@@ -1,0 +1,36 @@
+{
+  "games": [
+    {
+      "scummvm_id": "monkey-se",
+      "title": "The Secret of Monkey Island: Special Edition",
+      "detection_patterns": {
+        "unique_files": [
+          "Monkey1.pak",
+          "Monkey.exe"
+        ],
+        "file_patterns": [
+          "*.pak"
+        ]
+      },
+      "patches": [
+        {
+          "language": "he",
+          "version": "1.1",
+          "author": "AdventureBrew",
+          "completion": 100,
+          "download_url": "https://github.com/adventurebrew/scummworks/releases/download/MONKEY-1.1/MonkeyIsland-Heb-AdventureBrew.exe",
+          "installer_url": "https://github.com/adventurebrew/scummworks/releases/download/MONKEY-1.1/MonkeyIsland-Heb-AdventureBrew.exe",
+          "source_type": "github",
+          "checksum": null,
+          "file_size": null,
+          "description": "Hebrew translation for The Secret of Monkey Island: Special Edition"
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "version": "2.0",
+    "last_updated": "2024-12-28",
+    "source": "Kitor Community Registry"
+  }
+}
