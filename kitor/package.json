@@ -2,6 +2,7 @@
   "name": "kitor",
   "private": true,
   "version": "0.1.0",
+  "description": "Discover, scan, and patch adventure games with Hebrew support",
   "type": "module",
   "scripts": {
     "dev": "vite",

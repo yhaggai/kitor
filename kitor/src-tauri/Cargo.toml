@@ -1,7 +1,7 @@
 [package]
 name = "kitor"
 version = "0.1.0"
-description = "A Tauri App"
+description = "Hebrew patch manager for adventure games"
 authors = ["you"]
 edition = "2021"
 
