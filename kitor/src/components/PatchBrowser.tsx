@@ -1,10 +1,17 @@
-import { useEffect, useState } from "react";
 import { invoke } from "@tauri-apps/api/core";
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
-import { useAppStore, type Patch } from "@/store/store";
 import { Download } from "lucide-react";
+import { useEffect, useState } from "react";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { type Patch, useAppStore } from "@/store/store";
 
 export default function PatchBrowser() {
   const [patches, setPatches] = useState<Patch[]>([]);
@@ -14,12 +21,12 @@ export default function PatchBrowser() {
 
   useEffect(() => {
     loadPatches();
-  }, []);
+  }, [loadPatches]);
 
   const loadPatches = async () => {
     try {
       setLoading(true);
-      const allPatches = await invoke("get_all_patches") as Patch[];
+      const allPatches = (await invoke("get_all_patches")) as Patch[];
       setPatches(allPatches);
     } catch (error) {
       console.error("Failed to load patches:", error);
@@ -31,10 +38,10 @@ export default function PatchBrowser() {
   const handleInstall = async (patch: Patch) => {
     try {
       setInstalling(`${patch.scummvm_id}-${patch.language}-${patch.version}`);
-      await invoke("download_and_install_patch", { 
+      await invoke("download_and_install_patch", {
         scummvmId: patch.scummvm_id,
         language: patch.language,
-        version: patch.version
+        version: patch.version,
       });
       alert("Patch installed successfully!");
     } catch (error) {
@@ -53,9 +60,7 @@ export default function PatchBrowser() {
     <div className="space-y-6">
       <div>
         <h2 className="text-2xl font-bold mb-2">Available Patches</h2>
-        <p className="text-muted-foreground">
-          Browse and install community translation patches
-        </p>
+        <p className="text-muted-foreground">Browse and install community translation patches</p>
       </div>
 
       {patches.length === 0 ? (
@@ -83,15 +88,9 @@ export default function PatchBrowser() {
               </CardHeader>
               <CardContent>
                 {patch.description && (
-                  <p className="text-sm text-muted-foreground mb-2">
-                    {patch.description}
-                  </p>
+                  <p className="text-sm text-muted-foreground mb-2">{patch.description}</p>
                 )}
-                {patch.author && (
-                  <p className="text-xs text-muted-foreground">
-                    By {patch.author}
-                  </p>
-                )}
+                {patch.author && <p className="text-xs text-muted-foreground">By {patch.author}</p>}
               </CardContent>
               <CardFooter>
                 <Button
@@ -119,4 +118,3 @@ export default function PatchBrowser() {
     </div>
   );
 }
-

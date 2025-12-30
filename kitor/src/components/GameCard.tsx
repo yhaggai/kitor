@@ -1,10 +1,10 @@
 import { invoke } from "@tauri-apps/api/core";
-import { Card, CardContent, CardFooter } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
-import { Play, Package, Download, CheckCircle } from "lucide-react";
-import type { Game } from "@/store/store";
+import { CheckCircle, Download, Package, Play } from "lucide-react";
 import { useState } from "react";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardFooter } from "@/components/ui/card";
+import type { Game } from "@/store/store";
 
 interface GameCardProps {
   game: Game;
@@ -24,16 +24,16 @@ export default function GameCard({ game }: GameCardProps) {
 
   const handleInstallPatch = async () => {
     if (!game.available_patches || game.available_patches.length === 0) return;
-    
+
     // Install the first available patch (you could expand this to show a selection dialog)
     const patch = game.available_patches[0];
-    
+
     try {
       setIsInstalling(true);
-      await invoke("download_and_install_patch", { 
+      await invoke("download_and_install_patch", {
         scummvmId: game.scummvm_id,
         language: patch.language,
-        version: patch.version
+        version: patch.version,
       });
       alert("Patch installed successfully!");
       // Reload the page or update state to reflect the new patch status
@@ -92,9 +92,9 @@ export default function GameCard({ game }: GameCardProps) {
           Play
         </Button>
         {canInstall && (
-          <Button 
-            className="w-full" 
-            size="sm" 
+          <Button
+            className="w-full"
+            size="sm"
             variant="outline"
             onClick={handleInstallPatch}
             disabled={isInstalling}
@@ -104,12 +104,7 @@ export default function GameCard({ game }: GameCardProps) {
           </Button>
         )}
         {hasPatch && (
-          <Button 
-            className="w-full" 
-            size="sm" 
-            variant="outline"
-            disabled
-          >
+          <Button className="w-full" size="sm" variant="outline" disabled>
             <CheckCircle className="mr-2 h-3 w-3" />
             Patch Installed
           </Button>
@@ -118,7 +113,3 @@ export default function GameCard({ game }: GameCardProps) {
     </Card>
   );
 }
-
-
-
-

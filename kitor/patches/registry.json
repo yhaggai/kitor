@@ -4,13 +4,8 @@
       "scummvm_id": "monkey-se",
       "title": "The Secret of Monkey Island: Special Edition",
       "detection_patterns": {
-        "unique_files": [
-          "Monkey1.pak",
-          "Monkey.exe"
-        ],
-        "file_patterns": [
-          "*.pak"
-        ]
+        "unique_files": ["Monkey1.pak", "Monkey.exe"],
+        "file_patterns": ["*.pak"]
       },
       "patches": [
         {

@@ -1,4 +1,4 @@
-import { create } from 'zustand';
+import { create } from "zustand";
 
 interface InstalledPatchInfo {
   id: number;
@@ -56,7 +56,7 @@ interface AppStore {
   selectedGame: Game | null;
   downloadProgress: DownloadProgress | null;
   isScummVMInstalled: boolean;
-  
+
   setGames: (games: Game[]) => void;
   setPatches: (patches: Patch[]) => void;
   setSelectedGame: (game: Game | null) => void;
@@ -70,7 +70,7 @@ export const useAppStore = create<AppStore>((set) => ({
   selectedGame: null,
   downloadProgress: null,
   isScummVMInstalled: false,
-  
+
   setGames: (games) => set({ games }),
   setPatches: (patches) => set({ patches }),
   setSelectedGame: (game) => set({ selectedGame: game }),
@@ -79,6 +79,3 @@ export const useAppStore = create<AppStore>((set) => ({
 }));
 
 export type { Game, Patch, DownloadProgress, InstalledPatchInfo, AvailablePatchInfo };
-
-
-

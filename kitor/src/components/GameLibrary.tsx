@@ -1,10 +1,10 @@
-import { useState } from "react";
 import { invoke } from "@tauri-apps/api/core";
 import { open } from "@tauri-apps/plugin-dialog";
+import { FolderSearch, Plus } from "lucide-react";
+import { useState } from "react";
+import GameCard from "@/components/GameCard";
 import { Button } from "@/components/ui/button";
 import { useAppStore } from "@/store/store";
-import GameCard from "@/components/GameCard";
-import { Plus, FolderSearch } from "lucide-react";
 
 interface GameLibraryProps {
   onRefresh: () => void;
@@ -13,11 +13,11 @@ interface GameLibraryProps {
 export default function GameLibrary({ onRefresh }: GameLibraryProps) {
   const { games } = useAppStore();
   const [isScanning, setIsScanning] = useState(false);
-  const [showAddDialog, setShowAddDialog] = useState(false);
-  const [manualGameData, setManualGameData] = useState({
+  const [_showAddDialog, _setShowAddDialog] = useState(false);
+  const [_manualGameData, _setManualGameData] = useState({
     scummvmId: "",
     title: "",
-    installPath: ""
+    installPath: "",
   });
 
   const handleScanGames = async () => {
@@ -59,9 +59,9 @@ export default function GameLibrary({ onRefresh }: GameLibraryProps) {
         await invoke("add_game_manually", {
           scummvmId,
           title,
-          installPath: selected
+          installPath: selected,
         });
-        
+
         await onRefresh();
         alert("Game added successfully!");
       }
@@ -81,11 +81,7 @@ export default function GameLibrary({ onRefresh }: GameLibraryProps) {
           </p>
         </div>
         <div className="flex gap-2">
-          <Button
-            variant="outline"
-            onClick={handleScanGames}
-            disabled={isScanning}
-          >
+          <Button variant="outline" onClick={handleScanGames} disabled={isScanning}>
             <FolderSearch className="mr-2 h-4 w-4" />
             {isScanning ? "Scanning..." : "Scan Folder"}
           </Button>
@@ -118,6 +114,3 @@ export default function GameLibrary({ onRefresh }: GameLibraryProps) {
     </div>
   );
 }
-
-
-

@@ -1,11 +1,11 @@
-import { useEffect, useState } from "react";
 import { invoke } from "@tauri-apps/api/core";
 import { listen } from "@tauri-apps/api/event";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { useAppStore } from "@/store/store";
+import { useEffect, useState } from "react";
 import GameLibrary from "@/components/GameLibrary";
 import PatchBrowser from "@/components/PatchBrowser";
 import Settings from "@/components/Settings";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { useAppStore } from "@/store/store";
 
 function App() {
   const { setGames, setScummVMInstalled, setDownloadProgress } = useAppStore();
@@ -14,7 +14,7 @@ function App() {
   useEffect(() => {
     // Load games on startup
     loadGames();
-    
+
     // Check ScummVM installation
     checkScummVM();
 
@@ -26,7 +26,12 @@ function App() {
     return () => {
       unlisten.then((fn) => fn());
     };
-  }, []);
+  }, [
+    // Check ScummVM installation
+    checkScummVM, // Load games on startup
+    loadGames,
+    setDownloadProgress,
+  ]);
 
   const loadGames = async () => {
     try {
@@ -53,9 +58,7 @@ function App() {
       <div className="container mx-auto p-6">
         <header className="mb-8">
           <h1 className="text-4xl font-bold mb-2">Kitor</h1>
-          <p className="text-muted-foreground">
-            ScummVM Game Library & Translation Patch Manager
-          </p>
+          <p className="text-muted-foreground">ScummVM Game Library & Translation Patch Manager</p>
         </header>
 
         <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
