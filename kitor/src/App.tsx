@@ -5,9 +5,10 @@ import GameLibrary from "@/components/GameLibrary";
 import PatchBrowser from "@/components/PatchBrowser";
 import Settings from "@/components/Settings";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { useAppStore } from "@/store/store";
+import {  useAppStore } from "@/store/store";
+import type { Game } from "@/store/store";
 
-interface DownloadProgress {
+type DownloadProgress = {
   percentage: number;
   downloaded: number;
   total: number;
@@ -20,7 +21,7 @@ function App() {
   const loadGames = useCallback(async () => {
     try {
       const games = await invoke("get_games_with_patches");
-      setGames(games as unknown[]);
+      setGames(games as Game[]);
     } catch (error) {
       console.error("Failed to load games:", error);
     }

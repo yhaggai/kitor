@@ -6,7 +6,7 @@ import GameCard from "@/components/GameCard";
 import { Button } from "@/components/ui/button";
 import { useAppStore } from "@/store/store";
 
-interface GameLibraryProps {
+type GameLibraryProps = {
   onRefresh: () => void;
 }
 

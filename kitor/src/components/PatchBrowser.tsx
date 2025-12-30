@@ -1,6 +1,6 @@
 import { invoke } from "@tauri-apps/api/core";
 import { Download } from "lucide-react";
-import { useCallback, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import {
@@ -19,21 +19,20 @@ export default function PatchBrowser() {
   const [installing, setInstalling] = useState<string | null>(null);
   const { downloadProgress } = useAppStore();
 
-  const loadPatches = useCallback(async () => {
-    try {
-      setLoading(true);
-      const allPatches = (await invoke("get_all_patches")) as Patch[];
-      setPatches(allPatches);
-    } catch (error) {
-      console.error("Failed to load patches:", error);
-    } finally {
-      setLoading(false);
-    }
-  }, []);
-
   useEffect(() => {
+    async function loadPatches() {
+      try {
+        setLoading(true);
+        const allPatches = (await invoke("get_all_patches")) as Patch[];
+        setPatches(allPatches);
+      } catch (error) {
+        console.error("Failed to load patches:", error);
+      } finally {
+        setLoading(false);
+      }
+    }
     loadPatches();
-  }, [loadPatches]);
+  }, []);
 
   const handleInstall = async (patch: Patch) => {
     try {

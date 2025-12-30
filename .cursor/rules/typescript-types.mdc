@@ -1,0 +1,60 @@
+---
+description: Use TypeScript type aliases instead of interfaces
+globs: **/*.ts,**/*.tsx
+alwaysApply: true
+---
+# TypeScript Type Aliases
+
+Use `type` instead of `interface` for all type definitions.
+
+## Rules
+
+1. Always use `type` with object syntax:
+   ```typescript
+   // Good
+   type User = {
+     id: number;
+     name: string;
+   }
+   
+   // Bad
+   interface User {
+     id: number;
+     name: string;
+   }
+   ```
+
+2. For extending React types, use intersection:
+   ```typescript
+   // Good
+   export type ButtonProps = 
+     React.ButtonHTMLAttributes<HTMLButtonElement> & {
+     variant?: 'primary' | 'secondary';
+   }
+   
+   // Bad
+   export interface ButtonProps 
+     extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+     variant?: 'primary' | 'secondary';
+   }
+   ```
+
+3. For composing multiple types:
+   ```typescript
+   // Good
+   type Combined = BaseProps & VariantProps & {
+     extra: string;
+   }
+   
+   // Bad
+   interface Combined extends BaseProps, VariantProps {
+     extra: string;
+   }
+   ```
+
+## Why Types Over Interfaces
+
+- More flexible (unions, intersections, mapped types)
+- Consistent syntax throughout codebase
+- Better for functional programming patterns
+- Clearer semantics (aliases vs contracts)

@@ -1,6 +1,6 @@
 import { create } from "zustand";
 
-interface InstalledPatchInfo {
+type InstalledPatchInfo = {
   id: number;
   scummvm_id: string;
   language: string;
@@ -9,14 +9,14 @@ interface InstalledPatchInfo {
   status: string;
 }
 
-interface AvailablePatchInfo {
+type AvailablePatchInfo = {
   language: string;
   version: string;
   author: string;
   description: string;
 }
 
-interface Game {
+type Game = {
   id: number;
   scummvm_id: string;
   title: string;
@@ -30,7 +30,7 @@ interface Game {
   available_patches?: AvailablePatchInfo[];
 }
 
-interface Patch {
+type Patch = {
   scummvm_id: string;
   game_title: string;
   language: string;
@@ -44,13 +44,13 @@ interface Patch {
   description: string;
 }
 
-interface DownloadProgress {
+type DownloadProgress = {
   downloaded: number;
   total: number;
   percentage: number;
 }
 
-interface AppStore {
+type AppStore = {
   games: Game[];
   patches: Patch[];
   selectedGame: Game | null;
