@@ -133,7 +133,6 @@ Add a new patch to the database.
 - `language`: string (e.g., "ja", "fr", "de")
 - `version`: string (e.g., "1.0.0")
 - `downloadUrl`: string
-- `installerUrl`: string | null
 - `sourceType`: string ("github" | "custom")
 
 **Returns**: `Promise<Patch>`
@@ -144,7 +143,6 @@ const patch = await invoke('add_patch', {
   language: 'ja',
   version: '1.0.0',
   downloadUrl: 'https://example.com/patch.zip',
-  installerUrl: null,
   sourceType: 'github'
 });
 ```
@@ -247,7 +245,6 @@ interface Patch {
   language: string;
   version: string;
   download_url: string;
-  installer_url?: string;
   source_type: string;
   file_size?: number;
   checksum?: string;

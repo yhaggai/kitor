@@ -27,7 +27,6 @@ pub struct PatchDefinition {
     pub version: String,
     pub author: String,
     pub download_url: String,
-    pub installer_url: Option<String>,
     pub source_type: String,
     pub checksum: Option<String>,
     pub file_size: Option<i64>,

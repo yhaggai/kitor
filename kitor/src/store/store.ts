@@ -36,7 +36,6 @@ type Patch = {
   language: string;
   version: string;
   download_url: string;
-  installer_url?: string;
   source_type: string;
   file_size?: number;
   checksum?: string;
