@@ -13,7 +13,6 @@ interface AvailablePatchInfo {
   language: string;
   version: string;
   author: string;
-  completion: number;
   description: string;
 }
 
@@ -43,7 +42,6 @@ interface Patch {
   checksum?: string;
   author: string;
   description: string;
-  completion: number;
 }
 
 interface DownloadProgress {

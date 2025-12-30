@@ -20,7 +20,6 @@ pub struct AvailablePatchInfo {
     pub language: String,
     pub version: String,
     pub author: String,
-    pub completion: i32,
     pub description: String,
 }
 
@@ -221,7 +220,6 @@ pub async fn get_games_with_patches(db: &DatabaseConnection) -> Result<Vec<GameW
                     language: p.language.clone(),
                     version: p.version.clone(),
                     author: p.author.clone(),
-                    completion: p.completion,
                     description: p.description.clone(),
                 }
             }).collect()

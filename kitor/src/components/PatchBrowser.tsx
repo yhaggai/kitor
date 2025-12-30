@@ -3,7 +3,6 @@ import { invoke } from "@tauri-apps/api/core";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Progress } from "@/components/ui/progress";
 import { useAppStore, type Patch } from "@/store/store";
 import { Download } from "lucide-react";
 
@@ -92,15 +91,6 @@ export default function PatchBrowser() {
                   <p className="text-xs text-muted-foreground">
                     By {patch.author}
                   </p>
-                )}
-                {patch.completion && (
-                  <div className="mt-2">
-                    <div className="flex justify-between text-xs mb-1">
-                      <span>Translation Progress</span>
-                      <span>{patch.completion}%</span>
-                    </div>
-                    <Progress value={patch.completion} />
-                  </div>
                 )}
               </CardContent>
               <CardFooter>
