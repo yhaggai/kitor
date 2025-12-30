@@ -2,14 +2,17 @@ import { invoke } from "@tauri-apps/api/core";
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Play, Package } from "lucide-react";
+import { Play, Package, Download, CheckCircle } from "lucide-react";
 import type { Game } from "@/store/store";
+import { useState } from "react";
 
 interface GameCardProps {
   game: Game;
 }
 
 export default function GameCard({ game }: GameCardProps) {
+  const [isInstalling, setIsInstalling] = useState(false);
+
   const handleLaunch = async () => {
     try {
       await invoke("launch_game", { gameId: game.id });
@@ -18,6 +21,33 @@ export default function GameCard({ game }: GameCardProps) {
       alert(`Failed to launch game: ${error}`);
     }
   };
+
+  const handleInstallPatch = async () => {
+    if (!game.available_patches || game.available_patches.length === 0) return;
+    
+    // Install the first available patch (you could expand this to show a selection dialog)
+    const patch = game.available_patches[0];
+    
+    try {
+      setIsInstalling(true);
+      await invoke("download_and_install_patch", { 
+        scummvmId: game.scummvm_id,
+        language: patch.language,
+        version: patch.version
+      });
+      alert("Patch installed successfully!");
+      // Reload the page or update state to reflect the new patch status
+      window.location.reload();
+    } catch (error) {
+      console.error("Failed to install patch:", error);
+      alert(`Failed to install patch: ${error}`);
+    } finally {
+      setIsInstalling(false);
+    }
+  };
+
+  const hasPatch = game.installed_patches && game.installed_patches.length > 0;
+  const canInstall = game.has_available_patch && !hasPatch;
 
   return (
     <Card className="hover:shadow-lg transition-shadow">
@@ -39,18 +69,56 @@ export default function GameCard({ game }: GameCardProps) {
           <h3 className="font-semibold text-sm truncate mb-1" title={game.title}>
             {game.title}
           </h3>
-          <Badge variant="secondary" className="text-xs">
-            {game.scummvm_id}
-          </Badge>
+          <div className="flex items-center gap-2 flex-wrap">
+            <Badge variant="secondary" className="text-xs">
+              {game.scummvm_id}
+            </Badge>
+            {hasPatch && (
+              <Badge variant="default" className="text-xs bg-green-600">
+                <CheckCircle className="mr-1 h-3 w-3" />
+                Patched
+              </Badge>
+            )}
+            {canInstall && (
+              <Badge variant="default" className="text-xs bg-yellow-600">
+                <Download className="mr-1 h-3 w-3" />
+                Patch Available
+              </Badge>
+            )}
+          </div>
         </div>
         <Button className="w-full" size="sm" onClick={handleLaunch}>
           <Play className="mr-2 h-3 w-3" />
           Play
         </Button>
+        {canInstall && (
+          <Button 
+            className="w-full" 
+            size="sm" 
+            variant="outline"
+            onClick={handleInstallPatch}
+            disabled={isInstalling}
+          >
+            <Download className="mr-2 h-3 w-3" />
+            {isInstalling ? "Installing..." : "Install Patch"}
+          </Button>
+        )}
+        {hasPatch && (
+          <Button 
+            className="w-full" 
+            size="sm" 
+            variant="outline"
+            disabled
+          >
+            <CheckCircle className="mr-2 h-3 w-3" />
+            Patch Installed
+          </Button>
+        )}
       </CardFooter>
     </Card>
   );
 }
+
 
 
 

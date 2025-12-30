@@ -43,6 +43,7 @@ pub fn run() {
             commands::game_commands::add_game_manually,
             commands::game_commands::remove_game,
             commands::game_commands::get_game_by_id,
+            commands::game_commands::get_games_with_patches,
             // ScummVM commands
             commands::scummvm_commands::launch_game,
             commands::scummvm_commands::get_scummvm_path,

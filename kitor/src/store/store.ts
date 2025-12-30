@@ -1,5 +1,22 @@
 import { create } from 'zustand';
 
+interface InstalledPatchInfo {
+  id: number;
+  scummvm_id: string;
+  language: string;
+  version: string;
+  installed_date: string;
+  status: string;
+}
+
+interface AvailablePatchInfo {
+  language: string;
+  version: string;
+  author: string;
+  completion: number;
+  description: string;
+}
+
 interface Game {
   id: number;
   scummvm_id: string;
@@ -9,6 +26,9 @@ interface Game {
   detected_version?: string;
   added_date: string;
   last_played?: string;
+  has_available_patch?: boolean;
+  installed_patches?: InstalledPatchInfo[];
+  available_patches?: AvailablePatchInfo[];
 }
 
 interface Patch {
@@ -60,7 +80,7 @@ export const useAppStore = create<AppStore>((set) => ({
   setScummVMInstalled: (installed) => set({ isScummVMInstalled: installed }),
 }));
 
-export type { Game, Patch, DownloadProgress };
+export type { Game, Patch, DownloadProgress, InstalledPatchInfo, AvailablePatchInfo };
 
 
 

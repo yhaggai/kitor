@@ -30,7 +30,7 @@ function App() {
 
   const loadGames = async () => {
     try {
-      const games = await invoke("get_all_games");
+      const games = await invoke("get_games_with_patches");
       setGames(games as any[]);
     } catch (error) {
       console.error("Failed to load games:", error);

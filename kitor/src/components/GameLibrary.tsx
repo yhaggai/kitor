@@ -99,9 +99,9 @@ export default function GameLibrary({ onRefresh }: GameLibraryProps) {
       {games.length === 0 ? (
         <div className="text-center py-12 border-2 border-dashed rounded-lg">
           <FolderSearch className="mx-auto h-12 w-12 text-muted-foreground mb-4" />
-          <h3 className="text-lg font-semibold mb-2">No games found</h3>
+          <h3 className="text-lg font-semibold mb-2">No games with patches found</h3>
           <p className="text-muted-foreground mb-4">
-            Scan a folder or add games manually to get started
+            Scan a folder or add games with available translation patches
           </p>
           <Button onClick={handleScanGames}>
             <FolderSearch className="mr-2 h-4 w-4" />

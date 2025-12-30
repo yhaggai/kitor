@@ -1,7 +1,44 @@
 use sea_orm::*;
 use std::path::Path;
+use serde::{Deserialize, Serialize};
 use crate::models::game::{self, Entity as Game};
+use crate::models::installed_patch;
 use crate::services::registry_service;
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct InstalledPatchInfo {
+    pub id: i32,
+    pub scummvm_id: String,
+    pub language: String,
+    pub version: String,
+    pub installed_date: String,
+    pub status: String,
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct AvailablePatchInfo {
+    pub language: String,
+    pub version: String,
+    pub author: String,
+    pub completion: i32,
+    pub description: String,
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct GameWithPatches {
+    pub id: i32,
+    pub scummvm_id: String,
+    pub title: String,
+    pub install_path: String,
+    pub cover_url: Option<String>,
+    pub detected_version: Option<String>,
+    pub added_date: String,
+    pub last_played: Option<String>,
+    pub has_available_patch: bool,
+    pub installed_patches: Vec<InstalledPatchInfo>,
+    pub available_patches: Vec<AvailablePatchInfo>,
+}
+
 
 pub async fn get_all_games(db: &DatabaseConnection) -> Result<Vec<game::Model>, String> {
     Game::find()
@@ -141,6 +178,81 @@ fn detect_scummvm_game(path: &Path) -> Option<GameInfo> {
     
     None
 }
+
+pub async fn get_games_with_patches(db: &DatabaseConnection) -> Result<Vec<GameWithPatches>, String> {
+    // Get all games from DB
+    let games = Game::find()
+        .all(db)
+        .await
+        .map_err(|e| format!("Failed to fetch games: {}", e))?;
+    
+    // Load registry
+    let registry = registry_service::load_registry()?;
+    
+    let mut games_with_patches = Vec::new();
+    
+    for game in games {
+        // Find game definition in registry
+        let game_def = registry.games.iter()
+            .find(|g| g.scummvm_id == game.scummvm_id);
+        
+        // Get installed patches for this game
+        let installed = installed_patch::Entity::find()
+            .filter(installed_patch::Column::GameId.eq(game.id))
+            .all(db)
+            .await
+            .map_err(|e| format!("Failed to fetch installed patches: {}", e))?;
+        
+        let installed_patches: Vec<InstalledPatchInfo> = installed.iter().map(|p| {
+            InstalledPatchInfo {
+                id: p.id,
+                scummvm_id: p.scummvm_id.clone(),
+                language: p.language.clone(),
+                version: p.version.clone(),
+                installed_date: p.installed_date.format("%Y-%m-%d").to_string(),
+                status: p.status.clone(),
+            }
+        }).collect();
+        
+        // Get available patches from registry
+        let available_patches: Vec<AvailablePatchInfo> = if let Some(def) = game_def {
+            def.patches.iter().map(|p| {
+                AvailablePatchInfo {
+                    language: p.language.clone(),
+                    version: p.version.clone(),
+                    author: p.author.clone(),
+                    completion: p.completion,
+                    description: p.description.clone(),
+                }
+            }).collect()
+        } else {
+            Vec::new()
+        };
+        
+        // Only include games that have patches (available or installed)
+        let has_available_patch = !available_patches.is_empty();
+        let has_installed_patch = !installed_patches.is_empty();
+        
+        if has_available_patch || has_installed_patch {
+            games_with_patches.push(GameWithPatches {
+                id: game.id,
+                scummvm_id: game.scummvm_id,
+                title: game.title,
+                install_path: game.install_path,
+                cover_url: game.cover_url,
+                detected_version: game.detected_version,
+                added_date: game.added_date.format("%Y-%m-%d %H:%M:%S").to_string(),
+                last_played: game.last_played.map(|d| d.format("%Y-%m-%d %H:%M:%S").to_string()),
+                has_available_patch,
+                installed_patches,
+                available_patches,
+            });
+        }
+    }
+    
+    Ok(games_with_patches)
+}
+
 
 
 

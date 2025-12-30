@@ -1,6 +1,6 @@
 use tauri::State;
 use crate::models::game;
-use crate::services::game_service;
+use crate::services::game_service::{self, GameWithPatches};
 use crate::AppState;
 
 #[tauri::command]
@@ -38,6 +38,13 @@ pub async fn get_game_by_id(
 ) -> Result<Option<game::Model>, String> {
     game_service::get_game_by_id(&state.db, id).await
 }
+
+#[tauri::command]
+pub async fn get_games_with_patches(state: State<'_, AppState>) -> Result<Vec<GameWithPatches>, String> {
+    game_service::get_games_with_patches(&state.db).await
+}
+
+
 
 
 
