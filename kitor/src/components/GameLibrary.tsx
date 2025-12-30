@@ -8,7 +8,7 @@ import { useAppStore } from "@/store/store";
 
 type GameLibraryProps = {
   onRefresh: () => void;
-}
+};
 
 export default function GameLibrary({ onRefresh }: GameLibraryProps) {
   const { games } = useAppStore();

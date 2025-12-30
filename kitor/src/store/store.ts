@@ -7,14 +7,14 @@ type InstalledPatchInfo = {
   version: string;
   installed_date: string;
   status: string;
-}
+};
 
 type AvailablePatchInfo = {
   language: string;
   version: string;
   author: string;
   description: string;
-}
+};
 
 type Game = {
   id: number;
@@ -28,7 +28,7 @@ type Game = {
   has_available_patch?: boolean;
   installed_patches?: InstalledPatchInfo[];
   available_patches?: AvailablePatchInfo[];
-}
+};
 
 type Patch = {
   scummvm_id: string;
@@ -42,13 +42,13 @@ type Patch = {
   checksum?: string;
   author: string;
   description: string;
-}
+};
 
 type DownloadProgress = {
   downloaded: number;
   total: number;
   percentage: number;
-}
+};
 
 type AppStore = {
   games: Game[];
@@ -62,7 +62,7 @@ type AppStore = {
   setSelectedGame: (game: Game | null) => void;
   setDownloadProgress: (progress: DownloadProgress | null) => void;
   setScummVMInstalled: (installed: boolean) => void;
-}
+};
 
 export const useAppStore = create<AppStore>((set) => ({
   games: [],

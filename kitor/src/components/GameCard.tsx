@@ -8,7 +8,7 @@ import type { Game } from "@/store/store";
 
 type GameCardProps = {
   game: Game;
-}
+};
 
 export default function GameCard({ game }: GameCardProps) {
   const [isInstalling, setIsInstalling] = useState(false);

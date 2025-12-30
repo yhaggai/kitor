@@ -5,14 +5,14 @@ import GameLibrary from "@/components/GameLibrary";
 import PatchBrowser from "@/components/PatchBrowser";
 import Settings from "@/components/Settings";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import {  useAppStore } from "@/store/store";
 import type { Game } from "@/store/store";
+import { useAppStore } from "@/store/store";
 
 type DownloadProgress = {
   percentage: number;
   downloaded: number;
   total: number;
-}
+};
 
 function App() {
   const { setGames, setScummVMInstalled, setDownloadProgress } = useAppStore();
