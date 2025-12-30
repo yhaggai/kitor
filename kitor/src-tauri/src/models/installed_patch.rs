@@ -8,7 +8,6 @@ pub struct Model {
     pub id: i32,
     pub game_id: i32,
     pub scummvm_id: String,
-    pub language: String,
     pub version: String,
     pub installed_date: DateTime,
     pub status: String,
@@ -32,6 +31,3 @@ impl Related<super::game::Entity> for Entity {
 }
 
 impl ActiveModelBehavior for ActiveModel {}
-
-
-

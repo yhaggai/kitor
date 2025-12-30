@@ -1,6 +1,6 @@
 use tauri::State;
 use crate::models::game;
-use crate::services::game_service::{self, GameWithPatches};
+use crate::services::game_service::{self, DetectedGameInfo, GameWithPatches};
 use crate::AppState;
 
 #[tauri::command]
@@ -24,6 +24,11 @@ pub async fn add_game_manually(
     state: State<'_, AppState>,
 ) -> Result<game::Model, String> {
     game_service::add_game_manually(&state.db, scummvm_id, title, install_path).await
+}
+
+#[tauri::command]
+pub async fn detect_game_in_folder(path: String) -> Result<Option<DetectedGameInfo>, String> {
+    game_service::detect_game_in_folder(std::path::Path::new(&path))
 }
 
 #[tauri::command]

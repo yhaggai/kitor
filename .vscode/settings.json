@@ -1,0 +1,7 @@
+{
+  "rust-analyzer.linkedProjects": [
+    "./kitor/src-tauri/Cargo.toml"
+  ]
+}
+
+

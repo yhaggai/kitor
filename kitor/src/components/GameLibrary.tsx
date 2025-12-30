@@ -2,6 +2,7 @@ import { invoke } from "@tauri-apps/api/core";
 import { open } from "@tauri-apps/plugin-dialog";
 import { FolderSearch, Plus } from "lucide-react";
 import { useState } from "react";
+import AddGameDialog from "@/components/AddGameDialog";
 import GameCard from "@/components/GameCard";
 import { Button } from "@/components/ui/button";
 import { useAppStore } from "@/store/store";
@@ -13,12 +14,7 @@ type GameLibraryProps = {
 export default function GameLibrary({ onRefresh }: GameLibraryProps) {
   const { games } = useAppStore();
   const [isScanning, setIsScanning] = useState(false);
-  const [_showAddDialog, _setShowAddDialog] = useState(false);
-  const [_manualGameData, _setManualGameData] = useState({
-    scummvmId: "",
-    title: "",
-    installPath: "",
-  });
+  const [showAddDialog, setShowAddDialog] = useState(false);
 
   const handleScanGames = async () => {
     try {
@@ -40,36 +36,7 @@ export default function GameLibrary({ onRefresh }: GameLibraryProps) {
     }
   };
 
-  const handleAddManually = async () => {
-    try {
-      const selected = await open({
-        directory: true,
-        multiple: false,
-        title: "Select game installation folder",
-      });
-
-      if (selected) {
-        // For now, prompt for details - could make this a dialog later
-        const scummvmId = prompt("Enter ScummVM game ID (e.g., 'monkey-se'):");
-        if (!scummvmId) return;
-
-        const title = prompt("Enter game title:", "Game Title");
-        if (!title) return;
-
-        await invoke("add_game_manually", {
-          scummvmId,
-          title,
-          installPath: selected,
-        });
-
-        await onRefresh();
-        alert("Game added successfully!");
-      }
-    } catch (error) {
-      console.error("Failed to add game:", error);
-      alert(`Failed to add game: ${error}`);
-    }
-  };
+  const handleAddManually = () => setShowAddDialog(true);
 
   return (
     <div className="space-y-6">
@@ -92,6 +59,8 @@ export default function GameLibrary({ onRefresh }: GameLibraryProps) {
         </div>
       </div>
 
+      <AddGameDialog open={showAddDialog} onOpenChange={setShowAddDialog} onAdded={onRefresh} />
+
       {games.length === 0 ? (
         <div className="text-center py-12 border-2 border-dashed rounded-lg">
           <FolderSearch className="mx-auto h-12 w-12 text-muted-foreground mb-4" />
@@ -107,7 +76,7 @@ export default function GameLibrary({ onRefresh }: GameLibraryProps) {
       ) : (
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
           {games.map((game) => (
-            <GameCard key={game.id} game={game} />
+            <GameCard key={game.id} game={game} onRemove={onRefresh} />
           ))}
         </div>
       )}

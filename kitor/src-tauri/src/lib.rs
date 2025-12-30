@@ -41,6 +41,7 @@ pub fn run() {
             commands::game_commands::get_all_games,
             commands::game_commands::scan_games,
             commands::game_commands::add_game_manually,
+            commands::game_commands::detect_game_in_folder,
             commands::game_commands::remove_game,
             commands::game_commands::get_game_by_id,
             commands::game_commands::get_games_with_patches,

@@ -11,6 +11,8 @@ pub async fn init_db(app_data_dir: &PathBuf) -> Result<DatabaseConnection, DbErr
     let db_path = app_data_dir.join("kitor.db");
     let db_url = format!("sqlite://{}?mode=rwc", db_path.display());
 
+    eprintln!("📁 Database path: {}", db_path.display());
+
     let db = Database::connect(&db_url).await?;
 
     // Run migrations
@@ -22,6 +24,11 @@ pub async fn init_db(app_data_dir: &PathBuf) -> Result<DatabaseConnection, DbErr
 async fn create_tables(db: &DatabaseConnection) -> Result<(), DbErr> {
     use sea_orm::sea_query::{ColumnDef, SqliteQueryBuilder, Table};
     use sea_orm::{ConnectionTrait, Statement};
+
+    // Drop installed_patches table to recreate without language column
+    let drop_patches = "DROP TABLE IF EXISTS installed_patches";
+    db.execute(Statement::from_string(db.get_database_backend(), drop_patches))
+        .await?;
 
     // Create games table
     let create_games = Table::create()
@@ -81,11 +88,6 @@ async fn create_tables(db: &DatabaseConnection) -> Result<(), DbErr> {
         )
         .col(
             ColumnDef::new(crate::models::installed_patch::Column::ScummvmId)
-                .string()
-                .not_null(),
-        )
-        .col(
-            ColumnDef::new(crate::models::installed_patch::Column::Language)
                 .string()
                 .not_null(),
         )

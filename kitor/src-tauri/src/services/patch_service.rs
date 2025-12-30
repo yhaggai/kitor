@@ -159,7 +159,6 @@ pub async fn download_and_install_patch(
     let installed = installed_patch::ActiveModel {
         game_id: Set(game.id),
         scummvm_id: Set(scummvm_id),
-        language: Set(language),
         version: Set(version),
         installed_date: Set(chrono::Utc::now().naive_utc()),
         status: Set("active".to_string()),

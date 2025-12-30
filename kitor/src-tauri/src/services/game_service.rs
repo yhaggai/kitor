@@ -9,7 +9,6 @@ use crate::services::registry_service;
 pub struct InstalledPatchInfo {
     pub id: i32,
     pub scummvm_id: String,
-    pub language: String,
     pub version: String,
     pub installed_date: String,
     pub status: String,
@@ -36,6 +35,13 @@ pub struct GameWithPatches {
     pub has_available_patch: bool,
     pub installed_patches: Vec<InstalledPatchInfo>,
     pub available_patches: Vec<AvailablePatchInfo>,
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct DetectedGameInfo {
+    pub scummvm_id: String,
+    pub title: String,
+    pub available_patches_count: usize,
 }
 
 
@@ -110,6 +116,22 @@ pub async fn add_game_manually(
     title: String,
     install_path: String,
 ) -> Result<game::Model, String> {
+    // Idempotent add: if game exists (unique scummvm_id), update metadata + return it.
+    if let Some(existing) = Game::find()
+        .filter(game::Column::ScummvmId.eq(&scummvm_id))
+        .one(db)
+        .await
+        .map_err(|e| format!("Database error: {}", e))?
+    {
+        let mut active: game::ActiveModel = existing.into();
+        active.title = Set(title);
+        active.install_path = Set(install_path);
+        return active
+            .update(db)
+            .await
+            .map_err(|e| format!("Failed to update existing game: {}", e));
+    }
+
     let game = game::ActiveModel {
         scummvm_id: Set(scummvm_id),
         title: Set(title),
@@ -140,42 +162,55 @@ struct GameInfo {
     title: String,
 }
 
-fn detect_scummvm_game(path: &Path) -> Option<GameInfo> {
+pub fn detect_game_in_folder(path: &Path) -> Result<Option<DetectedGameInfo>, String> {
+    if !path.exists() || !path.is_dir() {
+        return Err("Invalid directory path".to_string());
+    }
+
     // Load registry and try to match against game definitions
-    let registry = registry_service::load_registry().ok()?;
-    
-    // Get list of files in directory
-    let entries = std::fs::read_dir(path).ok()?;
-    let mut files_in_dir: Vec<String> = Vec::new();
-    
+    let registry = registry_service::load_registry()?;
+
+    // Get list of files in directory (case-insensitive)
+    let entries = std::fs::read_dir(path)
+        .map_err(|e| format!("Failed to read directory: {}", e))?;
+
+    let mut files_in_dir_lower: Vec<String> = Vec::new();
     for entry in entries.flatten() {
         if let Some(file_name) = entry.file_name().to_str() {
-            files_in_dir.push(file_name.to_string());
+            files_in_dir_lower.push(file_name.to_ascii_lowercase());
         }
     }
-    
-    // Try to match against each game definition in registry
+
     for game_def in registry.games {
-        let mut matches = false;
-        
-        // Check if any unique files match
-        for unique_file in &game_def.detection_patterns.unique_files {
-            if files_in_dir.iter().any(|f| f.eq_ignore_ascii_case(unique_file)) {
-                matches = true;
-                break;
-            }
+        // Only allow games that actually have patches in registry
+        if game_def.patches.is_empty() {
+            continue;
         }
-        
-        // If matched by unique files, return this game
+
+        let matches = game_def
+            .detection_patterns
+            .unique_files
+            .iter()
+            .any(|unique_file| files_in_dir_lower.iter().any(|f| f == &unique_file.to_ascii_lowercase()));
+
         if matches {
-            return Some(GameInfo {
+            return Ok(Some(DetectedGameInfo {
                 scummvm_id: game_def.scummvm_id,
                 title: game_def.title,
-            });
+                available_patches_count: game_def.patches.len(),
+            }));
         }
     }
-    
-    None
+
+    Ok(None)
+}
+
+fn detect_scummvm_game(path: &Path) -> Option<GameInfo> {
+    let detected = detect_game_in_folder(path).ok()??;
+    Some(GameInfo {
+        scummvm_id: detected.scummvm_id,
+        title: detected.title,
+    })
 }
 
 pub async fn get_games_with_patches(db: &DatabaseConnection) -> Result<Vec<GameWithPatches>, String> {
@@ -206,7 +241,6 @@ pub async fn get_games_with_patches(db: &DatabaseConnection) -> Result<Vec<GameW
             InstalledPatchInfo {
                 id: p.id,
                 scummvm_id: p.scummvm_id.clone(),
-                language: p.language.clone(),
                 version: p.version.clone(),
                 installed_date: p.installed_date.format("%Y-%m-%d").to_string(),
                 status: p.status.clone(),
