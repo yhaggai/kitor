@@ -1,7 +1,7 @@
-import { invoke } from "@tauri-apps/api/core";
-import { open as openDialog } from "@tauri-apps/plugin-dialog";
 import * as Dialog from "@radix-ui/react-dialog";
 import * as Toast from "@radix-ui/react-toast";
+import { invoke } from "@tauri-apps/api/core";
+import { open as openDialog } from "@tauri-apps/plugin-dialog";
 import { CheckCircle, FolderSearch, XCircle } from "lucide-react";
 import { useCallback, useMemo, useState } from "react";
 import { Button } from "@/components/ui/button";
@@ -169,5 +169,3 @@ export default function AddGameDialog({ open, onOpenChange, onAdded }: AddGameDi
     </Toast.Provider>
   );
 }
-
-

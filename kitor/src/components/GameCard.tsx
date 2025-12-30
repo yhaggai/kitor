@@ -1,6 +1,6 @@
-import { invoke } from "@tauri-apps/api/core";
-import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
 import * as AlertDialog from "@radix-ui/react-alert-dialog";
+import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
+import { invoke } from "@tauri-apps/api/core";
 import { CheckCircle, Download, MoreVertical, Package, Play, Trash2 } from "lucide-react";
 import { useState } from "react";
 import { Badge } from "@/components/ui/badge";
@@ -183,7 +183,8 @@ export default function GameCard({ game, onRemove }: GameCardProps) {
               Remove {game.title}?
             </AlertDialog.Title>
             <AlertDialog.Description className="mt-2 text-sm text-muted-foreground">
-              This will remove the game from your library. The game files on your disk will not be deleted.
+              This will remove the game from your library. The game files on your disk will not be
+              deleted.
             </AlertDialog.Description>
             <div className="mt-6 flex justify-end gap-2">
               <AlertDialog.Cancel asChild>
