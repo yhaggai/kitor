@@ -1,48 +1,32 @@
 import { invoke } from "@tauri-apps/api/core";
 import { listen } from "@tauri-apps/api/event";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import GameLibrary from "@/components/GameLibrary";
 import PatchBrowser from "@/components/PatchBrowser";
 import Settings from "@/components/Settings";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useAppStore } from "@/store/store";
 
+interface DownloadProgress {
+  percentage: number;
+  downloaded: number;
+  total: number;
+}
+
 function App() {
   const { setGames, setScummVMInstalled, setDownloadProgress } = useAppStore();
   const [activeTab, setActiveTab] = useState("library");
 
-  useEffect(() => {
-    // Load games on startup
-    loadGames();
-
-    // Check ScummVM installation
-    checkScummVM();
-
-    // Listen for download progress
-    const unlisten = listen("download-progress", (event) => {
-      setDownloadProgress(event.payload as any);
-    });
-
-    return () => {
-      unlisten.then((fn) => fn());
-    };
-  }, [
-    // Check ScummVM installation
-    checkScummVM, // Load games on startup
-    loadGames,
-    setDownloadProgress,
-  ]);
-
-  const loadGames = async () => {
+  const loadGames = useCallback(async () => {
     try {
       const games = await invoke("get_games_with_patches");
-      setGames(games as any[]);
+      setGames(games as unknown[]);
     } catch (error) {
       console.error("Failed to load games:", error);
     }
-  };
+  }, [setGames]);
 
-  const checkScummVM = async () => {
+  const checkScummVM = useCallback(async () => {
     try {
       const installed = await invoke("verify_scummvm");
       console.log("ScummVM verification result:", installed);
@@ -51,7 +35,20 @@ function App() {
       console.error("Failed to check ScummVM:", error);
       setScummVMInstalled(false);
     }
-  };
+  }, [setScummVMInstalled]);
+
+  useEffect(() => {
+    loadGames();
+    checkScummVM();
+
+    const unlisten = listen("download-progress", (event) => {
+      setDownloadProgress(event.payload as DownloadProgress);
+    });
+
+    return () => {
+      unlisten.then((fn) => fn());
+    };
+  }, [loadGames, checkScummVM, setDownloadProgress]);
 
   return (
     <div className="min-h-screen bg-background">

@@ -1,6 +1,6 @@
 import { invoke } from "@tauri-apps/api/core";
 import { AlertCircle, CheckCircle, XCircle } from "lucide-react";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { useAppStore } from "@/store/store";
@@ -9,11 +9,7 @@ export default function Settings() {
   const { isScummVMInstalled, setScummVMInstalled } = useAppStore();
   const [scummvmPath, setScummvmPath] = useState<string>("");
 
-  useEffect(() => {
-    checkScummVMPath();
-  }, [checkScummVMPath]);
-
-  const checkScummVMPath = async () => {
+  const checkScummVMPath = useCallback(async () => {
     try {
       const path = (await invoke("get_scummvm_path")) as string;
       console.log("ScummVM found at:", path);
@@ -23,7 +19,11 @@ export default function Settings() {
       console.error("ScummVM not found:", error);
       setScummVMInstalled(false);
     }
-  };
+  }, [setScummVMInstalled]);
+
+  useEffect(() => {
+    checkScummVMPath();
+  }, [checkScummVMPath]);
 
   return (
     <div className="space-y-6">

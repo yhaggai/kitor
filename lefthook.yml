@@ -1,5 +1,5 @@
 pre-commit:
   commands:
     lint:
-      run: cd kitor && bun run lint:fix
+      run: bun run lint:fix
 

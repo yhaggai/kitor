@@ -1,6 +1,6 @@
 import { invoke } from "@tauri-apps/api/core";
 import { Download } from "lucide-react";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import {
@@ -19,11 +19,7 @@ export default function PatchBrowser() {
   const [installing, setInstalling] = useState<string | null>(null);
   const { downloadProgress } = useAppStore();
 
-  useEffect(() => {
-    loadPatches();
-  }, [loadPatches]);
-
-  const loadPatches = async () => {
+  const loadPatches = useCallback(async () => {
     try {
       setLoading(true);
       const allPatches = (await invoke("get_all_patches")) as Patch[];
@@ -33,7 +29,11 @@ export default function PatchBrowser() {
     } finally {
       setLoading(false);
     }
-  };
+  }, []);
+
+  useEffect(() => {
+    loadPatches();
+  }, [loadPatches]);
 
   const handleInstall = async (patch: Patch) => {
     try {
