@@ -1,5 +1,5 @@
 use sea_orm::*;
-use std::path::Path;
+use std::path::{Path, PathBuf};
 use std::process::Command;
 use crate::models::game;
 use crate::services::game_service;
@@ -12,13 +12,53 @@ pub async fn launch_game(
         .await?
         .ok_or("Game not found")?;
 
-    let scummvm_path = get_scummvm_path()?;
+    println!("=== LAUNCHING GAME ===");
+    println!("Game ID: {}", game.id);
+    println!("ScummVM ID: {}", game.scummvm_id);
+    println!("Title: {}", game.title);
+    println!("Install Path: {}", game.install_path);
 
-    Command::new(scummvm_path)
-        .arg("-p")
-        .arg(&game.install_path)
-        .arg(&game.scummvm_id)
-        .spawn()
+    let scummvm_path = get_scummvm_path()?;
+    println!("ScummVM Path: {}", scummvm_path);
+
+    // Read launch config from DB
+    println!("Launch config from DB:");
+    println!("  Subdirectory: {:?}", game.launch_subdirectory);
+    println!("  Args JSON: {:?}", game.launch_args);
+
+    // Build command with launch_config if available
+    let mut cmd = Command::new(&scummvm_path);
+    
+    // Determine game path (with optional subdirectory from DB)
+    let game_path = if let Some(subdir) = &game.launch_subdirectory {
+        PathBuf::from(&game.install_path).join(subdir)
+    } else {
+        PathBuf::from(&game.install_path)
+    };
+
+    println!("Final game path: {}", game_path.display());
+
+    // Add default ScummVM args
+    cmd.arg("-p").arg(&game_path);
+
+    // Add custom args from DB
+    if let Some(args_json) = &game.launch_args {
+        let args: Vec<String> = serde_json::from_str(args_json)
+            .map_err(|e| format!("Failed to parse launch args: {}", e))?;
+        
+        for arg in args {
+            // Template replacement
+            let processed_arg = arg
+                .replace("{install_path}", &game.install_path)
+                .replace("{scummvm_id}", &game.scummvm_id);
+            cmd.arg(processed_arg);
+        }
+    }
+
+    println!("Executing command: {:?}", cmd);
+    println!("=====================");
+
+    cmd.spawn()
         .map_err(|e| format!("Failed to launch game: {}", e))?;
 
     // Update last_played

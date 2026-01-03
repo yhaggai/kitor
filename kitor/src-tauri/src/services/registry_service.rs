@@ -13,6 +13,18 @@ pub struct GameDefinition {
     pub title: String,
     pub detection_patterns: DetectionPatterns,
     pub patches: Vec<PatchDefinition>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub launch_config: Option<LaunchConfig>,
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct LaunchConfig {
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub launcher: Option<String>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub subdirectory: Option<String>,
+    #[serde(default)]
+    pub args: Vec<String>,
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
@@ -31,6 +43,8 @@ pub struct PatchDefinition {
     pub checksum: Option<String>,
     pub file_size: Option<i64>,
     pub description: String,
+    pub filename: Option<String>,
+    pub post_install_script: Option<String>,
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]

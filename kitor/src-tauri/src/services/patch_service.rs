@@ -17,6 +17,8 @@ pub struct PatchInfo {
     pub checksum: Option<String>,
     pub file_size: Option<i64>,
     pub description: String,
+    pub filename: Option<String>,
+    pub post_install_script: Option<String>,
 }
 
 pub async fn get_patches_for_game(
@@ -51,6 +53,8 @@ pub async fn get_patches_for_game(
             checksum: p.checksum,
             file_size: p.file_size,
             description: p.description,
+            filename: p.filename,
+            post_install_script: p.post_install_script,
         })
         .collect();
     
@@ -85,6 +89,8 @@ pub async fn get_all_patches(db: &DatabaseConnection) -> Result<Vec<PatchInfo>, 
                 checksum: patch.checksum,
                 file_size: patch.file_size,
                 description: patch.description,
+                filename: patch.filename,
+                post_install_script: patch.post_install_script,
             });
         }
     }
@@ -126,11 +132,16 @@ pub async fn download_and_install_patch(
         .map_err(|e| format!("Failed to create downloads directory: {}", e))?;
 
     // Download patch
-    let file_name = patch.download_url
-        .split('/')
-        .last()
-        .unwrap_or("patch.zip");
-    let download_path = downloads_dir.join(file_name);
+    let file_name = patch.filename
+        .clone()
+        .unwrap_or_else(|| {
+            patch.download_url
+                .split('/')
+                .last()
+                .unwrap_or("patch.zip")
+                .to_string()
+        });
+    let download_path = downloads_dir.join(&file_name);
 
     download_service::download_file(&patch.download_url, &download_path, &app_handle)
         .await?;
@@ -145,9 +156,25 @@ pub async fn download_and_install_patch(
     // Extract and apply patch
     if download_path.extension().and_then(|s| s.to_str()) == Some("zip") {
         file_service::extract_zip(&download_path, Path::new(&game.install_path))?;
+        
+        // Run post-install script if specified
+        if let Some(script_name) = &patch.post_install_script {
+            let script_path = Path::new(&game.install_path).join(script_name);
+            if script_path.exists() {
+                match file_service::run_post_install_script(
+                    &script_path,
+                    Path::new(&game.install_path),
+                ) {
+                    Ok(_) => println!("Post-install script executed successfully"),
+                    Err(e) => eprintln!("Warning: Post-install script failed: {}", e),
+                }
+            } else {
+                eprintln!("Warning: Post-install script not found: {}", script_name);
+            }
+        }
     } else {
         // Copy file directly
-        let dest = Path::new(&game.install_path).join(file_name);
+        let dest = Path::new(&game.install_path).join(&file_name);
         std::fs::copy(&download_path, dest)
             .map_err(|e| format!("Failed to copy patch file: {}", e))?;
     }

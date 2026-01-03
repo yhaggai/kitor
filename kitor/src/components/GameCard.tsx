@@ -99,7 +99,7 @@ export default function GameCard({ game, onRemove }: GameCardProps) {
                 align="end"
               >
                 <DropdownMenu.Item
-                  className="flex cursor-pointer items-center rounded-sm px-2 py-2 text-sm outline-none hover:bg-accent focus:bg-accent"
+                  className="flex cursor-pointer items-center rounded-sm px-2 py-2 text-sm text-foreground outline-none hover:bg-accent focus:bg-accent"
                   onSelect={handleLaunch}
                 >
                   <Play className="mr-2 h-4 w-4" />
@@ -107,7 +107,7 @@ export default function GameCard({ game, onRemove }: GameCardProps) {
                 </DropdownMenu.Item>
                 {canInstall && (
                   <DropdownMenu.Item
-                    className="flex cursor-pointer items-center rounded-sm px-2 py-2 text-sm outline-none hover:bg-accent focus:bg-accent"
+                    className="flex cursor-pointer items-center rounded-sm px-2 py-2 text-sm text-foreground outline-none hover:bg-accent focus:bg-accent"
                     onSelect={handleInstallPatch}
                     disabled={isInstalling}
                   >

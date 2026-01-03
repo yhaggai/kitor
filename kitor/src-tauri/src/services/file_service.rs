@@ -1,6 +1,7 @@
 use std::path::Path;
 use std::fs;
 use std::io;
+use std::process::Command;
 
 pub fn extract_zip(zip_path: &Path, extract_to: &Path) -> Result<(), String> {
     let file = fs::File::open(zip_path)
@@ -83,6 +84,63 @@ fn copy_dir_recursive(src: &Path, dst: &Path) -> Result<(), String> {
             fs::copy(&src_path, &dst_path)
                 .map_err(|e| format!("Failed to copy file: {}", e))?;
         }
+    }
+
+    Ok(())
+}
+
+pub fn run_post_install_script(
+    script_path: &Path,
+    working_dir: &Path,
+) -> Result<(), String> {
+    // Verify script exists
+    if !script_path.exists() {
+        return Err(format!("Script not found: {}", script_path.display()));
+    }
+
+    // Security check: ensure script is within the working directory
+    let script_canonical = script_path.canonicalize()
+        .map_err(|e| format!("Failed to resolve script path: {}", e))?;
+    let working_canonical = working_dir.canonicalize()
+        .map_err(|e| format!("Failed to resolve working directory: {}", e))?;
+    
+    if !script_canonical.starts_with(&working_canonical) {
+        return Err("Security error: Script must be inside game directory".to_string());
+    }
+
+    println!("Running post-install script: {}", script_path.display());
+
+    // Run the batch file on Windows
+    #[cfg(target_os = "windows")]
+    {
+        let output = Command::new("cmd")
+            .args(["/C", &script_path.to_string_lossy()])
+            .current_dir(working_dir)
+            .output()
+            .map_err(|e| format!("Failed to execute script: {}", e))?;
+
+        let stdout = String::from_utf8_lossy(&output.stdout);
+        let stderr = String::from_utf8_lossy(&output.stderr);
+
+        if !stdout.is_empty() {
+            println!("Script output:\n{}", stdout);
+        }
+        if !stderr.is_empty() {
+            eprintln!("Script errors:\n{}", stderr);
+        }
+
+        if !output.status.success() {
+            let exit_code = output.status.code().unwrap_or(-1);
+            eprintln!("Warning: Script exited with code {}", exit_code);
+            // Don't return error - just log the warning as per requirements
+        } else {
+            println!("Script completed successfully");
+        }
+    }
+
+    #[cfg(not(target_os = "windows"))]
+    {
+        eprintln!("Warning: Post-install scripts only supported on Windows");
     }
 
     Ok(())

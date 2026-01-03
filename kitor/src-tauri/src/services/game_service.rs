@@ -87,6 +87,9 @@ pub async fn scan_directory(
                     .map_err(|e| format!("Database error: {}", e))?;
 
                 if existing.is_none() {
+                    let (launch_subdirectory, launch_args) = 
+                        get_launch_config_from_registry(&game_info.scummvm_id)?;
+                    
                     let game = game::ActiveModel {
                         scummvm_id: Set(game_info.scummvm_id),
                         title: Set(game_info.title),
@@ -95,6 +98,8 @@ pub async fn scan_directory(
                         detected_version: Set(None),
                         added_date: Set(chrono::Utc::now().naive_utc()),
                         last_played: Set(None),
+                        launch_subdirectory: Set(launch_subdirectory),
+                        launch_args: Set(launch_args),
                         ..Default::default()
                     };
 
@@ -132,6 +137,9 @@ pub async fn add_game_manually(
             .map_err(|e| format!("Failed to update existing game: {}", e));
     }
 
+    let (launch_subdirectory, launch_args) = 
+        get_launch_config_from_registry(&scummvm_id)?;
+
     let game = game::ActiveModel {
         scummvm_id: Set(scummvm_id),
         title: Set(title),
@@ -140,6 +148,8 @@ pub async fn add_game_manually(
         detected_version: Set(None),
         added_date: Set(chrono::Utc::now().naive_utc()),
         last_played: Set(None),
+        launch_subdirectory: Set(launch_subdirectory),
+        launch_args: Set(launch_args),
         ..Default::default()
     };
 
@@ -160,6 +170,25 @@ pub async fn remove_game(db: &DatabaseConnection, id: i32) -> Result<(), String>
 struct GameInfo {
     scummvm_id: String,
     title: String,
+}
+
+fn get_launch_config_from_registry(scummvm_id: &str) -> Result<(Option<String>, Option<String>), String> {
+    let registry = registry_service::load_registry()?;
+    
+    if let Some(game_def) = registry.games.iter().find(|g| g.scummvm_id == scummvm_id) {
+        if let Some(launch_config) = &game_def.launch_config {
+            let subdirectory = launch_config.subdirectory.clone();
+            let args_json = if !launch_config.args.is_empty() {
+                Some(serde_json::to_string(&launch_config.args)
+                    .map_err(|e| format!("Failed to serialize launch args: {}", e))?)
+            } else {
+                None
+            };
+            return Ok((subdirectory, args_json));
+        }
+    }
+    
+    Ok((None, None))
 }
 
 pub fn detect_game_in_folder(path: &Path) -> Result<Option<DetectedGameInfo>, String> {

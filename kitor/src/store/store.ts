@@ -41,6 +41,8 @@ type Patch = {
   checksum?: string;
   author: string;
   description: string;
+  filename?: string;
+  post_install_script?: string;
 };
 
 type DownloadProgress = {

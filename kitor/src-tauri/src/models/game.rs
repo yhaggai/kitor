@@ -13,6 +13,8 @@ pub struct Model {
     pub detected_version: Option<String>,
     pub added_date: DateTime,
     pub last_played: Option<DateTime>,
+    pub launch_subdirectory: Option<String>,
+    pub launch_args: Option<String>,
 }
 
 #[derive(Copy, Clone, Debug, EnumIter, DeriveRelation)]
