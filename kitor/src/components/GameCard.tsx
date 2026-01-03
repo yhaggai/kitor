@@ -1,11 +1,11 @@
 import * as AlertDialog from "@radix-ui/react-alert-dialog";
 import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
 import { invoke } from "@tauri-apps/api/core";
-import { CheckCircle, Download, MoreVertical, Package, Play, Trash2 } from "lucide-react";
-import { useState } from "react";
+import { CheckCircle, Download, MoreVertical, Package, Play, Trash2, Undo } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
+import { useGameCardState } from "@/hooks/useGameCardState";
 import type { Game } from "@/store/store";
 
 type GameCardProps = {
@@ -14,9 +14,7 @@ type GameCardProps = {
 };
 
 export default function GameCard({ game, onRemove }: GameCardProps) {
-  const [isInstalling, setIsInstalling] = useState(false);
-  const [showDeleteDialog, setShowDeleteDialog] = useState(false);
-  const [isDeleting, setIsDeleting] = useState(false);
+  const { state, actions } = useGameCardState();
 
   const handleLaunch = async () => {
     try {
@@ -34,7 +32,7 @@ export default function GameCard({ game, onRemove }: GameCardProps) {
     const patch = game.available_patches[0];
 
     try {
-      setIsInstalling(true);
+      actions.startInstall();
       await invoke("download_and_install_patch", {
         scummvmId: game.scummvm_id,
         language: patch.language,
@@ -47,26 +45,47 @@ export default function GameCard({ game, onRemove }: GameCardProps) {
       console.error("Failed to install patch:", error);
       alert(`Failed to install patch: ${error}`);
     } finally {
-      setIsInstalling(false);
+      actions.finishInstall();
     }
   };
 
   const handleRemoveGame = async () => {
     try {
-      setIsDeleting(true);
+      actions.startDelete();
       await invoke("remove_game", { id: game.id });
-      setShowDeleteDialog(false);
+      actions.hideDeleteDialog();
       onRemove?.();
     } catch (error) {
       console.error("Failed to remove game:", error);
       alert(`Failed to remove game: ${error}`);
     } finally {
-      setIsDeleting(false);
+      actions.finishDelete();
+    }
+  };
+
+  const handleRestorePatch = async () => {
+    if (!game.installed_patches || game.installed_patches.length === 0) return;
+
+    const installedPatch = game.installed_patches[0];
+
+    try {
+      actions.startRestore();
+      await invoke("restore_backup", {
+        installedPatchId: installedPatch.id,
+      });
+      alert("Game restored successfully!");
+      window.location.reload();
+    } catch (error) {
+      console.error("Failed to restore game:", error);
+      alert(`Failed to restore game: ${error}`);
+    } finally {
+      actions.finishRestore();
     }
   };
 
   const hasPatch = game.installed_patches && game.installed_patches.length > 0;
   const canInstall = game.has_available_patch && !hasPatch;
+  const canRestore = hasPatch 
 
   return (
     <>
@@ -109,16 +128,25 @@ export default function GameCard({ game, onRemove }: GameCardProps) {
                   <DropdownMenu.Item
                     className="flex cursor-pointer items-center rounded-sm px-2 py-2 text-sm text-foreground outline-none hover:bg-accent focus:bg-accent"
                     onSelect={handleInstallPatch}
-                    disabled={isInstalling}
+                    disabled={state.isInstalling}
                   >
                     <Download className="mr-2 h-4 w-4" />
-                    {isInstalling ? "Installing..." : "Install Patch"}
+                    {state.isInstalling ? "Installing..." : "Install Patch"}
+                  </DropdownMenu.Item>
+                )}
+                {canRestore && (
+                  <DropdownMenu.Item
+                    className="flex cursor-pointer items-center rounded-sm px-2 py-2 text-sm text-foreground outline-none hover:bg-accent focus:bg-accent"
+                    onSelect={() => actions.showRestoreDialog()}
+                  >
+                    <Undo className="mr-2 h-4 w-4" />
+                    Restore Game
                   </DropdownMenu.Item>
                 )}
                 <DropdownMenu.Separator className="my-1 h-px bg-border" />
                 <DropdownMenu.Item
                   className="flex cursor-pointer items-center rounded-sm px-2 py-2 text-sm text-destructive outline-none hover:bg-accent focus:bg-accent"
-                  onSelect={() => setShowDeleteDialog(true)}
+                  onSelect={() => actions.showDeleteDialog()}
                 >
                   <Trash2 className="mr-2 h-4 w-4" />
                   Remove Game
@@ -160,10 +188,10 @@ export default function GameCard({ game, onRemove }: GameCardProps) {
               size="sm"
               variant="outline"
               onClick={handleInstallPatch}
-              disabled={isInstalling}
+              disabled={state.isInstalling}
             >
               <Download className="mr-2 h-3 w-3" />
-              {isInstalling ? "Installing..." : "Install Patch"}
+              {state.isInstalling ? "Installing..." : "Install Patch"}
             </Button>
           )}
           {hasPatch && (
@@ -175,7 +203,7 @@ export default function GameCard({ game, onRemove }: GameCardProps) {
         </CardFooter>
       </Card>
 
-      <AlertDialog.Root open={showDeleteDialog} onOpenChange={setShowDeleteDialog}>
+      <AlertDialog.Root open={state.showDeleteDialog} onOpenChange={(open) => open ? actions.showDeleteDialog() : actions.hideDeleteDialog()}>
         <AlertDialog.Portal>
           <AlertDialog.Overlay className="fixed inset-0 bg-black/50" />
           <AlertDialog.Content className="fixed left-1/2 top-1/2 w-[min(420px,calc(100vw-32px))] -translate-x-1/2 -translate-y-1/2 rounded-lg border bg-background p-6 shadow-lg">
@@ -188,14 +216,42 @@ export default function GameCard({ game, onRemove }: GameCardProps) {
             </AlertDialog.Description>
             <div className="mt-6 flex justify-end gap-2">
               <AlertDialog.Cancel asChild>
-                <Button variant="outline" disabled={isDeleting}>
+                <Button variant="outline" disabled={state.isDeleting}>
                   Cancel
                 </Button>
               </AlertDialog.Cancel>
               <AlertDialog.Action asChild>
-                <Button variant="destructive" onClick={handleRemoveGame} disabled={isDeleting}>
+                <Button variant="destructive" onClick={handleRemoveGame} disabled={state.isDeleting}>
                   <Trash2 className="mr-2 h-4 w-4" />
-                  {isDeleting ? "Removing..." : "Remove"}
+                  {state.isDeleting ? "Removing..." : "Remove"}
+                </Button>
+              </AlertDialog.Action>
+            </div>
+          </AlertDialog.Content>
+        </AlertDialog.Portal>
+      </AlertDialog.Root>
+
+      <AlertDialog.Root open={state.showRestoreDialog} onOpenChange={(open) => open ? actions.showRestoreDialog() : actions.hideRestoreDialog()}>
+        <AlertDialog.Portal>
+          <AlertDialog.Overlay className="fixed inset-0 bg-black/50" />
+          <AlertDialog.Content className="fixed left-1/2 top-1/2 w-[min(420px,calc(100vw-32px))] -translate-x-1/2 -translate-y-1/2 rounded-lg border bg-background p-6 shadow-lg">
+            <AlertDialog.Title className="text-lg font-semibold">
+              Restore {game.title}?
+            </AlertDialog.Title>
+            <AlertDialog.Description className="mt-2 text-sm text-muted-foreground">
+              This will restore the game to its original state before the patch was installed. The
+              patch will be removed and the backup files will be restored.
+            </AlertDialog.Description>
+            <div className="mt-6 flex justify-end gap-2">
+              <AlertDialog.Cancel asChild>
+                <Button variant="outline" disabled={state.isRestoring}>
+                  Cancel
+                </Button>
+              </AlertDialog.Cancel>
+              <AlertDialog.Action asChild>
+                <Button onClick={handleRestorePatch} disabled={state.isRestoring}>
+                  <Undo className="mr-2 h-4 w-4" />
+                  {state.isRestoring ? "Restoring..." : "Restore"}
                 </Button>
               </AlertDialog.Action>
             </div>

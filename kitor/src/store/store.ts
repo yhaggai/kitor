@@ -7,6 +7,7 @@ type InstalledPatchInfo = {
   version: string;
   installed_date: string;
   status: string;
+  backup_path?: string;
 };
 
 type AvailablePatchInfo = {
