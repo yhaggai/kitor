@@ -3,6 +3,7 @@
     {
       "scummvm_id": "monkey-se",
       "title": "The Secret of Monkey Island: Special Edition",
+      "cover_url": "https://chatgpt.com/backend-api/estuary/public_content/enc/eyJpZCI6Im1fNjk1OTkzMmMwNzk4ODE5MWEyYzlkM2U3MzA4ZWFkNGQ6ZmlsZV8wMDAwMDAwMGMwYTA3MWY1YTkzM2I5ZjA1NDgzN2IxNyIsInRzIjoiMjA0NTYiLCJwIjoicHlpIiwiY2lkIjoiMSIsInNpZyI6IjgwZGVhYjBlODg0ZDIzNWVlMDdkOTMxNjcwNDY4ZGZkYmRjM2UyMTFiNDQzNWM3NWQ0NWZmZTcyNGU1YTAwNTAiLCJ2IjoiMCIsImdpem1vX2lkIjpudWxsLCJjcyI6bnVsbCwiY3AiOm51bGwsIm1hIjpudWxsfQ==",
       "detection_patterns": {
         "unique_files": ["Monkey1.pak", "Monkey.exe"],
         "file_patterns": ["*.pak"]

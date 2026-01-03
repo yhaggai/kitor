@@ -1,8 +1,10 @@
 use sea_orm::*;
 use std::path::Path;
+use std::path::PathBuf;
 use serde::{Deserialize, Serialize};
 use crate::models::game::{self, Entity as Game};
 use crate::models::installed_patch;
+use crate::services::image_service;
 use crate::services::registry_service;
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
@@ -62,6 +64,7 @@ pub async fn get_game_by_id(db: &DatabaseConnection, id: i32) -> Result<Option<g
 pub async fn scan_directory(
     db: &DatabaseConnection,
     scan_path: &str,
+    app_data_dir: PathBuf,
 ) -> Result<Vec<game::Model>, String> {
     let path = Path::new(scan_path);
     if !path.exists() || !path.is_dir() {
@@ -87,14 +90,14 @@ pub async fn scan_directory(
                     .map_err(|e| format!("Database error: {}", e))?;
 
                 if existing.is_none() {
-                    let (launch_subdirectory, launch_args) = 
-                        get_launch_config_from_registry(&game_info.scummvm_id)?;
+                    let (launch_subdirectory, launch_args, cover_url) =
+                        get_game_metadata_from_registry(&game_info.scummvm_id)?;
                     
                     let game = game::ActiveModel {
                         scummvm_id: Set(game_info.scummvm_id),
                         title: Set(game_info.title),
                         install_path: Set(entry_path.to_string_lossy().to_string()),
-                        cover_url: Set(None),
+                        cover_url: Set(cover_url.clone()),
                         detected_version: Set(None),
                         added_date: Set(chrono::Utc::now().naive_utc()),
                         last_played: Set(None),
@@ -105,6 +108,14 @@ pub async fn scan_directory(
 
                     let result = game.insert(db).await
                         .map_err(|e| format!("Failed to insert game: {}", e))?;
+
+                    if let Some(url) = cover_url {
+                        let scummvm_id = result.scummvm_id.clone();
+                        let app_data_dir = app_data_dir.clone();
+                        tokio::spawn(async move {
+                            let _ = image_service::download_and_cache_cover(&scummvm_id, &url, app_data_dir).await;
+                        });
+                    }
                     
                     games.push(result);
                 }
@@ -120,6 +131,7 @@ pub async fn add_game_manually(
     scummvm_id: String,
     title: String,
     install_path: String,
+    app_data_dir: PathBuf,
 ) -> Result<game::Model, String> {
     // Idempotent add: if game exists (unique scummvm_id), update metadata + return it.
     if let Some(existing) = Game::find()
@@ -131,20 +143,34 @@ pub async fn add_game_manually(
         let mut active: game::ActiveModel = existing.into();
         active.title = Set(title);
         active.install_path = Set(install_path);
+
+        let (_, _, cover_url) = get_game_metadata_from_registry(&scummvm_id)?;
+        if cover_url.is_some() {
+            active.cover_url = Set(cover_url.clone());
+        }
+
+        if let Some(url) = cover_url {
+            let scummvm_id = scummvm_id.clone();
+            let app_data_dir = app_data_dir.clone();
+            tokio::spawn(async move {
+                let _ = image_service::download_and_cache_cover(&scummvm_id, &url, app_data_dir).await;
+            });
+        }
+
         return active
             .update(db)
             .await
             .map_err(|e| format!("Failed to update existing game: {}", e));
     }
 
-    let (launch_subdirectory, launch_args) = 
-        get_launch_config_from_registry(&scummvm_id)?;
+    let (launch_subdirectory, launch_args, cover_url) =
+        get_game_metadata_from_registry(&scummvm_id)?;
 
     let game = game::ActiveModel {
         scummvm_id: Set(scummvm_id),
         title: Set(title),
         install_path: Set(install_path),
-        cover_url: Set(None),
+        cover_url: Set(cover_url.clone()),
         detected_version: Set(None),
         added_date: Set(chrono::Utc::now().naive_utc()),
         last_played: Set(None),
@@ -153,9 +179,18 @@ pub async fn add_game_manually(
         ..Default::default()
     };
 
-    game.insert(db)
+    let result = game.insert(db)
         .await
-        .map_err(|e| format!("Failed to add game: {}", e))
+        .map_err(|e| format!("Failed to add game: {}", e))?;
+
+    if let Some(url) = cover_url {
+        let scummvm_id = result.scummvm_id.clone();
+        tokio::spawn(async move {
+            let _ = image_service::download_and_cache_cover(&scummvm_id, &url, app_data_dir).await;
+        });
+    }
+
+    Ok(result)
 }
 
 pub async fn remove_game(db: &DatabaseConnection, id: i32) -> Result<(), String> {
@@ -172,10 +207,14 @@ struct GameInfo {
     title: String,
 }
 
-fn get_launch_config_from_registry(scummvm_id: &str) -> Result<(Option<String>, Option<String>), String> {
+fn get_game_metadata_from_registry(
+    scummvm_id: &str,
+) -> Result<(Option<String>, Option<String>, Option<String>), String> {
     let registry = registry_service::load_registry()?;
     
     if let Some(game_def) = registry.games.iter().find(|g| g.scummvm_id == scummvm_id) {
+        let cover_url = game_def.cover_url.clone();
+
         if let Some(launch_config) = &game_def.launch_config {
             let subdirectory = launch_config.subdirectory.clone();
             let args_json = if !launch_config.args.is_empty() {
@@ -184,11 +223,13 @@ fn get_launch_config_from_registry(scummvm_id: &str) -> Result<(Option<String>, 
             } else {
                 None
             };
-            return Ok((subdirectory, args_json));
+            return Ok((subdirectory, args_json, cover_url));
         }
+
+        return Ok((None, None, cover_url));
     }
     
-    Ok((None, None))
+    Ok((None, None, None))
 }
 
 pub fn detect_game_in_folder(path: &Path) -> Result<Option<DetectedGameInfo>, String> {
@@ -242,7 +283,10 @@ fn detect_scummvm_game(path: &Path) -> Option<GameInfo> {
     })
 }
 
-pub async fn get_games_with_patches(db: &DatabaseConnection) -> Result<Vec<GameWithPatches>, String> {
+pub async fn get_games_with_patches(
+    db: &DatabaseConnection,
+    app_data_dir: PathBuf,
+) -> Result<Vec<GameWithPatches>, String> {
     // Get all games from DB
     let games = Game::find()
         .all(db)
@@ -251,6 +295,8 @@ pub async fn get_games_with_patches(db: &DatabaseConnection) -> Result<Vec<GameW
     
     // Load registry
     let registry = registry_service::load_registry()?;
+
+    let _ = image_service::ensure_covers_dir(&app_data_dir);
     
     let mut games_with_patches = Vec::new();
     
@@ -295,12 +341,31 @@ pub async fn get_games_with_patches(db: &DatabaseConnection) -> Result<Vec<GameW
         let has_installed_patch = !installed_patches.is_empty();
         
         if has_available_patch || has_installed_patch {
+            let registry_cover_url = game_def.and_then(|d| d.cover_url.clone());
+            let cached_cover_path = image_service::get_cached_cover_path(&game.scummvm_id, &app_data_dir)?;
+
+            if cached_cover_path.is_none() {
+                if let Some(url) = registry_cover_url.clone().or_else(|| game.cover_url.clone()) {
+                    let scummvm_id = game.scummvm_id.clone();
+                    let app_data_dir = app_data_dir.clone();
+                    tokio::spawn(async move {
+                        let _ = image_service::download_and_cache_cover(&scummvm_id, &url, app_data_dir).await;
+                    });
+                }
+            }
+
+            let cover_url = if let Some(path) = cached_cover_path {
+                Some(path.to_string_lossy().to_string())
+            } else {
+                registry_cover_url.or(game.cover_url.clone())
+            };
+
             games_with_patches.push(GameWithPatches {
                 id: game.id,
                 scummvm_id: game.scummvm_id,
                 title: game.title,
                 install_path: game.install_path,
-                cover_url: game.cover_url,
+                cover_url,
                 detected_version: game.detected_version,
                 added_date: game.added_date.format("%Y-%m-%d %H:%M:%S").to_string(),
                 last_played: game.last_played.map(|d| d.format("%Y-%m-%d %H:%M:%S").to_string()),

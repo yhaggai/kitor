@@ -3,5 +3,17 @@
   "identifier": "default",
   "description": "Capability for the main window",
   "windows": ["main"],
-  "permissions": ["core:default", "opener:default", "dialog:default", "dialog:allow-open"]
+  "permissions": [
+    "core:default",
+    "core:image:default",
+    "opener:default",
+    "dialog:default",
+    "dialog:allow-open",
+    "fs:default",
+    "fs:read-all",
+    {
+      "identifier": "fs:scope",
+      "allow": [{ "path": "$APPDATA/**" }]
+    }
+  ]
 }

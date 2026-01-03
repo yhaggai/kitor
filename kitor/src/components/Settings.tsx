@@ -2,12 +2,15 @@ import { invoke } from "@tauri-apps/api/core";
 import { AlertCircle, CheckCircle, XCircle } from "lucide-react";
 import { useCallback, useEffect, useState } from "react";
 import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import type { Game } from "@/store/store";
 import { useAppStore } from "@/store/store";
 
 export default function Settings() {
-  const { isScummVMInstalled, setScummVMInstalled } = useAppStore();
+  const { isScummVMInstalled, setScummVMInstalled, setGames } = useAppStore();
   const [scummvmPath, setScummvmPath] = useState<string>("");
+  const [isClearingCovers, setIsClearingCovers] = useState(false);
 
   const checkScummVMPath = useCallback(async () => {
     try {
@@ -25,12 +28,38 @@ export default function Settings() {
     checkScummVMPath();
   }, [checkScummVMPath]);
 
+  const handleClearCoverCache = async () => {
+    try {
+      setIsClearingCovers(true);
+      await invoke("clear_cover_cache");
+      const games = (await invoke("get_games_with_patches")) as Game[];
+      setGames(games);
+    } catch (error) {
+      console.error("Failed to clear cover cache:", error);
+      alert(`Failed to clear cover cache: ${error}`);
+    } finally {
+      setIsClearingCovers(false);
+    }
+  };
+
   return (
     <div className="space-y-6">
       <div>
         <h2 className="text-2xl font-bold mb-2">Settings</h2>
         <p className="text-muted-foreground">Configure Kitor and check system requirements</p>
       </div>
+
+      <Card>
+        <CardHeader>
+          <CardTitle>Cover Images</CardTitle>
+          <CardDescription>Clear cached covers to force re-download from registry</CardDescription>
+        </CardHeader>
+        <CardContent className="flex items-center gap-2">
+          <Button variant="outline" onClick={handleClearCoverCache} disabled={isClearingCovers}>
+            {isClearingCovers ? "Clearing..." : "Clear Cover Cache"}
+          </Button>
+        </CardContent>
+      </Card>
 
       <Card>
         <CardHeader>

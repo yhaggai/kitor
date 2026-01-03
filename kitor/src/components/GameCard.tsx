@@ -1,7 +1,8 @@
 import * as AlertDialog from "@radix-ui/react-alert-dialog";
 import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
-import { invoke } from "@tauri-apps/api/core";
+import { convertFileSrc, invoke } from "@tauri-apps/api/core";
 import { CheckCircle, Download, MoreVertical, Package, Play, Trash2, Undo } from "lucide-react";
+import { useMemo, useState } from "react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
@@ -15,6 +16,19 @@ type GameCardProps = {
 
 export default function GameCard({ game, onRemove }: GameCardProps) {
   const { state, actions } = useGameCardState();
+  const [coverError, setCoverError] = useState(false);
+
+  const coverSrc = useMemo(() => {
+    if (!game.cover_url || coverError) return null;
+    if (game.cover_url.startsWith("http://") || game.cover_url.startsWith("https://")) {
+      console.log("[cover] Using remote URL:", game.cover_url);
+      return game.cover_url;
+    }
+    const normalizedPath = game.cover_url.split("\\").join("/");
+    const assetUrl = convertFileSrc(normalizedPath);
+    console.log("[cover] Local path:", game.cover_url, "→ asset URL:", assetUrl);
+    return assetUrl;
+  }, [coverError, game.cover_url]);
 
   const handleLaunch = async () => {
     try {
@@ -92,11 +106,13 @@ export default function GameCard({ game, onRemove }: GameCardProps) {
       <Card className="hover:shadow-lg transition-shadow">
         <CardContent className="p-0 relative">
           <div className="aspect-[3/4] bg-gradient-to-br from-primary/20 to-secondary/20 rounded-t-lg flex items-center justify-center">
-            {game.cover_url ? (
+            {coverSrc ? (
               <img
-                src={game.cover_url}
+                src={coverSrc}
                 alt={game.title}
                 className="w-full h-full object-cover rounded-t-lg"
+                loading="lazy"
+                onError={() => setCoverError(true)}
               />
             ) : (
               <Package className="h-16 w-16 text-muted-foreground" />

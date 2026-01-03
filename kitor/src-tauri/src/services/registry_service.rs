@@ -11,6 +11,8 @@ pub struct Registry {
 pub struct GameDefinition {
     pub scummvm_id: String,
     pub title: String,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub cover_url: Option<String>,
     pub detection_patterns: DetectionPatterns,
     pub patches: Vec<PatchDefinition>,
     #[serde(skip_serializing_if = "Option::is_none")]

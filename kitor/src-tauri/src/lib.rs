@@ -17,6 +17,7 @@ pub fn run() {
     tauri::Builder::default()
         .plugin(tauri_plugin_opener::init())
         .plugin(tauri_plugin_dialog::init())
+        .plugin(tauri_plugin_fs::init())
         .setup(|app| {
             let app_data_dir = app.path().app_data_dir()
                 .expect("Failed to get app data directory");
@@ -45,6 +46,8 @@ pub fn run() {
             commands::game_commands::remove_game,
             commands::game_commands::get_game_by_id,
             commands::game_commands::get_games_with_patches,
+            commands::game_commands::refresh_cover_image,
+            commands::game_commands::clear_cover_cache,
             // ScummVM commands
             commands::scummvm_commands::launch_game,
             commands::scummvm_commands::get_scummvm_path,
