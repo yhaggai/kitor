@@ -1,8 +1,19 @@
 import * as AlertDialog from "@radix-ui/react-alert-dialog";
 import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
+import * as Tooltip from "@radix-ui/react-tooltip";
 import { convertFileSrc, invoke } from "@tauri-apps/api/core";
-import { CheckCircle, Download, MoreVertical, Package, Play, Trash2, Undo } from "lucide-react";
-import { useMemo, useState } from "react";
+import { listen } from "@tauri-apps/api/event";
+import {
+  CheckCircle,
+  Download,
+  Loader2,
+  MoreVertical,
+  Package,
+  Play,
+  Trash2,
+  Undo,
+} from "lucide-react";
+import { useEffect, useMemo, useState } from "react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
@@ -17,6 +28,26 @@ type GameCardProps = {
 export default function GameCard({ game, onRemove }: GameCardProps) {
   const { state, actions } = useGameCardState();
   const [coverError, setCoverError] = useState(false);
+
+  useEffect(() => {
+    console.log("[GameCard] Setting up install-progress listener for", game.scummvm_id);
+
+    const unlisten = listen<{ scummvm_id: string; progress: number; step: string }>(
+      "install-progress",
+      (event) => {
+        console.log("[GameCard] Received event:", event.payload);
+        if (event.payload.scummvm_id === game.scummvm_id) {
+          console.log("[GameCard] Updating progress:", event.payload.progress, event.payload.step);
+          actions.updateProgress(event.payload.progress, event.payload.step);
+        }
+      }
+    );
+
+    return () => {
+      console.log("[GameCard] Cleaning up listener for", game.scummvm_id);
+      unlisten.then((fn) => fn());
+    };
+  }, [game.scummvm_id, actions]);
 
   const coverSrc = useMemo(() => {
     if (!game.cover_url || coverError) return null;
@@ -46,6 +77,7 @@ export default function GameCard({ game, onRemove }: GameCardProps) {
     const patch = game.available_patches[0];
 
     try {
+      actions.showInstallDialog();
       actions.startInstall();
       await invoke("download_and_install_patch", {
         scummvmId: game.scummvm_id,
@@ -133,13 +165,15 @@ export default function GameCard({ game, onRemove }: GameCardProps) {
                 className="min-w-[160px] rounded-md border bg-background p-1 shadow-lg"
                 align="end"
               >
-                <DropdownMenu.Item
-                  className="flex cursor-pointer items-center rounded-sm px-2 py-2 text-sm text-foreground outline-none hover:bg-accent focus:bg-accent"
-                  onSelect={handleLaunch}
-                >
-                  <Play className="mr-2 h-4 w-4" />
-                  Play
-                </DropdownMenu.Item>
+                {hasPatch && (
+                  <DropdownMenu.Item
+                    className="flex cursor-pointer items-center rounded-sm px-2 py-2 text-sm text-foreground outline-none hover:bg-accent focus:bg-accent"
+                    onSelect={handleLaunch}
+                  >
+                    <Play className="mr-2 h-4 w-4" />
+                    Play
+                  </DropdownMenu.Item>
+                )}
                 {canInstall && (
                   <DropdownMenu.Item
                     className="flex cursor-pointer items-center rounded-sm px-2 py-2 text-sm text-foreground outline-none hover:bg-accent focus:bg-accent"
@@ -173,9 +207,21 @@ export default function GameCard({ game, onRemove }: GameCardProps) {
         </CardContent>
         <CardFooter className="flex flex-col gap-2 p-4">
           <div className="w-full">
-            <h3 className="font-semibold text-sm truncate mb-1" title={game.title}>
-              {game.title}
-            </h3>
+            <Tooltip.Provider>
+              <Tooltip.Root>
+                <Tooltip.Trigger asChild>
+                  <h3 className="font-semibold text-sm truncate mb-1">{game.title}</h3>
+                </Tooltip.Trigger>
+                <Tooltip.Portal>
+                  <Tooltip.Content
+                    className="rounded-md bg-popover px-3 py-1.5 text-sm text-popover-foreground shadow-md"
+                    sideOffset={5}
+                  >
+                    {game.title}
+                  </Tooltip.Content>
+                </Tooltip.Portal>
+              </Tooltip.Root>
+            </Tooltip.Provider>
             <div className="flex items-center gap-2 flex-wrap">
               <Badge variant="secondary" className="text-xs">
                 {game.scummvm_id}
@@ -194,20 +240,16 @@ export default function GameCard({ game, onRemove }: GameCardProps) {
               )}
             </div>
           </div>
-          <Button className="w-full" size="sm" onClick={handleLaunch}>
-            <Play className="mr-2 h-3 w-3" />
-            Play
-          </Button>
+          {hasPatch && (
+            <Button className="w-full" size="sm" onClick={handleLaunch}>
+              <Play className="mr-2 h-3 w-3" />
+              Play
+            </Button>
+          )}
           {canInstall && (
-            <Button
-              className="w-full"
-              size="sm"
-              variant="outline"
-              onClick={handleInstallPatch}
-              disabled={state.isInstalling}
-            >
+            <Button className="w-full" size="sm" variant="outline" onClick={handleInstallPatch}>
               <Download className="mr-2 h-3 w-3" />
-              {state.isInstalling ? "Installing..." : "Install Patch"}
+              Install Patch
             </Button>
           )}
           {hasPatch && (
@@ -235,7 +277,7 @@ export default function GameCard({ game, onRemove }: GameCardProps) {
             </AlertDialog.Description>
             <div className="mt-6 flex justify-end gap-2">
               <AlertDialog.Cancel asChild>
-                <Button variant="outline" disabled={state.isDeleting}>
+                <Button variant="outline" disabled={state.isDeleting} className="text-foreground">
                   Cancel
                 </Button>
               </AlertDialog.Cancel>
@@ -270,7 +312,7 @@ export default function GameCard({ game, onRemove }: GameCardProps) {
             </AlertDialog.Description>
             <div className="mt-6 flex justify-end gap-2">
               <AlertDialog.Cancel asChild>
-                <Button variant="outline" disabled={state.isRestoring}>
+                <Button variant="outline" disabled={state.isRestoring} className="text-foreground">
                   Cancel
                 </Button>
               </AlertDialog.Cancel>
@@ -280,6 +322,53 @@ export default function GameCard({ game, onRemove }: GameCardProps) {
                   {state.isRestoring ? "Restoring..." : "Restore"}
                 </Button>
               </AlertDialog.Action>
+            </div>
+          </AlertDialog.Content>
+        </AlertDialog.Portal>
+      </AlertDialog.Root>
+
+      <AlertDialog.Root
+        open={state.showInstallDialog}
+        onOpenChange={(open) => (open ? actions.showInstallDialog() : actions.hideInstallDialog())}
+      >
+        <AlertDialog.Portal>
+          <AlertDialog.Overlay className="fixed inset-0 bg-black/50" />
+          <AlertDialog.Content className="fixed left-1/2 top-1/2 w-[min(500px,calc(100vw-32px))] -translate-x-1/2 -translate-y-1/2 rounded-lg border bg-background p-6 shadow-lg">
+            <AlertDialog.Title className="text-lg font-semibold mb-4">
+              Installing Patch for {game.title}
+            </AlertDialog.Title>
+            <div className="space-y-3">
+              {state.installSteps.map((step) => (
+                <div key={step.id} className="flex items-center gap-3 py-2">
+                  <div className="flex-shrink-0 w-5 h-5">
+                    {step.status === "complete" && (
+                      <CheckCircle className="w-5 h-5 text-green-600" />
+                    )}
+                    {step.status === "in-progress" && (
+                      <Loader2 className="w-5 h-5 text-primary animate-spin" />
+                    )}
+                    {step.status === "pending" && <div className="w-5 h-5" />}
+                  </div>
+                  <span
+                    className={
+                      step.status === "pending"
+                        ? "text-muted-foreground"
+                        : step.status === "complete"
+                          ? "text-foreground"
+                          : "text-foreground font-medium"
+                    }
+                  >
+                    {step.label}
+                  </span>
+                </div>
+              ))}
+            </div>
+            <div className="mt-6 flex justify-end">
+              <AlertDialog.Cancel asChild>
+                <Button variant="outline" className="text-foreground">
+                  Close
+                </Button>
+              </AlertDialog.Cancel>
             </div>
           </AlertDialog.Content>
         </AlertDialog.Portal>
