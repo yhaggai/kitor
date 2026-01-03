@@ -85,7 +85,7 @@ export default function GameCard({ game, onRemove }: GameCardProps) {
 
   const hasPatch = game.installed_patches && game.installed_patches.length > 0;
   const canInstall = game.has_available_patch && !hasPatch;
-  const canRestore = hasPatch 
+  const canRestore = hasPatch;
 
   return (
     <>
@@ -203,7 +203,10 @@ export default function GameCard({ game, onRemove }: GameCardProps) {
         </CardFooter>
       </Card>
 
-      <AlertDialog.Root open={state.showDeleteDialog} onOpenChange={(open) => open ? actions.showDeleteDialog() : actions.hideDeleteDialog()}>
+      <AlertDialog.Root
+        open={state.showDeleteDialog}
+        onOpenChange={(open) => (open ? actions.showDeleteDialog() : actions.hideDeleteDialog())}
+      >
         <AlertDialog.Portal>
           <AlertDialog.Overlay className="fixed inset-0 bg-black/50" />
           <AlertDialog.Content className="fixed left-1/2 top-1/2 w-[min(420px,calc(100vw-32px))] -translate-x-1/2 -translate-y-1/2 rounded-lg border bg-background p-6 shadow-lg">
@@ -221,7 +224,11 @@ export default function GameCard({ game, onRemove }: GameCardProps) {
                 </Button>
               </AlertDialog.Cancel>
               <AlertDialog.Action asChild>
-                <Button variant="destructive" onClick={handleRemoveGame} disabled={state.isDeleting}>
+                <Button
+                  variant="destructive"
+                  onClick={handleRemoveGame}
+                  disabled={state.isDeleting}
+                >
                   <Trash2 className="mr-2 h-4 w-4" />
                   {state.isDeleting ? "Removing..." : "Remove"}
                 </Button>
@@ -231,7 +238,10 @@ export default function GameCard({ game, onRemove }: GameCardProps) {
         </AlertDialog.Portal>
       </AlertDialog.Root>
 
-      <AlertDialog.Root open={state.showRestoreDialog} onOpenChange={(open) => open ? actions.showRestoreDialog() : actions.hideRestoreDialog()}>
+      <AlertDialog.Root
+        open={state.showRestoreDialog}
+        onOpenChange={(open) => (open ? actions.showRestoreDialog() : actions.hideRestoreDialog())}
+      >
         <AlertDialog.Portal>
           <AlertDialog.Overlay className="fixed inset-0 bg-black/50" />
           <AlertDialog.Content className="fixed left-1/2 top-1/2 w-[min(420px,calc(100vw-32px))] -translate-x-1/2 -translate-y-1/2 rounded-lg border bg-background p-6 shadow-lg">
