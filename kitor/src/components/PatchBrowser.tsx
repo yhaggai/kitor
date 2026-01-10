@@ -42,7 +42,7 @@ export default function PatchBrowser() {
             game_installed: isGameInstalled,
             patch_installed: isPatchInstalled,
             game_id: game?.id,
-            cover_url: game?.cover_url,
+            cover_url: game?.cover_url || patch.cover_url,
           };
         });
 

@@ -20,6 +20,7 @@ pub struct PatchInfo {
     pub description: String,
     pub filename: Option<String>,
     pub post_install_script: Option<String>,
+    pub cover_url: Option<String>,
 }
 
 pub async fn get_patches_for_game(
@@ -56,6 +57,7 @@ pub async fn get_patches_for_game(
             description: p.description,
             filename: p.filename,
             post_install_script: p.post_install_script,
+            cover_url: game_def.cover_url.clone(),
         })
         .collect();
     
@@ -92,6 +94,7 @@ pub async fn get_all_patches(db: &DatabaseConnection) -> Result<Vec<PatchInfo>, 
                 description: patch.description,
                 filename: patch.filename,
                 post_install_script: patch.post_install_script,
+                cover_url: game_def.cover_url.clone(),
             });
         }
     }

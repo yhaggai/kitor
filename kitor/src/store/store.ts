@@ -45,6 +45,7 @@ type Patch = {
   filename?: string;
   post_install_script?: string;
   purchase_guide?: string;
+  cover_url?: string;
 };
 
 type DownloadProgress = {

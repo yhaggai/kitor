@@ -51,7 +51,7 @@ export function PurchaseGuideDialog({
         <Dialog.Overlay className="fixed inset-0 bg-black/50" />
         <Dialog.Content className="fixed left-1/2 top-1/2 w-[min(600px,calc(100vw-32px))] max-h-[80vh] -translate-x-1/2 -translate-y-1/2 rounded-lg border bg-background p-6 shadow-lg overflow-y-auto">
           <div className="flex justify-between items-start mb-4">
-            <Dialog.Title className="text-lg font-semibold">{gameTitle}</Dialog.Title>
+            <Dialog.Title className="text-lg font-semibold text-white">{gameTitle}</Dialog.Title>
             <Dialog.Close asChild>
               <Button variant="ghost" size="sm" className="h-6 w-6 p-0">
                 <X className="h-4 w-4" />
@@ -59,11 +59,11 @@ export function PurchaseGuideDialog({
             </Dialog.Close>
           </div>
 
-          {loading && <div className="text-center py-8">Loading guide...</div>}
-          {error && <div className="text-center py-8 text-destructive">{error}</div>}
+          {loading && <div className="text-center py-8 text-white">Loading guide...</div>}
+          {error && <div className="text-center py-8 text-white">{error}</div>}
           {!loading && !error && !content && onAddGame && (
             <div className="text-center py-8">
-              <p className="text-muted-foreground mb-4">
+              <p className="text-white mb-4">
                 This game is not in your library yet. Click the button below to add it.
               </p>
               <Button
@@ -79,7 +79,7 @@ export function PurchaseGuideDialog({
           )}
           {content && (
             <>
-              <div className="prose prose-sm dark:prose-invert max-w-none">
+              <div className="prose prose-sm dark:prose-invert max-w-none text-white">
                 <ReactMarkdown
                   components={{
                     a: ({ href, children }) => (
