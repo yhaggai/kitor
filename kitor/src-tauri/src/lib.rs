@@ -59,6 +59,7 @@ pub fn run() {
             commands::patch_commands::download_and_install_patch,
             commands::patch_commands::get_installed_patches,
             commands::patch_commands::restore_backup,
+            commands::patch_commands::get_purchase_guide,
         ])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");

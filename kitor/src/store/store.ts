@@ -44,6 +44,7 @@ type Patch = {
   description: string;
   filename?: string;
   post_install_script?: string;
+  purchase_guide?: string;
 };
 
 type DownloadProgress = {
@@ -106,6 +107,7 @@ export type PatchWithStatus = Patch & {
   patch_installed: boolean;
   game_id?: number;
   cover_url?: string;
+  purchase_guide?: string;
 };
 
 export type {

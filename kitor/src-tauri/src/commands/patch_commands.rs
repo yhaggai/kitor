@@ -1,7 +1,8 @@
 use tauri::{AppHandle, State};
 use crate::models::installed_patch;
-use crate::services::patch_service;
+use crate::services::{patch_service, registry_service};
 use crate::AppState;
+use std::path::Path;
 
 #[tauri::command]
 pub async fn get_patches_for_game(
@@ -49,4 +50,29 @@ pub async fn restore_backup(
     state: State<'_, AppState>,
 ) -> Result<(), String> {
     patch_service::restore_backup(&state.db, installed_patch_id).await
+}
+
+#[tauri::command]
+pub async fn get_purchase_guide(
+    scummvm_id: String,
+) -> Result<String, String> {
+    let registry = registry_service::load_registry()?;
+    
+    let game = registry.games
+        .iter()
+        .find(|g| g.scummvm_id == scummvm_id)
+        .ok_or("Game not found in registry")?;
+    
+    let guide_filename = game.purchase_guide
+        .as_ref()
+        .ok_or("No purchase guide available")?;
+    
+    let guide_path = if cfg!(debug_assertions) {
+        Path::new("../patches/guides").join(guide_filename)
+    } else {
+        Path::new("patches/guides").join(guide_filename)
+    };
+    
+    std::fs::read_to_string(&guide_path)
+        .map_err(|e| format!("Failed to read guide: {}", e))
 }

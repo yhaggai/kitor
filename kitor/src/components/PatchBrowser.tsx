@@ -1,8 +1,9 @@
 import * as Tooltip from "@radix-ui/react-tooltip";
 import { convertFileSrc, invoke } from "@tauri-apps/api/core";
-import { CheckCircle, Download, Package, Play, Plus } from "lucide-react";
+import { CheckCircle, Download, ExternalLink, Package, Play, Plus } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
 import AddGameDialog from "@/components/AddGameDialog";
+import { PurchaseGuideDialog } from "@/components/PurchaseGuideDialog";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
@@ -14,6 +15,9 @@ export default function PatchBrowser() {
   const [loading, setLoading] = useState(false);
   const [installing, setInstalling] = useState<string | null>(null);
   const [showAddDialog, setShowAddDialog] = useState(false);
+  const [selectedGuide, setSelectedGuide] = useState<{ scummvmId: string; title: string } | null>(
+    null
+  );
 
   const { games, downloadProgress, setActiveTab, setHighlightedGameId, setGames } = useAppStore();
   const { alert } = useDialog();
@@ -99,6 +103,13 @@ export default function PatchBrowser() {
         }}
       />
 
+      <PurchaseGuideDialog
+        scummvmId={selectedGuide?.scummvmId || ""}
+        gameTitle={selectedGuide?.title || ""}
+        open={!!selectedGuide}
+        onOpenChange={(open) => !open && setSelectedGuide(null)}
+      />
+
       {patches.length === 0 ? (
         <Card>
           <CardContent className="pt-6 text-center">
@@ -118,6 +129,9 @@ export default function PatchBrowser() {
               onInstall={() => handleInstall(patch)}
               onViewGame={() => patch.game_id && handleViewGame(patch.game_id)}
               onAddGame={() => setShowAddDialog(true)}
+              onShowGuide={() =>
+                setSelectedGuide({ scummvmId: patch.scummvm_id, title: patch.game_title })
+              }
             />
           ))}
         </div>
@@ -133,6 +147,7 @@ type PatchCardProps = {
   onInstall: () => void;
   onViewGame: () => void;
   onAddGame: () => void;
+  onShowGuide: () => void;
 };
 
 function PatchCard({
@@ -142,6 +157,7 @@ function PatchCard({
   onInstall,
   onViewGame,
   onAddGame,
+  onShowGuide,
 }: PatchCardProps) {
   const [coverError, setCoverError] = useState(false);
 
@@ -229,6 +245,11 @@ function PatchCard({
                 Install Patch
               </>
             )}
+          </Button>
+        ) : patch.purchase_guide ? (
+          <Button className="w-full" size="sm" variant="secondary" onClick={onShowGuide}>
+            <ExternalLink className="mr-2 h-3 w-3" />
+            Purchase Guide
           </Button>
         ) : (
           <Button className="w-full" size="sm" variant="secondary" onClick={onAddGame}>

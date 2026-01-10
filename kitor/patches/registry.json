@@ -12,6 +12,7 @@
         "subdirectory": "hebrew",
         "args": ["--language=he", "--fullscreen", "--auto-detect"]
       },
+      "purchase_guide": "monkey-se.md",
       "patches": [
         {
           "language": "he",
