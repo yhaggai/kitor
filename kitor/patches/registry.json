@@ -27,6 +27,34 @@
           "post_install_script": "patch.bat"
         }
       ]
+    },
+    {
+      "scummvm_id": "monkey2-se",
+      "title": "Monkey Island 2: LeChuck's Revenge Special Edition",
+      "cover_url": "https://m.media-amazon.com/images/M/MV5BNWU0OWQ4ODAtMjViNS00M2RiLWE5ZGQtMDE2NTgyMTIwOTMxXkEyXkFqcGc@._V1_FMjpg_UY2400_.jpg",
+      "detection_patterns": {
+        "unique_files": ["Monkey2.pak", "Monkey2.exe"],
+        "file_patterns": ["*.pak"]
+      },
+      "launch_config": {
+        "subdirectory": "hebrew",
+        "args": ["--language=he", "--fullscreen", "--auto-detect"]
+      },
+      "purchase_guide": "monkey2-se.md",
+      "patches": [
+        {
+          "language": "he",
+          "version": "1.0",
+          "author": "AdventureBrew",
+          "download_url": "https://drive.usercontent.google.com/uc?id=1_vRek1EgpwWfaB-HY-W1H3G7K8NPanHU&authuser=0&export=download",
+          "source_type": "google_drive",
+          "checksum": null,
+          "file_size": null,
+          "description": "Hebrew translation for Monkey Island 2: LeChuck's Revenge Special Edition",
+          "filename": "MonkeyIsland2-Heb-AdventureBrew.zip",
+          "post_install_script": "patch.bat"
+        }
+      ]
     }
   ],
   "metadata": {

@@ -13,6 +13,11 @@ type PurchaseGuideDialogProps = {
   onAddGame?: () => void;
 };
 
+const isHebrew = (text: string): boolean => {
+  const hebrewPattern = /[\u0590-\u05FF]/;
+  return hebrewPattern.test(text);
+};
+
 export function PurchaseGuideDialog({
   scummvmId,
   gameTitle,
@@ -30,7 +35,7 @@ export function PurchaseGuideDialog({
       setError(null);
       const guide = await invoke("get_purchase_guide", { scummvmId });
       setContent(guide as string);
-    } catch (err) {
+    } catch (_err) {
       // If no guide exists, that's okay - we'll show a default message
       setContent("");
       setError(null);
@@ -50,8 +55,15 @@ export function PurchaseGuideDialog({
       <Dialog.Portal>
         <Dialog.Overlay className="fixed inset-0 bg-black/50" />
         <Dialog.Content className="fixed left-1/2 top-1/2 w-[min(600px,calc(100vw-32px))] max-h-[80vh] -translate-x-1/2 -translate-y-1/2 rounded-lg border bg-background p-6 shadow-lg overflow-y-auto">
-          <div className="flex justify-between items-start mb-4">
-            <Dialog.Title className="text-lg font-semibold text-white">{gameTitle}</Dialog.Title>
+          <div
+            className={`flex justify-between items-start mb-4 ${isHebrew(content) ? "flex-row-reverse" : ""}`}
+          >
+            <Dialog.Title
+              className={`text-lg font-semibold text-white ${isHebrew(content) ? "text-right" : ""}`}
+              dir={isHebrew(content) ? "rtl" : "ltr"}
+            >
+              {gameTitle}
+            </Dialog.Title>
             <Dialog.Close asChild>
               <Button variant="ghost" size="sm" className="h-6 w-6 p-0">
                 <X className="h-4 w-4" />
@@ -79,7 +91,10 @@ export function PurchaseGuideDialog({
           )}
           {content && (
             <>
-              <div className="prose prose-sm dark:prose-invert max-w-none text-white">
+              <div
+                className={`prose prose-sm dark:prose-invert max-w-none text-white ${isHebrew(content) ? "text-right" : ""}`}
+                dir={isHebrew(content) ? "rtl" : "ltr"}
+              >
                 <ReactMarkdown
                   components={{
                     a: ({ href, children }) => (
