@@ -11,6 +11,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { useDialog } from "@/hooks/useDialog";
 import { type Patch, useAppStore } from "@/store/store";
 
 export default function PatchBrowser() {
@@ -18,6 +19,7 @@ export default function PatchBrowser() {
   const [loading, setLoading] = useState(false);
   const [installing, setInstalling] = useState<string | null>(null);
   const { downloadProgress } = useAppStore();
+  const { alert } = useDialog();
 
   useEffect(() => {
     async function loadPatches() {
@@ -42,10 +44,10 @@ export default function PatchBrowser() {
         language: patch.language,
         version: patch.version,
       });
-      alert("Patch installed successfully!");
+      await alert({ title: "Success", description: "Patch installed successfully!" });
     } catch (error) {
       console.error("Failed to install patch:", error);
-      alert(`Failed to install patch: ${error}`);
+      await alert({ title: "Install Failed", description: String(error) });
     } finally {
       setInstalling(null);
     }

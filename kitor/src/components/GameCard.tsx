@@ -1,4 +1,3 @@
-import * as AlertDialog from "@radix-ui/react-alert-dialog";
 import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
 import * as Tooltip from "@radix-ui/react-tooltip";
 import { convertFileSrc, invoke } from "@tauri-apps/api/core";
@@ -6,7 +5,6 @@ import { listen } from "@tauri-apps/api/event";
 import {
   CheckCircle,
   Download as DownloadIcon,
-  Loader2,
   MoreVertical,
   Package,
   Play,
@@ -14,9 +12,14 @@ import {
   Undo,
 } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
+import { DeleteGameDialog } from "@/components/dialogs/DeleteGameDialog";
+import { InstallPatchDialog } from "@/components/dialogs/InstallPatchDialog";
+import { RestoreGameDialog } from "@/components/dialogs/RestoreGameDialog";
+import { ScummVMDialog } from "@/components/dialogs/ScummVMDialog";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
+import { useDialog } from "@/hooks/useDialog";
 import { useGameCardState } from "@/hooks/useGameCardState";
 import type { Game } from "@/store/store";
 import { useAppStore } from "@/store/store";
@@ -30,6 +33,7 @@ export default function GameCard({ game, onRemove }: GameCardProps) {
   const { state, actions } = useGameCardState();
   const [coverError, setCoverError] = useState(false);
   const { isScummVMReady } = useAppStore();
+  const { alert } = useDialog();
 
   useEffect(() => {
     console.log("[GameCard] Setting up install-progress listener for", game.scummvm_id);
@@ -79,7 +83,7 @@ export default function GameCard({ game, onRemove }: GameCardProps) {
       if (errorStr.includes("not downloaded") || errorStr.includes("not found")) {
         actions.showScummVMDialog();
       } else {
-        alert(`Failed to launch game: ${error}`);
+        await alert({ title: "Launch Failed", description: String(error) });
       }
     }
   };
@@ -98,12 +102,12 @@ export default function GameCard({ game, onRemove }: GameCardProps) {
         language: patch.language,
         version: patch.version,
       });
-      alert("Patch installed successfully!");
+      await alert({ title: "Success", description: "Patch installed successfully!" });
       // Reload the page or update state to reflect the new patch status
       window.location.reload();
     } catch (error) {
       console.error("Failed to install patch:", error);
-      alert(`Failed to install patch: ${error}`);
+      await alert({ title: "Install Failed", description: String(error) });
     } finally {
       actions.finishInstall();
     }
@@ -117,7 +121,7 @@ export default function GameCard({ game, onRemove }: GameCardProps) {
       onRemove?.();
     } catch (error) {
       console.error("Failed to remove game:", error);
-      alert(`Failed to remove game: ${error}`);
+      await alert({ title: "Remove Failed", description: String(error) });
     } finally {
       actions.finishDelete();
     }
@@ -133,11 +137,11 @@ export default function GameCard({ game, onRemove }: GameCardProps) {
       await invoke("restore_backup", {
         installedPatchId: installedPatch.id,
       });
-      alert("Game restored successfully!");
+      await alert({ title: "Success", description: "Game restored successfully!" });
       window.location.reload();
     } catch (error) {
       console.error("Failed to restore game:", error);
-      alert(`Failed to restore game: ${error}`);
+      await alert({ title: "Restore Failed", description: String(error) });
     } finally {
       actions.finishRestore();
     }
@@ -275,143 +279,33 @@ export default function GameCard({ game, onRemove }: GameCardProps) {
         </CardFooter>
       </Card>
 
-      <AlertDialog.Root
+      <DeleteGameDialog
+        gameTitle={game.title}
         open={state.showDeleteDialog}
         onOpenChange={(open) => (open ? actions.showDeleteDialog() : actions.hideDeleteDialog())}
-      >
-        <AlertDialog.Portal>
-          <AlertDialog.Overlay className="fixed inset-0 bg-black/50" />
-          <AlertDialog.Content className="fixed left-1/2 top-1/2 w-[min(420px,calc(100vw-32px))] -translate-x-1/2 -translate-y-1/2 rounded-lg border bg-background p-6 shadow-lg">
-            <AlertDialog.Title className="text-lg font-semibold">
-              Remove {game.title}?
-            </AlertDialog.Title>
-            <AlertDialog.Description className="mt-2 text-sm text-muted-foreground">
-              This will remove the game from your library. The game files on your disk will not be
-              deleted.
-            </AlertDialog.Description>
-            <div className="mt-6 flex justify-end gap-2">
-              <AlertDialog.Cancel asChild>
-                <Button variant="outline" disabled={state.isDeleting} className="text-foreground">
-                  Cancel
-                </Button>
-              </AlertDialog.Cancel>
-              <AlertDialog.Action asChild>
-                <Button
-                  variant="destructive"
-                  onClick={handleRemoveGame}
-                  disabled={state.isDeleting}
-                >
-                  <Trash2 className="mr-2 h-4 w-4" />
-                  {state.isDeleting ? "Removing..." : "Remove"}
-                </Button>
-              </AlertDialog.Action>
-            </div>
-          </AlertDialog.Content>
-        </AlertDialog.Portal>
-      </AlertDialog.Root>
+        onConfirm={handleRemoveGame}
+        isDeleting={state.isDeleting}
+      />
 
-      <AlertDialog.Root
+      <RestoreGameDialog
+        gameTitle={game.title}
         open={state.showRestoreDialog}
         onOpenChange={(open) => (open ? actions.showRestoreDialog() : actions.hideRestoreDialog())}
-      >
-        <AlertDialog.Portal>
-          <AlertDialog.Overlay className="fixed inset-0 bg-black/50" />
-          <AlertDialog.Content className="fixed left-1/2 top-1/2 w-[min(420px,calc(100vw-32px))] -translate-x-1/2 -translate-y-1/2 rounded-lg border bg-background p-6 shadow-lg">
-            <AlertDialog.Title className="text-lg font-semibold">
-              Restore {game.title}?
-            </AlertDialog.Title>
-            <AlertDialog.Description className="mt-2 text-sm text-muted-foreground">
-              This will restore the game to its original state before the patch was installed. The
-              patch will be removed and the backup files will be restored.
-            </AlertDialog.Description>
-            <div className="mt-6 flex justify-end gap-2">
-              <AlertDialog.Cancel asChild>
-                <Button variant="outline" disabled={state.isRestoring} className="text-foreground">
-                  Cancel
-                </Button>
-              </AlertDialog.Cancel>
-              <AlertDialog.Action asChild>
-                <Button onClick={handleRestorePatch} disabled={state.isRestoring}>
-                  <Undo className="mr-2 h-4 w-4" />
-                  {state.isRestoring ? "Restoring..." : "Restore"}
-                </Button>
-              </AlertDialog.Action>
-            </div>
-          </AlertDialog.Content>
-        </AlertDialog.Portal>
-      </AlertDialog.Root>
+        onConfirm={handleRestorePatch}
+        isRestoring={state.isRestoring}
+      />
 
-      <AlertDialog.Root
+      <InstallPatchDialog
+        gameTitle={game.title}
         open={state.showInstallDialog}
         onOpenChange={(open) => (open ? actions.showInstallDialog() : actions.hideInstallDialog())}
-      >
-        <AlertDialog.Portal>
-          <AlertDialog.Overlay className="fixed inset-0 bg-black/50" />
-          <AlertDialog.Content className="fixed left-1/2 top-1/2 w-[min(500px,calc(100vw-32px))] -translate-x-1/2 -translate-y-1/2 rounded-lg border bg-background p-6 shadow-lg">
-            <AlertDialog.Title className="text-lg font-semibold mb-4">
-              Installing Patch for {game.title}
-            </AlertDialog.Title>
-            <div className="space-y-3">
-              {state.installSteps.map((step) => (
-                <div key={step.id} className="flex items-center gap-3 py-2">
-                  <div className="flex-shrink-0 w-5 h-5">
-                    {step.status === "complete" && (
-                      <CheckCircle className="w-5 h-5 text-green-600" />
-                    )}
-                    {step.status === "in-progress" && (
-                      <Loader2 className="w-5 h-5 text-primary animate-spin" />
-                    )}
-                    {step.status === "pending" && <div className="w-5 h-5" />}
-                  </div>
-                  <span
-                    className={
-                      step.status === "pending"
-                        ? "text-muted-foreground"
-                        : step.status === "complete"
-                          ? "text-foreground"
-                          : "text-foreground font-medium"
-                    }
-                  >
-                    {step.label}
-                  </span>
-                </div>
-              ))}
-            </div>
-            <div className="mt-6 flex justify-end">
-              <AlertDialog.Cancel asChild>
-                <Button variant="outline" className="text-foreground">
-                  Close
-                </Button>
-              </AlertDialog.Cancel>
-            </div>
-          </AlertDialog.Content>
-        </AlertDialog.Portal>
-      </AlertDialog.Root>
+        installSteps={state.installSteps}
+      />
 
-      <AlertDialog.Root
+      <ScummVMDialog
         open={state.showScummVMDialog}
         onOpenChange={(open) => (open ? actions.showScummVMDialog() : actions.hideScummVMDialog())}
-      >
-        <AlertDialog.Portal>
-          <AlertDialog.Overlay className="fixed inset-0 bg-black/50" />
-          <AlertDialog.Content className="fixed left-1/2 top-1/2 w-[min(420px,calc(100vw-32px))] -translate-x-1/2 -translate-y-1/2 rounded-lg border bg-background p-6 shadow-lg">
-            <AlertDialog.Title className="text-lg font-semibold">
-              ScummVM Required
-            </AlertDialog.Title>
-            <AlertDialog.Description className="mt-2 text-sm text-muted-foreground">
-              ScummVM needs to be downloaded before you can launch games. Go to Settings to download
-              ScummVM.
-            </AlertDialog.Description>
-            <div className="mt-6 flex justify-end gap-2">
-              <AlertDialog.Cancel asChild>
-                <Button variant="outline" className="text-foreground">
-                  Close
-                </Button>
-              </AlertDialog.Cancel>
-            </div>
-          </AlertDialog.Content>
-        </AlertDialog.Portal>
-      </AlertDialog.Root>
+      />
     </>
   );
 }

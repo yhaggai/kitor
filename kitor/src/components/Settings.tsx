@@ -5,6 +5,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
+import { useDialog } from "@/hooks/useDialog";
 import { useSettingsState } from "@/hooks/useSettingsState";
 import type { Game } from "@/store/store";
 import { useAppStore } from "@/store/store";
@@ -37,6 +38,7 @@ export default function Settings() {
     setIsUninstalling,
     setUpdateAvailable,
   } = useSettingsState();
+  const { alert } = useDialog();
 
   const checkScummVMStatus = useCallback(async () => {
     try {
@@ -64,7 +66,7 @@ export default function Settings() {
       await checkScummVMStatus();
     } catch (error) {
       console.error("Failed to download ScummVM:", error);
-      alert(`Failed to download ScummVM: ${error}`);
+      await alert({ title: "Download Failed", description: String(error) });
     } finally {
       setScummVMDownloadInProgress(false);
       setScummVMDownloadProgress(null);
@@ -84,7 +86,7 @@ export default function Settings() {
       await checkScummVMStatus();
     } catch (error) {
       console.error("Failed to uninstall ScummVM:", error);
-      alert(`Failed to uninstall ScummVM: ${error}`);
+      await alert({ title: "Uninstall Failed", description: String(error) });
     } finally {
       setIsUninstalling(false);
     }
@@ -107,7 +109,7 @@ export default function Settings() {
       await checkScummVMStatus();
     } catch (error) {
       console.error("Failed to update ScummVM:", error);
-      alert(`Failed to update ScummVM: ${error}`);
+      await alert({ title: "Update Failed", description: String(error) });
     } finally {
       setIsUninstalling(false);
       setScummVMDownloadInProgress(false);
@@ -123,7 +125,7 @@ export default function Settings() {
       setGames(games);
     } catch (error) {
       console.error("Failed to clear cover cache:", error);
-      alert(`Failed to clear cover cache: ${error}`);
+      await alert({ title: "Clear Cache Failed", description: String(error) });
     } finally {
       setIsClearingCovers(false);
     }
