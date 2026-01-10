@@ -1,6 +1,6 @@
 import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
 import * as Tooltip from "@radix-ui/react-tooltip";
-import { convertFileSrc, invoke } from "@tauri-apps/api/core";
+import { invoke } from "@tauri-apps/api/core";
 import { listen } from "@tauri-apps/api/event";
 import {
   CheckCircle,
@@ -21,6 +21,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import { useDialog } from "@/hooks/useDialog";
 import { useGameCardState } from "@/hooks/useGameCardState";
+import { getCoverSrc } from "@/lib/utils";
 import type { Game } from "@/store/store";
 import { useAppStore } from "@/store/store";
 
@@ -57,15 +58,8 @@ export default function GameCard({ game, onRemove, isHighlighted }: GameCardProp
   }, [game.scummvm_id, actions]);
 
   const coverSrc = useMemo(() => {
-    if (!game.cover_url || coverError) return null;
-    if (game.cover_url.startsWith("http://") || game.cover_url.startsWith("https://")) {
-      console.log("[cover] Using remote URL:", game.cover_url);
-      return game.cover_url;
-    }
-    const normalizedPath = game.cover_url.split("\\").join("/");
-    const assetUrl = convertFileSrc(normalizedPath);
-    console.log("[cover] Local path:", game.cover_url, "→ asset URL:", assetUrl);
-    return assetUrl;
+    if (coverError) return null;
+    return getCoverSrc(game.cover_url);
   }, [coverError, game.cover_url]);
 
   const handleLaunch = async () => {

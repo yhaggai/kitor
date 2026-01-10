@@ -35,6 +35,8 @@ pub struct LaunchConfig {
 pub struct DetectionPatterns {
     pub unique_files: Vec<String>,
     pub file_patterns: Vec<String>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub detection_subdirectory: Option<String>,
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]

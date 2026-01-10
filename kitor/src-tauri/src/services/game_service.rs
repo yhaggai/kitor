@@ -241,15 +241,20 @@ pub fn detect_game_in_folder(path: &Path) -> Result<Option<DetectedGameInfo>, St
     let registry = registry_service::load_registry()?;
 
     // Get list of files in directory (case-insensitive)
-    let entries = std::fs::read_dir(path)
-        .map_err(|e| format!("Failed to read directory: {}", e))?;
-
-    let mut files_in_dir_lower: Vec<String> = Vec::new();
-    for entry in entries.flatten() {
-        if let Some(file_name) = entry.file_name().to_str() {
-            files_in_dir_lower.push(file_name.to_ascii_lowercase());
+    let get_files_in_dir = |dir_path: &Path| -> Result<Vec<String>, String> {
+        let entries = std::fs::read_dir(dir_path)
+            .map_err(|e| format!("Failed to read directory: {}", e))?;
+        
+        let mut files: Vec<String> = Vec::new();
+        for entry in entries.flatten() {
+            if let Some(file_name) = entry.file_name().to_str() {
+                files.push(file_name.to_ascii_lowercase());
+            }
         }
-    }
+        Ok(files)
+    };
+
+    let files_in_root = get_files_in_dir(path)?;
 
     for game_def in registry.games {
         // Only allow games that actually have patches in registry
@@ -257,11 +262,27 @@ pub fn detect_game_in_folder(path: &Path) -> Result<Option<DetectedGameInfo>, St
             continue;
         }
 
-        let matches = game_def
+        let mut matches = game_def
             .detection_patterns
             .unique_files
             .iter()
-            .any(|unique_file| files_in_dir_lower.iter().any(|f| f == &unique_file.to_ascii_lowercase()));
+            .any(|unique_file| files_in_root.iter().any(|f| f == &unique_file.to_ascii_lowercase()));
+
+        // If not found in root, check subdirectory if configured
+        if !matches {
+             if let Some(subdir) = &game_def.detection_patterns.detection_subdirectory {
+                 let subdir_path = path.join(subdir);
+                 if subdir_path.exists() && subdir_path.is_dir() {
+                     if let Ok(files_in_subdir) = get_files_in_dir(&subdir_path) {
+                        matches = game_def
+                            .detection_patterns
+                            .unique_files
+                            .iter()
+                            .any(|unique_file| files_in_subdir.iter().any(|f| f == &unique_file.to_ascii_lowercase()));
+                     }
+                 }
+             }
+        }
 
         if matches {
             return Ok(Some(DetectedGameInfo {

@@ -215,11 +215,19 @@ pub async fn download_and_install_patch(
         "step": "Creating backup..."
     }));
 
+    // Determine install target (handle subdirectory)
+    let install_target = if let Some(subdir) = &game_def.detection_patterns.detection_subdirectory {
+        Path::new(&game.install_path).join(subdir)
+    } else {
+        Path::new(&game.install_path).to_path_buf()
+    };
+    println!("[patch_service] Install target: {}", install_target.display());
+
     // Create backup
     let backup_dir = app_data_dir.join("backups").join(&game.scummvm_id);
     println!("[patch_service] Creating backup at: {}", backup_dir.display());
     let backup_path = file_service::create_backup(
-        Path::new(&game.install_path),
+        &install_target,
         &backup_dir,
     )?;
     println!("[patch_service] Backup created successfully");
@@ -240,8 +248,8 @@ pub async fn download_and_install_patch(
 
     // Extract and apply patch
     if download_path.extension().and_then(|s| s.to_str()) == Some("zip") {
-        println!("[patch_service] Extracting ZIP to: {}", game.install_path);
-        file_service::extract_zip(&download_path, Path::new(&game.install_path))?;
+        println!("[patch_service] Extracting ZIP to: {}", install_target.display());
+        file_service::extract_zip(&download_path, &install_target)?;
         println!("[patch_service] Extraction complete");
         
         // Run post-install script if specified
@@ -252,12 +260,12 @@ pub async fn download_and_install_patch(
                 "step": "Running post-install script..."
             }));
             
-            let script_path = Path::new(&game.install_path).join(script_name);
+            let script_path = install_target.join(script_name);
             if script_path.exists() {
                 println!("[patch_service] Running post-install script: {}", script_name);
                 match file_service::run_post_install_script(
                     &script_path,
-                    Path::new(&game.install_path),
+                    &install_target,
                 ) {
                     Ok(_) => println!("[patch_service] Post-install script executed successfully"),
                     Err(e) => eprintln!("[patch_service] Warning: Post-install script failed: {}", e),
@@ -268,7 +276,7 @@ pub async fn download_and_install_patch(
         }
     } else {
         println!("[patch_service] Copying patch file directly");
-        let dest = Path::new(&game.install_path).join(&file_name);
+        let dest = install_target.join(&file_name);
         std::fs::copy(&download_path, &dest)
             .map_err(|e| format!("Failed to copy patch file: {}", e))?;
         println!("[patch_service] File copied to: {}", dest.display());
@@ -343,9 +351,22 @@ pub async fn restore_backup(
         .map_err(|e| format!("Database error: {}", e))?
         .ok_or("Game not found")?;
 
+    // Load registry to check for subdirectory
+    let registry = registry_service::load_registry()?;
+    let game_def = registry.games
+        .iter()
+        .find(|g| g.scummvm_id == game.scummvm_id)
+        .ok_or("Game not found in registry")?;
+
+    let install_target = if let Some(subdir) = &game_def.detection_patterns.detection_subdirectory {
+        Path::new(&game.install_path).join(subdir)
+    } else {
+        Path::new(&game.install_path).to_path_buf()
+    };
+
     // Restore from backup
     let src = Path::new(&backup_path);
-    let dst = Path::new(&game.install_path);
+    let dst = &install_target;
 
     if src.is_dir() {
         // Clear current directory contents (Windows-safe: avoids remove+recreate race)

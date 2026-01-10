@@ -1,5 +1,5 @@
 import * as Tooltip from "@radix-ui/react-tooltip";
-import { convertFileSrc, invoke } from "@tauri-apps/api/core";
+import { invoke } from "@tauri-apps/api/core";
 import { CheckCircle, Download, ExternalLink, Package, Play } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
 import AddGameDialog from "@/components/AddGameDialog";
@@ -8,6 +8,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import { usePatchBrowserState } from "@/hooks/usePatchBrowserState";
+import { getCoverSrc } from "@/lib/utils";
 import { type Game, type Patch, type PatchWithStatus, useAppStore } from "@/store/store";
 
 export default function PatchBrowser() {
@@ -120,19 +121,8 @@ function PatchCard({ patch, onViewGame, onShowGuide }: PatchCardProps) {
   const [coverError, setCoverError] = useState(false);
 
   const coverSrc = useMemo(() => {
-    if (!patch.cover_url || coverError) return null;
-    if (patch.cover_url.startsWith("http://") || patch.cover_url.startsWith("https://")) {
-      return patch.cover_url;
-    }
-    // Public folder assets can be referenced directly
-    if (
-      patch.cover_url.startsWith("/") ||
-      (!patch.cover_url.includes("\\") && !patch.cover_url.includes(":"))
-    ) {
-      return patch.cover_url;
-    }
-    const normalizedPath = patch.cover_url.split("\\").join("/");
-    return convertFileSrc(normalizedPath);
+    if (coverError) return null;
+    return getCoverSrc(patch.cover_url);
   }, [coverError, patch.cover_url]);
 
   return (
