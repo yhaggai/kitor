@@ -2,7 +2,7 @@ use sea_orm::*;
 use std::path::{Path, PathBuf};
 use tauri::Emitter;
 use crate::models::installed_patch;
-use crate::services::{download_service, file_service, registry_service};
+use crate::services::{download_service, file_service, registry_service, image_service};
 use serde::{Deserialize, Serialize};
 
 // Patch representation for API responses
@@ -64,7 +64,7 @@ pub async fn get_patches_for_game(
     Ok(patches)
 }
 
-pub async fn get_all_patches(db: &DatabaseConnection) -> Result<Vec<PatchInfo>, String> {
+pub async fn get_all_patches(db: &DatabaseConnection, app_data_dir: PathBuf) -> Result<Vec<PatchInfo>, String> {
     // Load all games from DB to include game_id in response
     let games = crate::models::game::Entity::find()
         .all(db)
@@ -80,6 +80,24 @@ pub async fn get_all_patches(db: &DatabaseConnection) -> Result<Vec<PatchInfo>, 
         // Check if this game exists in user's library
         let _game_in_library = games.iter().find(|g| g.scummvm_id == game_def.scummvm_id);
         
+        // Download and cache cover if URL exists
+        let cached_cover = if let Some(ref cover_url) = game_def.cover_url {
+            if cover_url.starts_with("http://") || cover_url.starts_with("https://") {
+                // Try to cache, but don't fail if it doesn't work
+                match image_service::download_and_cache_cover(&game_def.scummvm_id, cover_url, app_data_dir.clone()).await {
+                    Ok(path) => Some(path.to_string_lossy().to_string()),
+                    Err(e) => {
+                        eprintln!("Failed to cache cover for {}: {}", game_def.scummvm_id, e);
+                        Some(cover_url.clone())
+                    }
+                }
+            } else {
+                Some(cover_url.clone())
+            }
+        } else {
+            None
+        };
+        
         for patch in game_def.patches {
             all_patches.push(PatchInfo {
                 scummvm_id: game_def.scummvm_id.clone(),
@@ -94,7 +112,7 @@ pub async fn get_all_patches(db: &DatabaseConnection) -> Result<Vec<PatchInfo>, 
                 description: patch.description,
                 filename: patch.filename,
                 post_install_script: patch.post_install_script,
-                cover_url: game_def.cover_url.clone(),
+                cover_url: cached_cover.clone(),
             });
         }
     }
