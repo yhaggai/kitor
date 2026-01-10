@@ -124,6 +124,13 @@ function PatchCard({ patch, onViewGame, onShowGuide }: PatchCardProps) {
     if (patch.cover_url.startsWith("http://") || patch.cover_url.startsWith("https://")) {
       return patch.cover_url;
     }
+    // Public folder assets can be referenced directly
+    if (
+      patch.cover_url.startsWith("/") ||
+      (!patch.cover_url.includes("\\") && !patch.cover_url.includes(":"))
+    ) {
+      return patch.cover_url;
+    }
     const normalizedPath = patch.cover_url.split("\\").join("/");
     return convertFileSrc(normalizedPath);
   }, [coverError, patch.cover_url]);

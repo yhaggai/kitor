@@ -3,7 +3,7 @@
     {
       "scummvm_id": "monkey-se",
       "title": "The Secret of Monkey Island: Special Edition",
-      "cover_url": "https://chatgpt.com/backend-api/estuary/public_content/enc/eyJpZCI6Im1fNjk1OTkzMmMwNzk4ODE5MWEyYzlkM2U3MzA4ZWFkNGQ6ZmlsZV8wMDAwMDAwMGMwYTA3MWY1YTkzM2I5ZjA1NDgzN2IxNyIsInRzIjoiMjA0NTYiLCJwIjoicHlpIiwiY2lkIjoiMSIsInNpZyI6IjgwZGVhYjBlODg0ZDIzNWVlMDdkOTMxNjcwNDY4ZGZkYmRjM2UyMTFiNDQzNWM3NWQ0NWZmZTcyNGU1YTAwNTAiLCJ2IjoiMCIsImdpem1vX2lkIjpudWxsLCJjcyI6bnVsbCwiY3AiOm51bGwsIm1hIjpudWxsfQ==",
+      "cover_url": "/mI1.webp",
       "detection_patterns": {
         "unique_files": ["Monkey1.pak", "Monkey.exe"],
         "file_patterns": ["*.pak"]
@@ -79,6 +79,33 @@
           "file_size": null,
           "description": "Hebrew translation for Space Quest I VGA",
           "filename": "SpaceQuest1VGA-Heb-AdventureBrew.zip",
+          "post_install_script": null
+        }
+      ]
+    },
+    {
+      "scummvm_id": "kyra1-cd",
+      "title": "The Legend of Kyrandia",
+      "cover_url": "https://cdn.mobygames.com/covers/4237701-fables-fiends-the-legend-of-kyrandia-book-one-dos-front-cover.jpg",
+      "detection_patterns": {
+        "unique_files": ["GEMCUT.EMC", "KYRAGEM.EMC"],
+        "file_patterns": ["*.EMC", "*.PAK"]
+      },
+      "launch_config": {
+        "args": ["--language=he", "--fullscreen", "--auto-detect"]
+      },
+      "purchase_guide": null,
+      "patches": [
+        {
+          "language": "he",
+          "version": "1.0-beta",
+          "author": "AdventureBrew",
+          "download_url": "https://github.com/adventurebrew/fableworks/releases/download/KYRA-IR/KyraHebPatch-BETA.zip",
+          "source_type": "github",
+          "checksum": null,
+          "file_size": null,
+          "description": "Hebrew translation for The Legend of Kyrandia (BETA)",
+          "filename": "KyraHebPatch-BETA.zip",
           "post_install_script": null
         }
       ]

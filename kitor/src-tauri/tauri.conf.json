@@ -14,7 +14,18 @@
       {
         "title": "kitor",
         "width": 800,
-        "height": 600
+        "height": 600,
+        "visible": false,
+        "label": "main"
+      },
+      {
+        "width": 1536,
+        "height": 1024,
+        "decorations": false,
+        "transparent": true,
+        "url": "splashscreen.html",
+        "label": "splashscreen",
+        "center": true
       }
     ],
     "security": {

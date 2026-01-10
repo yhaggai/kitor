@@ -57,8 +57,17 @@ function App() {
   }, [setScummVMReady]);
 
   useEffect(() => {
-    loadGames();
-    checkScummVM();
+    const initApp = async () => {
+      await Promise.all([loadGames(), checkScummVM()]);
+      // Close splash screen once app is ready
+      try {
+        await invoke("close_splashscreen");
+      } catch (error) {
+        console.error("Failed to close splash screen:", error);
+      }
+    };
+
+    initApp();
 
     const unlistenDownload = listen("download-progress", (event) => {
       setDownloadProgress(event.payload as DownloadProgress);

@@ -60,6 +60,8 @@ pub fn run() {
             commands::patch_commands::get_installed_patches,
             commands::patch_commands::restore_backup,
             commands::patch_commands::get_purchase_guide,
+            // Window commands
+            commands::window_commands::close_splashscreen,
         ])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");
