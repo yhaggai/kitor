@@ -1,11 +1,11 @@
 import { invoke } from "@tauri-apps/api/core";
 import { listen } from "@tauri-apps/api/event";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import GameLibrary from "@/components/GameLibrary";
 import PatchBrowser from "@/components/PatchBrowser";
 import Settings from "@/components/Settings";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import type { Game } from "@/store/store";
+import type { Game, ScummVMDownloadProgress } from "@/store/store";
 import { useAppStore } from "@/store/store";
 
 type DownloadProgress = {
@@ -14,9 +14,27 @@ type DownloadProgress = {
   total: number;
 };
 
+type ScummVMStatus = {
+  downloaded: boolean;
+  path?: string;
+  version?: string;
+};
+
 function App() {
-  const { setGames, setScummVMInstalled, setDownloadProgress } = useAppStore();
+  const {
+    setGames,
+    setScummVMReady,
+    setDownloadProgress,
+    setScummVMDownloadProgress,
+    scummvmDownloadInProgress,
+  } = useAppStore();
   const [activeTab, setActiveTab] = useState("library");
+
+  // Track download state for event listener (ref avoids stale closure)
+  const isDownloadingRef = useRef(scummvmDownloadInProgress);
+  useEffect(() => {
+    isDownloadingRef.current = scummvmDownloadInProgress;
+  }, [scummvmDownloadInProgress]);
 
   const loadGames = useCallback(async () => {
     try {
@@ -29,27 +47,33 @@ function App() {
 
   const checkScummVM = useCallback(async () => {
     try {
-      const installed = await invoke("verify_scummvm");
-      console.log("ScummVM verification result:", installed);
-      setScummVMInstalled(installed as boolean);
+      const status = (await invoke("check_scummvm_status")) as ScummVMStatus;
+      setScummVMReady(status.downloaded);
     } catch (error) {
       console.error("Failed to check ScummVM:", error);
-      setScummVMInstalled(false);
+      setScummVMReady(false);
     }
-  }, [setScummVMInstalled]);
+  }, [setScummVMReady]);
 
   useEffect(() => {
     loadGames();
     checkScummVM();
 
-    const unlisten = listen("download-progress", (event) => {
+    const unlistenDownload = listen("download-progress", (event) => {
       setDownloadProgress(event.payload as DownloadProgress);
     });
 
+    const unlistenScummVM = listen("scummvm-download-progress", (event) => {
+      if (isDownloadingRef.current) {
+        setScummVMDownloadProgress(event.payload as ScummVMDownloadProgress);
+      }
+    });
+
     return () => {
-      unlisten.then((fn) => fn());
+      unlistenDownload.then((fn) => fn());
+      unlistenScummVM.then((fn) => fn());
     };
-  }, [loadGames, checkScummVM, setDownloadProgress]);
+  }, [loadGames, checkScummVM, setDownloadProgress, setScummVMDownloadProgress]);
 
   return (
     <div className="min-h-screen bg-background">

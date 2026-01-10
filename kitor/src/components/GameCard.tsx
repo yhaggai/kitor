@@ -5,7 +5,7 @@ import { convertFileSrc, invoke } from "@tauri-apps/api/core";
 import { listen } from "@tauri-apps/api/event";
 import {
   CheckCircle,
-  Download,
+  Download as DownloadIcon,
   Loader2,
   MoreVertical,
   Package,
@@ -19,6 +19,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import { useGameCardState } from "@/hooks/useGameCardState";
 import type { Game } from "@/store/store";
+import { useAppStore } from "@/store/store";
 
 type GameCardProps = {
   game: Game;
@@ -28,6 +29,7 @@ type GameCardProps = {
 export default function GameCard({ game, onRemove }: GameCardProps) {
   const { state, actions } = useGameCardState();
   const [coverError, setCoverError] = useState(false);
+  const { isScummVMReady } = useAppStore();
 
   useEffect(() => {
     console.log("[GameCard] Setting up install-progress listener for", game.scummvm_id);
@@ -62,11 +64,23 @@ export default function GameCard({ game, onRemove }: GameCardProps) {
   }, [coverError, game.cover_url]);
 
   const handleLaunch = async () => {
+    if (!isScummVMReady) {
+      actions.showScummVMDialog();
+      return;
+    }
+
     try {
       await invoke("launch_game", { gameId: game.id });
     } catch (error) {
       console.error("Failed to launch game:", error);
-      alert(`Failed to launch game: ${error}`);
+
+      // Check if error is about ScummVM not being downloaded
+      const errorStr = String(error);
+      if (errorStr.includes("not downloaded") || errorStr.includes("not found")) {
+        actions.showScummVMDialog();
+      } else {
+        alert(`Failed to launch game: ${error}`);
+      }
     }
   };
 
@@ -180,7 +194,7 @@ export default function GameCard({ game, onRemove }: GameCardProps) {
                     onSelect={handleInstallPatch}
                     disabled={state.isInstalling}
                   >
-                    <Download className="mr-2 h-4 w-4" />
+                    <DownloadIcon className="mr-2 h-4 w-4" />
                     {state.isInstalling ? "Installing..." : "Install Patch"}
                   </DropdownMenu.Item>
                 )}
@@ -234,7 +248,7 @@ export default function GameCard({ game, onRemove }: GameCardProps) {
               )}
               {canInstall && (
                 <Badge variant="default" className="text-xs bg-yellow-600">
-                  <Download className="mr-1 h-3 w-3" />
+                  <DownloadIcon className="mr-1 h-3 w-3" />
                   Patch Available
                 </Badge>
               )}
@@ -248,7 +262,7 @@ export default function GameCard({ game, onRemove }: GameCardProps) {
           )}
           {canInstall && (
             <Button className="w-full" size="sm" variant="outline" onClick={handleInstallPatch}>
-              <Download className="mr-2 h-3 w-3" />
+              <DownloadIcon className="mr-2 h-3 w-3" />
               Install Patch
             </Button>
           )}
@@ -364,6 +378,31 @@ export default function GameCard({ game, onRemove }: GameCardProps) {
               ))}
             </div>
             <div className="mt-6 flex justify-end">
+              <AlertDialog.Cancel asChild>
+                <Button variant="outline" className="text-foreground">
+                  Close
+                </Button>
+              </AlertDialog.Cancel>
+            </div>
+          </AlertDialog.Content>
+        </AlertDialog.Portal>
+      </AlertDialog.Root>
+
+      <AlertDialog.Root
+        open={state.showScummVMDialog}
+        onOpenChange={(open) => (open ? actions.showScummVMDialog() : actions.hideScummVMDialog())}
+      >
+        <AlertDialog.Portal>
+          <AlertDialog.Overlay className="fixed inset-0 bg-black/50" />
+          <AlertDialog.Content className="fixed left-1/2 top-1/2 w-[min(420px,calc(100vw-32px))] -translate-x-1/2 -translate-y-1/2 rounded-lg border bg-background p-6 shadow-lg">
+            <AlertDialog.Title className="text-lg font-semibold">
+              ScummVM Required
+            </AlertDialog.Title>
+            <AlertDialog.Description className="mt-2 text-sm text-muted-foreground">
+              ScummVM needs to be downloaded before you can launch games. Go to Settings to download
+              ScummVM.
+            </AlertDialog.Description>
+            <div className="mt-6 flex justify-end gap-2">
               <AlertDialog.Cancel asChild>
                 <Button variant="outline" className="text-foreground">
                   Close

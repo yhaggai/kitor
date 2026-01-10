@@ -50,8 +50,9 @@ pub fn run() {
             commands::game_commands::clear_cover_cache,
             // ScummVM commands
             commands::scummvm_commands::launch_game,
-            commands::scummvm_commands::get_scummvm_path,
-            commands::scummvm_commands::verify_scummvm,
+            commands::scummvm_commands::download_scummvm_binary,
+            commands::scummvm_commands::check_scummvm_status,
+            commands::scummvm_commands::uninstall_scummvm,
             // Patch commands
             commands::patch_commands::get_patches_for_game,
             commands::patch_commands::get_all_patches,

@@ -102,3 +102,4 @@ enum Games {
 ✅ No manual SQL needed
 ✅ Type-safe with SeaQuery
 
+

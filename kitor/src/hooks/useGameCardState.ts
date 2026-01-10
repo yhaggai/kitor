@@ -16,6 +16,7 @@ type State = {
   isDeleting: boolean;
   showRestoreDialog: boolean;
   isRestoring: boolean;
+  showScummVMDialog: boolean;
 };
 
 type Action =
@@ -32,7 +33,9 @@ type Action =
   | { type: "SHOW_RESTORE_DIALOG" }
   | { type: "HIDE_RESTORE_DIALOG" }
   | { type: "START_RESTORE" }
-  | { type: "FINISH_RESTORE" };
+  | { type: "FINISH_RESTORE" }
+  | { type: "SHOW_SCUMMVM_DIALOG" }
+  | { type: "HIDE_SCUMMVM_DIALOG" };
 
 const INITIAL_STEPS: InstallStep[] = [
   { id: "preparing", label: "Preparing installation", status: "pending" },
@@ -163,6 +166,10 @@ const reducer = (state: State, action: Action): State => {
       return { ...state, isRestoring: true };
     case "FINISH_RESTORE":
       return { ...state, isRestoring: false };
+    case "SHOW_SCUMMVM_DIALOG":
+      return { ...state, showScummVMDialog: true };
+    case "HIDE_SCUMMVM_DIALOG":
+      return { ...state, showScummVMDialog: false };
     default:
       return state;
   }
@@ -176,6 +183,7 @@ const initialState: State = {
   isDeleting: false,
   showRestoreDialog: false,
   isRestoring: false,
+  showScummVMDialog: false,
 };
 
 export const useGameCardState = () => {
@@ -200,6 +208,8 @@ export const useGameCardState = () => {
       hideRestoreDialog: () => dispatch({ type: "HIDE_RESTORE_DIALOG" }),
       startRestore: () => dispatch({ type: "START_RESTORE" }),
       finishRestore: () => dispatch({ type: "FINISH_RESTORE" }),
+      showScummVMDialog: () => dispatch({ type: "SHOW_SCUMMVM_DIALOG" }),
+      hideScummVMDialog: () => dispatch({ type: "HIDE_SCUMMVM_DIALOG" }),
     }),
     []
   );

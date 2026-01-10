@@ -52,18 +52,27 @@ type DownloadProgress = {
   percentage: number;
 };
 
+type ScummVMDownloadProgress = {
+  progress: number;
+  step: string;
+};
+
 type AppStore = {
   games: Game[];
   patches: Patch[];
   selectedGame: Game | null;
   downloadProgress: DownloadProgress | null;
-  isScummVMInstalled: boolean;
+  isScummVMReady: boolean;
+  scummvmDownloadInProgress: boolean;
+  scummvmDownloadProgress: ScummVMDownloadProgress | null;
 
   setGames: (games: Game[]) => void;
   setPatches: (patches: Patch[]) => void;
   setSelectedGame: (game: Game | null) => void;
   setDownloadProgress: (progress: DownloadProgress | null) => void;
-  setScummVMInstalled: (installed: boolean) => void;
+  setScummVMReady: (ready: boolean) => void;
+  setScummVMDownloadInProgress: (inProgress: boolean) => void;
+  setScummVMDownloadProgress: (progress: ScummVMDownloadProgress | null) => void;
 };
 
 export const useAppStore = create<AppStore>((set) => ({
@@ -71,13 +80,24 @@ export const useAppStore = create<AppStore>((set) => ({
   patches: [],
   selectedGame: null,
   downloadProgress: null,
-  isScummVMInstalled: false,
+  isScummVMReady: false,
+  scummvmDownloadInProgress: false,
+  scummvmDownloadProgress: null,
 
   setGames: (games) => set({ games }),
   setPatches: (patches) => set({ patches }),
   setSelectedGame: (game) => set({ selectedGame: game }),
   setDownloadProgress: (progress) => set({ downloadProgress: progress }),
-  setScummVMInstalled: (installed) => set({ isScummVMInstalled: installed }),
+  setScummVMReady: (ready) => set({ isScummVMReady: ready }),
+  setScummVMDownloadInProgress: (inProgress) => set({ scummvmDownloadInProgress: inProgress }),
+  setScummVMDownloadProgress: (progress) => set({ scummvmDownloadProgress: progress }),
 }));
 
-export type { Game, Patch, DownloadProgress, InstalledPatchInfo, AvailablePatchInfo };
+export type {
+  Game,
+  Patch,
+  DownloadProgress,
+  InstalledPatchInfo,
+  AvailablePatchInfo,
+  ScummVMDownloadProgress,
+};

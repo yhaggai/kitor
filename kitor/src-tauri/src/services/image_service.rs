@@ -121,3 +121,4 @@ pub fn clear_cover_cache(app_data_dir: &Path) -> Result<(), String> {
 }
 
 
+
