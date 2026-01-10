@@ -319,14 +319,14 @@ fn get_download_url_and_name() -> Result<(String, String), String> {
 fn extract_scummvm_archive(archive_path: &Path, dest_dir: &Path) -> Result<(), String> {
     #[cfg(target_os = "windows")]
     {
-        // Extract ZIP and move executable to root of scummvm dir
+        // Extract ZIP to temp, then move entire contents to dest_dir
         let temp_extract = dest_dir.join("temp_extract");
         std::fs::create_dir_all(&temp_extract)
             .map_err(|e| format!("Failed to create temp directory: {}", e))?;
         
         file_service::extract_zip(archive_path, &temp_extract)?;
         
-        // Find scummvm.exe in extracted files and move to dest_dir
+        // Find the ScummVM directory (contains scummvm.exe) and move ALL contents
         for entry in std::fs::read_dir(&temp_extract)
             .map_err(|e| format!("Failed to read temp directory: {}", e))? 
         {
@@ -334,11 +334,25 @@ fn extract_scummvm_archive(archive_path: &Path, dest_dir: &Path) -> Result<(), S
             let path = entry.path();
             
             if path.is_dir() {
-                // Look for scummvm.exe in this directory
+                // Check if this is the ScummVM directory
                 let exe_path = path.join("scummvm.exe");
                 if exe_path.exists() {
-                    std::fs::copy(&exe_path, dest_dir.join("scummvm.exe"))
-                        .map_err(|e| format!("Failed to copy executable: {}", e))?;
+                    // Copy ALL files from this directory to dest_dir
+                    for file_entry in std::fs::read_dir(&path)
+                        .map_err(|e| format!("Failed to read ScummVM directory: {}", e))?
+                    {
+                        let file_entry = file_entry.map_err(|e| format!("Failed to read file: {}", e))?;
+                        let src = file_entry.path();
+                        let dest = dest_dir.join(file_entry.file_name());
+                        
+                        if src.is_dir() {
+                            // Copy directory recursively
+                            copy_dir_recursive(&src, &dest)?;
+                        } else {
+                            std::fs::copy(&src, &dest)
+                                .map_err(|e| format!("Failed to copy {}: {}", src.display(), e))?;
+                        }
+                    }
                     break;
                 }
             }
@@ -378,6 +392,29 @@ fn extract_scummvm_archive(archive_path: &Path, dest_dir: &Path) -> Result<(), S
     {
         Err("Unsupported platform".to_string())
     }
+}
+
+#[cfg(target_os = "windows")]
+fn copy_dir_recursive(src: &Path, dst: &Path) -> Result<(), String> {
+    std::fs::create_dir_all(dst)
+        .map_err(|e| format!("Failed to create directory {}: {}", dst.display(), e))?;
+
+    for entry in std::fs::read_dir(src)
+        .map_err(|e| format!("Failed to read directory {}: {}", src.display(), e))?
+    {
+        let entry = entry.map_err(|e| format!("Failed to read entry: {}", e))?;
+        let src_path = entry.path();
+        let dst_path = dst.join(entry.file_name());
+
+        if src_path.is_dir() {
+            copy_dir_recursive(&src_path, &dst_path)?;
+        } else {
+            std::fs::copy(&src_path, &dst_path)
+                .map_err(|e| format!("Failed to copy {}: {}", src_path.display(), e))?;
+        }
+    }
+
+    Ok(())
 }
 
 async fn get_config_value(db: &DatabaseConnection, key: &str) -> Result<Option<String>, String> {
