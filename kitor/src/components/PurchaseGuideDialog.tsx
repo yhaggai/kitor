@@ -1,6 +1,6 @@
 import * as Dialog from "@radix-ui/react-dialog";
 import { invoke } from "@tauri-apps/api/core";
-import { ExternalLink, X } from "lucide-react";
+import { ExternalLink, Plus, X } from "lucide-react";
 import { useCallback, useEffect, useState } from "react";
 import ReactMarkdown from "react-markdown";
 import { Button } from "@/components/ui/button";
@@ -10,6 +10,7 @@ type PurchaseGuideDialogProps = {
   gameTitle: string;
   open: boolean;
   onOpenChange: (open: boolean) => void;
+  onAddGame?: () => void;
 };
 
 export function PurchaseGuideDialog({
@@ -17,6 +18,7 @@ export function PurchaseGuideDialog({
   gameTitle,
   open,
   onOpenChange,
+  onAddGame,
 }: PurchaseGuideDialogProps) {
   const [content, setContent] = useState<string>("");
   const [loading, setLoading] = useState(false);
@@ -29,7 +31,9 @@ export function PurchaseGuideDialog({
       const guide = await invoke("get_purchase_guide", { scummvmId });
       setContent(guide as string);
     } catch (err) {
-      setError(String(err));
+      // If no guide exists, that's okay - we'll show a default message
+      setContent("");
+      setError(null);
     } finally {
       setLoading(false);
     }
@@ -57,26 +61,57 @@ export function PurchaseGuideDialog({
 
           {loading && <div className="text-center py-8">Loading guide...</div>}
           {error && <div className="text-center py-8 text-destructive">{error}</div>}
-          {content && (
-            <div className="prose prose-sm dark:prose-invert max-w-none">
-              <ReactMarkdown
-                components={{
-                  a: ({ href, children }) => (
-                    <a
-                      href={href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1 text-primary hover:underline"
-                    >
-                      {children}
-                      <ExternalLink className="h-3 w-3" />
-                    </a>
-                  ),
+          {!loading && !error && !content && onAddGame && (
+            <div className="text-center py-8">
+              <p className="text-muted-foreground mb-4">
+                This game is not in your library yet. Click the button below to add it.
+              </p>
+              <Button
+                onClick={() => {
+                  onAddGame();
+                  onOpenChange(false);
                 }}
               >
-                {content}
-              </ReactMarkdown>
+                <Plus className="mr-2 h-4 w-4" />
+                Add Game to Library
+              </Button>
             </div>
+          )}
+          {content && (
+            <>
+              <div className="prose prose-sm dark:prose-invert max-w-none">
+                <ReactMarkdown
+                  components={{
+                    a: ({ href, children }) => (
+                      <a
+                        href={href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1 text-primary hover:underline"
+                      >
+                        {children}
+                        <ExternalLink className="h-3 w-3" />
+                      </a>
+                    ),
+                  }}
+                >
+                  {content}
+                </ReactMarkdown>
+              </div>
+              {onAddGame && (
+                <div className="mt-6 pt-4 border-t flex justify-end gap-2">
+                  <Button
+                    onClick={() => {
+                      onAddGame();
+                      onOpenChange(false);
+                    }}
+                  >
+                    <Plus className="mr-2 h-4 w-4" />
+                    Add Game to Library
+                  </Button>
+                </div>
+              )}
+            </>
           )}
         </Dialog.Content>
       </Dialog.Portal>

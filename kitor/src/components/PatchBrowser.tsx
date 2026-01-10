@@ -1,6 +1,6 @@
 import * as Tooltip from "@radix-ui/react-tooltip";
 import { convertFileSrc, invoke } from "@tauri-apps/api/core";
-import { CheckCircle, Download, ExternalLink, Package, Play, Plus } from "lucide-react";
+import { CheckCircle, Download, ExternalLink, Package, Play } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
 import AddGameDialog from "@/components/AddGameDialog";
 import { PurchaseGuideDialog } from "@/components/PurchaseGuideDialog";
@@ -108,6 +108,7 @@ export default function PatchBrowser() {
         gameTitle={selectedGuide?.title || ""}
         open={!!selectedGuide}
         onOpenChange={(open) => !open && setSelectedGuide(null)}
+        onAddGame={() => setShowAddDialog(true)}
       />
 
       {patches.length === 0 ? (
@@ -128,7 +129,6 @@ export default function PatchBrowser() {
               downloadProgress={downloadProgress?.percentage || 0}
               onInstall={() => handleInstall(patch)}
               onViewGame={() => patch.game_id && handleViewGame(patch.game_id)}
-              onAddGame={() => setShowAddDialog(true)}
               onShowGuide={() =>
                 setSelectedGuide({ scummvmId: patch.scummvm_id, title: patch.game_title })
               }
@@ -146,7 +146,6 @@ type PatchCardProps = {
   downloadProgress: number;
   onInstall: () => void;
   onViewGame: () => void;
-  onAddGame: () => void;
   onShowGuide: () => void;
 };
 
@@ -156,7 +155,6 @@ function PatchCard({
   downloadProgress,
   onInstall,
   onViewGame,
-  onAddGame,
   onShowGuide,
 }: PatchCardProps) {
   const [coverError, setCoverError] = useState(false);
@@ -246,15 +244,10 @@ function PatchCard({
               </>
             )}
           </Button>
-        ) : patch.purchase_guide ? (
+        ) : (
           <Button className="w-full" size="sm" variant="secondary" onClick={onShowGuide}>
             <ExternalLink className="mr-2 h-3 w-3" />
             Purchase Guide
-          </Button>
-        ) : (
-          <Button className="w-full" size="sm" variant="secondary" onClick={onAddGame}>
-            <Plus className="mr-2 h-3 w-3" />
-            Add Game
           </Button>
         )}
       </CardFooter>
