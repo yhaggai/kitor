@@ -7,22 +7,19 @@ import { PurchaseGuideDialog } from "@/components/PurchaseGuideDialog";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
+import { usePatchBrowserState } from "@/hooks/usePatchBrowserState";
 import { type Game, type Patch, type PatchWithStatus, useAppStore } from "@/store/store";
 
 export default function PatchBrowser() {
-  const [patches, setPatches] = useState<PatchWithStatus[]>([]);
-  const [loading, setLoading] = useState(false);
-  const [showAddDialog, setShowAddDialog] = useState(false);
-  const [selectedGuide, setSelectedGuide] = useState<{ scummvmId: string; title: string } | null>(
-    null
-  );
+  const { state, actions } = usePatchBrowserState();
+  const { patches, loading, showAddDialog, selectedGuide } = state;
 
   const { games, setActiveTab, setHighlightedGameId, setGames } = useAppStore();
 
   useEffect(() => {
     async function loadPatches() {
       try {
-        setLoading(true);
+        actions.setLoading(true);
         const allPatches = (await invoke("get_all_patches")) as Patch[];
 
         // Map status to patches
@@ -43,16 +40,16 @@ export default function PatchBrowser() {
           };
         });
 
-        setPatches(patchesWithStatus);
+        actions.setPatches(patchesWithStatus);
       } catch (error) {
         console.error("Failed to load patches:", error);
       } finally {
-        setLoading(false);
+        actions.setLoading(false);
       }
     }
 
     loadPatches();
-  }, [games]);
+  }, [games, actions]);
 
   const handleViewGame = (gameId: number) => {
     setActiveTab("library");
@@ -72,7 +69,7 @@ export default function PatchBrowser() {
 
       <AddGameDialog
         open={showAddDialog}
-        onOpenChange={setShowAddDialog}
+        onOpenChange={(open) => (open ? actions.showAddDialog() : actions.hideAddDialog())}
         onAdded={async () => {
           const updatedGames = (await invoke("get_games_with_patches")) as Game[];
           setGames(updatedGames);
@@ -83,8 +80,8 @@ export default function PatchBrowser() {
         scummvmId={selectedGuide?.scummvmId || ""}
         gameTitle={selectedGuide?.title || ""}
         open={!!selectedGuide}
-        onOpenChange={(open) => !open && setSelectedGuide(null)}
-        onAddGame={() => setShowAddDialog(true)}
+        onOpenChange={(open) => !open && actions.clearSelectedGuide()}
+        onAddGame={() => actions.showAddDialog()}
       />
 
       {patches.length === 0 ? (
@@ -103,7 +100,7 @@ export default function PatchBrowser() {
               patch={patch}
               onViewGame={() => patch.game_id && handleViewGame(patch.game_id)}
               onShowGuide={() =>
-                setSelectedGuide({ scummvmId: patch.scummvm_id, title: patch.game_title })
+                actions.setSelectedGuide({ scummvmId: patch.scummvm_id, title: patch.game_title })
               }
             />
           ))}
