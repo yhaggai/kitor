@@ -7,20 +7,17 @@ import { PurchaseGuideDialog } from "@/components/PurchaseGuideDialog";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
-import { useDialog } from "@/hooks/useDialog";
 import { type Game, type Patch, type PatchWithStatus, useAppStore } from "@/store/store";
 
 export default function PatchBrowser() {
   const [patches, setPatches] = useState<PatchWithStatus[]>([]);
   const [loading, setLoading] = useState(false);
-  const [installing, setInstalling] = useState<string | null>(null);
   const [showAddDialog, setShowAddDialog] = useState(false);
   const [selectedGuide, setSelectedGuide] = useState<{ scummvmId: string; title: string } | null>(
     null
   );
 
-  const { games, downloadProgress, setActiveTab, setHighlightedGameId, setGames } = useAppStore();
-  const { alert } = useDialog();
+  const { games, setActiveTab, setHighlightedGameId, setGames } = useAppStore();
 
   useEffect(() => {
     async function loadPatches() {
@@ -56,27 +53,6 @@ export default function PatchBrowser() {
 
     loadPatches();
   }, [games]);
-
-  const handleInstall = async (patch: PatchWithStatus) => {
-    try {
-      setInstalling(`${patch.scummvm_id}-${patch.language}-${patch.version}`);
-      await invoke("download_and_install_patch", {
-        scummvmId: patch.scummvm_id,
-        language: patch.language,
-        version: patch.version,
-      });
-      await alert({ title: "Success", description: "Patch installed successfully!" });
-
-      // Refresh games to update status
-      const updatedGames = (await invoke("get_games_with_patches")) as Game[];
-      setGames(updatedGames);
-    } catch (error) {
-      console.error("Failed to install patch:", error);
-      await alert({ title: "Install Failed", description: String(error) });
-    } finally {
-      setInstalling(null);
-    }
-  };
 
   const handleViewGame = (gameId: number) => {
     setActiveTab("library");
@@ -125,9 +101,6 @@ export default function PatchBrowser() {
             <PatchCard
               key={`${patch.scummvm_id}-${patch.language}-${patch.version}`}
               patch={patch}
-              isInstalling={installing === `${patch.scummvm_id}-${patch.language}-${patch.version}`}
-              downloadProgress={downloadProgress?.percentage || 0}
-              onInstall={() => handleInstall(patch)}
               onViewGame={() => patch.game_id && handleViewGame(patch.game_id)}
               onShowGuide={() =>
                 setSelectedGuide({ scummvmId: patch.scummvm_id, title: patch.game_title })
@@ -142,21 +115,11 @@ export default function PatchBrowser() {
 
 type PatchCardProps = {
   patch: PatchWithStatus;
-  isInstalling: boolean;
-  downloadProgress: number;
-  onInstall: () => void;
   onViewGame: () => void;
   onShowGuide: () => void;
 };
 
-function PatchCard({
-  patch,
-  isInstalling,
-  downloadProgress,
-  onInstall,
-  onViewGame,
-  onShowGuide,
-}: PatchCardProps) {
+function PatchCard({ patch, onViewGame, onShowGuide }: PatchCardProps) {
   const [coverError, setCoverError] = useState(false);
 
   const coverSrc = useMemo(() => {
@@ -225,24 +188,9 @@ function PatchCard({
             View Game
           </Button>
         ) : patch.game_installed ? (
-          <Button
-            className="w-full"
-            size="sm"
-            variant="default"
-            onClick={onInstall}
-            disabled={isInstalling}
-          >
-            {isInstalling ? (
-              <>
-                <Download className="mr-2 h-3 w-3 animate-spin" />
-                {downloadProgress}%
-              </>
-            ) : (
-              <>
-                <Download className="mr-2 h-3 w-3" />
-                Install Patch
-              </>
-            )}
+          <Button className="w-full" size="sm" variant="default" onClick={onViewGame}>
+            <Download className="mr-2 h-3 w-3" />
+            Install Patch
           </Button>
         ) : (
           <Button className="w-full" size="sm" variant="secondary" onClick={onShowGuide}>
