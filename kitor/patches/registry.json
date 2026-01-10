@@ -55,6 +55,33 @@
           "post_install_script": "patch.bat"
         }
       ]
+    },
+    {
+      "scummvm_id": "sq1sci",
+      "title": "Space Quest I: Roger Wilco in the Sarien Encounter (VGA Remake)",
+      "cover_url": "https://cdn.mobygames.com/covers/10020-space-quest-i-roger-wilco-in-the-sarien-encounter-dos-front-cove.jpg",
+      "detection_patterns": {
+        "unique_files": ["RESOURCE.000", "SCIDHUV.EXE"],
+        "file_patterns": ["RESOURCE.*"]
+      },
+      "launch_config": {
+        "args": ["--language=he", "--fullscreen", "--auto-detect"]
+      },
+      "purchase_guide": null,
+      "patches": [
+        {
+          "language": "he",
+          "version": "1.0",
+          "author": "AdventureBrew",
+          "download_url": "https://drive.usercontent.google.com/uc?id=1HGZ24L471D02M5Uys_9GorzwkISug2Zo&authuser=0&export=download",
+          "source_type": "google_drive",
+          "checksum": null,
+          "file_size": null,
+          "description": "Hebrew translation for Space Quest I VGA",
+          "filename": "SpaceQuest1VGA-Heb-AdventureBrew.zip",
+          "post_install_script": null
+        }
+      ]
     }
   ],
   "metadata": {
