@@ -1,7 +1,7 @@
 import { invoke } from "@tauri-apps/api/core";
 import { open } from "@tauri-apps/plugin-dialog";
 import { FolderSearch, Plus } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import AddGameDialog from "@/components/AddGameDialog";
 import GameCard from "@/components/GameCard";
 import { Button } from "@/components/ui/button";
@@ -12,9 +12,23 @@ type GameLibraryProps = {
 };
 
 export default function GameLibrary({ onRefresh }: GameLibraryProps) {
-  const { games } = useAppStore();
+  const { games, highlightedGameId, setHighlightedGameId } = useAppStore();
   const [isScanning, setIsScanning] = useState(false);
   const [showAddDialog, setShowAddDialog] = useState(false);
+
+  useEffect(() => {
+    if (highlightedGameId) {
+      const element = document.getElementById(`game-card-${highlightedGameId}`);
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth", block: "center" });
+        // Clear highlight after animation
+        const timer = setTimeout(() => {
+          setHighlightedGameId(null);
+        }, 2000);
+        return () => clearTimeout(timer);
+      }
+    }
+  }, [highlightedGameId, setHighlightedGameId]);
 
   const handleScanGames = async () => {
     try {
@@ -76,7 +90,12 @@ export default function GameLibrary({ onRefresh }: GameLibraryProps) {
       ) : (
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
           {games.map((game) => (
-            <GameCard key={game.id} game={game} onRemove={onRefresh} />
+            <GameCard
+              key={game.id}
+              game={game}
+              onRemove={onRefresh}
+              isHighlighted={game.id === highlightedGameId}
+            />
           ))}
         </div>
       )}

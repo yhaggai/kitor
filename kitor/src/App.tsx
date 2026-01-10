@@ -1,6 +1,6 @@
 import { invoke } from "@tauri-apps/api/core";
 import { listen } from "@tauri-apps/api/event";
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef } from "react";
 import GameLibrary from "@/components/GameLibrary";
 import PatchBrowser from "@/components/PatchBrowser";
 import Settings from "@/components/Settings";
@@ -27,8 +27,9 @@ function App() {
     setDownloadProgress,
     setScummVMDownloadProgress,
     scummvmDownloadInProgress,
+    activeTab,
+    setActiveTab,
   } = useAppStore();
-  const [activeTab, setActiveTab] = useState("library");
 
   // Track download state for event listener (ref avoids stale closure)
   const isDownloadingRef = useRef(scummvmDownloadInProgress);

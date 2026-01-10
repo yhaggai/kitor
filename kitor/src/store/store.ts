@@ -65,6 +65,8 @@ type AppStore = {
   isScummVMReady: boolean;
   scummvmDownloadInProgress: boolean;
   scummvmDownloadProgress: ScummVMDownloadProgress | null;
+  activeTab: string;
+  highlightedGameId: number | null;
 
   setGames: (games: Game[]) => void;
   setPatches: (patches: Patch[]) => void;
@@ -73,6 +75,8 @@ type AppStore = {
   setScummVMReady: (ready: boolean) => void;
   setScummVMDownloadInProgress: (inProgress: boolean) => void;
   setScummVMDownloadProgress: (progress: ScummVMDownloadProgress | null) => void;
+  setActiveTab: (tab: string) => void;
+  setHighlightedGameId: (id: number | null) => void;
 };
 
 export const useAppStore = create<AppStore>((set) => ({
@@ -83,6 +87,8 @@ export const useAppStore = create<AppStore>((set) => ({
   isScummVMReady: false,
   scummvmDownloadInProgress: false,
   scummvmDownloadProgress: null,
+  activeTab: "library",
+  highlightedGameId: null,
 
   setGames: (games) => set({ games }),
   setPatches: (patches) => set({ patches }),
@@ -91,7 +97,16 @@ export const useAppStore = create<AppStore>((set) => ({
   setScummVMReady: (ready) => set({ isScummVMReady: ready }),
   setScummVMDownloadInProgress: (inProgress) => set({ scummvmDownloadInProgress: inProgress }),
   setScummVMDownloadProgress: (progress) => set({ scummvmDownloadProgress: progress }),
+  setActiveTab: (tab) => set({ activeTab: tab }),
+  setHighlightedGameId: (id) => set({ highlightedGameId: id }),
 }));
+
+export type PatchWithStatus = Patch & {
+  game_installed: boolean;
+  patch_installed: boolean;
+  game_id?: number;
+  cover_url?: string;
+};
 
 export type {
   Game,

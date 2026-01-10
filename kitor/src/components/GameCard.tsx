@@ -27,9 +27,10 @@ import { useAppStore } from "@/store/store";
 type GameCardProps = {
   game: Game;
   onRemove?: () => void;
+  isHighlighted?: boolean;
 };
 
-export default function GameCard({ game, onRemove }: GameCardProps) {
+export default function GameCard({ game, onRemove, isHighlighted }: GameCardProps) {
   const { state, actions } = useGameCardState();
   const [coverError, setCoverError] = useState(false);
   const { isScummVMReady } = useAppStore();
@@ -153,7 +154,12 @@ export default function GameCard({ game, onRemove }: GameCardProps) {
 
   return (
     <>
-      <Card className="hover:shadow-lg transition-shadow">
+      <Card
+        id={`game-card-${game.id}`}
+        className={`hover:shadow-lg transition-all duration-300 ${
+          isHighlighted ? "ring-2 ring-primary shadow-xl scale-[1.02]" : ""
+        }`}
+      >
         <CardContent className="p-0 relative">
           <div className="aspect-[3/4] bg-gradient-to-br from-primary/20 to-secondary/20 rounded-t-lg flex items-center justify-center">
             {coverSrc ? (
