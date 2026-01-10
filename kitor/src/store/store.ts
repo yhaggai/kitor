@@ -3,7 +3,6 @@ import { create } from "zustand";
 type InstalledPatchInfo = {
   id: number;
   scummvm_id: string;
-  language: string;
   version: string;
   installed_date: string;
   status: string;
@@ -11,7 +10,6 @@ type InstalledPatchInfo = {
 };
 
 type AvailablePatchInfo = {
-  language: string;
   version: string;
   author: string;
   description: string;
@@ -34,7 +32,6 @@ type Game = {
 type Patch = {
   scummvm_id: string;
   game_title: string;
-  language: string;
   version: string;
   download_url: string;
   source_type: string;
