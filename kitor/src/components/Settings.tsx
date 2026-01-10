@@ -1,10 +1,11 @@
 import { invoke } from "@tauri-apps/api/core";
 import { AlertCircle, CheckCircle, Download, RefreshCw, Trash2, XCircle } from "lucide-react";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect } from "react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
+import { useSettingsState } from "@/hooks/useSettingsState";
 import type { Game } from "@/store/store";
 import { useAppStore } from "@/store/store";
 
@@ -26,10 +27,16 @@ export default function Settings() {
     scummvmDownloadProgress,
     setScummVMDownloadProgress,
   } = useAppStore();
-  const [scummvmVersion, setScummvmVersion] = useState<string>("");
-  const [isClearingCovers, setIsClearingCovers] = useState(false);
-  const [isUninstalling, setIsUninstalling] = useState(false);
-  const [updateAvailable, setUpdateAvailable] = useState(false);
+  const {
+    scummvmVersion,
+    isClearingCovers,
+    isUninstalling,
+    updateAvailable,
+    setScummvmVersion,
+    setIsClearingCovers,
+    setIsUninstalling,
+    setUpdateAvailable,
+  } = useSettingsState();
 
   const checkScummVMStatus = useCallback(async () => {
     try {
@@ -44,7 +51,7 @@ export default function Settings() {
       console.error("Failed to check ScummVM status:", error);
       setScummVMReady(false);
     }
-  }, [setScummVMReady]);
+  }, [setScummVMReady, setScummvmVersion, setUpdateAvailable]);
 
   useEffect(() => {
     checkScummVMStatus();
