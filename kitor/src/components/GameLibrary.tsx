@@ -62,7 +62,12 @@ export default function GameLibrary({ onRefresh }: GameLibraryProps) {
           </p>
         </div>
         <div className="flex gap-2">
-          <Button variant="outline" onClick={handleScanGames} disabled={isScanning}>
+          <Button
+            variant="outline"
+            onClick={handleScanGames}
+            disabled={isScanning}
+            className="text-white"
+          >
             <FolderSearch className="mr-2 h-4 w-4" />
             {isScanning ? "Scanning..." : "Scan Folder"}
           </Button>
@@ -82,7 +87,7 @@ export default function GameLibrary({ onRefresh }: GameLibraryProps) {
           <p className="text-muted-foreground mb-4">
             Scan a folder or add games with available translation patches
           </p>
-          <Button onClick={handleScanGames}>
+          <Button onClick={handleScanGames} className="text-white">
             <FolderSearch className="mr-2 h-4 w-4" />
             Scan for Games
           </Button>

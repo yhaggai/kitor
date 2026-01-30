@@ -1,6 +1,14 @@
 import { invoke } from "@tauri-apps/api/core";
-import { AlertCircle, CheckCircle, Download, RefreshCw, Trash2, XCircle } from "lucide-react";
-import { useCallback, useEffect } from "react";
+import {
+  AlertCircle,
+  CheckCircle,
+  Download,
+  ExternalLink,
+  RefreshCw,
+  Trash2,
+  XCircle,
+} from "lucide-react";
+import { useCallback, useEffect, useState } from "react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -15,8 +23,6 @@ type ScummVMStatus = {
   path?: string;
   version?: string;
 };
-
-const LATEST_SCUMMVM_VERSION = "2.8.1"; // Should match backend constant
 
 export default function Settings() {
   const {
@@ -39,6 +45,18 @@ export default function Settings() {
     setUpdateAvailable,
   } = useSettingsState();
   const { alert } = useDialog();
+  const [latestScummVMVersion, setLatestScummVMVersion] = useState<string>("");
+
+  const fetchLatestVersion = useCallback(async () => {
+    try {
+      const version = await invoke<string>("get_latest_scummvm_version");
+      setLatestScummVMVersion(version);
+    } catch (error) {
+      console.error("Failed to fetch latest ScummVM version:", error);
+      // Set empty string on error so UI doesn't show stale data
+      setLatestScummVMVersion("");
+    }
+  }, []);
 
   const checkScummVMStatus = useCallback(async () => {
     try {
@@ -47,13 +65,19 @@ export default function Settings() {
       if (status.downloaded) {
         const version = status.version || "Unknown";
         setScummvmVersion(version);
-        setUpdateAvailable(version !== LATEST_SCUMMVM_VERSION && version !== "Unknown");
+        if (latestScummVMVersion) {
+          setUpdateAvailable(version !== latestScummVMVersion && version !== "Unknown");
+        }
       }
     } catch (error) {
       console.error("Failed to check ScummVM status:", error);
       setScummVMReady(false);
     }
-  }, [setScummVMReady, setScummvmVersion, setUpdateAvailable]);
+  }, [setScummVMReady, setScummvmVersion, setUpdateAvailable, latestScummVMVersion]);
+
+  useEffect(() => {
+    fetchLatestVersion();
+  }, [fetchLatestVersion]);
 
   useEffect(() => {
     checkScummVMStatus();
@@ -131,6 +155,15 @@ export default function Settings() {
     }
   };
 
+  const handleOpenScummVM = async () => {
+    try {
+      await invoke("open_scummvm");
+    } catch (error) {
+      console.error("Failed to open ScummVM:", error);
+      await alert({ title: "Open Failed", description: String(error) });
+    }
+  };
+
   return (
     <div className="space-y-6">
       <div>
@@ -185,17 +218,20 @@ export default function Settings() {
 
           {isScummVMReady && !scummvmDownloadInProgress && !isUninstalling && (
             <div className="flex gap-2">
+              <Button onClick={handleOpenScummVM} variant="outline" className="flex-1">
+                <ExternalLink className="h-4 w-4 mr-2" />
+                Open ScummVM
+              </Button>
               {updateAvailable && (
-                <Button onClick={handleUpdateScummVM} variant="default" className="flex-1">
+                <Button onClick={handleUpdateScummVM} variant="default">
                   <RefreshCw className="h-4 w-4 mr-2" />
-                  Update to {LATEST_SCUMMVM_VERSION}
+                  Update to {latestScummVMVersion}
                 </Button>
               )}
               <Button
                 onClick={handleUninstallScummVM}
                 variant="destructive"
                 disabled={isUninstalling}
-                className={updateAvailable ? "" : "flex-1"}
               >
                 <Trash2 className="h-4 w-4 mr-2" />
                 Uninstall

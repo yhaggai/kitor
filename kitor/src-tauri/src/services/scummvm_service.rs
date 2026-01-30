@@ -2,11 +2,47 @@ use sea_orm::*;
 use std::path::{Path, PathBuf};
 use std::process::Command;
 use crate::models::{game, app_config};
-use crate::services::{game_service, file_service};
+use crate::services::game_service;
 use serde::{Serialize, Deserialize};
 use tauri::Emitter;
 
-const SCUMMVM_VERSION: &str = "2.8.1";
+async fn fetch_latest_scummvm_version() -> Result<String, String> {
+    let client = reqwest::Client::builder()
+        .user_agent("kitor/1.0")
+        .build()
+        .map_err(|e| format!("Failed to create HTTP client: {}", e))?;
+
+    let response = client
+        .get("https://api.github.com/repos/scummvm/scummvm/releases/latest")
+        .send()
+        .await
+        .map_err(|e| format!("Failed to fetch GitHub releases: {}", e))?;
+
+    if !response.status().is_success() {
+        return Err(format!("GitHub API returned error: {}", response.status()));
+    }
+
+    let text = response
+        .text()
+        .await
+        .map_err(|e| format!("Failed to read GitHub API response: {}", e))?;
+
+    let release: serde_json::Value = serde_json::from_str(&text)
+        .map_err(|e| format!("Failed to parse GitHub API response: {}", e))?;
+
+    let tag_name = release["tag_name"]
+        .as_str()
+        .ok_or("tag_name not found in GitHub API response")?;
+
+    // Remove 'v' prefix if present (e.g., "v2.9.1" -> "2.9.1")
+    let version = tag_name.strip_prefix('v').unwrap_or(tag_name).to_string();
+
+    Ok(version)
+}
+
+pub async fn get_latest_scummvm_version() -> Result<String, String> {
+    fetch_latest_scummvm_version().await
+}
 
 #[derive(Clone, Serialize, Deserialize)]
 pub struct ScummVMStatus {
@@ -35,14 +71,21 @@ pub async fn launch_game(
     let scummvm_path = get_or_download_scummvm(db, app_data_dir, app_handle).await?;
     println!("ScummVM Path: {}", scummvm_path);
 
+    // Remove quarantine attribute on macOS before launching
+    #[cfg(target_os = "macos")]
+    {
+        let scummvm_dir = app_data_dir.join("scummvm");
+        let app_bundle = scummvm_dir.join("ScummVM.app");
+        if app_bundle.exists() {
+            remove_quarantine_attribute(&app_bundle);
+        }
+    }
+
     // Read launch config from DB
     println!("Launch config from DB:");
     println!("  Subdirectory: {:?}", game.launch_subdirectory);
     println!("  Args JSON: {:?}", game.launch_args);
 
-    // Build command with launch_config if available
-    let mut cmd = Command::new(&scummvm_path);
-    
     // Determine game path (with optional subdirectory from DB)
     let game_path = if let Some(subdir) = &game.launch_subdirectory {
         PathBuf::from(&game.install_path).join(subdir)
@@ -52,28 +95,81 @@ pub async fn launch_game(
 
     println!("Final game path: {}", game_path.display());
 
-    // Add default ScummVM args
-    cmd.arg("-p").arg(&game_path);
-
-    // Add custom args from DB
-    if let Some(args_json) = &game.launch_args {
-        let args: Vec<String> = serde_json::from_str(args_json)
-            .map_err(|e| format!("Failed to parse launch args: {}", e))?;
+    // Build command with launch_config if available
+    #[cfg(target_os = "macos")]
+    {
+        // On macOS, use 'open' command with --args to launch app bundle with arguments
+        let scummvm_dir = app_data_dir.join("scummvm");
+        let app_bundle = scummvm_dir.join("ScummVM.app");
         
-        for arg in args {
-            // Template replacement
-            let processed_arg = arg
-                .replace("{install_path}", &game.install_path)
-                .replace("{scummvm_id}", &game.scummvm_id);
-            cmd.arg(processed_arg);
+        if !app_bundle.exists() {
+            return Err("ScummVM.app not found".to_string());
         }
+        
+        // Remove quarantine attribute before launching
+        remove_quarantine_attribute(&app_bundle);
+        
+        // Launch executable directly (more reliable than app bundle on macOS)
+        let executable_path = app_bundle.join("Contents").join("MacOS").join("scummvm");
+        if !executable_path.exists() {
+            return Err("ScummVM executable not found in app bundle".to_string());
+        }
+        
+        // Build command with args
+        let mut cmd = Command::new(&executable_path);
+        
+        // Add default ScummVM args
+        cmd.arg("-p").arg(&game_path);
+        
+        // Add custom args from DB
+        if let Some(args_json) = &game.launch_args {
+            let custom_args: Vec<String> = serde_json::from_str(args_json)
+                .map_err(|e| format!("Failed to parse launch args: {}", e))?;
+            
+            for arg in custom_args {
+                // Template replacement
+                let processed_arg = arg
+                    .replace("{install_path}", &game.install_path)
+                    .replace("{scummvm_id}", &game.scummvm_id);
+                cmd.arg(processed_arg);
+            }
+        }
+        
+        println!("Executing command: {:?}", cmd);
+        println!("=====================");
+        
+        cmd.spawn()
+            .map_err(|e| format!("Failed to launch game: {}", e))?;
     }
+    
+    #[cfg(not(target_os = "macos"))]
+    {
+        // On Windows and Linux, launch the executable directly
+        let mut cmd = Command::new(&scummvm_path);
+        
+        // Add default ScummVM args
+        cmd.arg("-p").arg(&game_path);
 
-    println!("Executing command: {:?}", cmd);
-    println!("=====================");
+        // Add custom args from DB
+        if let Some(args_json) = &game.launch_args {
+            let args: Vec<String> = serde_json::from_str(args_json)
+                .map_err(|e| format!("Failed to parse launch args: {}", e))?;
+            
+            for arg in args {
+                // Template replacement
+                let processed_arg = arg
+                    .replace("{install_path}", &game.install_path)
+                    .replace("{scummvm_id}", &game.scummvm_id);
+                cmd.arg(processed_arg);
+            }
+        }
 
-    cmd.spawn()
-        .map_err(|e| format!("Failed to launch game: {}", e))?;
+        println!("Executing command: {:?}", cmd);
+        println!("=====================");
+
+        cmd.spawn()
+            .map_err(|e| format!("Failed to launch game: {}", e))?;
+    }
 
     // Update last_played
     let mut active_game: game::ActiveModel = game.into();
@@ -126,7 +222,7 @@ pub async fn download_scummvm(
         .map_err(|e| format!("Failed to create ScummVM directory: {}", e))?;
 
     // Get download URL based on platform
-    let (download_url, archive_name) = get_download_url_and_name()?;
+    let (download_url, archive_name) = get_download_url_and_name().await?;
     
     println!("[scummvm_service] Download URL: {}", download_url);
 
@@ -188,9 +284,10 @@ pub async fn download_scummvm(
     let _ = std::fs::remove_file(&download_path);
 
     // Update database state
+    let version = fetch_latest_scummvm_version().await?;
     set_config_value(db, "scummvm_downloaded", "true").await?;
     set_config_value(db, "scummvm_path", &scummvm_path).await?;
-    set_config_value(db, "scummvm_version", SCUMMVM_VERSION).await?;
+    set_config_value(db, "scummvm_version", &version).await?;
 
     // Emit progress: Complete
     let _ = app_handle.emit("scummvm-download-progress", serde_json::json!({
@@ -252,6 +349,65 @@ pub async fn uninstall_scummvm(
     Ok(())
 }
 
+pub async fn open_scummvm_app(
+    db: &DatabaseConnection,
+    app_data_dir: &PathBuf,
+    app_handle: &tauri::AppHandle,
+) -> Result<(), String> {
+    #[allow(unused_variables)]
+    let scummvm_path = get_or_download_scummvm(db, app_data_dir, app_handle).await?;
+    
+    #[cfg(target_os = "macos")]
+    {
+        // On macOS, open the .app bundle, not the executable inside
+        let scummvm_dir = app_data_dir.join("scummvm");
+        let app_bundle = scummvm_dir.join("ScummVM.app");
+        
+        if !app_bundle.exists() {
+            return Err("ScummVM.app not found".to_string());
+        }
+        
+        // Verify app bundle structure
+        let executable_path = app_bundle.join("Contents").join("MacOS").join("scummvm");
+        if !executable_path.exists() {
+            return Err("ScummVM executable not found in app bundle".to_string());
+        }
+        
+        // Remove quarantine attribute before opening (handles existing installations)
+        remove_quarantine_attribute(&app_bundle);
+        
+        // Try launching executable directly first (more reliable than app bundle)
+        // If that fails, fall back to open command
+        let executable_path = app_bundle.join("Contents").join("MacOS").join("scummvm");
+        if executable_path.exists() {
+            // Launch executable directly - this bypasses some Gatekeeper issues
+            Command::new(&executable_path)
+                .spawn()
+                .map_err(|e| format!("Failed to launch ScummVM executable: {}", e))?;
+        } else {
+            // Fallback to app bundle launch
+            Command::new("open")
+                .arg(&app_bundle)
+                .spawn()
+                .map_err(|e| format!("Failed to open ScummVM app: {}", e))?;
+        }
+    }
+    
+    #[cfg(not(target_os = "macos"))]
+    {
+        // On Windows and Linux, launch the executable directly
+        if !Path::new(&scummvm_path).exists() {
+            return Err("ScummVM executable not found".to_string());
+        }
+        
+        Command::new(&scummvm_path)
+            .spawn()
+            .map_err(|e| format!("Failed to launch ScummVM: {}", e))?;
+    }
+    
+    Ok(())
+}
+
 fn get_embedded_scummvm_path(app_data_dir: &PathBuf) -> Result<String, String> {
     let scummvm_dir = app_data_dir.join("scummvm");
     
@@ -269,7 +425,7 @@ fn get_embedded_scummvm_path(app_data_dir: &PathBuf) -> Result<String, String> {
 
     #[cfg(target_os = "macos")]
     {
-        let exe_path = scummvm_dir.join("scummvm");
+        let exe_path = scummvm_dir.join("ScummVM.app").join("Contents").join("MacOS").join("scummvm");
         return Ok(exe_path.to_string_lossy().to_string());
     }
 
@@ -279,14 +435,16 @@ fn get_embedded_scummvm_path(app_data_dir: &PathBuf) -> Result<String, String> {
     }
 }
 
-fn get_download_url_and_name() -> Result<(String, String), String> {
+async fn get_download_url_and_name() -> Result<(String, String), String> {
+    let version = fetch_latest_scummvm_version().await?;
+    
     #[cfg(target_os = "windows")]
     {
         let url = format!(
             "https://www.scummvm.org/frs/scummvm/{}/scummvm-{}-win32.zip",
-            SCUMMVM_VERSION, SCUMMVM_VERSION
+            version, version
         );
-        let name = format!("scummvm-{}-win32.zip", SCUMMVM_VERSION);
+        let name = format!("scummvm-{}-win32.zip", version);
         return Ok((url, name));
     }
 
@@ -294,9 +452,9 @@ fn get_download_url_and_name() -> Result<(String, String), String> {
     {
         let url = format!(
             "https://www.scummvm.org/frs/scummvm/{}/scummvm-{}-linux-x86_64.tar.xz",
-            SCUMMVM_VERSION, SCUMMVM_VERSION
+            version, version
         );
-        let name = format!("scummvm-{}-linux.tar.xz", SCUMMVM_VERSION);
+        let name = format!("scummvm-{}-linux.tar.xz", version);
         return Ok((url, name));
     }
 
@@ -304,9 +462,9 @@ fn get_download_url_and_name() -> Result<(String, String), String> {
     {
         let url = format!(
             "https://www.scummvm.org/frs/scummvm/{}/scummvm-{}-macosx.dmg",
-            SCUMMVM_VERSION, SCUMMVM_VERSION
+            version, version
         );
-        let name = format!("scummvm-{}-macosx.dmg", SCUMMVM_VERSION);
+        let name = format!("scummvm-{}-macosx.dmg", version);
         return Ok((url, name));
     }
 
@@ -319,6 +477,7 @@ fn get_download_url_and_name() -> Result<(String, String), String> {
 fn extract_scummvm_archive(archive_path: &Path, dest_dir: &Path) -> Result<(), String> {
     #[cfg(target_os = "windows")]
     {
+        use crate::services::file_service;
         // Extract ZIP to temp, then move entire contents to dest_dir
         let temp_extract = dest_dir.join("temp_extract");
         std::fs::create_dir_all(&temp_extract)
@@ -383,13 +542,101 @@ fn extract_scummvm_archive(archive_path: &Path, dest_dir: &Path) -> Result<(), S
 
     #[cfg(target_os = "macos")]
     {
-        // For macOS, we'll need to mount DMG and copy files
-        // This is more complex and might need special handling
-        Err("macOS DMG extraction not yet implemented. Please install ScummVM manually.".to_string())
+        use std::process::Command;
+        
+        // Create temporary mount point
+        let mount_point = dest_dir.join("temp_mount");
+        std::fs::create_dir_all(&mount_point)
+            .map_err(|e| format!("Failed to create mount point: {}", e))?;
+        
+        // Mount DMG
+        let mount_output = Command::new("hdiutil")
+            .args([
+                "attach",
+                "-nobrowse",
+                "-mountpoint",
+                &mount_point.to_string_lossy(),
+                &archive_path.to_string_lossy(),
+            ])
+            .output()
+            .map_err(|e| format!("Failed to execute hdiutil attach: {}", e))?;
+        
+        if !mount_output.status.success() {
+            let _ = std::fs::remove_dir_all(&mount_point);
+            return Err(format!(
+                "Failed to mount DMG: {}",
+                String::from_utf8_lossy(&mount_output.stderr)
+            ));
+        }
+        
+        // Find ScummVM.app in mounted volume
+        let mut scummvm_app_path: Option<PathBuf> = None;
+        for entry in std::fs::read_dir(&mount_point)
+            .map_err(|e| format!("Failed to read mount point: {}", e))?
+        {
+            let entry = entry.map_err(|e| format!("Failed to read entry: {}", e))?;
+            let path = entry.path();
+            
+            if path.is_dir() {
+                let file_name = path.file_name().and_then(|n| n.to_str());
+                if file_name == Some("ScummVM.app") {
+                    scummvm_app_path = Some(path.clone());
+                    break;
+                }
+            }
+        }
+        
+        let scummvm_app = scummvm_app_path.ok_or("ScummVM.app not found in DMG")?;
+        
+        // Copy ScummVM.app to destination using ditto (preserves all attributes, symlinks, etc.)
+        let dest_app = dest_dir.join("ScummVM.app");
+        
+        // Remove existing app if it exists
+        if dest_app.exists() {
+            std::fs::remove_dir_all(&dest_app)
+                .map_err(|e| format!("Failed to remove existing app: {}", e))?;
+        }
+        
+        // Use ditto to copy app bundle (preserves permissions, symlinks, extended attributes)
+        let ditto_output = Command::new("ditto")
+            .arg(&scummvm_app)
+            .arg(&dest_app)
+            .output()
+            .map_err(|e| format!("Failed to execute ditto: {}", e))?;
+        
+        if !ditto_output.status.success() {
+            return Err(format!(
+                "Failed to copy ScummVM.app: {}",
+                String::from_utf8_lossy(&ditto_output.stderr)
+            ));
+        }
+        
+        // Remove quarantine attribute (macOS Gatekeeper)
+        remove_quarantine_attribute(&dest_app);
+        
+        // Unmount DMG
+        let detach_output = Command::new("hdiutil")
+            .args(["detach", &mount_point.to_string_lossy()])
+            .output()
+            .map_err(|e| format!("Failed to execute hdiutil detach: {}", e))?;
+        
+        // Clean up mount point
+        let _ = std::fs::remove_dir_all(&mount_point);
+        
+        if !detach_output.status.success() {
+            // Log warning but don't fail - DMG might already be unmounted
+            println!(
+                "Warning: Failed to unmount DMG: {}",
+                String::from_utf8_lossy(&detach_output.stderr)
+            );
+        }
+        
+        Ok(())
     }
 
     #[cfg(not(any(target_os = "windows", target_os = "linux", target_os = "macos")))]
     {
+        let _ = (archive_path, dest_dir); // Acknowledge parameters for unused warning
         Err("Unsupported platform".to_string())
     }
 }
@@ -408,6 +655,86 @@ fn copy_dir_recursive(src: &Path, dst: &Path) -> Result<(), String> {
 
         if src_path.is_dir() {
             copy_dir_recursive(&src_path, &dst_path)?;
+        } else {
+            std::fs::copy(&src_path, &dst_path)
+                .map_err(|e| format!("Failed to copy {}: {}", src_path.display(), e))?;
+        }
+    }
+
+    Ok(())
+}
+
+#[cfg(target_os = "macos")]
+fn remove_quarantine_attribute(app_path: &Path) {
+    use std::process::Command;
+    
+    // Only remove quarantine attribute, preserve everything else (including signatures)
+    let xattr_output = Command::new("xattr")
+        .args(["-d", "com.apple.quarantine", &app_path.to_string_lossy()])
+        .output();
+    
+    match xattr_output {
+        Ok(output) if output.status.success() => {
+            println!("[scummvm_service] Removed quarantine attribute from ScummVM.app");
+        }
+        Ok(output) => {
+            let stderr = String::from_utf8_lossy(&output.stderr);
+            // Only warn if it's not "No such xattr" error (which is fine)
+            if !stderr.contains("No such xattr") {
+                println!(
+                    "[scummvm_service] Warning: Could not remove quarantine attribute: {}",
+                    stderr
+                );
+            }
+        }
+        Err(e) => {
+            println!(
+                "[scummvm_service] Warning: Failed to execute xattr: {}",
+                e
+            );
+        }
+    }
+    
+    // Verify executable exists and check its architecture
+    let executable_path = app_path.join("Contents").join("MacOS").join("scummvm");
+    if executable_path.exists() {
+        // Set executable permissions
+        use std::os::unix::fs::PermissionsExt;
+        if let Ok(mut perms) = std::fs::metadata(&executable_path).map(|m| m.permissions()) {
+            perms.set_mode(0o755);
+            if let Err(e) = std::fs::set_permissions(&executable_path, perms) {
+                println!("[scummvm_service] Warning: Could not set executable permissions: {}", e);
+            }
+        }
+        
+        // Check executable architecture
+        let file_output = Command::new("file")
+            .arg(&executable_path)
+            .output();
+        
+        if let Ok(output) = file_output {
+            let info = String::from_utf8_lossy(&output.stdout);
+            println!("[scummvm_service] Executable info: {}", info);
+        }
+    } else {
+        println!("[scummvm_service] Warning: Executable not found in app bundle");
+    }
+}
+
+#[cfg(target_os = "macos")]
+fn copy_dir_recursive_macos(src: &Path, dst: &Path) -> Result<(), String> {
+    std::fs::create_dir_all(dst)
+        .map_err(|e| format!("Failed to create directory {}: {}", dst.display(), e))?;
+
+    for entry in std::fs::read_dir(src)
+        .map_err(|e| format!("Failed to read directory {}: {}", src.display(), e))?
+    {
+        let entry = entry.map_err(|e| format!("Failed to read entry: {}", e))?;
+        let src_path = entry.path();
+        let dst_path = dst.join(entry.file_name());
+
+        if src_path.is_dir() {
+            copy_dir_recursive_macos(&src_path, &dst_path)?;
         } else {
             std::fs::copy(&src_path, &dst_path)
                 .map_err(|e| format!("Failed to copy {}: {}", src_path.display(), e))?;

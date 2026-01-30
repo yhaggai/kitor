@@ -32,3 +32,16 @@ pub async fn uninstall_scummvm(
 ) -> Result<(), String> {
     scummvm_service::uninstall_scummvm(&state.db, &state.app_data_dir).await
 }
+
+#[tauri::command]
+pub async fn get_latest_scummvm_version() -> Result<String, String> {
+    scummvm_service::get_latest_scummvm_version().await
+}
+
+#[tauri::command]
+pub async fn open_scummvm(
+    state: State<'_, AppState>,
+    app_handle: tauri::AppHandle,
+) -> Result<(), String> {
+    scummvm_service::open_scummvm_app(&state.db, &state.app_data_dir, &app_handle).await
+}

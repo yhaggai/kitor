@@ -53,6 +53,8 @@ pub fn run() {
             commands::scummvm_commands::download_scummvm_binary,
             commands::scummvm_commands::check_scummvm_status,
             commands::scummvm_commands::uninstall_scummvm,
+            commands::scummvm_commands::get_latest_scummvm_version,
+            commands::scummvm_commands::open_scummvm,
             // Patch commands
             commands::patch_commands::get_patches_for_game,
             commands::patch_commands::get_all_patches,

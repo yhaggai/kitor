@@ -1,7 +1,6 @@
 use std::path::Path;
 use std::fs;
 use std::io;
-use std::process::Command;
 
 pub fn extract_zip(zip_path: &Path, extract_to: &Path) -> Result<(), String> {
     let file = fs::File::open(zip_path)
@@ -113,6 +112,7 @@ pub fn run_post_install_script(
     // Run the batch file on Windows
     #[cfg(target_os = "windows")]
     {
+        use std::process::Command;
         let output = Command::new("cmd")
             .args(["/C", &script_path.to_string_lossy()])
             .current_dir(working_dir)
