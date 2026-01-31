@@ -721,29 +721,6 @@ fn remove_quarantine_attribute(app_path: &Path) {
     }
 }
 
-#[cfg(target_os = "macos")]
-fn copy_dir_recursive_macos(src: &Path, dst: &Path) -> Result<(), String> {
-    std::fs::create_dir_all(dst)
-        .map_err(|e| format!("Failed to create directory {}: {}", dst.display(), e))?;
-
-    for entry in std::fs::read_dir(src)
-        .map_err(|e| format!("Failed to read directory {}: {}", src.display(), e))?
-    {
-        let entry = entry.map_err(|e| format!("Failed to read entry: {}", e))?;
-        let src_path = entry.path();
-        let dst_path = dst.join(entry.file_name());
-
-        if src_path.is_dir() {
-            copy_dir_recursive_macos(&src_path, &dst_path)?;
-        } else {
-            std::fs::copy(&src_path, &dst_path)
-                .map_err(|e| format!("Failed to copy {}: {}", src_path.display(), e))?;
-        }
-    }
-
-    Ok(())
-}
-
 async fn get_config_value(db: &DatabaseConnection, key: &str) -> Result<Option<String>, String> {
     let config = app_config::Entity::find_by_id(key.to_string())
         .one(db)

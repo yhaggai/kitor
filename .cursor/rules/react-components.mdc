@@ -1,0 +1,154 @@
+---
+description: React component best practices for state management and dialogs
+globs: **/*.tsx,**/*.ts
+alwaysApply: true
+---
+# React Component Guidelines
+
+## State Management
+
+### Use Reducer for Multiple State Updates
+
+When a component has more than 2 `useState` calls, prefer using `useReducer` instead.
+
+```typescript
+// Bad - too many useState calls
+function MyComponent() {
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const [data, setData] = useState<Data | null>(null);
+  const [filter, setFilter] = useState('');
+  // ... more state
+}
+
+// Good - use reducer for 3+ state variables
+type State = {
+  isLoading: boolean;
+  error: string | null;
+  data: Data | null;
+  filter: string;
+};
+
+type Action =
+  | { type: 'SET_LOADING'; payload: boolean }
+  | { type: 'SET_ERROR'; payload: string | null }
+  | { type: 'SET_DATA'; payload: Data | null }
+  | { type: 'SET_FILTER'; payload: string };
+
+function reducer(state: State, action: Action): State {
+  switch (action.type) {
+    case 'SET_LOADING':
+      return { ...state, isLoading: action.payload };
+    case 'SET_ERROR':
+      return { ...state, error: action.payload };
+    case 'SET_DATA':
+      return { ...state, data: action.payload };
+    case 'SET_FILTER':
+      return { ...state, filter: action.payload };
+    default:
+      return state;
+  }
+}
+
+function MyComponent() {
+  const [state, dispatch] = useReducer(reducer, {
+    isLoading: false,
+    error: null,
+    data: null,
+    filter: '',
+  });
+}
+```
+
+## Dialogs
+
+### Always Use DialogContext for Confirm Dialogs
+
+Never create custom confirm dialogs or use native `confirm()`. Always use the `useDialog` hook from `@/hooks/useDialog`.
+
+**Why avoid native `confirm()`:**
+- Blocks the event loop (not async)
+- Poor UX with browser default styling
+- Doesn't work properly in Tauri webviews
+- Can't be styled or customized
+
+```typescript
+// Bad - native confirm (blocks event loop, poor UX)
+function MyComponent() {
+  const handleDelete = () => {
+    if (confirm('Are you sure?')) {
+      // Delete logic
+    }
+  };
+  
+  return <Button onClick={handleDelete}>Delete</Button>;
+}
+
+// Bad - custom confirm dialog
+function MyComponent() {
+  const [showConfirm, setShowConfirm] = useState(false);
+  
+  const handleDelete = () => {
+    setShowConfirm(true);
+  };
+  
+  return (
+    <>
+      <Button onClick={handleDelete}>Delete</Button>
+      {showConfirm && (
+        <Dialog>
+          <DialogContent>
+            <DialogTitle>Confirm Delete</DialogTitle>
+            <Button onClick={() => setShowConfirm(false)}>Cancel</Button>
+            <Button onClick={handleConfirmDelete}>Delete</Button>
+          </DialogContent>
+        </Dialog>
+      )}
+    </>
+  );
+}
+
+// Good - use DialogContext
+import { useDialog } from '@/hooks/useDialog';
+
+function MyComponent() {
+  const alert = useDialog();
+  
+  const handleDelete = async () => {
+    const confirmed = await alert.confirm({
+      title: 'Delete Item?',
+      description: 'Are you sure you want to delete this item?',
+      confirmText: 'Delete',
+      cancelText: 'Cancel',
+    });
+    
+    if (confirmed) {
+      // Perform delete
+    }
+  };
+  
+  return <Button onClick={handleDelete}>Delete</Button>;
+}
+```
+
+### Confirm Dialog Pattern
+
+- Use `alert.confirm()` which returns a Promise<boolean>
+- Always check the result before proceeding
+- Cancel button should have `variant="outline"` and `className="text-white"`
+- Confirm button uses default variant
+
+```typescript
+const confirmed = await alert.confirm({
+  title: 'Action Title',
+  description: 'Optional description',
+  confirmText: 'Confirm', // optional, defaults to "Confirm"
+  cancelText: 'Cancel',   // optional, defaults to "Cancel"
+});
+
+if (confirmed) {
+  // User clicked confirm
+} else {
+  // User clicked cancel or closed dialog
+}
+```

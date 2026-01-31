@@ -9,6 +9,7 @@ import {
   XCircle,
 } from "lucide-react";
 import { useCallback, useEffect, useState } from "react";
+import GogAuthCard from "@/components/GogAuthCard";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -182,6 +183,8 @@ export default function Settings() {
           </Button>
         </CardContent>
       </Card>
+
+      <GogAuthCard />
 
       <Card>
         <CardHeader>

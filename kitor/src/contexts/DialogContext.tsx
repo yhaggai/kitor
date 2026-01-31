@@ -129,7 +129,11 @@ export function DialogProvider({ children, dialogRootElement }: DialogProviderPr
               )}
             </DialogHeader>
             <DialogFooter>
-              <Button variant="outline" onClick={() => handleOpenChange(false)}>
+              <Button
+                variant="outline"
+                onClick={() => handleOpenChange(false)}
+                className="text-white"
+              >
                 {state.options.cancelText || "Cancel"}
               </Button>
               <Button onClick={handleConfirm}>{state.options.confirmText || "Confirm"}</Button>

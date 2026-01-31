@@ -56,6 +56,17 @@ type ScummVMDownloadProgress = {
   step: string;
 };
 
+type GogAuthState = {
+  isAuthenticated: boolean;
+  userEmail?: string;
+};
+
+type GogGame = {
+  id: number;
+  title: string;
+  cover_url?: string;
+};
+
 type AppStore = {
   games: Game[];
   patches: Patch[];
@@ -66,6 +77,8 @@ type AppStore = {
   scummvmDownloadProgress: ScummVMDownloadProgress | null;
   activeTab: string;
   highlightedGameId: number | null;
+  gogAuth: GogAuthState;
+  gogGames: GogGame[];
 
   setGames: (games: Game[]) => void;
   setPatches: (patches: Patch[]) => void;
@@ -76,6 +89,8 @@ type AppStore = {
   setScummVMDownloadProgress: (progress: ScummVMDownloadProgress | null) => void;
   setActiveTab: (tab: string) => void;
   setHighlightedGameId: (id: number | null) => void;
+  setGogAuth: (auth: GogAuthState) => void;
+  setGogGames: (games: GogGame[]) => void;
 };
 
 export const useAppStore = create<AppStore>((set) => ({
@@ -88,6 +103,8 @@ export const useAppStore = create<AppStore>((set) => ({
   scummvmDownloadProgress: null,
   activeTab: "library",
   highlightedGameId: null,
+  gogAuth: { isAuthenticated: false },
+  gogGames: [],
 
   setGames: (games) => set({ games }),
   setPatches: (patches) => set({ patches }),
@@ -98,6 +115,8 @@ export const useAppStore = create<AppStore>((set) => ({
   setScummVMDownloadProgress: (progress) => set({ scummvmDownloadProgress: progress }),
   setActiveTab: (tab) => set({ activeTab: tab }),
   setHighlightedGameId: (id) => set({ highlightedGameId: id }),
+  setGogAuth: (auth) => set({ gogAuth: auth }),
+  setGogGames: (games) => set({ gogGames: games }),
 }));
 
 export type PatchWithStatus = Patch & {
@@ -115,4 +134,6 @@ export type {
   InstalledPatchInfo,
   AvailablePatchInfo,
   ScummVMDownloadProgress,
+  GogAuthState,
+  GogGame,
 };

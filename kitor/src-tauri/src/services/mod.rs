@@ -5,6 +5,8 @@ pub mod download_service;
 pub mod file_service;
 pub mod registry_service;
 pub mod image_service;
+pub mod gog_service;
+pub mod http_server;
 
 
 

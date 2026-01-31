@@ -4,6 +4,7 @@ mod m20260103_000001_create_tables;
 mod m20260103_000002_add_launch_columns;
 mod m20260103_000003_update_monkey_launch_args;
 mod m20260110_000001_create_app_config;
+mod m20260130_000001_create_gog_auth;
 
 pub struct Migrator;
 
@@ -15,6 +16,7 @@ impl MigratorTrait for Migrator {
             Box::new(m20260103_000002_add_launch_columns::Migration),
             Box::new(m20260103_000003_update_monkey_launch_args::Migration),
             Box::new(m20260110_000001_create_app_config::Migration),
+            Box::new(m20260130_000001_create_gog_auth::Migration),
         ]
     }
 }

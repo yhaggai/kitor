@@ -27,10 +27,12 @@ serde_json = "1"
 tokio = { version = "1", features = ["full"] }
 sea-orm = { version = "1.1", features = ["sqlx-sqlite", "runtime-tokio-rustls", "macros"] }
 sea-orm-migration = { version = "1.1", features = ["runtime-tokio-rustls", "sqlx-sqlite"] }
-reqwest = { version = "0.12", features = ["stream"] }
+reqwest = { version = "0.12", features = ["stream", "json"] }
 zip = "2.2"
 chrono = { version = "0.4", features = ["serde"] }
 futures = "0.3"
+base64 = "0.22"
+url = "2.5"
 
 [dependencies.migration]
 path = "migration"

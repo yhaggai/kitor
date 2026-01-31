@@ -62,6 +62,12 @@ pub fn run() {
             commands::patch_commands::get_installed_patches,
             commands::patch_commands::restore_backup,
             commands::patch_commands::get_purchase_guide,
+            // GOG commands
+            commands::gog_commands::login_to_gog,
+            commands::gog_commands::complete_gog_login,
+            commands::gog_commands::check_gog_auth_status,
+            commands::gog_commands::logout_from_gog,
+            commands::gog_commands::get_gog_user_games,
             // Window commands
             commands::window_commands::close_splashscreen,
         ])
