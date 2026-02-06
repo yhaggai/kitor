@@ -75,6 +75,7 @@ type AppStore = {
   isScummVMReady: boolean;
   scummvmDownloadInProgress: boolean;
   scummvmDownloadProgress: ScummVMDownloadProgress | null;
+  scummvmVersion: string | null;
   activeTab: string;
   highlightedGameId: number | null;
   gogAuth: GogAuthState;
@@ -87,6 +88,7 @@ type AppStore = {
   setScummVMReady: (ready: boolean) => void;
   setScummVMDownloadInProgress: (inProgress: boolean) => void;
   setScummVMDownloadProgress: (progress: ScummVMDownloadProgress | null) => void;
+  setScummVMVersion: (version: string | null) => void;
   setActiveTab: (tab: string) => void;
   setHighlightedGameId: (id: number | null) => void;
   setGogAuth: (auth: GogAuthState) => void;
@@ -101,6 +103,7 @@ export const useAppStore = create<AppStore>((set) => ({
   isScummVMReady: false,
   scummvmDownloadInProgress: false,
   scummvmDownloadProgress: null,
+  scummvmVersion: null,
   activeTab: "library",
   highlightedGameId: null,
   gogAuth: { isAuthenticated: false },
@@ -113,6 +116,7 @@ export const useAppStore = create<AppStore>((set) => ({
   setScummVMReady: (ready) => set({ isScummVMReady: ready }),
   setScummVMDownloadInProgress: (inProgress) => set({ scummvmDownloadInProgress: inProgress }),
   setScummVMDownloadProgress: (progress) => set({ scummvmDownloadProgress: progress }),
+  setScummVMVersion: (version) => set({ scummvmVersion: version }),
   setActiveTab: (tab) => set({ activeTab: tab }),
   setHighlightedGameId: (id) => set({ highlightedGameId: id }),
   setGogAuth: (auth) => set({ gogAuth: auth }),

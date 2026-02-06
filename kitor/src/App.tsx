@@ -24,6 +24,7 @@ function App() {
   const {
     setGames,
     setScummVMReady,
+    setScummVMVersion,
     setDownloadProgress,
     setScummVMDownloadProgress,
     scummvmDownloadInProgress,
@@ -50,11 +51,13 @@ function App() {
     try {
       const status = (await invoke("check_scummvm_status")) as ScummVMStatus;
       setScummVMReady(status.downloaded);
+      setScummVMVersion(status.version || null);
     } catch (error) {
       console.error("Failed to check ScummVM:", error);
       setScummVMReady(false);
+      setScummVMVersion(null);
     }
-  }, [setScummVMReady]);
+  }, [setScummVMReady, setScummVMVersion]);
 
   useEffect(() => {
     const initApp = async () => {

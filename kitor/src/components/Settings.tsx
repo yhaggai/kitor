@@ -1,9 +1,12 @@
+import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
 import { invoke } from "@tauri-apps/api/core";
 import {
   AlertCircle,
   CheckCircle,
   Download,
   ExternalLink,
+  FolderOpen,
+  MoreVertical,
   RefreshCw,
   Trash2,
   XCircle,
@@ -34,18 +37,18 @@ export default function Settings() {
     setScummVMDownloadInProgress,
     scummvmDownloadProgress,
     setScummVMDownloadProgress,
+    scummvmVersion,
+    setScummVMVersion,
   } = useAppStore();
   const {
-    scummvmVersion,
     isClearingCovers,
     isUninstalling,
     updateAvailable,
-    setScummvmVersion,
     setIsClearingCovers,
     setIsUninstalling,
     setUpdateAvailable,
   } = useSettingsState();
-  const { alert } = useDialog();
+  const { alert, confirm } = useDialog();
   const [latestScummVMVersion, setLatestScummVMVersion] = useState<string>("");
 
   const fetchLatestVersion = useCallback(async () => {
@@ -63,26 +66,28 @@ export default function Settings() {
     try {
       const status = (await invoke("check_scummvm_status")) as ScummVMStatus;
       setScummVMReady(status.downloaded);
-      if (status.downloaded) {
-        const version = status.version || "Unknown";
-        setScummvmVersion(version);
-        if (latestScummVMVersion) {
-          setUpdateAvailable(version !== latestScummVMVersion && version !== "Unknown");
-        }
-      }
+      const version = status.version || "Unknown";
+      setScummVMVersion(version);
     } catch (error) {
       console.error("Failed to check ScummVM status:", error);
       setScummVMReady(false);
+      setScummVMVersion(null);
     }
-  }, [setScummVMReady, setScummvmVersion, setUpdateAvailable, latestScummVMVersion]);
+  }, [setScummVMReady, setScummVMVersion]);
 
   useEffect(() => {
     fetchLatestVersion();
   }, [fetchLatestVersion]);
 
   useEffect(() => {
-    checkScummVMStatus();
-  }, [checkScummVMStatus]);
+    if (scummvmVersion && latestScummVMVersion) {
+      const isAvailable =
+        scummvmVersion !== latestScummVMVersion &&
+        scummvmVersion !== "Unknown" &&
+        scummvmVersion !== "Missing/Corrupted";
+      setUpdateAvailable(isAvailable);
+    }
+  }, [scummvmVersion, latestScummVMVersion, setUpdateAvailable]);
 
   const handleDownloadScummVM = async () => {
     try {
@@ -99,9 +104,13 @@ export default function Settings() {
   };
 
   const handleUninstallScummVM = async () => {
-    if (
-      !confirm("Are you sure you want to uninstall ScummVM? You can download it again anytime.")
-    ) {
+    const confirmed = await confirm({
+      title: "Uninstall ScummVM?",
+      description: "Are you sure you want to uninstall ScummVM? You can download it again anytime.",
+      confirmText: "Uninstall",
+      cancelText: "Cancel",
+    });
+    if (!confirmed) {
       return;
     }
 
@@ -118,7 +127,13 @@ export default function Settings() {
   };
 
   const handleUpdateScummVM = async () => {
-    if (!confirm("This will download and install the latest version of ScummVM. Continue?")) {
+    const confirmed = await confirm({
+      title: "Update ScummVM?",
+      description: "This will download and install the latest version of ScummVM. Continue?",
+      confirmText: "Update",
+      cancelText: "Cancel",
+    });
+    if (!confirmed) {
       return;
     }
 
@@ -162,6 +177,15 @@ export default function Settings() {
     } catch (error) {
       console.error("Failed to open ScummVM:", error);
       await alert({ title: "Open Failed", description: String(error) });
+    }
+  };
+
+  const handleOpenScummVMFolder = async () => {
+    try {
+      await invoke("open_scummvm_folder");
+    } catch (error) {
+      console.error("Failed to open ScummVM folder:", error);
+      await alert({ title: "Open Folder Failed", description: String(error) });
     }
   };
 
@@ -231,14 +255,36 @@ export default function Settings() {
                   Update to {latestScummVMVersion}
                 </Button>
               )}
-              <Button
-                onClick={handleUninstallScummVM}
-                variant="destructive"
-                disabled={isUninstalling}
-              >
-                <Trash2 className="h-4 w-4 mr-2" />
-                Uninstall
-              </Button>
+              <DropdownMenu.Root>
+                <DropdownMenu.Trigger asChild>
+                  <Button variant="outline" size="icon">
+                    <MoreVertical className="h-4 w-4" />
+                  </Button>
+                </DropdownMenu.Trigger>
+                <DropdownMenu.Portal>
+                  <DropdownMenu.Content
+                    className="min-w-[160px] rounded-md border bg-background p-1 shadow-lg"
+                    align="end"
+                  >
+                    <DropdownMenu.Item
+                      className="flex cursor-pointer items-center rounded-sm px-2 py-2 text-sm text-foreground outline-none hover:bg-accent focus:bg-accent"
+                      onSelect={handleOpenScummVMFolder}
+                    >
+                      <FolderOpen className="mr-2 h-4 w-4" />
+                      Open Folder
+                    </DropdownMenu.Item>
+                    <DropdownMenu.Separator className="my-1 h-px bg-border" />
+                    <DropdownMenu.Item
+                      className="flex cursor-pointer items-center rounded-sm px-2 py-2 text-sm text-destructive outline-none hover:bg-accent focus:bg-accent"
+                      onSelect={handleUninstallScummVM}
+                      disabled={isUninstalling}
+                    >
+                      <Trash2 className="mr-2 h-4 w-4" />
+                      Uninstall
+                    </DropdownMenu.Item>
+                  </DropdownMenu.Content>
+                </DropdownMenu.Portal>
+              </DropdownMenu.Root>
             </div>
           )}
 

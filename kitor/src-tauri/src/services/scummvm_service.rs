@@ -304,17 +304,25 @@ pub async fn check_scummvm_status(
     app_data_dir: &PathBuf,
 ) -> Result<ScummVMStatus, String> {
     let embedded_path = get_embedded_scummvm_path(app_data_dir)?;
-    let exists = Path::new(&embedded_path).exists();
+    let file_exists = Path::new(&embedded_path).exists();
     
-    let version = if exists {
+    // Check database state
+    let db_downloaded = get_config_value(db, "scummvm_downloaded").await? == Some("true".to_string());
+    
+    // ScummVM is only ready if the executable file actually exists
+    let downloaded = file_exists;
+    
+    let version = if file_exists {
         get_config_value(db, "scummvm_version").await?
+    } else if db_downloaded {
+        Some("Missing/Corrupted".to_string())
     } else {
         None
     };
 
     Ok(ScummVMStatus {
-        downloaded: exists,
-        path: if exists { Some(embedded_path) } else { None },
+        downloaded,
+        path: if file_exists { Some(embedded_path) } else { None },
         version,
     })
 }
@@ -327,10 +335,67 @@ pub async fn uninstall_scummvm(
     
     let scummvm_dir = app_data_dir.join("scummvm");
     
+    // On macOS, aggressively clean up any stuck mounts
+    #[cfg(target_os = "macos")]
+    {
+        let mount_point = scummvm_dir.join("temp_mount");
+        if mount_point.exists() {
+            println!("[scummvm_service] Found potential mount point at {}", mount_point.display());
+            
+            // Try hdiutil first
+            let _ = Command::new("hdiutil")
+                .args(["detach", &mount_point.to_string_lossy(), "-force"])
+                .output();
+                
+            // Also try umount -f just in case
+            let _ = Command::new("umount")
+                .args(["-f", &mount_point.to_string_lossy()])
+                .output();
+        }
+    }
+    
     // Remove ScummVM directory
     if scummvm_dir.exists() {
-        std::fs::remove_dir_all(&scummvm_dir)
-            .map_err(|e| format!("Failed to remove ScummVM directory: {}", e))?;
+        if let Err(e) = std::fs::remove_dir_all(&scummvm_dir) {
+            println!("[scummvm_service] Failed to remove directory: {}. Checking for stuck mounts...", e);
+            
+            // If we hit read-only FS, it's definitely a mount issue.
+            // Let's look for ANY mounts inside our directory
+            #[cfg(target_os = "macos")]
+            {
+                let mount_output = Command::new("mount").output().map_err(|e| e.to_string())?;
+                let mount_str = String::from_utf8_lossy(&mount_output.stdout);
+                
+                let scummvm_path_str = scummvm_dir.to_string_lossy();
+                
+                for line in mount_str.lines() {
+                    if let Some(path_part) = line.split(" on ").nth(1) {
+                        let mount_path = path_part.split(" (").next().unwrap_or("").trim();
+                        if mount_path.starts_with(scummvm_path_str.as_ref()) {
+                            println!("[scummvm_service] Found stuck mount at: {}", mount_path);
+                            
+                            // Force detach this specific mount
+                            let _ = Command::new("hdiutil")
+                                .args(["detach", mount_path, "-force"])
+                                .output();
+                                
+                            let _ = Command::new("umount")
+                                .args(["-f", mount_path])
+                                .output();
+                        }
+                    }
+                }
+                
+                // Try removal one more time
+                std::fs::remove_dir_all(&scummvm_dir)
+                    .map_err(|e| format!("Failed to remove ScummVM directory after cleanup: {}", e))?;
+            }
+            
+            #[cfg(not(target_os = "macos"))]
+            {
+                return Err(format!("Failed to remove ScummVM directory: {}", e));
+            }
+        }
         println!("[scummvm_service] Removed ScummVM directory");
     }
     
@@ -405,6 +470,47 @@ pub async fn open_scummvm_app(
             .map_err(|e| format!("Failed to launch ScummVM: {}", e))?;
     }
     
+    Ok(())
+}
+
+pub async fn open_scummvm_folder(
+    app_data_dir: &PathBuf,
+) -> Result<(), String> {
+    let scummvm_dir = app_data_dir.join("scummvm");
+    
+    if !scummvm_dir.exists() {
+        return Err("ScummVM directory does not exist".to_string());
+    }
+
+    #[cfg(target_os = "macos")]
+    {
+        Command::new("open")
+            .arg(&scummvm_dir)
+            .spawn()
+            .map_err(|e| format!("Failed to open folder: {}", e))?;
+    }
+
+    #[cfg(target_os = "windows")]
+    {
+        Command::new("explorer")
+            .arg(&scummvm_dir)
+            .spawn()
+            .map_err(|e| format!("Failed to open folder: {}", e))?;
+    }
+
+    #[cfg(target_os = "linux")]
+    {
+        Command::new("xdg-open")
+            .arg(&scummvm_dir)
+            .spawn()
+            .map_err(|e| format!("Failed to open folder: {}", e))?;
+    }
+
+    #[cfg(not(any(target_os = "windows", target_os = "linux", target_os = "macos")))]
+    {
+        return Err("Unsupported platform".to_string());
+    }
+
     Ok(())
 }
 

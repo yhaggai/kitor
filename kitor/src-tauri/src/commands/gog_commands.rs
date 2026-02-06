@@ -125,3 +125,11 @@ pub async fn get_gog_user_games(
 ) -> Result<Vec<gog_service::GogGame>, String> {
     gog_service::get_user_games(&state.db).await
 }
+
+#[tauri::command]
+pub async fn get_gog_game_installers(
+    state: State<'_, AppState>,
+    game_id: i64,
+) -> Result<Vec<gog_service::OfflineInstaller>, String> {
+    gog_service::get_game_installers(&state.db, game_id).await
+}

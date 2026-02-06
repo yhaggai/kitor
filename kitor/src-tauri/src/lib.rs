@@ -55,6 +55,7 @@ pub fn run() {
             commands::scummvm_commands::uninstall_scummvm,
             commands::scummvm_commands::get_latest_scummvm_version,
             commands::scummvm_commands::open_scummvm,
+            commands::scummvm_commands::open_scummvm_folder,
             // Patch commands
             commands::patch_commands::get_patches_for_game,
             commands::patch_commands::get_all_patches,
@@ -68,6 +69,7 @@ pub fn run() {
             commands::gog_commands::check_gog_auth_status,
             commands::gog_commands::logout_from_gog,
             commands::gog_commands::get_gog_user_games,
+            commands::gog_commands::get_gog_game_installers,
             // Window commands
             commands::window_commands::close_splashscreen,
         ])

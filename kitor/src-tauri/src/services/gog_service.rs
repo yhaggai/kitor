@@ -24,6 +24,14 @@ pub struct GogGame {
     pub cover_url: Option<String>,
 }
 
+#[derive(Debug, Serialize, Deserialize)]
+pub struct OfflineInstaller {
+    pub id: String,
+    pub name: String,
+    pub size: String,
+    pub path: String,
+}
+
 pub fn build_auth_url() -> String {
     format!(
         "{}?client_id={}&redirect_uri={}&response_type=code&layout=client2",
@@ -184,51 +192,137 @@ pub async fn get_user_games(db: &DatabaseConnection) -> Result<Vec<GogGame>, Str
     
     let client = reqwest::Client::new();
     
+    // 1. Get owned game IDs from the correct endpoint
     let response = client
-        .get("https://embed.gog.com/account/getFilteredProducts")
+        .get("https://www.gog.com/user/data/games")
         .header("Authorization", format!("Bearer {}", token))
         .send()
         .await
-        .map_err(|e| format!("Failed to fetch games: {}", e))?;
+        .map_err(|e| format!("Failed to fetch owned games: {}", e))?;
     
     if !response.status().is_success() {
         let error_text = response.text().await.unwrap_or_default();
-        return Err(format!("Failed to fetch games: {}", error_text));
+        return Err(format!("Failed to fetch owned games: {}", error_text));
     }
     
-    // Parse GOG response and extract games
-    // Note: The actual API structure may need adjustment based on GOG's response
-    let games_data: serde_json::Value = response
+    let data: serde_json::Value = response
         .json::<serde_json::Value>()
         .await
-        .map_err(|e| format!("Failed to parse games response: {}", e))?;
+        .map_err(|e| format!("Failed to parse owned games response: {}", e))?;
     
-    // Extract games from response (structure may vary)
-    let games = games_data
-        .get("products")
-        .and_then(|p| p.as_array())
-        .map(|products| {
-            products
-                .iter()
-                .filter_map(|product| {
-                    let id = product.get("id")?.as_i64()?;
-                    let title = product.get("title")?.as_str()?.to_string();
-                    let cover_url = product
-                        .get("image")
-                        .and_then(|i| i.as_str())
-                        .map(|s| s.to_string());
-                    
-                    Some(GogGame {
-                        id,
-                        title,
-                        cover_url,
-                    })
-                })
-                .collect()
-        })
-        .unwrap_or_default();
+    let owned_ids = data
+        .get("owned")
+        .and_then(|v| v.as_array())
+        .ok_or("Could not find 'owned' games in response")?;
     
-    Ok(games)
+    if owned_ids.is_empty() {
+        return Ok(vec![]);
+    }
+
+    // 2. Fetch game details in chunks
+    let mut all_games = Vec::new();
+    let id_strings: Vec<String> = owned_ids
+        .iter()
+        .filter_map(|v| v.as_i64().map(|id| id.to_string()))
+        .collect();
+
+    for chunk in id_strings.chunks(50) {
+        let ids_param = chunk.join(",");
+        let details_url = format!("https://api.gog.com/products?ids={}", ids_param);
+        
+        let details_response = client
+            .get(&details_url)
+            .send()
+            .await;
+
+        if let Ok(resp) = details_response {
+            if resp.status().is_success() {
+                if let Ok(products) = resp.json::<Vec<serde_json::Value>>().await {
+                    for product in products {
+                        let id = product.get("id").and_then(|v| v.as_i64()).unwrap_or(0);
+                        let title = product.get("title").and_then(|v| v.as_str()).unwrap_or("Unknown").to_string();
+                        let cover_url = product
+                            .get("image")
+                            .and_then(|v| v.as_str())
+                            .map(|s| {
+                                if s.starts_with("//") {
+                                    format!("https:{}", s)
+                                } else {
+                                    s.to_string()
+                                }
+                            });
+                        
+                        all_games.push(GogGame {
+                            id,
+                            title,
+                            cover_url,
+                        });
+                    }
+                }
+            }
+        }
+    }
+    
+    // Sort games by title
+    all_games.sort_by(|a, b| a.title.to_lowercase().cmp(&b.title.to_lowercase()));
+
+    Ok(all_games)
+}
+
+pub async fn get_game_installers(db: &DatabaseConnection, game_id: i64) -> Result<Vec<OfflineInstaller>, String> {
+    let token = get_valid_token(db).await?;
+    let client = reqwest::Client::new();
+    
+    let url = format!("https://www.gog.com/account/gameDetails/{}.json", game_id);
+    
+    let response = client
+        .get(&url)
+        .header("Authorization", format!("Bearer {}", token))
+        .send()
+        .await
+        .map_err(|e| format!("Failed to fetch game details: {}", e))?;
+    
+    if !response.status().is_success() {
+        let error_text = response.text().await.unwrap_or_default();
+        return Err(format!("Failed to fetch game details ({}): {}", response.status(), error_text));
+    }
+    
+    let details: serde_json::Value = response
+        .json()
+        .await
+        .map_err(|e| format!("Failed to parse game details JSON: {}", e))?;
+    
+    let mut installers = Vec::new();
+    
+    // Look for downloads in the 'downloads' array
+    if let Some(downloads) = details.get("downloads").and_then(|d| d.as_array()) {
+        for download in downloads {
+            // downloads is usually an array of pairs [language, details]
+            if let Some(entry) = download.as_array() {
+                if entry.len() >= 2 {
+                    if let Some(platform_details) = entry[1].get("windows").and_then(|w| w.as_array()) {
+                        for item in platform_details {
+                            let id = item.get("id").and_then(|v| v.as_str()).unwrap_or_default().to_string();
+                            let name = item.get("name").and_then(|v| v.as_str()).unwrap_or("Installer").to_string();
+                            let size = item.get("size").and_then(|v| v.as_str()).unwrap_or("Unknown").to_string();
+                            let path = item.get("manualUrl").and_then(|v| v.as_str()).unwrap_or_default().to_string();
+                            
+                            if !path.is_empty() {
+                                installers.push(OfflineInstaller {
+                                    id,
+                                    name,
+                                    size,
+                                    path: format!("https://www.gog.com{}", path),
+                                });
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+    Ok(installers)
 }
 
 fn encrypt_token(token: &str) -> String {

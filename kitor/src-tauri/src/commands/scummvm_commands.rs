@@ -45,3 +45,10 @@ pub async fn open_scummvm(
 ) -> Result<(), String> {
     scummvm_service::open_scummvm_app(&state.db, &state.app_data_dir, &app_handle).await
 }
+
+#[tauri::command]
+pub async fn open_scummvm_folder(
+    state: State<'_, AppState>,
+) -> Result<(), String> {
+    scummvm_service::open_scummvm_folder(&state.app_data_dir).await
+}
