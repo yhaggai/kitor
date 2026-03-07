@@ -27,7 +27,7 @@ jobs:
           set -e
           
           # Find all patch.json files
-          find patches-workspace -name "patch.json" | while read -r p; read -r patch_file; do
+          while read -r patch_file; do
             # We want to skip the while read -r if empty since find might return nothing
             if [ -z "$patch_file" ]; then continue; fi
             
