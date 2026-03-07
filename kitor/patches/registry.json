@@ -81,9 +81,9 @@
       "patches": [
         {
           "language": "he",
-          "version": "1.0",
+          "version": "1.1",
           "author": "AdventureBrew",
-          "download_url": "https://github.com/yhaggai/kitor/releases/download/patch-monkey2-se-he-v1.0/MonkeyIsland2-Heb-AdventureBrew.zip",
+          "download_url": "https://github.com/yhaggai/kitor/releases/download/patch-monkey2-se-he-v1.1/MonkeyIsland2-Heb-AdventureBrew.zip",
           "source_type": "github",
           "checksum": null,
           "file_size": null,
