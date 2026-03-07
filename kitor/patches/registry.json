@@ -108,7 +108,8 @@
           "description": "Hebrew translation for Monkey Island 2: LeChuck's Revenge Special Edition",
           "filename": "MonkeyIsland2-Heb-AdventureBrew.zip",
           "post_install_script": {
-            "windows": "patch.bat"
+            "windows": "patch.bat",
+            "osx": "patch.sh"
           }
         }
       ]
