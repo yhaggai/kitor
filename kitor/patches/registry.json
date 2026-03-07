@@ -22,20 +22,29 @@
         ]
       },
       "detection_patterns": {
-        "unique_files": ["Monkey1.pak", "Monkey.exe"],
-        "file_patterns": ["*.pak"]
+        "unique_files": [
+          "Monkey1.pak",
+          "Monkey.exe"
+        ],
+        "file_patterns": [
+          "*.pak"
+        ]
       },
       "launch_config": {
         "subdirectory": "hebrew",
-        "args": ["--language=he", "--fullscreen", "--auto-detect"]
+        "args": [
+          "--language=he",
+          "--fullscreen",
+          "--auto-detect"
+        ]
       },
       "purchase_guide": "monkey-se.md",
       "patches": [
         {
           "language": "he",
-          "version": "1.1",
+          "version": "1.2",
           "author": "AdventureBrew",
-          "download_url": "https://github.com/yhaggai/kitor/releases/download/patch-monkey-se-he-v1.1/MonkeyIsland-Heb-AdventureBrew.zip",
+          "download_url": "https://github.com/yhaggai/kitor/releases/download/patch-monkey-se-he-v1.2/MonkeyIsland-Heb-AdventureBrew.zip",
           "source_type": "github",
           "checksum": null,
           "file_size": null,
@@ -67,12 +76,21 @@
         ]
       },
       "detection_patterns": {
-        "unique_files": ["Monkey2.pak", "Monkey2.exe"],
-        "file_patterns": ["*.pak"]
+        "unique_files": [
+          "Monkey2.pak",
+          "Monkey2.exe"
+        ],
+        "file_patterns": [
+          "*.pak"
+        ]
       },
       "launch_config": {
         "subdirectory": "hebrew",
-        "args": ["--language=he", "--fullscreen", "--auto-detect"]
+        "args": [
+          "--language=he",
+          "--fullscreen",
+          "--auto-detect"
+        ]
       },
       "purchase_guide": "monkey2-se.md",
       "patches": [
@@ -100,11 +118,20 @@
         "linux": true
       },
       "detection_patterns": {
-        "unique_files": ["RESOURCE.000", "SCIDHUV.EXE"],
-        "file_patterns": ["RESOURCE.*"]
+        "unique_files": [
+          "RESOURCE.000",
+          "SCIDHUV.EXE"
+        ],
+        "file_patterns": [
+          "RESOURCE.*"
+        ]
       },
       "launch_config": {
-        "args": ["--language=he", "--fullscreen", "--auto-detect"]
+        "args": [
+          "--language=he",
+          "--fullscreen",
+          "--auto-detect"
+        ]
       },
       "purchase_guide": null,
       "patches": [
@@ -144,12 +171,22 @@
         ]
       },
       "detection_patterns": {
-        "unique_files": ["GEMCUT.PAK", "KYRAGEM.PAK"],
-        "file_patterns": ["*.PAK", "*.VRM"],
+        "unique_files": [
+          "GEMCUT.PAK",
+          "KYRAGEM.PAK"
+        ],
+        "file_patterns": [
+          "*.PAK",
+          "*.VRM"
+        ],
         "detection_subdirectory": "DAT"
       },
       "launch_config": {
-        "args": ["--language=he", "--fullscreen", "--auto-detect"]
+        "args": [
+          "--language=he",
+          "--fullscreen",
+          "--auto-detect"
+        ]
       },
       "purchase_guide": null,
       "patches": [
