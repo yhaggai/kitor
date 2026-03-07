@@ -8,11 +8,43 @@ pub struct Registry {
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct GogInstaller {
+    pub id: String,
+    pub name: String,
+    pub path: String,
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct GogInfo {
+    pub id: i64,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub slug: Option<String>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub title: Option<String>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub installers: Option<Vec<GogInstaller>>,
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct Platforms {
+    #[serde(default)]
+    pub windows: bool,
+    #[serde(default)]
+    pub osx: bool,
+    #[serde(default)]
+    pub linux: bool,
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct GameDefinition {
     pub scummvm_id: String,
     pub title: String,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub cover_url: Option<String>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub platforms: Option<Platforms>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub gog: Option<GogInfo>,
     pub detection_patterns: DetectionPatterns,
     pub patches: Vec<PatchDefinition>,
     #[serde(skip_serializing_if = "Option::is_none")]

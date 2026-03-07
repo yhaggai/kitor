@@ -4,6 +4,23 @@
       "scummvm_id": "monkey-se",
       "title": "The Secret of Monkey Island: Special Edition",
       "cover_url": "/mI1.webp",
+      "platforms": {
+        "windows": true,
+        "osx": false,
+        "linux": false
+      },
+      "gog": {
+        "id": 1207666253,
+        "slug": "the_secret_of_monkey_island_special_edition",
+        "title": "The Secret of Monkey Island™: Special Edition",
+        "installers": [
+          {
+            "id": "",
+            "name": "The Secret of Monkey Island™: Special Edition",
+            "path": "https://www.gog.com/downloads/the_secret_of_monkey_island_special_edition/en1installer0"
+          }
+        ]
+      },
       "detection_patterns": {
         "unique_files": ["Monkey1.pak", "Monkey.exe"],
         "file_patterns": ["*.pak"]
@@ -18,8 +35,8 @@
           "language": "he",
           "version": "1.1",
           "author": "AdventureBrew",
-          "download_url": "https://drive.usercontent.google.com/uc?id=1tie83ysQyuwmnLtwZfsV90nYZY9Bz5uR&export=download",
-          "source_type": "google_drive",
+          "download_url": "https://github.com/yhaggai/kitor/releases/download/patch-monkey-se-he-v1.1/MonkeyIsland-Heb-AdventureBrew.zip",
+          "source_type": "github",
           "checksum": null,
           "file_size": null,
           "description": "Hebrew translation for The Secret of Monkey Island: Special Edition",
@@ -32,6 +49,23 @@
       "scummvm_id": "monkey2-se",
       "title": "Monkey Island 2: LeChuck's Revenge Special Edition",
       "cover_url": "https://m.media-amazon.com/images/M/MV5BNWU0OWQ4ODAtMjViNS00M2RiLWE5ZGQtMDE2NTgyMTIwOTMxXkEyXkFqcGc@._V1_FMjpg_UY2400_.jpg",
+      "platforms": {
+        "windows": true,
+        "osx": false,
+        "linux": false
+      },
+      "gog": {
+        "id": 1425039730,
+        "slug": "monkey_island_2_special_edition_lechucks_revenge",
+        "title": "Monkey Island™ 2 Special Edition: LeChuck's Revenge™",
+        "installers": [
+          {
+            "id": "",
+            "name": "Monkey Island™ 2 Special Edition: LeChuck's Revenge™",
+            "path": "https://www.gog.com/downloads/monkey_island_2_special_edition_lechucks_revenge/en1installer0"
+          }
+        ]
+      },
       "detection_patterns": {
         "unique_files": ["Monkey2.pak", "Monkey2.exe"],
         "file_patterns": ["*.pak"]
@@ -46,8 +80,8 @@
           "language": "he",
           "version": "1.0",
           "author": "AdventureBrew",
-          "download_url": "https://drive.usercontent.google.com/uc?id=1_vRek1EgpwWfaB-HY-W1H3G7K8NPanHU&authuser=0&export=download",
-          "source_type": "google_drive",
+          "download_url": "https://github.com/yhaggai/kitor/releases/download/patch-monkey2-se-he-v1.0/MonkeyIsland2-Heb-AdventureBrew.zip",
+          "source_type": "github",
           "checksum": null,
           "file_size": null,
           "description": "Hebrew translation for Monkey Island 2: LeChuck's Revenge Special Edition",
@@ -60,6 +94,11 @@
       "scummvm_id": "sq1sci",
       "title": "Space Quest I: Roger Wilco in the Sarien Encounter (VGA Remake)",
       "cover_url": "https://cdn.mobygames.com/covers/10020-space-quest-i-roger-wilco-in-the-sarien-encounter-dos-front-cove.jpg",
+      "platforms": {
+        "windows": true,
+        "osx": true,
+        "linux": true
+      },
       "detection_patterns": {
         "unique_files": ["RESOURCE.000", "SCIDHUV.EXE"],
         "file_patterns": ["RESOURCE.*"]
@@ -73,8 +112,8 @@
           "language": "he",
           "version": "1.0",
           "author": "AdventureBrew",
-          "download_url": "https://drive.usercontent.google.com/uc?id=1HGZ24L471D02M5Uys_9GorzwkISug2Zo&authuser=0&export=download",
-          "source_type": "google_drive",
+          "download_url": "https://github.com/yhaggai/kitor/releases/download/patch-sq1sci-he-v1.0/SpaceQuest1VGA-Heb-AdventureBrew.zip",
+          "source_type": "github",
           "checksum": null,
           "file_size": null,
           "description": "Hebrew translation for Space Quest I VGA",
@@ -87,6 +126,23 @@
       "scummvm_id": "kyra1-cd",
       "title": "The Legend of Kyrandia",
       "cover_url": "https://cdn.mobygames.com/covers/4237701-fables-fiends-the-legend-of-kyrandia-book-one-dos-front-cover.jpg",
+      "platforms": {
+        "windows": true,
+        "osx": true,
+        "linux": false
+      },
+      "gog": {
+        "id": 1207659683,
+        "slug": "legend_of_kyrandia",
+        "title": "The Legend of Kyrandia (Book One)",
+        "installers": [
+          {
+            "id": "",
+            "name": "The Legend of Kyrandia (Book One)",
+            "path": "https://www.gog.com/downloads/legend_of_kyrandia/en1installer0"
+          }
+        ]
+      },
       "detection_patterns": {
         "unique_files": ["GEMCUT.PAK", "KYRAGEM.PAK"],
         "file_patterns": ["*.PAK", "*.VRM"],
@@ -101,7 +157,7 @@
           "language": "he",
           "version": "1.0-beta",
           "author": "AdventureBrew",
-          "download_url": "https://github.com/adventurebrew/fableworks/releases/download/KYRA-IR/KyraHebPatch-BETA.zip",
+          "download_url": "https://github.com/yhaggai/kitor/releases/download/patch-kyra1-cd-he-v1.0-beta/KyraHebPatch-BETA.zip",
           "source_type": "github",
           "checksum": null,
           "file_size": null,

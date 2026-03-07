@@ -28,7 +28,6 @@ pub struct GogGame {
 pub struct OfflineInstaller {
     pub id: String,
     pub name: String,
-    pub size: String,
     pub path: String,
 }
 
@@ -283,8 +282,9 @@ pub async fn get_game_installers(db: &DatabaseConnection, game_id: i64) -> Resul
         .map_err(|e| format!("Failed to fetch game details: {}", e))?;
     
     if !response.status().is_success() {
+        let status = response.status();
         let error_text = response.text().await.unwrap_or_default();
-        return Err(format!("Failed to fetch game details ({}): {}", response.status(), error_text));
+        return Err(format!("Failed to fetch game details ({}): {}", status, error_text));
     }
     
     let details: serde_json::Value = response
@@ -304,14 +304,12 @@ pub async fn get_game_installers(db: &DatabaseConnection, game_id: i64) -> Resul
                         for item in platform_details {
                             let id = item.get("id").and_then(|v| v.as_str()).unwrap_or_default().to_string();
                             let name = item.get("name").and_then(|v| v.as_str()).unwrap_or("Installer").to_string();
-                            let size = item.get("size").and_then(|v| v.as_str()).unwrap_or("Unknown").to_string();
                             let path = item.get("manualUrl").and_then(|v| v.as_str()).unwrap_or_default().to_string();
                             
                             if !path.is_empty() {
                                 installers.push(OfflineInstaller {
                                     id,
                                     name,
-                                    size,
                                     path: format!("https://www.gog.com{}", path),
                                 });
                             }
