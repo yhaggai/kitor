@@ -19,7 +19,7 @@ pub struct PatchInfo {
     pub file_size: Option<i64>,
     pub description: String,
     pub filename: Option<String>,
-    pub post_install_script: Option<String>,
+    pub post_install_script: Option<registry_service::PostInstallScript>,
     pub cover_url: Option<String>,
 }
 
@@ -253,25 +253,35 @@ pub async fn download_and_install_patch(
         println!("[patch_service] Extraction complete");
         
         // Run post-install script if specified
-        if let Some(script_name) = &patch.post_install_script {
-            let _ = app_handle.emit("install-progress", serde_json::json!({
-                "scummvm_id": scummvm_id,
-                "progress": 85,
-                "step": "Running post-install script..."
-            }));
-            
-            let script_path = install_target.join(script_name);
-            if script_path.exists() {
-                println!("[patch_service] Running post-install script: {}", script_name);
-                match file_service::run_post_install_script(
-                    &script_path,
-                    &install_target,
-                ) {
-                    Ok(_) => println!("[patch_service] Post-install script executed successfully"),
-                    Err(e) => eprintln!("[patch_service] Warning: Post-install script failed: {}", e),
-                }
+        if let Some(scripts) = &patch.post_install_script {
+            let script_name = if cfg!(target_os = "windows") {
+                &scripts.windows
+            } else if cfg!(target_os = "macos") {
+                &scripts.osx
             } else {
-                eprintln!("[patch_service] Warning: Post-install script not found: {}", script_name);
+                &scripts.linux
+            };
+
+            if let Some(script_name) = script_name {
+                let _ = app_handle.emit("install-progress", serde_json::json!({
+                    "scummvm_id": scummvm_id,
+                    "progress": 85,
+                    "step": "Running post-install script..."
+                }));
+                
+                let script_path = install_target.join(script_name);
+                if script_path.exists() {
+                    println!("[patch_service] Running post-install script: {}", script_name);
+                    match file_service::run_post_install_script(
+                        &script_path,
+                        &install_target,
+                    ) {
+                        Ok(_) => println!("[patch_service] Post-install script executed successfully"),
+                        Err(e) => eprintln!("[patch_service] Warning: Post-install script failed: {}", e),
+                    }
+                } else {
+                    eprintln!("[patch_service] Warning: Post-install script not found: {}", script_name);
+                }
             }
         }
     } else {

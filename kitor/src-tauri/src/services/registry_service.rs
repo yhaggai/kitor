@@ -82,7 +82,18 @@ pub struct PatchDefinition {
     pub file_size: Option<i64>,
     pub description: String,
     pub filename: Option<String>,
-    pub post_install_script: Option<String>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub post_install_script: Option<PostInstallScript>,
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct PostInstallScript {
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub windows: Option<String>,
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub osx: Option<String>,
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub linux: Option<String>,
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]

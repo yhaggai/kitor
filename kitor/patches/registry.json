@@ -50,7 +50,10 @@
           "file_size": null,
           "description": "Hebrew translation for The Secret of Monkey Island: Special Edition",
           "filename": "MonkeyIsland-Heb-AdventureBrew.zip",
-          "post_install_script": "patch.bat"
+          "post_install_script": {
+            "windows": "patch.bat",
+            "osx": "patch.sh"
+          }
         }
       ]
     },
@@ -104,7 +107,9 @@
           "file_size": null,
           "description": "Hebrew translation for Monkey Island 2: LeChuck's Revenge Special Edition",
           "filename": "MonkeyIsland2-Heb-AdventureBrew.zip",
-          "post_install_script": "patch.bat"
+          "post_install_script": {
+            "windows": "patch.bat"
+          }
         }
       ]
     },
