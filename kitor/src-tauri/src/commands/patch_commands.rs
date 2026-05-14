@@ -76,3 +76,63 @@ pub async fn get_purchase_guide(
     std::fs::read_to_string(&guide_path)
         .map_err(|e| format!("Failed to read guide: {}", e))
 }
+#[tauri::command]
+pub fn get_os() -> String {
+    if cfg!(target_os = "windows") {
+        "windows".to_string()
+    } else if cfg!(target_os = "macos") {
+        "osx".to_string()
+    } else {
+        "linux".to_string()
+    }
+}
+
+#[tauri::command]
+pub async fn open_gog_client(game_id: i64) -> Result<(), String> {
+    let url = format!("goggalaxy://openGameView/{}", game_id);
+    
+    #[cfg(target_os = "macos")]
+    {
+        std::process::Command::new("open")
+            .arg(&url)
+            .spawn()
+            .map_err(|e| format!("Failed to open GOG client: {}", e))?;
+    }
+    
+    #[cfg(target_os = "windows")]
+    {
+        std::process::Command::new("cmd")
+            .args(["/C", "start", "", &url])
+            .spawn()
+            .map_err(|e| format!("Failed to open GOG client: {}", e))?;
+    }
+    
+    #[cfg(target_os = "linux")]
+    {
+        std::process::Command::new("xdg-open")
+            .arg(&url)
+            .spawn()
+            .map_err(|e| format!("Failed to open GOG client: {}", e))?;
+    }
+    
+    Ok(())
+}
+
+#[tauri::command]
+pub async fn download_and_extract_gog_installer(
+    scummvm_id: String,
+    installer_path: String,
+    dest_dir: String,
+    state: tauri::State<'_, crate::AppState>,
+    app_handle: tauri::AppHandle,
+) -> Result<(), String> {
+    use std::path::PathBuf;
+    crate::services::patch_service::download_and_extract_gog_installer(
+        &state.db,
+        scummvm_id,
+        installer_path,
+        PathBuf::from(dest_dir),
+        app_handle,
+        state.app_data_dir.clone(),
+    ).await
+}

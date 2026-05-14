@@ -1,6 +1,9 @@
+import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
 import * as Tooltip from "@radix-ui/react-tooltip";
 import { invoke } from "@tauri-apps/api/core";
-import { CheckCircle, Download, ExternalLink, Package, Play } from "lucide-react";
+import { listen } from "@tauri-apps/api/event";
+import { open as openDialog } from "@tauri-apps/plugin-dialog";
+import { CheckCircle, Download, ExternalLink, MoreVertical, Package, Play } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
 import AddGameDialog from "@/components/AddGameDialog";
 import { PurchaseGuideDialog } from "@/components/PurchaseGuideDialog";
@@ -16,6 +19,11 @@ export default function PatchBrowser() {
   const { patches, loading, showAddDialog, selectedGuide } = state;
 
   const { games, setActiveTab, setHighlightedGameId, setGames } = useAppStore();
+  const [currentOs, setCurrentOs] = useState<string>("");
+
+  useEffect(() => {
+    invoke("get_os").then((os) => setCurrentOs(os as string));
+  }, []);
 
   useEffect(() => {
     async function loadPatches() {
@@ -99,6 +107,7 @@ export default function PatchBrowser() {
             <PatchCard
               key={`${patch.scummvm_id}-${patch.language}-${patch.version}`}
               patch={patch}
+              currentOs={currentOs}
               onViewGame={() => patch.game_id && handleViewGame(patch.game_id)}
               onShowGuide={() =>
                 actions.setSelectedGuide({ scummvmId: patch.scummvm_id, title: patch.game_title })
@@ -113,12 +122,31 @@ export default function PatchBrowser() {
 
 type PatchCardProps = {
   patch: PatchWithStatus;
+  currentOs: string;
   onViewGame: () => void;
   onShowGuide: () => void;
 };
 
-function PatchCard({ patch, onViewGame, onShowGuide }: PatchCardProps) {
+function PatchCard({ patch, currentOs, onViewGame, onShowGuide }: PatchCardProps) {
   const [coverError, setCoverError] = useState(false);
+  const { setGames } = useAppStore();
+  const [isDownloading, setIsDownloading] = useState(false);
+  const [downloadStep, setDownloadStep] = useState<string | null>(null);
+
+  useEffect(() => {
+    let unlisten: () => void;
+    listen<{ step: string; progress: number }>("gog-installer-progress", (event) => {
+      if (isDownloading) {
+        setDownloadStep(`${event.payload.step} ${event.payload.progress}%`);
+      }
+    }).then((fn) => {
+      unlisten = fn;
+    });
+
+    return () => {
+      if (unlisten) unlisten();
+    };
+  }, [isDownloading]);
 
   const coverSrc = useMemo(() => {
     if (coverError) return null;
@@ -126,7 +154,13 @@ function PatchCard({ patch, onViewGame, onShowGuide }: PatchCardProps) {
   }, [coverError, patch.cover_url]);
 
   return (
-    <Card className="hover:shadow-lg transition-shadow">
+    <Card className="hover:shadow-lg transition-shadow relative">
+      {isDownloading && (
+        <div className="absolute inset-0 z-20 flex flex-col items-center justify-center bg-background/80 backdrop-blur-sm rounded-lg p-4 text-center">
+          <Download className="h-8 w-8 animate-bounce mb-2 text-primary" />
+          <p className="text-sm font-medium">{downloadStep || "Starting..."}</p>
+        </div>
+      )}
       <CardContent className="p-0 relative">
         <div className="aspect-[3/4] bg-gradient-to-br from-primary/20 to-secondary/20 rounded-t-lg flex items-center justify-center relative overflow-hidden">
           {coverSrc ? (
@@ -152,6 +186,87 @@ function PatchCard({ patch, onViewGame, onShowGuide }: PatchCardProps) {
               </Badge>
             )}
           </div>
+          {!patch.game_installed && (
+            <DropdownMenu.Root>
+              <DropdownMenu.Trigger asChild>
+                <Button
+                  variant="outline"
+                  size="sm"
+                  className="absolute top-2 left-2 h-8 w-8 p-0 bg-background/80 backdrop-blur-sm"
+                >
+                  <MoreVertical className="h-4 w-4" />
+                </Button>
+              </DropdownMenu.Trigger>
+              <DropdownMenu.Portal>
+                <DropdownMenu.Content
+                  className="min-w-[160px] rounded-md border bg-background p-1 shadow-lg"
+                  align="start"
+                >
+                  {patch.gog_id &&
+                  (!patch.platforms ||
+                    (currentOs === "windows" && patch.platforms.windows) ||
+                    (currentOs === "osx" && patch.platforms.osx) ||
+                    (currentOs === "linux" && patch.platforms.linux)) ? (
+                    <DropdownMenu.Item
+                      className="flex cursor-pointer items-center rounded-sm px-2 py-2 text-sm text-foreground outline-none hover:bg-accent focus:bg-accent"
+                      onSelect={async () => {
+                        await invoke("open_gog_client", { gameId: patch.gog_id });
+                      }}
+                    >
+                      <ExternalLink className="mr-2 h-4 w-4" />
+                      Install with GOG
+                    </DropdownMenu.Item>
+                  ) : (
+                    patch.gog_installer_path && (
+                      <DropdownMenu.Item
+                        className="flex cursor-pointer items-center rounded-sm px-2 py-2 text-sm text-foreground outline-none hover:bg-accent focus:bg-accent"
+                        onSelect={async (e) => {
+                          e.preventDefault();
+                          try {
+                            const selectedDir = await openDialog({
+                              directory: true,
+                              multiple: false,
+                              title: "Select Installation Directory",
+                            });
+
+                            if (selectedDir) {
+                              setIsDownloading(true);
+                              setDownloadStep("Starting download...");
+                              await invoke("download_and_extract_gog_installer", {
+                                scummvmId: patch.scummvm_id,
+                                installerPath: patch.gog_installer_path,
+                                destDir: selectedDir,
+                              });
+                              const updatedGames = (await invoke(
+                                "get_games_with_patches"
+                              )) as Game[];
+                              setGames(updatedGames);
+                            }
+                          } catch (err) {
+                            console.error(err);
+                            alert(`Failed to download and extract: ${err}`);
+                          } finally {
+                            setIsDownloading(false);
+                            setDownloadStep(null);
+                          }
+                        }}
+                      >
+                        <Download className="mr-2 h-4 w-4" />
+                        Download & Extract GOG
+                      </DropdownMenu.Item>
+                    )
+                  )}
+                  <DropdownMenu.Item
+                    className="flex cursor-pointer items-center rounded-sm px-2 py-2 text-sm text-foreground outline-none hover:bg-accent focus:bg-accent"
+                    onSelect={onShowGuide}
+                  >
+                    <ExternalLink className="mr-2 h-4 w-4" />
+                    Purchase Guide
+                  </DropdownMenu.Item>
+                </DropdownMenu.Content>
+              </DropdownMenu.Portal>
+            </DropdownMenu.Root>
+          )}
         </div>
       </CardContent>
       <CardFooter className="flex flex-col gap-2 p-4">

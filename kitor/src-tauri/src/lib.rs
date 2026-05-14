@@ -63,6 +63,9 @@ pub fn run() {
             commands::patch_commands::get_installed_patches,
             commands::patch_commands::restore_backup,
             commands::patch_commands::get_purchase_guide,
+            commands::patch_commands::get_os,
+            commands::patch_commands::open_gog_client,
+            commands::patch_commands::download_and_extract_gog_installer,
             // GOG commands
             commands::gog_commands::login_to_gog,
             commands::gog_commands::complete_gog_login,

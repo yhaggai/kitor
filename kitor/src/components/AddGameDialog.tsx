@@ -37,7 +37,7 @@ export default function AddGameDialog({ open, onOpenChange, onAdded }: AddGameDi
       : base;
   }, [toast]);
 
-  const showToast = useCallback((title: string, variant: ToastState["variant"]) => {
+  const showToast = useCallback((title: string, variant: "default" | "destructive") => {
     setToast({ open: true, title, variant });
   }, []);
 

@@ -6,10 +6,12 @@ type InstalledPatchInfo = {
   version: string;
   installed_date: string;
   status: string;
+  language: string;
   backup_path?: string;
 };
 
 type AvailablePatchInfo = {
+  language: string;
   version: string;
   author: string;
   description: string;
@@ -32,6 +34,7 @@ type Game = {
 type Patch = {
   scummvm_id: string;
   game_title: string;
+  language: string;
   version: string;
   download_url: string;
   source_type: string;
@@ -43,6 +46,13 @@ type Patch = {
   post_install_script?: string;
   purchase_guide?: string;
   cover_url?: string;
+  gog_id?: number | null;
+  gog_installer_path?: string | null;
+  platforms?: {
+    windows: boolean;
+    osx: boolean;
+    linux: boolean;
+  };
 };
 
 type DownloadProgress = {
@@ -129,6 +139,13 @@ export type PatchWithStatus = Patch & {
   game_id?: number;
   cover_url?: string;
   purchase_guide?: string;
+  gog_id?: number | null;
+  gog_installer_path?: string | null;
+  platforms?: {
+    windows: boolean;
+    osx: boolean;
+    linux: boolean;
+  };
 };
 
 export type {

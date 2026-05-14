@@ -14,8 +14,9 @@ export async function getConsts(): Promise<Consts> {
     throw new Error("Failed to load consts.json");
   }
 
-  cachedConsts = await response.json();
-  return cachedConsts;
+  const data = await response.json();
+  cachedConsts = data;
+  return data;
 }
 
 export async function getScummVMVersion(): Promise<string> {
