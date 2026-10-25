@@ -1,0 +1,63 @@
+name: Validate patch packages
+
+on:
+  push:
+    branches: [v1, main]
+    paths:
+      - 'patches-workspace/**'
+      - 'kitor/tools/**'
+      - 'kitor/src-tauri/**'
+      - '.github/workflows/validate-patch-packages.yml'
+  pull_request:
+    paths:
+      - 'patches-workspace/**'
+      - 'kitor/tools/**'
+      - 'kitor/src-tauri/**'
+      - '.github/workflows/validate-patch-packages.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  lifecycle-and-packaging:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [windows-latest, macos-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Hydrate pinned large payloads from private build inputs
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python kitor/tools/hydrate_patch_inputs.py --repo ${{ github.repository }}
+      - uses: dtolnay/rust-toolchain@stable
+      - name: Build disposable validation CLI
+        run: cargo build --manifest-path kitor/tools/lifecycle-harness/Cargo.toml --locked --bin validate_owned_games
+      - name: Test package safety and reproducibility
+        run: python -m unittest discover -s kitor/tools -p "test_*.py"
+      - name: Test native selective installation and restoration fixtures
+        run: python kitor/tools/run_lifecycle_tests.py
+      - name: Validate and build all installable manifests
+        shell: python
+        run: |
+          import pathlib, subprocess, sys
+          manifests = sorted(pathlib.Path('patches-workspace').glob('*/he/patch.json'))
+          if not manifests:
+              raise SystemExit('No installable manifests found')
+          for manifest in manifests:
+              subprocess.run([sys.executable, 'kitor/tools/build_patch_packages.py', str(manifest), '--output', 'dist/patches'], check=True)
+          for manifest in sorted(pathlib.Path('patches-workspace').glob('*/he/patch.windows.candidate.json')):
+              subprocess.run([sys.executable, 'kitor/tools/build_patch_packages.py', str(manifest), '--platform', 'windows', '--output', 'dist/candidates'], check=True)
+      - uses: actions/upload-artifact@v4
+        with:
+          name: unverified-patch-builds-${{ matrix.os }}
+          path: |
+            dist/patches/*.zip
+            dist/candidates/*.zip
+          compression-level: 0
+          if-no-files-found: error

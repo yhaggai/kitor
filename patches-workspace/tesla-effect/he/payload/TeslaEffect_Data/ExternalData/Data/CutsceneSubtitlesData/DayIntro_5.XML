@@ -1,0 +1,22 @@
+<CaptionData>
+                <caption>
+                                <stringID>day_5_intro_a</stringID>
+                                <timeStart>2</timeStart>
+                                <timeEnd>10</timeEnd>
+                </caption>			
+                <caption>
+                                <stringID>day_5_intro_b</stringID>
+                                <timeStart>10</timeStart>
+                                <timeEnd>13</timeEnd>
+                </caption>			
+                <caption>
+                                <stringID>day_5_intro_c</stringID>
+                                <timeStart>13</timeStart>
+                                <timeEnd>15</timeEnd>
+                </caption>			
+                <caption>
+                                <stringID>day_5_intro_d</stringID>
+                                <timeStart>15</timeStart>
+                                <timeEnd>18</timeEnd>
+                </caption>			
+</CaptionData>

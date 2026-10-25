@@ -1,0 +1,26 @@
+{
+  "catalog_index": 27,
+  "title": "The Legend of Kyrandia (Book One)",
+  "owned_stores": ["gog"],
+  "status": "packaged_unverified",
+  "source_urls": ["https://github.com/adventurebrew/fableworks/releases"],
+  "catalog_source": "Downloads/json/all_games.json entry 27",
+  "retrieved_at": "2026-10-25",
+  "install_method": "Kitor declarative patch.json file plan",
+  "uninstall_method": "Kitor selective transaction journal: restore affected originals, remove patch-created files, preserve unrelated files",
+  "validation": {
+    "windows_gameplay": "not_run",
+    "macos_gameplay": "not_run",
+    "built_platform_archives": ["windows", "osx"],
+    "zip_integrity": "passed"
+  },
+  "blockers": [
+    "Native Windows/macOS gameplay verification pending; local package building is not a compatibility certification."
+  ],
+  "release_ready": false,
+  "target_architectures": "Architecture-independent game data; requires a host-native Kitor and appropriate game/ScummVM runtime.",
+  "dependencies": {
+    "windows": ["Kitor selective lifecycle", "ScummVM with required Hebrew engine support"],
+    "osx": ["Kitor selective lifecycle", "ScummVM with required Hebrew engine support"]
+  }
+}

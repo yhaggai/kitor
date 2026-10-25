@@ -1,0 +1,21 @@
+{
+  "schema_version": 1,
+  "scummvm_id": "journey-down1",
+  "language": "he",
+  "version": "2025-01-23-kitor1",
+  "filename": "journey-down1-he-2025-01-23-kitor1.zip",
+  "platforms": {
+    "windows": {}
+  },
+  "files": [
+    {
+      "path": "jd1.gob",
+      "operation": "modify",
+      "source": {
+        "kind": "copy",
+        "path": "payload/jd1.gob",
+        "sha256": "9959bcf31ecd6a1450c1d2c081ad4fafcd5152e1bd882b155ed15cbafcfe87c7"
+      }
+    }
+  ]
+}

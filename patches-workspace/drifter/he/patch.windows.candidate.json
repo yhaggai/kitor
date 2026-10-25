@@ -1,0 +1,21 @@
+{
+  "schema_version": 1,
+  "scummvm_id": "drifter",
+  "language": "he",
+  "version": "2026-07-09-kitor1",
+  "filename": "drifter-he-2026-07-09-kitor1.zip",
+  "platforms": {
+    "windows": {}
+  },
+  "files": [
+    {
+      "path": "translation.csv",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "payload/translation.csv",
+        "sha256": "e0d9cf26450732ea683c205d1e80e9c334c09b96c1f31f11099639570d4c3864"
+      }
+    }
+  ]
+}

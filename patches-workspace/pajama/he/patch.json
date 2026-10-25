@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "scummvm_id": "pajama",
+  "language": "he",
+  "version": "1.0-kitor1",
+  "filename": "pajama-he-kitor1.zip",
+  "platforms": {
+    "windows": {},
+    "osx": {}
+  },
+  "files": [
+    {
+      "path": "pajama.he0",
+      "operation": "modify",
+      "source": {
+        "kind": "xdelta",
+        "path": "payload/patch.he0",
+        "sha256": "b8d013f91d1de6bdc3b801c75905567863fa7f56250ed1da681747ce3c72be09",
+        "input": "pajama.he0",
+        "windows_tool": "payload/xdelta3.exe",
+        "windows_tool_sha256": "d81f59b2fe5e8589c0ee9782e231c805084f4d23dfade413903a4cad63b4e342"
+      }
+    },
+    {
+      "path": "pajama.he1",
+      "operation": "modify",
+      "source": {
+        "kind": "xdelta",
+        "path": "payload/patch.he1",
+        "sha256": "8200b2605b8089b736d7cacf707d2beebcae60464169f9fb3a7acb8376a789d6",
+        "input": "pajama.he1",
+        "windows_tool": "payload/xdelta3.exe",
+        "windows_tool_sha256": "d81f59b2fe5e8589c0ee9782e231c805084f4d23dfade413903a4cad63b4e342"
+      }
+    }
+  ]
+}

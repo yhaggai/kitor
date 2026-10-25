@@ -1,0 +1,32 @@
+{
+  "catalog_index": 97,
+  "title": "The Shivah",
+  "owned_stores": ["steam"],
+  "status": "blocked",
+  "source_urls": [
+    "https://drive.google.com/file/d/1QeKpJOTf35GzuraQNaT--SF_JZc_IpCz/view?usp=sharing"
+  ],
+  "catalog_source": "Downloads/json/all_games.json entry 97",
+  "retrieved_at": "2026-10-25",
+  "install_method": null,
+  "uninstall_method": null,
+  "validation": {
+    "windows_gameplay": "not_run",
+    "macos_gameplay": "not_run",
+    "built_platform_archives": [],
+    "zip_integrity": "not_applicable"
+  },
+  "blockers": [
+    "Catalog explicitly requires GOG edition; only Steam edition is owned. Do not apply this patch to Steam.",
+    "No compatible Windows/macOS package enabled."
+  ],
+  "release_ready": false,
+  "source_artifacts": [
+    {
+      "path": "upstream/Shivah-Heb.exe",
+      "size": 2850927,
+      "sha256": "82e8f88ec2f8aaf598eda8b638d6c8ffc30f0205ddbb366f1e36efff60ed5074"
+    }
+  ],
+  "target_architectures": "Architecture-independent game data; requires a host-native Kitor and appropriate game/ScummVM runtime."
+}

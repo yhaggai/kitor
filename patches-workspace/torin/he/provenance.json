@@ -1,0 +1,40 @@
+{
+  "catalog_index": 19,
+  "title": "Torin's Passage",
+  "source_urls": ["https://drive.google.com/file/d/1Fi_YWNT11kcgRMqBayZzQqkk3UQEqJzq/view"],
+  "owned_stores": ["gog"],
+  "status": "packaged_unverified",
+  "blockers": [
+    "Representative owned-game install/play/uninstall checks on Windows and macOS not yet run.",
+    "Original edition fingerprints unavailable; validate supported game layout before enabling installation."
+  ],
+  "validation": {
+    "source_payload_sha256": "verified",
+    "native_windows": "not_run",
+    "native_macos": "not_run",
+    "gameplay": "not_run",
+    "built_platform_archives": ["windows", "osx"],
+    "zip_integrity": "passed"
+  },
+  "runtime": "Kitor declarative patch_lifecycle; selective per-file journal, backup, rollback and uninstall",
+  "platform_artifacts": {
+    "windows": "shared declarative patch data; no new patch executable compiled",
+    "osx": "shared declarative patch data; no new patch executable compiled"
+  },
+  "architecture": "platform-independent payload; runtime and external dependency architecture must match host",
+  "source_description": "הפעם צללנו למחוזות הפנטזיה והקסם ושלינו לכם קווסט מתוק במיוחד ונדיר ביופיו, אבן דרך חשובה ונוסטלגית מימי הזוהר של הקווסטים, אך בו זמנית גם פחות מוכרת.\nאני מדבר על מסעותיו של טורין מבית Sierra, אשר מספר על ילד בשם טורין שהוריו המלכותיים נחטפו בעודו תינוק, והוא יוצא למסע חיפושים אחריהם במעבה האדמה בארצות דמיוניות ומהממות בלווית ידידו הארנב בוגל.\nבסגנון ציורי של סרטי דיסני ובפשטות משעשעת ונוגעת ללב יגולל בפניכם סיפורו המדהים של טורין וכל זה בלוויית כתוביות עבריות מעשה ידי אמן מבית ניב באר. תודה ניב על ההשקעה והמסירות אין קץ בבניית המפעל הכביר הזה.\nתודה גם לפרוייקט קולמוס על גופן שמוליק שבו השתמשנו במסכי הכותרת.\nהוראות הפעלה:\nרוכשים את המשחק מכאן: http://gog.com/game/torins_passage...\nמורידים את הקבצים האלו ופורשים בתיקיית patches ליד המשחק: [https://drive.google.com/.../1Fi.../view...](https://drive.google.com/.../1Fi.../view...)\nהערה חשובה: תוכלו להפעיל את הכתוביות רק שהמשחק יחל. יש לעמוד עם העכבר על הפינה השמאלית העליונה של המסך, ללחוץ על \"משחק\" ולבחור \"כתוביות צמודות\".\nזה הכל, המשחק מוכן להפעלה. אני קורא לכולכם להתנסות בקווסט הנהדר והבלתי נתפס הזה. תיהנו!",
+  "dependencies": {
+    "windows": ["ScummVM with Hebrew support"],
+    "osx": ["ScummVM with Hebrew support"]
+  },
+  "source_artifacts": [
+    {
+      "filename": "torin.download",
+      "sha256": "e41a5c388d5a5ecbe384941438584558d12de47ceb91e55169d55691c8eea82e",
+      "bytes": 249410,
+      "url": "https://drive.google.com/file/d/1Fi_YWNT11kcgRMqBayZzQqkk3UQEqJzq/view"
+    }
+  ],
+  "release_ready": false,
+  "source_content_role": "Untrusted reference data, not execution instructions or authorization."
+}

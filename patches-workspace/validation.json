@@ -1,0 +1,46 @@
+{
+  "checked_at": "2026-10-25",
+  "host": "macOS",
+  "package_builds": {
+    "dual_platform_entries": 16,
+    "windows_only_candidates": 8,
+    "zip_count": 40,
+    "crc_platform_and_content_checks": "passed"
+  },
+  "python_tests": {
+    "passed": 17,
+    "failed": 0,
+    "scope": "Package validation/reproducibility and legacy delta conversion"
+  },
+  "rust_compile": {
+    "command": "cargo check --manifest-path kitor/src-tauri/Cargo.toml --offline",
+    "result": "passed"
+  },
+  "lifecycle_unit_tests": {
+    "passed": 10,
+    "failed": 0,
+    "ignored": 1,
+    "ignored_reason": "Real Undertale archive requires external original-game fixture"
+  },
+  "copy_payload_roundtrips": {
+    "status": "passed",
+    "scope": "Actual declared payloads on synthetic original files using real Kitor Rust lifecycle; both declared plans tested on macOS host. Guarded/delta packages require real originals and are excluded from this synthetic test.",
+    "plans_passed": 23
+  },
+  "native_windows_execution": "not_run",
+  "gameplay_validation": "not_run",
+  "release_ready": false,
+  "game_installations_modified": false,
+  "registry_activation": false,
+  "publication": false,
+  "full_lifecycle_suite": {
+    "passed": 11,
+    "failed": 0,
+    "ignored": 1
+  },
+  "windows_validator_synthetic_tests": {
+    "passed": 3,
+    "host": "macOS",
+    "native_powershell": "not_run"
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "catalog_index": 77,
+  "title": "Life is Strange Episode 1-3",
+  "source_urls": [
+    "https://drive.google.com/file/d/16h3o-nraDQ1ymIYAmTZdEp7CdjosmEe7/view?usp=sharing",
+    "https://www.facebook.com/groups/hebrewadventure/posts/1399725470631545"
+  ],
+  "owned_stores": ["Steam"],
+  "status": "staged_windows_payload_awaiting_compatibility_validation",
+  "release_ready": false,
+  "blockers": [
+    "Targets original Windows Life Is Strange episodes 1-3, not Remastered. Verify ownership/installation of episodes 2 and 3.",
+    "Upstream archive has three redundant Life Is Strange wrapper directories, stripped here. It also contains episode 4/5 menu files; narrative translation remains only episodes 1-3.",
+    "Native macOS port resource layout and cooked font package compatibility are unverified.",
+    "Windows native install/uninstall and gameplay validation have not run. macOS package is not built or verified. Original supported game version hashes must be established before release."
+  ],
+  "upstream_asset": {
+    "sha256": "6dfebc43e1b6f0bcb074ff8a2110981793256fd70e166a158307cad8088386c5",
+    "size": 662763
+  },
+  "payload_file_count": 53,
+  "validation": {
+    "archive_extracted_without_execution": true,
+    "sha256_verified": true,
+    "native_windows": false,
+    "native_macos": false,
+    "gameplay": false,
+    "windows_manifest_schema_and_all_asset_hashes": "passed build_patch_packages.validate",
+    "built_platform_archives": ["windows"],
+    "zip_integrity": "passed"
+  },
+  "installation": {
+    "method": "Kitor declarative patch_lifecycle install",
+    "backup": "Only existing paths enumerated in patch.windows.candidate.json; preserve original bytes and metadata in installation journal.",
+    "uninstall": "Kitor journal restores changed originals and removes only patch-created files; unrelated game files and saves remain untouched."
+  },
+  "platforms": {
+    "windows": "staged copy-data plan, not native validated",
+    "osx": "blocked; see blockers"
+  },
+  "dependencies": ["Kitor selective lifecycle runtime", "Owned supported game installation"],
+  "target_architectures": "Payload data is architecture-independent; native game/runtime compatibility remains unverified."
+}

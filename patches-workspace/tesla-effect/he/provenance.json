@@ -1,0 +1,42 @@
+{
+  "catalog_index": 36,
+  "title": "Tesla Effect: A Tex Murphy Adventure",
+  "source_urls": [
+    "https://drive.google.com/file/d/1t7HXMHgFbmSSIp69BYtbWCOE3kTg2IgI/view",
+    "https://www.facebook.com/groups/200491360554968/permalink/356128024991300/"
+  ],
+  "owned_stores": ["Steam"],
+  "status": "staged_windows_payload_awaiting_compatibility_validation",
+  "release_ready": false,
+  "blockers": [
+    "Steam Tesla Effect; upstream allows other stores but only Steam ownership was matched.",
+    "macOS Unity .app ExternalData location and compatibility must be established before adding osx.",
+    "Windows native install/uninstall and gameplay validation have not run. macOS package is not built or verified. Original supported game version hashes must be established before release."
+  ],
+  "upstream_asset": {
+    "sha256": "0948ac67823cd4c3a3ac154930f81c3adb1995509f6a8fd80e9d7daac5907a19",
+    "size": 740110
+  },
+  "payload_file_count": 31,
+  "validation": {
+    "archive_extracted_without_execution": true,
+    "sha256_verified": true,
+    "native_windows": false,
+    "native_macos": false,
+    "gameplay": false,
+    "windows_manifest_schema_and_all_asset_hashes": "passed build_patch_packages.validate",
+    "built_platform_archives": ["windows"],
+    "zip_integrity": "passed"
+  },
+  "installation": {
+    "method": "Kitor declarative patch_lifecycle install",
+    "backup": "Only existing paths enumerated in patch.windows.candidate.json; preserve original bytes and metadata in installation journal.",
+    "uninstall": "Kitor journal restores changed originals and removes only patch-created files; unrelated game files and saves remain untouched."
+  },
+  "platforms": {
+    "windows": "staged copy-data plan, not native validated",
+    "osx": "blocked; see blockers"
+  },
+  "dependencies": ["Kitor selective lifecycle runtime", "Owned supported game installation"],
+  "target_architectures": "Payload data is architecture-independent; native game/runtime compatibility remains unverified."
+}

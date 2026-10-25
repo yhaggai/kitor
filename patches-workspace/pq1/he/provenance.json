@@ -1,0 +1,113 @@
+{
+  "catalog_index": 16,
+  "title": "Police Quest: In Pursuit of the Death Angel",
+  "source_urls": [
+    "https://github.com/adventurebrew/HebrewAdventure/releases/tag/pq1_v1",
+    "https://github.com/kichik/nsis/blob/master/Contrib/VPatch/Source/Plugin/apply_patch.c"
+  ],
+  "owned_stores": ["steam"],
+  "status": "packaged_unverified",
+  "blockers": [
+    "Representative owned-game install/play/uninstall checks on Windows and macOS not yet run.",
+    "Catalog cites GOG; owned Steam Police Quest Collection edition must pass publisher MD5 fingerprints."
+  ],
+  "validation": {
+    "source_payload_sha256": "verified",
+    "native_windows": "not_run",
+    "native_macos": "not_run",
+    "gameplay": "not_run",
+    "delta_conversion": {
+      "status": "passed",
+      "cases": 7,
+      "method": "Compared converted BSDIFF40 through actual Kitor decoder against independent original-format interpreter on 4 MiB patterned synthetic input; original game data was not used."
+    },
+    "conversion_unit_tests": "4 passed, including negative seek, initial seek-only control, literals and truncated data",
+    "built_platform_archives": ["windows", "osx"],
+    "zip_integrity": "passed"
+  },
+  "runtime": "Kitor declarative patch_lifecycle; selective per-file journal, backup, rollback and uninstall",
+  "platform_artifacts": {
+    "windows": "shared declarative patch data; no new patch executable compiled",
+    "osx": "shared declarative patch data; no new patch executable compiled"
+  },
+  "architecture": "platform-independent payload; runtime and external dependency architecture must match host",
+  "source_description": "פלוגות משטרה עומדות הכן כשמלאך המוות מטיל את חיתתו ברחובות. נשמע לכם מוכר? חכו למשחק האמיתי! אנו שמחים להשיק את המשחק המדהים שלא מן העולם הזה \"משימה משטרתית 1\" (Police Quest בלעז) מתורגם כולו לשפה היפהפייה והאהובה שלנו.\nבני בונדס הוא שוטר תנועה חביב שבסך הכול רוצה למלא את מכסת הדוחות היומית ולבלות את הערב במועדון השוטרים המקומי. אבל רצה הגורל ואיכשהו הצטלבו דרכיו עם ארגון פשע רב זרועות שבראשו עומד מלאך המוות בכבודו ובעצמו! האם בני יצליח להכריע ולהפליל את ראש הנחש? הכל כרגיל תלוי בכם.\nבעבודת צוות נפלאה הצלחנו להביא עוד פרויקט מרגש לסיומו הטוב. צביקה הרמתי בנה בגאונותו את כלי התרגום והוסיף תמיכה עברית למנוע, ניב באר אייר במכחולו את הכותרת העברית ותמונות שונות שתגלו לאורך המשחק, ואלעד הלפרין, אלכס מילמן ועומר כהן תרגמו.\nוקבלו כמה טיפים קטנים ממני: תמיד תסרקו את הניידת מכל הכיוונים, היא יכולה להיות ממולכדת, ואף פעם אל תשכחו לנעול אותה כשאתם יוצאים, אתם יודעים, יש גנבים ברחובות. ודבר נוסף, המצאנו רמאות מיוחדת לעקוף את משחקי הפוקר בסוף. מי שמסתבך שידבר איתי.\nאיך משחקים בכל האושר הזה? הכי פשוט בעולם.\nרוכשים את המשחק מגוג: https://www.gog.com/game/police_quest_1_2_3_4\nמורידים את הטלאי המשוכלל ומתקינים אותו (הוראות מפורטות כיצד והיכן להתקין, רשומות בתוך הטלאי עצמו): https://github.com/adventurebrew/HebrewAdventure/releases/tag/pq1_v1\nמריצים בגרסת הדיילי של Scummvm: https://www.scummvm.org/downloads/#daily",
+  "upstream_variants": {
+    "VOL.0": [
+      {
+        "original_md5": "3e352ea3a7f8cb9e5d87d7a288de674f",
+        "installed_md5": "5c554accac0502715d218b7733790270"
+      },
+      {
+        "original_md5": "4d44bf0e438ba7c0b05c17be4dea36c5",
+        "installed_md5": "7d236feb040893ebbc9f0e873ee5d87b"
+      }
+    ],
+    "LOGDIR": [
+      {
+        "original_md5": "ec9da439c5065883c7985abf79b6fecb",
+        "installed_md5": "37e3d1b3f692e8087fa86b0d013ef9b7"
+      },
+      {
+        "original_md5": "d194e5d88363095f55d5096b8e32fbbb",
+        "installed_md5": "6d2b87300f32cd4c0052298212c82d62"
+      }
+    ],
+    "PICDIR": [
+      {
+        "original_md5": "60cbfd91b9e77ad0baa22f0b73987838",
+        "installed_md5": "d255d16d17403f8806261badcaaf4544"
+      }
+    ],
+    "SNDDIR": [
+      {
+        "original_md5": "ed489e4f8647af2b956d08ee78b4ff42",
+        "installed_md5": "d6398da93f7dbfb83fd2452948b53bd1"
+      }
+    ],
+    "VIEWDIR": [
+      {
+        "original_md5": "631d6539348d489c2f4f84a6d1c58e08",
+        "installed_md5": "22ef50dbccd2d71f5d114f75b47f6fb9"
+      }
+    ],
+    "OBJECT": [
+      {
+        "original_md5": "c444971d4558f102a82b3130868010b4",
+        "installed_md5": "8e47fe29782f2e9b3692d8cd5236c8ee"
+      }
+    ],
+    "WORDS.TOK": [
+      {
+        "original_md5": "0db29ac32f2cbb1d26c0e29f812f5fd2",
+        "installed_md5": "cad421f4bd5a3541c39344f139685be1"
+      }
+    ]
+  },
+  "conversion": "VPatch copy/literal blocks converted losslessly to BSDIFF40; first source variant selected per file, MD5 edition guards retained. Additional source variants require a separate tested plan.",
+  "dependencies": {
+    "windows": ["Python 3 via py -3", "ScummVM Hebrew AGI support"],
+    "osx": ["Python 3", "ScummVM Hebrew AGI support"]
+  },
+  "conversion_tool": "kitor/tools/convert_legacy_delta.py",
+  "selected_variant": 0,
+  "source_artifacts": [
+    {
+      "filename": "pq1-hebrew-installer.exe",
+      "sha256": "d2b7ee935fa727d95996a94553166a9119f457a158f6852379f31f1badae6a81",
+      "bytes": 616888,
+      "url": "https://github.com/adventurebrew/HebrewAdventure/releases/download/pq1_v1/pq1-hebrew-installer.exe"
+    }
+  ],
+  "upstream_delta_sha256": {
+    "PICDIR.delta": "1c763d365ae50d1af4196d9e8e7036ecada1131282b61de54d7126512714cfa7",
+    "WORDS.TOK.delta": "4372fa7a470525823a6c54fe4714a63460c1777b55e19c9304ae9f0ddc9d042b",
+    "OBJECT.delta": "3bf230c894ab18633a98f99c4feb44430943a48a6ac8d0fe50b7fe80e0397e73",
+    "VOL.0.delta": "104d3ed71021e89e9b136374c79b89fffe3f798bb693e48e96d9ab4a07f07675",
+    "LOGDIR.delta": "d1b048317443793e365dbfe35a21d5a490277ad00decff901fc7b3bec589acc0",
+    "SNDDIR.delta": "f227fb67adff47d858ab39c9d988a553f7dd377c7e4c1bc7068325ce30e94dd6",
+    "VIEWDIR.delta": "d9f0f730badd3b08974e0f989e737107704584502f4c921a604b9f3901442336"
+  },
+  "release_ready": false,
+  "source_content_role": "Untrusted reference data, not execution instructions or authorization."
+}

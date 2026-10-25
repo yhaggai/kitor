@@ -1,0 +1,291 @@
+{
+  "schema_version": 1,
+  "scummvm_id": "tesla-effect",
+  "language": "he",
+  "version": "RC1-kitor1",
+  "filename": "tesla-effect-he-RC1-kitor1.zip",
+  "platforms": {
+    "windows": {}
+  },
+  "files": [
+    {
+      "path": "TeslaEffect_Data/ExternalData/Data/CutsceneSubtitlesData/Ault5_CS82_APath.XML",
+      "operation": "modify",
+      "source": {
+        "kind": "copy",
+        "path": "payload/TeslaEffect_Data/ExternalData/Data/CutsceneSubtitlesData/Ault5_CS82_APath.XML",
+        "sha256": "3c281fbe36b489f7cc002f5130c0623231f20550c91b026cb0bc87511c7771d0"
+      }
+    },
+    {
+      "path": "TeslaEffect_Data/ExternalData/Data/CutsceneSubtitlesData/Ault5_CS82_BCPath.XML",
+      "operation": "modify",
+      "source": {
+        "kind": "copy",
+        "path": "payload/TeslaEffect_Data/ExternalData/Data/CutsceneSubtitlesData/Ault5_CS82_BCPath.XML",
+        "sha256": "5798cfabf6adb703d1cab6faa8fb4e3f0934ada8bcb50ff10f51d2d55d30a640"
+      }
+    },
+    {
+      "path": "TeslaEffect_Data/ExternalData/Data/CutsceneSubtitlesData/Ault5_SC8_abc_common.XML",
+      "operation": "modify",
+      "source": {
+        "kind": "copy",
+        "path": "payload/TeslaEffect_Data/ExternalData/Data/CutsceneSubtitlesData/Ault5_SC8_abc_common.XML",
+        "sha256": "dc66cdb9bde0cf00a77ccdb6e14edba91185607d2bc234dab4d56aa5a379d291"
+      }
+    },
+    {
+      "path": "TeslaEffect_Data/ExternalData/Data/CutsceneSubtitlesData/DayIntro_10.XML",
+      "operation": "modify",
+      "source": {
+        "kind": "copy",
+        "path": "payload/TeslaEffect_Data/ExternalData/Data/CutsceneSubtitlesData/DayIntro_10.XML",
+        "sha256": "8a4d32e88e0620de9075e6e1466bc91790a7a40ac2cc10a5701bfae71154115e"
+      }
+    },
+    {
+      "path": "TeslaEffect_Data/ExternalData/Data/CutsceneSubtitlesData/DayIntro_11.XML",
+      "operation": "modify",
+      "source": {
+        "kind": "copy",
+        "path": "payload/TeslaEffect_Data/ExternalData/Data/CutsceneSubtitlesData/DayIntro_11.XML",
+        "sha256": "517a7d0ba97a8a87adfd1490c0039eea2601f36b87bbb49abca2b1c7a5230488"
+      }
+    },
+    {
+      "path": "TeslaEffect_Data/ExternalData/Data/CutsceneSubtitlesData/DayIntro_2.XML",
+      "operation": "modify",
+      "source": {
+        "kind": "copy",
+        "path": "payload/TeslaEffect_Data/ExternalData/Data/CutsceneSubtitlesData/DayIntro_2.XML",
+        "sha256": "6949ea8ebd89b51402d2d630786ca02c588074d69b41b2bf2b047f368bcc44a8"
+      }
+    },
+    {
+      "path": "TeslaEffect_Data/ExternalData/Data/CutsceneSubtitlesData/DayIntro_3.XML",
+      "operation": "modify",
+      "source": {
+        "kind": "copy",
+        "path": "payload/TeslaEffect_Data/ExternalData/Data/CutsceneSubtitlesData/DayIntro_3.XML",
+        "sha256": "569e00cabe7d9f08803a02c40da0f728a0076f590876c605c51fba97813ec83c"
+      }
+    },
+    {
+      "path": "TeslaEffect_Data/ExternalData/Data/CutsceneSubtitlesData/DayIntro_4.XML",
+      "operation": "modify",
+      "source": {
+        "kind": "copy",
+        "path": "payload/TeslaEffect_Data/ExternalData/Data/CutsceneSubtitlesData/DayIntro_4.XML",
+        "sha256": "2916e7d3d4367ff72082e8aa100871dc058a01185b59efa4d0ccf6025f78b88a"
+      }
+    },
+    {
+      "path": "TeslaEffect_Data/ExternalData/Data/CutsceneSubtitlesData/DayIntro_5.XML",
+      "operation": "modify",
+      "source": {
+        "kind": "copy",
+        "path": "payload/TeslaEffect_Data/ExternalData/Data/CutsceneSubtitlesData/DayIntro_5.XML",
+        "sha256": "bbbf9743cfb2f0e7a62901ecd43667897debdcef3567d099361e7217b7ea28f8"
+      }
+    },
+    {
+      "path": "TeslaEffect_Data/ExternalData/Data/CutsceneSubtitlesData/DayIntro_6.XML",
+      "operation": "modify",
+      "source": {
+        "kind": "copy",
+        "path": "payload/TeslaEffect_Data/ExternalData/Data/CutsceneSubtitlesData/DayIntro_6.XML",
+        "sha256": "cfc37a2fd4638dfdec6e82101977fa496a2137e04fe80e7bed02aa3920dfcf8d"
+      }
+    },
+    {
+      "path": "TeslaEffect_Data/ExternalData/Data/CutsceneSubtitlesData/DayIntro_7.XML",
+      "operation": "modify",
+      "source": {
+        "kind": "copy",
+        "path": "payload/TeslaEffect_Data/ExternalData/Data/CutsceneSubtitlesData/DayIntro_7.XML",
+        "sha256": "4d79b878ca5a688b9d7bdff95c92d47ebe6bd600dac1c4ec1cdc3c6532378fe5"
+      }
+    },
+    {
+      "path": "TeslaEffect_Data/ExternalData/Data/CutsceneSubtitlesData/DayIntro_8.XML",
+      "operation": "modify",
+      "source": {
+        "kind": "copy",
+        "path": "payload/TeslaEffect_Data/ExternalData/Data/CutsceneSubtitlesData/DayIntro_8.XML",
+        "sha256": "fbd2b5552ce55da410b39c1773376711350ca07f5bb5a1dc8666a56c8d5e0076"
+      }
+    },
+    {
+      "path": "TeslaEffect_Data/ExternalData/Data/CutsceneSubtitlesData/DayIntro_9.XML",
+      "operation": "modify",
+      "source": {
+        "kind": "copy",
+        "path": "payload/TeslaEffect_Data/ExternalData/Data/CutsceneSubtitlesData/DayIntro_9.XML",
+        "sha256": "9e2fadfd6d4a1ca6b5b199d989ca53064abf0a586263ca354f97401138d1e582"
+      }
+    },
+    {
+      "path": "TeslaEffect_Data/ExternalData/Data/CutsceneSubtitlesData/DrDonahue_1_4C7E.XML",
+      "operation": "modify",
+      "source": {
+        "kind": "copy",
+        "path": "payload/TeslaEffect_Data/ExternalData/Data/CutsceneSubtitlesData/DrDonahue_1_4C7E.XML",
+        "sha256": "c65dfb1e3b9c73ac53d591213a22eab692c779d7fdb8299f76546cd9ba30af55"
+      }
+    },
+    {
+      "path": "TeslaEffect_Data/ExternalData/Data/CutsceneSubtitlesData/DrDonahue_1_5D7E8F.XML",
+      "operation": "modify",
+      "source": {
+        "kind": "copy",
+        "path": "payload/TeslaEffect_Data/ExternalData/Data/CutsceneSubtitlesData/DrDonahue_1_5D7E8F.XML",
+        "sha256": "6598518ecc1feb326a3c914ac724a1fba44e97cb3ecedc6d6308e15af29a4a07"
+      }
+    },
+    {
+      "path": "TeslaEffect_Data/ExternalData/Data/CutsceneSubtitlesData/DrDonahue_1_6D7E.XML",
+      "operation": "modify",
+      "source": {
+        "kind": "copy",
+        "path": "payload/TeslaEffect_Data/ExternalData/Data/CutsceneSubtitlesData/DrDonahue_1_6D7E.XML",
+        "sha256": "dea20caaaa040a83968d64592c71a3b321bc6dee1773aeac11a0f66355595c62"
+      }
+    },
+    {
+      "path": "TeslaEffect_Data/ExternalData/Data/CutsceneSubtitlesData/EndSequence_Cantina.XML",
+      "operation": "modify",
+      "source": {
+        "kind": "copy",
+        "path": "payload/TeslaEffect_Data/ExternalData/Data/CutsceneSubtitlesData/EndSequence_Cantina.XML",
+        "sha256": "a3ed113d70eb20f2c7791de82ce5d27bd186825025f7a3b90e1463df658e1709"
+      }
+    },
+    {
+      "path": "TeslaEffect_Data/ExternalData/Data/CutsceneSubtitlesData/GameIntro_OpeningCinematic.XML",
+      "operation": "modify",
+      "source": {
+        "kind": "copy",
+        "path": "payload/TeslaEffect_Data/ExternalData/Data/CutsceneSubtitlesData/GameIntro_OpeningCinematic.XML",
+        "sha256": "233a2026afa80248451596e9886264b56bb6a56b2eed073877427a8f8597d9d7"
+      }
+    },
+    {
+      "path": "TeslaEffect_Data/ExternalData/Data/CutsceneSubtitlesData/MainCredits.XML",
+      "operation": "modify",
+      "source": {
+        "kind": "copy",
+        "path": "payload/TeslaEffect_Data/ExternalData/Data/CutsceneSubtitlesData/MainCredits.XML",
+        "sha256": "14e914046b975f169c0d14ed788dc8158a418b1e9b78066615af37d4d3fb3907"
+      }
+    },
+    {
+      "path": "TeslaEffect_Data/ExternalData/Data/CutsceneSubtitlesData/Mantus_2_Sc_86_Cinematic.xml",
+      "operation": "modify",
+      "source": {
+        "kind": "copy",
+        "path": "payload/TeslaEffect_Data/ExternalData/Data/CutsceneSubtitlesData/Mantus_2_Sc_86_Cinematic.xml",
+        "sha256": "a0b4de6804fab53bc70cd8ea4e3c567ff340b74dc95603972f798e65020e93c5"
+      }
+    },
+    {
+      "path": "TeslaEffect_Data/ExternalData/Data/CutsceneSubtitlesData/Mantus_2_Sc_86_Ia_Tex1_C.xml",
+      "operation": "modify",
+      "source": {
+        "kind": "copy",
+        "path": "payload/TeslaEffect_Data/ExternalData/Data/CutsceneSubtitlesData/Mantus_2_Sc_86_Ia_Tex1_C.xml",
+        "sha256": "43aac373e85b7ed88d5d44348c0bd05947ac7ecadfb47e07e0d7e5ccf3fed991"
+      }
+    },
+    {
+      "path": "TeslaEffect_Data/ExternalData/Data/CutsceneSubtitlesData/Mantus_2_Sc_86_Ia_Tex4_C.xml",
+      "operation": "modify",
+      "source": {
+        "kind": "copy",
+        "path": "payload/TeslaEffect_Data/ExternalData/Data/CutsceneSubtitlesData/Mantus_2_Sc_86_Ia_Tex4_C.xml",
+        "sha256": "0c36e8026ccb6f64eba8ab7fd87ce047e7d594dc4806f1a2858ece157bb48c01"
+      }
+    },
+    {
+      "path": "TeslaEffect_Data/ExternalData/Data/CutsceneSubtitlesData/Mantus_2_Sc_86_Ia_Tex5_C.xml",
+      "operation": "modify",
+      "source": {
+        "kind": "copy",
+        "path": "payload/TeslaEffect_Data/ExternalData/Data/CutsceneSubtitlesData/Mantus_2_Sc_86_Ia_Tex5_C.xml",
+        "sha256": "f794ca973996d18ff1c29a72428c7eb4d189015927f535d7c50d931542c7d832"
+      }
+    },
+    {
+      "path": "TeslaEffect_Data/ExternalData/Data/CutsceneSubtitlesData/Mantus_2_Sc_86_Ia_Tex6_C.xml",
+      "operation": "modify",
+      "source": {
+        "kind": "copy",
+        "path": "payload/TeslaEffect_Data/ExternalData/Data/CutsceneSubtitlesData/Mantus_2_Sc_86_Ia_Tex6_C.xml",
+        "sha256": "05bd4dae48f0df677d5c96007a45835c8d22ea482deb2490d5b8492ffd9052cb"
+      }
+    },
+    {
+      "path": "TeslaEffect_Data/ExternalData/Data/CutsceneSubtitlesData/Pandora_Malloy.XML",
+      "operation": "modify",
+      "source": {
+        "kind": "copy",
+        "path": "payload/TeslaEffect_Data/ExternalData/Data/CutsceneSubtitlesData/Pandora_Malloy.XML",
+        "sha256": "e6d6abf13e421179f4ba66caa10d2c758ca9ab938ff3e5e6a0ab7ed9ec94cbb1"
+      }
+    },
+    {
+      "path": "TeslaEffect_Data/ExternalData/Data/CutsceneSubtitlesData/PathA_Ending.XML",
+      "operation": "modify",
+      "source": {
+        "kind": "copy",
+        "path": "payload/TeslaEffect_Data/ExternalData/Data/CutsceneSubtitlesData/PathA_Ending.XML",
+        "sha256": "e296f798c4162a5d2a734d0d0f57922f8669e649e77018b98c1afea4ebedd715"
+      }
+    },
+    {
+      "path": "TeslaEffect_Data/ExternalData/Data/CutsceneSubtitlesData/Resort_SC87_2pt16_2pt19_T2L.XML",
+      "operation": "modify",
+      "source": {
+        "kind": "copy",
+        "path": "payload/TeslaEffect_Data/ExternalData/Data/CutsceneSubtitlesData/Resort_SC87_2pt16_2pt19_T2L.XML",
+        "sha256": "f2908674d8fde423469f7ef9ef06f05ccb2850286d40ab9ed6dff1d6dd70954d"
+      }
+    },
+    {
+      "path": "TeslaEffect_Data/ExternalData/Data/CutsceneSubtitlesData/Saffyre_1_15K.XML",
+      "operation": "modify",
+      "source": {
+        "kind": "copy",
+        "path": "payload/TeslaEffect_Data/ExternalData/Data/CutsceneSubtitlesData/Saffyre_1_15K.XML",
+        "sha256": "9b58218e3afdbd523dcdba41f7c817e8b806bd0e85e3bd1f05ab40ff5e96c4ca"
+      }
+    },
+    {
+      "path": "TeslaEffect_Data/ExternalData/Data/CutsceneSubtitlesData/UndergroundFacility_Frequency3_finale.XML",
+      "operation": "modify",
+      "source": {
+        "kind": "copy",
+        "path": "payload/TeslaEffect_Data/ExternalData/Data/CutsceneSubtitlesData/UndergroundFacility_Frequency3_finale.XML",
+        "sha256": "d7cb74d2463beb0729da14b98c14d49bf221d9da36658cfbe040097d6cc1270d"
+      }
+    },
+    {
+      "path": "TeslaEffect_Data/ExternalData/Data/CutsceneSubtitlesData/cs_NorthHill_Taxi.XML",
+      "operation": "modify",
+      "source": {
+        "kind": "copy",
+        "path": "payload/TeslaEffect_Data/ExternalData/Data/CutsceneSubtitlesData/cs_NorthHill_Taxi.XML",
+        "sha256": "f2a29d18eaddb60d1f6c1c7acfab216cacbd0225c7b125a8472253d62ac0e9f7"
+      }
+    },
+    {
+      "path": "TeslaEffect_Data/ExternalData/Localization/Strings/strings_en.xml",
+      "operation": "modify",
+      "source": {
+        "kind": "copy",
+        "path": "payload/TeslaEffect_Data/ExternalData/Localization/Strings/strings_en.xml",
+        "sha256": "dcc0da3cb1a2a039f2cb08a4ef5e66a779379f5338da0b8ef7426e0a1f60ae05"
+      }
+    }
+  ]
+}

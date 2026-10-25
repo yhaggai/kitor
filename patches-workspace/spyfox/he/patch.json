@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "scummvm_id": "spyfox",
+  "language": "he",
+  "version": "1.0-kitor1",
+  "filename": "spyfox-he-kitor1.zip",
+  "platforms": {
+    "windows": {},
+    "osx": {}
+  },
+  "files": [
+    {
+      "path": "spyfox.he0",
+      "operation": "modify",
+      "source": {
+        "kind": "xdelta",
+        "path": "payload/patch.he0",
+        "sha256": "843d86d725c742468dba0863b84927fe7c3ec7224edd80d2cf6361ff38d82e70",
+        "input": "spyfox.he0",
+        "windows_tool": "payload/xdelta3.exe",
+        "windows_tool_sha256": "d81f59b2fe5e8589c0ee9782e231c805084f4d23dfade413903a4cad63b4e342"
+      }
+    },
+    {
+      "path": "spyfox.he1",
+      "operation": "modify",
+      "source": {
+        "kind": "xdelta",
+        "path": "payload/patch.he1",
+        "sha256": "b0ecaea30ba0274256d7d23dd8b6da0c68404dc7fd8cddf345176a686ba01e9e",
+        "input": "spyfox.he1",
+        "windows_tool": "payload/xdelta3.exe",
+        "windows_tool_sha256": "d81f59b2fe5e8589c0ee9782e231c805084f4d23dfade413903a4cad63b4e342"
+      }
+    }
+  ]
+}

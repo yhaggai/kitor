@@ -1,0 +1,43 @@
+{
+  "catalog_index": 160,
+  "title": "The Drifter",
+  "source_urls": [
+    "https://drive.google.com/file/d/1Atx1m7AaFqAUphmnOP4Ke5fdICYgy0FP/view?usp=drive_link",
+    "https://www.facebook.com/share/p/1LEcjZ4Kyj/"
+  ],
+  "owned_stores": ["Steam"],
+  "status": "staged_windows_payload_awaiting_compatibility_validation",
+  "release_ready": false,
+  "blockers": [
+    "Steam The Drifter; standalone translation.csv payload.",
+    "Native macOS SystemText.get_SaveDirectory returns Application.persistentDataPath when Application.platform==1 (OSXPlayer), versus ./ on Windows. InitialiseCustomLanguage appends translation.csv.",
+    "macOS installation therefore needs a separately journaled user-data target; the current game-root-only manifest cannot safely represent this. Do not write into game .app and claim success.",
+    "Windows native install/uninstall and gameplay validation have not run. macOS package is not built or verified. Original supported game version hashes must be established before release."
+  ],
+  "upstream_asset": {
+    "sha256": "684f3428a5b4b6c6991424bbb227a1ac7ea4a58d4ae0da581d9fa1385fa75e92",
+    "size": 452714
+  },
+  "payload_file_count": 1,
+  "validation": {
+    "archive_extracted_without_execution": true,
+    "sha256_verified": true,
+    "native_windows": false,
+    "native_macos": false,
+    "gameplay": false,
+    "windows_manifest_schema_and_all_asset_hashes": "passed build_patch_packages.validate",
+    "built_platform_archives": ["windows"],
+    "zip_integrity": "passed"
+  },
+  "installation": {
+    "method": "Kitor declarative patch_lifecycle install",
+    "backup": "Only existing paths enumerated in patch.windows.candidate.json; preserve original bytes and metadata in installation journal.",
+    "uninstall": "Kitor journal restores changed originals and removes only patch-created files; unrelated game files and saves remain untouched."
+  },
+  "platforms": {
+    "windows": "staged copy-data plan, not native validated",
+    "osx": "blocked; see blockers"
+  },
+  "dependencies": ["Kitor selective lifecycle runtime", "Owned supported game installation"],
+  "target_architectures": "Payload data is architecture-independent; native game/runtime compatibility remains unverified."
+}

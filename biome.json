@@ -7,7 +7,15 @@
   },
   "files": {
     "ignoreUnknown": false,
-    "includes": ["**", "!!**/node_modules", "!!**/dist", "!!**/target", "!!**/*.lock"]
+    "includes": [
+      "**",
+      "!!**/node_modules",
+      "!!**/dist",
+      "!!**/target",
+      "!!**/*.lock",
+      "!!patches-workspace/**/payload",
+      "!!patches-workspace/**/upstream"
+    ]
   },
   "formatter": {
     "enabled": true,

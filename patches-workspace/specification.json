@@ -1,0 +1,34 @@
+{
+  "schema_version": 1,
+  "scope": "Owned-game catalog imports dated 2026-10-25; local preparation, not publication or installation",
+  "platforms_required": ["windows", "osx"],
+  "package_manifest": "patch.json (strict Kitor lifecycle schema)",
+  "provenance": "provenance.json (source, ownership, compatibility, blockers and validation; excluded from deployment ZIPs)",
+  "install": {
+    "entry_point": "Kitor patch_lifecycle::install",
+    "backup": "Only affected existing files; original bytes preserved before mutation",
+    "tracking": "Persistent per-install journal records original and installed hashes and created paths",
+    "failure": "Selective rollback; retain recovery state on failure"
+  },
+  "uninstall": {
+    "entry_point": "Kitor patch_lifecycle::uninstall",
+    "restore": "Only files changed by the patch",
+    "remove": "Only patch-created files and empty patch-created directories",
+    "preserve": "Unrelated files, later saves and settings; detect post-install changes"
+  },
+  "release_policy": {
+    "release_ready_required": true,
+    "default": false,
+    "requirements": [
+      "Both Windows and macOS packages built",
+      "Applicable target-edition checks",
+      "Native install/uninstall and gameplay validation recorded",
+      "Source redistribution requirements reviewed"
+    ]
+  },
+  "validation_limits": [
+    "Deterministic ZIP building does not compile or certify native executables.",
+    "Copy-only patches use portable data and Kitor native lifecycle; xdelta/BSDIFF packages require declared tools.",
+    "Synthetic roundtrips verify lifecycle behavior, not translation correctness or game build compatibility."
+  ]
+}

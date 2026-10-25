@@ -1,0 +1,17 @@
+<CaptionData>
+                <caption>
+                                <stringID>Saffyre_1_15K_PIECE_A</stringID>
+                                <timeStart>0</timeStart>
+                                <timeEnd>3</timeEnd>
+                </caption>
+				 <caption>
+                                <stringID>Saffyre_1_15K_PIECE_B</stringID>
+                                <timeStart>3</timeStart>
+                                <timeEnd>8</timeEnd>
+                </caption>
+				 <caption>
+                                <stringID>Saffyre_1_15K_PIECE_C</stringID>
+                                <timeStart>9</timeStart>
+                                <timeEnd>11</timeEnd>
+                </caption>
+</CaptionData>

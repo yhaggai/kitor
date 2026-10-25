@@ -1,0 +1,489 @@
+{
+  "schema_version": 1,
+  "scummvm_id": "life-is-strange",
+  "language": "he",
+  "version": "2024-01-15-kitor1",
+  "filename": "life-is-strange-he-2024-01-15-kitor1.zip",
+  "platforms": {
+    "windows": {}
+  },
+  "files": [
+    {
+      "path": "LifeIsStrangeGame/CookedPCConsoleFinal/fonts_he.upk",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "payload/LifeIsStrangeGame/CookedPCConsoleFinal/fonts_he.upk",
+        "sha256": "4fdd6c31a36e1cbb78eb34dc329fc63b9fc29f4b467135fd7f7f8c087331a274"
+      }
+    },
+    {
+      "path": "LifeIsStrangeGame/Localization/INT/CU_E1_1A.INT",
+      "operation": "modify",
+      "source": {
+        "kind": "copy",
+        "path": "payload/LifeIsStrangeGame/Localization/INT/CU_E1_1A.INT",
+        "sha256": "71942e9f850c7a5113eaf56a59279612601f0d50232478aa34f241a3b90aeeb3"
+      }
+    },
+    {
+      "path": "LifeIsStrangeGame/Localization/INT/CU_E1_2A.INT",
+      "operation": "modify",
+      "source": {
+        "kind": "copy",
+        "path": "payload/LifeIsStrangeGame/Localization/INT/CU_E1_2A.INT",
+        "sha256": "cb15ac06764b9f0ea5185dc9db968e37e6caeba59b533f7332af404c78a77935"
+      }
+    },
+    {
+      "path": "LifeIsStrangeGame/Localization/INT/CU_E1_3A.INT",
+      "operation": "modify",
+      "source": {
+        "kind": "copy",
+        "path": "payload/LifeIsStrangeGame/Localization/INT/CU_E1_3A.INT",
+        "sha256": "f3ac3db7008a2edec22ebf3e7ba2c814eb520f8526ce8fed8bcb19231e060b85"
+      }
+    },
+    {
+      "path": "LifeIsStrangeGame/Localization/INT/CU_E1_3B.INT",
+      "operation": "modify",
+      "source": {
+        "kind": "copy",
+        "path": "payload/LifeIsStrangeGame/Localization/INT/CU_E1_3B.INT",
+        "sha256": "4d01477164ff9dab8862d0939bd5104733f2feddb731b9690350e9e177fec547"
+      }
+    },
+    {
+      "path": "LifeIsStrangeGame/Localization/INT/CU_E1_3C.INT",
+      "operation": "modify",
+      "source": {
+        "kind": "copy",
+        "path": "payload/LifeIsStrangeGame/Localization/INT/CU_E1_3C.INT",
+        "sha256": "5fa6ca36e65423e1917b4afc718b4214089836fa054ddd517ee1800ea472cde0"
+      }
+    },
+    {
+      "path": "LifeIsStrangeGame/Localization/INT/CU_E1_3D.INT",
+      "operation": "modify",
+      "source": {
+        "kind": "copy",
+        "path": "payload/LifeIsStrangeGame/Localization/INT/CU_E1_3D.INT",
+        "sha256": "a7fb16d957670eb64bbf79e6b4dbd109b6454b5a6f8d4df9a115dcab3a922abb"
+      }
+    },
+    {
+      "path": "LifeIsStrangeGame/Localization/INT/CU_E1_4A.INT",
+      "operation": "modify",
+      "source": {
+        "kind": "copy",
+        "path": "payload/LifeIsStrangeGame/Localization/INT/CU_E1_4A.INT",
+        "sha256": "4d5631d693d8c609c17079c3c43f8b151420e11e948f30c26bdfcfd04a89bfa3"
+      }
+    },
+    {
+      "path": "LifeIsStrangeGame/Localization/INT/CU_E1_5A.INT",
+      "operation": "modify",
+      "source": {
+        "kind": "copy",
+        "path": "payload/LifeIsStrangeGame/Localization/INT/CU_E1_5A.INT",
+        "sha256": "563ac2e81255a2ad6f2343a9303309e4fb60f611fe455fcff6e86630712ab769"
+      }
+    },
+    {
+      "path": "LifeIsStrangeGame/Localization/INT/CU_E1_5B.INT",
+      "operation": "modify",
+      "source": {
+        "kind": "copy",
+        "path": "payload/LifeIsStrangeGame/Localization/INT/CU_E1_5B.INT",
+        "sha256": "4a21dd21c2928877a96a9ff40d7b89de64ee96bb77174a4273b7989fd214b9f3"
+      }
+    },
+    {
+      "path": "LifeIsStrangeGame/Localization/INT/CU_E1_6A.INT",
+      "operation": "modify",
+      "source": {
+        "kind": "copy",
+        "path": "payload/LifeIsStrangeGame/Localization/INT/CU_E1_6A.INT",
+        "sha256": "2a2a6f99d51fd0ae2b4da3ab6b1ce5a9c603a22ffb00f78ff015296440d100bd"
+      }
+    },
+    {
+      "path": "LifeIsStrangeGame/Localization/INT/CU_E1_6B.INT",
+      "operation": "modify",
+      "source": {
+        "kind": "copy",
+        "path": "payload/LifeIsStrangeGame/Localization/INT/CU_E1_6B.INT",
+        "sha256": "a6b176e573eddf54f2116fdbd219087869a209a1c69911a866c60e877549f0c3"
+      }
+    },
+    {
+      "path": "LifeIsStrangeGame/Localization/INT/CU_GEN_Max.INT",
+      "operation": "modify",
+      "source": {
+        "kind": "copy",
+        "path": "payload/LifeIsStrangeGame/Localization/INT/CU_GEN_Max.INT",
+        "sha256": "b5ccd30605d042e7bdb41852048999c10c9e679451bacb62fa14c0f58de5255a"
+      }
+    },
+    {
+      "path": "LifeIsStrangeGame/Localization/INT/Episode02__CU_E2_1A.INT",
+      "operation": "modify",
+      "source": {
+        "kind": "copy",
+        "path": "payload/LifeIsStrangeGame/Localization/INT/Episode02__CU_E2_1A.INT",
+        "sha256": "0cfe71eecf3589407d64ff8b816347cce50a5a27f6f5711f3d5697d482c1c76e"
+      }
+    },
+    {
+      "path": "LifeIsStrangeGame/Localization/INT/Episode02__CU_E2_1B.INT",
+      "operation": "modify",
+      "source": {
+        "kind": "copy",
+        "path": "payload/LifeIsStrangeGame/Localization/INT/Episode02__CU_E2_1B.INT",
+        "sha256": "17c7db6e2935f828dea05ea578e68dc4e00e9946595c3be1af28d866fb2ed2b3"
+      }
+    },
+    {
+      "path": "LifeIsStrangeGame/Localization/INT/Episode02__CU_E2_1C.INT",
+      "operation": "modify",
+      "source": {
+        "kind": "copy",
+        "path": "payload/LifeIsStrangeGame/Localization/INT/Episode02__CU_E2_1C.INT",
+        "sha256": "c52a74f8762f5b96da6f4543939ef8c760e1e890cdce58dd82fba61a555049d8"
+      }
+    },
+    {
+      "path": "LifeIsStrangeGame/Localization/INT/Episode02__CU_E2_2A.INT",
+      "operation": "modify",
+      "source": {
+        "kind": "copy",
+        "path": "payload/LifeIsStrangeGame/Localization/INT/Episode02__CU_E2_2A.INT",
+        "sha256": "26a97c6b8a45694c50ebea2a0c199af6ea4114ec5ac376ab02ea85c1c57a11cc"
+      }
+    },
+    {
+      "path": "LifeIsStrangeGame/Localization/INT/Episode02__CU_E2_3A.INT",
+      "operation": "modify",
+      "source": {
+        "kind": "copy",
+        "path": "payload/LifeIsStrangeGame/Localization/INT/Episode02__CU_E2_3A.INT",
+        "sha256": "e9ca2b090a880044c37ef3086886b999e2914658c4644866ede04c5d05816474"
+      }
+    },
+    {
+      "path": "LifeIsStrangeGame/Localization/INT/Episode02__CU_E2_3B.INT",
+      "operation": "modify",
+      "source": {
+        "kind": "copy",
+        "path": "payload/LifeIsStrangeGame/Localization/INT/Episode02__CU_E2_3B.INT",
+        "sha256": "e2b6267bc039f27297c6d2d9675736e26a5de3932fe6c908c6b237774539539a"
+      }
+    },
+    {
+      "path": "LifeIsStrangeGame/Localization/INT/Episode02__CU_E2_4A.INT",
+      "operation": "modify",
+      "source": {
+        "kind": "copy",
+        "path": "payload/LifeIsStrangeGame/Localization/INT/Episode02__CU_E2_4A.INT",
+        "sha256": "59ff3e72a2fdec46d18d09f692da736e5cb4f332d83eba395bd37d18c9a8bb27"
+      }
+    },
+    {
+      "path": "LifeIsStrangeGame/Localization/INT/Episode02__CU_E2_4B.INT",
+      "operation": "modify",
+      "source": {
+        "kind": "copy",
+        "path": "payload/LifeIsStrangeGame/Localization/INT/Episode02__CU_E2_4B.INT",
+        "sha256": "20180d08420452a6c9e3c1222748b15502297bdc2c4775e18a54546fdd6e2516"
+      }
+    },
+    {
+      "path": "LifeIsStrangeGame/Localization/INT/Episode02__CU_E2_4C.INT",
+      "operation": "modify",
+      "source": {
+        "kind": "copy",
+        "path": "payload/LifeIsStrangeGame/Localization/INT/Episode02__CU_E2_4C.INT",
+        "sha256": "9b3729eacd8af498650b2eb2e8745257bbd740783c028395547727997501cd96"
+      }
+    },
+    {
+      "path": "LifeIsStrangeGame/Localization/INT/Episode02__CU_E2_5A.INT",
+      "operation": "modify",
+      "source": {
+        "kind": "copy",
+        "path": "payload/LifeIsStrangeGame/Localization/INT/Episode02__CU_E2_5A.INT",
+        "sha256": "5db18e0c5b285dc9741e28b2ea08cf215ddeade6b695f7c34b855ba0a2e9c9a6"
+      }
+    },
+    {
+      "path": "LifeIsStrangeGame/Localization/INT/Episode02__CU_E2_6A.INT",
+      "operation": "modify",
+      "source": {
+        "kind": "copy",
+        "path": "payload/LifeIsStrangeGame/Localization/INT/Episode02__CU_E2_6A.INT",
+        "sha256": "aee84748cf274e8fd5e979143500d58ea4c75fec1a43f9daa1a43bde6f87ce9e"
+      }
+    },
+    {
+      "path": "LifeIsStrangeGame/Localization/INT/Episode02__HUD.INT",
+      "operation": "modify",
+      "source": {
+        "kind": "copy",
+        "path": "payload/LifeIsStrangeGame/Localization/INT/Episode02__HUD.INT",
+        "sha256": "e067e357f2ca384f46f9af37e0826cb3eaa594fd56e3d6b13cbadf8a303194b4"
+      }
+    },
+    {
+      "path": "LifeIsStrangeGame/Localization/INT/Episode02__Menus.INT",
+      "operation": "modify",
+      "source": {
+        "kind": "copy",
+        "path": "payload/LifeIsStrangeGame/Localization/INT/Episode02__Menus.INT",
+        "sha256": "c962045f2a31d3f610baa782453b66558a46552edc493db312c233d745260b9c"
+      }
+    },
+    {
+      "path": "LifeIsStrangeGame/Localization/INT/Episode03__CU_E3_1A.INT",
+      "operation": "modify",
+      "source": {
+        "kind": "copy",
+        "path": "payload/LifeIsStrangeGame/Localization/INT/Episode03__CU_E3_1A.INT",
+        "sha256": "443ed0fddd5dc8a3f05d65dc874380a35c7869434dbcc74c0b07ed261f60788d"
+      }
+    },
+    {
+      "path": "LifeIsStrangeGame/Localization/INT/Episode03__CU_E3_1B.INT",
+      "operation": "modify",
+      "source": {
+        "kind": "copy",
+        "path": "payload/LifeIsStrangeGame/Localization/INT/Episode03__CU_E3_1B.INT",
+        "sha256": "c87182c9efdd9bea780493804c7a9f6378510b3bc01d0d6e8d5b3e8841f7c243"
+      }
+    },
+    {
+      "path": "LifeIsStrangeGame/Localization/INT/Episode03__CU_E3_1C.INT",
+      "operation": "modify",
+      "source": {
+        "kind": "copy",
+        "path": "payload/LifeIsStrangeGame/Localization/INT/Episode03__CU_E3_1C.INT",
+        "sha256": "1d6341860a0723ad3f4d76566a05a41099810b4e0c7edb9421772125f22c8bf8"
+      }
+    },
+    {
+      "path": "LifeIsStrangeGame/Localization/INT/Episode03__CU_E3_2A.INT",
+      "operation": "modify",
+      "source": {
+        "kind": "copy",
+        "path": "payload/LifeIsStrangeGame/Localization/INT/Episode03__CU_E3_2A.INT",
+        "sha256": "d3115fcef852d7f837972ba70edbcc4b815d494fc749dc81659e063f3c92ca33"
+      }
+    },
+    {
+      "path": "LifeIsStrangeGame/Localization/INT/Episode03__CU_E3_3A.INT",
+      "operation": "modify",
+      "source": {
+        "kind": "copy",
+        "path": "payload/LifeIsStrangeGame/Localization/INT/Episode03__CU_E3_3A.INT",
+        "sha256": "d665f43fd761a6f8281929886c990629c6a348aed552ba4d23e53143a038ebd5"
+      }
+    },
+    {
+      "path": "LifeIsStrangeGame/Localization/INT/Episode03__CU_E3_3B.INT",
+      "operation": "modify",
+      "source": {
+        "kind": "copy",
+        "path": "payload/LifeIsStrangeGame/Localization/INT/Episode03__CU_E3_3B.INT",
+        "sha256": "22c2753aa3e120e2b3d3ae72e44fed821c467b247ecc8e3403006f4b38b9a1ee"
+      }
+    },
+    {
+      "path": "LifeIsStrangeGame/Localization/INT/Episode03__CU_E3_5A.INT",
+      "operation": "modify",
+      "source": {
+        "kind": "copy",
+        "path": "payload/LifeIsStrangeGame/Localization/INT/Episode03__CU_E3_5A.INT",
+        "sha256": "0754a9b44a9a6755141ebd8b7e67438ae558bab4b224191634158d238cc8ef06"
+      }
+    },
+    {
+      "path": "LifeIsStrangeGame/Localization/INT/Episode03__CU_E3_5B.INT",
+      "operation": "modify",
+      "source": {
+        "kind": "copy",
+        "path": "payload/LifeIsStrangeGame/Localization/INT/Episode03__CU_E3_5B.INT",
+        "sha256": "a3bc4cc6fa533ad755a11a7d864b47f7041c409b240c764c098ff7d4bd7c5285"
+      }
+    },
+    {
+      "path": "LifeIsStrangeGame/Localization/INT/Episode03__CU_E3_6A.INT",
+      "operation": "modify",
+      "source": {
+        "kind": "copy",
+        "path": "payload/LifeIsStrangeGame/Localization/INT/Episode03__CU_E3_6A.INT",
+        "sha256": "47dcfa3c6b5d0b806aec84e2faac8730112c00cabd4e72862ba9ed1f33b7f610"
+      }
+    },
+    {
+      "path": "LifeIsStrangeGame/Localization/INT/Episode03__CU_E3_6B.INT",
+      "operation": "modify",
+      "source": {
+        "kind": "copy",
+        "path": "payload/LifeIsStrangeGame/Localization/INT/Episode03__CU_E3_6B.INT",
+        "sha256": "3fa2a3e205d789ca25283754dca1076522d525b5b07020a7dbf833c73154fddf"
+      }
+    },
+    {
+      "path": "LifeIsStrangeGame/Localization/INT/Episode03__CU_E3_7A.INT",
+      "operation": "modify",
+      "source": {
+        "kind": "copy",
+        "path": "payload/LifeIsStrangeGame/Localization/INT/Episode03__CU_E3_7A.INT",
+        "sha256": "512bcb1cecd32d198678d0b1c5a9b9fef67f57628448f8cf5c65c80d7c24e499"
+      }
+    },
+    {
+      "path": "LifeIsStrangeGame/Localization/INT/Episode03__CU_E3_7B.INT",
+      "operation": "modify",
+      "source": {
+        "kind": "copy",
+        "path": "payload/LifeIsStrangeGame/Localization/INT/Episode03__CU_E3_7B.INT",
+        "sha256": "5d32dc5c6debd80062c2ddd9ad6a6c36e3680cd6064159666fcced2098e21cfb"
+      }
+    },
+    {
+      "path": "LifeIsStrangeGame/Localization/INT/Episode03__CU_E3_7C.INT",
+      "operation": "modify",
+      "source": {
+        "kind": "copy",
+        "path": "payload/LifeIsStrangeGame/Localization/INT/Episode03__CU_E3_7C.INT",
+        "sha256": "20373aea969c9c6381c798bf29c89b0e0a6ac754413b4ca64dc2de9ab8fcfa7e"
+      }
+    },
+    {
+      "path": "LifeIsStrangeGame/Localization/INT/Episode03__CU_E3_7D.INT",
+      "operation": "modify",
+      "source": {
+        "kind": "copy",
+        "path": "payload/LifeIsStrangeGame/Localization/INT/Episode03__CU_E3_7D.INT",
+        "sha256": "0f1ea1871afa869f9d010e9a0f3f7ab79928925f691631cd47bfbf467df4ab8d"
+      }
+    },
+    {
+      "path": "LifeIsStrangeGame/Localization/INT/Episode03__CU_E3_8A.INT",
+      "operation": "modify",
+      "source": {
+        "kind": "copy",
+        "path": "payload/LifeIsStrangeGame/Localization/INT/Episode03__CU_E3_8A.INT",
+        "sha256": "81b68d57494b94a7206b9c26f59eb549eb2248c40451d6355f950304555fa4e4"
+      }
+    },
+    {
+      "path": "LifeIsStrangeGame/Localization/INT/Episode03__CU_E3_Previously.INT",
+      "operation": "modify",
+      "source": {
+        "kind": "copy",
+        "path": "payload/LifeIsStrangeGame/Localization/INT/Episode03__CU_E3_Previously.INT",
+        "sha256": "7741c144646d54d9cec0e5a02405ab1dcf378a835f1d9332c5df20e12183d950"
+      }
+    },
+    {
+      "path": "LifeIsStrangeGame/Localization/INT/Episode03__HUD.INT",
+      "operation": "modify",
+      "source": {
+        "kind": "copy",
+        "path": "payload/LifeIsStrangeGame/Localization/INT/Episode03__HUD.INT",
+        "sha256": "0c62ed7b218c9a4a86b950ed1af2797b17d6d4a41fa04168d254406efb4b1846"
+      }
+    },
+    {
+      "path": "LifeIsStrangeGame/Localization/INT/Episode03__Menus.INT",
+      "operation": "modify",
+      "source": {
+        "kind": "copy",
+        "path": "payload/LifeIsStrangeGame/Localization/INT/Episode03__Menus.INT",
+        "sha256": "9ddaac2ede54de8180e0372f9c464bcf26931fbf2c5cbcc2a40becb0717e5e26"
+      }
+    },
+    {
+      "path": "LifeIsStrangeGame/Localization/INT/Episode04__Menus.INT",
+      "operation": "modify",
+      "source": {
+        "kind": "copy",
+        "path": "payload/LifeIsStrangeGame/Localization/INT/Episode04__Menus.INT",
+        "sha256": "4ed4c303443d47491331f84de51c48164174c461b2d39717cbb68effce58ebb6"
+      }
+    },
+    {
+      "path": "LifeIsStrangeGame/Localization/INT/Episode05__Menus.INT",
+      "operation": "modify",
+      "source": {
+        "kind": "copy",
+        "path": "payload/LifeIsStrangeGame/Localization/INT/Episode05__Menus.INT",
+        "sha256": "7c7e503b3620426c310e790a05ba1a4b7f46611637870e3e269825214cdc0c8d"
+      }
+    },
+    {
+      "path": "LifeIsStrangeGame/Localization/INT/Extra01__Menus.INT",
+      "operation": "modify",
+      "source": {
+        "kind": "copy",
+        "path": "payload/LifeIsStrangeGame/Localization/INT/Extra01__Menus.INT",
+        "sha256": "02536948260de445fb1f7858085dca2e54106868850f8222414e49a89a5107b8"
+      }
+    },
+    {
+      "path": "LifeIsStrangeGame/Localization/INT/GFxUI.int",
+      "operation": "modify",
+      "source": {
+        "kind": "copy",
+        "path": "payload/LifeIsStrangeGame/Localization/INT/GFxUI.int",
+        "sha256": "5244556f396ffbecb72e73fd491120664594df72efd0f3475ac5f34b8f02351c"
+      }
+    },
+    {
+      "path": "LifeIsStrangeGame/Localization/INT/HUD.INT",
+      "operation": "modify",
+      "source": {
+        "kind": "copy",
+        "path": "payload/LifeIsStrangeGame/Localization/INT/HUD.INT",
+        "sha256": "9e1a93ed2ede7cf672d6c08044c2eea525075ca18395f2a5de4925cdd867024d"
+      }
+    },
+    {
+      "path": "LifeIsStrangeGame/Localization/INT/Menus.INT",
+      "operation": "modify",
+      "source": {
+        "kind": "copy",
+        "path": "payload/LifeIsStrangeGame/Localization/INT/Menus.INT",
+        "sha256": "e249ec0d82905dbf8fe8f4a0bd6d89561ec66c10f70daed60dbaac4935667d68"
+      }
+    },
+    {
+      "path": "LifeIsStrangeGame/Localization/INT/None.INT",
+      "operation": "modify",
+      "source": {
+        "kind": "copy",
+        "path": "payload/LifeIsStrangeGame/Localization/INT/None.INT",
+        "sha256": "c751755fbade29ec5dfb61ee9204a465acaed8b8f79fca8a2ec5c127a3683071"
+      }
+    },
+    {
+      "path": "LifeIsStrangeGame/Localization/INT/Pc.INT",
+      "operation": "modify",
+      "source": {
+        "kind": "copy",
+        "path": "payload/LifeIsStrangeGame/Localization/INT/Pc.INT",
+        "sha256": "aed2a8b043a6ff1a92fc99c3d14d37c582304d94a46c96747e3f5f153b84cbce"
+      }
+    },
+    {
+      "path": "LifeIsStrangeGame/Localization/INT/Sensen.INT",
+      "operation": "modify",
+      "source": {
+        "kind": "copy",
+        "path": "payload/LifeIsStrangeGame/Localization/INT/Sensen.INT",
+        "sha256": "95acd72fac498518104669ba7329479eb6f33040a1bef344b34fad9c72376dcb"
+      }
+    }
+  ]
+}

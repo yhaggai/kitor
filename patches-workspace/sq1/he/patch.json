@@ -1,0 +1,148 @@
+{
+  "schema_version": 1,
+  "scummvm_id": "sq1",
+  "language": "he",
+  "version": "1.0-kitor1",
+  "filename": "sq1-he-kitor1.zip",
+  "platforms": {
+    "windows": {},
+    "osx": {}
+  },
+  "files": [
+    {
+      "path": "LOGDIR",
+      "operation": "modify",
+      "original_sha256": "1aeef7bd675ac6c3907181b619df3c53f14f42bc64ea2965e6b3ab7f81f8a1fd",
+      "installed_sha256": "969ea8c0b95b63bb5998e2dcba8a6a525ce2f677caff751e05a64c1f157b0dd2",
+      "source": {
+        "kind": "bsdiff",
+        "path": "payload/LOGDIR.bsdiff",
+        "sha256": "5431686dd4ceaf71a28073ae33d530e982d08fb98d05aa939c97e6acd1d4654c",
+        "input": "LOGDIR"
+      }
+    },
+    {
+      "path": "OBJECT",
+      "operation": "modify",
+      "original_sha256": "058d2fcfef8df6667e764b889a1c22d6b8746eac8c25321f707a64e4d712464c",
+      "installed_sha256": "c2d76170ccca8ed059e9a027d9cb3d6ae5a7e08fd87337dc9d744239b5565b17",
+      "source": {
+        "kind": "bsdiff",
+        "path": "payload/OBJECT.bsdiff",
+        "sha256": "c5664046dfb4452de4bcf2f184b4af2b6df2f4fd261e9abed8d73c77cf0a6a5c",
+        "input": "OBJECT"
+      }
+    },
+    {
+      "path": "PICDIR",
+      "operation": "modify",
+      "original_sha256": "c6e6bf86845841bd4e07c43f52a0656cf10affc08a399c88ed89b58584f98e02",
+      "installed_sha256": "7db446f621bcbe953839d88a0f32429a0a3655c9df182e458118a1274a536ca4",
+      "source": {
+        "kind": "bsdiff",
+        "path": "payload/PICDIR.bsdiff",
+        "sha256": "50e1d63a88eb20aef3abf20f23daa84ef33ad3569fdf8a85343bb836f4cf3daa",
+        "input": "PICDIR"
+      }
+    },
+    {
+      "path": "SNDDIR",
+      "operation": "modify",
+      "original_sha256": "8d001a67050a7f466b51696299db71a9673d8773c18c773ff102f44c7162a273",
+      "installed_sha256": "db3afe4c77ea2f800c973ff972ccbd2d78f88bccbbae488aca4bbee80c8faa83",
+      "source": {
+        "kind": "bsdiff",
+        "path": "payload/SNDDIR.bsdiff",
+        "sha256": "b00590d02c0e0313c4f9b9802e601515cc085db685d2d5c7b01f4996271ed3bb",
+        "input": "SNDDIR"
+      }
+    },
+    {
+      "path": "VIEWDIR",
+      "operation": "modify",
+      "original_sha256": "e72e45451b0b48ee2ea61bfb68858dcf6e63187e21a217bcc58e7e1f3d4a5aa1",
+      "installed_sha256": "c0ab981fc9c79b16839c81fd9d10dad064678acaabe71c12e788b8fd3c1f31d1",
+      "source": {
+        "kind": "bsdiff",
+        "path": "payload/VIEWDIR.bsdiff",
+        "sha256": "71c1108afa9f4429891aeef05ad51646fbfb44c64a60a083b47ef16255456dbe",
+        "input": "VIEWDIR"
+      }
+    },
+    {
+      "path": "VOL.0",
+      "operation": "modify",
+      "original_sha256": "63f4d3906bf9ddfd7545a9cea80b9d0f7aedb79a0c757310fed1c2876505c70a",
+      "installed_sha256": "8b3c00847241eba22db1829157bf4711931c7d01ff0622471f4d97f4776397f9",
+      "source": {
+        "kind": "bsdiff",
+        "path": "payload/VOL.0.bsdiff",
+        "sha256": "366a2a94b433cc1b19e90a1500bb4dbb4780bb94e88334e70f46b72142ce1e0c",
+        "input": "VOL.0"
+      }
+    },
+    {
+      "path": "VOL.1",
+      "operation": "modify",
+      "original_sha256": "3b63425d27b981e16a5570ff068d1663d714776192183ea7dfde03cf61fc9aed",
+      "installed_sha256": "9f4b197658bfdc45e120be3384857d3af3abfe4382bad08a22fce7706234de55",
+      "source": {
+        "kind": "bsdiff",
+        "path": "payload/VOL.1.bsdiff",
+        "sha256": "17a01bf37fd4af15269bcb19f448aa09d0885354ec49e3a5579046244f17e082",
+        "input": "VOL.1"
+      }
+    },
+    {
+      "path": "VOL.2",
+      "operation": "modify",
+      "original_sha256": "6fa6608a30ee3345976fc630efb290859e87ec67aa34bb1c79691fb0267caf1b",
+      "installed_sha256": "41836d4dc19ddd63efe9b7ea75dae5bd4da0ab2eff9f42db83cd16b63fe87ddc",
+      "source": {
+        "kind": "bsdiff",
+        "path": "payload/VOL.2.bsdiff",
+        "sha256": "4764c4df8ea3d60f847fd4c48285bc27cbebb7da4301b20e1cbfd9e38d96e590",
+        "input": "VOL.2"
+      }
+    },
+    {
+      "path": "VOL.3",
+      "operation": "create",
+      "source": {
+        "kind": "copy",
+        "path": "payload/VOL.3",
+        "sha256": "b4defa0e9dfa98a10192d61b508bda4b6fbe1d91a55ff12bdddd69027334d243"
+      }
+    },
+    {
+      "path": "WORDS.TOK",
+      "operation": "modify",
+      "original_sha256": "7538e02617e9d8afd8c8de8cb1c2290ca24291d5b1af1e329486c2f84571803e",
+      "installed_sha256": "51a7cea408d70fcc4f04c55540927a1f3394f7bdda9f3caae7243c8258a2b255",
+      "source": {
+        "kind": "bsdiff",
+        "path": "payload/WORDS.TOK.bsdiff",
+        "sha256": "ea33da1247844a5931874f1b7ded0fb7e1196a76fd9aa7298a72e98a2a2398c9",
+        "input": "WORDS.TOK"
+      }
+    },
+    {
+      "path": "WORDS.TOK.EXTENDED",
+      "operation": "create",
+      "source": {
+        "kind": "copy",
+        "path": "payload/WORDS.TOK.EXTENDED",
+        "sha256": "5689ae9676fb3b035461e3b93ea757750a42dd3a8c7ae395ea2f5a5bd5803336"
+      }
+    },
+    {
+      "path": "agi-font-dos.bin",
+      "operation": "create",
+      "source": {
+        "kind": "copy",
+        "path": "payload/agi-font-dos.bin",
+        "sha256": "6961fdd01a443ef0e11fa79bd0878dd65e2b1a91862621510af7f87e70d81612"
+      }
+    }
+  ]
+}

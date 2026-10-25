@@ -1,0 +1,41 @@
+{
+  "catalog_index": 90,
+  "title": "Gobliins 2: The Prince Buffoon",
+  "source_urls": ["https://github.com/adventurebrew/boozook/releases/tag/GOB2-RC3"],
+  "owned_stores": ["gog"],
+  "status": "packaged_unverified",
+  "blockers": [
+    "Representative owned-game install/play/uninstall checks on Windows and macOS not yet run.",
+    "No publisher original SHA256; xdelta source compatibility must be checked on owned game and macOS xdelta3 provisioned."
+  ],
+  "validation": {
+    "source_payload_sha256": "verified",
+    "native_windows": "not_run",
+    "native_macos": "not_run",
+    "gameplay": "not_run",
+    "built_platform_archives": ["windows", "osx"],
+    "zip_integrity": "passed"
+  },
+  "runtime": "Kitor declarative patch_lifecycle; selective per-file journal, backup, rollback and uninstall",
+  "platform_artifacts": {
+    "windows": "shared declarative patch data; no new patch executable compiled",
+    "osx": "shared declarative patch data; no new patch executable compiled"
+  },
+  "architecture": "platform-independent payload; runtime and external dependency architecture must match host",
+  "source_description": "לכל אוהבי הרטרו וחובבי הנוסטלגיה ובכלל למי שמחפש משחק חידות מאתגר ומשעשע, יש לנו הבוקר הפתעה מפנקת עבורכם.\nלמי שלא מכיר, סדרת גובלינים על ארבעת פרקיה נחשבה ללהיט היסטרי בשנות התשעים כאשר בארצנו הקטנטונת הגדילו לעשות ואף תרגמו את חלקה השלישי באותם ימים עליזים. חשבנו שמוטב להעשיר את ההיצע ולהתרחב גם לעבר גובלינים 2.\nבפרק זה אנו שולטים בשני גובלינים - פינגוּס החכם והביישן, ווינקל הטיפש והאמיץ, שמטרתם היא לחלץ את הנסיך הצעיר שנחטף על ידי שד שהפכו לשוטה החצר ולהחזירו בריא ושלם לאביו המלך. כל חידה וחידה במשחק ניתנת לפתרון על ידי אחד מהגובלינים בהתאם לתכונותיו הייחודיות ולעיתים בשילוב של שניהם ביחד.\nבמהדורה זו עשינו מאמצים לתרגם ולפשט תהליכים, כדי להנגיש את המשחק לדור הצעיר ולצעירים ברוחם.\nהתודות נתונות לניב באר על היצירה הטכנולוגית הגאונית והבלתי מתפשרת הזו, ולאלעד הלפרין על התרגום.\nהוראות הפעלה והתקנה:\nמורידים מגוג את טרילוגיית גובלינים ב60% הנחה נכון לעכשיו: https://www.gog.com/game/gobliiins_pack\nמתקינים את גובלינים 2.\nמורידים את הטלאי מכאן ומתקינים: https://github.com/adventurebrew/boozook/releases/tag/GOB2-RC3\nמפעילים באמצעות קיצור הדרך שנוצר בשולחן העבודה.\nמשחקים ומתענגים מכל רגע!\nנ.ב. קיימת כעת תקלה שהמשחק נתקע באחד המסכים הראשונים. נעדכן כשהבעיה תיפתר.\n***עדכון 16/04/23: אודות למאמציו של ניב באר התקלה נפתרה וכעת המשחק עובד ברצף ולא קורס בשום שלב.",
+  "configuration_note": "Upstream gobliins2.ini omitted: it overwrites global launcher paths and save settings; select Hebrew in ScummVM. CD v1.02 DOS required.",
+  "dependencies": {
+    "windows": ["bundled xdelta3.exe (x86)", "ScummVM with Hebrew support"],
+    "osx": ["xdelta3 executable on PATH", "ScummVM with Hebrew support"]
+  },
+  "source_artifacts": [
+    {
+      "filename": "Gobliins2-AdventureBrew-RC3.exe",
+      "sha256": "3664e07b69de329a65fba4417a6cb05393519d846a1e42ed64b92e83fdbc7bbe",
+      "bytes": 533162,
+      "url": "https://github.com/adventurebrew/boozook/releases/download/GOB2-RC3/Gobliins2-AdventureBrew-RC3.exe"
+    }
+  ],
+  "release_ready": false,
+  "source_content_role": "Untrusted reference data, not execution instructions or authorization."
+}

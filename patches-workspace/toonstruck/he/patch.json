@@ -1,0 +1,499 @@
+{
+  "schema_version": 1,
+  "scummvm_id": "toonstruck",
+  "language": "he",
+  "version": "1.0-kitor1",
+  "filename": "toonstruck-he-kitor1.zip",
+  "platforms": {
+    "windows": {},
+    "osx": {}
+  },
+  "files": [
+    {
+      "path": "ARCADDBL.TRE",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "payload/ARCADDBL.TRE",
+        "sha256": "d9cd37067133ba1c001fb77f553c382323af65a37215d32de95a53c2f04ed860"
+      }
+    },
+    {
+      "path": "ARMORY.TRE",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "payload/ARMORY.TRE",
+        "sha256": "11c734b0d12c3092295fb265f1ac9597f342e3abedc1d429bbae79ffbea93716"
+      }
+    },
+    {
+      "path": "BAKERIES.TRE",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "payload/BAKERIES.TRE",
+        "sha256": "1ee33935f42f48dcf32846f2ab051284519f90165af8fe3833c36bce43a38128"
+      }
+    },
+    {
+      "path": "BARNIN1.TRE",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "payload/BARNIN1.TRE",
+        "sha256": "479cfd081482fe9d93a10356dd78bae708e335bc6959af34ac88dee9c1d77bfe"
+      }
+    },
+    {
+      "path": "BARNIN2.TRE",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "payload/BARNIN2.TRE",
+        "sha256": "9e0240a7658861ed81ccbbe345588aa9989274835b49fb7a60a017374d8b875b"
+      }
+    },
+    {
+      "path": "BATHDBL.TRE",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "payload/BATHDBL.TRE",
+        "sha256": "f357b85e6853ab08b392097e051973339b9f7acc6c1272db1a1150dc2c50dce1"
+      }
+    },
+    {
+      "path": "BEDRMDBL.TRE",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "payload/BEDRMDBL.TRE",
+        "sha256": "c081a9ed578a00a4ece3bf153efdcbaa993b8d0de959fb11cc31b1a0091799ea"
+      }
+    },
+    {
+      "path": "CAS1DBL.TRE",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "payload/CAS1DBL.TRE",
+        "sha256": "51cb38bf79da649b693afc2b6ac391c3340553f9fa47ab9c928043b9f121d935"
+      }
+    },
+    {
+      "path": "CAS2DBL.TRE",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "payload/CAS2DBL.TRE",
+        "sha256": "a5c807341c036f7e1ec5ca9b68c22cf9cc8fac7b929bc39502556e1ce7181412"
+      }
+    },
+    {
+      "path": "CAS3LAN.TRE",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "payload/CAS3LAN.TRE",
+        "sha256": "368b055452875114e93195e422409b330db154642680a242ca28709850750639"
+      }
+    },
+    {
+      "path": "CAS4DBL.TRE",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "payload/CAS4DBL.TRE",
+        "sha256": "df63b537965ba976081032152ed951298d28ca37ffa969d3674a7ac87fe84acc"
+      }
+    },
+    {
+      "path": "CELLAR.TRE",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "payload/CELLAR.TRE",
+        "sha256": "a67eb026dfedcce52e47ba57c51be8cc3028dbc9ac38924940f6eb6beb92ed31"
+      }
+    },
+    {
+      "path": "CLIMDBL.TRE",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "payload/CLIMDBL.TRE",
+        "sha256": "5164566a7500cc2d3ff0052b653ff0c8045c646c50615fd89ad234bcc14799cb"
+      }
+    },
+    {
+      "path": "CLOWNRM.TRE",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "payload/CLOWNRM.TRE",
+        "sha256": "c980417698393410d6f6c704e8388eebad0a8c79eade9617b604aa32ed6b8a7c"
+      }
+    },
+    {
+      "path": "COSTDBL.TRE",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "payload/COSTDBL.TRE",
+        "sha256": "44b7a69edea26755c0d019067b8028289b7856c6a9d273a2c94bacfda1bb0314"
+      }
+    },
+    {
+      "path": "DUNGEON.TRE",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "payload/DUNGEON.TRE",
+        "sha256": "1d740b71640e08f49fd745602e6f6284d46f7d03bd7fe16144ef9874b0ddb4af"
+      }
+    },
+    {
+      "path": "FARMEX1.TRE",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "payload/FARMEX1.TRE",
+        "sha256": "2ace633fcb929b267095189c92e0684431ff22245f008480039da8ad0289ea9b"
+      }
+    },
+    {
+      "path": "FARMEX2.TRE",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "payload/FARMEX2.TRE",
+        "sha256": "1f5a92780746acc9076f37fc0015496637cba8df54ba843800a721d8ffd82090"
+      }
+    },
+    {
+      "path": "FARMEX3.TRE",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "payload/FARMEX3.TRE",
+        "sha256": "82feb27ed35a81d981c967be6ce2aca0da08f51bb0c9ecc4db797603e3abaa97"
+      }
+    },
+    {
+      "path": "FOREST.TRE",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "payload/FOREST.TRE",
+        "sha256": "8708b4d1c10f0b60b0bc7b3beadf518531b59a057844070a601d0e985cbf7aa8"
+      }
+    },
+    {
+      "path": "GENERIC.TRE",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "payload/GENERIC.TRE",
+        "sha256": "849e362cee1031a8052179982967c13e91f4eaf0094847f74680d4a727a1bcf3"
+      }
+    },
+    {
+      "path": "JIMEX.TRE",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "payload/JIMEX.TRE",
+        "sha256": "dd585c03fbb979325fc391049b1c2593578aa0d2f428baae43481d18b1ff0bb6"
+      }
+    },
+    {
+      "path": "JIMIN.TRE",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "payload/JIMIN.TRE",
+        "sha256": "9e605c1127cfdb93088f133f25fd592e10b9877548d552809699c68bc3fa5e45"
+      }
+    },
+    {
+      "path": "KITCHDBL.TRE",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "payload/KITCHDBL.TRE",
+        "sha256": "8c89ff4af92539a6b078ade8ad35b1d394b2e94d2e5fe8c400b020c2d8a59c22"
+      }
+    },
+    {
+      "path": "KNIGHT.TRE",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "payload/KNIGHT.TRE",
+        "sha256": "22137b530e21c2ee5bd750d01ffac3eab147c241652e2f34382c27f80d2f3fe7"
+      }
+    },
+    {
+      "path": "MALTOWN.TRE",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "payload/MALTOWN.TRE",
+        "sha256": "97474d247b564eeec8812a7805db7ba682fc6b86f8e6fe2625e5ac907d9b5c8f"
+      }
+    },
+    {
+      "path": "MDMEADOW.TRE",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "payload/MDMEADOW.TRE",
+        "sha256": "7d8477d7f1f8324175c521b517fe59e15ff166fc883fc08a915ee1de9c36783f"
+      }
+    },
+    {
+      "path": "MSFORTUN.TRE",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "payload/MSFORTUN.TRE",
+        "sha256": "620ad94462844e5baff915f0acfdf90fa47a47e3ea691a5121651f69ea58cfeb"
+      }
+    },
+    {
+      "path": "NEFHQ.TRE",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "payload/NEFHQ.TRE",
+        "sha256": "fd5f5266a258fb818c7fbbe62440e46d3c61c799396598de7c250d96c076c97a"
+      }
+    },
+    {
+      "path": "NEXUS.TRE",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "payload/NEXUS.TRE",
+        "sha256": "868576d651c17fdead4aad896c74f4c35acba78c0632f736b367c63958c819b7"
+      }
+    },
+    {
+      "path": "OUTHSDBL.TRE",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "payload/OUTHSDBL.TRE",
+        "sha256": "861c4c0f04304158df9aebbc1e5781a1bccfa86e0d5cdea551ba441530d02cdf"
+      }
+    },
+    {
+      "path": "OVERLOOK.TRE",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "payload/OVERLOOK.TRE",
+        "sha256": "ffc2296bae27b42a1b71a4081b0da27e93b718ca54134f63d594b360b2a75272"
+      }
+    },
+    {
+      "path": "PAL1LAN.TRE",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "payload/PAL1LAN.TRE",
+        "sha256": "96ad3fa764109b71da1615cd36645df4bf9fbd3b96b3337669d435b3ca1872c8"
+      }
+    },
+    {
+      "path": "PALEX.TRE",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "payload/PALEX.TRE",
+        "sha256": "1f3cd9aacd24efbfbcce1b7ce5e2ae405dd3dd78a46206005e892865f3485808"
+      }
+    },
+    {
+      "path": "PRISNDBL.TRE",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "payload/PRISNDBL.TRE",
+        "sha256": "7be0243b4ab5eb8df40bd48d45b7f0465bf1aa6891b9be15f888f6994e9437fe"
+      }
+    },
+    {
+      "path": "RANDDBL.TRE",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "payload/RANDDBL.TRE",
+        "sha256": "1380abf441b64b71a0f3ddffd5d35e1ab3ceb70350698051b988e072a447c50e"
+      }
+    },
+    {
+      "path": "RECROOM.TRE",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "payload/RECROOM.TRE",
+        "sha256": "ea2f7bb6c484871e25569e36b392f1c4aee8e76adbc3cb2e97076004aff11060"
+      }
+    },
+    {
+      "path": "ROBOSHOW.TRE",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "payload/ROBOSHOW.TRE",
+        "sha256": "d3913d895e1fecefaf94981d2ea83951ac4eb9c979028bd8a13b0077ef7682f6"
+      }
+    },
+    {
+      "path": "SEEDYS.TRE",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "payload/SEEDYS.TRE",
+        "sha256": "140ba2a78462eabe1ffe7a28b78348c837764e485b710d4a27e1e64e8de2ac6b"
+      }
+    },
+    {
+      "path": "STAIRS.TRE",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "payload/STAIRS.TRE",
+        "sha256": "2835e695d1623b783721f9ccd2b919ed598d65360857cf8aa33fd8188e91e7c8"
+      }
+    },
+    {
+      "path": "STUDY.TRE",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "payload/STUDY.TRE",
+        "sha256": "72afeff30db4bcc31a52e117d9b17e42d1933b05e5d6cffc0cec57c9fe6ae83b"
+      }
+    },
+    {
+      "path": "SUBTITLES.PAK",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "payload/SUBTITLES.PAK",
+        "sha256": "4981b48d79daf84970c25a79d82a76c81492cc4e931cc26846bbb393f6c67fe6"
+      }
+    },
+    {
+      "path": "SURVRDBL.TRE",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "payload/SURVRDBL.TRE",
+        "sha256": "fb9f9b66ed1b2e0299fcdd8af8ed7f00e50362cb2fd568f27fd79037e31d8c28"
+      }
+    },
+    {
+      "path": "TAVERDBL.TRE",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "payload/TAVERDBL.TRE",
+        "sha256": "ed706d2d6e3cf891ebdfea593aba433824d17479b6d100a8242951d593ba7b92"
+      }
+    },
+    {
+      "path": "TOONFONT.CAF",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "payload/TOONFONT.CAF",
+        "sha256": "85db1731f93831c948db0b27282db098a4d41b229df1b57313508972ca5ba7c9"
+      }
+    },
+    {
+      "path": "TOWNCENT.TRE",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "payload/TOWNCENT.TRE",
+        "sha256": "551c370bcebf4d07dce30705082e1897ea11f4d6685f6593f341b4b621031d34"
+      }
+    },
+    {
+      "path": "TROPHYRM.TRE",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "payload/TROPHYRM.TRE",
+        "sha256": "d2afdba8b0826367029634826e0e7b29bd080372baed0ed0460b055de441d673"
+      }
+    },
+    {
+      "path": "VENT.TRE",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "payload/VENT.TRE",
+        "sha256": "6fc6346e8d452773f17b51eb8f248874c94e22ac531040b96317fc2a522b798c"
+      }
+    },
+    {
+      "path": "WACEXDBL.TRE",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "payload/WACEXDBL.TRE",
+        "sha256": "8e59ebf92237db421f32226454ded8f1a0ae1f7403b753d688a18f719dd00d01"
+      }
+    },
+    {
+      "path": "WACINDBL.TRE",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "payload/WACINDBL.TRE",
+        "sha256": "35ddb2b35d5862a6dec5cccdb2423c3c1b49fbd1b7415125bd262c0e9f965076"
+      }
+    },
+    {
+      "path": "WOLFDEN.TRE",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "payload/WOLFDEN.TRE",
+        "sha256": "d9cd541cd8fe2088c2d903751ca7c52bd168373c9775362e79cea35cdf28d995"
+      }
+    },
+    {
+      "path": "WRAP.TRE",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "payload/WRAP.TRE",
+        "sha256": "f6dd2c081f5d3da0bb77c06a5a3af99dee2cb6b539ecb6187a550deff64bfaa8"
+      }
+    },
+    {
+      "path": "ZCROSS.TRE",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "payload/ZCROSS.TRE",
+        "sha256": "159b4ec9d79ed60f33dae7e17e4b57ea33651d0fd52b4582da35662444aea4cc"
+      }
+    },
+    {
+      "path": "ZDOCKDBL.TRE",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "payload/ZDOCKDBL.TRE",
+        "sha256": "837244333f8cf2ceca53ecf64415c828d00bfba74449074ccfa3752d5a181a44"
+      }
+    }
+  ]
+}

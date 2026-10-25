@@ -9,3 +9,7 @@ bun.lockb
 
 
 
+# Patch packaging and validation outputs
+__pycache__/
+*.pyc
+!kitor/tools/lifecycle-harness/Cargo.lock

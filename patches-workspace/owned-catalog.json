@@ -1,0 +1,726 @@
+{
+  "schema_version": 1,
+  "ownership_checked_at": "2026-10-25",
+  "catalog_entry_count": 28,
+  "source_catalog": "Downloads/json/all_games.json (174 entries)",
+  "ownership_sources": {
+    "steam": "yhaggai signed-in All Games page, 103 entries",
+    "gog": "Authenticated account library, 36 titles"
+  },
+  "scope": "Local preparation only. No game installation, registry activation, or publication performed.",
+  "specification": "patches-workspace/specification.json",
+  "build_both_platforms": "python3 kitor/tools/build_patch_packages.py <patch.json> --output dist/patches",
+  "build_windows_candidate": "python3 kitor/tools/build_patch_packages.py <patch.windows.candidate.json> --platform windows --output dist/patches",
+  "verify_lifecycle": "python3 kitor/tools/run_lifecycle_tests.py --nocapture",
+  "entries": [
+    {
+      "catalog_index": 1,
+      "game_id": "simon1-25th",
+      "title": "Simon The sorcerer 25th Ann. edition",
+      "owned_stores": ["gog"],
+      "directory": "patches-workspace/simon1-25th/he",
+      "status": "no_patch_required",
+      "release_ready": false,
+      "manifest": null,
+      "declared_platforms": [],
+      "artifacts": [],
+      "blockers": []
+    },
+    {
+      "catalog_index": 4,
+      "game_id": "monkey-se",
+      "title": "The Secret of Monkey Island",
+      "owned_stores": ["gog"],
+      "directory": "patches-workspace/monkey-se/he",
+      "status": "packaged_unverified",
+      "release_ready": false,
+      "manifest": "patches-workspace/monkey-se/he/patch.json",
+      "declared_platforms": ["windows", "osx"],
+      "artifacts": [
+        {
+          "platform": "windows",
+          "path": "dist/patches/monkey-se-he-1.2-kitor2-windows.zip",
+          "size": 5015002,
+          "sha256": "bea9b09fa724b43cc37424d12fd84585a53d5eaf7dae2b49ed441963c2d46a7a"
+        },
+        {
+          "platform": "osx",
+          "path": "dist/patches/monkey-se-he-1.2-kitor2-osx.zip",
+          "size": 5014998,
+          "sha256": "2608cb8e2de6bbb433f5ee359ea46d9926ebc889c74058f3203b659787dd4b85"
+        }
+      ],
+      "blockers": [
+        "Native Windows/macOS gameplay verification pending; local package building is not a compatibility certification."
+      ]
+    },
+    {
+      "catalog_index": 5,
+      "game_id": "monkey2-se",
+      "title": "Monkey Island 2: LeChuck's Revenge",
+      "owned_stores": ["steam"],
+      "directory": "patches-workspace/monkey2-se/he",
+      "status": "packaged_unverified",
+      "release_ready": false,
+      "manifest": "patches-workspace/monkey2-se/he/patch.json",
+      "declared_platforms": ["windows", "osx"],
+      "artifacts": [
+        {
+          "platform": "windows",
+          "path": "dist/patches/monkey2-se-he-1.1-kitor2-windows.zip",
+          "size": 6843009,
+          "sha256": "ed3b93a6ca60b11e003b06eefb5ec9c01ed65658c117c3f3e35b079e82a156ed"
+        },
+        {
+          "platform": "osx",
+          "path": "dist/patches/monkey2-se-he-1.1-kitor2-osx.zip",
+          "size": 6843005,
+          "sha256": "d081e1cc16f9b23fab808c6db2528382d9c4dbe431c353b7849ae6772d747e50"
+        }
+      ],
+      "blockers": [
+        "Native Windows/macOS gameplay verification pending; local package building is not a compatibility certification."
+      ]
+    },
+    {
+      "catalog_index": 16,
+      "game_id": "pq1",
+      "title": "Police Quest: In Pursuit of the Death Angel",
+      "owned_stores": ["steam"],
+      "directory": "patches-workspace/pq1/he",
+      "status": "packaged_unverified",
+      "release_ready": false,
+      "manifest": "patches-workspace/pq1/he/patch.json",
+      "declared_platforms": ["windows", "osx"],
+      "artifacts": [
+        {
+          "platform": "windows",
+          "path": "dist/patches/pq1-he-1.0-kitor1-windows.zip",
+          "size": 231319,
+          "sha256": "abfdb5f3f688b985d194499dc1e2808b01fba688b9b861a813d09ec19a76b550"
+        },
+        {
+          "platform": "osx",
+          "path": "dist/patches/pq1-he-1.0-kitor1-osx.zip",
+          "size": 231315,
+          "sha256": "330bfbabf0f77f05a60f4f5baed73dbc22e4ee75096ff22f8a70b4bda32da709"
+        }
+      ],
+      "blockers": [
+        "Representative owned-game install/play/uninstall checks on Windows and macOS not yet run.",
+        "Catalog cites GOG; owned Steam Police Quest Collection edition must pass publisher MD5 fingerprints."
+      ]
+    },
+    {
+      "catalog_index": 17,
+      "game_id": "sq1sci",
+      "title": "Space Quest: The Sarien Encounter (VGA)",
+      "owned_stores": ["steam"],
+      "directory": "patches-workspace/sq1sci/he",
+      "status": "packaged_unverified",
+      "release_ready": false,
+      "manifest": "patches-workspace/sq1sci/he/patch.json",
+      "declared_platforms": ["windows", "osx", "linux"],
+      "artifacts": [
+        {
+          "platform": "windows",
+          "path": "dist/patches/sq1sci-he-1.0-kitor2-windows.zip",
+          "size": 709284,
+          "sha256": "f0ed591144b2388cdd52eb633aa25314dd20bce98eb46009b610593cb2ccd565"
+        },
+        {
+          "platform": "osx",
+          "path": "dist/patches/sq1sci-he-1.0-kitor2-osx.zip",
+          "size": 709280,
+          "sha256": "d92f411e55774e4a13132cc3d5534ec7eec898eb8c0a1f7be0cc54ba208fbfea"
+        }
+      ],
+      "blockers": [
+        "Native Windows/macOS gameplay verification pending; local package building is not a compatibility certification."
+      ]
+    },
+    {
+      "catalog_index": 18,
+      "game_id": "sq3",
+      "title": "Space Quest III: The Pirates of Pestulon",
+      "owned_stores": ["steam", "gog"],
+      "directory": "patches-workspace/sq3/he",
+      "status": "packaged_unverified",
+      "release_ready": false,
+      "manifest": "patches-workspace/sq3/he/patch.json",
+      "declared_platforms": ["windows", "osx"],
+      "artifacts": [
+        {
+          "platform": "windows",
+          "path": "dist/patches/sq3-he-1.0-kitor1-windows.zip",
+          "size": 512512,
+          "sha256": "08fbb89d4b4af9961947aee54ff0448f85f96c400aef3f36faea553f80139423"
+        },
+        {
+          "platform": "osx",
+          "path": "dist/patches/sq3-he-1.0-kitor1-osx.zip",
+          "size": 512508,
+          "sha256": "a1764aa5c9aea5c7e031056849a5e20d4889ee44854fbbd4eb968933e3f4fc5f"
+        }
+      ],
+      "blockers": [
+        "Representative owned-game install/play/uninstall checks on Windows and macOS not yet run.",
+        "Original edition fingerprints unavailable; validate supported game layout before enabling installation."
+      ]
+    },
+    {
+      "catalog_index": 19,
+      "game_id": "torin",
+      "title": "Torin's Passage",
+      "owned_stores": ["gog"],
+      "directory": "patches-workspace/torin/he",
+      "status": "packaged_unverified",
+      "release_ready": false,
+      "manifest": "patches-workspace/torin/he/patch.json",
+      "declared_platforms": ["windows", "osx"],
+      "artifacts": [
+        {
+          "platform": "windows",
+          "path": "dist/patches/torin-he-1.0-kitor1-windows.zip",
+          "size": 1186134,
+          "sha256": "9f3e561d262e3298609e5b482cee1f56fd6dd1b259482367cf787abc74c1512c"
+        },
+        {
+          "platform": "osx",
+          "path": "dist/patches/torin-he-1.0-kitor1-osx.zip",
+          "size": 1186130,
+          "sha256": "34928da952770a76a19133127fc160bb0b09861b36ccdd285368391cafa1ef33"
+        }
+      ],
+      "blockers": [
+        "Representative owned-game install/play/uninstall checks on Windows and macOS not yet run.",
+        "Original edition fingerprints unavailable; validate supported game layout before enabling installation."
+      ]
+    },
+    {
+      "catalog_index": 22,
+      "game_id": "stanley-parable",
+      "title": "The Stanley Parable (2013)",
+      "owned_stores": ["steam"],
+      "directory": "patches-workspace/stanley-parable/he",
+      "status": "staged_windows_payload_awaiting_compatibility_validation",
+      "release_ready": false,
+      "manifest": "patches-workspace/stanley-parable/he/patch.windows.candidate.json",
+      "declared_platforms": ["windows"],
+      "artifacts": [
+        {
+          "platform": "windows",
+          "path": "dist/patches/stanley-parable-he-0.9.2.2-steam-male-kitor1-windows.zip",
+          "size": 15236290,
+          "sha256": "44da2399f3259ba9c27b6dd78683c72b190fe1ef66205ac8fad49c0a8e714807"
+        }
+      ],
+      "blockers": [
+        "Steam 2013 edition only; excludes Ultra Deluxe and Epic. Male subtitle variant selected; upstream also offers female variant.",
+        "Upstream documents Windows and PlayOnMac, not native macOS. No native macOS rendering verification.",
+        "Windows native install/uninstall and gameplay validation have not run. macOS package is not built or verified. Original supported game version hashes must be established before release."
+      ]
+    },
+    {
+      "catalog_index": 27,
+      "game_id": "kyra1-cd",
+      "title": "The Legend of Kyrandia (Book One)",
+      "owned_stores": ["gog"],
+      "directory": "patches-workspace/kyra1-cd/he",
+      "status": "packaged_unverified",
+      "release_ready": false,
+      "manifest": "patches-workspace/kyra1-cd/he/patch.json",
+      "declared_platforms": ["windows", "osx"],
+      "artifacts": [
+        {
+          "platform": "windows",
+          "path": "dist/patches/kyra1-cd-he-1.0-beta-kitor2-windows.zip",
+          "size": 256724,
+          "sha256": "0642c72a73e15d116271170c7e91919b1b83ae8e621687ecbe06ab0df033489d"
+        },
+        {
+          "platform": "osx",
+          "path": "dist/patches/kyra1-cd-he-1.0-beta-kitor2-osx.zip",
+          "size": 256720,
+          "sha256": "db77318bd0d70d3fd7b4e724487e0f9c0b17e022040cef359f6adcf90f94f425"
+        }
+      ],
+      "blockers": [
+        "Native Windows/macOS gameplay verification pending; local package building is not a compatibility certification."
+      ]
+    },
+    {
+      "catalog_index": 36,
+      "game_id": "tesla-effect",
+      "title": "Tesla Effect: A Tex Murphy Adventure",
+      "owned_stores": ["steam"],
+      "directory": "patches-workspace/tesla-effect/he",
+      "status": "staged_windows_payload_awaiting_compatibility_validation",
+      "release_ready": false,
+      "manifest": "patches-workspace/tesla-effect/he/patch.windows.candidate.json",
+      "declared_platforms": ["windows"],
+      "artifacts": [
+        {
+          "platform": "windows",
+          "path": "dist/patches/tesla-effect-he-RC1-kitor1-windows.zip",
+          "size": 3691185,
+          "sha256": "e5ada5a5f82acab20f33f163eff59749cbdc8ded4fe1158ea51d1e4d7be3c505"
+        }
+      ],
+      "blockers": [
+        "Steam Tesla Effect; upstream allows other stores but only Steam ownership was matched.",
+        "macOS Unity .app ExternalData location and compatibility must be established before adding osx.",
+        "Windows native install/uninstall and gameplay validation have not run. macOS package is not built or verified. Original supported game version hashes must be established before release."
+      ]
+    },
+    {
+      "catalog_index": 39,
+      "game_id": "she-sees-red",
+      "title": "She Sees Red - Interactive Movie",
+      "owned_stores": ["steam"],
+      "directory": "patches-workspace/she-sees-red/he",
+      "status": "no_patch_required",
+      "release_ready": false,
+      "manifest": null,
+      "declared_platforms": [],
+      "artifacts": [],
+      "blockers": []
+    },
+    {
+      "catalog_index": 68,
+      "game_id": "spyfox",
+      "title": "Spy Fox In Dry Cereal",
+      "owned_stores": ["steam"],
+      "directory": "patches-workspace/spyfox/he",
+      "status": "packaged_unverified",
+      "release_ready": false,
+      "manifest": "patches-workspace/spyfox/he/patch.json",
+      "declared_platforms": ["windows", "osx"],
+      "artifacts": [
+        {
+          "platform": "windows",
+          "path": "dist/patches/spyfox-he-1.0-kitor1-windows.zip",
+          "size": 941318,
+          "sha256": "9d7bc6831b912dde8c4536d3989e04a68311784bddaa5985dcf30ea62039c9d7"
+        },
+        {
+          "platform": "osx",
+          "path": "dist/patches/spyfox-he-1.0-kitor1-osx.zip",
+          "size": 941314,
+          "sha256": "376c70f7851b81132997fa75da5d86a4b3863e16e61a32dde5e24cf81493b209"
+        }
+      ],
+      "blockers": [
+        "Representative owned-game install/play/uninstall checks on Windows and macOS not yet run.",
+        "No publisher original SHA256; xdelta source compatibility must be checked on owned game and macOS xdelta3 provisioned."
+      ]
+    },
+    {
+      "catalog_index": 69,
+      "game_id": "pajama",
+      "title": "Pajama Sam: No Need to Hide When It's Dark Outside",
+      "owned_stores": ["gog"],
+      "directory": "patches-workspace/pajama/he",
+      "status": "packaged_unverified",
+      "release_ready": false,
+      "manifest": "patches-workspace/pajama/he/patch.json",
+      "declared_platforms": ["windows", "osx"],
+      "artifacts": [
+        {
+          "platform": "windows",
+          "path": "dist/patches/pajama-he-1.0-kitor1-windows.zip",
+          "size": 963971,
+          "sha256": "2946d51220a0862d9bc50cf695aba5a827a21b33c33b523eff3f359a4cf8ff8a"
+        },
+        {
+          "platform": "osx",
+          "path": "dist/patches/pajama-he-1.0-kitor1-osx.zip",
+          "size": 963967,
+          "sha256": "600f46d3c961e57dd29056ce3c9def7950f51b9027864adc62d8608daf2347e1"
+        }
+      ],
+      "blockers": [
+        "Representative owned-game install/play/uninstall checks on Windows and macOS not yet run.",
+        "No publisher original SHA256; xdelta source compatibility must be checked on owned game and macOS xdelta3 provisioned."
+      ]
+    },
+    {
+      "catalog_index": 72,
+      "game_id": "sq5",
+      "title": "Space Quest V: The Next Mutation",
+      "owned_stores": ["steam"],
+      "directory": "patches-workspace/sq5/he",
+      "status": "packaged_unverified",
+      "release_ready": false,
+      "manifest": "patches-workspace/sq5/he/patch.json",
+      "declared_platforms": ["windows", "osx"],
+      "artifacts": [
+        {
+          "platform": "windows",
+          "path": "dist/patches/sq5-he-1.0-kitor1-windows.zip",
+          "size": 412335,
+          "sha256": "7a4bf22a82020596b9c68af25904cc438b39141f794166ffc02488da70c71654"
+        },
+        {
+          "platform": "osx",
+          "path": "dist/patches/sq5-he-1.0-kitor1-osx.zip",
+          "size": 412331,
+          "sha256": "02664326f4849a7a929445b8f6e7eaf099a41e2aa19943cce9ae7273aea3f581"
+        }
+      ],
+      "blockers": [
+        "Representative owned-game install/play/uninstall checks on Windows and macOS not yet run.",
+        "Original edition fingerprints unavailable; validate supported game layout before enabling installation."
+      ]
+    },
+    {
+      "catalog_index": 75,
+      "game_id": "ethan-carter",
+      "title": "The Vanishing of Ethan Carter",
+      "owned_stores": ["steam"],
+      "directory": "patches-workspace/ethan-carter/he",
+      "status": "staged_windows_payload_awaiting_compatibility_validation",
+      "release_ready": false,
+      "manifest": "patches-workspace/ethan-carter/he/patch.windows.candidate.json",
+      "declared_platforms": ["windows"],
+      "artifacts": [
+        {
+          "platform": "windows",
+          "path": "dist/patches/ethan-carter-he-2023-12-25-kitor1-windows.zip",
+          "size": 422301,
+          "sha256": "14c8b0df5ec77a2aacf15059524615dfc9e34531d244b98ff1df7aa17e6cb0b0"
+        }
+      ],
+      "blockers": [
+        "Targets original UE3 edition (AstronautsGame and Binaries/Game); does not target Redux UE4.",
+        "No native macOS payload or verified compatibility runtime is provided.",
+        "Windows native install/uninstall and gameplay validation have not run. macOS package is not built or verified. Original supported game version hashes must be established before release."
+      ]
+    },
+    {
+      "catalog_index": 76,
+      "game_id": "toonstruck",
+      "title": "Toonstruck",
+      "owned_stores": ["gog"],
+      "directory": "patches-workspace/toonstruck/he",
+      "status": "packaged_unverified",
+      "release_ready": false,
+      "manifest": "patches-workspace/toonstruck/he/patch.json",
+      "declared_platforms": ["windows", "osx"],
+      "artifacts": [
+        {
+          "platform": "windows",
+          "path": "dist/patches/toonstruck-he-1.0-kitor1-windows.zip",
+          "size": 404434,
+          "sha256": "d719ce4f93beb248eb3e8d82f9c1dadc5d094da19b27d1d5a78e330d89b0ba3b"
+        },
+        {
+          "platform": "osx",
+          "path": "dist/patches/toonstruck-he-1.0-kitor1-osx.zip",
+          "size": 404430,
+          "sha256": "716ef0ea9816b7f3a337346f640088f5db0551f9bf7caaa88f5215ca8449093d"
+        }
+      ],
+      "blockers": [
+        "Representative owned-game install/play/uninstall checks on Windows and macOS not yet run.",
+        "Original edition fingerprints unavailable; validate supported game layout before enabling installation."
+      ]
+    },
+    {
+      "catalog_index": 77,
+      "game_id": "life-is-strange",
+      "title": "Life is Strange Episode 1-3",
+      "owned_stores": ["steam"],
+      "directory": "patches-workspace/life-is-strange/he",
+      "status": "staged_windows_payload_awaiting_compatibility_validation",
+      "release_ready": false,
+      "manifest": "patches-workspace/life-is-strange/he/patch.windows.candidate.json",
+      "declared_platforms": ["windows"],
+      "artifacts": [
+        {
+          "platform": "windows",
+          "path": "dist/patches/life-is-strange-he-2024-01-15-kitor1-windows.zip",
+          "size": 2621096,
+          "sha256": "92a0df893416727fa60ca7daf1c4329a56dcc4635b082c19895272aa3f9c896c"
+        }
+      ],
+      "blockers": [
+        "Targets original Windows Life Is Strange episodes 1-3, not Remastered. Verify ownership/installation of episodes 2 and 3.",
+        "Upstream archive has three redundant Life Is Strange wrapper directories, stripped here. It also contains episode 4/5 menu files; narrative translation remains only episodes 1-3.",
+        "Native macOS port resource layout and cooked font package compatibility are unverified.",
+        "Windows native install/uninstall and gameplay validation have not run. macOS package is not built or verified. Original supported game version hashes must be established before release."
+      ]
+    },
+    {
+      "catalog_index": 87,
+      "game_id": "portal2",
+      "title": "Portal 2",
+      "owned_stores": ["steam"],
+      "directory": "patches-workspace/portal2/he",
+      "status": "experimental_windows_payload_requires_gameplay",
+      "release_ready": false,
+      "manifest": "patches-workspace/portal2/he/patch.windows.candidate.json",
+      "declared_platforms": ["windows"],
+      "artifacts": [
+        {
+          "platform": "windows",
+          "path": "dist/patches/portal2-he-0.9.8-glados-localfonts-experimental-kitor1-windows.zip",
+          "size": 223209837,
+          "sha256": "5ba214bcc7f5055aa9981f1907d118c6b0ac937f1926414061e48d9fb81f3f62"
+        }
+      ],
+      "blockers": [
+        "Native Windows install/uninstall and Hebrew gameplay/font rendering have not been tested. Do not enable or publish this candidate.",
+        "Upstream system-wide font substitution was replaced experimentally with four game-local Tahoma -> Courier New references inside update/pak01_dir.vpk. Additional engine-hardcoded font requests may exist; local substitution effectiveness remains unverified.",
+        "No native macOS implementation or validation. Linux archive remains reference material only."
+      ]
+    },
+    {
+      "catalog_index": 90,
+      "game_id": "gob2",
+      "title": "Gobliins 2: The Prince Buffoon",
+      "owned_stores": ["gog"],
+      "directory": "patches-workspace/gob2/he",
+      "status": "packaged_unverified",
+      "release_ready": false,
+      "manifest": "patches-workspace/gob2/he/patch.json",
+      "declared_platforms": ["windows", "osx"],
+      "artifacts": [
+        {
+          "platform": "windows",
+          "path": "dist/patches/gob2-he-1.0-kitor1-windows.zip",
+          "size": 659140,
+          "sha256": "723b1358ed2cc1fa8d4fba2f87990a58123ffc9e56770ad6ee00e027408df191"
+        },
+        {
+          "platform": "osx",
+          "path": "dist/patches/gob2-he-1.0-kitor1-osx.zip",
+          "size": 659136,
+          "sha256": "ee84fab9b24a2ea416a743f133784161d1ef3d4e7ba52663b7e2ed7eda668281"
+        }
+      ],
+      "blockers": [
+        "Representative owned-game install/play/uninstall checks on Windows and macOS not yet run.",
+        "No publisher original SHA256; xdelta source compatibility must be checked on owned game and macOS xdelta3 provisioned."
+      ]
+    },
+    {
+      "catalog_index": 97,
+      "game_id": "shivah",
+      "title": "The Shivah",
+      "owned_stores": ["steam"],
+      "directory": "patches-workspace/shivah/he",
+      "status": "blocked",
+      "release_ready": false,
+      "manifest": null,
+      "declared_platforms": [],
+      "artifacts": [],
+      "blockers": [
+        "Catalog explicitly requires GOG edition; only Steam edition is owned. Do not apply this patch to Steam.",
+        "No compatible Windows/macOS package enabled."
+      ]
+    },
+    {
+      "catalog_index": 99,
+      "game_id": "journey-down1",
+      "title": "The Journey Down",
+      "owned_stores": ["steam"],
+      "directory": "patches-workspace/journey-down1/he",
+      "status": "staged_windows_payload_awaiting_compatibility_validation",
+      "release_ready": false,
+      "manifest": "patches-workspace/journey-down1/he/patch.windows.candidate.json",
+      "declared_platforms": ["windows"],
+      "artifacts": [
+        {
+          "platform": "windows",
+          "path": "dist/patches/journey-down1-he-2025-01-23-kitor1-windows.zip",
+          "size": 615850780,
+          "sha256": "072b2cb4b4dcaa062f2813f1476a739e40353d296172969f17f8916e56f704eb"
+        }
+      ],
+      "blockers": [
+        "Chapter One only. jd1.gob is a full individual game archive (615850030 bytes), so selective backup of this one affected archive is necessary.",
+        "Native macOS game data layout and archive compatibility are unverified.",
+        "Windows native install/uninstall and gameplay validation have not run. macOS package is not built or verified. Original supported game version hashes must be established before release."
+      ]
+    },
+    {
+      "catalog_index": 107,
+      "game_id": "tlj",
+      "title": "The Longest Journey",
+      "owned_stores": ["steam", "gog"],
+      "directory": "patches-workspace/tlj/he",
+      "status": "packaged_unverified",
+      "release_ready": false,
+      "manifest": "patches-workspace/tlj/he/patch.json",
+      "declared_platforms": ["windows", "osx"],
+      "artifacts": [
+        {
+          "platform": "windows",
+          "path": "dist/patches/tlj-he-catalog-20261025-kitor1-windows.zip",
+          "size": 222543910,
+          "sha256": "325630ee0bdf792d0b4a0600ff1cc37134e9bafc968199f57375592bed51dc2d"
+        },
+        {
+          "platform": "osx",
+          "path": "dist/patches/tlj-he-catalog-20261025-kitor1-osx.zip",
+          "size": 222543906,
+          "sha256": "51e96282a5ddea625ca41afec683875bbaf3f303ef14517de251ed763a0a1100"
+        }
+      ],
+      "blockers": [
+        "Native Windows/macOS gameplay verification pending; local package building is not a compatibility certification."
+      ]
+    },
+    {
+      "catalog_index": 112,
+      "game_id": "sky",
+      "title": "Beneath A Steel Sky",
+      "owned_stores": ["gog"],
+      "directory": "patches-workspace/sky/he",
+      "status": "packaged_unverified",
+      "release_ready": false,
+      "manifest": "patches-workspace/sky/he/patch.json",
+      "declared_platforms": ["windows", "osx"],
+      "artifacts": [
+        {
+          "platform": "windows",
+          "path": "dist/patches/sky-he-catalog-20261025-kitor1-windows.zip",
+          "size": 76362155,
+          "sha256": "dc41f2dbd5294c3c4b594f3e3da57e5dea202e9302ab290c9de8b9c4dfbacb8a"
+        },
+        {
+          "platform": "osx",
+          "path": "dist/patches/sky-he-catalog-20261025-kitor1-osx.zip",
+          "size": 76362151,
+          "sha256": "f11baeabb2d5611655f35b1fe6bb8ff7892fcf375db76f3b0b54ac62bc04fe5e"
+        }
+      ],
+      "blockers": [
+        "Native Windows/macOS gameplay verification pending; local package building is not a compatibility certification."
+      ]
+    },
+    {
+      "catalog_index": 121,
+      "game_id": "kathy-rain-dc",
+      "title": "Kathy Rain: Director's Cut",
+      "owned_stores": ["steam"],
+      "directory": "patches-workspace/kathy-rain-dc/he",
+      "status": "staged_windows_payload_awaiting_compatibility_validation",
+      "release_ready": false,
+      "manifest": "patches-workspace/kathy-rain-dc/he/patch.windows.candidate.json",
+      "declared_platforms": ["windows"],
+      "artifacts": [
+        {
+          "platform": "windows",
+          "path": "dist/patches/kathy-rain-dc-he-2025-09-15-kitor1-windows.zip",
+          "size": 28830622,
+          "sha256": "cf4a00a10bcfc7718e5e428f08b30c576b6876d6642bd6a2d4c4017fe305c2b8"
+        }
+      ],
+      "blockers": [
+        "Director's Cut only, not original Kathy Rain. Windows Unity resources.assets replaces one 28829728-byte asset file.",
+        "Switch to English temporarily for the chapter 2 tape puzzle and final lock puzzle, then switch back to Hebrew (upstream guidance).",
+        "Windows Unity resources.assets cannot be assumed compatible with macOS .app bundle. Exact source-game build hash is not supplied.",
+        "Windows native install/uninstall and gameplay validation have not run. macOS package is not built or verified. Original supported game version hashes must be established before release."
+      ]
+    },
+    {
+      "catalog_index": 130,
+      "game_id": "sq2",
+      "title": "Space Quest II: Vohaul's Revenge",
+      "owned_stores": ["steam", "gog"],
+      "directory": "patches-workspace/sq2/he",
+      "status": "packaged_unverified",
+      "release_ready": false,
+      "manifest": "patches-workspace/sq2/he/patch.json",
+      "declared_platforms": ["windows", "osx"],
+      "artifacts": [
+        {
+          "platform": "windows",
+          "path": "dist/patches/sq2-he-1.0-kitor1-windows.zip",
+          "size": 503060,
+          "sha256": "5c49fc68ea2c8a3f2df223b9bad0b6d6ffa9d4710f365fa907569a4e7f7e3d9d"
+        },
+        {
+          "platform": "osx",
+          "path": "dist/patches/sq2-he-1.0-kitor1-osx.zip",
+          "size": 503056,
+          "sha256": "ec305d1f41e97ec8bbafb17bea48d8e489df1cff5b4233691503fbf465f2005a"
+        }
+      ],
+      "blockers": [
+        "Representative owned-game install/play/uninstall checks on Windows and macOS not yet run."
+      ]
+    },
+    {
+      "catalog_index": 136,
+      "game_id": "sq1",
+      "title": "Space Quest 1: The Sarien Encounter (EGA)",
+      "owned_stores": ["gog"],
+      "directory": "patches-workspace/sq1/he",
+      "status": "packaged_unverified",
+      "release_ready": false,
+      "manifest": "patches-workspace/sq1/he/patch.json",
+      "declared_platforms": ["windows", "osx"],
+      "artifacts": [
+        {
+          "platform": "windows",
+          "path": "dist/patches/sq1-he-1.0-kitor1-windows.zip",
+          "size": 321041,
+          "sha256": "d62fb8be840082fc152a46232d3beb61b5e37217adbcb6875a377006436b437d"
+        },
+        {
+          "platform": "osx",
+          "path": "dist/patches/sq1-he-1.0-kitor1-osx.zip",
+          "size": 321037,
+          "sha256": "bdcb4f7afab57045df06264005f711a830842a68b3ee985280fff192d7561d87"
+        }
+      ],
+      "blockers": [
+        "Representative owned-game install/play/uninstall checks on Windows and macOS not yet run."
+      ]
+    },
+    {
+      "catalog_index": 160,
+      "game_id": "drifter",
+      "title": "The Drifter",
+      "owned_stores": ["steam"],
+      "directory": "patches-workspace/drifter/he",
+      "status": "staged_windows_payload_awaiting_compatibility_validation",
+      "release_ready": false,
+      "manifest": "patches-workspace/drifter/he/patch.windows.candidate.json",
+      "declared_platforms": ["windows"],
+      "artifacts": [
+        {
+          "platform": "windows",
+          "path": "dist/patches/drifter-he-2026-07-09-kitor1-windows.zip",
+          "size": 1543862,
+          "sha256": "dc0e00ed10c10c4d1bb20be2d0ea7b530a0b29555ee8d99cc9db129779f7c380"
+        }
+      ],
+      "blockers": [
+        "Steam The Drifter; standalone translation.csv payload.",
+        "Native macOS SystemText.get_SaveDirectory returns Application.persistentDataPath when Application.platform==1 (OSXPlayer), versus ./ on Windows. InitialiseCustomLanguage appends translation.csv.",
+        "macOS installation therefore needs a separately journaled user-data target; the current game-root-only manifest cannot safely represent this. Do not write into game .app and claim success.",
+        "Windows native install/uninstall and gameplay validation have not run. macOS package is not built or verified. Original supported game version hashes must be established before release."
+      ]
+    },
+    {
+      "catalog_index": 164,
+      "game_id": "gemini-rue",
+      "title": "Gemini Rue",
+      "owned_stores": ["steam"],
+      "directory": "patches-workspace/gemini-rue/he",
+      "status": "blocked",
+      "release_ready": false,
+      "manifest": null,
+      "declared_platforms": [],
+      "artifacts": [],
+      "blockers": [
+        "Catalog explicitly requires GOG edition; only Steam edition is owned. Do not apply this patch to Steam.",
+        "No compatible Windows/macOS package enabled."
+      ]
+    }
+  ]
+}

@@ -1,0 +1,157 @@
+{
+  "schema_version": 1,
+  "scummvm_id": "sq2",
+  "language": "he",
+  "version": "1.0-kitor1",
+  "filename": "sq2-he-kitor1.zip",
+  "platforms": {
+    "windows": {},
+    "osx": {}
+  },
+  "files": [
+    {
+      "path": "VOL.0",
+      "operation": "modify",
+      "original_md5": "3e09c8580506212cd3494b5df8ea6cbc",
+      "installed_md5": "fb8624ed5f593d6f415d6189bd5fd5dd",
+      "source": {
+        "kind": "bsdiff",
+        "path": "payload/VOL.0.bsdiff",
+        "sha256": "c46b23a2888c3979af225d4d8af0ee730140d2fbc7d59f2f814ac885f6e9a65e",
+        "input": "VOL.0"
+      }
+    },
+    {
+      "path": "VOL.1",
+      "operation": "modify",
+      "original_md5": "3e09c8580506212cd3494b5df8ea6cbc",
+      "installed_md5": "876537acc263098fa49ce4706bb7dd1e",
+      "source": {
+        "kind": "bsdiff",
+        "path": "payload/VOL.1.bsdiff",
+        "sha256": "8f815d78d285ecc2d8c706b8e7380499fd1b1510c11eb76d75a21414364f98fb",
+        "input": "VOL.1"
+      }
+    },
+    {
+      "path": "VOL.2",
+      "operation": "modify",
+      "original_md5": "3e09c8580506212cd3494b5df8ea6cbc",
+      "installed_md5": "be68eb442c49b42a158edfc15c17a5c5",
+      "source": {
+        "kind": "bsdiff",
+        "path": "payload/VOL.2.bsdiff",
+        "sha256": "4d5c0c35bc9bc714e11cef65fc839f260ede4957fceebd1489ca41cca87729f8",
+        "input": "VOL.2"
+      }
+    },
+    {
+      "path": "LOGDIR",
+      "operation": "modify",
+      "original_md5": "28add5125484302d213911df60d2aded",
+      "installed_md5": "5f73ab13808a260d777d0002c70b967c",
+      "source": {
+        "kind": "bsdiff",
+        "path": "payload/LOGDIR.bsdiff",
+        "sha256": "a7e03010c5040b7d77e7e5833500ae8caea0dcbbb8597634d436a3c95b283253",
+        "input": "LOGDIR"
+      }
+    },
+    {
+      "path": "PICDIR",
+      "operation": "modify",
+      "original_md5": "514534df82237848dfcd760e476a766e",
+      "installed_md5": "4857adc82bf4b06cf7179574705a9bbf",
+      "source": {
+        "kind": "bsdiff",
+        "path": "payload/PICDIR.bsdiff",
+        "sha256": "8c18aff3dbf29c8ef91e278ed8cf0b1af9044beae25541eba87533b6a4da1c9e",
+        "input": "PICDIR"
+      }
+    },
+    {
+      "path": "SNDDIR",
+      "operation": "modify",
+      "original_md5": "eab6a5f4cb071c906df674e98891a432",
+      "installed_md5": "3aa0d9c91b8378f7191c5cc825153dc6",
+      "source": {
+        "kind": "bsdiff",
+        "path": "payload/SNDDIR.bsdiff",
+        "sha256": "07ea23d0732634ff77cb4acc7841c0f314c035c95c5d70612d567ab3753b1b0b",
+        "input": "SNDDIR"
+      }
+    },
+    {
+      "path": "VIEWDIR",
+      "operation": "modify",
+      "original_md5": "efb1f93513d57eeca9a539e019df7b89",
+      "installed_md5": "a3729ebe5a7fa758d749e07b55074e4e",
+      "source": {
+        "kind": "bsdiff",
+        "path": "payload/VIEWDIR.bsdiff",
+        "sha256": "8c8e3178cd1393f251f9539205e3094542fa492553118cff065ba2081a1fa3bb",
+        "input": "VIEWDIR"
+      }
+    },
+    {
+      "path": "OBJECT",
+      "operation": "modify",
+      "original_md5": "5024d50d42801aaea7170a756218a7e6",
+      "installed_md5": "e11b6ab3dab868f4cb190d4cb37ec49e",
+      "source": {
+        "kind": "bsdiff",
+        "path": "payload/OBJECT.bsdiff",
+        "sha256": "b9c23c81b579e5d35142cbbb8c305c1f66040bb168a8e89d845ad4ef1ce9a5d8",
+        "input": "OBJECT"
+      }
+    },
+    {
+      "path": "WORDS.TOK",
+      "operation": "modify",
+      "original_md5": "552e2b31bf8825eea5a46e6eebb4cb3e",
+      "installed_md5": "1f0a24e4b25e8012cef0fdc53b7d844f",
+      "source": {
+        "kind": "bsdiff",
+        "path": "payload/WORDS.TOK.bsdiff",
+        "sha256": "cbd9e9ac726dca45d416c4a58b75273efa1015da37cb1f21dd8fb4fb86ec5f57",
+        "input": "WORDS.TOK"
+      }
+    },
+    {
+      "path": "VOL.3",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "payload/VOL.3",
+        "sha256": "1582c6ebd8d47a4a1c0c8893726abacd30a10be4114092d4c10b36e9c73db8f2"
+      }
+    },
+    {
+      "path": "VOL.4",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "payload/VOL.4",
+        "sha256": "656505876fd75dd93f95f9c5f2691e93f9e73917a501ba7bb1c7b256158530c6"
+      }
+    },
+    {
+      "path": "WORDS.TOK.EXTENDED",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "payload/WORDS.TOK.EXTENDED",
+        "sha256": "803acda56d8fee7e2428914d5738a30ccae5812011789edef9d968dde261dde6"
+      }
+    },
+    {
+      "path": "agi-font-dos.bin",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "payload/agi-font-dos.bin",
+        "sha256": "6961fdd01a443ef0e11fa79bd0878dd65e2b1a91862621510af7f87e70d81612"
+      }
+    }
+  ]
+}

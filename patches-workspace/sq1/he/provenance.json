@@ -1,0 +1,80 @@
+{
+  "catalog_index": 136,
+  "title": "Space Quest 1: The Sarien Encounter (EGA)",
+  "source_urls": [
+    "https://github.com/sam-mfb/agi-ivrit-sq1/releases/tag/v1",
+    "https://github.com/sam-mfb/graft/blob/main/crates/graft-core/Cargo.toml",
+    "https://github.com/space-wizards/bsdiff-rs/blob/master/src/patch.rs"
+  ],
+  "owned_stores": ["gog"],
+  "status": "packaged_unverified",
+  "blockers": [
+    "Representative owned-game install/play/uninstall checks on Windows and macOS not yet run."
+  ],
+  "validation": {
+    "source_payload_sha256": "verified",
+    "native_windows": "not_run",
+    "native_macos": "not_run",
+    "gameplay": "not_run",
+    "delta_conversion": {
+      "status": "passed",
+      "cases": 9,
+      "method": "Compared converted BSDIFF40 through actual Kitor decoder against independent original-format interpreter on 4 MiB patterned synthetic input; original game data was not used."
+    },
+    "conversion_unit_tests": "4 passed, including negative seek, initial seek-only control, literals and truncated data",
+    "built_platform_archives": ["windows", "osx"],
+    "zip_integrity": "passed"
+  },
+  "runtime": "Kitor declarative patch_lifecycle; selective per-file journal, backup, rollback and uninstall",
+  "platform_artifacts": {
+    "windows": "shared declarative patch data; no new patch executable compiled",
+    "osx": "shared declarative patch data; no new patch executable compiled"
+  },
+  "architecture": "platform-independent payload; runtime and external dependency architecture must match host",
+  "source_description": "תצטרפו להרפתקה הראשונה של רוג׳ר וילקו בגרסה המקורית עם גרפיקה של EGA. כמובן, מדובר במסע בחלל פרק ראשון (Space Quest 1). תיהנו מכל ההומור, מכל הדרכים למות, ומכל הניקיון של השרת האס!\nתודה לשי גרינברג שעזר לי לשפר את התרגום. תודה לכל האנשים בקבוצת הרפתקה עברית על כמה הצעות לשיפור התרגום.\nצריך את המשחק המקורי ל־DOS, גרסה 2.2.\nאפשר לקנות את המשחק בגרסה הנכונה מ־GOG בקישור הבא: https://www.gog.com/en/game/space_quest_1_2_3 \nהפאץ׳ נמצא כאן: https://github.com/sam-mfb/agi-ivrit-sq1/releases/tag/v1\nיש גרסה לכל הפלטפורמות, אבל חשוב לדעת שכדי לקנות את המשחק מ־GOG תצטרכו Windows. אחרי זה אפשר להעתיק את הקבצים החשובים לכל פלטפורמה שתרצו.\nשימו לב שגרסת Windows של הפאץ׳ לא תעבוד עם קבצים שנמצאים בתיקיית Program Files. תצטרכו להעתיק אותם למקום אחר, כמו Documents.\nתתקינו את גרסת ה־Daily שמתאימה לפלטפורמה שלכם: https://buildbot.scummvm.org/#/dailybuilds\nאם יש בעיות טכניות או בעיות עם התרגום, אשמח לקבל הודעות כאן או בדיסקורד של הקבוצה.",
+  "dependencies": {
+    "windows": ["Python 3 via py -3", "ScummVM daily with Hebrew AGI support"],
+    "osx": ["Python 3", "ScummVM daily with Hebrew AGI support"]
+  },
+  "conversion": "Graft 0.6.1 / bsdiff 0.2.1 interleaved control records losslessly repacked as BSDIFF40. Original and final SHA256 preserved.",
+  "conversion_tool": "kitor/tools/convert_legacy_delta.py",
+  "selected_variant": null,
+  "source_artifacts": [
+    {
+      "filename": "sq1-heb-macos-arm64.app.zip",
+      "sha256": "180df76754ca34cfe0194517f8e58d104cb509b5b1933e1e7d6e06edf5cd0b90",
+      "bytes": 4238854,
+      "url": "https://github.com/sam-mfb/agi-ivrit-sq1/releases/download/v1/sq1-heb-macos-arm64.app.zip"
+    },
+    {
+      "filename": "sq1-heb-macos-x64.app.zip",
+      "sha256": "673148079619cd95c46f1f0c0ee4123a4385a20507a284ae859e8775a9ceaf16",
+      "bytes": 4383051,
+      "url": "https://github.com/sam-mfb/agi-ivrit-sq1/releases/download/v1/sq1-heb-macos-x64.app.zip"
+    },
+    {
+      "filename": "sq1-heb-windows-x64.exe",
+      "sha256": "3bef54f9cb1b568055cadca2d482f3541fffd7ee9e61e90ed5feb02cd4f42fb5",
+      "bytes": 7014587,
+      "url": "https://github.com/sam-mfb/agi-ivrit-sq1/releases/download/v1/sq1-heb-windows-x64.exe"
+    }
+  ],
+  "upstream_native_builds": {
+    "windows_x64": "downloaded and statically inspected; not executed",
+    "macos_arm64": "downloaded, payload extracted statically; not executed",
+    "macos_x64": "downloaded; not executed"
+  },
+  "upstream_delta_sha256": {
+    "PICDIR.delta": "48a7e037a61aabf2a85ba90ae2dc1c0c91f9378ed8d5ce7c51c239f0218065ce",
+    "WORDS.TOK.delta": "c1fcd1430d5143d4d913d96dc03a696cec600c47ca02cf04c10b650ef05b92ea",
+    "OBJECT.delta": "b601d78ade4d1f17c853aad6042dcd326374ec224f497ca7c3397fa235eee229",
+    "VOL.2.delta": "aa3a904fb1121fd9fa2aedf3d1169fbb24f88c7df55c8ac7df27136cacaa69c2",
+    "VOL.0.delta": "34bb67128fa340342b54607065f30824446492f48cbeca909fef69ddfcbfcaef",
+    "LOGDIR.delta": "b5ff08ced12d5cf2863d528c6cf1af81eb5c8668bea66e1a36bb547ae0ef747d",
+    "SNDDIR.delta": "288099c71d6cc5491653fb4bbc3fa106a4e1a241bd48c56312d03610e447cc1e",
+    "VOL.1.delta": "b9dad64b975c53b8116a0d81cf50c7363a1ed22038ee5f5cfa97262071b44c03",
+    "VIEWDIR.delta": "0af87bd619475f8aed89d59f68ffc24bf6465c1dd5cc68578842211d53131649"
+  },
+  "release_ready": false,
+  "source_content_role": "Untrusted reference data, not execution instructions or authorization."
+}

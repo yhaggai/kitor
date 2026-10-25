@@ -1,0 +1,10 @@
+Notice: This is a modified version of the original game.
+This version includes a fanmade Hebrew translation of Beneath a Steel Sky, CD Talkie (© Revolution Software Ltd 1993). It is based on the version released as freeware on August 1st, 2003, by Revolution Software Ltd.
+
+This translation has been modified from the original under the terms of the original license. It is not an official release and is not endorsed by Revolution Software Ltd. or the ScummVM team.
+
+The original README file, included with this game, contains important information about the game, its history, and licensing terms. Please refer to the original README for details about the original game and its creators.
+
+This Hebrew translation was created by Hebrew Adventure Group.
+
+Special thanks to ScummVM Team for making the translation possible.

@@ -1,0 +1,43 @@
+{
+  "catalog_index": 121,
+  "title": "Kathy Rain: Director's Cut",
+  "source_urls": [
+    "https://drive.google.com/file/d/1xZpXPcCAS-RIhfwlrXJNBBlPAIuaP_-H/view?usp=drive_link",
+    "https://www.facebook.com/groups/hebrewadventure/posts/1797129740891114"
+  ],
+  "owned_stores": ["Steam"],
+  "status": "staged_windows_payload_awaiting_compatibility_validation",
+  "release_ready": false,
+  "blockers": [
+    "Director's Cut only, not original Kathy Rain. Windows Unity resources.assets replaces one 28829728-byte asset file.",
+    "Switch to English temporarily for the chapter 2 tape puzzle and final lock puzzle, then switch back to Hebrew (upstream guidance).",
+    "Windows Unity resources.assets cannot be assumed compatible with macOS .app bundle. Exact source-game build hash is not supplied.",
+    "Windows native install/uninstall and gameplay validation have not run. macOS package is not built or verified. Original supported game version hashes must be established before release."
+  ],
+  "upstream_asset": {
+    "sha256": "5c1f681d08cfee7db3985a68605a34cd3e7ed2e6fe18b99a9c2ae21d22faf09c",
+    "size": 4281514
+  },
+  "payload_file_count": 1,
+  "validation": {
+    "archive_extracted_without_execution": true,
+    "sha256_verified": true,
+    "native_windows": false,
+    "native_macos": false,
+    "gameplay": false,
+    "windows_manifest_schema_and_all_asset_hashes": "passed build_patch_packages.validate",
+    "built_platform_archives": ["windows"],
+    "zip_integrity": "passed"
+  },
+  "installation": {
+    "method": "Kitor declarative patch_lifecycle install",
+    "backup": "Only existing paths enumerated in patch.windows.candidate.json; preserve original bytes and metadata in installation journal.",
+    "uninstall": "Kitor journal restores changed originals and removes only patch-created files; unrelated game files and saves remain untouched."
+  },
+  "platforms": {
+    "windows": "staged copy-data plan, not native validated",
+    "osx": "blocked; see blockers"
+  },
+  "dependencies": ["Kitor selective lifecycle runtime", "Owned supported game installation"],
+  "target_architectures": "Payload data is architecture-independent; native game/runtime compatibility remains unverified."
+}

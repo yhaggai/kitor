@@ -1,0 +1,184 @@
+{
+  "schema_version": 1,
+  "scummvm_id": "portal2",
+  "language": "he",
+  "version": "0.9.8-glados-localfonts-experimental-kitor1",
+  "filename": "portal2-he-0.9.8-glados-localfonts-experimental-kitor1.zip",
+  "platforms": {
+    "windows": {}
+  },
+  "files": [
+    {
+      "path": "portal2_dlc3/cfg/autoexec.cfg",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "payload/portal2_dlc3/cfg/autoexec.cfg",
+        "sha256": "bd2f555bc82b00606435942e7c4f4b97726a007d2bd95572d70c7ebe0c26c764"
+      }
+    },
+    {
+      "path": "portal2_dlc3/maps/soundcache/_master.cache",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "payload/portal2_dlc3/maps/soundcache/_master.cache",
+        "sha256": "63ad92420244bb50dcb4b04dee68791768a2a5d806a3103116665dc97dcdc2bc"
+      }
+    },
+    {
+      "path": "portal2_dlc3/media/bluescreen.bik",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "payload/portal2_dlc3/media/bluescreen.bik",
+        "sha256": "4e0e5d737982f030d042a0b8139bf6339f3af9aa317ed10a5bcf4901b7395d92"
+      }
+    },
+    {
+      "path": "portal2_dlc3/media/hebrewadventure.bik",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "payload/portal2_dlc3/media/hebrewadventure.bik",
+        "sha256": "ead6bfb360571ff1a2ba52280ef66474ea87cb70bf9923e85b486621015acf24"
+      }
+    },
+    {
+      "path": "portal2_dlc3/media/sp_credits_bg.bik",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "payload/portal2_dlc3/media/sp_credits_bg.bik",
+        "sha256": "12fd0d03d4f6adc933da412cefa6c83623913e9d738479386c3e8de405ee7a1f"
+      }
+    },
+    {
+      "path": "portal2_dlc3/media/startupvids.txt",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "payload/portal2_dlc3/media/startupvids.txt",
+        "sha256": "1132fc290437d3d74e369b5b6cc3e44cfce23b283f2109bc352a22e544ac482f"
+      }
+    },
+    {
+      "path": "portal2_dlc3/pak01_dir.vpk",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "payload/portal2_dlc3/pak01_dir.vpk",
+        "sha256": "28873d0a22411d0ae0058af96f829aa34fd32dc0dbe44dc2b17b6b480c6f6de4"
+      }
+    },
+    {
+      "path": "portal2_dlc3/portl.txt",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "payload/portal2_dlc3/portl.txt",
+        "sha256": "454c99dc65b219b6b620fd38056e04dae1248c9a3fee23ee53b6425b7e2516e2"
+      }
+    },
+    {
+      "path": "portal2_dlc3/resource/basemodui_english.txt",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "payload/portal2_dlc3/resource/basemodui_english.txt",
+        "sha256": "e943277d18863b8b23e0e57ff21961c86f98b4e960d68a6242186ee54311c1ab"
+      }
+    },
+    {
+      "path": "portal2_dlc3/resource/closecaption_english.dat",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "payload/portal2_dlc3/resource/closecaption_english.dat",
+        "sha256": "22e2fe1c48a16b95805c5701a2bef14dbc60bdb7b445057dcd6e66cfeb869399"
+      }
+    },
+    {
+      "path": "portal2_dlc3/resource/closecaption_english.txt",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "payload/portal2_dlc3/resource/closecaption_english.txt",
+        "sha256": "c180b3958162fec62622052531b29304b94b00a1995aa789e7b564780d2e26e9"
+      }
+    },
+    {
+      "path": "portal2_dlc3/resource/gameui_english.txt",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "payload/portal2_dlc3/resource/gameui_english.txt",
+        "sha256": "ef9febce326f3f0e4b040b8a0aeaa3815afd32c143557b1d95ee35173a51c6c8"
+      }
+    },
+    {
+      "path": "portal2_dlc3/resource/portal2_english.txt",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "payload/portal2_dlc3/resource/portal2_english.txt",
+        "sha256": "cacd5db29d824d42360611b83c001fd2d7e28fd3cfd69d7f010d3eca9e041995"
+      }
+    },
+    {
+      "path": "portal2_dlc3/resource/subtitles_english.dat",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "payload/portal2_dlc3/resource/subtitles_english.dat",
+        "sha256": "101369272644bc38fc11cac0124df3d317914bdf4a25af43582696a52ae87db7"
+      }
+    },
+    {
+      "path": "portal2_dlc3/resource/subtitles_english.txt",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "payload/portal2_dlc3/resource/subtitles_english.txt",
+        "sha256": "703b4a6ef66457690e1286054334a6ea4cbb31bcdb0b457b6920ba271c640908"
+      }
+    },
+    {
+      "path": "portal2_dlc3/scripts/credits.txt",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "payload/portal2_dlc3/scripts/credits.txt",
+        "sha256": "30b49ec6989abe5eef780e8ef3331d1741f7091b572d19c0f6e9a4235d884630"
+      }
+    },
+    {
+      "path": "portal2_dlc3/scripts/vscripts/credits/credits_coop.nut",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "payload/portal2_dlc3/scripts/vscripts/credits/credits_coop.nut",
+        "sha256": "0bd160856beed6ebc77504f280ec950eb4f8d6743eab09c27e12f656e1e2d8fd"
+      }
+    },
+    {
+      "path": "update/pak01_dir.vpk",
+      "operation": "modify",
+      "source": {
+        "kind": "copy",
+        "path": "payload/update/pak01_dir.vpk",
+        "sha256": "156d27a061d7295883f6ef8154f034541b45af16c527067263d3ca464e52f0f1"
+      },
+      "original_md5": "af3d03d0daff4d6bbb424bee0691a995"
+    },
+    {
+      "path": "update/resource/basemodui_tu_english.txt",
+      "operation": "modify",
+      "source": {
+        "kind": "copy",
+        "path": "payload/update/resource/basemodui_tu_english.txt",
+        "sha256": "b97aa3f1ec6684e69f07b0f315b61e29fbaae526feeca5955a6d1e6b83aa03b1"
+      }
+    }
+  ]
+}

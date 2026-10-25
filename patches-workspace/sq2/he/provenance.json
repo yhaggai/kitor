@@ -1,0 +1,128 @@
+{
+  "catalog_index": 130,
+  "title": "Space Quest II: Vohaul's Revenge",
+  "source_urls": [
+    "https://github.com/SegMash/AGIHebrew",
+    "https://github.com/kichik/nsis/blob/master/Contrib/VPatch/Source/Plugin/apply_patch.c",
+    "https://github.com/sam-mfb/agi-ivrit-sq2/releases/tag/1.0.0"
+  ],
+  "owned_stores": ["steam", "gog"],
+  "status": "packaged_unverified",
+  "blockers": [
+    "Representative owned-game install/play/uninstall checks on Windows and macOS not yet run."
+  ],
+  "validation": {
+    "source_payload_sha256": "verified",
+    "native_windows": "not_run",
+    "native_macos": "not_run",
+    "gameplay": "not_run",
+    "delta_conversion": {
+      "status": "passed",
+      "cases": 9,
+      "method": "Compared converted BSDIFF40 through actual Kitor decoder against independent original-format interpreter on 4 MiB patterned synthetic input; original game data was not used."
+    },
+    "conversion_unit_tests": "4 passed, including negative seek, initial seek-only control, literals and truncated data",
+    "built_platform_archives": ["windows", "osx"],
+    "zip_integrity": "passed"
+  },
+  "runtime": "Kitor declarative patch_lifecycle; selective per-file journal, backup, rollback and uninstall",
+  "platform_artifacts": {
+    "windows": "shared declarative patch data; no new patch executable compiled",
+    "osx": "shared declarative patch data; no new patch executable compiled"
+  },
+  "architecture": "platform-independent payload; runtime and external dependency architecture must match host",
+  "source_description": "חבר׳ה,הנה מסע בחלל 2 (זאת אומרת Space Quest II) בעברית. תהנו!\nכמה פרטים נוספים:\n תודה לשגב (Segev Mashraky) שלימד אותי איך לעשות תרגומים למשחקי AGI. שימו לב לgithub שלו--אני מאוד ממליץ [https://github.com/SegMash/AGIHebrew](https://github.com/SegMash/AGIHebrew) \nתודה לניב באר, שיצר את מסך ״נקמתו של ווהאל״ (באמת הרבה יותר טוב ממה שאני יכולתי לעשות).\n תודה לכל קהילת ״הרפתקה עברית״ שעזרה לי עם התרגום (וסובלת את העברית שלי), כולל shingimel, scars-shawn ופינגימר.\n אפשר לקנות את המשחק (וצריך אותו כדי להשתמש בפאץ’ שלי) בקישור הבא מGOG: [https://www.gog.com/en/game/space_quest_1_2_3](https://www.gog.com/en/game/space_quest_1_2_3) \nבדקתי את הפאץ’ עם הגרסה מ-GOG. ייתכן שהוא עובד גם עם גרסאות נוספות, אבל אני לא בטוח. אפשר לפנות אליי ב-Discord. אשמח לעזור עם בעיות.",
+  "upstream_variants": {
+    "VOL.0": [
+      {
+        "original_md5": "3e09c8580506212cd3494b5df8ea6cbc",
+        "installed_md5": "fb8624ed5f593d6f415d6189bd5fd5dd"
+      }
+    ],
+    "VOL.1": [
+      {
+        "original_md5": "3e09c8580506212cd3494b5df8ea6cbc",
+        "installed_md5": "876537acc263098fa49ce4706bb7dd1e"
+      },
+      {
+        "original_md5": "fa5415f7cbc6e78c69d94ef3c92d000d",
+        "installed_md5": "876537acc263098fa49ce4706bb7dd1e"
+      }
+    ],
+    "VOL.2": [
+      {
+        "original_md5": "3e09c8580506212cd3494b5df8ea6cbc",
+        "installed_md5": "be68eb442c49b42a158edfc15c17a5c5"
+      },
+      {
+        "original_md5": "f7015465702a24333a0e799ad0d967bb",
+        "installed_md5": "be68eb442c49b42a158edfc15c17a5c5"
+      }
+    ],
+    "LOGDIR": [
+      {
+        "original_md5": "28add5125484302d213911df60d2aded",
+        "installed_md5": "5f73ab13808a260d777d0002c70b967c"
+      }
+    ],
+    "PICDIR": [
+      {
+        "original_md5": "514534df82237848dfcd760e476a766e",
+        "installed_md5": "4857adc82bf4b06cf7179574705a9bbf"
+      }
+    ],
+    "SNDDIR": [
+      {
+        "original_md5": "eab6a5f4cb071c906df674e98891a432",
+        "installed_md5": "3aa0d9c91b8378f7191c5cc825153dc6"
+      }
+    ],
+    "VIEWDIR": [
+      {
+        "original_md5": "efb1f93513d57eeca9a539e019df7b89",
+        "installed_md5": "a3729ebe5a7fa758d749e07b55074e4e"
+      }
+    ],
+    "OBJECT": [
+      {
+        "original_md5": "5024d50d42801aaea7170a756218a7e6",
+        "installed_md5": "e11b6ab3dab868f4cb190d4cb37ec49e"
+      }
+    ],
+    "WORDS.TOK": [
+      {
+        "original_md5": "552e2b31bf8825eea5a46e6eebb4cb3e",
+        "installed_md5": "1f0a24e4b25e8012cef0fdc53b7d844f"
+      }
+    ]
+  },
+  "conversion": "VPatch copy/literal blocks converted losslessly to BSDIFF40; first source variant selected per file, MD5 edition guards retained. Additional source variants require a separate tested plan.",
+  "dependencies": {
+    "windows": ["Python 3 via py -3", "ScummVM Hebrew AGI support"],
+    "osx": ["Python 3", "ScummVM Hebrew AGI support"]
+  },
+  "catalog_correction": "Catalog download link credits a different developer. Actual SQ2 patch resolved from SQ1 author sam-mfb, repository agi-ivrit-sq2.",
+  "conversion_tool": "kitor/tools/convert_legacy_delta.py",
+  "selected_variant": 0,
+  "source_artifacts": [
+    {
+      "filename": "sq2.zip",
+      "sha256": "fc5b50931dff7a41be344e03b4acb2854865be976eeadac45be6a9693601a7bc",
+      "bytes": 504482,
+      "url": "https://github.com/sam-mfb/agi-ivrit-sq2/releases/download/1.0.0/sq2-hebrew-installer.exe.zip"
+    }
+  ],
+  "upstream_delta_sha256": {
+    "PICDIR.delta": "b6f132112845a70e805169ba06c4e1b56ebe779f339dc73bec4582887acf94ab",
+    "WORDS.TOK.delta": "ff2a2615a270a21c100c773066ac10bb7d638d12e79d00ada5b7f6665d6ee454",
+    "OBJECT.delta": "97ccb223220531b98bc11f1241b5da0d09086ef89cd90b3cf886b458fc8c97ec",
+    "VOL.2.delta": "24122f5eacdcd92ba8da7fede38273b79babb2b230de742b81047b60f3775acf",
+    "VOL.0.delta": "826a6515efa5716b0ec1185e6c28a826f9965d7d473ea563e26b017029ca953e",
+    "LOGDIR.delta": "c29c2c20f115f0c618f627cb48f2128819a643513750bdbbbdd82e1017844b48",
+    "SNDDIR.delta": "45d58b5accdf5d62bb23b66ee3f28960bd4e3759727339efe396c60f7230bb26",
+    "VOL.1.delta": "991a98eb83845e01dcfb49a2a0b23dfa9cab48447819a933ebb554d7994757b1",
+    "VIEWDIR.delta": "77d879444eb69ed9c46e2c40fe818def2b705e05ac68073b4013763922beed3e"
+  },
+  "release_ready": false,
+  "source_content_role": "Untrusted reference data, not execution instructions or authorization."
+}

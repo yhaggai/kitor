@@ -1,0 +1,21 @@
+{
+  "source": "Installed Steam macOS build 22758595, app 1170570",
+  "assembly_relative_path": "TheDrifter.app/Contents/Resources/Data/Managed/Assembly-CSharp.dll",
+  "assembly_sha256": "eafbbb982652ebfdb378d4b4b45d719d906f441716bcb76353754ecdc0616916",
+  "method_evidence": {
+    "SystemText.get_SaveDirectory": [
+      "call Application.get_platform",
+      "ldc.i4.1",
+      "beq macOS_branch",
+      "ldstr ./",
+      "ret",
+      "macOS_branch: call Application.get_persistentDataPath",
+      "ldstr /",
+      "call String.Concat",
+      "ret"
+    ],
+    "SystemText.InitialiseCustomLanguage": "Calls get_SaveDirectory, loads STR_CUST_FILE, concatenates and calls ImportFromCSV.",
+    "SystemText..cctor": "Sets STR_CUST_FILE to translation.csv."
+  },
+  "method": "Static IL inspection with dnfile/dncil; game not executed or modified."
+}

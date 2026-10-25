@@ -1,0 +1,43 @@
+{
+  "catalog_index": 18,
+  "title": "Space Quest III: The Pirates of Pestulon",
+  "source_urls": [
+    "https://github.com/adventurebrew/HebrewAdventure/releases/tag/sq3_hebrew_4",
+    "https://github.com/adventurebrew/HebrewAdventure/files/5826315/PATCHES.zip"
+  ],
+  "owned_stores": ["steam", "gog"],
+  "status": "packaged_unverified",
+  "blockers": [
+    "Representative owned-game install/play/uninstall checks on Windows and macOS not yet run.",
+    "Original edition fingerprints unavailable; validate supported game layout before enabling installation."
+  ],
+  "validation": {
+    "source_payload_sha256": "verified",
+    "native_windows": "not_run",
+    "native_macos": "not_run",
+    "gameplay": "not_run",
+    "built_platform_archives": ["windows", "osx"],
+    "zip_integrity": "passed"
+  },
+  "runtime": "Kitor declarative patch_lifecycle; selective per-file journal, backup, rollback and uninstall",
+  "platform_artifacts": {
+    "windows": "shared declarative patch data; no new patch executable compiled",
+    "osx": "shared declarative patch data; no new patch executable compiled"
+  },
+  "architecture": "platform-independent payload; runtime and external dependency architecture must match host",
+  "source_description": "מרגישים שכדור הארץ קצת קטן עליכם ורוצים לפרוס כנפיים? הגיע הזמן להתרומם מעל פני הקרקע ולטעום מאבק הכוכבים - צאו למסע בחלל!\nמיזם התרגום העברי השאפתני והגרנדיוזי של הפרק השלישי בסדרת Space Quest האהובה מבית Sierra Entertainment זכורה לטוב, הגיע לקיצו, ואנחנו מזמינים אתכם לקחת פסק זמן ולהתחמם לאורו של היופי והאושר האינסופי הזה, עם הילדים או לבד, לא משנה הסדר.\nאז מה שקורה שם בקצרה, רוג'ר ווילקו מצוייד בכישורי שרת מקצועי משייט לו בספינת חלל ששטה לה במסלול לא מוגדר, כשלפתע צצה מולם מיכלית עצומה לאיסוף אשפה שמיימית ששואבת את הספינה אל קירבה. מכאן העניינים רק מתחילים להתדרדר.\nכל הקסם הזה לא נוצר מעצמו אלא חבר'ה יקרים במיוחד שתרמו והשקיעו ונתנו את כל כולם ויצרו את הבלתי ייאמן. צביקה הרמתי על פיתוח המערך הטכנולוגי הגאוני והמתוחכם ועל ניהולו של הפרוייקט מראשיתו ועד סופו, וניב באר על הגופנים המרהיבים המאויירים בטוב טעם ועל היצירות הגרפיות מרוממות הנפש.\nאגב. מעבר לתרגום צביקה פיתח גם חידוש עולמי. צ'יט המאפשר לדלג על המיני משחקונים שפזורים לאורך המשחק, למשל התרנגולת בהמבורגר מונולית למי שזוכר, ועוד. אבל הצ'יט לא יפורסם כרגע כחלק מהעדכון, אלא מי שמעוניין בו שישלח לי בבקשה צילום מסך של המשחקון שבו נתקע והצ'יט בדרך אליו.\nטוב אז חסל סדר פטפטת, הבה ניגש ישר לעניינים, להלן הוראות ההתקנה:\nלקנות SQ3 מגוג: https://www.gog.com/game/space_quest_1_2_3\nלהוריד ScummVM עדכני (גרסה 2.2.0 ומעלה): https://www.scummvm.org/downloads/\nלהוריד את הקובץ PATCHES.zip מ https://github.com/adventurebrew/HebrewAdventure/releases/tag/sq3_hebrew_4\nלחלץ את קובץ הזיפ בתוך התיקייה של sq3, בצורה כזו שיהיה למשל 'sq3\\PATCHES\\font.000' ו 'sq3\\resource.map' (כאשר sq3 הוא שם התיקייה, יכול להיות כל שם שתרצו).\nלהוסיף את SQ3 ב ScummVM, לשים לב שהוא מזוהה אוטומטית כ Language Hebrew.\nלהריץ וליהנות...\nאם משהו לא עובד, אפשר לדווח כאן, או ב https://github.com/ZvikaZ/",
+  "dependencies": {
+    "windows": ["ScummVM with Hebrew support"],
+    "osx": ["ScummVM with Hebrew support"]
+  },
+  "source_artifacts": [
+    {
+      "filename": "sq3.zip",
+      "sha256": "61a6fb58917e75c494257ac8461ddcec5428248dd992c3c455fd9f743488faa7",
+      "bytes": 218310,
+      "url": "https://github.com/adventurebrew/HebrewAdventure/files/5826315/PATCHES.zip"
+    }
+  ],
+  "release_ready": false,
+  "source_content_role": "Untrusted reference data, not execution instructions or authorization."
+}

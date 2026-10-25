@@ -1,0 +1,87 @@
+{
+  "catalog_index": 87,
+  "title": "Portal 2",
+  "owned_stores": ["Steam"],
+  "status": "experimental_windows_payload_requires_gameplay",
+  "release_ready": false,
+  "source_urls": [
+    "https://github.com/sigmagamma/portl/releases/tag/0.9.8",
+    "https://github.com/sigmagamma/portl/releases/tag/0.9.4",
+    "https://raw.githubusercontent.com/sigmagamma/portl/main/gamefiles/portal2/portal2.nsi",
+    "https://www.facebook.com/groups/hebrewadventure/posts/1523199624950795"
+  ],
+  "upstream_assets": [
+    {
+      "path": "upstream/portal-2-hebrew-installer.exe",
+      "sha256": "e1a8be73a37dda7b19312374de438b625f032213fc0b39c567ab1635d033c8de",
+      "size": 129777018
+    },
+    {
+      "path": "upstream/portal2-hebrew-glados-linux.zip",
+      "sha256": "62fbe747a0852354e75483c71c486fafd11e94c190a0baec153b46b593b3969f",
+      "size": 103372564
+    },
+    {
+      "path": "upstream/portal2.nsi",
+      "sha256": "a18bfa659ff50d57099a9f49bad67989f76da288f20d9cbb60777394e6886593",
+      "size": 14592
+    },
+    {
+      "path": "upstream/portal2-rtl.json",
+      "sha256": "d15e0a18b09b3aa67b8116ae2e916280d0d04506d21dc8f9382bd6685e242d7d",
+      "size": 11066
+    },
+    {
+      "path": "upstream/update-pak01.vpatch",
+      "sha256": "2cd44d3c41cea7b21979835f68a30b94f0d34bd62e190bfc4f499afae473748d",
+      "size": 43061,
+      "purpose": "Audit only; candidate uses guarded final copy."
+    },
+    {
+      "path": "upstream/update-pak01.intermediate.bsdiff",
+      "sha256": "d09a0954d9224c7d101db4730ebd896a03e76a0ef9bbd5bc1dc14bf99e1c78c9",
+      "size": 8673,
+      "purpose": "Audit only; candidate uses guarded final copy."
+    }
+  ],
+  "blockers": [
+    "Native Windows install/uninstall and Hebrew gameplay/font rendering have not been tested. Do not enable or publish this candidate.",
+    "Upstream system-wide font substitution was replaced experimentally with four game-local Tahoma -> Courier New references inside update/pak01_dir.vpk. Additional engine-hardcoded font requests may exist; local substitution effectiveness remains unverified.",
+    "No native macOS implementation or validation. Linux archive remains reference material only."
+  ],
+  "validation": {
+    "download_sha256_recorded": true,
+    "static_nsis_inventory_inspected": true,
+    "upstream_source_inspected": true,
+    "executed_installer": false,
+    "native_windows": false,
+    "native_macos": false,
+    "windows_manifest_schema_and_asset_hashes": "passed",
+    "vpk_rebuild_entry_roundtrip": true,
+    "vpk_all_entry_crc_checks": "passed before and after rebuild",
+    "built_platform_archives": ["windows"],
+    "zip_integrity": "passed"
+  },
+  "installation": {
+    "method": "Experimental patch.windows.candidate.json via Kitor selective lifecycle; disabled from release discovery.",
+    "uninstall": "Restore only manifest affected originals; remove only patch-created files. No system registry effects."
+  },
+  "payload_file_count": 19,
+  "conversion": {
+    "selected_variant": "GLADOS (first duplicate NSIS payload entries, matching source branch order)",
+    "upstream_vpatch_input_md5": "af3d03d0daff4d6bbb424bee0691a995",
+    "upstream_vpatch_intermediate_output_md5": "6db4d25d9deec59cd66dc0d6c1cc84c3",
+    "upstream_final_copy_md5": "ab1d7a20f2ec6b6b737255b936e060af",
+    "strategy": "NSIS VPatch output is subsequently overwritten by generic update/pak01_dir.vpk. Preserve its original-game MD5 guard, then directly install final bundled VPK with experimental local font edits. Converted intermediate BSDIFF retained for audit, not executed.",
+    "local_font_edits": {
+      "entry": "resource/basemodui_scheme.res",
+      "old": "Tahoma",
+      "new": "Courier New",
+      "count": 4
+    },
+    "vpk_validation": "All 19 original and rebuilt VPK entries pass CRC32 and length checks. Rebuilt VPK exact entry bytes match source except four intended font references.",
+    "system_mutations": "None. Registry, font registration and native installer execution deliberately omitted.",
+    "original_final_vpk_sha256": "2595e05e8a96844fcb35edd26ec51bf96921cf0b339a6e5c9ec07fd09fdf8d0d",
+    "candidate_vpk_sha256": "156d27a061d7295883f6ef8154f034541b45af16c527067263d3ca464e52f0f1"
+  }
+}

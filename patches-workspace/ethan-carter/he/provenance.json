@@ -1,0 +1,42 @@
+{
+  "catalog_index": 75,
+  "title": "The Vanishing of Ethan Carter",
+  "source_urls": [
+    "https://drive.google.com/file/d/1jv6kP5FrR6a2f6uf84iuP6FwSqHkWWdV/view?usp=sharing",
+    "https://www.facebook.com/groups/hebrewadventure/permalink/1388383521765740/?mibextid=rS40aB7S9Ucbxw6v"
+  ],
+  "owned_stores": ["Steam"],
+  "status": "staged_windows_payload_awaiting_compatibility_validation",
+  "release_ready": false,
+  "blockers": [
+    "Targets original UE3 edition (AstronautsGame and Binaries/Game); does not target Redux UE4.",
+    "No native macOS payload or verified compatibility runtime is provided.",
+    "Windows native install/uninstall and gameplay validation have not run. macOS package is not built or verified. Original supported game version hashes must be established before release."
+  ],
+  "upstream_asset": {
+    "sha256": "7130b0e7a11de8b464fdcb7eed61374b11d7cda157acdda729c27d64ece098c1",
+    "size": 181035
+  },
+  "payload_file_count": 4,
+  "validation": {
+    "archive_extracted_without_execution": true,
+    "sha256_verified": true,
+    "native_windows": false,
+    "native_macos": false,
+    "gameplay": false,
+    "windows_manifest_schema_and_all_asset_hashes": "passed build_patch_packages.validate",
+    "built_platform_archives": ["windows"],
+    "zip_integrity": "passed"
+  },
+  "installation": {
+    "method": "Kitor declarative patch_lifecycle install",
+    "backup": "Only existing paths enumerated in patch.windows.candidate.json; preserve original bytes and metadata in installation journal.",
+    "uninstall": "Kitor journal restores changed originals and removes only patch-created files; unrelated game files and saves remain untouched."
+  },
+  "platforms": {
+    "windows": "staged copy-data plan, not native validated",
+    "osx": "blocked; see blockers"
+  },
+  "dependencies": ["Kitor selective lifecycle runtime", "Owned supported game installation"],
+  "target_architectures": "Payload data is architecture-independent; native game/runtime compatibility remains unverified."
+}

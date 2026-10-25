@@ -1,0 +1,32 @@
+{
+  "catalog_index": 164,
+  "title": "Gemini Rue",
+  "owned_stores": ["steam"],
+  "status": "blocked",
+  "source_urls": [
+    "https://drive.google.com/file/d/1nuhFIKGud_MXSlANHH2NX54YVnVPRva4/view?usp=sharing"
+  ],
+  "catalog_source": "Downloads/json/all_games.json entry 164",
+  "retrieved_at": "2026-10-25",
+  "install_method": null,
+  "uninstall_method": null,
+  "validation": {
+    "windows_gameplay": "not_run",
+    "macos_gameplay": "not_run",
+    "built_platform_archives": [],
+    "zip_integrity": "not_applicable"
+  },
+  "blockers": [
+    "Catalog explicitly requires GOG edition; only Steam edition is owned. Do not apply this patch to Steam.",
+    "No compatible Windows/macOS package enabled."
+  ],
+  "release_ready": false,
+  "source_artifacts": [
+    {
+      "path": "upstream/Gemini-Rue-Hebrew-GOG-1.0.0.zip",
+      "size": 2231737,
+      "sha256": "044d8054a0775ffbc0ac5589f4ccaa1d888e64984a7196c60994c91db816fa2a"
+    }
+  ],
+  "target_architectures": "Architecture-independent game data; requires a host-native Kitor and appropriate game/ScummVM runtime."
+}

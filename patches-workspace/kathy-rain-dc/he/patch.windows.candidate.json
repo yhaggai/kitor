@@ -1,0 +1,21 @@
+{
+  "schema_version": 1,
+  "scummvm_id": "kathy-rain-dc",
+  "language": "he",
+  "version": "2025-09-15-kitor1",
+  "filename": "kathy-rain-dc-he-2025-09-15-kitor1.zip",
+  "platforms": {
+    "windows": {}
+  },
+  "files": [
+    {
+      "path": "KathyRainDirectorsCut_Data/resources.assets",
+      "operation": "modify",
+      "source": {
+        "kind": "copy",
+        "path": "payload/KathyRainDirectorsCut_Data/resources.assets",
+        "sha256": "7189394a76ba84180289d61199aba85240070e1275a29b66cc019d60728e6f02"
+      }
+    }
+  ]
+}

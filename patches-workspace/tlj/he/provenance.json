@@ -1,0 +1,35 @@
+{
+  "catalog_index": 107,
+  "title": "The Longest Journey",
+  "owned_stores": ["steam", "gog"],
+  "status": "packaged_unverified",
+  "source_urls": ["https://drive.google.com/file/d/1foTGVMySIVKRG9HMJdd1AwVrlFaFoxQ4/view"],
+  "catalog_source": "Downloads/json/all_games.json entry 107",
+  "retrieved_at": "2026-10-25",
+  "install_method": "Kitor declarative patch.json file plan",
+  "uninstall_method": "Kitor selective transaction journal: restore affected originals, remove patch-created files, preserve unrelated files",
+  "validation": {
+    "windows_gameplay": "not_run",
+    "macos_gameplay": "not_run",
+    "built_platform_archives": ["windows", "osx"],
+    "zip_integrity": "passed"
+  },
+  "blockers": [
+    "Native Windows/macOS gameplay verification pending; local package building is not a compatibility certification."
+  ],
+  "notes": [
+    "Extracted published installer without running it. File payload is portable under ScummVM Stark; use owned GOG edition referenced by catalog.",
+    "Fonts remain game-local; do not install fonts system-wide.",
+    "Runtime requires a ScummVM build with the catalog Hebrew support."
+  ],
+  "source_archive": {
+    "filename": "TheLongestJourney-Heb-AdventureBrew.exe",
+    "sha256": "34b0fc94004dfddc499c915dff86a0f8476f63bb85353472c5c781cce6ba5746"
+  },
+  "release_ready": false,
+  "target_architectures": "Architecture-independent game data; requires a host-native Kitor and appropriate game/ScummVM runtime.",
+  "dependencies": {
+    "windows": ["Kitor selective lifecycle", "ScummVM with required Hebrew engine support"],
+    "osx": ["Kitor selective lifecycle", "ScummVM with required Hebrew engine support"]
+  }
+}

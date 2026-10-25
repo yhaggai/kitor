@@ -1,0 +1,183 @@
+{
+  "schema_version": 1,
+  "scummvm_id": "stanley-parable",
+  "language": "he",
+  "version": "0.9.2.2-steam-male-kitor1",
+  "filename": "stanley-parable-he-0.9.2.2-steam-male-kitor1.zip",
+  "platforms": {
+    "windows": {}
+  },
+  "files": [
+    {
+      "path": "thestanleyparable_dlc1/cfg/autoexec.cfg",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "payload/thestanleyparable_dlc1/cfg/autoexec.cfg",
+        "sha256": "cd8c4751fbe7bf87fced69d581649c4d260eb59b4af1411f56bbc72e767607b9"
+      }
+    },
+    {
+      "path": "thestanleyparable_dlc1/maps/soundcache/_master.cache",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "payload/thestanleyparable_dlc1/maps/soundcache/_master.cache",
+        "sha256": "d0f7caa0a1206f53be772122daa6e7f605b054d5fd7bf6f8847b95e2e927251a"
+      }
+    },
+    {
+      "path": "thestanleyparable_dlc1/materials/adventure/hello.vtf",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "payload/thestanleyparable_dlc1/materials/adventure/hello.vtf",
+        "sha256": "61f2a506d649d3b14e22151c346cd6ec6be759eebbfde351c731e3edae0d87c7"
+      }
+    },
+    {
+      "path": "thestanleyparable_dlc1/materials/confusion/Schedule.vtf",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "payload/thestanleyparable_dlc1/materials/confusion/Schedule.vtf",
+        "sha256": "beb96419dedaa3a54af2e1aff61674efc838865ec7ef0f13ee12771cdb39ab4c"
+      }
+    },
+    {
+      "path": "thestanleyparable_dlc1/materials/models/props_parable/papersheets_3.vtf",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "payload/thestanleyparable_dlc1/materials/models/props_parable/papersheets_3.vtf",
+        "sha256": "340f4a4fed53f39c4419ddb44cef56198dca063303c5347cf018a83a24fbd20b"
+      }
+    },
+    {
+      "path": "thestanleyparable_dlc1/materials/screens/error22screen.vtf",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "payload/thestanleyparable_dlc1/materials/screens/error22screen.vtf",
+        "sha256": "d7007e7e8c7bd0b0e7086716a8ea03004e415e068b35900c4963e80c0cab7036"
+      }
+    },
+    {
+      "path": "thestanleyparable_dlc1/materials/screens/pleasespeak1.vtf",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "payload/thestanleyparable_dlc1/materials/screens/pleasespeak1.vtf",
+        "sha256": "543eed6c581234a895a4fcf2da714357c71a04014edf1fcb0c540bf70237d017"
+      }
+    },
+    {
+      "path": "thestanleyparable_dlc1/materials/signage/office/officepartition2.vtf",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "payload/thestanleyparable_dlc1/materials/signage/office/officepartition2.vtf",
+        "sha256": "d63e5778d864c052a2923881fc00f508787e80e088ad2a970a8b2fada54ee352"
+      }
+    },
+    {
+      "path": "thestanleyparable_dlc1/materials/stanley/babyfinal.vtf",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "payload/thestanleyparable_dlc1/materials/stanley/babyfinal.vtf",
+        "sha256": "bf80705b39e8f64f03cf9abc2b72ca4619a98e14b21a5a2da00eba73405447b1"
+      }
+    },
+    {
+      "path": "thestanleyparable_dlc1/materials/stanley/babyfinal_f.vtf",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "payload/thestanleyparable_dlc1/materials/stanley/babyfinal_f.vtf",
+        "sha256": "9366fed8f27f6e5d496b437d9dd093fadde9d855057563e285e465959d89fcf8"
+      }
+    },
+    {
+      "path": "thestanleyparable_dlc1/materials/stanley/broomcloset.vtf",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "payload/thestanleyparable_dlc1/materials/stanley/broomcloset.vtf",
+        "sha256": "d1374bdd1255d5e6e5984b117ea98192f5c0613115a1631501268ae80053fde5"
+      }
+    },
+    {
+      "path": "thestanleyparable_dlc1/materials/vgui/portal2logo.vtf",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "payload/thestanleyparable_dlc1/materials/vgui/portal2logo.vtf",
+        "sha256": "8feaab8fea8c1f60df0f2f3d9ceff979f5d632045ce9e5c85863ab549b850dd6"
+      }
+    },
+    {
+      "path": "thestanleyparable_dlc1/portl.txt",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "payload/thestanleyparable_dlc1/portl.txt",
+        "sha256": "1e97b01ad11f6567adbcad1944371577f997efcb3f969fd04b99873edf5f2635"
+      }
+    },
+    {
+      "path": "thestanleyparable_dlc1/resource/basemodui_english.txt",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "payload/thestanleyparable_dlc1/resource/basemodui_english.txt",
+        "sha256": "840e17763b4f990f37a2b42e66765a7f148a26461746e8fadc936c87813fcb9c"
+      }
+    },
+    {
+      "path": "thestanleyparable_dlc1/resource/basemodui_scheme.res",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "payload/thestanleyparable_dlc1/resource/basemodui_scheme.res",
+        "sha256": "6ee5892668f37f006ab448b205af6830c9ea95e9ca993deed0095985345f4baf"
+      }
+    },
+    {
+      "path": "thestanleyparable_dlc1/resource/gameui_english.txt",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "payload/thestanleyparable_dlc1/resource/gameui_english.txt",
+        "sha256": "ea042fb685e9cca5088544aa521dd5078c3fb7420f8b9d7f64fc75d47e97e3e7"
+      }
+    },
+    {
+      "path": "thestanleyparable_dlc1/resource/subtitles_english.dat",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "payload/thestanleyparable_dlc1/resource/subtitles_english.dat",
+        "sha256": "e5fb19adb6976f13f6029e05b37153c3cddb641925ee2ec241f3c2439e5be420"
+      }
+    },
+    {
+      "path": "thestanleyparable_dlc1/resource/subtitles_english.txt",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "payload/thestanleyparable_dlc1/resource/subtitles_english.txt",
+        "sha256": "8751d159168d18636d577a4804d5b0e8052777a815331c0352269b3b5d514969"
+      }
+    },
+    {
+      "path": "thestanleyparable_dlc1/resource/ui/basemodui/mainmenu_tsp.res",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "payload/thestanleyparable_dlc1/resource/ui/basemodui/mainmenu_tsp.res",
+        "sha256": "820a7ae62bc122d3f32d4b7f961115995ccebf40485a928453f9c9e2c4d2d6a3"
+      }
+    }
+  ]
+}

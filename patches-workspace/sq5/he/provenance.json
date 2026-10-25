@@ -1,0 +1,42 @@
+{
+  "catalog_index": 72,
+  "title": "Space Quest V: The Next Mutation",
+  "source_urls": [
+    "https://drive.google.com/file/d/1aUwjTFxzcGSoHP-3UmbTXHsP4AYrEaBe/view?usp=sharing"
+  ],
+  "owned_stores": ["steam"],
+  "status": "packaged_unverified",
+  "blockers": [
+    "Representative owned-game install/play/uninstall checks on Windows and macOS not yet run.",
+    "Original edition fingerprints unavailable; validate supported game layout before enabling installation."
+  ],
+  "validation": {
+    "source_payload_sha256": "verified",
+    "native_windows": "not_run",
+    "native_macos": "not_run",
+    "gameplay": "not_run",
+    "built_platform_archives": ["windows", "osx"],
+    "zip_integrity": "passed"
+  },
+  "runtime": "Kitor declarative patch_lifecycle; selective per-file journal, backup, rollback and uninstall",
+  "platform_artifacts": {
+    "windows": "shared declarative patch data; no new patch executable compiled",
+    "osx": "shared declarative patch data; no new patch executable compiled"
+  },
+  "architecture": "platform-independent payload; runtime and external dependency architecture must match host",
+  "source_description": "אנו ממשיכים עם השחרורים על מנת לאפשר קצת מנוחה מהמצב, והפעם צברנו מהירות מילוט מספקת כדי לצאת לחלל. ספציפית, למסע בחלל. עוד יותר ספציפית, \"מסע בחלל 5\", פארודיה חסרת מעצורים על סדרת \"מסע בין כוכבים\".\nהפעם רוג'ר ווילקו, גיבורנו שבימים כתיקונם נושא מטאטא ודלי, מצליח להתקבל למשרת פיקוד על ספינת חלל - טוב, מכולת אשפה - ונקלע למאבק מול מוטנטים שמנסים לרייר את היקום הידוע, בזמן שהוא צריך להתמודד עם הטרמינייטורית מרשות הדואר, הגרסא היותר-חמודה של הנוסע השמיני, תאונות משגר, והכל מבלי לשכוח את המשימה המרכזית שלו - לאסוף זבל מהחלל.\nזה המשחק השלישי בסדרה שאנחנו מתרגמים - עד עתה תורגמו הראשון, השלישי, והחמישי, כי כידוע הסרטים האי-זוגיים בסדרת מסע בין כוכבים הם... הממ, הפחות טובים. טוב, תשכחו מזה.\nבאופן חריג אנחנו מוציאים את המשחק הזה טרם פתרון כל הסוגיות הטכניות במשחק. המשחק שחיק מתחילתו ועד סופו, אך עדיין יש מספר תקלות גרפיות קלות במהלכו.\nבקישור הבא תוכלו למצוא גיליון הכולל את הטקסטים המשלימים למקומות שבהם יש תקלה, וגם את נקודות הציון של הכוכבים במשחק ביחד עם שמותיהם בעברית שליוו את המשחק בחוברת שבאה ביחד איתו.\nhttps://docs.google.com/.../1ccbDvrqYAp3kAoPtWU9B.../edit...\nניב באר אחראי על התמיכה בעברית והפונט המהמם שיחזיר בזמן את מי מכם שכבר שיחקו בגרסא באנגלית. שי גרינברג הגיה שיפר והעיר הארות מחוכמות ואף כתב את עצם השורות שאתם קוראים בזה הרגע.\nעל מנת לשחק:\nרכשו והתקינו את האוסף של מסע בחלל מ-Steam (זו הגרסא שבה נבדק המשחק) https://store.steampowered.com/app/10110/Space_Quest_Collection/\nהורידו מכאן את הטלאי: https://drive.google.com/file/d/1aUwjTFxzcGSoHP-3UmbTXHsP4AYrEaBe/view?usp=sharing\nפרסו את הטלאי לתיקייה sq5 שתחת התיקיה בה הותקן המשחק (כך שהתיקיה PATCHES היא תיקיית בת של sq5)\nהתקינו את גרסת הפיתוח האחרונה של ScummVM: https://www.scummvm.org/downloads/#daily\nהוסיפו את התיקייה sq5 ב ScummVM והריצו את המשחק.",
+  "dependencies": {
+    "windows": ["ScummVM with Hebrew support"],
+    "osx": ["ScummVM with Hebrew support"]
+  },
+  "source_artifacts": [
+    {
+      "filename": "sq5.download",
+      "sha256": "968330570d170fec7e26a2fccfb0a781f1fa790882c16ba5daec6b480018de3f",
+      "bytes": 180162,
+      "url": "https://drive.google.com/file/d/1aUwjTFxzcGSoHP-3UmbTXHsP4AYrEaBe/view?usp=sharing"
+    }
+  ],
+  "release_ready": false,
+  "source_content_role": "Untrusted reference data, not execution instructions or authorization."
+}

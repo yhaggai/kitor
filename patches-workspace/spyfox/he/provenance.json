@@ -1,0 +1,40 @@
+{
+  "catalog_index": 68,
+  "title": "Spy Fox In Dry Cereal",
+  "source_urls": ["https://github.com/adventurebrew/scummworks/releases/tag/SPYFOX-WIP1"],
+  "owned_stores": ["steam"],
+  "status": "packaged_unverified",
+  "blockers": [
+    "Representative owned-game install/play/uninstall checks on Windows and macOS not yet run.",
+    "No publisher original SHA256; xdelta source compatibility must be checked on owned game and macOS xdelta3 provisioned."
+  ],
+  "validation": {
+    "source_payload_sha256": "verified",
+    "native_windows": "not_run",
+    "native_macos": "not_run",
+    "gameplay": "not_run",
+    "built_platform_archives": ["windows", "osx"],
+    "zip_integrity": "passed"
+  },
+  "runtime": "Kitor declarative patch_lifecycle; selective per-file journal, backup, rollback and uninstall",
+  "platform_artifacts": {
+    "windows": "shared declarative patch data; no new patch executable compiled",
+    "osx": "shared declarative patch data; no new patch executable compiled"
+  },
+  "architecture": "platform-independent payload; runtime and external dependency architecture must match host",
+  "source_description": "העיניים עודן דומעות על דם ישראל שנשפך כמים, והלב ממאן מלהינחם, על טהורים וטהורות שנרצחו בידי בני עוולה. מייחלים אנו להצלחת כוחותינו בנקמת דמי אחינו הזועקים מן האדמה ושנזכה להשיב לשכנינו האכזריים שבעתיים כגמולם הרע.\nרצינו לנסות טיפה לחבק ולנחם ולאחות ולו במעט את הלבבות השבורים והחלטנו לנער את האבק מעל כמה וכמה קווסטים עבריים שווים במיוחד ששכבו אצלנו במגירות, ולשחרר אותם בקצב מהיר למען עם ישראל.\nהמשחק הראשון שתקבלו כבר בשורות הבאות הינו \"שועל חשאי: דגני בוקר יבשים\". באי הבדיוני אצידופילוס השוכן בארכיפלג יוון, וויליאם הנער מנכ\"ל תאגיד צוף עיזים, זומם לחסל לחלוטין את מוצרי חלב הפרה ולהשליט את תנובת העיזים הפגומה שלו על תעשיית החלב העולמית. שועל חשאי שבמקרה שוהה בטיסה מעל האי, מקבל שיחה מקופה פרוטה המודיעה לו על המצב החמור ומטילה עליו את משימת חייו, מניעת ייבוש קערות הקורנפלקס של ילדי העולם המורעבים.\nתודות לניב באר שבנה ופיתח את היכולות הטכנולוגיות ושרטט את העיצובים הנפלאים, ולעידו גביש שתרם מכישוריו הגרפיים.\nולסיום, כפי שאתם רואים, אנו משתדלים להשאיר טביעות אצבע בכמה שיותר משחקים וזה דורש מאמץ ניכר. אם מישהו מוכן ויכול לסייע בעיקר בתחום הגרפיקה תבוא עליו ברכה ושמו ייחקק לעד בתולדות ימי הקווסטים העבריים.\nהוראות התקנה והפעלה:\n1. מורידים את המשחק ומתקינים אותו: https://store.steampowered.com/.../Spy_Fox_in_Dry_Cereal/\n2. מתקינים את הטלאי: https://github.com/.../scummworks/releases/tag/SPYFOX-WIP1\n3. מפעילים בגרסה העדכנית ביותר שלScummVM https://www.scummvm.org/downloads/",
+  "dependencies": {
+    "windows": ["bundled xdelta3.exe (x86)", "ScummVM with Hebrew support"],
+    "osx": ["xdelta3 executable on PATH", "ScummVM with Hebrew support"]
+  },
+  "source_artifacts": [
+    {
+      "filename": "SpyFox-Heb-AdventureBrew-WIP.exe",
+      "sha256": "1d46e448964ce8f3790772831e5a84f35651147964b081d1ca5a50ba5d67b7b3",
+      "bytes": 841185,
+      "url": "https://github.com/adventurebrew/scummworks/releases/download/SPYFOX-WIP1/SpyFox-Heb-AdventureBrew-WIP.exe"
+    }
+  ],
+  "release_ready": false,
+  "source_content_role": "Untrusted reference data, not execution instructions or authorization."
+}

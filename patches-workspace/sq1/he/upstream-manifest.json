@@ -1,0 +1,85 @@
+{
+  "version": 1,
+  "name": "sq1-heb",
+  "title": "Space Quest I Hebrew Patch",
+  "entries": [
+    {
+      "operation": "patch",
+      "file": "LOGDIR",
+      "original_hash": "1aeef7bd675ac6c3907181b619df3c53f14f42bc64ea2965e6b3ab7f81f8a1fd",
+      "diff_hash": "b5ff08ced12d5cf2863d528c6cf1af81eb5c8668bea66e1a36bb547ae0ef747d",
+      "final_hash": "969ea8c0b95b63bb5998e2dcba8a6a525ce2f677caff751e05a64c1f157b0dd2"
+    },
+    {
+      "operation": "patch",
+      "file": "OBJECT",
+      "original_hash": "058d2fcfef8df6667e764b889a1c22d6b8746eac8c25321f707a64e4d712464c",
+      "diff_hash": "b601d78ade4d1f17c853aad6042dcd326374ec224f497ca7c3397fa235eee229",
+      "final_hash": "c2d76170ccca8ed059e9a027d9cb3d6ae5a7e08fd87337dc9d744239b5565b17"
+    },
+    {
+      "operation": "patch",
+      "file": "PICDIR",
+      "original_hash": "c6e6bf86845841bd4e07c43f52a0656cf10affc08a399c88ed89b58584f98e02",
+      "diff_hash": "48a7e037a61aabf2a85ba90ae2dc1c0c91f9378ed8d5ce7c51c239f0218065ce",
+      "final_hash": "7db446f621bcbe953839d88a0f32429a0a3655c9df182e458118a1274a536ca4"
+    },
+    {
+      "operation": "patch",
+      "file": "SNDDIR",
+      "original_hash": "8d001a67050a7f466b51696299db71a9673d8773c18c773ff102f44c7162a273",
+      "diff_hash": "288099c71d6cc5491653fb4bbc3fa106a4e1a241bd48c56312d03610e447cc1e",
+      "final_hash": "db3afe4c77ea2f800c973ff972ccbd2d78f88bccbbae488aca4bbee80c8faa83"
+    },
+    {
+      "operation": "patch",
+      "file": "VIEWDIR",
+      "original_hash": "e72e45451b0b48ee2ea61bfb68858dcf6e63187e21a217bcc58e7e1f3d4a5aa1",
+      "diff_hash": "0af87bd619475f8aed89d59f68ffc24bf6465c1dd5cc68578842211d53131649",
+      "final_hash": "c0ab981fc9c79b16839c81fd9d10dad064678acaabe71c12e788b8fd3c1f31d1"
+    },
+    {
+      "operation": "patch",
+      "file": "VOL.0",
+      "original_hash": "63f4d3906bf9ddfd7545a9cea80b9d0f7aedb79a0c757310fed1c2876505c70a",
+      "diff_hash": "34bb67128fa340342b54607065f30824446492f48cbeca909fef69ddfcbfcaef",
+      "final_hash": "8b3c00847241eba22db1829157bf4711931c7d01ff0622471f4d97f4776397f9"
+    },
+    {
+      "operation": "patch",
+      "file": "VOL.1",
+      "original_hash": "3b63425d27b981e16a5570ff068d1663d714776192183ea7dfde03cf61fc9aed",
+      "diff_hash": "b9dad64b975c53b8116a0d81cf50c7363a1ed22038ee5f5cfa97262071b44c03",
+      "final_hash": "9f4b197658bfdc45e120be3384857d3af3abfe4382bad08a22fce7706234de55"
+    },
+    {
+      "operation": "patch",
+      "file": "VOL.2",
+      "original_hash": "6fa6608a30ee3345976fc630efb290859e87ec67aa34bb1c79691fb0267caf1b",
+      "diff_hash": "aa3a904fb1121fd9fa2aedf3d1169fbb24f88c7df55c8ac7df27136cacaa69c2",
+      "final_hash": "41836d4dc19ddd63efe9b7ea75dae5bd4da0ab2eff9f42db83cd16b63fe87ddc"
+    },
+    {
+      "operation": "add",
+      "file": "VOL.3",
+      "final_hash": "b4defa0e9dfa98a10192d61b508bda4b6fbe1d91a55ff12bdddd69027334d243"
+    },
+    {
+      "operation": "patch",
+      "file": "WORDS.TOK",
+      "original_hash": "7538e02617e9d8afd8c8de8cb1c2290ca24291d5b1af1e329486c2f84571803e",
+      "diff_hash": "c1fcd1430d5143d4d913d96dc03a696cec600c47ca02cf04c10b650ef05b92ea",
+      "final_hash": "51a7cea408d70fcc4f04c55540927a1f3394f7bdda9f3caae7243c8258a2b255"
+    },
+    {
+      "operation": "add",
+      "file": "WORDS.TOK.EXTENDED",
+      "final_hash": "5689ae9676fb3b035461e3b93ea757750a42dd3a8c7ae395ea2f5a5bd5803336"
+    },
+    {
+      "operation": "add",
+      "file": "agi-font-dos.bin",
+      "final_hash": "6961fdd01a443ef0e11fa79bd0878dd65e2b1a91862621510af7f87e70d81612"
+    }
+  ]
+}

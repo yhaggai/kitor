@@ -1,0 +1,27 @@
+<CaptionData>
+<caption>
+		<stringID>Mantus_2_Sc_86_Ia_Tex6_C_PieceA</stringID>
+		<timeStart>0</timeStart>
+		<timeEnd>4</timeEnd>
+	</caption>
+	<caption>
+		<stringID>Mantus_2_Sc_86_Ia_Tex6_C_PieceB</stringID>
+		<timeStart>4</timeStart>
+		<timeEnd>7</timeEnd>
+	</caption>
+	<caption>
+		<stringID>Mantus_2_Sc_86_Ia_Tex6_C_PieceC</stringID>
+		<timeStart>7</timeStart>
+		<timeEnd>11</timeEnd>
+	</caption>
+	<caption>
+		<stringID>Mantus_2_Sc_86_Ia_Tex6_C_PieceD</stringID>
+		<timeStart>11</timeStart>
+		<timeEnd>15</timeEnd>
+	</caption>
+	<caption>
+		<stringID>Mantus_2_Sc_86_Ia_Tex6_C_PieceE</stringID>
+		<timeStart>16</timeStart>
+		<timeEnd>19</timeEnd>
+	</caption>
+</CaptionData>

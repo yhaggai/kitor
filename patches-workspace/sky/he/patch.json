@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "scummvm_id": "sky",
+  "language": "he",
+  "version": "catalog-20261025-kitor1",
+  "filename": "sky-he-catalog-20261025-kitor1.zip",
+  "platforms": {
+    "windows": {},
+    "osx": {}
+  },
+  "files": [
+    {
+      "path": "sky.cpt",
+      "operation": "install",
+      "installed_sha256": "9f41a3be39db91391400401152bd62435500b772bc92613d2c2eea0eb816982f",
+      "source": {
+        "kind": "copy",
+        "path": "payload/sky.cpt",
+        "sha256": "9f41a3be39db91391400401152bd62435500b772bc92613d2c2eea0eb816982f"
+      }
+    },
+    {
+      "path": "sky.dnr",
+      "operation": "install",
+      "installed_sha256": "42a63ae03c0a019a2021b6a5cef0e850a363debd773f37e36bdf099e08626c0e",
+      "source": {
+        "kind": "copy",
+        "path": "payload/sky.dnr",
+        "sha256": "42a63ae03c0a019a2021b6a5cef0e850a363debd773f37e36bdf099e08626c0e"
+      }
+    },
+    {
+      "path": "sky.dsk",
+      "operation": "install",
+      "installed_sha256": "92297ee3355e29005649a4df4f7f052cce0180f5dacfffb743e8e033e8b399e5",
+      "source": {
+        "kind": "copy",
+        "path": "payload/sky.dsk",
+        "sha256": "92297ee3355e29005649a4df4f7f052cce0180f5dacfffb743e8e033e8b399e5"
+      }
+    }
+  ]
+}

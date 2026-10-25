@@ -1,0 +1,8 @@
+
+# Preserve upstream patch bytes on every checkout, including Windows.
+patches-workspace/** -text
+patches-workspace/**/*.json text eol=lf
+patches-workspace/**/*.md text eol=lf
+patches-workspace/**/*.py text eol=lf
+patches-workspace/**/payload/** binary
+patches-workspace/**/upstream/** binary

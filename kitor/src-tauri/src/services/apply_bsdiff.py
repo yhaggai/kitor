@@ -17,7 +17,7 @@ def apply_patch(original,patch,output):
     while len(result)<size:
         if cp+24>len(control):raise ValueError('Truncated patch control block')
         x,y,z=(number(control[i:i+8]) for i in range(cp,cp+24,8));cp+=24
-        if min(x,y)<0 or x+y==0 or len(result)+x+y>size or dp+x>len(diff) or ep+y>len(extra):raise ValueError('Invalid patch control instruction')
+        if min(x,y)<0 or len(result)+x+y>size or dp+x>len(diff) or ep+y>len(extra):raise ValueError('Invalid patch control instruction')
         end=oldpos+x
         # Bytes outside the old file contribute zero, as in the BSDIFF format.
         while oldpos<end:

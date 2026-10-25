@@ -1,0 +1,27 @@
+<CaptionData>
+                <caption>
+                                <stringID>Resort_SC87_2pt16_2pt19_T2L_PIECE_A</stringID>
+                                <timeStart>1</timeStart>
+                                <timeEnd>6</timeEnd>
+                </caption>
+                <caption>
+                                <stringID>Resort_SC87_2pt16_2pt19_T2L_PIECE_B</stringID>
+                                <timeStart>8</timeStart>
+                                <timeEnd>14</timeEnd>
+                </caption>
+                <caption>
+                                <stringID>Resort_SC87_2pt16_2pt19_T2L_PIECE_C</stringID>
+                                <timeStart>14</timeStart>
+                                <timeEnd>22</timeEnd>
+                </caption>
+                <caption>
+                                <stringID>Resort_SC87_2pt16_2pt19_T2L_PIECE_D</stringID>
+                                <timeStart>26</timeStart>
+                                <timeEnd>35</timeEnd>
+                </caption>
+                <caption>
+                                <stringID>Resort_SC87_2pt16_2pt19_T2L_PIECE_E</stringID>
+                                <timeStart>36</timeStart>
+                                <timeEnd>40</timeEnd>
+                </caption>
+</CaptionData>

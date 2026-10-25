@@ -40,6 +40,8 @@ pub struct Change {
     pub source: Option<Source>,
     pub original_sha256: Option<String>,
     pub installed_sha256: Option<String>,
+    pub original_md5: Option<String>,
+    pub installed_md5: Option<String>,
 }
 #[derive(Debug, Clone, Copy, PartialEq, Deserialize, Serialize)]
 #[serde(rename_all = "snake_case")]
@@ -68,6 +70,28 @@ pub enum Source {
         windows_tool: String,
         windows_tool_sha256: String,
     },
+}
+
+// Legacy publishers provide MD5 as an edition identifier; payload integrity and
+// recovery journals always use SHA-256. MD5 is not an authenticity guarantee.
+fn check_md5(path: &Path, expected: &str) -> Result<()> {
+    let mut file = fs::File::open(path).map_err(err)?;
+    let mut digest = md5::Md5::new();
+    let mut buf = [0u8; 65536];
+    loop {
+        let n = file.read(&mut buf).map_err(err)?;
+        if n == 0 {
+            break;
+        }
+        digest.update(&buf[..n]);
+    }
+    if expected.len() != 32 || format!("{:x}", digest.finalize()) != expected {
+        return Err(format!(
+            "Legacy edition checksum mismatch: {}",
+            path.display()
+        ));
+    }
+    Ok(())
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -430,6 +454,9 @@ pub fn install(
                 return Err(format!("Unsupported original version: {}", change.path));
             }
         }
+        if let Some(expected) = &change.original_md5 {
+            check_md5(&path, expected)?;
+        }
         let output = dir.join("outputs").join(index.to_string());
         let installed_hash = if change.operation == Operation::Delete {
             if change.source.is_some() {
@@ -448,6 +475,9 @@ pub fn install(
             )?;
             if let Some(expected) = &change.installed_sha256 {
                 check_hash(&output, expected)?;
+            }
+            if let Some(expected) = &change.installed_md5 {
+                check_md5(&output, expected)?;
             }
             if original.is_some() {
                 fs::set_permissions(&output, fs::metadata(&path).map_err(err)?.permissions())
@@ -800,6 +830,39 @@ mod tests {
             assert_eq!(fs::read(f.game.join(name)).unwrap(), b"original");
         }
         assert_eq!(fs::read(f.game.join("unrelated")).unwrap(), b"keep");
+    }
+
+    #[test]
+    fn legacy_md5_guards_reject_wrong_input_and_output_before_mutation() {
+        for wrong_input in [true, false] {
+            let f = Fixture::new();
+            fs::write(f.game.join("existing"), b"original").unwrap();
+            let mut change = f.copy("existing", "modify", b"patched");
+            change["original_md5"] = json!(format!(
+                "{:x}",
+                md5::Md5::digest(if wrong_input {
+                    b"wrong".as_slice()
+                } else {
+                    b"original".as_slice()
+                })
+            ));
+            change["installed_md5"] = json!("00000000000000000000000000000000");
+            f.plan(json!([change]), "1");
+            assert!(f
+                .install("osx", "1")
+                .unwrap_err()
+                .contains("Legacy edition checksum mismatch"));
+            assert_eq!(fs::read(f.game.join("existing")).unwrap(), b"original");
+        }
+        let f = Fixture::new();
+        fs::write(f.game.join("existing"), b"original").unwrap();
+        let mut change = f.copy("existing", "modify", b"patched");
+        change["original_md5"] = json!(format!("{:x}", md5::Md5::digest(b"original")));
+        change["installed_md5"] = json!(format!("{:x}", md5::Md5::digest(b"patched")));
+        f.plan(json!([change]), "1");
+        let journal = f.install("osx", "1").unwrap();
+        uninstall(&journal, &f.game).unwrap();
+        assert_eq!(fs::read(f.game.join("existing")).unwrap(), b"original");
     }
 
     #[test]

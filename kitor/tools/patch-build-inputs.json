@@ -1,0 +1,18 @@
+{
+  "schema_version": 1,
+  "release_tag": "patch-build-inputs-20261025",
+  "assets": [
+    {
+      "asset": "journey-down1-jd1.gob",
+      "destination": "patches-workspace/journey-down1/he/payload/jd1.gob",
+      "size": 615850030,
+      "sha256": "9959bcf31ecd6a1450c1d2c081ad4fafcd5152e1bd882b155ed15cbafcfe87c7"
+    },
+    {
+      "asset": "portal2-pak01_dir.vpk",
+      "destination": "patches-workspace/portal2/he/payload/portal2_dlc3/pak01_dir.vpk",
+      "size": 134999264,
+      "sha256": "28873d0a22411d0ae0058af96f829aa34fd32dc0dbe44dc2b17b6b480c6f6de4"
+    }
+  ]
+}

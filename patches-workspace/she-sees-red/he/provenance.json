@@ -1,0 +1,23 @@
+{
+  "catalog_index": 39,
+  "title": "She Sees Red - Interactive Movie",
+  "owned_stores": ["steam"],
+  "status": "no_patch_required",
+  "source_urls": [],
+  "catalog_source": "Downloads/json/all_games.json entry 39",
+  "retrieved_at": "2026-10-25",
+  "install_method": null,
+  "uninstall_method": null,
+  "validation": {
+    "windows_gameplay": "not_run",
+    "macos_gameplay": "not_run",
+    "built_platform_archives": [],
+    "zip_integrity": "not_applicable"
+  },
+  "blockers": [],
+  "notes": [
+    "Catalog marks Hebrew support as built in; no external patch installation or uninstall is needed."
+  ],
+  "release_ready": false,
+  "target_architectures": "Architecture-independent game data; requires a host-native Kitor and appropriate game/ScummVM runtime."
+}

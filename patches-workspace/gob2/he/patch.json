@@ -1,0 +1,25 @@
+{
+  "schema_version": 1,
+  "scummvm_id": "gob2",
+  "language": "he",
+  "version": "1.0-kitor1",
+  "filename": "gob2-he-kitor1.zip",
+  "platforms": {
+    "windows": {},
+    "osx": {}
+  },
+  "files": [
+    {
+      "path": "INTRO.STK",
+      "operation": "modify",
+      "source": {
+        "kind": "xdelta",
+        "path": "payload/INTRO.patch",
+        "sha256": "ed38169952cf17a805c03d393ae0cb2915bc8e05dd9e8fd46793a2aed1368a4c",
+        "input": "INTRO.STK",
+        "windows_tool": "payload/xdelta3.exe",
+        "windows_tool_sha256": "d81f59b2fe5e8589c0ee9782e231c805084f4d23dfade413903a4cad63b4e342"
+      }
+    }
+  ]
+}

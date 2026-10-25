@@ -1,0 +1,27 @@
+<CaptionData>
+                <caption>
+                                <stringID>DrDonahue_1_5D7E8F_PIECE_A</stringID>
+                                <timeStart>0</timeStart>
+                                <timeEnd>4</timeEnd>
+                </caption>
+                <caption>
+                                <stringID>DrDonahue_1_5D7E8F_PIECE_B</stringID>
+                                <timeStart>5</timeStart>
+                                <timeEnd>7</timeEnd>
+                </caption>
+                <caption>
+                                <stringID>DrDonahue_1_5D7E8F_PIECE_C</stringID>
+                                <timeStart>11</timeStart>
+                                <timeEnd>12</timeEnd>
+                </caption>
+                <caption>
+                                <stringID>DrDonahue_1_5D7E8F_PIECE_D</stringID>
+                                <timeStart>12</timeStart>
+                                <timeEnd>13</timeEnd>
+                </caption>
+                <caption>
+                                <stringID>DrDonahue_1_5D7E8F_PIECE_E</stringID>
+                                <timeStart>14</timeStart>
+                                <timeEnd>16</timeEnd>
+                </caption>
+</CaptionData>

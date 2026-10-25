@@ -1,0 +1,34 @@
+{
+  "catalog_index": 112,
+  "title": "Beneath A Steel Sky",
+  "owned_stores": ["gog"],
+  "status": "packaged_unverified",
+  "source_urls": ["https://github.com/adventurebrew/kolminey/releases/tag/BASS-IR"],
+  "catalog_source": "Downloads/json/all_games.json entry 112",
+  "retrieved_at": "2026-10-25",
+  "install_method": "Kitor declarative patch.json file plan",
+  "uninstall_method": "Kitor selective transaction journal: restore affected originals, remove patch-created files, preserve unrelated files",
+  "validation": {
+    "windows_gameplay": "not_run",
+    "macos_gameplay": "not_run",
+    "built_platform_archives": ["windows", "osx"],
+    "zip_integrity": "passed"
+  },
+  "blockers": [
+    "Native Windows/macOS gameplay verification pending; local package building is not a compatibility certification."
+  ],
+  "notes": [
+    "Upstream distributes freeware game data with Hebrew included. Keep notice/readme as package documentation, not overwrite game readme files.",
+    "Use a ScummVM daily build with Hebrew support."
+  ],
+  "source_archive": {
+    "filename": "bass-he.zip",
+    "sha256": "b5a1d6fa7ae76613e331e83e8e42516787d716eddc79300aabf20c8f7df4487c"
+  },
+  "release_ready": false,
+  "target_architectures": "Architecture-independent game data; requires a host-native Kitor and appropriate game/ScummVM runtime.",
+  "dependencies": {
+    "windows": ["Kitor selective lifecycle", "ScummVM with required Hebrew engine support"],
+    "osx": ["Kitor selective lifecycle", "ScummVM with required Hebrew engine support"]
+  }
+}

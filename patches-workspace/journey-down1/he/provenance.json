@@ -1,0 +1,42 @@
+{
+  "catalog_index": 99,
+  "title": "The Journey Down",
+  "source_urls": [
+    "https://drive.google.com/file/d/1tJW5bydh-z_bIOluS-waaK7mYO1exc59/view?usp=drive_link",
+    "https://www.facebook.com/groups/hebrewadventure/posts/1627312777872812/"
+  ],
+  "owned_stores": ["Steam"],
+  "status": "staged_windows_payload_awaiting_compatibility_validation",
+  "release_ready": false,
+  "blockers": [
+    "Chapter One only. jd1.gob is a full individual game archive (615850030 bytes), so selective backup of this one affected archive is necessary.",
+    "Native macOS game data layout and archive compatibility are unverified.",
+    "Windows native install/uninstall and gameplay validation have not run. macOS package is not built or verified. Original supported game version hashes must be established before release."
+  ],
+  "upstream_asset": {
+    "sha256": "03d50836f996c54f4a6c6a9c4e7756193b427e7f17d008655225246d94fb7e26",
+    "size": 603481935
+  },
+  "payload_file_count": 1,
+  "validation": {
+    "archive_extracted_without_execution": true,
+    "sha256_verified": true,
+    "native_windows": false,
+    "native_macos": false,
+    "gameplay": false,
+    "windows_manifest_schema_and_all_asset_hashes": "passed build_patch_packages.validate",
+    "built_platform_archives": ["windows"],
+    "zip_integrity": "passed"
+  },
+  "installation": {
+    "method": "Kitor declarative patch_lifecycle install",
+    "backup": "Only existing paths enumerated in patch.windows.candidate.json; preserve original bytes and metadata in installation journal.",
+    "uninstall": "Kitor journal restores changed originals and removes only patch-created files; unrelated game files and saves remain untouched."
+  },
+  "platforms": {
+    "windows": "staged copy-data plan, not native validated",
+    "osx": "blocked; see blockers"
+  },
+  "dependencies": ["Kitor selective lifecycle runtime", "Owned supported game installation"],
+  "target_architectures": "Payload data is architecture-independent; native game/runtime compatibility remains unverified."
+}

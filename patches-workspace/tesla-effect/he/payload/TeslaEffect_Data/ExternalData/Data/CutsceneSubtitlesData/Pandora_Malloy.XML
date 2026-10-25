@@ -1,0 +1,22 @@
+<CaptionData>
+                <caption>
+                                <stringID>Pandora_Malloy_PIECE_A</stringID>
+                                <timeStart>0</timeStart>
+                                <timeEnd>5</timeEnd>
+                </caption>
+                <caption>
+                                <stringID>Pandora_Malloy_PIECE_B</stringID>
+                                <timeStart>6</timeStart>
+                                <timeEnd>7</timeEnd>
+                </caption>
+                <caption>
+                                <stringID>Pandora_Malloy_PIECE_C</stringID>
+                                <timeStart>8</timeStart>
+                                <timeEnd>9</timeEnd>
+                </caption>
+                <caption>
+                                <stringID>Pandora_Malloy_PIECE_D</stringID>
+                                <timeStart>10</timeStart>
+                                <timeEnd>12</timeEnd>
+                </caption>
+</CaptionData>

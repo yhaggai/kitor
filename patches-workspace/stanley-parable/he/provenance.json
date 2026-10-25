@@ -1,0 +1,43 @@
+{
+  "catalog_index": 22,
+  "title": "The Stanley Parable (2013)",
+  "source_urls": [
+    "https://docs.google.com/document/d/1lsCQosS-TDPFxHi6mnZCE653AfrbqW5MhDCbnV-U_Ds/edit?usp=sharing",
+    "https://www.facebook.com/groups/200491360554968/posts/1107855336485228/",
+    "https://github.com/sigmagamma/portl/releases/download/0.9.2.2/install_stanley_heb_win_steam_male.zip"
+  ],
+  "owned_stores": ["Steam"],
+  "status": "staged_windows_payload_awaiting_compatibility_validation",
+  "release_ready": false,
+  "blockers": [
+    "Steam 2013 edition only; excludes Ultra Deluxe and Epic. Male subtitle variant selected; upstream also offers female variant.",
+    "Upstream documents Windows and PlayOnMac, not native macOS. No native macOS rendering verification.",
+    "Windows native install/uninstall and gameplay validation have not run. macOS package is not built or verified. Original supported game version hashes must be established before release."
+  ],
+  "upstream_asset": {
+    "sha256": "83c047d6d53dd42dcb58d33f5a0b54d7fe158898923c531fd994703d5185b103",
+    "size": 721770
+  },
+  "payload_file_count": 19,
+  "validation": {
+    "archive_extracted_without_execution": true,
+    "sha256_verified": true,
+    "native_windows": false,
+    "native_macos": false,
+    "gameplay": false,
+    "windows_manifest_schema_and_all_asset_hashes": "passed build_patch_packages.validate",
+    "built_platform_archives": ["windows"],
+    "zip_integrity": "passed"
+  },
+  "installation": {
+    "method": "Kitor declarative patch_lifecycle install",
+    "backup": "Only existing paths enumerated in patch.windows.candidate.json; preserve original bytes and metadata in installation journal.",
+    "uninstall": "Kitor journal restores changed originals and removes only patch-created files; unrelated game files and saves remain untouched."
+  },
+  "platforms": {
+    "windows": "staged copy-data plan, not native validated",
+    "osx": "blocked; see blockers"
+  },
+  "dependencies": ["Kitor selective lifecycle runtime", "Owned supported game installation"],
+  "target_architectures": "Payload data is architecture-independent; native game/runtime compatibility remains unverified."
+}

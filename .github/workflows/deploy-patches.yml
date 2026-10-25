@@ -19,6 +19,10 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
       - name: Install dependencies
         run: sudo apt-get update && sudo apt-get install -y jq zip curl
 
@@ -31,6 +35,14 @@ jobs:
             # We want to skip the while read -r if empty since find might return nothing
             if [ -z "$patch_file" ]; then continue; fi
             
+            # Imported sources stay local until platform validation and review
+            # explicitly mark this package ready for publication.
+            provenance="$(dirname "$patch_file")/provenance.json"
+            if [ ! -f "$provenance" ] || ! jq -e '.release_ready == true' "$provenance" >/dev/null; then
+              echo "Skipping unapproved package: $patch_file"
+              continue
+            fi
+            python kitor/tools/build_patch_packages.py --check "$patch_file"
             echo "Processing $patch_file"
             
             # Extract metadata using jq
@@ -61,14 +73,10 @@ jobs:
             
             # Create a temporary directory for zipping
             temp_dir=$(mktemp -d)
-            mkdir -p "$temp_dir/out"
-            
-            # Include the file-change manifest in every release package
-            rsync -av --exclude="__pycache__" --exclude="*.pyc" "$patch_dir/" "$temp_dir/out/"
-            
-            # Create the zip file containing the contents directly (not wrapped in a parent folder)
-            (cd "$temp_dir/out" && zip -r "${temp_dir}/${filename}" .)
-            
+            # Include only declared, checksum-verified payloads. Never publish
+            # raw upstream installers, private ownership notes, or staging files.
+            python kitor/tools/build_patch_packages.py "$patch_file" --universal --output "$temp_dir"
+
             echo "Creating release $tag..."
             # Create release via API
             release_response=$(curl -s -X POST \

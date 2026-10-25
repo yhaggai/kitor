@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "scummvm_id": "ethan-carter",
+  "language": "he",
+  "version": "2023-12-25-kitor1",
+  "filename": "ethan-carter-he-2023-12-25-kitor1.zip",
+  "platforms": {
+    "windows": {}
+  },
+  "files": [
+    {
+      "path": "AstronautsGame/Localization/AstronautsGame.enu",
+      "operation": "modify",
+      "source": {
+        "kind": "copy",
+        "path": "payload/AstronautsGame/Localization/AstronautsGame.enu",
+        "sha256": "d4aacaf201ba7f0b1effbdf74a30224acef9696634ac0057cb6fee3db5c6fc34"
+      }
+    },
+    {
+      "path": "Binaries/Game/subtitlefont.ttf",
+      "operation": "modify",
+      "source": {
+        "kind": "copy",
+        "path": "payload/Binaries/Game/subtitlefont.ttf",
+        "sha256": "682165ad506fc5d127884538ccc16111841aad91a4636a19a55bd3a2ad799d6e"
+      }
+    },
+    {
+      "path": "Binaries/Game/textfont.ttf",
+      "operation": "modify",
+      "source": {
+        "kind": "copy",
+        "path": "payload/Binaries/Game/textfont.ttf",
+        "sha256": "682165ad506fc5d127884538ccc16111841aad91a4636a19a55bd3a2ad799d6e"
+      }
+    },
+    {
+      "path": "Binaries/Game/uifont.ttf",
+      "operation": "modify",
+      "source": {
+        "kind": "copy",
+        "path": "payload/Binaries/Game/uifont.ttf",
+        "sha256": "682165ad506fc5d127884538ccc16111841aad91a4636a19a55bd3a2ad799d6e"
+      }
+    }
+  ]
+}
