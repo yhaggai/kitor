@@ -113,6 +113,30 @@ pub async fn launch_game(
     println!("Title: {}", game.title);
     println!("Install Path: {}", game.install_path);
 
+    if game.scummvm_id == "undertale" {
+        let data = Path::new(&game.install_path);
+        #[cfg(target_os = "macos")]
+        let mut cmd = {
+            let bundle = data.parent().and_then(Path::parent)
+                .ok_or("Invalid UNDERTALE app path")?;
+            if !bundle.join("Contents/MacOS/Mac_Runner").is_file() {
+                return Err("UNDERTALE Mac runner not found".into());
+            }
+            let mut command = Command::new("open");
+            command.arg(bundle);
+            command
+        };
+        #[cfg(target_os = "windows")]
+        let mut cmd = Command::new(data.join("UNDERTALE.exe"));
+        #[cfg(not(any(target_os = "macos", target_os = "windows")))]
+        return Err("The UNDERTALE Hebrew patch supports macOS and Windows only".into());
+        #[cfg(any(target_os = "macos", target_os = "windows"))]
+        {
+            cmd.current_dir(data);
+            return start_game_process(&mut cmd, &app_data_dir.join("undertale-launch.log")).await;
+        }
+    }
+
     // Get or download ScummVM
     let scummvm_path = get_or_download_scummvm(db, app_data_dir, app_handle).await?;
     println!("ScummVM Path: {}", scummvm_path);

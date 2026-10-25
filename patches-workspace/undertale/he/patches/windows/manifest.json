@@ -1,0 +1,11 @@
+{
+  "release": "alpha2-steam",
+  "platform": "Windows",
+  "source_sha256": "b718f8223a5bb31979ffeed10be6140c857b882fc0d0462b89d6287ae38c81c7",
+  "patched_sha256": "ea5574817bf519895210a60e341080e002904239f75ce521ac267e70d99055be",
+  "patch_sha256": "ef67e33d92af0656758fa568270ff14a63b296f5c5beb3013cf09063d0ca07e7",
+  "catalog_entries": 16455,
+  "draft_translations": 15227,
+  "unchanged_entries": 1228,
+  "runtime_tested_on_windows": false
+}

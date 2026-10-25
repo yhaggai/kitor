@@ -1,0 +1,41 @@
+{
+  "scummvm_id": "undertale",
+  "language": "he",
+  "version": "alpha2-steam-kitor2",
+  "filename": "Undertale-Hebrew-alpha2-steam.zip",
+  "schema_version": 1,
+  "platforms": {
+    "osx": {
+      "files": [
+        {
+          "path": "game.ios",
+          "operation": "modify",
+          "original_sha256": "91a8acf1f40bd7c45d0bdb978de55187e7fb2cd76a1e2cda41c078dd44d3565e",
+          "installed_sha256": "e2ff7144a26506d23c59a3301233a91173ea69b9657ed84b2d345680b6293a60",
+          "source": {
+            "kind": "bsdiff",
+            "path": "patches/hebrew-steam.bsdiff",
+            "sha256": "187a4096021e104420a6d1ab6d6affff2eb95a9df7ff56c2133dd3acb58fe468",
+            "input": "game.ios"
+          }
+        }
+      ]
+    },
+    "windows": {
+      "files": [
+        {
+          "path": "data.win",
+          "operation": "modify",
+          "original_sha256": "b718f8223a5bb31979ffeed10be6140c857b882fc0d0462b89d6287ae38c81c7",
+          "installed_sha256": "ea5574817bf519895210a60e341080e002904239f75ce521ac267e70d99055be",
+          "source": {
+            "kind": "bsdiff",
+            "path": "patches/windows/hebrew-steam.bsdiff",
+            "sha256": "ef67e33d92af0656758fa568270ff14a63b296f5c5beb3013cf09063d0ca07e7",
+            "input": "data.win"
+          }
+        }
+      ]
+    }
+  }
+}

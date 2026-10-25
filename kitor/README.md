@@ -239,3 +239,18 @@ MIT
 ## Contributing
 
 Contributions welcome! Please feel free to submit a Pull Request.
+
+### UNDERTALE Hebrew (Alpha 2)
+
+The catalog includes the Steam macOS and Windows patch. Add `UNDERTALE.app`,
+its containing folder, or the Windows game folder. Kitor detects the archive,
+backs up only the game archive, applies the verified delta, and launches the native
+game. Python 3.10+ is required (`python3` on macOS; `py -3` on Windows).
+Save and close the game before installing or restoring. Keep English selected.
+Only the original archive hashes in the bundled manifests are supported.
+The translation is a draft; upstream Windows runtime testing is still pending.
+
+The patch binaries and full build sources are checked in under
+`patches-workspace/undertale/he/`, with provenance in `KITOR.md`. The existing
+Deploy Patches workflow publishes the catalog ZIP when pushed to main or v1.
+The download URL becomes available after that release is published.

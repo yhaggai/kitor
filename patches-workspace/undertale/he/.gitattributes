@@ -1,0 +1,7 @@
+*.cmd text eol=crlf
+*.bat text eol=crlf
+*.sh text eol=lf
+*.py text eol=lf
+*.csx text eol=lf
+*.gml text eol=lf
+*.bsdiff binary

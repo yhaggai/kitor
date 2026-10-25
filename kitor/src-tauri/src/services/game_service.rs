@@ -267,6 +267,24 @@ pub fn detect_game_in_folder(path: &Path) -> Result<Option<DetectedGameInfo>, St
         if game_def.patches.is_empty() {
             continue;
         }
+        // UNDERTALE's macOS archive lives inside its native app bundle.
+        // Require the runner as well: game.ios alone is not a unique signature.
+        if game_def.scummvm_id == "undertale" {
+            for bundle in [path.to_path_buf(), path.join("UNDERTALE.app"),
+                path.join("../..")] {
+                let data = bundle.join("Contents/Resources");
+                if data.join("game.ios").is_file()
+                    && bundle.join("Contents/MacOS/Mac_Runner").is_file() {
+                    return Ok(Some(DetectedGameInfo {
+                        install_path: data.canonicalize().map_err(|e| e.to_string())?
+                            .to_string_lossy().into_owned(),
+                        scummvm_id: game_def.scummvm_id,
+                        title: game_def.title,
+                        available_patches_count: game_def.patches.len(),
+                    }));
+                }
+            }
+        }
         for candidate in &candidates {
             let mut data_paths = vec![candidate.clone()];
             if let Some(subdir) = &game_def.detection_patterns.detection_subdirectory {
@@ -443,6 +461,27 @@ mod tests {
             assert_eq!(PathBuf::from(detected.install_path), data);
             assert_eq!(detected.available_patches_count, 1);
         }
+    }
+
+    #[test]
+    fn detects_undertale_bundle_parent_resources_and_windows() {
+        let fixture = Fixture::new();
+        let bundle = fixture.0.join("UNDERTALE.app");
+        let data = bundle.join("Contents/Resources");
+        std::fs::create_dir_all(&data).unwrap();
+        std::fs::create_dir_all(bundle.join("Contents/MacOS")).unwrap();
+        std::fs::write(data.join("game.ios"), b"fixture").unwrap();
+        assert!(detect_game_in_folder(&data).unwrap().is_none());
+        std::fs::write(bundle.join("Contents/MacOS/Mac_Runner"), b"runner").unwrap();
+        for selected in [&fixture.0, &bundle, &data] {
+            let detected = detect_game_in_folder(selected).unwrap().unwrap();
+            assert_eq!(detected.scummvm_id, "undertale");
+            assert_eq!(PathBuf::from(detected.install_path), data.canonicalize().unwrap());
+        }
+        let windows = fixture.0.join("windows");
+        std::fs::create_dir(&windows).unwrap();
+        std::fs::write(windows.join("UNDERTALE.exe"), b"runner").unwrap();
+        assert_eq!(detect_game_in_folder(&windows).unwrap().unwrap().scummvm_id, "undertale");
     }
 
     #[test]

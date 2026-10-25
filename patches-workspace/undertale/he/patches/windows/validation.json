@@ -1,0 +1,15 @@
+{
+  "platform": "Windows",
+  "game_runtime_tested": false,
+  "archive_build": "passed",
+  "archive_reload": "passed",
+  "fonts_verified": 20,
+  "draw_hooks_verified": 378,
+  "steam_app_id": 391540,
+  "delta_native_bspatch_roundtrip": "passed",
+  "delta_python_roundtrip": "passed",
+  "installer_and_rollback": "passed on disposable data.win on macOS",
+  "wrong_version_refusal": "passed",
+  "reference_layout_tests": 21,
+  "delta_tests": 4
+}

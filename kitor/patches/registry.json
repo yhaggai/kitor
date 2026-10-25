@@ -1,6 +1,39 @@
 {
   "games": [
     {
+      "scummvm_id": "undertale",
+      "title": "UNDERTALE",
+      "platforms": {
+        "windows": true,
+        "osx": true,
+        "linux": false
+      },
+      "detection_patterns": {
+        "unique_files": ["UNDERTALE.exe"],
+        "file_patterns": []
+      },
+      "launch_config": {
+        "launcher": "native",
+        "args": []
+      },
+      "purchase_guide": null,
+      "patches": [
+        {
+          "language": "he",
+          "version": "alpha2-steam-kitor2",
+          "author": "yhaggai",
+          "download_url": "https://github.com/yhaggai/kitor/releases/download/patch-undertale-he-valpha2-steam-kitor2/Undertale-Hebrew-alpha2-steam.zip",
+          "source_type": "github",
+          "checksum": null,
+          "file_size": null,
+          "description": "Hebrew Alpha 2 for Steam on macOS and Windows. Requires Python 3.10+. Draft translation; Windows runtime testing pending. Keep English selected in-game.",
+          "filename": "Undertale-Hebrew-alpha2-steam.zip",
+          "post_install_script": null,
+          "install_manifest": "patch.json"
+        }
+      ]
+    },
+    {
       "scummvm_id": "monkey-se",
       "title": "The Secret of Monkey Island: Special Edition",
       "cover_url": "/mI1.webp",
