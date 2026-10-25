@@ -9,7 +9,9 @@
         "linux": false
       },
       "detection_patterns": {
-        "unique_files": ["UNDERTALE.exe"],
+        "unique_files": [
+          "UNDERTALE.exe"
+        ],
         "file_patterns": []
       },
       "launch_config": {
@@ -55,12 +57,22 @@
         ]
       },
       "detection_patterns": {
-        "unique_files": ["Monkey1.pak", "Monkey.exe", "MISE.exe"],
-        "file_patterns": ["*.pak"]
+        "unique_files": [
+          "Monkey1.pak",
+          "Monkey.exe",
+          "MISE.exe"
+        ],
+        "file_patterns": [
+          "*.pak"
+        ]
       },
       "launch_config": {
         "subdirectory": "hebrew",
-        "args": ["--language=he", "--fullscreen", "--auto-detect"]
+        "args": [
+          "--language=he",
+          "--fullscreen",
+          "--auto-detect"
+        ]
       },
       "purchase_guide": "monkey-se.md",
       "patches": [
@@ -101,12 +113,21 @@
         ]
       },
       "detection_patterns": {
-        "unique_files": ["Monkey2.pak", "Monkey2.exe"],
-        "file_patterns": ["*.pak"]
+        "unique_files": [
+          "Monkey2.pak",
+          "Monkey2.exe"
+        ],
+        "file_patterns": [
+          "*.pak"
+        ]
       },
       "launch_config": {
         "subdirectory": "hebrew",
-        "args": ["--language=he", "--fullscreen", "--auto-detect"]
+        "args": [
+          "--language=he",
+          "--fullscreen",
+          "--auto-detect"
+        ]
       },
       "purchase_guide": "monkey2-se.md",
       "patches": [
@@ -135,22 +156,31 @@
         "linux": true
       },
       "detection_patterns": {
-        "unique_files": ["RESOURCE.000", "SCIDHUV.EXE"],
-        "file_patterns": ["RESOURCE.*"]
+        "unique_files": [
+          "RESOURCE.000",
+          "SCIDHUV.EXE"
+        ],
+        "file_patterns": [
+          "RESOURCE.*"
+        ]
       },
       "launch_config": {
-        "args": ["--language=he", "--fullscreen", "--auto-detect"]
+        "args": [
+          "--language=he",
+          "--fullscreen",
+          "--auto-detect"
+        ]
       },
       "purchase_guide": null,
       "patches": [
         {
           "language": "he",
-          "version": "1.0-kitor2",
+          "version": "1.0-kitor3",
           "author": "AdventureBrew",
-          "download_url": "https://github.com/yhaggai/kitor/releases/download/patch-sq1sci-he-v1.0-kitor2/SpaceQuest1VGA-Heb-AdventureBrew.zip",
+          "download_url": "https://github.com/yhaggai/kitor/releases/download/patch-sq1sci-he-v1.0-kitor3/SpaceQuest1VGA-Heb-AdventureBrew.zip",
           "source_type": "github",
-          "checksum": null,
-          "file_size": null,
+          "checksum": "7d374a187f733fc52de2c89f009d2a95a2d2aa74651e3cec2ccc360774098825",
+          "file_size": 703801,
           "description": "Hebrew translation for Space Quest I VGA",
           "filename": "SpaceQuest1VGA-Heb-AdventureBrew.zip",
           "post_install_script": null,
@@ -180,12 +210,21 @@
         ]
       },
       "detection_patterns": {
-        "unique_files": ["GEMCUT.PAK", "KYRAGEM.PAK"],
-        "file_patterns": ["*.PAK", "*.VRM"],
+        "unique_files": [
+          "GEMCUT.PAK",
+          "KYRAGEM.PAK"
+        ],
+        "file_patterns": [
+          "*.PAK",
+          "*.VRM"
+        ],
         "detection_subdirectory": "DAT"
       },
       "launch_config": {
-        "args": ["--fullscreen", "kyra:kyra1"]
+        "args": [
+          "--fullscreen",
+          "kyra:kyra1"
+        ]
       },
       "purchase_guide": null,
       "patches": [
@@ -217,7 +256,11 @@
         "file_patterns": []
       },
       "launch_config": {
-        "args": ["--language=he", "--fullscreen", "--auto-detect"]
+        "args": [
+          "--language=he",
+          "--fullscreen",
+          "--auto-detect"
+        ]
       },
       "purchase_guide": null,
       "patches": [
@@ -249,7 +292,11 @@
         "file_patterns": []
       },
       "launch_config": {
-        "args": ["--language=he", "--fullscreen", "--auto-detect"]
+        "args": [
+          "--language=he",
+          "--fullscreen",
+          "--auto-detect"
+        ]
       },
       "purchase_guide": null,
       "patches": [
@@ -285,7 +332,11 @@
         "file_patterns": []
       },
       "launch_config": {
-        "args": ["--language=he", "--fullscreen", "--auto-detect"]
+        "args": [
+          "--language=he",
+          "--fullscreen",
+          "--auto-detect"
+        ]
       },
       "purchase_guide": null,
       "patches": [
@@ -321,7 +372,11 @@
         "file_patterns": []
       },
       "launch_config": {
-        "args": ["--language=he", "--fullscreen", "--auto-detect"]
+        "args": [
+          "--language=he",
+          "--fullscreen",
+          "--auto-detect"
+        ]
       },
       "purchase_guide": null,
       "patches": [
@@ -357,7 +412,11 @@
         "file_patterns": []
       },
       "launch_config": {
-        "args": ["--language=he", "--fullscreen", "--auto-detect"]
+        "args": [
+          "--language=he",
+          "--fullscreen",
+          "--auto-detect"
+        ]
       },
       "purchase_guide": null,
       "patches": [
@@ -389,7 +448,11 @@
         "file_patterns": []
       },
       "launch_config": {
-        "args": ["--language=he", "--fullscreen", "--auto-detect"]
+        "args": [
+          "--language=he",
+          "--fullscreen",
+          "--auto-detect"
+        ]
       },
       "purchase_guide": null,
       "patches": [
@@ -421,11 +484,17 @@
         "linux": false
       },
       "detection_patterns": {
-        "unique_files": ["spyfox.he0"],
+        "unique_files": [
+          "spyfox.he0"
+        ],
         "file_patterns": []
       },
       "launch_config": {
-        "args": ["--language=he", "--fullscreen", "--auto-detect"]
+        "args": [
+          "--language=he",
+          "--fullscreen",
+          "--auto-detect"
+        ]
       },
       "purchase_guide": null,
       "patches": [
@@ -453,11 +522,17 @@
         "linux": false
       },
       "detection_patterns": {
-        "unique_files": ["pajama.he0"],
+        "unique_files": [
+          "pajama.he0"
+        ],
         "file_patterns": []
       },
       "launch_config": {
-        "args": ["--language=he", "--fullscreen", "--auto-detect"]
+        "args": [
+          "--language=he",
+          "--fullscreen",
+          "--auto-detect"
+        ]
       },
       "purchase_guide": null,
       "patches": [
@@ -493,7 +568,11 @@
         "file_patterns": []
       },
       "launch_config": {
-        "args": ["--language=he", "--fullscreen", "--auto-detect"]
+        "args": [
+          "--language=he",
+          "--fullscreen",
+          "--auto-detect"
+        ]
       },
       "purchase_guide": null,
       "patches": [
@@ -529,7 +608,11 @@
         "file_patterns": []
       },
       "launch_config": {
-        "args": ["--language=he", "--fullscreen", "--auto-detect"]
+        "args": [
+          "--language=he",
+          "--fullscreen",
+          "--auto-detect"
+        ]
       },
       "purchase_guide": null,
       "patches": [
@@ -565,7 +648,11 @@
         "file_patterns": []
       },
       "launch_config": {
-        "args": ["--language=he", "--fullscreen", "--auto-detect"]
+        "args": [
+          "--language=he",
+          "--fullscreen",
+          "--auto-detect"
+        ]
       },
       "purchase_guide": null,
       "patches": [
@@ -597,11 +684,17 @@
         "linux": false
       },
       "detection_patterns": {
-        "unique_files": ["sky.dsk"],
+        "unique_files": [
+          "sky.dsk"
+        ],
         "file_patterns": []
       },
       "launch_config": {
-        "args": ["--language=he", "--fullscreen", "--auto-detect"]
+        "args": [
+          "--language=he",
+          "--fullscreen",
+          "--auto-detect"
+        ]
       },
       "purchase_guide": null,
       "patches": [
@@ -749,7 +842,9 @@
         "linux": false
       },
       "detection_patterns": {
-        "unique_files": ["portal2.exe"],
+        "unique_files": [
+          "portal2.exe"
+        ],
         "file_patterns": []
       },
       "launch_config": null,
@@ -778,7 +873,9 @@
         "linux": false
       },
       "detection_patterns": {
-        "unique_files": ["jd1.gob"],
+        "unique_files": [
+          "jd1.gob"
+        ],
         "file_patterns": []
       },
       "launch_config": null,
