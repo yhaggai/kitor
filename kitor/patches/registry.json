@@ -292,14 +292,14 @@
         {
           "install_manifest": "patch.json",
           "language": "he",
-          "version": "1.0-kitor1",
+          "version": "1.0-kitor2",
           "author": "sam-mfb",
-          "download_url": "https://github.com/yhaggai/kitor/releases/download/patch-sq2-he-v1.0-kitor1/sq2-he-kitor1.zip",
+          "download_url": "https://github.com/yhaggai/kitor/releases/download/patch-sq2-he-v1.0-kitor2/sq2-he-kitor2.zip",
           "source_type": "github",
-          "checksum": "5e489c053f187a0ea0343421eb0bf062f0f045cf135426359789a65c75c82be2",
-          "file_size": 502472,
+          "checksum": "37a47cf0186557e0e1f71ac8be2d73777f20de56de9478452485c63663bb523d",
+          "file_size": 460690,
           "description": "GOG original AGI edition; Steam edition is unverified. Publisher MD5 edition guards. Requires Python 3 and Hebrew-capable ScummVM. Windows/macOS package plans are built; native gameplay validation is pending. Automatic folder detection is intentionally disabled pending a reliable game signature; the current Add Game UI cannot select this title explicitly.",
-          "filename": "sq2-he-kitor1.zip",
+          "filename": "sq2-he-kitor2.zip",
           "post_install_script": null
         }
       ],

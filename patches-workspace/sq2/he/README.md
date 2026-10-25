@@ -6,6 +6,6 @@ Validated on macOS using the actual Kitor lifecycle on disposable copies of the 
 
 Install and uninstall through Kitor’s declarative lifecycle. Only files listed in patch.json are affected; originals are backed up individually outside the game. Never run the upstream installer against the game.
 
-The published registry still points to kitor1. Publish the new universal archive and update its registry version, URL, filename, size, and SHA256 together before retrying through the app.
+The registry points to the published `patch-sq2-he-v1.0-kitor2` release and its checksum-verified universal archive. Restart the app to reload the local registry before retrying installation.
 
 See provenance.json for source URLs, edition restrictions, dependencies and validation gaps.
