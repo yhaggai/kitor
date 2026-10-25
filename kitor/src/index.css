@@ -46,3 +46,31 @@
     --color-ring: oklch(84% 0 0);
   }
 }
+
+@keyframes steam-download-progress {
+  from { transform: translateX(-100%); }
+  to { transform: translateX(300%); }
+}
+.steam-download-indicator {
+  animation: steam-download-progress 1.5s ease-in-out infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .steam-download-indicator { animation: none; margin-inline: auto; }
+}
+
+.game-box-trigger { cursor: pointer; }
+.game-box-trigger > div { transition: transform 350ms cubic-bezier(0.22, 1, 0.36, 1); }
+.game-box-trigger:hover > div,
+.game-box-trigger:focus-visible > div { transform: scale(1.045); }
+.game-box-hint { opacity: 0; transform: translateY(6px); transition: opacity 200ms, transform 200ms; }
+.game-box-trigger:hover .game-box-hint,
+.game-box-trigger:focus-visible .game-box-hint { opacity: 1; transform: translateY(0); }
+@keyframes game-details-fade { from { opacity: 0; } to { opacity: 1; } }
+@keyframes game-details-close { from { opacity: 1; scale: 1; } to { opacity: 0; scale: 0.96; } }
+.game-details-overlay[data-state="open"] { animation: game-details-fade 250ms ease-out; }
+.game-details-overlay[data-state="closed"] { animation: game-details-fade 180ms ease-in reverse; }
+.game-details-content[data-state="closed"] { animation: game-details-close 180ms ease-in; }
+@media (prefers-reduced-motion: reduce) {
+  .game-box-trigger > div, .game-box-hint { transition: none; transform: none !important; }
+  .game-details-overlay, .game-details-content { animation: none !important; }
+}

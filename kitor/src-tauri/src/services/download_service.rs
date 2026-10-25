@@ -22,6 +22,30 @@ pub async fn download_file(
     }).await
 }
 
+pub async fn download_patch_file(
+    url: &str,
+    dest_path: &Path,
+    app_handle: &tauri::AppHandle,
+    scummvm_id: &str,
+) -> Result<(), String> {
+    let started = std::time::Instant::now();
+    download_with_progress(url, dest_path, |progress| {
+        let bytes_per_second = progress.downloaded as f64 / started.elapsed().as_secs_f64().max(0.001);
+        let seconds_remaining = if progress.total > 0 && bytes_per_second > 0.0 {
+            Some(progress.total.saturating_sub(progress.downloaded) as f64 / bytes_per_second)
+        } else { None };
+        let _ = app_handle.emit("patch-download-progress", serde_json::json!({
+            "scummvm_id": scummvm_id,
+            "downloaded": progress.downloaded,
+            "total": progress.total,
+            "percentage": progress.percentage.min(100),
+            "bytes_per_second": bytes_per_second,
+            "seconds_remaining": seconds_remaining,
+        }));
+        let _ = app_handle.emit("download-progress", progress);
+    }).await
+}
+
 // Only release asset URLs on GitHub may use the user's GitHub CLI login.
 fn github_release_asset(url: &str) -> Option<(String, String, String)> {
     let url = url::Url::parse(url).ok()?;
@@ -56,13 +80,26 @@ async fn download_with_progress(
         let status = response.status();
         if status == reqwest::StatusCode::NOT_FOUND {
             if let Some((repo, tag, asset)) = github_release_asset(url) {
-                let output = tokio::process::Command::new("gh")
+                let mut command = tokio::process::Command::new("gh");
+                command
                     .args(["release", "download", &tag, "--repo", &format!("github.com/{}", repo),
                         "--pattern", &asset, "--output"])
                     .arg(&temp_path)
                     .env("GH_PROMPT_DISABLED", "1")
-                    .output().await
-                    .map_err(|_| "Patch download returned HTTP 404. For a private GitHub release, install GitHub CLI and sign in with `gh auth login`; otherwise check the patch URL.".to_string())?;
+                    ;
+                let output = command.output();
+                tokio::pin!(output);
+                let mut interval = tokio::time::interval(std::time::Duration::from_millis(250));
+                let output = loop {
+                    tokio::select! {
+                        result = &mut output => break result,
+                        _ = interval.tick() => {
+                            let downloaded = tokio::fs::metadata(&temp_path).await.map(|m| m.len()).unwrap_or(0);
+                            // gh does not expose the total size while downloading.
+                            progress(DownloadProgress { downloaded, total: 0, percentage: 0 });
+                        }
+                    }
+                }.map_err(|_| "Patch download returned HTTP 404. For a private GitHub release, install GitHub CLI and sign in with `gh auth login`; otherwise check the patch URL.".to_string())?;
                 if !output.status.success() {
                     return Err("Could not download the GitHub release asset. Check that the release exists and `gh auth status` shows an account with access to the repository.".to_string());
                 }
@@ -77,14 +114,19 @@ async fn download_with_progress(
                 .map_err(|e| format!("Failed to create download: {}", e))?;
             let mut downloaded = 0;
             let mut stream = response.bytes_stream();
+            let mut last_report = std::time::Instant::now();
+            progress(DownloadProgress { downloaded: 0, total, percentage: 0 });
             while let Some(item) = stream.next().await {
                 let chunk = item.map_err(|e| format!("Incomplete download: {}", e))?;
                 file.write_all(&chunk).await.map_err(|e| format!("Failed to write download: {}", e))?;
                 downloaded += chunk.len() as u64;
+                if last_report.elapsed() >= std::time::Duration::from_millis(250) {
                 progress(DownloadProgress {
                     downloaded, total,
                     percentage: if total > 0 { ((downloaded as f64 / total as f64) * 100.0) as u32 } else { 0 },
                 });
+                last_report = std::time::Instant::now();
+                }
             }
             file.flush().await.map_err(|e| format!("Failed to flush download: {}", e))?;
         }
@@ -143,6 +185,37 @@ mod tests {
             assert_eq!(std::fs::read_dir(&dir).unwrap().count(), 1);
             server.await.unwrap();
             std::fs::remove_dir_all(dir).unwrap();
+        }
+    }
+
+    #[tokio::test]
+    async fn reports_transfer_progress_with_known_and_unknown_sizes() {
+        use tokio::io::{AsyncReadExt, AsyncWriteExt};
+        for known_size in [true, false] {
+            let listener = tokio::net::TcpListener::bind("127.0.0.1:0").await.unwrap();
+            let url = format!("http://{}/patch.bin", listener.local_addr().unwrap());
+            let server = tokio::spawn(async move {
+                let (mut socket, _) = listener.accept().await.unwrap();
+                let mut request = [0; 4096];
+                socket.read(&mut request).await.unwrap();
+                let length = if known_size { "Content-Length: 6\r\n" } else { "" };
+                socket.write_all(format!("HTTP/1.1 200 OK\r\n{length}Connection: close\r\n\r\nabc").as_bytes()).await.unwrap();
+                tokio::time::sleep(std::time::Duration::from_millis(300)).await;
+                socket.write_all(b"def").await.unwrap();
+            });
+            let dir = tempfile::tempdir().unwrap();
+            let path = dir.path().join("patch.bin");
+            let reports = std::sync::Mutex::new(Vec::new());
+            download_with_progress(&url, &path, |p| reports.lock().unwrap().push(p)).await.unwrap();
+            server.await.unwrap();
+            let reports = reports.into_inner().unwrap();
+            assert!(reports.len() >= 3);
+            assert_eq!(reports[0].downloaded, 0);
+            assert_eq!(reports[0].total, if known_size { 6 } else { 0 });
+            assert!(reports[1].downloaded > 0);
+            let last = reports.last().unwrap();
+            assert_eq!((last.downloaded, last.total, last.percentage), (6, 6, 100));
+            assert_eq!(std::fs::read(path).unwrap(), b"abcdef");
         }
     }
 

@@ -1,0 +1,137 @@
+{
+  "batchcomplete": "",
+  "query": {
+    "pages": {
+      "-1": {
+        "ns": 0,
+        "title": "Treasure Island (2008 video game)",
+        "missing": ""
+      },
+      "-2": {
+        "ns": 0,
+        "title": "Lost Chronicles of Zerzura",
+        "missing": ""
+      },
+      "-3": {
+        "ns": 0,
+        "title": "Duke Grabowski: Mighty Swashbuckler",
+        "missing": ""
+      },
+      "-4": {
+        "ns": 0,
+        "title": "Mystic Pillars",
+        "missing": ""
+      },
+      "4302172": {
+        "pageid": 4302172,
+        "ns": 0,
+        "title": "Agatha Christie: And Then There Were None",
+        "original": {
+          "source": "https://upload.wikimedia.org/wikipedia/en/a/a9/ATTWN_Box.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=original",
+          "width": 311,
+          "height": 320
+        }
+      },
+      "39450480": {
+        "pageid": 39450480,
+        "ns": 0,
+        "title": "Alter Ego (2010 video game)",
+        "original": {
+          "source": "https://upload.wikimedia.org/wikipedia/en/d/d4/Alter_Ego_2010_PC_Cover.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=original",
+          "width": 267,
+          "height": 372
+        }
+      },
+      "3676459": {
+        "pageid": 3676459,
+        "ns": 0,
+        "title": "Apprentice (video game)",
+        "original": {
+          "source": "https://upload.wikimedia.org/wikipedia/en/8/86/Apprentice_videoGame_logo.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=original",
+          "width": 489,
+          "height": 177
+        }
+      },
+      "11576058": {
+        "pageid": 11576058,
+        "ns": 0,
+        "title": "Atlantis III: The New World",
+        "original": {
+          "source": "https://upload.wikimedia.org/wikipedia/en/9/9f/Atlantis_III_-_The_New_World_Coverart.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=original",
+          "width": 256,
+          "height": 364
+        }
+      },
+      "33716406": {
+        "pageid": 33716406,
+        "ns": 0,
+        "title": "Chronicles of Mystery: The Scorpio Ritual",
+        "original": {
+          "source": "https://upload.wikimedia.org/wikipedia/en/f/f5/Chronicles_of_Mystery_The_Scorpio_Ritual_cover.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=original",
+          "width": 256,
+          "height": 366
+        }
+      },
+      "30102763": {
+        "pageid": 30102763,
+        "ns": 0,
+        "title": "Dracula 4: The Shadow of the Dragon",
+        "original": {
+          "source": "https://upload.wikimedia.org/wikipedia/en/c/c5/Dracula_4_-_The_Shadow_of_the_Dragon.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=original",
+          "width": 256,
+          "height": 362
+        }
+      },
+      "40665782": {
+        "pageid": 40665782,
+        "ns": 0,
+        "title": "Dracula 5: The Blood Legacy",
+        "original": {
+          "source": "https://upload.wikimedia.org/wikipedia/en/6/67/Dracula_5_-_The_Blood_Legacy.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=original",
+          "width": 256,
+          "height": 325
+        }
+      },
+      "23349991": {
+        "pageid": 23349991,
+        "ns": 0,
+        "title": "Gray Matter (video game)",
+        "original": {
+          "source": "https://upload.wikimedia.org/wikipedia/en/5/54/Gray_Matter_cover.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=original",
+          "width": 256,
+          "height": 315
+        }
+      },
+      "5619694": {
+        "pageid": 5619694,
+        "ns": 0,
+        "title": "Keepsake (video game)",
+        "original": {
+          "source": "https://upload.wikimedia.org/wikipedia/en/9/92/Keepsake_Coverart.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=original",
+          "width": 256,
+          "height": 363
+        }
+      },
+      "56674001": {
+        "pageid": 56674001,
+        "ns": 0,
+        "title": "Mata Hari (video game)",
+        "original": {
+          "source": "https://upload.wikimedia.org/wikipedia/en/a/a4/Mata_Hari_Cover_art.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=original",
+          "width": 268,
+          "height": 372
+        }
+      },
+      "48441876": {
+        "pageid": 48441876,
+        "ns": 0,
+        "title": "Murder in the Abbey",
+        "original": {
+          "source": "https://upload.wikimedia.org/wikipedia/en/4/4e/Murder_in_the_Abbey_US_cover_art.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=original",
+          "width": 264,
+          "height": 376
+        }
+      }
+    }
+  }
+}

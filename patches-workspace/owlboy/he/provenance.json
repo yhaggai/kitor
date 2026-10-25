@@ -1,0 +1,16 @@
+{
+  "status": "experimental",
+  "release_ready": false,
+  "edition": "Steam macOS installed build; Windows layout unverified",
+  "scope": "Font prototype, not a full translation",
+  "translated_rows": 14,
+  "glyphs": 27,
+  "rtl": "Visual-order strings only; typewriter still LTR",
+  "install_root": "Owlboy.app/Contents/Resources on macOS; Owlboy.exe directory on Windows",
+  "source_exe_sha256": "e399de418effb376c7c48916f6da19e2aa7fa91a2fea0cce7479e52cb17e653c",
+  "native_validation": {
+    "macOS": "Installed and all 22 file hashes verified; Hebrew gameplay unverified due computer-use window/capture failures",
+    "Windows": "not run"
+  },
+  "font_origin": "Original hand-drawn Hebrew bitmaps in build_prototype.py; original English atlas retained locally"
+}

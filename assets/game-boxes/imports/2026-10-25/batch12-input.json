@@ -1,0 +1,228 @@
+[
+  {
+    "source_idx": 15,
+    "game_id": "the-colonel-s-bequest",
+    "title_en": "The Colonel's Bequest",
+    "title_he": "עזבונו של הקולונל",
+    "status": "pending",
+    "sources": {
+      "en": {
+        "file": "sources/the-colonel-s-bequest-en.png",
+        "url": "https://thumbnails.libretro.com/ScummVM/Named_Boxarts/Laura%20Bow_%20The%20Colonel%27s%20Bequest.png",
+        "source_page": "https://thumbnails.libretro.com/ScummVM/Named_Boxarts/",
+        "status": "needs_visual_review",
+        "width": 512,
+        "height": 649,
+        "sha256": "8090e43850a34ec646e6e1ba8e9b2cce8c338bfb82f9f494b5902eacdfe98aee"
+      }
+    }
+  },
+  {
+    "source_idx": 116,
+    "game_id": "leisure-suit-larry-in-the-land-of-the-lounge-lizards",
+    "title_en": "Leisure Suit Larry in the Land of the Lounge Lizards",
+    "title_he": "לארי לבוש ליציאה בארץ חרדוני הלילה",
+    "status": "pending",
+    "sources": {
+      "en": {
+        "file": "sources/leisure-suit-larry-in-the-land-of-the-lounge-lizards-en.png",
+        "url": "https://thumbnails.libretro.com/ScummVM/Named_Boxarts/Leisure%20Suit%20Larry%20in%20the%20Land%20of%20the%20Lounge%20Lizards.png",
+        "source_page": "https://thumbnails.libretro.com/ScummVM/Named_Boxarts/",
+        "status": "needs_visual_review",
+        "width": 512,
+        "height": 653,
+        "sha256": "61591c4d1fbfa8c22978469709c804e80064ab78aff708dfefaf4a999f421f79"
+      }
+    }
+  },
+  {
+    "source_idx": 122,
+    "game_id": "king-s-quest",
+    "title_en": "King's Quest",
+    "title_he": "מסע המלך",
+    "status": "pending",
+    "sources": {
+      "en": {
+        "file": "sources/king-s-quest-en.png",
+        "url": "https://thumbnails.libretro.com/ScummVM/Named_Boxarts/King%27s%20Quest.png",
+        "source_page": "https://thumbnails.libretro.com/ScummVM/Named_Boxarts/",
+        "status": "needs_visual_review",
+        "width": 512,
+        "height": 644,
+        "sha256": "1fafae36548c0c62341fec3150542ea35cdb48ab9f63c42f8135352b0eb7a479"
+      }
+    }
+  },
+  {
+    "source_idx": 127,
+    "game_id": "king-s-quest-2",
+    "title_en": "King's Quest 2",
+    "title_he": "מסע המלך 2",
+    "status": "pending",
+    "sources": {
+      "en": {
+        "file": "sources/king-s-quest-2-en.png",
+        "url": "https://thumbnails.libretro.com/ScummVM/Named_Boxarts/King%27s%20Quest%20II_%20Romancing%20the%20Throne.png",
+        "source_page": "https://thumbnails.libretro.com/ScummVM/Named_Boxarts/",
+        "status": "needs_visual_review",
+        "width": 512,
+        "height": 657,
+        "sha256": "ba72bcb7c9417742f78e9185cba8215f3a9d56dd1ae7a986c313a93174164318"
+      }
+    }
+  },
+  {
+    "source_idx": 132,
+    "game_id": "king-s-quest-iii-to-heir-is-human",
+    "title_en": "King's Quest III: To Heir is Human",
+    "title_he": "מסע המלך 3",
+    "status": "pending",
+    "sources": {
+      "en": {
+        "file": "sources/king-s-quest-iii-to-heir-is-human-en.png",
+        "url": "https://thumbnails.libretro.com/ScummVM/Named_Boxarts/King%27s%20Quest%20III_%20To%20Heir%20is%20Human.png",
+        "source_page": "https://thumbnails.libretro.com/ScummVM/Named_Boxarts/",
+        "status": "needs_visual_review",
+        "width": 512,
+        "height": 642,
+        "sha256": "b302fa2eb9a00f07658eb5ab95212c1d10983b35f6502fbbb8028d8c131a256d"
+      }
+    }
+  },
+  {
+    "source_idx": 138,
+    "game_id": "king-s-quest-iv-the-perils-of-rosella",
+    "title_en": "King's Quest IV: The Perils of Rosella",
+    "title_he": "מסע המלך 4: תלאותיה של רוזלה",
+    "status": "pending",
+    "sources": {
+      "en": {
+        "file": "sources/king-s-quest-iv-the-perils-of-rosella-en.png",
+        "url": "https://thumbnails.libretro.com/ScummVM/Named_Boxarts/King%27s%20Quest%20IV_%20The%20Perils%20of%20Rosella.png",
+        "source_page": "https://thumbnails.libretro.com/ScummVM/Named_Boxarts/",
+        "status": "needs_visual_review",
+        "width": 512,
+        "height": 654,
+        "sha256": "090aed95490b0628bde85234d9d3b3cf6442669d6bb098b7a3ef27582f733795"
+      }
+    }
+  },
+  {
+    "source_idx": 144,
+    "game_id": "king-s-quest-v-absence-makes-the-heart-go-yonder",
+    "title_en": "King's Quest V: Absence Makes the Heart go Yonder",
+    "title_he": "מסע המלך 5: רחוק מהעין, רחוק מהלב",
+    "status": "pending",
+    "sources": {
+      "en": {
+        "file": "sources/king-s-quest-v-absence-makes-the-heart-go-yonder-en.png",
+        "url": "https://thumbnails.libretro.com/ScummVM/Named_Boxarts/King%27s%20Quest%20V_%20Absence%20Makes%20the%20Heart%20Go%20Yonder%21.png",
+        "source_page": "https://thumbnails.libretro.com/ScummVM/Named_Boxarts/",
+        "status": "needs_visual_review",
+        "width": 512,
+        "height": 641,
+        "sha256": "93dd52504f1088019de6167287edb2c9cb95945417cae489f93be62044312075"
+      }
+    }
+  },
+  {
+    "source_idx": 151,
+    "game_id": "king-s-quest-vi-heir-today-gone-tomorrow",
+    "title_en": "King's Quest VI - Heir Today, Gone Tomorrow",
+    "title_he": "מסע המלך 6: היום יורש, מחר פורש",
+    "status": "pending",
+    "sources": {
+      "he-candidate": {
+        "file": "sources/king-s-quest-vi-heir-today-gone-tomorrow-he-candidate.jpeg",
+        "url": "https://images.hakufsa.co.il/wp-content/uploads/D00C8A10-2AFF-47FD-A80E-EA83BFCCF282_1_201_a.jpeg",
+        "source_page": "https://www.hakufsa.co.il/game/king-s-quest-vi-heir-today-gone-tomorrow",
+        "status": "english-title-not-a-hebrew-cover",
+        "width": 2724,
+        "height": 3440,
+        "sha256": "7ceb8703f6874008a65e609ac7d22db12cfa513d8004ebd010cae32664173344"
+      },
+      "en": {
+        "file": "sources/king-s-quest-vi-heir-today-gone-tomorrow-en.png",
+        "url": "https://thumbnails.libretro.com/ScummVM/Named_Boxarts/King%27s%20Quest%20VI_%20Heir%20Today%2C%20Gone%20Tomorrow.png",
+        "source_page": "https://thumbnails.libretro.com/ScummVM/Named_Boxarts/",
+        "status": "needs_visual_review",
+        "width": 512,
+        "height": 638,
+        "sha256": "7d5954a0cc76b44e82d361437a444b527444e5bbed241c89114c2f5c629698ab"
+      }
+    }
+  },
+  {
+    "source_idx": 163,
+    "game_id": "king-s-quest-1-sci",
+    "title_en": "King's Quest 1 (SCI)",
+    "title_he": "מסע המלך 1 (SCI)",
+    "status": "pending",
+    "sources": {
+      "en": {
+        "file": "sources/king-s-quest-1-sci-en.png",
+        "url": "https://thumbnails.libretro.com/ScummVM/Named_Boxarts/King%27s%20Quest%20I%20%28SCI%20remake%29.png",
+        "source_page": "https://thumbnails.libretro.com/ScummVM/Named_Boxarts/",
+        "status": "needs_visual_review",
+        "width": 512,
+        "height": 636,
+        "sha256": "859d3358284611fc717bafc35f14206ec305a189e11f7cecc4fd9454a8cefa35"
+      }
+    }
+  },
+  {
+    "source_idx": 28,
+    "game_id": "the-legend-of-kyrandia-hand-of-fate-book-two",
+    "title_en": "The Legend of Kyrandia: Hand of Fate (Book Two)",
+    "title_he": "דברי ימי קירנדיה 2: יד הגורל",
+    "status": "pending",
+    "sources": {
+      "en": {
+        "file": "sources/the-legend-of-kyrandia-hand-of-fate-book-two-en.png",
+        "url": "https://thumbnails.libretro.com/ScummVM/Named_Boxarts/The%20Legend%20of%20Kyrandia_%20Book%20Two_%20The%20Hand%20of%20Fate.png",
+        "source_page": "https://thumbnails.libretro.com/ScummVM/Named_Boxarts/",
+        "status": "needs_visual_review",
+        "width": 512,
+        "height": 571,
+        "sha256": "5ddbeea23469b363566780aa0d42a92db943a3b95a8f76b9d5ff98b51d442bdd"
+      }
+    }
+  },
+  {
+    "source_idx": 29,
+    "game_id": "the-legend-of-kyrandia-book-three-malcolm-s-revenge",
+    "title_en": "The Legend of Kyrandia - Book Three: Malcolm's Revenge",
+    "title_he": "דברי ימי קירנדיה 3: נקמתו של מלקולם",
+    "status": "pending",
+    "sources": {
+      "en": {
+        "file": "sources/the-legend-of-kyrandia-book-three-malcolm-s-revenge-en.png",
+        "url": "https://thumbnails.libretro.com/ScummVM/Named_Boxarts/The%20Legend%20of%20Kyrandia_%20Book%20Three_%20Malcolms%20Revenge.png",
+        "source_page": "https://thumbnails.libretro.com/ScummVM/Named_Boxarts/",
+        "status": "needs_visual_review",
+        "width": 512,
+        "height": 641,
+        "sha256": "394941c8626e597706e46db37e4e15f720406bc498fc7be949d22f75623614c0"
+      }
+    }
+  },
+  {
+    "source_idx": 23,
+    "game_id": "inherit-the-earth",
+    "title_en": "Inherit the Earth",
+    "title_he": "יירשו ארץ - המסע בעקבות העין",
+    "status": "pending",
+    "sources": {
+      "en": {
+        "file": "sources/inherit-the-earth-en.jpg",
+        "url": "https://cdn.akamai.steamstatic.com/steam/apps/257260/library_600x900_2x.jpg",
+        "source_page": "https://store.steampowered.com/app/257260/",
+        "status": "needs_visual_review",
+        "width": 600,
+        "height": 900,
+        "sha256": "5987bdbb2906dc0d10551cdf938bf7ee015f03e9e19f196a08506336a9f89905"
+      }
+    },
+    "steam_appid": "257260"
+  }
+]

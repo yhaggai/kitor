@@ -17,7 +17,9 @@
       "catalog_index": 1,
       "game_id": "simon1-25th",
       "title": "Simon The sorcerer 25th Ann. edition",
-      "owned_stores": ["gog"],
+      "owned_stores": [
+        "gog"
+      ],
       "directory": "patches-workspace/simon1-25th/he",
       "status": "no_patch_required",
       "release_ready": false,
@@ -30,12 +32,17 @@
       "catalog_index": 4,
       "game_id": "monkey-se",
       "title": "The Secret of Monkey Island",
-      "owned_stores": ["gog"],
+      "owned_stores": [
+        "gog"
+      ],
       "directory": "patches-workspace/monkey-se/he",
       "status": "packaged_unverified",
       "release_ready": false,
       "manifest": "patches-workspace/monkey-se/he/patch.json",
-      "declared_platforms": ["windows", "osx"],
+      "declared_platforms": [
+        "windows",
+        "osx"
+      ],
       "artifacts": [
         {
           "platform": "windows",
@@ -58,12 +65,17 @@
       "catalog_index": 5,
       "game_id": "monkey2-se",
       "title": "Monkey Island 2: LeChuck's Revenge",
-      "owned_stores": ["steam"],
+      "owned_stores": [
+        "steam"
+      ],
       "directory": "patches-workspace/monkey2-se/he",
       "status": "packaged_unverified",
       "release_ready": false,
       "manifest": "patches-workspace/monkey2-se/he/patch.json",
-      "declared_platforms": ["windows", "osx"],
+      "declared_platforms": [
+        "windows",
+        "osx"
+      ],
       "artifacts": [
         {
           "platform": "windows",
@@ -86,12 +98,17 @@
       "catalog_index": 16,
       "game_id": "pq1",
       "title": "Police Quest: In Pursuit of the Death Angel",
-      "owned_stores": ["steam"],
+      "owned_stores": [
+        "steam"
+      ],
       "directory": "patches-workspace/pq1/he",
       "status": "packaged_unverified",
       "release_ready": false,
       "manifest": "patches-workspace/pq1/he/patch.json",
-      "declared_platforms": ["windows", "osx"],
+      "declared_platforms": [
+        "windows",
+        "osx"
+      ],
       "artifacts": [
         {
           "platform": "windows",
@@ -115,24 +132,30 @@
       "catalog_index": 17,
       "game_id": "sq1sci",
       "title": "Space Quest: The Sarien Encounter (VGA)",
-      "owned_stores": ["steam"],
+      "owned_stores": [
+        "steam"
+      ],
       "directory": "patches-workspace/sq1sci/he",
       "status": "packaged_unverified",
       "release_ready": false,
       "manifest": "patches-workspace/sq1sci/he/patch.json",
-      "declared_platforms": ["windows", "osx", "linux"],
+      "declared_platforms": [
+        "windows",
+        "osx",
+        "linux"
+      ],
       "artifacts": [
         {
           "platform": "windows",
-          "path": "dist/patches/sq1sci-he-1.0-kitor2-windows.zip",
-          "size": 709284,
-          "sha256": "f0ed591144b2388cdd52eb633aa25314dd20bce98eb46009b610593cb2ccd565"
+          "path": "dist/patches/sq1sci-he-1.0-kitor3-windows.zip",
+          "size": 710852,
+          "sha256": "d720a36ffc816cc868aa4e8a4440161027766de5567c7b5cd47eeb70aea72e6c"
         },
         {
           "platform": "osx",
-          "path": "dist/patches/sq1sci-he-1.0-kitor2-osx.zip",
-          "size": 709280,
-          "sha256": "d92f411e55774e4a13132cc3d5534ec7eec898eb8c0a1f7be0cc54ba208fbfea"
+          "path": "dist/patches/sq1sci-he-1.0-kitor3-osx.zip",
+          "size": 710848,
+          "sha256": "205864997b82967ebbe9ab5936ff0f24e37a50a187a4078362f1d5cadfc67f1c"
         }
       ],
       "blockers": [
@@ -143,12 +166,18 @@
       "catalog_index": 18,
       "game_id": "sq3",
       "title": "Space Quest III: The Pirates of Pestulon",
-      "owned_stores": ["steam", "gog"],
+      "owned_stores": [
+        "steam",
+        "gog"
+      ],
       "directory": "patches-workspace/sq3/he",
       "status": "packaged_unverified",
       "release_ready": false,
       "manifest": "patches-workspace/sq3/he/patch.json",
-      "declared_platforms": ["windows", "osx"],
+      "declared_platforms": [
+        "windows",
+        "osx"
+      ],
       "artifacts": [
         {
           "platform": "windows",
@@ -172,12 +201,17 @@
       "catalog_index": 19,
       "game_id": "torin",
       "title": "Torin's Passage",
-      "owned_stores": ["gog"],
+      "owned_stores": [
+        "gog"
+      ],
       "directory": "patches-workspace/torin/he",
       "status": "packaged_unverified",
       "release_ready": false,
       "manifest": "patches-workspace/torin/he/patch.json",
-      "declared_platforms": ["windows", "osx"],
+      "declared_platforms": [
+        "windows",
+        "osx"
+      ],
       "artifacts": [
         {
           "platform": "windows",
@@ -201,12 +235,16 @@
       "catalog_index": 22,
       "game_id": "stanley-parable",
       "title": "The Stanley Parable (2013)",
-      "owned_stores": ["steam"],
+      "owned_stores": [
+        "steam"
+      ],
       "directory": "patches-workspace/stanley-parable/he",
       "status": "staged_windows_payload_awaiting_compatibility_validation",
       "release_ready": false,
       "manifest": "patches-workspace/stanley-parable/he/patch.windows.candidate.json",
-      "declared_platforms": ["windows"],
+      "declared_platforms": [
+        "windows"
+      ],
       "artifacts": [
         {
           "platform": "windows",
@@ -225,12 +263,17 @@
       "catalog_index": 27,
       "game_id": "kyra1-cd",
       "title": "The Legend of Kyrandia (Book One)",
-      "owned_stores": ["gog"],
+      "owned_stores": [
+        "gog"
+      ],
       "directory": "patches-workspace/kyra1-cd/he",
       "status": "packaged_unverified",
       "release_ready": false,
       "manifest": "patches-workspace/kyra1-cd/he/patch.json",
-      "declared_platforms": ["windows", "osx"],
+      "declared_platforms": [
+        "windows",
+        "osx"
+      ],
       "artifacts": [
         {
           "platform": "windows",
@@ -253,12 +296,16 @@
       "catalog_index": 36,
       "game_id": "tesla-effect",
       "title": "Tesla Effect: A Tex Murphy Adventure",
-      "owned_stores": ["steam"],
+      "owned_stores": [
+        "steam"
+      ],
       "directory": "patches-workspace/tesla-effect/he",
       "status": "staged_windows_payload_awaiting_compatibility_validation",
       "release_ready": false,
       "manifest": "patches-workspace/tesla-effect/he/patch.windows.candidate.json",
-      "declared_platforms": ["windows"],
+      "declared_platforms": [
+        "windows"
+      ],
       "artifacts": [
         {
           "platform": "windows",
@@ -277,7 +324,9 @@
       "catalog_index": 39,
       "game_id": "she-sees-red",
       "title": "She Sees Red - Interactive Movie",
-      "owned_stores": ["steam"],
+      "owned_stores": [
+        "steam"
+      ],
       "directory": "patches-workspace/she-sees-red/he",
       "status": "no_patch_required",
       "release_ready": false,
@@ -290,12 +339,17 @@
       "catalog_index": 68,
       "game_id": "spyfox",
       "title": "Spy Fox In Dry Cereal",
-      "owned_stores": ["steam"],
+      "owned_stores": [
+        "steam"
+      ],
       "directory": "patches-workspace/spyfox/he",
       "status": "packaged_unverified",
       "release_ready": false,
       "manifest": "patches-workspace/spyfox/he/patch.json",
-      "declared_platforms": ["windows", "osx"],
+      "declared_platforms": [
+        "windows",
+        "osx"
+      ],
       "artifacts": [
         {
           "platform": "windows",
@@ -319,12 +373,17 @@
       "catalog_index": 69,
       "game_id": "pajama",
       "title": "Pajama Sam: No Need to Hide When It's Dark Outside",
-      "owned_stores": ["gog"],
+      "owned_stores": [
+        "gog"
+      ],
       "directory": "patches-workspace/pajama/he",
       "status": "packaged_unverified",
       "release_ready": false,
       "manifest": "patches-workspace/pajama/he/patch.json",
-      "declared_platforms": ["windows", "osx"],
+      "declared_platforms": [
+        "windows",
+        "osx"
+      ],
       "artifacts": [
         {
           "platform": "windows",
@@ -348,12 +407,17 @@
       "catalog_index": 72,
       "game_id": "sq5",
       "title": "Space Quest V: The Next Mutation",
-      "owned_stores": ["steam"],
+      "owned_stores": [
+        "steam"
+      ],
       "directory": "patches-workspace/sq5/he",
       "status": "packaged_unverified",
       "release_ready": false,
       "manifest": "patches-workspace/sq5/he/patch.json",
-      "declared_platforms": ["windows", "osx"],
+      "declared_platforms": [
+        "windows",
+        "osx"
+      ],
       "artifacts": [
         {
           "platform": "windows",
@@ -377,12 +441,16 @@
       "catalog_index": 75,
       "game_id": "ethan-carter",
       "title": "The Vanishing of Ethan Carter",
-      "owned_stores": ["steam"],
+      "owned_stores": [
+        "steam"
+      ],
       "directory": "patches-workspace/ethan-carter/he",
       "status": "staged_windows_payload_awaiting_compatibility_validation",
       "release_ready": false,
       "manifest": "patches-workspace/ethan-carter/he/patch.windows.candidate.json",
-      "declared_platforms": ["windows"],
+      "declared_platforms": [
+        "windows"
+      ],
       "artifacts": [
         {
           "platform": "windows",
@@ -401,12 +469,17 @@
       "catalog_index": 76,
       "game_id": "toonstruck",
       "title": "Toonstruck",
-      "owned_stores": ["gog"],
+      "owned_stores": [
+        "gog"
+      ],
       "directory": "patches-workspace/toonstruck/he",
       "status": "packaged_unverified",
       "release_ready": false,
       "manifest": "patches-workspace/toonstruck/he/patch.json",
-      "declared_platforms": ["windows", "osx"],
+      "declared_platforms": [
+        "windows",
+        "osx"
+      ],
       "artifacts": [
         {
           "platform": "windows",
@@ -430,12 +503,16 @@
       "catalog_index": 77,
       "game_id": "life-is-strange",
       "title": "Life is Strange Episode 1-3",
-      "owned_stores": ["steam"],
+      "owned_stores": [
+        "steam"
+      ],
       "directory": "patches-workspace/life-is-strange/he",
       "status": "staged_windows_payload_awaiting_compatibility_validation",
       "release_ready": false,
       "manifest": "patches-workspace/life-is-strange/he/patch.windows.candidate.json",
-      "declared_platforms": ["windows"],
+      "declared_platforms": [
+        "windows"
+      ],
       "artifacts": [
         {
           "platform": "windows",
@@ -455,12 +532,16 @@
       "catalog_index": 87,
       "game_id": "portal2",
       "title": "Portal 2",
-      "owned_stores": ["steam"],
+      "owned_stores": [
+        "steam"
+      ],
       "directory": "patches-workspace/portal2/he",
       "status": "experimental_windows_payload_requires_gameplay",
       "release_ready": false,
       "manifest": "patches-workspace/portal2/he/patch.windows.candidate.json",
-      "declared_platforms": ["windows"],
+      "declared_platforms": [
+        "windows"
+      ],
       "artifacts": [
         {
           "platform": "windows",
@@ -479,12 +560,17 @@
       "catalog_index": 90,
       "game_id": "gob2",
       "title": "Gobliins 2: The Prince Buffoon",
-      "owned_stores": ["gog"],
+      "owned_stores": [
+        "gog"
+      ],
       "directory": "patches-workspace/gob2/he",
       "status": "packaged_unverified",
       "release_ready": false,
       "manifest": "patches-workspace/gob2/he/patch.json",
-      "declared_platforms": ["windows", "osx"],
+      "declared_platforms": [
+        "windows",
+        "osx"
+      ],
       "artifacts": [
         {
           "platform": "windows",
@@ -508,7 +594,9 @@
       "catalog_index": 97,
       "game_id": "shivah",
       "title": "The Shivah",
-      "owned_stores": ["steam"],
+      "owned_stores": [
+        "steam"
+      ],
       "directory": "patches-workspace/shivah/he",
       "status": "blocked",
       "release_ready": false,
@@ -524,12 +612,16 @@
       "catalog_index": 99,
       "game_id": "journey-down1",
       "title": "The Journey Down",
-      "owned_stores": ["steam"],
+      "owned_stores": [
+        "steam"
+      ],
       "directory": "patches-workspace/journey-down1/he",
       "status": "staged_windows_payload_awaiting_compatibility_validation",
       "release_ready": false,
       "manifest": "patches-workspace/journey-down1/he/patch.windows.candidate.json",
-      "declared_platforms": ["windows"],
+      "declared_platforms": [
+        "windows"
+      ],
       "artifacts": [
         {
           "platform": "windows",
@@ -548,12 +640,18 @@
       "catalog_index": 107,
       "game_id": "tlj",
       "title": "The Longest Journey",
-      "owned_stores": ["steam", "gog"],
+      "owned_stores": [
+        "steam",
+        "gog"
+      ],
       "directory": "patches-workspace/tlj/he",
       "status": "packaged_unverified",
       "release_ready": false,
       "manifest": "patches-workspace/tlj/he/patch.json",
-      "declared_platforms": ["windows", "osx"],
+      "declared_platforms": [
+        "windows",
+        "osx"
+      ],
       "artifacts": [
         {
           "platform": "windows",
@@ -576,12 +674,17 @@
       "catalog_index": 112,
       "game_id": "sky",
       "title": "Beneath A Steel Sky",
-      "owned_stores": ["gog"],
+      "owned_stores": [
+        "gog"
+      ],
       "directory": "patches-workspace/sky/he",
       "status": "packaged_unverified",
       "release_ready": false,
       "manifest": "patches-workspace/sky/he/patch.json",
-      "declared_platforms": ["windows", "osx"],
+      "declared_platforms": [
+        "windows",
+        "osx"
+      ],
       "artifacts": [
         {
           "platform": "windows",
@@ -604,12 +707,16 @@
       "catalog_index": 121,
       "game_id": "kathy-rain-dc",
       "title": "Kathy Rain: Director's Cut",
-      "owned_stores": ["steam"],
+      "owned_stores": [
+        "steam"
+      ],
       "directory": "patches-workspace/kathy-rain-dc/he",
       "status": "staged_windows_payload_awaiting_compatibility_validation",
       "release_ready": false,
       "manifest": "patches-workspace/kathy-rain-dc/he/patch.windows.candidate.json",
-      "declared_platforms": ["windows"],
+      "declared_platforms": [
+        "windows"
+      ],
       "artifacts": [
         {
           "platform": "windows",
@@ -629,12 +736,18 @@
       "catalog_index": 130,
       "game_id": "sq2",
       "title": "Space Quest II: Vohaul's Revenge",
-      "owned_stores": ["steam", "gog"],
+      "owned_stores": [
+        "steam",
+        "gog"
+      ],
       "directory": "patches-workspace/sq2/he",
       "status": "packaged_unverified",
       "release_ready": false,
       "manifest": "patches-workspace/sq2/he/patch.json",
-      "declared_platforms": ["windows", "osx"],
+      "declared_platforms": [
+        "windows",
+        "osx"
+      ],
       "artifacts": [
         {
           "platform": "windows",
@@ -657,12 +770,17 @@
       "catalog_index": 136,
       "game_id": "sq1",
       "title": "Space Quest 1: The Sarien Encounter (EGA)",
-      "owned_stores": ["gog"],
+      "owned_stores": [
+        "gog"
+      ],
       "directory": "patches-workspace/sq1/he",
       "status": "packaged_unverified",
       "release_ready": false,
       "manifest": "patches-workspace/sq1/he/patch.json",
-      "declared_platforms": ["windows", "osx"],
+      "declared_platforms": [
+        "windows",
+        "osx"
+      ],
       "artifacts": [
         {
           "platform": "windows",
@@ -685,32 +803,42 @@
       "catalog_index": 160,
       "game_id": "drifter",
       "title": "The Drifter",
-      "owned_stores": ["steam"],
+      "owned_stores": [
+        "steam"
+      ],
       "directory": "patches-workspace/drifter/he",
-      "status": "staged_windows_payload_awaiting_compatibility_validation",
+      "status": "dual_platform_bundled_gameplay_unverified",
       "release_ready": false,
-      "manifest": "patches-workspace/drifter/he/patch.windows.candidate.json",
-      "declared_platforms": ["windows"],
+      "manifest": "patches-workspace/drifter/he/patch.json",
+      "declared_platforms": [
+        "windows",
+        "osx"
+      ],
       "artifacts": [
         {
           "platform": "windows",
-          "path": "dist/patches/drifter-he-2026-07-09-kitor1-windows.zip",
+          "path": "dist/patches/drifter-he-2026-07-09-kitor2-windows.zip",
           "size": 1543862,
-          "sha256": "dc0e00ed10c10c4d1bb20be2d0ea7b530a0b29555ee8d99cc9db129779f7c380"
+          "sha256": "caed9c19149839656c5a1eace8550d7ca3d7795f448062af5c57d66eb90a38b1"
+        },
+        {
+          "platform": "osx",
+          "path": "dist/patches/drifter-he-2026-07-09-kitor2-osx.zip",
+          "size": 1543858,
+          "sha256": "ad133d4de6257aec24fe03495db3f7a775f4a75dd37fb755142abf9a2b7e64c1"
         }
       ],
       "blockers": [
-        "Steam The Drifter; standalone translation.csv payload.",
-        "Native macOS SystemText.get_SaveDirectory returns Application.persistentDataPath when Application.platform==1 (OSXPlayer), versus ./ on Windows. InitialiseCustomLanguage appends translation.csv.",
-        "macOS installation therefore needs a separately journaled user-data target; the current game-root-only manifest cannot safely represent this. Do not write into game .app and claim success.",
-        "Windows native install/uninstall and gameplay validation have not run. macOS package is not built or verified. Original supported game version hashes must be established before release."
+        "Native Windows installation and gameplay validation have not run. macOS gameplay remains unverified."
       ]
     },
     {
       "catalog_index": 164,
       "game_id": "gemini-rue",
       "title": "Gemini Rue",
-      "owned_stores": ["steam"],
+      "owned_stores": [
+        "steam"
+      ],
       "directory": "patches-workspace/gemini-rue/he",
       "status": "blocked",
       "release_ready": false,

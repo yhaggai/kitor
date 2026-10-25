@@ -1,11 +1,11 @@
 import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
 import { invoke } from "@tauri-apps/api/core";
 import { open } from "@tauri-apps/plugin-dialog";
-import { ChevronDown, FolderSearch, Plus } from "lucide-react";
+import { ChevronDown, FolderSearch } from "lucide-react";
 import { useEffect, useState } from "react";
-import AddGameDialog from "@/components/AddGameDialog";
 import GameCard from "@/components/GameCard";
 import { Button } from "@/components/ui/button";
+import { useDialog } from "@/hooks/useDialog";
 import { useAppStore } from "@/store/store";
 
 type GameLibraryProps = {
@@ -15,9 +15,10 @@ type GameLibraryProps = {
 export default function GameLibrary({ onRefresh }: GameLibraryProps) {
   const { games, highlightedGameId, setHighlightedGameId } = useAppStore();
   const [isScanning, setIsScanning] = useState(false);
+  const [isRemoving, setIsRemoving] = useState(false);
+  const { confirm } = useDialog();
   const [scanMessage, setScanMessage] = useState("");
   const [scanWarnings, setScanWarnings] = useState<string[]>([]);
-  const [showAddDialog, setShowAddDialog] = useState(false);
 
   useEffect(() => {
     if (highlightedGameId) {
@@ -34,7 +35,7 @@ export default function GameLibrary({ onRefresh }: GameLibraryProps) {
   }, [highlightedGameId, setHighlightedGameId]);
 
   const handleScanGames = async (automatic: boolean) => {
-    if (isScanning) return;
+    if (isScanning || isRemoving) return;
     setIsScanning(true);
     setScanMessage("");
     setScanWarnings([]);
@@ -72,16 +73,48 @@ export default function GameLibrary({ onRefresh }: GameLibraryProps) {
     }
   };
 
+  const handleRemoveAllGames = async () => {
+    if (isScanning || isRemoving) return;
+    setIsRemoving(true);
+    try {
+      const confirmed = await confirm({
+        title: "Remove all games from your library?",
+        description:
+          "This only removes tracking in Kitor. Your game files will stay on disk. You can scan your folders to add the games again.",
+        confirmText: "Remove all games",
+        cancelText: "Cancel",
+      });
+      if (!confirmed) return;
+      setScanMessage("");
+      setScanWarnings([]);
+      // Include tracked games that may not be visible in the patch-filtered library.
+      const trackedGames = await invoke<{ id: number }[]>("get_all_games");
+      for (const game of trackedGames) {
+        await invoke("remove_game", { id: game.id });
+      }
+      setHighlightedGameId(null);
+      setScanMessage("All games removed from your library. Game files were left on disk.");
+    } catch (error) {
+      setScanMessage(`Could not remove all games: ${String(error)}`);
+    } finally {
+      try {
+        await onRefresh();
+      } finally {
+        setIsRemoving(false);
+      }
+    }
+  };
+
   const scanButton = (outline = false) => (
     <DropdownMenu.Root>
       <DropdownMenu.Trigger asChild>
         <Button
           variant={outline ? "outline" : "default"}
-          disabled={isScanning}
+          disabled={isScanning || isRemoving}
           className="text-white"
         >
           <FolderSearch className="mr-2 h-4 w-4" />
-          {isScanning ? "Scanning..." : "Scan for Games"}
+          {isRemoving ? "Removing..." : isScanning ? "Scanning..." : "Scan for Games"}
           <ChevronDown className="ml-2 h-4 w-4" />
         </Button>
       </DropdownMenu.Trigger>
@@ -105,12 +138,18 @@ export default function GameLibrary({ onRefresh }: GameLibraryProps) {
           >
             Choose a folder…
           </DropdownMenu.Item>
+          <DropdownMenu.Separator className="my-1 h-px bg-border" />
+          <DropdownMenu.Item
+            disabled={isScanning || isRemoving}
+            onSelect={() => void handleRemoveAllGames()}
+            className="cursor-pointer rounded-sm px-3 py-2 text-sm text-destructive outline-none focus:bg-accent data-[disabled]:pointer-events-none data-[disabled]:opacity-50"
+          >
+            Remove all games
+          </DropdownMenu.Item>
         </DropdownMenu.Content>
       </DropdownMenu.Portal>
     </DropdownMenu.Root>
   );
-
-  const handleAddManually = () => setShowAddDialog(true);
 
   return (
     <div className="space-y-6">
@@ -121,13 +160,7 @@ export default function GameLibrary({ onRefresh }: GameLibraryProps) {
             {games.length} {games.length === 1 ? "game" : "games"} in library
           </p>
         </div>
-        <div className="flex gap-2">
-          {scanButton(true)}
-          <Button onClick={handleAddManually}>
-            <Plus className="mr-2 h-4 w-4" />
-            Add Manually
-          </Button>
-        </div>
+        {scanButton(true)}
       </div>
 
       <div aria-live="polite">
@@ -144,8 +177,6 @@ export default function GameLibrary({ onRefresh }: GameLibraryProps) {
           </details>
         )}
       </div>
-
-      <AddGameDialog open={showAddDialog} onOpenChange={setShowAddDialog} onAdded={onRefresh} />
 
       {games.length === 0 ? (
         <div className="text-center py-12 border-2 border-dashed rounded-lg">

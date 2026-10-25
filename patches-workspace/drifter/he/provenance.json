@@ -5,14 +5,13 @@
     "https://drive.google.com/file/d/1Atx1m7AaFqAUphmnOP4Ke5fdICYgy0FP/view?usp=drive_link",
     "https://www.facebook.com/share/p/1LEcjZ4Kyj/"
   ],
-  "owned_stores": ["Steam"],
-  "status": "staged_windows_payload_awaiting_compatibility_validation",
+  "owned_stores": [
+    "Steam"
+  ],
+  "status": "dual_platform_bundled_gameplay_unverified",
   "release_ready": false,
   "blockers": [
-    "Steam The Drifter; standalone translation.csv payload.",
-    "Native macOS SystemText.get_SaveDirectory returns Application.persistentDataPath when Application.platform==1 (OSXPlayer), versus ./ on Windows. InitialiseCustomLanguage appends translation.csv.",
-    "macOS installation therefore needs a separately journaled user-data target; the current game-root-only manifest cannot safely represent this. Do not write into game .app and claim success.",
-    "Windows native install/uninstall and gameplay validation have not run. macOS package is not built or verified. Original supported game version hashes must be established before release."
+    "Native Windows installation and gameplay validation have not run. macOS gameplay remains unverified."
   ],
   "upstream_asset": {
     "sha256": "684f3428a5b4b6c6991424bbb227a1ac7ea4a58d4ae0da581d9fa1385fa75e92",
@@ -26,18 +25,28 @@
     "native_macos": false,
     "gameplay": false,
     "windows_manifest_schema_and_all_asset_hashes": "passed build_patch_packages.validate",
-    "built_platform_archives": ["windows"],
-    "zip_integrity": "passed"
+    "built_platform_archives": [
+      "windows",
+      "osx"
+    ],
+    "zip_integrity": "passed",
+    "macos_build_sha256_verified": true,
+    "macos_userdata_fixture_roundtrip": true,
+    "lifecycle_suite": "15 passed, 1 unrelated real-archive test ignored"
   },
   "installation": {
     "method": "Kitor declarative patch_lifecycle install",
-    "backup": "Only existing paths enumerated in patch.windows.candidate.json; preserve original bytes and metadata in installation journal.",
-    "uninstall": "Kitor journal restores changed originals and removes only patch-created files; unrelated game files and saves remain untouched."
+    "backup": "Only translation.csv in the platform-specific target is backed up; existing originals survive retries.",
+    "uninstall": "Kitor journal restores changed originals and removes only patch-created files; unrelated game files and saves remain untouched.",
+    "macos_target": "~/Library/Application Support/com.Powerhoof.TheDrifter (must exist; start the game once first)"
   },
   "platforms": {
-    "windows": "staged copy-data plan, not native validated",
-    "osx": "blocked; see blockers"
+    "windows": "bundled copy-data plan; fixture verified, native gameplay unverified",
+    "osx": "Steam build 22758595; user-data target, selective journal fixture verified; gameplay unverified"
   },
-  "dependencies": ["Kitor selective lifecycle runtime", "Owned supported game installation"],
+  "dependencies": [
+    "Kitor selective lifecycle runtime",
+    "Owned supported game installation"
+  ],
   "target_architectures": "Payload data is architecture-independent; native game/runtime compatibility remains unverified."
 }

@@ -1,0 +1,32 @@
+[
+  {
+    "id": "the-bunker",
+    "prompt": "Use case: text-localization. Edit target is original game cover. Replace English game title with exactly \"הבונקר\". Match worn bold white sans-serif title at bottom. Hebrew right to left, correct spelling. Change ONLY lettering. Keep all artwork unchanged, including faces, clothing, pose, objects, texture, light, color, placement, framing and aspect ratio. Do not redraw, restyle, add elements, or change crop. Preserve original font style.",
+    "path": "/Users/haggaiyaniv/.codex/generated_images/01a17325-42a3-71b0-8569-0b89e59757d5/exec-b2e6ab58-3feb-4159-9243-8b695f87e161.png"
+  },
+  {
+    "id": "the-shapeshifting-detective",
+    "prompt": "Use case: text-localization. Edit target is original game cover. Replace English game title with exactly \"הבלש משנה הצורה\". Keep condensed sans-serif logo, red הבלש above large white משנה הצורה, smoky texture. Hebrew right to left, correct spelling. Change ONLY lettering. Keep all artwork unchanged, including faces, clothing, pose, objects, texture, light, color, placement, framing and aspect ratio. Do not redraw, restyle, add elements, or change crop. Preserve original font style.",
+    "path": "/Users/haggaiyaniv/.codex/generated_images/01a17325-42a3-71b0-8569-0b89e59757d5/exec-fcdf25f9-a1aa-480c-b409-ce6c5b44521b.png"
+  },
+  {
+    "id": "the-complex",
+    "prompt": "Use case: text-localization. Edit target is original game cover. Replace English game title with exactly \"מתח במתחם\". Keep very thin black widely spaced geometric sans-serif title at chest level. Hebrew right to left, correct spelling. Change ONLY lettering. Keep all artwork unchanged, including faces, clothing, pose, objects, texture, light, color, placement, framing and aspect ratio. Do not redraw, restyle, add elements, or change crop. Preserve original font style.",
+    "path": "/Users/haggaiyaniv/.codex/generated_images/01a17325-42a3-71b0-8569-0b89e59757d5/exec-37b5d241-74cd-4768-9b11-497843d4c8ca.png"
+  },
+  {
+    "id": "portal",
+    "prompt": "Use case: text-localization. Edit target is original game cover. Replace English game title with exactly \"פורטל\". Keep white widely spaced bold sans-serif lettering and integrate the blue portal-ring logo delicately into the Hebrew title. Hebrew right to left, correct spelling. Change ONLY lettering. Keep all artwork unchanged, including faces, clothing, pose, objects, texture, light, color, placement, framing and aspect ratio. Do not redraw, restyle, add elements, or change crop. Preserve original font style.",
+    "path": "/Users/haggaiyaniv/.codex/generated_images/01a17325-42a3-71b0-8569-0b89e59757d5/exec-844df790-8a29-4abc-865a-37a680bbf661.png"
+  },
+  {
+    "id": "portal-with-rtx",
+    "prompt": "Use case: text-localization. Edit target is original game cover. Replace English game title with exactly \"פורטל\". Replace PORTAL with פורטל and WITH RTX with עם RTX. Preserve white/cyan sans-serif and cyan ring motif. Hebrew right to left, correct spelling. Change ONLY lettering. Keep all artwork unchanged, including faces, clothing, pose, objects, texture, light, color, placement, framing and aspect ratio. Do not redraw, restyle, add elements, or change crop. Preserve original font style.",
+    "path": "/Users/haggaiyaniv/.codex/generated_images/01a17325-42a3-71b0-8569-0b89e59757d5/exec-b80b0601-d84a-40eb-b7c5-3d9308e5fbec.png"
+  },
+  {
+    "id": "ever-forward",
+    "prompt": "Use case: text-localization. Edit target is original game cover. Replace English game title with exactly \"לנצח בתי\". Preserve pale blue pixel/glitch geometric letter style, centered upper placement. Hebrew right to left, correct spelling. Change ONLY lettering. Keep all artwork unchanged, including faces, clothing, pose, objects, texture, light, color, placement, framing and aspect ratio. Do not redraw, restyle, add elements, or change crop. Preserve original font style.",
+    "path": "/Users/haggaiyaniv/.codex/generated_images/01a17325-42a3-71b0-8569-0b89e59757d5/exec-6b1b70cf-847b-43a4-86f0-149924586d15.png"
+  }
+]

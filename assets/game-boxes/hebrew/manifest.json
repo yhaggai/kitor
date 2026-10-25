@@ -1,0 +1,318 @@
+{
+  "created_on": "2026-10-25",
+  "generator": "built-in image_gen",
+  "scope": "19 Hebrew variants for English fallback covers; six existing Hebrew/Israeli covers untouched",
+  "originals_verified_unchanged": 25,
+  "integration_status": "not integrated; installation-state cover switching is a later step",
+  "games": [
+    {
+      "game_id": "undertale",
+      "source_file": "../originals/undertale.jpg",
+      "source_sha256": "9145051fa004631fd4c485903476de1397ca785422ac46f721f97b6285583f44",
+      "file": "undertale.png",
+      "language": "he",
+      "text": [
+        "אנדרטייל"
+      ],
+      "width": 1023,
+      "height": 1537,
+      "sha256": "7779b0629b755293e4e4315f888826641dec687f165cc7150feabcfb9eea367b",
+      "status": "generated-draft",
+      "review_note": "Text and style visually inspected. AI editing changes some non-text details; not pixel-identical to original artwork. Requires final art review before integration."
+    },
+    {
+      "game_id": "monkey-se",
+      "source_file": "../originals/monkey-se.jpg",
+      "source_sha256": "b9d8b502a92e9ee2efced935e58f0234d9804b69b5421083da57609b0f9422af",
+      "file": "monkey-se.png",
+      "language": "he",
+      "text": [
+        "הסוד של",
+        "אי הקופים",
+        "מהדורה מיוחדת"
+      ],
+      "width": 1060,
+      "height": 1484,
+      "sha256": "0808875f8dd22dfa509ad6ea85e3c0ba6c4e1fd9c2e40229d6544f872036c0a4",
+      "status": "generated-draft",
+      "review_note": "Text and style visually inspected. AI editing changes some non-text details; not pixel-identical to original artwork. Requires final art review before integration."
+    },
+    {
+      "game_id": "monkey2-se",
+      "source_file": "../originals/monkey2-se.jpg",
+      "source_sha256": "edc7e06d30c7b240dba4bca0c618992ef49e2f47f0961327c72de6670c8735cb",
+      "file": "monkey2-se.png",
+      "language": "he",
+      "text": [
+        "נקמתו של לה־צ׳אק",
+        "אי הקופים",
+        "מהדורה מיוחדת"
+      ],
+      "width": 1044,
+      "height": 1507,
+      "sha256": "04849cb6d306f2343597cab8fc7396f2218e7a37cef818cb71ca52b5dc5da579",
+      "status": "generated-draft",
+      "review_note": "Text and style visually inspected. AI editing changes some non-text details; not pixel-identical to original artwork. Requires final art review before integration."
+    },
+    {
+      "game_id": "sq1sci",
+      "source_file": "../originals/sq1sci.jpg",
+      "source_sha256": "47ff2f31fadc5b53a21b5e3ce1537b59f77c9a6895d69fd3881d342d14991f7f",
+      "file": "sq1sci.png",
+      "language": "he",
+      "text": [
+        "מסע בחלל I",
+        "רוג׳ר וילקו",
+        "במפגש עם הסאריאנים",
+        "משחק הרפתקאות מונפש בתלת־ממד"
+      ],
+      "width": 1122,
+      "height": 1402,
+      "sha256": "f465b464081178747edc7960111d6dd3043519767724deae6590a1a7f9e624fe",
+      "status": "generated-draft",
+      "review_note": "Text and style visually inspected. AI editing changes some non-text details; not pixel-identical to original artwork. Requires final art review before integration."
+    },
+    {
+      "game_id": "pq1",
+      "source_file": "../originals/pq1.jpg",
+      "source_sha256": "bb3cbf8ffefcfdb823e0f3633ef37d06d68ecd61ec2c9f1d2b52891279bbde36",
+      "file": "pq1.png",
+      "language": "he",
+      "text": [
+        "משימה משטרתית",
+        "במרדף אחר מלאך המוות",
+        "משחק הרפתקאות מונפש בתלת־ממד"
+      ],
+      "width": 1125,
+      "height": 1398,
+      "sha256": "02f732721274c836a1721ab0367475d97d17e31e957ee8ba8068ab57f66672ba",
+      "status": "generated-draft",
+      "review_note": "Text and style visually inspected. AI editing changes some non-text details; not pixel-identical to original artwork. Requires final art review before integration."
+    },
+    {
+      "game_id": "sq1",
+      "source_file": "../originals/sq1.jpg",
+      "source_sha256": "08cf78a61b31f699360f0122b6417d76ba2df7cb4a302b3c07df9061171ce04e",
+      "file": "sq1.png",
+      "language": "he",
+      "text": [
+        "מסע בחלל",
+        "משחק הרפתקאות מונפש בתלת־ממד",
+        "פרק 1",
+        "המפגש עם הסאריאנים",
+        "קופונים בפנים",
+        "פרטים בגב האריזה"
+      ],
+      "width": 1070,
+      "height": 1470,
+      "sha256": "14acb546941f2bd5793a2c26d74636d664d4c0b6f08103bc675ff47a07ed52ad",
+      "status": "generated-draft",
+      "review_note": "Text and style visually inspected. AI editing changes some non-text details; not pixel-identical to original artwork. Requires final art review before integration."
+    },
+    {
+      "game_id": "sq2",
+      "source_file": "../originals/sq2.jpg",
+      "source_sha256": "2f9730d67c73a4f7114d8681d358b8cc2c35b3ccfb15eebae3c0b740b28c3339",
+      "file": "sq2.png",
+      "language": "he",
+      "text": [
+        "מסע בחלל",
+        "פרק 2",
+        "נקמתו של ווהול",
+        "משחק הרפתקאות מונפש בתלת־ממד"
+      ],
+      "width": 1112,
+      "height": 1414,
+      "sha256": "fecca102b63e31a19f36e34f4d0b46e78d74e1a985594aa2f3905c5a978f6abc",
+      "status": "generated-draft",
+      "review_note": "Text and style visually inspected. AI editing changes some non-text details; not pixel-identical to original artwork. Requires final art review before integration."
+    },
+    {
+      "game_id": "spyfox",
+      "source_file": "../originals/spyfox.jpg",
+      "source_sha256": "f79e51735fc48dfc7d230d93370984fe044c5c1cabe3b4aed26e135a3d98499f",
+      "file": "spyfox.png",
+      "language": "he",
+      "text": [
+        "שועל ריגול",
+        "דגנים יבשים"
+      ],
+      "width": 1024,
+      "height": 1536,
+      "sha256": "d2bc70a55ef09bd09856bcaffcb0b4eda4662f419f67164b34f83b70fd15a9db",
+      "status": "generated-draft",
+      "review_note": "Text and style visually inspected. AI editing changes some non-text details; not pixel-identical to original artwork. Requires final art review before integration."
+    },
+    {
+      "game_id": "pajama",
+      "source_file": "../originals/pajama.jpg",
+      "source_sha256": "800dc7a2b3160bf6a4924de478c0eda03b359b16dcc61d90248d32916e289d0e",
+      "file": "pajama.png",
+      "language": "he",
+      "text": [
+        "פיג׳מה סם",
+        "לא צריך להתחבא כשחשוך בחוץ"
+      ],
+      "width": 1024,
+      "height": 1536,
+      "sha256": "524911dfb89b7eea7da526e0d2c47f40980d92bfaec6a3e2a6add361f8ea1c67",
+      "status": "generated-draft",
+      "review_note": "Text and style visually inspected. AI editing changes some non-text details; not pixel-identical to original artwork. Requires final art review before integration."
+    },
+    {
+      "game_id": "toonstruck",
+      "source_file": "../originals/toonstruck.jpg",
+      "source_sha256": "fbd6de512350be15ad09643a7751eeb9eb9818b7189b55b302ddad4bef51bedd",
+      "file": "toonstruck.png",
+      "language": "he",
+      "text": [
+        "טונסטרק"
+      ],
+      "width": 1024,
+      "height": 1536,
+      "sha256": "c74b163cee09532668ee6be2a9835c936a5b6e75f973d78dfb43eedacd366ff8",
+      "status": "generated-draft",
+      "review_note": "Text and style visually inspected. AI editing changes some non-text details; not pixel-identical to original artwork. Requires final art review before integration."
+    },
+    {
+      "game_id": "sky",
+      "source_file": "../originals/sky.jpg",
+      "source_sha256": "a66d8fcd68f6db1fca5acba9b9f825233e36dbf68a518a94825d43cb17bfd5f9",
+      "file": "sky.png",
+      "language": "he",
+      "text": [
+        "מתחת",
+        "לשמי",
+        "פלדה"
+      ],
+      "width": 1024,
+      "height": 1536,
+      "sha256": "01aa7fd0a807edd8abf6b9926a305fbe0946e847be9d2d091208d12977decf5b",
+      "status": "generated-draft",
+      "review_note": "Text and style visually inspected. AI editing changes some non-text details; not pixel-identical to original artwork. Requires final art review before integration."
+    },
+    {
+      "game_id": "stanley-parable",
+      "source_file": "../originals/stanley-parable.jpg",
+      "source_sha256": "924f717e3da09b95bf30c3620df78e0b9dbbf005b576e2cf9b3c7ee5cd4c398e",
+      "file": "stanley-parable.png",
+      "language": "he",
+      "text": [
+        "המשל של סטנלי"
+      ],
+      "width": 1024,
+      "height": 1536,
+      "sha256": "e3715fa6037e6d8a4b809128cae11ee8aa807aa57c1391450198150a4251924f",
+      "status": "generated-draft",
+      "review_note": "Text and style visually inspected. AI editing changes some non-text details; not pixel-identical to original artwork. Requires final art review before integration."
+    },
+    {
+      "game_id": "tesla-effect",
+      "source_file": "../originals/tesla-effect.jpg",
+      "source_sha256": "77011ed8d30d7413f9214888b4f3664550c1af6d39f2279e774e02ec12841ab7",
+      "file": "tesla-effect.png",
+      "language": "he",
+      "text": [
+        "אפקט טסלה",
+        "הרפתקה של טקס מרפי"
+      ],
+      "width": 1024,
+      "height": 1536,
+      "sha256": "2576368ae8b7f9e5f985b8900713a6027b7b6eb6b6d5a37b6fe2cce322fdc56a",
+      "status": "generated-draft",
+      "review_note": "Text and style visually inspected. AI editing changes some non-text details; not pixel-identical to original artwork. Requires final art review before integration."
+    },
+    {
+      "game_id": "ethan-carter",
+      "source_file": "../originals/ethan-carter.jpg",
+      "source_sha256": "1cb9c72fce73c8acb9f2583a9bc21ba169a67c9be821e228c41be5bf39b49ab4",
+      "file": "ethan-carter.png",
+      "language": "he",
+      "text": [
+        "היעלמותו של איתן קרטר"
+      ],
+      "width": 1024,
+      "height": 1536,
+      "sha256": "92abbf856e40e0b1e4ac962d4539a2ca32ac2644f54cbd3a7a832372439dfb67",
+      "status": "generated-draft",
+      "review_note": "Text and style visually inspected. AI editing changes some non-text details; not pixel-identical to original artwork. Requires final art review before integration."
+    },
+    {
+      "game_id": "life-is-strange",
+      "source_file": "../originals/life-is-strange.jpg",
+      "source_sha256": "3129cec77590977b08d06bc14f8efd8cd2effb047485ee4705966c97b950727b",
+      "file": "life-is-strange.png",
+      "language": "he",
+      "text": [
+        "החיים מוזרים"
+      ],
+      "width": 1024,
+      "height": 1536,
+      "sha256": "850643e4f7ca550019da8504da7b724a3dd1a0ed4086b095b2092bc285c8deac",
+      "status": "generated-draft",
+      "review_note": "Text and style visually inspected. AI editing changes some non-text details; not pixel-identical to original artwork. Requires final art review before integration."
+    },
+    {
+      "game_id": "portal2",
+      "source_file": "../originals/portal2.jpg",
+      "source_sha256": "716b26a850c5d9dff6645ffd1934fcb458dac262e4b9e2c9725054c0b057bea5",
+      "file": "portal2.png",
+      "language": "he",
+      "text": [
+        "פורטל 2"
+      ],
+      "width": 1024,
+      "height": 1536,
+      "sha256": "cbf4cc98e5cbceccabc5efca329eb543129b29af5c53dbb56916b31a43a7e983",
+      "status": "generated-draft",
+      "review_note": "Text and style visually inspected. AI editing changes some non-text details; not pixel-identical to original artwork. Requires final art review before integration."
+    },
+    {
+      "game_id": "journey-down1",
+      "source_file": "../originals/journey-down1.jpg",
+      "source_sha256": "593bbde1b4e920f57a656b7a130d9ecb8c0bebc8cede5d6ef3272b05c8c85ed5",
+      "file": "journey-down1.png",
+      "language": "he",
+      "text": [
+        "המסע למטה",
+        "פרק ראשון"
+      ],
+      "width": 1024,
+      "height": 1536,
+      "sha256": "881fae3ed173c70c28637842a6739722ec67f3b7316553425062d5b32ebcc2f5",
+      "status": "generated-draft",
+      "review_note": "Text and style visually inspected. AI editing changes some non-text details; not pixel-identical to original artwork. Requires final art review before integration."
+    },
+    {
+      "game_id": "kathy-rain-dc",
+      "source_file": "../originals/kathy-rain-dc.jpg",
+      "source_sha256": "4d5873a538fd9181e330afa4102c57abb2fe67d44362a6b9784eff929bcf4463",
+      "file": "kathy-rain-dc.png",
+      "language": "he",
+      "text": [
+        "קתי ריין",
+        "גרסת הבמאי"
+      ],
+      "width": 1024,
+      "height": 1536,
+      "sha256": "1804c853528e4dcbdea70144400150a1c2e1345c1e733033905d9623e03048df",
+      "status": "generated-draft",
+      "review_note": "Text and style visually inspected. AI editing changes some non-text details; not pixel-identical to original artwork. Requires final art review before integration."
+    },
+    {
+      "game_id": "drifter",
+      "source_file": "../originals/drifter.jpg",
+      "source_sha256": "8f903a5fb6f85911e216eed5f15af28a2785b8d352cd8f7bbcae6e36cad389cc",
+      "file": "drifter.png",
+      "language": "he",
+      "text": [
+        "הנווד"
+      ],
+      "width": 1024,
+      "height": 1536,
+      "sha256": "3fe049fcedf2cb7c0d2295300e7339dd3e292b8e1894b2bd8380aae3596d1448",
+      "status": "generated-draft",
+      "review_note": "Text and style visually inspected. AI editing changes some non-text details; not pixel-identical to original artwork. Requires final art review before integration."
+    }
+  ]
+}

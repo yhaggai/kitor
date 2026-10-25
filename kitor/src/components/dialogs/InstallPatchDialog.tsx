@@ -1,6 +1,9 @@
 import * as AlertDialog from "@radix-ui/react-alert-dialog";
 import { CheckCircle, Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Progress } from "@/components/ui/progress";
+
+import type { PatchDownloadProgress } from "@/hooks/useGameCardState";
 
 type StepStatus = "pending" | "in-progress" | "complete";
 
@@ -15,6 +18,8 @@ type InstallPatchDialogProps = {
   open: boolean;
   onOpenChange: (open: boolean) => void;
   installSteps: InstallStep[];
+  progress: number;
+  download: PatchDownloadProgress | null;
 };
 
 export function InstallPatchDialog({
@@ -22,6 +27,8 @@ export function InstallPatchDialog({
   open,
   onOpenChange,
   installSteps,
+  progress,
+  download,
 }: InstallPatchDialogProps) {
   return (
     <AlertDialog.Root open={open} onOpenChange={onOpenChange}>
@@ -31,9 +38,18 @@ export function InstallPatchDialog({
           <AlertDialog.Title className="text-lg font-semibold mb-4">
             Installing Patch for {gameTitle}
           </AlertDialog.Title>
+          <div className="mb-5 space-y-2">
+            <AlertDialog.Description className="flex items-center justify-between text-sm text-muted-foreground">
+              <span>Installation progress</span>
+              <span className="font-medium tabular-nums text-foreground">
+                {Math.round(progress)}%
+              </span>
+            </AlertDialog.Description>
+            <Progress value={progress} aria-label="Patch installation progress" className="h-2" />
+          </div>
           <div className="space-y-3">
             {installSteps.map((step) => (
-              <div key={step.id} className="flex items-center gap-3 py-2">
+              <div key={step.id} className="flex flex-wrap items-center gap-3 py-2">
                 <div className="flex-shrink-0 w-5 h-5">
                   {step.status === "complete" && <CheckCircle className="w-5 h-5 text-green-600" />}
                   {step.status === "in-progress" && (
@@ -52,6 +68,43 @@ export function InstallPatchDialog({
                 >
                   {step.label}
                 </span>
+                {step.id === "downloading" && step.status === "in-progress" && (
+                  <div className="ml-8 w-full space-y-2 text-xs text-muted-foreground tabular-nums">
+                    <Progress
+                      value={download && download.total > 0 ? download.percentage : null}
+                      aria-label="Patch download progress"
+                      className={`h-2 ${!download || download.total === 0 ? "animate-pulse" : ""}`}
+                    />
+                    {download ? (
+                      <>
+                        <div className="flex justify-between gap-2">
+                          <span>
+                            {(download.downloaded / 1_000_000).toFixed(1)} MB
+                            {download.total > 0 &&
+                              ` / ${(download.total / 1_000_000).toFixed(1)} MB`}
+                          </span>
+                          <span>
+                            {download.total > 0 ? `${download.percentage}%` : "Size unknown"}
+                          </span>
+                        </div>
+                        <div className="flex justify-between gap-2">
+                          <span>
+                            {(download.bytes_per_second / 1_000_000).toFixed(2)} MB/s (average)
+                          </span>
+                          <span>
+                            {download.percentage === 100
+                              ? "Download complete"
+                              : download.seconds_remaining !== null
+                                ? `About ${Math.ceil(download.seconds_remaining)}s remaining`
+                                : "Estimating time remaining…"}
+                          </span>
+                        </div>
+                      </>
+                    ) : (
+                      <p>Connecting to download…</p>
+                    )}
+                  </div>
+                )}
               </div>
             ))}
           </div>

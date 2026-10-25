@@ -1,0 +1,37 @@
+[
+  {
+    "game_id": "sq3",
+    "source_page": "https://spacequest.net/misc/boxscans/",
+    "image_url": "https://spacequest.net/misc/boxscans/sq3front.jpg",
+    "file": "english/sq3.jpg"
+  },
+  {
+    "game_id": "sq5",
+    "source_page": "https://spacequest.net/misc/boxscans/",
+    "image_url": "https://spacequest.net/misc/boxscans/sq5front.jpg",
+    "file": "english/sq5.jpg"
+  },
+  {
+    "game_id": "kyra1-cd",
+    "source_page": "https://gamesdb.launchbox-app.com/games/images/13727-the-legend-of-kyrandia-book-one",
+    "image_url": "https://images.launchbox-app.com/b32dd25f-9c2b-4aa0-b723-086c5fb530ea.jpg",
+    "file": "english/kyra1-cd-box.jpg"
+  },
+  {
+    "game_id": "torin",
+    "source_page": "https://gamesdb.launchbox-app.com/games/images/19424-torins-passage",
+    "image_url": "https://images.launchbox-app.com/ea293d34-28a7-409b-ac22-df339c0d0f4b.jpg",
+    "file": "english/torin-box.jpg"
+  },
+  {
+    "game_id": "gob2",
+    "source_page": "https://downloads.khinsider.com/game-soundtracks/album/gobliins-2-original-game-rip",
+    "image_url": "https://jetta.vgmtreasurechest.com/soundtracks/gobliins-2-original-game-rip/Gobliins%202%20Cover%202.jpg",
+    "file": "english/gob2.jpg"
+  },
+  {
+    "game_id": "tlj",
+    "source": "User-provided image",
+    "file": "english/tlj.png"
+  }
+]

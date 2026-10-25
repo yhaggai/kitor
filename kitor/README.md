@@ -107,11 +107,11 @@ kitor/
 
 ### Adding Games
 
-1. Click "Scan Folder" in the Library tab
+1. Open "Scan for Games" in the Library tab and select "Choose a folder…"
 2. Select a folder containing ScummVM games
 3. Kitor will automatically detect compatible games
 
-Or add games manually with the "Add Manually" button.
+You can also select "Automatically find Steam & GOG games" from the scan menu.
 
 ### Kyrandia on macOS
 
@@ -200,7 +200,10 @@ BSDIFF uses Kitor's decoder with Python 3 (`py -3` on Windows).
 All outputs are generated in temporary staging before game files change. Only
 manifest outputs are installed: package scripts, source catalogs, tools, and
 legacy uninstallers stay out of the game folder. Space Quest's loose resources
-are mapped from `sq1/PATCHES/` into the detected SCI game data directory.
+are mapped from `sq1/PATCHES/` into `PATCHES/` inside the detected SCI game
+data directory so ScummVM can recognize the Hebrew translation. For SQ1 VGA
+1.0-kitor3, uninstall the older flattened patch through Kitor before installing
+the replacement; do not manually delete loose resources or their backup journal.
 
 Kitor stores selective originals and a durable transaction manifest under its
 app data directory's `patch-transactions/<installation-hash>/<transaction>/`.
@@ -254,3 +257,93 @@ The patch binaries and full build sources are checked in under
 `patches-workspace/undertale/he/`, with provenance in `KITOR.md`. The existing
 Deploy Patches workflow publishes the catalog ZIP when pushed to main or v1.
 The download URL becomes available after that release is published.
+
+## Steam ownership integration
+
+In **Settings → Steam Integration**, connect your account in your system browser,
+then enter your own [Steam Web API key](https://steamcommunity.com/dev/apikey).
+Steam OpenID verifies your Steam ID; it does not grant access to private game details.
+Use the Steam privacy-settings link if library lookup reports unknown ownership.
+
+The API key is saved in the system credential store (macOS Keychain, Windows
+Credential Manager, or Linux Secret Service) and restored on startup. It is sent
+only to Steam's HTTPS API and never stored in app files or returned in status
+responses. Credential-store failures are shown explicitly; there is no plaintext
+fallback. The verified Steam ID is remembered in `steam-account.txt` in Kitor's
+app-data directory. Disconnect removes the saved key, ID, and cached ownership,
+and cancels pending login. Keys entered before secure persistence was added need
+to be entered once more because the earlier version kept them only in memory.
+
+Owned games open their Steam library entry, regardless of local installation.
+Other games, private libraries, and lookup errors open the store page. Missing or
+failed responses never establish that a user does not own a game. Lookup is refreshed
+on demand when clicking a Steam button after five minutes, or with Refresh library.
+Steam's active client account should match the account connected in Kitor.
+
+Validation: `cargo test --lib` from `src-tauri`, and `npm run build` from `kitor`.
+For a live smoke test, connect a Steam account, enter its API key, check an owned
+but uninstalled title, then disconnect and verify the button returns to the store.
+Also check a private game-details profile: it should report unknown ownership.
+
+### Steam Windows downloads on macOS (pilot)
+
+Monkey Island 2 has a single **Steam** button. On macOS it opens a Windows-version
+explanation; **Next** starts the download and shows an animated, indeterminate
+progress bar. The dialog can be hidden and reopened while downloading. Steam
+must be installed, initialized, online, and signed into an account owning the game;
+Kitor does not require a Steam Web API key for downloads. The backend invokes the
+local Steam client with `-console +download_depot 32460 32461`, monitors only new
+console log entries, and imports verified game files into Kitor's application data
+`games/monkey2-se-steam` folder. It then registers the game in the library, where
+users can install the Hebrew patch and launch through ScummVM.
+
+This curated pilot supports only app 32460/depot 32461 on macOS. Steam may display
+its console or request sign-in. Keep Kitor open during download/import. Progress
+is indeterminate; failures and a one-hour timeout are reported. A timeout does not
+cancel Steam's own download. Existing registered installations are reused, never
+replaced, and existing destination directories are not overwritten. If registration
+fails after import, use Add Game with the managed folder. Steam console formatting
+is an unofficial integration surface and may change between client releases.
+
+Validation: `cargo test steam_download_service --lib`. An opt-in live test downloads
+using the current Steam account and imports into a temporary library:
+`cargo test steam_download_and_register --lib -- --ignored --nocapture`.
+
+
+### Space Quest Collection on macOS
+
+The Steam buttons for SQ1 EGA (`sq1`), SQ1 VGA (`sq1sci`), SQ2, SQ3,
+and SQ5 share app **10110**, depot **10111**. The dialog defaults to the clicked
+game and offers the other supported editions. Downloads/imports share one task;
+hiding the dialog does not cancel Steam. Timeout retries resume the recorded
+request rather than issue another download.
+
+Verified on 2026-10-25 using the signed-in Steam client: public manifest
+`6725209980292758062`, 644,216,240 download bytes. ScummVM **2026.1.0** detected
+and displayed an opening screen for all five editions. SQ1 EGA is DOS 2.2;
+SQ2 is DOS 2.0F. SQ1 EGA also yields a CoCo3 detection, so collection launches
+select the DOS platform and explicit engine/game identity. Unpatched games do
+not inherit the registry's Hebrew language restriction; active patches retain it.
+These are original-game smoke tests, not full playthroughs or Hebrew-patch validation.
+
+`src-tauri/data/space_quest_steam.json` records the exact source directories,
+allowlisted files, and SHA-256 digests from that verified Steam manifest.
+The importer stages and verifies independent folders under `games/<id>-steam`
+and retains pristine shared sources under `steam-sources/10110-6725209980292758062`.
+It reuses matching Steam files even without an installed-game appmanifest,
+rejects unknown bytes and symlinks, and preserves registered installations,
+saves, and patch state. A Steam update with changed files requires revalidation
+of these recipes. Games outside the five catalog editions are not imported.
+
+Validation commands (from `kitor/`):
+
+```sh
+npm run build
+cargo test --manifest-path src-tauri/Cargo.toml --lib
+# Opt-in disposable integration test; requires the owned collection's downloaded depot:
+cargo test --manifest-path src-tauri/Cargo.toml live_collection_imports_and_reuses_each_game --lib -- --ignored
+```
+
+The separate `import_collection_into_explicit_library` opt-in helper writes to
+an explicitly supplied `KITOR_STEAM_IMPORT_LIBRARY` directory. Normal tests never
+write to the user's library. The app's Steam dialog is the normal import entry point.

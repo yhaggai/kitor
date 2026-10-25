@@ -1,0 +1,14 @@
+{
+  "osx": {
+    "fixture_roundtrip": "passed",
+    "affected_files": 22,
+    "backed_up_originals": 16,
+    "native_gameplay": "not tested by this script"
+  },
+  "windows": {
+    "fixture_roundtrip": "passed",
+    "affected_files": 22,
+    "backed_up_originals": 16,
+    "native_gameplay": "not tested by this script"
+  }
+}

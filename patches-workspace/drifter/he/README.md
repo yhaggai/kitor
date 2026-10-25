@@ -1,12 +1,11 @@
 # The Drifter — Hebrew
 
-Staged upstream payload; **not release-ready**. Windows manifest is provided; macOS is blocked pending the work below. No upstream executable was run.
+Kitor bundles version `2026-07-09-kitor2` for Windows and macOS. Both platform ZIP artifacts are also built from `patch.json`. Payload data is architecture-independent; use the native game from Steam.
 
-- Steam The Drifter; standalone translation.csv payload.
-- Native macOS SystemText.get_SaveDirectory returns Application.persistentDataPath when Application.platform==1 (OSXPlayer), versus ./ on Windows. InitialiseCustomLanguage appends translation.csv.
-- macOS installation therefore needs a separately journaled user-data target; the current game-root-only manifest cannot safely represent this. Do not write into game .app and claim success.
-- Windows native install/uninstall and gameplay validation have not run. macOS package is not built or verified. Original supported game version hashes must be established before release.
+On Windows, the translation installs into the detected game directory. On macOS, Steam build 22758595 is checked against the assembly SHA-256 in `macos-loader-evidence.json` before installation. Its loader reads `translation.csv` from `~/Library/Application Support/com.Powerhoof.TheDrifter`. Start the game once to create this directory before installing. Symlinked user-data paths are rejected.
 
-Install and uninstall must use Kitor’s selective journaled lifecycle. Do not run the original installer or restore the entire game folder. Each manifest entry is hashed; only affected existing files are backed up, and only patch-created files may be removed during uninstall.
+Kitor journals this user-data target separately from the game bundle. Only an existing `translation.csv` is backed up. Uninstall restores it (or removes the patch-created translation), preserving saves, settings, unrelated files and subsequent additions. Retry preserves the original backup; conflicting later edits are rejected. Uninstall does not require the original game assembly version.
 
-Source provenance, archive hash, platform evidence and validation state are in `provenance.json`.
+Validation: Windows and macOS packages built; both file plans roundtrip in fixtures on macOS. User-data tests cover existing and absent translation files, reinstall, unrelated saves, and symlink rejection. The full lifecycle suite also checks interrupted operations and missing backups. Installed macOS assembly hash matches the supported build. Native Windows execution and gameplay on either platform remain unverified; `release_ready` remains false.
+
+Kitor’s Play button opens the native `TheDrifter.app` directly on macOS, from either the detected bundle or its Steam parent folder. It does not require ScummVM.

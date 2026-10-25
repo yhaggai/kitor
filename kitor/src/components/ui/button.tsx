@@ -10,6 +10,9 @@ const buttonVariants = cva(
     variants: {
       variant: {
         default: "bg-primary text-primary-foreground hover:bg-primary/90",
+        steam:
+          "border border-white/20 bg-[linear-gradient(165deg,#353535_0%,#111_35%,#050505_36%,#000_100%)] text-white shadow-[inset_0_1px_1px_rgba(255,255,255,0.25),0_2px_5px_rgba(0,0,0,0.3)] hover:brightness-125",
+        gog: "border border-purple-300/40 bg-[radial-gradient(ellipse_at_75%_85%,#bd35c9_0%,#6c1c9e_35%,#26094c_80%)] text-white shadow-[inset_0_1px_1px_rgba(255,255,255,0.25),0_2px_5px_rgba(51,0,85,0.35)] hover:brightness-125",
         destructive: "bg-destructive text-destructive-foreground hover:bg-destructive/90",
         outline: "border border-input bg-background hover:bg-accent hover:text-accent-foreground",
         secondary: "bg-secondary text-secondary-foreground hover:bg-secondary/80",

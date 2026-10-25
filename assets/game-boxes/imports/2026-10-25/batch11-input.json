@@ -1,0 +1,261 @@
+[
+  {
+    "source_idx": 3,
+    "game_id": "the-dig",
+    "title_en": "The Dig",
+    "title_he": "התגלית",
+    "status": "pending",
+    "sources": {
+      "en": {
+        "file": "sources/the-dig-en.png",
+        "url": "https://thumbnails.libretro.com/ScummVM/Named_Boxarts/The%20Dig.png",
+        "source_page": "https://thumbnails.libretro.com/ScummVM/Named_Boxarts/",
+        "status": "needs_visual_review",
+        "width": 512,
+        "height": 656,
+        "sha256": "fd2cf443e99402a1ce04c50e0314e409189184964b5fdef9f9ab83d19dc7a14b"
+      }
+    },
+    "steam_appid": "6040"
+  },
+  {
+    "source_idx": 4,
+    "game_id": "the-secret-of-monkey-island",
+    "title_en": "The Secret of Monkey Island",
+    "title_he": "הסוד של אי הקופים",
+    "status": "pending",
+    "sources": {
+      "en": {
+        "file": "sources/the-secret-of-monkey-island-en.png",
+        "url": "https://thumbnails.libretro.com/ScummVM/Named_Boxarts/The%20Secret%20of%20Monkey%20Island.png",
+        "source_page": "https://thumbnails.libretro.com/ScummVM/Named_Boxarts/",
+        "status": "needs_visual_review",
+        "width": 512,
+        "height": 644,
+        "sha256": "bdb3276b36cfb2783729d26baf32b6ecb8172e455068f2f7b819e918fa2176b1"
+      }
+    }
+  },
+  {
+    "source_idx": 6,
+    "game_id": "the-curse-of-monkey-island",
+    "title_en": "The Curse of Monkey Island",
+    "title_he": "הקללה של אי הקופים",
+    "status": "pending",
+    "sources": {
+      "en": {
+        "file": "sources/the-curse-of-monkey-island-en.jpg",
+        "url": "https://cdn.akamai.steamstatic.com/steam/apps/730820/library_600x900_2x.jpg",
+        "source_page": "https://store.steampowered.com/app/730820/",
+        "status": "needs_visual_review",
+        "width": 600,
+        "height": 900,
+        "sha256": "514798db10c3b994b7d61452df867fb73a8624b7fe4d568e8a980e55fe1d1000"
+      },
+      "he-candidate": {
+        "file": "sources/the-curse-of-monkey-island-he-candidate.jpg",
+        "url": "https://images.hakufsa.co.il/wp-content/uploads/IMG_2240.jpg",
+        "source_page": "https://www.hakufsa.co.il/game/the-curse-of-monkey-island",
+        "status": "english-title-not-a-hebrew-cover",
+        "width": 2800,
+        "height": 3276,
+        "sha256": "5e392b6d7553e564692cab2000675bd64a1237420d5755992ba9d232140d1e18"
+      }
+    },
+    "steam_appid": "730820"
+  },
+  {
+    "source_idx": 8,
+    "game_id": "indiana-jones-and-the-last-crusade",
+    "title_en": "Indiana Jones and the Last Crusade",
+    "title_he": "אינדיאנה ג'ונס ומסע הצלב האחרון",
+    "status": "pending",
+    "sources": {
+      "en": {
+        "file": "sources/indiana-jones-and-the-last-crusade-en.png",
+        "url": "https://thumbnails.libretro.com/ScummVM/Named_Boxarts/Indiana%20Jones%20and%20the%20Last%20Crusade.png",
+        "source_page": "https://thumbnails.libretro.com/ScummVM/Named_Boxarts/",
+        "status": "needs_visual_review",
+        "width": 500,
+        "height": 634,
+        "sha256": "7a80bf26a524a7ea78303a2a39e369506eb5c841f6fde6a35a749b106ef64736"
+      }
+    },
+    "steam_appid": "32310"
+  },
+  {
+    "source_idx": 9,
+    "game_id": "maniac-mansion",
+    "title_en": "Maniac Mansion",
+    "title_he": "אחוזת המטורפים",
+    "status": "pending",
+    "sources": {
+      "en": {
+        "file": "sources/maniac-mansion-en.png",
+        "url": "https://thumbnails.libretro.com/ScummVM/Named_Boxarts/Maniac%20Mansion.png",
+        "source_page": "https://thumbnails.libretro.com/ScummVM/Named_Boxarts/",
+        "status": "needs_visual_review",
+        "width": 500,
+        "height": 640,
+        "sha256": "e029a792b041b26842227139e078c7a08e71bd4d04ee368955a4c4f55ec83618"
+      }
+    },
+    "steam_appid": "529890"
+  },
+  {
+    "source_idx": 10,
+    "game_id": "full-throttle-not-the-remastered-version",
+    "title_en": "Full Throttle (not the Remastered version)",
+    "title_he": "הילוך שיא",
+    "status": "pending",
+    "sources": {
+      "en": {
+        "file": "sources/full-throttle-not-the-remastered-version-en.png",
+        "url": "https://thumbnails.libretro.com/ScummVM/Named_Boxarts/Full%20Throttle.png",
+        "source_page": "https://thumbnails.libretro.com/ScummVM/Named_Boxarts/",
+        "status": "needs_visual_review",
+        "width": 500,
+        "height": 632,
+        "sha256": "20b4a1960f327d07cd58a0cee737a4d4cffb6898cac8be2b82dfe533b67415f0"
+      }
+    }
+  },
+  {
+    "source_idx": 11,
+    "game_id": "grim-fandango-not-the-remastered-version",
+    "title_en": "Grim Fandango (not the Remastered version)",
+    "title_he": "גרים פנדנגו",
+    "status": "pending",
+    "sources": {
+      "he-candidate": {
+        "file": "sources/grim-fandango-not-the-remastered-version-he-candidate.jpeg",
+        "url": "https://images.hakufsa.co.il/wp-content/uploads/D156EBA6-36C8-43C2-A521-A5641BA6F722_1_105_c.jpeg",
+        "source_page": "https://www.hakufsa.co.il/game/grim-fandango",
+        "status": "english-title-not-a-hebrew-cover",
+        "width": 774,
+        "height": 1014,
+        "sha256": "6382269b630511139b351d35d68438636699e25251e5f9430811fbcf0e0f9075"
+      },
+      "en": {
+        "file": "sources/grim-fandango-not-the-remastered-version-en.png",
+        "url": "https://thumbnails.libretro.com/ScummVM/Named_Boxarts/Grim%20Fandango.png",
+        "source_page": "https://thumbnails.libretro.com/ScummVM/Named_Boxarts/",
+        "status": "needs_visual_review",
+        "width": 512,
+        "height": 644,
+        "sha256": "ff3d0ca7ea65bc7cd92633bd05b040d4b2d7bba56dababe0c440a5eb3d9ce626"
+      }
+    }
+  },
+  {
+    "source_idx": 13,
+    "game_id": "zak-mckracken-and-the-alien-mindbenders",
+    "title_en": "Zak McKracken and the Alien Mindbenders",
+    "title_he": "זכי מקראקן ומבלבלי השכל מהחלל",
+    "status": "pending",
+    "sources": {
+      "en": {
+        "file": "sources/zak-mckracken-and-the-alien-mindbenders-en.png",
+        "url": "https://thumbnails.libretro.com/ScummVM/Named_Boxarts/Zak%20McKracken%20and%20the%20Alien%20Mindbenders.png",
+        "source_page": "https://thumbnails.libretro.com/ScummVM/Named_Boxarts/",
+        "status": "needs_visual_review",
+        "width": 512,
+        "height": 622,
+        "sha256": "ec8ae162c3333e10df45884d8a04e5b039ac638db288c4d27760f69a4a8c3eb9"
+      }
+    },
+    "steam_appid": "559070"
+  },
+  {
+    "source_idx": 14,
+    "game_id": "loom-fm-towns",
+    "title_en": "Loom (FM-Towns)",
+    "title_he": "האורגים",
+    "status": "pending",
+    "sources": {
+      "en": {
+        "file": "sources/loom-fm-towns-en.png",
+        "url": "https://thumbnails.libretro.com/ScummVM/Named_Boxarts/Loom%20%28FM-Towns%29.png",
+        "source_page": "https://thumbnails.libretro.com/ScummVM/Named_Boxarts/",
+        "status": "needs_visual_review",
+        "width": 512,
+        "height": 724,
+        "sha256": "8ad39cffa1df73670b5736261fbbda21f6b8dc106e5688aff277b495219e9229"
+      }
+    }
+  },
+  {
+    "source_idx": 34,
+    "game_id": "blade-runner",
+    "title_en": "Blade Runner",
+    "title_he": "בלייד ראנר",
+    "status": "pending",
+    "sources": {
+      "he-candidate": {
+        "file": "sources/blade-runner-he-candidate.jpeg",
+        "url": "https://images.hakufsa.co.il/wp-content/uploads/F50EAA26-9659-458B-8AE7-186ECAD8EF47.jpeg",
+        "source_page": "https://www.hakufsa.co.il/game/blade-runner",
+        "status": "english-title-not-a-hebrew-cover",
+        "width": 2720,
+        "height": 3160,
+        "sha256": "6f24874984331ad8fc9c0b6f6fd4cf510fa50faf1c62f885b84abdc960e3cb66"
+      },
+      "en": {
+        "file": "sources/blade-runner-en.png",
+        "url": "https://thumbnails.libretro.com/ScummVM/Named_Boxarts/Blade%20Runner.png",
+        "source_page": "https://thumbnails.libretro.com/ScummVM/Named_Boxarts/",
+        "status": "needs_visual_review",
+        "width": 512,
+        "height": 655,
+        "sha256": "b254f39542bea89215ef1d39c35c79a327578a768005093e75b768178c89ad69"
+      }
+    }
+  },
+  {
+    "source_idx": 142,
+    "game_id": "escape-from-monkey-island",
+    "title_en": "Escape From Monkey Island",
+    "title_he": "הבריחה מאי הקופים",
+    "status": "pending",
+    "sources": {
+      "he-candidate": {
+        "file": "sources/escape-from-monkey-island-he-candidate.jpg",
+        "url": "https://images.hakufsa.co.il/wp-content/uploads/IMG_2463.jpg",
+        "source_page": "https://www.hakufsa.co.il/game/escape-from-monkey-island",
+        "status": "english-title-not-a-hebrew-cover",
+        "width": 2708,
+        "height": 3456,
+        "sha256": "545d94ef773d69976f18bc797c42150ae3936d8d34eb7c0a17e8eccdeeab4fc6"
+      },
+      "en": {
+        "file": "sources/escape-from-monkey-island-en.png",
+        "url": "https://thumbnails.libretro.com/ScummVM/Named_Boxarts/Escape%20From%20Monkey%20Island.png",
+        "source_page": "https://thumbnails.libretro.com/ScummVM/Named_Boxarts/",
+        "status": "needs_visual_review",
+        "width": 512,
+        "height": 681,
+        "sha256": "49a30510ed7551c47ac068f380bf9f07df42026afe21fcc203f03d2cb8624c0b"
+      }
+    },
+    "steam_appid": "730830"
+  },
+  {
+    "source_idx": 30,
+    "game_id": "sam-max-save-the-world",
+    "title_en": "Sam & Max Save the World",
+    "title_he": "סם ומקס מצילים את העולם - פרק 1",
+    "status": "pending",
+    "sources": {
+      "en": {
+        "file": "sources/sam-max-save-the-world-en.jpg",
+        "url": "https://cdn.akamai.steamstatic.com/steam/apps/1440440/library_600x900_2x.jpg",
+        "source_page": "https://store.steampowered.com/app/1440440/",
+        "status": "needs_visual_review",
+        "width": 600,
+        "height": 900,
+        "sha256": "b3029b23f44a8e0de8b789591cf865ba029a07ebd08022975a8a3d1422c20b85"
+      }
+    },
+    "steam_appid": "1440440"
+  }
+]

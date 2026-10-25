@@ -1,0 +1,32 @@
+[
+  {
+    "id": "dear-esther-landmark-edition",
+    "prompt": "Use case: text-localization. Input is the edit target, an original game cover. Replace Dear Esther with אסתר היקרה and Landmark Edition with מהדורת ציון הדרך. Preserve silver italic serif title and small italic subtitle. Use correct right-to-left Hebrew, verbatim wording. Change ONLY title lettering and specified subtitle. Preserve all non-text pixels as closely as possible: artwork, faces, pose, backgrounds, objects, lighting, colors, composition, crop and aspect ratio. No redesign, no added elements, no new labels or watermarks.",
+    "path": "/Users/haggaiyaniv/.codex/generated_images/01a17325-42a3-71b0-8569-0b89e59757d5/exec-dabea091-701e-45c1-ad80-ea9eb5abae59.png"
+  },
+  {
+    "id": "the-7th-guest-25th-anniversary-edition",
+    "prompt": "Use case: text-localization. Input is the edit target, an original game cover. Replace The 7th Guest with האורח השביעי. Use ornate horror serif letters: האורח in black and השביעי in glowing red with gold edging, retaining the distinctive original logo style and top placement. Use correct right-to-left Hebrew, verbatim wording. Change ONLY title lettering and specified subtitle. Preserve all non-text pixels as closely as possible: artwork, faces, pose, backgrounds, objects, lighting, colors, composition, crop and aspect ratio. No redesign, no added elements, no new labels or watermarks.",
+    "path": "/Users/haggaiyaniv/.codex/generated_images/01a17325-42a3-71b0-8569-0b89e59757d5/exec-4d19b6fd-9832-4e64-9247-9baa96cef647.png"
+  },
+  {
+    "id": "cat-and-ghostly-road",
+    "prompt": "Use case: text-localization. Input is the edit target, an original game cover. Replace Cat and Ghostly Road with חתול בדרך רפאים in the same elaborate flowing white calligraphy. Keep tiny white cat silhouette and red lantern integrated with the title. Use correct right-to-left Hebrew, verbatim wording. Change ONLY title lettering and specified subtitle. Preserve all non-text pixels as closely as possible: artwork, faces, pose, backgrounds, objects, lighting, colors, composition, crop and aspect ratio. No redesign, no added elements, no new labels or watermarks.",
+    "path": "/Users/haggaiyaniv/.codex/generated_images/01a17325-42a3-71b0-8569-0b89e59757d5/exec-d759b754-3a24-46e7-947b-138d8000bc5d.png"
+  },
+  {
+    "id": "dark-nights-with-poe-and-munro",
+    "prompt": "Use case: text-localization. Input is the edit target, an original game cover. Replace DARK NIGHTS WITH with לילות אפלים עם and POE & MUNRO with פו ומונרו. Match original condensed white sans-serif lettering and hierarchy exactly. Use correct right-to-left Hebrew, verbatim wording. Change ONLY title lettering and specified subtitle. Preserve all non-text pixels as closely as possible: artwork, faces, pose, backgrounds, objects, lighting, colors, composition, crop and aspect ratio. No redesign, no added elements, no new labels or watermarks.",
+    "path": "/Users/haggaiyaniv/.codex/generated_images/01a17325-42a3-71b0-8569-0b89e59757d5/exec-9597abca-78df-4dc0-be90-e57da9d8781d.png"
+  },
+  {
+    "id": "maid-of-sker",
+    "prompt": "Use case: text-localization. Input is the edit target, an original game cover. Replace MAID OF SKER with בתולת סקר in the same distressed thin white serif style. Keep background hotel gate lettering unchanged. Use correct right-to-left Hebrew, verbatim wording. Change ONLY title lettering and specified subtitle. Preserve all non-text pixels as closely as possible: artwork, faces, pose, backgrounds, objects, lighting, colors, composition, crop and aspect ratio. No redesign, no added elements, no new labels or watermarks.",
+    "path": "/Users/haggaiyaniv/.codex/generated_images/01a17325-42a3-71b0-8569-0b89e59757d5/exec-b8ee62c3-5695-495c-976f-1ba672bcaa62.png"
+  },
+  {
+    "id": "late-shift",
+    "prompt": "Use case: text-localization. Input is the edit target, an original game cover. Replace LATE SHIFT with משמרת מאוחרת and YOUR DECISIONS ARE YOU with ההחלטות שלך הן מי שאתה. Match original tall thin white geometric sans serif and subtitle layout. Use correct right-to-left Hebrew, verbatim wording. Change ONLY title lettering and specified subtitle. Preserve all non-text pixels as closely as possible: artwork, faces, pose, backgrounds, objects, lighting, colors, composition, crop and aspect ratio. No redesign, no added elements, no new labels or watermarks.",
+    "path": "/Users/haggaiyaniv/.codex/generated_images/01a17325-42a3-71b0-8569-0b89e59757d5/exec-6844cb30-959e-4d2c-86ad-1cc9e09856dc.png"
+  }
+]

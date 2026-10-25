@@ -1,7 +1,9 @@
 {
   "catalog_index": 17,
   "title": "Space Quest: The Sarien Encounter (VGA)",
-  "owned_stores": ["steam"],
+  "owned_stores": [
+    "steam"
+  ],
   "status": "packaged_unverified",
   "source_urls": [
     "https://github.com/adventurebrew/HebrewAdventure/releases/download/sq1vga_1/sq1vga-hebrew-installer.exe"
@@ -13,8 +15,14 @@
   "validation": {
     "windows_gameplay": "not_run",
     "macos_gameplay": "not_run",
-    "built_platform_archives": ["windows", "osx"],
-    "zip_integrity": "passed"
+    "built_platform_archives": [
+      "windows",
+      "osx"
+    ],
+    "zip_integrity": "passed",
+    "lifecycle": "Windows and osx plans passed selective install/uninstall fixture checks on macOS; affected originals restored byte-for-byte and unrelated files preserved",
+    "launch_arguments": "2 isolated Rust tests passed, including stale/missing language settings for patched SQ1 VGA",
+    "destination_layout": "Both platform ZIP manifests preserve PATCHES/"
   },
   "blockers": [
     "Native Windows/macOS gameplay verification pending; local package building is not a compatibility certification."
@@ -22,7 +30,16 @@
   "release_ready": false,
   "target_architectures": "Architecture-independent game data; requires a host-native Kitor and appropriate game/ScummVM runtime.",
   "dependencies": {
-    "windows": ["Kitor selective lifecycle", "ScummVM with required Hebrew engine support"],
-    "osx": ["Kitor selective lifecycle", "ScummVM with required Hebrew engine support"]
-  }
+    "windows": [
+      "Kitor selective lifecycle",
+      "ScummVM with required Hebrew engine support"
+    ],
+    "osx": [
+      "Kitor selective lifecycle",
+      "ScummVM with required Hebrew engine support"
+    ]
+  },
+  "package_version": "1.0-kitor3",
+  "layout": "Preserve PATCHES/ beneath the SCI game directory for Hebrew detection",
+  "upgrade_method": "Uninstall prior version through its existing Kitor transaction before installing 1.0-kitor3"
 }

@@ -1,0 +1,110 @@
+[
+  {
+    "source_idx": 43,
+    "game_id": "return-of-the-tentacle-prologue",
+    "title_en": "Return of the Tentacle - Prologue",
+    "title_he": "חזרתו של הטנטקל",
+    "status": "pending",
+    "sources": {
+      "en": {
+        "file": "sources/return-of-the-tentacle-prologue-en-fixed.jpg",
+        "url": "https://img.itch.zone/aW1hZ2UvMjU2MTYwLzEyMzI5NTIucG5n/original/iA5Qca.png",
+        "source_page": "https://catmic.itch.io/return-of-the-tentacle",
+        "status": "needs_visual_review",
+        "width": 630,
+        "height": 500,
+        "sha256": "e85bccedb6ac4137d05adacf075c03aab254691e809e0a430b1673e2fdb6fb58"
+      }
+    }
+  },
+  {
+    "source_idx": 88,
+    "game_id": "space-madness",
+    "title_en": "Space Madness",
+    "title_he": "טירוף בחלל",
+    "status": "pending",
+    "sources": {
+      "en": {
+        "file": "sources/space-madness-en-fixed.jpg",
+        "url": "https://img.itch.zone/aW1nLzM2MjQ0NTIucG5n/original/xoPR2M.png",
+        "source_page": "https://spreadcamp.itch.io/space-madness",
+        "status": "needs_visual_review",
+        "width": 630,
+        "height": 500,
+        "sha256": "93752a1f998a13d8550137db9a08144eaedae3ee2eb8752845161fed10ea5986"
+      }
+    }
+  },
+  {
+    "source_idx": 92,
+    "game_id": "dracula-4-5",
+    "title_en": "Dracula 4+5",
+    "title_he": "דרקולה 4+5",
+    "status": "pending",
+    "sources": {
+      "en": {
+        "file": "sources/dracula-4-5-en-fixed.jpg",
+        "url": "https://images.gog-statics.com/c0261dd36f6c50a2c10292e11916f7f254914452098a1996c054a1153e05a2fe.jpg",
+        "source_page": "https://www.gog.com/en/game/dracula_4_5",
+        "status": "needs_visual_review",
+        "width": 1600,
+        "height": 740,
+        "sha256": "d8be90790211bb88e744d3fc0a8524f6d518b5d2caa69953f99a6315df55da74"
+      }
+    }
+  },
+  {
+    "source_idx": 98,
+    "game_id": "reversion",
+    "title_en": "Reversion",
+    "title_he": "",
+    "status": "pending",
+    "sources": {
+      "en": {
+        "file": "sources/reversion-en-fixed.jpg",
+        "url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/bundles/13507/ks45lewaxs19sn0u/header_ratio.jpg?t=1669406723",
+        "source_page": "https://store.steampowered.com/bundle/13507/Reversion_Trilogy__Soundtracks/",
+        "status": "needs_visual_review",
+        "width": 460,
+        "height": 215,
+        "sha256": "647fcc9fece6c43d6c381c4a56573a6b4c559add3170f911a8562e6985296dbc"
+      }
+    }
+  },
+  {
+    "source_idx": 120,
+    "game_id": "and-then-there-were-none",
+    "title_en": "And Then There Were None",
+    "title_he": "ולא נותר אף אחד",
+    "status": "pending",
+    "sources": {
+      "en": {
+        "file": "sources/and-then-there-were-none-en-fixed.jpg",
+        "url": "https://cdn.mobygames.com/covers/6518502-agatha-christie-and-then-there-were-none-windows-front-cover.jpg",
+        "source_page": "https://www.mobygames.com/game/19864/agatha-christie-and-then-there-were-none/",
+        "status": "needs_visual_review",
+        "width": 929,
+        "height": 800,
+        "sha256": "d9132723bef246e03988f1294fed8fe7a04ae4b84b3bb20e30372d4f3e6923e1"
+      }
+    }
+  },
+  {
+    "source_idx": 155,
+    "game_id": "agatha-christie-murder-on-the-orient-express-2006",
+    "title_en": "Agatha Christie: Murder on the Orient Express (2006)",
+    "title_he": "רצח באוריינט אקספרס (2006)",
+    "status": "pending",
+    "sources": {
+      "en": {
+        "file": "sources/agatha-christie-murder-on-the-orient-express-2006-en-fixed.jpg",
+        "url": "https://cdn.mobygames.com/covers/4446793-agatha-christie-murder-on-the-orient-express-windows-other.jpg",
+        "source_page": "https://www.mobygames.com/game/25472/agatha-christie-murder-on-the-orient-express/",
+        "status": "needs_visual_review",
+        "width": 792,
+        "height": 800,
+        "sha256": "cbf3c062232e1a82ea18f160ed27f1200794b517c19e48fedf9b6ea0e5a32577"
+      }
+    }
+  }
+]

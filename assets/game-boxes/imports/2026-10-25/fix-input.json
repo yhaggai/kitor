@@ -1,0 +1,120 @@
+[
+  {
+    "source_idx": 96,
+    "game_id": "ghost-in-the-sheet",
+    "title_en": "Ghost in the Sheet",
+    "title_he": "הרוח בסדין",
+    "status": "pair-composited-review",
+    "sources": {
+      "en": {
+        "file": "sources/ghost-in-the-sheet-en.png",
+        "url": "https://thumbnails.libretro.com/ScummVM/Named_Boxarts/Ghost%20in%20the%20Sheet.png",
+        "source_page": "https://thumbnails.libretro.com/ScummVM/Named_Boxarts/",
+        "status": "needs_visual_review",
+        "width": 512,
+        "height": 733,
+        "sha256": "91cd9f0b972e3d8beb1bf0c5f29489b13fb6b2c2009f927901a11cad51fc53ed"
+      },
+      "he": {
+        "file": "composited/ghost-in-the-sheet-he.png",
+        "kind": "ai-text-localization",
+        "tool": "built-in image_gen",
+        "status": "composited-needs-visual-review",
+        "draft_file": "generated/ghost-in-the-sheet-he.png",
+        "note": "Original pixels preserved exactly outside recorded title edit masks; background under replaced lettering comes from AI draft.",
+        "sha256": "aae3d4162f617beaf8704a059289085940b0a0a40b1b61ade8dd9f9cdadaab97",
+        "width": 512,
+        "height": 733
+      }
+    }
+  },
+  {
+    "source_idx": 106,
+    "game_id": "the-abbey-director-s-cut",
+    "title_en": "The Abbey - Director's cut",
+    "title_he": "רצח במנזר",
+    "status": "pair-composited-review",
+    "sources": {
+      "en": {
+        "file": "sources/the-abbey-director-s-cut-en-fixed.jpg",
+        "url": "https://images.stopgame.ru/games/logos/29038/the_abbey_director_s_cut-square.jpg",
+        "source_page": "https://stopgame.ru/game/the_abbey_director_s_cut",
+        "status": "needs_visual_review",
+        "width": 1024,
+        "height": 1024,
+        "sha256": "450bfe6204b9797f966e95f81bf94aa82a8d62b9d7b3922bf93a5aec42704dcf"
+      },
+      "he": {
+        "file": "composited/the-abbey-director-s-cut-he.png",
+        "kind": "ai-text-localization",
+        "tool": "built-in image_gen",
+        "status": "composited-needs-visual-review",
+        "draft_file": "generated/the-abbey-director-s-cut-he.png",
+        "note": "Original pixels preserved exactly outside recorded title edit masks; background under replaced lettering comes from AI draft.",
+        "sha256": "5e1e153d5f81799210d5a4d1afd88372742ab054c1167d9d6dba6316d44458b1",
+        "width": 1024,
+        "height": 1024
+      }
+    }
+  },
+  {
+    "source_idx": 129,
+    "game_id": "ankh-anniversary-edition",
+    "title_en": "Ankh Anniversary Edition",
+    "title_he": "ענח'",
+    "status": "pair-composited-review",
+    "sources": {
+      "en": {
+        "file": "sources/ankh-anniversary-edition-en.jpg",
+        "url": "https://cdn.akamai.steamstatic.com/steam/apps/353980/library_600x900_2x.jpg",
+        "source_page": "https://store.steampowered.com/app/353980/",
+        "status": "needs_visual_review",
+        "width": 600,
+        "height": 900,
+        "sha256": "7e6226d9f0556775a42f8906f3245fad28639553d775ca19d79a5272fa3d8470"
+      },
+      "he": {
+        "file": "composited/ankh-anniversary-edition-he.png",
+        "kind": "ai-text-localization",
+        "tool": "built-in image_gen",
+        "status": "composited-needs-visual-review",
+        "draft_file": "generated/ankh-anniversary-edition-he.png",
+        "note": "Original pixels preserved exactly outside recorded title edit masks; background under replaced lettering comes from AI draft.",
+        "sha256": "6e9215c76328dbe6861721262e14ec7adf1479c5fbbf4cd2e54a92461d2bb109",
+        "width": 600,
+        "height": 900
+      }
+    },
+    "steam_appid": "353980"
+  },
+  {
+    "source_idx": 152,
+    "game_id": "duke-grabowski-mighty-swashbuckler",
+    "title_en": "Duke Grabowski: Mighty Swashbuckler",
+    "title_he": "דוכס גרבובסקי: הרפתקן אדיר!",
+    "status": "pair-composited-review",
+    "sources": {
+      "en": {
+        "file": "sources/duke-grabowski-mighty-swashbuckler-en-fixed.jpg",
+        "url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/472420/9e72d431c3cb9203766376cbd880b5717ad5ae63/header.jpg?t=1787054761",
+        "source_page": "https://store.steampowered.com/app/472420/",
+        "status": "needs_visual_review",
+        "width": 460,
+        "height": 215,
+        "sha256": "f2b7a635fbcb0c09e029ece4dd5d6b8cd995d2067443c96fa42de208ada1b262"
+      },
+      "he": {
+        "file": "composited/duke-grabowski-mighty-swashbuckler-he.png",
+        "kind": "ai-text-localization",
+        "tool": "built-in image_gen",
+        "status": "composited-needs-visual-review",
+        "draft_file": "generated/duke-grabowski-mighty-swashbuckler-he.png",
+        "note": "Original pixels preserved exactly outside recorded title edit masks; background under replaced lettering comes from AI draft.",
+        "sha256": "9201cee60f263cd497c5480c9bdcd2761c2a0ee11d5a87fd3bc23d237a8a91df",
+        "width": 460,
+        "height": 215
+      }
+    },
+    "steam_appid": "472420"
+  }
+]

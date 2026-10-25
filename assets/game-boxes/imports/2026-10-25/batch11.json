@@ -1,0 +1,62 @@
+[
+  {
+    "id": "the-dig",
+    "prompt": "Edit this exact original game box The Dig. Replace only game title/subtitle with Hebrew: התגלית. Slashes mean line breaks, not literal slashes; parenthetic notes describe hierarchy, not printed. Preserve original font style, decorative letter forms, colors, texture, size, orientation, effects, placement. Correct readable Hebrew RTL. Leave illustrations, faces, composition, borders, logos and other small text untouched. Same aspect ratio and original full framing. Output one cover.",
+    "path": "/Users/haggaiyaniv/.codex/generated_images/01a17325-42a3-71b0-8569-0b89e59757d5/exec-81c7794b-e4cd-4548-a815-ccd8342e80ae.png"
+  },
+  {
+    "id": "the-secret-of-monkey-island",
+    "prompt": "Edit this exact original game box The Secret of Monkey Island. Replace only game title/subtitle with Hebrew: הסוד של / אי הקופים. Slashes mean line breaks, not literal slashes; parenthetic notes describe hierarchy, not printed. Preserve original font style, decorative letter forms, colors, texture, size, orientation, effects, placement. Correct readable Hebrew RTL. Leave illustrations, faces, composition, borders, logos and other small text untouched. Same aspect ratio and original full framing. Output one cover.",
+    "path": "/Users/haggaiyaniv/.codex/generated_images/01a17325-42a3-71b0-8569-0b89e59757d5/exec-9fe72a6c-e5fb-4e90-a26c-5e7927b1545f.png"
+  },
+  {
+    "id": "the-curse-of-monkey-island",
+    "prompt": "Edit this exact original game box The Curse of Monkey Island. Replace only game title/subtitle with Hebrew: הקללה של / אי הקופים. Slashes mean line breaks, not literal slashes; parenthetic notes describe hierarchy, not printed. Preserve original font style, decorative letter forms, colors, texture, size, orientation, effects, placement. Correct readable Hebrew RTL. Leave illustrations, faces, composition, borders, logos and other small text untouched. Same aspect ratio and original full framing. Output one cover.",
+    "path": "/Users/haggaiyaniv/.codex/generated_images/01a17325-42a3-71b0-8569-0b89e59757d5/exec-c4116bdb-8ccd-49df-95ce-8820d6ddc486.png"
+  },
+  {
+    "id": "indiana-jones-and-the-last-crusade",
+    "prompt": "Edit this exact original game box Indiana Jones and the Last Crusade. Replace only game title/subtitle with Hebrew: אינדי (huge logo), אינדיאנה ג'ונס ומסע הצלב האחרון (small subtitle). Slashes mean line breaks, not literal slashes; parenthetic notes describe hierarchy, not printed. Preserve original font style, decorative letter forms, colors, texture, size, orientation, effects, placement. Correct readable Hebrew RTL. Leave illustrations, faces, composition, borders, logos and other small text untouched. Same aspect ratio and original full framing. Output one cover.",
+    "path": "/Users/haggaiyaniv/.codex/generated_images/01a17325-42a3-71b0-8569-0b89e59757d5/exec-ad49167d-4d29-4d27-bd6b-7041743d8872.png"
+  },
+  {
+    "id": "maniac-mansion",
+    "prompt": "Edit this exact original game box Maniac Mansion. Replace only game title/subtitle with Hebrew: אחוזת המטורפים. Slashes mean line breaks, not literal slashes; parenthetic notes describe hierarchy, not printed. Preserve original font style, decorative letter forms, colors, texture, size, orientation, effects, placement. Correct readable Hebrew RTL. Leave illustrations, faces, composition, borders, logos and other small text untouched. Same aspect ratio and original full framing. Output one cover.",
+    "path": "/Users/haggaiyaniv/.codex/generated_images/01a17325-42a3-71b0-8569-0b89e59757d5/exec-f4e44631-9583-4a87-8d11-a68b3380ea1c.png"
+  },
+  {
+    "id": "full-throttle-not-the-remastered-version",
+    "prompt": "Edit this exact original game box Full Throttle (not the Remastered version). Replace only game title/subtitle with Hebrew: הילוך שיא. Slashes mean line breaks, not literal slashes; parenthetic notes describe hierarchy, not printed. Preserve original font style, decorative letter forms, colors, texture, size, orientation, effects, placement. Correct readable Hebrew RTL. Leave illustrations, faces, composition, borders, logos and other small text untouched. Same aspect ratio and original full framing. Output one cover.",
+    "path": "/Users/haggaiyaniv/.codex/generated_images/01a17325-42a3-71b0-8569-0b89e59757d5/exec-f52b27ea-998b-4ee7-8951-78c63fcd8ce0.png"
+  },
+  {
+    "id": "grim-fandango-not-the-remastered-version",
+    "prompt": "Edit this exact original game box Grim Fandango (not the Remastered version). Replace only game title/subtitle with Hebrew: גרים פנדנגו. Slashes mean line breaks, not literal slashes; parenthetic notes describe hierarchy, not printed. Preserve original font style, decorative letter forms, colors, texture, size, orientation, effects, placement. Correct readable Hebrew RTL. Leave illustrations, faces, composition, borders, logos and other small text untouched. Same aspect ratio and original full framing. Output one cover.",
+    "path": "/Users/haggaiyaniv/.codex/generated_images/01a17325-42a3-71b0-8569-0b89e59757d5/exec-68772904-9eaf-4a8c-a7fd-cfc2109b0224.png"
+  },
+  {
+    "id": "zak-mckracken-and-the-alien-mindbenders",
+    "prompt": "Edit this exact original game box Zak McKracken and the Alien Mindbenders. Replace only game title/subtitle with Hebrew: זכי מקראקן / ומבלבלי השכל מהחלל. Slashes mean line breaks, not literal slashes; parenthetic notes describe hierarchy, not printed. Preserve original font style, decorative letter forms, colors, texture, size, orientation, effects, placement. Correct readable Hebrew RTL. Leave illustrations, faces, composition, borders, logos and other small text untouched. Same aspect ratio and original full framing. Output one cover.",
+    "path": "/Users/haggaiyaniv/.codex/generated_images/01a17325-42a3-71b0-8569-0b89e59757d5/exec-872d7d7f-5093-41f3-b584-cee2e1e18905.png"
+  },
+  {
+    "id": "loom-fm-towns",
+    "prompt": "Edit this exact original game box Loom (FM-Towns). Replace only game title/subtitle with Hebrew: האורגים. Slashes mean line breaks, not literal slashes; parenthetic notes describe hierarchy, not printed. Preserve original font style, decorative letter forms, colors, texture, size, orientation, effects, placement. Correct readable Hebrew RTL. Leave illustrations, faces, composition, borders, logos and other small text untouched. Same aspect ratio and original full framing. Output one cover.",
+    "path": "/Users/haggaiyaniv/.codex/generated_images/01a17325-42a3-71b0-8569-0b89e59757d5/exec-c0cb62e1-060e-4a5e-808b-0df7b6080efc.png"
+  },
+  {
+    "id": "blade-runner",
+    "prompt": "Edit this exact original game box Blade Runner. Replace only game title/subtitle with Hebrew: בלייד ראנר. Slashes mean line breaks, not literal slashes; parenthetic notes describe hierarchy, not printed. Preserve original font style, decorative letter forms, colors, texture, size, orientation, effects, placement. Correct readable Hebrew RTL. Leave illustrations, faces, composition, borders, logos and other small text untouched. Same aspect ratio and original full framing. Output one cover.",
+    "path": "/Users/haggaiyaniv/.codex/generated_images/01a17325-42a3-71b0-8569-0b89e59757d5/exec-aba0d08e-b321-4d47-b423-a77f209dd2a9.png"
+  },
+  {
+    "id": "escape-from-monkey-island",
+    "prompt": "Edit this exact original game box Escape From Monkey Island. Replace only game title/subtitle with Hebrew: הבריחה / מאי הקופים. Slashes mean line breaks, not literal slashes; parenthetic notes describe hierarchy, not printed. Preserve original font style, decorative letter forms, colors, texture, size, orientation, effects, placement. Correct readable Hebrew RTL. Leave illustrations, faces, composition, borders, logos and other small text untouched. Same aspect ratio and original full framing. Output one cover.",
+    "path": "/Users/haggaiyaniv/.codex/generated_images/01a17325-42a3-71b0-8569-0b89e59757d5/exec-d8552baf-bfd2-4f5c-aae1-735af083601c.png"
+  },
+  {
+    "id": "sam-max-save-the-world",
+    "prompt": "Edit this exact original game box Sam & Max Save the World. Replace only game title/subtitle with Hebrew: סם ומקס / מצילים את העולם. Slashes mean line breaks, not literal slashes; parenthetic notes describe hierarchy, not printed. Preserve original font style, decorative letter forms, colors, texture, size, orientation, effects, placement. Correct readable Hebrew RTL. Leave illustrations, faces, composition, borders, logos and other small text untouched. Same aspect ratio and original full framing. Output one cover.",
+    "path": "/Users/haggaiyaniv/.codex/generated_images/01a17325-42a3-71b0-8569-0b89e59757d5/exec-0ce227d4-e520-4547-b6f8-cb71c3ba373b.png"
+  }
+]

@@ -1,0 +1,32 @@
+[
+  {
+    "id": "tender-loving-care",
+    "prompt": "Use case: text-localization. Edit only the original cover title into Hebrew \"טיפול רגשי\". White elegant serif in two lines, preserve horizontal rules, bottom-central title. Spell exactly right to left. Keep all art, faces, objects, colors, lighting, composition and crop unchanged. Preserve original font style. Do not change credits, logos, ratings or other text.",
+    "path": "/Users/haggaiyaniv/.codex/generated_images/01a17325-42a3-71b0-8569-0b89e59757d5/exec-c3acf52b-5017-46b4-b8a1-30334ce066eb.png"
+  },
+  {
+    "id": "a-vampyre-story",
+    "prompt": "Use case: text-localization. Edit only the original cover title into Hebrew \"מעשה בערפדית\". Red sharply pointed whimsical gothic serif, original title area upper right. Spell exactly right to left. Keep all art, faces, objects, colors, lighting, composition and crop unchanged. Preserve original font style. Do not change credits, logos, ratings or other text.",
+    "path": "/Users/haggaiyaniv/.codex/generated_images/01a17325-42a3-71b0-8569-0b89e59757d5/exec-198251dc-73ce-473a-96b2-e726188af1b2.png"
+  },
+  {
+    "id": "serena",
+    "prompt": "Use case: text-localization. Edit only the original cover title into Hebrew \"סרינה\". White brush handwriting, centered across middle. Spell exactly right to left. Keep all art, faces, objects, colors, lighting, composition and crop unchanged. Preserve original font style. Do not change credits, logos, ratings or other text.",
+    "path": "/Users/haggaiyaniv/.codex/generated_images/01a17325-42a3-71b0-8569-0b89e59757d5/exec-e36fa187-6b46-45c8-8e50-79ff6f1509a7.png"
+  },
+  {
+    "id": "gone-home",
+    "prompt": "Use case: text-localization. Edit only the original cover title into Hebrew \"לשוב הביתה\". White rough chalk handwritten italic style in two lines across upper sky. Spell exactly right to left. Keep all art, faces, objects, colors, lighting, composition and crop unchanged. Preserve original font style. Do not change credits, logos, ratings or other text.",
+    "path": "/Users/haggaiyaniv/.codex/generated_images/01a17325-42a3-71b0-8569-0b89e59757d5/exec-b2014358-20c9-4515-8cb4-52b9d2523253.png"
+  },
+  {
+    "id": "black-mirror-2017",
+    "prompt": "Use case: text-localization. Edit only the original cover title into Hebrew \"מראה שחורה\". White high-contrast serif two-line title centered in original location. Spell exactly right to left. Keep all art, faces, objects, colors, lighting, composition and crop unchanged. Preserve original font style. Do not change credits, logos, ratings or other text.",
+    "path": "/Users/haggaiyaniv/.codex/generated_images/01a17325-42a3-71b0-8569-0b89e59757d5/exec-72bd741a-1323-429a-b567-97376b48dbb2.png"
+  },
+  {
+    "id": "salammb-battle-for-carthage",
+    "prompt": "Use case: text-localization. Edit only the original cover title into Hebrew \"סלמבו\". Large white classical serif at top. Replace BATTLE FOR CARTHAGE with הקרב על קרתגו in small white serif subtitle. Spell exactly right to left. Keep all art, faces, objects, colors, lighting, composition and crop unchanged. Preserve original font style. Do not change credits, logos, ratings or other text.",
+    "path": "/Users/haggaiyaniv/.codex/generated_images/01a17325-42a3-71b0-8569-0b89e59757d5/exec-33a921d4-8100-4e05-8973-44146421b221.png"
+  }
+]

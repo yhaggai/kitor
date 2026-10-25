@@ -19,6 +19,9 @@ pub fn run() {
         .plugin(tauri_plugin_dialog::init())
         .plugin(tauri_plugin_fs::init())
         .setup(|app| {
+            // macOS title bars follow the native application's appearance.
+            app.set_theme(Some(tauri::Theme::Dark));
+
             let app_data_dir = app.path().app_data_dir()
                 .expect("Failed to get app data directory");
 
@@ -28,6 +31,10 @@ pub fn run() {
                     .await
                     .expect("Failed to initialize database")
             });
+
+            let mut steam = services::steam_service::SteamState::default();
+            steam.session.get_mut().steam_id = services::steam_service::load_identity(&app_data_dir);
+            app.manage(steam);
 
             // Store state
             app.manage(AppState {
@@ -40,6 +47,8 @@ pub fn run() {
         .invoke_handler(tauri::generate_handler![
             // Game commands
             commands::game_commands::get_all_games,
+            commands::game_commands::refresh_game,
+            commands::game_commands::open_game_folder,
             commands::game_commands::scan_games,
             commands::game_commands::scan_installed_games,
             commands::game_commands::add_game_manually,
@@ -66,7 +75,14 @@ pub fn run() {
             commands::patch_commands::get_purchase_guide,
             commands::patch_commands::get_os,
             commands::patch_commands::open_gog_client,
+            commands::patch_commands::open_steam_client,
             commands::patch_commands::download_and_extract_gog_installer,
+            commands::steam_commands::get_steam_status,
+            commands::steam_commands::download_steam_windows_game,
+            commands::steam_commands::set_steam_api_key,
+            commands::steam_commands::refresh_steam_library,
+            commands::steam_commands::connect_steam,
+            commands::steam_commands::disconnect_steam,
             // GOG commands
             commands::gog_commands::login_to_gog,
             commands::gog_commands::complete_gog_login,

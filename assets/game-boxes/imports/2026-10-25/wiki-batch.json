@@ -1,0 +1,323 @@
+{
+  "batchcomplete": "",
+  "query": {
+    "normalized": [
+      {
+        "from": "keepsake",
+        "to": "Keepsake"
+      }
+    ],
+    "redirects": [
+      {
+        "from": "Gray Matter",
+        "to": "Grey Matter"
+      },
+      {
+        "from": "Cleopatra: A Queen's Destiny",
+        "to": "Cleopatra: Riddle of the Tomb"
+      }
+    ],
+    "pages": {
+      "-1": {
+        "ns": 0,
+        "title": "Return of the Tentacle",
+        "missing": ""
+      },
+      "-2": {
+        "ns": 0,
+        "title": "Mystic Pillars",
+        "missing": ""
+      },
+      "-3": {
+        "ns": 0,
+        "title": "אושר בלי גבולות",
+        "missing": ""
+      },
+      "-4": {
+        "ns": 0,
+        "title": "Atlantis III : The New World",
+        "missing": ""
+      },
+      "-5": {
+        "ns": 0,
+        "title": "Reversion (video game)",
+        "missing": ""
+      },
+      "-6": {
+        "ns": 0,
+        "title": "Lost Chronicles of Zerzura",
+        "missing": ""
+      },
+      "-7": {
+        "ns": 0,
+        "title": "The Abbey (video game)",
+        "missing": ""
+      },
+      "-8": {
+        "ns": 0,
+        "title": "Chronicles of Mystery - The Scorpio Ritual",
+        "missing": ""
+      },
+      "-9": {
+        "ns": 0,
+        "title": "Duke Grabowski: Mighty Swashbuckler",
+        "missing": ""
+      },
+      "11847908": {
+        "pageid": 11847908,
+        "ns": 0,
+        "title": "Agatha Christie: Evil Under the Sun",
+        "original": {
+          "source": "https://upload.wikimedia.org/wikipedia/en/6/6f/Agatha_Christie_-_Evil_Under_the_Sun_Coverart.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=original",
+          "width": 256,
+          "height": 363
+        }
+      },
+      "8596963": {
+        "pageid": 8596963,
+        "ns": 0,
+        "title": "Agatha Christie: Murder on the Orient Express",
+        "original": {
+          "source": "https://upload.wikimedia.org/wikipedia/en/8/83/MOE_box.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=original",
+          "width": 276,
+          "height": 362
+        }
+      },
+      "33033069": {
+        "pageid": 33033069,
+        "ns": 0,
+        "title": "Alpha Polaris",
+        "original": {
+          "source": "https://upload.wikimedia.org/wikipedia/en/4/42/Alpha_Polaris_PC_Cover_Art.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=original",
+          "width": 200,
+          "height": 289
+        }
+      },
+      "2481713": {
+        "pageid": 2481713,
+        "ns": 0,
+        "title": "Alter Ego"
+      },
+      "18949410": {
+        "pageid": 18949410,
+        "ns": 0,
+        "title": "And Then There Were None",
+        "original": {
+          "source": "https://upload.wikimedia.org/wikipedia/en/2/26/And_Then_There_Were_None_US_First_Edition_Cover_1940.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=original",
+          "width": 256,
+          "height": 391
+        }
+      },
+      "3676459": {
+        "pageid": 3676459,
+        "ns": 0,
+        "title": "Apprentice (video game)",
+        "original": {
+          "source": "https://upload.wikimedia.org/wikipedia/en/8/86/Apprentice_videoGame_logo.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=original",
+          "width": 489,
+          "height": 177
+        }
+      },
+      "11576139": {
+        "pageid": 11576139,
+        "ns": 0,
+        "title": "Atlantis Evolution",
+        "original": {
+          "source": "https://upload.wikimedia.org/wikipedia/en/f/f2/Atlantisevolution.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=original",
+          "width": 216,
+          "height": 314
+        }
+      },
+      "11575736": {
+        "pageid": 11575736,
+        "ns": 0,
+        "title": "Atlantis II",
+        "original": {
+          "source": "https://upload.wikimedia.org/wikipedia/en/7/71/Atlantis_II.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=original",
+          "width": 275,
+          "height": 362
+        }
+      },
+      "11920950": {
+        "pageid": 11920950,
+        "ns": 0,
+        "title": "Destination: Treasure Island",
+        "original": {
+          "source": "https://upload.wikimedia.org/wikipedia/en/8/8c/Destination_Treasure_Island_cover.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=original",
+          "width": 265,
+          "height": 376
+        }
+      },
+      "30102763": {
+        "pageid": 30102763,
+        "ns": 0,
+        "title": "Dracula 4: The Shadow of the Dragon",
+        "original": {
+          "source": "https://upload.wikimedia.org/wikipedia/en/c/c5/Dracula_4_-_The_Shadow_of_the_Dragon.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=original",
+          "width": 256,
+          "height": 362
+        }
+      },
+      "21804414": {
+        "pageid": 21804414,
+        "ns": 0,
+        "title": "Emerald City Confidential",
+        "original": {
+          "source": "https://upload.wikimedia.org/wikipedia/en/2/2e/EmeraldCityConfidentialPublicityShot.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=original",
+          "width": 170,
+          "height": 247
+        }
+      },
+      "51577707": {
+        "pageid": 51577707,
+        "ns": 0,
+        "title": "Face Noir",
+        "original": {
+          "source": "https://upload.wikimedia.org/wikipedia/en/f/f4/Face_Noir_cover.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=original",
+          "width": 257,
+          "height": 388
+        }
+      },
+      "6343784": {
+        "pageid": 6343784,
+        "ns": 0,
+        "title": "Gabriel Knight 3: Blood of the Sacred, Blood of the Damned",
+        "original": {
+          "source": "https://upload.wikimedia.org/wikipedia/en/5/5d/Gabriel_Knight_3_-_Blood_of_the_Sacred%2C_Blood_of_the_Damned_Coverart.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=original",
+          "width": 256,
+          "height": 308
+        }
+      },
+      "9351407": {
+        "pageid": 9351407,
+        "ns": 0,
+        "title": "Keepsake"
+      },
+      "45610": {
+        "pageid": 45610,
+        "ns": 0,
+        "title": "Mata Hari",
+        "original": {
+          "source": "https://upload.wikimedia.org/wikipedia/commons/8/8f/MataHari15.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=original",
+          "width": 1279,
+          "height": 1600
+        }
+      },
+      "6891462": {
+        "pageid": 6891462,
+        "ns": 0,
+        "title": "Neighbours from Hell",
+        "original": {
+          "source": "https://upload.wikimedia.org/wikipedia/en/9/92/Neighbors_from_Hell_Coverart.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=original",
+          "width": 256,
+          "height": 341
+        }
+      },
+      "25274546": {
+        "pageid": 25274546,
+        "ns": 0,
+        "title": "Next Life",
+        "original": {
+          "source": "https://upload.wikimedia.org/wikipedia/en/0/0e/Next_Life_Cover.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=original",
+          "width": 254,
+          "height": 392
+        }
+      },
+      "810810": {
+        "pageid": 810810,
+        "ns": 0,
+        "title": "Pokémon Emerald",
+        "original": {
+          "source": "https://upload.wikimedia.org/wikipedia/en/f/f7/PokemonEmeraldBox.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=original",
+          "width": 316,
+          "height": 316
+        }
+      },
+      "30874393": {
+        "pageid": 30874393,
+        "ns": 0,
+        "title": "Rayman 2: The Great Escape",
+        "original": {
+          "source": "https://upload.wikimedia.org/wikipedia/en/6/61/Rayman_2.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=original",
+          "width": 280,
+          "height": 357
+        }
+      },
+      "74224807": {
+        "pageid": 74224807,
+        "ns": 0,
+        "title": "She Sees Red",
+        "original": {
+          "source": "https://upload.wikimedia.org/wikipedia/en/5/56/She_Sees_Red_cover_art.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=original",
+          "width": 316,
+          "height": 316
+        }
+      },
+      "13482774": {
+        "pageid": 13482774,
+        "ns": 0,
+        "title": "The Hardy Boys: The Hidden Theft",
+        "original": {
+          "source": "https://upload.wikimedia.org/wikipedia/en/5/55/Thehardyboys.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=original",
+          "width": 266,
+          "height": 374
+        }
+      },
+      "11576273": {
+        "pageid": 11576273,
+        "ns": 0,
+        "title": "The Secrets of Atlantis: The Sacred Legacy",
+        "original": {
+          "source": "https://upload.wikimedia.org/wikipedia/en/4/4c/The_Secrets_of_Atlantis_The_Sacred_Legacy.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=original",
+          "width": 200,
+          "height": 291
+        }
+      },
+      "64995541": {
+        "pageid": 64995541,
+        "ns": 0,
+        "title": "There Is No Game: Wrong Dimension",
+        "original": {
+          "source": "https://upload.wikimedia.org/wikipedia/en/2/2c/There_is_No_Game_Wrong_Dimension_cover.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=original",
+          "width": 417,
+          "height": 239
+        }
+      },
+      "167963": {
+        "pageid": 167963,
+        "ns": 0,
+        "title": "Treasure Island",
+        "original": {
+          "source": "https://upload.wikimedia.org/wikipedia/commons/f/fe/Treasure_Island_%28title_page%2C_1883%29.webp?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=original",
+          "width": 4000,
+          "height": 7127
+        }
+      },
+      "880212": {
+        "pageid": 880212,
+        "ns": 0,
+        "title": "Warcraft Adventures: Lord of the Clans",
+        "original": {
+          "source": "https://upload.wikimedia.org/wikipedia/en/3/33/Warcraft-adventures-boxart.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=original",
+          "width": 278,
+          "height": 359
+        }
+      },
+      "53963233": {
+        "pageid": 53963233,
+        "ns": 0,
+        "title": "Cleopatra: Riddle of the Tomb",
+        "original": {
+          "source": "https://upload.wikimedia.org/wikipedia/en/a/a9/Cleopatra_Riddle_of_the_Tomb.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=original",
+          "width": 263,
+          "height": 379
+        }
+      },
+      "9105608": {
+        "pageid": 9105608,
+        "ns": 0,
+        "title": "Grey Matter"
+      }
+    }
+  }
+}

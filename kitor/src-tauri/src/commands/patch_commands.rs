@@ -89,33 +89,25 @@ pub fn get_os() -> String {
 
 #[tauri::command]
 pub async fn open_gog_client(game_id: i64) -> Result<(), String> {
-    let url = format!("goggalaxy://openGameView/{}", game_id);
-    
-    #[cfg(target_os = "macos")]
-    {
-        std::process::Command::new("open")
-            .arg(&url)
-            .spawn()
-            .map_err(|e| format!("Failed to open GOG client: {}", e))?;
+    if game_id <= 0 {
+        return Err("Invalid GOG game ID".to_string());
     }
-    
-    #[cfg(target_os = "windows")]
-    {
-        std::process::Command::new("cmd")
-            .args(["/C", "start", "", &url])
-            .spawn()
-            .map_err(|e| format!("Failed to open GOG client: {}", e))?;
+    tauri_plugin_opener::open_url(
+        format!("goggalaxy://openGameView/{}", game_id),
+        None::<&str>,
+    ).map_err(|e| format!("Could not open GOG Galaxy. Make sure it is installed: {}", e))
+}
+
+#[tauri::command]
+pub async fn open_steam_client(app_id: u32, steam: State<'_, crate::services::steam_service::SteamState>) -> Result<(), String> {
+    if app_id == 0 {
+        return Err("Invalid Steam app ID".to_string());
     }
-    
-    #[cfg(target_os = "linux")]
-    {
-        std::process::Command::new("xdg-open")
-            .arg(&url)
-            .spawn()
-            .map_err(|e| format!("Failed to open GOG client: {}", e))?;
-    }
-    
-    Ok(())
+    crate::services::steam_service::restore_key(&steam).await;
+    tauri_plugin_opener::open_url(
+        crate::services::steam_service::game_url(&steam, app_id).await,
+        None::<&str>,
+    ).map_err(|e| format!("Could not open Steam. Make sure it is installed: {}", e))
 }
 
 #[tauri::command]

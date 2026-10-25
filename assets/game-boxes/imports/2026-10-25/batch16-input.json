@@ -1,0 +1,168 @@
+[
+  {
+    "source_idx": 1,
+    "game_id": "simon-the-sorcerer-25th-ann-edition",
+    "title_en": "Simon The sorcerer 25th Ann. edition",
+    "title_he": "שוליית המכשף 1",
+    "status": "pending",
+    "sources": {
+      "en": {
+        "file": "sources/simon-the-sorcerer-25th-ann-edition-en-fixed.jpg",
+        "url": "https://images.gog-statics.com/bd156943fc8711e383a601ca2744e782d2953d7e964ec3c557875ef008fc457c.png",
+        "source_page": "https://www.gog.com/en/game/simon_the_sorcerer",
+        "status": "needs_visual_review",
+        "width": 1600,
+        "height": 740,
+        "sha256": "78d3abc6efbcde17d5132f39132ca6c03950636b96d8f1e5c10741508207c81b"
+      }
+    },
+    "steam_appid": "674150"
+  },
+  {
+    "source_idx": 67,
+    "game_id": "atlantis-iii-the-new-world",
+    "title_en": "Atlantis III : The New World",
+    "title_he": "אטלנטיס 3 : העולם החדש",
+    "status": "pending",
+    "sources": {
+      "en": {
+        "file": "sources/atlantis-iii-the-new-world-en-fixed.jpg",
+        "url": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/coa450.jpg",
+        "source_page": "https://backloggd.com/games/atlantis-iii-the-new-world/",
+        "status": "needs_visual_review",
+        "width": 528,
+        "height": 704,
+        "sha256": "e3f66f85bc72f8eb88525e33899891cd89c1fba9c3e193cfc285ef4fd2ba7aa8"
+      }
+    }
+  },
+  {
+    "source_idx": 103,
+    "game_id": "lost-chronicles-of-zerzura",
+    "title_en": "Lost Chronicles of Zerzura",
+    "title_he": "האגדות האבודות של זרזורה",
+    "status": "pending",
+    "sources": {
+      "en": {
+        "file": "sources/lost-chronicles-of-zerzura-en-fixed.jpg",
+        "url": "https://images.launchbox-app.com/519517f7-1ee5-4541-b8b0-e60167f45621.png",
+        "source_page": "https://gamesdb.launchbox-app.com/games/images/138235-lost-chronicles-of-zerzura",
+        "status": "needs_visual_review",
+        "width": 600,
+        "height": 900,
+        "sha256": "b4e628950e890ea6fe7c4df83eacd1634e6a29622730cbbe2cea994c688378ea"
+      }
+    },
+    "steam_appid": "308330"
+  },
+  {
+    "source_idx": 105,
+    "game_id": "treasure-island",
+    "title_en": "Treasure Island",
+    "title_he": "אי המטמון",
+    "status": "pending",
+    "sources": {
+      "en": {
+        "file": "sources/treasure-island-en-fixed.jpg",
+        "url": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/ljtzbpj3aefeke0dvayn.jpg",
+        "source_page": "https://www.igdb.com/games/treasure-island--3",
+        "status": "needs_visual_review",
+        "width": 528,
+        "height": 670,
+        "sha256": "ea5fe40e5ac0830054e22c9f6e2f6b74cd665168956d9487d8d9f6424b3ec9b9"
+      }
+    }
+  },
+  {
+    "source_idx": 106,
+    "game_id": "the-abbey-director-s-cut",
+    "title_en": "The Abbey - Director's cut",
+    "title_he": "רצח במנזר",
+    "status": "pending",
+    "sources": {
+      "en": {
+        "file": "sources/the-abbey-director-s-cut-en-fixed.jpg",
+        "url": "https://images.stopgame.ru/games/logos/29038/the_abbey_director_s_cut-square.jpg",
+        "source_page": "https://stopgame.ru/game/the_abbey_director_s_cut",
+        "status": "needs_visual_review",
+        "width": 1024,
+        "height": 1024,
+        "sha256": "450bfe6204b9797f966e95f81bf94aa82a8d62b9d7b3922bf93a5aec42704dcf"
+      }
+    }
+  },
+  {
+    "source_idx": 111,
+    "game_id": "the-secrets-of-atlantis-the-sacred-legacy",
+    "title_en": "The Secrets of Atlantis: The Sacred Legacy",
+    "title_he": "מסתורי אטלנטיס: המורשת המקודשת",
+    "status": "pending",
+    "sources": {
+      "en": {
+        "file": "sources/the-secrets-of-atlantis-the-sacred-legacy-en-fixed.jpg",
+        "url": "https://cdn.mobygames.com/covers/4721394-the-secrets-of-atlantis-windows-front-cover.jpg",
+        "source_page": "https://www.mobygames.com/game/25666/the-secrets-of-atlantis/",
+        "status": "needs_visual_review",
+        "width": 563,
+        "height": 800,
+        "sha256": "926ea77225ef515cc2a7294c56c95328e19f7c949a2474626aeebd3e95c00952"
+      }
+    }
+  },
+  {
+    "source_idx": 150,
+    "game_id": "dracula-3-the-path-of-the-dragon",
+    "title_en": "Dracula 3: The Path of the Dragon",
+    "title_he": "דרקולה 3: נתיב הדרקון",
+    "status": "pending",
+    "sources": {
+      "en": {
+        "file": "sources/dracula-3-the-path-of-the-dragon-en-fixed.jpg",
+        "url": "https://images.launchbox-app.com/7b1f63be-1ca9-4572-bf03-8d90d0959d9d.jpg",
+        "source_page": "https://gamesdb.launchbox-app.com/games/images/20357-dracula-3-the-path-of-the-dragon",
+        "status": "needs_visual_review",
+        "width": 640,
+        "height": 918,
+        "sha256": "520e0a3f934cd6a37c17af0f3dc55413d03ac96d577acdf202cde84dceee870c"
+      }
+    },
+    "steam_appid": "289840"
+  },
+  {
+    "source_idx": 152,
+    "game_id": "duke-grabowski-mighty-swashbuckler",
+    "title_en": "Duke Grabowski: Mighty Swashbuckler",
+    "title_he": "דוכס גרבובסקי: הרפתקן אדיר!",
+    "status": "pending",
+    "sources": {
+      "en": {
+        "file": "sources/duke-grabowski-mighty-swashbuckler-en-fixed.jpg",
+        "url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/472420/9e72d431c3cb9203766376cbd880b5717ad5ae63/header.jpg?t=1787054761",
+        "source_page": "https://store.steampowered.com/app/472420/",
+        "status": "needs_visual_review",
+        "width": 460,
+        "height": 215,
+        "sha256": "f2b7a635fbcb0c09e029ece4dd5d6b8cd995d2067443c96fa42de208ada1b262"
+      }
+    },
+    "steam_appid": "472420"
+  },
+  {
+    "source_idx": 154,
+    "game_id": "galador-the-prince-and-the-coward",
+    "title_en": "Galador - The Prince and the Coward",
+    "title_he": "גלאדור: הנסיך והפחדן",
+    "status": "pending",
+    "sources": {
+      "en": {
+        "file": "sources/galador-the-prince-and-the-coward-en-fixed.jpg",
+        "url": "https://images.gamegator.net/co5eia",
+        "source_page": "https://gamegator.net/games/galador-the-prince-and-the-coward",
+        "status": "needs_visual_review",
+        "width": 1621,
+        "height": 2160,
+        "sha256": "3ae13357ea5c1b23c64bfeb745feac41cf19d4e0074a18fe79679777e0278f12"
+      }
+    }
+  }
+]

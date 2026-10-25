@@ -1,0 +1,19 @@
+# Game box assets
+
+`covers/manifest.json` is the bilingual catalog for all 25 games. Each game has `covers.en` and `covers.he`, including source provenance, dimensions, SHA-256, Cloudflare object key, original URL, and 240/480/960px transformation URLs.
+
+Published paths follow `covers/<game-id>/<en|he>/<sha256-prefix>.<extension>` in the `kitor-assets` R2 bucket, served from https://assets.kitor.click. Filenames are content-addressed; new revisions should use new hashes.
+
+Selection for the forthcoming UI feature: English when the Hebrew patch is absent, Hebrew when installed. This asset preparation does not change application selection logic.
+
+## Local layout
+
+- `covers/`: organized publication tree, including both languages and its manifest. Upload this folder at the bucket root to preserve object keys.
+- `originals/` and `manifest.json`: original 25 collected covers and their provenance, retained unchanged except for a pointer to the bilingual catalog.
+- `hebrew/`: 19 AI-localized cover drafts, generation specifications, and their review page. These are the versions approved for upload; AI editing can alter non-text artwork.
+- `english/`: six additional English covers and source records. Earlier low-resolution candidates are retained but are not published.
+- `review-pairs.html`: side-by-side review of all 25 English/Hebrew pairs, with links to hosted originals.
+
+The six existing Hebrew/Israeli scans remain the Hebrew variants for Kyrandia, Space Quest III/V, Torin’s Passage, Gobliins 2 and The Longest Journey. The English Space Quest III scan is the Amiga packaging variant; its platform sticker differs from PC packaging. Kyrandia’s English scan is floppy-era packaging. The Longest Journey English variant uses the user-supplied retail box scan.
+
+Existing legacy Cloudflare object keys are retained so current app cover URLs continue working. `upload-verification.json` records public URL and checksum verification after publication.

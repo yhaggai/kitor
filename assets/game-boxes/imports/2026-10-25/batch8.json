@@ -1,0 +1,32 @@
+[
+  {
+    "id": "secret-files-tunguska",
+    "prompt": "Edit the supplied game cover, changing ONLY the English title to \"תיקים סודיים / טונגוסקה\" in Hebrew. Slash means line break, omit slash. Black typewriter slab-serif title and smaller spaced subtitle. Keep title at exactly the original location and within original title bounds. Match typography style, texture, scale and color. Correct Hebrew RTL. Preserve all artwork, characters, faces, background and logos exactly. No redesign. Same full-cover composition and aspect ratio.",
+    "path": "/Users/haggaiyaniv/.codex/generated_images/01a17325-42a3-71b0-8569-0b89e59757d5/exec-85476c28-b95d-4441-b092-b3af3fc02d04.png"
+  },
+  {
+    "id": "secret-files-2-puritas-cordis",
+    "prompt": "Edit the supplied game cover, changing ONLY the English title to \"תיקים סודיים 2 / פוריטס קורדיס\" in Hebrew. Slash means line break, omit slash. Black typewriter slab-serif title and smaller spaced subtitle. Keep title at exactly the original location and within original title bounds. Match typography style, texture, scale and color. Correct Hebrew RTL. Preserve all artwork, characters, faces, background and logos exactly. No redesign. Same full-cover composition and aspect ratio.",
+    "path": "/Users/haggaiyaniv/.codex/generated_images/01a17325-42a3-71b0-8569-0b89e59757d5/exec-9e91ad8b-1ab1-4751-bc98-000f62c81200.png"
+  },
+  {
+    "id": "secret-files-3",
+    "prompt": "Edit the supplied game cover, changing ONLY the English title to \"תיקים סודיים 3\" in Hebrew. Slash means line break, omit slash. White typewriter slab-serif with black outline. Keep title at exactly the original location and within original title bounds. Match typography style, texture, scale and color. Correct Hebrew RTL. Preserve all artwork, characters, faces, background and logos exactly. No redesign. Same full-cover composition and aspect ratio.",
+    "path": "/Users/haggaiyaniv/.codex/generated_images/01a17325-42a3-71b0-8569-0b89e59757d5/exec-583723fe-879b-4ce5-887d-0e4665cf70d1.png"
+  },
+  {
+    "id": "secret-files-sam-peters",
+    "prompt": "Edit the supplied game cover, changing ONLY the English title to \"תיקים סודיים / סם פיטרס\" in Hebrew. Slash means line break, omit slash. Small white typewriter heading and large golden beveled block subtitle. Keep title at exactly the original location and within original title bounds. Match typography style, texture, scale and color. Correct Hebrew RTL. Preserve all artwork, characters, faces, background and logos exactly. No redesign. Same full-cover composition and aspect ratio.",
+    "path": "/Users/haggaiyaniv/.codex/generated_images/01a17325-42a3-71b0-8569-0b89e59757d5/exec-cf6b7600-d63d-4449-86c9-ef607fa78801.png"
+  },
+  {
+    "id": "lost-horizon",
+    "prompt": "Edit the supplied game cover, changing ONLY the English title to \"אופק אבוד\" in Hebrew. Slash means line break, omit slash. Bold italic condensed blue-to-white gradient block lettering black outline. Keep title at exactly the original location and within original title bounds. Match typography style, texture, scale and color. Correct Hebrew RTL. Preserve all artwork, characters, faces, background and logos exactly. No redesign. Same full-cover composition and aspect ratio.",
+    "path": "/Users/haggaiyaniv/.codex/generated_images/01a17325-42a3-71b0-8569-0b89e59757d5/exec-552a2261-d568-43a6-b4bc-d469946d064f.png"
+  },
+  {
+    "id": "lost-horizon-2",
+    "prompt": "Edit the supplied game cover, changing ONLY the English title to \"אופק אבוד 2\" in Hebrew. Slash means line break, omit slash. Bold condensed italic white weathered block lettering. Keep title at exactly the original location and within original title bounds. Match typography style, texture, scale and color. Correct Hebrew RTL. Preserve all artwork, characters, faces, background and logos exactly. No redesign. Same full-cover composition and aspect ratio.",
+    "path": "/Users/haggaiyaniv/.codex/generated_images/01a17325-42a3-71b0-8569-0b89e59757d5/exec-3681da07-fedb-4ab6-ba1a-e14716efb058.png"
+  }
+]

@@ -1,0 +1,77 @@
+[
+  {
+    "id": "sq1",
+    "signature": "LOGDIR",
+    "sha256": [
+      "1aeef7bd675ac6c3907181b619df3c53f14f42bc64ea2965e6b3ab7f81f8a1fd",
+      "969ea8c0b95b63bb5998e2dcba8a6a525ce2f677caff751e05a64c1f157b0dd2"
+    ],
+    "required": [
+      "LOGDIR",
+      "PICDIR",
+      "SNDDIR",
+      "VIEWDIR",
+      "VOL.0",
+      "VOL.1",
+      "VOL.2"
+    ]
+  },
+  {
+    "id": "sq1sci",
+    "signature": "RESOURCE.MAP",
+    "sha256": [
+      "b39d7965bb3413c01286525077be3aedde47fcd17b891ba16baea772416261d5"
+    ],
+    "required": [
+      "RESOURCE.000",
+      "RESOURCE.001",
+      "RESOURCE.002",
+      "RESOURCE.003",
+      "RESOURCE.004",
+      "RESOURCE.MAP"
+    ]
+  },
+  {
+    "id": "sq2",
+    "signature": "LOGDIR",
+    "sha256": [
+      "6955d9116b24da3ac92289e10b8d9f38cf305a48b7e3fc8565c289746598db01",
+      "46e9a703fde53ba91e4178e561b10e0b45015939e3eef8af6f5ed7519c7043ef"
+    ],
+    "required": [
+      "LOGDIR",
+      "PICDIR",
+      "SNDDIR",
+      "VIEWDIR",
+      "VOL.0",
+      "VOL.1",
+      "VOL.2"
+    ]
+  },
+  {
+    "id": "sq3",
+    "signature": "RESOURCE.MAP",
+    "sha256": [
+      "9075d55e53cee2f70b75404bb215c5a37cfc2bb8803896706179a10b099efb42"
+    ],
+    "required": [
+      "RESOURCE.001",
+      "RESOURCE.002",
+      "RESOURCE.003",
+      "RESOURCE.MAP"
+    ]
+  },
+  {
+    "id": "sq5",
+    "signature": "RESOURCE.MAP",
+    "sha256": [
+      "148b5b8445399a347cf7d3286264902e8ef480f4e0544164678c92ee5be476d1"
+    ],
+    "required": [
+      "RESOURCE.000",
+      "RESOURCE.AUD",
+      "RESOURCE.MAP",
+      "RESOURCE.MSG"
+    ]
+  }
+]

@@ -1,0 +1,32 @@
+[
+  {
+    "id": "chronicles-of-mystery-the-tree-of-life",
+    "prompt": "Localize only the game-title lettering of this supplied cover into Hebrew \"עולמות של מסתורין / עץ החיים\". Slash is a line break, not printed. Gold weathered serif main title two lines, white serif subtitle at top. Preserve original font style, text position, scale, effects, and colors. Correct RTL lettering. Leave the entire illustration, characters, background, logos and incidental text unchanged. Same aspect ratio and framing. Output one full cover.",
+    "path": "/Users/haggaiyaniv/.codex/generated_images/01a17325-42a3-71b0-8569-0b89e59757d5/exec-4cf2536b-0f01-46d3-80b0-5396c64c80bb.png"
+  },
+  {
+    "id": "art-of-murder-hunt-for-the-puppeteer",
+    "prompt": "Localize only the game-title lettering of this supplied cover into Hebrew \"אמנות הרצח / המצוד אחר הבובנאי\". Slash is a line break, not printed. Silver gradient serif main title two lines, red serif subtitle at top. Preserve original font style, text position, scale, effects, and colors. Correct RTL lettering. Leave the entire illustration, characters, background, logos and incidental text unchanged. Same aspect ratio and framing. Output one full cover.",
+    "path": "/Users/haggaiyaniv/.codex/generated_images/01a17325-42a3-71b0-8569-0b89e59757d5/exec-f6461a0c-b649-4e7c-80ad-f32a282302c4.png"
+  },
+  {
+    "id": "art-of-murder-fbi-confidential",
+    "prompt": "Localize only the game-title lettering of this supplied cover into Hebrew \"אמנות הרצח / סודות הבולשת\". Slash is a line break, not printed. Silver serif main title two lines at center, black condensed subtitle on yellow strip. Preserve original font style, text position, scale, effects, and colors. Correct RTL lettering. Leave the entire illustration, characters, background, logos and incidental text unchanged. Same aspect ratio and framing. Output one full cover.",
+    "path": "/Users/haggaiyaniv/.codex/generated_images/01a17325-42a3-71b0-8569-0b89e59757d5/exec-79983d3a-0155-4183-8db3-ce010a48619f.png"
+  },
+  {
+    "id": "art-of-murder-cards-of-destiny",
+    "prompt": "Localize only the game-title lettering of this supplied cover into Hebrew \"אמנות הרצח / קלפי הגורל\". Slash is a line break, not printed. Silver gradient serif main title at lower center, red serif subtitle. Do not add a numeral absent from original. Preserve original font style, text position, scale, effects, and colors. Correct RTL lettering. Leave the entire illustration, characters, background, logos and incidental text unchanged. Same aspect ratio and framing. Output one full cover.",
+    "path": "/Users/haggaiyaniv/.codex/generated_images/01a17325-42a3-71b0-8569-0b89e59757d5/exec-a4589beb-27f7-4b58-87ec-340f2ed5a83b.png"
+  },
+  {
+    "id": "memento-mori",
+    "prompt": "Localize only the game-title lettering of this supplied cover into Hebrew \"דע את יום מותך\". Slash is a line break, not printed. White irregular tall condensed gothic text top, fit two lines. Preserve original font style, text position, scale, effects, and colors. Correct RTL lettering. Leave the entire illustration, characters, background, logos and incidental text unchanged. Same aspect ratio and framing. Output one full cover.",
+    "path": "/Users/haggaiyaniv/.codex/generated_images/01a17325-42a3-71b0-8569-0b89e59757d5/exec-84d62d5f-1893-4723-89d4-88a77f11b210.png"
+  },
+  {
+    "id": "nikopol-secrets-of-the-immortals",
+    "prompt": "Localize only the game-title lettering of this supplied cover into Hebrew \"ניקופול / סודות בני האלמוות\". Slash is a line break, not printed. Heavy condensed silver gradient block title at bottom with smaller white subtitle. Preserve original font style, text position, scale, effects, and colors. Correct RTL lettering. Leave the entire illustration, characters, background, logos and incidental text unchanged. Same aspect ratio and framing. Output one full cover.",
+    "path": "/Users/haggaiyaniv/.codex/generated_images/01a17325-42a3-71b0-8569-0b89e59757d5/exec-cec384b4-f7b6-4d3f-9f58-697809e81fbc.png"
+  }
+]

@@ -6,7 +6,7 @@ use crate::services::{download_service, file_service, registry_service, image_se
 use serde::{Deserialize, Serialize};
 
 // Serialize lifecycle operations through database recording as well as file writes.
-static PATCH_OPERATION: tokio::sync::Mutex<()> = tokio::sync::Mutex::const_new(());
+pub(crate) static PATCH_OPERATION: tokio::sync::Mutex<()> = tokio::sync::Mutex::const_new(());
 
 // Patch representation for API responses
 #[derive(Debug, Clone, Serialize, Deserialize)]
@@ -25,6 +25,7 @@ pub struct PatchInfo {
     pub post_install_script: Option<registry_service::PostInstallScript>,
     pub cover_url: Option<String>,
     pub gog_id: Option<i64>,
+    pub steam_app_id: Option<u32>,
     pub gog_installer_path: Option<String>,
     pub platforms: Option<registry_service::Platforms>,
 }
@@ -64,6 +65,7 @@ pub async fn get_patches_for_game(
             filename: p.filename,
             post_install_script: p.post_install_script,
             cover_url: game_def.cover_url.clone(),
+            steam_app_id: game_def.steam_app_id,
             gog_id: game_def.gog.as_ref().map(|g| g.id),
             gog_installer_path: game_def.gog.as_ref().and_then(|g| g.installers.as_ref()).and_then(|i| i.first().map(|inst| inst.path.clone())),
             platforms: game_def.platforms.clone(),
@@ -92,11 +94,17 @@ pub async fn get_all_patches(db: &DatabaseConnection, app_data_dir: PathBuf) -> 
         // Download and cache cover if URL exists
         let cached_cover = if let Some(ref cover_url) = game_def.cover_url {
             if cover_url.starts_with("http://") || cover_url.starts_with("https://") {
-                // Try to cache, but don't fail if it doesn't work
-                match image_service::download_and_cache_cover(&game_def.scummvm_id, cover_url, app_data_dir.clone()).await {
-                    Ok(path) => Some(path.to_string_lossy().to_string()),
-                    Err(e) => {
-                        eprintln!("Failed to cache cover for {}: {}", game_def.scummvm_id, e);
+                match image_service::get_cached_cover_for_url(&game_def.scummvm_id, cover_url, &app_data_dir) {
+                    Ok(Some(path)) => Some(path.to_string_lossy().to_string()),
+                    _ => {
+                        let id = game_def.scummvm_id.clone();
+                        let url = cover_url.clone();
+                        let cache_dir = app_data_dir.clone();
+                        tokio::spawn(async move {
+                            if let Err(e) = image_service::download_and_cache_cover(&id, &url, cache_dir).await {
+                                eprintln!("Failed to cache cover for {}: {}", id, e);
+                            }
+                        });
                         Some(cover_url.clone())
                     }
                 }
@@ -122,6 +130,7 @@ pub async fn get_all_patches(db: &DatabaseConnection, app_data_dir: PathBuf) -> 
                 filename: patch.filename,
                 post_install_script: patch.post_install_script,
                 cover_url: cached_cover.clone(),
+                steam_app_id: game_def.steam_app_id,
                 gog_id: game_def.gog.as_ref().map(|g| g.id),
                 gog_installer_path: game_def.gog.as_ref().and_then(|g| g.installers.as_ref()).and_then(|i| i.first().map(|inst| inst.path.clone())),
                 platforms: game_def.platforms.clone(),
@@ -185,6 +194,13 @@ pub async fn download_and_install_patch(
 
     println!("[patch_service] Patch found: {} by {}", patch.description, patch.author);
 
+    let install_target = crate::services::game_service::detect_game_in_folder(
+        Path::new(&game.install_path),
+    )?
+    .filter(|detected| detected.scummvm_id == game.scummvm_id)
+    .map(|detected| PathBuf::from(detected.install_path))
+    .ok_or("Game data folder no longer matches the registered game")?;
+
     // Emit progress: Preparing download
     let _ = app_handle.emit("install-progress", serde_json::json!({
         "scummvm_id": scummvm_id,
@@ -219,8 +235,11 @@ pub async fn download_and_install_patch(
 
     println!("[patch_service] Downloading from: {}", patch.download_url);
     println!("[patch_service] Download destination: {}", download_path.display());
-    download_service::download_file(&patch.download_url, &download_path, &app_handle)
-        .await?;
+    let bundled_drifter = patch.source_type == "bundled" && scummvm_id == "drifter";
+    if !bundled_drifter {
+        download_service::download_patch_file(&patch.download_url, &download_path, &app_handle, &scummvm_id)
+            .await?;
+    }
     println!("[patch_service] Download complete");
     
     // Emit progress: Download complete
@@ -230,12 +249,7 @@ pub async fn download_and_install_patch(
         "step": "Download complete!"
     }));
 
-    let install_target = crate::services::game_service::detect_game_in_folder(
-        Path::new(&game.install_path),
-    )?
-    .filter(|detected| detected.scummvm_id == game.scummvm_id)
-    .map(|detected| PathBuf::from(detected.install_path))
-    .ok_or("Game data folder no longer matches the registered game")?;
+
 
     let manifest_name = patch.install_manifest.as_deref()
         .ok_or("Patch has no file-change manifest; whole-folder installation is no longer supported")?;
@@ -244,8 +258,16 @@ pub async fn download_and_install_patch(
     }
     // Package tools and source data never enter the game installation.
     let staging = tempfile::Builder::new().prefix("kitor-package-").tempdir().map_err(|e| e.to_string())?;
-    file_service::validate_zip(&download_path)?;
-    file_service::extract_zip(&download_path, staging.path())?;
+    if bundled_drifter {
+        super::drifter_patch::stage(staging.path(), &language, &version)?;
+    } else {
+        file_service::validate_zip(&download_path)?;
+        file_service::extract_zip(&download_path, staging.path())?;
+    }
+    let install_target = if cfg!(target_os = "macos") && scummvm_id == "drifter" {
+        super::drifter_patch::validate_macos_build(&install_target)?;
+        super::drifter_patch::macos_target(&std::env::home_dir().ok_or("Cannot locate home directory")?)?
+    } else { install_target };
     let _ = app_handle.emit("install-progress", serde_json::json!({
         "scummvm_id": scummvm_id,
         "progress": 55,
@@ -339,7 +361,10 @@ pub async fn restore_backup(
 
     // Use the recorded installation root even if the patch removed a detection
     // signature. The journal validates that this is the correct installation.
-    patch_lifecycle::uninstall(Path::new(&backup_path), Path::new(&game.install_path))?;
+    let target = if cfg!(target_os = "macos") && game.scummvm_id == "drifter" {
+        super::drifter_patch::macos_target(&std::env::home_dir().ok_or("Cannot locate home directory")?)?
+    } else { PathBuf::from(&game.install_path) };
+    patch_lifecycle::uninstall(Path::new(&backup_path), &target)?;
 
     // Delete installed patch record
     installed_patch::Entity::delete_by_id(installed_patch_id)

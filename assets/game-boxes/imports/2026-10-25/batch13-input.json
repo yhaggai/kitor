@@ -1,0 +1,232 @@
+[
+  {
+    "source_idx": 35,
+    "game_id": "atlantis-4-evolution",
+    "title_en": "Atlantis 4: Evolution",
+    "title_he": "אטלנטיס - גן עדן בלהבות",
+    "status": "pending",
+    "sources": {
+      "en": {
+        "file": "sources/atlantis-4-evolution-en.jpg",
+        "url": "https://upload.wikimedia.org/wikipedia/en/f/f2/Atlantisevolution.jpg",
+        "source_page": "https://en.wikipedia.org/wiki/Atlantis_Evolution",
+        "status": "needs-visual-and-edition-review",
+        "width": 216,
+        "height": 314,
+        "sha256": "624304122a7a048c0de00208f546af06a06d49eaf2324d95a0a5bf0d5944eb1b"
+      }
+    }
+  },
+  {
+    "source_idx": 39,
+    "game_id": "she-sees-red-interactive-movie",
+    "title_en": "She Sees Red - Interactive Movie",
+    "title_he": "אדום בעיניה",
+    "status": "pending",
+    "sources": {
+      "en": {
+        "file": "sources/she-sees-red-interactive-movie-en.jpg",
+        "url": "https://upload.wikimedia.org/wikipedia/en/5/56/She_Sees_Red_cover_art.jpg",
+        "source_page": "https://en.wikipedia.org/wiki/She_Sees_Red",
+        "status": "needs-visual-and-edition-review",
+        "width": 316,
+        "height": 316,
+        "sha256": "dbfd9e1393c6121e506dd6c06e3afb77607e8ddd839b486c04a04dc68c379ad6"
+      }
+    }
+  },
+  {
+    "source_idx": 66,
+    "game_id": "atlantis-ii-beyond-atlantis",
+    "title_en": "Atlantis II : Beyond Atlantis",
+    "title_he": "אטלנטיס 2 : מעבר לאטלנטיס",
+    "status": "pending",
+    "sources": {
+      "en": {
+        "file": "sources/atlantis-ii-beyond-atlantis-en.jpg",
+        "url": "https://upload.wikimedia.org/wikipedia/en/7/71/Atlantis_II.jpg",
+        "source_page": "https://en.wikipedia.org/wiki/Atlantis_II",
+        "status": "needs-visual-and-edition-review",
+        "width": 275,
+        "height": 362,
+        "sha256": "b5da963d15f393b0aaf0bb21367e530224bab6a80c4993a239bf8bcc8ed269c6"
+      }
+    }
+  },
+  {
+    "source_idx": 67,
+    "game_id": "atlantis-iii-the-new-world",
+    "title_en": "Atlantis III : The New World",
+    "title_he": "אטלנטיס 3 : העולם החדש",
+    "status": "pending",
+    "sources": {
+      "en": {
+        "file": "sources/atlantis-iii-the-new-world-en.jpg",
+        "url": "https://upload.wikimedia.org/wikipedia/en/9/9f/Atlantis_III_-_The_New_World_Coverart.jpg",
+        "source_page": "https://en.wikipedia.org/wiki/Atlantis_III%3A_The_New_World",
+        "status": "needs-visual-and-edition-review",
+        "width": 256,
+        "height": 364,
+        "sha256": "4ba10efa86e9bd097f4a1f004623e54771adbcb0b02b53b0f65843a97bd25df6"
+      }
+    }
+  },
+  {
+    "source_idx": 74,
+    "game_id": "alpha-polaris-a-horror-adventure-game",
+    "title_en": "Alpha Polaris : A Horror Adventure Game",
+    "title_he": "אלפא פולאריס",
+    "status": "pending",
+    "sources": {
+      "en": {
+        "file": "sources/alpha-polaris-a-horror-adventure-game-en.jpg",
+        "url": "https://upload.wikimedia.org/wikipedia/en/4/42/Alpha_Polaris_PC_Cover_Art.jpg",
+        "source_page": "https://en.wikipedia.org/wiki/Alpha_Polaris",
+        "status": "needs-visual-and-edition-review",
+        "width": 200,
+        "height": 289,
+        "sha256": "280add62cb589ab6ca45edf017838a155b3110a90f58d20b20581085a5740720"
+      }
+    },
+    "steam_appid": "405780"
+  },
+  {
+    "source_idx": 78,
+    "game_id": "face-noir",
+    "title_en": "Face Noir",
+    "title_he": "פני האפלה",
+    "status": "pending",
+    "sources": {
+      "en": {
+        "file": "sources/face-noir-en.jpg",
+        "url": "https://upload.wikimedia.org/wikipedia/en/f/f4/Face_Noir_cover.jpg",
+        "source_page": "https://en.wikipedia.org/wiki/Face_Noir",
+        "status": "needs-visual-and-edition-review",
+        "width": 257,
+        "height": 388,
+        "sha256": "c8d4bda3e5241e213700392646719441ce2f8008317d17956cb4d86779a2c2d1"
+      }
+    },
+    "steam_appid": "244690"
+  },
+  {
+    "source_idx": 95,
+    "game_id": "the-hardy-boys-the-hidden-theft",
+    "title_en": "The Hardy Boys: The Hidden Theft",
+    "title_he": "בני הרדי בתעלומת השוד הכמוס",
+    "status": "pending",
+    "sources": {
+      "en": {
+        "file": "sources/the-hardy-boys-the-hidden-theft-en.jpg",
+        "url": "https://upload.wikimedia.org/wikipedia/en/5/55/Thehardyboys.jpg",
+        "source_page": "https://en.wikipedia.org/wiki/The_Hardy_Boys%3A_The_Hidden_Theft",
+        "status": "needs-visual-and-edition-review",
+        "width": 266,
+        "height": 374,
+        "sha256": "52c947a9f484b70568c937021a742ee9a8ccc209493878f78f52ce0851963ad0"
+      }
+    }
+  },
+  {
+    "source_idx": 108,
+    "game_id": "mata-hari",
+    "title_en": "Mata Hari",
+    "title_he": "מאטה הארי",
+    "status": "pending",
+    "sources": {
+      "en": {
+        "file": "sources/mata-hari-en.jpg",
+        "url": "https://upload.wikimedia.org/wikipedia/en/a/a4/Mata_Hari_Cover_art.jpg",
+        "source_page": "https://en.wikipedia.org/wiki/Mata_Hari_%28video_game%29",
+        "status": "needs-visual-and-edition-review",
+        "width": 268,
+        "height": 372,
+        "sha256": "af2317698fa8982bd321bbdb22780bbd2763287b67f252c3827a44ee0e74325c"
+      }
+    },
+    "steam_appid": "18480"
+  },
+  {
+    "source_idx": 109,
+    "game_id": "chronicles-of-mystery-the-scorpio-ritual",
+    "title_en": "Chronicles of Mystery - The Scorpio Ritual",
+    "title_he": "עולמות של מסתורין: פולחן העקרב",
+    "status": "pending",
+    "sources": {
+      "en": {
+        "file": "sources/chronicles-of-mystery-the-scorpio-ritual-en.jpg",
+        "url": "https://upload.wikimedia.org/wikipedia/en/f/f5/Chronicles_of_Mystery_The_Scorpio_Ritual_cover.jpg",
+        "source_page": "https://en.wikipedia.org/wiki/Chronicles_of_Mystery%3A_The_Scorpio_Ritual",
+        "status": "needs-visual-and-edition-review",
+        "width": 256,
+        "height": 366,
+        "sha256": "f1519eb411ca3d303c7546a6d228c9948e5ca83d31177eae0ad3d1e34f94be29"
+      }
+    }
+  },
+  {
+    "source_idx": 111,
+    "game_id": "the-secrets-of-atlantis-the-sacred-legacy",
+    "title_en": "The Secrets of Atlantis: The Sacred Legacy",
+    "title_he": "מסתורי אטלנטיס: המורשת המקודשת",
+    "status": "pending",
+    "sources": {
+      "en": {
+        "file": "sources/the-secrets-of-atlantis-the-sacred-legacy-en.jpg",
+        "url": "https://upload.wikimedia.org/wikipedia/en/4/4c/The_Secrets_of_Atlantis_The_Sacred_Legacy.jpg",
+        "source_page": "https://en.wikipedia.org/wiki/The_Secrets_of_Atlantis%3A_The_Sacred_Legacy",
+        "status": "needs-visual-and-edition-review",
+        "width": 200,
+        "height": 291,
+        "sha256": "ef16d46682a7972d48c3f57dff05ee8699c66e2e050b0a83c6823104bff9b542"
+      }
+    }
+  },
+  {
+    "source_idx": 113,
+    "game_id": "keepsake",
+    "title_en": "keepsake",
+    "title_he": "מזכרת",
+    "status": "pending",
+    "sources": {
+      "en": {
+        "file": "sources/keepsake-en.png",
+        "url": "https://upload.wikimedia.org/wikipedia/en/9/92/Keepsake_Coverart.png",
+        "source_page": "https://en.wikipedia.org/wiki/Keepsake_%28video_game%29",
+        "status": "needs-visual-and-edition-review",
+        "width": 256,
+        "height": 363,
+        "sha256": "6346741f9a6c90cbec0f6842bea08a5009b4c7208421f81fde31891d7bab0fed"
+      }
+    },
+    "steam_appid": "704860"
+  },
+  {
+    "source_idx": 117,
+    "game_id": "gabriel-knight-3-blood-of-the-sacred-blood-of-the-damned",
+    "title_en": "Gabriel Knight 3: Blood of the Sacred, Blood of the Damned",
+    "title_he": "גבריאל נייט 3: דם קדושים, דם ארורים",
+    "status": "pending",
+    "sources": {
+      "he-candidate": {
+        "file": "sources/gabriel-knight-3-blood-of-the-sacred-blood-of-the-damned-he-candidate.jpeg",
+        "url": "https://images.hakufsa.co.il/wp-content/uploads/0B3E289A-CEE9-49C8-93E6-4AE0F0B25857_1_102_o.jpeg",
+        "source_page": "https://www.hakufsa.co.il/game/gabriel-knight-3-blood-of-the-sacred-blood-of-the-damned",
+        "status": "english-title-not-a-hebrew-cover",
+        "width": 1611,
+        "height": 1950,
+        "sha256": "327c0250c9e605c378e73ef3d866bcccc2f80b3726c9590ee14dec80c286644d"
+      },
+      "en": {
+        "file": "sources/gabriel-knight-3-blood-of-the-sacred-blood-of-the-damned-en.png",
+        "url": "https://upload.wikimedia.org/wikipedia/en/5/5d/Gabriel_Knight_3_-_Blood_of_the_Sacred%2C_Blood_of_the_Damned_Coverart.png",
+        "source_page": "https://en.wikipedia.org/wiki/Gabriel_Knight_3%3A_Blood_of_the_Sacred%2C_Blood_of_the_Damned",
+        "status": "needs-visual-and-edition-review",
+        "width": 256,
+        "height": 308,
+        "sha256": "04f5a37b5c3bf7e044a300b7491857cdfbc862e8c2fc2e5b02fbe79827101aef"
+      }
+    },
+    "steam_appid": "497360"
+  }
+]

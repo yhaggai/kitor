@@ -1,0 +1,510 @@
+{
+  "verified_on": "2026-10-25",
+  "bucket": "kitor-assets",
+  "manifest_url": "https://assets.kitor.click/covers/manifest.json",
+  "manifest_verified": true,
+  "results": [
+    {
+      "game_id": "undertale",
+      "language": "en",
+      "original_sha256_verified": true,
+      "variant_480_verified": true,
+      "variant_dimensions": [
+        480,
+        720
+      ]
+    },
+    {
+      "game_id": "undertale",
+      "language": "he",
+      "original_sha256_verified": true,
+      "variant_480_verified": true,
+      "variant_dimensions": [
+        480,
+        721
+      ]
+    },
+    {
+      "game_id": "monkey-se",
+      "language": "en",
+      "original_sha256_verified": true,
+      "variant_480_verified": true,
+      "variant_dimensions": [
+        480,
+        671
+      ]
+    },
+    {
+      "game_id": "monkey-se",
+      "language": "he",
+      "original_sha256_verified": true,
+      "variant_480_verified": true,
+      "variant_dimensions": [
+        480,
+        672
+      ]
+    },
+    {
+      "game_id": "monkey2-se",
+      "language": "en",
+      "original_sha256_verified": true,
+      "variant_480_verified": true,
+      "variant_dimensions": [
+        480,
+        693
+      ]
+    },
+    {
+      "game_id": "monkey2-se",
+      "language": "he",
+      "original_sha256_verified": true,
+      "variant_480_verified": true,
+      "variant_dimensions": [
+        480,
+        692
+      ]
+    },
+    {
+      "game_id": "sq1sci",
+      "language": "en",
+      "original_sha256_verified": true,
+      "variant_480_verified": true,
+      "variant_dimensions": [
+        480,
+        600
+      ]
+    },
+    {
+      "game_id": "sq1sci",
+      "language": "he",
+      "original_sha256_verified": true,
+      "variant_480_verified": true,
+      "variant_dimensions": [
+        480,
+        599
+      ]
+    },
+    {
+      "game_id": "kyra1-cd",
+      "language": "en",
+      "original_sha256_verified": true,
+      "variant_480_verified": true,
+      "variant_dimensions": [
+        480,
+        615
+      ]
+    },
+    {
+      "game_id": "kyra1-cd",
+      "language": "he",
+      "original_sha256_verified": true,
+      "variant_480_verified": true,
+      "variant_dimensions": [
+        480,
+        611
+      ]
+    },
+    {
+      "game_id": "pq1",
+      "language": "en",
+      "original_sha256_verified": true,
+      "variant_480_verified": true,
+      "variant_dimensions": [
+        480,
+        596
+      ]
+    },
+    {
+      "game_id": "pq1",
+      "language": "he",
+      "original_sha256_verified": true,
+      "variant_480_verified": true,
+      "variant_dimensions": [
+        480,
+        596
+      ]
+    },
+    {
+      "game_id": "sq1",
+      "language": "en",
+      "original_sha256_verified": true,
+      "variant_480_verified": true,
+      "variant_dimensions": [
+        480,
+        659
+      ]
+    },
+    {
+      "game_id": "sq1",
+      "language": "he",
+      "original_sha256_verified": true,
+      "variant_480_verified": true,
+      "variant_dimensions": [
+        480,
+        659
+      ]
+    },
+    {
+      "game_id": "sq2",
+      "language": "en",
+      "original_sha256_verified": true,
+      "variant_480_verified": true,
+      "variant_dimensions": [
+        480,
+        610
+      ]
+    },
+    {
+      "game_id": "sq2",
+      "language": "he",
+      "original_sha256_verified": true,
+      "variant_480_verified": true,
+      "variant_dimensions": [
+        480,
+        610
+      ]
+    },
+    {
+      "game_id": "sq3",
+      "language": "en",
+      "original_sha256_verified": true,
+      "variant_480_verified": true,
+      "variant_dimensions": [
+        480,
+        596
+      ]
+    },
+    {
+      "game_id": "sq3",
+      "language": "he",
+      "original_sha256_verified": true,
+      "variant_480_verified": true,
+      "variant_dimensions": [
+        480,
+        625
+      ]
+    },
+    {
+      "game_id": "sq5",
+      "language": "en",
+      "original_sha256_verified": true,
+      "variant_480_verified": true,
+      "variant_dimensions": [
+        480,
+        599
+      ]
+    },
+    {
+      "game_id": "sq5",
+      "language": "he",
+      "original_sha256_verified": true,
+      "variant_480_verified": true,
+      "variant_dimensions": [
+        480,
+        601
+      ]
+    },
+    {
+      "game_id": "torin",
+      "language": "en",
+      "original_sha256_verified": true,
+      "variant_480_verified": true,
+      "variant_dimensions": [
+        480,
+        577
+      ]
+    },
+    {
+      "game_id": "torin",
+      "language": "he",
+      "original_sha256_verified": true,
+      "variant_480_verified": true,
+      "variant_dimensions": [
+        480,
+        560
+      ]
+    },
+    {
+      "game_id": "spyfox",
+      "language": "en",
+      "original_sha256_verified": true,
+      "variant_480_verified": true,
+      "variant_dimensions": [
+        480,
+        720
+      ]
+    },
+    {
+      "game_id": "spyfox",
+      "language": "he",
+      "original_sha256_verified": true,
+      "variant_480_verified": true,
+      "variant_dimensions": [
+        480,
+        720
+      ]
+    },
+    {
+      "game_id": "pajama",
+      "language": "en",
+      "original_sha256_verified": true,
+      "variant_480_verified": true,
+      "variant_dimensions": [
+        480,
+        720
+      ]
+    },
+    {
+      "game_id": "pajama",
+      "language": "he",
+      "original_sha256_verified": true,
+      "variant_480_verified": true,
+      "variant_dimensions": [
+        480,
+        720
+      ]
+    },
+    {
+      "game_id": "toonstruck",
+      "language": "en",
+      "original_sha256_verified": true,
+      "variant_480_verified": true,
+      "variant_dimensions": [
+        480,
+        720
+      ]
+    },
+    {
+      "game_id": "toonstruck",
+      "language": "he",
+      "original_sha256_verified": true,
+      "variant_480_verified": true,
+      "variant_dimensions": [
+        480,
+        720
+      ]
+    },
+    {
+      "game_id": "gob2",
+      "language": "en",
+      "original_sha256_verified": true,
+      "variant_480_verified": true,
+      "variant_dimensions": [
+        480,
+        598
+      ]
+    },
+    {
+      "game_id": "gob2",
+      "language": "he",
+      "original_sha256_verified": true,
+      "variant_480_verified": true,
+      "variant_dimensions": [
+        480,
+        565
+      ]
+    },
+    {
+      "game_id": "tlj",
+      "language": "en",
+      "original_sha256_verified": true,
+      "variant_480_verified": true,
+      "variant_dimensions": [
+        480,
+        582
+      ],
+      "object_key": "covers/tlj/en/318fdae99f56.png",
+      "sha256": "318fdae99f5628fbf9ee9ca9a13605336ecd26d726bd7f33651d3c1c809f1b92"
+    },
+    {
+      "game_id": "tlj",
+      "language": "he",
+      "original_sha256_verified": true,
+      "variant_480_verified": true,
+      "variant_dimensions": [
+        480,
+        623
+      ]
+    },
+    {
+      "game_id": "sky",
+      "language": "en",
+      "original_sha256_verified": true,
+      "variant_480_verified": true,
+      "variant_dimensions": [
+        480,
+        720
+      ]
+    },
+    {
+      "game_id": "sky",
+      "language": "he",
+      "original_sha256_verified": true,
+      "variant_480_verified": true,
+      "variant_dimensions": [
+        480,
+        720
+      ]
+    },
+    {
+      "game_id": "stanley-parable",
+      "language": "en",
+      "original_sha256_verified": true,
+      "variant_480_verified": true,
+      "variant_dimensions": [
+        480,
+        720
+      ]
+    },
+    {
+      "game_id": "stanley-parable",
+      "language": "he",
+      "original_sha256_verified": true,
+      "variant_480_verified": true,
+      "variant_dimensions": [
+        480,
+        720
+      ]
+    },
+    {
+      "game_id": "tesla-effect",
+      "language": "en",
+      "original_sha256_verified": true,
+      "variant_480_verified": true,
+      "variant_dimensions": [
+        480,
+        720
+      ]
+    },
+    {
+      "game_id": "tesla-effect",
+      "language": "he",
+      "original_sha256_verified": true,
+      "variant_480_verified": true,
+      "variant_dimensions": [
+        480,
+        720
+      ]
+    },
+    {
+      "game_id": "ethan-carter",
+      "language": "en",
+      "original_sha256_verified": true,
+      "variant_480_verified": true,
+      "variant_dimensions": [
+        480,
+        720
+      ]
+    },
+    {
+      "game_id": "ethan-carter",
+      "language": "he",
+      "original_sha256_verified": true,
+      "variant_480_verified": true,
+      "variant_dimensions": [
+        480,
+        720
+      ]
+    },
+    {
+      "game_id": "life-is-strange",
+      "language": "en",
+      "original_sha256_verified": true,
+      "variant_480_verified": true,
+      "variant_dimensions": [
+        480,
+        720
+      ]
+    },
+    {
+      "game_id": "life-is-strange",
+      "language": "he",
+      "original_sha256_verified": true,
+      "variant_480_verified": true,
+      "variant_dimensions": [
+        480,
+        720
+      ]
+    },
+    {
+      "game_id": "portal2",
+      "language": "en",
+      "original_sha256_verified": true,
+      "variant_480_verified": true,
+      "variant_dimensions": [
+        480,
+        720
+      ]
+    },
+    {
+      "game_id": "portal2",
+      "language": "he",
+      "original_sha256_verified": true,
+      "variant_480_verified": true,
+      "variant_dimensions": [
+        480,
+        720
+      ]
+    },
+    {
+      "game_id": "journey-down1",
+      "language": "en",
+      "original_sha256_verified": true,
+      "variant_480_verified": true,
+      "variant_dimensions": [
+        480,
+        720
+      ]
+    },
+    {
+      "game_id": "journey-down1",
+      "language": "he",
+      "original_sha256_verified": true,
+      "variant_480_verified": true,
+      "variant_dimensions": [
+        480,
+        720
+      ]
+    },
+    {
+      "game_id": "kathy-rain-dc",
+      "language": "en",
+      "original_sha256_verified": true,
+      "variant_480_verified": true,
+      "variant_dimensions": [
+        480,
+        720
+      ]
+    },
+    {
+      "game_id": "kathy-rain-dc",
+      "language": "he",
+      "original_sha256_verified": true,
+      "variant_480_verified": true,
+      "variant_dimensions": [
+        480,
+        720
+      ]
+    },
+    {
+      "game_id": "drifter",
+      "language": "en",
+      "original_sha256_verified": true,
+      "variant_480_verified": true,
+      "variant_dimensions": [
+        480,
+        720
+      ]
+    },
+    {
+      "game_id": "drifter",
+      "language": "he",
+      "original_sha256_verified": true,
+      "variant_480_verified": true,
+      "variant_dimensions": [
+        480,
+        720
+      ]
+    }
+  ]
+}

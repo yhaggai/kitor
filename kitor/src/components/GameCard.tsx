@@ -6,12 +6,13 @@ import {
   CheckCircle,
   Download as DownloadIcon,
   MoreVertical,
-  Package,
+  RefreshCw,
   Play,
   Trash2,
   Undo,
 } from "lucide-react";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
+import { OpenGameFolderMenuItem } from "@/components/OpenGameFolderMenuItem";
 import { DeleteGameDialog } from "@/components/dialogs/DeleteGameDialog";
 import { InstallPatchDialog } from "@/components/dialogs/InstallPatchDialog";
 import { RestoreGameDialog } from "@/components/dialogs/RestoreGameDialog";
@@ -20,9 +21,9 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import { useDialog } from "@/hooks/useDialog";
-import { useGameCardState } from "@/hooks/useGameCardState";
-import { getCoverSrc } from "@/lib/utils";
-import type { Game } from "@/store/store";
+import { type PatchDownloadProgress, useGameCardState } from "@/hooks/useGameCardState";
+import { GameDetailsBox } from "@/components/GameDetailsBox";
+import type { Game, GameHealth } from "@/store/store";
 import { useAppStore } from "@/store/store";
 
 type GameCardProps = {
@@ -32,8 +33,8 @@ type GameCardProps = {
 };
 
 export default function GameCard({ game, onRemove, isHighlighted }: GameCardProps) {
+  const [refreshing, setRefreshing] = useState(false);
   const { state, actions } = useGameCardState();
-  const [coverError, setCoverError] = useState(false);
   const { isScummVMReady } = useAppStore();
   const { alert } = useDialog();
 
@@ -51,16 +52,32 @@ export default function GameCard({ game, onRemove, isHighlighted }: GameCardProp
       }
     );
 
+    const unlistenDownload = listen<PatchDownloadProgress>("patch-download-progress", (event) => {
+      if (event.payload.scummvm_id === game.scummvm_id) {
+        actions.updateDownload(event.payload);
+      }
+    });
+
     return () => {
+      unlistenDownload.then((fn) => fn());
       console.log("[GameCard] Cleaning up listener for", game.scummvm_id);
       unlisten.then((fn) => fn());
     };
   }, [game.scummvm_id, actions]);
 
-  const coverSrc = useMemo(() => {
-    if (coverError) return null;
-    return getCoverSrc(game.cover_url);
-  }, [coverError, game.cover_url]);
+  const handleRefresh = async () => {
+    if (refreshing) return;
+    setRefreshing(true);
+    try {
+      const health = await invoke<GameHealth>("refresh_game", { gameId: game.id });
+      const store = useAppStore.getState();
+      store.setGames(store.games.map((entry) => entry.id === game.id ? { ...entry, health } : entry));
+    } catch (error) {
+      await alert({ title: "Refresh Failed", description: String(error) });
+    } finally {
+      setRefreshing(false);
+    }
+  };
 
   const handleLaunch = async () => {
     if (!isScummVMReady) {
@@ -97,13 +114,13 @@ export default function GameCard({ game, onRemove, isHighlighted }: GameCardProp
         language: patch.language,
         version: patch.version,
       });
-      await alert({ title: "Success", description: "Patch installed successfully!" });
-      // Reload the page or update state to reflect the new patch status
-      window.location.reload();
+      actions.hideInstallDialog();
+      await refreshPatchStatus("Patch installed successfully!");
     } catch (error) {
       console.error("Failed to install patch:", error);
       await alert({ title: "Install Failed", description: String(error) });
     } finally {
+      actions.hideInstallDialog();
       actions.finishInstall();
     }
   };
@@ -132,8 +149,8 @@ export default function GameCard({ game, onRemove, isHighlighted }: GameCardProp
       await invoke("restore_backup", {
         installedPatchId: installedPatch.id,
       });
-      await alert({ title: "Success", description: "Game restored successfully!" });
-      window.location.reload();
+      actions.hideRestoreDialog();
+      await refreshPatchStatus("Game restored successfully!");
     } catch (error) {
       console.error("Failed to restore game:", error);
       await alert({ title: "Restore Failed", description: String(error) });
@@ -142,9 +159,35 @@ export default function GameCard({ game, onRemove, isHighlighted }: GameCardProp
     }
   };
 
-  const hasPatch = game.installed_patches && game.installed_patches.length > 0;
-  const canInstall = game.has_available_patch && !hasPatch;
-  const canRestore = hasPatch;
+  const refreshPatchStatus = async (successMessage: string) => {
+    try {
+      const games = await invoke<Game[]>("get_games_with_patches");
+      const updatedGame = games.find((entry) => entry.id === game.id);
+      if (!updatedGame) throw new Error("Updated game was not found in the library.");
+
+      // Keep the list mounted and preserve its order and the other cards' state.
+      // Replace stale health too: the previous check predates this operation.
+      const store = useAppStore.getState();
+      store.setGames(store.games.map((entry) => entry.id === game.id ? updatedGame : entry));
+    } catch (error) {
+      console.error("Failed to refresh patch status:", error);
+      await alert({
+        title: "Library Refresh Failed",
+        description: `${successMessage} The displayed status could not be refreshed: ${String(error)}`,
+      });
+      return;
+    }
+    await alert({ title: "Success", description: successMessage });
+  };
+
+  const recordedPatch = !!game.installed_patches?.length;
+  const gameReady = !game.health || game.health.game_status === "present";
+  const hasPatch = game.health ? game.health.patch_status === "installed" : recordedPatch;
+  const canPlay = gameReady && hasPatch;
+  const canInstall = gameReady && game.has_available_patch && !recordedPatch &&
+    (!game.health || game.health.patch_status === "not_installed");
+  const canRestore = gameReady && recordedPatch;
+  const busy = refreshing || state.isInstalling || state.isRestoring || state.isDeleting;
 
   return (
     <>
@@ -155,18 +198,8 @@ export default function GameCard({ game, onRemove, isHighlighted }: GameCardProp
         }`}
       >
         <CardContent className="p-0 relative">
-          <div className="aspect-[3/4] bg-gradient-to-br from-primary/20 to-secondary/20 rounded-t-lg flex items-center justify-center">
-            {coverSrc ? (
-              <img
-                src={coverSrc}
-                alt={game.title}
-                className="w-full h-full object-cover rounded-t-lg"
-                loading="lazy"
-                onError={() => setCoverError(true)}
-              />
-            ) : (
-              <Package className="h-16 w-16 text-muted-foreground" />
-            )}
+          <div className="bg-gradient-to-br from-primary/20 to-secondary/20 rounded-t-lg flex items-center justify-center">
+            <GameDetailsBox isPatched={hasPatch} gameId={game.scummvm_id} coverUrl={game.cover_url} title={game.title} description={game.available_patches?.find((patch) => patch.description?.trim())?.description} />
           </div>
           <DropdownMenu.Root>
             <DropdownMenu.Trigger asChild>
@@ -183,10 +216,20 @@ export default function GameCard({ game, onRemove, isHighlighted }: GameCardProp
                 className="min-w-[160px] rounded-md border bg-background p-1 shadow-lg"
                 align="end"
               >
-                {hasPatch && (
+                <OpenGameFolderMenuItem gameId={game.id} />
+                <DropdownMenu.Item
+                  className="flex cursor-pointer items-center rounded-sm px-2 py-2 text-sm text-foreground outline-none hover:bg-accent focus:bg-accent data-[disabled]:opacity-50"
+                  onSelect={handleRefresh}
+                  disabled={busy}
+                >
+                  <RefreshCw className={`mr-2 h-4 w-4 ${refreshing ? "animate-spin" : ""}`} />
+                  {refreshing ? "Refreshing…" : "Refresh game"}
+                </DropdownMenu.Item>
+                {canPlay && (
                   <DropdownMenu.Item
                     className="flex cursor-pointer items-center rounded-sm px-2 py-2 text-sm text-foreground outline-none hover:bg-accent focus:bg-accent"
                     onSelect={handleLaunch}
+                    disabled={busy}
                   >
                     <Play className="mr-2 h-4 w-4" />
                     Play
@@ -196,7 +239,7 @@ export default function GameCard({ game, onRemove, isHighlighted }: GameCardProp
                   <DropdownMenu.Item
                     className="flex cursor-pointer items-center rounded-sm px-2 py-2 text-sm text-foreground outline-none hover:bg-accent focus:bg-accent"
                     onSelect={handleInstallPatch}
-                    disabled={state.isInstalling}
+                    disabled={busy}
                   >
                     <DownloadIcon className="mr-2 h-4 w-4" />
                     {state.isInstalling ? "Installing..." : "Install Patch"}
@@ -206,6 +249,7 @@ export default function GameCard({ game, onRemove, isHighlighted }: GameCardProp
                   <DropdownMenu.Item
                     className="flex cursor-pointer items-center rounded-sm px-2 py-2 text-sm text-foreground outline-none hover:bg-accent focus:bg-accent"
                     onSelect={() => actions.showRestoreDialog()}
+                    disabled={busy}
                   >
                     <Undo className="mr-2 h-4 w-4" />
                     Restore Game
@@ -215,6 +259,7 @@ export default function GameCard({ game, onRemove, isHighlighted }: GameCardProp
                 <DropdownMenu.Item
                   className="flex cursor-pointer items-center rounded-sm px-2 py-2 text-sm text-destructive outline-none hover:bg-accent focus:bg-accent"
                   onSelect={() => actions.showDeleteDialog()}
+                  disabled={busy}
                 >
                   <Trash2 className="mr-2 h-4 w-4" />
                   Remove Game
@@ -258,14 +303,26 @@ export default function GameCard({ game, onRemove, isHighlighted }: GameCardProp
               )}
             </div>
           </div>
-          {hasPatch && (
-            <Button className="w-full" size="sm" onClick={handleLaunch}>
+          {refreshing && <p role="status" className="text-xs text-muted-foreground">Checking game and patch files…</p>}
+          {game.health && (
+            <div role="status" className="w-full space-y-1 text-xs">
+              <p className={gameReady ? "text-muted-foreground" : "text-destructive"}>
+                {game.health.game_status === "present" ? "Game files found" : game.health.game_status === "missing" ? "Game files missing" : "Game could not be identified"}
+                {" · "}
+                {{ installed: "Patch verified", not_installed: "No recorded patch", damaged: "Patch files missing or changed", unverified: "Patch could not be verified" }[game.health.patch_status]}
+              </p>
+              {game.health.details.map((detail, index) => <p key={`${index}-${detail}`} className="break-words text-muted-foreground">{detail}</p>)}
+              <p className="text-muted-foreground">Checked {new Date(game.health.checked_at).toLocaleTimeString()}</p>
+            </div>
+          )}
+          {canPlay && (
+            <Button className="w-full" size="sm" onClick={handleLaunch} disabled={busy}>
               <Play className="mr-2 h-3 w-3" />
               Play
             </Button>
           )}
           {canInstall && (
-            <Button className="w-full" size="sm" variant="outline" onClick={handleInstallPatch}>
+            <Button className="w-full" size="sm" variant="outline" onClick={handleInstallPatch} disabled={busy}>
               <DownloadIcon className="mr-2 h-3 w-3" />
               Install Patch
             </Button>
@@ -300,6 +357,8 @@ export default function GameCard({ game, onRemove, isHighlighted }: GameCardProp
         open={state.showInstallDialog}
         onOpenChange={(open) => (open ? actions.showInstallDialog() : actions.hideInstallDialog())}
         installSteps={state.installSteps}
+        progress={state.installProgress}
+        download={state.patchDownload}
       />
 
       <ScummVMDialog

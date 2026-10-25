@@ -1,0 +1,8 @@
+[package]
+name = "owlboy-font-test"
+version = "0.1.0"
+edition = "2021"
+publish = false
+
+[dependencies]
+kitor-patch-lifecycle-harness = { path = "../../../../kitor/tools/lifecycle-harness" }

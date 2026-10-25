@@ -15,7 +15,7 @@ export function getCoverSrc(coverUrl: string | null | undefined): string | null 
   }
 
   // Public folder assets can be referenced directly
-  if (coverUrl.startsWith("/") || (!coverUrl.includes("\\") && !coverUrl.includes(":"))) {
+  if (/^\/[^/]+$/.test(coverUrl) || (!coverUrl.startsWith("/") && !coverUrl.includes("\\") && !coverUrl.includes(":"))) {
     return coverUrl;
   }
 

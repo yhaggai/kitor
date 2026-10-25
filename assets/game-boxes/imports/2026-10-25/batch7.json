@@ -1,0 +1,32 @@
+[
+  {
+    "id": "blackwell-unbound",
+    "prompt": "Edit this exact game cover. Replace only its English game title with Hebrew \"בלאקוול / קשר אבוד\" (slash indicates line break, do not print slash). Gold outlined thin serif letters at top. Match original font style, size, texture, colors and title placement. Correct readable right-to-left Hebrew. Keep all artwork, faces, background, framing, logos and other text unchanged. Same aspect ratio, full cover. Output one edited cover.",
+    "path": "/Users/haggaiyaniv/.codex/generated_images/01a17325-42a3-71b0-8569-0b89e59757d5/exec-a0f32bb2-f45b-4dd8-b0a8-f7f57b95a948.png"
+  },
+  {
+    "id": "blackwell-convergence",
+    "prompt": "Edit this exact game cover. Replace only its English game title with Hebrew \"בלאקוול / התכנסות\" (slash indicates line break, do not print slash). Gold outlined thin serif letters at top. Match original font style, size, texture, colors and title placement. Correct readable right-to-left Hebrew. Keep all artwork, faces, background, framing, logos and other text unchanged. Same aspect ratio, full cover. Output one edited cover.",
+    "path": "/Users/haggaiyaniv/.codex/generated_images/01a17325-42a3-71b0-8569-0b89e59757d5/exec-16bcb8c3-7cff-44a3-a06a-730064cf5e87.png"
+  },
+  {
+    "id": "blackwell-epiphany",
+    "prompt": "Edit this exact game cover. Replace only its English game title with Hebrew \"בלאקוול / ההתגלות\" (slash indicates line break, do not print slash). Red filled gold outlined serif at top. Match original font style, size, texture, colors and title placement. Correct readable right-to-left Hebrew. Keep all artwork, faces, background, framing, logos and other text unchanged. Same aspect ratio, full cover. Output one edited cover.",
+    "path": "/Users/haggaiyaniv/.codex/generated_images/01a17325-42a3-71b0-8569-0b89e59757d5/exec-d0ff217e-8bcf-4017-8f12-7e3c38924898.png"
+  },
+  {
+    "id": "gemini-rue",
+    "prompt": "Edit this exact game cover. Replace only its English game title with Hebrew \"קללת תאומים\" (slash indicates line break, do not print slash). White narrow spaced monospaced blue glowing lettering near bottom. Match original font style, size, texture, colors and title placement. Correct readable right-to-left Hebrew. Keep all artwork, faces, background, framing, logos and other text unchanged. Same aspect ratio, full cover. Output one edited cover.",
+    "path": "/Users/haggaiyaniv/.codex/generated_images/01a17325-42a3-71b0-8569-0b89e59757d5/exec-730de171-0bb6-4dc3-8145-b8f8317b9776.png"
+  },
+  {
+    "id": "jolly-rover",
+    "prompt": "Edit this exact game cover. Replace only its English game title with Hebrew \"ג'ולי רובר\" (slash indicates line break, do not print slash). Cream cartoon pirate lettering on the black flag, two lines. Keep flag and bone pole. Match original font style, size, texture, colors and title placement. Correct readable right-to-left Hebrew. Keep all artwork, faces, background, framing, logos and other text unchanged. Same aspect ratio, full cover. Output one edited cover.",
+    "path": "/Users/haggaiyaniv/.codex/generated_images/01a17325-42a3-71b0-8569-0b89e59757d5/exec-86e1008b-9428-4f39-902b-39d1ea2fa1b8.png"
+  },
+  {
+    "id": "black-mirror-i",
+    "prompt": "Edit this exact game cover. Replace only its English game title with Hebrew \"מראה שחורה\" (slash indicates line break, do not print slash). Tall narrow gothic black filled white beveled lettering with red glow near top. Match original font style, size, texture, colors and title placement. Correct readable right-to-left Hebrew. Keep all artwork, faces, background, framing, logos and other text unchanged. Same aspect ratio, full cover. Output one edited cover.",
+    "path": "/Users/haggaiyaniv/.codex/generated_images/01a17325-42a3-71b0-8569-0b89e59757d5/exec-2e12ca48-e0d2-4808-a4d9-5faf1b627f2e.png"
+  }
+]

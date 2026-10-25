@@ -1,0 +1,27 @@
+[
+  {
+    "id": "the-shivah",
+    "prompt": "Edit this exact game cover. Replace only its English game title with Hebrew \"השבעה\". Distressed white narrow serif at upper left. Match original font style, size, texture, colors and title placement. Correct readable right-to-left Hebrew. Keep every illustration, face, background, framing, logo and other text unchanged. No redesign or new elements. Same aspect ratio and full cover. Output one edited cover.",
+    "path": "/Users/haggaiyaniv/.codex/generated_images/01a17325-42a3-71b0-8569-0b89e59757d5/exec-00ced147-0193-473a-83e1-6cf19b742723.png"
+  },
+  {
+    "id": "still-life",
+    "prompt": "Edit this exact game cover. Replace only its English game title with Hebrew \"טבע דומם\". Dark embossed serif title with white red-edged scratched strokes in lower right. Match original font style, size, texture, colors and title placement. Correct readable right-to-left Hebrew. Keep every illustration, face, background, framing, logo and other text unchanged. No redesign or new elements. Same aspect ratio and full cover. Output one edited cover.",
+    "path": "/Users/haggaiyaniv/.codex/generated_images/01a17325-42a3-71b0-8569-0b89e59757d5/exec-4d1c6645-e282-4872-bbd0-f01cbec941a3.png"
+  },
+  {
+    "id": "alternativa",
+    "prompt": "Edit this exact game cover. Replace only its English game title with Hebrew \"אלטרנטיבה\". Thin futuristic black lettering on the existing silver horizontal plaque; retain circle symbol. Match original font style, size, texture, colors and title placement. Correct readable right-to-left Hebrew. Keep every illustration, face, background, framing, logo and other text unchanged. No redesign or new elements. Same aspect ratio and full cover. Output one edited cover.",
+    "path": "/Users/haggaiyaniv/.codex/generated_images/01a17325-42a3-71b0-8569-0b89e59757d5/exec-8aa907d0-f41f-48e1-b1af-bd8473fbbd42.png"
+  },
+  {
+    "id": "the-blackwell-legacy",
+    "prompt": "Edit this exact game cover. Replace only its English game title with Hebrew \"מורשת בלאקוול\". Two lines across top, orange-gold outlined tall serif lettering with dark red interior. Match original font style, size, texture, colors and title placement. Correct readable right-to-left Hebrew. Keep every illustration, face, background, framing, logo and other text unchanged. No redesign or new elements. Same aspect ratio and full cover. Output one edited cover.",
+    "path": "/Users/haggaiyaniv/.codex/generated_images/01a17325-42a3-71b0-8569-0b89e59757d5/exec-f189c81c-48fa-4be2-abdd-a3d65349cc78.png"
+  },
+  {
+    "id": "the-cat-lady",
+    "prompt": "Edit this exact game cover. Replace only its English game title with Hebrew \"אשת החתולים\". White distressed tall serif lettering at bottom, two lines. Match original font style, size, texture, colors and title placement. Correct readable right-to-left Hebrew. Keep every illustration, face, background, framing, logo and other text unchanged. No redesign or new elements. Same aspect ratio and full cover. Output one edited cover.",
+    "path": "/Users/haggaiyaniv/.codex/generated_images/01a17325-42a3-71b0-8569-0b89e59757d5/exec-75b5b4bb-36b8-4445-a47f-adfaeae7ba34.png"
+  }
+]

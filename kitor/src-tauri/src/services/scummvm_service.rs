@@ -79,6 +79,37 @@ fn add_game_paths(cmd: &mut Command, game_path: &Path, extra_path: Option<&Path>
     }
 }
 
+fn add_required_game_options(cmd: &mut Command, scummvm_id: &str) {
+    // Pajama Sam's Hebrew patch requires subtitles explicitly enabled. Apply at
+    // launch so libraries with older, persisted launch_args also get the fix.
+    if scummvm_id == "pajama" {
+        cmd.arg("--subtitles");
+    }
+}
+
+// Collection editions need an explicit identity/platform. Let ScummVM detect
+// language from the installed data, so the original English files also launch.
+fn normalize_collection_args(id: &str, args: Vec<String>, patched: bool) -> Vec<String> {
+    let engine = match id {
+        "sq1" | "sq2" => "agi",
+        "sq1sci" | "sq3" | "sq5" => "sci",
+        _ => return args,
+    };
+    let target = format!("{engine}:{id}");
+    let mut args: Vec<_> = args.into_iter().filter(|arg|
+        arg != "--auto-detect" && (patched || !arg.starts_with("--language=")) && !arg.starts_with("--platform=") && arg != &target
+    ).collect();
+    // Persisted settings may omit Hebrew or still specify English. SQ1 VGA's
+    // translated resources require SCI's RTL rendering whenever patched.
+    if id == "sq1sci" && patched {
+        args.retain(|arg| !arg.starts_with("--language="));
+        args.push("--language=he".into());
+    }
+    args.push("--platform=dos".into());
+    args.push(target);
+    args
+}
+
 async fn start_game_process(cmd: &mut Command, log_path: &Path) -> Result<(), String> {
     let log = std::fs::File::create(log_path)
         .map_err(|e| format!("Failed to create launch log: {}", e))?;
@@ -97,6 +128,21 @@ async fn start_game_process(cmd: &mut Command, log_path: &Path) -> Result<(), St
     Ok(())
 }
 
+#[cfg(target_os = "macos")]
+fn drifter_launch_command(install_path: &Path) -> Result<Command, String> {
+    // Detection stores the app bundle; accept a manually selected Steam folder too.
+    let bundle = [install_path.to_path_buf(), install_path.join("TheDrifter.app")]
+        .into_iter()
+        .find(|path| path.join("Contents/MacOS/The Drifter").is_file()
+            && path.join("Contents/Resources/Data/globalgamemanagers").is_file())
+        .ok_or("The Drifter app was not found in its installation folder")?;
+    let bundle = bundle.canonicalize().map_err(|e| e.to_string())?;
+    let mut cmd = Command::new("/usr/bin/open");
+    cmd.arg(&bundle);
+    cmd.current_dir(bundle.parent().ok_or("Invalid Drifter app path")?);
+    Ok(cmd)
+}
+
 pub async fn launch_game(
     db: &DatabaseConnection,
     game_id: i32,
@@ -112,6 +158,12 @@ pub async fn launch_game(
     println!("ScummVM ID: {}", game.scummvm_id);
     println!("Title: {}", game.title);
     println!("Install Path: {}", game.install_path);
+
+    #[cfg(target_os = "macos")]
+    if game.scummvm_id == "drifter" {
+        let mut cmd = drifter_launch_command(Path::new(&game.install_path))?;
+        return start_game_process(&mut cmd, &app_data_dir.join("drifter-launch.log")).await;
+    }
 
     if game.scummvm_id == "undertale" {
         let data = Path::new(&game.install_path);
@@ -150,6 +202,14 @@ pub async fn launch_game(
             remove_quarantine_attribute(&app_bundle);
         }
     }
+
+    let collection_patched = if matches!(game.scummvm_id.as_str(), "sq1" | "sq1sci" | "sq2" | "sq3" | "sq5") {
+        use crate::models::installed_patch;
+        installed_patch::Entity::find()
+            .filter(installed_patch::Column::GameId.eq(game.id))
+            .filter(installed_patch::Column::Status.eq("active"))
+            .one(db).await.map_err(|e| e.to_string())?.is_some()
+    } else { false };
 
     // Read launch config from DB
     println!("Launch config from DB:");
@@ -204,13 +264,14 @@ pub async fn launch_game(
         
         // Add default ScummVM args
         add_game_paths(&mut cmd, &game_path, extra_path.as_deref());
+        add_required_game_options(&mut cmd, &game.scummvm_id);
         
         // Add custom args from DB
         if let Some(args_json) = &game.launch_args {
             let custom_args: Vec<String> = serde_json::from_str(args_json)
                 .map_err(|e| format!("Failed to parse launch args: {}", e))?;
             
-            for arg in custom_args {
+            for arg in normalize_collection_args(&game.scummvm_id, custom_args, collection_patched) {
                 // Template replacement
                 let processed_arg = arg
                     .replace("{install_path}", &game.install_path)
@@ -232,13 +293,14 @@ pub async fn launch_game(
         
         // Add default ScummVM args
         add_game_paths(&mut cmd, &game_path, extra_path.as_deref());
+        add_required_game_options(&mut cmd, &game.scummvm_id);
 
         // Add custom args from DB
         if let Some(args_json) = &game.launch_args {
             let args: Vec<String> = serde_json::from_str(args_json)
                 .map_err(|e| format!("Failed to parse launch args: {}", e))?;
             
-            for arg in args {
+            for arg in normalize_collection_args(&game.scummvm_id, args, collection_patched) {
                 // Template replacement
                 let processed_arg = arg
                     .replace("{install_path}", &game.install_path)
@@ -1010,6 +1072,37 @@ async fn set_config_value(db: &DatabaseConnection, key: &str, value: &str) -> Re
 mod kyrandia_tests {
     use super::*;
 
+    #[cfg(target_os = "macos")]
+    #[test]
+    fn drifter_launches_native_bundle_from_both_detected_and_manual_paths() {
+        let root = tempfile::tempdir().unwrap();
+        let bundle = root.path().join("TheDrifter.app");
+        assert!(drifter_launch_command(root.path()).is_err());
+        std::fs::create_dir_all(bundle.join("Contents/MacOS")).unwrap();
+        std::fs::create_dir_all(bundle.join("Contents/Resources/Data")).unwrap();
+        std::fs::write(bundle.join("Contents/MacOS/The Drifter"), b"runner").unwrap();
+        std::fs::write(bundle.join("Contents/Resources/Data/globalgamemanagers"), b"data").unwrap();
+        for path in [root.path(), bundle.as_path()] {
+            let cmd = drifter_launch_command(path).unwrap();
+            assert_eq!(cmd.get_program(), "/usr/bin/open");
+            assert_eq!(cmd.get_args().collect::<Vec<_>>(), vec![bundle.canonicalize().unwrap().as_os_str()]);
+            assert_eq!(cmd.get_current_dir(), Some(root.path().canonicalize().unwrap().as_path()));
+        }
+    }
+
+
+    #[test]
+    fn pajama_subtitles_do_not_depend_on_saved_launch_args() {
+        let mut cmd = Command::new("scummvm");
+        add_required_game_options(&mut cmd, "pajama");
+        cmd.args(["--language=he", "--fullscreen", "--auto-detect"]);
+        assert!(cmd.get_args().any(|arg| arg == "--subtitles"));
+
+        let mut other_game = Command::new("scummvm");
+        add_required_game_options(&mut other_game, "kyra1-cd");
+        assert_eq!(other_game.get_args().count(), 0);
+    }
+
     #[test]
     fn extra_path_is_a_single_long_option_including_spaces() {
         let mut cmd = Command::new("scummvm");
@@ -1047,5 +1140,27 @@ mod kyrandia_tests {
         assert_eq!(std::fs::read(launch.join("GEMCUT.PAK")).unwrap(), b"patched");
         assert!(data.join("FATE.PAK").exists());
         std::fs::remove_dir_all(root).unwrap();
+    }
+}
+
+#[cfg(test)]
+mod collection_launch_tests {
+    use super::normalize_collection_args;
+    #[test]
+    fn patched_sq1_vga_enables_hebrew_with_stale_settings() {
+        for args in [vec![], vec!["--language=en".into()], vec!["--language=he".into()]] {
+            assert_eq!(normalize_collection_args("sq1sci", args, true),
+                vec!["--language=he", "--platform=dos", "sci:sq1sci"]);
+        }
+        assert_eq!(normalize_collection_args("sq1sci", vec!["--language=he".into()], false),
+            vec!["--platform=dos", "sci:sq1sci"]);
+    }
+
+    #[test]
+    fn original_and_patched_collection_launches_select_the_correct_language() {
+        let args = vec!["--language=he".into(), "--fullscreen".into(), "--auto-detect".into()];
+        assert_eq!(normalize_collection_args("sq1", args.clone(), false), vec!["--fullscreen", "--platform=dos", "agi:sq1"]);
+        assert_eq!(normalize_collection_args("sq1", args.clone(), true), vec!["--language=he", "--fullscreen", "--platform=dos", "agi:sq1"]);
+        assert_eq!(normalize_collection_args("monkey2-se", args.clone(), false), args);
     }
 }

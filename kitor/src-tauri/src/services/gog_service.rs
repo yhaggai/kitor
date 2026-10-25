@@ -189,7 +189,10 @@ pub async fn is_authenticated(db: &DatabaseConnection) -> Result<bool, String> {
 pub async fn get_user_games(db: &DatabaseConnection) -> Result<Vec<GogGame>, String> {
     let token = get_valid_token(db).await?;
     
-    let client = reqwest::Client::new();
+    let client = reqwest::Client::builder()
+        .timeout(std::time::Duration::from_secs(30))
+        .build()
+        .map_err(|e| format!("Failed to create GOG client: {}", e))?;
     
     // 1. Get owned game IDs from the correct endpoint
     let response = client
@@ -200,8 +203,7 @@ pub async fn get_user_games(db: &DatabaseConnection) -> Result<Vec<GogGame>, Str
         .map_err(|e| format!("Failed to fetch owned games: {}", e))?;
     
     if !response.status().is_success() {
-        let error_text = response.text().await.unwrap_or_default();
-        return Err(format!("Failed to fetch owned games: {}", error_text));
+        return Err(format!("Failed to fetch owned games (HTTP {}). Try reconnecting your GOG account if this persists.", response.status()));
     }
     
     let data: serde_json::Value = response
@@ -219,53 +221,88 @@ pub async fn get_user_games(db: &DatabaseConnection) -> Result<Vec<GogGame>, Str
     }
 
     // 2. Fetch game details in chunks
-    let mut all_games = Vec::new();
-    let id_strings: Vec<String> = owned_ids
+    let mut all_games: Vec<GogGame> = owned_ids
         .iter()
-        .filter_map(|v| v.as_i64().map(|id| id.to_string()))
-        .collect();
+        .map(|value| {
+            let id = value.as_i64()
+                .or_else(|| value.as_str().and_then(|id| id.parse::<i64>().ok()))
+                .filter(|id| *id > 0)
+                .ok_or_else(|| "Invalid game ID in GOG ownership response".to_string())?;
+            Ok(GogGame { id, title: format!("GOG game {}", id), cover_url: None })
+        })
+        .collect::<Result<_, String>>()?;
+    all_games.sort_by_key(|game| game.id);
+    all_games.dedup_by_key(|game| game.id);
 
-    for chunk in id_strings.chunks(50) {
-        let ids_param = chunk.join(",");
-        let details_url = format!("https://api.gog.com/products?ids={}", ids_param);
-        
-        let details_response = client
-            .get(&details_url)
-            .send()
-            .await;
-
-        if let Ok(resp) = details_response {
-            if resp.status().is_success() {
-                if let Ok(products) = resp.json::<Vec<serde_json::Value>>().await {
-                    for product in products {
-                        let id = product.get("id").and_then(|v| v.as_i64()).unwrap_or(0);
-                        let title = product.get("title").and_then(|v| v.as_str()).unwrap_or("Unknown").to_string();
-                        let cover_url = product
-                            .get("image")
-                            .and_then(|v| v.as_str())
-                            .map(|s| {
-                                if s.starts_with("//") {
-                                    format!("https:{}", s)
-                                } else {
-                                    s.to_string()
-                                }
-                            });
-                        
-                        all_games.push(GogGame {
-                            id,
-                            title,
-                            cover_url,
-                        });
-                    }
+    // Ownership is authoritative; unavailable catalog metadata must not remove games.
+    for chunk in all_games.chunks_mut(50) {
+        let ids_param = chunk.iter().map(|game| game.id.to_string()).collect::<Vec<_>>().join(",");
+        let response = client
+            .get("https://api.gog.com/products")
+            .query(&[("ids", ids_param)])
+            .send().await;
+        if let Ok(response) = response {
+            if response.status().is_success() {
+                if let Ok(products) = response.json::<Vec<serde_json::Value>>().await {
+                    apply_product_metadata(chunk, &products);
                 }
             }
         }
     }
-    
+
     // Sort games by title
     all_games.sort_by(|a, b| a.title.to_lowercase().cmp(&b.title.to_lowercase()));
 
     Ok(all_games)
+}
+
+fn apply_product_metadata(games: &mut [GogGame], products: &[serde_json::Value]) {
+    for game in games {
+        if let Some(product) = products.iter().find(|p| p.get("id").and_then(|id| id.as_i64()) == Some(game.id)) {
+            if let Some(title) = product.get("title").and_then(|v| v.as_str()).filter(|title| !title.is_empty()) {
+                game.title = title.to_string();
+            }
+            game.cover_url = product.pointer("/images/logo2x")
+                .or_else(|| product.get("image"))
+                .and_then(|v| v.as_str())
+                .map(|url| if url.starts_with("//") { format!("https:{}", url) } else { url.to_string() });
+        }
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    // Opt-in diagnostic: never uses a saved account during ordinary test runs.
+    #[tokio::test]
+    #[ignore = "requires an explicitly authorized GOG_TEST_DATABASE_URL and network access"]
+    async fn live_owned_library() {
+        let url = std::env::var("GOG_TEST_DATABASE_URL").expect("GOG_TEST_DATABASE_URL is required");
+        let db = sea_orm::Database::connect(url).await.unwrap();
+        let games = get_user_games(&db).await.unwrap();
+        let expected: usize = std::env::var("GOG_TEST_EXPECTED_COUNT").expect("expected count is required").parse().unwrap();
+        assert_eq!(games.len(), expected);
+        println!("Verified {} owned games; {} have catalog titles", games.len(), games.iter().filter(|game| !game.title.starts_with("GOG game ")).count());
+    }
+
+    #[test]
+    fn missing_metadata_preserves_ownership() {
+        let mut games = vec![
+            GogGame { id: 1, title: "GOG game 1".into(), cover_url: None },
+            GogGame { id: 2, title: "GOG game 2".into(), cover_url: None },
+        ];
+        apply_product_metadata(&mut games, &[]);
+        assert_eq!(games.len(), 2);
+        apply_product_metadata(&mut games, &[
+            serde_json::json!({"id": 1, "title": "Owned game", "images": {"logo2x": "//images.gog.com/cover.jpg"}}),
+            serde_json::json!({"id": 3, "title": "Not owned"}),
+        ]);
+        assert_eq!(games.iter().map(|game| game.id).collect::<Vec<_>>(), vec![1, 2]);
+        assert_eq!(games[0].title, "Owned game");
+        assert_eq!(games[0].cover_url.as_deref(), Some("https://images.gog.com/cover.jpg"));
+        assert_eq!(games[1].title, "GOG game 2");
+    }
 }
 
 pub async fn get_game_installers(db: &DatabaseConnection, game_id: i64) -> Result<Vec<OfflineInstaller>, String> {

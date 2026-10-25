@@ -1,0 +1,312 @@
+[
+  {
+    "source_idx": 96,
+    "game_id": "ghost-in-the-sheet",
+    "title_en": "Ghost in the Sheet",
+    "title_he": "הרוח בסדין",
+    "status": "pending",
+    "sources": {
+      "en": {
+        "file": "sources/ghost-in-the-sheet-en.png",
+        "url": "https://thumbnails.libretro.com/ScummVM/Named_Boxarts/Ghost%20in%20the%20Sheet.png",
+        "source_page": "https://thumbnails.libretro.com/ScummVM/Named_Boxarts/",
+        "status": "needs_visual_review",
+        "width": 512,
+        "height": 733,
+        "sha256": "91cd9f0b972e3d8beb1bf0c5f29489b13fb6b2c2009f927901a11cad51fc53ed"
+      }
+    }
+  },
+  {
+    "source_idx": 119,
+    "game_id": "call-of-cthulu-shadow-of-the-comet",
+    "title_en": "Call of Cthulu: Shadow of the Comet",
+    "title_he": "קריאתו של קת'ולהו: צל השביט",
+    "status": "pending",
+    "sources": {
+      "en": {
+        "file": "sources/call-of-cthulu-shadow-of-the-comet-en.png",
+        "url": "https://thumbnails.libretro.com/DOS/Named_Boxarts/Call%20of%20Cthulhu%20Shadow%20of%20the%20Comet.png",
+        "source_page": "https://thumbnails.libretro.com/DOS/Named_Boxarts/",
+        "status": "needs_visual_review",
+        "width": 512,
+        "height": 638,
+        "sha256": "7010a8b441415dee28a8925aa0220a95591c2ba9bdb86b4117182efa7cd94bad"
+      }
+    },
+    "steam_appid": "389470"
+  },
+  {
+    "source_idx": 120,
+    "game_id": "and-then-there-were-none",
+    "title_en": "And Then There Were None",
+    "title_he": "ולא נותר אף אחד",
+    "status": "pending",
+    "sources": {
+      "en": {
+        "file": "sources/and-then-there-were-none-en.jpg",
+        "url": "https://upload.wikimedia.org/wikipedia/en/a/a9/ATTWN_Box.jpg",
+        "source_page": "https://en.wikipedia.org/wiki/Agatha_Christie%3A_And_Then_There_Were_None",
+        "status": "needs-visual-and-edition-review",
+        "width": 311,
+        "height": 320,
+        "sha256": "b613a79b1dcc9f23964c6261be9277537b06ae6813d26aa9cedc3cae49acba67"
+      }
+    }
+  },
+  {
+    "source_idx": 123,
+    "game_id": "cleopatra-a-queen-s-destiny",
+    "title_en": "Cleopatra: A Queen's Destiny",
+    "title_he": "קליאופטרה: גורלה של מלכה",
+    "status": "pending",
+    "sources": {
+      "en": {
+        "file": "sources/cleopatra-a-queen-s-destiny-en.jpg",
+        "url": "https://upload.wikimedia.org/wikipedia/en/a/a9/Cleopatra_Riddle_of_the_Tomb.jpg",
+        "source_page": "https://en.wikipedia.org/wiki/Cleopatra%3A_Riddle_of_the_Tomb",
+        "status": "needs-visual-and-edition-review",
+        "width": 263,
+        "height": 379,
+        "sha256": "420f9db282ff447f8faf9701ddc743e262441161215cfab93496040b61914586"
+      }
+    }
+  },
+  {
+    "source_idx": 125,
+    "game_id": "emerald-city-confidential",
+    "title_en": "Emerald City Confidential",
+    "title_he": "סודות עיר האזמרגד",
+    "status": "pending",
+    "sources": {
+      "en": {
+        "file": "sources/emerald-city-confidential-en.jpg",
+        "url": "https://upload.wikimedia.org/wikipedia/en/2/2e/EmeraldCityConfidentialPublicityShot.jpg",
+        "source_page": "https://en.wikipedia.org/wiki/Emerald_City_Confidential",
+        "status": "needs-visual-and-edition-review",
+        "width": 170,
+        "height": 247,
+        "sha256": "ec32a8c23ef6db410181b5eeee6490bff61e14e584eec73d0ac3539fa8cedc89"
+      }
+    },
+    "steam_appid": "37260"
+  },
+  {
+    "source_idx": 126,
+    "game_id": "destination-treasure-island",
+    "title_en": "Destination: Treasure Island",
+    "title_he": "יעד: אי המטמון",
+    "status": "pending",
+    "sources": {
+      "en": {
+        "file": "sources/destination-treasure-island-en.jpg",
+        "url": "https://upload.wikimedia.org/wikipedia/en/8/8c/Destination_Treasure_Island_cover.jpg",
+        "source_page": "https://en.wikipedia.org/wiki/Destination%3A_Treasure_Island",
+        "status": "needs-visual-and-edition-review",
+        "width": 265,
+        "height": 376,
+        "sha256": "f5766637e0d5fe7b9015e5c2c4a4281857c5bae030aeefd5ae0383e05aa98bb0"
+      }
+    }
+  },
+  {
+    "source_idx": 128,
+    "game_id": "gray-matter",
+    "title_en": "Gray Matter",
+    "title_he": "חומר אפור",
+    "status": "pending",
+    "sources": {
+      "en": {
+        "file": "sources/gray-matter-en.jpg",
+        "url": "https://upload.wikimedia.org/wikipedia/en/5/54/Gray_Matter_cover.jpg",
+        "source_page": "https://en.wikipedia.org/wiki/Gray_Matter_%28video_game%29",
+        "status": "needs-visual-and-edition-review",
+        "width": 256,
+        "height": 315,
+        "sha256": "b658d38c454507cba02ec557e4a6f9d4c056269bdb40727aa06725fd745fe650"
+      }
+    },
+    "steam_appid": "260570"
+  },
+  {
+    "source_idx": 133,
+    "game_id": "pok-mon-emerald",
+    "title_en": "Pokémon Emerald",
+    "title_he": "פוקימון ברקת",
+    "status": "pending",
+    "sources": {
+      "en": {
+        "file": "sources/pok-mon-emerald-en.jpg",
+        "url": "https://upload.wikimedia.org/wikipedia/en/f/f7/PokemonEmeraldBox.jpg",
+        "source_page": "https://en.wikipedia.org/wiki/Pok%C3%A9mon_Emerald",
+        "status": "needs-visual-and-edition-review",
+        "width": 316,
+        "height": 316,
+        "sha256": "69c2882817f07393c7c8599c79cefb4e8885386d76a24b7bf08f5540815ef9d8"
+      }
+    }
+  },
+  {
+    "source_idx": 140,
+    "game_id": "alter-ego",
+    "title_en": "Alter Ego",
+    "title_he": "אלטר אגו",
+    "status": "pending",
+    "sources": {
+      "en": {
+        "file": "sources/alter-ego-en.jpg",
+        "url": "https://upload.wikimedia.org/wikipedia/en/d/d4/Alter_Ego_2010_PC_Cover.jpg",
+        "source_page": "https://en.wikipedia.org/wiki/Alter_Ego_%282010_video_game%29",
+        "status": "needs-visual-and-edition-review",
+        "width": 267,
+        "height": 372,
+        "sha256": "05ddfbdc43501aa793f600714b8d665c820412eb9616faac249a4bd6c0aa5c4d"
+      }
+    },
+    "steam_appid": "63110"
+  },
+  {
+    "source_idx": 145,
+    "game_id": "next-life",
+    "title_en": "Next Life",
+    "title_he": "עולם הבא",
+    "status": "pending",
+    "sources": {
+      "en": {
+        "file": "sources/next-life-en.jpg",
+        "url": "https://upload.wikimedia.org/wikipedia/en/0/0e/Next_Life_Cover.jpg",
+        "source_page": "https://en.wikipedia.org/wiki/Next_Life",
+        "status": "needs-visual-and-edition-review",
+        "width": 254,
+        "height": 392,
+        "sha256": "4fe861c1c9a160ca866a905619c64a886bca77bc08a51d817f74f4ef40339cf4"
+      }
+    }
+  },
+  {
+    "source_idx": 149,
+    "game_id": "there-is-no-game-wrong-dimension",
+    "title_en": "There Is No Game - Wrong Dimension",
+    "title_he": "אין שום משחק - מימד שגוי",
+    "status": "pending",
+    "sources": {
+      "en": {
+        "file": "sources/there-is-no-game-wrong-dimension-en.jpg",
+        "url": "https://upload.wikimedia.org/wikipedia/en/2/2c/There_is_No_Game_Wrong_Dimension_cover.jpg",
+        "source_page": "https://en.wikipedia.org/wiki/There_Is_No_Game%3A_Wrong_Dimension",
+        "status": "needs-visual-and-edition-review",
+        "width": 417,
+        "height": 239,
+        "sha256": "369d14a44c4c530e0fa1e804a5b1074214e456d72b8c58288163932e743fe22b"
+      }
+    }
+  },
+  {
+    "source_idx": 154,
+    "game_id": "galador-the-prince-and-the-coward",
+    "title_en": "Galador - The Prince and the Coward",
+    "title_he": "גלאדור: הנסיך והפחדן",
+    "status": "pending",
+    "sources": {
+      "en": {
+        "file": "sources/galador-the-prince-and-the-coward-en.png",
+        "url": "https://thumbnails.libretro.com/ScummVM/Named_Boxarts/The%20Prince%20and%20the%20Coward.png",
+        "source_page": "https://thumbnails.libretro.com/ScummVM/Named_Boxarts/",
+        "status": "needs_visual_review",
+        "width": 512,
+        "height": 720,
+        "sha256": "f0ae37dcfd8dd04c27c259fd2d6c3a22c740ebc3b60c8d591fd9bc3eda4e3691"
+      }
+    }
+  },
+  {
+    "source_idx": 155,
+    "game_id": "agatha-christie-murder-on-the-orient-express-2006",
+    "title_en": "Agatha Christie: Murder on the Orient Express (2006)",
+    "title_he": "רצח באוריינט אקספרס (2006)",
+    "status": "pending",
+    "sources": {
+      "en": {
+        "file": "sources/agatha-christie-murder-on-the-orient-express-2006-en.jpg",
+        "url": "https://upload.wikimedia.org/wikipedia/en/8/83/MOE_box.jpg",
+        "source_page": "https://en.wikipedia.org/wiki/Agatha_Christie%3A_Murder_on_the_Orient_Express",
+        "status": "needs-visual-and-edition-review",
+        "width": 276,
+        "height": 362,
+        "sha256": "9dd45657a14a181d9b48c4cdb7381ed543a98e5b56471b7c2763dbb54d2de10b"
+      }
+    }
+  },
+  {
+    "source_idx": 165,
+    "game_id": "agatha-christie-evil-under-the-sun",
+    "title_en": "Agatha Christie: Evil Under the Sun",
+    "title_he": "רעה תחת השמש",
+    "status": "pending",
+    "sources": {
+      "en": {
+        "file": "sources/agatha-christie-evil-under-the-sun-en.png",
+        "url": "https://upload.wikimedia.org/wikipedia/en/6/6f/Agatha_Christie_-_Evil_Under_the_Sun_Coverart.png",
+        "source_page": "https://en.wikipedia.org/wiki/Agatha_Christie%3A_Evil_Under_the_Sun",
+        "status": "needs-visual-and-edition-review",
+        "width": 256,
+        "height": 363,
+        "sha256": "9128aef4021dd984d182f1a998fb68900e1b01bb33fa4a871b27f164f2d42a98"
+      }
+    }
+  },
+  {
+    "source_idx": 166,
+    "game_id": "dune",
+    "title_en": "Dune",
+    "title_he": "חולית",
+    "status": "pending",
+    "sources": {
+      "en": {
+        "file": "sources/dune-en.png",
+        "url": "https://thumbnails.libretro.com/DOS/Named_Boxarts/Dune%20%281992%29.png",
+        "source_page": "https://thumbnails.libretro.com/DOS/Named_Boxarts/",
+        "status": "needs_visual_review",
+        "width": 320,
+        "height": 366,
+        "sha256": "2245245c2fb6d153a6f035ba7206e765d8b8635cac5054310c1dfab95d0d0021"
+      }
+    }
+  },
+  {
+    "source_idx": 169,
+    "game_id": "touche-the-adventures-of-the-fifth-musketeer",
+    "title_en": "Touche: The Adventures of the Fifth Musketeer",
+    "title_he": "טושה: הרפתקת המוסקטר החמישי",
+    "status": "pending",
+    "sources": {
+      "en": {
+        "file": "sources/touche-the-adventures-of-the-fifth-musketeer-en.png",
+        "url": "https://thumbnails.libretro.com/ScummVM/Named_Boxarts/Touch%C3%A9_%20The%20Adventures%20of%20the%20Fifth%20Musketeer.png",
+        "source_page": "https://thumbnails.libretro.com/ScummVM/Named_Boxarts/",
+        "status": "needs_visual_review",
+        "width": 512,
+        "height": 652,
+        "sha256": "c542689db3f9abb5303e7cf2e0692cea978098799002fdd8a69748fea10e3837"
+      }
+    }
+  },
+  {
+    "source_idx": 173,
+    "game_id": "warcraft-adventures-lord-of-the-clans",
+    "title_en": "Warcraft Adventures - Lord of the Clans",
+    "title_he": "הרפתקאות וורקראפט - אדון השבטים",
+    "status": "pending",
+    "sources": {
+      "en": {
+        "file": "sources/warcraft-adventures-lord-of-the-clans-en.jpg",
+        "url": "https://upload.wikimedia.org/wikipedia/en/3/33/Warcraft-adventures-boxart.jpg",
+        "source_page": "https://en.wikipedia.org/wiki/Warcraft_Adventures%3A_Lord_of_the_Clans",
+        "status": "needs-visual-and-edition-review",
+        "width": 278,
+        "height": 359,
+        "sha256": "8162bfb7f455dbf815f0061d68ae1b8b68f93fa3ca003e73b9f83ba5303d7ff8"
+      }
+    }
+  }
+]

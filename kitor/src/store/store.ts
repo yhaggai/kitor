@@ -17,7 +17,15 @@ type AvailablePatchInfo = {
   description: string;
 };
 
+export type GameHealth = {
+  game_status: "present" | "missing" | "unrecognized";
+  patch_status: "installed" | "not_installed" | "damaged" | "unverified";
+  details: string[];
+  checked_at: string;
+};
+
 type Game = {
+  health?: GameHealth;
   id: number;
   scummvm_id: string;
   title: string;
@@ -46,6 +54,7 @@ type Patch = {
   post_install_script?: string;
   purchase_guide?: string;
   cover_url?: string;
+  steam_app_id?: number | null;
   gog_id?: number | null;
   gog_installer_path?: string | null;
   platforms?: {
@@ -139,6 +148,7 @@ export type PatchWithStatus = Patch & {
   game_id?: number;
   cover_url?: string;
   purchase_guide?: string;
+  steam_app_id?: number | null;
   gog_id?: number | null;
   gog_installer_path?: string | null;
   platforms?: {

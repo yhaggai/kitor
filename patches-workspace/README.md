@@ -40,7 +40,7 @@ Portable data packages use Kitor and the appropriate native game/ScummVM runtime
 | 121 | [Kathy Rain: Director's Cut](kathy-rain-dc/he/provenance.json) | steam | Windows candidate; macOS pending |
 | 130 | [Space Quest II: Vohaul's Revenge](sq2/he/provenance.json) | steam, gog | Windows + macOS packages; gameplay unverified |
 | 136 | [Space Quest 1: The Sarien Encounter (EGA)](sq1/he/provenance.json) | gog | Windows + macOS packages; gameplay unverified |
-| 160 | [The Drifter](drifter/he/provenance.json) | steam | Windows candidate; macOS pending |
+| 160 | [The Drifter](drifter/he/provenance.json) | steam | Bundled Windows + macOS; gameplay unverified |
 | 164 | [Gemini Rue](gemini-rue/he/provenance.json) | steam | Owned edition incompatible with catalog patch |
 
 ## Build and verification

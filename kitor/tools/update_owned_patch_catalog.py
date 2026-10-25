@@ -57,6 +57,7 @@ def main():
     destination = WORKSPACE / 'owned-catalog.json'
     destination.write_text(json.dumps(result, indent=2, ensure_ascii=False) + '\n')
     labels = {
+        'dual_platform_bundled_gameplay_unverified': 'Bundled Windows + macOS; gameplay unverified',
         'packaged_unverified': 'Windows + macOS packages; gameplay unverified',
         'staged_windows_payload_awaiting_compatibility_validation': 'Windows candidate; macOS pending',
         'experimental_windows_payload_requires_gameplay': 'Experimental Windows candidate; macOS pending',

@@ -1,0 +1,228 @@
+[
+  {
+    "source_idx": 24,
+    "game_id": "broken-sword-the-shadow-of-the-templars",
+    "title_en": "Broken Sword: The Shadow of the Templars",
+    "title_he": "חרב שבורה: צל אבירי המקדש",
+    "status": "pending",
+    "sources": {
+      "en": {
+        "file": "sources/broken-sword-the-shadow-of-the-templars-en.png",
+        "url": "https://thumbnails.libretro.com/ScummVM/Named_Boxarts/Broken%20Sword_%20The%20Shadow%20of%20the%20Templars.png",
+        "source_page": "https://thumbnails.libretro.com/ScummVM/Named_Boxarts/",
+        "status": "needs_visual_review",
+        "width": 512,
+        "height": 683,
+        "sha256": "fcf27efe3b98ea50cca7201e7fd3691c28b67269402a5005206f962d643bf8ca"
+      }
+    },
+    "steam_appid": "3361990"
+  },
+  {
+    "source_idx": 25,
+    "game_id": "broken-sword-ii-the-smoking-mirror",
+    "title_en": "Broken Sword II: The Smoking Mirror",
+    "title_he": "חרב שבורה 2 - המראה המעשנת",
+    "status": "pending",
+    "sources": {
+      "en": {
+        "file": "sources/broken-sword-ii-the-smoking-mirror-en.png",
+        "url": "https://thumbnails.libretro.com/ScummVM/Named_Boxarts/Broken%20Sword%20II_%20The%20Smoking%20Mirror.png",
+        "source_page": "https://thumbnails.libretro.com/ScummVM/Named_Boxarts/",
+        "status": "needs_visual_review",
+        "width": 512,
+        "height": 683,
+        "sha256": "42044f5b9bc71c032206c85bb17f4e3e6730f79fa911500795e9f0e62a9d248f"
+      }
+    }
+  },
+  {
+    "source_idx": 26,
+    "game_id": "broken-sword-2-5-the-return-of-the-templars",
+    "title_en": "Broken Sword 2.5: The Return of the Templars",
+    "title_he": "חרב שבורה 2.5 - שובם של הטמפלרים",
+    "status": "pending",
+    "sources": {
+      "en": {
+        "file": "sources/broken-sword-2-5-the-return-of-the-templars-en.png",
+        "url": "https://thumbnails.libretro.com/ScummVM/Named_Boxarts/Broken%20Sword%202.5_%20The%20Return%20of%20the%20Templars.png",
+        "source_page": "https://thumbnails.libretro.com/ScummVM/Named_Boxarts/",
+        "status": "needs_visual_review",
+        "width": 512,
+        "height": 727,
+        "sha256": "ba1e280e21682fbc3e6145a5ec69fb13f9a78a3825a5f66dc83f1f36f9f13023"
+      }
+    }
+  },
+  {
+    "source_idx": 131,
+    "game_id": "broken-sword-4-the-angel-of-death",
+    "title_en": "Broken Sword 4 - the Angel of Death",
+    "title_he": "חרב שבורה 4: מלאך המוות",
+    "status": "pending",
+    "sources": {
+      "en": {
+        "file": "sources/broken-sword-4-the-angel-of-death-en.jpg",
+        "url": "https://cdn.akamai.steamstatic.com/steam/apps/316160/library_600x900_2x.jpg",
+        "source_page": "https://store.steampowered.com/app/316160/",
+        "status": "needs_visual_review",
+        "width": 600,
+        "height": 900,
+        "sha256": "222a74891158925b0f107b68f3bd214972209ed3af07ce131354e6706c3c7c8d"
+      }
+    },
+    "steam_appid": "316160"
+  },
+  {
+    "source_idx": 137,
+    "game_id": "broken-sword-3-the-sleeping-dragon",
+    "title_en": "Broken Sword 3: The Sleeping Dragon",
+    "title_he": "חרב שבורה 3: הדרקון הישן",
+    "status": "pending",
+    "sources": {
+      "en": {
+        "file": "sources/broken-sword-3-the-sleeping-dragon-en.jpg",
+        "url": "https://cdn.akamai.steamstatic.com/steam/apps/33610/library_600x900_2x.jpg",
+        "source_page": "https://store.steampowered.com/app/33610/",
+        "status": "needs_visual_review",
+        "width": 600,
+        "height": 900,
+        "sha256": "181650d86644f53379165bea84bb0b163f839186f8cbee247a169ecbc4edef77"
+      }
+    },
+    "steam_appid": "33610"
+  },
+  {
+    "source_idx": 170,
+    "game_id": "broken-sword-5-the-serpent-s-curse",
+    "title_en": "Broken Sword 5 - The Serpent's Curse",
+    "title_he": "חרב שבורה 5: קללת הנחש",
+    "status": "pending",
+    "sources": {
+      "en": {
+        "file": "sources/broken-sword-5-the-serpent-s-curse-en.jpg",
+        "url": "https://cdn.akamai.steamstatic.com/steam/apps/262940/library_600x900_2x.jpg",
+        "source_page": "https://store.steampowered.com/app/262940/",
+        "status": "needs_visual_review",
+        "width": 600,
+        "height": 900,
+        "sha256": "54d613c53b86ac3bef4a99f8efb97eae1e85db2bdd0dd59cd7dda898545477f8"
+      }
+    },
+    "steam_appid": "262940"
+  },
+  {
+    "source_idx": 129,
+    "game_id": "ankh-anniversary-edition",
+    "title_en": "Ankh Anniversary Edition",
+    "title_he": "ענח'",
+    "status": "pending",
+    "sources": {
+      "en": {
+        "file": "sources/ankh-anniversary-edition-en.jpg",
+        "url": "https://cdn.akamai.steamstatic.com/steam/apps/353980/library_600x900_2x.jpg",
+        "source_page": "https://store.steampowered.com/app/353980/",
+        "status": "needs_visual_review",
+        "width": 600,
+        "height": 900,
+        "sha256": "7e6226d9f0556775a42f8906f3245fad28639553d775ca19d79a5272fa3d8470"
+      }
+    },
+    "steam_appid": "353980"
+  },
+  {
+    "source_idx": 134,
+    "game_id": "dreamfall-the-longest-journey",
+    "title_en": "Dreamfall: The Longest Journey",
+    "title_he": "דרימפול: המסע הארוך ביותר",
+    "status": "pending",
+    "sources": {
+      "en": {
+        "file": "sources/dreamfall-the-longest-journey-en.jpg",
+        "url": "https://cdn.akamai.steamstatic.com/steam/apps/6300/library_600x900_2x.jpg",
+        "source_page": "https://store.steampowered.com/app/6300/",
+        "status": "needs_visual_review",
+        "width": 600,
+        "height": 900,
+        "sha256": "e472a74b0d4dadec2c9f9fe11de342f137d622399b739db501e972d7e7691a66"
+      }
+    },
+    "steam_appid": "6300"
+  },
+  {
+    "source_idx": 141,
+    "game_id": "black-sails-the-ghost-ship",
+    "title_en": "Black Sails: The Ghost Ship",
+    "title_he": "מפרשים שחורים",
+    "status": "pending",
+    "sources": {
+      "en": {
+        "file": "sources/black-sails-the-ghost-ship-en.jpg",
+        "url": "https://cdn.akamai.steamstatic.com/steam/apps/373240/library_600x900_2x.jpg",
+        "source_page": "https://store.steampowered.com/app/373240/",
+        "status": "needs_visual_review",
+        "width": 600,
+        "height": 900,
+        "sha256": "9204faef7a8ccf2d9bf110a1fde47b1710b4efc0d61a529829ac5af3cdfef951"
+      }
+    },
+    "steam_appid": "373240"
+  },
+  {
+    "source_idx": 148,
+    "game_id": "tales-of-monkey-island",
+    "title_en": "Tales of Monkey Island",
+    "title_he": "מעשיות אי הקופים",
+    "status": "pending",
+    "sources": {
+      "en": {
+        "file": "sources/tales-of-monkey-island-en.jpg",
+        "url": "https://cdn.akamai.steamstatic.com/steam/apps/31170/library_600x900_2x.jpg",
+        "source_page": "https://store.steampowered.com/app/31170/",
+        "status": "needs_visual_review",
+        "width": 600,
+        "height": 900,
+        "sha256": "61768c4c0332e59fc87326238f51ab94c7d079533199fd39a16cbdd2dcbcb836"
+      }
+    },
+    "steam_appid": "31170"
+  },
+  {
+    "source_idx": 150,
+    "game_id": "dracula-3-the-path-of-the-dragon",
+    "title_en": "Dracula 3: The Path of the Dragon",
+    "title_he": "דרקולה 3: נתיב הדרקון",
+    "status": "pending",
+    "sources": {
+      "en": {
+        "file": "sources/dracula-3-the-path-of-the-dragon-en.jpg",
+        "url": "https://cdn.akamai.steamstatic.com/steam/apps/289840/library_600x900_2x.jpg",
+        "source_page": "https://store.steampowered.com/app/289840/",
+        "status": "needs_visual_review",
+        "width": 600,
+        "height": 900,
+        "sha256": "0edb64a846290bd7e2f221279bc5855ad03912239985be55272d28e765bfba19"
+      }
+    },
+    "steam_appid": "289840"
+  },
+  {
+    "source_idx": 167,
+    "game_id": "kaptain-brawe-a-brawe-new-world",
+    "title_en": "Kaptain Brawe: A Brawe New World",
+    "title_he": "קפטן ברייב: עולם חדש ואמיץ",
+    "status": "pending",
+    "sources": {
+      "en": {
+        "file": "sources/kaptain-brawe-a-brawe-new-world-en.jpg",
+        "url": "https://cdn.akamai.steamstatic.com/steam/apps/65080/library_600x900_2x.jpg",
+        "source_page": "https://store.steampowered.com/app/65080/",
+        "status": "needs_visual_review",
+        "width": 600,
+        "height": 900,
+        "sha256": "8fd52ae10355fedbb86eecb8b3db83e858cf7b4b266b0aada6680012df215cd6"
+      }
+    },
+    "steam_appid": "65080"
+  }
+]

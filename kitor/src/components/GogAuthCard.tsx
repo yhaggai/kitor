@@ -1,47 +1,25 @@
 import { invoke } from "@tauri-apps/api/core";
 import { listen } from "@tauri-apps/api/event";
 import { CheckCircle, LogIn, LogOut, XCircle } from "lucide-react";
-import { useCallback, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { useDialog } from "@/hooks/useDialog";
-import type { GogGame } from "@/store/store";
+import { useGogLibrary } from "@/store/gog";
 import { useAppStore } from "@/store/store";
 
 export default function GogAuthCard() {
-  const { gogAuth, gogGames, setGogAuth, setGogGames } = useAppStore();
+  const { gogAuth } = useAppStore();
   const alert = useDialog();
   const [isLoggingIn, setIsLoggingIn] = useState(false);
   const [isLoggingOut, setIsLoggingOut] = useState(false);
 
-  const checkAuthStatus = useCallback(async () => {
-    try {
-      const isAuthenticated = await invoke<boolean>("check_gog_auth_status");
-      setGogAuth({ isAuthenticated });
-
-      if (isAuthenticated) {
-        try {
-          const games = await invoke<GogGame[]>("get_gog_user_games");
-          setGogGames(games);
-        } catch (error) {
-          console.error("Failed to fetch GOG games:", error);
-        }
-      }
-    } catch (error) {
-      console.error("Failed to check GOG auth status:", error);
-      setGogAuth({ isAuthenticated: false });
-    }
-  }, [setGogAuth, setGogGames]);
-
-  useEffect(() => {
-    checkAuthStatus();
-  }, [checkAuthStatus]);
+  const { loading: isLoadingGames, error: libraryError, refresh: checkAuthStatus } = useGogLibrary();
 
   useEffect(() => {
     const unlistenSuccess = listen("gog-login-success", () => {
       setIsLoggingIn(false);
-      checkAuthStatus();
       alert.alert({ title: "Success", description: "Successfully logged in to GOG" });
     });
 
@@ -82,8 +60,7 @@ export default function GogAuthCard() {
     try {
       setIsLoggingOut(true);
       await invoke("logout_from_gog");
-      setGogAuth({ isAuthenticated: false });
-      setGogGames([]);
+      useGogLibrary.getState().clear();
     } catch (error) {
       console.error("Failed to logout from GOG:", error);
       await alert.alert({ title: "Logout Failed", description: String(error) });
@@ -108,7 +85,7 @@ export default function GogAuthCard() {
               <div className="flex-1">
                 <p className="font-medium">Connected to GOG</p>
                 <p className="text-sm text-muted-foreground">
-                  {gogGames.length} game{gogGames.length !== 1 ? "s" : ""} in library
+                  {isLoadingGames ? "Loading library…" : libraryError ? "Library could not be loaded" : "Ownership synced"}
                 </p>
               </div>
               <Badge variant="secondary">Connected</Badge>
@@ -141,21 +118,13 @@ export default function GogAuthCard() {
           </Button>
         )}
 
-        {gogAuth.isAuthenticated && gogGames.length > 0 && (
-          <div className="border-t pt-4">
-            <p className="text-sm font-medium mb-2">Your GOG Games:</p>
-            <div className="space-y-1 max-h-40 overflow-y-auto">
-              {gogGames.map((game) => (
-                <div
-                  key={game.id}
-                  className="text-sm text-muted-foreground flex items-center gap-2"
-                >
-                  <span className="truncate">{game.title}</span>
-                </div>
-              ))}
-            </div>
-          </div>
+        {libraryError && <p role="alert" className="text-sm text-destructive">{libraryError}</p>}
+        {gogAuth.isAuthenticated && (
+          <Button variant="outline" className="w-full" disabled={isLoadingGames || isLoggingOut} onClick={() => void checkAuthStatus()}>
+            {isLoadingGames ? "Loading library…" : "Refresh GOG library"}
+          </Button>
         )}
+
       </CardContent>
     </Card>
   );

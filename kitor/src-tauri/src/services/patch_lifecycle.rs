@@ -218,6 +218,26 @@ fn load(dir: &Path) -> Result<Journal> {
     }
     Ok(journal)
 }
+/// Inspect installed bytes without changing game files, backups, or records.
+pub fn verify_installed(dir: &Path, target: &Path, game: &str, version: &str) -> Result<Vec<String>> {
+    let journal = load(dir)?;
+    if journal.target != target.canonicalize().map_err(err)? || journal.game != game || journal.version != version {
+        return Err("Patch manifest belongs to a different installation or version".into());
+    }
+    if journal.status != "active" || journal.files.is_empty() {
+        return Err(format!("Patch installation is not active ({})", journal.status));
+    }
+    let mut problems = Vec::new();
+    for record in journal.files {
+        if !record.started || record.restored { return Err("Patch installation is incomplete".into()); }
+        let actual = current_hash(&safe_path(target, &record.path)?)?;
+        if actual != record.installed_hash {
+            problems.push(format!("{}: {}", record.path, if actual.is_none() { "missing" } else { "changed" }));
+        }
+    }
+    Ok(problems)
+}
+
 fn copy_durable(from: &Path, to: &Path) -> Result<()> {
     fs::create_dir_all(to.parent().ok_or("Missing destination parent")?).map_err(err)?;
     // Windows FlushFileBuffers requires a writable handle. Reopening the copy

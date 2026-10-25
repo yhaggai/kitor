@@ -1,0 +1,220 @@
+[
+  {
+    "source_idx": 37,
+    "game_id": "ghost-pirates-of-vooju-island",
+    "title_en": "Ghost Pirates of Vooju Island",
+    "title_he": "פיראטי הרפאים מהאי ווג'ו",
+    "status": "pending",
+    "sources": {
+      "en": {
+        "file": "sources/ghost-pirates-of-vooju-island-en.jpg",
+        "url": "https://cdn.mobygames.com/covers/6655386-ghost-pirates-of-vooju-island-front-cover.jpg",
+        "source_page": "https://www.mobygames.com/game/46048/ghost-pirates-of-vooju-island/",
+        "status": "needs_visual_review",
+        "width": 584,
+        "height": 800,
+        "sha256": "8103a5a2b449fc9c239bae8e5b4ced4db189a102468ca891dc6ce667d8bf4705"
+      }
+    },
+    "steam_appid": "344030"
+  },
+  {
+    "source_idx": 51,
+    "game_id": "neighbours-from-hell",
+    "title_en": "Neighbours from Hell",
+    "title_he": "שכנים מהגיהנום",
+    "status": "pending",
+    "sources": {
+      "en": {
+        "file": "sources/neighbours-from-hell-en.png",
+        "url": "https://upload.wikimedia.org/wikipedia/en/9/92/Neighbors_from_Hell_Coverart.png",
+        "source_page": "https://en.wikipedia.org/wiki/Neighbours_from_Hell",
+        "status": "needs-visual-and-edition-review",
+        "width": 256,
+        "height": 341,
+        "sha256": "95901a417e8536fb7f1c9e4922f6f31ed3fe9592618e5623099e93239034c4dd"
+      }
+    }
+  },
+  {
+    "source_idx": 55,
+    "game_id": "mystic-pillars-a-story-based-puzzle-game",
+    "title_en": "Mystic Pillars: A Story-Based Puzzle Game",
+    "title_he": "עמודי הפלא",
+    "status": "pending",
+    "sources": {
+      "en": {
+        "file": "sources/mystic-pillars-a-story-based-puzzle-game-en.jpg",
+        "url": "https://cdn.akamai.steamstatic.com/steam/apps/1197030/library_600x900.jpg",
+        "source_page": "https://store.steampowered.com/app/1197030/",
+        "status": "original-title-verified"
+      }
+    }
+  },
+  {
+    "source_idx": 79,
+    "game_id": "rayman-2-the-great-escape",
+    "title_en": "Rayman 2: The Great Escape",
+    "title_he": "ריימן 2: הבריחה הגדולה",
+    "status": "pending",
+    "sources": {
+      "en": {
+        "file": "sources/rayman-2-the-great-escape-en.jpg",
+        "url": "https://upload.wikimedia.org/wikipedia/en/6/61/Rayman_2.jpg",
+        "source_page": "https://en.wikipedia.org/wiki/Rayman_2%3A_The_Great_Escape",
+        "status": "needs-visual-and-edition-review",
+        "width": 280,
+        "height": 357,
+        "sha256": "d113218f34b43331acb2d0881091280674bd116f035d085a003e1c236cd7ffd6"
+      }
+    }
+  },
+  {
+    "source_idx": 80,
+    "game_id": "j-u-l-i-a-among-the-stars",
+    "title_en": "J.U.L.I.A. Among the Stars",
+    "title_he": "ג'וליה: בין הכוכבים:",
+    "status": "pending",
+    "sources": {
+      "en": {
+        "file": "sources/j-u-l-i-a-among-the-stars-en.png",
+        "url": "https://thumbnails.libretro.com/ScummVM/Named_Boxarts/J.U.L.I.A._%20Among%20the%20Stars.png",
+        "source_page": "https://thumbnails.libretro.com/ScummVM/Named_Boxarts/",
+        "status": "needs_visual_review",
+        "width": 265,
+        "height": 374,
+        "sha256": "ebe2d10b727b010e132f31c0922218b2993b59733c2468fc93868cb37ec42063"
+      }
+    },
+    "steam_appid": "257690"
+  },
+  {
+    "source_idx": 81,
+    "game_id": "contradiction-spot-the-liar",
+    "title_en": "Contradiction: Spot The Liar:",
+    "title_he": "",
+    "status": "pending",
+    "sources": {
+      "en": {
+        "file": "sources/contradiction-spot-the-liar-en.jpg",
+        "url": "https://cdn.akamai.steamstatic.com/steam/apps/373390/library_600x900_2x.jpg",
+        "source_page": "https://store.steampowered.com/app/373390/",
+        "status": "needs_visual_review",
+        "width": 600,
+        "height": 900,
+        "sha256": "e5b6a9d5db3e53f4792ed16b07c3f5f4ea8b936c475257ce1acff8518d7cdee6"
+      }
+    },
+    "steam_appid": "373390"
+  },
+  {
+    "source_idx": 84,
+    "game_id": "zork-grand-inquisitor",
+    "title_en": "Zork: Grand Inquisitor",
+    "title_he": "זורק: האינקוויזיטור הגדול",
+    "status": "pending",
+    "sources": {
+      "en": {
+        "file": "sources/zork-grand-inquisitor-en.png",
+        "url": "https://thumbnails.libretro.com/ScummVM/Named_Boxarts/Zork_%20Grand%20Inquisitor.png",
+        "source_page": "https://thumbnails.libretro.com/ScummVM/Named_Boxarts/",
+        "status": "needs_visual_review",
+        "width": 512,
+        "height": 721,
+        "sha256": "c619440fb59b9722873a9f43a6c6ef96b9c3839c316afe06131cbbd672d112c5"
+      }
+    },
+    "steam_appid": "570680"
+  },
+  {
+    "source_idx": 85,
+    "game_id": "zork-nemesis-the-forbidden-land",
+    "title_en": "Zork Nemesis: The Forbidden Land",
+    "title_he": "זורק נמסיס: הארצות האסורות",
+    "status": "pending",
+    "sources": {
+      "en": {
+        "file": "sources/zork-nemesis-the-forbidden-land-en.png",
+        "url": "https://thumbnails.libretro.com/ScummVM/Named_Boxarts/Zork%20Nemesis_%20The%20Forbidden%20Lands.png",
+        "source_page": "https://thumbnails.libretro.com/ScummVM/Named_Boxarts/",
+        "status": "needs_visual_review",
+        "width": 512,
+        "height": 598,
+        "sha256": "45eb852292866affd0c16e5a06747ccba52338a731b96fab90f760ed8475f00a"
+      }
+    },
+    "steam_appid": "571060"
+  },
+  {
+    "source_idx": 86,
+    "game_id": "helga-deep-in-trouble",
+    "title_en": "Helga deep in trouble",
+    "title_he": "הלגה עמוק בצרות",
+    "status": "pending",
+    "sources": {
+      "en": {
+        "file": "sources/helga-deep-in-trouble-en.png",
+        "url": "https://thumbnails.libretro.com/ScummVM/Named_Boxarts/Helga%20Deep%20In%20Trouble.png",
+        "source_page": "https://thumbnails.libretro.com/ScummVM/Named_Boxarts/",
+        "status": "needs_visual_review",
+        "width": 512,
+        "height": 381,
+        "sha256": "bf63ae360511d30fcee709631e2750842fa01744c514827e0b2f80a88d5c0cca"
+      }
+    }
+  },
+  {
+    "source_idx": 88,
+    "game_id": "space-madness",
+    "title_en": "Space Madness",
+    "title_he": "טירוף בחלל",
+    "status": "pending",
+    "sources": {
+      "en": {
+        "file": "sources/space-madness-en.png",
+        "url": "https://thumbnails.libretro.com/ScummVM/Named_Boxarts/Space%20Madness.png",
+        "source_page": "https://thumbnails.libretro.com/ScummVM/Named_Boxarts/",
+        "status": "needs_visual_review",
+        "width": 512,
+        "height": 288,
+        "sha256": "c7066f82bf3919536425803af4b36bb864f32ab2011828014597679c28ae6923"
+      }
+    }
+  },
+  {
+    "source_idx": 89,
+    "game_id": "even-more-incredible-machine",
+    "title_en": "Even More Incredible Machine",
+    "title_he": "המכונה המופלאה",
+    "status": "pending",
+    "sources": {
+      "en": {
+        "file": "sources/even-more-incredible-machine-en.png",
+        "url": "https://thumbnails.libretro.com/DOS/Named_Boxarts/Even%20More%20Incredible%20Machine%2C%20The%20%281993%29.png",
+        "source_page": "https://thumbnails.libretro.com/DOS/Named_Boxarts/",
+        "status": "needs_visual_review",
+        "width": 320,
+        "height": 399,
+        "sha256": "30b07ae60e07bea4f0ae7e3fcd961c102db9c38a028ae2914bdd0c0a994ec875"
+      }
+    }
+  },
+  {
+    "source_idx": 94,
+    "game_id": "dirty-split",
+    "title_en": "Dirty Split",
+    "title_he": "גירושין מכוערים",
+    "status": "pending",
+    "sources": {
+      "en": {
+        "file": "sources/dirty-split-en.png",
+        "url": "https://thumbnails.libretro.com/ScummVM/Named_Boxarts/Dirty%20Split.png",
+        "source_page": "https://thumbnails.libretro.com/ScummVM/Named_Boxarts/",
+        "status": "needs_visual_review",
+        "width": 512,
+        "height": 512,
+        "sha256": "6d035edb9c46aa01c7c8f00adffac0f8756059b265ef2ddab0d730f3e8f9fb42"
+      }
+    }
+  }
+]

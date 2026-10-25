@@ -1,0 +1,89 @@
+{
+  "mode": "built-in image_gen, one reference-image edit per cover",
+  "use_case": "text-localization",
+  "shared_prompt_specification": "Change only game title and descriptive lettering to the specified Hebrew text. Match original typography, weight, outlines, bevels, shadows, colors, texture, placement and composition. Preserve all artwork, characters, scenery, publisher logos, technical labels and aspect ratio. No redesign or added elements.",
+  "text_by_game": {
+    "undertale": [
+      "אנדרטייל"
+    ],
+    "monkey-se": [
+      "הסוד של",
+      "אי הקופים",
+      "מהדורה מיוחדת"
+    ],
+    "monkey2-se": [
+      "נקמתו של לה־צ׳אק",
+      "אי הקופים",
+      "מהדורה מיוחדת"
+    ],
+    "sq1sci": [
+      "מסע בחלל I",
+      "רוג׳ר וילקו",
+      "במפגש עם הסאריאנים",
+      "משחק הרפתקאות מונפש בתלת־ממד"
+    ],
+    "pq1": [
+      "משימה משטרתית",
+      "במרדף אחר מלאך המוות",
+      "משחק הרפתקאות מונפש בתלת־ממד"
+    ],
+    "sq1": [
+      "מסע בחלל",
+      "משחק הרפתקאות מונפש בתלת־ממד",
+      "פרק 1",
+      "המפגש עם הסאריאנים",
+      "קופונים בפנים",
+      "פרטים בגב האריזה"
+    ],
+    "sq2": [
+      "מסע בחלל",
+      "פרק 2",
+      "נקמתו של ווהול",
+      "משחק הרפתקאות מונפש בתלת־ממד"
+    ],
+    "spyfox": [
+      "שועל ריגול",
+      "דגנים יבשים"
+    ],
+    "pajama": [
+      "פיג׳מה סם",
+      "לא צריך להתחבא כשחשוך בחוץ"
+    ],
+    "toonstruck": [
+      "טונסטרק"
+    ],
+    "sky": [
+      "מתחת",
+      "לשמי",
+      "פלדה"
+    ],
+    "stanley-parable": [
+      "המשל של סטנלי"
+    ],
+    "tesla-effect": [
+      "אפקט טסלה",
+      "הרפתקה של טקס מרפי"
+    ],
+    "ethan-carter": [
+      "היעלמותו של איתן קרטר"
+    ],
+    "life-is-strange": [
+      "החיים מוזרים"
+    ],
+    "portal2": [
+      "פורטל 2"
+    ],
+    "journey-down1": [
+      "המסע למטה",
+      "פרק ראשון"
+    ],
+    "kathy-rain-dc": [
+      "קתי ריין",
+      "גרסת הבמאי"
+    ],
+    "drifter": [
+      "הנווד"
+    ]
+  },
+  "note": "This records the common prompt specification and exact requested Hebrew strings; individual generation calls additionally described each cover typography."
+}

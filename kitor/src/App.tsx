@@ -3,6 +3,8 @@ import { listen } from "@tauri-apps/api/event";
 import { useCallback, useEffect, useRef } from "react";
 import GameLibrary from "@/components/GameLibrary";
 import PatchBrowser from "@/components/PatchBrowser";
+import { useGogLibrary } from "@/store/gog";
+import { useSteamStore } from "@/store/steam";
 import Settings from "@/components/Settings";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import type { Game, ScummVMDownloadProgress } from "@/store/store";
@@ -21,6 +23,15 @@ type ScummVMStatus = {
 };
 
 function App() {
+  useEffect(() => {
+    const unlisten = listen("gog-login-success", () => {
+      useGogLibrary.getState().clear();
+      void useGogLibrary.getState().refresh();
+    });
+    void useGogLibrary.getState().refresh();
+    return () => { void unlisten.then((stop) => stop()); };
+  }, []);
+  useEffect(() => { void useSteamStore.getState().run("get_steam_status"); }, []);
   const {
     setGames,
     setScummVMReady,

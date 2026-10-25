@@ -1,7 +1,7 @@
 {
   "scummvm_id": "sq1sci",
   "language": "he",
-  "version": "1.0-kitor2",
+  "version": "1.0-kitor3",
   "filename": "SpaceQuest1VGA-Heb-AdventureBrew.zip",
   "schema_version": 1,
   "platforms": {
@@ -11,7 +11,7 @@
   },
   "files": [
     {
-      "path": "0.fon",
+      "path": "PATCHES/0.fon",
       "operation": "install",
       "source": {
         "kind": "copy",
@@ -20,7 +20,7 @@
       }
     },
     {
-      "path": "0.scr",
+      "path": "PATCHES/0.scr",
       "operation": "install",
       "source": {
         "kind": "copy",
@@ -29,7 +29,7 @@
       }
     },
     {
-      "path": "1.scr",
+      "path": "PATCHES/1.scr",
       "operation": "install",
       "source": {
         "kind": "copy",
@@ -38,7 +38,7 @@
       }
     },
     {
-      "path": "10.scr",
+      "path": "PATCHES/10.scr",
       "operation": "install",
       "source": {
         "kind": "copy",
@@ -47,7 +47,7 @@
       }
     },
     {
-      "path": "103.scr",
+      "path": "PATCHES/103.scr",
       "operation": "install",
       "source": {
         "kind": "copy",
@@ -56,7 +56,7 @@
       }
     },
     {
-      "path": "11.scr",
+      "path": "PATCHES/11.scr",
       "operation": "install",
       "source": {
         "kind": "copy",
@@ -65,7 +65,7 @@
       }
     },
     {
-      "path": "12.scr",
+      "path": "PATCHES/12.scr",
       "operation": "install",
       "source": {
         "kind": "copy",
@@ -74,7 +74,7 @@
       }
     },
     {
-      "path": "13.scr",
+      "path": "PATCHES/13.scr",
       "operation": "install",
       "source": {
         "kind": "copy",
@@ -83,7 +83,7 @@
       }
     },
     {
-      "path": "138.scr",
+      "path": "PATCHES/138.scr",
       "operation": "install",
       "source": {
         "kind": "copy",
@@ -92,7 +92,7 @@
       }
     },
     {
-      "path": "14.scr",
+      "path": "PATCHES/14.scr",
       "operation": "install",
       "source": {
         "kind": "copy",
@@ -101,7 +101,7 @@
       }
     },
     {
-      "path": "18.scr",
+      "path": "PATCHES/18.scr",
       "operation": "install",
       "source": {
         "kind": "copy",
@@ -110,7 +110,7 @@
       }
     },
     {
-      "path": "19.scr",
+      "path": "PATCHES/19.scr",
       "operation": "install",
       "source": {
         "kind": "copy",
@@ -119,7 +119,7 @@
       }
     },
     {
-      "path": "2.scr",
+      "path": "PATCHES/2.scr",
       "operation": "install",
       "source": {
         "kind": "copy",
@@ -128,7 +128,7 @@
       }
     },
     {
-      "path": "20.scr",
+      "path": "PATCHES/20.scr",
       "operation": "install",
       "source": {
         "kind": "copy",
@@ -137,7 +137,7 @@
       }
     },
     {
-      "path": "21.scr",
+      "path": "PATCHES/21.scr",
       "operation": "install",
       "source": {
         "kind": "copy",
@@ -146,7 +146,7 @@
       }
     },
     {
-      "path": "22.scr",
+      "path": "PATCHES/22.scr",
       "operation": "install",
       "source": {
         "kind": "copy",
@@ -155,7 +155,7 @@
       }
     },
     {
-      "path": "23.scr",
+      "path": "PATCHES/23.scr",
       "operation": "install",
       "source": {
         "kind": "copy",
@@ -164,7 +164,7 @@
       }
     },
     {
-      "path": "238.scr",
+      "path": "PATCHES/238.scr",
       "operation": "install",
       "source": {
         "kind": "copy",
@@ -173,7 +173,7 @@
       }
     },
     {
-      "path": "24.scr",
+      "path": "PATCHES/24.scr",
       "operation": "install",
       "source": {
         "kind": "copy",
@@ -182,7 +182,7 @@
       }
     },
     {
-      "path": "25.scr",
+      "path": "PATCHES/25.scr",
       "operation": "install",
       "source": {
         "kind": "copy",
@@ -191,7 +191,7 @@
       }
     },
     {
-      "path": "26.scr",
+      "path": "PATCHES/26.scr",
       "operation": "install",
       "source": {
         "kind": "copy",
@@ -200,7 +200,7 @@
       }
     },
     {
-      "path": "27.scr",
+      "path": "PATCHES/27.scr",
       "operation": "install",
       "source": {
         "kind": "copy",
@@ -209,7 +209,7 @@
       }
     },
     {
-      "path": "28.scr",
+      "path": "PATCHES/28.scr",
       "operation": "install",
       "source": {
         "kind": "copy",
@@ -218,7 +218,7 @@
       }
     },
     {
-      "path": "3.scr",
+      "path": "PATCHES/3.scr",
       "operation": "install",
       "source": {
         "kind": "copy",
@@ -227,7 +227,7 @@
       }
     },
     {
-      "path": "30.scr",
+      "path": "PATCHES/30.scr",
       "operation": "install",
       "source": {
         "kind": "copy",
@@ -236,7 +236,7 @@
       }
     },
     {
-      "path": "300.fon",
+      "path": "PATCHES/300.fon",
       "operation": "install",
       "source": {
         "kind": "copy",
@@ -245,7 +245,7 @@
       }
     },
     {
-      "path": "300.p56",
+      "path": "PATCHES/300.p56",
       "operation": "install",
       "source": {
         "kind": "copy",
@@ -254,7 +254,7 @@
       }
     },
     {
-      "path": "300.scr",
+      "path": "PATCHES/300.scr",
       "operation": "install",
       "source": {
         "kind": "copy",
@@ -263,7 +263,7 @@
       }
     },
     {
-      "path": "301.scr",
+      "path": "PATCHES/301.scr",
       "operation": "install",
       "source": {
         "kind": "copy",
@@ -272,7 +272,7 @@
       }
     },
     {
-      "path": "302.scr",
+      "path": "PATCHES/302.scr",
       "operation": "install",
       "source": {
         "kind": "copy",
@@ -281,7 +281,7 @@
       }
     },
     {
-      "path": "303.scr",
+      "path": "PATCHES/303.scr",
       "operation": "install",
       "source": {
         "kind": "copy",
@@ -290,7 +290,7 @@
       }
     },
     {
-      "path": "31.scr",
+      "path": "PATCHES/31.scr",
       "operation": "install",
       "source": {
         "kind": "copy",
@@ -299,7 +299,7 @@
       }
     },
     {
-      "path": "32.scr",
+      "path": "PATCHES/32.scr",
       "operation": "install",
       "source": {
         "kind": "copy",
@@ -308,7 +308,7 @@
       }
     },
     {
-      "path": "33.scr",
+      "path": "PATCHES/33.scr",
       "operation": "install",
       "source": {
         "kind": "copy",
@@ -317,7 +317,7 @@
       }
     },
     {
-      "path": "338.scr",
+      "path": "PATCHES/338.scr",
       "operation": "install",
       "source": {
         "kind": "copy",
@@ -326,7 +326,7 @@
       }
     },
     {
-      "path": "35.scr",
+      "path": "PATCHES/35.scr",
       "operation": "install",
       "source": {
         "kind": "copy",
@@ -335,7 +335,7 @@
       }
     },
     {
-      "path": "36.scr",
+      "path": "PATCHES/36.scr",
       "operation": "install",
       "source": {
         "kind": "copy",
@@ -344,7 +344,7 @@
       }
     },
     {
-      "path": "37.scr",
+      "path": "PATCHES/37.scr",
       "operation": "install",
       "source": {
         "kind": "copy",
@@ -353,7 +353,7 @@
       }
     },
     {
-      "path": "38.scr",
+      "path": "PATCHES/38.scr",
       "operation": "install",
       "source": {
         "kind": "copy",
@@ -362,7 +362,7 @@
       }
     },
     {
-      "path": "4.fon",
+      "path": "PATCHES/4.fon",
       "operation": "install",
       "source": {
         "kind": "copy",
@@ -371,7 +371,7 @@
       }
     },
     {
-      "path": "4.scr",
+      "path": "PATCHES/4.scr",
       "operation": "install",
       "source": {
         "kind": "copy",
@@ -380,7 +380,7 @@
       }
     },
     {
-      "path": "40.scr",
+      "path": "PATCHES/40.scr",
       "operation": "install",
       "source": {
         "kind": "copy",
@@ -389,7 +389,7 @@
       }
     },
     {
-      "path": "400.scr",
+      "path": "PATCHES/400.scr",
       "operation": "install",
       "source": {
         "kind": "copy",
@@ -398,7 +398,7 @@
       }
     },
     {
-      "path": "41.scr",
+      "path": "PATCHES/41.scr",
       "operation": "install",
       "source": {
         "kind": "copy",
@@ -407,7 +407,7 @@
       }
     },
     {
-      "path": "42.scr",
+      "path": "PATCHES/42.scr",
       "operation": "install",
       "source": {
         "kind": "copy",
@@ -416,7 +416,7 @@
       }
     },
     {
-      "path": "43.scr",
+      "path": "PATCHES/43.scr",
       "operation": "install",
       "source": {
         "kind": "copy",
@@ -425,7 +425,7 @@
       }
     },
     {
-      "path": "44.scr",
+      "path": "PATCHES/44.scr",
       "operation": "install",
       "source": {
         "kind": "copy",
@@ -434,7 +434,7 @@
       }
     },
     {
-      "path": "45.scr",
+      "path": "PATCHES/45.scr",
       "operation": "install",
       "source": {
         "kind": "copy",
@@ -443,7 +443,7 @@
       }
     },
     {
-      "path": "46.scr",
+      "path": "PATCHES/46.scr",
       "operation": "install",
       "source": {
         "kind": "copy",
@@ -452,7 +452,7 @@
       }
     },
     {
-      "path": "47.scr",
+      "path": "PATCHES/47.scr",
       "operation": "install",
       "source": {
         "kind": "copy",
@@ -461,7 +461,7 @@
       }
     },
     {
-      "path": "48.scr",
+      "path": "PATCHES/48.scr",
       "operation": "install",
       "source": {
         "kind": "copy",
@@ -470,7 +470,7 @@
       }
     },
     {
-      "path": "49.scr",
+      "path": "PATCHES/49.scr",
       "operation": "install",
       "source": {
         "kind": "copy",
@@ -479,7 +479,7 @@
       }
     },
     {
-      "path": "5.scr",
+      "path": "PATCHES/5.scr",
       "operation": "install",
       "source": {
         "kind": "copy",
@@ -488,7 +488,7 @@
       }
     },
     {
-      "path": "51.scr",
+      "path": "PATCHES/51.scr",
       "operation": "install",
       "source": {
         "kind": "copy",
@@ -497,7 +497,7 @@
       }
     },
     {
-      "path": "53.scr",
+      "path": "PATCHES/53.scr",
       "operation": "install",
       "source": {
         "kind": "copy",
@@ -506,7 +506,7 @@
       }
     },
     {
-      "path": "54.scr",
+      "path": "PATCHES/54.scr",
       "operation": "install",
       "source": {
         "kind": "copy",
@@ -515,7 +515,7 @@
       }
     },
     {
-      "path": "55.scr",
+      "path": "PATCHES/55.scr",
       "operation": "install",
       "source": {
         "kind": "copy",
@@ -524,7 +524,7 @@
       }
     },
     {
-      "path": "57.scr",
+      "path": "PATCHES/57.scr",
       "operation": "install",
       "source": {
         "kind": "copy",
@@ -533,7 +533,7 @@
       }
     },
     {
-      "path": "58.scr",
+      "path": "PATCHES/58.scr",
       "operation": "install",
       "source": {
         "kind": "copy",
@@ -542,7 +542,7 @@
       }
     },
     {
-      "path": "59.scr",
+      "path": "PATCHES/59.scr",
       "operation": "install",
       "source": {
         "kind": "copy",
@@ -551,7 +551,7 @@
       }
     },
     {
-      "path": "6.scr",
+      "path": "PATCHES/6.scr",
       "operation": "install",
       "source": {
         "kind": "copy",
@@ -560,7 +560,7 @@
       }
     },
     {
-      "path": "60.fon",
+      "path": "PATCHES/60.fon",
       "operation": "install",
       "source": {
         "kind": "copy",
@@ -569,7 +569,7 @@
       }
     },
     {
-      "path": "60.scr",
+      "path": "PATCHES/60.scr",
       "operation": "install",
       "source": {
         "kind": "copy",
@@ -578,7 +578,7 @@
       }
     },
     {
-      "path": "600.v56",
+      "path": "PATCHES/600.v56",
       "operation": "install",
       "source": {
         "kind": "copy",
@@ -587,7 +587,7 @@
       }
     },
     {
-      "path": "61.fon",
+      "path": "PATCHES/61.fon",
       "operation": "install",
       "source": {
         "kind": "copy",
@@ -596,7 +596,7 @@
       }
     },
     {
-      "path": "61.scr",
+      "path": "PATCHES/61.scr",
       "operation": "install",
       "source": {
         "kind": "copy",
@@ -605,7 +605,7 @@
       }
     },
     {
-      "path": "62.scr",
+      "path": "PATCHES/62.scr",
       "operation": "install",
       "source": {
         "kind": "copy",
@@ -614,7 +614,7 @@
       }
     },
     {
-      "path": "63.scr",
+      "path": "PATCHES/63.scr",
       "operation": "install",
       "source": {
         "kind": "copy",
@@ -623,7 +623,7 @@
       }
     },
     {
-      "path": "64.scr",
+      "path": "PATCHES/64.scr",
       "operation": "install",
       "source": {
         "kind": "copy",
@@ -632,7 +632,7 @@
       }
     },
     {
-      "path": "65.scr",
+      "path": "PATCHES/65.scr",
       "operation": "install",
       "source": {
         "kind": "copy",
@@ -641,7 +641,7 @@
       }
     },
     {
-      "path": "66.scr",
+      "path": "PATCHES/66.scr",
       "operation": "install",
       "source": {
         "kind": "copy",
@@ -650,7 +650,7 @@
       }
     },
     {
-      "path": "67.scr",
+      "path": "PATCHES/67.scr",
       "operation": "install",
       "source": {
         "kind": "copy",
@@ -659,7 +659,7 @@
       }
     },
     {
-      "path": "68.fon",
+      "path": "PATCHES/68.fon",
       "operation": "install",
       "source": {
         "kind": "copy",
@@ -668,7 +668,7 @@
       }
     },
     {
-      "path": "68.scr",
+      "path": "PATCHES/68.scr",
       "operation": "install",
       "source": {
         "kind": "copy",
@@ -677,7 +677,7 @@
       }
     },
     {
-      "path": "69.fon",
+      "path": "PATCHES/69.fon",
       "operation": "install",
       "source": {
         "kind": "copy",
@@ -686,7 +686,7 @@
       }
     },
     {
-      "path": "7.scr",
+      "path": "PATCHES/7.scr",
       "operation": "install",
       "source": {
         "kind": "copy",
@@ -695,7 +695,7 @@
       }
     },
     {
-      "path": "700.scr",
+      "path": "PATCHES/700.scr",
       "operation": "install",
       "source": {
         "kind": "copy",
@@ -704,7 +704,7 @@
       }
     },
     {
-      "path": "702.scr",
+      "path": "PATCHES/702.scr",
       "operation": "install",
       "source": {
         "kind": "copy",
@@ -713,7 +713,7 @@
       }
     },
     {
-      "path": "703.scr",
+      "path": "PATCHES/703.scr",
       "operation": "install",
       "source": {
         "kind": "copy",
@@ -722,7 +722,7 @@
       }
     },
     {
-      "path": "704.scr",
+      "path": "PATCHES/704.scr",
       "operation": "install",
       "source": {
         "kind": "copy",
@@ -731,7 +731,7 @@
       }
     },
     {
-      "path": "707.scr",
+      "path": "PATCHES/707.scr",
       "operation": "install",
       "source": {
         "kind": "copy",
@@ -740,7 +740,7 @@
       }
     },
     {
-      "path": "8.scr",
+      "path": "PATCHES/8.scr",
       "operation": "install",
       "source": {
         "kind": "copy",
@@ -749,7 +749,7 @@
       }
     },
     {
-      "path": "803.scr",
+      "path": "PATCHES/803.scr",
       "operation": "install",
       "source": {
         "kind": "copy",
@@ -758,7 +758,7 @@
       }
     },
     {
-      "path": "9.scr",
+      "path": "PATCHES/9.scr",
       "operation": "install",
       "source": {
         "kind": "copy",
@@ -767,7 +767,7 @@
       }
     },
     {
-      "path": "947.v56",
+      "path": "PATCHES/947.v56",
       "operation": "install",
       "source": {
         "kind": "copy",
@@ -776,7 +776,7 @@
       }
     },
     {
-      "path": "990.scr",
+      "path": "PATCHES/990.scr",
       "operation": "install",
       "source": {
         "kind": "copy",
@@ -785,7 +785,7 @@
       }
     },
     {
-      "path": "994.scr",
+      "path": "PATCHES/994.scr",
       "operation": "install",
       "source": {
         "kind": "copy",
@@ -794,7 +794,7 @@
       }
     },
     {
-      "path": "995.scr",
+      "path": "PATCHES/995.scr",
       "operation": "install",
       "source": {
         "kind": "copy",
@@ -803,7 +803,7 @@
       }
     },
     {
-      "path": "996.scr",
+      "path": "PATCHES/996.scr",
       "operation": "install",
       "source": {
         "kind": "copy",
@@ -812,7 +812,7 @@
       }
     },
     {
-      "path": "999.fon",
+      "path": "PATCHES/999.fon",
       "operation": "install",
       "source": {
         "kind": "copy",
@@ -821,7 +821,7 @@
       }
     },
     {
-      "path": "999.voc",
+      "path": "PATCHES/999.voc",
       "operation": "install",
       "source": {
         "kind": "copy",
@@ -830,7 +830,7 @@
       }
     },
     {
-      "path": "text.000",
+      "path": "PATCHES/text.000",
       "operation": "install",
       "source": {
         "kind": "copy",
@@ -839,7 +839,7 @@
       }
     },
     {
-      "path": "text.001",
+      "path": "PATCHES/text.001",
       "operation": "install",
       "source": {
         "kind": "copy",
@@ -848,7 +848,7 @@
       }
     },
     {
-      "path": "text.002",
+      "path": "PATCHES/text.002",
       "operation": "install",
       "source": {
         "kind": "copy",
@@ -857,7 +857,7 @@
       }
     },
     {
-      "path": "text.003",
+      "path": "PATCHES/text.003",
       "operation": "install",
       "source": {
         "kind": "copy",
@@ -866,7 +866,7 @@
       }
     },
     {
-      "path": "text.004",
+      "path": "PATCHES/text.004",
       "operation": "install",
       "source": {
         "kind": "copy",
@@ -875,7 +875,7 @@
       }
     },
     {
-      "path": "text.005",
+      "path": "PATCHES/text.005",
       "operation": "install",
       "source": {
         "kind": "copy",
@@ -884,7 +884,7 @@
       }
     },
     {
-      "path": "text.006",
+      "path": "PATCHES/text.006",
       "operation": "install",
       "source": {
         "kind": "copy",
@@ -893,7 +893,7 @@
       }
     },
     {
-      "path": "text.007",
+      "path": "PATCHES/text.007",
       "operation": "install",
       "source": {
         "kind": "copy",
@@ -902,7 +902,7 @@
       }
     },
     {
-      "path": "text.009",
+      "path": "PATCHES/text.009",
       "operation": "install",
       "source": {
         "kind": "copy",
@@ -911,7 +911,7 @@
       }
     },
     {
-      "path": "text.010",
+      "path": "PATCHES/text.010",
       "operation": "install",
       "source": {
         "kind": "copy",
@@ -920,7 +920,7 @@
       }
     },
     {
-      "path": "text.011",
+      "path": "PATCHES/text.011",
       "operation": "install",
       "source": {
         "kind": "copy",
@@ -929,7 +929,7 @@
       }
     },
     {
-      "path": "text.012",
+      "path": "PATCHES/text.012",
       "operation": "install",
       "source": {
         "kind": "copy",
@@ -938,7 +938,7 @@
       }
     },
     {
-      "path": "text.013",
+      "path": "PATCHES/text.013",
       "operation": "install",
       "source": {
         "kind": "copy",
@@ -947,7 +947,7 @@
       }
     },
     {
-      "path": "text.014",
+      "path": "PATCHES/text.014",
       "operation": "install",
       "source": {
         "kind": "copy",
@@ -956,7 +956,7 @@
       }
     },
     {
-      "path": "text.020",
+      "path": "PATCHES/text.020",
       "operation": "install",
       "source": {
         "kind": "copy",
@@ -965,7 +965,7 @@
       }
     },
     {
-      "path": "text.022",
+      "path": "PATCHES/text.022",
       "operation": "install",
       "source": {
         "kind": "copy",
@@ -974,7 +974,7 @@
       }
     },
     {
-      "path": "text.023",
+      "path": "PATCHES/text.023",
       "operation": "install",
       "source": {
         "kind": "copy",
@@ -983,7 +983,7 @@
       }
     },
     {
-      "path": "text.024",
+      "path": "PATCHES/text.024",
       "operation": "install",
       "source": {
         "kind": "copy",
@@ -992,7 +992,7 @@
       }
     },
     {
-      "path": "text.025",
+      "path": "PATCHES/text.025",
       "operation": "install",
       "source": {
         "kind": "copy",
@@ -1001,7 +1001,7 @@
       }
     },
     {
-      "path": "text.027",
+      "path": "PATCHES/text.027",
       "operation": "install",
       "source": {
         "kind": "copy",
@@ -1010,7 +1010,7 @@
       }
     },
     {
-      "path": "text.028",
+      "path": "PATCHES/text.028",
       "operation": "install",
       "source": {
         "kind": "copy",
@@ -1019,7 +1019,7 @@
       }
     },
     {
-      "path": "text.030",
+      "path": "PATCHES/text.030",
       "operation": "install",
       "source": {
         "kind": "copy",
@@ -1028,7 +1028,7 @@
       }
     },
     {
-      "path": "text.031",
+      "path": "PATCHES/text.031",
       "operation": "install",
       "source": {
         "kind": "copy",
@@ -1037,7 +1037,7 @@
       }
     },
     {
-      "path": "text.032",
+      "path": "PATCHES/text.032",
       "operation": "install",
       "source": {
         "kind": "copy",
@@ -1046,7 +1046,7 @@
       }
     },
     {
-      "path": "text.033",
+      "path": "PATCHES/text.033",
       "operation": "install",
       "source": {
         "kind": "copy",
@@ -1055,7 +1055,7 @@
       }
     },
     {
-      "path": "text.034",
+      "path": "PATCHES/text.034",
       "operation": "install",
       "source": {
         "kind": "copy",
@@ -1064,7 +1064,7 @@
       }
     },
     {
-      "path": "text.035",
+      "path": "PATCHES/text.035",
       "operation": "install",
       "source": {
         "kind": "copy",
@@ -1073,7 +1073,7 @@
       }
     },
     {
-      "path": "text.036",
+      "path": "PATCHES/text.036",
       "operation": "install",
       "source": {
         "kind": "copy",
@@ -1082,7 +1082,7 @@
       }
     },
     {
-      "path": "text.037",
+      "path": "PATCHES/text.037",
       "operation": "install",
       "source": {
         "kind": "copy",
@@ -1091,7 +1091,7 @@
       }
     },
     {
-      "path": "text.038",
+      "path": "PATCHES/text.038",
       "operation": "install",
       "source": {
         "kind": "copy",
@@ -1100,7 +1100,7 @@
       }
     },
     {
-      "path": "text.040",
+      "path": "PATCHES/text.040",
       "operation": "install",
       "source": {
         "kind": "copy",
@@ -1109,7 +1109,7 @@
       }
     },
     {
-      "path": "text.041",
+      "path": "PATCHES/text.041",
       "operation": "install",
       "source": {
         "kind": "copy",
@@ -1118,7 +1118,7 @@
       }
     },
     {
-      "path": "text.042",
+      "path": "PATCHES/text.042",
       "operation": "install",
       "source": {
         "kind": "copy",
@@ -1127,7 +1127,7 @@
       }
     },
     {
-      "path": "text.043",
+      "path": "PATCHES/text.043",
       "operation": "install",
       "source": {
         "kind": "copy",
@@ -1136,7 +1136,7 @@
       }
     },
     {
-      "path": "text.044",
+      "path": "PATCHES/text.044",
       "operation": "install",
       "source": {
         "kind": "copy",
@@ -1145,7 +1145,7 @@
       }
     },
     {
-      "path": "text.045",
+      "path": "PATCHES/text.045",
       "operation": "install",
       "source": {
         "kind": "copy",
@@ -1154,7 +1154,7 @@
       }
     },
     {
-      "path": "text.046",
+      "path": "PATCHES/text.046",
       "operation": "install",
       "source": {
         "kind": "copy",
@@ -1163,7 +1163,7 @@
       }
     },
     {
-      "path": "text.047",
+      "path": "PATCHES/text.047",
       "operation": "install",
       "source": {
         "kind": "copy",
@@ -1172,7 +1172,7 @@
       }
     },
     {
-      "path": "text.048",
+      "path": "PATCHES/text.048",
       "operation": "install",
       "source": {
         "kind": "copy",
@@ -1181,7 +1181,7 @@
       }
     },
     {
-      "path": "text.049",
+      "path": "PATCHES/text.049",
       "operation": "install",
       "source": {
         "kind": "copy",
@@ -1190,7 +1190,7 @@
       }
     },
     {
-      "path": "text.050",
+      "path": "PATCHES/text.050",
       "operation": "install",
       "source": {
         "kind": "copy",
@@ -1199,7 +1199,7 @@
       }
     },
     {
-      "path": "text.051",
+      "path": "PATCHES/text.051",
       "operation": "install",
       "source": {
         "kind": "copy",
@@ -1208,7 +1208,7 @@
       }
     },
     {
-      "path": "text.053",
+      "path": "PATCHES/text.053",
       "operation": "install",
       "source": {
         "kind": "copy",
@@ -1217,7 +1217,7 @@
       }
     },
     {
-      "path": "text.054",
+      "path": "PATCHES/text.054",
       "operation": "install",
       "source": {
         "kind": "copy",
@@ -1226,7 +1226,7 @@
       }
     },
     {
-      "path": "text.055",
+      "path": "PATCHES/text.055",
       "operation": "install",
       "source": {
         "kind": "copy",
@@ -1235,7 +1235,7 @@
       }
     },
     {
-      "path": "text.057",
+      "path": "PATCHES/text.057",
       "operation": "install",
       "source": {
         "kind": "copy",
@@ -1244,7 +1244,7 @@
       }
     },
     {
-      "path": "text.058",
+      "path": "PATCHES/text.058",
       "operation": "install",
       "source": {
         "kind": "copy",
@@ -1253,7 +1253,7 @@
       }
     },
     {
-      "path": "text.059",
+      "path": "PATCHES/text.059",
       "operation": "install",
       "source": {
         "kind": "copy",
@@ -1262,7 +1262,7 @@
       }
     },
     {
-      "path": "text.060",
+      "path": "PATCHES/text.060",
       "operation": "install",
       "source": {
         "kind": "copy",
@@ -1271,7 +1271,7 @@
       }
     },
     {
-      "path": "text.061",
+      "path": "PATCHES/text.061",
       "operation": "install",
       "source": {
         "kind": "copy",
@@ -1280,7 +1280,7 @@
       }
     },
     {
-      "path": "text.062",
+      "path": "PATCHES/text.062",
       "operation": "install",
       "source": {
         "kind": "copy",
@@ -1289,7 +1289,7 @@
       }
     },
     {
-      "path": "text.063",
+      "path": "PATCHES/text.063",
       "operation": "install",
       "source": {
         "kind": "copy",
@@ -1298,7 +1298,7 @@
       }
     },
     {
-      "path": "text.064",
+      "path": "PATCHES/text.064",
       "operation": "install",
       "source": {
         "kind": "copy",
@@ -1307,7 +1307,7 @@
       }
     },
     {
-      "path": "text.065",
+      "path": "PATCHES/text.065",
       "operation": "install",
       "source": {
         "kind": "copy",
@@ -1316,7 +1316,7 @@
       }
     },
     {
-      "path": "text.066",
+      "path": "PATCHES/text.066",
       "operation": "install",
       "source": {
         "kind": "copy",
@@ -1325,7 +1325,7 @@
       }
     },
     {
-      "path": "text.067",
+      "path": "PATCHES/text.067",
       "operation": "install",
       "source": {
         "kind": "copy",
@@ -1334,7 +1334,7 @@
       }
     },
     {
-      "path": "text.068",
+      "path": "PATCHES/text.068",
       "operation": "install",
       "source": {
         "kind": "copy",
@@ -1343,7 +1343,7 @@
       }
     },
     {
-      "path": "text.071",
+      "path": "PATCHES/text.071",
       "operation": "install",
       "source": {
         "kind": "copy",
@@ -1352,7 +1352,7 @@
       }
     },
     {
-      "path": "text.103",
+      "path": "PATCHES/text.103",
       "operation": "install",
       "source": {
         "kind": "copy",
@@ -1361,7 +1361,7 @@
       }
     },
     {
-      "path": "text.140",
+      "path": "PATCHES/text.140",
       "operation": "install",
       "source": {
         "kind": "copy",
@@ -1370,7 +1370,7 @@
       }
     },
     {
-      "path": "text.141",
+      "path": "PATCHES/text.141",
       "operation": "install",
       "source": {
         "kind": "copy",
@@ -1379,7 +1379,7 @@
       }
     },
     {
-      "path": "text.143",
+      "path": "PATCHES/text.143",
       "operation": "install",
       "source": {
         "kind": "copy",
@@ -1388,7 +1388,7 @@
       }
     },
     {
-      "path": "text.145",
+      "path": "PATCHES/text.145",
       "operation": "install",
       "source": {
         "kind": "copy",
@@ -1397,7 +1397,7 @@
       }
     },
     {
-      "path": "text.157",
+      "path": "PATCHES/text.157",
       "operation": "install",
       "source": {
         "kind": "copy",
@@ -1406,7 +1406,7 @@
       }
     },
     {
-      "path": "text.158",
+      "path": "PATCHES/text.158",
       "operation": "install",
       "source": {
         "kind": "copy",
@@ -1415,7 +1415,7 @@
       }
     },
     {
-      "path": "text.170",
+      "path": "PATCHES/text.170",
       "operation": "install",
       "source": {
         "kind": "copy",
@@ -1424,7 +1424,7 @@
       }
     },
     {
-      "path": "text.300",
+      "path": "PATCHES/text.300",
       "operation": "install",
       "source": {
         "kind": "copy",
@@ -1433,7 +1433,7 @@
       }
     },
     {
-      "path": "text.301",
+      "path": "PATCHES/text.301",
       "operation": "install",
       "source": {
         "kind": "copy",
@@ -1442,7 +1442,7 @@
       }
     },
     {
-      "path": "text.302",
+      "path": "PATCHES/text.302",
       "operation": "install",
       "source": {
         "kind": "copy",
@@ -1451,7 +1451,7 @@
       }
     },
     {
-      "path": "text.303",
+      "path": "PATCHES/text.303",
       "operation": "install",
       "source": {
         "kind": "copy",
@@ -1460,7 +1460,7 @@
       }
     },
     {
-      "path": "text.400",
+      "path": "PATCHES/text.400",
       "operation": "install",
       "source": {
         "kind": "copy",
@@ -1469,7 +1469,7 @@
       }
     },
     {
-      "path": "text.401",
+      "path": "PATCHES/text.401",
       "operation": "install",
       "source": {
         "kind": "copy",
@@ -1478,7 +1478,7 @@
       }
     },
     {
-      "path": "text.402",
+      "path": "PATCHES/text.402",
       "operation": "install",
       "source": {
         "kind": "copy",
@@ -1487,7 +1487,7 @@
       }
     },
     {
-      "path": "text.550",
+      "path": "PATCHES/text.550",
       "operation": "install",
       "source": {
         "kind": "copy",
@@ -1496,7 +1496,7 @@
       }
     },
     {
-      "path": "text.551",
+      "path": "PATCHES/text.551",
       "operation": "install",
       "source": {
         "kind": "copy",
@@ -1505,7 +1505,7 @@
       }
     },
     {
-      "path": "text.552",
+      "path": "PATCHES/text.552",
       "operation": "install",
       "source": {
         "kind": "copy",
@@ -1514,7 +1514,7 @@
       }
     },
     {
-      "path": "text.553",
+      "path": "PATCHES/text.553",
       "operation": "install",
       "source": {
         "kind": "copy",
@@ -1523,7 +1523,7 @@
       }
     },
     {
-      "path": "text.554",
+      "path": "PATCHES/text.554",
       "operation": "install",
       "source": {
         "kind": "copy",
@@ -1532,7 +1532,7 @@
       }
     },
     {
-      "path": "text.555",
+      "path": "PATCHES/text.555",
       "operation": "install",
       "source": {
         "kind": "copy",
@@ -1541,7 +1541,7 @@
       }
     },
     {
-      "path": "text.556",
+      "path": "PATCHES/text.556",
       "operation": "install",
       "source": {
         "kind": "copy",
@@ -1550,7 +1550,7 @@
       }
     },
     {
-      "path": "text.557",
+      "path": "PATCHES/text.557",
       "operation": "install",
       "source": {
         "kind": "copy",
@@ -1559,7 +1559,7 @@
       }
     },
     {
-      "path": "text.558",
+      "path": "PATCHES/text.558",
       "operation": "install",
       "source": {
         "kind": "copy",
@@ -1568,7 +1568,7 @@
       }
     },
     {
-      "path": "text.559",
+      "path": "PATCHES/text.559",
       "operation": "install",
       "source": {
         "kind": "copy",
@@ -1577,7 +1577,7 @@
       }
     },
     {
-      "path": "text.560",
+      "path": "PATCHES/text.560",
       "operation": "install",
       "source": {
         "kind": "copy",
@@ -1586,7 +1586,7 @@
       }
     },
     {
-      "path": "text.562",
+      "path": "PATCHES/text.562",
       "operation": "install",
       "source": {
         "kind": "copy",
@@ -1595,7 +1595,7 @@
       }
     },
     {
-      "path": "text.563",
+      "path": "PATCHES/text.563",
       "operation": "install",
       "source": {
         "kind": "copy",
@@ -1604,7 +1604,7 @@
       }
     },
     {
-      "path": "text.564",
+      "path": "PATCHES/text.564",
       "operation": "install",
       "source": {
         "kind": "copy",
@@ -1613,7 +1613,7 @@
       }
     },
     {
-      "path": "text.565",
+      "path": "PATCHES/text.565",
       "operation": "install",
       "source": {
         "kind": "copy",
@@ -1622,7 +1622,7 @@
       }
     },
     {
-      "path": "text.569",
+      "path": "PATCHES/text.569",
       "operation": "install",
       "source": {
         "kind": "copy",
@@ -1631,7 +1631,7 @@
       }
     },
     {
-      "path": "text.570",
+      "path": "PATCHES/text.570",
       "operation": "install",
       "source": {
         "kind": "copy",
@@ -1640,7 +1640,7 @@
       }
     },
     {
-      "path": "text.571",
+      "path": "PATCHES/text.571",
       "operation": "install",
       "source": {
         "kind": "copy",
@@ -1649,7 +1649,7 @@
       }
     },
     {
-      "path": "text.572",
+      "path": "PATCHES/text.572",
       "operation": "install",
       "source": {
         "kind": "copy",
@@ -1658,7 +1658,7 @@
       }
     },
     {
-      "path": "text.573",
+      "path": "PATCHES/text.573",
       "operation": "install",
       "source": {
         "kind": "copy",
@@ -1667,7 +1667,7 @@
       }
     },
     {
-      "path": "text.700",
+      "path": "PATCHES/text.700",
       "operation": "install",
       "source": {
         "kind": "copy",
@@ -1676,7 +1676,7 @@
       }
     },
     {
-      "path": "text.702",
+      "path": "PATCHES/text.702",
       "operation": "install",
       "source": {
         "kind": "copy",
@@ -1685,7 +1685,7 @@
       }
     },
     {
-      "path": "text.703",
+      "path": "PATCHES/text.703",
       "operation": "install",
       "source": {
         "kind": "copy",
@@ -1694,7 +1694,7 @@
       }
     },
     {
-      "path": "text.704",
+      "path": "PATCHES/text.704",
       "operation": "install",
       "source": {
         "kind": "copy",
@@ -1703,7 +1703,7 @@
       }
     },
     {
-      "path": "text.705",
+      "path": "PATCHES/text.705",
       "operation": "install",
       "source": {
         "kind": "copy",
@@ -1712,7 +1712,7 @@
       }
     },
     {
-      "path": "text.706",
+      "path": "PATCHES/text.706",
       "operation": "install",
       "source": {
         "kind": "copy",
@@ -1721,7 +1721,7 @@
       }
     },
     {
-      "path": "text.811",
+      "path": "PATCHES/text.811",
       "operation": "install",
       "source": {
         "kind": "copy",
@@ -1730,7 +1730,7 @@
       }
     },
     {
-      "path": "text.817",
+      "path": "PATCHES/text.817",
       "operation": "install",
       "source": {
         "kind": "copy",
@@ -1739,7 +1739,7 @@
       }
     },
     {
-      "path": "text.950",
+      "path": "PATCHES/text.950",
       "operation": "install",
       "source": {
         "kind": "copy",
@@ -1748,7 +1748,7 @@
       }
     },
     {
-      "path": "text.990",
+      "path": "PATCHES/text.990",
       "operation": "install",
       "source": {
         "kind": "copy",
@@ -1757,7 +1757,7 @@
       }
     },
     {
-      "path": "text.993",
+      "path": "PATCHES/text.993",
       "operation": "install",
       "source": {
         "kind": "copy",
@@ -1766,7 +1766,7 @@
       }
     },
     {
-      "path": "text.994",
+      "path": "PATCHES/text.994",
       "operation": "install",
       "source": {
         "kind": "copy",

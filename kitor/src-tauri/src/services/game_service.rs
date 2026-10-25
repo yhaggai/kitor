@@ -247,6 +247,52 @@ fn get_game_metadata_from_registry(
     Ok((None, None, None))
 }
 
+// AGI/SCI filenames are shared across titles. Fingerprints identify the
+// supported Steam editions and patched AGI directories; SCI patches leave
+// RESOURCE.MAP intact. Values come from the import recipes and patch payloads.
+fn is_space_quest(path: &Path, id: &str) -> bool {
+    use sha2::Digest;
+    #[derive(Deserialize)]
+    struct Signature {
+        id: String,
+        signature: String,
+        sha256: Vec<String>,
+        required: Vec<String>,
+    }
+    let signatures: Vec<Signature> = serde_json::from_str(include_str!(
+        "../../data/space_quest_detection.json"
+    )).expect("bundled Space Quest signatures");
+    let Some(signature) = signatures.iter().find(|s| s.id == id) else { return false; };
+    let Ok(entries) = std::fs::read_dir(path) else { return false; };
+    let files: std::collections::HashMap<_, _> = entries.flatten()
+        .filter(|entry| entry.file_type().is_ok_and(|kind| kind.is_file()))
+        .map(|entry| (entry.file_name().to_string_lossy().to_ascii_lowercase(), entry.path()))
+        .collect();
+    if !signature.required.iter().all(|name| files.contains_key(&name.to_ascii_lowercase())) {
+        return false;
+    }
+    let Some(file) = files.get(&signature.signature.to_ascii_lowercase()) else { return false; };
+    let Ok(bytes) = std::fs::read(file) else { return false; };
+    signature.sha256.contains(&format!("{:x}", sha2::Sha256::digest(bytes)))
+}
+
+// GOG keeps Toonstruck's identifying resources below MISC. Match both files
+// case-insensitively, but retain the parent containing ACT1/ACT2 for ScummVM.
+fn is_toonstruck(path: &Path) -> bool {
+    let Ok(entries) = std::fs::read_dir(path) else { return false; };
+    entries.flatten().any(|entry| {
+        if !entry.file_name().to_string_lossy().eq_ignore_ascii_case("misc") {
+            return false;
+        }
+        let Ok(files) = std::fs::read_dir(entry.path()) else { return false; };
+        let names: std::collections::HashSet<_> = files.flatten()
+            .filter(|file| file.file_type().is_ok_and(|kind| kind.is_file()))
+            .map(|file| file.file_name().to_string_lossy().to_ascii_lowercase())
+            .collect();
+        names.contains("toonfont.caf") && names.contains("toonstrk.res")
+    })
+}
+
 pub fn detect_game_in_folder(path: &Path) -> Result<Option<DetectedGameInfo>, String> {
     if !path.exists() || !path.is_dir() {
         return Err("Invalid directory path".to_string());
@@ -266,6 +312,23 @@ pub fn detect_game_in_folder(path: &Path) -> Result<Option<DetectedGameInfo>, St
     for game_def in registry.games {
         if game_def.patches.is_empty() {
             continue;
+        }
+        // Steam's Drifter installation wraps its Unity data in a native bundle.
+        // Check both the title-specific runner and game data, not the folder name.
+        if game_def.scummvm_id == "drifter" {
+            for bundle in [path.to_path_buf(), path.join("TheDrifter.app")] {
+                if bundle.join("Contents/MacOS/The Drifter").is_file()
+                    && bundle.join("Contents/Resources/Data/globalgamemanagers").is_file()
+                {
+                    return Ok(Some(DetectedGameInfo {
+                        install_path: bundle.canonicalize().map_err(|e| e.to_string())?
+                            .to_string_lossy().into_owned(),
+                        scummvm_id: game_def.scummvm_id,
+                        title: game_def.title,
+                        available_patches_count: game_def.patches.len(),
+                    }));
+                }
+            }
         }
         // UNDERTALE's macOS archive lives inside its native app bundle.
         // Require the runner as well: game.ios alone is not a unique signature.
@@ -294,12 +357,17 @@ pub fn detect_game_in_folder(path: &Path) -> Result<Option<DetectedGameInfo>, St
                 let Ok(entries) = std::fs::read_dir(&data_path) else {
                     continue;
                 };
-                let matches = entries.flatten().any(|entry| {
+                let is_sq = matches!(game_def.scummvm_id.as_str(), "sq1" | "sq1sci" | "sq2" | "sq3" | "sq5");
+                let matches = if is_sq {
+                    is_space_quest(&data_path, &game_def.scummvm_id)
+                } else if game_def.scummvm_id == "toonstruck" {
+                    is_toonstruck(&data_path)
+                } else { entries.flatten().any(|entry| {
                     entry.file_type().is_ok_and(|kind| kind.is_file())
                         && game_def.detection_patterns.unique_files.iter().any(|name| {
                             entry.file_name().to_string_lossy().eq_ignore_ascii_case(name)
                         })
-                });
+                }) };
                 if matches {
                     return Ok(Some(DetectedGameInfo {
                         install_path: data_path.to_string_lossy().into_owned(),
@@ -383,7 +451,11 @@ pub async fn get_games_with_patches(
         
         if has_available_patch || has_installed_patch {
             let registry_cover_url = game_def.and_then(|d| d.cover_url.clone());
-            let cached_cover_path = image_service::get_cached_cover_path(&game.scummvm_id, &app_data_dir)?;
+            let cached_cover_path = if let Some(ref url) = registry_cover_url {
+                image_service::get_cached_cover_for_url(&game.scummvm_id, url, &app_data_dir)?
+            } else {
+                image_service::get_cached_cover_path(&game.scummvm_id, &app_data_dir)?
+            };
 
             if cached_cover_path.is_none() {
                 if let Some(url) = registry_cover_url.clone().or_else(|| game.cover_url.clone()) {
@@ -430,9 +502,8 @@ mod tests {
     struct Fixture(PathBuf);
     impl Fixture {
         fn new() -> Self {
-            let path = std::env::temp_dir().join(format!("kitor-kyra-{}-{}",
-                std::process::id(), chrono::Utc::now().timestamp_nanos_opt().unwrap()));
-            std::fs::create_dir_all(&path).unwrap();
+            let path = tempfile::Builder::new().prefix("kitor-detection-")
+                .tempdir().unwrap().keep();
             Self(path)
         }
         fn data(&self, relative: &str) -> PathBuf {
@@ -444,6 +515,93 @@ mod tests {
     }
     impl Drop for Fixture {
         fn drop(&mut self) { let _ = std::fs::remove_dir_all(&self.0); }
+    }
+
+    #[test]
+    #[ignore = "requires local collection; set KITOR_SPACE_QUEST_DIR"]
+    fn detects_space_quest_collection() {
+        let root = PathBuf::from(std::env::var("KITOR_SPACE_QUEST_DIR").unwrap());
+        let signatures: serde_json::Value = serde_json::from_str(include_str!(
+            "../../data/space_quest_detection.json"
+        )).unwrap();
+        for signature in signatures.as_array().unwrap() {
+            let id = signature["id"].as_str().unwrap();
+            let source = root.join(format!("{id}-steam"));
+            let detected = detect_game_in_folder(&source).unwrap().unwrap();
+            assert_eq!(detected.scummvm_id, id);
+            assert_eq!(PathBuf::from(detected.install_path), source);
+            let fixture = Fixture::new();
+            for name in signature["required"].as_array().unwrap() {
+                let name = name.as_str().unwrap();
+                std::fs::copy(source.join(name), fixture.0.join(name.to_lowercase())).unwrap();
+            }
+            assert_eq!(detect_game_in_folder(&fixture.0).unwrap().unwrap().scummvm_id, id);
+            for other in ["sq1", "sq1sci", "sq2", "sq3", "sq5"] {
+                assert_eq!(is_space_quest(&fixture.0, other), id == other);
+            }
+            let file = fixture.0.join(signature["signature"].as_str().unwrap().to_lowercase());
+            std::fs::write(file, b"unrecognized game data").unwrap();
+            assert!(detect_game_in_folder(&fixture.0).unwrap().is_none());
+        }
+    }
+
+    #[test]
+    fn sq2_rejects_shared_agi_names_without_matching_contents() {
+        let fixture = Fixture::new();
+        for name in ["LOGDIR", "PICDIR", "SNDDIR", "VIEWDIR", "VOL.0", "VOL.1", "VOL.2"] {
+            std::fs::write(fixture.0.join(name), b"another AGI game").unwrap();
+        }
+        assert!(!is_space_quest(&fixture.0, "sq2"));
+        assert!(detect_game_in_folder(&fixture.0).unwrap().is_none());
+    }
+
+    #[test]
+    #[ignore = "requires local SQ2 data; set KITOR_SQ2_DIR"]
+    fn detects_local_sq2_and_case_insensitive_copy() {
+        let path = PathBuf::from(std::env::var("KITOR_SQ2_DIR").unwrap());
+        let detected = detect_game_in_folder(&path).unwrap().unwrap();
+        assert_eq!(detected.scummvm_id, "sq2");
+        assert_eq!(PathBuf::from(detected.install_path), path);
+        let fixture = Fixture::new();
+        for name in ["LOGDIR", "PICDIR", "SNDDIR", "VIEWDIR", "VOL.0", "VOL.1", "VOL.2"] {
+            std::fs::copy(path.join(name), fixture.0.join(name.to_lowercase())).unwrap();
+        }
+        assert_eq!(detect_game_in_folder(&fixture.0).unwrap().unwrap().scummvm_id, "sq2");
+        std::fs::remove_file(fixture.0.join("vol.0")).unwrap();
+        assert!(detect_game_in_folder(&fixture.0).unwrap().is_none());
+    }
+
+    #[test]
+    fn detects_toonstruck_data_and_gog_bundle() {
+        let fixture = Fixture::new();
+        let bundle = fixture.0.join("Toonstruck.app");
+        let data = bundle.join("Contents/Resources/game/game");
+        let misc = data.join("mIsC");
+        std::fs::create_dir_all(&misc).unwrap();
+        std::fs::write(misc.join("ToonFont.CAF"), b"fixture").unwrap();
+        assert!(detect_game_in_folder(&bundle).unwrap().is_none());
+        std::fs::create_dir(misc.join("TOONSTRK.RES")).unwrap();
+        assert!(detect_game_in_folder(&bundle).unwrap().is_none());
+        std::fs::remove_dir(misc.join("TOONSTRK.RES")).unwrap();
+        std::fs::write(misc.join("TOONSTRK.RES"), b"fixture").unwrap();
+        for selected in [&bundle, &data] {
+            let detected = detect_game_in_folder(selected).unwrap().unwrap();
+            assert_eq!(detected.scummvm_id, "toonstruck");
+            assert_eq!(PathBuf::from(detected.install_path), data);
+        }
+    }
+
+    #[tokio::test]
+    #[ignore = "requires local GOG Toonstruck; set KITOR_TOONSTRUCK_APP"]
+    async fn scans_local_toonstruck_installation() {
+        let fixture = Fixture::new();
+        let bundle = PathBuf::from(std::env::var("KITOR_TOONSTRUCK_APP").unwrap());
+        let db = crate::db::init_db(&fixture.0.join("database")).await.unwrap();
+        let games = scan_directory(&db, bundle.to_str().unwrap(), fixture.0.clone()).await.unwrap();
+        assert_eq!(games.len(), 1);
+        assert_eq!(games[0].scummvm_id, "toonstruck");
+        assert_eq!(Path::new(&games[0].install_path), bundle.join("Contents/Resources/game/game"));
+        assert!(scan_directory(&db, bundle.to_str().unwrap(), fixture.0.clone()).await.unwrap().is_empty());
     }
 
     #[test]
@@ -482,6 +640,37 @@ mod tests {
         std::fs::create_dir(&windows).unwrap();
         std::fs::write(windows.join("UNDERTALE.exe"), b"runner").unwrap();
         assert_eq!(detect_game_in_folder(&windows).unwrap().unwrap().scummvm_id, "undertale");
+    }
+
+    #[tokio::test]
+    async fn detects_and_scans_drifter_bundle_and_parent_folders() {
+        let fixture = Fixture::new();
+        let game_folder = fixture.0.join("The Drifter");
+        let bundle = game_folder.join("TheDrifter.app");
+        std::fs::create_dir_all(bundle.join("Contents/MacOS")).unwrap();
+        std::fs::create_dir_all(bundle.join("Contents/Resources/Data")).unwrap();
+        assert!(detect_game_in_folder(&game_folder).unwrap().is_none());
+        std::fs::write(bundle.join("Contents/MacOS/The Drifter"), b"runner").unwrap();
+        assert!(detect_game_in_folder(&bundle).unwrap().is_none());
+        std::fs::write(bundle.join("Contents/Resources/Data/globalgamemanagers"), b"data").unwrap();
+        let expected = bundle.canonicalize().unwrap();
+        let db = crate::db::init_db(&fixture.0.join("database")).await.unwrap();
+        for selected in [&fixture.0, &game_folder, &bundle] {
+            let games = scan_directory(&db, selected.to_str().unwrap(), fixture.0.clone()).await.unwrap();
+            assert_eq!(games.len(), 1);
+            assert_eq!(games[0].scummvm_id, "drifter");
+            assert_eq!(Path::new(&games[0].install_path), expected);
+            remove_game(&db, games[0].id).await.unwrap();
+        }
+    }
+
+    #[test]
+    #[ignore = "requires a local Drifter installation; set KITOR_DRIFTER_PATH"]
+    fn detects_local_drifter_installation() {
+        let path = PathBuf::from(std::env::var("KITOR_DRIFTER_PATH").unwrap());
+        let detected = detect_game_in_folder(&path).unwrap().unwrap();
+        assert_eq!(detected.scummvm_id, "drifter");
+        assert!(Path::new(&detected.install_path).join("Contents/MacOS/The Drifter").is_file());
     }
 
     #[test]

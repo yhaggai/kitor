@@ -1,5 +1,14 @@
 import { useMemo, useReducer } from "react";
 
+export type PatchDownloadProgress = {
+  scummvm_id: string;
+  downloaded: number;
+  total: number;
+  percentage: number;
+  bytes_per_second: number;
+  seconds_remaining: number | null;
+};
+
 type StepStatus = "pending" | "in-progress" | "complete";
 
 type InstallStep = {
@@ -12,6 +21,8 @@ type State = {
   isInstalling: boolean;
   showInstallDialog: boolean;
   installSteps: InstallStep[];
+  installProgress: number;
+  patchDownload: PatchDownloadProgress | null;
   showDeleteDialog: boolean;
   isDeleting: boolean;
   showRestoreDialog: boolean;
@@ -20,6 +31,7 @@ type State = {
 };
 
 type Action =
+  | { type: "UPDATE_DOWNLOAD"; download: PatchDownloadProgress }
   | { type: "START_INSTALL" }
   | { type: "FINISH_INSTALL" }
   | { type: "SHOW_INSTALL_DIALOG" }
@@ -48,17 +60,23 @@ const INITIAL_STEPS: InstallStep[] = [
 
 const reducer = (state: State, action: Action): State => {
   switch (action.type) {
+    case "UPDATE_DOWNLOAD":
+      return state.isInstalling ? { ...state, patchDownload: action.download } : state;
     case "START_INSTALL":
       return {
         ...state,
         isInstalling: true,
         installSteps: INITIAL_STEPS.map((s) => ({ ...s })),
+        installProgress: 0,
+        patchDownload: null,
       };
     case "FINISH_INSTALL":
       return {
         ...state,
         isInstalling: false,
         installSteps: INITIAL_STEPS.map((s) => ({ ...s })),
+        installProgress: 0,
+        patchDownload: null,
       };
     case "SHOW_INSTALL_DIALOG":
       return { ...state, showInstallDialog: true };
@@ -73,7 +91,9 @@ const reducer = (state: State, action: Action): State => {
       };
     case "UPDATE_PROGRESS": {
       // Map progress percentage to step updates
-      const progress = action.progress;
+      const progress = Number.isFinite(action.progress)
+        ? Math.min(100, Math.max(0, action.progress))
+        : state.installProgress;
       let updatedSteps = [...state.installSteps];
 
       if (progress >= 0 && progress < 20) {
@@ -148,7 +168,7 @@ const reducer = (state: State, action: Action): State => {
         );
       }
 
-      return { ...state, installSteps: updatedSteps };
+      return { ...state, installSteps: updatedSteps, installProgress: progress };
     }
     case "SHOW_DELETE_DIALOG":
       return { ...state, showDeleteDialog: true };
@@ -179,6 +199,8 @@ const initialState: State = {
   isInstalling: false,
   showInstallDialog: false,
   installSteps: INITIAL_STEPS.map((s) => ({ ...s })),
+  installProgress: 0,
+  patchDownload: null,
   showDeleteDialog: false,
   isDeleting: false,
   showRestoreDialog: false,
@@ -192,6 +214,8 @@ export const useGameCardState = () => {
   // Memoize actions to prevent useEffect re-runs on every render
   const actions = useMemo(
     () => ({
+      updateDownload: (download: PatchDownloadProgress) =>
+        dispatch({ type: "UPDATE_DOWNLOAD", download }),
       startInstall: () => dispatch({ type: "START_INSTALL" }),
       finishInstall: () => dispatch({ type: "FINISH_INSTALL" }),
       showInstallDialog: () => dispatch({ type: "SHOW_INSTALL_DIALOG" }),

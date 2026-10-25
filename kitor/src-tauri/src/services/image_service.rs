@@ -22,7 +22,7 @@ pub fn get_cached_cover_path(scummvm_id: &str, app_data_dir: &Path) -> Result<Op
     for entry in entries {
         let entry = entry.map_err(|e| format!("Failed to read covers dir entry: {}", e))?;
         let path = entry.path();
-        if !path.is_file() {
+        if !path.is_file() || path.extension().and_then(OsStr::to_str) == Some("source") {
             continue;
         }
 
@@ -46,6 +46,18 @@ fn extension_from_url(url: &str) -> Option<String> {
     }
 }
 
+pub fn get_cached_cover_for_url(
+    scummvm_id: &str,
+    cover_url: &str,
+    app_data_dir: &Path,
+) -> Result<Option<PathBuf>, String> {
+    let source = covers_dir(app_data_dir).join(format!("{}.source", scummvm_id));
+    if std::fs::read_to_string(source).ok().as_deref() != Some(cover_url) {
+        return Ok(None);
+    }
+    get_cached_cover_path(scummvm_id, app_data_dir)
+}
+
 fn extension_from_content_type(content_type: Option<&str>) -> Option<String> {
     let content_type = content_type?.to_ascii_lowercase();
     match content_type.split(';').next().unwrap_or("").trim() {
@@ -64,7 +76,7 @@ pub async fn download_and_cache_cover(
 ) -> Result<PathBuf, String> {
     let dir = ensure_covers_dir(&app_data_dir)?;
 
-    if let Some(existing) = get_cached_cover_path(scummvm_id, &app_data_dir)? {
+    if let Some(existing) = get_cached_cover_for_url(scummvm_id, cover_url, &app_data_dir)? {
         return Ok(existing);
     }
 
@@ -76,6 +88,8 @@ pub async fn download_and_cache_cover(
         .get(cover_url)
         .send()
         .await
+        .map_err(|e| format!("Failed to download cover image: {}", e))?
+        .error_for_status()
         .map_err(|e| format!("Failed to download cover image: {}", e))?;
 
     let content_type = response
@@ -83,8 +97,8 @@ pub async fn download_and_cache_cover(
         .get(CONTENT_TYPE)
         .and_then(|v| v.to_str().ok());
 
-    let ext = extension_from_url(cover_url)
-        .or_else(|| extension_from_content_type(content_type))
+    let ext = extension_from_content_type(content_type)
+        .or_else(|| extension_from_url(cover_url))
         .unwrap_or_else(|| "jpg".to_string());
 
     let dest_path = dir.join(format!("{}.{}", scummvm_id, ext));
@@ -97,6 +111,19 @@ pub async fn download_and_cache_cover(
     tokio::fs::write(&dest_path, bytes)
         .await
         .map_err(|e| format!("Failed to write cover image: {}", e))?;
+
+    // Remove an old format only after the replacement has downloaded successfully.
+    for entry in std::fs::read_dir(&dir).map_err(|e| e.to_string())? {
+        let path = entry.map_err(|e| e.to_string())?.path();
+        if path != dest_path && path.is_file()
+            && path.file_stem().and_then(OsStr::to_str) == Some(scummvm_id)
+            && path.extension().and_then(OsStr::to_str) != Some("source")
+        {
+            std::fs::remove_file(path).map_err(|e| e.to_string())?;
+        }
+    }
+    tokio::fs::write(dir.join(format!("{}.source", scummvm_id)), cover_url)
+        .await.map_err(|e| format!("Failed to save cover source: {}", e))?;
 
     Ok(dest_path)
 }

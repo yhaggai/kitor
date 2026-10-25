@@ -12,6 +12,7 @@ import {
   XCircle,
 } from "lucide-react";
 import { useCallback, useEffect, useState } from "react";
+import SteamAuthCard from "@/components/SteamAuthCard";
 import GogAuthCard from "@/components/GogAuthCard";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -209,6 +210,7 @@ export default function Settings() {
       </Card>
 
       <GogAuthCard />
+      <SteamAuthCard />
 
       <Card>
         <CardHeader>

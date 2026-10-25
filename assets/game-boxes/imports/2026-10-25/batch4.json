@@ -1,0 +1,32 @@
+[
+  {
+    "id": "my-memory-of-us",
+    "prompt": "Use case: text-localization. Edit the supplied original cover: replace only game title with exact Hebrew \"זכור אזכרנו\". Preserve red and white distressed condensed sans-serif letters in the upper left. Correct right-to-left spelling. Keep all original artwork, people, colors, light, positions and framing unchanged. Change no other text unless specified. No added objects. Retain original aspect ratio and title placement.",
+    "path": "/Users/haggaiyaniv/.codex/generated_images/01a17325-42a3-71b0-8569-0b89e59757d5/exec-e009e79b-40ee-407f-b237-a01e372ffbb4.png"
+  },
+  {
+    "id": "a-fold-apart",
+    "prompt": "Use case: text-localization. Edit the supplied original cover: replace only game title with exact Hebrew \"רגשות מקופלים\". Preserve pink red paper-folded block letters with thick white edging. Two lines occupying original title space. Correct right-to-left spelling. Keep all original artwork, people, colors, light, positions and framing unchanged. Change no other text unless specified. No added objects. Retain original aspect ratio and title placement.",
+    "path": "/Users/haggaiyaniv/.codex/generated_images/01a17325-42a3-71b0-8569-0b89e59757d5/exec-fc952520-8744-4d55-8f94-49102f314a6f.png"
+  },
+  {
+    "id": "hidden-saga-xamadeon-stone",
+    "prompt": "Use case: text-localization. Edit the supplied original cover: replace only game title with exact Hebrew \"הסאגה הסודית\nואבן השמדיאון\". Preserve black hand-lettered whimsical lettering inside existing white ribbon. Correct right-to-left spelling. Keep all original artwork, people, colors, light, positions and framing unchanged. Change no other text unless specified. No added objects. Retain original aspect ratio and title placement.",
+    "path": "/Users/haggaiyaniv/.codex/generated_images/01a17325-42a3-71b0-8569-0b89e59757d5/exec-586a73eb-153b-460f-ac2a-40f22422a260.png"
+  },
+  {
+    "id": "the-henry-stickmin-collection",
+    "prompt": "Use case: text-localization. Edit the supplied original cover: replace only game title with exact Hebrew \"הנרי לי דקיק\". Preserve playful white lettering with thick black double outlines at bottom. Replace Collection with האוסף in smaller matching type. Correct right-to-left spelling. Keep all original artwork, people, colors, light, positions and framing unchanged. Change no other text unless specified. No added objects. Retain original aspect ratio and title placement.",
+    "path": "/Users/haggaiyaniv/.codex/generated_images/01a17325-42a3-71b0-8569-0b89e59757d5/exec-81bf9e72-4f5f-48e1-a417-372d35beb02d.png"
+  },
+  {
+    "id": "syberia",
+    "prompt": "Use case: text-localization. Edit the supplied original cover: replace only game title with exact Hebrew \"סיבריה\". Preserve bold white condensed sans-serif bevel and shadow. Keep B.SOKAL credit unchanged. Correct right-to-left spelling. Keep all original artwork, people, colors, light, positions and framing unchanged. Change no other text unless specified. No added objects. Retain original aspect ratio and title placement.",
+    "path": "/Users/haggaiyaniv/.codex/generated_images/01a17325-42a3-71b0-8569-0b89e59757d5/exec-5940fcc6-e981-4a60-ad96-ddb3a4c1c7df.png"
+  },
+  {
+    "id": "syberia-ii",
+    "prompt": "Use case: text-localization. Edit the supplied original cover: replace only game title with exact Hebrew \"סיבריה 2\". Preserve red flowing italic calligraphic title with thin white edge and shadow, upper position. Keep B.SOKAL and other logos unchanged. Correct right-to-left spelling. Keep all original artwork, people, colors, light, positions and framing unchanged. Change no other text unless specified. No added objects. Retain original aspect ratio and title placement.",
+    "path": "/Users/haggaiyaniv/.codex/generated_images/01a17325-42a3-71b0-8569-0b89e59757d5/exec-98b3fb9f-8e6e-4776-a3d9-dc8d64c998b7.png"
+  }
+]

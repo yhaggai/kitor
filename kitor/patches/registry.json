@@ -2,6 +2,8 @@
   "games": [
     {
       "scummvm_id": "undertale",
+      "steam_app_id": 391540,
+      "cover_url": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/undertale/9145051fa004.jpg",
       "title": "UNDERTALE",
       "platforms": {
         "windows": true,
@@ -9,7 +11,9 @@
         "linux": false
       },
       "detection_patterns": {
-        "unique_files": ["UNDERTALE.exe"],
+        "unique_files": [
+          "UNDERTALE.exe"
+        ],
         "file_patterns": []
       },
       "launch_config": {
@@ -35,8 +39,9 @@
     },
     {
       "scummvm_id": "monkey-se",
+      "steam_app_id": 32360,
       "title": "The Secret of Monkey Island: Special Edition",
-      "cover_url": "/mI1.webp",
+      "cover_url": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/monkey-se/b9d8b502a92e.jpg",
       "platforms": {
         "windows": true,
         "osx": true,
@@ -55,12 +60,22 @@
         ]
       },
       "detection_patterns": {
-        "unique_files": ["Monkey1.pak", "Monkey.exe", "MISE.exe"],
-        "file_patterns": ["*.pak"]
+        "unique_files": [
+          "Monkey1.pak",
+          "Monkey.exe",
+          "MISE.exe"
+        ],
+        "file_patterns": [
+          "*.pak"
+        ]
       },
       "launch_config": {
         "subdirectory": "hebrew",
-        "args": ["--language=he", "--fullscreen", "--auto-detect"]
+        "args": [
+          "--language=he",
+          "--fullscreen",
+          "--auto-detect"
+        ]
       },
       "purchase_guide": "monkey-se.md",
       "patches": [
@@ -72,7 +87,7 @@
           "source_type": "github",
           "checksum": null,
           "file_size": null,
-          "description": "Hebrew translation for The Secret of Monkey Island: Special Edition",
+          "description": "הרפתקת הצבע והקלק משעשעת באיים הקאריביים: ברנשצבע חולם להיות פיראט אימתני, ומתייצב מול פיראט הרפאים לה צ׳אק כדי להציל את המושלת אילנה.\n\nקרדיטים ותודות (מהפרסום המקורי):\nחובה עלינו לציין את ניב באר אשר יצא מגדרו וברא ויצר ליטש ושייף והפך אותו ליצירה פונומנלית. בזכותו המשחק כולל משחקי מילים מובחרים, גיור מלא של שמות הדמויות השונות, קטעי גרפיקה ומעבר על טהרת העברית, גופנים מרהיבים ביופיים, תוכנות ומערכות תומכות מתוחכמות, ועוד אינספור שיפורים ושדרוגים. באופן כללי הוא דאג לנו לקווסט שיספק לנו אלפי רגעים של קסם ואושר.\nנזכיר גם את תומר פיינר ומיקי הוז שעזרו ותרמו רבות בתרגום והגהת המשחק, וגם אני הקטן השתדלתי לעזור כמיטב יכולתי.\n\nHebrew translation for The Secret of Monkey Island: Special Edition",
           "filename": "MonkeyIsland-Heb-AdventureBrew.zip",
           "post_install_script": null,
           "install_manifest": "patch.json"
@@ -81,8 +96,9 @@
     },
     {
       "scummvm_id": "monkey2-se",
+      "steam_app_id": 32460,
       "title": "Monkey Island 2: LeChuck's Revenge Special Edition",
-      "cover_url": "https://m.media-amazon.com/images/M/MV5BNWU0OWQ4ODAtMjViNS00M2RiLWE5ZGQtMDE2NTgyMTIwOTMxXkEyXkFqcGc@._V1_FMjpg_UY2400_.jpg",
+      "cover_url": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/monkey2-se/edc7e06d30c7.jpg",
       "platforms": {
         "windows": true,
         "osx": true,
@@ -101,12 +117,21 @@
         ]
       },
       "detection_patterns": {
-        "unique_files": ["Monkey2.pak", "Monkey2.exe"],
-        "file_patterns": ["*.pak"]
+        "unique_files": [
+          "Monkey2.pak",
+          "Monkey2.exe"
+        ],
+        "file_patterns": [
+          "*.pak"
+        ]
       },
       "launch_config": {
         "subdirectory": "hebrew",
-        "args": ["--language=he", "--fullscreen", "--auto-detect"]
+        "args": [
+          "--language=he",
+          "--fullscreen",
+          "--auto-detect"
+        ]
       },
       "purchase_guide": "monkey2-se.md",
       "patches": [
@@ -118,7 +143,7 @@
           "source_type": "github",
           "checksum": null,
           "file_size": null,
-          "description": "Hebrew translation for Monkey Island 2: LeChuck's Revenge Special Edition",
+          "description": "ברנשצבע יוצא למסע אחר אוצר אגדי, בעוד לה צ׳אק טומן לו מלכודת. ההרפתקה השנייה בסדרת אי הקופים משלבת חידות, הומור ומשחקי מילים.\n\nקרדיטים ותודות (מהפרסום המקורי):\nאת המשחק שאתם מחזיקים בידכם מעטרים רקעים מרהיבים דוברי עברית פרי מכחולם של ניב באר ואורגד שנה, שדאגו גם לשיפורים וליטושים טכניים שונים במשחק ובמנוע לחוויה מושלמת.\nוכמובן, כיאה למשחק עם כזו ציפיה, על התרגום שקדו רבים וטובים, ולהם נרצה להודות גם כן:\nנתנאל אטלי, ניב באר, אלעד הלפרין, אלעד אברהם כהן, עומר כהן, אסף קפלן, שני רוז, אריאל רוזנטל, גיא-בראש שטח, אורגד ורייזל שנה, איילת שריד.\nתודה מיוחדת לאורגד שנה שדחף, קידם, עיצב, הוביל, תיקן, גיהץ וליטש עד הפרט האחרון.\n\nHebrew translation for Monkey Island 2: LeChuck's Revenge Special Edition",
           "filename": "MonkeyIsland2-Heb-AdventureBrew.zip",
           "post_install_script": null,
           "install_manifest": "patch.json"
@@ -127,31 +152,41 @@
     },
     {
       "scummvm_id": "sq1sci",
+      "steam_app_id": 10110,
       "title": "Space Quest I: Roger Wilco in the Sarien Encounter (VGA Remake)",
-      "cover_url": "https://cdn.mobygames.com/covers/10020-space-quest-i-roger-wilco-in-the-sarien-encounter-dos-front-cove.jpg",
+      "cover_url": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/sq1sci/47ff2f31fadc.jpg",
       "platforms": {
         "windows": true,
         "osx": true,
         "linux": true
       },
       "detection_patterns": {
-        "unique_files": ["RESOURCE.000", "SCIDHUV.EXE"],
-        "file_patterns": ["RESOURCE.*"]
+        "unique_files": [
+          "RESOURCE.000",
+          "SCIDHUV.EXE"
+        ],
+        "file_patterns": [
+          "RESOURCE.*"
+        ]
       },
       "launch_config": {
-        "args": ["--language=he", "--fullscreen", "--auto-detect"]
+        "args": [
+          "--language=he",
+          "--fullscreen",
+          "--auto-detect"
+        ]
       },
       "purchase_guide": null,
       "patches": [
         {
           "language": "he",
-          "version": "1.0-kitor2",
+          "version": "1.0-kitor3",
           "author": "AdventureBrew",
-          "download_url": "https://github.com/yhaggai/kitor/releases/download/patch-sq1sci-he-v1.0-kitor2/SpaceQuest1VGA-Heb-AdventureBrew.zip",
+          "download_url": "https://github.com/yhaggai/kitor/releases/download/patch-sq1sci-he-v1.0-kitor3/SpaceQuest1VGA-Heb-AdventureBrew.zip",
           "source_type": "github",
-          "checksum": null,
-          "file_size": null,
-          "description": "Hebrew translation for Space Quest I VGA",
+          "checksum": "7d374a187f733fc52de2c89f009d2a95a2d2aa74651e3cec2ccc360774098825",
+          "file_size": 703801,
+          "description": "רוג׳ר ווילקו, שרת בספינת חלל, מתעורר מתנומה בארון השירות לקולות אזעקה ומגלה שיום העבודה הרגיל שלו הפך להרפתקה. גרסת VGA של הקווסט הפרודי והמשעשע מבית סיירה.\n\nקרדיטים ותודות (מהפרסום המקורי):\nאנו שמחים ונרגשים לבשר כי לאחר עבודה קשה ומפרכת, המשחק הפרודי והמשעשע מבית סיירה ושני החבר'ה מאנדרומדה, מסע בחלל 1, תורגם לעברית וזמין לשימושכם והנאתכם. האחראי המיידי לכל הצעצועים הטכנולוגיים ולשלל הפיצ'רים הגאוניים שאיפשרו את קיומו של המערך הכמעט דמיוני הזה, הוא צביקה הרמתי היקר שמלווה אותנו במסעות השונים מזה שנים רבות. לצידו ניב באר שכמו תמיד לא קיפח אותנו ובכישוריו האינסופיים עיטר את המשחק ביצירות גרפיות משוכללות. עזרו בתרגום ובהגהות אלעד הלפרין וגלעד טסה.\n\nHebrew translation for Space Quest I VGA",
           "filename": "SpaceQuest1VGA-Heb-AdventureBrew.zip",
           "post_install_script": null,
           "install_manifest": "patch.json"
@@ -161,7 +196,7 @@
     {
       "scummvm_id": "kyra1-cd",
       "title": "The Legend of Kyrandia",
-      "cover_url": "https://cdn.mobygames.com/covers/4237701-fables-fiends-the-legend-of-kyrandia-book-one-dos-front-cover.jpg",
+      "cover_url": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/kyra1-cd/b9f9a5ade25d.jpeg",
       "platforms": {
         "windows": true,
         "osx": true,
@@ -180,12 +215,21 @@
         ]
       },
       "detection_patterns": {
-        "unique_files": ["GEMCUT.PAK", "KYRAGEM.PAK"],
-        "file_patterns": ["*.PAK", "*.VRM"],
+        "unique_files": [
+          "GEMCUT.PAK",
+          "KYRAGEM.PAK"
+        ],
+        "file_patterns": [
+          "*.PAK",
+          "*.VRM"
+        ],
         "detection_subdirectory": "DAT"
       },
       "launch_config": {
-        "args": ["--fullscreen", "kyra:kyra1"]
+        "args": [
+          "--fullscreen",
+          "kyra:kyra1"
+        ]
       },
       "purchase_guide": null,
       "patches": [
@@ -197,7 +241,7 @@
           "source_type": "github",
           "checksum": null,
           "file_size": null,
-          "description": "Hebrew translation for The Legend of Kyrandia (BETA)",
+          "description": "לאחר שמלקולם, ליצן החצר שהפך למכשף אכזר, הופך את סבו לאבן, ברנדון יוצא להציל את יושבי היער והממלכה. הפרק הראשון בסדרת הרפתקאות הפנטזיה דברי ימי קירנדיה.\n\nקרדיטים ותודות (מהפרסום המקורי):\nאיש אחד ומיוחד אחראי ליצירת המופת הזאת - ניב באר. הוא כתב וחיבר, שורר והלחין, סיפר והמחיז, צייר ועיטר, ולבסוף הגשים את החלום המתוק למציאות אמיתית של ממש.\n\nHebrew translation for The Legend of Kyrandia (BETA)",
           "filename": "KyraHebPatch-BETA.zip",
           "post_install_script": null,
           "install_manifest": "patch.json"
@@ -206,6 +250,8 @@
     },
     {
       "scummvm_id": "pq1",
+      "steam_app_id": 494740,
+      "cover_url": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/pq1/bb3cbf8ffefc.jpg",
       "title": "Police Quest: In Pursuit of the Death Angel (EGA)",
       "platforms": {
         "windows": true,
@@ -217,7 +263,11 @@
         "file_patterns": []
       },
       "launch_config": {
-        "args": ["--language=he", "--fullscreen", "--auto-detect"]
+        "args": [
+          "--language=he",
+          "--fullscreen",
+          "--auto-detect"
+        ]
       },
       "purchase_guide": null,
       "patches": [
@@ -230,7 +280,7 @@
           "source_type": "github",
           "checksum": "6bf874c6fd540c0a4a8f4a27034a25bea80f168a8d365363978ab1db680711be",
           "file_size": 230863,
-          "description": "Original AGI/EGA edition. Catalog cites GOG; owned Steam Collection must match publisher MD5 guards. Requires Python 3 and Hebrew-capable ScummVM. Windows/macOS package plans are built; native gameplay validation is pending. Automatic folder detection is intentionally disabled pending a reliable game signature; the current Add Game UI cannot select this title explicitly.",
+          "description": "בני בונדס, שוטר תנועה שרוצה רק לסיים את מכסת הדוחות שלו, מסתבך בחקירה של ארגון פשע שבראשו עומד מלאך המוות. האם יצליח להפליל את ראש הארגון?\n\nקרדיטים ותודות (מהפרסום המקורי):\nבעבודת צוות נפלאה הצלחנו להביא עוד פרויקט מרגש לסיומו הטוב. צביקה הרמתי בנה בגאונותו את כלי התרגום והוסיף תמיכה עברית למנוע, ניב באר אייר במכחולו את הכותרת העברית ותמונות שונות שתגלו לאורך המשחק, ואלעד הלפרין, אלכס מילמן ועומר כהן תרגמו.\n\nOriginal AGI/EGA edition. Catalog cites GOG; owned Steam Collection must match publisher MD5 guards. Requires Python 3 and Hebrew-capable ScummVM. Windows/macOS package plans are built; native gameplay validation is pending. Automatic folder detection recognizes the Toonstruck resources in MISC, including GOG macOS app bundles.",
           "filename": "pq1-he-kitor1.zip",
           "post_install_script": null
         }
@@ -238,6 +288,8 @@
     },
     {
       "scummvm_id": "sq1",
+      "steam_app_id": 10110,
+      "cover_url": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/sq1/08cf78a61b31.jpg",
       "title": "Space Quest I: The Sarien Encounter (EGA)",
       "platforms": {
         "windows": true,
@@ -249,7 +301,11 @@
         "file_patterns": []
       },
       "launch_config": {
-        "args": ["--language=he", "--fullscreen", "--auto-detect"]
+        "args": [
+          "--language=he",
+          "--fullscreen",
+          "--auto-detect"
+        ]
       },
       "purchase_guide": null,
       "patches": [
@@ -262,7 +318,7 @@
           "source_type": "github",
           "checksum": "fa16c5dbb079787afb5cdc01f7913c170e68b89a56c1054138743fd71fd5d7af",
           "file_size": 320489,
-          "description": "Original DOS EGA version 2.2 from GOG. Exact original/final SHA-256 guards. Requires Python 3 and a ScummVM daily build with Hebrew AGI support. Windows/macOS package plans are built; native gameplay validation is pending. Automatic folder detection is intentionally disabled pending a reliable game signature; the current Add Game UI cannot select this title explicitly.",
+          "description": "ההרפתקה הראשונה של רוג׳ר ווילקו בגרסת EGA המקורית: קווסט חלל מלא הומור, סכנות ודרכים משונות למות, בכיכובו של שרת שהופך לגיבור.\n\nקרדיטים ותודות (מהפרסום המקורי):\nתודה לשי גרינברג שעזר לי לשפר את התרגום. תודה לכל האנשים בקבוצת הרפתקה עברית על כמה הצעות לשיפור התרגום.\n\nOriginal DOS EGA version 2.2 from GOG. Exact original/final SHA-256 guards. Requires Python 3 and a ScummVM daily build with Hebrew AGI support. Windows/macOS package plans are built; native gameplay validation is pending. Automatic folder detection recognizes the Toonstruck resources in MISC, including GOG macOS app bundles.",
           "filename": "sq1-he-kitor1.zip",
           "post_install_script": null
         }
@@ -274,6 +330,8 @@
     },
     {
       "scummvm_id": "sq2",
+      "steam_app_id": 10110,
+      "cover_url": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/sq2/2f9730d67c73.jpg",
       "title": "Space Quest II: Vohaul’s Revenge",
       "platforms": {
         "windows": true,
@@ -285,7 +343,11 @@
         "file_patterns": []
       },
       "launch_config": {
-        "args": ["--language=he", "--fullscreen", "--auto-detect"]
+        "args": [
+          "--language=he",
+          "--fullscreen",
+          "--auto-detect"
+        ]
       },
       "purchase_guide": null,
       "patches": [
@@ -298,7 +360,7 @@
           "source_type": "github",
           "checksum": "37a47cf0186557e0e1f71ac8be2d73777f20de56de9478452485c63663bb523d",
           "file_size": 460690,
-          "description": "GOG original AGI edition; Steam edition is unverified. Publisher MD5 edition guards. Requires Python 3 and Hebrew-capable ScummVM. Windows/macOS package plans are built; native gameplay validation is pending. Automatic folder detection is intentionally disabled pending a reliable game signature; the current Add Game UI cannot select this title explicitly.",
+          "description": "הפרק השני בסדרת מסע בחלל, נקמתו של ווהאל, בתרגום לעברית.\n\nקרדיטים ותודות (מהפרסום המקורי):\nתודה לשגב (Segev Mashraky) שלימד אותי איך לעשות תרגומים למשחקי AGI. שימו לב לgithub שלו--אני מאוד ממליץ [https://github.com/SegMash/AGIHebrew](https://github.com/SegMash/AGIHebrew)\nתודה לניב באר, שיצר את מסך ״נקמתו של ווהאל״ (באמת הרבה יותר טוב ממה שאני יכולתי לעשות).\nתודה לכל קהילת ״הרפתקה עברית״ שעזרה לי עם התרגום (וסובלת את העברית שלי), כולל shingimel, scars-shawn ופינגימר.\n\nGOG original AGI edition; Steam edition is unverified. Publisher MD5 edition guards. Requires Python 3 and Hebrew-capable ScummVM. Windows/macOS package plans are built; native gameplay validation is pending. Automatic folder detection recognizes the Toonstruck resources in MISC, including GOG macOS app bundles.",
           "filename": "sq2-he-kitor2.zip",
           "post_install_script": null
         }
@@ -310,6 +372,8 @@
     },
     {
       "scummvm_id": "sq3",
+      "steam_app_id": 10110,
+      "cover_url": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/sq3/48f13b56b776.jpeg",
       "title": "Space Quest III: The Pirates of Pestulon",
       "platforms": {
         "windows": true,
@@ -321,7 +385,11 @@
         "file_patterns": []
       },
       "launch_config": {
-        "args": ["--language=he", "--fullscreen", "--auto-detect"]
+        "args": [
+          "--language=he",
+          "--fullscreen",
+          "--auto-detect"
+        ]
       },
       "purchase_guide": null,
       "patches": [
@@ -334,7 +402,7 @@
           "source_type": "github",
           "checksum": "86bce60caac9e362779c85d501099e91e668e6ae9a37639e23de8c78282b5fae",
           "file_size": 506380,
-          "description": "Space Quest Collection or GOG original SCI edition. Requires ScummVM 2.2.0 or later with Hebrew support. Select the SQ3 data directory; patch files go in PATCHES. Windows/macOS package plans are built; native gameplay validation is pending. Automatic folder detection is intentionally disabled pending a reliable game signature; the current Add Game UI cannot select this title explicitly.",
+          "description": "רוג׳ר ווילקו משייט בחלל כשמכלית ענקית לאיסוף אשפה שואבת את ספינתו לתוכה. מכאן העניינים רק מסתבכים בפרק השלישי בסדרת ההרפתקאות הקומית מסע בחלל.\n\nקרדיטים ותודות (מהפרסום המקורי):\nכל הקסם הזה לא נוצר מעצמו אלא חבר'ה יקרים במיוחד שתרמו והשקיעו ונתנו את כל כולם ויצרו את הבלתי ייאמן. צביקה הרמתי על פיתוח המערך הטכנולוגי הגאוני והמתוחכם ועל ניהולו של הפרוייקט מראשיתו ועד סופו, וניב באר על הגופנים המרהיבים המאויירים בטוב טעם ועל היצירות הגרפיות מרוממות הנפש.\n\nSpace Quest Collection or GOG original SCI edition. Requires ScummVM 2.2.0 or later with Hebrew support. Windows/macOS package plans are built; native gameplay validation is pending. Automatic folder detection recognizes the Toonstruck resources in MISC, including GOG macOS app bundles.",
           "filename": "sq3-he-kitor1.zip",
           "post_install_script": null
         }
@@ -346,6 +414,8 @@
     },
     {
       "scummvm_id": "sq5",
+      "steam_app_id": 10110,
+      "cover_url": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/sq5/8d60499f2931.webp",
       "title": "Space Quest V: The Next Mutation",
       "platforms": {
         "windows": true,
@@ -357,7 +427,11 @@
         "file_patterns": []
       },
       "launch_config": {
-        "args": ["--language=he", "--fullscreen", "--auto-detect"]
+        "args": [
+          "--language=he",
+          "--fullscreen",
+          "--auto-detect"
+        ]
       },
       "purchase_guide": null,
       "patches": [
@@ -370,7 +444,7 @@
           "source_type": "github",
           "checksum": "1b43e451d5f633df38fe5cd22e913dc5ae2e5f5315e137198a9f67ec3fd396fa",
           "file_size": 408723,
-          "description": "Steam Space Quest Collection edition referenced by publisher. Select the SQ5 data directory. Requires Hebrew-capable ScummVM daily. Upstream notes remaining minor graphical issues. Windows/macOS package plans are built; native gameplay validation is pending. Automatic folder detection is intentionally disabled pending a reliable game signature; the current Add Game UI cannot select this title explicitly.",
+          "description": "רוג׳ר ווילקו מקבל פיקוד על ספינת איסוף אשפה ונקלע למאבק במוטנטים המאיימים על היקום. פארודיה על מסע בין כוכבים, עם תאונות משגר, יצורים משונים והרבה זבל חללי.\n\nקרדיטים ותודות (מהפרסום המקורי):\nניב באר אחראי על התמיכה בעברית והפונט המהמם שיחזיר בזמן את מי מכם שכבר שיחקו בגרסא באנגלית. שי גרינברג הגיה שיפר והעיר הארות מחוכמות ואף כתב את עצם השורות שאתם קוראים בזה הרגע.\n\nSteam Space Quest Collection edition referenced by publisher. Requires Hebrew-capable ScummVM daily. Upstream notes remaining minor graphical issues. Windows/macOS package plans are built; native gameplay validation is pending. Automatic folder detection recognizes the Toonstruck resources in MISC, including GOG macOS app bundles.",
           "filename": "sq5-he-kitor1.zip",
           "post_install_script": null
         }
@@ -378,6 +452,7 @@
     },
     {
       "scummvm_id": "torin",
+      "cover_url": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/torin/344dd7e600d6.jpeg",
       "title": "Torin’s Passage",
       "platforms": {
         "windows": true,
@@ -389,7 +464,11 @@
         "file_patterns": []
       },
       "launch_config": {
-        "args": ["--language=he", "--fullscreen", "--auto-detect"]
+        "args": [
+          "--language=he",
+          "--fullscreen",
+          "--auto-detect"
+        ]
       },
       "purchase_guide": null,
       "patches": [
@@ -402,7 +481,7 @@
           "source_type": "github",
           "checksum": "4c409dc35808a5ec404de73ac2183e1557bb580eb368991cbc0abc03c4d4202e",
           "file_size": 1183242,
-          "description": "GOG edition referenced by publisher. Patch files go in patches. Enable subtitles from the in-game menu after play begins. Requires Hebrew-capable ScummVM. Windows/macOS package plans are built; native gameplay validation is pending. Automatic folder detection is intentionally disabled pending a reliable game signature; the current Add Game UI cannot select this title explicitly.",
+          "description": "טורין יוצא למסע חיפושים אחר הוריו בארצות פנטזיה במעבה האדמה, בלוויית ידידו בוגל. הרפתקה מצוירת מבית סיירה, עם הומור וסגנון המזכיר סרטי אנימציה.\n\nקרדיטים ותודות (מהפרסום המקורי):\nבסגנון ציורי של סרטי דיסני ובפשטות משעשעת ונוגעת ללב יגולל בפניכם סיפורו המדהים של טורין וכל זה בלוויית כתוביות עבריות מעשה ידי אמן מבית ניב באר. תודה ניב על ההשקעה והמסירות אין קץ בבניית המפעל הכביר הזה.\nתודה גם לפרוייקט קולמוס על גופן שמוליק שבו השתמשנו במסכי הכותרת.\n\nGOG edition referenced by publisher. Enable subtitles from the in-game menu after play begins. Requires Hebrew-capable ScummVM. Windows/macOS package plans are built; native gameplay validation is pending. Automatic folder detection recognizes the Toonstruck resources in MISC, including GOG macOS app bundles.",
           "filename": "torin-he-kitor1.zip",
           "post_install_script": null
         }
@@ -414,6 +493,8 @@
     },
     {
       "scummvm_id": "spyfox",
+      "steam_app_id": 283980,
+      "cover_url": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/spyfox/f79e51735fc4.jpg",
       "title": "Spy Fox in Dry Cereal",
       "platforms": {
         "windows": true,
@@ -421,11 +502,17 @@
         "linux": false
       },
       "detection_patterns": {
-        "unique_files": ["spyfox.he0"],
+        "unique_files": [
+          "spyfox.he0"
+        ],
         "file_patterns": []
       },
       "launch_config": {
-        "args": ["--language=he", "--fullscreen", "--auto-detect"]
+        "args": [
+          "--language=he",
+          "--fullscreen",
+          "--auto-detect"
+        ]
       },
       "purchase_guide": null,
       "patches": [
@@ -438,7 +525,7 @@
           "source_type": "github",
           "checksum": "a3e2c5607e722dbd10f7695f0152ce20f29ebc0146c48ea7858e405af0c48daf",
           "file_size": 941210,
-          "description": "Steam edition referenced by publisher. Work-in-progress translation. Requires current Hebrew-capable ScummVM; macOS also requires xdelta3 on PATH. Windows/macOS package plans are built; native gameplay validation is pending.",
+          "description": "שועל חשאי נשלח לאי אצידופילוס כדי לעצור מזימה לחיסול חלב הפרה ולהשתלטות על תעשיית החלב. הרפתקת ריגול משעשעת שבה גורל קערות הקורנפלקס של ילדי העולם מונח על הכף.\n\nקרדיטים ותודות (מהפרסום המקורי):\nתודות לניב באר שבנה ופיתח את היכולות הטכנולוגיות ושרטט את העיצובים הנפלאים, ולעידו גביש שתרם מכישוריו הגרפיים.\n\nSteam edition referenced by publisher. Work-in-progress translation. Requires current Hebrew-capable ScummVM; macOS also requires xdelta3 on PATH. Windows/macOS package plans are built; native gameplay validation is pending.",
           "filename": "spyfox-he-kitor1.zip",
           "post_install_script": null
         }
@@ -446,6 +533,7 @@
     },
     {
       "scummvm_id": "pajama",
+      "cover_url": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/pajama/800dc7a2b316.jpg",
       "title": "Pajama Sam: No Need to Hide When It’s Dark Outside",
       "platforms": {
         "windows": true,
@@ -453,11 +541,17 @@
         "linux": false
       },
       "detection_patterns": {
-        "unique_files": ["pajama.he0"],
+        "unique_files": [
+          "pajama.he0"
+        ],
         "file_patterns": []
       },
       "launch_config": {
-        "args": ["--language=he", "--fullscreen", "--auto-detect"]
+        "args": [
+          "--language=he",
+          "--fullscreen",
+          "--auto-detect"
+        ]
       },
       "purchase_guide": null,
       "patches": [
@@ -470,7 +564,7 @@
           "source_type": "github",
           "checksum": "051ac3ae6903067f6d595c3801d800431e1cd7cdfae6cc0773f602dafa11d5b3",
           "file_size": 963863,
-          "description": "GOG first Pajama Sam game. Work-in-progress translation. Select Hebrew and both speech/text in ScummVM; macOS also requires xdelta3 on PATH. Windows/macOS package plans are built; native gameplay validation is pending.",
+          "description": "סאם מפחד לישון בחושך, ולכן מתחפש לגיבור על ויוצא להתעמת עם החושך בעצמו, מצויד בפנס, מסכה וקופסת אוכל. הרפתקה לילדים על התמודדות עם פחדים.\n\nקרדיטים ותודות (מהפרסום המקורי):\nתכנן, פיתח, והוציא לפועל ניב באר, תירגם אלעד הלפרין, עיצבו ניב באר ועידו גביש.\n\nGOG first Pajama Sam game. Work-in-progress translation. Select Hebrew and both speech/text in ScummVM; macOS also requires xdelta3 on PATH. Windows/macOS package plans are built; native gameplay validation is pending.",
           "filename": "pajama-he-kitor1.zip",
           "post_install_script": null
         }
@@ -482,6 +576,7 @@
     },
     {
       "scummvm_id": "toonstruck",
+      "cover_url": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/toonstruck/fbd6de512350.jpg",
       "title": "Toonstruck",
       "platforms": {
         "windows": true,
@@ -493,7 +588,11 @@
         "file_patterns": []
       },
       "launch_config": {
-        "args": ["--language=he", "--fullscreen", "--auto-detect"]
+        "args": [
+          "--language=he",
+          "--fullscreen",
+          "--auto-detect"
+        ]
       },
       "purchase_guide": null,
       "patches": [
@@ -506,7 +605,7 @@
           "source_type": "github",
           "checksum": "41ab16f4a8c489724b9c6d911d1a6c6f2c4801ae452e55c036a71e5e9dc4e97e",
           "file_size": 402478,
-          "description": "GOG edition referenced by publisher. Translation remains unfinished upstream. Requires a ScummVM daily build with Hebrew support; upstream instructions specifically tested its Windows build. Windows/macOS package plans are built; native gameplay validation is pending. Automatic folder detection is intentionally disabled pending a reliable game signature; the current Add Game UI cannot select this title explicitly.",
+          "description": "דרו בלנק, אנימטור מתוסכל, נשאב אל עולם מצויר ופוגש את הדמויות שיצר. יחד עם פלקס ווילדלי הוא יוצא להציל את הממלכה מהרוזן נפריוס, בהרפתקה בכיכובו של כריסטופר לויד.\n\nקרדיטים ותודות (מהפרסום המקורי):\nהמשחק תורגם כבר לפני כמה שנים והיום סוף סוף יוצא בשעה טובה ומוצלחת לאחר עיכובים שהיו מחוץ לשליטתנו. תודה למומחה האדיר ניב באר שטיפל בכל העניינים הסבוכים שרק הוא מתמצא בהם, ולאנשים שהיו מעורבים בתהליך התרגום - בן רז גוטמן, מור שמש, אוהד רשף, שני רוז, ושאול קדם.\n\nGOG edition referenced by publisher. Translation remains unfinished upstream. Requires a ScummVM daily build with Hebrew support; upstream instructions specifically tested its Windows build. Windows/macOS package plans are built; native gameplay validation is pending. Automatic folder detection recognizes the Toonstruck resources in MISC, including GOG macOS app bundles.",
           "filename": "toonstruck-he-kitor1.zip",
           "post_install_script": null
         }
@@ -518,6 +617,7 @@
     },
     {
       "scummvm_id": "gob2",
+      "cover_url": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/gob2/e7017e6b020e.jpeg",
       "title": "Gobliins 2: The Prince Buffoon",
       "platforms": {
         "windows": true,
@@ -529,7 +629,11 @@
         "file_patterns": []
       },
       "launch_config": {
-        "args": ["--language=he", "--fullscreen", "--auto-detect"]
+        "args": [
+          "--language=he",
+          "--fullscreen",
+          "--auto-detect"
+        ]
       },
       "purchase_guide": null,
       "patches": [
@@ -542,7 +646,7 @@
           "source_type": "github",
           "checksum": "9610e10f41de81566ec45fb997cd353bd4eb9262a88e91567b44899b3d137e09",
           "file_size": 659080,
-          "description": "GOG CD v1.02 DOS edition targeted by upstream configuration. Hebrew through ScummVM. macOS requires xdelta3 on PATH. Global launcher/save settings are preserved. Windows/macOS package plans are built; native gameplay validation is pending. Automatic folder detection is intentionally disabled pending a reliable game signature; the current Add Game UI cannot select this title explicitly.",
+          "description": "פינגוס החכם והביישן ווינקל האמיץ יוצאים להציל נסיך שנחטף והפך לשוטה החצר. משחק חידות משעשע שבו משלבים את הכישורים השונים של שני הגובלינים.\n\nקרדיטים ותודות (מהפרסום המקורי):\nהתודות נתונות לניב באר על היצירה הטכנולוגית הגאונית והבלתי מתפשרת הזו, ולאלעד הלפרין על התרגום.\n\nGOG CD v1.02 DOS edition targeted by upstream configuration. Hebrew through ScummVM. macOS requires xdelta3 on PATH. Global launcher/save settings are preserved. Windows/macOS package plans are built; native gameplay validation is pending. Automatic folder detection recognizes the Toonstruck resources in MISC, including GOG macOS app bundles.",
           "filename": "gob2-he-kitor1.zip",
           "post_install_script": null
         }
@@ -554,6 +658,7 @@
     },
     {
       "scummvm_id": "tlj",
+      "cover_url": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/tlj/7caffc0e3eb6.jpeg",
       "title": "The Longest Journey",
       "platforms": {
         "windows": true,
@@ -565,7 +670,11 @@
         "file_patterns": []
       },
       "launch_config": {
-        "args": ["--language=he", "--fullscreen", "--auto-detect"]
+        "args": [
+          "--language=he",
+          "--fullscreen",
+          "--auto-detect"
+        ]
       },
       "purchase_guide": null,
       "patches": [
@@ -578,7 +687,7 @@
           "source_type": "github",
           "checksum": "ef14aaeaff5c680ebfde31751b6f24d4bd1c417521ed0a1f8d03da33906075bf",
           "file_size": 222535658,
-          "description": "Use the owned GOG edition referenced by publisher; Steam compatibility remains unverified. Requires a ScummVM Stark build with Hebrew support. Fonts remain local to the game. Windows/macOS package plans are built; native gameplay validation is pending. Automatic folder detection is intentionally disabled pending a reliable game signature; the current Add Game UI cannot select this title explicitly.",
+          "description": "הרפתקת הצבע והקלק עם אפריל ריאן בין העולמות ארקדיה וסטארק, המשלבת חלומות, פילוסופיה, הומור וקסם.\n\nקרדיטים ותודות (מהפרסום המקורי):\nבראש ובראשונה נכיר תודה לקברניט שהוביל וניווט את הספינה בנחישות ובתבונה לחוף מבטחים, האחד והיחיד ניב באר. וכמו כן ליורדי הים שהצטרפו להפלגה ותרמו איש איש מכישוריו ונסיונו. ואלה שמותם: סיון רדט (מתרגמת ראשית), נתנאל אטלי, גל שמש, חן יערי, אלעזר גרשוני.\n\nUse the owned GOG edition referenced by publisher; Steam compatibility remains unverified. Requires a ScummVM Stark build with Hebrew support. Fonts remain local to the game. Windows/macOS package plans are built; native gameplay validation is pending. Automatic folder detection recognizes the Toonstruck resources in MISC, including GOG macOS app bundles.",
           "filename": "tlj-he-catalog-20261025-kitor1.zip",
           "post_install_script": null
         }
@@ -590,6 +699,7 @@
     },
     {
       "scummvm_id": "sky",
+      "cover_url": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/sky/a66d8fcd68f6.jpg",
       "title": "Beneath a Steel Sky",
       "platforms": {
         "windows": true,
@@ -597,11 +707,17 @@
         "linux": false
       },
       "detection_patterns": {
-        "unique_files": ["sky.dsk"],
+        "unique_files": [
+          "sky.dsk"
+        ],
         "file_patterns": []
       },
       "launch_config": {
-        "args": ["--language=he", "--fullscreen", "--auto-detect"]
+        "args": [
+          "--language=he",
+          "--fullscreen",
+          "--auto-detect"
+        ]
       },
       "purchase_guide": null,
       "patches": [
@@ -614,7 +730,7 @@
           "source_type": "github",
           "checksum": "560c7e171e67ac6bad597437986f37535937642b71bc2bc6777feec32fc75806",
           "file_size": 76362023,
-          "description": "Published freeware game data with Hebrew included. Requires a ScummVM daily build with Hebrew support. Windows/macOS package plans are built; native gameplay validation is pending.",
+          "description": "רוברט פוסטר נחטף מכפרו ומוצא את עצמו נרדף בעיר הנשלטת בידי מערכת מחשבי־על. יחד עם ג׳ואי הרובוט הוא מנסה לשרוד ולשחרר את התושבים משלטון העריצות.\n\nקרדיטים ותודות (מהפרסום המקורי):\nהתודות מגיעות לניב באר שעמל על המשחק במשך שנים, תכנת פיתח ועיצב, ושכלל אותו עד לכדי דרגת שלמות, ולגל שמש שהנפיש את אנימציית הכותרת. היה עוד בחור שעזר בתרגום ששכחתי את שמו, אם אתה קורא שורות אלו הזכר לי בבקשה.\n\nPublished freeware game data with Hebrew included. Requires a ScummVM daily build with Hebrew support. Windows/macOS package plans are built; native gameplay validation is pending.",
           "filename": "sky-he-catalog-20261025-kitor1.zip",
           "post_install_script": null
         }
@@ -626,6 +742,8 @@
     },
     {
       "scummvm_id": "stanley-parable",
+      "steam_app_id": 221910,
+      "cover_url": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/stanley-parable/924f717e3da0.jpg",
       "title": "The Stanley Parable (2013)",
       "platforms": {
         "windows": true,
@@ -646,7 +764,7 @@
           "source_type": "github",
           "checksum": "44da2399f3259ba9c27b6dd78683c72b190fe1ef66205ac8fad49c0a8e714807",
           "file_size": 15236290,
-          "description": "Hebrew translation; experimental Windows candidate. Native gameplay unverified; no macOS support. Steam 2013 edition only; excludes Ultra Deluxe and Epic. Male subtitle variant selected; upstream also offers female variant. Install-only candidate: launch the game through Steam/GOG. Kitor native launching and automatic folder detection are not implemented for this title.",
+          "description": "הרפתקה עם עלילה מתפצלת הבוחנת בהומור מי שולט בסיפור: השחקן או היוצר. החוויה מתמקדת בחקירה ובגילוי עלילתי, בהשראת משחקי הרפתקה וטקסט.\n\nקרדיטים ותודות (מהפרסום המקורי):\nתודות לכל מי שהשתתף בעבודה על התרגום - Omer Cohen,Niv Baehr,Sivan Radt,Ohad Reshef,Adir Segev,Or Kurts, Nir Hauschner, וחברי הרפתקה עברית ופורטל בעברית.\n\nHebrew translation; experimental Windows candidate. Native gameplay unverified; no macOS support. Steam 2013 edition only; excludes Ultra Deluxe and Epic. Male subtitle variant selected; upstream also offers female variant. Install-only candidate: launch the game through Steam/GOG. Kitor native launching and automatic folder detection are not implemented for this title.",
           "filename": "stanley-parable-he-0.9.2.2-steam-male-kitor1-windows.zip",
           "install_manifest": "patch.json",
           "post_install_script": null
@@ -655,6 +773,8 @@
     },
     {
       "scummvm_id": "tesla-effect",
+      "steam_app_id": 261510,
+      "cover_url": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/tesla-effect/77011ed8d30d.jpg",
       "title": "Tesla Effect: A Tex Murphy Adventure",
       "platforms": {
         "windows": true,
@@ -675,7 +795,7 @@
           "source_type": "github",
           "checksum": "e5ada5a5f82acab20f33f163eff59749cbdc8ded4fe1158ea51d1e4d7be3c505",
           "file_size": 3691185,
-          "description": "Hebrew translation; experimental Windows candidate. Native gameplay unverified; no macOS support. Steam Tesla Effect; upstream allows other stores but only Steam ownership was matched. Install-only candidate: launch the game through Steam/GOG. Kitor native launching and automatic folder detection are not implemented for this title.",
+          "description": "המשחק השישי בסדרת טקס מרפי מחזיר את סדרת ההרפתקאות לאחר הפסקה של 16 שנה, וממשיך את מסורת החדשנות והעושר העלילתי שלה.\n\nקרדיטים ותודות (מהפרסום המקורי):\nבהזדמנות זאת אודה לחברים היקרים והבולטים שהשקיעו בזמנם ומירצם בעבודת התרגום המפרכת Yuval Ben-Hillel Adi Armoza  Dori Nachman, ולניב באר שלנו שפתר בעיות טכנולוגיות מסובכות עזר רבות בהגהות והכין את הטלאי.\n\nHebrew translation; experimental Windows candidate. Native gameplay unverified; no macOS support. Steam Tesla Effect; upstream allows other stores but only Steam ownership was matched. Install-only candidate: launch the game through Steam/GOG. Kitor native launching and automatic folder detection are not implemented for this title.",
           "filename": "tesla-effect-he-RC1-kitor1-windows.zip",
           "install_manifest": "patch.json",
           "post_install_script": null
@@ -684,6 +804,8 @@
     },
     {
       "scummvm_id": "ethan-carter",
+      "steam_app_id": 258520,
+      "cover_url": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/ethan-carter/1cb9c72fce73.jpg",
       "title": "The Vanishing of Ethan Carter (original)",
       "platforms": {
         "windows": true,
@@ -704,7 +826,7 @@
           "source_type": "github",
           "checksum": "14c8b0df5ec77a2aacf15059524615dfc9e34531d244b98ff1df7aa17e6cb0b0",
           "file_size": 422301,
-          "description": "Hebrew translation; experimental Windows candidate. Native gameplay unverified; no macOS support. Targets original UE3 edition (AstronautsGame and Binaries/Game); does not target Redux UE4. Install-only candidate: launch the game through Steam/GOG. Kitor native launching and automatic folder detection are not implemented for this title.",
+          "description": "הבלש פול פרוספרו מגיע לעמק מבודד בעקבות מכתב מצוקה מהילד איתן קרטר. באמצעות כוחותיו העל־טבעיים הוא חוקר עולם פתוח ומסתורי ומנסה לפענח את היעלמות התושבים.\n\nקרדיטים ותודות (מהפרסום המקורי):\nתודה לניב באר ואלעד הלפרין על העזרה בתרגום.\n\nHebrew translation; experimental Windows candidate. Native gameplay unverified; no macOS support. Targets original UE3 edition (AstronautsGame and Binaries/Game); does not target Redux UE4. Install-only candidate: launch the game through Steam/GOG. Kitor native launching and automatic folder detection are not implemented for this title.",
           "filename": "ethan-carter-he-2023-12-25-kitor1-windows.zip",
           "install_manifest": "patch.json",
           "post_install_script": null
@@ -713,6 +835,8 @@
     },
     {
       "scummvm_id": "life-is-strange",
+      "steam_app_id": 319630,
+      "cover_url": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/life-is-strange/3129cec77590.jpg",
       "title": "Life Is Strange — Episodes 1–3",
       "platforms": {
         "windows": true,
@@ -733,7 +857,7 @@
           "source_type": "github",
           "checksum": "92a0df893416727fa60ca7daf1c4329a56dcc4635b082c19895272aa3f9c896c",
           "file_size": 2621096,
-          "description": "Hebrew translation; experimental Windows candidate. Native gameplay unverified; no macOS support. Targets original Windows Life Is Strange episodes 1-3, not Remastered. Verify ownership/installation of episodes 2 and 3. Install-only candidate: launch the game through Steam/GOG. Kitor native launching and automatic folder detection are not implemented for this title.",
+          "description": "מקס, תלמידת צילום השבה לעיירת ילדותה, מגלה שהיא מסוגלת להשיב את הזמן לאחור ולשנות אירועים. הכוח החדש מוביל אותה לעלילה סוערת שבה לבחירותיה יש השלכות.\n\nקרדיטים ותודות (מהפרסום המקורי):\nכבר לפני כמה שנים גילה חגי יניב את היכולת לתרגם את המשחק ולשנות את הגופנים לעברית. כמה חברים יקרים ביניהם אלכס מילמן, פז גלב, עומר רועי, ושני רוז, התגייסו למשימה במלוא מרצם וכך תוך זמן קצר יחסית תורגם הפרק הראשון במלואו כולל כל היומנים, מסמכים, פוסטרים מכתבים וכדומה.\n\nHebrew translation; experimental Windows candidate. Native gameplay unverified; no macOS support. Targets original Windows Life Is Strange episodes 1-3, not Remastered. Verify ownership/installation of episodes 2 and 3. Install-only candidate: launch the game through Steam/GOG. Kitor native launching and automatic folder detection are not implemented for this title.",
           "filename": "life-is-strange-he-2024-01-15-kitor1-windows.zip",
           "install_manifest": "patch.json",
           "post_install_script": null
@@ -742,6 +866,8 @@
     },
     {
       "scummvm_id": "portal2",
+      "steam_app_id": 620,
+      "cover_url": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/portal2/716b26a850c5.jpg",
       "title": "Portal 2",
       "platforms": {
         "windows": true,
@@ -749,7 +875,9 @@
         "linux": false
       },
       "detection_patterns": {
-        "unique_files": ["portal2.exe"],
+        "unique_files": [
+          "portal2.exe"
+        ],
         "file_patterns": []
       },
       "launch_config": null,
@@ -762,7 +890,7 @@
           "source_type": "github",
           "checksum": "5ba214bcc7f5055aa9981f1907d118c6b0ac937f1926414061e48d9fb81f3f62",
           "file_size": 223209837,
-          "description": "Hebrew translation; experimental Windows candidate. Native gameplay unverified; no macOS support. Local-font substitution experiment; do not claim verified Hebrew rendering. Install-only candidate: launch the game through Steam/GOG. Kitor native launching and automatic folder detection are not implemented for this title.",
+          "description": "משחק חידות המרחיב את עולמו של פורטל עם אתגרים חדשים, דמויות מלאות הומור והיסטוריה מסתורית. לצד ההרפתקה לשחקן יחיד קיים גם מצב שיתופי לשני משתתפים.\n\nקרדיטים ותודות (מהפרסום המקורי):\nבראש ובראשונה - ל Niv Baehr, שמלבד חלקו בפתרון הטכני שאפשר את הפלא הזה, תמיד נמצא שם לעזור עם דילמות מהסוג הטכני, המילולי, הגרפי, ואחרות.\nל Kfir Sadeh - שאחראי לעיצוב שיר הסיום וגם עסק בפתרון הטכני ובתרגום, ודחף את הפרויקט קדימה ורחוק יותר ממה שאי פעם יכולתי לדמיין.\nל Alexander Epelman - הטקסטורות שאלכסנדר עיצב העלו את הפרויקט הזה כמה רמות למעלה, והוא הצליח לייצר כמויות אדירות של תוכן ברמות שלמות גבוהות. וחוצמזה ממש כיף לעבוד איתו\nלאלון ג'משי - שיזם את הפרויקט ואחראי לחלק משמעותי מהתרגום. אני כבר הייתי נכון להניח לפורטל 2, ואז אלון הגיע.\nלאורי סלע, לצביקה, Nissim Khalifa, אופיר, מיכאל, ותומר, ולכל מי שתרגם או תרם בדרך אחרת לפרויקט. וגם לתורם הידוע בתור \"גם אני\".\nוכמובן, ל Omer Cohen, שהקים את הקבוצה והמיזם, ובלעדיו שום דבר מזה לא היה קורה.\nולכולכם בקהילות הרפתקה עברית ו פורטל בעברית, שעודדתם, התעניינתם, ושיתפתם. מקווים שתיהנו. ומקווים לימים טובים יותר, ולחזרתם של החטופים הביתה.\n\nHebrew translation; experimental Windows candidate. Native gameplay unverified; no macOS support. Local-font substitution experiment; do not claim verified Hebrew rendering. Install-only candidate: launch the game through Steam/GOG. Kitor native launching and automatic folder detection are not implemented for this title.",
           "filename": "portal2-he-0.9.8-glados-localfonts-experimental-kitor1-windows.zip",
           "install_manifest": "patch.json",
           "post_install_script": null
@@ -771,6 +899,8 @@
     },
     {
       "scummvm_id": "journey-down1",
+      "steam_app_id": 220090,
+      "cover_url": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/journey-down1/593bbde1b4e9.jpg",
       "title": "The Journey Down: Chapter One",
       "platforms": {
         "windows": true,
@@ -778,7 +908,9 @@
         "linux": false
       },
       "detection_patterns": {
-        "unique_files": ["jd1.gob"],
+        "unique_files": [
+          "jd1.gob"
+        ],
         "file_patterns": []
       },
       "launch_config": null,
@@ -791,7 +923,7 @@
           "source_type": "github",
           "checksum": "072b2cb4b4dcaa062f2813f1476a739e40353d296172969f17f8916e56f704eb",
           "file_size": 615850780,
-          "description": "Hebrew translation; experimental Windows candidate. Native gameplay unverified; no macOS support. Chapter One only. jd1.gob is a full individual game archive (615850030 bytes), so selective backup of this one affected archive is necessary. Install-only candidate: launch the game through Steam/GOG. Kitor native launching and automatic folder detection are not implemented for this title.",
+          "description": "האחים בוואנה וקיטו מנהלים תחנת דלק כושלת, עד שלקוחה מסתורית מציעה להם הצעה שקשה לסרב לה. הרפתקת הצבע והקלק באווירה אפרו־קריבית, עם דמויות משעשעות וחידות יצירתיות.\n\nHebrew translation; experimental Windows candidate. Native gameplay unverified; no macOS support. Chapter One only. jd1.gob is a full individual game archive (615850030 bytes), so selective backup of this one affected archive is necessary. Install-only candidate: launch the game through Steam/GOG. Kitor native launching and automatic folder detection are not implemented for this title.",
           "filename": "journey-down1-he-2025-01-23-kitor1-windows.zip",
           "install_manifest": "patch.json",
           "post_install_script": null
@@ -800,6 +932,8 @@
     },
     {
       "scummvm_id": "kathy-rain-dc",
+      "steam_app_id": 1395030,
+      "cover_url": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/kathy-rain-dc/4d5873a538fd.jpg",
       "title": "Kathy Rain: Director's Cut",
       "platforms": {
         "windows": true,
@@ -820,7 +954,7 @@
           "source_type": "github",
           "checksum": "cf4a00a10bcfc7718e5e428f08b30c576b6876d6642bd6a2d4c4017fe305c2b8",
           "file_size": 28830622,
-          "description": "Hebrew translation; experimental Windows candidate. Native gameplay unverified; no macOS support. Director's Cut only, not original Kathy Rain. Windows Unity resources.assets replaces one 28829728-byte asset file. Install-only candidate: launch the game through Steam/GOG. Kitor native launching and automatic folder detection are not implemented for this title.",
+          "description": "בשנות התשעים, קת׳י ריין חוזרת לעיירת הולדתה לאחר מות סבה וחוקרת את המורשת המסתורית שהותיר. קווסט בלשי עם גרפיקת פיקסלים, סודות משפחתיים ואווירה כפרית אפופת מסתורין.\n\nקרדיטים ותודות (מהפרסום המקורי):\nגם הפעם מי שתמך וחיזק את ידי וסייע בכל צעד ושעל לאורך המסלול, היה ידידנו ההונגרי אוהב ישראל hamarfa, שאני אסיר תודה לו על כל העזרה שניתנת במאור פנים וללא שום ציפיה לתמורה. בנוסף תודה לגל שמש על העזרה בעיצוב הגופנים.\n\nHebrew translation; experimental Windows candidate. Native gameplay unverified; no macOS support. Director's Cut only, not original Kathy Rain. Windows Unity resources.assets replaces one 28829728-byte asset file. Install-only candidate: launch the game through Steam/GOG. Kitor native launching and automatic folder detection are not implemented for this title.",
           "filename": "kathy-rain-dc-he-2025-09-15-kitor1-windows.zip",
           "install_manifest": "patch.json",
           "post_install_script": null
@@ -829,10 +963,12 @@
     },
     {
       "scummvm_id": "drifter",
+      "steam_app_id": 1170570,
+      "cover_url": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/drifter/8f903a5fb6f8.jpg",
       "title": "The Drifter",
       "platforms": {
         "windows": true,
-        "osx": false,
+        "osx": true,
         "linux": false
       },
       "detection_patterns": {
@@ -843,14 +979,14 @@
       "patches": [
         {
           "language": "he",
-          "version": "2026-07-09-kitor1",
+          "version": "2026-07-09-kitor2",
           "author": "Hebrew Adventure community (upstream credits)",
-          "download_url": "https://github.com/yhaggai/kitor/releases/download/patch-drifter-he-v2026-07-09-kitor1/drifter-he-2026-07-09-kitor1-windows.zip",
-          "source_type": "github",
-          "checksum": "dc0e00ed10c10c4d1bb20be2d0ea7b530a0b29555ee8d99cc9db129779f7c380",
-          "file_size": 1543862,
-          "description": "Hebrew translation; experimental Windows candidate. Native gameplay unverified; no macOS support. Steam The Drifter; standalone translation.csv payload. Install-only candidate: launch the game through Steam/GOG. Kitor native launching and automatic folder detection are not implemented for this title.",
-          "filename": "drifter-he-2026-07-09-kitor1-windows.zip",
+          "download_url": "",
+          "source_type": "bundled",
+          "checksum": null,
+          "file_size": null,
+          "description": "מיק קרטר, נווד הבורח מעברו, חוזר לעיר הולדתו ונקלע לרצח מסתורי. כשהוא עצמו נהרג ומתעורר רגעים לפני מותו, עליו לגלות מי רודף אחריו וכיצד הכול קשור לעברו.\n\nקרדיטים ותודות (מהפרסום המקורי):\nתודה לחגי יניב, האיש שגילה לי על קיומו של המשחק והאפשרות לתרגמו, ודחק במפתחים להכיר בקיומה של השפה העברית.\n\nBundled Hebrew translation for Windows and macOS. macOS supports Steam build 22758595 and installs into the game’s existing user-data folder. Start the game once before installing. Selective backup and uninstall; gameplay unverified. Kitor launches the native app directly on macOS; use Steam on Windows.",
+          "filename": "drifter-he-2026-07-09-kitor2.zip",
           "install_manifest": "patch.json",
           "post_install_script": null
         }

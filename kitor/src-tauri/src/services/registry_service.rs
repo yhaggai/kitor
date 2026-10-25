@@ -38,6 +38,8 @@ pub struct Platforms {
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct GameDefinition {
     pub scummvm_id: String,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub steam_app_id: Option<u32>,
     pub title: String,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub cover_url: Option<String>,

@@ -1,0 +1,2549 @@
+[
+  {
+    "game_id": "simon-the-sorcerer-25th-ann-edition",
+    "original_sha256": "78d3abc6efbcde17d5132f39132ca6c03950636b96d8f1e5c10741508207c81b",
+    "boxes": [
+      [
+        427,
+        197,
+        1160,
+        477
+      ]
+    ],
+    "dimensions": [
+      1600,
+      740
+    ],
+    "outside_mask_changed_pixels": 0,
+    "preserved_pixels": 977746,
+    "total_pixels": 1184000
+  },
+  {
+    "game_id": "the-dig",
+    "original_sha256": "fd2cf443e99402a1ce04c50e0314e409189184964b5fdef9f9ab83d19dc7a14b",
+    "boxes": [
+      [
+        38,
+        40,
+        482,
+        248
+      ]
+    ],
+    "dimensions": [
+      512,
+      656
+    ],
+    "outside_mask_changed_pixels": 0,
+    "preserved_pixels": 242867,
+    "total_pixels": 335872
+  },
+  {
+    "game_id": "the-secret-of-monkey-island",
+    "original_sha256": "bdb3276b36cfb2783729d26baf32b6ecb8172e455068f2f7b819e918fa2176b1",
+    "boxes": [
+      [
+        47,
+        21,
+        457,
+        200
+      ]
+    ],
+    "dimensions": [
+      512,
+      644
+    ],
+    "outside_mask_changed_pixels": 0,
+    "preserved_pixels": 255748,
+    "total_pixels": 329728
+  },
+  {
+    "game_id": "the-curse-of-monkey-island",
+    "original_sha256": "514798db10c3b994b7d61452df867fb73a8624b7fe4d568e8a980e55fe1d1000",
+    "boxes": [
+      [
+        15,
+        70,
+        585,
+        365
+      ]
+    ],
+    "dimensions": [
+      600,
+      900
+    ],
+    "outside_mask_changed_pixels": 0,
+    "preserved_pixels": 370984,
+    "total_pixels": 540000
+  },
+  {
+    "game_id": "indiana-jones-and-the-last-crusade",
+    "original_sha256": "7a80bf26a524a7ea78303a2a39e369506eb5c841f6fde6a35a749b106ef64736",
+    "boxes": [
+      [
+        29,
+        46,
+        496,
+        176
+      ],
+      [
+        242,
+        166,
+        479,
+        247
+      ],
+      [
+        29,
+        162,
+        125,
+        338
+      ]
+    ],
+    "dimensions": [
+      500,
+      634
+    ],
+    "outside_mask_changed_pixels": 0,
+    "preserved_pixels": 223080,
+    "total_pixels": 317000
+  },
+  {
+    "game_id": "maniac-mansion",
+    "original_sha256": "e029a792b041b26842227139e078c7a08e71bd4d04ee368955a4c4f55ec83618",
+    "boxes": [
+      [
+        67,
+        32,
+        454,
+        203
+      ]
+    ],
+    "dimensions": [
+      500,
+      640
+    ],
+    "outside_mask_changed_pixels": 0,
+    "preserved_pixels": 253264,
+    "total_pixels": 320000
+  },
+  {
+    "game_id": "full-throttle-not-the-remastered-version",
+    "original_sha256": "20b4a1960f327d07cd58a0cee737a4d4cffb6898cac8be2b82dfe533b67415f0",
+    "boxes": [
+      [
+        12,
+        25,
+        488,
+        190
+      ]
+    ],
+    "dimensions": [
+      500,
+      632
+    ],
+    "outside_mask_changed_pixels": 0,
+    "preserved_pixels": 236818,
+    "total_pixels": 316000
+  },
+  {
+    "game_id": "grim-fandango-not-the-remastered-version",
+    "original_sha256": "ff3d0ca7ea65bc7cd92633bd05b040d4b2d7bba56dababe0c440a5eb3d9ce626",
+    "boxes": [
+      [
+        13,
+        32,
+        303,
+        179
+      ],
+      [
+        13,
+        143,
+        503,
+        233
+      ],
+      [
+        13,
+        225,
+        213,
+        322
+      ]
+    ],
+    "dimensions": [
+      512,
+      644
+    ],
+    "outside_mask_changed_pixels": 0,
+    "preserved_pixels": 234857,
+    "total_pixels": 329728
+  },
+  {
+    "game_id": "zak-mckracken-and-the-alien-mindbenders",
+    "original_sha256": "ec8ae162c3333e10df45884d8a04e5b039ac638db288c4d27760f69a4a8c3eb9",
+    "boxes": [
+      [
+        85,
+        52,
+        418,
+        207
+      ],
+      [
+        367,
+        204,
+        491,
+        311
+      ]
+    ],
+    "dimensions": [
+      512,
+      622
+    ],
+    "outside_mask_changed_pixels": 0,
+    "preserved_pixels": 253068,
+    "total_pixels": 318464
+  },
+  {
+    "game_id": "loom-fm-towns",
+    "original_sha256": "8ad39cffa1df73670b5736261fbbda21f6b8dc106e5688aff277b495219e9229",
+    "boxes": [
+      [
+        85,
+        125,
+        427,
+        217
+      ]
+    ],
+    "dimensions": [
+      512,
+      724
+    ],
+    "outside_mask_changed_pixels": 0,
+    "preserved_pixels": 338789,
+    "total_pixels": 370688
+  },
+  {
+    "game_id": "the-colonel-s-bequest",
+    "original_sha256": "8090e43850a34ec646e6e1ba8e9b2cce8c338bfb82f9f494b5902eacdfe98aee",
+    "boxes": [
+      [
+        68,
+        0,
+        444,
+        177
+      ]
+    ],
+    "dimensions": [
+      512,
+      649
+    ],
+    "outside_mask_changed_pixels": 0,
+    "preserved_pixels": 265182,
+    "total_pixels": 332288
+  },
+  {
+    "game_id": "inherit-the-earth",
+    "original_sha256": "5987bdbb2906dc0d10551cdf938bf7ee015f03e9e19f196a08506336a9f89905",
+    "boxes": [
+      [
+        25,
+        585,
+        585,
+        865
+      ]
+    ],
+    "dimensions": [
+      600,
+      900
+    ],
+    "outside_mask_changed_pixels": 0,
+    "preserved_pixels": 382359,
+    "total_pixels": 540000
+  },
+  {
+    "game_id": "broken-sword-the-shadow-of-the-templars",
+    "original_sha256": "fcf27efe3b98ea50cca7201e7fd3691c28b67269402a5005206f962d643bf8ca",
+    "boxes": [
+      [
+        0,
+        292,
+        512,
+        433
+      ]
+    ],
+    "dimensions": [
+      512,
+      683
+    ],
+    "outside_mask_changed_pixels": 0,
+    "preserved_pixels": 276992,
+    "total_pixels": 349696
+  },
+  {
+    "game_id": "broken-sword-ii-the-smoking-mirror",
+    "original_sha256": "42044f5b9bc71c032206c85bb17f4e3e6730f79fa911500795e9f0e62a9d248f",
+    "boxes": [
+      [
+        51,
+        87,
+        469,
+        205
+      ]
+    ],
+    "dimensions": [
+      512,
+      683
+    ],
+    "outside_mask_changed_pixels": 0,
+    "preserved_pixels": 299835,
+    "total_pixels": 349696
+  },
+  {
+    "game_id": "broken-sword-2-5-the-return-of-the-templars",
+    "original_sha256": "ba1e280e21682fbc3e6145a5ec69fb13f9a78a3825a5f66dc83f1f36f9f13023",
+    "boxes": [
+      [
+        90,
+        485,
+        427,
+        687
+      ]
+    ],
+    "dimensions": [
+      512,
+      727
+    ],
+    "outside_mask_changed_pixels": 0,
+    "preserved_pixels": 303610,
+    "total_pixels": 372224
+  },
+  {
+    "game_id": "the-legend-of-kyrandia-hand-of-fate-book-two",
+    "original_sha256": "5ddbeea23469b363566780aa0d42a92db943a3b95a8f76b9d5ff98b51d442bdd",
+    "boxes": [
+      [
+        64,
+        57,
+        457,
+        200
+      ]
+    ],
+    "dimensions": [
+      512,
+      571
+    ],
+    "outside_mask_changed_pixels": 0,
+    "preserved_pixels": 235616,
+    "total_pixels": 292352
+  },
+  {
+    "game_id": "the-legend-of-kyrandia-book-three-malcolm-s-revenge",
+    "original_sha256": "394941c8626e597706e46db37e4e15f720406bc498fc7be949d22f75623614c0",
+    "boxes": [
+      [
+        13,
+        82,
+        499,
+        214
+      ]
+    ],
+    "dimensions": [
+      512,
+      641
+    ],
+    "outside_mask_changed_pixels": 0,
+    "preserved_pixels": 263421,
+    "total_pixels": 328192
+  },
+  {
+    "game_id": "sam-max-save-the-world",
+    "original_sha256": "b3029b23f44a8e0de8b789591cf865ba029a07ebd08022975a8a3d1422c20b85",
+    "boxes": [
+      [
+        30,
+        25,
+        560,
+        380
+      ]
+    ],
+    "dimensions": [
+      600,
+      900
+    ],
+    "outside_mask_changed_pixels": 0,
+    "preserved_pixels": 350964,
+    "total_pixels": 540000
+  },
+  {
+    "game_id": "beautiful-desolation",
+    "original_sha256": "2707494636ef35dc2e1f233f92150c86e7f4e98fbe63f638c2b99ccd14e18bdf",
+    "boxes": [
+      [
+        30,
+        630,
+        580,
+        800
+      ]
+    ],
+    "dimensions": [
+      600,
+      900
+    ],
+    "outside_mask_changed_pixels": 0,
+    "preserved_pixels": 445779,
+    "total_pixels": 540000
+  },
+  {
+    "game_id": "black-mirror-ii",
+    "original_sha256": "f1f6f2981d67582088b8497638e5547c457705968756da7d4f929900f51abdab",
+    "boxes": [
+      [
+        20,
+        105,
+        580,
+        240
+      ]
+    ],
+    "dimensions": [
+      600,
+      900
+    ],
+    "outside_mask_changed_pixels": 0,
+    "preserved_pixels": 463704,
+    "total_pixels": 540000
+  },
+  {
+    "game_id": "black-mirror-iii",
+    "original_sha256": "27e70b4b3db33d4e31afa9d18719cf1bd74649484173f4c280972c9d8e28e39e",
+    "boxes": [
+      [
+        25,
+        345,
+        580,
+        475
+      ]
+    ],
+    "dimensions": [
+      600,
+      900
+    ],
+    "outside_mask_changed_pixels": 0,
+    "preserved_pixels": 467164,
+    "total_pixels": 540000
+  },
+  {
+    "game_id": "blade-runner",
+    "original_sha256": "b254f39542bea89215ef1d39c35c79a327578a768005093e75b768178c89ad69",
+    "boxes": [
+      [
+        26,
+        7,
+        503,
+        226
+      ]
+    ],
+    "dimensions": [
+      512,
+      655
+    ],
+    "outside_mask_changed_pixels": 0,
+    "preserved_pixels": 230200,
+    "total_pixels": 335360
+  },
+  {
+    "game_id": "atlantis-4-evolution",
+    "original_sha256": "624304122a7a048c0de00208f546af06a06d49eaf2324d95a0a5bf0d5944eb1b",
+    "boxes": [
+      [
+        9,
+        28,
+        209,
+        91
+      ]
+    ],
+    "dimensions": [
+      216,
+      314
+    ],
+    "outside_mask_changed_pixels": 0,
+    "preserved_pixels": 54960,
+    "total_pixels": 67824
+  },
+  {
+    "game_id": "ghost-pirates-of-vooju-island",
+    "original_sha256": "8103a5a2b449fc9c239bae8e5b4ced4db189a102468ca891dc6ce667d8bf4705",
+    "boxes": [
+      [
+        19,
+        120,
+        565,
+        311
+      ]
+    ],
+    "dimensions": [
+      584,
+      800
+    ],
+    "outside_mask_changed_pixels": 0,
+    "preserved_pixels": 362176,
+    "total_pixels": 467200
+  },
+  {
+    "game_id": "dear-esther-landmark-edition",
+    "original_sha256": "a49aab5372d1392449f72ccd1ce5bd12a32a599036f05c16a27625bf0a7510d7",
+    "boxes": [
+      [
+        55,
+        600,
+        565,
+        733
+      ]
+    ],
+    "dimensions": [
+      600,
+      900
+    ],
+    "outside_mask_changed_pixels": 0,
+    "preserved_pixels": 471526,
+    "total_pixels": 540000
+  },
+  {
+    "game_id": "she-sees-red-interactive-movie",
+    "original_sha256": "dbfd9e1393c6121e506dd6c06e3afb77607e8ddd839b486c04a04dc68c379ad6",
+    "boxes": [
+      [
+        29,
+        221,
+        295,
+        279
+      ]
+    ],
+    "dimensions": [
+      316,
+      316
+    ],
+    "outside_mask_changed_pixels": 0,
+    "preserved_pixels": 84103,
+    "total_pixels": 99856
+  },
+  {
+    "game_id": "the-7th-guest-25th-anniversary-edition",
+    "original_sha256": "331e02234a4b3f918b73a0380089873d9e6b983245bd56758b2a639fc6fb041b",
+    "boxes": [
+      [
+        20,
+        40,
+        585,
+        520
+      ]
+    ],
+    "dimensions": [
+      600,
+      900
+    ],
+    "outside_mask_changed_pixels": 0,
+    "preserved_pixels": 267754,
+    "total_pixels": 540000
+  },
+  {
+    "game_id": "cat-and-ghostly-road",
+    "original_sha256": "6375f7e65943c5ed7b5067ecd7300947cefda058a44f27fbd9f22a89bc5c8657",
+    "boxes": [
+      [
+        0,
+        70,
+        590,
+        495
+      ]
+    ],
+    "dimensions": [
+      600,
+      900
+    ],
+    "outside_mask_changed_pixels": 0,
+    "preserved_pixels": 288234,
+    "total_pixels": 540000
+  },
+  {
+    "game_id": "dark-nights-with-poe-and-munro",
+    "original_sha256": "c319f77b12c3ea92238098eec73a4b808f3303bfa736c39339eb7c797f28c71e",
+    "boxes": [
+      [
+        20,
+        670,
+        580,
+        840
+      ]
+    ],
+    "dimensions": [
+      600,
+      900
+    ],
+    "outside_mask_changed_pixels": 0,
+    "preserved_pixels": 444069,
+    "total_pixels": 540000
+  },
+  {
+    "game_id": "maid-of-sker",
+    "original_sha256": "145e2861d3da28d4b44da942adae4fefe4d229c0c3dab60e50e622b4897c74d1",
+    "boxes": [
+      [
+        65,
+        230,
+        545,
+        410
+      ]
+    ],
+    "dimensions": [
+      600,
+      900
+    ],
+    "outside_mask_changed_pixels": 0,
+    "preserved_pixels": 452939,
+    "total_pixels": 540000
+  },
+  {
+    "game_id": "late-shift",
+    "original_sha256": "ef25e190e7d1c9d7e22465d11a520bd24025c9a17ef015dce57c8554ea02f698",
+    "boxes": [
+      [
+        20,
+        650,
+        585,
+        850
+      ]
+    ],
+    "dimensions": [
+      600,
+      900
+    ],
+    "outside_mask_changed_pixels": 0,
+    "preserved_pixels": 426234,
+    "total_pixels": 540000
+  },
+  {
+    "game_id": "the-bunker",
+    "original_sha256": "10972bb964975e85af04e1ca1769e9f4ae1feb74ac8645b537f3b2252079d1d0",
+    "boxes": [
+      [
+        20,
+        755,
+        580,
+        850
+      ]
+    ],
+    "dimensions": [
+      600,
+      900
+    ],
+    "outside_mask_changed_pixels": 0,
+    "preserved_pixels": 486144,
+    "total_pixels": 540000
+  },
+  {
+    "game_id": "the-shapeshifting-detective",
+    "original_sha256": "bb72e874e21192b07b1f7ba3315eccfbd8e2c5be7866f5a85f86b2326e987639",
+    "boxes": [
+      [
+        20,
+        100,
+        580,
+        345
+      ]
+    ],
+    "dimensions": [
+      600,
+      900
+    ],
+    "outside_mask_changed_pixels": 0,
+    "preserved_pixels": 401994,
+    "total_pixels": 540000
+  },
+  {
+    "game_id": "the-complex",
+    "original_sha256": "cbf7b6e323e8aa3b3f3c15ed5b290f5080f91a3379055a48a2abfe41dd23263e",
+    "boxes": [
+      [
+        50,
+        285,
+        565,
+        375
+      ]
+    ],
+    "dimensions": [
+      600,
+      900
+    ],
+    "outside_mask_changed_pixels": 0,
+    "preserved_pixels": 493044,
+    "total_pixels": 540000
+  },
+  {
+    "game_id": "portal",
+    "original_sha256": "3543da98712d53887a0e145f984e61de4624c71412387ab1f7cbf0e4e905b0cb",
+    "boxes": [
+      [
+        85,
+        730,
+        520,
+        885
+      ]
+    ],
+    "dimensions": [
+      600,
+      900
+    ],
+    "outside_mask_changed_pixels": 0,
+    "preserved_pixels": 471984,
+    "total_pixels": 540000
+  },
+  {
+    "game_id": "portal-with-rtx",
+    "original_sha256": "e84a36acd958e032bcfc3141b108da041b7973bf5c55d08b83c805f569570613",
+    "boxes": [
+      [
+        120,
+        535,
+        500,
+        730
+      ]
+    ],
+    "dimensions": [
+      600,
+      900
+    ],
+    "outside_mask_changed_pixels": 0,
+    "preserved_pixels": 465324,
+    "total_pixels": 540000
+  },
+  {
+    "game_id": "neighbours-from-hell",
+    "original_sha256": "95901a417e8536fb7f1c9e4922f6f31ed3fe9592618e5623099e93239034c4dd",
+    "boxes": [
+      [
+        9,
+        34,
+        247,
+        114
+      ]
+    ],
+    "dimensions": [
+      256,
+      341
+    ],
+    "outside_mask_changed_pixels": 0,
+    "preserved_pixels": 67937,
+    "total_pixels": 87296
+  },
+  {
+    "game_id": "ever-forward",
+    "original_sha256": "0f2329d3d8d67a242ccb76cc7dcb60295ef04b83c3c3292a37c13ee69b69112c",
+    "boxes": [
+      [
+        10,
+        20,
+        590,
+        175
+      ]
+    ],
+    "dimensions": [
+      600,
+      900
+    ],
+    "outside_mask_changed_pixels": 0,
+    "preserved_pixels": 449364,
+    "total_pixels": 540000
+  },
+  {
+    "game_id": "my-memory-of-us",
+    "original_sha256": "5af3dd28ce7185967060e63835deff23399e8cb6dbe8714193af4e67bcdf787e",
+    "boxes": [
+      [
+        40,
+        45,
+        290,
+        335
+      ]
+    ],
+    "dimensions": [
+      600,
+      900
+    ],
+    "outside_mask_changed_pixels": 0,
+    "preserved_pixels": 466959,
+    "total_pixels": 540000
+  },
+  {
+    "game_id": "mystic-pillars-a-story-based-puzzle-game",
+    "original_sha256": "7b526778e887f489d989bde8e2e3ff588c7094a8b8dbfaa3d1c7d9e14d00d129",
+    "boxes": [
+      [
+        15,
+        60,
+        285,
+        150
+      ]
+    ],
+    "dimensions": [
+      300,
+      450
+    ],
+    "outside_mask_changed_pixels": 0,
+    "preserved_pixels": 110339,
+    "total_pixels": 135000
+  },
+  {
+    "game_id": "a-fold-apart",
+    "original_sha256": "39919a01e75e75c04df03ac5c857647a2743f99260a5b03fb3c93f6cd17a3394",
+    "boxes": [
+      [
+        25,
+        25,
+        575,
+        335
+      ]
+    ],
+    "dimensions": [
+      600,
+      900
+    ],
+    "outside_mask_changed_pixels": 0,
+    "preserved_pixels": 368639,
+    "total_pixels": 540000
+  },
+  {
+    "game_id": "hidden-saga-xamadeon-stone",
+    "original_sha256": "14a69c3dd87a4cadefe75897dee818278988d167770aacaaf79235bdd10c5e75",
+    "boxes": [
+      [
+        130,
+        565,
+        460,
+        665
+      ]
+    ],
+    "dimensions": [
+      600,
+      900
+    ],
+    "outside_mask_changed_pixels": 0,
+    "preserved_pixels": 506569,
+    "total_pixels": 540000
+  },
+  {
+    "game_id": "the-henry-stickmin-collection",
+    "original_sha256": "279d6f6c7310deae9bd0ff2bd80b5a3acd138ff4444d9d411fdf77dff9caf63d",
+    "boxes": [
+      [
+        35,
+        680,
+        570,
+        875
+      ]
+    ],
+    "dimensions": [
+      600,
+      900
+    ],
+    "outside_mask_changed_pixels": 0,
+    "preserved_pixels": 434944,
+    "total_pixels": 540000
+  },
+  {
+    "game_id": "syberia",
+    "original_sha256": "08e2eda637d62489d8863ee0a80a2e5e50867359c669dae04d2f509d8a131869",
+    "boxes": [
+      [
+        130,
+        40,
+        480,
+        160
+      ]
+    ],
+    "dimensions": [
+      600,
+      900
+    ],
+    "outside_mask_changed_pixels": 0,
+    "preserved_pixels": 497529,
+    "total_pixels": 540000
+  },
+  {
+    "game_id": "syberia-ii",
+    "original_sha256": "d1af68e797fa6b4f4e8aede5b2fe8839fb22411da084a22ae8d4a8129282c505",
+    "boxes": [
+      [
+        70,
+        60,
+        550,
+        200
+      ]
+    ],
+    "dimensions": [
+      600,
+      900
+    ],
+    "outside_mask_changed_pixels": 0,
+    "preserved_pixels": 472179,
+    "total_pixels": 540000
+  },
+  {
+    "game_id": "tender-loving-care",
+    "original_sha256": "883c0bdb853cd81491b898f1aac87b0f7ad5f628b0b244784206f8a83b659766",
+    "boxes": [
+      [
+        25,
+        550,
+        575,
+        675
+      ]
+    ],
+    "dimensions": [
+      600,
+      900
+    ],
+    "outside_mask_changed_pixels": 0,
+    "preserved_pixels": 470574,
+    "total_pixels": 540000
+  },
+  {
+    "game_id": "atlantis-ii-beyond-atlantis",
+    "original_sha256": "b5da963d15f393b0aaf0bb21367e530224bab6a80c4993a239bf8bcc8ed269c6",
+    "boxes": [
+      [
+        46,
+        10,
+        225,
+        80
+      ]
+    ],
+    "dimensions": [
+      275,
+      362
+    ],
+    "outside_mask_changed_pixels": 0,
+    "preserved_pixels": 86770,
+    "total_pixels": 99550
+  },
+  {
+    "game_id": "atlantis-iii-the-new-world",
+    "original_sha256": "e3f66f85bc72f8eb88525e33899891cd89c1fba9c3e193cfc285ef4fd2ba7aa8",
+    "boxes": [
+      [
+        13,
+        137,
+        515,
+        372
+      ]
+    ],
+    "dimensions": [
+      528,
+      704
+    ],
+    "outside_mask_changed_pixels": 0,
+    "preserved_pixels": 253004,
+    "total_pixels": 371712
+  },
+  {
+    "game_id": "a-vampyre-story",
+    "original_sha256": "f253a499da93ab7dc574f06380f6afd1d8992c7cf4b6d88844d481187fb1bb33",
+    "boxes": [
+      [
+        200,
+        25,
+        570,
+        220
+      ],
+      [
+        270,
+        210,
+        560,
+        335
+      ]
+    ],
+    "dimensions": [
+      600,
+      900
+    ],
+    "outside_mask_changed_pixels": 0,
+    "preserved_pixels": 433819,
+    "total_pixels": 540000
+  },
+  {
+    "game_id": "alpha-polaris-a-horror-adventure-game",
+    "original_sha256": "280add62cb589ab6ca45edf017838a155b3110a90f58d20b20581085a5740720",
+    "boxes": [
+      [
+        5,
+        27,
+        195,
+        108
+      ]
+    ],
+    "dimensions": [
+      200,
+      289
+    ],
+    "outside_mask_changed_pixels": 0,
+    "preserved_pixels": 42138,
+    "total_pixels": 57800
+  },
+  {
+    "game_id": "face-noir",
+    "original_sha256": "c8d4bda3e5241e213700392646719441ce2f8008317d17956cb4d86779a2c2d1",
+    "boxes": [
+      [
+        32,
+        216,
+        236,
+        257
+      ]
+    ],
+    "dimensions": [
+      257,
+      388
+    ],
+    "outside_mask_changed_pixels": 0,
+    "preserved_pixels": 91106,
+    "total_pixels": 99716
+  },
+  {
+    "game_id": "rayman-2-the-great-escape",
+    "original_sha256": "d113218f34b43331acb2d0881091280674bd116f035d085a003e1c236cd7ffd6",
+    "boxes": [
+      [
+        9,
+        34,
+        271,
+        133
+      ]
+    ],
+    "dimensions": [
+      280,
+      357
+    ],
+    "outside_mask_changed_pixels": 0,
+    "preserved_pixels": 73660,
+    "total_pixels": 99960
+  },
+  {
+    "game_id": "j-u-l-i-a-among-the-stars",
+    "original_sha256": "ebe2d10b727b010e132f31c0922218b2993b59733c2468fc93868cb37ec42063",
+    "boxes": [
+      [
+        9,
+        15,
+        256,
+        104
+      ]
+    ],
+    "dimensions": [
+      265,
+      374
+    ],
+    "outside_mask_changed_pixels": 0,
+    "preserved_pixels": 76790,
+    "total_pixels": 99110
+  },
+  {
+    "game_id": "contradiction-spot-the-liar",
+    "original_sha256": "e5b6a9d5db3e53f4792ed16b07c3f5f4ea8b936c475257ce1acff8518d7cdee6",
+    "boxes": [
+      [
+        0,
+        300,
+        600,
+        475
+      ]
+    ],
+    "dimensions": [
+      600,
+      900
+    ],
+    "outside_mask_changed_pixels": 0,
+    "preserved_pixels": 434400,
+    "total_pixels": 540000
+  },
+  {
+    "game_id": "serena",
+    "original_sha256": "98c59336e3adf8c0fcfeb43d373f5f3b6836a035e10ef87e9fa485ae2ae2850b",
+    "boxes": [
+      [
+        20,
+        355,
+        580,
+        505
+      ]
+    ],
+    "dimensions": [
+      600,
+      900
+    ],
+    "outside_mask_changed_pixels": 0,
+    "preserved_pixels": 455289,
+    "total_pixels": 540000
+  },
+  {
+    "game_id": "gone-home",
+    "original_sha256": "c272df2fc5df4d98c28a54f8ffc2fefbe69e77bfde3f432477e9513783b85b67",
+    "boxes": [
+      [
+        65,
+        65,
+        550,
+        335
+      ]
+    ],
+    "dimensions": [
+      600,
+      900
+    ],
+    "outside_mask_changed_pixels": 0,
+    "preserved_pixels": 408294,
+    "total_pixels": 540000
+  },
+  {
+    "game_id": "zork-grand-inquisitor",
+    "original_sha256": "c619440fb59b9722873a9f43a6c6ef96b9c3839c316afe06131cbbd672d112c5",
+    "boxes": [
+      [
+        9,
+        244,
+        503,
+        517
+      ]
+    ],
+    "dimensions": [
+      512,
+      721
+    ],
+    "outside_mask_changed_pixels": 0,
+    "preserved_pixels": 233522,
+    "total_pixels": 369152
+  },
+  {
+    "game_id": "zork-nemesis-the-forbidden-land",
+    "original_sha256": "45eb852292866affd0c16e5a06747ccba52338a731b96fab90f760ed8475f00a",
+    "boxes": [
+      [
+        124,
+        249,
+        388,
+        372
+      ],
+      [
+        85,
+        56,
+        435,
+        136
+      ]
+    ],
+    "dimensions": [
+      512,
+      598
+    ],
+    "outside_mask_changed_pixels": 0,
+    "preserved_pixels": 244885,
+    "total_pixels": 306176
+  },
+  {
+    "game_id": "helga-deep-in-trouble",
+    "original_sha256": "bf63ae360511d30fcee709631e2750842fa01744c514827e0b2f80a88d5c0cca",
+    "boxes": [
+      [
+        119,
+        135,
+        384,
+        294
+      ]
+    ],
+    "dimensions": [
+      512,
+      381
+    ],
+    "outside_mask_changed_pixels": 0,
+    "preserved_pixels": 152512,
+    "total_pixels": 195072
+  },
+  {
+    "game_id": "even-more-incredible-machine",
+    "original_sha256": "30b07ae60e07bea4f0ae7e3fcd961c102db9c38a028ae2914bdd0c0a994ec875",
+    "boxes": [
+      [
+        35,
+        44,
+        285,
+        164
+      ]
+    ],
+    "dimensions": [
+      320,
+      399
+    ],
+    "outside_mask_changed_pixels": 0,
+    "preserved_pixels": 97309,
+    "total_pixels": 127680
+  },
+  {
+    "game_id": "black-mirror-2017",
+    "original_sha256": "29942241f1bb76d8ef6b74db4206a8c2dd367fe8af8de2b855a0b6c345214ced",
+    "boxes": [
+      [
+        85,
+        405,
+        510,
+        550
+      ]
+    ],
+    "dimensions": [
+      600,
+      900
+    ],
+    "outside_mask_changed_pixels": 0,
+    "preserved_pixels": 477804,
+    "total_pixels": 540000
+  },
+  {
+    "game_id": "salammb-battle-for-carthage",
+    "original_sha256": "bb5351241a30a3b08ab9a16a0dcfb6fa4c5dc2ac6ef6463cd945c0e3cc7b22ff",
+    "boxes": [
+      [
+        25,
+        20,
+        575,
+        150
+      ]
+    ],
+    "dimensions": [
+      600,
+      900
+    ],
+    "outside_mask_changed_pixels": 0,
+    "preserved_pixels": 467819,
+    "total_pixels": 540000
+  },
+  {
+    "game_id": "dirty-split",
+    "original_sha256": "6d035edb9c46aa01c7c8f00adffac0f8756059b265ef2ddab0d730f3e8f9fb42",
+    "boxes": [
+      [
+        111,
+        37,
+        393,
+        185
+      ]
+    ],
+    "dimensions": [
+      512,
+      512
+    ],
+    "outside_mask_changed_pixels": 0,
+    "preserved_pixels": 219977,
+    "total_pixels": 262144
+  },
+  {
+    "game_id": "the-hardy-boys-the-hidden-theft",
+    "original_sha256": "52c947a9f484b70568c937021a742ee9a8ccc209493878f78f52ce0851963ad0",
+    "boxes": [
+      [
+        7,
+        62,
+        259,
+        143
+      ]
+    ],
+    "dimensions": [
+      266,
+      374
+    ],
+    "outside_mask_changed_pixels": 0,
+    "preserved_pixels": 78738,
+    "total_pixels": 99484
+  },
+  {
+    "game_id": "ghost-in-the-sheet",
+    "original_sha256": "91cd9f0b972e3d8beb1bf0c5f29489b13fb6b2c2009f927901a11cad51fc53ed",
+    "boxes": [
+      [
+        0,
+        0,
+        512,
+        187
+      ]
+    ],
+    "dimensions": [
+      512,
+      733
+    ],
+    "outside_mask_changed_pixels": 0,
+    "preserved_pixels": 279040,
+    "total_pixels": 375296
+  },
+  {
+    "game_id": "the-shivah",
+    "original_sha256": "136f2c23180ea9e0a360079cd9ac378d62d328f37134a0f2607f661c7bb09bbe",
+    "boxes": [
+      [
+        20,
+        40,
+        345,
+        130
+      ]
+    ],
+    "dimensions": [
+      600,
+      900
+    ],
+    "outside_mask_changed_pixels": 0,
+    "preserved_pixels": 510334,
+    "total_pixels": 540000
+  },
+  {
+    "game_id": "chronicles-of-mystery-the-tree-of-life",
+    "original_sha256": "deae97470ac0bfa5001f754b823b3ac3b261268c5f15864a34f695ddf4fda6be",
+    "boxes": [
+      [
+        20,
+        55,
+        580,
+        310
+      ]
+    ],
+    "dimensions": [
+      600,
+      900
+    ],
+    "outside_mask_changed_pixels": 0,
+    "preserved_pixels": 396384,
+    "total_pixels": 540000
+  },
+  {
+    "game_id": "art-of-murder-hunt-for-the-puppeteer",
+    "original_sha256": "5fb0fd87d0caca99c5a12d6a40cac4ddae8fbba2938189a3f87b7195de5aaa46",
+    "boxes": [
+      [
+        25,
+        40,
+        575,
+        350
+      ]
+    ],
+    "dimensions": [
+      600,
+      900
+    ],
+    "outside_mask_changed_pixels": 0,
+    "preserved_pixels": 368639,
+    "total_pixels": 540000
+  },
+  {
+    "game_id": "lost-chronicles-of-zerzura",
+    "original_sha256": "b4e628950e890ea6fe7c4df83eacd1634e6a29622730cbbe2cea994c688378ea",
+    "boxes": [
+      [
+        10,
+        20,
+        585,
+        250
+      ]
+    ],
+    "dimensions": [
+      600,
+      900
+    ],
+    "outside_mask_changed_pixels": 0,
+    "preserved_pixels": 406944,
+    "total_pixels": 540000
+  },
+  {
+    "game_id": "still-life",
+    "original_sha256": "9b003a4c5f9668044ed303d8878c0f7d3ed23044271bd22935bb21e3a11d1866",
+    "boxes": [
+      [
+        220,
+        615,
+        595,
+        775
+      ]
+    ],
+    "dimensions": [
+      600,
+      900
+    ],
+    "outside_mask_changed_pixels": 0,
+    "preserved_pixels": 479464,
+    "total_pixels": 540000
+  },
+  {
+    "game_id": "treasure-island",
+    "original_sha256": "ea5fe40e5ac0830054e22c9f6e2f6b74cd665168956d9487d8d9f6424b3ec9b9",
+    "boxes": [
+      [
+        97,
+        56,
+        431,
+        223
+      ]
+    ],
+    "dimensions": [
+      528,
+      670
+    ],
+    "outside_mask_changed_pixels": 0,
+    "preserved_pixels": 297480,
+    "total_pixels": 353760
+  },
+  {
+    "game_id": "the-abbey-director-s-cut",
+    "original_sha256": "450bfe6204b9797f966e95f81bf94aa82a8d62b9d7b3922bf93a5aec42704dcf",
+    "boxes": [
+      [
+        102,
+        603,
+        990,
+        939
+      ]
+    ],
+    "dimensions": [
+      1024,
+      1024
+    ],
+    "outside_mask_changed_pixels": 0,
+    "preserved_pixels": 748983,
+    "total_pixels": 1048576
+  },
+  {
+    "game_id": "mata-hari",
+    "original_sha256": "af2317698fa8982bd321bbdb22780bbd2763287b67f252c3827a44ee0e74325c",
+    "boxes": [
+      [
+        20,
+        35,
+        252,
+        85
+      ]
+    ],
+    "dimensions": [
+      268,
+      372
+    ],
+    "outside_mask_changed_pixels": 0,
+    "preserved_pixels": 87813,
+    "total_pixels": 99696
+  },
+  {
+    "game_id": "chronicles-of-mystery-the-scorpio-ritual",
+    "original_sha256": "f1519eb411ca3d303c7546a6d228c9948e5ca83d31177eae0ad3d1e34f94be29",
+    "boxes": [
+      [
+        6,
+        57,
+        250,
+        152
+      ]
+    ],
+    "dimensions": [
+      256,
+      366
+    ],
+    "outside_mask_changed_pixels": 0,
+    "preserved_pixels": 70176,
+    "total_pixels": 93696
+  },
+  {
+    "game_id": "alternativa",
+    "original_sha256": "105d50f7e48a9e08e8bb558da4af530eef672a7a9eab8601c88d65b5c2883787",
+    "boxes": [
+      [
+        25,
+        675,
+        575,
+        735
+      ]
+    ],
+    "dimensions": [
+      600,
+      900
+    ],
+    "outside_mask_changed_pixels": 0,
+    "preserved_pixels": 506389,
+    "total_pixels": 540000
+  },
+  {
+    "game_id": "the-secrets-of-atlantis-the-sacred-legacy",
+    "original_sha256": "926ea77225ef515cc2a7294c56c95328e19f7c949a2474626aeebd3e95c00952",
+    "boxes": [
+      [
+        28,
+        27,
+        535,
+        173
+      ]
+    ],
+    "dimensions": [
+      563,
+      800
+    ],
+    "outside_mask_changed_pixels": 0,
+    "preserved_pixels": 375724,
+    "total_pixels": 450400
+  },
+  {
+    "game_id": "keepsake",
+    "original_sha256": "6346741f9a6c90cbec0f6842bea08a5009b4c7208421f81fde31891d7bab0fed",
+    "boxes": [
+      [
+        21,
+        16,
+        207,
+        87
+      ]
+    ],
+    "dimensions": [
+      256,
+      363
+    ],
+    "outside_mask_changed_pixels": 0,
+    "preserved_pixels": 79464,
+    "total_pixels": 92928
+  },
+  {
+    "game_id": "art-of-murder-fbi-confidential",
+    "original_sha256": "f1475bf58a6139b0a5d40be7c138fc4167eaed11062da4cd5cc0373b9df07ea6",
+    "boxes": [
+      [
+        30,
+        390,
+        575,
+        690
+      ]
+    ],
+    "dimensions": [
+      600,
+      900
+    ],
+    "outside_mask_changed_pixels": 0,
+    "preserved_pixels": 375654,
+    "total_pixels": 540000
+  },
+  {
+    "game_id": "secret-files-tunguska",
+    "original_sha256": "f9f448dbf7bb92de61626974be17985ff96591cd61c83fcb592703df6e95f6e0",
+    "boxes": [
+      [
+        20,
+        100,
+        575,
+        240
+      ]
+    ],
+    "dimensions": [
+      600,
+      900
+    ],
+    "outside_mask_changed_pixels": 0,
+    "preserved_pixels": 461604,
+    "total_pixels": 540000
+  },
+  {
+    "game_id": "leisure-suit-larry-in-the-land-of-the-lounge-lizards",
+    "original_sha256": "61591c4d1fbfa8c22978469709c804e80064ab78aff708dfefaf4a999f421f79",
+    "boxes": [
+      [
+        17,
+        7,
+        320,
+        91
+      ],
+      [
+        43,
+        83,
+        422,
+        305
+      ]
+    ],
+    "dimensions": [
+      512,
+      653
+    ],
+    "outside_mask_changed_pixels": 0,
+    "preserved_pixels": 226258,
+    "total_pixels": 334336
+  },
+  {
+    "game_id": "gabriel-knight-3-blood-of-the-sacred-blood-of-the-damned",
+    "original_sha256": "04f5a37b5c3bf7e044a300b7491857cdfbc862e8c2fc2e5b02fbe79827101aef",
+    "boxes": [
+      [
+        4,
+        210,
+        250,
+        279
+      ]
+    ],
+    "dimensions": [
+      256,
+      308
+    ],
+    "outside_mask_changed_pixels": 0,
+    "preserved_pixels": 61558,
+    "total_pixels": 78848
+  },
+  {
+    "game_id": "secret-files-2-puritas-cordis",
+    "original_sha256": "971b34bb0b63b874c03ad3eb3f0ea5090abea51aa50a7b46df4b5a170b1fabb7",
+    "boxes": [
+      [
+        35,
+        135,
+        570,
+        255
+      ]
+    ],
+    "dimensions": [
+      600,
+      900
+    ],
+    "outside_mask_changed_pixels": 0,
+    "preserved_pixels": 475144,
+    "total_pixels": 540000
+  },
+  {
+    "game_id": "call-of-cthulu-shadow-of-the-comet",
+    "original_sha256": "7010a8b441415dee28a8925aa0220a95591c2ba9bdb86b4117182efa7cd94bad",
+    "boxes": [
+      [
+        111,
+        0,
+        384,
+        99
+      ],
+      [
+        4,
+        99,
+        508,
+        167
+      ]
+    ],
+    "dimensions": [
+      512,
+      638
+    ],
+    "outside_mask_changed_pixels": 0,
+    "preserved_pixels": 264685,
+    "total_pixels": 326656
+  },
+  {
+    "game_id": "king-s-quest",
+    "original_sha256": "1fafae36548c0c62341fec3150542ea35cdb48ab9f63c42f8135352b0eb7a479",
+    "boxes": [
+      [
+        77,
+        7,
+        435,
+        100
+      ],
+      [
+        47,
+        107,
+        474,
+        165
+      ]
+    ],
+    "dimensions": [
+      512,
+      644
+    ],
+    "outside_mask_changed_pixels": 0,
+    "preserved_pixels": 270730,
+    "total_pixels": 329728
+  },
+  {
+    "game_id": "cleopatra-a-queen-s-destiny",
+    "original_sha256": "420f9db282ff447f8faf9701ddc743e262441161215cfab93496040b61914586",
+    "boxes": [
+      [
+        7,
+        173,
+        256,
+        297
+      ]
+    ],
+    "dimensions": [
+      263,
+      379
+    ],
+    "outside_mask_changed_pixels": 0,
+    "preserved_pixels": 68427,
+    "total_pixels": 99677
+  },
+  {
+    "game_id": "lost-horizon",
+    "original_sha256": "bcd83d0942fceeceb5bce204339ba8ab84d8fe645af0a503d2e21d6c31f82349",
+    "boxes": [
+      [
+        45,
+        125,
+        580,
+        215
+      ]
+    ],
+    "dimensions": [
+      600,
+      900
+    ],
+    "outside_mask_changed_pixels": 0,
+    "preserved_pixels": 491224,
+    "total_pixels": 540000
+  },
+  {
+    "game_id": "emerald-city-confidential",
+    "original_sha256": "ec32a8c23ef6db410181b5eeee6490bff61e14e584eec73d0ac3539fa8cedc89",
+    "boxes": [
+      [
+        4,
+        0,
+        167,
+        80
+      ]
+    ],
+    "dimensions": [
+      170,
+      247
+    ],
+    "outside_mask_changed_pixels": 0,
+    "preserved_pixels": 28706,
+    "total_pixels": 41990
+  },
+  {
+    "game_id": "destination-treasure-island",
+    "original_sha256": "f5766637e0d5fe7b9015e5c2c4a4281857c5bae030aeefd5ae0383e05aa98bb0",
+    "boxes": [
+      [
+        13,
+        19,
+        261,
+        98
+      ]
+    ],
+    "dimensions": [
+      265,
+      376
+    ],
+    "outside_mask_changed_pixels": 0,
+    "preserved_pixels": 79720,
+    "total_pixels": 99640
+  },
+  {
+    "game_id": "king-s-quest-2",
+    "original_sha256": "ba72bcb7c9417742f78e9185cba8215f3a9d56dd1ae7a986c313a93174164318",
+    "boxes": [
+      [
+        73,
+        11,
+        439,
+        106
+      ],
+      [
+        43,
+        113,
+        469,
+        179
+      ]
+    ],
+    "dimensions": [
+      512,
+      657
+    ],
+    "outside_mask_changed_pixels": 0,
+    "preserved_pixels": 272543,
+    "total_pixels": 336384
+  },
+  {
+    "game_id": "gray-matter",
+    "original_sha256": "b658d38c454507cba02ec557e4a6f9d4c056269bdb40727aa06725fd745fe650",
+    "boxes": [
+      [
+        34,
+        161,
+        207,
+        245
+      ]
+    ],
+    "dimensions": [
+      256,
+      315
+    ],
+    "outside_mask_changed_pixels": 0,
+    "preserved_pixels": 65850,
+    "total_pixels": 80640
+  },
+  {
+    "game_id": "ankh-anniversary-edition",
+    "original_sha256": "7e6226d9f0556775a42f8906f3245fad28639553d775ca19d79a5272fa3d8470",
+    "boxes": [
+      [
+        80,
+        30,
+        570,
+        330
+      ]
+    ],
+    "dimensions": [
+      600,
+      900
+    ],
+    "outside_mask_changed_pixels": 0,
+    "preserved_pixels": 392209,
+    "total_pixels": 540000
+  },
+  {
+    "game_id": "broken-sword-4-the-angel-of-death",
+    "original_sha256": "222a74891158925b0f107b68f3bd214972209ed3af07ce131354e6706c3c7c8d",
+    "boxes": [
+      [
+        35,
+        500,
+        570,
+        630
+      ]
+    ],
+    "dimensions": [
+      600,
+      900
+    ],
+    "outside_mask_changed_pixels": 0,
+    "preserved_pixels": 469784,
+    "total_pixels": 540000
+  },
+  {
+    "game_id": "king-s-quest-iii-to-heir-is-human",
+    "original_sha256": "b302fa2eb9a00f07658eb5ab95212c1d10983b35f6502fbbb8028d8c131a256d",
+    "boxes": [
+      [
+        73,
+        11,
+        439,
+        103
+      ],
+      [
+        51,
+        111,
+        469,
+        168
+      ]
+    ],
+    "dimensions": [
+      512,
+      642
+    ],
+    "outside_mask_changed_pixels": 0,
+    "preserved_pixels": 270271,
+    "total_pixels": 328704
+  },
+  {
+    "game_id": "pok-mon-emerald",
+    "original_sha256": "69c2882817f07393c7c8599c79cefb4e8885386d76a24b7bf08f5540815ef9d8",
+    "boxes": [
+      [
+        82,
+        7,
+        308,
+        126
+      ]
+    ],
+    "dimensions": [
+      316,
+      316
+    ],
+    "outside_mask_changed_pixels": 0,
+    "preserved_pixels": 72616,
+    "total_pixels": 99856
+  },
+  {
+    "game_id": "dreamfall-the-longest-journey",
+    "original_sha256": "e472a74b0d4dadec2c9f9fe11de342f137d622399b739db501e972d7e7691a66",
+    "boxes": [
+      [
+        0,
+        0,
+        600,
+        145
+      ]
+    ],
+    "dimensions": [
+      600,
+      900
+    ],
+    "outside_mask_changed_pixels": 0,
+    "preserved_pixels": 452400,
+    "total_pixels": 540000
+  },
+  {
+    "game_id": "broken-sword-3-the-sleeping-dragon",
+    "original_sha256": "181650d86644f53379165bea84bb0b163f839186f8cbee247a169ecbc4edef77",
+    "boxes": [
+      [
+        95,
+        635,
+        515,
+        745
+      ]
+    ],
+    "dimensions": [
+      600,
+      900
+    ],
+    "outside_mask_changed_pixels": 0,
+    "preserved_pixels": 493269,
+    "total_pixels": 540000
+  },
+  {
+    "game_id": "king-s-quest-iv-the-perils-of-rosella",
+    "original_sha256": "090aed95490b0628bde85234d9d3b3cf6442669d6bb098b7a3ef27582f733795",
+    "boxes": [
+      [
+        73,
+        0,
+        439,
+        102
+      ],
+      [
+        47,
+        105,
+        469,
+        171
+      ]
+    ],
+    "dimensions": [
+      512,
+      654
+    ],
+    "outside_mask_changed_pixels": 0,
+    "preserved_pixels": 268706,
+    "total_pixels": 334848
+  },
+  {
+    "game_id": "jolly-rover",
+    "original_sha256": "696c752ae084bcca0e4325d66d438d0bd8d1d182b988f9ed54763e565e4dc998",
+    "boxes": [
+      [
+        75,
+        590,
+        540,
+        820
+      ]
+    ],
+    "dimensions": [
+      600,
+      900
+    ],
+    "outside_mask_changed_pixels": 0,
+    "preserved_pixels": 432354,
+    "total_pixels": 540000
+  },
+  {
+    "game_id": "alter-ego",
+    "original_sha256": "05ddfbdc43501aa793f600714b8d665c820412eb9616faac249a4bd6c0aa5c4d",
+    "boxes": [
+      [
+        65,
+        219,
+        200,
+        318
+      ]
+    ],
+    "dimensions": [
+      267,
+      372
+    ],
+    "outside_mask_changed_pixels": 0,
+    "preserved_pixels": 85724,
+    "total_pixels": 99324
+  },
+  {
+    "game_id": "black-sails-the-ghost-ship",
+    "original_sha256": "9204faef7a8ccf2d9bf110a1fde47b1710b4efc0d61a529829ac5af3cdfef951",
+    "boxes": [
+      [
+        10,
+        65,
+        595,
+        225
+      ]
+    ],
+    "dimensions": [
+      600,
+      900
+    ],
+    "outside_mask_changed_pixels": 0,
+    "preserved_pixels": 445654,
+    "total_pixels": 540000
+  },
+  {
+    "game_id": "escape-from-monkey-island",
+    "original_sha256": "49a30510ed7551c47ac068f380bf9f07df42026afe21fcc203f03d2cb8624c0b",
+    "boxes": [
+      [
+        30,
+        4,
+        503,
+        208
+      ]
+    ],
+    "dimensions": [
+      512,
+      681
+    ],
+    "outside_mask_changed_pixels": 0,
+    "preserved_pixels": 251502,
+    "total_pixels": 348672
+  },
+  {
+    "game_id": "secret-files-3",
+    "original_sha256": "002cf74b8cad26b1771962c97f75f9baf9e2767937337860c9ceca7b6bf52b49",
+    "boxes": [
+      [
+        45,
+        100,
+        555,
+        180
+      ]
+    ],
+    "dimensions": [
+      600,
+      900
+    ],
+    "outside_mask_changed_pixels": 0,
+    "preserved_pixels": 498609,
+    "total_pixels": 540000
+  },
+  {
+    "game_id": "king-s-quest-v-absence-makes-the-heart-go-yonder",
+    "original_sha256": "93dd52504f1088019de6167287edb2c9cb95945417cae489f93be62044312075",
+    "boxes": [
+      [
+        38,
+        28,
+        482,
+        274
+      ]
+    ],
+    "dimensions": [
+      512,
+      641
+    ],
+    "outside_mask_changed_pixels": 0,
+    "preserved_pixels": 218277,
+    "total_pixels": 328192
+  },
+  {
+    "game_id": "next-life",
+    "original_sha256": "4fe861c1c9a160ca866a905619c64a886bca77bc08a51d817f74f4ef40339cf4",
+    "boxes": [
+      [
+        0,
+        231,
+        254,
+        281
+      ]
+    ],
+    "dimensions": [
+      254,
+      392
+    ],
+    "outside_mask_changed_pixels": 0,
+    "preserved_pixels": 86614,
+    "total_pixels": 99568
+  },
+  {
+    "game_id": "art-of-murder-cards-of-destiny",
+    "original_sha256": "995674c219e212f4d416571051e07e9edd0957dad71a593f046114af1f50824c",
+    "boxes": [
+      [
+        20,
+        385,
+        575,
+        710
+      ]
+    ],
+    "dimensions": [
+      600,
+      900
+    ],
+    "outside_mask_changed_pixels": 0,
+    "preserved_pixels": 358744,
+    "total_pixels": 540000
+  },
+  {
+    "game_id": "nikopol-secrets-of-the-immortals",
+    "original_sha256": "ecf6aaef2137a7f0d1f48ffba104a0d9eb3e2b5e9ead98faf92b947dfefe6c3e",
+    "boxes": [
+      [
+        85,
+        695,
+        510,
+        895
+      ]
+    ],
+    "dimensions": [
+      600,
+      900
+    ],
+    "outside_mask_changed_pixels": 0,
+    "preserved_pixels": 454374,
+    "total_pixels": 540000
+  },
+  {
+    "game_id": "tales-of-monkey-island",
+    "original_sha256": "61768c4c0332e59fc87326238f51ab94c7d079533199fd39a16cbdd2dcbcb836",
+    "boxes": [
+      [
+        65,
+        25,
+        550,
+        290
+      ]
+    ],
+    "dimensions": [
+      600,
+      900
+    ],
+    "outside_mask_changed_pixels": 0,
+    "preserved_pixels": 410724,
+    "total_pixels": 540000
+  },
+  {
+    "game_id": "there-is-no-game-wrong-dimension",
+    "original_sha256": "369d14a44c4c530e0fa1e804a5b1074214e456d72b8c58288163932e743fe22b",
+    "boxes": [
+      [
+        83,
+        12,
+        348,
+        143
+      ],
+      [
+        153,
+        138,
+        250,
+        202
+      ]
+    ],
+    "dimensions": [
+      417,
+      239
+    ],
+    "outside_mask_changed_pixels": 0,
+    "preserved_pixels": 58769,
+    "total_pixels": 99663
+  },
+  {
+    "game_id": "dracula-3-the-path-of-the-dragon",
+    "original_sha256": "520e0a3f934cd6a37c17af0f3dc55413d03ac96d577acdf202cde84dceee870c",
+    "boxes": [
+      [
+        16,
+        143,
+        629,
+        342
+      ]
+    ],
+    "dimensions": [
+      640,
+      918
+    ],
+    "outside_mask_changed_pixels": 0,
+    "preserved_pixels": 464720,
+    "total_pixels": 587520
+  },
+  {
+    "game_id": "king-s-quest-vi-heir-today-gone-tomorrow",
+    "original_sha256": "7d5954a0cc76b44e82d361437a444b527444e5bbed241c89114c2f5c629698ab",
+    "boxes": [
+      [
+        149,
+        14,
+        469,
+        124
+      ],
+      [
+        43,
+        121,
+        486,
+        259
+      ]
+    ],
+    "dimensions": [
+      512,
+      638
+    ],
+    "outside_mask_changed_pixels": 0,
+    "preserved_pixels": 230593,
+    "total_pixels": 326656
+  },
+  {
+    "game_id": "duke-grabowski-mighty-swashbuckler",
+    "original_sha256": "f2b7a635fbcb0c09e029ece4dd5d6b8cd995d2067443c96fa42de208ada1b262",
+    "boxes": [
+      [
+        19,
+        57,
+        257,
+        106
+      ],
+      [
+        38,
+        145,
+        264,
+        197
+      ]
+    ],
+    "dimensions": [
+      460,
+      215
+    ],
+    "outside_mask_changed_pixels": 0,
+    "preserved_pixels": 74919,
+    "total_pixels": 98900
+  },
+  {
+    "game_id": "memento-mori",
+    "original_sha256": "e480e8f7b2e77b3ccd448e84929b936a7197adb2fdd856b460d1a2686e0b28d7",
+    "boxes": [
+      [
+        80,
+        70,
+        520,
+        320
+      ]
+    ],
+    "dimensions": [
+      600,
+      900
+    ],
+    "outside_mask_changed_pixels": 0,
+    "preserved_pixels": 429309,
+    "total_pixels": 540000
+  },
+  {
+    "game_id": "galador-the-prince-and-the-coward",
+    "original_sha256": "3ae13357ea5c1b23c64bfeb745feac41cf19d4e0074a18fe79679777e0278f12",
+    "boxes": [
+      [
+        54,
+        24,
+        1567,
+        744
+      ]
+    ],
+    "dimensions": [
+      1621,
+      2160
+    ],
+    "outside_mask_changed_pixels": 0,
+    "preserved_pixels": 2409766,
+    "total_pixels": 3501360
+  },
+  {
+    "game_id": "the-blackwell-legacy",
+    "original_sha256": "f36bd018141d508a4c3436277e8e3a0115fefc449e42966e5ebebfa0c53edb4f",
+    "boxes": [
+      [
+        15,
+        10,
+        585,
+        200
+      ]
+    ],
+    "dimensions": [
+      600,
+      900
+    ],
+    "outside_mask_changed_pixels": 0,
+    "preserved_pixels": 430939,
+    "total_pixels": 540000
+  },
+  {
+    "game_id": "the-cat-lady",
+    "original_sha256": "d84ee41fc9f67f91382f8b47535556e66ccfa6d741b368c471511a5364700e9b",
+    "boxes": [
+      [
+        135,
+        575,
+        480,
+        855
+      ]
+    ],
+    "dimensions": [
+      600,
+      900
+    ],
+    "outside_mask_changed_pixels": 0,
+    "preserved_pixels": 442774,
+    "total_pixels": 540000
+  },
+  {
+    "game_id": "blackwell-unbound",
+    "original_sha256": "88f53c7245c2e73d0605f893922a5cb59f16ba823835b3f4fb7de1efcc0a74bd",
+    "boxes": [
+      [
+        10,
+        10,
+        590,
+        185
+      ]
+    ],
+    "dimensions": [
+      600,
+      900
+    ],
+    "outside_mask_changed_pixels": 0,
+    "preserved_pixels": 437744,
+    "total_pixels": 540000
+  },
+  {
+    "game_id": "blackwell-convergence",
+    "original_sha256": "7a0ffad48e7d975cb1a661646b58a819465e15d05466930901e2f62b73c0091e",
+    "boxes": [
+      [
+        5,
+        5,
+        595,
+        155
+      ]
+    ],
+    "dimensions": [
+      600,
+      900
+    ],
+    "outside_mask_changed_pixels": 0,
+    "preserved_pixels": 450759,
+    "total_pixels": 540000
+  },
+  {
+    "game_id": "secret-files-sam-peters",
+    "original_sha256": "350521cd763e2b7169ed8f63b358c612b26f9152be008cc71371516ef8ccc957",
+    "boxes": [
+      [
+        20,
+        90,
+        580,
+        250
+      ]
+    ],
+    "dimensions": [
+      600,
+      900
+    ],
+    "outside_mask_changed_pixels": 0,
+    "preserved_pixels": 449679,
+    "total_pixels": 540000
+  },
+  {
+    "game_id": "king-s-quest-1-sci",
+    "original_sha256": "859d3358284611fc717bafc35f14206ec305a189e11f7cecc4fd9454a8cefa35",
+    "boxes": [
+      [
+        51,
+        28,
+        452,
+        265
+      ]
+    ],
+    "dimensions": [
+      512,
+      636
+    ],
+    "outside_mask_changed_pixels": 0,
+    "preserved_pixels": 229956,
+    "total_pixels": 325632
+  },
+  {
+    "game_id": "gemini-rue",
+    "original_sha256": "92c7d3eaec51021e379468b6394a3728900bdd5c0acb74ea31d0178747a4b944",
+    "boxes": [
+      [
+        65,
+        775,
+        540,
+        845
+      ]
+    ],
+    "dimensions": [
+      600,
+      900
+    ],
+    "outside_mask_changed_pixels": 0,
+    "preserved_pixels": 506204,
+    "total_pixels": 540000
+  },
+  {
+    "game_id": "agatha-christie-evil-under-the-sun",
+    "original_sha256": "9128aef4021dd984d182f1a998fb68900e1b01bb33fa4a871b27f164f2d42a98",
+    "boxes": [
+      [
+        15,
+        133,
+        243,
+        182
+      ]
+    ],
+    "dimensions": [
+      256,
+      363
+    ],
+    "outside_mask_changed_pixels": 0,
+    "preserved_pixels": 81478,
+    "total_pixels": 92928
+  },
+  {
+    "game_id": "dune",
+    "original_sha256": "2245245c2fb6d153a6f035ba7206e765d8b8635cac5054310c1dfab95d0d0021",
+    "boxes": [
+      [
+        53,
+        142,
+        267,
+        191
+      ]
+    ],
+    "dimensions": [
+      320,
+      366
+    ],
+    "outside_mask_changed_pixels": 0,
+    "preserved_pixels": 106370,
+    "total_pixels": 117120
+  },
+  {
+    "game_id": "kaptain-brawe-a-brawe-new-world",
+    "original_sha256": "8fd52ae10355fedbb86eecb8b3db83e858cf7b4b266b0aada6680012df215cd6",
+    "boxes": [
+      [
+        75,
+        365,
+        550,
+        870
+      ]
+    ],
+    "dimensions": [
+      600,
+      900
+    ],
+    "outside_mask_changed_pixels": 0,
+    "preserved_pixels": 299144,
+    "total_pixels": 540000
+  },
+  {
+    "game_id": "lost-horizon-2",
+    "original_sha256": "039ee5e17dbffebd36abbdd322e9a632d6f84e361cbce6a66d92bf4badb3f7b9",
+    "boxes": [
+      [
+        60,
+        145,
+        545,
+        235
+      ]
+    ],
+    "dimensions": [
+      600,
+      900
+    ],
+    "outside_mask_changed_pixels": 0,
+    "preserved_pixels": 495774,
+    "total_pixels": 540000
+  },
+  {
+    "game_id": "touche-the-adventures-of-the-fifth-musketeer",
+    "original_sha256": "c542689db3f9abb5303e7cf2e0692cea978098799002fdd8a69748fea10e3837",
+    "boxes": [
+      [
+        4,
+        58,
+        503,
+        250
+      ]
+    ],
+    "dimensions": [
+      512,
+      652
+    ],
+    "outside_mask_changed_pixels": 0,
+    "preserved_pixels": 237324,
+    "total_pixels": 333824
+  },
+  {
+    "game_id": "broken-sword-5-the-serpent-s-curse",
+    "original_sha256": "54d613c53b86ac3bef4a99f8efb97eae1e85db2bdd0dd59cd7dda898545477f8",
+    "boxes": [
+      [
+        55,
+        30,
+        535,
+        150
+      ]
+    ],
+    "dimensions": [
+      600,
+      900
+    ],
+    "outside_mask_changed_pixels": 0,
+    "preserved_pixels": 481799,
+    "total_pixels": 540000
+  },
+  {
+    "game_id": "blackwell-epiphany",
+    "original_sha256": "20027a18c0dd9b6c271c726358fd837a3954a905be852c8af54610b16776281e",
+    "boxes": [
+      [
+        30,
+        30,
+        540,
+        160
+      ]
+    ],
+    "dimensions": [
+      600,
+      900
+    ],
+    "outside_mask_changed_pixels": 0,
+    "preserved_pixels": 473059,
+    "total_pixels": 540000
+  },
+  {
+    "game_id": "warcraft-adventures-lord-of-the-clans",
+    "original_sha256": "8162bfb7f455dbf815f0061d68ae1b8b68f93fa3ca003e73b9f83ba5303d7ff8",
+    "boxes": [
+      [
+        53,
+        6,
+        225,
+        96
+      ]
+    ],
+    "dimensions": [
+      278,
+      359
+    ],
+    "outside_mask_changed_pixels": 0,
+    "preserved_pixels": 84059,
+    "total_pixels": 99802
+  },
+  {
+    "game_id": "black-mirror-i",
+    "original_sha256": "e22bbc80a513c0cc25463ee63ba3a0d50fed6a47d80962c08640045b58f58760",
+    "boxes": [
+      [
+        20,
+        120,
+        580,
+        310
+      ]
+    ],
+    "dimensions": [
+      600,
+      900
+    ],
+    "outside_mask_changed_pixels": 0,
+    "preserved_pixels": 432849,
+    "total_pixels": 540000
+  }
+]

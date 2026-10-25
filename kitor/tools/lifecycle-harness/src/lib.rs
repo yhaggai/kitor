@@ -1,3 +1,5 @@
+#[path = "../../../src-tauri/src/services/drifter_patch.rs"]
+pub mod drifter_patch;
 #[path = "../../../src-tauri/src/services/patch_lifecycle.rs"]
 pub mod patch_lifecycle;
 #[path = "../../../src-tauri/src/services/registry_service.rs"]
