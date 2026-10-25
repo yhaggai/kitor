@@ -940,7 +940,11 @@ mod tests {
     }
     #[test]
     fn all_catalog_packages_have_matching_plans_and_verified_assets() {
-        let registry = crate::services::registry_service::load_registry().unwrap();
+        // Fixtures use the source registry in both debug and optimized builds;
+        // the production loader intentionally uses a different release path.
+        let registry: crate::services::registry_service::Registry = serde_json::from_slice(
+            &fs::read("../patches/registry.json").unwrap(),
+        ).unwrap();
         for game in registry.games {
             if game.patches.is_empty() {
                 continue;

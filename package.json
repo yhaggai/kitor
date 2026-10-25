@@ -10,7 +10,7 @@
     "lint": "biome check .",
     "lint:fix": "biome check --write --unsafe .",
     "format": "biome format --write .",
-    "lint:staged": "biome check  --staged ."
+    "lint:staged": "biome check --staged --no-errors-on-unmatched ."
   },
   "devDependencies": {
     "@biomejs/biome": "^2.3.10",
