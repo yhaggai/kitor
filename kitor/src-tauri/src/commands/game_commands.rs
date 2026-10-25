@@ -83,3 +83,8 @@ pub async fn clear_cover_cache(state: State<'_, AppState>) -> Result<(), String>
 
 
 
+
+#[tauri::command]
+pub async fn scan_installed_games(state: State<'_, AppState>) -> Result<crate::services::game_discovery_service::ScanResult, String> {
+    crate::services::game_discovery_service::scan_installed_games(&state.db, state.app_data_dir.clone()).await
+}

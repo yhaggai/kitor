@@ -12,3 +12,5 @@ pub mod http_server;
 
 
 pub mod patch_lifecycle;
+
+pub mod game_discovery_service;
