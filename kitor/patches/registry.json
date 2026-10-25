@@ -45,11 +45,11 @@
       "gog": {
         "id": 1207666253,
         "slug": "the_secret_of_monkey_island_special_edition",
-        "title": "The Secret of Monkey Island\u2122: Special Edition",
+        "title": "The Secret of Monkey Island™: Special Edition",
         "installers": [
           {
             "id": "",
-            "name": "The Secret of Monkey Island\u2122: Special Edition",
+            "name": "The Secret of Monkey Island™: Special Edition",
             "path": "https://www.gog.com/downloads/the_secret_of_monkey_island_special_edition/en1installer0"
           }
         ]
@@ -91,11 +91,11 @@
       "gog": {
         "id": 1425039730,
         "slug": "monkey_island_2_special_edition_lechucks_revenge",
-        "title": "Monkey Island\u2122 2 Special Edition: LeChuck's Revenge\u2122",
+        "title": "Monkey Island™ 2 Special Edition: LeChuck's Revenge™",
         "installers": [
           {
             "id": "",
-            "name": "Monkey Island\u2122 2 Special Edition: LeChuck's Revenge\u2122",
+            "name": "Monkey Island™ 2 Special Edition: LeChuck's Revenge™",
             "path": "https://www.gog.com/downloads/monkey_island_2_special_edition_lechucks_revenge/en1installer0"
           }
         ]
@@ -203,10 +203,662 @@
           "install_manifest": "patch.json"
         }
       ]
+    },
+    {
+      "scummvm_id": "pq1",
+      "title": "Police Quest: In Pursuit of the Death Angel (EGA)",
+      "platforms": {
+        "windows": true,
+        "osx": true,
+        "linux": false
+      },
+      "detection_patterns": {
+        "unique_files": [],
+        "file_patterns": []
+      },
+      "launch_config": {
+        "args": ["--language=he", "--fullscreen", "--auto-detect"]
+      },
+      "purchase_guide": null,
+      "patches": [
+        {
+          "install_manifest": "patch.json",
+          "language": "he",
+          "version": "1.0-kitor1",
+          "author": "AdventureBrew",
+          "download_url": "https://github.com/yhaggai/kitor/releases/download/patch-pq1-he-v1.0-kitor1/pq1-he-kitor1.zip",
+          "source_type": "github",
+          "checksum": "6bf874c6fd540c0a4a8f4a27034a25bea80f168a8d365363978ab1db680711be",
+          "file_size": 230863,
+          "description": "Original AGI/EGA edition. Catalog cites GOG; owned Steam Collection must match publisher MD5 guards. Requires Python 3 and Hebrew-capable ScummVM. Windows/macOS package plans are built; native gameplay validation is pending. Automatic folder detection is intentionally disabled pending a reliable game signature; the current Add Game UI cannot select this title explicitly.",
+          "filename": "pq1-he-kitor1.zip",
+          "post_install_script": null
+        }
+      ]
+    },
+    {
+      "scummvm_id": "sq1",
+      "title": "Space Quest I: The Sarien Encounter (EGA)",
+      "platforms": {
+        "windows": true,
+        "osx": true,
+        "linux": false
+      },
+      "detection_patterns": {
+        "unique_files": [],
+        "file_patterns": []
+      },
+      "launch_config": {
+        "args": ["--language=he", "--fullscreen", "--auto-detect"]
+      },
+      "purchase_guide": null,
+      "patches": [
+        {
+          "install_manifest": "patch.json",
+          "language": "he",
+          "version": "1.0-kitor1",
+          "author": "sam-mfb",
+          "download_url": "https://github.com/yhaggai/kitor/releases/download/patch-sq1-he-v1.0-kitor1/sq1-he-kitor1.zip",
+          "source_type": "github",
+          "checksum": "fa16c5dbb079787afb5cdc01f7913c170e68b89a56c1054138743fd71fd5d7af",
+          "file_size": 320489,
+          "description": "Original DOS EGA version 2.2 from GOG. Exact original/final SHA-256 guards. Requires Python 3 and a ScummVM daily build with Hebrew AGI support. Windows/macOS package plans are built; native gameplay validation is pending. Automatic folder detection is intentionally disabled pending a reliable game signature; the current Add Game UI cannot select this title explicitly.",
+          "filename": "sq1-he-kitor1.zip",
+          "post_install_script": null
+        }
+      ],
+      "gog": {
+        "id": 1207661413,
+        "title": "Space Quest 1 - The Sarien Encounter"
+      }
+    },
+    {
+      "scummvm_id": "sq2",
+      "title": "Space Quest II: Vohaul’s Revenge",
+      "platforms": {
+        "windows": true,
+        "osx": true,
+        "linux": false
+      },
+      "detection_patterns": {
+        "unique_files": [],
+        "file_patterns": []
+      },
+      "launch_config": {
+        "args": ["--language=he", "--fullscreen", "--auto-detect"]
+      },
+      "purchase_guide": null,
+      "patches": [
+        {
+          "install_manifest": "patch.json",
+          "language": "he",
+          "version": "1.0-kitor1",
+          "author": "sam-mfb",
+          "download_url": "https://github.com/yhaggai/kitor/releases/download/patch-sq2-he-v1.0-kitor1/sq2-he-kitor1.zip",
+          "source_type": "github",
+          "checksum": "5e489c053f187a0ea0343421eb0bf062f0f045cf135426359789a65c75c82be2",
+          "file_size": 502472,
+          "description": "GOG original AGI edition; Steam edition is unverified. Publisher MD5 edition guards. Requires Python 3 and Hebrew-capable ScummVM. Windows/macOS package plans are built; native gameplay validation is pending. Automatic folder detection is intentionally disabled pending a reliable game signature; the current Add Game UI cannot select this title explicitly.",
+          "filename": "sq2-he-kitor1.zip",
+          "post_install_script": null
+        }
+      ],
+      "gog": {
+        "id": 1207661423,
+        "title": "Space Quest 2 - Vohaul's Revenge"
+      }
+    },
+    {
+      "scummvm_id": "sq3",
+      "title": "Space Quest III: The Pirates of Pestulon",
+      "platforms": {
+        "windows": true,
+        "osx": true,
+        "linux": false
+      },
+      "detection_patterns": {
+        "unique_files": [],
+        "file_patterns": []
+      },
+      "launch_config": {
+        "args": ["--language=he", "--fullscreen", "--auto-detect"]
+      },
+      "purchase_guide": null,
+      "patches": [
+        {
+          "install_manifest": "patch.json",
+          "language": "he",
+          "version": "1.0-kitor1",
+          "author": "AdventureBrew",
+          "download_url": "https://github.com/yhaggai/kitor/releases/download/patch-sq3-he-v1.0-kitor1/sq3-he-kitor1.zip",
+          "source_type": "github",
+          "checksum": "86bce60caac9e362779c85d501099e91e668e6ae9a37639e23de8c78282b5fae",
+          "file_size": 506380,
+          "description": "Space Quest Collection or GOG original SCI edition. Requires ScummVM 2.2.0 or later with Hebrew support. Select the SQ3 data directory; patch files go in PATCHES. Windows/macOS package plans are built; native gameplay validation is pending. Automatic folder detection is intentionally disabled pending a reliable game signature; the current Add Game UI cannot select this title explicitly.",
+          "filename": "sq3-he-kitor1.zip",
+          "post_install_script": null
+        }
+      ],
+      "gog": {
+        "id": 1207661433,
+        "title": "Space Quest 3 - The Pirates of Pestulon"
+      }
+    },
+    {
+      "scummvm_id": "sq5",
+      "title": "Space Quest V: The Next Mutation",
+      "platforms": {
+        "windows": true,
+        "osx": true,
+        "linux": false
+      },
+      "detection_patterns": {
+        "unique_files": [],
+        "file_patterns": []
+      },
+      "launch_config": {
+        "args": ["--language=he", "--fullscreen", "--auto-detect"]
+      },
+      "purchase_guide": null,
+      "patches": [
+        {
+          "install_manifest": "patch.json",
+          "language": "he",
+          "version": "1.0-kitor1",
+          "author": "AdventureBrew",
+          "download_url": "https://github.com/yhaggai/kitor/releases/download/patch-sq5-he-v1.0-kitor1/sq5-he-kitor1.zip",
+          "source_type": "github",
+          "checksum": "1b43e451d5f633df38fe5cd22e913dc5ae2e5f5315e137198a9f67ec3fd396fa",
+          "file_size": 408723,
+          "description": "Steam Space Quest Collection edition referenced by publisher. Select the SQ5 data directory. Requires Hebrew-capable ScummVM daily. Upstream notes remaining minor graphical issues. Windows/macOS package plans are built; native gameplay validation is pending. Automatic folder detection is intentionally disabled pending a reliable game signature; the current Add Game UI cannot select this title explicitly.",
+          "filename": "sq5-he-kitor1.zip",
+          "post_install_script": null
+        }
+      ]
+    },
+    {
+      "scummvm_id": "torin",
+      "title": "Torin’s Passage",
+      "platforms": {
+        "windows": true,
+        "osx": true,
+        "linux": false
+      },
+      "detection_patterns": {
+        "unique_files": [],
+        "file_patterns": []
+      },
+      "launch_config": {
+        "args": ["--language=he", "--fullscreen", "--auto-detect"]
+      },
+      "purchase_guide": null,
+      "patches": [
+        {
+          "install_manifest": "patch.json",
+          "language": "he",
+          "version": "1.0-kitor1",
+          "author": "AdventureBrew",
+          "download_url": "https://github.com/yhaggai/kitor/releases/download/patch-torin-he-v1.0-kitor1/torin-he-kitor1.zip",
+          "source_type": "github",
+          "checksum": "4c409dc35808a5ec404de73ac2183e1557bb580eb368991cbc0abc03c4d4202e",
+          "file_size": 1183242,
+          "description": "GOG edition referenced by publisher. Patch files go in patches. Enable subtitles from the in-game menu after play begins. Requires Hebrew-capable ScummVM. Windows/macOS package plans are built; native gameplay validation is pending. Automatic folder detection is intentionally disabled pending a reliable game signature; the current Add Game UI cannot select this title explicitly.",
+          "filename": "torin-he-kitor1.zip",
+          "post_install_script": null
+        }
+      ],
+      "gog": {
+        "id": 1207659044,
+        "title": "Torin's Passage"
+      }
+    },
+    {
+      "scummvm_id": "spyfox",
+      "title": "Spy Fox in Dry Cereal",
+      "platforms": {
+        "windows": true,
+        "osx": true,
+        "linux": false
+      },
+      "detection_patterns": {
+        "unique_files": ["spyfox.he0"],
+        "file_patterns": []
+      },
+      "launch_config": {
+        "args": ["--language=he", "--fullscreen", "--auto-detect"]
+      },
+      "purchase_guide": null,
+      "patches": [
+        {
+          "install_manifest": "patch.json",
+          "language": "he",
+          "version": "1.0-kitor1",
+          "author": "AdventureBrew",
+          "download_url": "https://github.com/yhaggai/kitor/releases/download/patch-spyfox-he-v1.0-kitor1/spyfox-he-kitor1.zip",
+          "source_type": "github",
+          "checksum": "a3e2c5607e722dbd10f7695f0152ce20f29ebc0146c48ea7858e405af0c48daf",
+          "file_size": 941210,
+          "description": "Steam edition referenced by publisher. Work-in-progress translation. Requires current Hebrew-capable ScummVM; macOS also requires xdelta3 on PATH. Windows/macOS package plans are built; native gameplay validation is pending.",
+          "filename": "spyfox-he-kitor1.zip",
+          "post_install_script": null
+        }
+      ]
+    },
+    {
+      "scummvm_id": "pajama",
+      "title": "Pajama Sam: No Need to Hide When It’s Dark Outside",
+      "platforms": {
+        "windows": true,
+        "osx": true,
+        "linux": false
+      },
+      "detection_patterns": {
+        "unique_files": ["pajama.he0"],
+        "file_patterns": []
+      },
+      "launch_config": {
+        "args": ["--language=he", "--fullscreen", "--auto-detect"]
+      },
+      "purchase_guide": null,
+      "patches": [
+        {
+          "install_manifest": "patch.json",
+          "language": "he",
+          "version": "1.0-kitor1",
+          "author": "AdventureBrew",
+          "download_url": "https://github.com/yhaggai/kitor/releases/download/patch-pajama-he-v1.0-kitor1/pajama-he-kitor1.zip",
+          "source_type": "github",
+          "checksum": "051ac3ae6903067f6d595c3801d800431e1cd7cdfae6cc0773f602dafa11d5b3",
+          "file_size": 963863,
+          "description": "GOG first Pajama Sam game. Work-in-progress translation. Select Hebrew and both speech/text in ScummVM; macOS also requires xdelta3 on PATH. Windows/macOS package plans are built; native gameplay validation is pending.",
+          "filename": "pajama-he-kitor1.zip",
+          "post_install_script": null
+        }
+      ],
+      "gog": {
+        "id": 1435735429,
+        "title": "Pajama Sam: No Need to Hide When It’s Dark Outside"
+      }
+    },
+    {
+      "scummvm_id": "toonstruck",
+      "title": "Toonstruck",
+      "platforms": {
+        "windows": true,
+        "osx": true,
+        "linux": false
+      },
+      "detection_patterns": {
+        "unique_files": [],
+        "file_patterns": []
+      },
+      "launch_config": {
+        "args": ["--language=he", "--fullscreen", "--auto-detect"]
+      },
+      "purchase_guide": null,
+      "patches": [
+        {
+          "install_manifest": "patch.json",
+          "language": "he",
+          "version": "1.0-kitor1",
+          "author": "AdventureBrew",
+          "download_url": "https://github.com/yhaggai/kitor/releases/download/patch-toonstruck-he-v1.0-kitor1/toonstruck-he-kitor1.zip",
+          "source_type": "github",
+          "checksum": "41ab16f4a8c489724b9c6d911d1a6c6f2c4801ae452e55c036a71e5e9dc4e97e",
+          "file_size": 402478,
+          "description": "GOG edition referenced by publisher. Translation remains unfinished upstream. Requires a ScummVM daily build with Hebrew support; upstream instructions specifically tested its Windows build. Windows/macOS package plans are built; native gameplay validation is pending. Automatic folder detection is intentionally disabled pending a reliable game signature; the current Add Game UI cannot select this title explicitly.",
+          "filename": "toonstruck-he-kitor1.zip",
+          "post_install_script": null
+        }
+      ],
+      "gog": {
+        "id": 1207666633,
+        "title": "Toonstruck"
+      }
+    },
+    {
+      "scummvm_id": "gob2",
+      "title": "Gobliins 2: The Prince Buffoon",
+      "platforms": {
+        "windows": true,
+        "osx": true,
+        "linux": false
+      },
+      "detection_patterns": {
+        "unique_files": [],
+        "file_patterns": []
+      },
+      "launch_config": {
+        "args": ["--language=he", "--fullscreen", "--auto-detect"]
+      },
+      "purchase_guide": null,
+      "patches": [
+        {
+          "install_manifest": "patch.json",
+          "language": "he",
+          "version": "1.0-kitor1",
+          "author": "AdventureBrew",
+          "download_url": "https://github.com/yhaggai/kitor/releases/download/patch-gob2-he-v1.0-kitor1/gob2-he-kitor1.zip",
+          "source_type": "github",
+          "checksum": "9610e10f41de81566ec45fb997cd353bd4eb9262a88e91567b44899b3d137e09",
+          "file_size": 659080,
+          "description": "GOG CD v1.02 DOS edition targeted by upstream configuration. Hebrew through ScummVM. macOS requires xdelta3 on PATH. Global launcher/save settings are preserved. Windows/macOS package plans are built; native gameplay validation is pending. Automatic folder detection is intentionally disabled pending a reliable game signature; the current Add Game UI cannot select this title explicitly.",
+          "filename": "gob2-he-kitor1.zip",
+          "post_install_script": null
+        }
+      ],
+      "gog": {
+        "id": 1207662293,
+        "title": "Gobliins 2 - The Prince Buffoon"
+      }
+    },
+    {
+      "scummvm_id": "tlj",
+      "title": "The Longest Journey",
+      "platforms": {
+        "windows": true,
+        "osx": true,
+        "linux": false
+      },
+      "detection_patterns": {
+        "unique_files": [],
+        "file_patterns": []
+      },
+      "launch_config": {
+        "args": ["--language=he", "--fullscreen", "--auto-detect"]
+      },
+      "purchase_guide": null,
+      "patches": [
+        {
+          "install_manifest": "patch.json",
+          "language": "he",
+          "version": "catalog-20261025-kitor1",
+          "author": "AdventureBrew",
+          "download_url": "https://github.com/yhaggai/kitor/releases/download/patch-tlj-he-vcatalog-20261025-kitor1/tlj-he-catalog-20261025-kitor1.zip",
+          "source_type": "github",
+          "checksum": "ef14aaeaff5c680ebfde31751b6f24d4bd1c417521ed0a1f8d03da33906075bf",
+          "file_size": 222535658,
+          "description": "Use the owned GOG edition referenced by publisher; Steam compatibility remains unverified. Requires a ScummVM Stark build with Hebrew support. Fonts remain local to the game. Windows/macOS package plans are built; native gameplay validation is pending. Automatic folder detection is intentionally disabled pending a reliable game signature; the current Add Game UI cannot select this title explicitly.",
+          "filename": "tlj-he-catalog-20261025-kitor1.zip",
+          "post_install_script": null
+        }
+      ],
+      "gog": {
+        "id": 1207658794,
+        "title": "The Longest Journey"
+      }
+    },
+    {
+      "scummvm_id": "sky",
+      "title": "Beneath a Steel Sky",
+      "platforms": {
+        "windows": true,
+        "osx": true,
+        "linux": false
+      },
+      "detection_patterns": {
+        "unique_files": ["sky.dsk"],
+        "file_patterns": []
+      },
+      "launch_config": {
+        "args": ["--language=he", "--fullscreen", "--auto-detect"]
+      },
+      "purchase_guide": null,
+      "patches": [
+        {
+          "install_manifest": "patch.json",
+          "language": "he",
+          "version": "catalog-20261025-kitor1",
+          "author": "AdventureBrew",
+          "download_url": "https://github.com/yhaggai/kitor/releases/download/patch-sky-he-vcatalog-20261025-kitor1/sky-he-catalog-20261025-kitor1.zip",
+          "source_type": "github",
+          "checksum": "560c7e171e67ac6bad597437986f37535937642b71bc2bc6777feec32fc75806",
+          "file_size": 76362023,
+          "description": "Published freeware game data with Hebrew included. Requires a ScummVM daily build with Hebrew support. Windows/macOS package plans are built; native gameplay validation is pending.",
+          "filename": "sky-he-catalog-20261025-kitor1.zip",
+          "post_install_script": null
+        }
+      ],
+      "gog": {
+        "id": 1207658695,
+        "title": "Beneath a Steel Sky (1994)"
+      }
+    },
+    {
+      "scummvm_id": "stanley-parable",
+      "title": "The Stanley Parable (2013)",
+      "platforms": {
+        "windows": true,
+        "osx": false,
+        "linux": false
+      },
+      "detection_patterns": {
+        "unique_files": [],
+        "file_patterns": []
+      },
+      "launch_config": null,
+      "patches": [
+        {
+          "language": "he",
+          "version": "0.9.2.2-steam-male-kitor1",
+          "author": "sigmagamma and Hebrew Adventure contributors",
+          "download_url": "https://github.com/yhaggai/kitor/releases/download/patch-stanley-parable-he-v0.9.2.2-steam-male-kitor1/stanley-parable-he-0.9.2.2-steam-male-kitor1-windows.zip",
+          "source_type": "github",
+          "checksum": "44da2399f3259ba9c27b6dd78683c72b190fe1ef66205ac8fad49c0a8e714807",
+          "file_size": 15236290,
+          "description": "Hebrew translation; experimental Windows candidate. Native gameplay unverified; no macOS support. Steam 2013 edition only; excludes Ultra Deluxe and Epic. Male subtitle variant selected; upstream also offers female variant. Install-only candidate: launch the game through Steam/GOG. Kitor native launching and automatic folder detection are not implemented for this title.",
+          "filename": "stanley-parable-he-0.9.2.2-steam-male-kitor1-windows.zip",
+          "install_manifest": "patch.json",
+          "post_install_script": null
+        }
+      ]
+    },
+    {
+      "scummvm_id": "tesla-effect",
+      "title": "Tesla Effect: A Tex Murphy Adventure",
+      "platforms": {
+        "windows": true,
+        "osx": false,
+        "linux": false
+      },
+      "detection_patterns": {
+        "unique_files": [],
+        "file_patterns": []
+      },
+      "launch_config": null,
+      "patches": [
+        {
+          "language": "he",
+          "version": "RC1-kitor1",
+          "author": "Hebrew Adventure community (upstream credits)",
+          "download_url": "https://github.com/yhaggai/kitor/releases/download/patch-tesla-effect-he-vRC1-kitor1/tesla-effect-he-RC1-kitor1-windows.zip",
+          "source_type": "github",
+          "checksum": "e5ada5a5f82acab20f33f163eff59749cbdc8ded4fe1158ea51d1e4d7be3c505",
+          "file_size": 3691185,
+          "description": "Hebrew translation; experimental Windows candidate. Native gameplay unverified; no macOS support. Steam Tesla Effect; upstream allows other stores but only Steam ownership was matched. Install-only candidate: launch the game through Steam/GOG. Kitor native launching and automatic folder detection are not implemented for this title.",
+          "filename": "tesla-effect-he-RC1-kitor1-windows.zip",
+          "install_manifest": "patch.json",
+          "post_install_script": null
+        }
+      ]
+    },
+    {
+      "scummvm_id": "ethan-carter",
+      "title": "The Vanishing of Ethan Carter (original)",
+      "platforms": {
+        "windows": true,
+        "osx": false,
+        "linux": false
+      },
+      "detection_patterns": {
+        "unique_files": [],
+        "file_patterns": []
+      },
+      "launch_config": null,
+      "patches": [
+        {
+          "language": "he",
+          "version": "2023-12-25-kitor1",
+          "author": "Hebrew Adventure community (upstream credits)",
+          "download_url": "https://github.com/yhaggai/kitor/releases/download/patch-ethan-carter-he-v2023-12-25-kitor1/ethan-carter-he-2023-12-25-kitor1-windows.zip",
+          "source_type": "github",
+          "checksum": "14c8b0df5ec77a2aacf15059524615dfc9e34531d244b98ff1df7aa17e6cb0b0",
+          "file_size": 422301,
+          "description": "Hebrew translation; experimental Windows candidate. Native gameplay unverified; no macOS support. Targets original UE3 edition (AstronautsGame and Binaries/Game); does not target Redux UE4. Install-only candidate: launch the game through Steam/GOG. Kitor native launching and automatic folder detection are not implemented for this title.",
+          "filename": "ethan-carter-he-2023-12-25-kitor1-windows.zip",
+          "install_manifest": "patch.json",
+          "post_install_script": null
+        }
+      ]
+    },
+    {
+      "scummvm_id": "life-is-strange",
+      "title": "Life Is Strange — Episodes 1–3",
+      "platforms": {
+        "windows": true,
+        "osx": false,
+        "linux": false
+      },
+      "detection_patterns": {
+        "unique_files": [],
+        "file_patterns": []
+      },
+      "launch_config": null,
+      "patches": [
+        {
+          "language": "he",
+          "version": "2024-01-15-kitor1",
+          "author": "Hebrew Adventure community (upstream credits)",
+          "download_url": "https://github.com/yhaggai/kitor/releases/download/patch-life-is-strange-he-v2024-01-15-kitor1/life-is-strange-he-2024-01-15-kitor1-windows.zip",
+          "source_type": "github",
+          "checksum": "92a0df893416727fa60ca7daf1c4329a56dcc4635b082c19895272aa3f9c896c",
+          "file_size": 2621096,
+          "description": "Hebrew translation; experimental Windows candidate. Native gameplay unverified; no macOS support. Targets original Windows Life Is Strange episodes 1-3, not Remastered. Verify ownership/installation of episodes 2 and 3. Install-only candidate: launch the game through Steam/GOG. Kitor native launching and automatic folder detection are not implemented for this title.",
+          "filename": "life-is-strange-he-2024-01-15-kitor1-windows.zip",
+          "install_manifest": "patch.json",
+          "post_install_script": null
+        }
+      ]
+    },
+    {
+      "scummvm_id": "portal2",
+      "title": "Portal 2",
+      "platforms": {
+        "windows": true,
+        "osx": false,
+        "linux": false
+      },
+      "detection_patterns": {
+        "unique_files": ["portal2.exe"],
+        "file_patterns": []
+      },
+      "launch_config": null,
+      "patches": [
+        {
+          "language": "he",
+          "version": "0.9.8-glados-localfonts-experimental-kitor1",
+          "author": "sigmagamma and Hebrew Adventure contributors",
+          "download_url": "https://github.com/yhaggai/kitor/releases/download/patch-portal2-he-v0.9.8-glados-localfonts-experimental-kitor1/portal2-he-0.9.8-glados-localfonts-experimental-kitor1-windows.zip",
+          "source_type": "github",
+          "checksum": "5ba214bcc7f5055aa9981f1907d118c6b0ac937f1926414061e48d9fb81f3f62",
+          "file_size": 223209837,
+          "description": "Hebrew translation; experimental Windows candidate. Native gameplay unverified; no macOS support. Local-font substitution experiment; do not claim verified Hebrew rendering. Install-only candidate: launch the game through Steam/GOG. Kitor native launching and automatic folder detection are not implemented for this title.",
+          "filename": "portal2-he-0.9.8-glados-localfonts-experimental-kitor1-windows.zip",
+          "install_manifest": "patch.json",
+          "post_install_script": null
+        }
+      ]
+    },
+    {
+      "scummvm_id": "journey-down1",
+      "title": "The Journey Down: Chapter One",
+      "platforms": {
+        "windows": true,
+        "osx": false,
+        "linux": false
+      },
+      "detection_patterns": {
+        "unique_files": ["jd1.gob"],
+        "file_patterns": []
+      },
+      "launch_config": null,
+      "patches": [
+        {
+          "language": "he",
+          "version": "2025-01-23-kitor1",
+          "author": "Hebrew Adventure community (upstream credits)",
+          "download_url": "https://github.com/yhaggai/kitor/releases/download/patch-journey-down1-he-v2025-01-23-kitor1/journey-down1-he-2025-01-23-kitor1-windows.zip",
+          "source_type": "github",
+          "checksum": "072b2cb4b4dcaa062f2813f1476a739e40353d296172969f17f8916e56f704eb",
+          "file_size": 615850780,
+          "description": "Hebrew translation; experimental Windows candidate. Native gameplay unverified; no macOS support. Chapter One only. jd1.gob is a full individual game archive (615850030 bytes), so selective backup of this one affected archive is necessary. Install-only candidate: launch the game through Steam/GOG. Kitor native launching and automatic folder detection are not implemented for this title.",
+          "filename": "journey-down1-he-2025-01-23-kitor1-windows.zip",
+          "install_manifest": "patch.json",
+          "post_install_script": null
+        }
+      ]
+    },
+    {
+      "scummvm_id": "kathy-rain-dc",
+      "title": "Kathy Rain: Director's Cut",
+      "platforms": {
+        "windows": true,
+        "osx": false,
+        "linux": false
+      },
+      "detection_patterns": {
+        "unique_files": [],
+        "file_patterns": []
+      },
+      "launch_config": null,
+      "patches": [
+        {
+          "language": "he",
+          "version": "2025-09-15-kitor1",
+          "author": "Hebrew Adventure community (upstream credits)",
+          "download_url": "https://github.com/yhaggai/kitor/releases/download/patch-kathy-rain-dc-he-v2025-09-15-kitor1/kathy-rain-dc-he-2025-09-15-kitor1-windows.zip",
+          "source_type": "github",
+          "checksum": "cf4a00a10bcfc7718e5e428f08b30c576b6876d6642bd6a2d4c4017fe305c2b8",
+          "file_size": 28830622,
+          "description": "Hebrew translation; experimental Windows candidate. Native gameplay unverified; no macOS support. Director's Cut only, not original Kathy Rain. Windows Unity resources.assets replaces one 28829728-byte asset file. Install-only candidate: launch the game through Steam/GOG. Kitor native launching and automatic folder detection are not implemented for this title.",
+          "filename": "kathy-rain-dc-he-2025-09-15-kitor1-windows.zip",
+          "install_manifest": "patch.json",
+          "post_install_script": null
+        }
+      ]
+    },
+    {
+      "scummvm_id": "drifter",
+      "title": "The Drifter",
+      "platforms": {
+        "windows": true,
+        "osx": false,
+        "linux": false
+      },
+      "detection_patterns": {
+        "unique_files": [],
+        "file_patterns": []
+      },
+      "launch_config": null,
+      "patches": [
+        {
+          "language": "he",
+          "version": "2026-07-09-kitor1",
+          "author": "Hebrew Adventure community (upstream credits)",
+          "download_url": "https://github.com/yhaggai/kitor/releases/download/patch-drifter-he-v2026-07-09-kitor1/drifter-he-2026-07-09-kitor1-windows.zip",
+          "source_type": "github",
+          "checksum": "dc0e00ed10c10c4d1bb20be2d0ea7b530a0b29555ee8d99cc9db129779f7c380",
+          "file_size": 1543862,
+          "description": "Hebrew translation; experimental Windows candidate. Native gameplay unverified; no macOS support. Steam The Drifter; standalone translation.csv payload. Install-only candidate: launch the game through Steam/GOG. Kitor native launching and automatic folder detection are not implemented for this title.",
+          "filename": "drifter-he-2026-07-09-kitor1-windows.zip",
+          "install_manifest": "patch.json",
+          "post_install_script": null
+        }
+      ]
     }
   ],
   "metadata": {
-    "version": "2.0",
+    "version": "2.1",
     "last_updated": "2026-10-25",
     "source": "Kitor Community Registry"
   }

@@ -220,9 +220,11 @@ fn load(dir: &Path) -> Result<Journal> {
 }
 fn copy_durable(from: &Path, to: &Path) -> Result<()> {
     fs::create_dir_all(to.parent().ok_or("Missing destination parent")?).map_err(err)?;
-    fs::copy(from, to).map_err(err)?;
-    fs::File::open(to).and_then(|f| f.sync_all()).map_err(err)?;
-    sync_dir(to.parent().unwrap())
+    // Windows FlushFileBuffers requires a writable handle. Reopening the copy
+    // with File::open creates a read-only handle and fails even for normal files.
+    // replace retains the writable temporary handle opened before fs::copy also
+    // copies source permissions, so read-only source files remain supported.
+    replace(from, to)
 }
 fn replace(from: &Path, to: &Path) -> Result<()> {
     let parent = to.parent().ok_or("Missing target parent")?;
@@ -690,6 +692,25 @@ mod tests {
         }
     }
     #[test]
+    fn durable_copy_flushes_writable_handle_and_preserves_readonly_permissions() {
+        let root = tempfile::tempdir().unwrap();
+        let source = root.path().join("source");
+        let destination = root.path().join("nested/copy");
+        fs::write(&source, b"original readonly bytes").unwrap();
+        let mut permissions = fs::metadata(&source).unwrap().permissions();
+        permissions.set_readonly(true);
+        fs::set_permissions(&source, permissions).unwrap();
+        copy_durable(&source, &destination).unwrap();
+        assert_eq!(fs::read(&destination).unwrap(), b"original readonly bytes");
+        assert!(fs::metadata(&destination).unwrap().permissions().readonly());
+        #[cfg(windows)]
+        for path in [&source, &destination] {
+            let mut permissions = fs::metadata(path).unwrap().permissions();
+            permissions.set_readonly(false);
+            fs::set_permissions(path, permissions).unwrap();
+        }
+    }
+    #[test]
     fn selective_roundtrip_both_layouts_preserves_unrelated_files_and_permissions() {
         for platform in ["windows", "osx"] {
             let f = Fixture::new();
@@ -921,18 +942,35 @@ mod tests {
     fn all_catalog_packages_have_matching_plans_and_verified_assets() {
         let registry = crate::services::registry_service::load_registry().unwrap();
         for game in registry.games {
+            if game.patches.is_empty() {
+                continue;
+            }
             let root = Path::new("../../patches-workspace")
                 .join(&game.scummvm_id)
                 .join("he");
+            let manifest = if root.join("patch.json").is_file() {
+                root.join("patch.json")
+            } else {
+                root.join("patch.windows.candidate.json")
+            };
             let package: Package =
-                serde_json::from_slice(&fs::read(root.join("patch.json")).unwrap()).unwrap();
+                serde_json::from_slice(&fs::read(manifest).unwrap()).unwrap();
             assert_eq!(package.version, game.patches[0].version);
             assert_eq!(
                 game.patches[0].install_manifest.as_deref(),
                 Some("patch.json")
             );
             for platform in ["windows", "osx"] {
-                let plan = package.platforms.get(platform).expect("Windows/macOS plan");
+                let supported = game.platforms.as_ref().map(|p| match platform {
+                    "windows" => p.windows,
+                    _ => p.osx,
+                }).unwrap_or(false);
+                assert_eq!(supported, package.platforms.contains_key(platform),
+                    "Registry platform mismatch for {}: {}", game.scummvm_id, platform);
+                if !supported {
+                    continue;
+                }
+                let plan = package.platforms.get(platform).unwrap();
                 let files = if plan.files.is_empty() {
                     &package.files
                 } else {

@@ -8,7 +8,7 @@
     "crc_platform_and_content_checks": "passed"
   },
   "python_tests": {
-    "passed": 17,
+    "passed": 23,
     "failed": 0,
     "scope": "Package validation/reproducibility and legacy delta conversion"
   },
@@ -31,8 +31,8 @@
   "gameplay_validation": "not_run",
   "release_ready": false,
   "game_installations_modified": false,
-  "registry_activation": false,
-  "publication": false,
+  "registry_activation": true,
+  "publication": "20 new candidate prereleases; not gameplay verified",
   "full_lifecycle_suite": {
     "passed": 11,
     "failed": 0,

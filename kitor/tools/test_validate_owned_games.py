@@ -44,7 +44,7 @@ class DisposableValidationTests(unittest.TestCase):
 
     def test_real_copy_plan_uses_disposable_subset(self):
         result, report = self.run_validator()
-        self.assertEqual(result.returncode, 0, result.stderr)
+        self.assertEqual(result.returncode, 0, result.stderr + "\n" + json.dumps(report, indent=2))
         self.assertEqual(report['results'][0]['status'], 'pass')
         self.assertEqual(report['results'][0]['details']['backedUpFiles'], 1)
         self.assertEqual(report['nativeWindows'], os.name == 'nt')
@@ -54,7 +54,8 @@ class DisposableValidationTests(unittest.TestCase):
         self.manifest['files'][0]['original_sha256'] = '0' * 64
         result, report = self.run_validator()
         self.assertEqual(result.returncode, 1)
-        self.assertEqual(report['results'][0]['status'], 'fail')
+        self.assertEqual(report['results'][0]['status'], 'fail', json.dumps(report, indent=2))
+        self.assertIn('Unsupported original version: original.bin', report['results'][0].get('error', ''), json.dumps(report, indent=2))
         self.assertEqual(report['summary']['passed'], 0)
 
     def test_empty_config_does_not_report_success(self):

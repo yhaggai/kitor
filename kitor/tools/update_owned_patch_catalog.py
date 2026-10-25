@@ -48,7 +48,7 @@ def main():
               'catalog_entry_count': len(rows), 'source_catalog': 'Downloads/json/all_games.json (174 entries)',
               'ownership_sources': {'steam': 'yhaggai signed-in All Games page, 103 entries',
                                     'gog': 'Authenticated account library, 36 titles'},
-              'scope': 'Local preparation only. No game installation, registry activation, or publication performed.',
+              'scope': 'Owned patch packages are indexed in Kitor; new packages are published as unverified prereleases. No game installation was modified.',
               'specification': 'patches-workspace/specification.json',
               'build_both_platforms': 'python3 kitor/tools/build_patch_packages.py <patch.json> --output dist/patches',
               'build_windows_candidate': 'python3 kitor/tools/build_patch_packages.py <patch.windows.candidate.json> --platform windows --output dist/patches',
@@ -66,7 +66,7 @@ def main():
     lines = [
         '# Owned-game patch workspace', '',
         'Ownership snapshot: 25 October 2026. All 28 catalog matches are represented here.', '',
-        'These are local source imports and build artifacts. They are not enabled in the live Kitor registry or published. Native Windows tests and game-specific Windows/macOS gameplay validation remain outstanding.', '',
+        'Installable packages are indexed in the Kitor registry. New packages are published as unverified prereleases; game-specific Windows/macOS gameplay validation remains outstanding. Some entries need manual selection/detection support, and modern games must be launched through Steam/GOG.', '',
         '## Contract', '',
         'Every releasable patch needs Windows and macOS artifacts, a declared file plan, source hashes, edition/dependency information, and selective install/uninstall through Kitor. Back up only affected existing files; restore those originals and remove patch-created files. Never copy or clear the entire game directory. See [specification.json](specification.json).', '',
         'Portable data packages use Kitor and the appropriate native game/ScummVM runtime; packaging a ZIP does not compile a new native installer. Dependencies and exceptions live in each provenance.json.', '',
@@ -83,7 +83,7 @@ def main():
         'python3 kitor/tools/run_lifecycle_tests.py --nocapture',
         'python3 kitor/tools/update_owned_patch_catalog.py', '```', '',
         'The [machine-readable inventory](owned-catalog.json) records local artifact paths and SHA-256 hashes. The [validation record](validation.json) distinguishes fixture results from native gameplay checks.', '',
-        'Journey Down and Portal 2 have payloads exceeding GitHub single-file limits. Those assets remain locally but are excluded from Git; CI deliberately excludes Windows candidates until source hydration or large-file storage is configured.', '',
+        'Journey Down and Portal 2 have payloads exceeding GitHub single-file limits. Those assets are excluded from Git and hydrated from private, SHA256-pinned build-input release assets. CI builds both dual-platform packages and Windows candidates.', '',
         'Release automation requires explicit release_ready=true in provenance.json and validated dual-platform manifests. All imported entries remain false. Raw upstream installers and ownership metadata are excluded from release ZIPs.', '',
     ]
     (WORKSPACE / 'README.md').write_text('\n'.join(lines))

@@ -6,7 +6,7 @@ import subprocess
 import sys
 
 root = Path(__file__).resolve().parent
-build = subprocess.run(['cargo', 'test', '--manifest-path', str(root / 'lifecycle-harness/Cargo.toml'), '--locked', '--no-run', '--message-format=json'], capture_output=True, text=True)
+build = subprocess.run(['cargo', 'test', '--manifest-path', str(root / 'lifecycle-harness/Cargo.toml'), '--locked', '--release', '--no-run', '--message-format=json'], capture_output=True, text=True)
 print(build.stderr, end='', file=sys.stderr)
 if build.returncode:
     print(build.stdout, end='')

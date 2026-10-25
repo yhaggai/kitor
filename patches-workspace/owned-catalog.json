@@ -7,7 +7,7 @@
     "steam": "yhaggai signed-in All Games page, 103 entries",
     "gog": "Authenticated account library, 36 titles"
   },
-  "scope": "Local preparation only. No game installation, registry activation, or publication performed.",
+  "scope": "Owned patch packages are indexed in Kitor; new packages are published as unverified prereleases. No game installation was modified.",
   "specification": "patches-workspace/specification.json",
   "build_both_platforms": "python3 kitor/tools/build_patch_packages.py <patch.json> --output dist/patches",
   "build_windows_candidate": "python3 kitor/tools/build_patch_packages.py <patch.windows.candidate.json> --platform windows --output dist/patches",

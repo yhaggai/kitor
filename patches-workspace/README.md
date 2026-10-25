@@ -2,7 +2,7 @@
 
 Ownership snapshot: 25 October 2026. All 28 catalog matches are represented here.
 
-These are local source imports and build artifacts. They are not enabled in the live Kitor registry or published. Native Windows tests and game-specific Windows/macOS gameplay validation remain outstanding.
+Installable packages are indexed in the Kitor registry. New packages are published as unverified prereleases; game-specific Windows/macOS gameplay validation remains outstanding. Some entries need manual selection/detection support, and modern games must be launched through Steam/GOG.
 
 ## Contract
 
@@ -57,6 +57,6 @@ python3 kitor/tools/update_owned_patch_catalog.py
 
 The [machine-readable inventory](owned-catalog.json) records local artifact paths and SHA-256 hashes. The [validation record](validation.json) distinguishes fixture results from native gameplay checks.
 
-Journey Down and Portal 2 have payloads exceeding GitHub single-file limits. Those assets remain locally but are excluded from Git; CI deliberately excludes Windows candidates until source hydration or large-file storage is configured.
+Journey Down and Portal 2 have payloads exceeding GitHub single-file limits. Those assets are excluded from Git and hydrated from private, SHA256-pinned build-input release assets. CI builds both dual-platform packages and Windows candidates.
 
 Release automation requires explicit release_ready=true in provenance.json and validated dual-platform manifests. All imported entries remain false. Raw upstream installers and ownership metadata are excluded from release ZIPs.
