@@ -22,8 +22,17 @@
       "method": "Compared converted BSDIFF40 through actual Kitor decoder against independent original-format interpreter on 4 MiB patterned synthetic input; original game data was not used."
     },
     "conversion_unit_tests": "4 passed, including negative seek, initial seek-only control, literals and truncated data",
-    "built_platform_archives": ["windows", "osx"],
-    "zip_integrity": "passed"
+    "built_platform_archives": ["windows", "osx", "universal"],
+    "zip_integrity": "passed",
+    "owned_steam_roundtrip": {
+      "status": "passed",
+      "host": "macOS",
+      "plan": "windows (identical shared file plan for osx)",
+      "originals_restored": 9,
+      "affected_files": 13,
+      "method": "Actual Kitor lifecycle on disposable affected-file copies; installed MD5 guards, selective backup count, byte-for-byte restoration, created-file removal, and unrelated files before/after install verified. Owned source files unchanged.",
+      "gameplay": "not_run"
+    }
   },
   "runtime": "Kitor declarative patch_lifecycle; selective per-file journal, backup, rollback and uninstall",
   "platform_artifacts": {
@@ -96,7 +105,7 @@
       }
     ]
   },
-  "conversion": "VPatch copy/literal blocks converted losslessly to BSDIFF40; first source variant selected per file, MD5 edition guards retained. Additional source variants require a separate tested plan.",
+  "conversion": "VPatch copy/literal blocks converted losslessly to BSDIFF40; VOL.1 and VOL.2 use upstream variant 1, matching the owned Steam files; all other files use variant 0. MD5 input and output guards retained.",
   "dependencies": {
     "windows": ["Python 3 via py -3", "ScummVM Hebrew AGI support"],
     "osx": ["Python 3", "ScummVM Hebrew AGI support"]

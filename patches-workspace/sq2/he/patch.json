@@ -2,8 +2,8 @@
   "schema_version": 1,
   "scummvm_id": "sq2",
   "language": "he",
-  "version": "1.0-kitor1",
-  "filename": "sq2-he-kitor1.zip",
+  "version": "1.0-kitor2",
+  "filename": "sq2-he-kitor2.zip",
   "platforms": {
     "windows": {},
     "osx": {}
@@ -24,24 +24,24 @@
     {
       "path": "VOL.1",
       "operation": "modify",
-      "original_md5": "3e09c8580506212cd3494b5df8ea6cbc",
+      "original_md5": "fa5415f7cbc6e78c69d94ef3c92d000d",
       "installed_md5": "876537acc263098fa49ce4706bb7dd1e",
       "source": {
         "kind": "bsdiff",
         "path": "payload/VOL.1.bsdiff",
-        "sha256": "8f815d78d285ecc2d8c706b8e7380499fd1b1510c11eb76d75a21414364f98fb",
+        "sha256": "c506fb99cb19af6a5d8a8b8508bf4ecf394e95b680836a57f22978377fd0d7c1",
         "input": "VOL.1"
       }
     },
     {
       "path": "VOL.2",
       "operation": "modify",
-      "original_md5": "3e09c8580506212cd3494b5df8ea6cbc",
+      "original_md5": "f7015465702a24333a0e799ad0d967bb",
       "installed_md5": "be68eb442c49b42a158edfc15c17a5c5",
       "source": {
         "kind": "bsdiff",
         "path": "payload/VOL.2.bsdiff",
-        "sha256": "4d5c0c35bc9bc714e11cef65fc839f260ede4957fceebd1489ca41cca87729f8",
+        "sha256": "1f35e299aca10d8533d81e16a537122531e6f30adbe46b0cafd8c085e9d2818f",
         "input": "VOL.2"
       }
     },
