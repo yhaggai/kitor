@@ -1,6 +1,1778 @@
 {
   "scummvm_id": "sq1sci",
   "language": "he",
-  "version": "1.0",
-  "filename": "SpaceQuest1VGA-Heb-AdventureBrew.zip"
+  "version": "1.0-kitor2",
+  "filename": "SpaceQuest1VGA-Heb-AdventureBrew.zip",
+  "schema_version": 1,
+  "platforms": {
+    "windows": {},
+    "osx": {},
+    "linux": {}
+  },
+  "files": [
+    {
+      "path": "0.fon",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "sq1/PATCHES/0.fon",
+        "sha256": "16fa555dcb7ec5759d4dd1706a7d846dd5222b54215121fd20bca6019d2a0734"
+      }
+    },
+    {
+      "path": "0.scr",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "sq1/PATCHES/0.scr",
+        "sha256": "2d1f1b63e6334569f3de2ccbc11c98d67eea91c30b7bd55a788daf325b75d406"
+      }
+    },
+    {
+      "path": "1.scr",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "sq1/PATCHES/1.scr",
+        "sha256": "4bec5f4e487fc233085c4e390b770803e3082e98f9d77bc6c21f39fffdfc1566"
+      }
+    },
+    {
+      "path": "10.scr",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "sq1/PATCHES/10.scr",
+        "sha256": "6d0fd4b70f55f24c86ee39ebd95de9ff13313ef68e9855b2f827c74aa3447a3b"
+      }
+    },
+    {
+      "path": "103.scr",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "sq1/PATCHES/103.scr",
+        "sha256": "edb7dd67af328f2a9b0d55cfdee559ca8ffa6beb0875b395feb67ded54fbe3e0"
+      }
+    },
+    {
+      "path": "11.scr",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "sq1/PATCHES/11.scr",
+        "sha256": "9ec162ac54ec9032d2f3cb4894ddf3cf22ddffef1ebb2e890d3c283c566d05fa"
+      }
+    },
+    {
+      "path": "12.scr",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "sq1/PATCHES/12.scr",
+        "sha256": "5a0dbe3cc3f4566c28bbf2e34534d5849e144672d75a01292aeb8e7f97198998"
+      }
+    },
+    {
+      "path": "13.scr",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "sq1/PATCHES/13.scr",
+        "sha256": "8f870d19a3d7ce68072744205daeb717148e58d301f1eb5a5cd134a3e5dbaa8f"
+      }
+    },
+    {
+      "path": "138.scr",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "sq1/PATCHES/138.scr",
+        "sha256": "f84bcff570d0e68c33b6f29fd98809a630680965ec3b7fc2613a479fc772219c"
+      }
+    },
+    {
+      "path": "14.scr",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "sq1/PATCHES/14.scr",
+        "sha256": "0da4ae2546d01f2321902b956ebcb3699ff7e3d96c4a62295ac8cbdda846243d"
+      }
+    },
+    {
+      "path": "18.scr",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "sq1/PATCHES/18.scr",
+        "sha256": "09a8ec6035b43b795744a6fc21206a19c1073e8e67aa42c80a2cd339bd0ee714"
+      }
+    },
+    {
+      "path": "19.scr",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "sq1/PATCHES/19.scr",
+        "sha256": "58698810ed23f3b93f36eef446c64ded36db76d3e836b68422cd17bd66b7550b"
+      }
+    },
+    {
+      "path": "2.scr",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "sq1/PATCHES/2.scr",
+        "sha256": "4887cc96d8b7d9be4b68a366b4a887283ca64a18cd78326b96da8b7e590da9e5"
+      }
+    },
+    {
+      "path": "20.scr",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "sq1/PATCHES/20.scr",
+        "sha256": "0aeaeb4001bf5f4f61451ab045e28279e6bc39d9c089e65fd8ea07ea312cdc5f"
+      }
+    },
+    {
+      "path": "21.scr",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "sq1/PATCHES/21.scr",
+        "sha256": "6b39eba64404d85ac2e3c168200c13d20a85b59e5a5d6e34985a49a2b62d1c77"
+      }
+    },
+    {
+      "path": "22.scr",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "sq1/PATCHES/22.scr",
+        "sha256": "251ce7ecc21d26013c887b968be16518086285e264c76e9695178ca0d40f0994"
+      }
+    },
+    {
+      "path": "23.scr",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "sq1/PATCHES/23.scr",
+        "sha256": "e018db2abd910918013ac59bdda6e40d8fd3332b1fff25c34b6da1af46ac3536"
+      }
+    },
+    {
+      "path": "238.scr",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "sq1/PATCHES/238.scr",
+        "sha256": "50fa369d53a881ee839929f22543160d6ca2d1f9f624edca0ddc3720f0cb4706"
+      }
+    },
+    {
+      "path": "24.scr",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "sq1/PATCHES/24.scr",
+        "sha256": "1084235c285236a62549c3feecc2f027f87ddbec90e81081e2f0fa6ad23e4903"
+      }
+    },
+    {
+      "path": "25.scr",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "sq1/PATCHES/25.scr",
+        "sha256": "182aba795e07eb07c79df52bf59ff8ac971314d83957f07a225922ca7c423542"
+      }
+    },
+    {
+      "path": "26.scr",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "sq1/PATCHES/26.scr",
+        "sha256": "26ceea77931507f0e6d95e27458574ce547adc352324a6cad454d609a873bd5e"
+      }
+    },
+    {
+      "path": "27.scr",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "sq1/PATCHES/27.scr",
+        "sha256": "40f575287dab8d5b9942d3b40ae3dd5f3b68a8d90746e5dbe6715daec2a5c4f0"
+      }
+    },
+    {
+      "path": "28.scr",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "sq1/PATCHES/28.scr",
+        "sha256": "4f34de6d272858892d1cfd62a6eb290fda93c671c26297b13d8e6a0e9185cf38"
+      }
+    },
+    {
+      "path": "3.scr",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "sq1/PATCHES/3.scr",
+        "sha256": "29f1fb7330d013da16dbc75cfc6cc6d7a95eca74287e05ae129ae3984fb9d85d"
+      }
+    },
+    {
+      "path": "30.scr",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "sq1/PATCHES/30.scr",
+        "sha256": "896054af07e3a2babd0799e4a35eb6f88282be6831da488b77972e573a10a03a"
+      }
+    },
+    {
+      "path": "300.fon",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "sq1/PATCHES/300.fon",
+        "sha256": "adec3c6cfd0afccf0e316bb8405a72ff9b66fddcab3ce658527f03ca98cdb277"
+      }
+    },
+    {
+      "path": "300.p56",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "sq1/PATCHES/300.p56",
+        "sha256": "c7f3a371746cbd18461fa7dcd0c41b7882d866d52a8017aaec3879e45b85f225"
+      }
+    },
+    {
+      "path": "300.scr",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "sq1/PATCHES/300.scr",
+        "sha256": "b4c1a5974a8d479d07af48d11c394c6fff11bcfa2a4e1a43a918bcfbc0e578c4"
+      }
+    },
+    {
+      "path": "301.scr",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "sq1/PATCHES/301.scr",
+        "sha256": "3ce98de0bfe735295bb57c88b186798978f3793cd25df4fa0c6630e33cae73af"
+      }
+    },
+    {
+      "path": "302.scr",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "sq1/PATCHES/302.scr",
+        "sha256": "b0dd83fccd56d74bd7a137f39e9d8690aa103784dfeb7c9aa5d6352ad52c8756"
+      }
+    },
+    {
+      "path": "303.scr",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "sq1/PATCHES/303.scr",
+        "sha256": "e713c05a83de1ed1f5e5ba285e4002c9984b7b2b4072c1038417eca0e5c6d16d"
+      }
+    },
+    {
+      "path": "31.scr",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "sq1/PATCHES/31.scr",
+        "sha256": "6164c2ebf34e48345416d8fdb5580deb3f5740cb6bf88bdc992d8040b10fdd36"
+      }
+    },
+    {
+      "path": "32.scr",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "sq1/PATCHES/32.scr",
+        "sha256": "e4f99c1d41a9ff157e2d24413f41790b14470b7ac8185a6fc0fca6843c58ad7c"
+      }
+    },
+    {
+      "path": "33.scr",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "sq1/PATCHES/33.scr",
+        "sha256": "65d9ca0558973c7ae48541e0fae2395ef5fe8495c73620e4f28d73cf6e5288aa"
+      }
+    },
+    {
+      "path": "338.scr",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "sq1/PATCHES/338.scr",
+        "sha256": "fb022a9dfd8a681c06663e368eacbf8325072812c96609b0bb6d3a37aee23d18"
+      }
+    },
+    {
+      "path": "35.scr",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "sq1/PATCHES/35.scr",
+        "sha256": "1c1ca0ecf3d5674bf5743324d6efc17461ef366804657282ba16fda88fad3dc1"
+      }
+    },
+    {
+      "path": "36.scr",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "sq1/PATCHES/36.scr",
+        "sha256": "f11f4394c42be62c824348b73473320d25d2a0076fd412c583957b5025a7de6f"
+      }
+    },
+    {
+      "path": "37.scr",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "sq1/PATCHES/37.scr",
+        "sha256": "64b46d82e6c47e09c0b3c79c133928f6aba6335af1a0970304a61c22cb9320a8"
+      }
+    },
+    {
+      "path": "38.scr",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "sq1/PATCHES/38.scr",
+        "sha256": "955af3c462a40c4493a783b9ec6de45fc83f50d29d4faff81dfa058f935a5b82"
+      }
+    },
+    {
+      "path": "4.fon",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "sq1/PATCHES/4.fon",
+        "sha256": "f23670df57bac8ed5ba483560a213010cdfc068d23cf5652323ebe340728fcfd"
+      }
+    },
+    {
+      "path": "4.scr",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "sq1/PATCHES/4.scr",
+        "sha256": "3c0425f8eac6633d4c4eeebef5d6bdcc0cc4f446f961b4043b31c08234ec3c24"
+      }
+    },
+    {
+      "path": "40.scr",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "sq1/PATCHES/40.scr",
+        "sha256": "377330300d9897b1828425e4002c5cd757da345699a08ba88538d66dfd71f6ee"
+      }
+    },
+    {
+      "path": "400.scr",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "sq1/PATCHES/400.scr",
+        "sha256": "fc84c8881b71f4fb3ceb2b235c22bf19d8cd0469872444cd9031e55843e53ec5"
+      }
+    },
+    {
+      "path": "41.scr",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "sq1/PATCHES/41.scr",
+        "sha256": "58eec0af3958b51130c155ebc7c9223fab22d0a99bf53c947ef7795a65a02738"
+      }
+    },
+    {
+      "path": "42.scr",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "sq1/PATCHES/42.scr",
+        "sha256": "dc71bb414134813cc8d24c4d01ec04f3a9a9b6f2043d88a5badc355024557bf1"
+      }
+    },
+    {
+      "path": "43.scr",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "sq1/PATCHES/43.scr",
+        "sha256": "81d170648cab7935422129591c0cebe3dc3ef457b43529750bcb9270f170bcf6"
+      }
+    },
+    {
+      "path": "44.scr",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "sq1/PATCHES/44.scr",
+        "sha256": "f12436378ad97d4a889dd424a8c1e03446f1df53d620b04642620618c4cbb598"
+      }
+    },
+    {
+      "path": "45.scr",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "sq1/PATCHES/45.scr",
+        "sha256": "47b025b84b71ad49be545b5598ea4ddc9dfd9822111fc826222c460d87631e2b"
+      }
+    },
+    {
+      "path": "46.scr",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "sq1/PATCHES/46.scr",
+        "sha256": "aae2b2c0a1f84f2ae35c828a4ecad31cbe718b845b036e113f1e17b3ce18fa8a"
+      }
+    },
+    {
+      "path": "47.scr",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "sq1/PATCHES/47.scr",
+        "sha256": "3da9b874c0e0eb6055e98baa852e108f7838073f091724a139286dbccad26785"
+      }
+    },
+    {
+      "path": "48.scr",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "sq1/PATCHES/48.scr",
+        "sha256": "b33340ec24e1fac79374dcef91c5936768a1b509a7061818224d56e05ee2256c"
+      }
+    },
+    {
+      "path": "49.scr",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "sq1/PATCHES/49.scr",
+        "sha256": "c2e744106333c73b2662a6959387f4b90e5495bb438cd5d0aab240a197221bd5"
+      }
+    },
+    {
+      "path": "5.scr",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "sq1/PATCHES/5.scr",
+        "sha256": "122fe6678b78c2beb5648115f758d811e385dddd4f7ac95b6277e024c406ed80"
+      }
+    },
+    {
+      "path": "51.scr",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "sq1/PATCHES/51.scr",
+        "sha256": "776fd3feae14ca466407a567a1b6b29cc678c6e5b21f65e0bcaeb2f2c4c9ef0a"
+      }
+    },
+    {
+      "path": "53.scr",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "sq1/PATCHES/53.scr",
+        "sha256": "267a69e5fc3cc63d72c49c6e5fb688e015075ea9ed347e29a0dd4d6b2a173ad9"
+      }
+    },
+    {
+      "path": "54.scr",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "sq1/PATCHES/54.scr",
+        "sha256": "1733982662509391c27e01588c06d2964e1090387cbbc987a5bd9cf8f3a27cba"
+      }
+    },
+    {
+      "path": "55.scr",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "sq1/PATCHES/55.scr",
+        "sha256": "d06d63801517599148688d5c00707cc2f9268eaf54dcae004cd967c595372a00"
+      }
+    },
+    {
+      "path": "57.scr",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "sq1/PATCHES/57.scr",
+        "sha256": "87b2325836fb594c469db7fe4081182b334ea7fc6b2a02b78765fa66ac013fdb"
+      }
+    },
+    {
+      "path": "58.scr",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "sq1/PATCHES/58.scr",
+        "sha256": "a2f5998d9cd6bb7ffecac59497f70f3e99f99428e69ccdc281ea87578be48022"
+      }
+    },
+    {
+      "path": "59.scr",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "sq1/PATCHES/59.scr",
+        "sha256": "e85187da15481584012c4d7671d1549cfae644e051d1ddd5ad0a0f17f5b0d163"
+      }
+    },
+    {
+      "path": "6.scr",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "sq1/PATCHES/6.scr",
+        "sha256": "238059ca0575fdade941a4adf8a451e098ab465348664dbfce97a2102e2968e3"
+      }
+    },
+    {
+      "path": "60.fon",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "sq1/PATCHES/60.fon",
+        "sha256": "b49673ead236e914234401bfe0cac08b305ec3dbdbd6d02a098cee1948627ad3"
+      }
+    },
+    {
+      "path": "60.scr",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "sq1/PATCHES/60.scr",
+        "sha256": "f92e4f914ece7da68b1a61666bd55cf7d02e417a54770729932d1853c9182dee"
+      }
+    },
+    {
+      "path": "600.v56",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "sq1/PATCHES/600.v56",
+        "sha256": "8babc4936639bc77df5233c5dac3946442d41991f4b0ddf072b524f89181acfc"
+      }
+    },
+    {
+      "path": "61.fon",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "sq1/PATCHES/61.fon",
+        "sha256": "0065b0d3f00e109de348bd20dfe19c3f63a1dc5f26446d654cf06e5cc3b9c0e0"
+      }
+    },
+    {
+      "path": "61.scr",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "sq1/PATCHES/61.scr",
+        "sha256": "4bee5d93ae5cc791c5d0e3fba21634b64b66e240925835d4a7b4054327986e45"
+      }
+    },
+    {
+      "path": "62.scr",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "sq1/PATCHES/62.scr",
+        "sha256": "006bf2d1618f486a2aca3be70a49ce4f6aa0b1b488e2c8429e116ea69e87ca96"
+      }
+    },
+    {
+      "path": "63.scr",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "sq1/PATCHES/63.scr",
+        "sha256": "9973fcc264773e5f60f7361229df19888a86ebbe9157f41c7d1647ab3670a0c6"
+      }
+    },
+    {
+      "path": "64.scr",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "sq1/PATCHES/64.scr",
+        "sha256": "70896605bd1f4c7d6e702f2222a47052d2c0a4db145a4d68bacef32e82db76d0"
+      }
+    },
+    {
+      "path": "65.scr",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "sq1/PATCHES/65.scr",
+        "sha256": "34ee29e7e725826fc8d4c14d6b72ad8caa4240b40c9f3f5aca0e87629ee9a4bd"
+      }
+    },
+    {
+      "path": "66.scr",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "sq1/PATCHES/66.scr",
+        "sha256": "2cf15c9cf9191930acc1a155ee2e10112ccb3474ca03edf126560fa61baeeacd"
+      }
+    },
+    {
+      "path": "67.scr",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "sq1/PATCHES/67.scr",
+        "sha256": "48c6b46bd8331db506e207581fa6d194ed1d82c906a10e9221e5576c58d14c80"
+      }
+    },
+    {
+      "path": "68.fon",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "sq1/PATCHES/68.fon",
+        "sha256": "fd770eca8b03e6b032380bbd5268f95e5687f4bda35a4a7313425abf245d4aab"
+      }
+    },
+    {
+      "path": "68.scr",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "sq1/PATCHES/68.scr",
+        "sha256": "577a87f52365a25e500942b081136da062b8522e4c9cdf6ea4bb4e0a63bb5a34"
+      }
+    },
+    {
+      "path": "69.fon",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "sq1/PATCHES/69.fon",
+        "sha256": "991f8962acb24e9c0e957595ce246411406b6b29c1397b6cc7169cd2186c163a"
+      }
+    },
+    {
+      "path": "7.scr",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "sq1/PATCHES/7.scr",
+        "sha256": "95b89d7e3d1d6222206d94f1f681c1d243a2ae713520736ce9e09ee1a91ca72f"
+      }
+    },
+    {
+      "path": "700.scr",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "sq1/PATCHES/700.scr",
+        "sha256": "8e8f575c195e3e262ff8da55ace1a3ad8ce2cb932143985ed245f6a9c6a964eb"
+      }
+    },
+    {
+      "path": "702.scr",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "sq1/PATCHES/702.scr",
+        "sha256": "9706e2de6457eb78289b5d7267a6d487afe7f5281c55c5f3955f0002a0dad5dd"
+      }
+    },
+    {
+      "path": "703.scr",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "sq1/PATCHES/703.scr",
+        "sha256": "f8d1183e4914dc42c628145d860372763a3908851ccb6687cbed294e04afbddf"
+      }
+    },
+    {
+      "path": "704.scr",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "sq1/PATCHES/704.scr",
+        "sha256": "41a8ca716d5f406e37b29d1f9db946c08c1c0fabce78167a57fc7dbb9d3099d4"
+      }
+    },
+    {
+      "path": "707.scr",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "sq1/PATCHES/707.scr",
+        "sha256": "76c64091ad6fb81f95579167275d043cc4a9671a615d445229542dff6bf7101f"
+      }
+    },
+    {
+      "path": "8.scr",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "sq1/PATCHES/8.scr",
+        "sha256": "6d4b6d162af93b6ae7f0b15806eb6b18a4423e985f9c242ab0b1137c352d2bca"
+      }
+    },
+    {
+      "path": "803.scr",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "sq1/PATCHES/803.scr",
+        "sha256": "0888faa2b90b293bc77439d977cd6f3f1191f4eb2e608f223d05d37c2afc35ee"
+      }
+    },
+    {
+      "path": "9.scr",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "sq1/PATCHES/9.scr",
+        "sha256": "7367094dfd07581d1e9b7a30150e975fea51699df4f76fc3bc2e155a483e43f1"
+      }
+    },
+    {
+      "path": "947.v56",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "sq1/PATCHES/947.v56",
+        "sha256": "43d49bf2a0b7ba1f21af400aaf05ea87e982285878242a0c35a984a020b0155d"
+      }
+    },
+    {
+      "path": "990.scr",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "sq1/PATCHES/990.scr",
+        "sha256": "2122b124d287d39c95ad66b447aaad1a4d5dace089ba23e7a7b1b0070dca9dae"
+      }
+    },
+    {
+      "path": "994.scr",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "sq1/PATCHES/994.scr",
+        "sha256": "f8f131caec5dcf2b2be75150a4f1635d22e87f9197baf255d8e780d23b905907"
+      }
+    },
+    {
+      "path": "995.scr",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "sq1/PATCHES/995.scr",
+        "sha256": "3d14756721bd1411a07a9d4b840dfcb4dd5a094a85f79bcd403873d624ffc16a"
+      }
+    },
+    {
+      "path": "996.scr",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "sq1/PATCHES/996.scr",
+        "sha256": "811d85dc92a8354747445f332af4b670ace0962ffc218efa232ad4b7d7d87a65"
+      }
+    },
+    {
+      "path": "999.fon",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "sq1/PATCHES/999.fon",
+        "sha256": "f728115199fc60cc7c2c921731ee3d879a90ecc707994bd5bff9fb604a55b407"
+      }
+    },
+    {
+      "path": "999.voc",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "sq1/PATCHES/999.voc",
+        "sha256": "f4756d14a806cb4cf26fa2d6ca3fcdc1c19161dabc0d4dc0eb467f7cb2ba43ce"
+      }
+    },
+    {
+      "path": "text.000",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "sq1/PATCHES/text.000",
+        "sha256": "3574a46e7785bc99e494694201aad723e83a4ee0cd992a4849350c90858d26f7"
+      }
+    },
+    {
+      "path": "text.001",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "sq1/PATCHES/text.001",
+        "sha256": "76352b591840dd9e83ff371188efe9a942081f46e8bda65540eb2d5c19c4a023"
+      }
+    },
+    {
+      "path": "text.002",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "sq1/PATCHES/text.002",
+        "sha256": "abdd00aa60979ecb583a215655e189c98eb478ecbd7ab50fbb9d0f45380fa92f"
+      }
+    },
+    {
+      "path": "text.003",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "sq1/PATCHES/text.003",
+        "sha256": "bee70c78f303846249ba2afcf7d82e5a5c0075d01cfbbc2ee0a4b1449d3709da"
+      }
+    },
+    {
+      "path": "text.004",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "sq1/PATCHES/text.004",
+        "sha256": "93ce36979a0629f00475b73c18c6bd92896bb72697e379c1616c1b6452fede42"
+      }
+    },
+    {
+      "path": "text.005",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "sq1/PATCHES/text.005",
+        "sha256": "decd8f6eef72114737ca28df027476177505f7e4a4bfed98dc41d98193024dd2"
+      }
+    },
+    {
+      "path": "text.006",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "sq1/PATCHES/text.006",
+        "sha256": "0eca7097d4c10e0396ad90f4745cbd767c6b9db2727f5c084de7fe7240f628c5"
+      }
+    },
+    {
+      "path": "text.007",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "sq1/PATCHES/text.007",
+        "sha256": "8a7fa95decd257f8f156e68a5176e77d7066c6e9756b1456ca6de06752aa9fce"
+      }
+    },
+    {
+      "path": "text.009",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "sq1/PATCHES/text.009",
+        "sha256": "4d1bdacbbb94b1465acb1f5d77dc5b1977ab5580e2abe8b9c9a88bd9f1178f75"
+      }
+    },
+    {
+      "path": "text.010",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "sq1/PATCHES/text.010",
+        "sha256": "2dfebb0479e310ca3b8a0db315a2d3880bc8f1ba57038d769152ccb6bdb0fea4"
+      }
+    },
+    {
+      "path": "text.011",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "sq1/PATCHES/text.011",
+        "sha256": "192078c518c8334ad307eadddd7ea0f1b41417d5b1ea3ee986e11aa53ffb8b23"
+      }
+    },
+    {
+      "path": "text.012",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "sq1/PATCHES/text.012",
+        "sha256": "73b1ce8e1a8639f8ff6647d050836c3614779cbda28a28b022d4b3ae8179ebde"
+      }
+    },
+    {
+      "path": "text.013",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "sq1/PATCHES/text.013",
+        "sha256": "3b718bfe9194d1f98ef96c04db2c64d01af3a51e2088a7e3ad05c64bfa92ecba"
+      }
+    },
+    {
+      "path": "text.014",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "sq1/PATCHES/text.014",
+        "sha256": "88c87bdac6d568b68534fd4485a7d52f51df6d34b8f594104235f2bb48dcd6a9"
+      }
+    },
+    {
+      "path": "text.020",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "sq1/PATCHES/text.020",
+        "sha256": "97bcaced90415eeb79f0295288698b0b0acfaf4d3215a84037168b5940bc59db"
+      }
+    },
+    {
+      "path": "text.022",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "sq1/PATCHES/text.022",
+        "sha256": "44a1bf2c21005b68a01b6bab273c61674b773dac26751ac9899e8ff7ade85805"
+      }
+    },
+    {
+      "path": "text.023",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "sq1/PATCHES/text.023",
+        "sha256": "43f3312f8b96c036ab94f0a8267a15537f191863d7fa6c62fa01bbc31f23991f"
+      }
+    },
+    {
+      "path": "text.024",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "sq1/PATCHES/text.024",
+        "sha256": "3130a9374ff9d96bc7b0429e501f3eb357a9d339250fe1a06de1c8c6a9ec45f8"
+      }
+    },
+    {
+      "path": "text.025",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "sq1/PATCHES/text.025",
+        "sha256": "a54bb10e0b2c343aa54d17ef68355a6e57847ecabf700747cc0c98daf788067e"
+      }
+    },
+    {
+      "path": "text.027",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "sq1/PATCHES/text.027",
+        "sha256": "952c2d7f5daecce7e623baf913736d070512fc160cad87b591367d21968d28fa"
+      }
+    },
+    {
+      "path": "text.028",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "sq1/PATCHES/text.028",
+        "sha256": "d728af661a1641ec69870b047638e5c73c9181278e0189a594ca8b45e9bb3008"
+      }
+    },
+    {
+      "path": "text.030",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "sq1/PATCHES/text.030",
+        "sha256": "d517368030e1ac7aa817db36cc635570039bfe055d76ccf729df4110667dd4c7"
+      }
+    },
+    {
+      "path": "text.031",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "sq1/PATCHES/text.031",
+        "sha256": "9c26184a885a6300ec8b4a70c4c77b94eb54f565d514e6dc071f1c96e9ee43f7"
+      }
+    },
+    {
+      "path": "text.032",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "sq1/PATCHES/text.032",
+        "sha256": "b53ffdd860cc6ef030b5e4d05102c8c28c2bf33758e164adf2f7804a22ee534d"
+      }
+    },
+    {
+      "path": "text.033",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "sq1/PATCHES/text.033",
+        "sha256": "d004ae821cae8fcc76f07bf740ec5350e6481479467591764399cd84e8c3abd2"
+      }
+    },
+    {
+      "path": "text.034",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "sq1/PATCHES/text.034",
+        "sha256": "182a63ecc5faca46e325c62153d5cee132fe91c6cbd804100918435d118b796d"
+      }
+    },
+    {
+      "path": "text.035",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "sq1/PATCHES/text.035",
+        "sha256": "51df191f9ad1ffab20cbafedcc41c1ee789551b1659d7272878001d9ebf19267"
+      }
+    },
+    {
+      "path": "text.036",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "sq1/PATCHES/text.036",
+        "sha256": "b085b1c7e1f620c069953e79d56e328d772a50dde9de0d585a2a35292ee4122b"
+      }
+    },
+    {
+      "path": "text.037",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "sq1/PATCHES/text.037",
+        "sha256": "f259d1d735c0594bd920b6a76b6b701c8f2af4024b884ad5a2279e34223b0d2f"
+      }
+    },
+    {
+      "path": "text.038",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "sq1/PATCHES/text.038",
+        "sha256": "f870dbff68fd437b0c008980eff9e839b1bf27b46a52aa2ea00d24227a3d09ee"
+      }
+    },
+    {
+      "path": "text.040",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "sq1/PATCHES/text.040",
+        "sha256": "6a44d50566e39fe2f6c1b9cad5420cdb65e91233b01e8f61a1567f1f54c42ebb"
+      }
+    },
+    {
+      "path": "text.041",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "sq1/PATCHES/text.041",
+        "sha256": "840572e7acad2afc090ffa2b5e6b673983fe815cffa32d5abd9a09e7d60d959f"
+      }
+    },
+    {
+      "path": "text.042",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "sq1/PATCHES/text.042",
+        "sha256": "d277e7f8b23385ee035e30e3ae502800f81d3b3bdb36633b0fceaa94394d84f7"
+      }
+    },
+    {
+      "path": "text.043",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "sq1/PATCHES/text.043",
+        "sha256": "29ce15d0ac5259472f5f11ddbe6c3bb007fd453adbd7ec62724eca6c2b0d550f"
+      }
+    },
+    {
+      "path": "text.044",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "sq1/PATCHES/text.044",
+        "sha256": "abb6220d85aa154bb7e37fedac713060da369060960b359a248ebd8b73a83763"
+      }
+    },
+    {
+      "path": "text.045",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "sq1/PATCHES/text.045",
+        "sha256": "0b75e4bf8309203e55cc1b7ce520e22c38ba8054fd19b65664aa7c23fb69d23b"
+      }
+    },
+    {
+      "path": "text.046",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "sq1/PATCHES/text.046",
+        "sha256": "b8a0cef329c9a860c9503c3ddf7d153cf41ddcad591fd3ffc071b3d178694dbe"
+      }
+    },
+    {
+      "path": "text.047",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "sq1/PATCHES/text.047",
+        "sha256": "0099890beb0913c67633e4d8df2a1670037f26a7fe9e0c82d30c4aa466a95b2e"
+      }
+    },
+    {
+      "path": "text.048",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "sq1/PATCHES/text.048",
+        "sha256": "29b2b87561d6ce53823c0e488c759aab99be0c442a20dd831f76e77bae05052f"
+      }
+    },
+    {
+      "path": "text.049",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "sq1/PATCHES/text.049",
+        "sha256": "c5e7f34f2405486dcc07fbd4f828072ad12d990fc46ec6c2492fa770fff5897d"
+      }
+    },
+    {
+      "path": "text.050",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "sq1/PATCHES/text.050",
+        "sha256": "ec73bfb4089240750bd3483e0875440c0544d067c4f5b703d9708ba8153f9899"
+      }
+    },
+    {
+      "path": "text.051",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "sq1/PATCHES/text.051",
+        "sha256": "b5375a246096d0642062ecf0607435bb1ba22f3ea07afb85848f644e2ff14a21"
+      }
+    },
+    {
+      "path": "text.053",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "sq1/PATCHES/text.053",
+        "sha256": "353a23dd000413a3f774bcec422f1e3d0294d03a9502ab9ba33cf587ca8cd7cb"
+      }
+    },
+    {
+      "path": "text.054",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "sq1/PATCHES/text.054",
+        "sha256": "888ebd99c88bcb4abce5530808f1b4ca8fe1c8cb4851042a4e91cc5cf2bdca6f"
+      }
+    },
+    {
+      "path": "text.055",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "sq1/PATCHES/text.055",
+        "sha256": "714b8b3b8de87d50c12ad592aaef34c7e11d0c586e9f696529c72cf076c0bf60"
+      }
+    },
+    {
+      "path": "text.057",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "sq1/PATCHES/text.057",
+        "sha256": "46cad202ada873a10fe5eed40467bbd34dc186daf5e744731a8e1084fc0264c6"
+      }
+    },
+    {
+      "path": "text.058",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "sq1/PATCHES/text.058",
+        "sha256": "97c63aa62590ad14f6ff8f2c99f166666da2660a963b08e81f4fbbf7729c8652"
+      }
+    },
+    {
+      "path": "text.059",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "sq1/PATCHES/text.059",
+        "sha256": "5e5055b8e9496bccb5dc3bf4b624d445ca77eea46bd6c2feb89865ed1ea82744"
+      }
+    },
+    {
+      "path": "text.060",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "sq1/PATCHES/text.060",
+        "sha256": "64cbf1d8e0b7db28b545d396d287e0eec7fa538da7959aea5b356653ea235d9d"
+      }
+    },
+    {
+      "path": "text.061",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "sq1/PATCHES/text.061",
+        "sha256": "3bdb58835fb7451d3952015bf8751ec4e4e7963761dbf09664ee8d272a588de3"
+      }
+    },
+    {
+      "path": "text.062",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "sq1/PATCHES/text.062",
+        "sha256": "e58ac053138f06307098d68db4dbf877cc7c6974bd0b264e586e2e18186c96a9"
+      }
+    },
+    {
+      "path": "text.063",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "sq1/PATCHES/text.063",
+        "sha256": "cd414a43f7fd72bdbde137ca97a0d3351e1e00f5663208400819a48693520887"
+      }
+    },
+    {
+      "path": "text.064",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "sq1/PATCHES/text.064",
+        "sha256": "9e48c2bb4a8b82f24d4b196ee5d97a105ebb8d197ee420e798a42fdcc5407ec3"
+      }
+    },
+    {
+      "path": "text.065",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "sq1/PATCHES/text.065",
+        "sha256": "b60ac842859bd18d3997b60bd552abf10fedbb51f87fcc9ffff4c9cd8cd6926b"
+      }
+    },
+    {
+      "path": "text.066",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "sq1/PATCHES/text.066",
+        "sha256": "b8b40aa246998769f24ea2ec8498b0241d0aeea2bac8bff243b20b7dfaa05596"
+      }
+    },
+    {
+      "path": "text.067",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "sq1/PATCHES/text.067",
+        "sha256": "02726c9fc779344bd7c78c44b0eeeca69a2443d737fa7c48afc87ad7e6d3519a"
+      }
+    },
+    {
+      "path": "text.068",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "sq1/PATCHES/text.068",
+        "sha256": "5cfb9bfad2a7d8466cb5436546a58f31569e9b9a11b819e037688ef0f5ddabf6"
+      }
+    },
+    {
+      "path": "text.071",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "sq1/PATCHES/text.071",
+        "sha256": "dc6bfea8f21921915fd4455575eeeb34d99027588a9c66c7d7f6d15aac8afc03"
+      }
+    },
+    {
+      "path": "text.103",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "sq1/PATCHES/text.103",
+        "sha256": "35a5b2af4bce1abe277c9bf00495b26da5bb6e08ff15938424629c3ac4002463"
+      }
+    },
+    {
+      "path": "text.140",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "sq1/PATCHES/text.140",
+        "sha256": "4b0022ac8b8aaf66d778df512fc03d1dc7691cc5e3b3c98438d13e1387d75dfc"
+      }
+    },
+    {
+      "path": "text.141",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "sq1/PATCHES/text.141",
+        "sha256": "193a19a956b31afa270de7332c8af851e66fbbb7fe8acfcce0180da96efc46cc"
+      }
+    },
+    {
+      "path": "text.143",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "sq1/PATCHES/text.143",
+        "sha256": "800d4fe04ac9b1177a0dfa296f64d95c9a6ae1b7bfbcc6abf67e00b88f734d3c"
+      }
+    },
+    {
+      "path": "text.145",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "sq1/PATCHES/text.145",
+        "sha256": "997192be142a81743130ad16103e3dc46c90c3c32e533b38516e85b267fbdcc1"
+      }
+    },
+    {
+      "path": "text.157",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "sq1/PATCHES/text.157",
+        "sha256": "0f1d14957c7747cb4f97c34f5a5f1ed1f2123a6bb3eaab78748da7f578642d7f"
+      }
+    },
+    {
+      "path": "text.158",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "sq1/PATCHES/text.158",
+        "sha256": "502bc6a754663bd40f30b745099f3c2fa07ddad385c2e0023c0820fef1141128"
+      }
+    },
+    {
+      "path": "text.170",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "sq1/PATCHES/text.170",
+        "sha256": "843e0c2b40edc02932e501864e189f042fd64eb2ffd2fd30623850d47493c68d"
+      }
+    },
+    {
+      "path": "text.300",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "sq1/PATCHES/text.300",
+        "sha256": "ebbd5b72b35bd133a0aa6c3321e3fc6ba1f94839acac4996ec7d0828e90e7f86"
+      }
+    },
+    {
+      "path": "text.301",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "sq1/PATCHES/text.301",
+        "sha256": "d9b4c57b12dfcd40b1ece2493c916aa2671f5215bb75129fa466c5648880ac3a"
+      }
+    },
+    {
+      "path": "text.302",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "sq1/PATCHES/text.302",
+        "sha256": "d7703b97ae7c742bbdd39a93b37f4759cf996b32eb5d9f049ef0efe70ddccdbb"
+      }
+    },
+    {
+      "path": "text.303",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "sq1/PATCHES/text.303",
+        "sha256": "74c068270520a9d2915cad94a026f96d3bdca4f65347ccdd6ee0aa2f2b079b3a"
+      }
+    },
+    {
+      "path": "text.400",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "sq1/PATCHES/text.400",
+        "sha256": "be250a2584bab07f68a6aad3d70ab0e106852c08719241e5c7b6fc1885b5b4ce"
+      }
+    },
+    {
+      "path": "text.401",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "sq1/PATCHES/text.401",
+        "sha256": "ecbf04f71b09fc25357305dbb397477c634d35e2b24c3b309192bc252fcf4ffb"
+      }
+    },
+    {
+      "path": "text.402",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "sq1/PATCHES/text.402",
+        "sha256": "938584c2fbc06a3d87a9e6bbcce781da28113f057b7acbc360c63a968c0420bf"
+      }
+    },
+    {
+      "path": "text.550",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "sq1/PATCHES/text.550",
+        "sha256": "373b6417ebe77f0614f460c034214a1a8234b2b8f0ddc943079cdeb8e06c079f"
+      }
+    },
+    {
+      "path": "text.551",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "sq1/PATCHES/text.551",
+        "sha256": "f552c2337588bed2dba3f1f1fbbef06fb7a8eb6a7cacb0b60b8a87d168e37108"
+      }
+    },
+    {
+      "path": "text.552",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "sq1/PATCHES/text.552",
+        "sha256": "d55fce2e382d42a4414b3c413cd312ab65cef923f229a5d461c8cf6c34461688"
+      }
+    },
+    {
+      "path": "text.553",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "sq1/PATCHES/text.553",
+        "sha256": "b1141f55da631a1eed06313d3dc9ecc7dd657852aa90c9166fc4dc201e16ffe6"
+      }
+    },
+    {
+      "path": "text.554",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "sq1/PATCHES/text.554",
+        "sha256": "a7b3676e00bf2a51858069593177f1d4bb6b2b815b189a60c677715082f38000"
+      }
+    },
+    {
+      "path": "text.555",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "sq1/PATCHES/text.555",
+        "sha256": "e99db738c91066ab32eb4f276c0794a57144a391b4627eb78f82698c8abc2e3d"
+      }
+    },
+    {
+      "path": "text.556",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "sq1/PATCHES/text.556",
+        "sha256": "f6221a635e5413c4a557c9d7c42cc246e88da9499ebe7539876bae6281590f15"
+      }
+    },
+    {
+      "path": "text.557",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "sq1/PATCHES/text.557",
+        "sha256": "896bcd0392e225e61e5517d8b0e1df2acc464dd0180eb72bd752696ef16701af"
+      }
+    },
+    {
+      "path": "text.558",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "sq1/PATCHES/text.558",
+        "sha256": "f57f07334a5025f47235441576d3ec0e309b948a8b5122c9fb68666745e2a6e6"
+      }
+    },
+    {
+      "path": "text.559",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "sq1/PATCHES/text.559",
+        "sha256": "9139a2ea9b0b8552b0cc1ce6b62e7468de09e94bf7af67512d4c018c98603f29"
+      }
+    },
+    {
+      "path": "text.560",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "sq1/PATCHES/text.560",
+        "sha256": "4634efaae0f4c840ca10c74fdd8c239452e912422b37ca1ddff83521691922be"
+      }
+    },
+    {
+      "path": "text.562",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "sq1/PATCHES/text.562",
+        "sha256": "016ee938a9e30b14e2768d70ba97f88b1a2741fc8bfd460b9331a993f66e591a"
+      }
+    },
+    {
+      "path": "text.563",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "sq1/PATCHES/text.563",
+        "sha256": "af8286227716435a0927c3593cee2e2c84fc60f7d899caa522e8d29f0d4a8b0a"
+      }
+    },
+    {
+      "path": "text.564",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "sq1/PATCHES/text.564",
+        "sha256": "80f0311c96cd1bc486e900e85b32e79034a579c2702c9b5d7f126a998624f974"
+      }
+    },
+    {
+      "path": "text.565",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "sq1/PATCHES/text.565",
+        "sha256": "36d06b894e757c629347b8c10f8849382506f271ab32eb97b4211ee3d5b67eba"
+      }
+    },
+    {
+      "path": "text.569",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "sq1/PATCHES/text.569",
+        "sha256": "68628657bf85ffc2c6ab6732690d7aa28a6da1389e860a7700c0c42e8e9b8abb"
+      }
+    },
+    {
+      "path": "text.570",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "sq1/PATCHES/text.570",
+        "sha256": "ecfc2adf16980767cd48f6e1f04fc59333e258f2945da7f7d6008e4dd956b802"
+      }
+    },
+    {
+      "path": "text.571",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "sq1/PATCHES/text.571",
+        "sha256": "b37f605d74397550454fc0de202b00f506242f3f8383d0966cffe747fcf4ee36"
+      }
+    },
+    {
+      "path": "text.572",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "sq1/PATCHES/text.572",
+        "sha256": "4d08dcb391614b7ae85e1e73e916d08b1473e9e7d9732d35aeda1d43abb94813"
+      }
+    },
+    {
+      "path": "text.573",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "sq1/PATCHES/text.573",
+        "sha256": "4d08dcb391614b7ae85e1e73e916d08b1473e9e7d9732d35aeda1d43abb94813"
+      }
+    },
+    {
+      "path": "text.700",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "sq1/PATCHES/text.700",
+        "sha256": "dc9c84775ad67607d7e3d5a543e64cbd210b9d88bc37ca68fc952e1f5a42e6d2"
+      }
+    },
+    {
+      "path": "text.702",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "sq1/PATCHES/text.702",
+        "sha256": "827f9d1dba2d999376978d22e9f74879973b8183b6cdf9831ff05055522224f6"
+      }
+    },
+    {
+      "path": "text.703",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "sq1/PATCHES/text.703",
+        "sha256": "c5f2d8bde07c3f8eb0cf48281037b6372fc6106593192d077b38d4958e5c715e"
+      }
+    },
+    {
+      "path": "text.704",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "sq1/PATCHES/text.704",
+        "sha256": "279611751dd5cf72a4cc87fab0e8d145a9c99b2291eba3bdfcaa207f02f95f48"
+      }
+    },
+    {
+      "path": "text.705",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "sq1/PATCHES/text.705",
+        "sha256": "b5615f913b8391ae38ce72b95bc5d99db99f0a1ea89967f152b2d2c3d15606c9"
+      }
+    },
+    {
+      "path": "text.706",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "sq1/PATCHES/text.706",
+        "sha256": "ef1f174598c741081f6f1570f47dc009c29577b063b31f08ba616a66cdfaffc2"
+      }
+    },
+    {
+      "path": "text.811",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "sq1/PATCHES/text.811",
+        "sha256": "967b25be9da8cf1c64e709d314a108630a53ec2de6d04b6aa08b202addcce8fe"
+      }
+    },
+    {
+      "path": "text.817",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "sq1/PATCHES/text.817",
+        "sha256": "d2dabb8de77c54e02625adb6c79cb7208b34b321e496421056e9d2183daaa806"
+      }
+    },
+    {
+      "path": "text.950",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "sq1/PATCHES/text.950",
+        "sha256": "4e4b5eec871c6fcd05a9ea78afe59b8c2ea789ea4bb43f9559811691c5e97b9b"
+      }
+    },
+    {
+      "path": "text.990",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "sq1/PATCHES/text.990",
+        "sha256": "5333dee17298c426b9d8a61d5e969b0ad14cff8f6a395d1802d0d2b09dc05654"
+      }
+    },
+    {
+      "path": "text.993",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "sq1/PATCHES/text.993",
+        "sha256": "50f34e2cddf8c651af6ac5986d46b691039be1a50bb527eac44ef83df798087a"
+      }
+    },
+    {
+      "path": "text.994",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "sq1/PATCHES/text.994",
+        "sha256": "1e62178521deab6dfb154d9d49ed61aab77f4f9f6e75f287cdd049b10b6035d3"
+      }
+    }
+  ]
 }

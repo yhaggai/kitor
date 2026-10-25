@@ -73,6 +73,8 @@ pub struct DetectionPatterns {
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct PatchDefinition {
+    #[serde(default)]
+    pub install_manifest: Option<String>,
     pub language: String,
     pub version: String,
     pub author: String,

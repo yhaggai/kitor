@@ -1,6 +1,841 @@
 {
   "scummvm_id": "kyra1-cd",
   "language": "he",
-  "version": "1.0-beta",
-  "filename": "KyraHebPatch-BETA.zip"
+  "version": "1.0-beta-kitor2",
+  "filename": "KyraHebPatch-BETA.zip",
+  "schema_version": 1,
+  "platforms": {
+    "windows": {},
+    "osx": {}
+  },
+  "files": [
+    {
+      "path": "8FAT.FNT",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "8FAT.FNT",
+        "sha256": "adf8e933e8f51eb9249c9a64381767dcb33bb2e57e44951cac41837457f4d6d2"
+      }
+    },
+    {
+      "path": "ALCHEMY.EMC",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "ALCHEMY.EMC",
+        "sha256": "26d9beeee0b12df3da1cb9ed3c2979a45f8224f181df5c069d1103c15cb27add"
+      }
+    },
+    {
+      "path": "ALGAE.EMC",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "ALGAE.EMC",
+        "sha256": "558529cc98a05d69c4739e7004c8fa99f2080830e9de2576a8af758a7a79aee7"
+      }
+    },
+    {
+      "path": "ALTAR.EMC",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "ALTAR.EMC",
+        "sha256": "ca6d415cb50e3a403a82c76fa3c0bf378c78d9adadadd7c728fd5be2acc2403e"
+      }
+    },
+    {
+      "path": "ARCH.EMC",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "ARCH.EMC",
+        "sha256": "f23279f04baeb82ce2a38461c163e5ff78f980da8a8aef471194c0259af4612a"
+      }
+    },
+    {
+      "path": "BALCONY.EMC",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "BALCONY.EMC",
+        "sha256": "dc38f86607547d99005c2ce4744acefa9dc08de02bfc2658f74adbbe658ba0ad"
+      }
+    },
+    {
+      "path": "BELROOM.EMC",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "BELROOM.EMC",
+        "sha256": "bf7052193c791eef37d9fe1216fc8e88838e91e7e6978c72714144906f174ac4"
+      }
+    },
+    {
+      "path": "BONKBG.EMC",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "BONKBG.EMC",
+        "sha256": "1ba595f4deb701af19daecf8bc23abc409d00526476e312b20d294dce2287ffb"
+      }
+    },
+    {
+      "path": "BRIDGE.EMC",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "BRIDGE.EMC",
+        "sha256": "93b8d8693a927723db2fb1daad9455720db5ee1135e50e491329efa15675bcc5"
+      }
+    },
+    {
+      "path": "BRINS.EMC",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "BRINS.EMC",
+        "sha256": "3f24a31f357c92e14277962bb96e0048a33d1017704cb8cb4ace3dafcfba7e6d"
+      }
+    },
+    {
+      "path": "BROKEN.EMC",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "BROKEN.EMC",
+        "sha256": "ce519406d27ad5c727bcf807d4adc2d31652ecd5ae53e3bfb65e535b04f4f226"
+      }
+    },
+    {
+      "path": "BURN.EMC",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "BURN.EMC",
+        "sha256": "d1a99476b28c0a2e3354e0f33a1416857f90cbae3763d372d2b3c08b20b752fc"
+      }
+    },
+    {
+      "path": "CASTLE.EMC",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "CASTLE.EMC",
+        "sha256": "15cb8a7922f3419982f5e92f42c06272df54c7fb4a36eb07fae512526ce53724"
+      }
+    },
+    {
+      "path": "CATACOM.EMC",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "CATACOM.EMC",
+        "sha256": "8212c31522a32480face9eccbb915b59055288dd13e335a794a8d06690b0f5f8"
+      }
+    },
+    {
+      "path": "CAVE.EMC",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "CAVE.EMC",
+        "sha256": "44a62a1f91bf74d55aa908fb0a72a36b42e53577ffe814f01d0d25a55a174418"
+      }
+    },
+    {
+      "path": "CAVEB.EMC",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "CAVEB.EMC",
+        "sha256": "0ae2165d734e7d637bc7284105d8946479cc457dc5b2458dee1431a5c5b3890d"
+      }
+    },
+    {
+      "path": "CGATE.EMC",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "CGATE.EMC",
+        "sha256": "7e7ab187564939117ca81d17c524647941e3c654745491b745d8948b4010124f"
+      }
+    },
+    {
+      "path": "CHASM.EMC",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "CHASM.EMC",
+        "sha256": "4af75e7922520b32e0e0f7d05b2b262c17745a76fc1cceca6f48dbe52d87983c"
+      }
+    },
+    {
+      "path": "CLIFF.EMC",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "CLIFF.EMC",
+        "sha256": "2b25ad18ca908601b9fa06418efa392083e869889ab3de1f5332ca48cf30f745"
+      }
+    },
+    {
+      "path": "DARMS.EMC",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "DARMS.EMC",
+        "sha256": "ecaf323ee17db2626ad1c01637077b95e17a83df5c9967bda7d716169d6ec761"
+      }
+    },
+    {
+      "path": "DEAD.EMC",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "DEAD.EMC",
+        "sha256": "1853c0fd9668ef42efe8bbd07a0e36836a99b3c1d3a9502e178ba24c36b61aa9"
+      }
+    },
+    {
+      "path": "DNSTAIR.EMC",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "DNSTAIR.EMC",
+        "sha256": "84c8c637051ac02736fc6ee89ab1131f2ea5fff5f55707cc99baefe1814de9e4"
+      }
+    },
+    {
+      "path": "DRAGON.EMC",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "DRAGON.EMC",
+        "sha256": "3198b0aad0724e1808f86403d2c60eff3f7aeff9ffc6ab3d9f6358def33c04b9"
+      }
+    },
+    {
+      "path": "EDGE.EMC",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "EDGE.EMC",
+        "sha256": "38432de9f2d486792a3554bbcd9b4357a446e3b4803416b23683dd618b1d9a93"
+      }
+    },
+    {
+      "path": "EDGEB.EMC",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "EDGEB.EMC",
+        "sha256": "1aac92f768d98c21edabae7022055ad76e513f5411b4325fc4649fd922295797"
+      }
+    },
+    {
+      "path": "EMCAV.EMC",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "EMCAV.EMC",
+        "sha256": "6f0384c8c9386dd29d2265c1d1849c3bc07824adcee37053bfd3ec393a735704"
+      }
+    },
+    {
+      "path": "ENTER.EMC",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "ENTER.EMC",
+        "sha256": "a95d7f64e280c5e08f33565cce87405c2d9a91b66a2b3ace0e4674663f19fa3f"
+      }
+    },
+    {
+      "path": "EXTHEAL.EMC",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "EXTHEAL.EMC",
+        "sha256": "545045fa29a49f9bf817e6250a09d7d4042a17712f8cc0e92889fe9151345be8"
+      }
+    },
+    {
+      "path": "EXTPOT.EMC",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "EXTPOT.EMC",
+        "sha256": "a856ce4db45d42324a7164a99cddcba8c9c07a0e64ed0817a000af75b86f0b54"
+      }
+    },
+    {
+      "path": "EXTSPEL.EMC",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "EXTSPEL.EMC",
+        "sha256": "abd721c6ed19f5fb46a86c7e8438cb6acca8b06eb3ad251da2244530b8f61f8b"
+      }
+    },
+    {
+      "path": "FALLS.EMC",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "FALLS.EMC",
+        "sha256": "ad250726e0d5f623067ea6382fcb55cd0b011d99753904f4be20ededb16e3279"
+      }
+    },
+    {
+      "path": "FESTSTH.EMC",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "FESTSTH.EMC",
+        "sha256": "b2afd9368b17249fea5a1c524c5628dbc01f2b73262ab6e16248d5c7917e11b4"
+      }
+    },
+    {
+      "path": "FGOWEST.EMC",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "FGOWEST.EMC",
+        "sha256": "b2afd9368b17249fea5a1c524c5628dbc01f2b73262ab6e16248d5c7917e11b4"
+      }
+    },
+    {
+      "path": "FNORTH.EMC",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "FNORTH.EMC",
+        "sha256": "4616b6cf33c909fe87c9c58f7753fd89b5e3e921dec8f02a5d265c1770c8808f"
+      }
+    },
+    {
+      "path": "FORESTA.EMC",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "FORESTA.EMC",
+        "sha256": "76710a0e11f02d39cf97fbc2cb97b1db0f3171e02e39e3b706b6118b8717dbe0"
+      }
+    },
+    {
+      "path": "FORESTB.EMC",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "FORESTB.EMC",
+        "sha256": "fc55f02eedabe685620bde39cb7a9b99059236a1d1b1f60e8f9941b5f4465b4a"
+      }
+    },
+    {
+      "path": "FORESTC.EMC",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "FORESTC.EMC",
+        "sha256": "871cfb808b59fd1f7fabd12788aa85a4147c3850c2d4bdbca25c1270594fe93a"
+      }
+    },
+    {
+      "path": "FOUNTN.EMC",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "FOUNTN.EMC",
+        "sha256": "40d74ef281bed0e094328592b2976c5ff52b35524b855ba5a15a5491bb8feaf5"
+      }
+    },
+    {
+      "path": "FOYER.EMC",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "FOYER.EMC",
+        "sha256": "e783d8f8755a142814cf680f01f9b60b1186c4bf19cfae2177437a32ba845062"
+      }
+    },
+    {
+      "path": "FSOUTH.EMC",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "FSOUTH.EMC",
+        "sha256": "b2afd9368b17249fea5a1c524c5628dbc01f2b73262ab6e16248d5c7917e11b4"
+      }
+    },
+    {
+      "path": "FSOUTHB.EMC",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "FSOUTHB.EMC",
+        "sha256": "b2afd9368b17249fea5a1c524c5628dbc01f2b73262ab6e16248d5c7917e11b4"
+      }
+    },
+    {
+      "path": "FWSTSTH.EMC",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "FWSTSTH.EMC",
+        "sha256": "b2afd9368b17249fea5a1c524c5628dbc01f2b73262ab6e16248d5c7917e11b4"
+      }
+    },
+    {
+      "path": "GATECV.EMC",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "GATECV.EMC",
+        "sha256": "a5a5037366f2fb196251b8e69e94b21d9ca66437c48bcc0935fbbb8275dde41e"
+      }
+    },
+    {
+      "path": "GEM.EMC",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "GEM.EMC",
+        "sha256": "3f2e049abdc8f23cff4d4f64226307c972466d4c628087446c8f69cd878b7234"
+      }
+    },
+    {
+      "path": "GEMCUT.EMC",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "GEMCUT.EMC",
+        "sha256": "147cfae07ad51662dc97b5a9e336efcd5d8eb2a6fd88458ff2a467338bf810dc"
+      }
+    },
+    {
+      "path": "GEMCUT.PAK",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "GEMCUT.PAK",
+        "sha256": "5a9e2f52f284757555f256144f68c17129f72688e3bdcd8e60fcadbe916f2cca"
+      }
+    },
+    {
+      "path": "GENCAVB.EMC",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "GENCAVB.EMC",
+        "sha256": "106f466d13145c21c2318ca451dd802f6bb90fca890e9d93773d665d84b5ff4b"
+      }
+    },
+    {
+      "path": "GENHALL.EMC",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "GENHALL.EMC",
+        "sha256": "5b2d6e7911033c64d37126d60c0e6ffa26a5cc86e67172b87139f7d5b33f5941"
+      }
+    },
+    {
+      "path": "GEN_CAV.EMC",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "GEN_CAV.EMC",
+        "sha256": "620662957037e30a1234983dd3903be36b68cb3ed88b91cfa89e433a40ec6c11"
+      }
+    },
+    {
+      "path": "GLADE.EMC",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "GLADE.EMC",
+        "sha256": "72014b0df602e9c5b9d99e6cc429cb5457beea9122c705bec6ce81b9237f2e68"
+      }
+    },
+    {
+      "path": "GRAVE.EMC",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "GRAVE.EMC",
+        "sha256": "273ac44603437845dfdcf0dc36814530fa36efbd3aa0201b79ff7fb36fcf5ca2"
+      }
+    },
+    {
+      "path": "GRTHALL.EMC",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "GRTHALL.EMC",
+        "sha256": "d3978a521a0b0581c34ddaad45956344dfee04cf20d2c4eb3edb5ec2d7511edb"
+      }
+    },
+    {
+      "path": "HEALER.EMC",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "HEALER.EMC",
+        "sha256": "9637c1630d0b09c937be271e727fe12f4912da6ab8fbf72eb10b2259077a7763"
+      }
+    },
+    {
+      "path": "KITCHEN.EMC",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "KITCHEN.EMC",
+        "sha256": "2d7e74a45cca2fccddff4ad052d6ca926d1ea4a8d449f202b206b4fcfc514dd1"
+      }
+    },
+    {
+      "path": "KYRAGEM.EMC",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "KYRAGEM.EMC",
+        "sha256": "c84c7519be02da7a16f14316ac7e1f8b80b70aacd16ef774f8971a05d434cdff"
+      }
+    },
+    {
+      "path": "LAGOON.EMC",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "LAGOON.EMC",
+        "sha256": "90eebb8c690345e3a96cb7199fe346838038a1ad9a2671fa37c7208e2228fd8b"
+      }
+    },
+    {
+      "path": "LANDING.EMC",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "LANDING.EMC",
+        "sha256": "15cafb8f6a51c4ab48e0ed4ff9c3d71ab47f7fec4af94d49e0fbf4546da264e3"
+      }
+    },
+    {
+      "path": "LAVA.EMC",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "LAVA.EMC",
+        "sha256": "e01479dc7d7a18fc7e603414b1a057b6bf7fc1cffac3bd9b97aba6b4b73b3c8e"
+      }
+    },
+    {
+      "path": "LEPHOLE.EMC",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "LEPHOLE.EMC",
+        "sha256": "65ca396ada5d253defc1e94cb5a16edaac49f36a2a450d5b70803e94c1439d05"
+      }
+    },
+    {
+      "path": "LIBRARY.EMC",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "LIBRARY.EMC",
+        "sha256": "a305ca8be67cc4d51225bbdaf8fa2ad59039783d4003476a515abaccc6541972"
+      }
+    },
+    {
+      "path": "MAIN_HEB.CPS",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "MAIN_HEB.CPS",
+        "sha256": "fa5d8b79cd7eb11a81189a87932f4b41c0244ef73597ebd6e80c576eb8205d22"
+      }
+    },
+    {
+      "path": "MIX.EMC",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "MIX.EMC",
+        "sha256": "c42ba55abf453f94f1502eb9b8b5b841d79c475884d342dbe8aeaf7f2af0aa3f"
+      }
+    },
+    {
+      "path": "MOONCAV.EMC",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "MOONCAV.EMC",
+        "sha256": "be8f5cd45cb5adf954fe41aa7acd719d8b1e906fd070f3196a90867cb0df0e71"
+      }
+    },
+    {
+      "path": "NCLIFF.EMC",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "NCLIFF.EMC",
+        "sha256": "b601e654d07abfb55f32e98c66c0fa7b341039d67a4905acb686c646ce2d6038"
+      }
+    },
+    {
+      "path": "NCLIFFB.EMC",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "NCLIFFB.EMC",
+        "sha256": "b601e654d07abfb55f32e98c66c0fa7b341039d67a4905acb686c646ce2d6038"
+      }
+    },
+    {
+      "path": "NWCLIFB.EMC",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "NWCLIFB.EMC",
+        "sha256": "eb55ec1d1f2bf44fb0828b29d0ee6bf919b9271177ee3597f4a047cf2ce6027c"
+      }
+    },
+    {
+      "path": "NWCLIFF.EMC",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "NWCLIFF.EMC",
+        "sha256": "b601e654d07abfb55f32e98c66c0fa7b341039d67a4905acb686c646ce2d6038"
+      }
+    },
+    {
+      "path": "OAKS.EMC",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "OAKS.EMC",
+        "sha256": "fa984a748ae6920feff30d5a94bff07882ce7115f18ea04b55a131482db04f4c"
+      }
+    },
+    {
+      "path": "PLATEAU.EMC",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "PLATEAU.EMC",
+        "sha256": "dc17ff7b56ddc743fa2f08a89d950bbb3df4c4c257c39f8c490dfdecd4d0be81"
+      }
+    },
+    {
+      "path": "PLTCAVE.EMC",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "PLTCAVE.EMC",
+        "sha256": "750250da012e0c43550704fb3613173837526ae519ec6afd708f076488bb019c"
+      }
+    },
+    {
+      "path": "POTION.EMC",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "POTION.EMC",
+        "sha256": "497a089059431b8566897eeaa45224ad7658ca596492d7dae7b83e2fe9d4115f"
+      }
+    },
+    {
+      "path": "RUBY.EMC",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "RUBY.EMC",
+        "sha256": "4f23149cd2bf2e33535a40ac723ebe30da027ec37e209e614a4d3a2dfe03ac41"
+      }
+    },
+    {
+      "path": "SICKWIL.EMC",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "SICKWIL.EMC",
+        "sha256": "773b07823c252c0d8ad64e8f647bb2580a547887c4e851a247ebd68ee8c079a0"
+      }
+    },
+    {
+      "path": "SONG.EMC",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "SONG.EMC",
+        "sha256": "8979345a4fe33fce904132181ff8d316f21bf7f0f2dd2d05086875b7f7bd7a1a"
+      }
+    },
+    {
+      "path": "SORROW.EMC",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "SORROW.EMC",
+        "sha256": "616149f2957dda7bdc1e1086aae7e47ec6bbd5a2e4e1c8bf1d762036fca9d769"
+      }
+    },
+    {
+      "path": "SPELL.EMC",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "SPELL.EMC",
+        "sha256": "ee81d19500992dd3f4080402d9a478c1adb9835c7b5058f0a74b83601b79c162"
+      }
+    },
+    {
+      "path": "SPRING.EMC",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "SPRING.EMC",
+        "sha256": "8f7db19a28f7258aae37b128e95b3edb774297695e6d0cd71970623fe9e1d1b5"
+      }
+    },
+    {
+      "path": "SQUARE.EMC",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "SQUARE.EMC",
+        "sha256": "ec8e3bbf7a1a9d9dcf5b55bc80848800406c42b80cd2ae049b8ada34fa312069"
+      }
+    },
+    {
+      "path": "STUMP.EMC",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "STUMP.EMC",
+        "sha256": "81e6b3b08bf443e2b78aa80cad2e0cad54284b76e708d250cb702e87386e122b"
+      }
+    },
+    {
+      "path": "TEMPLE.EMC",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "TEMPLE.EMC",
+        "sha256": "00a7f443173408658c03384576802e43579fcd97201b824fe29ea6d963a7af1e"
+      }
+    },
+    {
+      "path": "TEXT_HEB.CPS",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "TEXT_HEB.CPS",
+        "sha256": "3e4d81002635c358e8b6604f064348cba2385294277687c703355e67b1faf6af"
+      }
+    },
+    {
+      "path": "TRUNK.EMC",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "TRUNK.EMC",
+        "sha256": "ed606d069d77bdfa92932231ad857fb4c13cb8732cbbe00a2e51e54f8813bbfb"
+      }
+    },
+    {
+      "path": "UPSTAIR.EMC",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "UPSTAIR.EMC",
+        "sha256": "c4987f0d2dc75e92e4eef110ff0d8b929c53ca43ae1a1c32fbcb9089a7133a2a"
+      }
+    },
+    {
+      "path": "WELL.EMC",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "WELL.EMC",
+        "sha256": "2aef0a81b943da623a76e5a670ec30ddcb9b7f39dab23408ec19eabecd61b7c2"
+      }
+    },
+    {
+      "path": "WILLOW.EMC",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "WILLOW.EMC",
+        "sha256": "07ec18bf308dd879a635c9d4bd507d16bf09904eda76a278f182596f2d11659f"
+      }
+    },
+    {
+      "path": "WISE.EMC",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "WISE.EMC",
+        "sha256": "54ae355bec6a8b3bb5b4c35489d05de1ae79327ccd8581c9b53a09e498ed3585"
+      }
+    },
+    {
+      "path": "XEDGE.EMC",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "XEDGE.EMC",
+        "sha256": "310296650641e6a4d1cd60c918a949eae6d7988423c01569f8e3bb319168b631"
+      }
+    },
+    {
+      "path": "XEDGEB.EMC",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "XEDGEB.EMC",
+        "sha256": "c9a7254d4df9e62f30853bab54943a4a612b0efedb6711f4d98f968c2d6bf988"
+      }
+    },
+    {
+      "path": "XEDGEC.EMC",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "XEDGEC.EMC",
+        "sha256": "b18fbe0ce98e7e099cf2ae7a50af07519b1f7cd424d711b7d0cfc5d351214e20"
+      }
+    },
+    {
+      "path": "ZROCK.EMC",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "ZROCK.EMC",
+        "sha256": "4d8ab9fb3f09f58a8a0d7440462836fbe2ddef6bfb36bc7b7fee7859a21387da"
+      }
+    },
+    {
+      "path": "_NPC.EMC",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "_NPC.EMC",
+        "sha256": "3921d73dcc051a5edb26abeda5d0c8e667f78e536f2bd7c3c1d1e05c3b50252e"
+      }
+    },
+    {
+      "path": "_STARTUP.EMC",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "_STARTUP.EMC",
+        "sha256": "f75540c7a54a401faffbd854a9fef00d4c36a5887ebff265a00d8b4231198161"
+      }
+    }
+  ]
 }

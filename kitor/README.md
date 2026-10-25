@@ -7,7 +7,7 @@ A desktop application built with Tauri + React for managing ScummVM games and co
 - 🎮 **Game Library** - Automatically scan and detect ScummVM games
 - 🌍 **Translation Patches** - Browse and install community translation patches
 - 📦 **One-Click Install** - Download, backup, and apply patches automatically
-- 🔄 **Backup & Restore** - Automatically backup original game files
+- 🔄 **Backup & Restore** - Back up only files affected by a patch
 - ⚡ **Fast & Lightweight** - Built with Tauri (3-5 MB binary)
 - 🎨 **Modern UI** - Beautiful interface with shadcn/ui components
 
@@ -134,35 +134,88 @@ installation, set `KITOR_KYRANDIA_APP` to the app bundle path and run
 1. Go to the Patches tab
 2. Browse available translation patches
 3. Click "Install Patch" to download and apply
-4. Original files are automatically backed up
+4. Only affected existing files are backed up; newly created files are tracked for uninstall
 
 ### Launching Games
 
 Click the "Play" button on any game card to launch it through ScummVM.
 
-## Patch Registry Format
+## Patch file-change manifests
 
-Create a `patches/registry.json` file with patch metadata:
+Each release ZIP includes `patch.json` from `patches-workspace/<game>/he/`.
+The catalog references it with `install_manifest: "patch.json"`; the package's
+game, language and version must match the catalog. Current package versions use
+`-kitor2` so existing releases without manifests cannot be mistaken for these
+packages. Publish the new releases before using the updated catalog downloads.
+
+A minimal package manifest looks like:
 
 ```json
 {
-  "patches": [
+  "schema_version": 1,
+  "scummvm_id": "example",
+  "language": "he",
+  "version": "1.0-kitor2",
+  "filename": "example.zip",
+  "platforms": { "windows": {}, "osx": {} },
+  "files": [
     {
-      "game_scummvm_id": "monkey",
-      "language": "ja",
-      "version": "1.0.0",
-      "author": "Community Team",
-      "completion": 100,
-      "download_url": "https://example.com/patch.zip",
-      "installer_url": null,
-      "source_type": "github",
-      "checksum": "sha256:...",
-      "file_size": 5242880,
-      "description": "Full Japanese translation"
+      "path": "dialogue.dat",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "translated/dialogue.dat",
+        "sha256": "<SHA-256 of the packaged file>"
+      }
     }
   ]
 }
 ```
+
+`files` is a shared list; `platforms.<platform>.files` overrides it when platform
+archives differ, as in Undertale. Every target path is relative to the detected
+game data directory. No wildcards, absolute paths, traversal or symlinks are
+accepted. Case-insensitive matches preserve the existing filename's spelling.
+
+Operations:
+- `install`: replace an existing file or add it if absent, recording which occurred.
+- `modify`: require and replace an existing file.
+- `create`: require an absent target; an existing file is a conflict.
+- `delete`: require and remove an existing file, with no `source`.
+
+Sources are `copy`, `bsdiff`, or `xdelta`. Each specifies the packaged asset path
+and SHA-256. Delta sources also declare an `input` path relative to the game.
+`original_sha256` and `installed_sha256` pin supported input and output versions;
+Undertale requires both. Xdelta validates the source through its delta decoder.
+Windows xdelta tools are bundled and checksum-verified; macOS requires `xdelta3`
+on PATH. Kitor does not auto-install dependencies or run package install scripts.
+BSDIFF uses Kitor's decoder with Python 3 (`py -3` on Windows).
+
+All outputs are generated in temporary staging before game files change. Only
+manifest outputs are installed: package scripts, source catalogs, tools, and
+legacy uninstallers stay out of the game folder. Space Quest's loose resources
+are mapped from `sq1/PATCHES/` into the detected SCI game data directory.
+
+Kitor stores selective originals and a durable transaction manifest under its
+app data directory's `patch-transactions/<installation-hash>/<transaction>/`.
+The manifest records each target's original and installed hash, whether it
+originally existed, and operation progress. Original file permissions are
+preserved. Retrying an installed version reuses its original backups; overlapping
+patches/upgrades require uninstall first. Interrupted transactions are recovered
+on the next installation attempt. Recovery data is retained if a conflict stops
+rollback, and after restoration for diagnosis/retry.
+
+Uninstall restores only changed originals and removes only patch-created files
+and empty patch-created directories. Unrelated files, saves, settings, and files
+added later remain untouched. Changed targets or missing/corrupt backups stop
+restoration with an error. Existing full-folder backups are preserved but cannot
+be automatically restored because they lack reliable file ownership metadata.
+
+Validation: `cargo test --lib` from `src-tauri`. The optional
+`real_undertale_archive_roundtrip_on_disposable_copy` test uses
+`KITOR_UNDERTALE_ARCHIVE` pointing to an original `game.ios` or `data.win`; it
+copies that file to a temporary installation. Run it with `-- --ignored`.
+Synthetic Windows/macOS layout tests are not native Windows runtime validation.
 
 ## Database
 

@@ -6,23 +6,23 @@
       "cover_url": "/mI1.webp",
       "platforms": {
         "windows": true,
-        "osx": false,
+        "osx": true,
         "linux": false
       },
       "gog": {
         "id": 1207666253,
         "slug": "the_secret_of_monkey_island_special_edition",
-        "title": "The Secret of Monkey Island™: Special Edition",
+        "title": "The Secret of Monkey Island\u2122: Special Edition",
         "installers": [
           {
             "id": "",
-            "name": "The Secret of Monkey Island™: Special Edition",
+            "name": "The Secret of Monkey Island\u2122: Special Edition",
             "path": "https://www.gog.com/downloads/the_secret_of_monkey_island_special_edition/en1installer0"
           }
         ]
       },
       "detection_patterns": {
-        "unique_files": ["Monkey1.pak", "Monkey.exe"],
+        "unique_files": ["Monkey1.pak", "Monkey.exe", "MISE.exe"],
         "file_patterns": ["*.pak"]
       },
       "launch_config": {
@@ -33,18 +33,16 @@
       "patches": [
         {
           "language": "he",
-          "version": "1.2",
+          "version": "1.2-kitor2",
           "author": "AdventureBrew",
-          "download_url": "https://github.com/yhaggai/kitor/releases/download/patch-monkey-se-he-v1.2/MonkeyIsland-Heb-AdventureBrew.zip",
+          "download_url": "https://github.com/yhaggai/kitor/releases/download/patch-monkey-se-he-v1.2-kitor2/MonkeyIsland-Heb-AdventureBrew.zip",
           "source_type": "github",
           "checksum": null,
           "file_size": null,
           "description": "Hebrew translation for The Secret of Monkey Island: Special Edition",
           "filename": "MonkeyIsland-Heb-AdventureBrew.zip",
-          "post_install_script": {
-            "windows": "patch.bat",
-            "osx": "patch.sh"
-          }
+          "post_install_script": null,
+          "install_manifest": "patch.json"
         }
       ]
     },
@@ -54,17 +52,17 @@
       "cover_url": "https://m.media-amazon.com/images/M/MV5BNWU0OWQ4ODAtMjViNS00M2RiLWE5ZGQtMDE2NTgyMTIwOTMxXkEyXkFqcGc@._V1_FMjpg_UY2400_.jpg",
       "platforms": {
         "windows": true,
-        "osx": false,
+        "osx": true,
         "linux": false
       },
       "gog": {
         "id": 1425039730,
         "slug": "monkey_island_2_special_edition_lechucks_revenge",
-        "title": "Monkey Island™ 2 Special Edition: LeChuck's Revenge™",
+        "title": "Monkey Island\u2122 2 Special Edition: LeChuck's Revenge\u2122",
         "installers": [
           {
             "id": "",
-            "name": "Monkey Island™ 2 Special Edition: LeChuck's Revenge™",
+            "name": "Monkey Island\u2122 2 Special Edition: LeChuck's Revenge\u2122",
             "path": "https://www.gog.com/downloads/monkey_island_2_special_edition_lechucks_revenge/en1installer0"
           }
         ]
@@ -81,18 +79,16 @@
       "patches": [
         {
           "language": "he",
-          "version": "1.1",
+          "version": "1.1-kitor2",
           "author": "AdventureBrew",
-          "download_url": "https://github.com/yhaggai/kitor/releases/download/patch-monkey2-se-he-v1.1/MonkeyIsland2-Heb-AdventureBrew.zip",
+          "download_url": "https://github.com/yhaggai/kitor/releases/download/patch-monkey2-se-he-v1.1-kitor2/MonkeyIsland2-Heb-AdventureBrew.zip",
           "source_type": "github",
           "checksum": null,
           "file_size": null,
           "description": "Hebrew translation for Monkey Island 2: LeChuck's Revenge Special Edition",
           "filename": "MonkeyIsland2-Heb-AdventureBrew.zip",
-          "post_install_script": {
-            "windows": "patch.bat",
-            "osx": "patch.sh"
-          }
+          "post_install_script": null,
+          "install_manifest": "patch.json"
         }
       ]
     },
@@ -116,15 +112,16 @@
       "patches": [
         {
           "language": "he",
-          "version": "1.0",
+          "version": "1.0-kitor2",
           "author": "AdventureBrew",
-          "download_url": "https://github.com/yhaggai/kitor/releases/download/patch-sq1sci-he-v1.0/SpaceQuest1VGA-Heb-AdventureBrew.zip",
+          "download_url": "https://github.com/yhaggai/kitor/releases/download/patch-sq1sci-he-v1.0-kitor2/SpaceQuest1VGA-Heb-AdventureBrew.zip",
           "source_type": "github",
           "checksum": null,
           "file_size": null,
           "description": "Hebrew translation for Space Quest I VGA",
           "filename": "SpaceQuest1VGA-Heb-AdventureBrew.zip",
-          "post_install_script": null
+          "post_install_script": null,
+          "install_manifest": "patch.json"
         }
       ]
     },
@@ -161,22 +158,23 @@
       "patches": [
         {
           "language": "he",
-          "version": "1.0-beta",
+          "version": "1.0-beta-kitor2",
           "author": "AdventureBrew",
-          "download_url": "https://github.com/yhaggai/kitor/releases/download/patch-kyra1-cd-he-v1.0-beta/KyraHebPatch-BETA.zip",
+          "download_url": "https://github.com/yhaggai/kitor/releases/download/patch-kyra1-cd-he-v1.0-beta-kitor2/KyraHebPatch-BETA.zip",
           "source_type": "github",
           "checksum": null,
           "file_size": null,
           "description": "Hebrew translation for The Legend of Kyrandia (BETA)",
           "filename": "KyraHebPatch-BETA.zip",
-          "post_install_script": null
+          "post_install_script": null,
+          "install_manifest": "patch.json"
         }
       ]
     }
   ],
   "metadata": {
     "version": "2.0",
-    "last_updated": "2024-12-28",
+    "last_updated": "2026-10-25",
     "source": "Kitor Community Registry"
   }
 }

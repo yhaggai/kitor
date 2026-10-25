@@ -1,6 +1,37 @@
 {
   "scummvm_id": "monkey-se",
   "language": "he",
-  "version": "1.2",
-  "filename": "MonkeyIsland-Heb-AdventureBrew.zip"
+  "version": "1.2-kitor2",
+  "filename": "MonkeyIsland-Heb-AdventureBrew.zip",
+  "schema_version": 1,
+  "platforms": {
+    "windows": {},
+    "osx": {}
+  },
+  "files": [
+    {
+      "path": "hebrew/MONKEY.000",
+      "operation": "create",
+      "source": {
+        "kind": "xdelta",
+        "path": "PATCHES/patch.000",
+        "sha256": "d3a819277852fb22fbf41516688c45662fa2aad93966217d3332f0d576e8d8a1",
+        "input": "MISE.exe",
+        "windows_tool": "PATCHES/xdelta3.exe",
+        "windows_tool_sha256": "d81f59b2fe5e8589c0ee9782e231c805084f4d23dfade413903a4cad63b4e342"
+      }
+    },
+    {
+      "path": "hebrew/MONKEY.001",
+      "operation": "create",
+      "source": {
+        "kind": "xdelta",
+        "path": "PATCHES/patch.001",
+        "sha256": "42d54d934a6c54417f4a3f966d608623448ec37786bb83aa609f5a34b9f57626",
+        "input": "MISE.exe",
+        "windows_tool": "PATCHES/xdelta3.exe",
+        "windows_tool_sha256": "d81f59b2fe5e8589c0ee9782e231c805084f4d23dfade413903a4cad63b4e342"
+      }
+    }
+  ]
 }

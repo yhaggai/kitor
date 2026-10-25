@@ -2,8 +2,11 @@ use sea_orm::*;
 use std::path::{Path, PathBuf};
 use tauri::Emitter;
 use crate::models::installed_patch;
-use crate::services::{download_service, file_service, registry_service, image_service};
+use crate::services::{download_service, file_service, registry_service, image_service, patch_lifecycle};
 use serde::{Deserialize, Serialize};
+
+// Serialize lifecycle operations through database recording as well as file writes.
+static PATCH_OPERATION: tokio::sync::Mutex<()> = tokio::sync::Mutex::const_new(());
 
 // Patch representation for API responses
 #[derive(Debug, Clone, Serialize, Deserialize)]
@@ -137,6 +140,7 @@ pub async fn download_and_install_patch(
     app_handle: tauri::AppHandle,
     app_data_dir: PathBuf,
 ) -> Result<(), String> {
+    let _operation = PATCH_OPERATION.lock().await;
     println!("[patch_service] Starting installation for {} (lang: {}, ver: {})", scummvm_id, language, version);
     
     // Emit progress: Starting
@@ -165,6 +169,15 @@ pub async fn download_and_install_patch(
         .find(|g| g.scummvm_id == scummvm_id)
         .ok_or("Game not found in registry")?;
     
+    if let Some(platforms) = &game_def.platforms {
+        let supported = if cfg!(target_os = "windows") { platforms.windows }
+            else if cfg!(target_os = "macos") { platforms.osx }
+            else { platforms.linux };
+        if !supported {
+            return Err("This patch does not support the current operating system".into());
+        }
+    }
+
     let patch = game_def.patches
         .into_iter()
         .find(|p| p.language == language && p.version == version)
@@ -217,89 +230,39 @@ pub async fn download_and_install_patch(
         "step": "Download complete!"
     }));
 
-    // Emit progress: Creating backup
+    let install_target = crate::services::game_service::detect_game_in_folder(
+        Path::new(&game.install_path),
+    )?
+    .filter(|detected| detected.scummvm_id == game.scummvm_id)
+    .map(|detected| PathBuf::from(detected.install_path))
+    .ok_or("Game data folder no longer matches the registered game")?;
+
+    let manifest_name = patch.install_manifest.as_deref()
+        .ok_or("Patch has no file-change manifest; whole-folder installation is no longer supported")?;
+    if download_path.extension().and_then(|s| s.to_str()) != Some("zip") {
+        return Err("Declarative patch packages must be ZIP archives".into());
+    }
+    // Package tools and source data never enter the game installation.
+    let staging = tempfile::Builder::new().prefix("kitor-package-").tempdir().map_err(|e| e.to_string())?;
+    file_service::validate_zip(&download_path)?;
+    file_service::extract_zip(&download_path, staging.path())?;
     let _ = app_handle.emit("install-progress", serde_json::json!({
         "scummvm_id": scummvm_id,
         "progress": 55,
-        "step": "Creating backup..."
+        "step": "Validating outputs and backing up affected files..."
     }));
-
-    // Determine install target (handle subdirectory)
-    let install_target = if let Some(subdir) = &game_def.detection_patterns.detection_subdirectory {
-        Path::new(&game.install_path).join(subdir)
-    } else {
-        Path::new(&game.install_path).to_path_buf()
-    };
-    println!("[patch_service] Install target: {}", install_target.display());
-
-    // Create backup
-    let backup_dir = app_data_dir.join("backups").join(&game.scummvm_id);
-    println!("[patch_service] Creating backup at: {}", backup_dir.display());
-    let backup_path = file_service::create_backup(
-        &install_target,
-        &backup_dir,
-    )?;
-    println!("[patch_service] Backup created successfully");
-    
-    // Emit progress: Backup complete
-    let _ = app_handle.emit("install-progress", serde_json::json!({
-        "scummvm_id": scummvm_id,
-        "progress": 65,
-        "step": "Backup created!"
-    }));
-
-    // Emit progress: Installing patch
-    let _ = app_handle.emit("install-progress", serde_json::json!({
-        "scummvm_id": scummvm_id,
-        "progress": 70,
-        "step": "Installing patch..."
-    }));
-
-    // Extract and apply patch
-    if download_path.extension().and_then(|s| s.to_str()) == Some("zip") {
-        println!("[patch_service] Extracting ZIP to: {}", install_target.display());
-        file_service::extract_zip(&download_path, &install_target)?;
-        println!("[patch_service] Extraction complete");
-        
-        // Run post-install script if specified
-        if let Some(scripts) = &patch.post_install_script {
-            let script_name = if cfg!(target_os = "windows") {
-                &scripts.windows
-            } else if cfg!(target_os = "macos") {
-                &scripts.osx
-            } else {
-                &scripts.linux
-            };
-
-            if let Some(script_name) = script_name {
-                let _ = app_handle.emit("install-progress", serde_json::json!({
-                    "scummvm_id": scummvm_id,
-                    "progress": 85,
-                    "step": "Running post-install script..."
-                }));
-                
-                let script_path = install_target.join(script_name);
-                if script_path.exists() {
-                    println!("[patch_service] Running post-install script: {}", script_name);
-                    match file_service::run_post_install_script(
-                        &script_path,
-                        &install_target,
-                    ) {
-                        Ok(_) => println!("[patch_service] Post-install script executed successfully"),
-                        Err(e) => eprintln!("[patch_service] Warning: Post-install script failed: {}", e),
-                    }
-                } else {
-                    eprintln!("[patch_service] Warning: Post-install script not found: {}", script_name);
-                }
-            }
-        }
-    } else {
-        println!("[patch_service] Copying patch file directly");
-        let dest = install_target.join(&file_name);
-        std::fs::copy(&download_path, &dest)
-            .map_err(|e| format!("Failed to copy patch file: {}", e))?;
-        println!("[patch_service] File copied to: {}", dest.display());
+    let previous = get_installed_patches(db, game.id).await?;
+    if previous.iter().any(|p| p.backup_path.as_ref().is_none_or(|p| !Path::new(p).join("manifest.json").is_file())) {
+        return Err("This installation has a legacy folder backup. Resolve the legacy installation before applying a new patch; its backup has been preserved.".into());
     }
+    let backup_path = patch_lifecycle::install(
+        staging.path(), manifest_name, &install_target,
+        &app_data_dir.join("patch-transactions"), &scummvm_id, &language,
+        &version, patch_lifecycle::platform(),
+    )?;
+    // Retrying the same version reuses the verified active transaction and its
+    // originals. Do not insert a second database record for it.
+    let already_recorded = previous.iter().any(|p| p.backup_path.as_deref() == backup_path.to_str());
 
     // Emit progress: Finalizing
     let _ = app_handle.emit("install-progress", serde_json::json!({
@@ -316,13 +279,16 @@ pub async fn download_and_install_patch(
         version: Set(version),
         installed_date: Set(chrono::Utc::now().naive_utc()),
         status: Set("active".to_string()),
-        backup_path: Set(Some(backup_path)),
+        backup_path: Set(Some(backup_path.to_string_lossy().into_owned())),
         ..Default::default()
     };
 
-    installed.insert(db)
-        .await
-        .map_err(|e| format!("Failed to record installation: {}", e))?;
+    if !already_recorded {
+        if let Err(error) = installed.insert(db).await {
+            let recovery = patch_lifecycle::uninstall(&backup_path, &install_target);
+            return Err(format!("Failed to record installation: {error}; rollback: {recovery:?}. Recovery manifest: {}", backup_path.display()));
+        }
+    }
     println!("[patch_service] Installation recorded successfully");
 
     // Clean up download
@@ -355,6 +321,7 @@ pub async fn restore_backup(
     db: &DatabaseConnection,
     installed_patch_id: i32,
 ) -> Result<(), String> {
+    let _operation = PATCH_OPERATION.lock().await;
     let installed = installed_patch::Entity::find_by_id(installed_patch_id)
         .one(db)
         .await
@@ -370,88 +337,15 @@ pub async fn restore_backup(
         .map_err(|e| format!("Database error: {}", e))?
         .ok_or("Game not found")?;
 
-    // Load registry to check for subdirectory
-    let registry = registry_service::load_registry()?;
-    let game_def = registry.games
-        .iter()
-        .find(|g| g.scummvm_id == game.scummvm_id)
-        .ok_or("Game not found in registry")?;
-
-    let install_target = if let Some(subdir) = &game_def.detection_patterns.detection_subdirectory {
-        Path::new(&game.install_path).join(subdir)
-    } else {
-        Path::new(&game.install_path).to_path_buf()
-    };
-
-    // Restore from backup
-    let src = Path::new(&backup_path);
-    let dst = &install_target;
-
-    if src.is_dir() {
-        // Clear current directory contents (Windows-safe: avoids remove+recreate race)
-        clear_directory_contents(dst)?;
-        
-        // Copy backup contents into the existing directory
-        copy_dir_contents(src, dst)?;
-    } else {
-        std::fs::copy(src, dst)
-            .map_err(|e| format!("Failed to restore file: {}", e))?;
-    }
+    // Use the recorded installation root even if the patch removed a detection
+    // signature. The journal validates that this is the correct installation.
+    patch_lifecycle::uninstall(Path::new(&backup_path), Path::new(&game.install_path))?;
 
     // Delete installed patch record
     installed_patch::Entity::delete_by_id(installed_patch_id)
         .exec(db)
         .await
         .map_err(|e| format!("Failed to delete installed patch record: {}", e))?;
-
-    Ok(())
-}
-
-/// Clears all contents of a directory without removing the directory itself.
-/// Windows-safe: avoids the race condition of remove_dir_all + create_dir_all.
-fn clear_directory_contents(dir: &Path) -> Result<(), String> {
-    if !dir.exists() {
-        return Ok(());
-    }
-    
-    for entry in std::fs::read_dir(dir)
-        .map_err(|e| format!("Failed to read directory: {}", e))?
-    {
-        let entry = entry.map_err(|e| format!("Failed to read entry: {}", e))?;
-        let path = entry.path();
-        
-        if path.is_dir() {
-            std::fs::remove_dir_all(&path)
-                .map_err(|e| format!("Failed to remove directory {}: {}", path.display(), e))?;
-        } else {
-            std::fs::remove_file(&path)
-                .map_err(|e| format!("Failed to remove file {}: {}", path.display(), e))?;
-        }
-    }
-    
-    Ok(())
-}
-
-/// Copies contents of src directory into dst directory (dst must exist).
-fn copy_dir_contents(src: &Path, dst: &Path) -> Result<(), String> {
-    for entry in std::fs::read_dir(src)
-        .map_err(|e| format!("Failed to read directory: {}", e))?
-    {
-        let entry = entry.map_err(|e| format!("Failed to read entry: {}", e))?;
-        let file_type = entry.file_type()
-            .map_err(|e| format!("Failed to get file type: {}", e))?;
-        let src_path = entry.path();
-        let dst_path = dst.join(entry.file_name());
-
-        if file_type.is_dir() {
-            std::fs::create_dir_all(&dst_path)
-                .map_err(|e| format!("Failed to create directory: {}", e))?;
-            copy_dir_contents(&src_path, &dst_path)?;
-        } else {
-            std::fs::copy(&src_path, &dst_path)
-                .map_err(|e| format!("Failed to copy file: {}", e))?;
-        }
-    }
 
     Ok(())
 }
@@ -577,4 +471,52 @@ pub async fn download_and_extract_gog_installer(
     }));
 
     Ok(())
+}
+
+#[cfg(test)]
+mod restore_tests {
+    use super::*;
+
+    #[tokio::test]
+    async fn selective_restore_preserves_unrelated_files_and_database_record_on_failure() {
+        let temp = tempfile::tempdir().unwrap();
+        let root = temp.path();
+        let data = root.join("game");
+        let package = root.join("package");
+        std::fs::create_dir(&data).unwrap();
+        std::fs::create_dir(&package).unwrap();
+        std::fs::write(data.join("GEMCUT.PAK"), b"original").unwrap();
+        std::fs::write(data.join("save.dat"), b"saved game").unwrap();
+        std::fs::write(package.join("translated"), b"translated").unwrap();
+        let checksum = patch_lifecycle::hash(&package.join("translated")).unwrap();
+        std::fs::write(package.join("patch.json"), serde_json::to_vec(&serde_json::json!({
+            "schema_version": 1, "scummvm_id": "kyra1-cd", "language": "he", "version": "test",
+            "filename": "test.zip", "platforms": {"osx": {}},
+            "files": [{"path":"GEMCUT.PAK","operation":"modify", "source": {
+                "kind":"copy", "path":"translated", "sha256":checksum
+            }}]
+        })).unwrap()).unwrap();
+        let backup = patch_lifecycle::install(&package, "patch.json", &data,
+            &root.join("transactions"), "kyra1-cd", "he", "test", "osx").unwrap();
+        let db = crate::db::init_db(&root.join("db")).await.unwrap();
+        let game = crate::services::game_service::add_game_manually(&db,
+            "kyra1-cd".into(), "Kyrandia".into(), data.to_string_lossy().into_owned(), root.to_path_buf())
+            .await.unwrap();
+        let installed = installed_patch::ActiveModel {
+            game_id: Set(game.id), scummvm_id: Set("kyra1-cd".into()),
+            version: Set("test".into()), installed_date: Set(chrono::Utc::now().naive_utc()),
+            status: Set("active".into()), backup_path: Set(Some(backup.to_string_lossy().into_owned())),
+            ..Default::default()
+        }.insert(&db).await.unwrap();
+        std::fs::write(data.join("later.txt"), b"user file").unwrap();
+        std::fs::write(data.join("GEMCUT.PAK"), b"another mod").unwrap();
+        assert!(restore_backup(&db, installed.id).await.is_err());
+        assert_eq!(get_installed_patches(&db, game.id).await.unwrap().len(), 1);
+        std::fs::write(data.join("GEMCUT.PAK"), b"translated").unwrap();
+        restore_backup(&db, installed.id).await.unwrap();
+        assert_eq!(std::fs::read(data.join("GEMCUT.PAK")).unwrap(), b"original");
+        assert_eq!(std::fs::read(data.join("save.dat")).unwrap(), b"saved game");
+        assert_eq!(std::fs::read(data.join("later.txt")).unwrap(), b"user file");
+        assert!(get_installed_patches(&db, game.id).await.unwrap().is_empty());
+    }
 }

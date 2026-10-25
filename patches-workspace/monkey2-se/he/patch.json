@@ -1,7 +1,37 @@
 {
   "scummvm_id": "monkey2-se",
   "language": "he",
-  "version": "1.1",
-  "filename": "MonkeyIsland2-Heb-AdventureBrew.zip"
+  "version": "1.1-kitor2",
+  "filename": "MonkeyIsland2-Heb-AdventureBrew.zip",
+  "schema_version": 1,
+  "platforms": {
+    "windows": {},
+    "osx": {}
+  },
+  "files": [
+    {
+      "path": "hebrew/MONKEY2.000",
+      "operation": "create",
+      "source": {
+        "kind": "xdelta",
+        "path": "PATCHES/patch.000",
+        "sha256": "ef2e34df7d1dd6f81a7137b589ea7620f94301e815afab8c6b7916c1c27cac4d",
+        "input": "audio/SFXOriginal.xwb",
+        "windows_tool": "PATCHES/xdelta3.exe",
+        "windows_tool_sha256": "d81f59b2fe5e8589c0ee9782e231c805084f4d23dfade413903a4cad63b4e342"
+      }
+    },
+    {
+      "path": "hebrew/MONKEY2.001",
+      "operation": "create",
+      "source": {
+        "kind": "xdelta",
+        "path": "PATCHES/patch.001",
+        "sha256": "f1029c6736e8a5d779c277c02043f10c8a063edd3d7ebb557436d6c683556007",
+        "input": "audio/SFXOriginal.xwb",
+        "windows_tool": "PATCHES/xdelta3.exe",
+        "windows_tool_sha256": "d81f59b2fe5e8589c0ee9782e231c805084f4d23dfade413903a4cad63b4e342"
+      }
+    }
+  ]
 }
-
