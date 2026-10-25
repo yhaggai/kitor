@@ -155,7 +155,7 @@
         "detection_subdirectory": "DAT"
       },
       "launch_config": {
-        "args": ["--language=he", "--fullscreen", "--auto-detect"]
+        "args": ["--fullscreen", "kyra:kyra1"]
       },
       "purchase_guide": null,
       "patches": [

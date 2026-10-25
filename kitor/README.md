@@ -113,6 +113,22 @@ kitor/
 
 Or add games manually with the "Add Manually" button.
 
+### Kyrandia on macOS
+
+Select the GOG `The Legend of Kyrandia(Book One).app` bundle, its parent folder
+when scanning, or the game data folder directly. Kitor resolves
+`Contents/Resources/game/game` for patching and launching; flat installations
+and Windows `DAT` folders are also supported.
+
+Some GOG bundles contain Book Two's `FATE.PAK` as well. Kitor copies Book One's
+`GEMCUT.PAK` into a small launch folder under its app data directory and loads
+other assets with ScummVM's `--extrapath`, avoiding a false Book Two match without
+removing game files. ScummVM detects English or Hebrew from the current files.
+
+Regression tests: run `cargo test --lib` from `src-tauri`. To also check a local
+installation, set `KITOR_KYRANDIA_APP` to the app bundle path and run
+`cargo test --lib -- --include-ignored`.
+
 ### Installing Patches
 
 1. Go to the Patches tab

@@ -7,6 +7,7 @@ import { useCallback, useMemo, useState } from "react";
 import { Button } from "@/components/ui/button";
 
 type DetectedGameInfo = {
+  install_path: string;
   scummvm_id: string;
   title: string;
   available_patches_count: number;
@@ -75,7 +76,7 @@ export default function AddGameDialog({ open, onOpenChange, onAdded }: AddGameDi
       await invoke("add_game_manually", {
         scummvmId: detectedGame.scummvm_id,
         title: detectedGame.title,
-        installPath: selected,
+        installPath: detectedGame.install_path,
       });
 
       showToast(`Added: ${detectedGame.title}`, "default");

@@ -41,6 +41,7 @@ pub struct GameWithPatches {
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct DetectedGameInfo {
+    pub install_path: String,
     pub scummvm_id: String,
     pub title: String,
     pub available_patches_count: usize,
@@ -73,12 +74,18 @@ pub async fn scan_directory(
 
     let mut games = Vec::new();
 
-    let entries = std::fs::read_dir(path)
-        .map_err(|e| format!("Failed to read directory: {}", e))?;
+    // A selected game/app is itself a candidate; otherwise scan its children.
+    let candidates = if detect_scummvm_game(path).is_some() {
+        vec![path.to_path_buf()]
+    } else {
+        std::fs::read_dir(path)
+            .map_err(|e| format!("Failed to read directory: {}", e))?
+            .map(|entry| entry.map(|entry| entry.path()))
+            .collect::<Result<Vec<_>, _>>()
+            .map_err(|e| format!("Failed to read entry: {}", e))?
+    };
 
-    for entry in entries {
-        let entry = entry.map_err(|e| format!("Failed to read entry: {}", e))?;
-        let entry_path = entry.path();
+    for entry_path in candidates {
 
         if entry_path.is_dir() {
             if let Some(game_info) = detect_scummvm_game(&entry_path) {
@@ -96,7 +103,7 @@ pub async fn scan_directory(
                     let game = game::ActiveModel {
                         scummvm_id: Set(game_info.scummvm_id),
                         title: Set(game_info.title),
-                        install_path: Set(entry_path.to_string_lossy().to_string()),
+                        install_path: Set(game_info.install_path),
                         cover_url: Set(cover_url.clone()),
                         detected_version: Set(None),
                         added_date: Set(chrono::Utc::now().naive_utc()),
@@ -133,6 +140,11 @@ pub async fn add_game_manually(
     install_path: String,
     app_data_dir: PathBuf,
 ) -> Result<game::Model, String> {
+    let install_path = detect_game_in_folder(Path::new(&install_path))?
+        .filter(|detected| detected.scummvm_id == scummvm_id)
+        .map(|detected| detected.install_path)
+        .unwrap_or(install_path);
+
     // Idempotent add: if game exists (unique scummvm_id), update metadata + return it.
     if let Some(existing) = Game::find()
         .filter(game::Column::ScummvmId.eq(&scummvm_id))
@@ -144,7 +156,9 @@ pub async fn add_game_manually(
         active.title = Set(title);
         active.install_path = Set(install_path);
 
-        let (_, _, cover_url) = get_game_metadata_from_registry(&scummvm_id)?;
+        let (subdirectory, args, cover_url) = get_game_metadata_from_registry(&scummvm_id)?;
+        active.launch_subdirectory = Set(subdirectory);
+        active.launch_args = Set(args);
         if cover_url.is_some() {
             active.cover_url = Set(cover_url.clone());
         }
@@ -203,6 +217,7 @@ pub async fn remove_game(db: &DatabaseConnection, id: i32) -> Result<(), String>
 }
 
 struct GameInfo {
+    install_path: String,
     scummvm_id: String,
     title: String,
 }
@@ -240,56 +255,42 @@ pub fn detect_game_in_folder(path: &Path) -> Result<Option<DetectedGameInfo>, St
     // Load registry and try to match against game definitions
     let registry = registry_service::load_registry()?;
 
-    // Get list of files in directory (case-insensitive)
-    let get_files_in_dir = |dir_path: &Path| -> Result<Vec<String>, String> {
-        let entries = std::fs::read_dir(dir_path)
-            .map_err(|e| format!("Failed to read directory: {}", e))?;
-        
-        let mut files: Vec<String> = Vec::new();
-        for entry in entries.flatten() {
-            if let Some(file_name) = entry.file_name().to_str() {
-                files.push(file_name.to_ascii_lowercase());
-            }
-        }
-        Ok(files)
-    };
-
-    let files_in_root = get_files_in_dir(path)?;
+    // GOG macOS bundles wrap the actual data folder. Keep the resolved folder
+    // as install_path so patch installation and ScummVM use the same files.
+    let mut candidates = vec![path.to_path_buf()];
+    if path.extension().is_some_and(|ext| ext.eq_ignore_ascii_case("app")) {
+        candidates.push(path.join("Contents/Resources/game/game"));
+        candidates.push(path.join("Contents/Resources/game"));
+    }
 
     for game_def in registry.games {
-        // Only allow games that actually have patches in registry
         if game_def.patches.is_empty() {
             continue;
         }
-
-        let mut matches = game_def
-            .detection_patterns
-            .unique_files
-            .iter()
-            .any(|unique_file| files_in_root.iter().any(|f| f == &unique_file.to_ascii_lowercase()));
-
-        // If not found in root, check subdirectory if configured
-        if !matches {
-             if let Some(subdir) = &game_def.detection_patterns.detection_subdirectory {
-                 let subdir_path = path.join(subdir);
-                 if subdir_path.exists() && subdir_path.is_dir() {
-                     if let Ok(files_in_subdir) = get_files_in_dir(&subdir_path) {
-                        matches = game_def
-                            .detection_patterns
-                            .unique_files
-                            .iter()
-                            .any(|unique_file| files_in_subdir.iter().any(|f| f == &unique_file.to_ascii_lowercase()));
-                     }
-                 }
-             }
-        }
-
-        if matches {
-            return Ok(Some(DetectedGameInfo {
-                scummvm_id: game_def.scummvm_id,
-                title: game_def.title,
-                available_patches_count: game_def.patches.len(),
-            }));
+        for candidate in &candidates {
+            let mut data_paths = vec![candidate.clone()];
+            if let Some(subdir) = &game_def.detection_patterns.detection_subdirectory {
+                data_paths.push(candidate.join(subdir));
+            }
+            for data_path in data_paths {
+                let Ok(entries) = std::fs::read_dir(&data_path) else {
+                    continue;
+                };
+                let matches = entries.flatten().any(|entry| {
+                    entry.file_type().is_ok_and(|kind| kind.is_file())
+                        && game_def.detection_patterns.unique_files.iter().any(|name| {
+                            entry.file_name().to_string_lossy().eq_ignore_ascii_case(name)
+                        })
+                });
+                if matches {
+                    return Ok(Some(DetectedGameInfo {
+                        install_path: data_path.to_string_lossy().into_owned(),
+                        scummvm_id: game_def.scummvm_id,
+                        title: game_def.title,
+                        available_patches_count: game_def.patches.len(),
+                    }));
+                }
+            }
         }
     }
 
@@ -299,6 +300,7 @@ pub fn detect_game_in_folder(path: &Path) -> Result<Option<DetectedGameInfo>, St
 fn detect_scummvm_game(path: &Path) -> Option<GameInfo> {
     let detected = detect_game_in_folder(path).ok()??;
     Some(GameInfo {
+        install_path: detected.install_path,
         scummvm_id: detected.scummvm_id,
         title: detected.title,
     })
@@ -403,3 +405,79 @@ pub async fn get_games_with_patches(
 
 
 
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    struct Fixture(PathBuf);
+    impl Fixture {
+        fn new() -> Self {
+            let path = std::env::temp_dir().join(format!("kitor-kyra-{}-{}",
+                std::process::id(), chrono::Utc::now().timestamp_nanos_opt().unwrap()));
+            std::fs::create_dir_all(&path).unwrap();
+            Self(path)
+        }
+        fn data(&self, relative: &str) -> PathBuf {
+            let path = self.0.join(relative);
+            std::fs::create_dir_all(&path).unwrap();
+            std::fs::write(path.join("kyragem.pak"), b"fixture").unwrap();
+            path
+        }
+    }
+    impl Drop for Fixture {
+        fn drop(&mut self) { let _ = std::fs::remove_dir_all(&self.0); }
+    }
+
+    #[test]
+    fn resolves_kyrandia_bundle_flat_and_dat_layouts() {
+        let fixture = Fixture::new();
+        for relative in ["flat", "dos/DAT", "Kyrandia.app/Contents/Resources/game/game"] {
+            let data = fixture.data(relative);
+            let selected = match relative {
+                "dos/DAT" => fixture.0.join("dos"),
+                "flat" => data.clone(),
+                _ => fixture.0.join("Kyrandia.app"),
+            };
+            let detected = detect_game_in_folder(&selected).unwrap().unwrap();
+            assert_eq!(detected.scummvm_id, "kyra1-cd");
+            assert_eq!(PathBuf::from(detected.install_path), data);
+            assert_eq!(detected.available_patches_count, 1);
+        }
+    }
+
+    #[test]
+    fn does_not_detect_a_directory_named_like_a_game_file() {
+        let fixture = Fixture::new();
+        std::fs::create_dir(fixture.0.join("KYRAGEM.PAK")).unwrap();
+        assert!(detect_game_in_folder(&fixture.0).unwrap().is_none());
+    }
+
+    #[tokio::test]
+    async fn scanning_and_manual_add_store_the_resolved_folder() {
+        let fixture = Fixture::new();
+        let bundle = fixture.0.join("Kyrandia.app");
+        let data = fixture.data("Kyrandia.app/Contents/Resources/game/game");
+        let db = crate::db::init_db(&fixture.0.join("database")).await.unwrap();
+        let games = scan_directory(&db, fixture.0.to_str().unwrap(), fixture.0.clone()).await.unwrap();
+        assert_eq!(games.len(), 1);
+        assert_eq!(Path::new(&games[0].install_path), data);
+        remove_game(&db, games[0].id).await.unwrap();
+        let games = scan_directory(&db, bundle.to_str().unwrap(), fixture.0.clone()).await.unwrap();
+        assert_eq!(games.len(), 1);
+        assert_eq!(Path::new(&games[0].install_path), data);
+        let added = add_game_manually(&db, "kyra1-cd".into(), "Kyrandia".into(),
+            bundle.to_string_lossy().into_owned(), fixture.0.clone()).await.unwrap();
+        assert_eq!(added.id, games[0].id);
+        assert_eq!(Path::new(&added.install_path), data);
+        assert!(added.launch_args.unwrap().contains("kyra:kyra1"));
+    }
+
+    #[test]
+    #[ignore = "requires a local GOG Kyrandia installation; set KITOR_KYRANDIA_APP"]
+    fn detects_local_kyrandia_installation() {
+        let path = PathBuf::from(std::env::var("KITOR_KYRANDIA_APP").unwrap());
+        let detected = detect_game_in_folder(&path).unwrap().unwrap();
+        assert_eq!(detected.scummvm_id, "kyra1-cd");
+        assert_eq!(PathBuf::from(detected.install_path), path.join("Contents/Resources/game/game"));
+    }
+}

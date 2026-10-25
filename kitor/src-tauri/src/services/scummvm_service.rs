@@ -51,6 +51,52 @@ pub struct ScummVMStatus {
     pub version: Option<String>,
 }
 
+// Some GOG Book One bundles also contain FATE.PAK. Together with the Hebrew
+// font it wins ScummVM's detection as Book Two. Detect using only Book One's
+// signature, then load all remaining assets through --extrapath.
+fn prepare_kyrandia_launch_path(data_path: &Path, launch_path: &Path) -> Result<PathBuf, String> {
+    let signature = std::fs::read_dir(data_path)
+        .map_err(|e| format!("Failed to read Kyrandia data: {}", e))?
+        .flatten()
+        .find(|entry| entry.file_name().to_string_lossy().eq_ignore_ascii_case("GEMCUT.PAK")
+            && entry.path().is_file())
+        .ok_or("Kyrandia GEMCUT.PAK not found")?;
+    std::fs::create_dir_all(launch_path)
+        .map_err(|e| format!("Failed to create Kyrandia launch folder: {}", e))?;
+    // Refresh after installing or restoring a patch; the signature changes.
+    std::fs::copy(signature.path(), launch_path.join("GEMCUT.PAK"))
+        .map_err(|e| format!("Failed to prepare Kyrandia launch: {}", e))?;
+    Ok(launch_path.to_path_buf())
+}
+
+fn add_game_paths(cmd: &mut Command, game_path: &Path, extra_path: Option<&Path>) {
+    cmd.arg("-p").arg(game_path);
+    if let Some(path) = extra_path {
+        // ScummVM long options require --name=value, unlike the short -p option.
+        let mut argument = std::ffi::OsString::from("--extrapath=");
+        argument.push(path);
+        cmd.arg(argument);
+    }
+}
+
+async fn start_game_process(cmd: &mut Command, log_path: &Path) -> Result<(), String> {
+    let log = std::fs::File::create(log_path)
+        .map_err(|e| format!("Failed to create launch log: {}", e))?;
+    cmd.stderr(std::process::Stdio::from(log));
+    let mut child = cmd.spawn().map_err(|e| format!("Failed to launch game: {}", e))?;
+    tokio::time::sleep(std::time::Duration::from_millis(500)).await;
+    if let Some(status) = child.try_wait().map_err(|e| format!("Failed to check game launch: {}", e))? {
+        if !status.success() {
+            let detail = std::fs::read_to_string(log_path).unwrap_or_default();
+            return Err(format!("Game exited with {}: {}", status, detail.trim()));
+        }
+    } else {
+        // Reap the process when play ends without blocking the UI.
+        std::thread::spawn(move || { let _ = child.wait(); });
+    }
+    Ok(())
+}
+
 pub async fn launch_game(
     db: &DatabaseConnection,
     game_id: i32,
@@ -93,6 +139,20 @@ pub async fn launch_game(
         PathBuf::from(&game.install_path)
     };
 
+    let extra_path = if game.scummvm_id == "kyra1-cd" {
+        Some(game_path.clone())
+    } else {
+        None
+    };
+    let game_path = if extra_path.is_some() {
+        prepare_kyrandia_launch_path(
+            &game_path,
+            &app_data_dir.join("launch-data").join(game.id.to_string()),
+        )?
+    } else {
+        game_path
+    };
+
     println!("Final game path: {}", game_path.display());
 
     // Build command with launch_config if available
@@ -119,7 +179,7 @@ pub async fn launch_game(
         let mut cmd = Command::new(&executable_path);
         
         // Add default ScummVM args
-        cmd.arg("-p").arg(&game_path);
+        add_game_paths(&mut cmd, &game_path, extra_path.as_deref());
         
         // Add custom args from DB
         if let Some(args_json) = &game.launch_args {
@@ -138,8 +198,7 @@ pub async fn launch_game(
         println!("Executing command: {:?}", cmd);
         println!("=====================");
         
-        cmd.spawn()
-            .map_err(|e| format!("Failed to launch game: {}", e))?;
+        start_game_process(&mut cmd, &app_data_dir.join(format!("launch-{}.log", game.id))).await?;
     }
     
     #[cfg(not(target_os = "macos"))]
@@ -148,7 +207,7 @@ pub async fn launch_game(
         let mut cmd = Command::new(&scummvm_path);
         
         // Add default ScummVM args
-        cmd.arg("-p").arg(&game_path);
+        add_game_paths(&mut cmd, &game_path, extra_path.as_deref());
 
         // Add custom args from DB
         if let Some(args_json) = &game.launch_args {
@@ -167,8 +226,7 @@ pub async fn launch_game(
         println!("Executing command: {:?}", cmd);
         println!("=====================");
 
-        cmd.spawn()
-            .map_err(|e| format!("Failed to launch game: {}", e))?;
+        start_game_process(&mut cmd, &app_data_dir.join(format!("launch-{}.log", game.id))).await?;
     }
 
     // Update last_played
@@ -922,4 +980,48 @@ async fn set_config_value(db: &DatabaseConnection, key: &str, value: &str) -> Re
         .map_err(|e| format!("Failed to save config: {}", e))?;
     
     Ok(())
+}
+
+#[cfg(test)]
+mod kyrandia_tests {
+    use super::*;
+
+    #[test]
+    fn extra_path_is_a_single_long_option_including_spaces() {
+        let mut cmd = Command::new("scummvm");
+        add_game_paths(&mut cmd, Path::new("/launch folder"), Some(Path::new("/Game.app/game data")));
+        assert_eq!(cmd.get_args().collect::<Vec<_>>(), vec![
+            std::ffi::OsStr::new("-p"), std::ffi::OsStr::new("/launch folder"),
+            std::ffi::OsStr::new("--extrapath=/Game.app/game data")]);
+    }
+
+    #[cfg(unix)]
+    #[tokio::test]
+    async fn immediate_launch_failure_reaches_the_caller() {
+        let log = std::env::temp_dir().join(format!("kitor-failed-launch-{}.log", std::process::id()));
+        let mut cmd = Command::new("/bin/sh");
+        cmd.args(["-c", "echo 'invalid launch option' >&2; exit 1"]);
+        let error = start_game_process(&mut cmd, &log).await.unwrap_err();
+        assert!(error.contains("invalid launch option"));
+        std::fs::remove_file(log).unwrap();
+    }
+
+    #[test]
+    fn launch_signature_is_isolated_and_refreshed_after_patching() {
+        let root = std::env::temp_dir().join(format!("kitor-kyra-launch-{}-{}",
+            std::process::id(), chrono::Utc::now().timestamp_nanos_opt().unwrap()));
+        let data = root.join("data");
+        let launch = root.join("launch");
+        std::fs::create_dir_all(&data).unwrap();
+        std::fs::write(data.join("gemcut.pak"), b"original").unwrap();
+        std::fs::write(data.join("FATE.PAK"), b"conflicting signature").unwrap();
+        prepare_kyrandia_launch_path(&data, &launch).unwrap();
+        assert_eq!(std::fs::read(launch.join("GEMCUT.PAK")).unwrap(), b"original");
+        assert!(!launch.join("FATE.PAK").exists());
+        std::fs::write(data.join("gemcut.pak"), b"patched").unwrap();
+        prepare_kyrandia_launch_path(&data, &launch).unwrap();
+        assert_eq!(std::fs::read(launch.join("GEMCUT.PAK")).unwrap(), b"patched");
+        assert!(data.join("FATE.PAK").exists());
+        std::fs::remove_dir_all(root).unwrap();
+    }
 }
