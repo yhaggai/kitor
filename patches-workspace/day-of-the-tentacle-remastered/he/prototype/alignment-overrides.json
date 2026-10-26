@@ -1,0 +1,117 @@
+[
+  {
+    "source_group": "PUT_2_toxic-pipes_1_9",
+    "reason": "Redistribute the Hebrew meaning across three HD beats; newly adapted connective כאילו replaces the fused שאני.",
+    "targets": [
+      {
+        "id": "PUT_2_toxic-pipes_1_9",
+        "english": "...like...",
+        "hebrew": "...כאילו..."
+      },
+      {
+        "id": "PUT_2_toxic-pipes_1_10",
+        "english": "...I...",
+        "hebrew": "...אני..."
+      },
+      {
+        "id": "PUT_2_toxic-pipes_1_11",
+        "english": "...could...",
+        "hebrew": "...יכול..."
+      }
+    ]
+  },
+  {
+    "source_group": "WAS_13_congress_50_61",
+    "reason": "Restore the omitted OW interjection as newly translated אאוץ׳!!; preserve the six existing segments.",
+    "targets": [
+      {
+        "id": "WAS_13_congress_50_61",
+        "english": "I've been to WAR, boy.",
+        "hebrew": "אני השתתפתי במלחמה, ילד."
+      },
+      {
+        "id": "WAS_13_congress_50_62",
+        "english": "No one who's heard the thunder of musket fire...",
+        "hebrew": "אף אחד מאלו ששמעו את רעם רובי המוסקט..."
+      },
+      {
+        "id": "WAS_13_congress_50_63",
+        "english": "...smelled the sulphur from a cannon blast...",
+        "hebrew": "...הריח את הגופרית ממטחי התותחים..."
+      },
+      {
+        "id": "WAS_13_congress_50_64",
+        "english": "...and felt the fear in the hearts of his comrades...",
+        "hebrew": "...וחש את הפחד בלבבות חבריו לנשק..."
+      },
+      {
+        "id": "WAS_13_congress_50_65",
+        "english": "...is going to be bothered by a little thing like--",
+        "hebrew": "...לא יוטרד מדבר קטן כמו--"
+      },
+      {
+        "id": "WAS_13_congress_50_66",
+        "english": "OW!!",
+        "hebrew": "אאוץ׳!!"
+      },
+      {
+        "id": "WAS_13_congress_50_67",
+        "english": "Blast it!",
+        "hebrew": "לעזאזל עם זה!"
+      }
+    ]
+  },
+  {
+    "source_group": "BET_20_betsys_114_6",
+    "reason": "Original parser stops at an embedded SCUMM control parameter; both Hebrew segments match the two consecutive HD English lines.",
+    "targets": [
+      {
+        "id": "BET_20_betsys_114_6",
+        "english": "I knew it.",
+        "hebrew": "ידעתי."
+      },
+      {
+        "id": "BET_20_betsys_114_7",
+        "english": "What's the current brainstorm from our fickle founding fathers?",
+        "hebrew": "מה יצר סיעור המוחין האחרון של אבותינו המייסדים ההפכפכים?"
+      }
+    ]
+  },
+  {
+    "source_group": "LAV_53_sekrit_522_5",
+    "reason": "Join two Hebrew sentences corresponding to a single complete HD subtitle.",
+    "targets": [
+      {
+        "id": "LAV_53_sekrit_522_5",
+        "english": "I don't want to put it in storage yet.",
+        "hebrew": "אני לא רוצה לאפסן אותה בינתיים."
+      },
+      {
+        "id": "LAV_53_sekrit_522_6",
+        "english": "I like it.  I want to carry it around with me.",
+        "hebrew": "אני מחבבת אותה. אני רוצה לסחוב אותה איתי."
+      }
+    ]
+  },
+  {
+    "source_group": "JED_22_ned-jeds_130_11",
+    "reason": "Use the complete classic utterance with matching English over the conflicting direct voice mapping (--ממפפלר!--), which does not translate this English sentence. Runtime timing remains to be verified.",
+    "targets": [
+      {
+        "id": "JED_22_ned-jeds_130_11",
+        "english": "What does it look like, nitwit?",
+        "hebrew": "כמו מה זה נראה לך, טמבל?"
+      },
+      {
+        "id": "JED_22_ned-jeds_130_12",
+        "english": "Oh, sorry about that...",
+        "hebrew": "אוי, מצטער על זה..."
+      },
+      {
+        "id": "JED_22_ned-jeds_130_13",
+        "english": "I'm trying to cultivate my artistic temperament.",
+        "hebrew": "אני מנסה לטפח את חום המזג האמנותי שלי."
+      }
+    ]
+  }
+]
