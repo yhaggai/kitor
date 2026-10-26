@@ -1,3 +1,4 @@
+static RUNTIME_OPERATION: tokio::sync::Mutex<()> = tokio::sync::Mutex::const_new(());
 use sea_orm::*;
 use std::path::{Path, PathBuf};
 use std::process::Command;
@@ -391,6 +392,7 @@ pub async fn download_scummvm(
     app_data_dir: &PathBuf,
     app_handle: &tauri::AppHandle,
 ) -> Result<(), String> {
+    let _operation = RUNTIME_OPERATION.lock().await;
     println!("[scummvm_service] Starting ScummVM download");
 
     // Emit progress: Starting
@@ -514,74 +516,15 @@ pub async fn uninstall_scummvm(
     db: &DatabaseConnection,
     app_data_dir: &PathBuf,
 ) -> Result<(), String> {
+    let _operation = RUNTIME_OPERATION.lock().await;
     println!("[scummvm_service] Uninstalling ScummVM");
     
     let scummvm_dir = app_data_dir.join("scummvm");
     
-    // On macOS, aggressively clean up any stuck mounts
-    #[cfg(target_os = "macos")]
-    {
-        let mount_point = scummvm_dir.join("temp_mount");
-        if mount_point.exists() {
-            println!("[scummvm_service] Found potential mount point at {}", mount_point.display());
-            
-            // Try hdiutil first
-            let _ = Command::new("hdiutil")
-                .args(["detach", &mount_point.to_string_lossy(), "-force"])
-                .output();
-                
-            // Also try umount -f just in case
-            let _ = Command::new("umount")
-                .args(["-f", &mount_point.to_string_lossy()])
-                .output();
-        }
-    }
-    
-    // Remove ScummVM directory
-    if scummvm_dir.exists() {
-        if let Err(e) = std::fs::remove_dir_all(&scummvm_dir) {
-            println!("[scummvm_service] Failed to remove directory: {}. Checking for stuck mounts...", e);
-            
-            // If we hit read-only FS, it's definitely a mount issue.
-            // Let's look for ANY mounts inside our directory
-            #[cfg(target_os = "macos")]
-            {
-                let mount_output = Command::new("mount").output().map_err(|e| e.to_string())?;
-                let mount_str = String::from_utf8_lossy(&mount_output.stdout);
-                
-                let scummvm_path_str = scummvm_dir.to_string_lossy();
-                
-                for line in mount_str.lines() {
-                    if let Some(path_part) = line.split(" on ").nth(1) {
-                        let mount_path = path_part.split(" (").next().unwrap_or("").trim();
-                        if mount_path.starts_with(scummvm_path_str.as_ref()) {
-                            println!("[scummvm_service] Found stuck mount at: {}", mount_path);
-                            
-                            // Force detach this specific mount
-                            let _ = Command::new("hdiutil")
-                                .args(["detach", mount_path, "-force"])
-                                .output();
-                                
-                            let _ = Command::new("umount")
-                                .args(["-f", mount_path])
-                                .output();
-                        }
-                    }
-                }
-                
-                // Try removal one more time
-                std::fs::remove_dir_all(&scummvm_dir)
-                    .map_err(|e| format!("Failed to remove ScummVM directory after cleanup: {}", e))?;
-            }
-            
-            #[cfg(not(target_os = "macos"))]
-            {
-                return Err(format!("Failed to remove ScummVM directory: {}", e));
-            }
-        }
-        println!("[scummvm_service] Removed ScummVM directory");
-    }
-    
+    // Never force-unmount arbitrary volumes or recurse into a mounted image.
+    // The user can eject a leftover image and retry without losing its contents.
+    super::runtime_cleanup::remove_owned_tree(&scummvm_dir)?;
+
     // Update database state
     set_config_value(db, "scummvm_downloaded", "false").await?;
     
@@ -807,7 +750,7 @@ fn extract_scummvm_archive(archive_path: &Path, dest_dir: &Path) -> Result<(), S
         }
         
         // Clean up temp
-        let _ = std::fs::remove_dir_all(&temp_extract);
+        super::runtime_cleanup::remove_owned_tree(&temp_extract)?;
         
         Ok(())
     }
@@ -851,7 +794,7 @@ fn extract_scummvm_archive(archive_path: &Path, dest_dir: &Path) -> Result<(), S
             .map_err(|e| format!("Failed to execute hdiutil attach: {}", e))?;
         
         if !mount_output.status.success() {
-            let _ = std::fs::remove_dir_all(&mount_point);
+            let _ = std::fs::remove_dir(&mount_point);
             return Err(format!(
                 "Failed to mount DMG: {}",
                 String::from_utf8_lossy(&mount_output.stderr)
@@ -882,7 +825,7 @@ fn extract_scummvm_archive(archive_path: &Path, dest_dir: &Path) -> Result<(), S
         
         // Remove existing app if it exists
         if dest_app.exists() {
-            std::fs::remove_dir_all(&dest_app)
+            super::runtime_cleanup::remove_owned_tree(&dest_app)
                 .map_err(|e| format!("Failed to remove existing app: {}", e))?;
         }
         
@@ -909,17 +852,13 @@ fn extract_scummvm_archive(archive_path: &Path, dest_dir: &Path) -> Result<(), S
             .output()
             .map_err(|e| format!("Failed to execute hdiutil detach: {}", e))?;
         
-        // Clean up mount point
-        let _ = std::fs::remove_dir_all(&mount_point);
-        
         if !detach_output.status.success() {
-            // Log warning but don't fail - DMG might already be unmounted
-            println!(
-                "Warning: Failed to unmount DMG: {}",
-                String::from_utf8_lossy(&detach_output.stderr)
-            );
+            return Err("Could not eject the ScummVM disk image. Its mount point was preserved; eject it and retry.".into());
         }
-        
+        // Only remove the now-empty mount point; never its mounted contents.
+        std::fs::remove_dir(&mount_point)
+            .map_err(|e| format!("Could not remove empty mount point: {e}"))?;
+
         Ok(())
     }
 

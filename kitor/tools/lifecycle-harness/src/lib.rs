@@ -4,6 +4,8 @@ pub mod owlboy;
 pub mod drifter_patch;
 #[path = "../../../src-tauri/src/services/patch_lifecycle.rs"]
 pub mod patch_lifecycle;
+#[path = "../../../src-tauri/src/services/runtime_cleanup.rs"]
+pub mod runtime_cleanup;
 #[path = "../../../src-tauri/src/services/registry_service.rs"]
 pub mod registry_service;
 pub mod services {
