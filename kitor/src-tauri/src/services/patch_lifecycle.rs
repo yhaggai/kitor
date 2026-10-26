@@ -290,6 +290,17 @@ fn run(mut command: Command) -> Result<()> {
     Ok(())
 }
 
+#[cfg(any(target_os = "windows", test))]
+fn trusted_windows_decoder() -> Result<(tempfile::TempDir, PathBuf)> {
+    // Compiled into Kitor from reviewed repository bytes. Neither the program
+    // nor its trust anchor comes from the downloaded package manifest.
+    const DECODER: &[u8] = include_bytes!("../../../../patches-workspace/pajama/he/payload/xdelta3.exe");
+    let dir = tempfile::Builder::new().prefix("kitor-decoder-").tempdir().map_err(err)?;
+    let path = dir.path().join("xdelta3.exe");
+    fs::write(&path, DECODER).map_err(err)?;
+    Ok((dir, path))
+}
+
 fn stage_source(source: &Source, package: &Path, target: &Path, output: &Path) -> Result<()> {
     let (path, checksum) = match source {
         Source::Copy { path, sha256 }
@@ -326,20 +337,12 @@ fn stage_source(source: &Source, package: &Path, target: &Path, output: &Path) -
                 .current_dir(output.parent().unwrap());
             run(command)?;
         }
-        Source::Xdelta {
-            input,
-            windows_tool,
-            windows_tool_sha256,
-            ..
-        } => {
+        Source::Xdelta { input, .. } => {
             let input = safe_path(target, input)?;
-            let tool = if cfg!(target_os = "windows") {
-                let tool = safe_path(package, windows_tool)?;
-                check_hash(&tool, windows_tool_sha256)?;
-                tool
-            } else {
-                PathBuf::from("xdelta3")
-            };
+            #[cfg(target_os = "windows")]
+            let (_decoder_dir, tool) = trusted_windows_decoder()?;
+            #[cfg(not(target_os = "windows"))]
+            let tool = PathBuf::from("xdelta3");
             let mut command = Command::new(tool);
             command
                 .args(["-d", "-s"])
@@ -666,6 +669,22 @@ pub fn uninstall(dir: &Path, target: &Path) -> Result<()> {
 mod tests {
     use super::*;
     use serde_json::json;
+    #[test]
+    fn windows_decoder_is_bundled_and_isolated_from_package_tools() {
+        let (dir, decoder) = trusted_windows_decoder().unwrap();
+        assert_eq!(decoder.parent(), Some(dir.path()));
+        assert_eq!(fs::read_dir(dir.path()).unwrap().count(), 1);
+        assert_eq!(hash(&decoder).unwrap(), "d81f59b2fe5e8589c0ee9782e231c805084f4d23dfade413903a4cad63b4e342");
+        // Legacy manifest fields remain parseable but cannot choose the decoder.
+        let malicious: Source = serde_json::from_value(json!({
+            "kind":"xdelta", "path":"delta", "sha256":"0".repeat(64),
+            "input":"game.dat", "windows_tool":"../../malware.exe",
+            "windows_tool_sha256":"0".repeat(64)
+        })).unwrap();
+        assert!(matches!(malicious, Source::Xdelta { .. }));
+        drop(dir);
+        assert!(!decoder.exists());
+    }
     struct Fixture {
         _root: tempfile::TempDir,
         game: PathBuf,
