@@ -387,13 +387,24 @@ pub async fn restore_backup(
 pub async fn download_and_extract_gog_installer(
     db: &DatabaseConnection,
     scummvm_id: String,
-    installer_path: String,
     dest_dir: PathBuf,
     app_handle: tauri::AppHandle,
     app_data_dir: PathBuf,
 ) -> Result<(), String> {
     use crate::services::{gog_service, game_service};
     use std::process::Command;
+
+    let registry = registry_service::load_registry()?;
+    let game = registry.games.iter().find(|g| g.scummvm_id == scummvm_id)
+        .ok_or("Unknown GOG game")?;
+    let installer = game.gog.as_ref().and_then(|g| g.installers.as_ref())
+        .and_then(|items| items.first()).ok_or("No GOG installer in catalog")?;
+    let url = super::gog_download_security::installer_url(&installer.path)?;
+    let extraction = super::gog_download_security::extraction_directory(&dest_dir)?;
+    let dest_dir = extraction.path().to_owned();
+    let download_dir = tempfile::Builder::new().prefix("kitor-gog-download-")
+        .tempdir().map_err(|e| e.to_string())?;
+    let download_path = download_dir.path().join("installer.exe");
     
     // 1. Verify innoextract is installed
     let innoextract_check = Command::new("innoextract").arg("--version").output();
@@ -419,32 +430,13 @@ pub async fn download_and_extract_gog_installer(
     // 2. Get GOG access token
     let token = gog_service::get_valid_token(db).await?;
     
-    // 3. Download the installer
-    // Append the access token as a query parameter
-    let url = if installer_path.contains("?") {
-        format!("{}&access_token={}", installer_path, token)
-    } else {
-        format!("{}?access_token={}", installer_path, token)
-    };
-    
-    let downloads_dir = app_data_dir.join("downloads");
-    std::fs::create_dir_all(&downloads_dir)
-        .map_err(|e| format!("Failed to create downloads directory: {}", e))?;
-    
-    let file_name = std::path::Path::new(url.split('?').next().unwrap_or(&url))
-        .file_name()
-        .and_then(|n| n.to_str())
-        .unwrap_or("gog_installer.exe");
-        
-    let download_path = downloads_dir.join(file_name);
-    
     let _ = app_handle.emit("gog-installer-progress", serde_json::json!({
         "step": "Downloading installer...",
         "progress": 10
     }));
     
     // Use download_service to download the file
-    crate::services::download_service::download_file(&url, &download_path, &app_handle).await
+    crate::services::download_service::download_gog_installer(url, &token, &download_path, &app_handle).await
         .map_err(|e| format!("Failed to download installer: {}", e))?;
         
     let _ = app_handle.emit("gog-installer-progress", serde_json::json!({
@@ -469,6 +461,10 @@ pub async fn download_and_extract_gog_installer(
         let _ = std::fs::remove_file(&download_path);
         return Err(format!("innoextract failed: {}", String::from_utf8_lossy(&extract_output.stderr)));
     }
+
+    // Once extraction succeeds, preserve the game even if library registration
+    // fails, so the user can recover it without downloading again.
+    let _ = extraction.keep();
     
     // 5. Clean up the installer
     let _ = std::fs::remove_file(&download_path);
