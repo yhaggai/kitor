@@ -1,5 +1,7 @@
 # Game box assets
 
+Artwork binaries under `assets/` are an ignored local workspace. Git tracks the manifests, provenance, review pages, and preparation scripts; it does not track originals or generation drafts. Keep local copies or retrieve published covers from the URLs in the manifest. Optimized runtime assets under `kitor/public/` and `website/public/` remain tracked so fresh checkouts work.
+
 `covers/manifest.json` is the bilingual catalog for all 174 games. Each game has `covers.en` and `covers.he`, including source provenance, dimensions, SHA-256, Cloudflare object key, original URL, and 240/480/960px transformation URLs.
 
 Published paths follow `covers/<game-id>/<en|he>/<sha256-prefix>.<extension>` in the `kitor-assets` R2 bucket, served from https://assets.kitor.click. Filenames are content-addressed; new revisions should use new hashes.

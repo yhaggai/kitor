@@ -13,3 +13,12 @@ bun.lockb
 __pycache__/
 *.pyc
 !kitor/tools/lifecycle-harness/Cargo.lock
+
+# Local artwork originals and generation drafts; keep manifests and tooling.
+/assets/**/*.png
+/assets/**/*.jpg
+/assets/**/*.jpeg
+/assets/**/*.webp
+/assets/**/*.gif
+/assets/**/*.psd
+.DS_Store
