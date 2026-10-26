@@ -1,3 +1,52 @@
+// Register every application command with Tauri's capability ACL.
+const COMMANDS: &[&str] = &[
+    "get_all_games",
+    "refresh_game",
+    "open_game_folder",
+    "scan_games",
+    "scan_installed_games",
+    "add_game_manually",
+    "detect_game_in_folder",
+    "remove_game",
+    "get_game_by_id",
+    "get_games_with_patches",
+    "refresh_cover_image",
+    "clear_cover_cache",
+    "launch_game",
+    "download_scummvm_binary",
+    "check_scummvm_status",
+    "uninstall_scummvm",
+    "get_latest_scummvm_version",
+    "open_scummvm",
+    "open_scummvm_folder",
+    "get_patches_for_game",
+    "get_all_patches",
+    "download_and_install_patch",
+    "get_installed_patches",
+    "restore_backup",
+    "get_purchase_guide",
+    "get_os",
+    "open_gog_client",
+    "open_steam_client",
+    "download_and_extract_gog_installer",
+    "get_steam_status",
+    "download_steam_windows_game",
+    "set_steam_api_key",
+    "refresh_steam_library",
+    "connect_steam",
+    "disconnect_steam",
+    "login_to_gog",
+    "complete_gog_login",
+    "check_gog_auth_status",
+    "logout_from_gog",
+    "get_gog_user_games",
+    "get_gog_game_installers",
+    "save_bug_report",
+    "close_splashscreen",
+];
+
 fn main() {
-    tauri_build::build()
+    tauri_build::try_build(tauri_build::Attributes::new()
+        .app_manifest(tauri_build::AppManifest::new().commands(COMMANDS)))
+        .expect("Failed to build application command permissions");
 }
