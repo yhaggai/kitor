@@ -107,31 +107,26 @@ pub struct RegistryMetadata {
     pub source: String,
 }
 
-pub fn load_registry() -> Result<Registry, String> {
-    // Get the registry file path relative to the executable
-    let registry_path = if cfg!(debug_assertions) {
-        // In development, look in the workspace root (one level up from src-tauri)
-        Path::new("../patches/registry.json")
-    } else {
-        // In production, look relative to the executable
-        Path::new("patches/registry.json")
-    };
+fn registry_content(development_path: &Path) -> Result<String, String> {
+    const EMBEDDED: &str = include_str!("../../../patches/registry.json");
+    #[cfg(debug_assertions)]
+    {
+        std::fs::read_to_string(development_path).or_else(|error| {
+            if error.kind() == std::io::ErrorKind::NotFound { Ok(EMBEDDED.to_owned()) }
+            else { Err(error) }
+        }).map_err(|e| format!("Failed to read development registry: {e}"))
+    }
+    #[cfg(not(debug_assertions))]
+    {
+        let _ = development_path;
+        Ok(EMBEDDED.to_owned())
+    }
+}
 
-    println!("Attempting to load registry from: {:?}", registry_path);
-    
-    let content = std::fs::read_to_string(registry_path)
-        .or_else(|error| {
-            // Finder-launched bundles have no project working directory.
-            // Keep the reviewed registry available without relying on cwd.
-            if error.kind() == std::io::ErrorKind::NotFound {
-                Ok(include_str!("../../../patches/registry.json").to_owned())
-            } else { Err(error) }
-        })
-        .map_err(|e| {
-            let err_msg = format!("Failed to read registry file: {}", e);
-            println!("Registry load error: {}", err_msg);
-            err_msg
-        })?;
+pub fn load_registry() -> Result<Registry, String> {
+    // Packaged apps trust only the registry compiled into this build.
+    // A working-directory override is available solely in development builds.
+    let content = registry_content(Path::new("../patches/registry.json"))?;
 
     println!("Registry file loaded successfully, parsing JSON...");
     
@@ -148,5 +143,16 @@ pub fn load_registry() -> Result<Registry, String> {
     );
 
     Ok(registry)
+}
+
+#[cfg(all(test, not(debug_assertions)))]
+mod tests {
+    #[test]
+    fn production_registry_ignores_untrusted_files() {
+        let dir = tempfile::tempdir().unwrap();
+        let file = dir.path().join("registry.json");
+        std::fs::write(&file, "attacker-controlled registry").unwrap();
+        assert_eq!(super::registry_content(&file).unwrap(), include_str!("../../../patches/registry.json"));
+    }
 }
 

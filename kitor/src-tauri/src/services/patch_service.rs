@@ -208,23 +208,11 @@ pub async fn download_and_install_patch(
         "step": "Preparing download..."
     }));
 
-    // Create downloads directory
-    let downloads_dir = app_data_dir.join("downloads");
-    println!("[patch_service] Creating downloads directory: {}", downloads_dir.display());
-    std::fs::create_dir_all(&downloads_dir)
-        .map_err(|e| format!("Failed to create downloads directory: {}", e))?;
-
-    // Download patch
-    let file_name = patch.filename
-        .clone()
-        .unwrap_or_else(|| {
-            patch.download_url
-                .split('/')
-                .last()
-                .unwrap_or("patch.zip")
-                .to_string()
-        });
-    let download_path = downloads_dir.join(&file_name);
+    // Catalog filenames and URL paths are display metadata, never local paths.
+    // A private random directory also isolates retries and cleans failed downloads.
+    let download_dir = tempfile::Builder::new().prefix("kitor-download-")
+        .tempdir().map_err(|e| format!("Failed to create download directory: {e}"))?;
+    let download_path = download_dir.path().join("patch.zip");
 
     // Emit progress: Downloading
     let _ = app_handle.emit("install-progress", serde_json::json!({
