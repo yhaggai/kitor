@@ -240,8 +240,15 @@ pub async fn download_and_install_patch(
     let bundled_tentacle = patch.source_type == "bundled" && scummvm_id == "tentacle";
     let bundled_dott_remastered = patch.source_type == "bundled" && scummvm_id == "day-of-the-tentacle-remastered";
     if !bundled_drifter && !bundled_owlboy && !bundled_tentacle && !bundled_dott_remastered {
+        let checksum = super::package_auth::required_checksum(patch.checksum.as_deref())?;
         download_service::download_patch_file(&patch.download_url, &download_path, &app_handle, &scummvm_id)
             .await?;
+        // The downloaded manifest is untrusted until the entire archive matches
+        // the checksum distributed with Kitor. CRCs only detect corruption.
+        if let Err(error) = super::package_auth::verify(&download_path, checksum) {
+            let _ = std::fs::remove_file(&download_path);
+            return Err(error);
+        }
     }
     println!("[patch_service] Download complete");
     
