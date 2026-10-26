@@ -225,6 +225,10 @@ pub async fn download_and_install_patch(
                 .to_string()
         });
     let download_path = downloads_dir.join(&file_name);
+    if Path::new(&file_name).file_name().and_then(|s| s.to_str()) != Some(file_name.as_str())
+        || file_name.contains(['/', '\\', ':']) {
+        return Err("Unsafe patch download filename".into());
+    }
 
     // Emit progress: Downloading
     let _ = app_handle.emit("install-progress", serde_json::json!({
@@ -242,6 +246,13 @@ pub async fn download_and_install_patch(
     if !bundled_drifter && !bundled_owlboy && !bundled_tentacle && !bundled_dott_remastered {
         download_service::download_patch_file(&patch.download_url, &download_path, &app_handle, &scummvm_id)
             .await?;
+        if let Some(checksum) = &patch.checksum {
+            if patch_lifecycle::hash(&download_path)? != checksum.to_lowercase() {
+                return Err("Downloaded translation checksum mismatch; game files were not changed".into());
+            }
+        } else if patch.release_revision > 0 {
+            return Err("Published translation is missing its package checksum".into());
+        }
     }
     println!("[patch_service] Download complete");
     
@@ -286,11 +297,33 @@ pub async fn download_and_install_patch(
     if previous.iter().any(|p| p.backup_path.as_ref().is_none_or(|p| !Path::new(p).join("manifest.json").is_file())) {
         return Err("This installation has a legacy folder backup. Resolve the legacy installation before applying a new patch; its backup has been preserved.".into());
     }
-    let backup_path = patch_lifecycle::install(
+    let package: patch_lifecycle::Package = serde_json::from_slice(
+        &std::fs::read(patch_lifecycle::safe_path(staging.path(), manifest_name)?).map_err(|e| e.to_string())?
+    ).map_err(|e| e.to_string())?;
+    if package.release_revision != patch.release_revision {
+        return Err("Package revision does not match the registry".into());
+    }
+    let mut matching = Vec::new();
+    for installed in &previous {
+        let path = Path::new(installed.backup_path.as_deref().ok_or("Missing installation manifest")?);
+        let (_, installed_language, status, _) = patch_lifecycle::recover_installation(path)?;
+        if installed_language == language && status == "active" { matching.push(installed); }
+    }
+    if matching.len() > 1 { return Err("Multiple active translations require recovery before updating".into()); }
+    let backup_path = if let Some(installed) = matching.first() {
+        let _ = app_handle.emit("install-progress", serde_json::json!({
+            "scummvm_id": scummvm_id, "progress": 60,
+            "step": "Validating translation update and preserving recovery files..."
+        }));
+        patch_lifecycle::update(
+            Path::new(installed.backup_path.as_deref().unwrap()), staging.path(), manifest_name,
+            &install_target, &scummvm_id, &language, &version, patch_lifecycle::platform(),
+        )?
+    } else { patch_lifecycle::install(
         staging.path(), manifest_name, &install_target,
         &app_data_dir.join("patch-transactions"), &scummvm_id, &language,
         &version, patch_lifecycle::platform(),
-    )?;
+    )? };
     // Retrying the same version reuses the verified active transaction and its
     // originals. Do not insert a second database record for it.
     let already_recorded = previous.iter().any(|p| p.backup_path.as_deref() == backup_path.to_str());
@@ -319,6 +352,10 @@ pub async fn download_and_install_patch(
             let recovery = patch_lifecycle::uninstall(&backup_path, &install_target);
             return Err(format!("Failed to record installation: {error}; rollback: {recovery:?}. Recovery manifest: {}", backup_path.display()));
         }
+    } else {
+        // The durable manifest is authoritative if the app exits between the
+        // file commit and this write. Library loading reconciles the same row.
+        get_installed_patches(db, game.id).await?;
     }
     println!("[patch_service] Installation recorded successfully");
 
@@ -341,11 +378,25 @@ pub async fn get_installed_patches(
     db: &DatabaseConnection,
     game_id: i32,
 ) -> Result<Vec<installed_patch::Model>, String> {
-    installed_patch::Entity::find()
+    let mut installed = installed_patch::Entity::find()
         .filter(installed_patch::Column::GameId.eq(game_id))
         .all(db)
         .await
-        .map_err(|e| format!("Failed to fetch installed patches: {}", e))
+        .map_err(|e| format!("Failed to fetch installed patches: {}", e))?;
+    for row in &mut installed {
+        if let Some(path) = &row.backup_path {
+            // Preserve legacy or damaged records so the UI can report them.
+            if !Path::new(path).join("manifest.json").is_file() { continue; }
+            let (version, _, status, _) = patch_lifecycle::recover_installation(Path::new(path))?;
+            if status == "active" && row.version != version {
+                let mut model: installed_patch::ActiveModel = row.clone().into();
+                model.version = Set(version);
+                model.installed_date = Set(chrono::Utc::now().naive_utc());
+                *row = model.update(db).await.map_err(|e| format!("Translation is installed; database reconciliation failed: {e}"))?;
+            }
+        }
+    }
+    Ok(installed)
 }
 
 pub async fn restore_backup(
@@ -512,7 +563,7 @@ mod restore_tests {
     use super::*;
 
     #[tokio::test]
-    async fn selective_restore_preserves_unrelated_files_and_database_record_on_failure() {
+    async fn update_reconciles_stale_database_and_restore_preserves_unrelated_files() {
         let temp = tempfile::tempdir().unwrap();
         let root = temp.path();
         let data = root.join("game");
@@ -542,11 +593,25 @@ mod restore_tests {
             status: Set("active".into()), backup_path: Set(Some(backup.to_string_lossy().into_owned())),
             ..Default::default()
         }.insert(&db).await.unwrap();
+        // Simulate a successful file commit followed by an app exit before SQL
+        // was updated. The next read must use disk identity, not the registry.
+        let mut manifest: serde_json::Value = serde_json::from_slice(&std::fs::read(package.join("patch.json")).unwrap()).unwrap();
+        manifest["version"] = serde_json::json!("test2");
+        manifest["release_revision"] = serde_json::json!(1);
+        std::fs::write(package.join("translated"), b"new translation").unwrap();
+        manifest["files"][0]["source"]["sha256"] = serde_json::json!(patch_lifecycle::hash(&package.join("translated")).unwrap());
+        std::fs::write(package.join("patch.json"), serde_json::to_vec(&manifest).unwrap()).unwrap();
+        patch_lifecycle::update(&backup, &package, "patch.json", &data, "kyra1-cd", "he", "test2", "osx").unwrap();
+        assert_eq!(installed_patch::Entity::find_by_id(installed.id).one(&db).await.unwrap().unwrap().version, "test");
+        let reconciled = get_installed_patches(&db, game.id).await.unwrap();
+        assert_eq!(reconciled.len(), 1);
+        assert_eq!(reconciled[0].id, installed.id);
+        assert_eq!(reconciled[0].version, "test2");
         std::fs::write(data.join("later.txt"), b"user file").unwrap();
         std::fs::write(data.join("GEMCUT.PAK"), b"another mod").unwrap();
         assert!(restore_backup(&db, installed.id).await.is_err());
         assert_eq!(get_installed_patches(&db, game.id).await.unwrap().len(), 1);
-        std::fs::write(data.join("GEMCUT.PAK"), b"translated").unwrap();
+        std::fs::write(data.join("GEMCUT.PAK"), b"new translation").unwrap();
         restore_backup(&db, installed.id).await.unwrap();
         assert_eq!(std::fs::read(data.join("GEMCUT.PAK")).unwrap(), b"original");
         assert_eq!(std::fs::read(data.join("save.dat")).unwrap(), b"saved game");

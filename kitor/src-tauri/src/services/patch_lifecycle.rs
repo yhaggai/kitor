@@ -9,6 +9,10 @@ use std::{
     process::Command,
 };
 
+#[path = "patch_upgrade.rs"]
+mod upgrade;
+pub use upgrade::{update, recover_installation};
+
 type Result<T> = std::result::Result<T, String>;
 fn err(e: impl std::fmt::Display) -> String {
     e.to_string()
@@ -17,6 +21,8 @@ fn err(e: impl std::fmt::Display) -> String {
 #[derive(Debug, Clone, Deserialize, Serialize)]
 #[serde(deny_unknown_fields)]
 pub struct Package {
+    #[serde(default)]
+    pub release_revision: u64,
     pub schema_version: u32,
     pub scummvm_id: String,
     pub language: String,
@@ -97,6 +103,8 @@ fn check_md5(path: &Path, expected: &str) -> Result<()> {
 
 #[derive(Debug, Serialize, Deserialize)]
 struct Journal {
+    #[serde(default)]
+    release_revision: u64,
     schema_version: u32,
     target: PathBuf,
     game: String,
@@ -105,6 +113,12 @@ struct Journal {
     status: String,
     files: Vec<Record>,
     created_dirs: Vec<String>,
+    #[serde(default = "default_originals_dir")]
+    originals_dir: String,
+}
+fn default_originals_dir() -> String { "originals".into() }
+fn original_file(dir: &Path, journal: &Journal, index: usize) -> Result<PathBuf> {
+    safe_path(dir, &format!("{}/{index}", journal.originals_dir))
 }
 #[derive(Debug, Serialize, Deserialize)]
 struct Record {
@@ -190,7 +204,7 @@ fn check_hash(path: &Path, expected: &str) -> Result<()> {
     }
     Ok(())
 }
-fn write_json(path: &Path, value: &Journal) -> Result<()> {
+fn write_json(path: &Path, value: &impl Serialize) -> Result<()> {
     let mut tmp = tempfile::NamedTempFile::new_in(path.parent().ok_or("Missing journal parent")?)
         .map_err(err)?;
     tmp.write_all(&serde_json::to_vec_pretty(value).map_err(err)?)
@@ -219,8 +233,10 @@ fn load(dir: &Path) -> Result<Journal> {
     }
     Ok(journal)
 }
-/// Inspect installed bytes without changing game files, backups, or records.
+/// Recover any interrupted update, then inspect installed bytes.
 pub fn verify_installed(dir: &Path, target: &Path, game: &str, version: &str) -> Result<Vec<String>> {
+    let _lock = lock(dir.parent().ok_or("Missing transaction parent")?)?;
+    upgrade::recover(dir)?;
     let journal = load(dir)?;
     if journal.target != target.canonicalize().map_err(err)? || journal.game != game || journal.version != version {
         return Err("Patch manifest belongs to a different installation or version".into());
@@ -418,6 +434,7 @@ pub fn install(
         if !dir.is_dir() || !dir.join("manifest.json").exists() {
             continue;
         }
+        upgrade::recover(&dir)?;
         let mut existing = load(&dir)?;
         if existing.target != target {
             return Err("Recovery manifest target mismatch".into());
@@ -452,6 +469,7 @@ pub fn install(
     fs::create_dir(dir.join("originals")).map_err(err)?;
     fs::create_dir(dir.join("outputs")).map_err(err)?;
     let mut journal = Journal {
+        release_revision: package.release_revision,
         schema_version: 1,
         target: target.clone(),
         game: game.into(),
@@ -460,6 +478,7 @@ pub fn install(
         status: "prepared".into(),
         files: vec![],
         created_dirs: vec![],
+        originals_dir: default_originals_dir(),
     };
     for (index, change) in files.iter().enumerate() {
         let path = safe_path(&target, &change.path)?;
@@ -584,7 +603,7 @@ fn apply(dir: &Path, journal: &mut Journal) -> Result<()> {
             fs::create_dir_all(path.parent().unwrap()).map_err(err)?;
             replace(&dir.join("outputs").join(index.to_string()), &path)?;
             check_hash(&path, expected)?;
-        } else {
+        } else if path.exists() {
             fs::remove_file(&path).map_err(err)?;
             sync_dir(path.parent().unwrap())?;
         }
@@ -603,7 +622,7 @@ fn restore_inner(dir: &Path, journal: &mut Journal) -> Result<()> {
             continue;
         }
         if let Some(expected) = &record.original_hash {
-            check_hash(&dir.join("originals").join(index.to_string()), expected)
+            check_hash(&original_file(dir, journal, index)?, expected)
                 .map_err(|e| format!("Missing or invalid original backup: {e}"))?;
         }
         let current = current_hash(&safe_path(&journal.target, &record.path)?)?;
@@ -628,7 +647,7 @@ fn restore_inner(dir: &Path, journal: &mut Journal) -> Result<()> {
                 return Err(format!("File changed during restoration: {}", record.path));
             }
             if let Some(expected) = &record.original_hash {
-                replace(&dir.join("originals").join(index.to_string()), &path)?;
+                replace(&original_file(dir, journal, index)?, &path)?;
                 check_hash(&path, expected)?;
             } else if path.exists() {
                 fs::remove_file(&path).map_err(err)?;
@@ -654,6 +673,7 @@ fn restore_inner(dir: &Path, journal: &mut Journal) -> Result<()> {
 pub fn uninstall(dir: &Path, target: &Path) -> Result<()> {
     // Deliberately do not interpret old full-directory backups as manifests.
     let _lock = lock(dir.parent().ok_or("Missing transaction parent")?)?;
+    upgrade::recover(dir)?;
     let mut journal = load(dir)?;
     let target = target.canonicalize().map_err(err)?;
     if journal.target != target {
@@ -848,6 +868,7 @@ mod tests {
         fs::create_dir_all(dir.join("originals")).unwrap();
         fs::create_dir(dir.join("outputs")).unwrap();
         let mut journal = Journal {
+            release_revision: 0,
             schema_version: 1,
             target: f.game.canonicalize().unwrap(),
             game: "test".into(),
@@ -856,6 +877,7 @@ mod tests {
             status: "prepared".into(),
             files: vec![],
             created_dirs: vec![],
+            originals_dir: default_originals_dir(),
         };
         for (i, name) in ["first", "second"].iter().enumerate() {
             fs::copy(f.game.join(name), dir.join("originals").join(i.to_string())).unwrap();
@@ -1048,6 +1070,7 @@ mod tests {
             for platform in ["windows", "osx"] {
                 let f = Fixture::new();
                 let first = &package.files[0].path;
+                fs::create_dir_all(f.game.join(first).parent().unwrap()).unwrap();
                 fs::write(f.game.join(first), b"original resource").unwrap();
                 fs::write(f.game.join("save.dat"), b"save").unwrap();
                 let dir = install(

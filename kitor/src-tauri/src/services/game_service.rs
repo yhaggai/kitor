@@ -3,12 +3,13 @@ use std::path::Path;
 use std::path::PathBuf;
 use serde::{Deserialize, Serialize};
 use crate::models::game::{self, Entity as Game};
-use crate::models::installed_patch;
 use crate::services::image_service;
 use crate::services::registry_service;
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct InstalledPatchInfo {
+    pub language: Option<String>,
+    pub release_revision: u64,
     pub id: i32,
     pub scummvm_id: String,
     pub version: String,
@@ -18,6 +19,7 @@ pub struct InstalledPatchInfo {
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct AvailablePatchInfo {
+    pub release_revision: u64,
     pub language: String,
     pub version: String,
     pub author: String,
@@ -456,14 +458,14 @@ pub async fn get_games_with_patches(
             .find(|g| g.scummvm_id == game.scummvm_id);
         
         // Get installed patches for this game
-        let installed = installed_patch::Entity::find()
-            .filter(installed_patch::Column::GameId.eq(game.id))
-            .all(db)
-            .await
-            .map_err(|e| format!("Failed to fetch installed patches: {}", e))?;
+        let installed = super::patch_service::get_installed_patches(db, game.id).await?;
         
         let installed_patches: Vec<InstalledPatchInfo> = installed.iter().map(|p| {
+            let identity = p.backup_path.as_ref().and_then(|path|
+                super::patch_lifecycle::recover_installation(Path::new(path)).ok());
             InstalledPatchInfo {
+                language: identity.as_ref().map(|i| i.1.clone()),
+                release_revision: identity.as_ref().map_or(0, |i| i.3),
                 id: p.id,
                 scummvm_id: p.scummvm_id.clone(),
                 version: p.version.clone(),
@@ -478,6 +480,7 @@ pub async fn get_games_with_patches(
         }) {
             def.patches.iter().map(|p| {
                 AvailablePatchInfo {
+                    release_revision: p.release_revision,
                     language: p.language.clone(),
                     version: p.version.clone(),
                     author: p.author.clone(),

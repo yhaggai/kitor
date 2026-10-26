@@ -5,6 +5,11 @@ use crate::AppState;
 use std::path::Path;
 
 #[tauri::command]
+pub async fn refresh_patch_registry() -> Result<(), String> {
+    crate::services::registry_update_service::refresh().await
+}
+
+#[tauri::command]
 pub async fn get_patches_for_game(
     game_id: i32,
     state: State<'_, AppState>,

@@ -14,6 +14,7 @@ type InstallStep = {
 };
 
 type InstallPatchDialogProps = {
+  updating?: boolean;
   gameTitle: string;
   open: boolean;
   onOpenChange: (open: boolean) => void;
@@ -23,6 +24,7 @@ type InstallPatchDialogProps = {
 };
 
 export function InstallPatchDialog({
+  updating = false,
   gameTitle,
   open,
   onOpenChange,
@@ -36,7 +38,7 @@ export function InstallPatchDialog({
         <AlertDialog.Overlay className="fixed inset-0 bg-black/50" />
         <AlertDialog.Content className="fixed left-1/2 top-1/2 w-[min(500px,calc(100vw-32px))] -translate-x-1/2 -translate-y-1/2 rounded-lg border bg-background p-6 shadow-lg">
           <AlertDialog.Title className="text-lg font-semibold mb-4">
-            Installing Patch for {gameTitle}
+            {updating ? "Updating Translation" : "Installing Patch"} for {gameTitle}
           </AlertDialog.Title>
           <div className="mb-5 space-y-2">
             <AlertDialog.Description className="flex items-center justify-between text-sm text-muted-foreground">
