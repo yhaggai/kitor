@@ -15,6 +15,7 @@ on:
       - 'kitor/src-tauri/**'
       - '.github/workflows/validate-patch-packages.yml'
   workflow_dispatch:
+  workflow_call:
 
 permissions:
   contents: read
@@ -27,15 +28,19 @@ jobs:
         os: [windows-latest, macos-latest]
     runs-on: ${{ matrix.os }}
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5
         with:
           python-version: '3.12'
       - name: Hydrate pinned large payloads from private build inputs
         env:
           GH_TOKEN: ${{ github.token }}
         run: python kitor/tools/hydrate_patch_inputs.py --repo ${{ github.repository }}
-      - uses: dtolnay/rust-toolchain@stable
+      - uses: dtolnay/rust-toolchain@b725eda525362e7cf34af9a7243cac1e3f01a7ec # stable
+        with:
+          toolchain: stable
       - name: Build disposable validation CLI
         run: cargo build --manifest-path kitor/tools/lifecycle-harness/Cargo.toml --locked --bin validate_owned_games
       - name: Compile native classic Tentacle installer
@@ -62,7 +67,7 @@ jobs:
               subprocess.run([sys.executable, 'kitor/tools/build_patch_packages.py', str(manifest), '--platform', 'windows', '--output', 'dist/candidates'], check=True)
           for manifest in sorted(pathlib.Path('patches-workspace').glob('*/he/patch.osx.candidate.json')):
               subprocess.run([sys.executable, 'kitor/tools/build_patch_packages.py', str(manifest), '--platform', 'osx', '--output', 'dist/candidates'], check=True)
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
         with:
           name: unverified-patch-builds-${{ matrix.os }}
           path: |
