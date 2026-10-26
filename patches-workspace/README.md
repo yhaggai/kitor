@@ -60,3 +60,10 @@ The [machine-readable inventory](owned-catalog.json) records local artifact path
 Journey Down and Portal 2 have payloads exceeding GitHub single-file limits. Those assets are excluded from Git and hydrated from private, SHA256-pinned build-input release assets. CI builds both dual-platform packages and Windows candidates.
 
 Release automation requires explicit release_ready=true in provenance.json and validated dual-platform manifests. All imported entries remain false. Raw upstream installers and ownership metadata are excluded from release ZIPs.
+
+## Original Owlboy translation
+
+[Owlboy Hebrew](owlboy/he/README.md) is imported from the separately published
+`yhaggai/owlboy-hebrew` source repository. Its full 4,537-entry translation and
+corrected flag are packaged as a macOS candidate at
+`owlboy/he/patch.osx.candidate.json`. Windows edition validation remains pending.

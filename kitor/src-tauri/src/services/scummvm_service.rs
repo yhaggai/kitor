@@ -87,6 +87,27 @@ fn add_required_game_options(cmd: &mut Command, scummvm_id: &str) {
     }
 }
 
+// A locally built Toon runtime fixes Hebrew string lifetimes without replacing
+// the shared ScummVM installation used by other engines.
+fn game_runtime_path(app_data_dir: &Path, game_id: &str, standard: PathBuf) -> PathBuf {
+    let executable = if cfg!(target_os = "windows") { "scummvm.exe" } else { "scummvm" };
+    let patched = app_data_dir.join("scummvm-toon-hebrew").join(executable);
+    if game_id == "toonstruck" && patched.is_file()
+        && patched.parent().is_some_and(|dir| dir.join("toon.dat").is_file()) {
+        patched
+    } else { standard }
+}
+
+fn add_toon_runtime_data(cmd: &mut Command, app_data_dir: &Path, game_id: &str) {
+    let standard = PathBuf::new();
+    let runtime = game_runtime_path(app_data_dir, game_id, standard.clone());
+    if runtime != standard {
+        let mut argument = std::ffi::OsString::from("--extrapath=");
+        argument.push(runtime.parent().unwrap());
+        cmd.arg(argument);
+    }
+}
+
 // Collection editions need an explicit identity/platform. Let ScummVM detect
 // language from the installed data, so the original English files also launch.
 fn normalize_collection_args(id: &str, args: Vec<String>, patched: bool) -> Vec<String> {
@@ -165,6 +186,17 @@ pub async fn launch_game(
         return start_game_process(&mut cmd, &app_data_dir.join("drifter-launch.log")).await;
     }
 
+    if game.scummvm_id == "day-of-the-tentacle-remastered" {
+        let mut cmd = super::tentacle_remastered::launch_command(Path::new(&game.install_path))?;
+        return start_game_process(&mut cmd, &app_data_dir.join("dott-remastered-launch.log")).await;
+    }
+
+    if game.scummvm_id == "owlboy" {
+        if !cfg!(target_os = "macos") { return Err("Owlboy Hebrew currently supports the native macOS edition only".into()); }
+        let mut cmd = super::owlboy::launch_command(Path::new(&game.install_path))?;
+        return start_game_process(&mut cmd, &app_data_dir.join("owlboy-launch.log")).await;
+    }
+
     if game.scummvm_id == "undertale" {
         let data = Path::new(&game.install_path);
         #[cfg(target_os = "macos")]
@@ -217,7 +249,10 @@ pub async fn launch_game(
     println!("  Args JSON: {:?}", game.launch_args);
 
     // Determine game path (with optional subdirectory from DB)
-    let game_path = if let Some(subdir) = &game.launch_subdirectory {
+    let game_path = if game.scummvm_id == "tentacle"
+        && super::tentacle::detect_classic(Path::new(&game.install_path)).is_some() {
+        PathBuf::from(&game.install_path)
+    } else if let Some(subdir) = &game.launch_subdirectory {
         PathBuf::from(&game.install_path).join(subdir)
     } else {
         PathBuf::from(&game.install_path)
@@ -254,7 +289,8 @@ pub async fn launch_game(
         remove_quarantine_attribute(&app_bundle);
         
         // Launch executable directly (more reliable than app bundle on macOS)
-        let executable_path = app_bundle.join("Contents").join("MacOS").join("scummvm");
+        let executable_path = game_runtime_path(app_data_dir, &game.scummvm_id,
+            app_bundle.join("Contents").join("MacOS").join("scummvm"));
         if !executable_path.exists() {
             return Err("ScummVM executable not found in app bundle".to_string());
         }
@@ -265,6 +301,7 @@ pub async fn launch_game(
         // Add default ScummVM args
         add_game_paths(&mut cmd, &game_path, extra_path.as_deref());
         add_required_game_options(&mut cmd, &game.scummvm_id);
+        add_toon_runtime_data(&mut cmd, app_data_dir, &game.scummvm_id);
         
         // Add custom args from DB
         if let Some(args_json) = &game.launch_args {
@@ -289,11 +326,13 @@ pub async fn launch_game(
     #[cfg(not(target_os = "macos"))]
     {
         // On Windows and Linux, launch the executable directly
-        let mut cmd = Command::new(&scummvm_path);
+        let mut cmd = Command::new(game_runtime_path(app_data_dir, &game.scummvm_id,
+            PathBuf::from(&scummvm_path)));
         
         // Add default ScummVM args
         add_game_paths(&mut cmd, &game_path, extra_path.as_deref());
         add_required_game_options(&mut cmd, &game.scummvm_id);
+        add_toon_runtime_data(&mut cmd, app_data_dir, &game.scummvm_id);
 
         // Add custom args from DB
         if let Some(args_json) = &game.launch_args {
@@ -1071,6 +1110,25 @@ async fn set_config_value(db: &DatabaseConnection, key: &str, value: &str) -> Re
 #[cfg(test)]
 mod kyrandia_tests {
     use super::*;
+
+    #[test]
+    fn patched_toon_runtime_is_optional_and_isolated() {
+        let root = tempfile::tempdir().unwrap();
+        let standard = root.path().join("standard-scummvm");
+        assert_eq!(game_runtime_path(root.path(), "toonstruck", standard.clone()), standard);
+        let directory = root.path().join("scummvm-toon-hebrew");
+        std::fs::create_dir(&directory).unwrap();
+        let patched = directory.join(if cfg!(target_os = "windows") { "scummvm.exe" } else { "scummvm" });
+        std::fs::write(&patched, b"fixture").unwrap();
+        assert_eq!(game_runtime_path(root.path(), "toonstruck", standard.clone()), standard);
+        std::fs::write(directory.join("toon.dat"), b"fixture").unwrap();
+        assert_eq!(game_runtime_path(root.path(), "toonstruck", standard.clone()), patched);
+        assert_eq!(game_runtime_path(root.path(), "pajama", standard.clone()), standard);
+        let mut cmd = Command::new("scummvm");
+        add_toon_runtime_data(&mut cmd, root.path(), "toonstruck");
+        assert_eq!(cmd.get_args().next().unwrap().to_string_lossy(),
+            format!("--extrapath={}", directory.display()));
+    }
 
     #[cfg(target_os = "macos")]
     #[test]

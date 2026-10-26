@@ -1,0 +1,20 @@
+{
+  "idx": 132,
+  "name_he": "מסע המלך 3",
+  "name_en": "King's Quest III: To Heir is Human",
+  "facebook_post": "https://www.facebook.com/groups/hebrewadventure/posts/1871598410110913/",
+  "post_date": "2025-12-18T09:42:00Z (UTC, from creation_time)",
+  "description": "חנוכה שמח. לכבוד חג החנוכה אני שמח לפרסם בפורום הזה את התרגום המלא למסע המלך 3. הלא הוא KQ3.\nאשמח לקבל הערות והארות. בקרוב אפרסם בל\"נ תרגום לKQ4 וKQ8.\nקרדיטים:\nאני רוצה להודות לחברי הפורום הוותיקים גל, ניב, עומר וצביקה על תרגום הטקסט לעברית וכן יש לציין שבכל משחקי הAGI עד כה כולל KQ1 וKQ2 התבססתי בין השאר על סקריפטים שהם כתבו, וכן יש לציין לשבח את התיקונים שנכנסו לscumm כדי לאפשר כתיבה מימין לשמאל וגם אני הקטן הכנסתי מספר תיקונים בתוכנת הscumm לאורך הדרך.\nתזכורת נחמדה למשחק - חידת המערות... זהירות לא להחליק!\nחג חנוכה שמח.\nנ.ב.\nועוד משהו - הוראות בעברית להכנת השיקויים מצורף כPDF לפאץ' תמצאו אותו בספריית המשחק.",
+  "vm": "ScummVM",
+  "vm_notes": "daily build",
+  "vm_source": "post",
+  "patch_link": "https://github.com/SegMash/AGIHebrew/releases/download/12_25/kq3-hebrew-installer.exe",
+  "patch_links": [
+    "https://github.com/SegMash/AGIHebrew/releases/download/12_25/kq3-hebrew-installer.exe"
+  ],
+  "other_links": [
+    "https://www.gog.com/en/game/kings_quest_1_2_3",
+    "https://buildbot.scummvm.org/#/dailybuilds"
+  ],
+  "extraction_status": "ok"
+}

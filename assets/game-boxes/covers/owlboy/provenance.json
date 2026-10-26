@@ -1,0 +1,43 @@
+{
+  "title": "ילד הינשוף",
+  "source_url": "https://store.steampowered.com/app/115800/Owlboy/",
+  "reference": "Steam library_600x900.jpg",
+  "method": "imagegen text-localization",
+  "prompt": "Replace top Owlboy lettering with ילד הינשוף; retain original composition and characters.",
+  "review": "Hebrew wording and RTL correct; AI redrew non-text artwork slightly and removed the original logo ear motif. Broad composition preserved.",
+  "hosting": "pending",
+  "covers": {
+    "en": {
+      "file": "covers/owlboy/en/20261b2ad2fb.jpg",
+      "sha256": "20261b2ad2fb0222edc12e7b8f36b99e924854623ce74a248bbb61d938fb2b7d",
+      "bytes": 78976,
+      "width": 300,
+      "height": 450,
+      "object_key": "covers/owlboy/en/20261b2ad2fb.jpg",
+      "original_url": "https://assets.kitor.click/covers/owlboy/en/20261b2ad2fb.jpg",
+      "variant_urls": {
+        "240": "https://assets.kitor.click/cdn-cgi/image/width=240,fit=scale-down,quality=85,format=auto/covers/owlboy/en/20261b2ad2fb.jpg",
+        "480": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/owlboy/en/20261b2ad2fb.jpg",
+        "960": "https://assets.kitor.click/cdn-cgi/image/width=960,fit=scale-down,quality=85,format=auto/covers/owlboy/en/20261b2ad2fb.jpg"
+      },
+      "source": "Steam official library artwork",
+      "publication_status": "pending"
+    },
+    "he": {
+      "file": "covers/owlboy/he/2e67f2ab5edc.png",
+      "sha256": "2e67f2ab5edc707229c8dbc1edbbf242ee932e767da0f1fad4b2a6f142740935",
+      "bytes": 2092138,
+      "width": 1024,
+      "height": 1536,
+      "object_key": "covers/owlboy/he/2e67f2ab5edc.png",
+      "original_url": "https://assets.kitor.click/covers/owlboy/he/2e67f2ab5edc.png",
+      "variant_urls": {
+        "240": "https://assets.kitor.click/cdn-cgi/image/width=240,fit=scale-down,quality=85,format=auto/covers/owlboy/he/2e67f2ab5edc.png",
+        "480": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/owlboy/he/2e67f2ab5edc.png",
+        "960": "https://assets.kitor.click/cdn-cgi/image/width=960,fit=scale-down,quality=85,format=auto/covers/owlboy/he/2e67f2ab5edc.png"
+      },
+      "source": "AI localized official artwork; title supplied by user",
+      "publication_status": "pending"
+    }
+  }
+}

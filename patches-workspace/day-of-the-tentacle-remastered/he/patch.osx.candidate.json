@@ -1,0 +1,74 @@
+{
+  "schema_version": 1,
+  "scummvm_id": "day-of-the-tentacle-remastered",
+  "language": "he",
+  "version": "0.1-local-items-kitor1",
+  "filename": "DOTT-Remastered-Hebrew-local-kitor1.zip",
+  "platforms": {
+    "osx": {
+      "files": [
+        {
+          "path": "Dott.app/Contents/Resources/tenta.cle",
+          "operation": "modify",
+          "original_sha256": "c97d6690abcee78e429fa22bb2d8d5ba6ab181641785e21ead0d6260e97640f1",
+          "installed_sha256": "5228ad6679e1a5b0a1c248ad1492b186bb5f5ce21629511005b461760b076a7d",
+          "source": {
+            "kind": "reconstruct",
+            "path": "recipes/tenta.cle.json",
+            "sha256": "419fc813ce7a999341c7b5ab31dbc653bc2c2f05dc523cffb25687cdf2dd6139",
+            "input": "Dott.app/Contents/Resources/tenta.cle"
+          }
+        },
+        {
+          "path": "Dott.app/Contents/MacOS/Dott",
+          "operation": "modify",
+          "original_sha256": "d1d9e2220595c2c7870a16803f6bc21915c2e1da8cde2f51ff5dc27bebf509fc",
+          "installed_sha256": "d4b87d5b0df39146ede2095dce39b3e7f337cd27623dc6730883522d367331c6",
+          "source": {
+            "kind": "reconstruct",
+            "path": "recipes/signature-0.json",
+            "sha256": "9e97459f61ec0cbc29be8f4340d8cea2a18ec912850824c3cf712db91e3e3f0d",
+            "input": "Dott.app/Contents/MacOS/Dott"
+          }
+        },
+        {
+          "path": "Dott.app/Contents/MacOS/libfmod.dylib",
+          "operation": "modify",
+          "original_sha256": "4c9b58da55678d16a4ea6f5d0711d7e0c5d359800b62efb2c162009e99a25e14",
+          "installed_sha256": "6341fe6aac337afa1fb76296bc1c1f79fd00d10c6b628f51efe05cb1c6d07b13",
+          "source": {
+            "kind": "reconstruct",
+            "path": "recipes/signature-1.json",
+            "sha256": "677944b5c4fa469830a5ec01f87952efa1d8be84c6be17d8e51b329cfc94647c",
+            "input": "Dott.app/Contents/MacOS/libfmod.dylib"
+          }
+        },
+        {
+          "path": "Dott.app/Contents/MacOS/libsteam_api.dylib",
+          "operation": "modify",
+          "original_sha256": "47a8462409541c938a48343d8e1fe482fdd24bc4a719c7c8301da299a0afa202",
+          "installed_sha256": "3cafb1006bfc793896d3da001ec8be648cc2782bf22f1e65c35a73267cb3a7bb",
+          "source": {
+            "kind": "reconstruct",
+            "path": "recipes/signature-2.json",
+            "sha256": "aeb0515c09d756548d47a878f80feefa614235885019dc4c97bf883e14b9b168",
+            "input": "Dott.app/Contents/MacOS/libsteam_api.dylib"
+          }
+        },
+        {
+          "path": "Dott.app/Contents/_CodeSignature/CodeResources",
+          "operation": "modify",
+          "original_sha256": "f5b914f740a37348f7cc7e7d83f0bf4e233c80794c8f604d3e2ea623683ba896",
+          "installed_sha256": "788d583ef0f16d39ddb37dd714aa3fb0941ecde775f082ac3628eb0b444c4e82",
+          "source": {
+            "kind": "reconstruct",
+            "path": "recipes/signature-3.json",
+            "sha256": "900ee70c7c471ff3e8ad02f43b7fa74ddef8c4ea87eaa6c32a2c2ad9a586fdb9",
+            "input": "Dott.app/Contents/_CodeSignature/CodeResources"
+          }
+        }
+      ]
+    }
+  },
+  "files": []
+}

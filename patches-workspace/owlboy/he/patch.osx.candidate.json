@@ -1,0 +1,351 @@
+{
+  "schema_version": 1,
+  "scummvm_id": "owlboy",
+  "language": "he",
+  "version": "0.2.0-beta.2-kitor1",
+  "filename": "owlboy-he-0.2.0-beta.2-kitor1-osx.zip",
+  "platforms": {
+    "osx": {
+      "files": [
+        {
+          "path": "Data/Localizations/en/Arial/Arial.png",
+          "operation": "modify",
+          "installed_sha256": "6ab1deb9678e480d57d92fc9dc300a2387593650d0f8e98ee146102af670f891",
+          "original_sha256": "cc22d03cff886ff1395727d823de3aa212325f0e3eaec028d780815612e599e6",
+          "source": {
+            "kind": "bsdiff",
+            "path": "deltas/Data/Localizations/en/Arial/Arial.png.bsdiff",
+            "input": "Data/Localizations/en/Arial/Arial.png",
+            "sha256": "1a6d27fd1aa0592e49e8fe4772b66813dea3dd1549f0bcd7268300c54f93e470"
+          }
+        },
+        {
+          "path": "Data/Localizations/en/Arial/charmap.txt",
+          "operation": "modify",
+          "installed_sha256": "0a65f915da6efa85123347fd24908b45aad2e5cffc3858b8869007187c9887c1",
+          "original_sha256": "3c387a4e511353eb759aa3119e929ca49e936ccaca76361ccc71b3e6d3c759fa",
+          "source": {
+            "kind": "bsdiff",
+            "path": "deltas/Data/Localizations/en/Arial/charmap.txt.bsdiff",
+            "input": "Data/Localizations/en/Arial/charmap.txt",
+            "sha256": "419c4b0fa604aa795e76df4229641120f056cfa3631c1d0c9931e5014598fb57"
+          }
+        },
+        {
+          "path": "Data/Localizations/en/Arial/info.txt",
+          "operation": "modify",
+          "installed_sha256": "96f1f67f5b95099c478b0f8ff45e5b43e1d9eaaf1ae10ca02bddee86f1bd9846",
+          "original_sha256": "86e3cebfc6dcd13d0005a30cd5c934bfbeb3997d8bd3a5b5e6d402ae406d60c9",
+          "source": {
+            "kind": "bsdiff",
+            "path": "deltas/Data/Localizations/en/Arial/info.txt.bsdiff",
+            "input": "Data/Localizations/en/Arial/info.txt",
+            "sha256": "88dfe5d7be112b5147a5123f478fadcbefdf49e8b9791c99ac9a1cae8db4cbaf"
+          }
+        },
+        {
+          "path": "Data/Localizations/en/Gulim/Gulim.png",
+          "operation": "modify",
+          "installed_sha256": "cdbb762ff580b791d78d360806e49fd73b25c917c61edb5b7970338f9b5694ed",
+          "original_sha256": "8ae87cd9feae864e9f869c5d1bc420739b3c6353ebc8ba327e9fc54821e7caf5",
+          "source": {
+            "kind": "bsdiff",
+            "path": "deltas/Data/Localizations/en/Gulim/Gulim.png.bsdiff",
+            "input": "Data/Localizations/en/Gulim/Gulim.png",
+            "sha256": "d175482d4c3cbc59aa81376430e23ee3c0c8a95fe159dae01161978578af1f06"
+          }
+        },
+        {
+          "path": "Data/Localizations/en/Gulim/charmap.txt",
+          "operation": "modify",
+          "installed_sha256": "0a65f915da6efa85123347fd24908b45aad2e5cffc3858b8869007187c9887c1",
+          "original_sha256": "3c387a4e511353eb759aa3119e929ca49e936ccaca76361ccc71b3e6d3c759fa",
+          "source": {
+            "kind": "bsdiff",
+            "path": "deltas/Data/Localizations/en/Gulim/charmap.txt.bsdiff",
+            "input": "Data/Localizations/en/Gulim/charmap.txt",
+            "sha256": "419c4b0fa604aa795e76df4229641120f056cfa3631c1d0c9931e5014598fb57"
+          }
+        },
+        {
+          "path": "Data/Localizations/en/Gulim/info.txt",
+          "operation": "modify",
+          "installed_sha256": "6787fd2c6205a76bffbafc81a74834511d0c7493100619538bf8c55a8ac4fc29",
+          "original_sha256": "90a4c5a4111e101a8cc613e0c32e931cf4507b061f06566f9b671ada75dfc440",
+          "source": {
+            "kind": "bsdiff",
+            "path": "deltas/Data/Localizations/en/Gulim/info.txt.bsdiff",
+            "input": "Data/Localizations/en/Gulim/info.txt",
+            "sha256": "03a5296997e56df23a074aa017a353bcba54e969ecbdaddec78e0a778a020655"
+          }
+        },
+        {
+          "path": "Data/Localizations/en/GulimBold/GulimBold.png",
+          "operation": "modify",
+          "installed_sha256": "e657ccca05845896ce36e9239707f231a74a422ae76d840877e385f80b262d9c",
+          "original_sha256": "235425fb972dca0fd3addf04aacab7a049c39c8c90916a0476cdca42e670eacf",
+          "source": {
+            "kind": "bsdiff",
+            "path": "deltas/Data/Localizations/en/GulimBold/GulimBold.png.bsdiff",
+            "input": "Data/Localizations/en/GulimBold/GulimBold.png",
+            "sha256": "66bbb3647f0629a95c8aa5a5568ae57b5d454d5ffa632b8e8813434fabe9a1aa"
+          }
+        },
+        {
+          "path": "Data/Localizations/en/GulimBold/charmap.txt",
+          "operation": "modify",
+          "installed_sha256": "0a65f915da6efa85123347fd24908b45aad2e5cffc3858b8869007187c9887c1",
+          "original_sha256": "3c387a4e511353eb759aa3119e929ca49e936ccaca76361ccc71b3e6d3c759fa",
+          "source": {
+            "kind": "bsdiff",
+            "path": "deltas/Data/Localizations/en/GulimBold/charmap.txt.bsdiff",
+            "input": "Data/Localizations/en/GulimBold/charmap.txt",
+            "sha256": "419c4b0fa604aa795e76df4229641120f056cfa3631c1d0c9931e5014598fb57"
+          }
+        },
+        {
+          "path": "Data/Localizations/en/GulimBold/info.txt",
+          "operation": "modify",
+          "installed_sha256": "496687c3d040253a583e527753e75ae9f4226a75ca1bed3ddaad83a0705c50f1",
+          "original_sha256": "1c95c8731bf67677e9a460f17a1156eec5023e4b00ebbea64e125a1ef877983e",
+          "source": {
+            "kind": "bsdiff",
+            "path": "deltas/Data/Localizations/en/GulimBold/info.txt.bsdiff",
+            "input": "Data/Localizations/en/GulimBold/info.txt",
+            "sha256": "6a29f1deed9dd976aca805eab929a72913c4f1b02a53478dc537101fe6ce01aa"
+          }
+        },
+        {
+          "path": "Data/Localizations/he/SpriteFont1/SpriteFont1.png",
+          "operation": "create",
+          "installed_sha256": "0cc968de583a9ebdafb91b5ce2704af7581f4e4096a9ea4432bf0df8983b4f30",
+          "source": {
+            "kind": "bsdiff",
+            "path": "deltas/Data/Localizations/he/SpriteFont1/SpriteFont1.png.bsdiff",
+            "input": "Data/Localizations/en/SpriteFont1/SpriteFont1.png",
+            "sha256": "dfec8e99756d4584a4ec44abb483754667b76d7012ac160f7fb9e325800b5536"
+          }
+        },
+        {
+          "path": "Data/Localizations/he/SpriteFont1/charmap.txt",
+          "operation": "create",
+          "installed_sha256": "2601a0bbc6e7d2e0f161aa0d5fec86dde778207acc2662f86208b4e757216275",
+          "source": {
+            "kind": "bsdiff",
+            "path": "deltas/Data/Localizations/he/SpriteFont1/charmap.txt.bsdiff",
+            "input": "Data/Localizations/en/SpriteFont1/charmap.txt",
+            "sha256": "5d714810b92ce8ec00434ca3490f43293dc9b682de95c657caafd9ed481b2caa"
+          }
+        },
+        {
+          "path": "Data/Localizations/he/SpriteFont1/info.txt",
+          "operation": "create",
+          "installed_sha256": "9acea4f3f1258a1681d818337e78c650da7121fb00d81346f9b494f6e981170e",
+          "source": {
+            "kind": "bsdiff",
+            "path": "deltas/Data/Localizations/he/SpriteFont1/info.txt.bsdiff",
+            "input": "Data/Localizations/en/SpriteFont1/info.txt",
+            "sha256": "8f345448c31ff4ce8d678a0b5be71d4a72c1b3f9fa06934de44ffe4e2fd8db49"
+          }
+        },
+        {
+          "path": "Data/Localizations/en/Unlocalized/Unlocalized.png",
+          "operation": "modify",
+          "installed_sha256": "0cc968de583a9ebdafb91b5ce2704af7581f4e4096a9ea4432bf0df8983b4f30",
+          "original_sha256": "9c80afe13a8de0d652deb0eac700eacce64238fddd8fa5102e4ba8b47ae6bbc8",
+          "source": {
+            "kind": "bsdiff",
+            "path": "deltas/Data/Localizations/en/Unlocalized/Unlocalized.png.bsdiff",
+            "input": "Data/Localizations/en/Unlocalized/Unlocalized.png",
+            "sha256": "dfec8e99756d4584a4ec44abb483754667b76d7012ac160f7fb9e325800b5536"
+          }
+        },
+        {
+          "path": "Data/Localizations/en/Unlocalized/charmap.txt",
+          "operation": "modify",
+          "installed_sha256": "2601a0bbc6e7d2e0f161aa0d5fec86dde778207acc2662f86208b4e757216275",
+          "original_sha256": "b9e337e320bba7db4b518ed6c50593291bb73320c76b45591717dd7c3f23fde3",
+          "source": {
+            "kind": "bsdiff",
+            "path": "deltas/Data/Localizations/en/Unlocalized/charmap.txt.bsdiff",
+            "input": "Data/Localizations/en/Unlocalized/charmap.txt",
+            "sha256": "5d714810b92ce8ec00434ca3490f43293dc9b682de95c657caafd9ed481b2caa"
+          }
+        },
+        {
+          "path": "Data/Localizations/en/Unlocalized/info.txt",
+          "operation": "modify",
+          "installed_sha256": "9acea4f3f1258a1681d818337e78c650da7121fb00d81346f9b494f6e981170e",
+          "original_sha256": "46cebaae483ba05651c478f35a71a0df44dd7c419f107f6c7a496616a3c71be6",
+          "source": {
+            "kind": "bsdiff",
+            "path": "deltas/Data/Localizations/en/Unlocalized/info.txt.bsdiff",
+            "input": "Data/Localizations/en/Unlocalized/info.txt",
+            "sha256": "8f345448c31ff4ce8d678a0b5be71d4a72c1b3f9fa06934de44ffe4e2fd8db49"
+          }
+        },
+        {
+          "path": "Data/Localizations/en/WarningFont/WarningFont.png",
+          "operation": "modify",
+          "installed_sha256": "d2c7e07aabef5d0f41b853314894babde7c74663e551171c0556beb6cecc5bde",
+          "original_sha256": "b82077599b4f8936015e4d811f7b49fe62b770ae9d930f161bd27a3976c5346f",
+          "source": {
+            "kind": "bsdiff",
+            "path": "deltas/Data/Localizations/en/WarningFont/WarningFont.png.bsdiff",
+            "input": "Data/Localizations/en/WarningFont/WarningFont.png",
+            "sha256": "0d5280840b4cbf1721f6416729a50c734b57d30a004d98998ce7ea3620af2f81"
+          }
+        },
+        {
+          "path": "Data/Localizations/en/WarningFont/charmap.txt",
+          "operation": "modify",
+          "installed_sha256": "1b607e89f9fece8473b5907909a3d04655888905d3788430b622b02f484fe4fc",
+          "original_sha256": "7ae9773d6f2a7f973e979e2a86361e47a5e047d0fe63cbabc886cc39e6eeb639",
+          "source": {
+            "kind": "bsdiff",
+            "path": "deltas/Data/Localizations/en/WarningFont/charmap.txt.bsdiff",
+            "input": "Data/Localizations/en/WarningFont/charmap.txt",
+            "sha256": "98f955f657fc7418e5af26c1b874db0a0141c76f84081ee211e9e74394f042c3"
+          }
+        },
+        {
+          "path": "Data/Localizations/en/WarningFont/info.txt",
+          "operation": "modify",
+          "installed_sha256": "b81bb9d383df4568bcff13e35f322d9ab5d5e3ad42e0881e2ec4e5a94364fefa",
+          "original_sha256": "57b6487ee97e06bdd84a091ae219916316d16ae41bf757199b31a7d1dd2a005d",
+          "source": {
+            "kind": "bsdiff",
+            "path": "deltas/Data/Localizations/en/WarningFont/info.txt.bsdiff",
+            "input": "Data/Localizations/en/WarningFont/info.txt",
+            "sha256": "ae6cc3c846b15d8cefd90963297f7ab05f114c06d8dbeb4805e2e7121a6a186a"
+          }
+        },
+        {
+          "path": "Data/Localizations/he.csv",
+          "operation": "create",
+          "installed_sha256": "f1d62347609917d120032a60961a38b148ceea50a983c2e82f5ee81a8e02e0ae",
+          "source": {
+            "kind": "bsdiff",
+            "path": "deltas/Data/Localizations/he.csv.bsdiff",
+            "input": "Data/Localizations/de.csv",
+            "sha256": "2d6c0ce4fdff92ca76a87327dc0f7ada7d4e81cec13a6389479094515df108bc"
+          }
+        },
+        {
+          "path": "Data/Localizations/Translations.csv",
+          "operation": "modify",
+          "installed_sha256": "2fa58ef831b48c79e72d53a0253f385757530d56cd8f15f465bb4afd37b698d8",
+          "original_sha256": "d1dbcf1268b79196cbff3f93404d0526a4f121914d8dbb3828dfaa0f0bba8191",
+          "source": {
+            "kind": "bsdiff",
+            "path": "deltas/Data/Localizations/Translations.csv.bsdiff",
+            "input": "Data/Localizations/Translations.csv",
+            "sha256": "966cfb11e870fa3fdf478d3b07f49680e16928b248dfcd25444818b96f927196"
+          }
+        },
+        {
+          "path": "Data/Localizations/he/speechBubbleConfig.ini",
+          "operation": "create",
+          "installed_sha256": "64e16a9c9cd71d62bf48dda6c268ffc493cec9c0aa1e7877fd0be421b4b86b31",
+          "source": {
+            "kind": "copy",
+            "path": "assets/Data/Localizations/he/speechBubbleConfig.ini",
+            "sha256": "64e16a9c9cd71d62bf48dda6c268ffc493cec9c0aa1e7877fd0be421b4b86b31"
+          }
+        },
+        {
+          "path": "Data/Localizations/Flags/he.png",
+          "operation": "create",
+          "installed_sha256": "949b03c00fc516fea476fe1bf73cb47c06a33db66cd4c74b50c316f475a9e1fc",
+          "source": {
+            "kind": "copy",
+            "path": "assets/Data/Localizations/Flags/he.png",
+            "sha256": "949b03c00fc516fea476fe1bf73cb47c06a33db66cd4c74b50c316f475a9e1fc"
+          }
+        },
+        {
+          "path": "Data/Localizations/he/Titles/sprTittelVellie_58x37.png",
+          "operation": "create",
+          "installed_sha256": "4990d75e91ee6eebd66cd56fc7464d3af8b796aff1dfc1379a98cefe387e4de3",
+          "source": {
+            "kind": "copy",
+            "path": "assets/Data/Localizations/he/Titles/sprTittelVellie_58x37.png",
+            "sha256": "4990d75e91ee6eebd66cd56fc7464d3af8b796aff1dfc1379a98cefe387e4de3"
+          }
+        },
+        {
+          "path": "Data/Localizations/he/Titles/sprTitleAdvent_183x37.png",
+          "operation": "create",
+          "installed_sha256": "a300a1c8bb4dfe22764f8df0f2e81e2591ddbf519ce4590c6767895e9130fb35",
+          "source": {
+            "kind": "copy",
+            "path": "assets/Data/Localizations/he/Titles/sprTitleAdvent_183x37.png",
+            "sha256": "a300a1c8bb4dfe22764f8df0f2e81e2591ddbf519ce4590c6767895e9130fb35"
+          }
+        },
+        {
+          "path": "Data/Localizations/he/Titles/sprTitleOwlTemple_117x48.png",
+          "operation": "create",
+          "installed_sha256": "36a9881afda49cc80d0c14dfa443d5b4ac1615c4e8af8d0cdfbba910bcb4422c",
+          "source": {
+            "kind": "copy",
+            "path": "assets/Data/Localizations/he/Titles/sprTitleOwlTemple_117x48.png",
+            "sha256": "36a9881afda49cc80d0c14dfa443d5b4ac1615c4e8af8d0cdfbba910bcb4422c"
+          }
+        },
+        {
+          "path": "Data/Localizations/he/Titles/sprTittelSvevendeKontinent_232x37.png",
+          "operation": "create",
+          "installed_sha256": "6996b0408c1ae1fe53812b419c9e4c4d1494d4eb231e3fe6f8a1e0058e6861c9",
+          "source": {
+            "kind": "copy",
+            "path": "assets/Data/Localizations/he/Titles/sprTittelSvevendeKontinent_232x37.png",
+            "sha256": "6996b0408c1ae1fe53812b419c9e4c4d1494d4eb231e3fe6f8a1e0058e6861c9"
+          }
+        },
+        {
+          "path": "Data/Localizations/he/Titles/sprTittelPiratmoderskipet_175x45.png",
+          "operation": "create",
+          "installed_sha256": "aed957a32bc046a8e07a09c098155078e78ba81fe3a3f4c58c0771b8d280f966",
+          "source": {
+            "kind": "copy",
+            "path": "assets/Data/Localizations/he/Titles/sprTittelPiratmoderskipet_175x45.png",
+            "sha256": "aed957a32bc046a8e07a09c098155078e78ba81fe3a3f4c58c0771b8d280f966"
+          }
+        },
+        {
+          "path": "Data/Localizations/he/layouts.tsv",
+          "operation": "create",
+          "installed_sha256": "ca20472ff3c8d72a4c763042e7a2e2180fed233efec0c70a23fb749884bb410d",
+          "source": {
+            "kind": "copy",
+            "path": "assets/Data/Localizations/he/layouts.tsv",
+            "sha256": "ca20472ff3c8d72a4c763042e7a2e2180fed233efec0c70a23fb749884bb410d"
+          }
+        },
+        {
+          "path": "OwlboyHebrew.dll",
+          "operation": "create",
+          "installed_sha256": "38793cad15e0d779fa76a6465c90e9af17e8e0a3a06819054a42ccfd56d26c48",
+          "source": {
+            "kind": "copy",
+            "path": "assets/OwlboyHebrew.dll",
+            "sha256": "38793cad15e0d779fa76a6465c90e9af17e8e0a3a06819054a42ccfd56d26c48"
+          }
+        },
+        {
+          "path": "Owlboy.exe",
+          "operation": "modify",
+          "installed_sha256": "17be192bd1b5c707e5fe98873fe5da9cf823be5cee3a1d020c81353e9c3a0321",
+          "original_sha256": "e399de418effb376c7c48916f6da19e2aa7fa91a2fea0cce7479e52cb17e653c",
+          "source": {
+            "kind": "bsdiff",
+            "path": "deltas/Owlboy.exe.bsdiff",
+            "input": "Owlboy.exe",
+            "sha256": "e11578fb45761b9b7e95c1c5b9b5312d2b05da8d42cbbf1bbf963b9f0836402a"
+          }
+        }
+      ]
+    }
+  }
+}

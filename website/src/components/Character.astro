@@ -1,0 +1,7 @@
+---
+interface Props { kind?: 'pirate' | 'space' | 'tentacle'; side?: 'left' | 'right' }
+const { kind = 'pirate', side = 'left' } = Astro.props;
+---
+<div class:list={['character', kind, side]} aria-hidden="true">
+{kind === 'tentacle' ? <svg viewBox="0 0 32 48" shape-rendering="crispEdges"><path fill="#9459b8" d="M8 47V28h4V16h4V4h-4V0h12v4h4v16h-4v12h4v8h4v8Z"/><path fill="#54316e" d="M8 32h4v12h16v4H8z"/><path fill="#a4d766" d="M17 12h7v8h-7zm-4 15h8v8h-8zm6 12h7v6h-7z"/><path fill="#1c3242" d="M20 14h3v4h-3zm-4 15h3v4h-3z"/></svg> : <svg viewBox="0 0 32 48" shape-rendering="crispEdges"><path fill={kind === 'pirate' ? '#d49b42' : '#edc05c'} d="M8 6h16v16H8z"/><path fill="#f2c49a" d="M10 10h14v14H10zM4 28h6v12H4zm20 0h6v12h-6z"/><path fill="#182232" d="M18 14h3v3h-3zM10 42h7v6H7v-3h3zm10 0h7v6H20z"/><path fill={kind === 'pirate' ? '#a94449' : '#dbe5e3'} d="M8 24h18v18H8z"/><path fill={kind === 'pirate' ? '#252536' : '#aa4346'} d="M4 6h4V2h16v4h4v5H4zm8 19h4v14h-4z"/><path fill="#f9e9b6" d="M13 4h5v4h-5zM8 36h18v3H8z"/><path fill="#79523e" d="M17 20h6v2h-6z"/></svg>}
+</div>

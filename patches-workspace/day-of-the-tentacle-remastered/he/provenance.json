@@ -1,0 +1,16 @@
+{
+  "status": "packaged_unverified",
+  "release_ready": false,
+  "version": "0.1-local-items-kitor1",
+  "source": "prototype/generated/full-hebrew-items-v2/full-manifest.json",
+  "input_sha256": "c97d6690abcee78e429fa22bb2d8d5ba6ab181641785e21ead0d6260e97640f1",
+  "installed_sha256": "5228ad6679e1a5b0a1c248ad1492b186bb5f5ce21629511005b461760b076a7d",
+  "redistribution": "Local personal-use only. Prototype uses Arial glyphs; do not publish. Classic translation announcement also prohibits redistribution.",
+  "limitations": [
+    "579 dialogue records remain English including commentary",
+    "Menus and dialogue choices remain untranslated",
+    "English language only",
+    "Windows runtime and native Mac installation validation pending"
+  ],
+  "runtime": "Native remastered engine; never ScummVM"
+}

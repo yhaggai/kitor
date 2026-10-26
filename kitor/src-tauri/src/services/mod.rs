@@ -20,3 +20,11 @@ pub mod steam_service;
 pub mod drifter_patch;
 pub mod steam_download_service;
 pub mod game_refresh_service;
+
+pub mod owlboy;
+
+pub mod reconstruction;
+
+pub mod tentacle;
+
+pub mod tentacle_remastered;

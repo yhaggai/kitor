@@ -1,0 +1,9 @@
+---
+import '../styles/global.css';
+interface Props { title?: string; description?: string }
+const { title = 'קיטור — המשחקים שאהבת. עכשיו בעברית.', description = 'ספריית המשחקים והתרגומים שלכם, במקום אחד. גלו את המשחקים הנתמכים בקיטור.' } = Astro.props;
+---
+<!doctype html><html lang="he" dir="rtl"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><meta name="theme-color" content="#080f1d"/><meta name="description" content={description}/><title>{title}</title><link rel="icon" href="/favicon.svg"/></head><body><a class="skip" href="#main">דלגו לתוכן</a><header class="nav wrap"><a class="brand" href="/" aria-label="קיטור — הבית"><span class="steam">♨</span> קיטור</a><nav aria-label="ניווט ראשי"><a href="/games/">משחקים</a><a href="/#how">איך זה עובד</a><a href="/#community">הקהילה</a></nav><a class="button small" href="/#download">הורדה <span aria-hidden="true">↓</span></a></header><slot/><footer class="wrap footer"><a class="brand" href="/">קיטור</a><span>עוד הרפתקה אחת, בשפה שלנו.</span><a href="https://github.com/yhaggai/kitor">הפרויקט ב־GitHub ↗</a></footer><script>
+const observer = new IntersectionObserver(entries => { for (const entry of entries) entry.target.classList.toggle('in-view', entry.isIntersecting); }, { threshold: 0.15 });
+document.querySelectorAll('.character').forEach(el => observer.observe(el));
+</script></body></html>

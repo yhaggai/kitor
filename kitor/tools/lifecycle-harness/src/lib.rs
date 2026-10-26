@@ -1,3 +1,5 @@
+#[path = "../../../src-tauri/src/services/owlboy.rs"]
+pub mod owlboy;
 #[path = "../../../src-tauri/src/services/drifter_patch.rs"]
 pub mod drifter_patch;
 #[path = "../../../src-tauri/src/services/patch_lifecycle.rs"]
@@ -27,7 +29,7 @@ mod payload_tests {
                 continue;
             }
             let root = game.path().join("he");
-            for manifest_name in ["patch.json", "patch.windows.candidate.json"] {
+            for manifest_name in ["patch.json", "patch.windows.candidate.json", "patch.osx.candidate.json"] {
                 if manifest_name != "patch.json" && std::env::var_os("KITOR_SKIP_CANDIDATES").is_some() { continue; }
                 let manifest = root.join(manifest_name);
                 if !manifest.is_file() {
@@ -120,3 +122,12 @@ mod payload_tests {
         assert!(exercised > 0);
     }
 }
+
+#[path = "../../../src-tauri/src/services/reconstruction.rs"]
+pub mod reconstruction;
+
+#[path = "../../../src-tauri/src/services/tentacle.rs"]
+pub mod tentacle;
+
+#[path = "../../../src-tauri/src/services/tentacle_remastered.rs"]
+pub mod tentacle_remastered;

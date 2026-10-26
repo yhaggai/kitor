@@ -1,0 +1,20 @@
+{
+  "idx": 144,
+  "name_he": "מסע המלך 5: רחוק מהעין, רחוק מהלב",
+  "name_en": "King's Quest V: Absence Makes the Heart go Yonder",
+  "facebook_post": "https://www.facebook.com/groups/hebrewadventure/posts/1942558549681565",
+  "post_date": "2026-03-21T18:20:47Z (UTC, from creation_time)",
+  "description": "אני שמח שעלה בידי לתרגם גם את מסע המלך 5. בעבר פרסמתי כאן תרגומים למסע המלך 1-4 וכן מסע המלך 8.\nהפעם זה המשחק הראשון שיצא בVGA. ושנה לאחר מכן גם יצא עם דיבוב בגרסת הCD. (אמנם קצת חובבני אך עדיין דיבוב חמוד מאד).\nתודות:\nאז קודם כל תודה רבה לחברי הרפתקה עברית הוותיקים שהניחו תשתית לתרגום משחקים המבוססים על מנוע SCI.\nשנית התרגום לא היה יכול להתבצע ללא כתוביות. ואך לפני מספר חודשים משתמש בשם mcmagi העלה לgithub פרוייקט הוספת כתוביות באנגלית למשחק גרסת הCD. גם הוא התבסס על פרוייקט נוסף של sluicebox שחילץ והעלה את הסקריפטים של משחקי SCI לgithub.\nולבסוף תודה רבה לגל וניב שעיצבו לי את מסך הפתיחה.\nבהזדמנות הזו, מי שרוצה לבדוק את מסע המלך 6 או 7 מוזמן ליצור איתי קשר כאן או בדיסקורד.",
+  "vm": "ScummVM",
+  "vm_notes": "daily build",
+  "vm_source": "post",
+  "patch_link": "https://github.com/SegMash/SCIHebrew/releases/download/3_26/KQ5_Hebrew_Patch_Setup.exe",
+  "patch_links": [
+    "https://github.com/SegMash/SCIHebrew/releases/download/3_26/KQ5_Hebrew_Patch_Setup.exe"
+  ],
+  "other_links": [
+    "https://www.gog.com/en/game/kings_quest_4_5_6",
+    "https://buildbot.scummvm.org/#/dailybuilds"
+  ],
+  "extraction_status": "ok"
+}

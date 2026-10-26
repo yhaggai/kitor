@@ -103,7 +103,7 @@ def validate(manifest_path, platform):
         require(isinstance(source, dict), f'Missing source: {name}')
         kind = source.get('kind')
         required = {'kind', 'path', 'sha256'}
-        require(kind in ('copy', 'bsdiff', 'xdelta'), f'Unsupported source kind: {kind}')
+        require(kind in ('copy', 'bsdiff', 'xdelta', 'reconstruct'), f'Unsupported source kind: {kind}')
         if kind != 'copy':
             required.add('input')
         if kind == 'xdelta':

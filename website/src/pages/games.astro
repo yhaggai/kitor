@@ -1,0 +1,14 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Box from '../components/Box';
+import { games } from '../lib/catalog';
+import { hebrewTitles } from '../lib/hebrew-titles';
+const platformLabels: Record<string, string> = { windows: 'Windows', osx: 'macOS', linux: 'Linux' };
+---
+<Layout title="כל המשחקים — קיטור"><main id="main" class="wrap catalog"><a class="text-link" href="/">→ בחזרה לבית</a><p class="eyebrow">הספרייה של קיטור</p><h1>קופסה אחת.<br/><em>עולם שלם.</em></h1><p class="lead">כל {games.length} המשחקים הנתמכים כרגע באפליקציה, עם הקופסאות המקוריות מהספרייה.</p><div class="filters"><label>חיפוש משחק<input id="search" type="search" placeholder="שם המשחק בעברית או באנגלית…"/></label><label>מערכת הפעלה<select id="platform"><option value="all">כל המערכות</option><option value="windows">Windows</option><option value="osx">macOS</option><option value="linux">Linux</option></select></label><p id="count" role="status" aria-live="polite">{games.length} משחקים</p></div><div class="game-grid">{games.map(game => <article class="game-entry" data-title={`${game.title} ${hebrewTitles[game.id] ?? ''} ${game.id}`.toLocaleLowerCase('he')} data-platforms={Object.entries(game.platforms).filter(([,value]) => value).map(([key]) => key).join(' ')}><Box title={game.title} covers={game.covers} client:visible/><div class="game-meta"><span>תרגום לעברית</span><span dir="ltr">{Object.entries(game.platforms).filter(([,value]) => value).map(([key]) => platformLabels[key]).join(' · ')}</span></div></article>)}</div><p id="empty" hidden>לא נמצאו משחקים מתאימים. נסו שם אחר או מערכת הפעלה אחרת.</p><noscript><p>כל המשחקים מוצגים כאן. הפעלת JavaScript מאפשרת חיפוש, סינון וסיבוב הקופסאות.</p></noscript></main><script>
+const search = document.querySelector<HTMLInputElement>('#search')!;
+const platform = document.querySelector<HTMLSelectElement>('#platform')!;
+const entries = [...document.querySelectorAll<HTMLElement>('.game-entry')];
+function filter() { let count = 0; const query = search.value.trim().toLocaleLowerCase('he'); for (const entry of entries) { const visible = entry.dataset.title!.includes(query) && (platform.value === 'all' || entry.dataset.platforms!.split(' ').includes(platform.value)); entry.hidden = !visible; if (visible) count++; } document.querySelector('#count')!.textContent = count === 1 ? "משחק אחד" : `${count} משחקים`; document.querySelector<HTMLElement>('#empty')!.hidden = count !== 0; }
+search.addEventListener('input', filter); platform.addEventListener('change', filter);
+</script></Layout>

@@ -1,0 +1,20 @@
+{
+  "idx": 69,
+  "name_he": "פיג'מה סאם: לא צריך להסתתר כשבחוץ קודר",
+  "name_en": "Pajama Sam: No Need to Hide When It's Dark Outside",
+  "facebook_post": "https://www.facebook.com/groups/hebrewadventure/posts/1353949765209116",
+  "post_date": "2023-10-18T06:22:01Z (UTC, from creation_time)",
+  "description": "ממשיכים לחבק את זאטוטינו הקטנים ועכשיו משחק נעים וכיפי שעוסק בהתמודדות עם פחדים שימתיק מעט את הגלולה המרה לילדים שגם ככה עוברים ימים לא פשוטים, ומאידך גם המבוגרים שבינינו יוכלו ליהנות ממנו לא פחות.\n\"פיג'מה סאם: לא צריך להסתתר כשבחוץ קודר\" הוא הראשון בסדרה המתפרסת על פני שישה כותרים כשהשני שבהם אף דובב לעברית לפני עשרות שנים.\nסאם הקטן מאד מפחד לישון בחושך. אבל כשאמא אומרת שהלילה הוא ילד גדול ומכבה לו את האור, סאם מחליט להתחפש לגיבור על. הוא חוגר את כלי הנשק שלו (קופסת אוכל, מסיכה ופנס) ויוצא להילחם בחושך בכבודו ובעצמו!\nתכנן, פיתח, והוציא לפועל ניב באר, תירגם אלעד הלפרין, עיצבו ניב באר ועידו גביש.",
+  "vm": "ScummVM",
+  "vm_notes": null,
+  "vm_source": "post",
+  "patch_link": "https://github.com/adventurebrew/scummworks/releases/tag/PAJAMA-WIP1",
+  "patch_links": [
+    "https://github.com/adventurebrew/scummworks/releases/tag/PAJAMA-WIP1"
+  ],
+  "other_links": [
+    "https://www.gog.com/en/game/pajama_sam_vol_1",
+    "https://www.scummvm.org/downloads/"
+  ],
+  "extraction_status": "ok"
+}

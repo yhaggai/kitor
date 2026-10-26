@@ -1,0 +1,150 @@
+{
+  "schema_version": 1,
+  "input_sha256": "4c9b58da55678d16a4ea6f5d0711d7e0c5d359800b62efb2c162009e99a25e14",
+  "output_size": 1442992,
+  "operations": [
+    {
+      "offset": 0,
+      "length": 1409
+    },
+    {
+      "hex": "400200000000000000140000000000b0040200"
+    },
+    {
+      "offset": 959808,
+      "length": 20
+    },
+    {
+      "hex": "0d00000030000000"
+    },
+    {
+      "offset": 1456,
+      "length": 764
+    },
+    {
+      "hex": "008e"
+    },
+    {
+      "offset": 48,
+      "length": 17
+    },
+    {
+      "offset": 48,
+      "length": 17
+    },
+    {
+      "offset": 48,
+      "length": 17
+    },
+    {
+      "offset": 48,
+      "length": 17
+    },
+    {
+      "offset": 48,
+      "length": 17
+    },
+    {
+      "offset": 48,
+      "length": 17
+    },
+    {
+      "offset": 48,
+      "length": 17
+    },
+    {
+      "offset": 48,
+      "length": 17
+    },
+    {
+      "offset": 48,
+      "length": 17
+    },
+    {
+      "offset": 48,
+      "length": 17
+    },
+    {
+      "offset": 48,
+      "length": 17
+    },
+    {
+      "hex": "00000000000000"
+    },
+    {
+      "offset": 2416,
+      "length": 1404230
+    },
+    {
+      "hex": "479a00000004000000000000002c0000000200001bbd0000100000001bc90001000000004792fade0c0200001b910002040000000002000000b10000005800000002"
+    },
+    {
+      "offset": 1406720,
+      "length": 23
+    },
+    {
+      "offset": 48,
+      "length": 17
+    },
+    {
+      "hex": "00000000000000000013100000000000"
+    },
+    {
+      "offset": 1406784,
+      "length": 53
+    },
+    {
+      "hex": "3a75f6db058529148e14dd7ea1b4729cc09ec9"
+    },
+    {
+      "offset": 1279584,
+      "length": 21
+    },
+    {
+      "hex": "2e9a3f3004974b7c6a53a897a4b11d90fbacba652cff6cabc931ec3c"
+    },
+    {
+      "offset": 1406976,
+      "length": 6859
+    },
+    {
+      "hex": "0c00000000fade0c0200002bc90002040000000002000000c90000005800000002000001"
+    },
+    {
+      "offset": 1414288,
+      "length": 20
+    },
+    {
+      "offset": 48,
+      "length": 17
+    },
+    {
+      "hex": "00000000000000000013100000000000"
+    },
+    {
+      "offset": 1406784,
+      "length": 53
+    },
+    {
+      "hex": "987920904eab650e75788c054aa0b0524e6a80bfc71aa32df8d237a61743f986"
+    },
+    {
+      "offset": 48,
+      "length": 17
+    },
+    {
+      "hex": "0000000000000000000000000000009c4a8ace49c6fc0e34cef0a327ec5fdbadec26bdc41438f54d3bd20a2d82499dbbd7da"
+    },
+    {
+      "offset": 1414608,
+      "length": 10979
+    },
+    {
+      "hex": "00088d18f4462ca4"
+    },
+    {
+      "offset": 1424976,
+      "length": 18016
+    }
+  ]
+}

@@ -194,8 +194,8 @@ pub async fn download_and_install_patch(
 
     println!("[patch_service] Patch found: {} by {}", patch.description, patch.author);
 
-    let install_target = crate::services::game_service::detect_game_in_folder(
-        Path::new(&game.install_path),
+    let install_target = crate::services::game_service::detect_game_for_id(
+        Path::new(&game.install_path), &game.scummvm_id,
     )?
     .filter(|detected| detected.scummvm_id == game.scummvm_id)
     .map(|detected| PathBuf::from(detected.install_path))
@@ -236,7 +236,10 @@ pub async fn download_and_install_patch(
     println!("[patch_service] Downloading from: {}", patch.download_url);
     println!("[patch_service] Download destination: {}", download_path.display());
     let bundled_drifter = patch.source_type == "bundled" && scummvm_id == "drifter";
-    if !bundled_drifter {
+    let bundled_owlboy = patch.source_type == "bundled" && scummvm_id == "owlboy";
+    let bundled_tentacle = patch.source_type == "bundled" && scummvm_id == "tentacle";
+    let bundled_dott_remastered = patch.source_type == "bundled" && scummvm_id == "day-of-the-tentacle-remastered";
+    if !bundled_drifter && !bundled_owlboy && !bundled_tentacle && !bundled_dott_remastered {
         download_service::download_patch_file(&patch.download_url, &download_path, &app_handle, &scummvm_id)
             .await?;
     }
@@ -260,6 +263,12 @@ pub async fn download_and_install_patch(
     let staging = tempfile::Builder::new().prefix("kitor-package-").tempdir().map_err(|e| e.to_string())?;
     if bundled_drifter {
         super::drifter_patch::stage(staging.path(), &language, &version)?;
+    } else if bundled_dott_remastered {
+        super::tentacle_remastered::stage(staging.path(), &language, &version)?;
+    } else if bundled_tentacle {
+        super::tentacle::stage(staging.path(), &language, &version, &install_target)?;
+    } else if bundled_owlboy {
+        super::owlboy::stage(staging.path(), &language, &version)?;
     } else {
         file_service::validate_zip(&download_path)?;
         file_service::extract_zip(&download_path, staging.path())?;

@@ -1,0 +1,32 @@
+[
+  {
+    "id": "return-of-the-tentacle-prologue",
+    "prompt": "Edit supplied original Return of the Tentacle - Prologue cover. Replace only its main title with exact Hebrew \"חזרתו של הטנטקל\". Match original font style, color, texture, shading, scale and placement. Complete readable Hebrew letters right to left. Leave edition labels (including Prologue, Trilogy+Soundtrack), author name, all other text and all artwork, characters, framing and background unchanged. Same aspect ratio.",
+    "path": "/Users/haggaiyaniv/.codex/generated_images/01a17325-42a3-71b0-8569-0b89e59757d5/exec-922118fd-29b7-44fc-9fd7-9d5607ef015e.png"
+  },
+  {
+    "id": "space-madness",
+    "prompt": "Edit supplied original Space Madness cover. Replace only its main title with exact Hebrew \"טירוף בחלל\". Match original font style, color, texture, shading, scale and placement. Complete readable Hebrew letters right to left. Leave edition labels (including Prologue, Trilogy+Soundtrack), author name, all other text and all artwork, characters, framing and background unchanged. Same aspect ratio.",
+    "path": "/Users/haggaiyaniv/.codex/generated_images/01a17325-42a3-71b0-8569-0b89e59757d5/exec-e54d9907-cf68-4d4e-9b2e-8e8801121dda.png"
+  },
+  {
+    "id": "dracula-4-5",
+    "prompt": "Edit supplied original Dracula 4+5 cover. Replace only its main title with exact Hebrew \"דרקולה 4+5\". Match original font style, color, texture, shading, scale and placement. Complete readable Hebrew letters right to left. Leave edition labels (including Prologue, Trilogy+Soundtrack), author name, all other text and all artwork, characters, framing and background unchanged. Same aspect ratio.",
+    "path": "/Users/haggaiyaniv/.codex/generated_images/01a17325-42a3-71b0-8569-0b89e59757d5/exec-28f0ed81-b8cf-4a33-9ffb-641043e1ec6b.png"
+  },
+  {
+    "id": "reversion",
+    "prompt": "Edit supplied original Reversion cover. Replace only its main title with exact Hebrew \"רוורסיה\". Match original font style, color, texture, shading, scale and placement. Complete readable Hebrew letters right to left. Leave edition labels (including Prologue, Trilogy+Soundtrack), author name, all other text and all artwork, characters, framing and background unchanged. Same aspect ratio.",
+    "path": "/Users/haggaiyaniv/.codex/generated_images/01a17325-42a3-71b0-8569-0b89e59757d5/exec-2d943e99-7696-478d-8905-4a6d37179442.png"
+  },
+  {
+    "id": "and-then-there-were-none",
+    "prompt": "Edit supplied original And Then There Were None cover. Replace only its main title with exact Hebrew \"ולא נותר אף אחד\". Match original font style, color, texture, shading, scale and placement. Complete readable Hebrew letters right to left. Leave edition labels (including Prologue, Trilogy+Soundtrack), author name, all other text and all artwork, characters, framing and background unchanged. Same aspect ratio.",
+    "path": "/Users/haggaiyaniv/.codex/generated_images/01a17325-42a3-71b0-8569-0b89e59757d5/exec-22ce036f-33f4-49e1-af8a-a13f5984bbf0.png"
+  },
+  {
+    "id": "agatha-christie-murder-on-the-orient-express-2006",
+    "prompt": "Edit supplied original Agatha Christie: Murder on the Orient Express (2006) cover. Replace only its main title with exact Hebrew \"רצח באוריינט אקספרס\". Match original font style, color, texture, shading, scale and placement. Complete readable Hebrew letters right to left. Leave edition labels (including Prologue, Trilogy+Soundtrack), author name, all other text and all artwork, characters, framing and background unchanged. Same aspect ratio.",
+    "path": "/Users/haggaiyaniv/.codex/generated_images/01a17325-42a3-71b0-8569-0b89e59757d5/exec-8197bea1-0573-45e0-8e5f-30c28038a0c8.png"
+  }
+]

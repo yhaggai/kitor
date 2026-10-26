@@ -1,0 +1,19 @@
+{
+  "idx": 63,
+  "name_he": "נער הנבואה",
+  "name_en": "The Prophecy",
+  "facebook_post": "https://www.facebook.com/groups/hebrewadventure/posts/1309728392964587",
+  "post_date": "2023-07-18T06:19:37Z (UTC, from creation_time)",
+  "description": "אולי היה קצת שקט לאחרונה, אבל מבטיחים לכם שלא היתה אבן שלא הפכנו כדי להביא לכם את מיטב הקלאסיקה שעליה גדלנו בלבוש חדשני ומודרני ובעברית מלאה. בשבועות הקרובים הולך להיות פה אקשן רציני והרבה הפתעות שאותם נחשוף טיפין טיפין.\nנפתח בפנינה נדירה מ-1992 שהופצה בארץ בזמנו בשם \"נער הנבואה\" ובחו\"ל נקראה \"הנבואה\", מאותה חברה שפיתחה את הגובלינים רק בנימה מעט יותר רצינית ומיסטית. ווין הקוסם הצעיר יוצא להציל את ממלכת הסלעים הכחולים מפני המכשף הרשע קראל. בתוך שלושה ימים עליו להשיג 3 גרגרי חול קסומים, לגאול את הממלכה ממבקשי רעתה, ולזכות בליבה של הנסיכה אופל.\nעל המלאכה ניצחו ניב באר שתכנן ובנה את הפרויקט הסבוך על כל שכלוליו ופיתוחיו, וגל שמש על התרגום היפה והקולח.",
+  "vm": "ScummVM",
+  "vm_notes": null,
+  "vm_source": "post",
+  "patch_link": "https://github.com/adventurebrew/boozook/releases/tag/WEEN-RC1",
+  "patch_links": [
+    "https://github.com/adventurebrew/boozook/releases/tag/WEEN-RC1"
+  ],
+  "other_links": [
+    "https://www.myabandonware.com/game/the-prophecy-225"
+  ],
+  "extraction_status": "ok"
+}

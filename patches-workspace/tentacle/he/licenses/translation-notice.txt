@@ -1,0 +1,8 @@
+Classic Hebrew translation: AdventureBrew, Shany Roze, Rafael Ben-Ari, Niv Baehr, Omer Cohen.
+Source: https://www.facebook.com/groups/hebrewadventure/posts/342895866314516/
+The announcement restricts use to personal use and prohibits redistribution.
+DOTT-WIP2 is a preview, not a final translation. These local packages are not approved for publication.
+
+Audio table/layout: BLooperZ remonstered, GPL-3.0-or-later. Source revision 7d38eedaa9823a4a1c91315a24dfcb32bae5c114.
+FSB5 format reference: Simon Pinfold and BLooperZ python-fsb5 revision 817aa3cf60a69eb727494d89b1d804d90ff17cb2.
+All game audio and original resources are read from the user-owned archive at installation time.

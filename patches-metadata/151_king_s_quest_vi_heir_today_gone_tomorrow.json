@@ -1,0 +1,22 @@
+{
+  "idx": 151,
+  "name_he": "מסע המלך 6: היום יורש, מחר פורש",
+  "name_en": "King's Quest VI - Heir Today, Gone Tomorrow",
+  "facebook_post": "https://www.facebook.com/groups/hebrewadventure/posts/1981964749074278",
+  "post_date": "2026-05-11T06:01:47Z (UTC, from creation_time)",
+  "description": "תרגום מסע המלך 6\nהי, אני שמח לבשר שלאחר מאמצים מרובים עלה בידי לתרגם גם את מסע המלך 6. מסע מטלטל בין אהבה חיים ומוות. טקסטים רבים ומורכבים וההבנה העמוקה שאנשים הם לא תמיד כפי שהם באמת לטוב ולרע. מסע המלך 6, הוכתר בידי רבים כמשחק הטוב ביותר בסדרה.\nראשית אני רוצה להודות שוב לחברים הוותיקים פה שהניחו את היסודות שעליהם התבססתי. למשל רוב הגופנים וחלק מהסקריפטים. תודה מיוחדת לניב וגל על העזרה בעריכת הגרפיקה, ותודה מיוחדת לשי גרינברג על הבדיקות ומתן ההערות.\nהתרגום תומך ב2 הגרסאות גם Windows וגם DOS! יש ייתרונות לכאן ולכאן.\nהמלצה שלי - שחקו את גרסת הWindows. גל שמש האלוף, עבד קשה והחדיר כתוביות לסרט הפתיחה בגרסא זו.\nאה, ועוד משהו. במהלך המשחק יש את חידות הצוקים. מי שרוצה יכול לקרוא את הPDF המצורף למשחק המקורי, ולנסות לפתור אותן. ולמי שאין סבלנות, השארתי קובץ בעברית עם הפתרונות:\nhttps://github.com/.../download/4_26/TheLogicCliffs.docx\nולסיום תרגום מסע המלך 7 - כבר מוכן! מי רוצה להתנסות? תכתבו לי.",
+  "vm": "ScummVM",
+  "vm_notes": "daily build",
+  "vm_source": "post",
+  "patch_link": "https://github.com/SegMash/SCIHebrew/releases/download/4_26/KQ6_Hebrew_Patch_Setup.exe",
+  "patch_links": [
+    "https://github.com/SegMash/SCIHebrew/releases/download/4_26/KQ6_Hebrew_Patch_Setup.exe",
+    "https://github.com/SegMash/SCIHebrew/releases/download/4_26/kq6_hebrew_patch.zip",
+    "https://github.com/SegMash/SCIHebrew/releases/download/4_26/TheLogicCliffs.docx"
+  ],
+  "other_links": [
+    "https://www.gog.com/en/game/kings_quest_4_5_6",
+    "https://buildbot.scummvm.org/#/dailybuilds"
+  ],
+  "extraction_status": "ok"
+}

@@ -34,6 +34,7 @@ type Game = {
   detected_version?: string;
   added_date: string;
   last_played?: string;
+  requires_scummvm?: boolean;
   has_available_patch?: boolean;
   installed_patches?: InstalledPatchInfo[];
   available_patches?: AvailablePatchInfo[];

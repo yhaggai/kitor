@@ -120,6 +120,13 @@ pub fn load_registry() -> Result<Registry, String> {
     println!("Attempting to load registry from: {:?}", registry_path);
     
     let content = std::fs::read_to_string(registry_path)
+        .or_else(|error| {
+            // Finder-launched bundles have no project working directory.
+            // Keep the reviewed registry available without relying on cwd.
+            if error.kind() == std::io::ErrorKind::NotFound {
+                Ok(include_str!("../../../patches/registry.json").to_owned())
+            } else { Err(error) }
+        })
         .map_err(|e| {
             let err_msg = format!("Failed to read registry file: {}", e);
             println!("Registry load error: {}", err_msg);

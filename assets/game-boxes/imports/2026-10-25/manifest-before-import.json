@@ -1,0 +1,1106 @@
+{
+  "schema_version": 1,
+  "created_on": "2026-10-25",
+  "bucket": "kitor-assets",
+  "base_url": "https://assets.kitor.click",
+  "selection": {
+    "patch_not_installed": "en",
+    "hebrew_patch_installed": "he"
+  },
+  "games": [
+    {
+      "game_id": "undertale",
+      "title": "UNDERTALE",
+      "covers": {
+        "en": {
+          "file": "covers/undertale/en/9145051fa004.jpg",
+          "source_file": "originals/undertale.jpg",
+          "sha256": "9145051fa004631fd4c485903476de1397ca785422ac46f721f97b6285583f44",
+          "bytes": 14498,
+          "width": 600,
+          "height": 900,
+          "object_key": "covers/undertale/en/9145051fa004.jpg",
+          "original_url": "https://assets.kitor.click/covers/undertale/en/9145051fa004.jpg",
+          "variant_urls": {
+            "240": "https://assets.kitor.click/cdn-cgi/image/width=240,fit=scale-down,quality=85,format=auto/covers/undertale/en/9145051fa004.jpg",
+            "480": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/undertale/en/9145051fa004.jpg",
+            "960": "https://assets.kitor.click/cdn-cgi/image/width=960,fit=scale-down,quality=85,format=auto/covers/undertale/en/9145051fa004.jpg"
+          },
+          "source": "Steam",
+          "source_page": "https://store.steampowered.com/app/391540/",
+          "image_url": "https://cdn.akamai.steamstatic.com/steam/apps/391540/library_600x900_2x.jpg",
+          "kind": "digital-library-cover"
+        },
+        "he": {
+          "file": "covers/undertale/he/7779b0629b75.png",
+          "source_file": "hebrew/undertale.png",
+          "sha256": "7779b0629b755293e4e4315f888826641dec687f165cc7150feabcfb9eea367b",
+          "bytes": 329275,
+          "width": 1023,
+          "height": 1537,
+          "object_key": "covers/undertale/he/7779b0629b75.png",
+          "original_url": "https://assets.kitor.click/covers/undertale/he/7779b0629b75.png",
+          "variant_urls": {
+            "240": "https://assets.kitor.click/cdn-cgi/image/width=240,fit=scale-down,quality=85,format=auto/covers/undertale/he/7779b0629b75.png",
+            "480": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/undertale/he/7779b0629b75.png",
+            "960": "https://assets.kitor.click/cdn-cgi/image/width=960,fit=scale-down,quality=85,format=auto/covers/undertale/he/7779b0629b75.png"
+          },
+          "source": "AI text localization",
+          "kind": "ai-localized-cover",
+          "derived_from": "originals/undertale.jpg",
+          "note": "AI-generated; non-text artwork is not pixel-identical to source."
+        }
+      }
+    },
+    {
+      "game_id": "monkey-se",
+      "title": "The Secret of Monkey Island: Special Edition",
+      "covers": {
+        "en": {
+          "file": "covers/monkey-se/en/b9d8b502a92e.jpg",
+          "source_file": "originals/monkey-se.jpg",
+          "sha256": "b9d8b502a92e9ee2efced935e58f0234d9804b69b5421083da57609b0f9422af",
+          "bytes": 991573,
+          "width": 2248,
+          "height": 3146,
+          "object_key": "covers/monkey-se/en/b9d8b502a92e.jpg",
+          "original_url": "https://assets.kitor.click/covers/monkey-se/en/b9d8b502a92e.jpg",
+          "variant_urls": {
+            "240": "https://assets.kitor.click/cdn-cgi/image/width=240,fit=scale-down,quality=85,format=auto/covers/monkey-se/en/b9d8b502a92e.jpg",
+            "480": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/monkey-se/en/b9d8b502a92e.jpg",
+            "960": "https://assets.kitor.click/cdn-cgi/image/width=960,fit=scale-down,quality=85,format=auto/covers/monkey-se/en/b9d8b502a92e.jpg"
+          },
+          "source": "SCUMM Bar",
+          "source_page": "https://scummbar.com/cover/000003",
+          "image_url": "https://scummbar.com/MojoDB/DotWhat/cover.images/full-1-2.jpg",
+          "kind": "cover-art"
+        },
+        "he": {
+          "file": "covers/monkey-se/he/0808875f8dd2.png",
+          "source_file": "hebrew/monkey-se.png",
+          "sha256": "0808875f8dd22dfa509ad6ea85e3c0ba6c4e1fd9c2e40229d6544f872036c0a4",
+          "bytes": 2231116,
+          "width": 1060,
+          "height": 1484,
+          "object_key": "covers/monkey-se/he/0808875f8dd2.png",
+          "original_url": "https://assets.kitor.click/covers/monkey-se/he/0808875f8dd2.png",
+          "variant_urls": {
+            "240": "https://assets.kitor.click/cdn-cgi/image/width=240,fit=scale-down,quality=85,format=auto/covers/monkey-se/he/0808875f8dd2.png",
+            "480": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/monkey-se/he/0808875f8dd2.png",
+            "960": "https://assets.kitor.click/cdn-cgi/image/width=960,fit=scale-down,quality=85,format=auto/covers/monkey-se/he/0808875f8dd2.png"
+          },
+          "source": "AI text localization",
+          "kind": "ai-localized-cover",
+          "derived_from": "originals/monkey-se.jpg",
+          "note": "AI-generated; non-text artwork is not pixel-identical to source."
+        }
+      }
+    },
+    {
+      "game_id": "monkey2-se",
+      "title": "Monkey Island 2: LeChuck's Revenge Special Edition",
+      "covers": {
+        "en": {
+          "file": "covers/monkey2-se/en/edc7e06d30c7.jpg",
+          "source_file": "originals/monkey2-se.jpg",
+          "sha256": "edc7e06d30c7b240dba4bca0c618992ef49e2f47f0961327c72de6670c8735cb",
+          "bytes": 788862,
+          "width": 2248,
+          "height": 3248,
+          "object_key": "covers/monkey2-se/en/edc7e06d30c7.jpg",
+          "original_url": "https://assets.kitor.click/covers/monkey2-se/en/edc7e06d30c7.jpg",
+          "variant_urls": {
+            "240": "https://assets.kitor.click/cdn-cgi/image/width=240,fit=scale-down,quality=85,format=auto/covers/monkey2-se/en/edc7e06d30c7.jpg",
+            "480": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/monkey2-se/en/edc7e06d30c7.jpg",
+            "960": "https://assets.kitor.click/cdn-cgi/image/width=960,fit=scale-down,quality=85,format=auto/covers/monkey2-se/en/edc7e06d30c7.jpg"
+          },
+          "source": "SCUMM Bar",
+          "source_page": "https://scummbar.com/cover/000001-003",
+          "image_url": "https://scummbar.com/MojoDB/DotWhat/cover.images/full-2-3.jpg",
+          "kind": "cover-art"
+        },
+        "he": {
+          "file": "covers/monkey2-se/he/04849cb6d306.png",
+          "source_file": "hebrew/monkey2-se.png",
+          "sha256": "04849cb6d306f2343597cab8fc7396f2218e7a37cef818cb71ca52b5dc5da579",
+          "bytes": 1929657,
+          "width": 1044,
+          "height": 1507,
+          "object_key": "covers/monkey2-se/he/04849cb6d306.png",
+          "original_url": "https://assets.kitor.click/covers/monkey2-se/he/04849cb6d306.png",
+          "variant_urls": {
+            "240": "https://assets.kitor.click/cdn-cgi/image/width=240,fit=scale-down,quality=85,format=auto/covers/monkey2-se/he/04849cb6d306.png",
+            "480": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/monkey2-se/he/04849cb6d306.png",
+            "960": "https://assets.kitor.click/cdn-cgi/image/width=960,fit=scale-down,quality=85,format=auto/covers/monkey2-se/he/04849cb6d306.png"
+          },
+          "source": "AI text localization",
+          "kind": "ai-localized-cover",
+          "derived_from": "originals/monkey2-se.jpg",
+          "note": "AI-generated; non-text artwork is not pixel-identical to source."
+        }
+      }
+    },
+    {
+      "game_id": "sq1sci",
+      "title": "Space Quest I: Roger Wilco in the Sarien Encounter (VGA Remake)",
+      "covers": {
+        "en": {
+          "file": "covers/sq1sci/en/47ff2f31fadc.jpg",
+          "source_file": "originals/sq1sci.jpg",
+          "sha256": "47ff2f31fadc5b53a21b5e3ce1537b59f77c9a6895d69fd3881d342d14991f7f",
+          "bytes": 91478,
+          "width": 640,
+          "height": 800,
+          "object_key": "covers/sq1sci/en/47ff2f31fadc.jpg",
+          "original_url": "https://assets.kitor.click/covers/sq1sci/en/47ff2f31fadc.jpg",
+          "variant_urls": {
+            "240": "https://assets.kitor.click/cdn-cgi/image/width=240,fit=scale-down,quality=85,format=auto/covers/sq1sci/en/47ff2f31fadc.jpg",
+            "480": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/sq1sci/en/47ff2f31fadc.jpg",
+            "960": "https://assets.kitor.click/cdn-cgi/image/width=960,fit=scale-down,quality=85,format=auto/covers/sq1sci/en/47ff2f31fadc.jpg"
+          },
+          "source": "MobyGames",
+          "source_page": "https://www.mobygames.com/game/187/space-quest-i-roger-wilco-in-the-sarien-encounter/covers/",
+          "image_url": "https://cdn.mobygames.com/covers/10020-space-quest-i-roger-wilco-in-the-sarien-encounter-dos-front-cove.jpg",
+          "kind": "box-front-scan"
+        },
+        "he": {
+          "file": "covers/sq1sci/he/f465b4640811.png",
+          "source_file": "hebrew/sq1sci.png",
+          "sha256": "f465b464081178747edc7960111d6dd3043519767724deae6590a1a7f9e624fe",
+          "bytes": 1986467,
+          "width": 1122,
+          "height": 1402,
+          "object_key": "covers/sq1sci/he/f465b4640811.png",
+          "original_url": "https://assets.kitor.click/covers/sq1sci/he/f465b4640811.png",
+          "variant_urls": {
+            "240": "https://assets.kitor.click/cdn-cgi/image/width=240,fit=scale-down,quality=85,format=auto/covers/sq1sci/he/f465b4640811.png",
+            "480": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/sq1sci/he/f465b4640811.png",
+            "960": "https://assets.kitor.click/cdn-cgi/image/width=960,fit=scale-down,quality=85,format=auto/covers/sq1sci/he/f465b4640811.png"
+          },
+          "source": "AI text localization",
+          "kind": "ai-localized-cover",
+          "derived_from": "originals/sq1sci.jpg",
+          "note": "AI-generated; non-text artwork is not pixel-identical to source."
+        }
+      }
+    },
+    {
+      "game_id": "kyra1-cd",
+      "title": "The Legend of Kyrandia",
+      "covers": {
+        "en": {
+          "file": "covers/kyra1-cd/en/dc0a02457e0c.jpg",
+          "source_file": "english/kyra1-cd-box.jpg",
+          "sha256": "dc0a02457e0c1fb916f731780f3ae807968a3be5fc509ce5981d5ecbee9c00d0",
+          "bytes": 5685263,
+          "width": 2126,
+          "height": 2727,
+          "object_key": "covers/kyra1-cd/en/dc0a02457e0c.jpg",
+          "original_url": "https://assets.kitor.click/covers/kyra1-cd/en/dc0a02457e0c.jpg",
+          "variant_urls": {
+            "240": "https://assets.kitor.click/cdn-cgi/image/width=240,fit=scale-down,quality=85,format=auto/covers/kyra1-cd/en/dc0a02457e0c.jpg",
+            "480": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/kyra1-cd/en/dc0a02457e0c.jpg",
+            "960": "https://assets.kitor.click/cdn-cgi/image/width=960,fit=scale-down,quality=85,format=auto/covers/kyra1-cd/en/dc0a02457e0c.jpg"
+          },
+          "source_page": "https://gamesdb.launchbox-app.com/games/images/13727-the-legend-of-kyrandia-book-one",
+          "image_url": "https://images.launchbox-app.com/b32dd25f-9c2b-4aa0-b723-086c5fb530ea.jpg",
+          "kind": "box-front-scan"
+        },
+        "he": {
+          "file": "covers/kyra1-cd/he/b9f9a5ade25d.jpeg",
+          "source_file": "originals/kyra1-cd.jpeg",
+          "sha256": "b9f9a5ade25d066f16375dfa4949c73cc4360fb2f5287c4e8afe2fe8a511f022",
+          "bytes": 2635486,
+          "width": 2696,
+          "height": 3432,
+          "object_key": "covers/kyra1-cd/he/b9f9a5ade25d.jpeg",
+          "original_url": "https://assets.kitor.click/covers/kyra1-cd/he/b9f9a5ade25d.jpeg",
+          "variant_urls": {
+            "240": "https://assets.kitor.click/cdn-cgi/image/width=240,fit=scale-down,quality=85,format=auto/covers/kyra1-cd/he/b9f9a5ade25d.jpeg",
+            "480": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/kyra1-cd/he/b9f9a5ade25d.jpeg",
+            "960": "https://assets.kitor.click/cdn-cgi/image/width=960,fit=scale-down,quality=85,format=auto/covers/kyra1-cd/he/b9f9a5ade25d.jpeg"
+          },
+          "source": "Hakufsa",
+          "source_page": "https://www.hakufsa.co.il/game/the-legend-of-kyrandia",
+          "image_url": "https://images.hakufsa.co.il/wp-content/uploads/809EAF17-37C5-4221-A337-13F832E5F854.jpeg",
+          "kind": "box-front-scan"
+        }
+      }
+    },
+    {
+      "game_id": "pq1",
+      "title": "Police Quest: In Pursuit of the Death Angel (EGA)",
+      "covers": {
+        "en": {
+          "file": "covers/pq1/en/bb3cbf8ffefc.jpg",
+          "source_file": "originals/pq1.jpg",
+          "sha256": "bb3cbf8ffefcfdb823e0f3633ef37d06d68ecd61ec2c9f1d2b52891279bbde36",
+          "bytes": 113750,
+          "width": 702,
+          "height": 872,
+          "object_key": "covers/pq1/en/bb3cbf8ffefc.jpg",
+          "original_url": "https://assets.kitor.click/covers/pq1/en/bb3cbf8ffefc.jpg",
+          "variant_urls": {
+            "240": "https://assets.kitor.click/cdn-cgi/image/width=240,fit=scale-down,quality=85,format=auto/covers/pq1/en/bb3cbf8ffefc.jpg",
+            "480": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/pq1/en/bb3cbf8ffefc.jpg",
+            "960": "https://assets.kitor.click/cdn-cgi/image/width=960,fit=scale-down,quality=85,format=auto/covers/pq1/en/bb3cbf8ffefc.jpg"
+          },
+          "source": "Retro Freak Reviews",
+          "source_page": "https://retrofreakreviews.com/2017/02/15/police-quest-i-review/",
+          "image_url": "https://retrofreakreviews.com/wp-content/uploads/2017/01/223-police-quest-in-pursuit-of-the-death-angel-dos-front-cover.jpg",
+          "kind": "box-front-scan"
+        },
+        "he": {
+          "file": "covers/pq1/he/02f732721274.png",
+          "source_file": "hebrew/pq1.png",
+          "sha256": "02f732721274c836a1721ab0367475d97d17e31e957ee8ba8068ab57f66672ba",
+          "bytes": 2154417,
+          "width": 1125,
+          "height": 1398,
+          "object_key": "covers/pq1/he/02f732721274.png",
+          "original_url": "https://assets.kitor.click/covers/pq1/he/02f732721274.png",
+          "variant_urls": {
+            "240": "https://assets.kitor.click/cdn-cgi/image/width=240,fit=scale-down,quality=85,format=auto/covers/pq1/he/02f732721274.png",
+            "480": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/pq1/he/02f732721274.png",
+            "960": "https://assets.kitor.click/cdn-cgi/image/width=960,fit=scale-down,quality=85,format=auto/covers/pq1/he/02f732721274.png"
+          },
+          "source": "AI text localization",
+          "kind": "ai-localized-cover",
+          "derived_from": "originals/pq1.jpg",
+          "note": "AI-generated; non-text artwork is not pixel-identical to source."
+        }
+      }
+    },
+    {
+      "game_id": "sq1",
+      "title": "Space Quest I: The Sarien Encounter (EGA)",
+      "covers": {
+        "en": {
+          "file": "covers/sq1/en/08cf78a61b31.jpg",
+          "source_file": "originals/sq1.jpg",
+          "sha256": "08cf78a61b31f699360f0122b6417d76ba2df7cb4a302b3c07df9061171ce04e",
+          "bytes": 133680,
+          "width": 980,
+          "height": 1346,
+          "object_key": "covers/sq1/en/08cf78a61b31.jpg",
+          "original_url": "https://assets.kitor.click/covers/sq1/en/08cf78a61b31.jpg",
+          "variant_urls": {
+            "240": "https://assets.kitor.click/cdn-cgi/image/width=240,fit=scale-down,quality=85,format=auto/covers/sq1/en/08cf78a61b31.jpg",
+            "480": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/sq1/en/08cf78a61b31.jpg",
+            "960": "https://assets.kitor.click/cdn-cgi/image/width=960,fit=scale-down,quality=85,format=auto/covers/sq1/en/08cf78a61b31.jpg"
+          },
+          "source": "SpaceQuest.Net",
+          "source_page": "https://spacequest.net/misc/boxscans/",
+          "image_url": "https://spacequest.net/misc/boxscans/sq1ver1front.jpg",
+          "kind": "box-front-scan"
+        },
+        "he": {
+          "file": "covers/sq1/he/14acb546941f.png",
+          "source_file": "hebrew/sq1.png",
+          "sha256": "14acb546941f2bd5793a2c26d74636d664d4c0b6f08103bc675ff47a07ed52ad",
+          "bytes": 2057388,
+          "width": 1070,
+          "height": 1470,
+          "object_key": "covers/sq1/he/14acb546941f.png",
+          "original_url": "https://assets.kitor.click/covers/sq1/he/14acb546941f.png",
+          "variant_urls": {
+            "240": "https://assets.kitor.click/cdn-cgi/image/width=240,fit=scale-down,quality=85,format=auto/covers/sq1/he/14acb546941f.png",
+            "480": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/sq1/he/14acb546941f.png",
+            "960": "https://assets.kitor.click/cdn-cgi/image/width=960,fit=scale-down,quality=85,format=auto/covers/sq1/he/14acb546941f.png"
+          },
+          "source": "AI text localization",
+          "kind": "ai-localized-cover",
+          "derived_from": "originals/sq1.jpg",
+          "note": "AI-generated; non-text artwork is not pixel-identical to source."
+        }
+      }
+    },
+    {
+      "game_id": "sq2",
+      "title": "Space Quest II: Vohaul’s Revenge",
+      "covers": {
+        "en": {
+          "file": "covers/sq2/en/2f9730d67c73.jpg",
+          "source_file": "originals/sq2.jpg",
+          "sha256": "2f9730d67c73a4f7114d8681d358b8cc2c35b3ccfb15eebae3c0b740b28c3339",
+          "bytes": 172228,
+          "width": 980,
+          "height": 1246,
+          "object_key": "covers/sq2/en/2f9730d67c73.jpg",
+          "original_url": "https://assets.kitor.click/covers/sq2/en/2f9730d67c73.jpg",
+          "variant_urls": {
+            "240": "https://assets.kitor.click/cdn-cgi/image/width=240,fit=scale-down,quality=85,format=auto/covers/sq2/en/2f9730d67c73.jpg",
+            "480": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/sq2/en/2f9730d67c73.jpg",
+            "960": "https://assets.kitor.click/cdn-cgi/image/width=960,fit=scale-down,quality=85,format=auto/covers/sq2/en/2f9730d67c73.jpg"
+          },
+          "source": "SpaceQuest.Net",
+          "source_page": "https://spacequest.net/misc/boxscans/",
+          "image_url": "https://spacequest.net/misc/boxscans/sq2front.jpg",
+          "kind": "box-front-scan"
+        },
+        "he": {
+          "file": "covers/sq2/he/fecca102b63e.png",
+          "source_file": "hebrew/sq2.png",
+          "sha256": "fecca102b63e31a19f36e34f4d0b46e78d74e1a985594aa2f3905c5a978f6abc",
+          "bytes": 2244562,
+          "width": 1112,
+          "height": 1414,
+          "object_key": "covers/sq2/he/fecca102b63e.png",
+          "original_url": "https://assets.kitor.click/covers/sq2/he/fecca102b63e.png",
+          "variant_urls": {
+            "240": "https://assets.kitor.click/cdn-cgi/image/width=240,fit=scale-down,quality=85,format=auto/covers/sq2/he/fecca102b63e.png",
+            "480": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/sq2/he/fecca102b63e.png",
+            "960": "https://assets.kitor.click/cdn-cgi/image/width=960,fit=scale-down,quality=85,format=auto/covers/sq2/he/fecca102b63e.png"
+          },
+          "source": "AI text localization",
+          "kind": "ai-localized-cover",
+          "derived_from": "originals/sq2.jpg",
+          "note": "AI-generated; non-text artwork is not pixel-identical to source."
+        }
+      }
+    },
+    {
+      "game_id": "sq3",
+      "title": "Space Quest III: The Pirates of Pestulon",
+      "covers": {
+        "en": {
+          "file": "covers/sq3/en/a67b602ab498.jpg",
+          "source_file": "english/sq3.jpg",
+          "sha256": "a67b602ab498d8c3de4a39961b9c6d449a101b2957d6efabc077e44dbf165d73",
+          "bytes": 204795,
+          "width": 980,
+          "height": 1218,
+          "object_key": "covers/sq3/en/a67b602ab498.jpg",
+          "original_url": "https://assets.kitor.click/covers/sq3/en/a67b602ab498.jpg",
+          "variant_urls": {
+            "240": "https://assets.kitor.click/cdn-cgi/image/width=240,fit=scale-down,quality=85,format=auto/covers/sq3/en/a67b602ab498.jpg",
+            "480": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/sq3/en/a67b602ab498.jpg",
+            "960": "https://assets.kitor.click/cdn-cgi/image/width=960,fit=scale-down,quality=85,format=auto/covers/sq3/en/a67b602ab498.jpg"
+          },
+          "source_page": "https://spacequest.net/misc/boxscans/",
+          "image_url": "https://spacequest.net/misc/boxscans/sq3front.jpg",
+          "kind": "box-front-scan",
+          "note": "English Amiga box scan; same game artwork, platform sticker differs from PC edition."
+        },
+        "he": {
+          "file": "covers/sq3/he/48f13b56b776.jpeg",
+          "source_file": "originals/sq3.jpeg",
+          "sha256": "48f13b56b77655f0befbcb62fdf74d291ed7917a9c2453678113bea5c48dad1d",
+          "bytes": 292111,
+          "width": 776,
+          "height": 1012,
+          "object_key": "covers/sq3/he/48f13b56b776.jpeg",
+          "original_url": "https://assets.kitor.click/covers/sq3/he/48f13b56b776.jpeg",
+          "variant_urls": {
+            "240": "https://assets.kitor.click/cdn-cgi/image/width=240,fit=scale-down,quality=85,format=auto/covers/sq3/he/48f13b56b776.jpeg",
+            "480": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/sq3/he/48f13b56b776.jpeg",
+            "960": "https://assets.kitor.click/cdn-cgi/image/width=960,fit=scale-down,quality=85,format=auto/covers/sq3/he/48f13b56b776.jpeg"
+          },
+          "source": "Hakufsa",
+          "source_page": "https://www.hakufsa.co.il/game/space-quest-iii-the-pirates-of-pestulon",
+          "image_url": "https://images.hakufsa.co.il/wp-content/uploads/3DAF86BB-5A66-4C05-945F-9DA675116084_1_105_c.jpeg",
+          "kind": "box-front-scan"
+        }
+      }
+    },
+    {
+      "game_id": "sq5",
+      "title": "Space Quest V: The Next Mutation",
+      "covers": {
+        "en": {
+          "file": "covers/sq5/en/2d1c335322db.jpg",
+          "source_file": "english/sq5.jpg",
+          "sha256": "2d1c335322dbb2f04f486df7761856bafd60e639096e51017271c942a0fbf0b4",
+          "bytes": 244579,
+          "width": 980,
+          "height": 1224,
+          "object_key": "covers/sq5/en/2d1c335322db.jpg",
+          "original_url": "https://assets.kitor.click/covers/sq5/en/2d1c335322db.jpg",
+          "variant_urls": {
+            "240": "https://assets.kitor.click/cdn-cgi/image/width=240,fit=scale-down,quality=85,format=auto/covers/sq5/en/2d1c335322db.jpg",
+            "480": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/sq5/en/2d1c335322db.jpg",
+            "960": "https://assets.kitor.click/cdn-cgi/image/width=960,fit=scale-down,quality=85,format=auto/covers/sq5/en/2d1c335322db.jpg"
+          },
+          "source_page": "https://spacequest.net/misc/boxscans/",
+          "image_url": "https://spacequest.net/misc/boxscans/sq5front.jpg",
+          "kind": "box-front-scan"
+        },
+        "he": {
+          "file": "covers/sq5/he/8d60499f2931.webp",
+          "source_file": "originals/sq5.webp",
+          "sha256": "8d60499f293131791b8dd3c75219e4aaead25b7c8829f4acdc31ba142ffd818e",
+          "bytes": 157714,
+          "width": 792,
+          "height": 992,
+          "object_key": "covers/sq5/he/8d60499f2931.webp",
+          "original_url": "https://assets.kitor.click/covers/sq5/he/8d60499f2931.webp",
+          "variant_urls": {
+            "240": "https://assets.kitor.click/cdn-cgi/image/width=240,fit=scale-down,quality=85,format=auto/covers/sq5/he/8d60499f2931.webp",
+            "480": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/sq5/he/8d60499f2931.webp",
+            "960": "https://assets.kitor.click/cdn-cgi/image/width=960,fit=scale-down,quality=85,format=auto/covers/sq5/he/8d60499f2931.webp"
+          },
+          "source": "Hakufsa",
+          "source_page": "https://www.hakufsa.co.il/game/space-quest-v-the-next-mutation",
+          "image_url": "https://images.hakufsa.co.il/wp-content/uploads/1776668822257-8t54yh.webp",
+          "kind": "box-front-scan"
+        }
+      }
+    },
+    {
+      "game_id": "torin",
+      "title": "Torin’s Passage",
+      "covers": {
+        "en": {
+          "file": "covers/torin/en/e53a5ae010c8.jpg",
+          "source_file": "english/torin-box.jpg",
+          "sha256": "e53a5ae010c8cac2b888fddc6de95d4b33e8955c4cfeba012e7e80a032072c61",
+          "bytes": 145845,
+          "width": 800,
+          "height": 963,
+          "object_key": "covers/torin/en/e53a5ae010c8.jpg",
+          "original_url": "https://assets.kitor.click/covers/torin/en/e53a5ae010c8.jpg",
+          "variant_urls": {
+            "240": "https://assets.kitor.click/cdn-cgi/image/width=240,fit=scale-down,quality=85,format=auto/covers/torin/en/e53a5ae010c8.jpg",
+            "480": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/torin/en/e53a5ae010c8.jpg",
+            "960": "https://assets.kitor.click/cdn-cgi/image/width=960,fit=scale-down,quality=85,format=auto/covers/torin/en/e53a5ae010c8.jpg"
+          },
+          "source_page": "https://gamesdb.launchbox-app.com/games/images/19424-torins-passage",
+          "image_url": "https://images.launchbox-app.com/ea293d34-28a7-409b-ac22-df339c0d0f4b.jpg",
+          "kind": "box-front-scan"
+        },
+        "he": {
+          "file": "covers/torin/he/344dd7e600d6.jpeg",
+          "source_file": "originals/torin.jpeg",
+          "sha256": "344dd7e600d6be7379909f5ae7b5ee2e83174160f088aca9caf31fe8375199d5",
+          "bytes": 2718545,
+          "width": 2800,
+          "height": 3268,
+          "object_key": "covers/torin/he/344dd7e600d6.jpeg",
+          "original_url": "https://assets.kitor.click/covers/torin/he/344dd7e600d6.jpeg",
+          "variant_urls": {
+            "240": "https://assets.kitor.click/cdn-cgi/image/width=240,fit=scale-down,quality=85,format=auto/covers/torin/he/344dd7e600d6.jpeg",
+            "480": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/torin/he/344dd7e600d6.jpeg",
+            "960": "https://assets.kitor.click/cdn-cgi/image/width=960,fit=scale-down,quality=85,format=auto/covers/torin/he/344dd7e600d6.jpeg"
+          },
+          "source": "Hakufsa",
+          "source_page": "https://www.hakufsa.co.il/game/torin-s-passage",
+          "image_url": "https://images.hakufsa.co.il/wp-content/uploads/44FD335E-C9A6-4479-A765-D055A7E9981D.jpeg",
+          "kind": "box-front-scan"
+        }
+      }
+    },
+    {
+      "game_id": "spyfox",
+      "title": "Spy Fox in Dry Cereal",
+      "covers": {
+        "en": {
+          "file": "covers/spyfox/en/f79e51735fc4.jpg",
+          "source_file": "originals/spyfox.jpg",
+          "sha256": "f79e51735fc48dfc7d230d93370984fe044c5c1cabe3b4aed26e135a3d98499f",
+          "bytes": 149605,
+          "width": 600,
+          "height": 900,
+          "object_key": "covers/spyfox/en/f79e51735fc4.jpg",
+          "original_url": "https://assets.kitor.click/covers/spyfox/en/f79e51735fc4.jpg",
+          "variant_urls": {
+            "240": "https://assets.kitor.click/cdn-cgi/image/width=240,fit=scale-down,quality=85,format=auto/covers/spyfox/en/f79e51735fc4.jpg",
+            "480": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/spyfox/en/f79e51735fc4.jpg",
+            "960": "https://assets.kitor.click/cdn-cgi/image/width=960,fit=scale-down,quality=85,format=auto/covers/spyfox/en/f79e51735fc4.jpg"
+          },
+          "source": "Steam",
+          "source_page": "https://store.steampowered.com/app/283980/",
+          "image_url": "https://cdn.akamai.steamstatic.com/steam/apps/283980/library_600x900_2x.jpg",
+          "kind": "digital-library-cover"
+        },
+        "he": {
+          "file": "covers/spyfox/he/d2bc70a55ef0.png",
+          "source_file": "hebrew/spyfox.png",
+          "sha256": "d2bc70a55ef09bd09856bcaffcb0b4eda4662f419f67164b34f83b70fd15a9db",
+          "bytes": 1569365,
+          "width": 1024,
+          "height": 1536,
+          "object_key": "covers/spyfox/he/d2bc70a55ef0.png",
+          "original_url": "https://assets.kitor.click/covers/spyfox/he/d2bc70a55ef0.png",
+          "variant_urls": {
+            "240": "https://assets.kitor.click/cdn-cgi/image/width=240,fit=scale-down,quality=85,format=auto/covers/spyfox/he/d2bc70a55ef0.png",
+            "480": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/spyfox/he/d2bc70a55ef0.png",
+            "960": "https://assets.kitor.click/cdn-cgi/image/width=960,fit=scale-down,quality=85,format=auto/covers/spyfox/he/d2bc70a55ef0.png"
+          },
+          "source": "AI text localization",
+          "kind": "ai-localized-cover",
+          "derived_from": "originals/spyfox.jpg",
+          "note": "AI-generated; non-text artwork is not pixel-identical to source."
+        }
+      }
+    },
+    {
+      "game_id": "pajama",
+      "title": "Pajama Sam: No Need to Hide When It’s Dark Outside",
+      "covers": {
+        "en": {
+          "file": "covers/pajama/en/800dc7a2b316.jpg",
+          "source_file": "originals/pajama.jpg",
+          "sha256": "800dc7a2b3160bf6a4924de478c0eda03b359b16dcc61d90248d32916e289d0e",
+          "bytes": 221601,
+          "width": 600,
+          "height": 900,
+          "object_key": "covers/pajama/en/800dc7a2b316.jpg",
+          "original_url": "https://assets.kitor.click/covers/pajama/en/800dc7a2b316.jpg",
+          "variant_urls": {
+            "240": "https://assets.kitor.click/cdn-cgi/image/width=240,fit=scale-down,quality=85,format=auto/covers/pajama/en/800dc7a2b316.jpg",
+            "480": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/pajama/en/800dc7a2b316.jpg",
+            "960": "https://assets.kitor.click/cdn-cgi/image/width=960,fit=scale-down,quality=85,format=auto/covers/pajama/en/800dc7a2b316.jpg"
+          },
+          "source": "Steam",
+          "source_page": "https://store.steampowered.com/app/283960/",
+          "image_url": "https://cdn.akamai.steamstatic.com/steam/apps/283960/library_600x900_2x.jpg",
+          "kind": "digital-library-cover"
+        },
+        "he": {
+          "file": "covers/pajama/he/524911dfb89b.png",
+          "source_file": "hebrew/pajama.png",
+          "sha256": "524911dfb89b7eea7da526e0d2c47f40980d92bfaec6a3e2a6add361f8ea1c67",
+          "bytes": 1820421,
+          "width": 1024,
+          "height": 1536,
+          "object_key": "covers/pajama/he/524911dfb89b.png",
+          "original_url": "https://assets.kitor.click/covers/pajama/he/524911dfb89b.png",
+          "variant_urls": {
+            "240": "https://assets.kitor.click/cdn-cgi/image/width=240,fit=scale-down,quality=85,format=auto/covers/pajama/he/524911dfb89b.png",
+            "480": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/pajama/he/524911dfb89b.png",
+            "960": "https://assets.kitor.click/cdn-cgi/image/width=960,fit=scale-down,quality=85,format=auto/covers/pajama/he/524911dfb89b.png"
+          },
+          "source": "AI text localization",
+          "kind": "ai-localized-cover",
+          "derived_from": "originals/pajama.jpg",
+          "note": "AI-generated; non-text artwork is not pixel-identical to source."
+        }
+      }
+    },
+    {
+      "game_id": "toonstruck",
+      "title": "Toonstruck",
+      "covers": {
+        "en": {
+          "file": "covers/toonstruck/en/fbd6de512350.jpg",
+          "source_file": "originals/toonstruck.jpg",
+          "sha256": "fbd6de512350be15ad09643a7751eeb9eb9818b7189b55b302ddad4bef51bedd",
+          "bytes": 194829,
+          "width": 600,
+          "height": 900,
+          "object_key": "covers/toonstruck/en/fbd6de512350.jpg",
+          "original_url": "https://assets.kitor.click/covers/toonstruck/en/fbd6de512350.jpg",
+          "variant_urls": {
+            "240": "https://assets.kitor.click/cdn-cgi/image/width=240,fit=scale-down,quality=85,format=auto/covers/toonstruck/en/fbd6de512350.jpg",
+            "480": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/toonstruck/en/fbd6de512350.jpg",
+            "960": "https://assets.kitor.click/cdn-cgi/image/width=960,fit=scale-down,quality=85,format=auto/covers/toonstruck/en/fbd6de512350.jpg"
+          },
+          "source": "Steam",
+          "source_page": "https://store.steampowered.com/app/369830/",
+          "image_url": "https://cdn.akamai.steamstatic.com/steam/apps/369830/library_600x900_2x.jpg",
+          "kind": "digital-library-cover"
+        },
+        "he": {
+          "file": "covers/toonstruck/he/c74b163cee09.png",
+          "source_file": "hebrew/toonstruck.png",
+          "sha256": "c74b163cee09532668ee6be2a9835c936a5b6e75f973d78dfb43eedacd366ff8",
+          "bytes": 2172673,
+          "width": 1024,
+          "height": 1536,
+          "object_key": "covers/toonstruck/he/c74b163cee09.png",
+          "original_url": "https://assets.kitor.click/covers/toonstruck/he/c74b163cee09.png",
+          "variant_urls": {
+            "240": "https://assets.kitor.click/cdn-cgi/image/width=240,fit=scale-down,quality=85,format=auto/covers/toonstruck/he/c74b163cee09.png",
+            "480": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/toonstruck/he/c74b163cee09.png",
+            "960": "https://assets.kitor.click/cdn-cgi/image/width=960,fit=scale-down,quality=85,format=auto/covers/toonstruck/he/c74b163cee09.png"
+          },
+          "source": "AI text localization",
+          "kind": "ai-localized-cover",
+          "derived_from": "originals/toonstruck.jpg",
+          "note": "AI-generated; non-text artwork is not pixel-identical to source."
+        }
+      }
+    },
+    {
+      "game_id": "gob2",
+      "title": "Gobliins 2: The Prince Buffoon",
+      "covers": {
+        "en": {
+          "file": "covers/gob2/en/1e523d396214.jpg",
+          "source_file": "english/gob2.jpg",
+          "sha256": "1e523d396214bc4f4c7b5c09d64c034d8f1e48fdb8aef4c68f3e5adf88a28d0b",
+          "bytes": 395674,
+          "width": 642,
+          "height": 800,
+          "object_key": "covers/gob2/en/1e523d396214.jpg",
+          "original_url": "https://assets.kitor.click/covers/gob2/en/1e523d396214.jpg",
+          "variant_urls": {
+            "240": "https://assets.kitor.click/cdn-cgi/image/width=240,fit=scale-down,quality=85,format=auto/covers/gob2/en/1e523d396214.jpg",
+            "480": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/gob2/en/1e523d396214.jpg",
+            "960": "https://assets.kitor.click/cdn-cgi/image/width=960,fit=scale-down,quality=85,format=auto/covers/gob2/en/1e523d396214.jpg"
+          },
+          "source_page": "https://downloads.khinsider.com/game-soundtracks/album/gobliins-2-original-game-rip",
+          "image_url": "https://jetta.vgmtreasurechest.com/soundtracks/gobliins-2-original-game-rip/Gobliins%202%20Cover%202.jpg",
+          "kind": "box-front-scan"
+        },
+        "he": {
+          "file": "covers/gob2/he/e7017e6b020e.jpeg",
+          "source_file": "originals/gob2.jpeg",
+          "sha256": "e7017e6b020ee51e2d71e0c75a8fc3cd1017788a28881c7eaad022c84f808998",
+          "bytes": 251619,
+          "width": 812,
+          "height": 956,
+          "object_key": "covers/gob2/he/e7017e6b020e.jpeg",
+          "original_url": "https://assets.kitor.click/covers/gob2/he/e7017e6b020e.jpeg",
+          "variant_urls": {
+            "240": "https://assets.kitor.click/cdn-cgi/image/width=240,fit=scale-down,quality=85,format=auto/covers/gob2/he/e7017e6b020e.jpeg",
+            "480": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/gob2/he/e7017e6b020e.jpeg",
+            "960": "https://assets.kitor.click/cdn-cgi/image/width=960,fit=scale-down,quality=85,format=auto/covers/gob2/he/e7017e6b020e.jpeg"
+          },
+          "source": "Hakufsa",
+          "source_page": "https://www.hakufsa.co.il/game/gobliins-2-the-prince-buffoon",
+          "image_url": "https://images.hakufsa.co.il/wp-content/uploads/241318CC-7C16-4172-9D14-EC99A11B46AE.jpeg",
+          "kind": "box-front-scan"
+        }
+      }
+    },
+    {
+      "game_id": "tlj",
+      "title": "The Longest Journey",
+      "covers": {
+        "en": {
+          "file": "covers/tlj/en/318fdae99f56.png",
+          "source_file": "english/tlj.png",
+          "sha256": "318fdae99f5628fbf9ee9ca9a13605336ecd26d726bd7f33651d3c1c809f1b92",
+          "bytes": 895910,
+          "width": 659,
+          "height": 800,
+          "object_key": "covers/tlj/en/318fdae99f56.png",
+          "original_url": "https://assets.kitor.click/covers/tlj/en/318fdae99f56.png",
+          "variant_urls": {
+            "240": "https://assets.kitor.click/cdn-cgi/image/width=240,fit=scale-down,quality=85,format=auto/covers/tlj/en/318fdae99f56.png",
+            "480": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/tlj/en/318fdae99f56.png",
+            "960": "https://assets.kitor.click/cdn-cgi/image/width=960,fit=scale-down,quality=85,format=auto/covers/tlj/en/318fdae99f56.png"
+          },
+          "kind": "box-front-scan",
+          "source": "User-provided image"
+        },
+        "he": {
+          "file": "covers/tlj/he/7caffc0e3eb6.jpeg",
+          "source_file": "originals/tlj.jpeg",
+          "sha256": "7caffc0e3eb6bb4f9926d19e0d255546cadf0699b5ab438077d5ca518c3aad14",
+          "bytes": 379009,
+          "width": 778,
+          "height": 1010,
+          "object_key": "covers/tlj/he/7caffc0e3eb6.jpeg",
+          "original_url": "https://assets.kitor.click/covers/tlj/he/7caffc0e3eb6.jpeg",
+          "variant_urls": {
+            "240": "https://assets.kitor.click/cdn-cgi/image/width=240,fit=scale-down,quality=85,format=auto/covers/tlj/he/7caffc0e3eb6.jpeg",
+            "480": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/tlj/he/7caffc0e3eb6.jpeg",
+            "960": "https://assets.kitor.click/cdn-cgi/image/width=960,fit=scale-down,quality=85,format=auto/covers/tlj/he/7caffc0e3eb6.jpeg"
+          },
+          "source": "Hakufsa",
+          "source_page": "https://www.hakufsa.co.il/game/the-longest-journey",
+          "image_url": "https://images.hakufsa.co.il/wp-content/uploads/C7353DF5-1322-4354-A1C3-F4892FD2E2C1_1_105_c.jpeg",
+          "kind": "box-front-scan"
+        }
+      }
+    },
+    {
+      "game_id": "sky",
+      "title": "Beneath a Steel Sky",
+      "covers": {
+        "en": {
+          "file": "covers/sky/en/a66d8fcd68f6.jpg",
+          "source_file": "originals/sky.jpg",
+          "sha256": "a66d8fcd68f6db1fca5acba9b9f825233e36dbf68a518a94825d43cb17bfd5f9",
+          "bytes": 142211,
+          "width": 600,
+          "height": 900,
+          "object_key": "covers/sky/en/a66d8fcd68f6.jpg",
+          "original_url": "https://assets.kitor.click/covers/sky/en/a66d8fcd68f6.jpg",
+          "variant_urls": {
+            "240": "https://assets.kitor.click/cdn-cgi/image/width=240,fit=scale-down,quality=85,format=auto/covers/sky/en/a66d8fcd68f6.jpg",
+            "480": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/sky/en/a66d8fcd68f6.jpg",
+            "960": "https://assets.kitor.click/cdn-cgi/image/width=960,fit=scale-down,quality=85,format=auto/covers/sky/en/a66d8fcd68f6.jpg"
+          },
+          "source": "Steam",
+          "source_page": "https://store.steampowered.com/app/1368340/",
+          "image_url": "https://cdn.akamai.steamstatic.com/steam/apps/1368340/library_600x900_2x.jpg",
+          "kind": "digital-library-cover"
+        },
+        "he": {
+          "file": "covers/sky/he/01aa7fd0a807.png",
+          "source_file": "hebrew/sky.png",
+          "sha256": "01aa7fd0a807edd8abf6b9926a305fbe0946e847be9d2d091208d12977decf5b",
+          "bytes": 1611435,
+          "width": 1024,
+          "height": 1536,
+          "object_key": "covers/sky/he/01aa7fd0a807.png",
+          "original_url": "https://assets.kitor.click/covers/sky/he/01aa7fd0a807.png",
+          "variant_urls": {
+            "240": "https://assets.kitor.click/cdn-cgi/image/width=240,fit=scale-down,quality=85,format=auto/covers/sky/he/01aa7fd0a807.png",
+            "480": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/sky/he/01aa7fd0a807.png",
+            "960": "https://assets.kitor.click/cdn-cgi/image/width=960,fit=scale-down,quality=85,format=auto/covers/sky/he/01aa7fd0a807.png"
+          },
+          "source": "AI text localization",
+          "kind": "ai-localized-cover",
+          "derived_from": "originals/sky.jpg",
+          "note": "AI-generated; non-text artwork is not pixel-identical to source."
+        }
+      }
+    },
+    {
+      "game_id": "stanley-parable",
+      "title": "The Stanley Parable (2013)",
+      "covers": {
+        "en": {
+          "file": "covers/stanley-parable/en/924f717e3da0.jpg",
+          "source_file": "originals/stanley-parable.jpg",
+          "sha256": "924f717e3da09b95bf30c3620df78e0b9dbbf005b576e2cf9b3c7ee5cd4c398e",
+          "bytes": 89803,
+          "width": 600,
+          "height": 900,
+          "object_key": "covers/stanley-parable/en/924f717e3da0.jpg",
+          "original_url": "https://assets.kitor.click/covers/stanley-parable/en/924f717e3da0.jpg",
+          "variant_urls": {
+            "240": "https://assets.kitor.click/cdn-cgi/image/width=240,fit=scale-down,quality=85,format=auto/covers/stanley-parable/en/924f717e3da0.jpg",
+            "480": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/stanley-parable/en/924f717e3da0.jpg",
+            "960": "https://assets.kitor.click/cdn-cgi/image/width=960,fit=scale-down,quality=85,format=auto/covers/stanley-parable/en/924f717e3da0.jpg"
+          },
+          "source": "Steam",
+          "source_page": "https://store.steampowered.com/app/221910/",
+          "image_url": "https://cdn.akamai.steamstatic.com/steam/apps/221910/library_600x900_2x.jpg",
+          "kind": "digital-library-cover"
+        },
+        "he": {
+          "file": "covers/stanley-parable/he/e3715fa6037e.png",
+          "source_file": "hebrew/stanley-parable.png",
+          "sha256": "e3715fa6037e6d8a4b809128cae11ee8aa807aa57c1391450198150a4251924f",
+          "bytes": 1407015,
+          "width": 1024,
+          "height": 1536,
+          "object_key": "covers/stanley-parable/he/e3715fa6037e.png",
+          "original_url": "https://assets.kitor.click/covers/stanley-parable/he/e3715fa6037e.png",
+          "variant_urls": {
+            "240": "https://assets.kitor.click/cdn-cgi/image/width=240,fit=scale-down,quality=85,format=auto/covers/stanley-parable/he/e3715fa6037e.png",
+            "480": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/stanley-parable/he/e3715fa6037e.png",
+            "960": "https://assets.kitor.click/cdn-cgi/image/width=960,fit=scale-down,quality=85,format=auto/covers/stanley-parable/he/e3715fa6037e.png"
+          },
+          "source": "AI text localization",
+          "kind": "ai-localized-cover",
+          "derived_from": "originals/stanley-parable.jpg",
+          "note": "AI-generated; non-text artwork is not pixel-identical to source."
+        }
+      }
+    },
+    {
+      "game_id": "tesla-effect",
+      "title": "Tesla Effect: A Tex Murphy Adventure",
+      "covers": {
+        "en": {
+          "file": "covers/tesla-effect/en/77011ed8d30d.jpg",
+          "source_file": "originals/tesla-effect.jpg",
+          "sha256": "77011ed8d30d7413f9214888b4f3664550c1af6d39f2279e774e02ec12841ab7",
+          "bytes": 155471,
+          "width": 600,
+          "height": 900,
+          "object_key": "covers/tesla-effect/en/77011ed8d30d.jpg",
+          "original_url": "https://assets.kitor.click/covers/tesla-effect/en/77011ed8d30d.jpg",
+          "variant_urls": {
+            "240": "https://assets.kitor.click/cdn-cgi/image/width=240,fit=scale-down,quality=85,format=auto/covers/tesla-effect/en/77011ed8d30d.jpg",
+            "480": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/tesla-effect/en/77011ed8d30d.jpg",
+            "960": "https://assets.kitor.click/cdn-cgi/image/width=960,fit=scale-down,quality=85,format=auto/covers/tesla-effect/en/77011ed8d30d.jpg"
+          },
+          "source": "Steam",
+          "source_page": "https://store.steampowered.com/app/261510/",
+          "image_url": "https://cdn.akamai.steamstatic.com/steam/apps/261510/library_600x900_2x.jpg",
+          "kind": "digital-library-cover"
+        },
+        "he": {
+          "file": "covers/tesla-effect/he/2576368ae8b7.png",
+          "source_file": "hebrew/tesla-effect.png",
+          "sha256": "2576368ae8b7f9e5f985b8900713a6027b7b6eb6b6d5a37b6fe2cce322fdc56a",
+          "bytes": 1699322,
+          "width": 1024,
+          "height": 1536,
+          "object_key": "covers/tesla-effect/he/2576368ae8b7.png",
+          "original_url": "https://assets.kitor.click/covers/tesla-effect/he/2576368ae8b7.png",
+          "variant_urls": {
+            "240": "https://assets.kitor.click/cdn-cgi/image/width=240,fit=scale-down,quality=85,format=auto/covers/tesla-effect/he/2576368ae8b7.png",
+            "480": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/tesla-effect/he/2576368ae8b7.png",
+            "960": "https://assets.kitor.click/cdn-cgi/image/width=960,fit=scale-down,quality=85,format=auto/covers/tesla-effect/he/2576368ae8b7.png"
+          },
+          "source": "AI text localization",
+          "kind": "ai-localized-cover",
+          "derived_from": "originals/tesla-effect.jpg",
+          "note": "AI-generated; non-text artwork is not pixel-identical to source."
+        }
+      }
+    },
+    {
+      "game_id": "ethan-carter",
+      "title": "The Vanishing of Ethan Carter (original)",
+      "covers": {
+        "en": {
+          "file": "covers/ethan-carter/en/1cb9c72fce73.jpg",
+          "source_file": "originals/ethan-carter.jpg",
+          "sha256": "1cb9c72fce73c8acb9f2583a9bc21ba169a67c9be821e228c41be5bf39b49ab4",
+          "bytes": 267218,
+          "width": 600,
+          "height": 900,
+          "object_key": "covers/ethan-carter/en/1cb9c72fce73.jpg",
+          "original_url": "https://assets.kitor.click/covers/ethan-carter/en/1cb9c72fce73.jpg",
+          "variant_urls": {
+            "240": "https://assets.kitor.click/cdn-cgi/image/width=240,fit=scale-down,quality=85,format=auto/covers/ethan-carter/en/1cb9c72fce73.jpg",
+            "480": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/ethan-carter/en/1cb9c72fce73.jpg",
+            "960": "https://assets.kitor.click/cdn-cgi/image/width=960,fit=scale-down,quality=85,format=auto/covers/ethan-carter/en/1cb9c72fce73.jpg"
+          },
+          "source": "Steam",
+          "source_page": "https://store.steampowered.com/app/258520/",
+          "image_url": "https://cdn.akamai.steamstatic.com/steam/apps/258520/library_600x900_2x.jpg",
+          "kind": "digital-library-cover"
+        },
+        "he": {
+          "file": "covers/ethan-carter/he/92abbf856e40.png",
+          "source_file": "hebrew/ethan-carter.png",
+          "sha256": "92abbf856e40e0b1e4ac962d4539a2ca32ac2644f54cbd3a7a832372439dfb67",
+          "bytes": 2552253,
+          "width": 1024,
+          "height": 1536,
+          "object_key": "covers/ethan-carter/he/92abbf856e40.png",
+          "original_url": "https://assets.kitor.click/covers/ethan-carter/he/92abbf856e40.png",
+          "variant_urls": {
+            "240": "https://assets.kitor.click/cdn-cgi/image/width=240,fit=scale-down,quality=85,format=auto/covers/ethan-carter/he/92abbf856e40.png",
+            "480": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/ethan-carter/he/92abbf856e40.png",
+            "960": "https://assets.kitor.click/cdn-cgi/image/width=960,fit=scale-down,quality=85,format=auto/covers/ethan-carter/he/92abbf856e40.png"
+          },
+          "source": "AI text localization",
+          "kind": "ai-localized-cover",
+          "derived_from": "originals/ethan-carter.jpg",
+          "note": "AI-generated; non-text artwork is not pixel-identical to source."
+        }
+      }
+    },
+    {
+      "game_id": "life-is-strange",
+      "title": "Life Is Strange — Episodes 1–3",
+      "covers": {
+        "en": {
+          "file": "covers/life-is-strange/en/3129cec77590.jpg",
+          "source_file": "originals/life-is-strange.jpg",
+          "sha256": "3129cec77590977b08d06bc14f8efd8cd2effb047485ee4705966c97b950727b",
+          "bytes": 196363,
+          "width": 600,
+          "height": 900,
+          "object_key": "covers/life-is-strange/en/3129cec77590.jpg",
+          "original_url": "https://assets.kitor.click/covers/life-is-strange/en/3129cec77590.jpg",
+          "variant_urls": {
+            "240": "https://assets.kitor.click/cdn-cgi/image/width=240,fit=scale-down,quality=85,format=auto/covers/life-is-strange/en/3129cec77590.jpg",
+            "480": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/life-is-strange/en/3129cec77590.jpg",
+            "960": "https://assets.kitor.click/cdn-cgi/image/width=960,fit=scale-down,quality=85,format=auto/covers/life-is-strange/en/3129cec77590.jpg"
+          },
+          "source": "Steam",
+          "source_page": "https://store.steampowered.com/app/319630/",
+          "image_url": "https://cdn.akamai.steamstatic.com/steam/apps/319630/library_600x900_2x.jpg",
+          "kind": "digital-library-cover"
+        },
+        "he": {
+          "file": "covers/life-is-strange/he/850643e4f7ca.png",
+          "source_file": "hebrew/life-is-strange.png",
+          "sha256": "850643e4f7ca550019da8504da7b724a3dd1a0ed4086b095b2092bc285c8deac",
+          "bytes": 2282346,
+          "width": 1024,
+          "height": 1536,
+          "object_key": "covers/life-is-strange/he/850643e4f7ca.png",
+          "original_url": "https://assets.kitor.click/covers/life-is-strange/he/850643e4f7ca.png",
+          "variant_urls": {
+            "240": "https://assets.kitor.click/cdn-cgi/image/width=240,fit=scale-down,quality=85,format=auto/covers/life-is-strange/he/850643e4f7ca.png",
+            "480": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/life-is-strange/he/850643e4f7ca.png",
+            "960": "https://assets.kitor.click/cdn-cgi/image/width=960,fit=scale-down,quality=85,format=auto/covers/life-is-strange/he/850643e4f7ca.png"
+          },
+          "source": "AI text localization",
+          "kind": "ai-localized-cover",
+          "derived_from": "originals/life-is-strange.jpg",
+          "note": "AI-generated; non-text artwork is not pixel-identical to source."
+        }
+      }
+    },
+    {
+      "game_id": "portal2",
+      "title": "Portal 2",
+      "covers": {
+        "en": {
+          "file": "covers/portal2/en/716b26a850c5.jpg",
+          "source_file": "originals/portal2.jpg",
+          "sha256": "716b26a850c5d9dff6645ffd1934fcb458dac262e4b9e2c9725054c0b057bea5",
+          "bytes": 145080,
+          "width": 600,
+          "height": 900,
+          "object_key": "covers/portal2/en/716b26a850c5.jpg",
+          "original_url": "https://assets.kitor.click/covers/portal2/en/716b26a850c5.jpg",
+          "variant_urls": {
+            "240": "https://assets.kitor.click/cdn-cgi/image/width=240,fit=scale-down,quality=85,format=auto/covers/portal2/en/716b26a850c5.jpg",
+            "480": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/portal2/en/716b26a850c5.jpg",
+            "960": "https://assets.kitor.click/cdn-cgi/image/width=960,fit=scale-down,quality=85,format=auto/covers/portal2/en/716b26a850c5.jpg"
+          },
+          "source": "Steam",
+          "source_page": "https://store.steampowered.com/app/620/",
+          "image_url": "https://cdn.akamai.steamstatic.com/steam/apps/620/library_600x900_2x.jpg",
+          "kind": "digital-library-cover"
+        },
+        "he": {
+          "file": "covers/portal2/he/cbf4cc98e5cb.png",
+          "source_file": "hebrew/portal2.png",
+          "sha256": "cbf4cc98e5cbceccabc5efca329eb543129b29af5c53dbb56916b31a43a7e983",
+          "bytes": 1684828,
+          "width": 1024,
+          "height": 1536,
+          "object_key": "covers/portal2/he/cbf4cc98e5cb.png",
+          "original_url": "https://assets.kitor.click/covers/portal2/he/cbf4cc98e5cb.png",
+          "variant_urls": {
+            "240": "https://assets.kitor.click/cdn-cgi/image/width=240,fit=scale-down,quality=85,format=auto/covers/portal2/he/cbf4cc98e5cb.png",
+            "480": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/portal2/he/cbf4cc98e5cb.png",
+            "960": "https://assets.kitor.click/cdn-cgi/image/width=960,fit=scale-down,quality=85,format=auto/covers/portal2/he/cbf4cc98e5cb.png"
+          },
+          "source": "AI text localization",
+          "kind": "ai-localized-cover",
+          "derived_from": "originals/portal2.jpg",
+          "note": "AI-generated; non-text artwork is not pixel-identical to source."
+        }
+      }
+    },
+    {
+      "game_id": "journey-down1",
+      "title": "The Journey Down: Chapter One",
+      "covers": {
+        "en": {
+          "file": "covers/journey-down1/en/593bbde1b4e9.jpg",
+          "source_file": "originals/journey-down1.jpg",
+          "sha256": "593bbde1b4e920f57a656b7a130d9ecb8c0bebc8cede5d6ef3272b05c8c85ed5",
+          "bytes": 146753,
+          "width": 600,
+          "height": 900,
+          "object_key": "covers/journey-down1/en/593bbde1b4e9.jpg",
+          "original_url": "https://assets.kitor.click/covers/journey-down1/en/593bbde1b4e9.jpg",
+          "variant_urls": {
+            "240": "https://assets.kitor.click/cdn-cgi/image/width=240,fit=scale-down,quality=85,format=auto/covers/journey-down1/en/593bbde1b4e9.jpg",
+            "480": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/journey-down1/en/593bbde1b4e9.jpg",
+            "960": "https://assets.kitor.click/cdn-cgi/image/width=960,fit=scale-down,quality=85,format=auto/covers/journey-down1/en/593bbde1b4e9.jpg"
+          },
+          "source": "Steam",
+          "source_page": "https://store.steampowered.com/app/220090/",
+          "image_url": "https://cdn.akamai.steamstatic.com/steam/apps/220090/library_600x900_2x.jpg",
+          "kind": "digital-library-cover"
+        },
+        "he": {
+          "file": "covers/journey-down1/he/881fae3ed173.png",
+          "source_file": "hebrew/journey-down1.png",
+          "sha256": "881fae3ed173c70c28637842a6739722ec67f3b7316553425062d5b32ebcc2f5",
+          "bytes": 1661133,
+          "width": 1024,
+          "height": 1536,
+          "object_key": "covers/journey-down1/he/881fae3ed173.png",
+          "original_url": "https://assets.kitor.click/covers/journey-down1/he/881fae3ed173.png",
+          "variant_urls": {
+            "240": "https://assets.kitor.click/cdn-cgi/image/width=240,fit=scale-down,quality=85,format=auto/covers/journey-down1/he/881fae3ed173.png",
+            "480": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/journey-down1/he/881fae3ed173.png",
+            "960": "https://assets.kitor.click/cdn-cgi/image/width=960,fit=scale-down,quality=85,format=auto/covers/journey-down1/he/881fae3ed173.png"
+          },
+          "source": "AI text localization",
+          "kind": "ai-localized-cover",
+          "derived_from": "originals/journey-down1.jpg",
+          "note": "AI-generated; non-text artwork is not pixel-identical to source."
+        }
+      }
+    },
+    {
+      "game_id": "kathy-rain-dc",
+      "title": "Kathy Rain: Director's Cut",
+      "covers": {
+        "en": {
+          "file": "covers/kathy-rain-dc/en/4d5873a538fd.jpg",
+          "source_file": "originals/kathy-rain-dc.jpg",
+          "sha256": "4d5873a538fd9181e330afa4102c57abb2fe67d44362a6b9784eff929bcf4463",
+          "bytes": 156376,
+          "width": 600,
+          "height": 900,
+          "object_key": "covers/kathy-rain-dc/en/4d5873a538fd.jpg",
+          "original_url": "https://assets.kitor.click/covers/kathy-rain-dc/en/4d5873a538fd.jpg",
+          "variant_urls": {
+            "240": "https://assets.kitor.click/cdn-cgi/image/width=240,fit=scale-down,quality=85,format=auto/covers/kathy-rain-dc/en/4d5873a538fd.jpg",
+            "480": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/kathy-rain-dc/en/4d5873a538fd.jpg",
+            "960": "https://assets.kitor.click/cdn-cgi/image/width=960,fit=scale-down,quality=85,format=auto/covers/kathy-rain-dc/en/4d5873a538fd.jpg"
+          },
+          "source": "Steam",
+          "source_page": "https://store.steampowered.com/app/1395030/",
+          "image_url": "https://cdn.akamai.steamstatic.com/steam/apps/1395030/library_600x900_2x.jpg",
+          "kind": "digital-library-cover"
+        },
+        "he": {
+          "file": "covers/kathy-rain-dc/he/1804c853528e.png",
+          "source_file": "hebrew/kathy-rain-dc.png",
+          "sha256": "1804c853528e4dcbdea70144400150a1c2e1345c1e733033905d9623e03048df",
+          "bytes": 1630563,
+          "width": 1024,
+          "height": 1536,
+          "object_key": "covers/kathy-rain-dc/he/1804c853528e.png",
+          "original_url": "https://assets.kitor.click/covers/kathy-rain-dc/he/1804c853528e.png",
+          "variant_urls": {
+            "240": "https://assets.kitor.click/cdn-cgi/image/width=240,fit=scale-down,quality=85,format=auto/covers/kathy-rain-dc/he/1804c853528e.png",
+            "480": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/kathy-rain-dc/he/1804c853528e.png",
+            "960": "https://assets.kitor.click/cdn-cgi/image/width=960,fit=scale-down,quality=85,format=auto/covers/kathy-rain-dc/he/1804c853528e.png"
+          },
+          "source": "AI text localization",
+          "kind": "ai-localized-cover",
+          "derived_from": "originals/kathy-rain-dc.jpg",
+          "note": "AI-generated; non-text artwork is not pixel-identical to source."
+        }
+      }
+    },
+    {
+      "game_id": "drifter",
+      "title": "The Drifter",
+      "covers": {
+        "en": {
+          "file": "covers/drifter/en/8f903a5fb6f8.jpg",
+          "source_file": "originals/drifter.jpg",
+          "sha256": "8f903a5fb6f85911e216eed5f15af28a2785b8d352cd8f7bbcae6e36cad389cc",
+          "bytes": 160871,
+          "width": 600,
+          "height": 900,
+          "object_key": "covers/drifter/en/8f903a5fb6f8.jpg",
+          "original_url": "https://assets.kitor.click/covers/drifter/en/8f903a5fb6f8.jpg",
+          "variant_urls": {
+            "240": "https://assets.kitor.click/cdn-cgi/image/width=240,fit=scale-down,quality=85,format=auto/covers/drifter/en/8f903a5fb6f8.jpg",
+            "480": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/drifter/en/8f903a5fb6f8.jpg",
+            "960": "https://assets.kitor.click/cdn-cgi/image/width=960,fit=scale-down,quality=85,format=auto/covers/drifter/en/8f903a5fb6f8.jpg"
+          },
+          "source": "Steam",
+          "source_page": "https://store.steampowered.com/app/1170570/",
+          "image_url": "https://cdn.akamai.steamstatic.com/steam/apps/1170570/library_600x900_2x.jpg",
+          "kind": "digital-library-cover"
+        },
+        "he": {
+          "file": "covers/drifter/he/3fe049fcedf2.png",
+          "source_file": "hebrew/drifter.png",
+          "sha256": "3fe049fcedf2cb7c0d2295300e7339dd3e292b8e1894b2bd8380aae3596d1448",
+          "bytes": 1707985,
+          "width": 1024,
+          "height": 1536,
+          "object_key": "covers/drifter/he/3fe049fcedf2.png",
+          "original_url": "https://assets.kitor.click/covers/drifter/he/3fe049fcedf2.png",
+          "variant_urls": {
+            "240": "https://assets.kitor.click/cdn-cgi/image/width=240,fit=scale-down,quality=85,format=auto/covers/drifter/he/3fe049fcedf2.png",
+            "480": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/drifter/he/3fe049fcedf2.png",
+            "960": "https://assets.kitor.click/cdn-cgi/image/width=960,fit=scale-down,quality=85,format=auto/covers/drifter/he/3fe049fcedf2.png"
+          },
+          "source": "AI text localization",
+          "kind": "ai-localized-cover",
+          "derived_from": "originals/drifter.jpg",
+          "note": "AI-generated; non-text artwork is not pixel-identical to source."
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "idx": 3,
+  "name_he": "התגלית",
+  "name_en": "The Dig",
+  "facebook_post": "https://www.facebook.com/groups/200491360554968/permalink/507444396526328/",
+  "post_date": "2020-03-13T09:28:33Z (UTC, from creation_time)",
+  "description": "המצב בחוץ לא מלבב ועל כולנו עוברים ימים לא פשוטים. לשם כך התכנסנו כאן בהרפתקה עברית על מנת לעשות לכם טוב על הלב ולהעניק לכל עם ישראל מתנה מיוחדת אשר מתווספת לקטלוג ההולך ומתארך שלנו - The Dig / התגלית, הקווסט הנהדר והאהוב מבית לוקאסארטס, בעברית מלאה על המסך!\nלמדו כיצד כמה גיבורים בעוז רוח ובתושיה אין קץ מצילים את העולם מידי אסטרואיד אימתני המאיים להשמידו. הדבר מוביל אותם להסתבכות בעלילה הזויה ומרתקת, שאותה נשאיר לכם לגלות בעצמכם.\nתודותינו נתונות לניב באר על פיתוח הפרוייקט האדיר מהמסד ועד הטפחות, לאוהד רשף על התרגום הנפלא, ולסיוון על התיקונים המועילים.\nאז תיהנו לכם והכי חשוב, תהיו בריאים!",
+  "vm": "ScummVM",
+  "vm_notes": null,
+  "vm_source": "post",
+  "patch_link": "https://github.com/adventurebrew/scummworks/releases/tag/DIG-WIP1",
+  "patch_links": [
+    "https://github.com/adventurebrew/scummworks/releases/tag/DIG-WIP1"
+  ],
+  "other_links": [
+    "https://www.gog.com/en/game/the_dig",
+    "https://www.scummvm.org/downloads/#release"
+  ],
+  "extraction_status": "ok"
+}

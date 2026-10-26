@@ -1,0 +1,20 @@
+{
+  "idx": 136,
+  "name_he": "מסע בחלל 1: התקרית הסאריינית (EGA)",
+  "name_en": "Space Quest 1: The Sarien Encounter (EGA)",
+  "facebook_post": "https://www.facebook.com/groups/hebrewadventure/posts/1893489874588433/",
+  "post_date": "2026-01-18T14:28:38Z (UTC, from creation_time)",
+  "description": "תצטרפו להרפתקה הראשונה של רוג׳ר וילקו בגרסה המקורית עם גרפיקה של EGA. כמובן, מדובר במסע בחלל פרק ראשון (Space Quest 1). תיהנו מכל ההומור, מכל הדרכים למות, ומכל הניקיון של השרת האס!\nתודה לשי גרינברג שעזר לי לשפר את התרגום. תודה לכל האנשים בקבוצת הרפתקה עברית על כמה הצעות לשיפור התרגום.\nאם יש בעיות טכניות או בעיות עם התרגום, אשמח לקבל הודעות כאן או בדיסקורד של הקבוצה.",
+  "vm": "ScummVM",
+  "vm_notes": "daily build",
+  "vm_source": "post",
+  "patch_link": "https://github.com/sam-mfb/agi-ivrit-sq1/releases/tag/v1",
+  "patch_links": [
+    "https://github.com/sam-mfb/agi-ivrit-sq1/releases/tag/v1"
+  ],
+  "other_links": [
+    "https://www.gog.com/en/game/space_quest_1_2_3",
+    "https://buildbot.scummvm.org/#/dailybuilds"
+  ],
+  "extraction_status": "ok"
+}

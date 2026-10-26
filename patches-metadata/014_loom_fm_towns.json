@@ -1,0 +1,20 @@
+{
+  "idx": 14,
+  "name_he": "האורגים",
+  "name_en": "Loom (FM-Towns)",
+  "facebook_post": "https://www.facebook.com/groups/200491360554968/permalink/644718816132218/",
+  "post_date": "2020-07-13T21:29:12Z (UTC, from creation_time)",
+  "description": "חברים יקרים,\nאני שמח לספר שניתן לשחק במשחק הקסום \"האורגים\" בגרסת ה FM-Towns היפייפיה עם העברית המקורית של מחשבת (תרגום: עופר קליסקי).\nהכנת טלאי העברית לא היתה מתאפשרת לולא עזרתו האדיבה של ניב באר Niv Baehr.\nהסבר בנוגע לגרסאות המשחק השונות\nהמשחק יצא ב-3 גירסאות:\nגירסת EGA ל-PC:\n16 צבעים, דיאלוגים מלאים, פסקול MIDI, ללא דיבוב.\nזו הגירסה המקורית של המשחק שתורגמה לעברית ע\"י מחשבת.\nגירסת FM Towns:\n256 צבעים, דיאלוגים מלאים, פסקול דיגיטלי, ללא דיבוב.\nגירסה ייעודית למחשב היפני FM Towns. נחשבת נדירה יותר. זו הגירסה שניתן כרגע לייבא עבורה את התרגום העברי.\nגירסת PC CD:\n256 צבעים, דיאלוגים מקוצצים, פסקול דיגיטלי, דיבוב באנגלית.\nהגירסה שניתן למצוא ב-Steam וב-GOG. בגלל שהטקסט של גירסה זו שונה מהמקור, לא ניתן פשוט לייבא את התרגום של מחשבת. יש צורך לתרגם ידנית את רוב המלל במשחק. עד שמישהו לא יעשה זאת - לא ניתן יהיה לשחק בגירסה זו בעברית.",
+  "vm": "ScummVM",
+  "vm_notes": null,
+  "vm_source": "post",
+  "patch_link": "https://drive.google.com/file/d/1V-pHlVKcmpoJKOtG1zYSowGg39w7bvzP/view",
+  "patch_links": [
+    "https://drive.google.com/file/d/1V-pHlVKcmpoJKOtG1zYSowGg39w7bvzP/view"
+  ],
+  "other_links": [
+    "https://www.old-games.ru/game/download/get.php?fileid=3013",
+    "https://www.scummvm.org/downloads/#daily"
+  ],
+  "extraction_status": "ok"
+}

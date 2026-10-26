@@ -1,0 +1,20 @@
+{
+  "idx": 158,
+  "name_he": "מסע המלך 7: נסיכה לא כלה",
+  "name_en": "King's Quest VII: The Princesless Bride",
+  "facebook_post": "https://www.facebook.com/share/v/1EEevToedA/",
+  "post_date": "2026-06-21T18:51:42Z (UTC, from creation_time)",
+  "description": "אני שמח ונרגש, כן, לאחר מאמצים מרובים לפרסם את התרגום העברי למסע המלך 7.\nתודה רבה לגל שמש האגדי על העזרה בתרגום הגריפקה.\nתודה רבה איך לא, לשי גרינברג על תרגום שיר הפתיחה והעצות הטובות.\nתודה רבה למורן וייסמן מה\"קופסא\" - על סריקת החוברת המקורית של המשחק בעברית. (מצורף לפאצ')\nותודה לכל החבר'ה הוותיקים שהניחו את התשתית לתרגום משחקי SCI שעל חלקה התבססתי.\nצירפתי כאן להנאתכם את סרטון הפתיחה שהתאמצתי מאד לשתול בו כתוביות מקווה שתעריכו את המאמץ.\nודבר אחרון.\nבזאת השלמנו תרגום לכל סדרת מסע המלך.\nתם ולא נשלם. בקרוב - בונוס: תרגום לגרסת הרימייק של מסע המלך 1 בלוווי תזמורת של ניסים חליפה.",
+  "vm": "ScummVM",
+  "vm_notes": null,
+  "vm_source": "post",
+  "patch_link": "https://github.com/SegMash/SCIHebrew/releases/download/5_26/KQ7_Hebrew_Patch_Setup.exe",
+  "patch_links": [
+    "https://github.com/SegMash/SCIHebrew/releases/download/5_26/KQ7_Hebrew_Patch_Setup.exe",
+    "https://github.com/nitro-shoe/sc-55-soundfont/releases/tag/v1.32"
+  ],
+  "other_links": [
+    "https://www.scummvm.org/downloads/"
+  ],
+  "extraction_status": "ok"
+}

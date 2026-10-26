@@ -1,0 +1,470 @@
+[
+  {
+    "id": "undertale",
+    "title": "UNDERTALE",
+    "covers": {
+      "he": {
+        "src": "/covers/undertale-he.webp"
+      },
+      "en": {
+        "src": "/covers/undertale-en.webp"
+      }
+    },
+    "platforms": {
+      "windows": true,
+      "osx": true,
+      "linux": false
+    },
+    "hebrew": true
+  },
+  {
+    "id": "monkey-se",
+    "title": "The Secret of Monkey Island: Special Edition",
+    "covers": {
+      "he": {
+        "src": "/covers/monkey-se-he.webp"
+      },
+      "en": {
+        "src": "/covers/monkey-se-en.webp"
+      }
+    },
+    "platforms": {
+      "windows": true,
+      "osx": true,
+      "linux": false
+    },
+    "hebrew": true
+  },
+  {
+    "id": "monkey2-se",
+    "title": "Monkey Island 2: LeChuck's Revenge Special Edition",
+    "covers": {
+      "he": {
+        "src": "/covers/monkey2-se-he.webp"
+      },
+      "en": {
+        "src": "/covers/monkey2-se-en.webp"
+      }
+    },
+    "platforms": {
+      "windows": true,
+      "osx": true,
+      "linux": false
+    },
+    "hebrew": true
+  },
+  {
+    "id": "sq1sci",
+    "title": "Space Quest I: Roger Wilco in the Sarien Encounter (VGA Remake)",
+    "covers": {
+      "he": {
+        "src": "/covers/sq1sci-he.webp"
+      },
+      "en": {
+        "src": "/covers/sq1sci-en.webp"
+      }
+    },
+    "platforms": {
+      "windows": true,
+      "osx": true,
+      "linux": true
+    },
+    "hebrew": true
+  },
+  {
+    "id": "kyra1-cd",
+    "title": "The Legend of Kyrandia",
+    "covers": {
+      "he": {
+        "src": "/covers/kyra1-cd-he.webp"
+      },
+      "en": {
+        "src": "/covers/kyra1-cd-en.webp"
+      }
+    },
+    "platforms": {
+      "windows": true,
+      "osx": true,
+      "linux": false
+    },
+    "hebrew": true
+  },
+  {
+    "id": "pq1",
+    "title": "Police Quest: In Pursuit of the Death Angel (EGA)",
+    "covers": {
+      "he": {
+        "src": "/covers/pq1-he.webp"
+      },
+      "en": {
+        "src": "/covers/pq1-en.webp"
+      }
+    },
+    "platforms": {
+      "windows": true,
+      "osx": true,
+      "linux": false
+    },
+    "hebrew": true
+  },
+  {
+    "id": "sq1",
+    "title": "Space Quest I: The Sarien Encounter (EGA)",
+    "covers": {
+      "he": {
+        "src": "/covers/sq1-he.webp"
+      },
+      "en": {
+        "src": "/covers/sq1-en.webp"
+      }
+    },
+    "platforms": {
+      "windows": true,
+      "osx": true,
+      "linux": false
+    },
+    "hebrew": true
+  },
+  {
+    "id": "sq2",
+    "title": "Space Quest II: Vohaul’s Revenge",
+    "covers": {
+      "he": {
+        "src": "/covers/sq2-he.webp"
+      },
+      "en": {
+        "src": "/covers/sq2-en.webp"
+      }
+    },
+    "platforms": {
+      "windows": true,
+      "osx": true,
+      "linux": false
+    },
+    "hebrew": true
+  },
+  {
+    "id": "sq3",
+    "title": "Space Quest III: The Pirates of Pestulon",
+    "covers": {
+      "he": {
+        "src": "/covers/sq3-he.webp"
+      },
+      "en": {
+        "src": "/covers/sq3-en.webp"
+      }
+    },
+    "platforms": {
+      "windows": true,
+      "osx": true,
+      "linux": false
+    },
+    "hebrew": true
+  },
+  {
+    "id": "sq5",
+    "title": "Space Quest V: The Next Mutation",
+    "covers": {
+      "he": {
+        "src": "/covers/sq5-he.webp"
+      },
+      "en": {
+        "src": "/covers/sq5-en.webp"
+      }
+    },
+    "platforms": {
+      "windows": true,
+      "osx": true,
+      "linux": false
+    },
+    "hebrew": true
+  },
+  {
+    "id": "torin",
+    "title": "Torin’s Passage",
+    "covers": {
+      "he": {
+        "src": "/covers/torin-he.webp"
+      },
+      "en": {
+        "src": "/covers/torin-en.webp"
+      }
+    },
+    "platforms": {
+      "windows": true,
+      "osx": true,
+      "linux": false
+    },
+    "hebrew": true
+  },
+  {
+    "id": "spyfox",
+    "title": "Spy Fox in Dry Cereal",
+    "covers": {
+      "he": {
+        "src": "/covers/spyfox-he.webp"
+      },
+      "en": {
+        "src": "/covers/spyfox-en.webp"
+      }
+    },
+    "platforms": {
+      "windows": true,
+      "osx": true,
+      "linux": false
+    },
+    "hebrew": true
+  },
+  {
+    "id": "pajama",
+    "title": "Pajama Sam: No Need to Hide When It’s Dark Outside",
+    "covers": {
+      "he": {
+        "src": "/covers/pajama-he.webp"
+      },
+      "en": {
+        "src": "/covers/pajama-en.webp"
+      }
+    },
+    "platforms": {
+      "windows": true,
+      "osx": true,
+      "linux": false
+    },
+    "hebrew": true
+  },
+  {
+    "id": "toonstruck",
+    "title": "Toonstruck",
+    "covers": {
+      "he": {
+        "src": "/covers/toonstruck-he.webp"
+      },
+      "en": {
+        "src": "/covers/toonstruck-en.webp"
+      }
+    },
+    "platforms": {
+      "windows": true,
+      "osx": true,
+      "linux": false
+    },
+    "hebrew": true
+  },
+  {
+    "id": "gob2",
+    "title": "Gobliins 2: The Prince Buffoon",
+    "covers": {
+      "he": {
+        "src": "/covers/gob2-he.webp"
+      },
+      "en": {
+        "src": "/covers/gob2-en.webp"
+      }
+    },
+    "platforms": {
+      "windows": true,
+      "osx": true,
+      "linux": false
+    },
+    "hebrew": true
+  },
+  {
+    "id": "tlj",
+    "title": "The Longest Journey",
+    "covers": {
+      "he": {
+        "src": "/covers/tlj-he.webp"
+      },
+      "en": {
+        "src": "/covers/tlj-en.webp"
+      }
+    },
+    "platforms": {
+      "windows": true,
+      "osx": true,
+      "linux": false
+    },
+    "hebrew": true
+  },
+  {
+    "id": "sky",
+    "title": "Beneath a Steel Sky",
+    "covers": {
+      "he": {
+        "src": "/covers/sky-he.webp"
+      },
+      "en": {
+        "src": "/covers/sky-en.webp"
+      }
+    },
+    "platforms": {
+      "windows": true,
+      "osx": true,
+      "linux": false
+    },
+    "hebrew": true
+  },
+  {
+    "id": "stanley-parable",
+    "title": "The Stanley Parable (2013)",
+    "covers": {
+      "he": {
+        "src": "/covers/stanley-parable-he.webp"
+      },
+      "en": {
+        "src": "/covers/stanley-parable-en.webp"
+      }
+    },
+    "platforms": {
+      "windows": true,
+      "osx": false,
+      "linux": false
+    },
+    "hebrew": true
+  },
+  {
+    "id": "tesla-effect",
+    "title": "Tesla Effect: A Tex Murphy Adventure",
+    "covers": {
+      "he": {
+        "src": "/covers/tesla-effect-he.webp"
+      },
+      "en": {
+        "src": "/covers/tesla-effect-en.webp"
+      }
+    },
+    "platforms": {
+      "windows": true,
+      "osx": false,
+      "linux": false
+    },
+    "hebrew": true
+  },
+  {
+    "id": "ethan-carter",
+    "title": "The Vanishing of Ethan Carter (original)",
+    "covers": {
+      "he": {
+        "src": "/covers/ethan-carter-he.webp"
+      },
+      "en": {
+        "src": "/covers/ethan-carter-en.webp"
+      }
+    },
+    "platforms": {
+      "windows": true,
+      "osx": false,
+      "linux": false
+    },
+    "hebrew": true
+  },
+  {
+    "id": "life-is-strange",
+    "title": "Life Is Strange — Episodes 1–3",
+    "covers": {
+      "he": {
+        "src": "/covers/life-is-strange-he.webp"
+      },
+      "en": {
+        "src": "/covers/life-is-strange-en.webp"
+      }
+    },
+    "platforms": {
+      "windows": true,
+      "osx": false,
+      "linux": false
+    },
+    "hebrew": true
+  },
+  {
+    "id": "portal2",
+    "title": "Portal 2",
+    "covers": {
+      "he": {
+        "src": "/covers/portal2-he.webp"
+      },
+      "en": {
+        "src": "/covers/portal2-en.webp"
+      }
+    },
+    "platforms": {
+      "windows": true,
+      "osx": false,
+      "linux": false
+    },
+    "hebrew": true
+  },
+  {
+    "id": "journey-down1",
+    "title": "The Journey Down: Chapter One",
+    "covers": {
+      "he": {
+        "src": "/covers/journey-down1-he.webp"
+      },
+      "en": {
+        "src": "/covers/journey-down1-en.webp"
+      }
+    },
+    "platforms": {
+      "windows": true,
+      "osx": false,
+      "linux": false
+    },
+    "hebrew": true
+  },
+  {
+    "id": "kathy-rain-dc",
+    "title": "Kathy Rain: Director's Cut",
+    "covers": {
+      "he": {
+        "src": "/covers/kathy-rain-dc-he.webp"
+      },
+      "en": {
+        "src": "/covers/kathy-rain-dc-en.webp"
+      }
+    },
+    "platforms": {
+      "windows": true,
+      "osx": false,
+      "linux": false
+    },
+    "hebrew": true
+  },
+  {
+    "id": "drifter",
+    "title": "The Drifter",
+    "covers": {
+      "he": {
+        "src": "/covers/drifter-he.webp"
+      },
+      "en": {
+        "src": "/covers/drifter-en.webp"
+      }
+    },
+    "platforms": {
+      "windows": true,
+      "osx": true,
+      "linux": false
+    },
+    "hebrew": true
+  },
+  {
+    "id": "owlboy",
+    "title": "ילד הינשוף — Owlboy",
+    "covers": {
+      "he": {
+        "src": "/covers/owlboy-he.webp"
+      },
+      "en": {
+        "src": "/covers/owlboy-en.webp"
+      }
+    },
+    "platforms": {
+      "windows": false,
+      "osx": true,
+      "linux": false
+    },
+    "hebrew": true
+  }
+]

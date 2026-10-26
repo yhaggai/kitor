@@ -1,0 +1,21 @@
+{
+  "idx": 135,
+  "name_he": "מסע המלך: מסכת הנצח",
+  "name_en": "King's Quest: Mask of Eternity",
+  "facebook_post": "https://www.facebook.com/groups/hebrewadventure/posts/1886454635291957/",
+  "post_date": "2026-01-08T15:45:12Z (UTC, from creation_time)",
+  "description": "טוב חברים לאחר מסע ארוך אני שמח לשחרר את התרגום שלי למשחק KQ8 - \"מסכת הנצח\".\nהמשחק מתאר כיצד השתלט הרוע על דבנטרי ועל כל העולמות שמסביב ובחור צעיר בשם קונור, הפעם לא ממשפחת המלוכה - שיוצא למסע חוצה עולמות במטרה להשיב את חלקי המסכה למקומה ולהשיב את הסדר בממלכה. \nהמשחק הינו הראשון בסדרת מסע המלך שיצא בגרפיקת תלת מימד, וניתן לשחק ב2 מודים. ניתן לשחק בDirectDraw - ואז התחושה היא יותר מפוקסלת אבל הביצועים טובים. וניתן לשחק עם 3dfx ולמראה חלק יותר אבל ייתכן שתרגישו ביצועים פחות טובים במיוחד עם סבוב המצלמה.",
+  "vm": null,
+  "vm_notes": null,
+  "vm_source": null,
+  "patch_link": "https://github.com/SegMash/KQ8HebrewTranslation/releases/download/1_26/KQ8_Hebrew_Patch_Setup_For_DirectDraw.exe",
+  "patch_links": [
+    "https://github.com/SegMash/KQ8HebrewTranslation/releases/download/1_26/KQ8_Hebrew_Patch_Setup_For_DirectDraw.exe",
+    "https://github.com/SegMash/KQ8HebrewTranslation/releases/download/11_25/KQ8_Hebrew_Patch_Setup_For_3dfx.exe",
+    "https://github.com/SegMash/KQ8FixWin11"
+  ],
+  "other_links": [
+    "https://www.gog.com/en/game/kings_quest_7_8"
+  ],
+  "extraction_status": "ok (note: 3 of the link hrefs are themselves truncated with \"...\" in the original post, i.e. the author posted shortened urls; kept as found)"
+}

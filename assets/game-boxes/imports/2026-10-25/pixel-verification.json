@@ -155,6 +155,12 @@
         179
       ],
       [
+        299,
+        104,
+        503,
+        233
+      ],
+      [
         13,
         143,
         503,
@@ -165,6 +171,12 @@
         225,
         213,
         322
+      ],
+      [
+        13,
+        315,
+        60,
+        351
       ]
     ],
     "dimensions": [
@@ -172,7 +184,7 @@
       644
     ],
     "outside_mask_changed_pixels": 0,
-    "preserved_pixels": 234857,
+    "preserved_pixels": 225665,
     "total_pixels": 329728
   },
   {
@@ -581,6 +593,25 @@
     "total_pixels": 540000
   },
   {
+    "game_id": "return-of-the-tentacle-prologue",
+    "original_sha256": "e85bccedb6ac4137d05adacf075c03aab254691e809e0a430b1673e2fdb6fb58",
+    "boxes": [
+      [
+        0,
+        256,
+        273,
+        450
+      ]
+    ],
+    "dimensions": [
+      630,
+      500
+    ],
+    "outside_mask_changed_pixels": 0,
+    "preserved_pixels": 261570,
+    "total_pixels": 315000
+  },
+  {
     "game_id": "maid-of-sker",
     "original_sha256": "145e2861d3da28d4b44da942adae4fefe4d229c0c3dab60e50e622b4897c74d1",
     "boxes": [
@@ -928,7 +959,7 @@
     "boxes": [
       [
         13,
-        137,
+        113,
         515,
         372
       ]
@@ -938,7 +969,7 @@
       704
     ],
     "outside_mask_changed_pixels": 0,
-    "preserved_pixels": 253004,
+    "preserved_pixels": 240932,
     "total_pixels": 371712
   },
   {
@@ -1163,6 +1194,25 @@
     "total_pixels": 195072
   },
   {
+    "game_id": "space-madness",
+    "original_sha256": "93752a1f998a13d8550137db9a08144eaedae3ee2eb8752845161fed10ea5986",
+    "boxes": [
+      [
+        158,
+        64,
+        478,
+        228
+      ]
+    ],
+    "dimensions": [
+      630,
+      500
+    ],
+    "outside_mask_changed_pixels": 0,
+    "preserved_pixels": 262035,
+    "total_pixels": 315000
+  },
+  {
     "game_id": "even-more-incredible-machine",
     "original_sha256": "30b07ae60e07bea4f0ae7e3fcd961c102db9c38a028ae2914bdd0c0a994ec875",
     "boxes": [
@@ -1199,6 +1249,25 @@
     "outside_mask_changed_pixels": 0,
     "preserved_pixels": 477804,
     "total_pixels": 540000
+  },
+  {
+    "game_id": "dracula-4-5",
+    "original_sha256": "d8be90790211bb88e744d3fc0a8524f6d518b5d2caa69953f99a6315df55da74",
+    "boxes": [
+      [
+        387,
+        263,
+        1227,
+        452
+      ]
+    ],
+    "dimensions": [
+      1600,
+      740
+    ],
+    "outside_mask_changed_pixels": 0,
+    "preserved_pixels": 1024210,
+    "total_pixels": 1184000
   },
   {
     "game_id": "salammb-battle-for-carthage",
@@ -1265,7 +1334,7 @@
         0,
         0,
         512,
-        187
+        159
       ]
     ],
     "dimensions": [
@@ -1273,7 +1342,7 @@
       733
     ],
     "outside_mask_changed_pixels": 0,
-    "preserved_pixels": 279040,
+    "preserved_pixels": 293376,
     "total_pixels": 375296
   },
   {
@@ -1294,6 +1363,25 @@
     "outside_mask_changed_pixels": 0,
     "preserved_pixels": 510334,
     "total_pixels": 540000
+  },
+  {
+    "game_id": "reversion",
+    "original_sha256": "647fcc9fece6c43d6c381c4a56573a6b4c559add3170f911a8562e6985296dbc",
+    "boxes": [
+      [
+        107,
+        156,
+        356,
+        198
+      ]
+    ],
+    "dimensions": [
+      460,
+      215
+    ],
+    "outside_mask_changed_pixels": 0,
+    "preserved_pixels": 88150,
+    "total_pixels": 98900
   },
   {
     "game_id": "chronicles-of-mystery-the-tree-of-life",
@@ -1395,10 +1483,10 @@
     "original_sha256": "450bfe6204b9797f966e95f81bf94aa82a8d62b9d7b3922bf93a5aec42704dcf",
     "boxes": [
       [
-        102,
+        17,
         603,
-        990,
-        939
+        1015,
+        899
       ]
     ],
     "dimensions": [
@@ -1406,7 +1494,7 @@
       1024
     ],
     "outside_mask_changed_pixels": 0,
-    "preserved_pixels": 748983,
+    "preserved_pixels": 751873,
     "total_pixels": 1048576
   },
   {
@@ -1631,6 +1719,25 @@
     "total_pixels": 326656
   },
   {
+    "game_id": "and-then-there-were-none",
+    "original_sha256": "d9132723bef246e03988f1294fed8fe7a04ae4b84b3bb20e30372d4f3e6923e1",
+    "boxes": [
+      [
+        194,
+        538,
+        774,
+        653
+      ]
+    ],
+    "dimensions": [
+      929,
+      800
+    ],
+    "outside_mask_changed_pixels": 0,
+    "preserved_pixels": 675804,
+    "total_pixels": 743200
+  },
+  {
     "game_id": "king-s-quest",
     "original_sha256": "1fafae36548c0c62341fec3150542ea35cdb48ab9f63c42f8135352b0eb7a479",
     "boxes": [
@@ -1761,9 +1868,9 @@
     "original_sha256": "b658d38c454507cba02ec557e4a6f9d4c056269bdb40727aa06725fd745fe650",
     "boxes": [
       [
-        34,
+        28,
         161,
-        207,
+        237,
         245
       ]
     ],
@@ -1772,7 +1879,7 @@
       315
     ],
     "outside_mask_changed_pixels": 0,
-    "preserved_pixels": 65850,
+    "preserved_pixels": 62790,
     "total_pixels": 80640
   },
   {
@@ -2241,6 +2348,25 @@
     "outside_mask_changed_pixels": 0,
     "preserved_pixels": 2409766,
     "total_pixels": 3501360
+  },
+  {
+    "game_id": "agatha-christie-murder-on-the-orient-express-2006",
+    "original_sha256": "cbf3c062232e1a82ea18f160ed27f1200794b517c19e48fedf9b6ea0e5a32577",
+    "boxes": [
+      [
+        112,
+        489,
+        673,
+        702
+      ]
+    ],
+    "dimensions": [
+      792,
+      800
+    ],
+    "outside_mask_changed_pixels": 0,
+    "preserved_pixels": 513332,
+    "total_pixels": 633600
   },
   {
     "game_id": "the-blackwell-legacy",

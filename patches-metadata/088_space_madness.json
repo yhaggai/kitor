@@ -1,0 +1,22 @@
+{
+  "idx": 88,
+  "name_he": "טירוף בחלל",
+  "name_en": "Space Madness",
+  "facebook_post": "https://www.facebook.com/groups/hebrewadventure/permalink/1523464641590960/?app=fbl",
+  "post_date": "2024-08-20T06:00:03Z (UTC, from creation_time)",
+  "description": "פרופסור מרטי הוא מדען מטורף שמשייט לו על חללית אי שם ברחבי הגלקסיה. חלומו הוא ליצור צבא של שיבוטים בצלמו כדמותו שישתלטו על היקום כולו. אולם באחד הניסויים הכושלים שלו נוצר מוטנט צהוב בצורת מלבן בשם אד שמושלך ככלי אין חפץ בו על אדמת הכוכב הסמוך. לאחר ששב לעשתונותיו ולומד על ההיסטוריה הכואבת שלו, מחליט אד לצאת למסע להצלת העולם מידי הפרופסור המגלומן.\n\"טירוף בחלל\" הוא קווסט משעשע קליל וחביב שלא לוקח את עצמו יותר מדי ברצינות, ועושה מעל ומעבר כדי לספק לכם כמה שעות גדושות בכיף והנאה. ועכשיו גם בעברית תודות למתרגם המוכשר והמקצוען אלעד הלפרין.\nפתרונות למי שנתקע וצריך עזרה ותמיכה:\nhttps://www.adventurespel.nl/games/walk/spacemad.htm\nיש גם דמו למי שרוצה להתנסות בחינם, התרגום עובד גם עליו:\nhttps://downloads.scummvm.org/.../space_madness-demo-en.zip",
+  "vm": "ScummVM",
+  "vm_notes": null,
+  "vm_source": "post",
+  "patch_link": "https://drive.google.com/file/d/1ARW-4jmp__ebdqnt3zH3c9ad0SEjVQ-k/view?usp=sharing",
+  "patch_links": [
+    "https://drive.google.com/file/d/1ARW-4jmp__ebdqnt3zH3c9ad0SEjVQ-k/view?usp=sharing",
+    "http://itch.io/",
+    "https://spreadcamp.itch.io/space-madness"
+  ],
+  "other_links": [
+    "https://www.adventurespel.nl/games/walk/spacemad.htm",
+    "https://downloads.scummvm.org/frs/demos/wintermute/space_madness-demo-en.zip"
+  ],
+  "extraction_status": "ok"
+}

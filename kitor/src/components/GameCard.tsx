@@ -70,8 +70,14 @@ export default function GameCard({ game, onRemove, isHighlighted }: GameCardProp
     setRefreshing(true);
     try {
       const health = await invoke<GameHealth>("refresh_game", { gameId: game.id });
+      const games = await invoke<Game[]>("get_games_with_patches");
+      const updatedGame = games.find((entry) => entry.id === game.id);
+      if (!updatedGame) throw new Error("Updated game was not found in the library.");
+
+      // Disk health alone cannot clear stale installation records in the UI.
+      // Reload patch availability and installed patches along with the check.
       const store = useAppStore.getState();
-      store.setGames(store.games.map((entry) => entry.id === game.id ? { ...entry, health } : entry));
+      store.setGames(store.games.map((entry) => entry.id === game.id ? { ...updatedGame, health } : entry));
     } catch (error) {
       await alert({ title: "Refresh Failed", description: String(error) });
     } finally {
@@ -80,7 +86,7 @@ export default function GameCard({ game, onRemove, isHighlighted }: GameCardProp
   };
 
   const handleLaunch = async () => {
-    if (!isScummVMReady) {
+    if (game.requires_scummvm !== false && !isScummVMReady) {
       actions.showScummVMDialog();
       return;
     }
@@ -92,7 +98,7 @@ export default function GameCard({ game, onRemove, isHighlighted }: GameCardProp
 
       // Check if error is about ScummVM not being downloaded
       const errorStr = String(error);
-      if (errorStr.includes("not downloaded") || errorStr.includes("not found")) {
+      if (game.requires_scummvm !== false && (errorStr.includes("not downloaded") || errorStr.includes("not found"))) {
         actions.showScummVMDialog();
       } else {
         await alert({ title: "Launch Failed", description: String(error) });

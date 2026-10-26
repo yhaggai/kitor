@@ -198,5 +198,13 @@
     "he": {
       "src": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/drifter/he/3fe049fcedf2.png"
     }
+  },
+  "owlboy": {
+    "en": {
+      "src": "/covers/owlboy/en.jpg"
+    },
+    "he": {
+      "src": "/covers/owlboy/he.png"
+    }
   }
 }

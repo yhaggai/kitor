@@ -1,20 +1,31 @@
-# Catalog cover import — in progress
+# Catalog cover import
 
-Source: `/Users/haggaiyaniv/Downloads/json/all_games.json` (174 records).
-22 entries match the existing bilingual catalog; 152 entries are new.
+Input: `/Users/haggaiyaniv/Downloads/json/all_games.json` (174 records): 22 already represented, 152 new entries. Added 149 English/Hebrew pairs to the existing 25-pair catalog, yielding 174 pairs. The new Hebrew variants comprise 135 AI title composites and 14 existing Hebrew retail scans.
 
-Current checkpoint: 116 downloaded English sources (including one title-free Simon image rejected for final use), 14 existing Hebrew retail scans, 15 AI draft edits. All 29 available pairs are shown in `review.html`. The original catalog and Cloudflare objects have not been changed by this import.
+## Preservation and review
 
-`queue.json` records the complete import, exact catalog titles, existing-game mapping, source URLs, dimensions, SHA-256 checksums, and review states. `prompts.json` contains the prompts used with built-in image_gen. `generated/` holds the full AI draft outputs; `sources/` holds unchanged downloads. `batch2.json` and `batch3.json` preserve generation provenance. Run `python3 build_review.py` to refresh the review.
+English downloads remain unchanged. With explicit user authorization, translated title areas were composited onto the original images. `pixel-verification.json` records zero changed pixels outside the masks for all 135 composites. Background beneath replaced lettering is reconstructed, so preservation within those regions is not pixel-exact. Typography follows the original title treatment. Existing Hebrew scans retain their historical packaging and may differ from the English edition.
 
-## Outstanding work
+All composites were visually reviewed; corrected titles include Portal, Ankh, Duke Grabowski, and Reversion. The input omitted Hebrew names for Contradiction and Reversion; the proposed titles are סתירה and רוורסיה and are labeled in metadata.
 
-- Resolve artwork preservation: full-cover AI edits change some non-text details. A question is pending about locally compositing only translated title regions onto the original artwork. Do not treat drafts as final text-only edits.
-- Fix Portal with RTX: the decorative ring replaced the wrong Hebrew letter. Required title: פורטל.
-- Source 36 missing English covers and replace the title-free Simon source.
-- Inspect the downloaded English covers and their editions; currently source acquisition does not imply visual approval.
-- Generate/localize the remaining Hebrew covers and verify spelling and typography.
-- Resolve blank Hebrew catalog names for Contradiction and Reversion; check the grouped Dracula 4+5 and Reversion entries before assigning final assets.
-- Organize final approved pairs into the canonical content-addressed `covers/` structure and upload to Cloudflare, then verify public hashes and image transforms.
+## Files
 
-Existing Hebrew retail scans deliberately preserve their historic titles and packaging; these may differ from the translation project's current Hebrew name or English regional packaging. Source candidates with English titles are not classified as completed Hebrew covers.
+- `queue.json`: all input records, provenance, source hashes, publication state, and exceptions.
+- `sources/`: unchanged source downloads and retained candidates.
+- `generated/`, `batch*.json`, `fix-batch.json`, `prompts.json`: generation drafts and provenance.
+- `composited/`, `composite_titles.py`, `pixel-verification.json`: final Hebrew composites, masks, and preservation checks.
+- `review.html`: searchable import gallery, including unresolved records.
+- `prepare_publish.py`: constructs content-addressed canonical assets and upload staging. Running it resets publication states to ready-to-publish.
+- `publish-manifest.json`: 149 new publication records; `manifest-before-import.json` retains the prior catalog.
+- `upload-verification.json`: hosted image checksum and catalog verification.
+- `cloudflare-upload.png`: final batch success confirmation. Three batches contained 100, 100, and 99 files, including the catalog.
+
+All 348 hosted images passed SHA-256 verification, and the hosted manifest matches the local catalog. Temporary upload staging copies were removed after verification.
+
+Canonical assets are in `../../covers/<game>/<en|he>/` and served from `https://assets.kitor.click/covers/`. App cover switching is a separate implementation step.
+
+## Unresolved entries
+
+- Boundless Osher: native Hebrew game; no English original box located.
+- Loretta: image generation declined the edit; no Hebrew version published.
+- Apprentice 1 Deluxe: developer source provides a gameplay screenshot, but no usable original box was located.

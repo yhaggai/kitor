@@ -1,0 +1,20 @@
+{
+  "idx": 138,
+  "name_he": "מסע המלך 4: תלאותיה של רוזלה",
+  "name_en": "King's Quest IV: The Perils of Rosella",
+  "facebook_post": "https://www.facebook.com/groups/hebrewadventure/posts/1907908786479875/",
+  "post_date": "2026-02-05T21:06:22Z (UTC, from creation_time)",
+  "description": "אני שמח לבשר על עוד אבן דרך חשובה בתרגום מסע המלך 4 - \"תלאותיה של רוזלה\". זה המשחק הראשון שיצא עם מנוע הSCI בשנת 1988 עם גרפיקה משופרת ומוזיקה לטעמי משובחת (הגרסא הנוכחית מ1989).\nקודם כל אני רוצה לתת קרדיט לכל האנשים המופלאים פה שיצרו בעבר פונטים וסקריפטים שעזרו לי בתרגום ובראש ובראשונה לניב וצביקה.\nבמשחק חדש - תצטרכו לענות על שאלה הגנה. מצורף למשחק קובץ kq_ref_Card.pdf - השתמשו בו כדי לענות על השאלה. התשובה צריכה להכתב באנגלית כפי שמופיע בקובץ.\nאשמח לעמוד לרשותכם בכל בעיה או הצעה לשיפור.\nנתראה בקרוב עם מסע המלך 5...",
+  "vm": "ScummVM",
+  "vm_notes": "daily build",
+  "vm_source": "post",
+  "patch_link": "https://github.com/SegMash/SCIHebrew/releases/download/1_26/KQ4_Hebrew_Patch_Setup.exe",
+  "patch_links": [
+    "https://github.com/SegMash/SCIHebrew/releases/download/1_26/KQ4_Hebrew_Patch_Setup.exe"
+  ],
+  "other_links": [
+    "https://www.gog.com/en/game/kings_quest_4_5_6",
+    "https://buildbot.scummvm.org/#/dailybuilds"
+  ],
+  "extraction_status": "ok"
+}

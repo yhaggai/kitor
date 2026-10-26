@@ -1,0 +1,20 @@
+{
+  "idx": 28,
+  "name_he": "דברי ימי קירנדיה 2: יד הגורל",
+  "name_en": "The Legend of Kyrandia: Hand of Fate (Book Two)",
+  "facebook_post": "https://www.facebook.com/groups/200491360554968/posts/937055313565232/",
+  "post_date": "2021-11-10T07:00:03Z (UTC, from creation_time)",
+  "description": "בממלכת קירנדיה אין אף רגע דל. לאחר שבפרק הקודם סייענו בידם להביס את המכשף הרשע ולהביא שלום ושלווה לארץ השסועה, שוב חרב עליהם עולמם. דברים מתחילים להיעלם... פשוטו כמשמעו! אבן אחר אבן ועץ אחר עץ, קירנדיה הולכת ונעלמת. זאנתיה האלכימאית הצעירה, יוצאת במסע אל בטן העולם שם שוכנת \"אבן העוגן\" אשר אמורה לשים קץ לתעלומה.\nשמחים אנו לבשר כי לאור הצלחתו הכבירה של קירנדיה 1 שבנו אליכם עם שלל חדש והפעם קירנדיה 2: יד הגורל בתוספת תרגום עברי מלא מבית הרפתקה עברית. במשך חודשים רבים ישבה סיון רדט והשקיעה את כל כולה בתרגום הנפלא והמיוחד, בעזרתו האדיבה של ניב באר שסיתת שרטט וליטש את העולם הקסום עד לכדי שלמות.",
+  "vm": "ScummVM",
+  "vm_notes": null,
+  "vm_source": "post",
+  "patch_link": "https://github.com/adventurebrew/fableworks/releases",
+  "patch_links": [
+    "https://github.com/adventurebrew/fableworks/releases"
+  ],
+  "other_links": [
+    "https://www.gog.com/game/legend_of_kyrandia_hand_of_fate",
+    "https://www.scummvm.org/downloads/#daily"
+  ],
+  "extraction_status": "ok"
+}

@@ -1,6 +1,7 @@
 import { invoke } from "@tauri-apps/api/core";
 import { listen } from "@tauri-apps/api/event";
 import { useCallback, useEffect, useRef } from "react";
+import BugReportDialog from "@/components/BugReportDialog";
 import GameLibrary from "@/components/GameLibrary";
 import PatchBrowser from "@/components/PatchBrowser";
 import { useGogLibrary } from "@/store/gog";
@@ -102,9 +103,12 @@ function App() {
   return (
     <div className="min-h-screen bg-background">
       <div className="container mx-auto p-6">
-        <header className="mb-8">
-          <h1 className="text-4xl font-bold mb-2">Kitor</h1>
-          <p className="text-muted-foreground">ScummVM Game Library & Translation Patch Manager</p>
+        <header className="mb-8 flex flex-wrap items-center justify-between gap-4">
+          <div>
+            <h1 className="text-4xl font-bold mb-2">Kitor</h1>
+            <p className="text-muted-foreground">ScummVM Game Library & Translation Patch Manager</p>
+          </div>
+          <BugReportDialog />
         </header>
 
         <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">

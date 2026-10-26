@@ -49,7 +49,7 @@ fn validate_game(package_dir: &Path, manifest_name: &str, owned: &Path) -> Resul
         inputs.insert(change.path.clone());
         affected.insert(change.path.clone());
         match &change.source {
-            Some(Source::Bsdiff { input, .. } | Source::Xdelta { input, .. }) => { relative(input)?; inputs.insert(input.clone()); }
+            Some(Source::Bsdiff { input, .. } | Source::Xdelta { input, .. } | Source::Reconstruct { input, .. }) => { relative(input)?; inputs.insert(input.clone()); }
             _ => (),
         }
     }

@@ -1,0 +1,22 @@
+[
+  {
+    "id": "ghost-in-the-sheet",
+    "prompt": "Edit original Ghost in the Sheet box text only. Replace ghost in the sheet only with \"הרוח בסדין\". Keep new lettering within top 18% of cover; preserve the entire small tagline \"A Comedy Adventure of Paranormal Proportions\" underneath exactly. Match original typography, color, texture, shading and position. Preserve all original artwork and all other text exactly. Same aspect ratio and framing.",
+    "path": "/Users/haggaiyaniv/.codex/generated_images/01a17325-42a3-71b0-8569-0b89e59757d5/exec-ac913ab7-c712-4447-a227-5aaf0bc0f9d7.png"
+  },
+  {
+    "id": "the-abbey-director-s-cut",
+    "prompt": "Edit original The Abbey - Director's cut box text only. Replace The Abbey with \"רצח במנזר\" on two compact lines entirely within y=59% to y=82% of image height. Keep the existing DIRECTOR’S CUT text at bottom completely unchanged and unobscured, and keep creator credit above. Remove ALL original The Abbey letters. Match original typography, color, texture, shading and position. Preserve all original artwork and all other text exactly. Same aspect ratio and framing.",
+    "path": "/Users/haggaiyaniv/.codex/generated_images/01a17325-42a3-71b0-8569-0b89e59757d5/exec-a4bbc38f-8398-4d49-aee6-edaba39d97e4.png"
+  },
+  {
+    "id": "ankh-anniversary-edition",
+    "prompt": "Edit original Ankh Anniversary Edition box text only. Replace ANKH with Hebrew \"ענח\" only. No apostrophe or punctuation. Match original typography, color, texture, shading and position. Preserve all original artwork and all other text exactly. Same aspect ratio and framing.",
+    "path": "/Users/haggaiyaniv/.codex/generated_images/01a17325-42a3-71b0-8569-0b89e59757d5/exec-fe2b964a-8837-4da7-85fc-63872bdb39b2.png"
+  },
+  {
+    "id": "duke-grabowski-mighty-swashbuckler",
+    "prompt": "Edit original Duke Grabowski: Mighty Swashbuckler box text only. Replace Duke Grabowski with \"דוכס גרבובסקי\" and Mighty Swashbuckler with \"הרפתקן אדיר!\". The name must end with full final י after ק, both visible on left side. Sword decoration must NOT replace a letter. Match original typography, color, texture, shading and position. Preserve all original artwork and all other text exactly. Same aspect ratio and framing.",
+    "path": "/Users/haggaiyaniv/.codex/generated_images/01a17325-42a3-71b0-8569-0b89e59757d5/exec-1e7b687c-47a3-42cd-af98-ea013661aa7f.png"
+  }
+]

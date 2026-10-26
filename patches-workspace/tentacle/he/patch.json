@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "scummvm_id": "tentacle",
+  "language": "he",
+  "version": "2.0-beta2-kitor1",
+  "filename": "DOTT-Classic-Hebrew-2.0-beta2-kitor1.zip",
+  "platforms": {
+    "windows": {},
+    "osx": {}
+  },
+  "files": [
+    {
+      "path": "tentacle.000",
+      "operation": "modify",
+      "original_sha256": "c89a825fcb2c4ea4d9678feab9c23e924ba578293d25a5d098cb3cb39ac86cb9",
+      "installed_sha256": "21bdb9663389bd01b6bbb1cb50bdce985ec68adcb5fae3efcd6f384288066536",
+      "source": {
+        "kind": "reconstruct",
+        "path": "recipes/classic.000.json",
+        "sha256": "a25a63e2572a340826053b2ff83916f2e97f3aff71eaa73cb6ec362e2b9851b1",
+        "input": "tentacle.000"
+      }
+    },
+    {
+      "path": "tentacle.001",
+      "operation": "modify",
+      "original_sha256": "5bc34e98fd0c76e895ef9c7c39477da71cb012992d2b53152daaf17df188a863",
+      "installed_sha256": "99d1d246332e4a5541431ce4aec05988d5ae4ad51e05f6fe77a4fc003e4bf0cf",
+      "source": {
+        "kind": "reconstruct",
+        "path": "recipes/classic.001.json",
+        "sha256": "e8135df17d67c4481e60e2953eb42b4725e5bd3e0bea348f4535f6a30791c08a",
+        "input": "tentacle.001"
+      }
+    }
+  ]
+}

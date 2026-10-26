@@ -1,0 +1,10 @@
+.local/
+build/
+dist/
+recovery/
+__pycache__/
+*.pyc
+.venv/
+bin/
+obj/
+.DS_Store

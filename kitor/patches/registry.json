@@ -325,7 +325,14 @@
       ],
       "gog": {
         "id": 1207661413,
-        "title": "Space Quest 1 - The Sarien Encounter"
+        "title": "Space Quest 1 - The Sarien Encounter",
+        "installers": [
+          {
+            "id": "",
+            "name": "Space Quest 1 - The Sarien Encounter",
+            "path": "https://www.gog.com/downloads/space_quest_1_the_sarien_encounter/en1installer0"
+          }
+        ]
       }
     },
     {
@@ -367,7 +374,14 @@
       ],
       "gog": {
         "id": 1207661423,
-        "title": "Space Quest 2 - Vohaul's Revenge"
+        "title": "Space Quest 2 - Vohaul's Revenge",
+        "installers": [
+          {
+            "id": "",
+            "name": "Space Quest 2 - Vohaul's Revenge",
+            "path": "https://www.gog.com/downloads/space_quest_2_vohauls_revenge/en1installer0"
+          }
+        ]
       }
     },
     {
@@ -409,7 +423,14 @@
       ],
       "gog": {
         "id": 1207661433,
-        "title": "Space Quest 3 - The Pirates of Pestulon"
+        "title": "Space Quest 3 - The Pirates of Pestulon",
+        "installers": [
+          {
+            "id": "",
+            "name": "Space Quest 3 - The Pirates of Pestulon",
+            "path": "https://www.gog.com/downloads/space_quest_3_the_pirates_of_pestulon/en1installer0"
+          }
+        ]
       }
     },
     {
@@ -488,7 +509,14 @@
       ],
       "gog": {
         "id": 1207659044,
-        "title": "Torin's Passage"
+        "title": "Torin's Passage",
+        "installers": [
+          {
+            "id": "",
+            "name": "Torin's Passage",
+            "path": "https://www.gog.com/downloads/torins_passage/en1installer0"
+          }
+        ]
       }
     },
     {
@@ -653,7 +681,14 @@
       ],
       "gog": {
         "id": 1207662293,
-        "title": "Gobliins 2 - The Prince Buffoon"
+        "title": "Gobliins 2 - The Prince Buffoon",
+        "installers": [
+          {
+            "id": "",
+            "name": "Gobliins 2 - The Prince Buffoon",
+            "path": "https://www.gog.com/downloads/gobliins_2_the_prince_buffoon/en1installer0"
+          }
+        ]
       }
     },
     {
@@ -694,7 +729,19 @@
       ],
       "gog": {
         "id": 1207658794,
-        "title": "The Longest Journey"
+        "title": "The Longest Journey",
+        "installers": [
+          {
+            "id": "",
+            "name": "The Longest Journey (Part 1 of 2)",
+            "path": "https://www.gog.com/downloads/the_longest_journey/en1installer0"
+          },
+          {
+            "id": "",
+            "name": "The Longest Journey (Part 2 of 2)",
+            "path": "https://www.gog.com/downloads/the_longest_journey/en1installer1"
+          }
+        ]
       }
     },
     {
@@ -989,6 +1036,119 @@
           "filename": "drifter-he-2026-07-09-kitor2.zip",
           "install_manifest": "patch.json",
           "post_install_script": null
+        }
+      ]
+    },
+    {
+      "scummvm_id": "owlboy",
+      "steam_app_id": 115800,
+      "title": "ילד הינשוף — Owlboy",
+      "platforms": {
+        "windows": false,
+        "osx": true,
+        "linux": false
+      },
+      "detection_patterns": {
+        "unique_files": [
+          "Owlboy.exe"
+        ],
+        "file_patterns": []
+      },
+      "launch_config": {
+        "launcher": "native",
+        "args": []
+      },
+      "purchase_guide": "owlboy.md",
+      "patches": [
+        {
+          "language": "he",
+          "version": "0.2.0-beta.2-kitor1",
+          "author": "yhaggai (AI-assisted translation)",
+          "download_url": "bundled://owlboy/he",
+          "source_type": "bundled",
+          "checksum": null,
+          "file_size": null,
+          "description": "תרגום בטא מלא לעברית: 4,537 רשומות, גופן עברי וכתיבה מימין לשמאל. מיועד לגרסת Steam 1.4 המקורית ל-macOS בלבד. נדרש Python 3. יש לבחור עברית בתפריט השפות. בדיקת משחק מלאה ותמיכה ב-Windows עדיין ממתינות.",
+          "filename": "owlboy-he-0.2.0-beta.2-kitor1-osx.zip",
+          "post_install_script": null,
+          "install_manifest": "patch.json"
+        }
+      ]
+    },
+    {
+      "scummvm_id": "tentacle",
+      "steam_app_id": 388210,
+      "title": "Day of the Tentacle (Classic)",
+      "platforms": {
+        "windows": true,
+        "osx": true,
+        "linux": false
+      },
+      "detection_patterns": {
+        "unique_files": [
+          "tenta.cle"
+        ],
+        "file_patterns": []
+      },
+      "launch_config": {
+        "subdirectory": "hebrew",
+        "args": [
+          "--language=he",
+          "--platform=dos",
+          "--fullscreen",
+          "scumm:tentacle"
+        ]
+      },
+      "purchase_guide": "tentacle.md",
+      "patches": [
+        {
+          "language": "he",
+          "version": "2.0-beta2-kitor1",
+          "author": "AdventureBrew / Shany Roze, Rafael Ben-Ari, Niv Baehr, Omer Cohen; extraction: BLooperZ",
+          "download_url": "bundled://tentacle/he/2.0-beta2-kitor1",
+          "source_type": "bundled",
+          "checksum": null,
+          "file_size": null,
+          "description": "יומו של הטנטקל — הגרסה הקלאסית בעברית. התקנה ישירה על קובצי הגרסה הקלאסית הנתמכת, או חילוץ אופציונלי מתוך Remastered שבבעלותכם; הפעלה באמצעות ScummVM. תרגום בטא DOTT-WIP2 לשימוש אישי בלבד. אין להפיץ.",
+          "filename": "DOTT-Classic-Hebrew-2.0-beta2-kitor1.zip",
+          "post_install_script": null,
+          "install_manifest": "patch.json"
+        }
+      ]
+    },
+    {
+      "scummvm_id": "day-of-the-tentacle-remastered",
+      "steam_app_id": 388210,
+      "title": "Day of the Tentacle Remastered",
+      "platforms": {
+        "windows": false,
+        "osx": true,
+        "linux": false
+      },
+      "detection_patterns": {
+        "unique_files": [
+          "tenta.cle"
+        ],
+        "file_patterns": []
+      },
+      "launch_config": {
+        "launcher": "native",
+        "args": []
+      },
+      "purchase_guide": "tentacle-remastered.md",
+      "patches": [
+        {
+          "language": "he",
+          "version": "0.1-local-items-kitor1",
+          "author": "AdventureBrew classic translators; local remastered adaptation",
+          "download_url": "bundled://day-of-the-tentacle-remastered/he/0.1-local-items-kitor1",
+          "source_type": "bundled",
+          "checksum": null,
+          "file_size": null,
+          "description": "יומו של הטנטקל — אבטיפוס נפרד לגרסה המחודשת. 5,142 כתוביות ו-348 שמות פריטים ודמויות בעברית. תפריטים, אפשרויות שיחה ו-579 רשומות דיבור עדיין באנגלית. יש לבחור English. הפעלה במנוע המקורי; לא ScummVM. לשימוש מקומי בלבד, ללא הפצה. macOS local candidate only. Windows resource adaptation pending.",
+          "filename": "DOTT-Remastered-Hebrew-local-kitor1.zip",
+          "post_install_script": null,
+          "install_manifest": "patch.json"
         }
       ]
     }

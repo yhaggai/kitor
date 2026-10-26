@@ -1,0 +1,21 @@
+{
+  "idx": 12,
+  "name_he": "סם ומקס מתגלגלים בדרכים",
+  "name_en": "Sam & Max Hit the Road",
+  "facebook_post": "https://www.facebook.com/groups/200491360554968/permalink/380255062578596/",
+  "post_date": "2019-05-03T06:00:00Z (UTC, from creation_time)",
+  "description": "אז בסופו של דבר סם ומקס לא הפכו לשימי ומיכה אך הם בהחלט למדו לדבר בעברית צחה.\nאנו שמחים להעניק לכם חברי הרפתקה עברית יקרים, את המשחק הנהדר סם ומקס מתגלגלים בדרכים מתורגם לעברית מלאה. תודה על יצירת כל הטוב האינסופי הזה לניב באר האחד והיחיד, על התרגום לאוהד רשף ולניב, ולכל שאר המשתתפים בפרוייקט המיוחד.\nהמשחק כבר עבר הגהה, ובכל זאת אם מצאתם בעיה/תקלה/שגיאה - טכנית, עיצובית או לשונית, נא דווחו לנו על כך. כמובן שגם הצעות לשיפור יתקבלו בברכה.\nבהזדמנות זאת אזכיר, לכל אחד ואחת ממכם שמורה הזכות לתרום לקהילתנו ולעזור לנו להמשיך להתבסס ולתרגם ולהעלות תכנים עבריים חדשים. התרומה יכולה להתבטא בין בסיוע בתכנות, בפיתוח, תרגום וגרפיקה או כל נושא אחר שתבחרו. אשמח לשמוע ממכם.\nיאללה, תעשו חיים!",
+  "vm": "ScummVM (custom build)",
+  "vm_notes": null,
+  "vm_source": "post",
+  "patch_link": "https://drive.google.com/file/d/1tt4gDHvpeCBG4QkqOXjoryDWhCqvpa0I/view",
+  "patch_links": [
+    "https://drive.google.com/file/d/1tt4gDHvpeCBG4QkqOXjoryDWhCqvpa0I/view",
+    "https://github.com/BLooperZ/scummvm/releases/tag/scumm-rtl-pred3"
+  ],
+  "other_links": [
+    "http://gog.com/game/sam_max_hit_the_road?pp=22d200f8670dbdb3e253a90eee5098477c95c23d",
+    "http://gog.com/game/sam_max_hit_the_road"
+  ],
+  "extraction_status": "ok"
+}

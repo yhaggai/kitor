@@ -1,0 +1,35 @@
+{
+  "package_version": "0.2.0-beta.2",
+  "status": "passed",
+  "fixture": "disposable selective copy of original inputs",
+  "affected_files": 30,
+  "modified_existing_files": 17,
+  "created_files": 13,
+  "backups": 17,
+  "all_installed_hashes_verified": true,
+  "all_original_bytes_restored": true,
+  "all_created_files_removed": true,
+  "unrelated_before_file_preserved": true,
+  "later_nested_file_preserved": true,
+  "install_idempotent": true,
+  "uninstall_idempotent": true,
+  "kitor_manifest_checks": {
+    "osx": "passed",
+    "windows": "passed"
+  },
+  "limitations": [
+    "Package validation is not gameplay validation.",
+    "Roundtrip executed on macOS; Windows runtime execution not tested."
+  ],
+  "source_publication_audit": {
+    "status": "passed",
+    "candidate_files": 33,
+    "source_archive_files": 33,
+    "extracted_archive_python_tests_passed": 19,
+    "build_and_manager_cli_imports": "passed",
+    "macos_installer_shell_syntax": "passed",
+    "macos_installer_executable_zip_mode": "passed",
+    "private_path_and_secret_pattern_scan": "no findings",
+    "excluded": "original game data, source English dump, runtime binaries, build outputs, backups, local environments"
+  }
+}

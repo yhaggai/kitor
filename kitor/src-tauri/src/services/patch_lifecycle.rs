@@ -63,6 +63,7 @@ pub enum Source {
         sha256: String,
         input: String,
     },
+    Reconstruct { path: String, sha256: String, input: String },
     Xdelta {
         path: String,
         sha256: String,
@@ -293,6 +294,7 @@ fn stage_source(source: &Source, package: &Path, target: &Path, output: &Path) -
     let (path, checksum) = match source {
         Source::Copy { path, sha256 }
         | Source::Bsdiff { path, sha256, .. }
+        | Source::Reconstruct { path, sha256, .. }
         | Source::Xdelta { path, sha256, .. } => (path, sha256),
     };
     let asset = safe_path(package, path)?;
@@ -300,6 +302,9 @@ fn stage_source(source: &Source, package: &Path, target: &Path, output: &Path) -
     match source {
         Source::Copy { .. } => {
             copy_durable(&asset, output)?;
+        }
+        Source::Reconstruct { input, .. } => {
+            super::reconstruction::apply(&asset, &safe_path(target, input)?, output)?;
         }
         Source::Bsdiff { input, .. } => {
             // Only the trusted backend decoder runs, never a package installer.
@@ -974,6 +979,8 @@ mod tests {
                 .join("he");
             let manifest = if root.join("patch.json").is_file() {
                 root.join("patch.json")
+            } else if root.join("patch.osx.candidate.json").is_file() {
+                root.join("patch.osx.candidate.json")
             } else {
                 root.join("patch.windows.candidate.json")
             };
@@ -1006,7 +1013,7 @@ mod tests {
                     assert!(seen.insert(file.path.to_lowercase()));
                     safe_path(&root, &file.path).unwrap();
                     match file.source.as_ref().unwrap() {
-                        Source::Copy { path, sha256 } | Source::Bsdiff { path, sha256, .. } => {
+                        Source::Copy { path, sha256 } | Source::Bsdiff { path, sha256, .. } | Source::Reconstruct { path, sha256, .. } => {
                             check_hash(&safe_path(&root, path).unwrap(), sha256).unwrap()
                         }
                         Source::Xdelta {

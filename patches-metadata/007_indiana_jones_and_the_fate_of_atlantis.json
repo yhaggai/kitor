@@ -1,0 +1,20 @@
+{
+  "idx": 7,
+  "name_he": "אינדיאנה ג'ונס בעקבות סודה של אטלנטיס",
+  "name_en": "Indiana Jones® and the Fate of Atlantis",
+  "facebook_post": "https://www.facebook.com/groups/200491360554968/permalink/388328675104568/",
+  "post_date": "2019-05-19T06:00:01Z (UTC, from creation_time)",
+  "description": "סוף סוף הגיע היום הגורלי, הפרוייקט הענק והכביר ביותר שלנו עד כה ושכל כך קרוב לליבי באופן אישי הגיע לסיומו. אינדיאנה ג'ונס וגורלה של אטלנטיס שבעיניי מסמן את כל המתיקות הזוך והטוהר והיופי האינסופיים שבקווסטים, יוצא לראשונה בעולם בתרגום עברי מלא לכל אורך הטקסטים הממשקים הספרים ואפילו הלוגואים.\nתודה ליקיר ישראל שהצית את הניצוץ הראשון, תודה לניב באר שהפיח בו רוח חיים, תיכנת, ערך גרפית, עיצב גופנים ובנה את כל המבנה העצום הזה מהמסד ועד הטפחות, ותודה למור שמש על ההגהות וההערות הבונות.\nאני מזמין את כולכם לצאת איתנו למסע מרתק אל עבר היבשת האבודה וליהנות מהרפתקה מסעירה של פעם בחיים.\nמשחק מהנה!",
+  "vm": "ScummVM",
+  "vm_notes": null,
+  "vm_source": "post",
+  "patch_link": "https://github.com/adventurebrew/scummworks/releases/tag/ATLANTIS-RC1",
+  "patch_links": [
+    "https://github.com/adventurebrew/scummworks/releases/tag/ATLANTIS-RC1"
+  ],
+  "other_links": [
+    "http://gog.com/game/indiana_jones_and_the_fate_of_atlantis?pp=22d200f8670dbdb3e253a90eee5098477c95c23d",
+    "https://www.scummvm.org/downloads/"
+  ],
+  "extraction_status": "ok"
+}

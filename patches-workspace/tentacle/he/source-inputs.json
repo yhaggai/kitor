@@ -1,0 +1,20 @@
+[
+  {
+    "filename": "DOTT-Heb-AdventureBrew-BETA2.exe",
+    "url": "https://github.com/adventurebrew/scummworks/releases/download/DOTT-WIP2/DOTT-Heb-AdventureBrew-BETA2.exe",
+    "size": 707703,
+    "sha256": "1aaecba5eb9b74eaf26e1a983de76e45aa21a467b56029c69743f3a2f814bb1e"
+  },
+  {
+    "filename": "monster.tbl",
+    "url": "https://raw.githubusercontent.com/BLooperZ/remonstered/7d38eedaa9823a4a1c91315a24dfcb32bae5c114/dott/monster.tbl",
+    "size": 129248,
+    "sha256": "27c3bdef8aeba9fd9c2434545101568645360f0c088d495d335914532bf77e8a"
+  },
+  {
+    "filename": "tags.tbl",
+    "url": "https://raw.githubusercontent.com/BLooperZ/remonstered/7d38eedaa9823a4a1c91315a24dfcb32bae5c114/dott/tags.tbl",
+    "size": 50090,
+    "sha256": "08f7f0f54c81c728254f3175a256bfa8f46eb094e1974d44307d6567ecf7d3e9"
+  }
+]

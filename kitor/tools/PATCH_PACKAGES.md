@@ -82,3 +82,10 @@ those files and will fail explicitly.
 To focus a local payload check, set `KITOR_PAYLOAD_GAME` to one game directory
 name or comma-separated names. Leave it unset for the full copy payload suite.
 `KITOR_SKIP_CANDIDATES=1` remains available for an explicit restricted local run.
+
+`reconstruct` sources use the native bounded source-range decoder. Each recipe
+pins the input SHA-256 (and optionally explicitly verified compatible inputs),
+declares its exact output length, and contains only copy ranges and literal bytes.
+The manifest also pins the recipe and final output SHA-256. No external runtime
+is required. Tentacle direct-classic and optional Remastered extraction plans are
+separate manifests; use `patch.remastered-source.json` for the latter.

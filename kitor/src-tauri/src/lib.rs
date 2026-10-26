@@ -90,6 +90,7 @@ pub fn run() {
             commands::gog_commands::logout_from_gog,
             commands::gog_commands::get_gog_user_games,
             commands::gog_commands::get_gog_game_installers,
+            commands::bug_report_commands::save_bug_report,
             // Window commands
             commands::window_commands::close_splashscreen,
         ])

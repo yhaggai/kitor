@@ -1,0 +1,23 @@
+{
+  "idx": 176,
+  "name_he": "יומו של הטנטקל",
+  "name_en": "Day of the Tentacle (Classic)",
+  "facebook_post": "https://www.facebook.com/groups/hebrewadventure/posts/342895866314516/",
+  "post_date": "2019-02-01 (date only, from post UI; exact time and timezone unavailable)",
+  "description": "חברים יקרים, תרשו לי לספר לכם כי יומו של הטנטקל העברי השתדרג בגירסה עדכנית 2.0! הגירסה כוללת בתוכה פונטים חדשים מרהיבים שצויירו במכחולו של Rafael Ben-Ari האגדי, הפתעה מתוקה בלובי האחוזה שהוכנה לכם על ידי Niv Baehr וכמובן המון תיקונים והגהות. הפעם כולכם מוזמנים לשחק וליהנות. אני עדיין מדגיש כי זו לא גירסה סופית וכנראה שעדיין תתקלו בטעויות כאלה ואחרות. אי לכך המשחק מיועד לשימושכם האישי ואין להפיצו לאף גורם אחר. כמו כן אבקש שתעדכנו אותי בכל טעות שמצאתם כדי שנוכל להמשיך לשפר את המשחק הנפלא הזה לטובת כולם. חייב גם להזכיר כאן את פועלה האדיר של Shany Roze שרוב הטנטקל תורגם על ידה, וכרגע היא נמצאת בשלבים מתקדמים של תרגום אי הקופים 3!\n\nהוראות הפעלה:\n1. הורידו את גירסת הרמסטרד של יומו של הטנטקל והתקינו:\n2. הורידו את התוכנה המחלצת את המשחק המקורי מתוך המשחק המחודש, חלצו אותה לתיקייה בה הותקן המשחק, והפעילו את היישום remonster.exe:\n3. הורידו את טלאי העברית והתקינו אותו:\n4. הפעילו באמצעות הגרסה האחרונה של סקאם ויאם:",
+  "vm": "ScummVM",
+  "vm_notes": "לפי הפוסט, יש להתקין את Day of the Tentacle Remastered (Steam app 388210), לחלץ את המשחק המקורי באמצעות remonstered 1.12.1 (remonster.exe), להתקין את טלאי DOTT-WIP2 ולהפעיל באמצעות הגרסה האחרונה של ScummVM. הטלאי מיועד למשחק הקלאסי שחולץ, ולא למנוע או לגרפיקה של הרמסטרד.",
+  "vm_source": "post",
+  "patch_link": "https://github.com/adventurebrew/scummworks/releases/tag/DOTT-WIP2",
+  "patch_links": [
+    "https://github.com/adventurebrew/scummworks/releases/tag/DOTT-WIP2"
+  ],
+  "other_links": [
+    "https://store.steampowered.com/app/388210/Day_of_the_Tentacle_Remastered/",
+    "https://github.com/BLooperZ/remonstered/releases/tag/1.12.1",
+    "https://www.scummvm.org/downloads/",
+    "https://www.facebook.com/photo/?fbid=10224162185711473&set=pcb.342895866314516",
+    "https://www.facebook.com/photo/?fbid=10213399704376166&set=pcb.342895866314516"
+  ],
+  "extraction_status": "ok (public post by Omer Cohen; date shown as 1 February 2019, exact time/timezone unavailable; linked store edition is Day of the Tentacle Remastered, but explicit extraction instructions identify the patch target as the embedded classic game running in ScummVM; visible Niv Baehr comment links the same DOTT-WIP2 release and describes an updated preview with all missing fonts; personal-use/no-redistribution restriction preserved; patch installation and platform compatibility not verified)"
+}

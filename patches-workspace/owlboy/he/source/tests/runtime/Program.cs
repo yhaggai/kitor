@@ -1,0 +1,23 @@
+using Owlboy;
+using OwlboyHebrew;
+using Microsoft.Xna.Framework;
+using Owlboy.ScreenManagement.Renderers;
+static void Check(bool ok,string why){if(!ok)throw new Exception(why);}
+var font=new Font();var batch=new ScaledSpriteBatch();
+bool Draw(string text,float x=0,float y=0)=>Runtime.TryDraw(font,batch,text,new Vector2(x,y),new Color(),1,false,0,int.MaxValue,-1,true,false);
+Check(!Draw("English"),"English must use original renderer");
+var bubble=new SpeechBubbleSprite{storedText="שלום עולם",displayText="ש"};var renderer=new SpeechBubbleRenderer();
+Runtime.Begin(renderer,bubble);Check(Draw("ש"),"Hebrew should be handled");
+Check(font.calls.Count==1 && font.calls[0].x==48,"First logical letter must start at fixed right edge");
+font.calls.Clear();bubble.displayText=bubble.storedText;Draw(bubble.displayText);
+Check(string.Concat(font.calls.OrderBy(c=>c.x).Select(c=>c.text))=="םלוע םולש","RTL visual order");
+var expected=font.calls.Skip(5).Select(c=>c.x).ToArray();font.calls.Clear();
+Draw(Runtime.Slice(bubble.displayText,5,4),32);
+Check(font.calls.Select(c=>c.x).SequenceEqual(expected),"Colored segment positions must match unsplit text");
+font.calls.Clear();bubble.storedText="שלום\nכן";bubble.displayText="שלום\nכ";Draw(bubble.displayText);
+Check(font.calls.Last().x==18 && font.calls.Last().y==15,"Short second line should reveal at right edge");
+Runtime.End();font.calls.Clear();Draw("שלום 123");
+Check(string.Concat(font.calls.OrderBy(c=>c.x).Select(c=>c.text))=="123 םולש","Numbers must keep LTR order");
+font.calls.Clear();bubble.storedText="שלום";bubble.displayText="ש";renderer.CenterText=true;renderer.RenderTextSeparately=false;
+Runtime.Begin(renderer,bubble);Draw("ש",9);Check(font.calls[0].x==18,"Centered partial speech must use full-text anchor");Runtime.End();
+Console.WriteLine("PASS: English fallback, RTL reveal, stable full-line positions, highlight slices, multiline alignment, number ordering");

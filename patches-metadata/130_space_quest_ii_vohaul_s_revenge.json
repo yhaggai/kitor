@@ -1,0 +1,19 @@
+{
+  "idx": 130,
+  "name_he": "מסע בחלל 2: נקמתו של ווהאל",
+  "name_en": "Space Quest II: Vohaul's Revenge",
+  "facebook_post": "https://www.facebook.com/groups/hebrewadventure/posts/1864116760859078/",
+  "post_date": "2025-12-07T14:32:23Z (UTC, from creation_time)",
+  "description": "חבר׳ה,הנה מסע בחלל 2 (זאת אומרת Space Quest II) בעברית. תהנו!\nכמה פרטים נוספים:\n תודה לשגב (Segev Mashraky) שלימד אותי איך לעשות תרגומים למשחקי AGI. שימו לב לgithub שלו--אני מאוד ממליץ [https://github.com/SegMash/AGIHebrew](https://github.com/SegMash/AGIHebrew) \nתודה לניב באר, שיצר את מסך ״נקמתו של ווהאל״ (באמת הרבה יותר טוב ממה שאני יכולתי לעשות).\n תודה לכל קהילת ״הרפתקה עברית״ שעזרה לי עם התרגום (וסובלת את העברית שלי), כולל shingimel, scars-shawn ופינגימר.\nאפשר לפנות אליי ב-Discord. אשמח לעזור עם בעיות.",
+  "vm": "ScummVM",
+  "vm_notes": null,
+  "vm_source": "sheet",
+  "patch_link": "https://github.com/SegMash/AGIHebrew",
+  "patch_links": [
+    "https://github.com/SegMash/AGIHebrew"
+  ],
+  "other_links": [
+    "https://www.gog.com/en/game/space_quest_1_2_3"
+  ],
+  "extraction_status": "ok"
+}

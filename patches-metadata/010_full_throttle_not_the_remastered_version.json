@@ -1,0 +1,20 @@
+{
+  "idx": 10,
+  "name_he": "הילוך שיא",
+  "name_en": "Full Throttle (not the Remastered version)",
+  "facebook_post": "https://www.facebook.com/groups/200491360554968/posts/344552669482169/",
+  "post_date": "2019-02-06T07:00:01Z (UTC, from creation_time)",
+  "description": "נהניתם להציל את העולם מאיזה טנטקל סגול שבסך הכל שתה קצת יותר מדי מים מזוהמים, ועוד בעברית? נראה אותכם עומדים במשימה הבאה - להציל כנופיית אופנוענים מידי איזה מליין שמאיים לסגור להם את השיבר ולחסל להם את המנהיג!\nאנו שמחים להעניק לכם במתנה עוד משחק נהדר מבית הרפתקה עברית - פול תרוטל האגדי!\nעדכון 2: גירסה 2.1 - המשחק מהיום נקרא \"הילוך שיא\"!\nעדכון 1: עלתה גירסה 2.0 עם תיקוני נוסחאות וגרפיקת פתיחה עברית מאת ניב באר.\nאל תשכחו לעדכן את הבוס שלקחתם יום חופש \n ו...שיהיה המון בכיף!\nיש שאלות? צריכים עזרה? אנחנו כאן בשבילכם.",
+  "vm": "ScummVM (custom build)",
+  "vm_notes": null,
+  "vm_source": "post",
+  "patch_link": "https://drive.google.com/file/d/1Hve3qjbzQHr9ywbis0GIhSRYm_JErex4/view?usp=sharing",
+  "patch_links": [
+    "https://drive.google.com/file/d/1Hve3qjbzQHr9ywbis0GIhSRYm_JErex4/view?usp=sharing",
+    "https://github.com/BLooperZ/scummvm/releases/tag/scumm-rtl-pred3"
+  ],
+  "other_links": [
+    "https://oldgamesdownload.com/game/full-throttle-ns4/"
+  ],
+  "extraction_status": "ok"
+}

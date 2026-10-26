@@ -1,0 +1,22 @@
+{
+  "idx": 127,
+  "name_he": "מסע המלך 2",
+  "name_en": "King's Quest 2",
+  "facebook_post": "https://www.facebook.com/groups/hebrewadventure/posts/1839579363312818",
+  "post_date": "2025-11-04T15:14:59Z (UTC, from creation_time)",
+  "description": "אני שמח לבשר על פרסום התרגום של מסע המלך 2 (King's quest 2). \nותודה רבה ל Shai Greenberg על הגהת התרגום ומתן הערות והארות.\nאשמח לקבל הערות והארות. התרגום הבא למסע המלך 3 - כבר בדרך!",
+  "vm": "ScummVM",
+  "vm_notes": "daily build",
+  "vm_source": "post",
+  "patch_link": "https://github.com/SegMash/AGIHebrew/releases/download/10_25/kq2-hebrew-installer.exe",
+  "patch_links": [
+    "https://github.com/SegMash/AGIHebrew/releases/download/10_25/kq2-hebrew-installer.exe"
+  ],
+  "other_links": [
+    "https://www.gog.com/en/game/kings_quest_1_2_3",
+    "https://buildbot.scummvm.org/#/dailybuilds",
+    "https://buildbot.scummvm.org/?#/dailybuilds",
+    "https://buildbot.scummvm.org/"
+  ],
+  "extraction_status": "ok"
+}

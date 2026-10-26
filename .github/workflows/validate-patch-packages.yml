@@ -38,6 +38,11 @@ jobs:
       - uses: dtolnay/rust-toolchain@stable
       - name: Build disposable validation CLI
         run: cargo build --manifest-path kitor/tools/lifecycle-harness/Cargo.toml --locked --bin validate_owned_games
+      - name: Compile native classic Tentacle installer
+        run: cargo build --release --locked --manifest-path kitor/tools/lifecycle-harness/Cargo.toml --bin tentacle_patch
+      - name: Compile native Mac remastered candidate
+        if: runner.os == 'macOS'
+        run: cargo build --release --locked --manifest-path kitor/tools/lifecycle-harness/Cargo.toml --bin tentacle_remastered_patch
       - name: Test package safety and reproducibility
         run: python -m unittest discover -s kitor/tools -p "test_*.py"
       - name: Test native selective installation and restoration fixtures
@@ -51,8 +56,12 @@ jobs:
               raise SystemExit('No installable manifests found')
           for manifest in manifests:
               subprocess.run([sys.executable, 'kitor/tools/build_patch_packages.py', str(manifest), '--output', 'dist/patches'], check=True)
+          for manifest in sorted(pathlib.Path('patches-workspace').glob('*/he/patch.remastered-source.json')):
+              subprocess.run([sys.executable, 'kitor/tools/build_patch_packages.py', str(manifest), '--universal', '--output', 'dist/patches'], check=True)
           for manifest in sorted(pathlib.Path('patches-workspace').glob('*/he/patch.windows.candidate.json')):
               subprocess.run([sys.executable, 'kitor/tools/build_patch_packages.py', str(manifest), '--platform', 'windows', '--output', 'dist/candidates'], check=True)
+          for manifest in sorted(pathlib.Path('patches-workspace').glob('*/he/patch.osx.candidate.json')):
+              subprocess.run([sys.executable, 'kitor/tools/build_patch_packages.py', str(manifest), '--platform', 'osx', '--output', 'dist/candidates'], check=True)
       - uses: actions/upload-artifact@v4
         with:
           name: unverified-patch-builds-${{ matrix.os }}

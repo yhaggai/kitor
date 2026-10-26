@@ -1,0 +1,21 @@
+{
+  "idx": 163,
+  "name_he": "מסע המלך 1 (SCI)",
+  "name_en": "King's Quest 1 (SCI)",
+  "facebook_post": "https://www.facebook.com/groups/hebrewadventure/posts/2036984776905608",
+  "post_date": "2026-07-16T19:46:13Z (UTC, from creation_time)",
+  "description": "מתי הלכתם בפעם האחרונה לסרט?\nבואו נדבר קצת על מסע המלך 1.\nהיום יש לכם אפשרות להתרווח בכסא מול המחשב ולהנות מחוויה קולנועית נהדרת.\nבעבר תרגמתי כאן את מסע המלך 1 גרסת הAGI משנת 1984 -\nhttps://www.facebook.com/.../hebr.../posts/1797684850835603/\nוכעת ניתן לשחק בעברית מלאה במסע המלך 1 גרסת ה SCI.\nלטפס על גבעול האפונים, לשגע את הענק, להתחמק מהגמד, למות מידי פעם ולהנות ממשפטי מוות שנונים באדיבות Shai Greenberg.\nרגע! הבטחתי חוויה קולנועית. לא???\nהפעם החלפתי את מוזיקת הMIDI הישנה במוזיקת אודיו מתוזמרת היטב על פי עיבודו המושלם של Nissim Khalifa שחבר בפורום הזה. השקעתי זמן רב להתאים עד כמה שניתן את מוזיקת האודיו לתרחישים השונים במשחק.\nקרדיטים:\nראשית אני רוצה להודות לניסים חליפה על העיבוד המחודש. פשוט נפלא.\nשנית אני רוצה להודות לשי גרינברג, הרוח החיה של הפורום הזה, על הזמן ההשקעה והדירבון. זה לגמרי שלך!\nולבסוף, חייב להודות לבני היקר בועז (12) שבכישרון רב עיצב את מסך הפתיחה של המשחק. פרגנו לו.",
+  "vm": "ScummVM",
+  "vm_notes": null,
+  "vm_source": "post",
+  "patch_link": "https://github.com/SegMash/SCIHebrew/releases/tag/kq1_mp3",
+  "patch_links": [
+    "https://github.com/SegMash/SCIHebrew/releases/tag/kq1_mp3",
+    "https://github.com/SegMash/SCIHebrew/releases/tag/6_26"
+  ],
+  "other_links": [
+    "https://store.steampowered.com/app/10100/Kings_Quest_Collection/",
+    "https://www.facebook.com/groups/hebrewadventure/posts/1797684850835603/"
+  ],
+  "extraction_status": "ok"
+}

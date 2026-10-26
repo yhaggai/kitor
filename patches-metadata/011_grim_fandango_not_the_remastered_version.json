@@ -1,0 +1,21 @@
+{
+  "idx": 11,
+  "name_he": "גרים פנדנגו",
+  "name_en": "Grim Fandango (not the Remastered version)",
+  "facebook_post": "https://www.facebook.com/groups/200491360554968/permalink/356883714915731/",
+  "post_date": "2019-03-07T07:00:01Z (UTC, from creation_time)",
+  "description": "ונחתום את גל הפרסומים הנוכחי במשחק שחתם את עידן הקווסטים הקלאסי ולדעת רבים אף היה גולת הכותרת שלו - גרים פנדנגו המהולל!\nמודה בזאת לניב באר האחד והיחיד שהשקיע אינספור שעות והוציא מתחת ידו את המוצר המשובח הזה, ולשני רוז שתרגמה חלק נכבד מהמשחק.\nמאחל לכם הרבה הנאה ואושר, ואל תשכחו לספר חוויות!",
+  "vm": "ScummVM",
+  "vm_notes": null,
+  "vm_source": "post",
+  "patch_link": "https://drive.google.com/file/d/1x1dger-CWxx-kSVb70n0gccFZuHhwo3L/view",
+  "patch_links": [
+    "https://drive.google.com/file/d/1x1dger-CWxx-kSVb70n0gccFZuHhwo3L/view",
+    "https://drive.google.com/file/d/1DGyW6h9Szx-rVCRmXkR6lBRGAgpVdQIf/view"
+  ],
+  "other_links": [
+    "https://cdromance.com/windows/grim-fandango/",
+    "https://downloads.scummvm.org/frs/extras/patches/gfupd101.exe"
+  ],
+  "extraction_status": "ok"
+}

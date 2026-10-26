@@ -1,0 +1,61 @@
+{
+  "game_id": "tentacle",
+  "catalog_idx": 176,
+  "catalog_source": "patches-metadata/176_day_of_the_tentacle_classic.json",
+  "status": "packaged_unverified",
+  "release_ready": false,
+  "upstream": {
+    "url": "https://github.com/adventurebrew/scummworks/releases/download/DOTT-WIP2/DOTT-Heb-AdventureBrew-BETA2.exe",
+    "filename": "DOTT-Heb-AdventureBrew-BETA2.exe",
+    "size": 707703,
+    "sha256": "1aaecba5eb9b74eaf26e1a983de76e45aa21a467b56029c69743f3a2f814bb1e",
+    "download_date": "2026-10-26",
+    "version": "DOTT-WIP2"
+  },
+  "credits": [
+    "Shany Roze",
+    "Rafael Ben-Ari",
+    "Niv Baehr",
+    "Omer Cohen",
+    "AdventureBrew",
+    "BLooperZ (remonstered)",
+    "Simon Pinfold (python-fsb5)"
+  ],
+  "redistribution": "Announcement restricts translation to personal use and prohibits redistribution; local packages only, publication not authorized.",
+  "sources": {
+    "remonstered": "https://github.com/BLooperZ/remonstered/tree/7d38eedaa9823a4a1c91315a24dfcb32bae5c114",
+    "python_fsb5": "https://github.com/BLooperZ/python-fsb5/tree/817aa3cf60a69eb727494d89b1d804d90ff17cb2"
+  },
+  "supported_input": {
+    "input_sha256": "c97d6690abcee78e429fa22bb2d8d5ba6ab181641785e21ead0d6260e97640f1",
+    "input_size": 2729086579,
+    "outputs": {
+      "tentacle.000": {
+        "recipe_sha256": "398c714546dd2c1f393d6db75dd829168deb7570993d8d85c6eb5026c14a0fd9",
+        "sha256": "21bdb9663389bd01b6bbb1cb50bdce985ec68adcb5fae3efcd6f384288066536",
+        "size": 7932
+      },
+      "tentacle.001": {
+        "recipe_sha256": "9c0f9b676b07faa5bdaa35cd8122762e40fa2d337c4c9442fcd1a13cf071f14f",
+        "sha256": "99d1d246332e4a5541431ce4aec05988d5ae4ad51e05f6fe77a4fc003e4bf0cf",
+        "size": 11330154
+      },
+      "monster.so3": {
+        "recipe_sha256": "30fb6adf31cbc1b25e24c77df56e6ca628d5a538150312b3eea8d70a8afa7490",
+        "sha256": "281f0f8a8bacb0464bfb74b0d3af3b086a2a638df5290ac36658207e0f0330ba",
+        "size": 486659032
+      }
+    }
+  },
+  "platforms": {
+    "osx": "Steam app 388210 build 6047174; original KAPL archive; native ARM64 build pending validation",
+    "windows": "Native build and owned Windows archive verification pending"
+  },
+  "runtime": "ScummVM with SCUMM and MP3 support; classic presentation only",
+  "changes": [
+    "Create hebrew/tentacle.000",
+    "Create hebrew/tentacle.001",
+    "Create hebrew/monster.so3"
+  ],
+  "backup": "Creation-only plan refuses pre-existing outputs; no original game files modified; Kitor journal tracks all created files."
+}

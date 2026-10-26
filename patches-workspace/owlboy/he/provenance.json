@@ -1,16 +1,26 @@
 {
-  "status": "experimental",
+  "status": "packaged_unverified",
   "release_ready": false,
-  "edition": "Steam macOS installed build; Windows layout unverified",
-  "scope": "Font prototype, not a full translation",
-  "translated_rows": 14,
-  "glyphs": 27,
-  "rtl": "Visual-order strings only; typewriter still LTR",
-  "install_root": "Owlboy.app/Contents/Resources on macOS; Owlboy.exe directory on Windows",
-  "source_exe_sha256": "e399de418effb376c7c48916f6da19e2aa7fa91a2fea0cce7479e52cb17e653c",
-  "native_validation": {
-    "macOS": "Installed and all 22 file hashes verified; Hebrew gameplay unverified due computer-use window/capture failures",
-    "Windows": "not run"
+  "source_url": "https://github.com/yhaggai/owlboy-hebrew",
+  "source_commit": "2cfe6b3743cb57e20830cf2572efe67943fbb4fb",
+  "import_date": "2026-10-25",
+  "catalog_index": null,
+  "credits": "AI-assisted Hebrew translation and original glyphs; Owlboy by D-Pad Studio",
+  "license": "MIT for original patch code and glyphs; underlying game rights retained by D-Pad Studio",
+  "scope": "Full 4537-entry translation, RTL runtime, corrected 142x89 flag",
+  "edition": "Steam 1.4 macOS FNA",
+  "version": "0.2.0-beta.2-kitor1",
+  "platforms": {
+    "osx": "Opening dialogue smoke-tested on local Mac",
+    "windows": "Edition/gameplay unverified; no install plan"
   },
-  "font_origin": "Original hand-drawn Hebrew bitmaps in build_prototype.py; original English atlas retained locally"
+  "install_root": "Owlboy.app/Contents/Resources",
+  "dependencies": [
+    "Python 3 for BSDIFF application"
+  ],
+  "native_validation": {
+    "macOS": "Full translation opening dialogue verified; full playthrough pending",
+    "Windows": "Source CI passed; game edition and gameplay not tested"
+  },
+  "publication": "Local Kitor candidate only; registry distribution not enabled"
 }

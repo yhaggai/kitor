@@ -1,0 +1,12 @@
+{
+  "status": "passed",
+  "platform": "macOS",
+  "engine": "Kitor Rust patch_lifecycle",
+  "files": 30,
+  "installed_hashes": "all match",
+  "restoration": "all original bytes restored",
+  "created_files": "all removed",
+  "untouched_and_later_files": "preserved",
+  "fixture": "disposable selective game inputs",
+  "gameplay": "not exercised by this test"
+}

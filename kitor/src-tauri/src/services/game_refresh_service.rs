@@ -49,7 +49,7 @@ fn check_game(root: &Path, id: &str) -> Result<(String, Vec<String>), String> {
             missing,
         ));
     }
-    let detected = game_service::detect_game_in_folder(root)?;
+    let detected = game_service::detect_game_for_id(root, id)?;
     if detected.is_some_and(|g| g.scummvm_id == id) {
         Ok(("present".into(), vec![]))
     } else {

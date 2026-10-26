@@ -1,0 +1,22 @@
+{
+  "idx": 52,
+  "name_he": "הנסיך הפרסי",
+  "name_en": "Prince of Persia",
+  "facebook_post": "https://www.facebook.com/groups/200491360554968/permalink/598286260775474/",
+  "post_date": "2020-04-28T17:20:09Z (UTC, from creation_time)",
+  "description": "כל ילדי ה-DOS של שנות התשעים היכונו! אתם שנדרשתם להיות מתכנתים, כותבי קוד, טכנאי מחשבים ועוד שאר כישורי הישרדות מיוחדים בשביל לעזור לצעיר פרסי אומלל העובר אינסוף תלאות על מנת לפגוש את אהובתו הנסיכה, אתם הולכים לחזור היום במנהרת הזמן אל אותם ימים מאושרים.\nלכבוד יום העצמאות אנו מעניקים לכם את הנסיך הפרסי הראשון לשמו במהדורה עברית עדכנית בניצוחו של אשף המחשבים הכל יכול ניב באר, אשר לקח את יכולות הטכנולוגיה והגרפיקה עד הקצה ופיתח לנו את המוצר המדהים הזה.\nזה הכל חברים. תיהנו לכם מהמשחק שיגדיר לכם את הילדות מחדש.\nנ.ב. הנסיך הפרסי 2 בדיבובו של גל שמש האגדי נמצא בשלבי הקלטה אחרונים, וישוחרר בזמן הקרוב.",
+  "vm": "DOSBox",
+  "vm_notes": null,
+  "vm_source": "post",
+  "patch_link": "https://drive.google.com/file/d/1c9UjaUEiBx6Iog-FdLR6i7xkHeglDNaP/view",
+  "patch_links": [
+    "https://drive.google.com/file/d/1c9UjaUEiBx6Iog-FdLR6i7xkHeglDNaP/view",
+    "https://drive.google.com/file/d/1c9UjaUEiBx6Iog-FdLR6i7xkHeglDNaP/view?fbclid=IwAR3xNhEPK4cKOB7wLH4WMk8aL6910b9INiIMCb4mC3Ntng1GIoAGyarL-B8"
+  ],
+  "other_links": [
+    "https://www.popot.org/get_the_games.php?game=1",
+    "https://www.dosbox.com/",
+    "https://www.popot.org/get_the_games.php?game=1&fbclid=IwAR1UlA0m_P0gAfSJCAbnNSN7ltk91nFTEKIZ7RydOBpGjsEbTxXb5Rj6HEc"
+  ],
+  "extraction_status": "ok"
+}

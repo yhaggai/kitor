@@ -1,0 +1,20 @@
+{
+  "idx": 122,
+  "name_he": "מסע המלך",
+  "name_en": "King's Quest",
+  "facebook_post": "https://www.facebook.com/groups/hebrewadventure/posts/1797684850835603",
+  "post_date": "2025-09-15T12:47:16Z (UTC, from creation_time)",
+  "description": "הבטחתי ולכן אקיים. תודה רבה לכל מי שתמך ועזר בפורום הזה. אני שמח לפרסם כאן את התרגום ל King's quest 1 - מסע המלך 1. המשחק הראשון בהסטוריה של משחקי ההרתקאות עם גרפיקה מלאה ואנימציה.\nאשמח לקבל הערות והארות. התרגום הבא למסע המלך 2 - כבר בדרך!",
+  "vm": "ScummVM",
+  "vm_notes": "daily build",
+  "vm_source": "post",
+  "patch_link": "https://github.com/SegMash/AGIHebrew/releases/download/9_25/kq1-hebrew-installer.exe",
+  "patch_links": [
+    "https://github.com/SegMash/AGIHebrew/releases/download/9_25/kq1-hebrew-installer.exe"
+  ],
+  "other_links": [
+    "https://www.gog.com/en/game/kings_quest_1_2_3",
+    "https://buildbot.scummvm.org/#/dailybuilds"
+  ],
+  "extraction_status": "ok"
+}

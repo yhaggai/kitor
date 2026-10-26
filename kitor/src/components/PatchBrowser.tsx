@@ -165,9 +165,6 @@ function PatchCard({ patch, onViewGame, onShowGuide }: PatchCardProps) {
           />
 
           <div className="absolute top-2 right-2 flex flex-col gap-1 items-end">
-            <Badge variant="secondary" className="backdrop-blur-sm bg-background/80">
-              {patch.language}
-            </Badge>
             {patch.patch_installed && (
               <Badge variant="default" className="bg-green-600 backdrop-blur-sm">
                 <CheckCircle className="w-3 h-3 mr-1" />

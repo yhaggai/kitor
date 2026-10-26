@@ -6,3 +6,5 @@ pub mod gog_commands;
 
 
 pub mod steam_commands;
+
+pub mod bug_report_commands;

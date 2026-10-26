@@ -1,0 +1,1748 @@
+{
+  "checked_on": "2026-10-26",
+  "images_checked": 348,
+  "images_passed": 348,
+  "manifest_matches": true,
+  "results": [
+    {
+      "url": "https://assets.kitor.click/covers/undertale/en/9145051fa004.jpg",
+      "sha256": "9145051fa004631fd4c485903476de1397ca785422ac46f721f97b6285583f44",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/undertale/he/7779b0629b75.png",
+      "sha256": "7779b0629b755293e4e4315f888826641dec687f165cc7150feabcfb9eea367b",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/monkey-se/en/b9d8b502a92e.jpg",
+      "sha256": "b9d8b502a92e9ee2efced935e58f0234d9804b69b5421083da57609b0f9422af",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/monkey-se/he/0808875f8dd2.png",
+      "sha256": "0808875f8dd22dfa509ad6ea85e3c0ba6c4e1fd9c2e40229d6544f872036c0a4",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/monkey2-se/en/edc7e06d30c7.jpg",
+      "sha256": "edc7e06d30c7b240dba4bca0c618992ef49e2f47f0961327c72de6670c8735cb",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/monkey2-se/he/04849cb6d306.png",
+      "sha256": "04849cb6d306f2343597cab8fc7396f2218e7a37cef818cb71ca52b5dc5da579",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/sq1sci/en/47ff2f31fadc.jpg",
+      "sha256": "47ff2f31fadc5b53a21b5e3ce1537b59f77c9a6895d69fd3881d342d14991f7f",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/sq1sci/he/f465b4640811.png",
+      "sha256": "f465b464081178747edc7960111d6dd3043519767724deae6590a1a7f9e624fe",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/kyra1-cd/en/dc0a02457e0c.jpg",
+      "sha256": "dc0a02457e0c1fb916f731780f3ae807968a3be5fc509ce5981d5ecbee9c00d0",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/kyra1-cd/he/b9f9a5ade25d.jpeg",
+      "sha256": "b9f9a5ade25d066f16375dfa4949c73cc4360fb2f5287c4e8afe2fe8a511f022",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/pq1/en/bb3cbf8ffefc.jpg",
+      "sha256": "bb3cbf8ffefcfdb823e0f3633ef37d06d68ecd61ec2c9f1d2b52891279bbde36",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/pq1/he/02f732721274.png",
+      "sha256": "02f732721274c836a1721ab0367475d97d17e31e957ee8ba8068ab57f66672ba",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/sq1/en/08cf78a61b31.jpg",
+      "sha256": "08cf78a61b31f699360f0122b6417d76ba2df7cb4a302b3c07df9061171ce04e",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/sq1/he/14acb546941f.png",
+      "sha256": "14acb546941f2bd5793a2c26d74636d664d4c0b6f08103bc675ff47a07ed52ad",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/sq2/en/2f9730d67c73.jpg",
+      "sha256": "2f9730d67c73a4f7114d8681d358b8cc2c35b3ccfb15eebae3c0b740b28c3339",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/sq2/he/fecca102b63e.png",
+      "sha256": "fecca102b63e31a19f36e34f4d0b46e78d74e1a985594aa2f3905c5a978f6abc",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/sq3/en/a67b602ab498.jpg",
+      "sha256": "a67b602ab498d8c3de4a39961b9c6d449a101b2957d6efabc077e44dbf165d73",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/sq3/he/48f13b56b776.jpeg",
+      "sha256": "48f13b56b77655f0befbcb62fdf74d291ed7917a9c2453678113bea5c48dad1d",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/sq5/en/2d1c335322db.jpg",
+      "sha256": "2d1c335322dbb2f04f486df7761856bafd60e639096e51017271c942a0fbf0b4",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/sq5/he/8d60499f2931.webp",
+      "sha256": "8d60499f293131791b8dd3c75219e4aaead25b7c8829f4acdc31ba142ffd818e",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/torin/en/e53a5ae010c8.jpg",
+      "sha256": "e53a5ae010c8cac2b888fddc6de95d4b33e8955c4cfeba012e7e80a032072c61",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/torin/he/344dd7e600d6.jpeg",
+      "sha256": "344dd7e600d6be7379909f5ae7b5ee2e83174160f088aca9caf31fe8375199d5",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/spyfox/en/f79e51735fc4.jpg",
+      "sha256": "f79e51735fc48dfc7d230d93370984fe044c5c1cabe3b4aed26e135a3d98499f",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/spyfox/he/d2bc70a55ef0.png",
+      "sha256": "d2bc70a55ef09bd09856bcaffcb0b4eda4662f419f67164b34f83b70fd15a9db",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/pajama/en/800dc7a2b316.jpg",
+      "sha256": "800dc7a2b3160bf6a4924de478c0eda03b359b16dcc61d90248d32916e289d0e",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/pajama/he/524911dfb89b.png",
+      "sha256": "524911dfb89b7eea7da526e0d2c47f40980d92bfaec6a3e2a6add361f8ea1c67",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/toonstruck/en/fbd6de512350.jpg",
+      "sha256": "fbd6de512350be15ad09643a7751eeb9eb9818b7189b55b302ddad4bef51bedd",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/toonstruck/he/c74b163cee09.png",
+      "sha256": "c74b163cee09532668ee6be2a9835c936a5b6e75f973d78dfb43eedacd366ff8",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/gob2/en/1e523d396214.jpg",
+      "sha256": "1e523d396214bc4f4c7b5c09d64c034d8f1e48fdb8aef4c68f3e5adf88a28d0b",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/gob2/he/e7017e6b020e.jpeg",
+      "sha256": "e7017e6b020ee51e2d71e0c75a8fc3cd1017788a28881c7eaad022c84f808998",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/tlj/en/318fdae99f56.png",
+      "sha256": "318fdae99f5628fbf9ee9ca9a13605336ecd26d726bd7f33651d3c1c809f1b92",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/tlj/he/7caffc0e3eb6.jpeg",
+      "sha256": "7caffc0e3eb6bb4f9926d19e0d255546cadf0699b5ab438077d5ca518c3aad14",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/sky/en/a66d8fcd68f6.jpg",
+      "sha256": "a66d8fcd68f6db1fca5acba9b9f825233e36dbf68a518a94825d43cb17bfd5f9",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/sky/he/01aa7fd0a807.png",
+      "sha256": "01aa7fd0a807edd8abf6b9926a305fbe0946e847be9d2d091208d12977decf5b",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/stanley-parable/en/924f717e3da0.jpg",
+      "sha256": "924f717e3da09b95bf30c3620df78e0b9dbbf005b576e2cf9b3c7ee5cd4c398e",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/stanley-parable/he/e3715fa6037e.png",
+      "sha256": "e3715fa6037e6d8a4b809128cae11ee8aa807aa57c1391450198150a4251924f",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/tesla-effect/en/77011ed8d30d.jpg",
+      "sha256": "77011ed8d30d7413f9214888b4f3664550c1af6d39f2279e774e02ec12841ab7",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/tesla-effect/he/2576368ae8b7.png",
+      "sha256": "2576368ae8b7f9e5f985b8900713a6027b7b6eb6b6d5a37b6fe2cce322fdc56a",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/ethan-carter/en/1cb9c72fce73.jpg",
+      "sha256": "1cb9c72fce73c8acb9f2583a9bc21ba169a67c9be821e228c41be5bf39b49ab4",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/ethan-carter/he/92abbf856e40.png",
+      "sha256": "92abbf856e40e0b1e4ac962d4539a2ca32ac2644f54cbd3a7a832372439dfb67",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/life-is-strange/en/3129cec77590.jpg",
+      "sha256": "3129cec77590977b08d06bc14f8efd8cd2effb047485ee4705966c97b950727b",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/life-is-strange/he/850643e4f7ca.png",
+      "sha256": "850643e4f7ca550019da8504da7b724a3dd1a0ed4086b095b2092bc285c8deac",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/portal2/en/716b26a850c5.jpg",
+      "sha256": "716b26a850c5d9dff6645ffd1934fcb458dac262e4b9e2c9725054c0b057bea5",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/portal2/he/cbf4cc98e5cb.png",
+      "sha256": "cbf4cc98e5cbceccabc5efca329eb543129b29af5c53dbb56916b31a43a7e983",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/journey-down1/en/593bbde1b4e9.jpg",
+      "sha256": "593bbde1b4e920f57a656b7a130d9ecb8c0bebc8cede5d6ef3272b05c8c85ed5",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/journey-down1/he/881fae3ed173.png",
+      "sha256": "881fae3ed173c70c28637842a6739722ec67f3b7316553425062d5b32ebcc2f5",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/kathy-rain-dc/en/4d5873a538fd.jpg",
+      "sha256": "4d5873a538fd9181e330afa4102c57abb2fe67d44362a6b9784eff929bcf4463",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/kathy-rain-dc/he/1804c853528e.png",
+      "sha256": "1804c853528e4dcbdea70144400150a1c2e1345c1e733033905d9623e03048df",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/drifter/en/8f903a5fb6f8.jpg",
+      "sha256": "8f903a5fb6f85911e216eed5f15af28a2785b8d352cd8f7bbcae6e36cad389cc",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/drifter/he/3fe049fcedf2.png",
+      "sha256": "3fe049fcedf2cb7c0d2295300e7339dd3e292b8e1894b2bd8380aae3596d1448",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/simon-the-sorcerer-25th-ann-edition/en/78d3abc6efbc.png",
+      "sha256": "78d3abc6efbcde17d5132f39132ca6c03950636b96d8f1e5c10741508207c81b",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/simon-the-sorcerer-25th-ann-edition/he/2d37fc77884e.png",
+      "sha256": "2d37fc77884e8e34249de6465af50c778b9c64d2aeaedd8e8ea57f69b05b73dd",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/prince-of-persia-2-the-shadow-and-the-flame/en/64dec2a5e668.png",
+      "sha256": "64dec2a5e6689fc8311972b6146b1b49116b5f1983c7b7dbb7008d3ff6e4a703",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/prince-of-persia-2-the-shadow-and-the-flame/he/9f0450562585.jpg",
+      "sha256": "9f045056258576cffa6f8132cc1937f63beaae3a940c4d947cfb9b797603910b",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/the-dig/en/fd2cf443e994.png",
+      "sha256": "fd2cf443e99402a1ce04c50e0314e409189184964b5fdef9f9ab83d19dc7a14b",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/the-dig/he/663a07f7985a.png",
+      "sha256": "663a07f7985acc978c559d7ba2dc6e4078c44ea4544eb7ecf6178a4f31214e6d",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/the-secret-of-monkey-island/en/bdb3276b36cf.png",
+      "sha256": "bdb3276b36cfb2783729d26baf32b6ecb8172e455068f2f7b819e918fa2176b1",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/the-secret-of-monkey-island/he/f16669f4012f.png",
+      "sha256": "f16669f4012f8d80040a78355da7b0608d8ab2e08ee07b56a1f272f5e230c7ee",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/monkey-island-2-lechuck-s-revenge/en/c6a42adc2047.png",
+      "sha256": "c6a42adc2047f28ee61e1aa02f880ed3a04bc025f0092fc51c543e4e65782e0b",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/monkey-island-2-lechuck-s-revenge/he/926eac6d9534.jpg",
+      "sha256": "926eac6d9534cb7bca2a9aeef99591bdfe4cd995bcbef0b486314ebe338e946b",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/the-curse-of-monkey-island/en/514798db10c3.jpg",
+      "sha256": "514798db10c3b994b7d61452df867fb73a8624b7fe4d568e8a980e55fe1d1000",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/the-curse-of-monkey-island/he/4bb023d91419.png",
+      "sha256": "4bb023d914195b242c8e01f05cb311626ca97f3c4322c42de9a257d4b8d3de20",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/indiana-jones-and-the-fate-of-atlantis/en/762d51932ece.png",
+      "sha256": "762d51932ecef198cb8095c710fc1436673da4740840a33db2b7ede7aac11158",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/indiana-jones-and-the-fate-of-atlantis/he/775b1a4f0084.jpg",
+      "sha256": "775b1a4f0084cf52f1c93d361ab6108e082318e9b9840173f08571583f73c399",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/indiana-jones-and-the-last-crusade/en/7a80bf26a524.png",
+      "sha256": "7a80bf26a524a7ea78303a2a39e369506eb5c841f6fde6a35a749b106ef64736",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/indiana-jones-and-the-last-crusade/he/b65367b7bb90.png",
+      "sha256": "b65367b7bb90c00a36069f51dfbff940354fbba35cc01afe46883a1dc1c3af96",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/maniac-mansion/en/e029a792b041.png",
+      "sha256": "e029a792b041b26842227139e078c7a08e71bd4d04ee368955a4c4f55ec83618",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/maniac-mansion/he/ad6b16d25f76.png",
+      "sha256": "ad6b16d25f76347761786448edc0aaac1ed94e772c656e23fa710fcba79b2fea",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/full-throttle-not-the-remastered-version/en/20b4a1960f32.png",
+      "sha256": "20b4a1960f327d07cd58a0cee737a4d4cffb6898cac8be2b82dfe533b67415f0",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/full-throttle-not-the-remastered-version/he/383cd2103411.png",
+      "sha256": "383cd210341145f9bcd9e2c5ee38a4e83e4e6cdcd45778e97245e9b60156c2f3",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/grim-fandango-not-the-remastered-version/en/ff3d0ca7ea65.png",
+      "sha256": "ff3d0ca7ea65bc7cd92633bd05b040d4b2d7bba56dababe0c440a5eb3d9ce626",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/grim-fandango-not-the-remastered-version/he/60e5cf66bc9f.png",
+      "sha256": "60e5cf66bc9faafe3647909f7ed3382e8959c9689793c3477acf0cb092979875",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/sam-max-hit-the-road/en/664f13c62cb8.png",
+      "sha256": "664f13c62cb8e20ab324a6286205f64c8f0efad7760f48bc980b934dd7e89395",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/sam-max-hit-the-road/he/04a56c612e57.jpg",
+      "sha256": "04a56c612e57651d47ea1c939808f1e6196a6378e7751f9a4f3d8b764adce420",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/zak-mckracken-and-the-alien-mindbenders/en/ec8ae162c333.png",
+      "sha256": "ec8ae162c3333e10df45884d8a04e5b039ac638db288c4d27760f69a4a8c3eb9",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/zak-mckracken-and-the-alien-mindbenders/he/6e876baa0fce.png",
+      "sha256": "6e876baa0fce7a3948962e214c7f229a48bb3d8389d25e974e1acedc591e518f",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/loom-fm-towns/en/8ad39cffa1df.png",
+      "sha256": "8ad39cffa1df73670b5736261fbbda21f6b8dc106e5688aff277b495219e9229",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/loom-fm-towns/he/ef9573d939e1.png",
+      "sha256": "ef9573d939e17a24f1f5e4a0f737a0dc3a90b4f42c86ddc41d1bee30486ffec7",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/the-colonel-s-bequest/en/8090e43850a3.png",
+      "sha256": "8090e43850a34ec646e6e1ba8e9b2cce8c338bfb82f9f494b5902eacdfe98aee",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/the-colonel-s-bequest/he/0f899ee07304.png",
+      "sha256": "0f899ee07304a3544fcab79c494cb59c2e2852db3dd63dec89acdc568aa40254",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/gabriel-knight-sins-of-the-fathers-not-the-ann-edition/en/447bceda72c5.png",
+      "sha256": "447bceda72c514a343dd57fd34467c7ad3bd5ebabd5199c8b0c76ed1646679ff",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/gabriel-knight-sins-of-the-fathers-not-the-ann-edition/he/7bb2155eba21.jpg",
+      "sha256": "7bb2155eba214533eaec461a15300b57f828f63e46934163d022600fcb1e8034",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/the-beast-within-a-gabriel-knight-mystery/en/b8a5ec2041a5.png",
+      "sha256": "b8a5ec2041a522dac7d1f8cb4edf922aae9c36efd33fc1ee5d7acd1ae17658ed",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/the-beast-within-a-gabriel-knight-mystery/he/09fedb003ad7.jpg",
+      "sha256": "09fedb003ad739622934869df698be99f9a3f4fd63e14e812ca9a4abbc7cadba",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/inherit-the-earth/en/5987bdbb2906.jpg",
+      "sha256": "5987bdbb2906dc0d10551cdf938bf7ee015f03e9e19f196a08506336a9f89905",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/inherit-the-earth/he/844c2d83fe9e.png",
+      "sha256": "844c2d83fe9e49a0ad47b840fe52913776c19563e6585c67a2ab7e3e64768dc3",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/broken-sword-the-shadow-of-the-templars/en/fcf27efe3b98.png",
+      "sha256": "fcf27efe3b98ea50cca7201e7fd3691c28b67269402a5005206f962d643bf8ca",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/broken-sword-the-shadow-of-the-templars/he/4ba278b2f3e4.png",
+      "sha256": "4ba278b2f3e46f243756f8e8a0e198db18d4b7b992122a637734e9638762742c",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/broken-sword-ii-the-smoking-mirror/en/42044f5b9bc7.png",
+      "sha256": "42044f5b9bc71c032206c85bb17f4e3e6730f79fa911500795e9f0e62a9d248f",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/broken-sword-ii-the-smoking-mirror/he/b30fad455955.png",
+      "sha256": "b30fad45595505adb7eda18c5ae01e4deefe36654fdb5e39d34f8bcbf661007c",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/broken-sword-2-5-the-return-of-the-templars/en/ba1e280e2168.png",
+      "sha256": "ba1e280e21682fbc3e6145a5ec69fb13f9a78a3825a5f66dc83f1f36f9f13023",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/broken-sword-2-5-the-return-of-the-templars/he/baf0bc796004.png",
+      "sha256": "baf0bc79600407d14998c33c70d2b2596bd46b98e75fc8ff2a7e0d6a88cea146",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/the-legend-of-kyrandia-hand-of-fate-book-two/en/5ddbeea23469.png",
+      "sha256": "5ddbeea23469b363566780aa0d42a92db943a3b95a8f76b9d5ff98b51d442bdd",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/the-legend-of-kyrandia-hand-of-fate-book-two/he/7d87eb64a83e.png",
+      "sha256": "7d87eb64a83ee4982a08180ba9edca90cce5e81fe2073030c4cda540e5448784",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/the-legend-of-kyrandia-book-three-malcolm-s-revenge/en/394941c8626e.png",
+      "sha256": "394941c8626e597706e46db37e4e15f720406bc498fc7be949d22f75623614c0",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/the-legend-of-kyrandia-book-three-malcolm-s-revenge/he/7f5600cf9a8e.png",
+      "sha256": "7f5600cf9a8ee9440e0231dfc552089795f7bc6296217b9ed856134df7ef4404",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/sam-max-save-the-world/en/b3029b23f44a.jpg",
+      "sha256": "b3029b23f44a8e0de8b789591cf865ba029a07ebd08022975a8a3d1422c20b85",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/sam-max-save-the-world/he/b82e348ed16c.png",
+      "sha256": "b82e348ed16cfb79624e37372b75d9e153c4ca85b69c9975623ac66341ea3ba2",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/beautiful-desolation/en/2707494636ef.jpg",
+      "sha256": "2707494636ef35dc2e1f233f92150c86e7f4e98fbe63f638c2b99ccd14e18bdf",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/beautiful-desolation/he/ff1d0867bc59.png",
+      "sha256": "ff1d0867bc5989f8cc5d55173203395f01666f87d058ad634506650e3dae0e30",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/black-mirror-ii/en/f1f6f2981d67.jpg",
+      "sha256": "f1f6f2981d67582088b8497638e5547c457705968756da7d4f929900f51abdab",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/black-mirror-ii/he/d9ffad8c97fc.png",
+      "sha256": "d9ffad8c97fce9d8a77b6eaddda6467b7a93664d59e1d6d19f521b07008ccaf5",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/black-mirror-iii/en/27e70b4b3db3.jpg",
+      "sha256": "27e70b4b3db33d4e31afa9d18719cf1bd74649484173f4c280972c9d8e28e39e",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/black-mirror-iii/he/e396a4331810.png",
+      "sha256": "e396a43318101cf49babea9e409807263cd7da209ed86f6cd63a9a3b86fd2668",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/blade-runner/en/b254f39542be.png",
+      "sha256": "b254f39542bea89215ef1d39c35c79a327578a768005093e75b768178c89ad69",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/blade-runner/he/f84c93418edb.png",
+      "sha256": "f84c93418edb4873479423140369ee3081ff6e5854909b3dadaa9f901c7b2d26",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/atlantis-4-evolution/en/624304122a7a.jpg",
+      "sha256": "624304122a7a048c0de00208f546af06a06d49eaf2324d95a0a5bf0d5944eb1b",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/atlantis-4-evolution/he/2e2174bb72ac.png",
+      "sha256": "2e2174bb72acb5aea746962bb3bfdee1e4f2f535443599e52f834705d011b7e2",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/ghost-pirates-of-vooju-island/en/8103a5a2b449.jpg",
+      "sha256": "8103a5a2b449fc9c239bae8e5b4ced4db189a102468ca891dc6ce667d8bf4705",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/ghost-pirates-of-vooju-island/he/ca50dcf91f71.png",
+      "sha256": "ca50dcf91f71e2559cc26ad512d7f8397593a347ffa47fa1ced51da2464481bc",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/dear-esther-landmark-edition/en/a49aab5372d1.jpg",
+      "sha256": "a49aab5372d1392449f72ccd1ce5bd12a32a599036f05c16a27625bf0a7510d7",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/dear-esther-landmark-edition/he/a9849eea19a5.png",
+      "sha256": "a9849eea19a5cf72f638780085abd51f4f3eb634846703073954e10f9ea2fc60",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/she-sees-red-interactive-movie/en/dbfd9e1393c6.jpg",
+      "sha256": "dbfd9e1393c6121e506dd6c06e3afb77607e8ddd839b486c04a04dc68c379ad6",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/she-sees-red-interactive-movie/he/ebce57c5702f.png",
+      "sha256": "ebce57c5702fdd89663bad4a36804f10c9f42fe204a6b53b5e0c2765925049b3",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/the-7th-guest-25th-anniversary-edition/en/331e02234a4b.jpg",
+      "sha256": "331e02234a4b3f918b73a0380089873d9e6b983245bd56758b2a639fc6fb041b",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/the-7th-guest-25th-anniversary-edition/he/7e15afc2037b.png",
+      "sha256": "7e15afc2037b0be59e8e5c8ba409509fd12f063f1e79e2ce0dc22f39985002f9",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/cat-and-ghostly-road/en/6375f7e65943.jpg",
+      "sha256": "6375f7e65943c5ed7b5067ecd7300947cefda058a44f27fbd9f22a89bc5c8657",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/cat-and-ghostly-road/he/4032b3688c99.png",
+      "sha256": "4032b3688c992e4f25c2977d57d998127edcda1096e32d133272a136e811670e",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/dark-nights-with-poe-and-munro/en/c319f77b12c3.jpg",
+      "sha256": "c319f77b12c3ea92238098eec73a4b808f3303bfa736c39339eb7c797f28c71e",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/dark-nights-with-poe-and-munro/he/a8c41ed52232.png",
+      "sha256": "a8c41ed52232df1be79672f4ff0185d75bf1302e97a454e5e01982ce1ca511fb",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/return-of-the-tentacle-prologue/en/e85bccedb6ac.png",
+      "sha256": "e85bccedb6ac4137d05adacf075c03aab254691e809e0a430b1673e2fdb6fb58",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/return-of-the-tentacle-prologue/he/e870db2f26b4.png",
+      "sha256": "e870db2f26b41d6f5c80f05bfc9e6936739d655141ee3839efe2b1b444328a35",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/maid-of-sker/en/145e2861d3da.jpg",
+      "sha256": "145e2861d3da28d4b44da942adae4fefe4d229c0c3dab60e50e622b4897c74d1",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/maid-of-sker/he/663ab953b8ff.png",
+      "sha256": "663ab953b8ff1ec791dade33c7e629954f32950c17b1dc9f305e1426072e8f40",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/late-shift/en/ef25e190e7d1.jpg",
+      "sha256": "ef25e190e7d1c9d7e22465d11a520bd24025c9a17ef015dce57c8554ea02f698",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/late-shift/he/d00a942cadb0.png",
+      "sha256": "d00a942cadb05a5e7c3058bd6dee510486cbb920e1129b73089820eeef29ddee",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/the-bunker/en/10972bb96497.jpg",
+      "sha256": "10972bb964975e85af04e1ca1769e9f4ae1feb74ac8645b537f3b2252079d1d0",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/the-bunker/he/37455f4b644e.png",
+      "sha256": "37455f4b644e08a719f6b6fff7e2904dd68c8a2eab35c3513cd49f9fd14a74e2",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/the-shapeshifting-detective/en/bb72e874e211.jpg",
+      "sha256": "bb72e874e21192b07b1f7ba3315eccfbd8e2c5be7866f5a85f86b2326e987639",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/the-shapeshifting-detective/he/497815d8c642.png",
+      "sha256": "497815d8c642fe1dddcbb21660b7e4565404073a574f47f10d5212e0663d5a51",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/the-complex/en/cbf7b6e323e8.jpg",
+      "sha256": "cbf7b6e323e8aa3b3f3c15ed5b290f5080f91a3379055a48a2abfe41dd23263e",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/the-complex/he/c229b8ce3374.png",
+      "sha256": "c229b8ce33741a0c3006d7f8b260b47d371f21e8e5ce173946e2bece6b91a5f7",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/portal/en/3543da98712d.jpg",
+      "sha256": "3543da98712d53887a0e145f984e61de4624c71412387ab1f7cbf0e4e905b0cb",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/portal/he/3a9b3a6723bc.png",
+      "sha256": "3a9b3a6723bc23ae9dbd944e849b7fc716303f785c78930bfe951525be9a9891",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/portal-with-rtx/en/e84a36acd958.jpg",
+      "sha256": "e84a36acd958e032bcfc3141b108da041b7973bf5c55d08b83c805f569570613",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/portal-with-rtx/he/a5998b9a2768.png",
+      "sha256": "a5998b9a27686413e51a4c7b4cd4c8c3ced2a477ebb61bc14b11821684cf0777",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/neighbours-from-hell/en/95901a417e85.png",
+      "sha256": "95901a417e8536fb7f1c9e4922f6f31ed3fe9592618e5623099e93239034c4dd",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/neighbours-from-hell/he/108469a229e1.png",
+      "sha256": "108469a229e1d2c75541e5135b7c4ec60c586cec0b014c40bd8662bcd7b3623b",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/prince-of-persia/en/191967d0bdf5.png",
+      "sha256": "191967d0bdf5ab1851ee2ed07da2fb754215e21d59e271739ed1929496fa62bb",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/prince-of-persia/he/f1a711b49cb5.jpg",
+      "sha256": "f1a711b49cb5da7965f1bae258bd6375325a534f2e4a75588300b46f8de0219c",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/ever-forward/en/0f2329d3d8d6.jpg",
+      "sha256": "0f2329d3d8d67a242ccb76cc7dcb60295ef04b83c3c3292a37c13ee69b69112c",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/ever-forward/he/02c5e26d17ee.png",
+      "sha256": "02c5e26d17ee5defad33222eee9561fb00978fd3a79c900bfde0febb0b4b77e5",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/my-memory-of-us/en/5af3dd28ce71.jpg",
+      "sha256": "5af3dd28ce7185967060e63835deff23399e8cb6dbe8714193af4e67bcdf787e",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/my-memory-of-us/he/a822a034bd93.png",
+      "sha256": "a822a034bd938f47071186c61de9ca34aff29a18b6152f5b21d7272c04c6c9b7",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/mystic-pillars-a-story-based-puzzle-game/en/7b526778e887.jpg",
+      "sha256": "7b526778e887f489d989bde8e2e3ff588c7094a8b8dbfaa3d1c7d9e14d00d129",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/mystic-pillars-a-story-based-puzzle-game/he/51512a4f4068.png",
+      "sha256": "51512a4f4068dffa16df59c4704c5f285d1ad5f4773617ac3b765cd61760d369",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/a-fold-apart/en/39919a01e75e.jpg",
+      "sha256": "39919a01e75e75c04df03ac5c857647a2743f99260a5b03fb3c93f6cd17a3394",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/a-fold-apart/he/005609bf9d94.png",
+      "sha256": "005609bf9d9466a156bc4324675dd7615ba0824540998d1adaee4f7e01e72a5b",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/hidden-saga-xamadeon-stone/en/14a69c3dd87a.jpg",
+      "sha256": "14a69c3dd87a4cadefe75897dee818278988d167770aacaaf79235bdd10c5e75",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/hidden-saga-xamadeon-stone/he/143e54f8c7ad.png",
+      "sha256": "143e54f8c7ad08dbbfad515d99519771c0317a553dbdcea180b5d3e54e30593f",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/the-henry-stickmin-collection/en/279d6f6c7310.jpg",
+      "sha256": "279d6f6c7310deae9bd0ff2bd80b5a3acd138ff4444d9d411fdf77dff9caf63d",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/the-henry-stickmin-collection/he/5a4e9a47c49e.png",
+      "sha256": "5a4e9a47c49ec655b037c53a9e935da676427c84063877b791ad48e158ebb468",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/syberia/en/08e2eda637d6.jpg",
+      "sha256": "08e2eda637d62489d8863ee0a80a2e5e50867359c669dae04d2f509d8a131869",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/syberia/he/933c100afcd4.png",
+      "sha256": "933c100afcd4e71a985cd79d2f7f76033e57a5d5a051d2ff6f55c1c9f145d873",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/syberia-ii/en/d1af68e797fa.jpg",
+      "sha256": "d1af68e797fa6b4f4e8aede5b2fe8839fb22411da084a22ae8d4a8129282c505",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/syberia-ii/he/3f9eb02f5e12.png",
+      "sha256": "3f9eb02f5e121c7bd046f605dce5b4e1321f02e74bff4f2d4555908b7d8b0035",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/tender-loving-care/en/883c0bdb853c.jpg",
+      "sha256": "883c0bdb853cd81491b898f1aac87b0f7ad5f628b0b244784206f8a83b659766",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/tender-loving-care/he/fdef3b17fd68.png",
+      "sha256": "fdef3b17fd686081b9b8f20503f12455d6f45cfc33a219c0e171ad111487d0e1",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/sanitarium/en/bc8ea036c3e1.jpg",
+      "sha256": "bc8ea036c3e15e635666352dc1b548bda99803645107ecb0383e4da1c57fed29",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/sanitarium/he/affa2fecb622.jpg",
+      "sha256": "affa2fecb6223c98ef41c4d11f74e063cd2aa3060dcd704d0c796f554bc3c21c",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/the-prophecy/en/c770f00af29c.png",
+      "sha256": "c770f00af29c1e0ae1dd687f700ff29081806b43caea2976c0656e8ba4d22cd8",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/the-prophecy/he/f6119234833f.jpg",
+      "sha256": "f6119234833f0e4f547814e04faa616ec01e93b8d8ee14bd68431f123a76aad3",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/phantasmagoria/en/d1d3b27ff8ce.png",
+      "sha256": "d1d3b27ff8ced65b2605c8d038ae543293f8f1cf53202c2adf6bc89a8b35b3f7",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/phantasmagoria/he/fe37d3af5f3f.jpg",
+      "sha256": "fe37d3af5f3faf5b0f891ac596e0007fc264e819a27d0839076d7fa94be9d020",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/atlantis-ii-beyond-atlantis/en/b5da963d15f3.jpg",
+      "sha256": "b5da963d15f393b0aaf0bb21367e530224bab6a80c4993a239bf8bcc8ed269c6",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/atlantis-ii-beyond-atlantis/he/e6adca76a1e1.png",
+      "sha256": "e6adca76a1e1d802878cddbc699a17621f65f561b949fb2eb45724af1bd41608",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/atlantis-iii-the-new-world/en/e3f66f85bc72.jpg",
+      "sha256": "e3f66f85bc72f8eb88525e33899891cd89c1fba9c3e193cfc285ef4fd2ba7aa8",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/atlantis-iii-the-new-world/he/21212cf04593.png",
+      "sha256": "21212cf04593fb66ed2830d485ef0808544157204bf405bf8bcbfe863355c9f9",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/ecoquest-the-search-for-cetus/en/3545ea7e9e43.png",
+      "sha256": "3545ea7e9e434c0721e75807ddaae5adfd2da5589aefeed57e5d2a71b7a8d0e1",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/ecoquest-the-search-for-cetus/he/112a5bbb2d7f.jpg",
+      "sha256": "112a5bbb2d7fb0e5da70709e6148f28f5cb38f51e866a00db8cae12e4107e484",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/phantasmagoria-2-a-puzzle-of-flesh/en/85ec54d86031.png",
+      "sha256": "85ec54d8603102f6b0de457973dbfe11ec27a5e31ed6c29e62c7b94a9ff6a74a",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/phantasmagoria-2-a-puzzle-of-flesh/he/76fdfc034a8c.jpg",
+      "sha256": "76fdfc034a8cb818f387ece01384f096df9d3a59407ca52373b5dc1c6a42b3ee",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/a-vampyre-story/en/f253a499da93.jpg",
+      "sha256": "f253a499da93ab7dc574f06380f6afd1d8992c7cf4b6d88844d481187fb1bb33",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/a-vampyre-story/he/3d1e6d79085a.png",
+      "sha256": "3d1e6d79085ae6a4598382ab2317fdd8b8f187494226ed5c519295f03b216985",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/alpha-polaris-a-horror-adventure-game/en/280add62cb58.jpg",
+      "sha256": "280add62cb589ab6ca45edf017838a155b3110a90f58d20b20581085a5740720",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/alpha-polaris-a-horror-adventure-game/he/ab21e34cf811.png",
+      "sha256": "ab21e34cf811a446da6b765cc9b82ffd8fa77c875f5caa62a8d43f04d4816998",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/face-noir/en/c8d4bda3e524.jpg",
+      "sha256": "c8d4bda3e5241e213700392646719441ce2f8008317d17956cb4d86779a2c2d1",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/face-noir/he/fd90acbeebec.png",
+      "sha256": "fd90acbeebecb72caa238c1247c5f28a3744f9e764d1924816775d26b334939d",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/rayman-2-the-great-escape/en/d113218f34b4.jpg",
+      "sha256": "d113218f34b43331acb2d0881091280674bd116f035d085a003e1c236cd7ffd6",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/rayman-2-the-great-escape/he/2295d0910dae.png",
+      "sha256": "2295d0910dae8574c3030c7fc92d067b87ba4e7f666fe7edcaa481efe123b57d",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/j-u-l-i-a-among-the-stars/en/ebe2d10b727b.png",
+      "sha256": "ebe2d10b727b010e132f31c0922218b2993b59733c2468fc93868cb37ec42063",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/j-u-l-i-a-among-the-stars/he/835ff783438f.png",
+      "sha256": "835ff783438f98baad3ddfec8b91739132a502903fdc45618e1d97657146d10c",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/contradiction-spot-the-liar/en/e5b6a9d5db3e.jpg",
+      "sha256": "e5b6a9d5db3e53f4792ed16b07c3f5f4ea8b936c475257ce1acff8518d7cdee6",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/contradiction-spot-the-liar/he/c0a3fd39b780.png",
+      "sha256": "c0a3fd39b7805e11cf18d1ebd88727840ca560f9e0002225e957d0c61bd6c241",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/serena/en/98c59336e3ad.jpg",
+      "sha256": "98c59336e3adf8c0fcfeb43d373f5f3b6836a035e10ef87e9fa485ae2ae2850b",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/serena/he/4f81203d83d6.png",
+      "sha256": "4f81203d83d6e6d18b5d16d802792536739f3f7f4f12b2358259a57f4669bc38",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/gone-home/en/c272df2fc5df.jpg",
+      "sha256": "c272df2fc5df4d98c28a54f8ffc2fefbe69e77bfde3f432477e9513783b85b67",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/gone-home/he/a74c6195f779.png",
+      "sha256": "a74c6195f77906e22f90f8192235c3105536c1cb1d0480640f6f26ac9a2cdef0",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/zork-grand-inquisitor/en/c619440fb59b.png",
+      "sha256": "c619440fb59b9722873a9f43a6c6ef96b9c3839c316afe06131cbbd672d112c5",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/zork-grand-inquisitor/he/a1558862172e.png",
+      "sha256": "a1558862172e5d1654688670b1f4b2a8830b1619dd258a848d16cf1d096d4b18",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/zork-nemesis-the-forbidden-land/en/45eb85229286.png",
+      "sha256": "45eb852292866affd0c16e5a06747ccba52338a731b96fab90f760ed8475f00a",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/zork-nemesis-the-forbidden-land/he/4bbbf09bcf3b.png",
+      "sha256": "4bbbf09bcf3b77d578de9d9457ec8f9bc2cbd52de0bbb7b709aba8f07093edf8",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/helga-deep-in-trouble/en/bf63ae360511.png",
+      "sha256": "bf63ae360511d30fcee709631e2750842fa01744c514827e0b2f80a88d5c0cca",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/helga-deep-in-trouble/he/2e44f4cd022a.png",
+      "sha256": "2e44f4cd022ad1a5eee28eb4f0eb8d1d238ea11f0f3b7a0c98928f3dbd4f837a",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/space-madness/en/93752a1f998a.png",
+      "sha256": "93752a1f998a13d8550137db9a08144eaedae3ee2eb8752845161fed10ea5986",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/space-madness/he/e18403571ef0.png",
+      "sha256": "e18403571ef04c4020081f836f1aad15ee3355eed086ff1ac18ce09a6028a1f9",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/even-more-incredible-machine/en/30b07ae60e07.png",
+      "sha256": "30b07ae60e07bea4f0ae7e3fcd961c102db9c38a028ae2914bdd0c0a994ec875",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/even-more-incredible-machine/he/72208e591dc6.png",
+      "sha256": "72208e591dc683111a7df9d849ae3a7312bb2fb072c71f7b4f50b7899cc0ff4d",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/black-mirror-2017/en/29942241f1bb.jpg",
+      "sha256": "29942241f1bb76d8ef6b74db4206a8c2dd367fe8af8de2b855a0b6c345214ced",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/black-mirror-2017/he/b828316fff0f.png",
+      "sha256": "b828316fff0fe2c753eafac2b8936cecc23d828b36e18c822377bb5b074704a0",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/dracula-4-5/en/d8be90790211.jpg",
+      "sha256": "d8be90790211bb88e744d3fc0a8524f6d518b5d2caa69953f99a6315df55da74",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/dracula-4-5/he/2e75d8fff980.png",
+      "sha256": "2e75d8fff980216d842abc54e2fd23cc765c85aaad4212ea92cc3a885d4d7da4",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/salammb-battle-for-carthage/en/bb5351241a30.jpg",
+      "sha256": "bb5351241a30a3b08ab9a16a0dcfb6fa4c5dc2ac6ef6463cd945c0e3cc7b22ff",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/salammb-battle-for-carthage/he/02539ddeba97.png",
+      "sha256": "02539ddeba979949f61ff91e0145c12b83fed4f7acee3695399b0f5944ed4984",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/dirty-split/en/6d035edb9c46.png",
+      "sha256": "6d035edb9c46aa01c7c8f00adffac0f8756059b265ef2ddab0d730f3e8f9fb42",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/dirty-split/he/e52e42a2d580.png",
+      "sha256": "e52e42a2d5804996669709a9e9485d2b0b51b0d3674fe1c0b1a3105fe83c2530",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/the-hardy-boys-the-hidden-theft/en/52c947a9f484.jpg",
+      "sha256": "52c947a9f484b70568c937021a742ee9a8ccc209493878f78f52ce0851963ad0",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/the-hardy-boys-the-hidden-theft/he/97696815f0bf.png",
+      "sha256": "97696815f0bfba83214a9933a18f206a031fef4c0f982ebd71bdafc100914630",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/ghost-in-the-sheet/en/91cd9f0b972e.png",
+      "sha256": "91cd9f0b972e3d8beb1bf0c5f29489b13fb6b2c2009f927901a11cad51fc53ed",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/ghost-in-the-sheet/he/66f71920c724.png",
+      "sha256": "66f71920c7249499961ab36d265ece8db4870fb5b6afb508addb9f6491405ecb",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/the-shivah/en/136f2c23180e.jpg",
+      "sha256": "136f2c23180ea9e0a360079cd9ac378d62d328f37134a0f2607f661c7bb09bbe",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/the-shivah/he/a7605288a35f.png",
+      "sha256": "a7605288a35fe91b8454cb4f3cd049e765592fcbde62a8c7167a88e7b32f0519",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/reversion/en/647fcc9fece6.jpg",
+      "sha256": "647fcc9fece6c43d6c381c4a56573a6b4c559add3170f911a8562e6985296dbc",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/reversion/he/7aa87a345584.png",
+      "sha256": "7aa87a345584a703c3b3f11b6af3946397256ef862fbbdf35902ab3f4e6a0e98",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/chronicles-of-mystery-the-tree-of-life/en/deae97470ac0.jpg",
+      "sha256": "deae97470ac0bfa5001f754b823b3ac3b261268c5f15864a34f695ddf4fda6be",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/chronicles-of-mystery-the-tree-of-life/he/381d2109c8f9.png",
+      "sha256": "381d2109c8f9cbf28c26d2cc713b778057814c5f31ddccc5b69289f2971710c5",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/art-of-murder-hunt-for-the-puppeteer/en/5fb0fd87d0ca.jpg",
+      "sha256": "5fb0fd87d0caca99c5a12d6a40cac4ddae8fbba2938189a3f87b7195de5aaa46",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/art-of-murder-hunt-for-the-puppeteer/he/62cc2ca276a2.png",
+      "sha256": "62cc2ca276a215249ad7abf6e4e77e5c082b0bac32217d99980895b3ac6b90d9",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/lost-chronicles-of-zerzura/en/b4e628950e89.png",
+      "sha256": "b4e628950e890ea6fe7c4df83eacd1634e6a29622730cbbe2cea994c688378ea",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/lost-chronicles-of-zerzura/he/7f71a79bce7b.png",
+      "sha256": "7f71a79bce7bf458df480ab1dc57b5354efcb9a746687ab30c31bae00676a5bf",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/still-life/en/9b003a4c5f96.jpg",
+      "sha256": "9b003a4c5f9668044ed303d8878c0f7d3ed23044271bd22935bb21e3a11d1866",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/still-life/he/c1dbf8b28e85.png",
+      "sha256": "c1dbf8b28e85027c86d84a1f32287e98271f4b6b8bbdb4b7e5cb577278b53b0c",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/treasure-island/en/ea5fe40e5ac0.jpg",
+      "sha256": "ea5fe40e5ac0830054e22c9f6e2f6b74cd665168956d9487d8d9f6424b3ec9b9",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/treasure-island/he/e9a12e480db1.png",
+      "sha256": "e9a12e480db1c10ba348816e2f0832ca3e370bde0b4d8a98d3923baccb2bdc0d",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/the-abbey-director-s-cut/en/450bfe6204b9.jpg",
+      "sha256": "450bfe6204b9797f966e95f81bf94aa82a8d62b9d7b3922bf93a5aec42704dcf",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/the-abbey-director-s-cut/he/99dde918cdb9.png",
+      "sha256": "99dde918cdb9a41a131314a7e8473de4dc907477a93e32bb3acb27d64535f0a0",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/mata-hari/en/af2317698fa8.jpg",
+      "sha256": "af2317698fa8982bd321bbdb22780bbd2763287b67f252c3827a44ee0e74325c",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/mata-hari/he/5a9718a786b9.png",
+      "sha256": "5a9718a786b9c3b4d03f14081af67d2432c059b3406a124872576796cba22d00",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/chronicles-of-mystery-the-scorpio-ritual/en/f1519eb411ca.jpg",
+      "sha256": "f1519eb411ca3d303c7546a6d228c9948e5ca83d31177eae0ad3d1e34f94be29",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/chronicles-of-mystery-the-scorpio-ritual/he/c48865d16480.png",
+      "sha256": "c48865d164805a1f572d2ce26d1cbc1222cab3cefb08af7ea39f4fac2b7a9ee6",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/alternativa/en/105d50f7e48a.jpg",
+      "sha256": "105d50f7e48a9e08e8bb558da4af530eef672a7a9eab8601c88d65b5c2883787",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/alternativa/he/a15f255f3ede.png",
+      "sha256": "a15f255f3edef2e70e62620dac7ce0ec33bfc7f10fcabb94c3cda0b8d7395e86",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/the-secrets-of-atlantis-the-sacred-legacy/en/926ea77225ef.jpg",
+      "sha256": "926ea77225ef515cc2a7294c56c95328e19f7c949a2474626aeebd3e95c00952",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/the-secrets-of-atlantis-the-sacred-legacy/he/3fe4fc4fee88.png",
+      "sha256": "3fe4fc4fee885bfeb9536b516744a86d4a7bbf3e2eacf66047cb2aacdb8dfb79",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/keepsake/en/6346741f9a6c.png",
+      "sha256": "6346741f9a6c90cbec0f6842bea08a5009b4c7208421f81fde31891d7bab0fed",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/keepsake/he/30ba6043bfde.png",
+      "sha256": "30ba6043bfdec6b334f003465a11f388fd197958b916d78d818967aba7907e7b",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/art-of-murder-fbi-confidential/en/f1475bf58a61.jpg",
+      "sha256": "f1475bf58a6139b0a5d40be7c138fc4167eaed11062da4cd5cc0373b9df07ea6",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/art-of-murder-fbi-confidential/he/573d8ecbb54e.png",
+      "sha256": "573d8ecbb54e0c84ed776b571b70fc150fdd883abe19c9df954e1b17c576b0df",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/secret-files-tunguska/en/f9f448dbf7bb.jpg",
+      "sha256": "f9f448dbf7bb92de61626974be17985ff96591cd61c83fcb592703df6e95f6e0",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/secret-files-tunguska/he/c8b6c0f4be47.png",
+      "sha256": "c8b6c0f4be476afe11c1effbd58ebfd7fb45d079f554e7e716ab3eb8c748f48e",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/leisure-suit-larry-in-the-land-of-the-lounge-lizards/en/61591c4d1fbf.png",
+      "sha256": "61591c4d1fbfa8c22978469709c804e80064ab78aff708dfefaf4a999f421f79",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/leisure-suit-larry-in-the-land-of-the-lounge-lizards/he/c9ede328ddb7.png",
+      "sha256": "c9ede328ddb7b87c60761bb4dddbcbf25416611b971f77082e848fcd42c817d0",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/gabriel-knight-3-blood-of-the-sacred-blood-of-the-damned/en/04f5a37b5c3b.png",
+      "sha256": "04f5a37b5c3bf7e044a300b7491857cdfbc862e8c2fc2e5b02fbe79827101aef",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/gabriel-knight-3-blood-of-the-sacred-blood-of-the-damned/he/a0367435c6ee.png",
+      "sha256": "a0367435c6eef6692fa926d4bfddec4a09521895e8019134fd3ffe42c096d8f8",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/secret-files-2-puritas-cordis/en/971b34bb0b63.jpg",
+      "sha256": "971b34bb0b63b874c03ad3eb3f0ea5090abea51aa50a7b46df4b5a170b1fabb7",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/secret-files-2-puritas-cordis/he/7bd4af610693.png",
+      "sha256": "7bd4af610693411ac2402b63fe2171ba3bae1a5e1ee084e8519d3b1c2ca97188",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/call-of-cthulu-shadow-of-the-comet/en/7010a8b44141.png",
+      "sha256": "7010a8b441415dee28a8925aa0220a95591c2ba9bdb86b4117182efa7cd94bad",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/call-of-cthulu-shadow-of-the-comet/he/77d9406ceefe.png",
+      "sha256": "77d9406ceefefbf70f23758e29157702cf5640afa08bed96539154c2a3efd78e",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/and-then-there-were-none/en/d9132723bef2.jpg",
+      "sha256": "d9132723bef246e03988f1294fed8fe7a04ae4b84b3bb20e30372d4f3e6923e1",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/and-then-there-were-none/he/1fc93b505401.png",
+      "sha256": "1fc93b5054011fb2d9473969dfd4c6bda4db64ee9200c59b17aaa7350a104f8d",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/king-s-quest/en/1fafae36548c.png",
+      "sha256": "1fafae36548c0c62341fec3150542ea35cdb48ab9f63c42f8135352b0eb7a479",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/king-s-quest/he/7479a0a4f040.png",
+      "sha256": "7479a0a4f040b270efe2b646b01e9e4c6618f81af18025da8bda50bc810c4dfb",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/cleopatra-a-queen-s-destiny/en/420f9db282ff.jpg",
+      "sha256": "420f9db282ff447f8faf9701ddc743e262441161215cfab93496040b61914586",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/cleopatra-a-queen-s-destiny/he/cdadc1ea53ff.png",
+      "sha256": "cdadc1ea53ffd0db244df4e843c0653807ab96793d909239a97c542297e9c9d3",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/lost-horizon/en/bcd83d0942fc.jpg",
+      "sha256": "bcd83d0942fceeceb5bce204339ba8ab84d8fe645af0a503d2e21d6c31f82349",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/lost-horizon/he/3250b09d6736.png",
+      "sha256": "3250b09d673693885f95d64fa64bb792529d9e27954e1236a7c05f289f44b8f9",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/emerald-city-confidential/en/ec32a8c23ef6.jpg",
+      "sha256": "ec32a8c23ef6db410181b5eeee6490bff61e14e584eec73d0ac3539fa8cedc89",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/emerald-city-confidential/he/312ff58b35e0.png",
+      "sha256": "312ff58b35e0f8f0e096a1dbc71381c97322dcccccc44cfced539d1477574860",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/destination-treasure-island/en/f5766637e0d5.jpg",
+      "sha256": "f5766637e0d5fe7b9015e5c2c4a4281857c5bae030aeefd5ae0383e05aa98bb0",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/destination-treasure-island/he/ed10a322b88f.png",
+      "sha256": "ed10a322b88f1c25500f0cfab4f6d2c9c77e1a01662efe2814e22ed86df3129d",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/king-s-quest-2/en/ba72bcb7c941.png",
+      "sha256": "ba72bcb7c9417742f78e9185cba8215f3a9d56dd1ae7a986c313a93174164318",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/king-s-quest-2/he/4f53652b8331.png",
+      "sha256": "4f53652b8331782a1919ae2a742f25c277ebb2a370e0160cc2225725bd2a1159",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/gray-matter/en/b658d38c4545.jpg",
+      "sha256": "b658d38c454507cba02ec557e4a6f9d4c056269bdb40727aa06725fd745fe650",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/gray-matter/he/99b0919a0674.png",
+      "sha256": "99b0919a06741eccf35d93ddcbf85b501b5d2c2bb06793b6c5b1f501fb1af18b",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/ankh-anniversary-edition/en/7e6226d9f055.jpg",
+      "sha256": "7e6226d9f0556775a42f8906f3245fad28639553d775ca19d79a5272fa3d8470",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/ankh-anniversary-edition/he/d145eac0f965.png",
+      "sha256": "d145eac0f9655928b106025a90e913cdb0454e9fcb066f7d535f017666bd232b",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/broken-sword-4-the-angel-of-death/en/222a74891158.jpg",
+      "sha256": "222a74891158925b0f107b68f3bd214972209ed3af07ce131354e6706c3c7c8d",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/broken-sword-4-the-angel-of-death/he/7f2ae5d46e21.png",
+      "sha256": "7f2ae5d46e210c2f676ca423bde5cfbf75e939468fd420feb8d4c6c64616690d",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/king-s-quest-iii-to-heir-is-human/en/b302fa2eb9a0.png",
+      "sha256": "b302fa2eb9a00f07658eb5ab95212c1d10983b35f6502fbbb8028d8c131a256d",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/king-s-quest-iii-to-heir-is-human/he/4fa65169418f.png",
+      "sha256": "4fa65169418ffece6436f8eae71e75ba71b729d7018f5cac5499491f4284c2fc",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/pok-mon-emerald/en/69c2882817f0.jpg",
+      "sha256": "69c2882817f07393c7c8599c79cefb4e8885386d76a24b7bf08f5540815ef9d8",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/pok-mon-emerald/he/a409bb92a291.png",
+      "sha256": "a409bb92a291bdeed0a2afd8cc6cc3b64391fb7a682084efdc367ddb75ce77a9",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/dreamfall-the-longest-journey/en/e472a74b0d4d.jpg",
+      "sha256": "e472a74b0d4dadec2c9f9fe11de342f137d622399b739db501e972d7e7691a66",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/dreamfall-the-longest-journey/he/0b3c85a33293.png",
+      "sha256": "0b3c85a33293f4a2d9d7ca255d10945e91dae2ee142876c61364f57403995593",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/king-s-quest-mask-of-eternity/en/c21ce8fe1bf0.jpg",
+      "sha256": "c21ce8fe1bf00366abff036760c32ace44f724be32b5eddfc4f164b7057ff520",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/king-s-quest-mask-of-eternity/he/8c5b0ab96faf.jpg",
+      "sha256": "8c5b0ab96fafe425d52f5cdb86fe6c3042f02c4b212d75336ac91345d5491aec",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/broken-sword-3-the-sleeping-dragon/en/181650d86644.jpg",
+      "sha256": "181650d86644f53379165bea84bb0b163f839186f8cbee247a169ecbc4edef77",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/broken-sword-3-the-sleeping-dragon/he/4cabb3cd7897.png",
+      "sha256": "4cabb3cd78978d32724bfd3b047d92981eb3eefa1eadf27086bdb039181a7207",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/king-s-quest-iv-the-perils-of-rosella/en/090aed95490b.png",
+      "sha256": "090aed95490b0628bde85234d9d3b3cf6442669d6bb098b7a3ef27582f733795",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/king-s-quest-iv-the-perils-of-rosella/he/f64ab057dee5.png",
+      "sha256": "f64ab057dee5f7b722f8d72cd31ceacef6c63ea3d99106dbb594cc68eb5ea117",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/jolly-rover/en/696c752ae084.jpg",
+      "sha256": "696c752ae084bcca0e4325d66d438d0bd8d1d182b988f9ed54763e565e4dc998",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/jolly-rover/he/255e9aed45d1.png",
+      "sha256": "255e9aed45d1c7677974e1c05cc1a17ba0a44ae42a329ee20b5657c14c26bb17",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/alter-ego/en/05ddfbdc4350.jpg",
+      "sha256": "05ddfbdc43501aa793f600714b8d665c820412eb9616faac249a4bd6c0aa5c4d",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/alter-ego/he/2f5df1913794.png",
+      "sha256": "2f5df1913794113bc6ba023f8a3b7b06a96bdd625c9c1d507399d5731aac68bf",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/black-sails-the-ghost-ship/en/9204faef7a8c.jpg",
+      "sha256": "9204faef7a8ccf2d9bf110a1fde47b1710b4efc0d61a529829ac5af3cdfef951",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/black-sails-the-ghost-ship/he/244d0816bdac.png",
+      "sha256": "244d0816bdacdc89743112e3dfa68dc4f9e0996a64e19a4fe19313f7f2034969",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/escape-from-monkey-island/en/49a30510ed75.png",
+      "sha256": "49a30510ed7551c47ac068f380bf9f07df42026afe21fcc203f03d2cb8624c0b",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/escape-from-monkey-island/he/507eafa7678d.png",
+      "sha256": "507eafa7678d3c7a35710daa8b2788a666b8b06521182628c3dd509eb375cdba",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/secret-files-3/en/002cf74b8cad.jpg",
+      "sha256": "002cf74b8cad26b1771962c97f75f9baf9e2767937337860c9ceca7b6bf52b49",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/secret-files-3/he/5190ca420791.png",
+      "sha256": "5190ca4207916fa54ee93c8bfbbbaf3f1f34584b883214ea38d8fc5a14516662",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/king-s-quest-v-absence-makes-the-heart-go-yonder/en/93dd52504f10.png",
+      "sha256": "93dd52504f1088019de6167287edb2c9cb95945417cae489f93be62044312075",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/king-s-quest-v-absence-makes-the-heart-go-yonder/he/b02e7bb924b0.png",
+      "sha256": "b02e7bb924b0c0460657eab3673b6055897e6a44dac795cd44b7809c728b134c",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/next-life/en/4fe861c1c9a1.jpg",
+      "sha256": "4fe861c1c9a160ca866a905619c64a886bca77bc08a51d817f74f4ef40339cf4",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/next-life/he/9cb997050aff.png",
+      "sha256": "9cb997050affa8e0a145a7c191f33dbe6c13526db5b65416f0508530b6961077",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/art-of-murder-cards-of-destiny/en/995674c219e2.jpg",
+      "sha256": "995674c219e212f4d416571051e07e9edd0957dad71a593f046114af1f50824c",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/art-of-murder-cards-of-destiny/he/137807b85d75.png",
+      "sha256": "137807b85d75b8735216b6a7c1641aaa354856080b69223295131e936674887e",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/nikopol-secrets-of-the-immortals/en/ecf6aaef2137.jpg",
+      "sha256": "ecf6aaef2137a7f0d1f48ffba104a0d9eb3e2b5e9ead98faf92b947dfefe6c3e",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/nikopol-secrets-of-the-immortals/he/e44638627c2d.png",
+      "sha256": "e44638627c2de44421783f2e081e089ff7c3aa5912ee4a1f3bd90611f464583c",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/tales-of-monkey-island/en/61768c4c0332.jpg",
+      "sha256": "61768c4c0332e59fc87326238f51ab94c7d079533199fd39a16cbdd2dcbcb836",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/tales-of-monkey-island/he/415a20ec4af0.png",
+      "sha256": "415a20ec4af02aa38f1c36cab86aec1b74e1be159ff33910566e79e0b568f223",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/there-is-no-game-wrong-dimension/en/369d14a44c4c.jpg",
+      "sha256": "369d14a44c4c530e0fa1e804a5b1074214e456d72b8c58288163932e743fe22b",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/there-is-no-game-wrong-dimension/he/45d685fd1a2d.png",
+      "sha256": "45d685fd1a2d052ffd4ee78a24df604f44d80376afab87c8c12d952277c1886b",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/dracula-3-the-path-of-the-dragon/en/520e0a3f934c.jpg",
+      "sha256": "520e0a3f934cd6a37c17af0f3dc55413d03ac96d577acdf202cde84dceee870c",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/dracula-3-the-path-of-the-dragon/he/691d2c5604ea.png",
+      "sha256": "691d2c5604eae956d9b4e4f66a3c3d1b57d5ac78a874d72522d5d4e5d0b174fd",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/king-s-quest-vi-heir-today-gone-tomorrow/en/7d5954a0cc76.png",
+      "sha256": "7d5954a0cc76b44e82d361437a444b527444e5bbed241c89114c2f5c629698ab",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/king-s-quest-vi-heir-today-gone-tomorrow/he/ffb54e79e50d.png",
+      "sha256": "ffb54e79e50dea470b8696ef12b6b1d43a85883c987e3f7aafd5a47a8d78df5f",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/duke-grabowski-mighty-swashbuckler/en/f2b7a635fbcb.jpg",
+      "sha256": "f2b7a635fbcb0c09e029ece4dd5d6b8cd995d2067443c96fa42de208ada1b262",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/duke-grabowski-mighty-swashbuckler/he/8f8c6fde49f8.png",
+      "sha256": "8f8c6fde49f8c73d6c36a1e909f120afefea5b5bde688440cba951d5b0971692",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/memento-mori/en/e480e8f7b2e7.jpg",
+      "sha256": "e480e8f7b2e77b3ccd448e84929b936a7197adb2fdd856b460d1a2686e0b28d7",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/memento-mori/he/ca0346fb8258.png",
+      "sha256": "ca0346fb82580c8ccdbff97634e96d3dc6976a62ceea30d2be0f5686af44bc08",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/galador-the-prince-and-the-coward/en/3ae13357ea5c.jpg",
+      "sha256": "3ae13357ea5c1b23c64bfeb745feac41cf19d4e0074a18fe79679777e0278f12",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/galador-the-prince-and-the-coward/he/c82dce239f13.png",
+      "sha256": "c82dce239f136b371fba5457ef34349b6b8eb4d1eab1f68c64787056ed2a525e",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/agatha-christie-murder-on-the-orient-express-2006/en/cbf3c062232e.jpg",
+      "sha256": "cbf3c062232e1a82ea18f160ed27f1200794b517c19e48fedf9b6ea0e5a32577",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/agatha-christie-murder-on-the-orient-express-2006/he/a0340e2762a7.png",
+      "sha256": "a0340e2762a7f94bd8862fa42e108f7940f20772d673bea9bfcc679b889a4baf",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/the-blackwell-legacy/en/f36bd018141d.jpg",
+      "sha256": "f36bd018141d508a4c3436277e8e3a0115fefc449e42966e5ebebfa0c53edb4f",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/the-blackwell-legacy/he/e4f7778bc953.png",
+      "sha256": "e4f7778bc953bc11b66d66594a4d87b2bf96352b57e8a9278f8a91d7020a3f63",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/the-cat-lady/en/d84ee41fc9f6.jpg",
+      "sha256": "d84ee41fc9f67f91382f8b47535556e66ccfa6d741b368c471511a5364700e9b",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/the-cat-lady/he/2bf22bce9d74.png",
+      "sha256": "2bf22bce9d7409d68bc648d6c30d5405c3828ca83acbb8da573b034a15aff491",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/king-s-quest-vii-the-princesless-bride/en/1578c096895c.png",
+      "sha256": "1578c096895c7010dc239b983710946a1d6fd4d184ed24c4c935acc6bc2821cc",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/king-s-quest-vii-the-princesless-bride/he/de988fddbafa.jpg",
+      "sha256": "de988fddbafa8da1590c6c1526671fc5b370efd10691879f94b51ec135688590",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/blackwell-unbound/en/88f53c7245c2.jpg",
+      "sha256": "88f53c7245c2e73d0605f893922a5cb59f16ba823835b3f4fb7de1efcc0a74bd",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/blackwell-unbound/he/7eaac36d56e1.png",
+      "sha256": "7eaac36d56e1ef412e62fae16be5dc0e37051099e1878b8c4c07ab465e9b62b2",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/blackwell-convergence/en/7a0ffad48e7d.jpg",
+      "sha256": "7a0ffad48e7d975cb1a661646b58a819465e15d05466930901e2f62b73c0091e",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/blackwell-convergence/he/910e5da87b83.png",
+      "sha256": "910e5da87b835c73605041c1efdd12df59527ada9ce133c19ed0cd332300384d",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/secret-files-sam-peters/en/350521cd763e.jpg",
+      "sha256": "350521cd763e2b7169ed8f63b358c612b26f9152be008cc71371516ef8ccc957",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/secret-files-sam-peters/he/a5dc6039fb08.png",
+      "sha256": "a5dc6039fb0852c612daa8fc4307c45729c2efb335b0c3b4b5215b9e3ce75281",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/king-s-quest-1-sci/en/859d33582846.png",
+      "sha256": "859d3358284611fc717bafc35f14206ec305a189e11f7cecc4fd9454a8cefa35",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/king-s-quest-1-sci/he/867cb0701bbb.png",
+      "sha256": "867cb0701bbb74d1775031eb072b5f6990920ca24304e9843583c049d6119201",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/gemini-rue/en/92c7d3eaec51.jpg",
+      "sha256": "92c7d3eaec51021e379468b6394a3728900bdd5c0acb74ea31d0178747a4b944",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/gemini-rue/he/0f2605865513.png",
+      "sha256": "0f2605865513383bc00d8b2afcdbb8410732a242c16e41d010b3b8478632b3d3",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/agatha-christie-evil-under-the-sun/en/9128aef4021d.png",
+      "sha256": "9128aef4021dd984d182f1a998fb68900e1b01bb33fa4a871b27f164f2d42a98",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/agatha-christie-evil-under-the-sun/he/43549dc3e3bd.png",
+      "sha256": "43549dc3e3bda2b1e69625ad9e3a8504c58f48385b9d0e0ab3f87953e1c2497c",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/dune/en/2245245c2fb6.png",
+      "sha256": "2245245c2fb6d153a6f035ba7206e765d8b8635cac5054310c1dfab95d0d0021",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/dune/he/6d59aa0378fa.png",
+      "sha256": "6d59aa0378fa6afdcbcff79ed21beeb64809e6666337e3402588742b59233516",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/kaptain-brawe-a-brawe-new-world/en/8fd52ae10355.jpg",
+      "sha256": "8fd52ae10355fedbb86eecb8b3db83e858cf7b4b266b0aada6680012df215cd6",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/kaptain-brawe-a-brawe-new-world/he/38e0c6183651.png",
+      "sha256": "38e0c6183651bbcc9a556aa0f743721c8a3780c86aae83208ef5acea83b6433c",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/lost-horizon-2/en/039ee5e17dbf.jpg",
+      "sha256": "039ee5e17dbffebd36abbdd322e9a632d6f84e361cbce6a66d92bf4badb3f7b9",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/lost-horizon-2/he/0061ca3bc23c.png",
+      "sha256": "0061ca3bc23c4f30dc33cd524839506fe5ef4a478798612ef3234da5c2196f51",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/touche-the-adventures-of-the-fifth-musketeer/en/c542689db3f9.png",
+      "sha256": "c542689db3f9abb5303e7cf2e0692cea978098799002fdd8a69748fea10e3837",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/touche-the-adventures-of-the-fifth-musketeer/he/0be531c239a4.png",
+      "sha256": "0be531c239a4f54349cb05ab1aacb36307ca39a3f7a5d3459b875ab41c967fc1",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/broken-sword-5-the-serpent-s-curse/en/54d613c53b86.jpg",
+      "sha256": "54d613c53b86ac3bef4a99f8efb97eae1e85db2bdd0dd59cd7dda898545477f8",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/broken-sword-5-the-serpent-s-curse/he/d72f315805ae.png",
+      "sha256": "d72f315805aeab8e528e7b40c380598f4cb4804c812e0ff6c4f624b6b4e81a02",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/blackwell-epiphany/en/20027a18c0dd.jpg",
+      "sha256": "20027a18c0dd9b6c271c726358fd837a3954a905be852c8af54610b16776281e",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/blackwell-epiphany/he/eb8099c3c4ac.png",
+      "sha256": "eb8099c3c4ac95cdfd948c555355d225d976ba5cabd07e7b5e0094247403e6b2",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/warcraft-adventures-lord-of-the-clans/en/8162bfb7f455.jpg",
+      "sha256": "8162bfb7f455dbf815f0061d68ae1b8b68f93fa3ca003e73b9f83ba5303d7ff8",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/warcraft-adventures-lord-of-the-clans/he/da15ec5d81c5.png",
+      "sha256": "da15ec5d81c524f682e3f2dc2c18108f876dce5f502144a9689a8ef8d046807f",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/black-mirror-i/en/e22bbc80a513.jpg",
+      "sha256": "e22bbc80a513c0cc25463ee63ba3a0d50fed6a47d80962c08640045b58f58760",
+      "ok": true
+    },
+    {
+      "url": "https://assets.kitor.click/covers/black-mirror-i/he/9d09f9fd80fa.png",
+      "sha256": "9d09f9fd80fa1381813f82996490f2a81f4a327a9faabfcb27233564d0ab5c7d",
+      "ok": true
+    }
+  ]
+}

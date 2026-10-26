@@ -34,6 +34,7 @@ pub struct GameWithPatches {
     pub detected_version: Option<String>,
     pub added_date: String,
     pub last_played: Option<String>,
+    pub requires_scummvm: bool,
     pub has_available_patch: bool,
     pub installed_patches: Vec<InstalledPatchInfo>,
     pub available_patches: Vec<AvailablePatchInfo>,
@@ -88,7 +89,7 @@ pub async fn scan_directory(
     for entry_path in candidates {
 
         if entry_path.is_dir() {
-            if let Some(game_info) = detect_scummvm_game(&entry_path) {
+            for game_info in detect_library_games(&entry_path) {
                 // Check if game already exists
                 let existing = Game::find()
                     .filter(game::Column::ScummvmId.eq(&game_info.scummvm_id))
@@ -140,7 +141,7 @@ pub async fn add_game_manually(
     install_path: String,
     app_data_dir: PathBuf,
 ) -> Result<game::Model, String> {
-    let install_path = detect_game_in_folder(Path::new(&install_path))?
+    let install_path = detect_game_for_id(Path::new(&install_path), &scummvm_id)?
         .filter(|detected| detected.scummvm_id == scummvm_id)
         .map(|detected| detected.install_path)
         .unwrap_or(install_path);
@@ -298,6 +299,9 @@ pub fn detect_game_in_folder(path: &Path) -> Result<Option<DetectedGameInfo>, St
         return Err("Invalid directory path".to_string());
     }
 
+    if super::tentacle::detect_remastered(path).is_some() {
+        return detect_game_for_id(path, "day-of-the-tentacle-remastered");
+    }
     // Load registry and try to match against game definitions
     let registry = registry_service::load_registry()?;
 
@@ -311,6 +315,26 @@ pub fn detect_game_in_folder(path: &Path) -> Result<Option<DetectedGameInfo>, St
 
     for game_def in registry.games {
         if game_def.patches.is_empty() {
+            continue;
+        }
+        if game_def.scummvm_id == "tentacle" {
+            if let Some(root) = super::tentacle::detect(path) {
+                return Ok(Some(DetectedGameInfo {
+                    install_path: root.to_string_lossy().into_owned(),
+                    scummvm_id: game_def.scummvm_id, title: game_def.title,
+                    available_patches_count: game_def.patches.len(),
+                }));
+            }
+            continue;
+        }
+        if game_def.scummvm_id == "owlboy" {
+            if let Some(data) = super::owlboy::detect(path) {
+                return Ok(Some(DetectedGameInfo {
+                    install_path: data.to_string_lossy().into_owned(),
+                    scummvm_id: game_def.scummvm_id, title: game_def.title,
+                    available_patches_count: game_def.patches.len(),
+                }));
+            }
             continue;
         }
         // Steam's Drifter installation wraps its Unity data in a native bundle.
@@ -383,6 +407,23 @@ pub fn detect_game_in_folder(path: &Path) -> Result<Option<DetectedGameInfo>, St
     Ok(None)
 }
 
+pub fn detect_game_for_id(path: &Path, id: &str) -> Result<Option<DetectedGameInfo>, String> {
+    if matches!(id, "tentacle" | "day-of-the-tentacle-remastered") {
+        let root=if id=="tentacle" {super::tentacle::detect(path)} else {super::tentacle::detect_remastered(path)};
+        let registry=registry_service::load_registry()?;
+        return Ok(root.and_then(|root| registry.games.into_iter().find(|g|g.scummvm_id==id).map(|g|DetectedGameInfo {
+            install_path:root.to_string_lossy().into_owned(),scummvm_id:g.scummvm_id,title:g.title,available_patches_count:g.patches.len()
+        })));
+    }
+    Ok(detect_game_in_folder(path)?.filter(|g|g.scummvm_id==id))
+}
+fn detect_library_games(path: &Path) -> Vec<GameInfo> {
+    if super::tentacle::detect_remastered(path).is_some() {
+        return ["tentacle", "day-of-the-tentacle-remastered"].iter().filter_map(|id|detect_game_for_id(path,id).ok().flatten()).map(|d|GameInfo {install_path:d.install_path,scummvm_id:d.scummvm_id,title:d.title}).collect();
+    }
+    detect_scummvm_game(path).into_iter().collect()
+}
+
 fn detect_scummvm_game(path: &Path) -> Option<GameInfo> {
     let detected = detect_game_in_folder(path).ok()??;
     Some(GameInfo {
@@ -432,7 +473,9 @@ pub async fn get_games_with_patches(
         }).collect();
         
         // Get available patches from registry
-        let available_patches: Vec<AvailablePatchInfo> = if let Some(def) = game_def {
+        let available_patches: Vec<AvailablePatchInfo> = if let Some(def) = game_def.filter(|def| {
+            def.platforms.as_ref().is_none_or(|p| if cfg!(target_os="windows") {p.windows} else if cfg!(target_os="macos") {p.osx} else {p.linux})
+        }) {
             def.patches.iter().map(|p| {
                 AvailablePatchInfo {
                     language: p.language.clone(),
@@ -482,6 +525,7 @@ pub async fn get_games_with_patches(
                 detected_version: game.detected_version,
                 added_date: game.added_date.format("%Y-%m-%d %H:%M:%S").to_string(),
                 last_played: game.last_played.map(|d| d.format("%Y-%m-%d %H:%M:%S").to_string()),
+                requires_scummvm: game_def.and_then(|d| d.launch_config.as_ref()).and_then(|c| c.launcher.as_deref()) != Some("native"),
                 has_available_patch,
                 installed_patches,
                 available_patches,
@@ -619,6 +663,76 @@ mod tests {
             assert_eq!(PathBuf::from(detected.install_path), data);
             assert_eq!(detected.available_patches_count, 1);
         }
+    }
+
+    #[tokio::test]
+    async fn owlboy_scan_resolves_data_and_deduplicates() {
+        let fixture = Fixture::new();
+        let bundle = fixture.0.join("Owlboy/Owlboy.app");
+        let data = bundle.join("Contents/Resources");
+        std::fs::create_dir_all(data.join("Data/Localizations")).unwrap();
+        std::fs::create_dir_all(data.join("Data/Maps")).unwrap();
+        std::fs::create_dir_all(bundle.join("Contents/MacOS")).unwrap();
+        for name in ["Owlboy.exe", "FNA.dll", "Data/versioninfo.txt", "Data/Localizations/de.csv"] {
+            std::fs::write(data.join(name), b"fixture").unwrap();
+        }
+        assert!(detect_game_in_folder(&bundle).unwrap().is_none());
+        std::fs::write(bundle.join("Contents/MacOS/Owlboy"), b"fixture").unwrap();
+        for selected in [bundle.parent().unwrap(), &bundle, &data] {
+            let found = detect_game_in_folder(selected).unwrap().unwrap();
+            assert_eq!(found.scummvm_id, "owlboy");
+            assert_eq!(Path::new(&found.install_path), data.canonicalize().unwrap());
+        }
+        let db = crate::db::init_db(&fixture.0.join("database")).await.unwrap();
+        for _ in 0..2 {
+            scan_directory(&db, fixture.0.to_str().unwrap(), fixture.0.clone()).await.unwrap();
+        }
+        let games = Game::find().all(&db).await.unwrap();
+        assert_eq!(games.iter().filter(|g|g.scummvm_id == "owlboy").count(), 1);
+    }
+
+    #[tokio::test]
+    async fn tentacle_detection_scan_is_idempotent() {
+        let fixture = Fixture::new();
+        let root = fixture.0.join("Day of the Tentacle Remastered");
+        std::fs::create_dir_all(root.join("Dott.app/Contents/Resources")).unwrap();
+        std::fs::create_dir_all(root.join("Dott.app/Contents/MacOS")).unwrap();
+        std::fs::write(root.join("Dott.app/Contents/MacOS/Dott"), b"runner").unwrap();
+        std::fs::write(root.join("Dott.app/Contents/Resources/tenta.cle"),
+            [b"KAPL\0\0\x80?".as_slice(), &[0;40]].concat()).unwrap();
+        for path in [&root, &root.join("Dott.app"), &root.join("Dott.app/Contents/Resources")] {
+            let detected = detect_game_in_folder(path).unwrap().unwrap();
+            assert_eq!(detected.scummvm_id, "day-of-the-tentacle-remastered");
+            assert_eq!(PathBuf::from(detected.install_path), root.canonicalize().unwrap());
+        }
+        let db = crate::db::init_db(&fixture.0.join("database")).await.unwrap();
+        for _ in 0..2 { scan_directory(&db, root.to_str().unwrap(), fixture.0.clone()).await.unwrap(); }
+        assert_eq!(Game::find().all(&db).await.unwrap().len(), 2);
+    }
+
+    #[tokio::test]
+    #[ignore = "requires KITOR_TENTACLE_PATH; scans read-only using a temporary library database"]
+    async fn tentacle_local_scan() {
+        let root = PathBuf::from(std::env::var("KITOR_TENTACLE_PATH").unwrap());
+        let temp = tempfile::tempdir().unwrap();
+        let found = detect_game_in_folder(&root).unwrap().unwrap();
+        assert_eq!(found.scummvm_id, "day-of-the-tentacle-remastered");
+        let db = crate::db::init_db(&temp.path().join("db")).await.unwrap();
+        for _ in 0..2 { scan_directory(&db, root.to_str().unwrap(), temp.path().to_path_buf()).await.unwrap(); }
+        assert_eq!(Game::find().all(&db).await.unwrap().len(), 2);
+    }
+
+    #[tokio::test]
+    #[ignore = "requires KITOR_OWLBOY_PATH; uses only a temporary library database"]
+    async fn owlboy_local_detection_and_scan() {
+        let path = PathBuf::from(std::env::var("KITOR_OWLBOY_PATH").unwrap());
+        let temp = tempfile::tempdir().unwrap();
+        let found = detect_game_in_folder(&path).unwrap().unwrap();
+        assert_eq!(found.scummvm_id,"owlboy");
+        let db = crate::db::init_db(&temp.path().join("database")).await.unwrap();
+        for _ in 0..2 { scan_directory(&db,path.to_str().unwrap(),temp.path().to_path_buf()).await.unwrap(); }
+        let games = Game::find().all(&db).await.unwrap();
+        assert_eq!(games.iter().filter(|g|g.scummvm_id == "owlboy").count(),1);
     }
 
     #[test]
