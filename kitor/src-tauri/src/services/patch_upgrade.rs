@@ -32,6 +32,19 @@ pub(super) fn recover(dir: &Path) -> Result<()> {
     }
     if active.version != next.version || active.originals_dir != next.originals_dir {
         restore_inner(&pending, &mut rollback)?;
+        // Discard originals introduced by an uncommitted update, never the
+        // original backups still referenced by the active installation.
+        let retained = active.files.iter().enumerate()
+            .map(|(index, _)| original_file(dir, &active, index))
+            .collect::<Result<Vec<_>>>()?;
+        for (index, record) in next.files.iter().enumerate() {
+            if record.original_hash.is_some() {
+                let path = original_file(dir, &next, index)?;
+                if !retained.contains(&path) && path.exists() {
+                    fs::remove_file(path).map_err(err)?;
+                }
+            }
+        }
     }
     // Detach cleanup atomically: a crash partway through recursive deletion
     // must not leave a half-deleted directory that looks like pending recovery.
@@ -224,23 +237,23 @@ fn update_inner(
     )?;
     let mut next = load(&staged)?;
     next.target = target.clone();
-    let baseline = tempfile::Builder::new()
-        .prefix("originals-update-")
-        .tempdir_in(dir)
-        .map_err(err)?;
-    for (index, record) in next.files.iter().enumerate() {
-        if let Some(expected) = &record.original_hash {
-            let destination = baseline.path().join(index.to_string());
-            copy_durable(&original_file(&staged, &next, index)?, &destination)?;
-            check_hash(&destination, expected)?;
+    // Keep legacy numeric backup references stable when the new plan reorders files.
+    // Newly touched originals are published only after the recovery journal exists.
+    let mut additions = Vec::new();
+    for (index, record) in next.files.iter_mut().enumerate() {
+        if record.original_hash.is_some() {
+            if let Some((old_index, previous)) = old.files.iter().enumerate()
+                .find(|(_, previous)| previous.path.eq_ignore_ascii_case(&record.path)) {
+                record.original_backup = Some(previous.original_backup.clone()
+                    .unwrap_or_else(|| old_index.to_string()));
+            } else {
+                let name = format!("update-{}-{index}", package.release_revision);
+                additions.push((index, name.clone()));
+                record.original_backup = Some(name);
+            }
         }
     }
-    next.originals_dir = baseline
-        .path()
-        .file_name()
-        .unwrap()
-        .to_string_lossy()
-        .into_owned();
+    next.originals_dir = old.originals_dir.clone();
     next.created_dirs = old.created_dirs.clone();
     let pending_temp = tempfile::Builder::new()
         .prefix("prepare-update-")
@@ -314,6 +327,7 @@ fn update_inner(
             ancestor = folder.parent();
         }
         rollback.files.push(Record {
+            original_backup: None,
             path: relative.clone(),
             original_hash: original,
             installed_hash,
@@ -323,12 +337,18 @@ fn update_inner(
     }
     write_json(&pending.join("next.json"), &next)?;
     save(pending, &rollback)?;
-    let _ = baseline.keep();
     let prepared = pending_temp.keep();
     let pending = dir.join("pending-update");
     fs::rename(prepared, &pending).map_err(err)?;
     sync_dir(dir)?;
-    let result = checkpoint(&pending, false)
+    let result = (|| {
+        for (index, name) in &additions {
+            let destination = safe_path(dir, &format!("{}/{name}", next.originals_dir))?;
+            copy_durable(&staged.join("originals").join(index.to_string()), &destination)?;
+            check_hash(&destination, next.files[*index].original_hash.as_ref().unwrap())?;
+        }
+        Ok(())
+    })().and_then(|_| checkpoint(&pending, false))
         .and_then(|_| apply(&pending, &mut rollback))
         .and_then(|_| checkpoint(&pending, true))
         .and_then(|_| {
@@ -474,7 +494,7 @@ mod tests {
                 fs::read_dir(f.dir.join(&journal.originals_dir))
                     .unwrap()
                     .count(),
-                1
+                2
             );
             assert_eq!(
                 fs::read(original_file(&f.dir, &journal, 0).unwrap()).unwrap(),
@@ -505,6 +525,44 @@ mod tests {
             );
             assert!(!f.game.join("old").exists());
             assert!(!f.game.join("new").exists());
+        }
+    }
+
+    #[test]
+    fn reuses_backups_across_reordering_and_only_adds_new_originals() {
+        for platform in ["windows", "osx"] {
+            let f = Fixture::new(platform);
+            // Also exercise installations created by the previous updater.
+            fs::rename(f.dir.join("originals"), f.dir.join("originals-update-legacy")).unwrap();
+            let mut old = load(&f.dir).unwrap();
+            old.originals_dir = "originals-update-legacy".into();
+            save(&f.dir, &old).unwrap();
+            let original = original_file(&f.dir, &old, 0).unwrap();
+            let modified = fs::metadata(&original).unwrap().modified().unwrap();
+            fs::write(f.game.join("additional"), b"additional original").unwrap();
+            f.plan("RC2-kitor1", 1, json!([
+                f.copy("additional", "modify", b"additional translation"),
+                f.copy("data", "modify", b"new translation")
+            ]));
+            // A failed update removes only newly introduced original backups.
+            assert!(update_inner(&f.dir, &f.package, "patch.json", &f.game,
+                "test", "he", "RC2-kitor1", platform, &|_, applied| {
+                    if applied { Err("injected failure".into()) } else { Ok(()) }
+                }).is_err());
+            f.assert_old();
+            assert_eq!(fs::read_dir(f.dir.join(&old.originals_dir)).unwrap().count(), 2);
+            assert!(!f.dir.join("pending-update").exists());
+            f.update(platform).unwrap();
+            let next = load(&f.dir).unwrap();
+            assert_eq!(next.originals_dir, old.originals_dir);
+            assert_eq!(original_file(&f.dir, &next, 1).unwrap(), original);
+            assert_eq!(fs::metadata(&original).unwrap().modified().unwrap(), modified);
+            assert_eq!(fs::read_dir(f.dir.join(&next.originals_dir)).unwrap().count(), 3);
+            assert!(!f.dir.join("pending-update").exists());
+            assert_eq!(fs::read_dir(&f.dir).unwrap().count(), 2); // manifest + originals
+            uninstall(&f.dir, &f.game).unwrap();
+            assert_eq!(fs::read(f.game.join("additional")).unwrap(), b"additional original");
+            assert_eq!(fs::read(f.game.join("data")).unwrap(), b"original");
         }
     }
 

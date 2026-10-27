@@ -118,10 +118,13 @@ struct Journal {
 }
 fn default_originals_dir() -> String { "originals".into() }
 fn original_file(dir: &Path, journal: &Journal, index: usize) -> Result<PathBuf> {
-    safe_path(dir, &format!("{}/{index}", journal.originals_dir))
+    safe_path(dir, &format!("{}/{}", journal.originals_dir,
+        journal.files[index].original_backup.clone().unwrap_or_else(|| index.to_string())))
 }
 #[derive(Debug, Serialize, Deserialize)]
 struct Record {
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    original_backup: Option<String>,
     path: String,
     original_hash: Option<String>,
     installed_hash: Option<String>,
@@ -568,6 +571,7 @@ pub fn install(
             ancestor = folder.parent();
         }
         journal.files.push(Record {
+            original_backup: None,
             path: relative,
             original_hash: original,
             installed_hash,
@@ -887,6 +891,7 @@ mod tests {
         for (i, name) in ["first", "second"].iter().enumerate() {
             fs::copy(f.game.join(name), dir.join("originals").join(i.to_string())).unwrap();
             journal.files.push(Record {
+                original_backup: None,
                 path: name.to_string(),
                 original_hash: Some(hash(&f.game.join(name)).unwrap()),
                 installed_hash: Some(format!("{:x}", Sha256::digest(b"patched"))),
