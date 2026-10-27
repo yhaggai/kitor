@@ -1,3 +1,4 @@
+import * as AlertDialog from "@radix-ui/react-alert-dialog";
 import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
 import * as Tooltip from "@radix-ui/react-tooltip";
 import { invoke } from "@tauri-apps/api/core";
@@ -11,7 +12,7 @@ import {
   Trash2,
   Undo,
 } from "lucide-react";
-import { useEffect, useState } from "react";
+import { type ReactNode, useEffect, useState } from "react";
 import { DeleteGameDialog } from "@/components/dialogs/DeleteGameDialog";
 import { InstallPatchDialog } from "@/components/dialogs/InstallPatchDialog";
 import { RestoreGameDialog } from "@/components/dialogs/RestoreGameDialog";
@@ -32,8 +33,40 @@ type GameCardProps = {
   isHighlighted?: boolean;
 };
 
+function PatchVersionTooltip({
+  children,
+  label,
+  disabled,
+}: {
+  children: ReactNode;
+  label: string;
+  disabled: boolean;
+}) {
+  return (
+    <Tooltip.Provider>
+      <Tooltip.Root>
+        <Tooltip.Trigger asChild>
+          <span className="block w-full" tabIndex={disabled ? 0 : undefined}>
+            {children}
+          </span>
+        </Tooltip.Trigger>
+        <Tooltip.Portal>
+          <Tooltip.Content
+            className="z-50 max-w-xs rounded-md bg-popover px-3 py-1.5 text-sm text-popover-foreground shadow-md"
+            sideOffset={5}
+          >
+            {label}
+            <Tooltip.Arrow className="fill-popover" />
+          </Tooltip.Content>
+        </Tooltip.Portal>
+      </Tooltip.Root>
+    </Tooltip.Provider>
+  );
+}
+
 export default function GameCard({ game, onRemove, isHighlighted }: GameCardProps) {
   const [refreshing, setRefreshing] = useState(false);
+  const [updateConfirmationOpen, setUpdateConfirmationOpen] = useState(false);
   const { state, actions } = useGameCardState();
   const { isScummVMReady } = useAppStore();
   const { alert } = useDialog();
@@ -325,8 +358,12 @@ export default function GameCard({ game, onRemove, isHighlighted }: GameCardProp
               </Badge>
               {hasPatch && (
                 <Badge variant="default" className="text-xs bg-green-600">
-                  <CheckCircle className="mr-1 h-3 w-3" />
-                  Patched
+                  {canUpdate ? (
+                    <DownloadIcon className="mr-1 h-3 w-3" />
+                  ) : (
+                    <CheckCircle className="mr-1 h-3 w-3" />
+                  )}
+                  {canUpdate ? "Patch Update Available" : "Patched"}
                 </Badge>
               )}
               {canInstall && (
@@ -377,16 +414,21 @@ export default function GameCard({ game, onRemove, isHighlighted }: GameCardProp
             </Button>
           )}
           {canInstall && (
-            <Button
-              className="w-full"
-              size="sm"
-              variant="outline"
-              onClick={handleInstallPatch}
+            <PatchVersionTooltip
+              label={`Available patch version: ${game.available_patches?.[0]?.version ?? "Unknown"}`}
               disabled={busy}
             >
-              <DownloadIcon className="mr-2 h-3 w-3" />
-              Install Patch
-            </Button>
+              <Button
+                className="w-full"
+                size="sm"
+                variant="outline"
+                onClick={handleInstallPatch}
+                disabled={busy}
+              >
+                <DownloadIcon className="mr-2 h-3 w-3" />
+                Install Patch
+              </Button>
+            </PatchVersionTooltip>
           )}
           {canUpdate && (
             <div className="w-full space-y-2">
@@ -395,22 +437,69 @@ export default function GameCard({ game, onRemove, isHighlighted }: GameCardProp
                 {game.installed_patches?.find((p) => p.language === updatePatch?.language)?.version}{" "}
                 → {updatePatch?.version}
               </p>
-              <p className="text-xs text-muted-foreground">{updatePatch?.description}</p>
-              <p className="text-xs text-muted-foreground">Close the game before updating.</p>
-              <Button className="w-full" size="sm" onClick={handleInstallPatch} disabled={busy}>
-                <DownloadIcon className="mr-2 h-3 w-3" />
-                Update Translation
-              </Button>
+              <PatchVersionTooltip
+                label={`Installed version: ${game.installed_patches?.find((patch) => patch.status === "active" && patch.language === updatePatch?.language)?.version ?? "Unknown"} → Available version: ${updatePatch?.version ?? "Unknown"}`}
+                disabled={busy}
+              >
+                <Button
+                  className="w-full"
+                  size="sm"
+                  onClick={() => setUpdateConfirmationOpen(true)}
+                  disabled={busy}
+                >
+                  <DownloadIcon className="mr-2 h-3 w-3" />
+                  Install Patch Update
+                </Button>
+              </PatchVersionTooltip>
             </div>
           )}
           {hasPatch && !canUpdate && (
-            <Button className="w-full" size="sm" variant="outline" disabled>
-              <CheckCircle className="mr-2 h-3 w-3" />
-              Patch Installed
-            </Button>
+            <PatchVersionTooltip
+              label={`Installed patch version: ${game.installed_patches?.find((patch) => patch.status === "active")?.version ?? "Unknown"}`}
+              disabled
+            >
+              <Button className="w-full" size="sm" variant="outline" disabled>
+                <CheckCircle className="mr-2 h-3 w-3" />
+                Patch Installed
+              </Button>
+            </PatchVersionTooltip>
           )}
         </CardFooter>
       </Card>
+
+      <AlertDialog.Root open={updateConfirmationOpen} onOpenChange={setUpdateConfirmationOpen}>
+        <AlertDialog.Portal>
+          <AlertDialog.Overlay className="fixed inset-0 z-50 bg-black/50" />
+          <AlertDialog.Content className="fixed left-1/2 top-1/2 z-50 max-h-[85vh] w-[min(520px,calc(100vw-32px))] -translate-x-1/2 -translate-y-1/2 overflow-y-auto rounded-lg border bg-background p-6 shadow-lg">
+            <AlertDialog.Title className="text-lg font-semibold">
+              Install Patch Update — {game.title}
+            </AlertDialog.Title>
+            <AlertDialog.Description className="mt-2 text-sm text-muted-foreground">
+              Installed version:{" "}
+              {game.installed_patches?.find(
+                (patch) => patch.status === "active" && patch.language === updatePatch?.language
+              )?.version ?? "Unknown"}
+              {" → "}New version: {updatePatch?.version ?? "Unavailable"}. Close the game before
+              confirming the update.
+            </AlertDialog.Description>
+            <h4 className="mt-4 font-medium">What changed</h4>
+            <p className="mt-2 whitespace-pre-wrap break-words text-sm text-muted-foreground">
+              {updatePatch?.description?.trim() ||
+                "No release notes were provided for this update."}
+            </p>
+            <div className="mt-6 flex justify-end gap-2">
+              <AlertDialog.Cancel asChild>
+                <Button variant="outline">Cancel</Button>
+              </AlertDialog.Cancel>
+              <AlertDialog.Action asChild>
+                <Button onClick={handleInstallPatch} disabled={busy || !canUpdate}>
+                  Confirm
+                </Button>
+              </AlertDialog.Action>
+            </div>
+          </AlertDialog.Content>
+        </AlertDialog.Portal>
+      </AlertDialog.Root>
 
       <DeleteGameDialog
         gameTitle={game.title}
