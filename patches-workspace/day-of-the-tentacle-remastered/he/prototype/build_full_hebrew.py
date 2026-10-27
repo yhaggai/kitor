@@ -11,6 +11,7 @@ from pathlib import Path
 import plistlib
 import struct
 import subprocess
+import shutil
 
 from PIL import Image, ImageDraw, ImageFont
 from map_dialogue import extract_speech, rebuild, speech_rows, digest
@@ -40,7 +41,9 @@ def prepare_text(text, widths, limit=620):
 
 def main():
     ap=argparse.ArgumentParser(description=__doc__)
-    ap.add_argument('--source-app',required=True,type=Path)
+    sources=ap.add_mutually_exclusive_group(required=True)
+    sources.add_argument('--source-app',type=Path)
+    sources.add_argument('--source-windows',type=Path)
     ap.add_argument('--output',required=True,type=Path)
     ap.add_argument('--font',type=Path,default=Path('/System/Library/Fonts/Supplemental/Arial Bold.ttf'))
     ap.add_argument('--item-labels',type=Path,help='Generated item-label UI resource')
@@ -48,10 +51,18 @@ def main():
     if args.output.exists():
         raise SystemExit('Output already exists; choose a fresh test directory')
     args.output.mkdir(parents=True)
-    app=args.output/'DottHebrewFull.app'
-    subprocess.run(['cp','-cR',str(args.source_app),str(app)],check=True)
-    source=args.source_app/'Contents/Resources/tenta.cle'
-    archive=app/'Contents/Resources/tenta.cle'
+    if args.source_windows:
+        app=args.output/'game'
+        app.mkdir()
+        for name in ['Dott.exe','fmod.dll','steam_api.dll','controllerdef.txt','tenta.cle']:
+            shutil.copy2(args.source_windows/name,app/name)
+        source=args.source_windows/'tenta.cle'
+        archive=app/'tenta.cle'
+    else:
+        app=args.output/'DottHebrewFull.app'
+        subprocess.run(['cp','-cR',str(args.source_app),str(app)],check=True)
+        source=args.source_app/'Contents/Resources/tenta.cle'
+        archive=app/'Contents/Resources/tenta.cle'
     with source.open('rb') as f:
         header=list(struct.unpack('<4sf8I',f.read(40)))
         f.seek(header[3]);entries=list(struct.iter_unpack('<5I',f.read(header[7])))
@@ -107,6 +118,16 @@ def main():
         f.seek(0);f.write(struct.pack('<4sf8I',*header))
     for name,data in replacements.items():
         assert extract_speech(archive,name)==data
+    if args.source_windows:
+        (app/'steam_appid.txt').write_text('388210\n')
+        save=app/'savedata';save.mkdir()
+        (save/'settings.ini').write_text('[display]\nwindow_width=1280\nwindow_height=720\nmaximized=0\nfullscreen=0\n')
+        report={'platform':'windows','source_mutations':[], 'font_source':str(args.font),
+                'font_pairs':sum(n.endswith('.font') for n in replacements),
+                'item_labels':bool(args.item_labels),'probes':probes,'changes':changes}
+        (args.output/'full-manifest.json').write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+        print(json.dumps({'game':str(app.resolve()),'font_pairs':report['font_pairs'],'subtitle_probes':len(probes)}))
+        return
     info=app/'Contents/Info.plist'
     with info.open('rb') as f:pl=plistlib.load(f)
     pl.update(CFBundleIdentifier='local.kitor.dott-hebrew-full',CFBundleName='DOTT Hebrew Full',CFBundleExecutable='DottHebrewFull')

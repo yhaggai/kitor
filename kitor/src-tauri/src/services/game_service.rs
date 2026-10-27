@@ -713,6 +713,29 @@ mod tests {
         assert_eq!(Game::find().all(&db).await.unwrap().len(), 2);
     }
 
+    #[cfg(target_os = "windows")]
+    #[tokio::test]
+    async fn tentacle_windows_exposes_both_patches() {
+        let fixture = Fixture::new();
+        let root = fixture.0.join("DOTT");
+        std::fs::create_dir_all(&root).unwrap();
+        std::fs::write(root.join("Dott.exe"), b"fixture").unwrap();
+        std::fs::write(root.join("tenta.cle"),
+            [b"KAPL\0\0\x80?".as_slice(), &[0; 40]].concat()).unwrap();
+        let db = crate::db::init_db(&fixture.0.join("db")).await.unwrap();
+        for _ in 0..2 {
+            scan_directory(&db, root.to_str().unwrap(), fixture.0.clone()).await.unwrap();
+        }
+        let games = get_games_with_patches(&db, fixture.0.clone()).await.unwrap();
+        assert_eq!(games.len(), 2);
+        for id in ["tentacle", "day-of-the-tentacle-remastered"] {
+            let game = games.iter().find(|game| game.scummvm_id == id).unwrap();
+            assert!(game.has_available_patch);
+            assert_eq!(game.available_patches.len(), 1);
+            assert_eq!(game.requires_scummvm, id == "tentacle");
+        }
+    }
+
     #[tokio::test]
     #[ignore = "requires KITOR_TENTACLE_PATH; scans read-only using a temporary library database"]
     async fn tentacle_local_scan() {

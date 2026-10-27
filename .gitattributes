@@ -6,3 +6,4 @@ patches-workspace/**/*.md text eol=lf
 patches-workspace/**/*.py text eol=lf
 patches-workspace/**/payload/** binary
 patches-workspace/**/upstream/** binary
+kitor/patches/registry.json text eol=lf

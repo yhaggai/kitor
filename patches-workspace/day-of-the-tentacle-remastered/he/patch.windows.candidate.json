@@ -1,0 +1,26 @@
+{
+  "schema_version": 1,
+  "scummvm_id": "day-of-the-tentacle-remastered",
+  "language": "he",
+  "version": "0.1-local-items-kitor1",
+  "filename": "DOTT-Remastered-Hebrew-local-kitor1.zip",
+  "platforms": {
+    "windows": {
+      "files": [
+        {
+          "path": "tenta.cle",
+          "operation": "modify",
+          "original_sha256": "e50d476124ce1421441f8115d0b7cc07f3ed98714e37264cd31bdf67aea64841",
+          "installed_sha256": "9b84e69bddbd447622146d81fd51ba049166149be8b1131a8452ed8f5640f1fc",
+          "source": {
+            "kind": "reconstruct",
+            "path": "recipes/windows-tenta.cle.json",
+            "sha256": "672fb35d12b0463aabfac494125013f14364320f7618a3533c869b7e5e2d7578",
+            "input": "tenta.cle"
+          }
+        }
+      ]
+    }
+  },
+  "files": []
+}

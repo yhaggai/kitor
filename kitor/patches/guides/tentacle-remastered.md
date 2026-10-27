@@ -7,5 +7,11 @@ Keep the in-game text language set to English.
 
 The patch backs up only the changed archive and restores it on uninstall.
 It uses local Arial-derived glyphs and is for personal testing only.
-Windows resource layouts differ from the verified Mac prototype; native Windows
-remastered installation remains unavailable until a Windows adaptation is tested.
+Windows and macOS have separate patch recipes for their native resource layouts.
+The Windows Steam candidate includes the same subtitles and item labels; its
+native rendering was confirmed by the user on 2026-10-28. Keep text language set
+to English. This remains a partial translation, with broader gameplay review pending.
+
+Both Classic and Remastered patches are available for a Remastered installation.
+The Classic patch creates separate ScummVM data; the Remastered patch modifies
+only `tenta.cle` on Windows. Either can be uninstalled independently.
