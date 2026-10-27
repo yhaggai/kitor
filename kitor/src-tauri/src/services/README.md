@@ -12,6 +12,63 @@ Only affected files are backed up. Kitor does not copy the entire game folder.
 Files created by a patch have no original backup; the installation journal records
 that they should be removed during restoration.
 
+## State machine
+
+These are conceptual lifecycle states, not literal journal status values.
+“Installed” means whichever translation version is currently committed.
+
+```mermaid
+stateDiagram-v2
+    [*] --> Original
+    state "Original game" as Original
+    state "Installing first translation" as Installing
+    state "Translation installed" as Installed
+    state "Preparing update" as Preparing
+    state "Applying and verifying update" as Applying
+    state "New version committed; cleanup pending" as Committed
+    state "Restoring previous translation" as Rollback
+    state "Rollback blocked; recovery data retained" as RollbackBlocked
+    state "Restoring original game" as Restoring
+    state "Restore blocked; recovery data retained" as RestoreBlocked
+
+    Original --> Installing: Install; save affected originals
+    Installing --> Installed: Installation succeeds
+    Installing --> Restoring: Installation fails or is interrupted
+
+    Installed --> Preparing: Request update
+    Preparing --> Installed: Validation or staging fails; game unchanged
+    Preparing --> Applying: Persist rollback journal and required backups
+    Applying --> Rollback: Failure or interruption before commit
+    Applying --> Committed: Verify files; atomically commit active journal
+    Committed --> Committed: Interruption; keep new version and resume cleanup
+    Committed --> Installed: Temporary rollback data removed
+
+    Rollback --> Installed: Previous version restored; temporary data removed
+    Rollback --> RollbackBlocked: Recovery cannot complete
+    RollbackBlocked --> Rollback: Resolve issue and retry recovery
+
+    Installed --> Restoring: Uninstall translation
+    Restoring --> Original: Originals restored; patch-created files removed
+    Restoring --> RestoreBlocked: Restoration cannot complete
+    RestoreBlocked --> Restoring: Resolve issue and retry restoration
+
+    note right of Preparing
+        Reuse permanent original backups.
+        Back up newly affected originals only.
+        Temporary rollback saves current patched files.
+    end note
+    note right of Committed
+        Commit is the recovery decision point.
+        Before commit: restore the previous translation.
+        After commit: keep the new translation.
+    end note
+```
+
+An interruption during preparation leaves the live game unchanged. If a pending
+update journal has already been published, recovery processes it before another
+operation proceeds. Cleanup is best-effort; leftover temporary artifacts do not
+change which version is committed. See the recovery section below for details.
+
 ## First installation
 
 Before changing an existing file, Kitor saves its original bytes outside the game
