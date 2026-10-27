@@ -12,6 +12,49 @@ pub struct DownloadProgress {
     pub percentage: u32,
 }
 
+/// GOG authentication never enters a URL, error string, or CDN request.
+pub async fn download_gog_installer(
+    initial: url::Url, token: &str, destination: &Path, app: &tauri::AppHandle,
+) -> Result<(), String> {
+    let initial = super::gog_download_security::installer_url(initial.as_str())?;
+    let client = reqwest::Client::builder().redirect(reqwest::redirect::Policy::none())
+        .referer(false).build().map_err(|_| "Could not create GOG download client")?;
+    let mut url = initial.clone();
+    for hop in 0..=5 {
+        let mut request = client.get(url.clone());
+        // Only the initial catalog endpoint receives the account credential.
+        // Redirected URLs carry their own CDN authorization, if required.
+        if hop == 0 { request = request.bearer_auth(token); }
+        let response = request.send().await.map_err(|_| "GOG download request failed")?;
+        if response.status().is_redirection() {
+            let location = response.headers().get(reqwest::header::LOCATION)
+                .and_then(|v| v.to_str().ok()).ok_or("Invalid GOG download redirect")?;
+            let next = url.join(location).map_err(|_| "Invalid GOG download redirect")?;
+            if !super::gog_download_security::allowed_redirect(&next) {
+                return Err("GOG redirected to an untrusted download location".into());
+            }
+            url = next;
+            continue;
+        }
+        response.error_for_status_ref().map_err(|_| "GOG installer download was rejected")?;
+        let total = response.content_length().unwrap_or(0);
+        let mut file = File::create(destination).await.map_err(|_| "Could not create installer download")?;
+        let mut stream = response.bytes_stream();
+        let mut downloaded = 0u64;
+        while let Some(chunk) = stream.next().await {
+            let chunk = chunk.map_err(|_| "Incomplete GOG installer download")?;
+            file.write_all(&chunk).await.map_err(|_| "Could not write installer download")?;
+            downloaded += chunk.len() as u64;
+            let percentage = if total == 0 { 0 } else { ((downloaded as f64 / total as f64) * 100.0).min(100.0) as u32 };
+            let _ = app.emit("download-progress", DownloadProgress { downloaded, total, percentage });
+        }
+        file.flush().await.map_err(|_| "Could not flush installer download")?;
+        if downloaded == 0 { return Err("GOG returned an empty installer".into()); }
+        return Ok(());
+    }
+    Err("Too many GOG download redirects".into())
+}
+
 pub async fn download_file(
     url: &str,
     dest_path: &Path,

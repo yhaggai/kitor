@@ -268,14 +268,14 @@ fn copy_durable(from: &Path, to: &Path) -> Result<()> {
 }
 fn replace(from: &Path, to: &Path) -> Result<()> {
     let parent = to.parent().ok_or("Missing target parent")?;
+    let permissions = fs::metadata(from).map_err(err)?.permissions();
     let temp = tempfile::NamedTempFile::new_in(parent).map_err(err)?;
     fs::copy(from, temp.path()).map_err(err)?;
     temp.as_file().sync_all().map_err(err)?;
     let persisted = temp.persist(to).map_err(err)?;
-    // tempfile clears FILE_ATTRIBUTE_TEMPORARY with FILE_ATTRIBUTE_NORMAL on
-    // Windows during persist, which also clears the copied read-only flag.
-    // Restore source metadata after the rename using the writable handle.
-    persisted.set_permissions(fs::metadata(from).map_err(err)?.permissions()).map_err(err)?;
+    // tempfile clears Windows attributes when persisting. Restore source
+    // permissions using the still-writable handle, then durably flush them.
+    persisted.set_permissions(permissions).map_err(err)?;
     persisted.sync_all().map_err(err)?;
     sync_dir(parent)
 }

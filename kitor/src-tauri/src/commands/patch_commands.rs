@@ -118,7 +118,6 @@ pub async fn open_steam_client(app_id: u32, steam: State<'_, crate::services::st
 #[tauri::command]
 pub async fn download_and_extract_gog_installer(
     scummvm_id: String,
-    installer_path: String,
     dest_dir: String,
     state: tauri::State<'_, crate::AppState>,
     app_handle: tauri::AppHandle,
@@ -127,7 +126,6 @@ pub async fn download_and_extract_gog_installer(
     crate::services::patch_service::download_and_extract_gog_installer(
         &state.db,
         scummvm_id,
-        installer_path,
         PathBuf::from(dest_dir),
         app_handle,
         state.app_data_dir.clone(),

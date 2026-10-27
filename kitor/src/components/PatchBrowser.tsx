@@ -6,8 +6,8 @@ import { open as openDialog } from "@tauri-apps/plugin-dialog";
 import { CheckCircle, Download, ExternalLink, MoreVertical, Play } from "lucide-react";
 import { useEffect, useState } from "react";
 import AddGameDialog from "@/components/AddGameDialog";
-import { OpenGameFolderMenuItem } from "@/components/OpenGameFolderMenuItem";
 import { GameDetailsBox } from "@/components/GameDetailsBox";
+import { OpenGameFolderMenuItem } from "@/components/OpenGameFolderMenuItem";
 import { PurchaseGuideDialog } from "@/components/PurchaseGuideDialog";
 import { StoreInstallButtons } from "@/components/StoreInstallButtons";
 import { Badge } from "@/components/ui/badge";
@@ -207,7 +207,6 @@ function PatchCard({ patch, onViewGame, onShowGuide }: PatchCardProps) {
                           setDownloadStep("Starting download...");
                           await invoke("download_and_extract_gog_installer", {
                             scummvmId: patch.scummvm_id,
-                            installerPath: patch.gog_installer_path,
                             destDir: selectedDir,
                           });
                           const updatedGames = (await invoke("get_games_with_patches")) as Game[];
@@ -261,7 +260,11 @@ function PatchCard({ patch, onViewGame, onShowGuide }: PatchCardProps) {
         </div>
 
         {!patch.game_installed && (
-          <StoreInstallButtons scummvmId={patch.scummvm_id} steamAppId={patch.steam_app_id} gogId={patch.gog_id} />
+          <StoreInstallButtons
+            scummvmId={patch.scummvm_id}
+            steamAppId={patch.steam_app_id}
+            gogId={patch.gog_id}
+          />
         )}
 
         {patch.patch_installed ? (
