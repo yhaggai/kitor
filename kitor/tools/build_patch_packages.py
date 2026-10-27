@@ -52,9 +52,11 @@ def validate(manifest_path, platform):
         provenance = json.loads(provenance_path.read_text(encoding='utf-8'))
         require(provenance.get('status') not in ('blocked', 'no_patch_required', 'built_in'), 'Provenance marks patch noninstallable')
     manifest = json.loads(manifest_path.read_text(encoding='utf-8'))
-    fields(manifest, ('schema_version', 'scummvm_id', 'language', 'version', 'filename', 'platforms', 'files'),
+    fields(manifest, ('schema_version', 'scummvm_id', 'language', 'version', 'filename', 'platforms', 'files', 'release_revision'),
            ('schema_version', 'scummvm_id', 'language', 'version', 'filename', 'platforms'))
     require(manifest['schema_version'] == 1, 'Unsupported schema version')
+    require(type(manifest.get('release_revision', 0)) is int and 0 <= manifest.get('release_revision', 0) <= 9007199254740991,
+            'release_revision must be a nonnegative safe integer')
     for key in ('scummvm_id', 'language', 'version', 'filename'):
         safe_name(manifest[key])
         require('/' not in manifest[key], f'{key} must be a single component')

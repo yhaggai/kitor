@@ -8,12 +8,14 @@ on:
       - 'kitor/tools/**'
       - 'kitor/src-tauri/**'
       - '.github/workflows/validate-patch-packages.yml'
+      - '.github/workflows/deploy-patches.yml'
   pull_request:
     paths:
       - 'patches-workspace/**'
       - 'kitor/tools/**'
       - 'kitor/src-tauri/**'
       - '.github/workflows/validate-patch-packages.yml'
+      - '.github/workflows/deploy-patches.yml'
   workflow_dispatch:
 
 permissions:
@@ -47,6 +49,12 @@ jobs:
         run: python -m unittest discover -s kitor/tools -p "test_*.py"
       - name: Test native selective installation and restoration fixtures
         run: python kitor/tools/run_lifecycle_tests.py
+      - name: Test translation update database recovery
+        working-directory: kitor/src-tauri
+        env:
+          CARGO_PROFILE_TEST_DEBUG: '0'
+          CARGO_INCREMENTAL: '0'
+        run: cargo test --lib restore_tests::update_reconciles_stale_database_and_restore_preserves_unrelated_files
       - name: Validate and build all installable manifests
         shell: python
         run: |

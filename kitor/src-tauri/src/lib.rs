@@ -26,6 +26,7 @@ pub fn run() {
                 .expect("Failed to get app data directory");
 
             // Initialize database
+            services::registry_service::updates::initialize(&app_data_dir);
             let db = tauri::async_runtime::block_on(async {
                 db::init_db(&app_data_dir)
                     .await
@@ -69,6 +70,10 @@ pub fn run() {
             // Patch commands
             commands::patch_commands::get_patches_for_game,
             commands::patch_commands::get_all_patches,
+            commands::patch_commands::refresh_patch_registry,
+            commands::patch_commands::github_token_configured,
+            commands::patch_commands::save_github_token,
+            commands::patch_commands::remove_github_token,
             commands::patch_commands::download_and_install_patch,
             commands::patch_commands::get_installed_patches,
             commands::patch_commands::restore_backup,
