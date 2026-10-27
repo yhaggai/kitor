@@ -1,6 +1,28 @@
 # Grim Fandango Remastered Hebrew prototype
 
-Development handoff, 2026-10-26. This is an experiment for ScummVM, not a released patch, native Remastered patch, or Kitor registry entry. Windows execution has not been tested.
+Development handoff, 2026-10-26. This is an experimental Hebrew resource builder, not a released patch or Kitor registry entry. The user confirmed Hebrew letters and visible menu text in the native Windows game after the CRLF fix. Full dialogue layout and playthrough validation remain outstanding.
+
+## Native Windows experiment
+
+Build with `--resources copy` using the commands below, then run the copied native executable through the new launcher:
+
+```powershell
+.\.venv\Scripts\python.exe launch_native.py --game runtime\game
+```
+
+This runs `GrimFandango.exe` directly with the copied game as its working directory. It redirects the child process's `APPDATA` to `runtime/native-profile` to separate test saves and settings, and enables `runtime/game/Grim.log`. Keep the game's language set to English, whose text table is replaced, and enable subtitles in the native options. Do not run the copied executable directly if you want profile isolation.
+
+The builder now also supplies the remapped font under the original TTF filenames: the native executable references `FontsHD/FuturaStd-Heavy.ttf` directly as well as loading the LAF specifications. This is an experimental byte-font mapping; line wrapping and original-renderer fonts still need visual validation.
+
+The first native test showed a blank main menu according to user feedback, including untranslated English labels. The builder had normalized the Windows table's CRLF line endings to LF. It now preserves the source line-ending style; the user confirmed visible menu text after the native retest. A regression test preserves CRLF, font specifications, original source files, and font coverage.
+
+Windows GOG test on 2026-10-26: 7,704 of 9,639 rows reused. Source table SHA-256: `e2bc894fb4ef6cd2901befc052fa57f2741bdc25ccf724df51908ea8f1c98d4b`. Native logs reached `MoviesHD/intro.ogv` and confirmed the isolated profile path. The source text and executable were verified unchanged, and every generated text byte has a font mapping (excluding whitespace controls). Window capture timed out. Hebrew letters and menu visibility were confirmed by the user; speech and dialogue wrapping remain unverified. The initial direct-launch test used the normal profile; subsequent launches through `launch_native.py` use the isolated profile.
+
+The current Windows build is `runtime/game-native-v2`; launch it with `launch_native.py --game runtime/game-native-v2`. It reuses 7,727 rows (7,704 direct IDs plus 23 menu aliases); 1,912 rows retain English.
+
+The builder also reuses old menu translations for new UI IDs when the English labels match after ignoring accelerator markers, case, and whitespace. All matching old labels must have the same translation; ambiguous labels and dialogue are not remapped. The build report records each alias and the reason for every English fallback. No new translations are authored.
+
+Run regression checks with `.\.venv\Scripts\python.exe -m unittest discover -p "test_*.py"` from this directory.
 
 ## What is included
 
