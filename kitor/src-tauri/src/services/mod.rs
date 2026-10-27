@@ -31,3 +31,5 @@ pub mod tentacle;
 pub mod tentacle_remastered;
 
 pub mod github_download_service;
+
+pub mod pq1;

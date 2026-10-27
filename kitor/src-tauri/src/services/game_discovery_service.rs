@@ -176,9 +176,10 @@ pub async fn scan_installed_games(
     db: &sea_orm::DatabaseConnection,
     app_data_dir: PathBuf,
 ) -> Result<ScanResult, String> {
-    let (locations, warnings) = tokio::task::spawn_blocking(discover_locations)
+    let (mut locations, warnings) = tokio::task::spawn_blocking(discover_locations)
         .await
         .map_err(|e| e.to_string())?;
+    if app_data_dir.join("games").is_dir() { locations.push(app_data_dir.join("games")); }
     let mut result = ScanResult {
         warnings,
         ..Default::default()

@@ -131,3 +131,6 @@ pub mod tentacle;
 
 #[path = "../../../src-tauri/src/services/tentacle_remastered.rs"]
 pub mod tentacle_remastered;
+
+#[path = "../../../src-tauri/src/services/pq1.rs"]
+pub mod pq1;

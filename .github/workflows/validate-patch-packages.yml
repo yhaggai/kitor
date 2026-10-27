@@ -60,6 +60,7 @@ jobs:
         run: |
           import pathlib, subprocess, sys
           manifests = sorted(pathlib.Path('patches-workspace').glob('*/he/patch.json'))
+          manifests += sorted(pathlib.Path('patches-workspace').glob('*/he/patch.steam.json'))
           if not manifests:
               raise SystemExit('No installable manifests found')
           for manifest in manifests:

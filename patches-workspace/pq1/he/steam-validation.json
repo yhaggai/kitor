@@ -1,0 +1,65 @@
+{
+  "validated_date": "2026-10-28",
+  "steam_app_id": 494740,
+  "steam_depot_id": 494741,
+  "steam_manifest": "427993029009177791",
+  "download_files": 260,
+  "download_bytes": 503256727,
+  "scummvm_detection": "agi:pq1 (2.0G 1987-12-03/DOS/English)",
+  "plan": "patch.steam.json",
+  "host": "macOS arm64",
+  "plan_exercised": "windows (identical shared files for osx); not native Windows validation",
+  "roundtrip": {
+    "nativeWindows": false,
+    "results": [
+      {
+        "details": {
+          "affectedFiles": 10,
+          "backedUpFiles": 7,
+          "copiedOriginalFiles": 7,
+          "editionValidation": "incomplete_or_absent_original_fingerprints",
+          "gameplay": "not_run",
+          "guardedFileCount": 7,
+          "selectiveRoundtrip": "passed",
+          "warning": "Pass means disposable install/uninstall roundtrip only; game ownership, complete edition compatibility, and gameplay are not verified"
+        },
+        "gameId": "pq1",
+        "gameplay": "not_run",
+        "nativeWindows": false,
+        "status": "pass"
+      }
+    ],
+    "schemaVersion": 1,
+    "scope": "Disposable subset install/uninstall only; gameplay not tested",
+    "summary": {
+      "failed": 0,
+      "passed": 1,
+      "skipped": 0
+    }
+  },
+  "release_ready": false,
+  "pending": [
+    "Native Windows gameplay validation",
+    "Independent save/load test",
+    "GitHub Actions run and publication"
+  ],
+  "integration": {
+    "version": "1.0-kitor2",
+    "registry_source": "bundled",
+    "installed_via_kitor": true,
+    "installed_hashes_verified": 10,
+    "selective_backup_files": 7,
+    "automatic_scan": "added exactly one PQ1 entry from managed games folder",
+    "temporary_database_scan": "passed twice without duplicates",
+    "hebrew_launch": "user confirmed works on 2026-10-28; ScummVM UI identifies DOS/Hebrew",
+    "save_load": "not independently tested",
+    "tests": {
+      "python": 27,
+      "lifecycle": 30,
+      "ignored_lifecycle": 2,
+      "pq1_owned_case_insensitive_roundtrip": 2,
+      "temporary_database_scan": 1
+    },
+    "macos_app_build": "passed"
+  }
+}

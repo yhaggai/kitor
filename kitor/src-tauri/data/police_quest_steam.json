@@ -1,0 +1,117 @@
+[
+  {
+    "id": "pq1",
+    "title": "Police Quest: In Pursuit of the Death Angel (EGA)",
+    "folder": "PQ1/EGA",
+    "files": [
+      {
+        "name": "AGI",
+        "sha256": "29ddd3f3b91d65b6eade156608d7915e3c8b7f47701cb226ff119b717f3e8bd7"
+      },
+      {
+        "name": "AGIDATA.OVL",
+        "sha256": "f7ca256c1c0ab12509d695baabdd44a3c5e72a570b08118d3ead995a47f4c383"
+      },
+      {
+        "name": "CGA_GRAF.OVL",
+        "sha256": "59f0fa637f68cb5fecbd5d0d507a911a9ead32d083f785acba8d9b5a93bdf984"
+      },
+      {
+        "name": "EGA_GRAF.OVL",
+        "sha256": "c0f6cf0352e66710ae04132a32cead417233dbccf2244c87f3021ba6e1ad2404"
+      },
+      {
+        "name": "EXISTS.COM",
+        "sha256": "36cd8fca11efe7c21b29f67164273462c54b836526d4c931aa49a61c22401767"
+      },
+      {
+        "name": "GODIR.COM",
+        "sha256": "bff36a0e865cc3a51e98854e9eab1e41154b3b9392dbd4c1a335b2e4de67e4fb"
+      },
+      {
+        "name": "HGC_FONT",
+        "sha256": "d670b9ad81492f6894481553a0b71d4ffb16c60dfb8868a47ae8ab5207fb06fa"
+      },
+      {
+        "name": "HGC_GRAF.OVL",
+        "sha256": "20d1f56b2ffe573570804c7ad5c27c909302677944a9c9ec69b6b01c406ab192"
+      },
+      {
+        "name": "HGC_OBJS.OVL",
+        "sha256": "9e95f7772e04820ecd2cdddc6b5759008e1dc1b8b96a4119e894128cf7f545b8"
+      },
+      {
+        "name": "IBM_OBJS.OVL",
+        "sha256": "4f6c7d5d67f6c86a784f7b9c55eb7992b598efd8ec625955c5efe759a0aa0525"
+      },
+      {
+        "name": "INSTALL.BAT",
+        "sha256": "4c99255cb44c2c4ccc14743536062042069d44b23716efc8806e6558c32be900"
+      },
+      {
+        "name": "JR_GRAF.OVL",
+        "sha256": "fb41e85e936ddef31a706f87a5097b65a676846e19c8a796b06296725ab7b05d"
+      },
+      {
+        "name": "LOGDIR",
+        "sha256": "bb8a07fb13a6af30ab587110ee4dfec66fb11f850776be8fdf5d3d55cedda0ec"
+      },
+      {
+        "name": "OBJECT",
+        "sha256": "ed0e6e31fe8f714dcc10243f0b5cdff5f707375ee4b1d55f4b311da3b9803d47"
+      },
+      {
+        "name": "PICDIR",
+        "sha256": "3546dc1692780cc3c9df232c7634be18997720f2931f9dc9a014b695124f4f4f"
+      },
+      {
+        "name": "POPDIR.COM",
+        "sha256": "c15f9f88d98c3fcc3d391c507670ece6a2fdc8fc38c564effcf94357957ea93b"
+      },
+      {
+        "name": "PUSHDIR.COM",
+        "sha256": "4825b9e9d4542d45b2996a42681b42f4cd489b48ba31f9c8c394ea4938a678ce"
+      },
+      {
+        "name": "SIERRA.COM",
+        "sha256": "70fceed3f42470b610d17866a24c9b10dd2d00857bb4de08c5694c4aff2be0d5"
+      },
+      {
+        "name": "SNDDIR",
+        "sha256": "ab6325c099a5d8bfcfd19ec561a33b83885b45ac39cb906a69c32e241805bb48"
+      },
+      {
+        "name": "VG_GRAF.OVL",
+        "sha256": "c93b02bc3dc3f19615232103ee818a9ba6c15fa47c6f2533be8938b729dfd9d3"
+      },
+      {
+        "name": "VIEWDIR",
+        "sha256": "e80e7b40535eeaad4b03141613a404329b7bbfd2fef0e9fd08a0a9da3ac457ce"
+      },
+      {
+        "name": "VOL.0",
+        "sha256": "04449e1da52628290906eee1fe81c0cbfdae7a6fb146dfda652c1a7dd6304e52"
+      },
+      {
+        "name": "VOL.1",
+        "sha256": "08927df46a0cf3d4d53e0c83c48a446ea5d81c9c46f6ad63c069a35d179b3ec8"
+      },
+      {
+        "name": "VOL.2",
+        "sha256": "dbac3081ccf1f414cf0e8f5ad58ba6d788b7de8c0830ee317b093f8d4c8f3e90"
+      },
+      {
+        "name": "WHAT.EXE",
+        "sha256": "aafd2f3c7ab99a94ba12388b59f4746a6c1716da826165c9fd9110b8ac0e1d02"
+      },
+      {
+        "name": "WORDS.TOK",
+        "sha256": "a95eed1c9b2fcafb5ba63f2424adf05a3a1f7c349089fc22b09277ae020a13c2"
+      },
+      {
+        "name": "_INSTALL.BAT",
+        "sha256": "a1f61c03b822bd7d7bba71189dcc0f1f4f63e3673b26e3f174566f9918c8077d"
+      }
+    ]
+  }
+]

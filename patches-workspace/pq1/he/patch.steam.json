@@ -1,0 +1,125 @@
+{
+  "schema_version": 1,
+  "scummvm_id": "pq1",
+  "language": "he",
+  "version": "1.0-kitor2",
+  "filename": "pq1-he-kitor2-steam.zip",
+  "platforms": {
+    "windows": {},
+    "osx": {}
+  },
+  "files": [
+    {
+      "path": "VOL.0",
+      "operation": "modify",
+      "original_md5": "4d44bf0e438ba7c0b05c17be4dea36c5",
+      "installed_md5": "7d236feb040893ebbc9f0e873ee5d87b",
+      "source": {
+        "kind": "bsdiff",
+        "path": "payload/VOL.0.steam.bsdiff",
+        "sha256": "1fe2adc69ebae359c74c9d015f10818286d5d8de6f7e39d5af986b10f27f2b50",
+        "input": "VOL.0"
+      }
+    },
+    {
+      "path": "LOGDIR",
+      "operation": "modify",
+      "original_md5": "d194e5d88363095f55d5096b8e32fbbb",
+      "installed_md5": "6d2b87300f32cd4c0052298212c82d62",
+      "source": {
+        "kind": "bsdiff",
+        "path": "payload/LOGDIR.steam.bsdiff",
+        "sha256": "3a487b96aef252257873e847355de3ea8ec481d3a4c76049c3983ef057cba45f",
+        "input": "LOGDIR"
+      }
+    },
+    {
+      "path": "PICDIR",
+      "operation": "modify",
+      "original_md5": "60cbfd91b9e77ad0baa22f0b73987838",
+      "installed_md5": "d255d16d17403f8806261badcaaf4544",
+      "source": {
+        "kind": "bsdiff",
+        "path": "payload/PICDIR.bsdiff",
+        "sha256": "c5e025199c0623789f9ddad6d37a18e9479c27962c512c8f14a68ff5517834d7",
+        "input": "PICDIR"
+      }
+    },
+    {
+      "path": "SNDDIR",
+      "operation": "modify",
+      "original_md5": "ed489e4f8647af2b956d08ee78b4ff42",
+      "installed_md5": "d6398da93f7dbfb83fd2452948b53bd1",
+      "source": {
+        "kind": "bsdiff",
+        "path": "payload/SNDDIR.bsdiff",
+        "sha256": "45d9933ff386e2f74bd2e4ea591e808c22c7a82f06c32d3c1b04cbf0d4b3d544",
+        "input": "SNDDIR"
+      }
+    },
+    {
+      "path": "VIEWDIR",
+      "operation": "modify",
+      "original_md5": "631d6539348d489c2f4f84a6d1c58e08",
+      "installed_md5": "22ef50dbccd2d71f5d114f75b47f6fb9",
+      "source": {
+        "kind": "bsdiff",
+        "path": "payload/VIEWDIR.bsdiff",
+        "sha256": "0cedc8c0c89b3546eac544ae0bc81650822490400ebeb00740c1b716e8d53a01",
+        "input": "VIEWDIR"
+      }
+    },
+    {
+      "path": "OBJECT",
+      "operation": "modify",
+      "original_md5": "c444971d4558f102a82b3130868010b4",
+      "installed_md5": "8e47fe29782f2e9b3692d8cd5236c8ee",
+      "source": {
+        "kind": "bsdiff",
+        "path": "payload/OBJECT.bsdiff",
+        "sha256": "ef85ffcd37394c849d0e013fce6b3c14031c173ff94f8f867a252b6b567b1afd",
+        "input": "OBJECT"
+      }
+    },
+    {
+      "path": "WORDS.TOK",
+      "operation": "modify",
+      "original_md5": "0db29ac32f2cbb1d26c0e29f812f5fd2",
+      "installed_md5": "cad421f4bd5a3541c39344f139685be1",
+      "source": {
+        "kind": "bsdiff",
+        "path": "payload/WORDS.TOK.bsdiff",
+        "sha256": "1da38e5d5a44e7fc8d11a10adb3fa57bb925663759adbee72933b87c086c381a",
+        "input": "WORDS.TOK"
+      }
+    },
+    {
+      "path": "WORDS.TOK.EXTENDED",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "payload/WORDS.TOK.EXTENDED",
+        "sha256": "cc24ae4403a9fa2553a4143bd607d42bb7c158eb18b60b0e2b29c40e1ce69d9d"
+      }
+    },
+    {
+      "path": "agi-font-dos.bin",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "payload/agi-font-dos.bin",
+        "sha256": "6961fdd01a443ef0e11fa79bd0878dd65e2b1a91862621510af7f87e70d81612"
+      }
+    },
+    {
+      "path": "PQ1.WAG",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "payload/PQ1.WAG",
+        "sha256": "c62679417ab9c430753ddbd11f1ef86487bcd49a01ba090b01cdd8ea4bcd46a2"
+      }
+    }
+  ],
+  "release_revision": 2026102801
+}

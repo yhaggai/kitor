@@ -380,8 +380,10 @@ pub async fn download(
     if app_id == 32460 && game_ids == ["monkey2-se"] {
         return Ok(vec![download_monkey(app_id, state).await?]);
     }
-    let all = recipes();
-    if app_id != 10110
+    let (all, depot, manifest) = if app_id == 494740 {
+        (serde_json::from_str::<Vec<ImportRecipe>>(include_str!("../../data/police_quest_steam.json")).expect("PQ1 recipe"), 494741, "427993029009177791")
+    } else { (recipes(), 10111, "6725209980292758062") };
+    if ![10110, 494740].contains(&app_id)
         || game_ids.is_empty()
         || game_ids.iter().any(|id| !all.iter().any(|r| &r.id == id))
     {
@@ -411,14 +413,14 @@ pub async fn download(
     let runtime = steam.join("Steam.AppBundle/Steam/Contents/MacOS");
     let cache = state
         .app_data_dir
-        .join("steam-sources/10110-6725209980292758062");
+        .join(format!("steam-sources/{app_id}-{manifest}"));
     if !needed
         .iter()
         .all(|r| verify_recipe(&cache.join(&r.id), r).is_ok())
     {
         let candidates = [
-            runtime.join("steamapps/content/app_10110/depot_10111"),
-            steam.join("steamapps/content/app_10110/depot_10111"),
+            runtime.join(format!("steamapps/content/app_{app_id}/depot_{depot}")),
+            steam.join(format!("steamapps/content/app_{app_id}/depot_{depot}")),
         ];
         let valid_source = || {
             candidates
@@ -440,7 +442,7 @@ pub async fn download(
             .into_iter()
             .find(|p| p.is_file())
             .ok_or("Install Steam and sign in first")?;
-            download_depot(&steam, &executable, &state.app_data_dir, 10110, 10111).await?;
+            download_depot(&steam, &executable, &state.app_data_dir, app_id, depot).await?;
             valid_source().ok_or("Steam completed, but this collection's files do not match the verified edition. No games were imported.")?
         };
         for recipe in &all {

@@ -112,7 +112,7 @@ fn add_toon_runtime_data(cmd: &mut Command, app_data_dir: &Path, game_id: &str) 
 // language from the installed data, so the original English files also launch.
 fn normalize_collection_args(id: &str, args: Vec<String>, patched: bool) -> Vec<String> {
     let engine = match id {
-        "sq1" | "sq2" => "agi",
+        "pq1" | "sq1" | "sq2" => "agi",
         "sq1sci" | "sq3" | "sq5" => "sci",
         _ => return args,
     };
@@ -239,7 +239,7 @@ pub async fn launch_game(
         }
     }
 
-    let collection_patched = if matches!(game.scummvm_id.as_str(), "sq1" | "sq1sci" | "sq2" | "sq3" | "sq5") {
+    let collection_patched = if matches!(game.scummvm_id.as_str(), "pq1" | "sq1" | "sq1sci" | "sq2" | "sq3" | "sq5") {
         use crate::models::installed_patch;
         installed_patch::Entity::find()
             .filter(installed_patch::Column::GameId.eq(game.id))

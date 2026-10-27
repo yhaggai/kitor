@@ -319,6 +319,14 @@ pub fn detect_game_in_folder(path: &Path) -> Result<Option<DetectedGameInfo>, St
         if game_def.patches.is_empty() {
             continue;
         }
+        if game_def.scummvm_id == "pq1" {
+            if let Some(root) = super::pq1::detect(path) {
+                return Ok(Some(DetectedGameInfo { install_path: root.to_string_lossy().into_owned(),
+                    scummvm_id: game_def.scummvm_id, title: game_def.title,
+                    available_patches_count: game_def.patches.len() }));
+            }
+            continue;
+        }
         if game_def.scummvm_id == "tentacle" {
             if let Some(root) = super::tentacle::detect(path) {
                 return Ok(Some(DetectedGameInfo {
@@ -736,6 +744,19 @@ mod tests {
         for _ in 0..2 { scan_directory(&db,path.to_str().unwrap(),temp.path().to_path_buf()).await.unwrap(); }
         let games = Game::find().all(&db).await.unwrap();
         assert_eq!(games.iter().filter(|g|g.scummvm_id == "owlboy").count(),1);
+    }
+
+    #[tokio::test]
+    #[ignore = "requires KITOR_PQ1_TEST_DATA; scans read-only using a temporary database"]
+    async fn pq1_owned_detection_and_scan() {
+        let path = PathBuf::from(std::env::var("KITOR_PQ1_TEST_DATA").unwrap());
+        let temp = tempfile::tempdir().unwrap();
+        let found = detect_game_for_id(&path,"pq1").unwrap().unwrap();
+        assert!(found.install_path.ends_with("PQ1/EGA"));
+        let db = crate::db::init_db(&temp.path().join("database")).await.unwrap();
+        for _ in 0..2 { scan_directory(&db,path.to_str().unwrap(),temp.path().to_path_buf()).await.unwrap(); }
+        let games = Game::find().all(&db).await.unwrap();
+        assert_eq!(games.iter().filter(|g|g.scummvm_id == "pq1").count(),1);
     }
 
     #[test]
