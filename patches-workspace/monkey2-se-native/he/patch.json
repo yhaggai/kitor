@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "scummvm_id": "monkey2-se-native",
+  "language": "he",
+  "version": "0.2.0-native-candidate",
+  "filename": "monkey2-se-native-he.zip",
+  "platforms": { "windows": {} },
+  "files": [
+    {
+      "path": "monkey2.pak",
+      "operation": "modify",
+      "original_sha256": "25a6a441e9e82af21f12de169f0d1a253e4330761840fac6d92897420c6671cb",
+      "installed_sha256": "04a2d4c48004ced9d4c4b7f70973279f79ec313636816389b83ea78f529704f4",
+      "source": {
+        "kind": "reconstruct",
+        "path": "recipes/0.json",
+        "sha256": "1b5a4d05340c1533a79bea80d59f132406b0065a499e867c02d4cfb9c9852c55",
+        "input": "monkey2.pak"
+      }
+    }
+  ],
+  "release_revision": 1
+}

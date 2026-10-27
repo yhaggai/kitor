@@ -410,6 +410,14 @@ pub fn detect_game_in_folder(path: &Path) -> Result<Option<DetectedGameInfo>, St
 }
 
 pub fn detect_game_for_id(path: &Path, id: &str) -> Result<Option<DetectedGameInfo>, String> {
+    if super::monkey_native::supported(id) {
+        let registry = registry_service::load_registry()?;
+        return Ok(super::monkey_native::detect(path, id).and_then(|root|
+            registry.games.into_iter().find(|g|g.scummvm_id == id).map(|g| DetectedGameInfo {
+                install_path: root.to_string_lossy().into_owned(), scummvm_id: g.scummvm_id,
+                title: g.title, available_patches_count: g.patches.len(),
+            })));
+    }
     if matches!(id, "tentacle" | "day-of-the-tentacle-remastered") {
         let root=if id=="tentacle" {super::tentacle::detect(path)} else {super::tentacle::detect_remastered(path)};
         let registry=registry_service::load_registry()?;
@@ -420,6 +428,12 @@ pub fn detect_game_for_id(path: &Path, id: &str) -> Result<Option<DetectedGameIn
     Ok(detect_game_in_folder(path)?.filter(|g|g.scummvm_id==id))
 }
 fn detect_library_games(path: &Path) -> Vec<GameInfo> {
+    for (native, classic) in [("monkey-se-native", "monkey-se"), ("monkey2-se-native", "monkey2-se")] {
+        if super::monkey_native::detect(path, native).is_some() {
+            return [classic, native].iter().filter_map(|id| detect_game_for_id(path, id).ok().flatten())
+                .map(|d|GameInfo {install_path:d.install_path,scummvm_id:d.scummvm_id,title:d.title}).collect();
+        }
+    }
     if super::tentacle::detect_remastered(path).is_some() {
         return ["tentacle", "day-of-the-tentacle-remastered"].iter().filter_map(|id|detect_game_for_id(path,id).ok().flatten()).map(|d|GameInfo {install_path:d.install_path,scummvm_id:d.scummvm_id,title:d.title}).collect();
     }

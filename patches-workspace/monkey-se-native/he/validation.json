@@ -1,0 +1,17 @@
+{
+  "game": "monkey-se-native",
+  "install_uninstall_roundtrip": "passed",
+  "reinstall": "passed",
+  "affected_files": 4,
+  "unrelated_save": "preserved",
+  "runtime": "Opening scenes: user confirmed Hebrew in both graphics modes and speech; full-game coverage is incomplete",
+  "scope": "Owned game copies; not original installation",
+  "classic_update": {
+    "version": "0.2.0-native-candidate",
+    "update": "passed",
+    "installed_hashes": "passed",
+    "original_backups": "verified",
+    "unrelated_save": "preserved",
+    "runtime": "User confirmed Hebrew in both graphics modes and working speech in opening scenes; MI1 lookout rechecked"
+  }
+}

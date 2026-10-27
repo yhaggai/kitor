@@ -1,0 +1,218 @@
+MENU_ACHIEVEMENTS	הישגים
+MENU_SAVESLOT_LOAD_CONFIRM	לטעון את המשחק השמור?
+MENU_SAVESLOT_OVERWRITE	להחליף את השמירה? ההתקדמות בשמירה הקודמת תאבד.
+MENU_QUIT_TO_MAIN	לחזור לתפריט הראשי?
+MENU_BACK	חזרה
+MENU_CLASSIC_EDITION_CREDITS	יוצרי המהדורה הקלאסית
+MENU_CONTINUE_WITHOUT_SAVE	המשך ללא שמירה
+MENU_CONTROLS	מקשים ושליטה
+MENU_CREATE_NEW_SAVE_DATA	יצירת שמירה חדשה
+MENU_WARNING_DO_NOT_TURN_OFF_XBOX	אין לכבות את המכשיר או לנתק את האחסון כשהסמל מופיע.
+MENU_EXIT_GAME	יציאה מהמשחק
+MENU_FAILED_TO_SAVE	השמירה נכשלה
+MENU_HELP_AND_OPTIONS	עזרה ואפשרויות
+MENU_HOW_TO_PLAY	איך משחקים
+MENU_LEADERBOARDS	טבלאות שיאים
+MENU_LOAD_GAME	טעינת משחק
+MENU_WARNING_LOADING_GAME	המשחק נטען. אין לכבות את המכשיר.
+MENU_MONKEY_ISLAND_TITLE_NAME	אי הקופים
+MENU_MUSIC_VOLUME	עוצמת המוזיקה
+MENU_WARNING_NO_STORAGE_SELECTED	לא נבחר אמצעי אחסון. יש לבחור אחסון או להמשיך ללא שמירה.
+MENU_OK	אישור
+MENU_WARNING_CHOOSE_STORAGE_SPACE_NEEDED	יש לבחור אחסון עם לפחות %iKB פנויים כדי לשמור.
+MENU_WARNING_QUIT_WITHOUT_SAVE	יציאה ללא שמירה תאבד את ההתקדמות שלא נשמרה.
+MENU_RETRY_LOAD	ניסיון טעינה נוסף
+MENU_RETURN_TO_GAME	חזרה למשחק
+MENU_WARNING_SAVE_DATA_NOT_FOUND	לא נמצאה שמירה. ליצור שמירה חדשה או להמשיך ללא שמירה?
+MENU_SAVE_GAME	שמירת משחק
+MENU_SAVE_GAME_DAMAGED	קובץ השמירה פגום ולא ניתן להשתמש בו.
+MENU_WARNING_SAVING_CONTENT	מתבצעת שמירה. אין לכבות את המכשיר.
+MENU_SELECT	בחירה
+MENU_SELECT_STORAGE	בחירת אמצעי אחסון
+MENU_SETTINGS	הגדרות תצוגה
+MENU_SFX_VOLUME	עוצמת האפקטים
+MENU_SPECIAL_EDITION_CREDITS	יוצרי המהדורה המיוחדת
+MENU_SUBTITLES	כתוביות
+MENU_VOICE_VOLUME	עוצמת הדיבור
+MENU_YES	כן
+MENU_WARNING_360_NOTSIGNEDIN	אין חיבור לחשבון Xbox LIVE. טבלאות השיאים אינן זמינות.
+MENU_WARNING_INVALID_STORAGE_SELECTED	לא נבחר אחסון תקין. אם ממשיכים, לא ניתן לשמור את ההתקדמות.
+MENU_WARNING_NO_ACTIVE_GAMER_PROFILE	אין פרופיל שחקן פעיל. שמירות והישגים לא יהיו זמינים. להמשיך?
+MENU_CANCEL	ביטול
+MENU_EXIT	יציאה
+MENU_CHOOSE_LANGUAGE	בחירת שפה
+MENU_AUTOSAVE_AND_QUIT	שמירה אוטומטית ויציאה
+MENU_QUIT_WITHOUT_SAVE	יציאה ללא שמירה
+MENU_NO	לא
+MENU_LEADERBOARD	טבלת שיאים
+MENU_ON_UPPERCASE	פעיל
+MENU_OFF_UPPERCASE	כבוי
+MENU_PLAY_NEW_GAME	משחק חדש
+MENU_CONTINUE_SLASH_LOAD	המשך / טעינת משחק
+MENU_RETURN_TO_GAME_LIBRARY	חזרה לספריית המשחקים
+MENU_UNLOCK_FULL_GAME	פתיחת המשחק המלא
+MENU_PRESS_A_TO_VIEW_LEADERBOARD	לחצו A להצגת טבלת השיאים
+MENU_RETRIEVING_RECORDS_LEADERBOARD	טוען נתונים, נא להמתין
+MENU_TOTAL_NUM_PLAYERS_LEADERBOARD	מספר השחקנים:
+MENU_FRIENDS	חברים
+MENU_OVERALL	כללי
+MENU_MY_SCORE	הניקוד שלי
+MENU_RANK	דירוג
+MENU_GAMERTAG	שם שחקן
+MENU_COMPLETED	הושלם
+MENU_VIEW	הצגה
+MENU_GAMER_CARD	כרטיס שחקן
+MENU_EMPTY	ריק
+MENU_AUTOSAVE	שמירה אוטומטית:
+MENU_SLOT	משבצת שמירה
+MENU_WARNING_CANNOT_OVERWRITE_AUTOSAVE	לא ניתן להחליף את השמירה האוטומטית
+MENU_PART_ONE	חלק ראשון
+MENU_PART_TWO	חלק שני
+MENU_PART_THREE	חלק שלישי
+MENU_PART_FOUR	החלק האחרון
+MENU_PLAY_TIME	זמן משחק:
+MENU_PERCENT_COMPLETE	אחוזי השלמה:
+MENU_DISCONNECTED_FROM_XBOX_LIVE	החיבור ל-Xbox LIVE נותק
+MENU_PRESS_START	לחצו START
+MENU_HOLD_TO_SKIP	החזיקו [Y] כדי לדלג
+MENU_HOLD_FOR_HINT	החזיקו [X] לקבלת רמז
+MENU_NOT_RANKED	עדיין אין לכם דירוג במשחק הזה.
+MENU_FRIENDS_NOT_RANKED	לחברים שלכם עדיין אין דירוג במשחק הזה.
+MENU_NO_ENTRIES	אין רשומות בטבלה הזאת.
+MENU_ENTRIES	רשומות
+MENU_ENTRY	רשומה
+MENU_COULD_NOT_SAVE	לא ניתן לשמור באחסון שנבחר.
+LOADING	טוען...
+MENU_OVERWRITE	להחליף את נתוני אי הקופים הקודמים?
+MENU_NO_CLASSIC_TRANSLATION	המהדורה הקלאסית זמינה באנגלית בלבד.
+MENU_FRONTEND_OPTIONS_AUDIO	הגדרות שמע
+MENU_FRONTEND_OPTIONS_VIDEO	הגדרות תצוגה
+MENU_INGAME_SAVE_GAMESAVINGSHORT	שומר...
+OVERLAY_CURSOR	סמן
+OVERLAY_PRIMARY_SELECT	בחירה ראשית
+OVERLAY_DEFAULT_SELECT	בחירה רגילה
+OVERLAY_HINT	רמז
+OVERLAY_SKIP_CUTSCENE	דילוג על סצנה
+OVERLAY_VERBS	פעולות
+OVERLAY_INVENTORY	חפצים
+OVERLAY_MENU	תפריט
+OVERLAY_DIALOGUE_SELECTION	בחירת משפט
+OVERLAY_OPEN	פתיחה
+OVERLAY_USE	שימוש
+OVERLAY_PICK_UP	לקיחה
+OVERLAY_PUSH	דחיפה
+OVERLAY_PULL	משיכה
+OVERLAY_CLOSE	סגירה
+OVERLAY_LOOK_AT	הסתכלות
+OVERLAY_TALK_TO	שיחה
+OVERLAY_SUBTITLE_SPEED	מהירות כתוביות בקלאסי
+OVERLAY_OR	או
+OVERLAY_VERB_SHORTCUTS	קיצורי פעולות
+OVERLAY_CLASSIC	(קלאסי)
+OVERLAY_VERSION_HOTSWAP	החלפת מהדורה
+OVERLAY_GIVE	נתינה
+MENU_RESOLUTION	רזולוציה
+MENU_FULL_SCREEN	מסך מלא
+MENU_APPLY	החלה
+MENU_SPECIAL_EFFECTS	אפקטים מיוחדים
+MENU_AUDIO_INIT_FAIL	התקן השמע לא נמצא או לא הופעל.
+MENU_FAIL_MIN_REQ	המחשב אינו עומד בדרישות המינימום.
+MENU_VIDEO_INIT_FAIL	כרטיס המסך אינו עומד בדרישות.
+MENU_PROCESOR_FAIL_REQ	המעבד אינו עומד בדרישות.
+MENU_APP_EXIT_NOW	המשחק ייסגר כעת.
+MENU_ERR_CODE	קוד:
+MENU_SETTINGS_CONTROLS	מקשים ושליטה
+MENU_SETTINGS_OBJECTHIGHLIGHTING	הדגשת חפצים
+MENU_SETTINGS_CLASSICVOICE	דיבור במהדורה הקלאסית
+MENU_SETTINGS_SUBTITLES	כתוביות
+MENU_SETTINGS_MUSICVOLUME	עוצמת המוזיקה
+MENU_SETTINGS_SFXVOLUME	עוצמת האפקטים
+MENU_SETTINGS_DIALOGVOLUME	עוצמת הדיבור
+MENU_BONUS_DEVELOPERS_COMMENTARY	הערות היוצרים
+MENU_PIRATE_PERFORMANCE_CONGRATULATIONS	כל הכבוד! הדרגה שלך:
+MI1_SETT_CURS	מהירות הסמן
+MI1_SETT_CURS_1	מהירה
+MI1_SETT_CURS_2	רגילה
+MI1_SETT_VOICE	דיבור במהדורה הקלאסית
+MI1_SETT_SUBT_1	פעיל
+MI1_SETT_SUBT_2	כבוי
+MI1_OPT_TITLE_CAP	הגדרות
+BUY_GAME_MAINMENU	רכישת המשחק המלא
+MENU_CONCEPT_ART_UNLOCKED	נפתחה יצירת אמנות חדשה
+COMMENTARY_PRESS_BEGIN	לחצו
+COMMENTARY_PRESS_END	להשמעת הערות היוצרים
+MENU_SETTINGS_HEADER	הגדרות משחק
+MENU_SETTINGS_AUDIO_HEADER	הגדרות שמע
+LDBOARDS_PSN_VIEW_PR	הצגת פרופיל
+LB_XBLA_LEADERBOARDS	טבלאות שיאים
+LB_MY_FRIENDS	החברים שלי
+LB_MY_SCORE	הניקוד שלי
+LB_GAMERTAG	שם שחקן
+LB_SCORE	ניקוד
+MENU_SAVESLOT_LOAD_CONFIRM_LOSE_UNSAVED	ההתקדמות שלא נשמרה תאבד. לטעון את השמירה?
+PC_KEYBOARD_SHORTCUTS_UPPER	קיצורי מקלדת
+PC_KEYBOARD_SHORTCUTS_LOWER	קיצורי מקלדת
+PC_KEYBOARD_SHORTCUTS_DESC	אפשר לבצע את רוב הפעולות במשחק באמצעות המקלדת.
+INVENTORY	חפצים
+HINT	רמז
+CONTINUE GAME	המשך משחק
+FULL SCREEN	מסך מלא
+TRACKPAD	משטח מגע
+PIRATE DICTIONARY	מילון שודדי ים
+PRESS FOR RANKING	לחצו להצגת הדירוג
+LB_OVERALL	כללי
+INVENTORY_NO_OBJECTS	אין חפצים זמינים
+MENU_CHOOSE_DIFFERENT_STORAGE	בחרו אמצעי אחסון אחר.
+MENU_INGAME_SAVE360_STORAGEREMOVED	אמצעי האחסון שנבחר נותק.
+MENU_WARNING_OVERWRITTING_CORRUPTED_CONTENT	קובץ השמירה פגום. הוא יוחלף אוטומטית.
+MENU_RETRY_SAVE	ניסיון שמירה נוסף
+MENU_AUTOSAVE_DISABLED	האחסון נותק. בחרו אחסון כדי להפעיל שוב שמירה אוטומטית.
+CLICK ON THE IMAGE FOR FULL SCREEN	לחצו על התמונה למסך מלא
+MENU_RETURN_TO_GAME_LIBRARY_UPSELL	חזרה לספריית המשחקים
+MENU_EXIT_TO_MAIN_MENU_UPSELL	יציאה לתפריט הראשי
+MENU_PIRATE_PERFORMANCE_TIME_OF_COMPLETION	זמן השלמה
+MENU_PIRATE_PERFORMANCE_TIME_SCORE	ניקוד זמן
+MENU_PIRATE_PERFORMANCE_NUM_ITEMS_COLLECTED	מספר החפצים שנאספו
+MENU_PIRATE_PERFORMANCE_NUM_HINTS_USED	מספר הרמזים שנוצלו
+MENU_PIRATE_PERFORMANCE_TOTAL_SCORE	ניקוד
+SPECIAL_EFFECTS	אפקטים מיוחדים
+RESOLUTION	רזולוציה
+FULL_SCREEN	מסך מלא
+MENU_WARNING_SAVING_CONTENT_PC	מתבצעת שמירה
+NO_HINTS	אין כרגע רמזים זמינים...
+MENU_LOAD_CONFIRM_LOSE_SAVED	ההתקדמות שלא נשמרה תאבד. להמשיך?
+MENU_DISCONNECTED_FROM_PSN	אירעה שגיאת רשת. חוזר לתפריט הראשי.
+BONUS_FEATURES_X360PS3	תוספות
+PIRATE_PERFORMANCE_IPHONE	הישגי הפיראט
+THE_ART_OF_MONKEY_ISLAND_X360PS3	האמנות של אי הקופים
+SETTINGS_CONTROLS_MANUAL_X360PS3	שליטה ישירה
+SETTINGS_CONTROLS_POINT_AND_CLICK_X360PS3	הצבעה ולחיצה
+SETTINGS_CONTROLS_DIRECT_INPUT_IPHONE	שליטה ישירה
+SETTINGS_CONTROLS_TRACKPAD_IPHONE	משטח מגע
+SETTINGS_LABEL_GAME_CONTROLS_IPHONE	שליטה במשחק
+SETTINGS_LABEL_SUBTITLES_IN_SPECIAL_EDITION_IPHONE	כתוביות במהדורה המיוחדת
+SETTINGS_LABEL_VOICE IN CLASSIC_IPHONE	דיבור במהדורה הקלאסית
+MENU_EXIT_TO_MAIN_MENU_IPHONE	יציאה לתפריט הראשי
+MENU_QUIT_GAME_X360PS3	יציאה מהמשחק
+SETTINGS_HOWTOPLAY_PAGEONE_PC	הזזת ברנשצבע\nהצביעו על היעד ולחצו על כפתור העכבר השמאלי כדי ללכת אליו.
+SETTINGS_HOWTOPLAY_PAGETWO_PC	שימוש בסביבה\nהצביעו על חפץ בסביבה כדי לבחור אותו.
+SETTINGS_HOWTOPLAY_PAGETHREE_PC	פעולות\nהחזיקו את כפתור העכבר הימני כדי לפתוח את תפריט הפעולות. הצביעו על פעולה ושחררו כדי לבצע אותה.
+SETTINGS_HOWTOPLAY_PAGEFOUR_PC	הדגשת חפצים\nלחצו יחד על שני כפתורי העכבר כדי להדגיש חפצים שאפשר להשתמש בהם.
+SETTINGS_HOWTOPLAY_PAGEFIVE_PC	תפריט החפצים\nלחצו על גלגל העכבר לפתיחה. בחרו חפץ בלחיצה שמאלית. אפשר לבחור חפץ נוסף כדי לשלב ביניהם.
+SETTINGS_HOWTOPLAY_PAGESIX_PC	שימוש בחפצים\nבחרו חפץ, הצביעו על דמות או חפץ בסביבה ולחצו על כפתור העכבר השמאלי כדי להשתמש בו.
+SETTINGS_HOWTOPLAY_PAGESEVEN_PC	מערכת הרמזים\nלחצו H לקבלת רמז. לחיצה נוספת תציג רמז מפורט יותר.
+SETTINGS_HOWTOPLAY_PAGEEIGHT	סמלי הפעולות
+SETTINGS_CONTROLS_PC	כפתור שמאלי: הליכה, שימוש ובחירת משפט\nגלגל העכבר: פתיחה וסגירה של החפצים\nשני הכפתורים יחד: הדגשת חפצים\nכפתור ימני: תפריט פעולות והסתכלות
+Walk to	ללכת אל
+Give	לתת
+Open	לפתוח
+Close	לסגור
+Pick up	לקחת
+Look at	להסתכל על
+Talk to	לדבר עם
+Use	להשתמש
+Push	לדחוף
+Pull	למשוך
+MENU_WARNING_DO_NOT_TURN_OFF_PS3	המשחק שומר אוטומטית. אין לכבות את המכשיר כשנורית האחסון מהבהבת.
+MENU_PARENTAL_LOCK_PS3	השירות המקוון חסום בהגדרות בקרת ההורים של החשבון.
+MENU_INGAME_TUTORIAL1	כדי לפתוח את תפריט ההשהיה, סובבו את המכשיר למצב אנכי.

@@ -1,0 +1,30 @@
+Classic Hebrew dialogue: AdventureBrew / scummworks contributors.
+Source: https://github.com/adventurebrew/scummworks
+
+The Secret of Monkey Island: Niv Baehr, Tomer Feiner, Miki Hoz,
+and the original translation team's contributors, as credited in Kitor's
+classic Monkey Island catalog entry.
+
+Monkey Island 2: Netanel Atali, Niv Baehr, Elad Halperin, Elad Avraham Cohen,
+Omer Cohen, Asaf Kaplan, Shani Roz, Ariel Rosenthal, Guy-Barash Shtach,
+Orgad and Rayzel Shana, Eyalet Sarid, and the original translation team.
+The original Hebrew credits in Kitor's classic catalog remain authoritative.
+
+Native adaptation, new Hebrew menus, and font atlas generation: Kitor.
+Menu translations are new; reused dialogue remains credited to its authors.
+Speech-ID mapping: LogicDeLuxe's Ultimate Talkie tables, obtained from
+https://github.com/jmnunezizu/scummkit/tree/main/third_party/ultimate-talkie
+Resource format references: https://github.com/ShadowNate/MISETranslator
+Classic script parsing and relocation: BLooperZ/nutcracker (GPL-3.0-or-later),
+https://github.com/BLooperZ/nutcracker (build-time dependency).
+Classic Hebrew bitmap fonts: AdventureBrew/scummworks contributors.
+XACT cue mapping reference: https://github.com/FNA-XNA/FAudio
+
+Hebrew glyphs: Noto Sans Hebrew, SIL Open Font License 1.1.
+Source: https://github.com/google/fonts/tree/main/ofl/notosanshebrew
+The accompanying FONT-OFL.txt applies to the Hebrew font derivative.
+Existing game font glyphs and game resources remain the game owner's assets.
+
+Local experimental candidates. No public release or redistribution approval
+is asserted. Packages contain reconstruction recipes and require owned,
+checksum-matched game files. Do not distribute generated game directories.

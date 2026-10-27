@@ -239,11 +239,12 @@ pub async fn download_and_install_patch(
 
     println!("[patch_service] Downloading from: {}", patch.download_url);
     println!("[patch_service] Download destination: {}", download_path.display());
+    let bundled_monkey = patch.source_type == "bundled" && super::monkey_native::supported(&scummvm_id);
     let bundled_drifter = patch.source_type == "bundled" && scummvm_id == "drifter";
     let bundled_owlboy = patch.source_type == "bundled" && scummvm_id == "owlboy";
     let bundled_tentacle = patch.source_type == "bundled" && scummvm_id == "tentacle";
     let bundled_dott_remastered = patch.source_type == "bundled" && scummvm_id == "day-of-the-tentacle-remastered";
-    if !bundled_drifter && !bundled_owlboy && !bundled_tentacle && !bundled_dott_remastered {
+    if !bundled_monkey && !bundled_drifter && !bundled_owlboy && !bundled_tentacle && !bundled_dott_remastered {
         download_service::download_patch_file(&patch.download_url, &download_path, &app_handle, &scummvm_id)
             .await?;
         if let Some(checksum) = &patch.checksum {
@@ -272,7 +273,9 @@ pub async fn download_and_install_patch(
     }
     // Package tools and source data never enter the game installation.
     let staging = tempfile::Builder::new().prefix("kitor-package-").tempdir().map_err(|e| e.to_string())?;
-    if bundled_drifter {
+    if bundled_monkey {
+        super::monkey_native::stage(staging.path(), &scummvm_id, &language, &version)?;
+    } else if bundled_drifter {
         super::drifter_patch::stage(staging.path(), &language, &version)?;
     } else if bundled_dott_remastered {
         super::tentacle_remastered::stage(staging.path(), &language, &version)?;
