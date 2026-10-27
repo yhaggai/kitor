@@ -4,10 +4,10 @@ import { useCallback, useEffect, useRef } from "react";
 import BugReportDialog from "@/components/BugReportDialog";
 import GameLibrary from "@/components/GameLibrary";
 import PatchBrowser from "@/components/PatchBrowser";
-import { useGogLibrary } from "@/store/gog";
-import { useSteamStore } from "@/store/steam";
 import Settings from "@/components/Settings";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { useGogLibrary } from "@/store/gog";
+import { useSteamStore } from "@/store/steam";
 import type { Game, ScummVMDownloadProgress } from "@/store/store";
 import { useAppStore } from "@/store/store";
 
@@ -30,9 +30,13 @@ function App() {
       void useGogLibrary.getState().refresh();
     });
     void useGogLibrary.getState().refresh();
-    return () => { void unlisten.then((stop) => stop()); };
+    return () => {
+      void unlisten.then((stop) => stop());
+    };
   }, []);
-  useEffect(() => { void useSteamStore.getState().run("get_steam_status"); }, []);
+  useEffect(() => {
+    void useSteamStore.getState().run("get_steam_status");
+  }, []);
   const {
     setGames,
     setScummVMReady,
@@ -74,6 +78,12 @@ function App() {
   useEffect(() => {
     const initApp = async () => {
       await Promise.all([loadGames(), checkScummVM()]);
+      // Discovery is independent of installed records and never blocks offline use.
+      void invoke("refresh_patch_registry")
+        .then(loadGames)
+        .catch((error) => {
+          console.info("Translation update check unavailable; using cached catalog:", error);
+        });
       // Close splash screen once app is ready
       try {
         await invoke("close_splashscreen");
@@ -106,7 +116,9 @@ function App() {
         <header className="mb-8 flex flex-wrap items-center justify-between gap-4">
           <div>
             <h1 className="text-4xl font-bold mb-2">Kitor</h1>
-            <p className="text-muted-foreground">ScummVM Game Library & Translation Patch Manager</p>
+            <p className="text-muted-foreground">
+              ScummVM Game Library & Translation Patch Manager
+            </p>
           </div>
           <BugReportDialog />
         </header>

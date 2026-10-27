@@ -16,6 +16,22 @@ export default function GameLibrary({ onRefresh }: GameLibraryProps) {
   const { games, highlightedGameId, setHighlightedGameId } = useAppStore();
   const [isScanning, setIsScanning] = useState(false);
   const [isRemoving, setIsRemoving] = useState(false);
+  const [checkingUpdates, setCheckingUpdates] = useState(false);
+  const [updateMessage, setUpdateMessage] = useState("");
+  const checkUpdates = async () => {
+    setCheckingUpdates(true);
+    try {
+      await invoke("refresh_patch_registry");
+      await onRefresh();
+      setUpdateMessage("Translation catalog refreshed. Available updates appear on your games.");
+    } catch (error) {
+      setUpdateMessage(
+        `Could not check for translation updates. Your cached catalog is still available. ${String(error)}`
+      );
+    } finally {
+      setCheckingUpdates(false);
+    }
+  };
   const { confirm } = useDialog();
   const [scanMessage, setScanMessage] = useState("");
   const [scanWarnings, setScanWarnings] = useState<string[]>([]);
@@ -160,10 +176,16 @@ export default function GameLibrary({ onRefresh }: GameLibraryProps) {
             {games.length} {games.length === 1 ? "game" : "games"} in library
           </p>
         </div>
-        {scanButton(true)}
+        <div className="flex gap-2">
+          <Button variant="outline" onClick={checkUpdates} disabled={checkingUpdates}>
+            {checkingUpdates ? "Checking…" : "Check Translation Updates"}
+          </Button>
+          {scanButton(true)}
+        </div>
       </div>
 
       <div aria-live="polite">
+        {updateMessage && <p className="text-sm text-muted-foreground">{updateMessage}</p>}
         {isScanning && <p className="text-sm text-muted-foreground">Scanning game folders…</p>}
         {scanMessage && <p className="text-sm text-muted-foreground">{scanMessage}</p>}
         {scanWarnings.length > 0 && (

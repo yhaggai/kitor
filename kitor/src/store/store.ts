@@ -1,16 +1,18 @@
 import { create } from "zustand";
 
 type InstalledPatchInfo = {
+  release_revision: number;
   id: number;
   scummvm_id: string;
   version: string;
   installed_date: string;
   status: string;
-  language: string;
+  language: string | null;
   backup_path?: string;
 };
 
 type AvailablePatchInfo = {
+  release_revision: number;
   language: string;
   version: string;
   author: string;

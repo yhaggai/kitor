@@ -89,26 +89,6 @@ pub async fn download_patch_file(
     }).await
 }
 
-// Only release asset URLs on GitHub may use the user's GitHub CLI login.
-fn github_release_asset(url: &str) -> Option<(String, String, String)> {
-    let url = url::Url::parse(url).ok()?;
-    if url.scheme() != "https" || url.host_str()? != "github.com"
-        || !url.username().is_empty() || url.password().is_some()
-        || url.port().is_some() || url.query().is_some() || url.fragment().is_some() {
-        return None;
-    }
-    let parts: Vec<_> = url.path_segments()?.collect();
-    if parts.len() != 6 || parts[2] != "releases" || parts[3] != "download"
-        || parts.iter().any(|part| part.is_empty() || part.starts_with('-') || part.contains('%')) {
-        return None;
-    }
-    // gh treats the asset name as a glob; require a literal name.
-    if parts[5].contains(['*', '?', '[', ']']) {
-        return None;
-    }
-    Some((format!("{}/{}", parts[0], parts[1]), parts[4].into(), parts[5].into()))
-}
-
 async fn download_with_progress(
     url: &str,
     dest_path: &Path,
@@ -118,38 +98,13 @@ async fn download_with_progress(
     let temp_path = dest_path.with_extension(format!("download-{}-{}",
         std::process::id(), chrono::Utc::now().timestamp_nanos_opt().unwrap_or_default()));
     let result = async {
-        let response = reqwest::Client::new().get(url).send().await
-            .map_err(|e| format!("Failed to download file: {}", e))?;
+        let response = match super::github_download_service::download(url).await? {
+            Some(response) => response,
+            None => reqwest::Client::new().get(url).send().await
+                .map_err(|_| "Could not download file. Check your connection.".to_string())?,
+        };
         let status = response.status();
-        if status == reqwest::StatusCode::NOT_FOUND {
-            if let Some((repo, tag, asset)) = github_release_asset(url) {
-                let mut command = tokio::process::Command::new("gh");
-                command
-                    .args(["release", "download", &tag, "--repo", &format!("github.com/{}", repo),
-                        "--pattern", &asset, "--output"])
-                    .arg(&temp_path)
-                    .env("GH_PROMPT_DISABLED", "1")
-                    ;
-                let output = command.output();
-                tokio::pin!(output);
-                let mut interval = tokio::time::interval(std::time::Duration::from_millis(250));
-                let output = loop {
-                    tokio::select! {
-                        result = &mut output => break result,
-                        _ = interval.tick() => {
-                            let downloaded = tokio::fs::metadata(&temp_path).await.map(|m| m.len()).unwrap_or(0);
-                            // gh does not expose the total size while downloading.
-                            progress(DownloadProgress { downloaded, total: 0, percentage: 0 });
-                        }
-                    }
-                }.map_err(|_| "Patch download returned HTTP 404. For a private GitHub release, install GitHub CLI and sign in with `gh auth login`; otherwise check the patch URL.".to_string())?;
-                if !output.status.success() {
-                    return Err("Could not download the GitHub release asset. Check that the release exists and `gh auth status` shows an account with access to the repository.".to_string());
-                }
-            } else {
-                return Err(format!("Download failed: HTTP {}. Check the download URL and access permissions.", status));
-            }
-        } else {
+        {
             response.error_for_status_ref()
                 .map_err(|_| format!("Download failed: HTTP {}. Check the download URL and access permissions.", status))?;
             let total = response.content_length().unwrap_or(0);
@@ -191,19 +146,6 @@ async fn download_with_progress(
 #[cfg(test)]
 mod tests {
     use super::*;
-
-    #[test]
-    fn only_literal_github_release_assets_can_use_authentication() {
-        assert_eq!(github_release_asset("https://github.com/owner/repo/releases/download/v1/patch.zip"),
-            Some(("owner/repo".into(), "v1".into(), "patch.zip".into())));
-        for url in ["https://example.com/owner/repo/releases/download/v1/patch.zip",
-            "http://github.com/owner/repo/releases/download/v1/patch.zip",
-            "https://github.com/owner/repo/releases/download/v1/*.zip",
-            "https://github.com/owner/repo/releases/download/--help/patch.zip",
-            "https://github.com/owner/repo/blob/main/patch.zip"] {
-            assert!(github_release_asset(url).is_none(), "{}", url);
-        }
-    }
 
     #[tokio::test]
     async fn failed_http_and_invalid_zip_preserve_existing_download() {
@@ -263,7 +205,7 @@ mod tests {
     }
 
     #[tokio::test]
-    #[ignore = "requires network and gh authentication for the private patch repository"]
+    #[ignore = "requires network and a saved GitHub token for the private patch repository"]
     async fn downloads_real_kyrandia_release() {
         let dir = std::env::temp_dir().join(format!("kitor-release-test-{}", std::process::id()));
         std::fs::create_dir_all(&dir).unwrap();

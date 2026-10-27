@@ -5,6 +5,11 @@ use crate::AppState;
 use std::path::Path;
 
 #[tauri::command]
+pub async fn refresh_patch_registry() -> Result<(), String> {
+    crate::services::registry_update_service::refresh().await
+}
+
+#[tauri::command]
 pub async fn get_patches_for_game(
     game_id: i32,
     state: State<'_, AppState>,
@@ -125,4 +130,17 @@ pub async fn download_and_extract_gog_installer(
         app_handle,
         state.app_data_dir.clone(),
     ).await
+}
+
+#[tauri::command]
+pub fn github_token_configured() -> Result<bool, String> {
+    crate::services::github_download_service::configured()
+}
+#[tauri::command]
+pub async fn save_github_token(token: String) -> Result<(), String> {
+    crate::services::github_download_service::save(token).await
+}
+#[tauri::command]
+pub fn remove_github_token() -> Result<(), String> {
+    crate::services::github_download_service::remove()
 }

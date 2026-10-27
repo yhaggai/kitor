@@ -170,6 +170,10 @@ pub async fn launch_game(
     app_data_dir: &PathBuf,
     app_handle: &tauri::AppHandle,
 ) -> Result<(), String> {
+    let _operation = super::patch_service::PATCH_OPERATION.try_lock()
+        .map_err(|_| "A translation operation is running. Launch after it finishes.")?;
+    // Recover an interrupted update before launching through Kitor.
+    super::patch_service::get_installed_patches(db, game_id).await?;
     let game = game_service::get_game_by_id(db, game_id)
         .await?
         .ok_or("Game not found")?;

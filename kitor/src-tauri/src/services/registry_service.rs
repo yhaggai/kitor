@@ -1,6 +1,9 @@
 use serde::{Deserialize, Serialize};
 use std::path::Path;
 
+#[path = "patch_catalog.rs"]
+pub mod updates;
+
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct Registry {
     pub games: Vec<GameDefinition>,
@@ -76,6 +79,8 @@ pub struct DetectionPatterns {
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct PatchDefinition {
     #[serde(default)]
+    pub release_revision: u64,
+    #[serde(default)]
     pub install_manifest: Option<String>,
     pub language: String,
     pub version: String,
@@ -135,7 +140,7 @@ pub fn load_registry() -> Result<Registry, String> {
 
     println!("Registry file loaded successfully, parsing JSON...");
     
-    let registry: Registry = serde_json::from_str(&content)
+    let mut registry: Registry = serde_json::from_str(&content)
         .map_err(|e| {
             let err_msg = format!("Failed to parse registry JSON: {}", e);
             println!("Registry parse error: {}", err_msg);
@@ -147,6 +152,7 @@ pub fn load_registry() -> Result<Registry, String> {
         registry.games.iter().map(|g| g.patches.len()).sum::<usize>()
     );
 
+    updates::merge_cached(&mut registry);
     Ok(registry)
 }
 

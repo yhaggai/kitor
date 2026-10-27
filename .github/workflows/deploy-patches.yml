@@ -1,114 +1,36 @@
 name: Deploy Patches
 
 on:
-  push:
-    paths:
-      - 'patches-workspace/**'
-    branches:
-      - main
-      - v1
-  workflow_dispatch:
+  workflow_run:
+    workflows: [Validate patch packages]
+    types: [completed]
+    branches: [main, v1]
 
 permissions:
   contents: write
 
+concurrency:
+  group: publish-translation-patches
+  cancel-in-progress: false
+
 jobs:
-  build-and-release-patches:
+  publish:
+    # Only validated trusted pushes; never run PR code with write credentials.
+    if: github.event.workflow_run.conclusion == 'success' && github.event.workflow_run.event == 'push' && github.event.workflow_run.head_repository.full_name == github.repository
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.workflow_run.head_sha }}
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-
-      - name: Install dependencies
-        run: sudo apt-get update && sudo apt-get install -y jq zip curl
-
-      - name: Process Patches
-        run: |
-          set -e
-          
-          # Find all patch.json files
-          while read -r patch_file; do
-            # We want to skip the while read -r if empty since find might return nothing
-            if [ -z "$patch_file" ]; then continue; fi
-            
-            # Imported sources stay local until platform validation and review
-            # explicitly mark this package ready for publication.
-            provenance="$(dirname "$patch_file")/provenance.json"
-            if [ ! -f "$provenance" ] || ! jq -e '.release_ready == true' "$provenance" >/dev/null; then
-              echo "Skipping unapproved package: $patch_file"
-              continue
-            fi
-            python kitor/tools/build_patch_packages.py --check "$patch_file"
-            echo "Processing $patch_file"
-            
-            # Extract metadata using jq
-            scummvm_id=$(jq -r '.scummvm_id' "$patch_file")
-            language=$(jq -r '.language' "$patch_file")
-            version=$(jq -r '.version' "$patch_file")
-            filename=$(jq -r '.filename' "$patch_file")
-            
-            # The directory containing the patch files
-            patch_dir=$(dirname "$patch_file")
-            
-            # Define tag
-            tag="patch-${scummvm_id}-${language}-v${version}"
-            echo "Expected tag: $tag"
-            
-            # Check if release already exists using GitHub API
-            # -s for silent, -o /dev/null to hide output, -w to get http status code
-            status_code=$(curl -s -o /dev/null -w "%{http_code}" \
-              -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
-              "https://api.github.com/repos/${{ github.repository }}/releases/tags/${tag}")
-              
-            if [ "$status_code" -eq 200 ]; then
-              echo "Release $tag already exists. Skipping."
-              continue
-            fi
-            
-            echo "Creating zip file: $filename"
-            
-            # Create a temporary directory for zipping
-            temp_dir=$(mktemp -d)
-            # Include only declared, checksum-verified payloads. Never publish
-            # raw upstream installers, private ownership notes, or staging files.
-            python kitor/tools/build_patch_packages.py "$patch_file" --universal --output "$temp_dir"
-
-            echo "Creating release $tag..."
-            # Create release via API
-            release_response=$(curl -s -X POST \
-              -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
-              -H "Accept: application/vnd.github.v3+json" \
-              "https://api.github.com/repos/${{ github.repository }}/releases" \
-              -d '{
-                "tag_name": "'"$tag"'",
-                "name": "Patch: '"$scummvm_id"' '"$language"' v'"$version"'",
-                "body": "Automated patch release for '"$scummvm_id"' ('"$language"').",
-                "draft": false,
-                "prerelease": false
-              }')
-              
-            # Extract upload URL
-            upload_url=$(echo "$release_response" | jq -r '.upload_url' | sed -e "s/{?name,label}//")
-            
-            if [ "$upload_url" == "null" ] || [ -z "$upload_url" ]; then
-              echo "Failed to create release. Response: $release_response"
-              exit 1
-            fi
-            
-            echo "Uploading asset to $upload_url..."
-            # Upload asset
-            curl -s -X POST \
-              -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
-              -H "Content-Type: application/zip" \
-              --data-binary @"${temp_dir}/${filename}" \
-              "${upload_url}?name=${filename}"
-              
-            echo "Successfully released $filename for $tag"
-            
-            # Clean up temp dir
-            rm -rf "$temp_dir"
-          done < <(find patches-workspace -name "patch.json")
+      - name: Hydrate pinned build inputs
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python kitor/tools/hydrate_patch_inputs.py --repo "$GITHUB_REPOSITORY"
+      - name: Publish immutable packages and advance registry
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PATCH_SOURCE_SHA: ${{ github.event.workflow_run.head_sha }}
+        run: python kitor/tools/publish_patch_releases.py
