@@ -6,12 +6,6 @@ use std::{collections::HashSet, path::PathBuf, sync::OnceLock};
 pub fn repository() -> &'static str {
     "yhaggai/kitor"
 }
-pub fn url() -> String {
-    format!(
-        "https://raw.githubusercontent.com/{}/patch-registry/registry.json",
-        repository()
-    )
-}
 static CACHE: OnceLock<PathBuf> = OnceLock::new();
 
 #[derive(Debug, Clone, Serialize, Deserialize)]

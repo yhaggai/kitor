@@ -29,3 +29,5 @@ pub mod reconstruction;
 pub mod tentacle;
 
 pub mod tentacle_remastered;
+
+pub mod github_download_service;

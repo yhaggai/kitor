@@ -1,20 +1,10 @@
 use super::registry_service::updates;
-use std::{io::Write, time::Duration};
+use std::io::Write;
 static REFRESH: tokio::sync::Mutex<()> = tokio::sync::Mutex::const_new(());
 
 pub async fn refresh() -> Result<(), String> {
     let _lock = REFRESH.lock().await;
-    let client = reqwest::Client::builder()
-        .timeout(Duration::from_secs(20))
-        .build()
-        .map_err(|e| e.to_string())?;
-    let mut response = client
-        .get(updates::url())
-        .send()
-        .await
-        .map_err(|e| e.to_string())?
-        .error_for_status()
-        .map_err(|e| e.to_string())?;
+    let mut response = super::github_download_service::registry().await?;
     let mut bytes = Vec::new();
     while let Some(chunk) = response.chunk().await.map_err(|e| e.to_string())? {
         if bytes.len() + chunk.len() > 2_000_000 {

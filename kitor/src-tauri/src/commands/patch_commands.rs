@@ -133,3 +133,16 @@ pub async fn download_and_extract_gog_installer(
         state.app_data_dir.clone(),
     ).await
 }
+
+#[tauri::command]
+pub fn github_token_configured() -> Result<bool, String> {
+    crate::services::github_download_service::configured()
+}
+#[tauri::command]
+pub async fn save_github_token(token: String) -> Result<(), String> {
+    crate::services::github_download_service::save(token).await
+}
+#[tauri::command]
+pub fn remove_github_token() -> Result<(), String> {
+    crate::services::github_download_service::remove()
+}
