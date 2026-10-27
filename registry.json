@@ -1,0 +1,21 @@
+{
+  "schema_version": 1,
+  "catalog_revision": 1,
+  "patches": [
+    {
+      "scummvm_id": "owlboy",
+      "language": "he",
+      "version": "1",
+      "release_revision": 1,
+      "download_url": "https://github.com/yhaggai/kitor/releases/download/patch-owlboy-he-v1/owlboy-he-1-osx.zip",
+      "filename": "owlboy-he-1-osx.zip",
+      "checksum": "e833e1fe5cc9fab54a7aef535c4fc808af97a344ece08748f9ed1ad4822f7ab0",
+      "file_size": 2833876,
+      "author": "Kitor demo",
+      "description": "Local demonstration for the macOS Owlboy edition. Opening dialogue line 0010 now adds “העדכון הצליח!” (“The update worked!”). Existing Hebrew and niqqud content is preserved. Windows is not supported by this demo.",
+      "platforms": [
+        "osx"
+      ]
+    }
+  ]
+}
