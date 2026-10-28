@@ -1,20 +1,24 @@
 use super::*;
+use crate::services::game_adapters::prepare_kyrandia_launch_path;
+use crate::services::game_behavior::for_game;
+#[cfg(target_os = "macos")]
+use crate::services::game_adapters::drifter_launch_command;
 
 #[test]
 fn patched_toon_runtime_is_optional_and_isolated() {
     let root = tempfile::tempdir().unwrap();
     let standard = root.path().join("standard-scummvm");
-    assert_eq!(game_runtime_path(root.path(), "toonstruck", standard.clone()), standard);
+    assert_eq!(game_runtime_path(root.path(), &for_game("toonstruck").unwrap().launch_profile(true), standard.clone()), standard);
     let directory = root.path().join("scummvm-toon-hebrew");
     std::fs::create_dir(&directory).unwrap();
     let patched = directory.join(if cfg!(target_os = "windows") { "scummvm.exe" } else { "scummvm" });
     std::fs::write(&patched, b"fixture").unwrap();
-    assert_eq!(game_runtime_path(root.path(), "toonstruck", standard.clone()), standard);
+    assert_eq!(game_runtime_path(root.path(), &for_game("toonstruck").unwrap().launch_profile(true), standard.clone()), standard);
     std::fs::write(directory.join("toon.dat"), b"fixture").unwrap();
-    assert_eq!(game_runtime_path(root.path(), "toonstruck", standard.clone()), patched);
-    assert_eq!(game_runtime_path(root.path(), "pajama", standard.clone()), standard);
+    assert_eq!(game_runtime_path(root.path(), &for_game("toonstruck").unwrap().launch_profile(true), standard.clone()), patched);
+    assert_eq!(game_runtime_path(root.path(), &for_game("pajama").unwrap().launch_profile(true), standard.clone()), standard);
     let mut cmd = Command::new("scummvm");
-    add_toon_runtime_data(&mut cmd, root.path(), "toonstruck");
+    add_runtime_data(&mut cmd, root.path(), &for_game("toonstruck").unwrap().launch_profile(true));
     assert_eq!(cmd.get_args().next().unwrap().to_string_lossy(),
         format!("--extrapath={}", directory.display()));
 }
@@ -41,13 +45,13 @@ fn drifter_launches_native_bundle_from_both_detected_and_manual_paths() {
 #[test]
 fn pajama_subtitles_do_not_depend_on_saved_launch_args() {
     let mut cmd = Command::new("scummvm");
-    add_required_game_options(&mut cmd, "pajama");
+    cmd.args(for_game("pajama").unwrap().launch_profile(true).args);
     cmd.args(["--language=he", "--fullscreen", "--auto-detect"]);
     assert!(cmd.get_args().any(|arg| arg == "--subtitles"));
 
     let mut other_game = Command::new("scummvm");
-    add_required_game_options(&mut other_game, "kyra1-cd");
-    assert_eq!(other_game.get_args().count(), 0);
+    other_game.args(for_game("kyra1-cd").unwrap().launch_profile(true).args);
+    assert!(!other_game.get_args().any(|arg| arg == "--subtitles"));
 }
 
 #[test]

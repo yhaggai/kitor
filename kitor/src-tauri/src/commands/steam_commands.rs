@@ -87,3 +87,8 @@ pub async fn download_steam_windows_game(
     let _activity = updates.activity()?;
     crate::services::steam_download_service::download(app_id, game_ids, &app).await
 }
+
+#[tauri::command]
+pub fn get_steam_download_capabilities(app_id: u32, game_id: String) -> crate::services::steam_download_service::DownloadCapabilities {
+    crate::services::steam_download_service::capabilities(app_id, &game_id)
+}

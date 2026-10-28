@@ -35,3 +35,8 @@ pub mod monkey_native;
 pub mod github_download_service;
 
 pub mod app_updates;
+
+pub mod game_behavior;
+pub mod game_adapters;
+pub mod package_source;
+pub mod patch_state;

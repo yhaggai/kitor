@@ -78,6 +78,7 @@ fn catalog_never_replaces_launch_or_detection_configuration() {
         serde_json::to_value(&before.detection_patterns).unwrap(),
         serde_json::to_value(&after.detection_patterns).unwrap()
     );
+    assert_eq!(serde_json::to_value(&before.behavior).unwrap(), serde_json::to_value(&after.behavior).unwrap());
     if cfg!(any(target_os = "macos", target_os = "windows")) {
         assert_eq!(after.patches[0].version, "RC2-kitor1");
         assert_eq!(after.patches[0].release_revision, 1);

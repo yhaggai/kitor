@@ -89,6 +89,7 @@ pub fn run() {
             commands::patch_commands::download_and_extract_gog_installer,
             commands::steam_commands::get_steam_status,
             commands::steam_commands::download_steam_windows_game,
+            commands::steam_commands::get_steam_download_capabilities,
             commands::steam_commands::set_steam_api_key,
             commands::steam_commands::refresh_steam_library,
             commands::steam_commands::connect_steam,

@@ -37,6 +37,8 @@ pub struct GameWithPatches {
     pub added_date: String,
     pub last_played: Option<String>,
     pub requires_scummvm: bool,
+    pub is_patched: bool,
+    pub health: Option<super::game_refresh_service::GameHealth>,
     pub has_available_patch: bool,
     pub installed_patches: Vec<InstalledPatchInfo>,
     pub available_patches: Vec<AvailablePatchInfo>,
@@ -233,18 +235,11 @@ fn get_game_metadata_from_registry(
     if let Some(game_def) = registry.games.iter().find(|g| g.scummvm_id == scummvm_id) {
         let cover_url = game_def.cover_url.clone();
 
-        if let Some(launch_config) = &game_def.launch_config {
-            let subdirectory = launch_config.subdirectory.clone();
-            let args_json = if !launch_config.args.is_empty() {
-                Some(serde_json::to_string(&launch_config.args)
-                    .map_err(|e| format!("Failed to serialize launch args: {}", e))?)
-            } else {
-                None
-            };
-            return Ok((subdirectory, args_json, cover_url));
-        }
-
-        return Ok((None, None, cover_url));
+        let profile = game_def.behavior.launch_profile(true);
+        let args = if profile.args.is_empty() { None } else {
+            Some(serde_json::to_string(&profile.args).map_err(|e| e.to_string())?)
+        };
+        return Ok((profile.subdirectory, args, cover_url));
     }
     
     Ok((None, None, None))
@@ -253,195 +248,37 @@ fn get_game_metadata_from_registry(
 // AGI/SCI filenames are shared across titles. Fingerprints identify the
 // supported Steam editions and patched AGI directories; SCI patches leave
 // RESOURCE.MAP intact. Values come from the import recipes and patch payloads.
-fn is_space_quest(path: &Path, id: &str) -> bool {
-    use sha2::Digest;
-    #[derive(Deserialize)]
-    struct Signature {
-        id: String,
-        signature: String,
-        sha256: Vec<String>,
-        required: Vec<String>,
-    }
-    let signatures: Vec<Signature> = serde_json::from_str(include_str!(
-        "../../data/space_quest_detection.json"
-    )).expect("bundled Space Quest signatures");
-    let Some(signature) = signatures.iter().find(|s| s.id == id) else { return false; };
-    let Ok(entries) = std::fs::read_dir(path) else { return false; };
-    let files: std::collections::HashMap<_, _> = entries.flatten()
-        .filter(|entry| entry.file_type().is_ok_and(|kind| kind.is_file()))
-        .map(|entry| (entry.file_name().to_string_lossy().to_ascii_lowercase(), entry.path()))
-        .collect();
-    if !signature.required.iter().all(|name| files.contains_key(&name.to_ascii_lowercase())) {
-        return false;
-    }
-    let Some(file) = files.get(&signature.signature.to_ascii_lowercase()) else { return false; };
-    let Ok(bytes) = std::fs::read(file) else { return false; };
-    signature.sha256.contains(&format!("{:x}", sha2::Sha256::digest(bytes)))
-}
-
-// GOG keeps Toonstruck's identifying resources below MISC. Match both files
-// case-insensitively, but retain the parent containing ACT1/ACT2 for ScummVM.
-fn is_toonstruck(path: &Path) -> bool {
-    let Ok(entries) = std::fs::read_dir(path) else { return false; };
-    entries.flatten().any(|entry| {
-        if !entry.file_name().to_string_lossy().eq_ignore_ascii_case("misc") {
-            return false;
-        }
-        let Ok(files) = std::fs::read_dir(entry.path()) else { return false; };
-        let names: std::collections::HashSet<_> = files.flatten()
-            .filter(|file| file.file_type().is_ok_and(|kind| kind.is_file()))
-            .map(|file| file.file_name().to_string_lossy().to_ascii_lowercase())
-            .collect();
-        names.contains("toonfont.caf") && names.contains("toonstrk.res")
+fn detected(def: &registry_service::GameDefinition, path: &Path) -> Option<DetectedGameInfo> {
+    super::game_adapters::detect(def, path).map(|root| DetectedGameInfo {
+        install_path: root.to_string_lossy().into_owned(), scummvm_id: def.scummvm_id.clone(),
+        title: def.title.clone(), available_patches_count: def.patches.len(),
     })
 }
 
 pub fn detect_game_in_folder(path: &Path) -> Result<Option<DetectedGameInfo>, String> {
-    if !path.exists() || !path.is_dir() {
-        return Err("Invalid directory path".to_string());
-    }
-
-    if super::tentacle::detect_remastered(path).is_some() {
-        return detect_game_for_id(path, "day-of-the-tentacle-remastered");
-    }
-    // Load registry and try to match against game definitions
-    let registry = registry_service::load_registry()?;
-
-    // GOG macOS bundles wrap the actual data folder. Keep the resolved folder
-    // as install_path so patch installation and ScummVM use the same files.
-    let mut candidates = vec![path.to_path_buf()];
-    if path.extension().is_some_and(|ext| ext.eq_ignore_ascii_case("app")) {
-        candidates.push(path.join("Contents/Resources/game/game"));
-        candidates.push(path.join("Contents/Resources/game"));
-    }
-
-    for game_def in registry.games {
-        if game_def.patches.is_empty() {
-            continue;
-        }
-        if game_def.scummvm_id == "tentacle" {
-            if let Some(root) = super::tentacle::detect(path) {
-                return Ok(Some(DetectedGameInfo {
-                    install_path: root.to_string_lossy().into_owned(),
-                    scummvm_id: game_def.scummvm_id, title: game_def.title,
-                    available_patches_count: game_def.patches.len(),
-                }));
-            }
-            continue;
-        }
-        if game_def.scummvm_id == "owlboy" {
-            if let Some(data) = super::owlboy::detect(path) {
-                return Ok(Some(DetectedGameInfo {
-                    install_path: data.to_string_lossy().into_owned(),
-                    scummvm_id: game_def.scummvm_id, title: game_def.title,
-                    available_patches_count: game_def.patches.len(),
-                }));
-            }
-            continue;
-        }
-        // Steam's Drifter installation wraps its Unity data in a native bundle.
-        // Check both the title-specific runner and game data, not the folder name.
-        if game_def.scummvm_id == "drifter" {
-            for bundle in [path.to_path_buf(), path.join("TheDrifter.app")] {
-                if bundle.join("Contents/MacOS/The Drifter").is_file()
-                    && bundle.join("Contents/Resources/Data/globalgamemanagers").is_file()
-                {
-                    return Ok(Some(DetectedGameInfo {
-                        install_path: bundle.canonicalize().map_err(|e| e.to_string())?
-                            .to_string_lossy().into_owned(),
-                        scummvm_id: game_def.scummvm_id,
-                        title: game_def.title,
-                        available_patches_count: game_def.patches.len(),
-                    }));
-                }
-            }
-        }
-        // UNDERTALE's macOS archive lives inside its native app bundle.
-        // Require the runner as well: game.ios alone is not a unique signature.
-        if game_def.scummvm_id == "undertale" {
-            for bundle in [path.to_path_buf(), path.join("UNDERTALE.app"),
-                path.join("../..")] {
-                let data = bundle.join("Contents/Resources");
-                if data.join("game.ios").is_file()
-                    && bundle.join("Contents/MacOS/Mac_Runner").is_file() {
-                    return Ok(Some(DetectedGameInfo {
-                        install_path: data.canonicalize().map_err(|e| e.to_string())?
-                            .to_string_lossy().into_owned(),
-                        scummvm_id: game_def.scummvm_id,
-                        title: game_def.title,
-                        available_patches_count: game_def.patches.len(),
-                    }));
-                }
-            }
-        }
-        for candidate in &candidates {
-            let mut data_paths = vec![candidate.clone()];
-            // GOG's Windows installer nests the data below its launcher folder.
-            if game_def.scummvm_id == "toonstruck" {
-                data_paths.push(candidate.join("Toonstruck"));
-            }
-            if let Some(subdir) = &game_def.detection_patterns.detection_subdirectory {
-                data_paths.push(candidate.join(subdir));
-            }
-            for data_path in data_paths {
-                let Ok(entries) = std::fs::read_dir(&data_path) else {
-                    continue;
-                };
-                let is_sq = matches!(game_def.scummvm_id.as_str(), "sq1" | "sq1sci" | "sq2" | "sq3" | "sq5");
-                let matches = if is_sq {
-                    is_space_quest(&data_path, &game_def.scummvm_id)
-                } else if game_def.scummvm_id == "toonstruck" {
-                    is_toonstruck(&data_path)
-                } else { entries.flatten().any(|entry| {
-                    entry.file_type().is_ok_and(|kind| kind.is_file())
-                        && game_def.detection_patterns.unique_files.iter().any(|name| {
-                            entry.file_name().to_string_lossy().eq_ignore_ascii_case(name)
-                        })
-                }) };
-                if matches {
-                    return Ok(Some(DetectedGameInfo {
-                        install_path: data_path.to_string_lossy().into_owned(),
-                        scummvm_id: game_def.scummvm_id,
-                        title: game_def.title,
-                        available_patches_count: game_def.patches.len(),
-                    }));
-                }
-            }
-        }
-    }
-
-    Ok(None)
+    if !path.is_dir() { return Err("Invalid directory path".into()); }
+    let mut registry = registry_service::load_registry()?;
+    registry.games.sort_by_key(|g| std::cmp::Reverse(g.behavior.detection.priority));
+    Ok(registry.games.iter().find_map(|def| detected(def, path)))
 }
 
 pub fn detect_game_for_id(path: &Path, id: &str) -> Result<Option<DetectedGameInfo>, String> {
-    if super::monkey_native::supported(id) {
-        let registry = registry_service::load_registry()?;
-        return Ok(super::monkey_native::detect(path, id).and_then(|root|
-            registry.games.into_iter().find(|g|g.scummvm_id == id).map(|g| DetectedGameInfo {
-                install_path: root.to_string_lossy().into_owned(), scummvm_id: g.scummvm_id,
-                title: g.title, available_patches_count: g.patches.len(),
-            })));
-    }
-    if matches!(id, "tentacle" | "day-of-the-tentacle-remastered") {
-        let root=if id=="tentacle" {super::tentacle::detect(path)} else {super::tentacle::detect_remastered(path)};
-        let registry=registry_service::load_registry()?;
-        return Ok(root.and_then(|root| registry.games.into_iter().find(|g|g.scummvm_id==id).map(|g|DetectedGameInfo {
-            install_path:root.to_string_lossy().into_owned(),scummvm_id:g.scummvm_id,title:g.title,available_patches_count:g.patches.len()
-        })));
-    }
-    Ok(detect_game_in_folder(path)?.filter(|g|g.scummvm_id==id))
+    let registry = registry_service::load_registry()?;
+    Ok(registry.games.iter().find(|g| g.scummvm_id == id).and_then(|def| detected(def, path)))
 }
 fn detect_library_games(path: &Path) -> Vec<GameInfo> {
-    for (native, classic) in [("monkey-se-native", "monkey-se"), ("monkey2-se-native", "monkey2-se")] {
-        if super::monkey_native::detect(path, native).is_some() {
-            return [classic, native].iter().filter_map(|id| detect_game_for_id(path, id).ok().flatten())
-                .map(|d|GameInfo {install_path:d.install_path,scummvm_id:d.scummvm_id,title:d.title}).collect();
+    let Ok(mut registry) = registry_service::load_registry() else { return Vec::new(); };
+    registry.games.sort_by_key(|g| std::cmp::Reverse(g.behavior.detection.priority));
+    // A native installation may expose several independently patchable editions.
+    for def in &registry.games {
+        if !def.behavior.library_editions.is_empty() && super::game_adapters::detect(def, path).is_some() {
+            return def.behavior.library_editions.iter().filter_map(|id|
+                registry.games.iter().find(|g| &g.scummvm_id == id).and_then(|g| detected(g, path)))
+                .map(|d| GameInfo { install_path: d.install_path, scummvm_id: d.scummvm_id, title: d.title }).collect();
         }
     }
-    if super::tentacle::detect_remastered(path).is_some() {
-        return ["tentacle", "day-of-the-tentacle-remastered"].iter().filter_map(|id|detect_game_for_id(path,id).ok().flatten()).map(|d|GameInfo {install_path:d.install_path,scummvm_id:d.scummvm_id,title:d.title}).collect();
-    }
-    detect_scummvm_game(path).into_iter().collect()
+    registry.games.iter().find_map(|g| detected(g, path)).into_iter()
+        .map(|d| GameInfo { install_path: d.install_path, scummvm_id: d.scummvm_id, title: d.title }).collect()
 }
 
 fn detect_scummvm_game(path: &Path) -> Option<GameInfo> {
@@ -476,7 +313,10 @@ pub async fn get_games_with_patches(
             .find(|g| g.scummvm_id == game.scummvm_id);
         
         // Get installed patches for this game
-        let installed = super::patch_service::get_installed_patches(db, game.id).await?;
+        let behavior = game_def.map(|def| def.behavior.clone()).unwrap_or_default();
+        let state = super::patch_state::resolve(db, &game, &app_data_dir, &behavior).await?;
+        let patched = state.is_patched();
+        let installed = state.recorded;
         
         let installed_patches: Vec<InstalledPatchInfo> = installed.iter().map(|p| {
             let identity = p.backup_path.as_ref().and_then(|path|
@@ -534,11 +374,7 @@ pub async fn get_games_with_patches(
             registry_cover_url.or(game.cover_url.clone())
         };
 
-        let unpatched_special_edition = installed.iter().all(|p| p.status != "active")
-            && matches!(game.scummvm_id.as_str(), "monkey-se" | "monkey2-se");
-        let requires_scummvm = !unpatched_special_edition
-            && game_def.and_then(|d| d.launch_config.as_ref())
-                .and_then(|c| c.launcher.as_deref()) != Some("native");
+        let requires_scummvm = !behavior.launch_profile(patched).is_native();
 
         games_with_patches.push(GameWithPatches {
             id: game.id,
@@ -550,6 +386,8 @@ pub async fn get_games_with_patches(
             added_date: game.added_date.format("%Y-%m-%d %H:%M:%S").to_string(),
             last_played: game.last_played.map(|d| d.format("%Y-%m-%d %H:%M:%S").to_string()),
             requires_scummvm,
+            is_patched: patched,
+            health: state.manual_health,
             has_available_patch,
             installed_patches,
             available_patches,

@@ -51,24 +51,6 @@ pub struct ScummVMStatus {
     pub version: Option<String>,
 }
 
-// Some GOG Book One bundles also contain FATE.PAK. Together with the Hebrew
-// font it wins ScummVM's detection as Book Two. Detect using only Book One's
-// signature, then load all remaining assets through --extrapath.
-fn prepare_kyrandia_launch_path(data_path: &Path, launch_path: &Path) -> Result<PathBuf, String> {
-    let signature = std::fs::read_dir(data_path)
-        .map_err(|e| format!("Failed to read Kyrandia data: {}", e))?
-        .flatten()
-        .find(|entry| entry.file_name().to_string_lossy().eq_ignore_ascii_case("GEMCUT.PAK")
-            && entry.path().is_file())
-        .ok_or("Kyrandia GEMCUT.PAK not found")?;
-    std::fs::create_dir_all(launch_path)
-        .map_err(|e| format!("Failed to create Kyrandia launch folder: {}", e))?;
-    // Refresh after installing or restoring a patch; the signature changes.
-    std::fs::copy(signature.path(), launch_path.join("GEMCUT.PAK"))
-        .map_err(|e| format!("Failed to prepare Kyrandia launch: {}", e))?;
-    Ok(launch_path.to_path_buf())
-}
-
 fn add_game_paths(cmd: &mut Command, game_path: &Path, extra_path: Option<&Path>) {
     cmd.arg("-p").arg(game_path);
     if let Some(path) = extra_path {
@@ -79,69 +61,22 @@ fn add_game_paths(cmd: &mut Command, game_path: &Path, extra_path: Option<&Path>
     }
 }
 
-fn add_required_game_options(cmd: &mut Command, scummvm_id: &str) {
-    // Pajama Sam's Hebrew patch requires subtitles explicitly enabled. Apply at
-    // launch so libraries with older, persisted launch_args also get the fix.
-    if scummvm_id == "pajama" {
-        cmd.arg("--subtitles");
-    }
-}
-
-// A locally built Toon runtime fixes Hebrew string lifetimes without replacing
-// the shared ScummVM installation used by other engines.
-fn game_runtime_path(app_data_dir: &Path, game_id: &str, standard: PathBuf) -> PathBuf {
+fn game_runtime_path(app_data_dir: &Path, profile: &super::game_behavior::LaunchProfile, standard: PathBuf) -> PathBuf {
+    let Some(directory) = &profile.runtime else { return standard; };
     let executable = if cfg!(target_os = "windows") { "scummvm.exe" } else { "scummvm" };
-    let patched = app_data_dir.join("scummvm-toon-hebrew").join(executable);
-    if game_id == "toonstruck" && patched.is_file()
-        && patched.parent().is_some_and(|dir| dir.join("toon.dat").is_file()) {
-        patched
+    let runtime = app_data_dir.join(directory).join(executable);
+    if runtime.is_file() && profile.runtime_data.as_ref().is_none_or(|name| app_data_dir.join(directory).join(name).is_file()) {
+        runtime
     } else { standard }
 }
 
-fn add_toon_runtime_data(cmd: &mut Command, app_data_dir: &Path, game_id: &str) {
-    let standard = PathBuf::new();
-    let runtime = game_runtime_path(app_data_dir, game_id, standard.clone());
-    if runtime != standard {
+fn add_runtime_data(cmd: &mut Command, app_data_dir: &Path, profile: &super::game_behavior::LaunchProfile) {
+    let runtime = game_runtime_path(app_data_dir, profile, PathBuf::new());
+    if !runtime.as_os_str().is_empty() && profile.runtime_data.is_some() {
         let mut argument = std::ffi::OsString::from("--extrapath=");
         argument.push(runtime.parent().unwrap());
         cmd.arg(argument);
     }
-}
-
-// Collection editions need an explicit identity/platform. Let ScummVM detect
-// language from the installed data, so the original English files also launch.
-fn normalize_collection_args(id: &str, args: Vec<String>, patched: bool) -> Vec<String> {
-    let engine = match id {
-        "sq1" | "sq2" => "agi",
-        "sq1sci" | "sq3" | "sq5" => "sci",
-        _ => return args,
-    };
-    let target = format!("{engine}:{id}");
-    let mut args: Vec<_> = args.into_iter().filter(|arg|
-        arg != "--auto-detect" && (patched || !arg.starts_with("--language=")) && !arg.starts_with("--platform=") && arg != &target
-    ).collect();
-    // Persisted settings may omit Hebrew or still specify English. SQ1 VGA's
-    // translated resources require SCI's RTL rendering whenever patched.
-    if id == "sq1sci" && patched {
-        args.retain(|arg| !arg.starts_with("--language="));
-        args.push("--language=he".into());
-    }
-    args.push("--platform=dos".into());
-    args.push(target);
-    args
-}
-
-// Persisted registry arguments describe translated releases. Original data must
-// be detected in its own language; games without registry arguments still need
-// an explicit auto-detect target rather than opening ScummVM's launcher.
-fn launch_args(id: &str, mut args: Vec<String>, patched: bool) -> Vec<String> {
-    if !patched {
-        args.retain(|arg| !arg.starts_with("--language="));
-    }
-    if args.is_empty() {
-        args.push("--auto-detect".into());
-    }
-    normalize_collection_args(id, args, patched)
 }
 
 async fn start_game_process(cmd: &mut Command, log_path: &Path) -> Result<(), String> {
@@ -162,21 +97,6 @@ async fn start_game_process(cmd: &mut Command, log_path: &Path) -> Result<(), St
     Ok(())
 }
 
-#[cfg(target_os = "macos")]
-fn drifter_launch_command(install_path: &Path) -> Result<Command, String> {
-    // Detection stores the app bundle; accept a manually selected Steam folder too.
-    let bundle = [install_path.to_path_buf(), install_path.join("TheDrifter.app")]
-        .into_iter()
-        .find(|path| path.join("Contents/MacOS/The Drifter").is_file()
-            && path.join("Contents/Resources/Data/globalgamemanagers").is_file())
-        .ok_or("The Drifter app was not found in its installation folder")?;
-    let bundle = bundle.canonicalize().map_err(|e| e.to_string())?;
-    let mut cmd = Command::new("/usr/bin/open");
-    cmd.arg(&bundle);
-    cmd.current_dir(bundle.parent().ok_or("Invalid Drifter app path")?);
-    Ok(cmd)
-}
-
 pub async fn launch_game(
     db: &DatabaseConnection,
     game_id: i32,
@@ -186,8 +106,6 @@ pub async fn launch_game(
     let _operation = super::patch_service::PATCH_OPERATION.try_lock()
         .map_err(|_| "A translation operation is running. Launch after it finishes.")?;
     // Recover an interrupted update before launching through Kitor.
-    let installed = super::patch_service::get_installed_patches(db, game_id).await?;
-    let patched = installed.iter().any(|patch| patch.status == "active");
     let game = game_service::get_game_by_id(db, game_id)
         .await?
         .ok_or("Game not found")?;
@@ -198,59 +116,11 @@ pub async fn launch_game(
     println!("Title: {}", game.title);
     println!("Install Path: {}", game.install_path);
 
-    #[cfg(target_os = "macos")]
-    if game.scummvm_id == "drifter" {
-        let mut cmd = drifter_launch_command(Path::new(&game.install_path))?;
-        return start_game_process(&mut cmd, &app_data_dir.join("drifter-launch.log")).await;
-    }
-
-    if !patched && matches!(game.scummvm_id.as_str(), "monkey-se" | "monkey2-se") {
-        let native_id = if game.scummvm_id == "monkey-se" { "monkey-se-native" } else { "monkey2-se-native" };
-        let mut cmd = super::monkey_native::launch_command(Path::new(&game.install_path), native_id)?;
-        return start_game_process(&mut cmd, &app_data_dir.join(format!("{}-launch.log", game.scummvm_id))).await;
-    }
-    if super::monkey_native::supported(&game.scummvm_id) {
-        let mut cmd = super::monkey_native::launch_command(Path::new(&game.install_path), &game.scummvm_id)?;
-        return start_game_process(&mut cmd, &app_data_dir.join(format!("{}-launch.log", game.scummvm_id))).await;
-    }
-    if game.scummvm_id == "grim-fandango-remastered" {
-        let mut cmd = super::grim_remastered::launch_command(Path::new(&game.install_path))?;
-        if patched { super::grim_remastered::prepare_launch(Path::new(&game.install_path))?; }
-        return start_game_process(&mut cmd, &app_data_dir.join("grim-remastered-launch.log")).await;
-    }
-    if game.scummvm_id == "day-of-the-tentacle-remastered" {
-        let mut cmd = super::tentacle_remastered::launch_command(Path::new(&game.install_path))?;
-        return start_game_process(&mut cmd, &app_data_dir.join("dott-remastered-launch.log")).await;
-    }
-
-    if game.scummvm_id == "owlboy" {
-        if !cfg!(target_os = "macos") { return Err("Owlboy Hebrew currently supports the native macOS edition only".into()); }
-        let mut cmd = super::owlboy::launch_command(Path::new(&game.install_path))?;
-        return start_game_process(&mut cmd, &app_data_dir.join("owlboy-launch.log")).await;
-    }
-
-    if game.scummvm_id == "undertale" {
-        let data = Path::new(&game.install_path);
-        #[cfg(target_os = "macos")]
-        let mut cmd = {
-            let bundle = data.parent().and_then(Path::parent)
-                .ok_or("Invalid UNDERTALE app path")?;
-            if !bundle.join("Contents/MacOS/Mac_Runner").is_file() {
-                return Err("UNDERTALE Mac runner not found".into());
-            }
-            let mut command = Command::new("open");
-            command.arg(bundle);
-            command
-        };
-        #[cfg(target_os = "windows")]
-        let mut cmd = Command::new(data.join("UNDERTALE.exe"));
-        #[cfg(not(any(target_os = "macos", target_os = "windows")))]
-        return Err("The UNDERTALE Hebrew patch supports macOS and Windows only".into());
-        #[cfg(any(target_os = "macos", target_os = "windows"))]
-        {
-            cmd.current_dir(data);
-            return start_game_process(&mut cmd, &app_data_dir.join("undertale-launch.log")).await;
-        }
+    let behavior = super::game_behavior::for_game(&game.scummvm_id)?;
+    let state = super::patch_state::resolve(db, &game, app_data_dir, &behavior).await?;
+    let profile = behavior.launch_profile(state.is_patched());
+    if let Some(mut cmd) = super::game_adapters::native_command(&profile, Path::new(&game.install_path), &game.scummvm_id)? {
+        return start_game_process(&mut cmd, &app_data_dir.join(format!("launch-{}.log", game.id))).await;
     }
 
     // Get or download ScummVM
@@ -267,44 +137,14 @@ pub async fn launch_game(
         }
     }
 
-    // Read launch config from DB
-    println!("Launch config from DB:");
-    println!("  Subdirectory: {:?}", game.launch_subdirectory);
-    println!("  Args JSON: {:?}", game.launch_args);
-
-    // Determine game path (with optional subdirectory from DB)
-    let game_path = if game.scummvm_id == "tentacle"
-        && super::tentacle::detect_classic(Path::new(&game.install_path)).is_some() {
-        PathBuf::from(&game.install_path)
-    } else if let Some(subdir) = game.launch_subdirectory.as_ref().filter(|_| patched) {
-        PathBuf::from(&game.install_path).join(subdir)
-    } else {
-        PathBuf::from(&game.install_path)
-    };
-
-    let extra_path = if game.scummvm_id == "kyra1-cd" {
-        Some(game_path.clone())
-    } else {
-        None
-    };
-    let game_path = if extra_path.is_some() {
-        prepare_kyrandia_launch_path(
-            &game_path,
-            &app_data_dir.join("launch-data").join(game.id.to_string()),
-        )?
-    } else {
-        game_path
-    };
+    let (game_path, extra_path) = super::game_adapters::scummvm_paths(
+        &profile, Path::new(&game.install_path), &app_data_dir.join("launch-data").join(game.id.to_string()),
+    )?;
 
     println!("Final game path: {}", game_path.display());
-    let saved_args = game.launch_args.as_deref()
-        .map(serde_json::from_str::<Vec<String>>)
-        .transpose().map_err(|e| format!("Failed to parse launch args: {}", e))?
-        .unwrap_or_default();
-    let resolved_args = launch_args(&game.scummvm_id, saved_args, patched);
+    let resolved_args = &profile.args;
 
-
-    // Build command with launch_config if available
+    // Build the selected catalog launch profile
     #[cfg(target_os = "macos")]
     {
         // On macOS, use 'open' command with --args to launch app bundle with arguments
@@ -319,7 +159,7 @@ pub async fn launch_game(
         remove_quarantine_attribute(&app_bundle);
         
         // Launch executable directly (more reliable than app bundle on macOS)
-        let executable_path = game_runtime_path(app_data_dir, if patched { &game.scummvm_id } else { "" },
+        let executable_path = game_runtime_path(app_data_dir, &profile,
             app_bundle.join("Contents").join("MacOS").join("scummvm"));
         if !executable_path.exists() {
             return Err("ScummVM executable not found in app bundle".to_string());
@@ -330,13 +170,10 @@ pub async fn launch_game(
         
         // Add default ScummVM args
         add_game_paths(&mut cmd, &game_path, extra_path.as_deref());
-        if patched {
-            add_required_game_options(&mut cmd, &game.scummvm_id);
-            add_toon_runtime_data(&mut cmd, app_data_dir, &game.scummvm_id);
-        }
+        add_runtime_data(&mut cmd, app_data_dir, &profile);
         
-        // Add custom args from DB
-        for arg in &resolved_args {
+        // Apply arguments from the selected catalog profile
+        for arg in resolved_args {
             cmd.arg(arg.replace("{install_path}", &game.install_path)
                 .replace("{scummvm_id}", &game.scummvm_id));
         }
@@ -350,18 +187,15 @@ pub async fn launch_game(
     #[cfg(not(target_os = "macos"))]
     {
         // On Windows and Linux, launch the executable directly
-        let mut cmd = Command::new(game_runtime_path(app_data_dir, if patched { &game.scummvm_id } else { "" },
+        let mut cmd = Command::new(game_runtime_path(app_data_dir, &profile,
             PathBuf::from(&scummvm_path)));
         
         // Add default ScummVM args
         add_game_paths(&mut cmd, &game_path, extra_path.as_deref());
-        if patched {
-            add_required_game_options(&mut cmd, &game.scummvm_id);
-            add_toon_runtime_data(&mut cmd, app_data_dir, &game.scummvm_id);
-        }
+        add_runtime_data(&mut cmd, app_data_dir, &profile);
 
-        // Add custom args from DB
-        for arg in &resolved_args {
+        // Apply arguments from the selected catalog profile
+        for arg in resolved_args {
             cmd.arg(arg.replace("{install_path}", &game.install_path)
                 .replace("{scummvm_id}", &game.scummvm_id));
         }

@@ -1,30 +1,19 @@
-use super::{launch_args, normalize_collection_args};
+use crate::services::game_behavior::for_game;
 
 #[test]
-fn original_launch_does_not_force_patch_language() {
-    let args = vec!["--language=he".into(), "--fullscreen".into(), "--auto-detect".into()];
-    for id in ["pajama", "toonstruck", "pq1", "torin", "sky"] {
-        assert_eq!(launch_args(id, args.clone(), false), vec!["--fullscreen", "--auto-detect"]);
-        assert_eq!(launch_args(id, args.clone(), true), args);
+fn original_and_patched_profiles_select_language_and_engine() {
+    for id in ["pajama", "toonstruck", "pq1", "torin", "sky", "sq1", "sq1sci", "sq2", "sq3", "sq5"] {
+        let behavior = for_game(id).unwrap();
+        assert!(!behavior.launch_profile(false).args.iter().any(|arg| arg.starts_with("--language=")), "{id}");
+        assert!(behavior.launch_profile(true).args.contains(&"--language=he".to_string()), "{id}");
     }
-    assert_eq!(launch_args("unpatched-game", vec![], false), vec!["--auto-detect"]);
-    assert_eq!(launch_args("kyra1-cd", vec!["kyra:kyra1".into()], false), vec!["kyra:kyra1"]);
-}
-
-#[test]
-fn patched_sq1_vga_enables_hebrew_with_stale_settings() {
-    for args in [vec![], vec!["--language=en".into()], vec!["--language=he".into()]] {
-        assert_eq!(normalize_collection_args("sq1sci", args, true),
-            vec!["--language=he", "--platform=dos", "sci:sq1sci"]);
+    for (id, engine) in [("sq1", "agi"), ("sq1sci", "sci"), ("sq2", "agi"), ("sq3", "sci"), ("sq5", "sci")] {
+        for patched in [false, true] {
+            let profile = for_game(id).unwrap().launch_profile(patched);
+            assert!(profile.args.contains(&format!("{engine}:{id}")));
+            assert!(profile.args.contains(&"--platform=dos".into()));
+            assert!(!profile.args.contains(&"--auto-detect".into()));
+        }
     }
-    assert_eq!(normalize_collection_args("sq1sci", vec!["--language=he".into()], false),
-        vec!["--platform=dos", "sci:sq1sci"]);
-}
-
-#[test]
-fn original_and_patched_collection_launches_select_the_correct_language() {
-    let args = vec!["--language=he".into(), "--fullscreen".into(), "--auto-detect".into()];
-    assert_eq!(normalize_collection_args("sq1", args.clone(), false), vec!["--fullscreen", "--platform=dos", "agi:sq1"]);
-    assert_eq!(normalize_collection_args("sq1", args.clone(), true), vec!["--language=he", "--fullscreen", "--platform=dos", "agi:sq1"]);
-    assert_eq!(normalize_collection_args("monkey2-se", args.clone(), false), args);
+    assert_eq!(for_game("unknown").unwrap().launch_profile(false).args, vec!["--auto-detect"]);
 }

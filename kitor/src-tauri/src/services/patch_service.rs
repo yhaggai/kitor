@@ -2,7 +2,7 @@ use sea_orm::*;
 use std::path::{Path, PathBuf};
 use tauri::Emitter;
 use crate::models::installed_patch;
-use crate::services::{download_service, file_service, registry_service, image_service, patch_lifecycle};
+use crate::services::{download_service, registry_service, image_service, patch_lifecycle};
 use serde::{Deserialize, Serialize};
 
 // Serialize lifecycle operations through database recording as well as file writes.
@@ -239,13 +239,8 @@ pub async fn download_and_install_patch(
 
     println!("[patch_service] Downloading from: {}", patch.download_url);
     println!("[patch_service] Download destination: {}", download_path.display());
-    let bundled_drifter = patch.source_type == "bundled" && scummvm_id == "drifter";
-    let bundled_grim = patch.source_type == "bundled" && scummvm_id == "grim-fandango-remastered";
-    let bundled_monkey = patch.source_type == "bundled" && super::monkey_native::supported(&scummvm_id);
-    let bundled_owlboy = patch.source_type == "bundled" && scummvm_id == "owlboy";
-    let bundled_tentacle = patch.source_type == "bundled" && scummvm_id == "tentacle";
-    let bundled_dott_remastered = patch.source_type == "bundled" && scummvm_id == "day-of-the-tentacle-remastered";
-    if !bundled_monkey && !bundled_grim && !bundled_drifter && !bundled_owlboy && !bundled_tentacle && !bundled_dott_remastered {
+    let source = super::package_source::PackageSource::resolve(&patch, &game_def.behavior)?;
+    if matches!(source, super::package_source::PackageSource::Download) {
         download_service::download_patch_file(&patch.download_url, &download_path, &app_handle, &scummvm_id)
             .await?;
         if let Some(checksum) = &patch.checksum {
@@ -269,31 +264,14 @@ pub async fn download_and_install_patch(
 
     let manifest_name = patch.install_manifest.as_deref()
         .ok_or("Patch has no file-change manifest; whole-folder installation is no longer supported")?;
-    if download_path.extension().and_then(|s| s.to_str()) != Some("zip") {
+    if matches!(source, super::package_source::PackageSource::Download)
+        && download_path.extension().and_then(|s| s.to_str()) != Some("zip") {
         return Err("Declarative patch packages must be ZIP archives".into());
     }
     // Package tools and source data never enter the game installation.
     let staging = tempfile::Builder::new().prefix("kitor-package-").tempdir().map_err(|e| e.to_string())?;
-    if bundled_monkey {
-        super::monkey_native::stage(staging.path(), &scummvm_id, &language, &version)?;
-    } else if bundled_grim {
-        super::grim_remastered::stage(staging.path(), &language, &version)?;
-    } else if bundled_drifter {
-        super::drifter_patch::stage(staging.path(), &language, &version)?;
-    } else if bundled_dott_remastered {
-        super::tentacle_remastered::stage(staging.path(), &language, &version)?;
-    } else if bundled_tentacle {
-        super::tentacle::stage(staging.path(), &language, &version, &install_target)?;
-    } else if bundled_owlboy {
-        super::owlboy::stage(staging.path(), &language, &version)?;
-    } else {
-        file_service::validate_zip(&download_path)?;
-        file_service::extract_zip(&download_path, staging.path())?;
-    }
-    let install_target = if cfg!(target_os = "macos") && scummvm_id == "drifter" {
-        super::drifter_patch::validate_macos_build(&install_target)?;
-        super::drifter_patch::macos_target(&std::env::home_dir().ok_or("Cannot locate home directory")?)?
-    } else { install_target };
+    source.stage(staging.path(), &download_path, &scummvm_id, &language, &version, &install_target)?;
+    let install_target = game_def.behavior.validate_install_target(&install_target)?;
     let _ = app_handle.emit("install-progress", serde_json::json!({
         "scummvm_id": scummvm_id,
         "progress": 55,
@@ -367,7 +345,9 @@ pub async fn download_and_install_patch(
 
     // Clean up download
     println!("[patch_service] Cleaning up download file");
-    let _ = std::fs::remove_file(&download_path);
+    if matches!(source, super::package_source::PackageSource::Download) {
+        let _ = std::fs::remove_file(&download_path);
+    }
 
     // Emit progress: Complete
     let _ = app_handle.emit("install-progress", serde_json::json!({
@@ -386,11 +366,16 @@ pub async fn get_installed_patches(
 ) -> Result<Vec<installed_patch::Model>, String> {
     let game = crate::services::game_service::get_game_by_id(db, game_id).await?
         .ok_or("Game not found")?;
-    let target = if cfg!(target_os = "macos") && game.scummvm_id == "drifter" {
-        super::drifter_patch::macos_target(
-            &std::env::home_dir().ok_or("Cannot locate home directory")?,
-        )?
-    } else { PathBuf::from(&game.install_path) };
+    let behavior = super::game_behavior::for_game(&game.scummvm_id)?;
+    reconcile_patches(db, &game, &behavior).await
+}
+
+pub(super) async fn reconcile_patches(
+    db: &DatabaseConnection,
+    game: &crate::models::game::Model,
+    behavior: &super::game_behavior::GameBehavior,
+) -> Result<Vec<installed_patch::Model>, String> {
+    let game_id = game.id;
     // Removing a game preserves its patch and recovery records. A rescan gives
     // it a new game ID, so recover the association using the journal's exact
     // installation identity rather than the title or a potentially reused ID.
@@ -398,6 +383,8 @@ pub async fn get_installed_patches(
         .filter(installed_patch::Column::ScummvmId.eq(&game.scummvm_id))
         .all(db).await
         .map_err(|e| format!("Failed to fetch installed patches: {}", e))?;
+    if candidates.is_empty() { return Ok(Vec::new()); }
+    let target = behavior.install_target(Path::new(&game.install_path))?;
     let mut installed = Vec::new();
     for mut row in candidates {
         let associated = row.game_id == game_id;
@@ -453,9 +440,8 @@ pub async fn restore_backup(
 
     // Use the recorded installation root even if the patch removed a detection
     // signature. The journal validates that this is the correct installation.
-    let target = if cfg!(target_os = "macos") && game.scummvm_id == "drifter" {
-        super::drifter_patch::macos_target(&std::env::home_dir().ok_or("Cannot locate home directory")?)?
-    } else { PathBuf::from(&game.install_path) };
+    let target = super::game_behavior::for_game(&game.scummvm_id)?
+        .install_target(Path::new(&game.install_path))?;
     patch_lifecycle::uninstall(Path::new(&backup_path), &target)?;
 
     // Delete installed patch record
