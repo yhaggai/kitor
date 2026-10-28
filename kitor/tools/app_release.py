@@ -41,7 +41,7 @@ def configured_version():
 
 
 def gh(*args):
-    return subprocess.check_output(["gh", *args], text=True).strip()
+    return subprocess.check_output(["gh", *args], text=True, encoding="utf-8").strip()
 
 
 def api(path):

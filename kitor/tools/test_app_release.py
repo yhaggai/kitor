@@ -7,6 +7,13 @@ from app_release import PLATFORMS, REPO, filename, manifest_for, version_tuple
 
 
 class AppReleaseTests(unittest.TestCase):
+    def test_github_cli_output_uses_utf8_on_all_platforms(self):
+        with patch.object(app_release.subprocess, "check_output", return_value="שלום\n") as output:
+            self.assertEqual(app_release.gh("api", "repos/test/releases"), "שלום")
+        output.assert_called_once_with(
+            ["gh", "api", "repos/test/releases"], text=True, encoding="utf-8"
+        )
+
     def test_release_lookup_finds_draft_on_later_page_and_fetches_details(self):
         draft = {"id": 42, "tag_name": "app-v0.2.0", "draft": True, "assets": []}
         pages = [[{"id": 1, "tag_name": "patch-sq2-v1"}], [draft]]
