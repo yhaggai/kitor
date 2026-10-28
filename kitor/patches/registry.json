@@ -1086,7 +1086,7 @@
           "file_size": null,
           "filename": "monkey-se-native-he.zip",
           "post_install_script": null,
-          "install_manifest": "patch.windows.candidate.json",
+          "install_manifest": "patch.json",
           "description": "Native Windows Hebrew candidate using the classic AdventureBrew dialogue and new Hebrew menus. Select Hebrew (replaces French). Unmatched or conflicting dialogue stays English. Hebrew subtitles and bitmap fonts are included for the F1 classic-mode toggle; unmatched lines remain English. Full-game and RTL wrapping validation are incomplete. Requires a supported original edition; installation is reversible. Steam must be running for Monkey Island 2."
         }
       ]
@@ -1133,7 +1133,7 @@
           "file_size": null,
           "filename": "monkey2-se-native-he.zip",
           "post_install_script": null,
-          "install_manifest": "patch.windows.candidate.json",
+          "install_manifest": "patch.json",
           "description": "Native Windows Hebrew candidate using the classic AdventureBrew dialogue and new Hebrew menus. Select French in Steam to load Hebrew. The original executable is preserved. Unmatched or conflicting dialogue stays English. Hebrew subtitles and bitmap fonts are included for the F1 classic-mode toggle; unmatched lines remain English. Full-game and RTL wrapping validation are incomplete. Requires a supported original edition; installation is reversible. Steam must be running for Monkey Island 2."
         }
       ]
