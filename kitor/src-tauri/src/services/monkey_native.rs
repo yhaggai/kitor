@@ -58,7 +58,7 @@ pub fn stage(destination: &Path, id: &str, language: &str, version: &str) -> Res
     }
     fs::create_dir_all(destination.join("licenses")).map_err(|e|e.to_string())?;
     fs::write(destination.join("licenses/CREDITS.txt"), include_bytes!("../../../../patches-workspace/monkey-special-editions/CREDITS.txt")).map_err(|e|e.to_string())?;
-    fs::write(destination.join("licenses/FONT-OFL.txt"), include_bytes!("../../../../patches/grim-fandango-remastered/he/licenses/FONT-OFL.txt")).map_err(|e|e.to_string())?;
+    fs::write(destination.join("licenses/FONT-OFL.txt"), include_bytes!("../../../../patches-workspace/grim-fandango-remastered/he/licenses/FONT-OFL.txt")).map_err(|e|e.to_string())?;
     Ok(())
 }
 

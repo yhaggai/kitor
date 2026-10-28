@@ -19,7 +19,7 @@ Only the English text table, generated font aliases, font specifications, manife
 Build the ZIP from the repository root:
 
 ```powershell
-python3 kitor/tools/build_patch_packages.py patches/grim-fandango-remastered/he/patch.windows.candidate.json --platform windows --output dist/patches
+python3 kitor/tools/build_patch_packages.py patches-workspace/grim-fandango-remastered/he/patch.windows.candidate.json --platform windows --output dist/patches
 ```
 
 This is a local experimental candidate, not a published release. macOS native packaging and upstream translation redistribution review are still outstanding. See `provenance.json`.
