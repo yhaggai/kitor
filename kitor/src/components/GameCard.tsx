@@ -238,7 +238,7 @@ export default function GameCard({ game, onRemove, isHighlighted }: GameCardProp
   );
   const gameReady = !game.health || game.health.game_status === "present";
   const hasPatch = game.health ? game.health.patch_status === "installed" : recordedPatch;
-  const canPlay = gameReady && hasPatch;
+  const canPlay = gameReady;
   const canInstall =
     gameReady &&
     game.has_available_patch &&

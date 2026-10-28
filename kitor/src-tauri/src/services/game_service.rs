@@ -509,49 +509,51 @@ pub async fn get_games_with_patches(
             Vec::new()
         };
         
-        // Only include games that have patches (available or installed)
         let has_available_patch = !available_patches.is_empty();
-        let has_installed_patch = !installed_patches.is_empty();
         
-        if has_available_patch || has_installed_patch {
-            let registry_cover_url = game_def.and_then(|d| d.cover_url.clone());
-            let cached_cover_path = if let Some(ref url) = registry_cover_url {
-                image_service::get_cached_cover_for_url(&game.scummvm_id, url, &app_data_dir)?
-            } else {
-                image_service::get_cached_cover_path(&game.scummvm_id, &app_data_dir)?
-            };
+        let registry_cover_url = game_def.and_then(|d| d.cover_url.clone());
+        let cached_cover_path = if let Some(ref url) = registry_cover_url {
+            image_service::get_cached_cover_for_url(&game.scummvm_id, url, &app_data_dir)?
+        } else {
+            image_service::get_cached_cover_path(&game.scummvm_id, &app_data_dir)?
+        };
 
-            if cached_cover_path.is_none() {
-                if let Some(url) = registry_cover_url.clone().or_else(|| game.cover_url.clone()) {
-                    let scummvm_id = game.scummvm_id.clone();
-                    let app_data_dir = app_data_dir.clone();
-                    tokio::spawn(async move {
-                        let _ = image_service::download_and_cache_cover(&scummvm_id, &url, app_data_dir).await;
-                    });
-                }
+        if cached_cover_path.is_none() {
+            if let Some(url) = registry_cover_url.clone().or_else(|| game.cover_url.clone()) {
+                let scummvm_id = game.scummvm_id.clone();
+                let app_data_dir = app_data_dir.clone();
+                tokio::spawn(async move {
+                    let _ = image_service::download_and_cache_cover(&scummvm_id, &url, app_data_dir).await;
+                });
             }
-
-            let cover_url = if let Some(path) = cached_cover_path {
-                Some(path.to_string_lossy().to_string())
-            } else {
-                registry_cover_url.or(game.cover_url.clone())
-            };
-
-            games_with_patches.push(GameWithPatches {
-                id: game.id,
-                scummvm_id: game.scummvm_id,
-                title: game.title,
-                install_path: game.install_path,
-                cover_url,
-                detected_version: game.detected_version,
-                added_date: game.added_date.format("%Y-%m-%d %H:%M:%S").to_string(),
-                last_played: game.last_played.map(|d| d.format("%Y-%m-%d %H:%M:%S").to_string()),
-                requires_scummvm: game_def.and_then(|d| d.launch_config.as_ref()).and_then(|c| c.launcher.as_deref()) != Some("native"),
-                has_available_patch,
-                installed_patches,
-                available_patches,
-            });
         }
+
+        let cover_url = if let Some(path) = cached_cover_path {
+            Some(path.to_string_lossy().to_string())
+        } else {
+            registry_cover_url.or(game.cover_url.clone())
+        };
+
+        let unpatched_special_edition = installed.iter().all(|p| p.status != "active")
+            && matches!(game.scummvm_id.as_str(), "monkey-se" | "monkey2-se");
+        let requires_scummvm = !unpatched_special_edition
+            && game_def.and_then(|d| d.launch_config.as_ref())
+                .and_then(|c| c.launcher.as_deref()) != Some("native");
+
+        games_with_patches.push(GameWithPatches {
+            id: game.id,
+            scummvm_id: game.scummvm_id,
+            title: game.title,
+            install_path: game.install_path,
+            cover_url,
+            detected_version: game.detected_version,
+            added_date: game.added_date.format("%Y-%m-%d %H:%M:%S").to_string(),
+            last_played: game.last_played.map(|d| d.format("%Y-%m-%d %H:%M:%S").to_string()),
+            requires_scummvm,
+            has_available_patch,
+            installed_patches,
+            available_patches,
+        });
     }
     
     Ok(games_with_patches)
@@ -580,6 +582,27 @@ mod tests {
     }
     impl Drop for Fixture {
         fn drop(&mut self) { let _ = std::fs::remove_dir_all(&self.0); }
+    }
+
+    #[tokio::test]
+    async fn library_includes_game_without_any_patches() {
+        let fixture = Fixture::new();
+        let db = crate::db::init_db(&fixture.0.join("db")).await.unwrap();
+        let game = game::ActiveModel {
+            scummvm_id: Set("unpatched-library-fixture".to_string()),
+            title: Set("Game without a patch".to_string()),
+            install_path: Set(fixture.0.to_string_lossy().to_string()),
+            added_date: Set(chrono::Utc::now().naive_utc()),
+            ..Default::default()
+        }.insert(&db).await.unwrap();
+
+        let library = get_games_with_patches(&db, fixture.0.clone()).await.unwrap();
+        assert_eq!(library.len(), 1);
+        assert_eq!(library[0].id, game.id);
+        assert!(!library[0].has_available_patch);
+        assert!(library[0].available_patches.is_empty());
+        assert!(library[0].installed_patches.is_empty());
+        assert!(library[0].requires_scummvm);
     }
 
     #[test]

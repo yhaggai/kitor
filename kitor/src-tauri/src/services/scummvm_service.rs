@@ -131,6 +131,19 @@ fn normalize_collection_args(id: &str, args: Vec<String>, patched: bool) -> Vec<
     args
 }
 
+// Persisted registry arguments describe translated releases. Original data must
+// be detected in its own language; games without registry arguments still need
+// an explicit auto-detect target rather than opening ScummVM's launcher.
+fn launch_args(id: &str, mut args: Vec<String>, patched: bool) -> Vec<String> {
+    if !patched {
+        args.retain(|arg| !arg.starts_with("--language="));
+    }
+    if args.is_empty() {
+        args.push("--auto-detect".into());
+    }
+    normalize_collection_args(id, args, patched)
+}
+
 async fn start_game_process(cmd: &mut Command, log_path: &Path) -> Result<(), String> {
     let log = std::fs::File::create(log_path)
         .map_err(|e| format!("Failed to create launch log: {}", e))?;
@@ -173,7 +186,8 @@ pub async fn launch_game(
     let _operation = super::patch_service::PATCH_OPERATION.try_lock()
         .map_err(|_| "A translation operation is running. Launch after it finishes.")?;
     // Recover an interrupted update before launching through Kitor.
-    super::patch_service::get_installed_patches(db, game_id).await?;
+    let installed = super::patch_service::get_installed_patches(db, game_id).await?;
+    let patched = installed.iter().any(|patch| patch.status == "active");
     let game = game_service::get_game_by_id(db, game_id)
         .await?
         .ok_or("Game not found")?;
@@ -190,13 +204,18 @@ pub async fn launch_game(
         return start_game_process(&mut cmd, &app_data_dir.join("drifter-launch.log")).await;
     }
 
+    if !patched && matches!(game.scummvm_id.as_str(), "monkey-se" | "monkey2-se") {
+        let native_id = if game.scummvm_id == "monkey-se" { "monkey-se-native" } else { "monkey2-se-native" };
+        let mut cmd = super::monkey_native::launch_command(Path::new(&game.install_path), native_id)?;
+        return start_game_process(&mut cmd, &app_data_dir.join(format!("{}-launch.log", game.scummvm_id))).await;
+    }
     if super::monkey_native::supported(&game.scummvm_id) {
         let mut cmd = super::monkey_native::launch_command(Path::new(&game.install_path), &game.scummvm_id)?;
         return start_game_process(&mut cmd, &app_data_dir.join(format!("{}-launch.log", game.scummvm_id))).await;
     }
     if game.scummvm_id == "grim-fandango-remastered" {
         let mut cmd = super::grim_remastered::launch_command(Path::new(&game.install_path))?;
-        super::grim_remastered::prepare_launch(Path::new(&game.install_path))?;
+        if patched { super::grim_remastered::prepare_launch(Path::new(&game.install_path))?; }
         return start_game_process(&mut cmd, &app_data_dir.join("grim-remastered-launch.log")).await;
     }
     if game.scummvm_id == "day-of-the-tentacle-remastered" {
@@ -248,14 +267,6 @@ pub async fn launch_game(
         }
     }
 
-    let collection_patched = if matches!(game.scummvm_id.as_str(), "sq1" | "sq1sci" | "sq2" | "sq3" | "sq5") {
-        use crate::models::installed_patch;
-        installed_patch::Entity::find()
-            .filter(installed_patch::Column::GameId.eq(game.id))
-            .filter(installed_patch::Column::Status.eq("active"))
-            .one(db).await.map_err(|e| e.to_string())?.is_some()
-    } else { false };
-
     // Read launch config from DB
     println!("Launch config from DB:");
     println!("  Subdirectory: {:?}", game.launch_subdirectory);
@@ -265,7 +276,7 @@ pub async fn launch_game(
     let game_path = if game.scummvm_id == "tentacle"
         && super::tentacle::detect_classic(Path::new(&game.install_path)).is_some() {
         PathBuf::from(&game.install_path)
-    } else if let Some(subdir) = &game.launch_subdirectory {
+    } else if let Some(subdir) = game.launch_subdirectory.as_ref().filter(|_| patched) {
         PathBuf::from(&game.install_path).join(subdir)
     } else {
         PathBuf::from(&game.install_path)
@@ -286,6 +297,12 @@ pub async fn launch_game(
     };
 
     println!("Final game path: {}", game_path.display());
+    let saved_args = game.launch_args.as_deref()
+        .map(serde_json::from_str::<Vec<String>>)
+        .transpose().map_err(|e| format!("Failed to parse launch args: {}", e))?
+        .unwrap_or_default();
+    let resolved_args = launch_args(&game.scummvm_id, saved_args, patched);
+
 
     // Build command with launch_config if available
     #[cfg(target_os = "macos")]
@@ -302,7 +319,7 @@ pub async fn launch_game(
         remove_quarantine_attribute(&app_bundle);
         
         // Launch executable directly (more reliable than app bundle on macOS)
-        let executable_path = game_runtime_path(app_data_dir, &game.scummvm_id,
+        let executable_path = game_runtime_path(app_data_dir, if patched { &game.scummvm_id } else { "" },
             app_bundle.join("Contents").join("MacOS").join("scummvm"));
         if !executable_path.exists() {
             return Err("ScummVM executable not found in app bundle".to_string());
@@ -313,23 +330,17 @@ pub async fn launch_game(
         
         // Add default ScummVM args
         add_game_paths(&mut cmd, &game_path, extra_path.as_deref());
-        add_required_game_options(&mut cmd, &game.scummvm_id);
-        add_toon_runtime_data(&mut cmd, app_data_dir, &game.scummvm_id);
-        
-        // Add custom args from DB
-        if let Some(args_json) = &game.launch_args {
-            let custom_args: Vec<String> = serde_json::from_str(args_json)
-                .map_err(|e| format!("Failed to parse launch args: {}", e))?;
-            
-            for arg in normalize_collection_args(&game.scummvm_id, custom_args, collection_patched) {
-                // Template replacement
-                let processed_arg = arg
-                    .replace("{install_path}", &game.install_path)
-                    .replace("{scummvm_id}", &game.scummvm_id);
-                cmd.arg(processed_arg);
-            }
+        if patched {
+            add_required_game_options(&mut cmd, &game.scummvm_id);
+            add_toon_runtime_data(&mut cmd, app_data_dir, &game.scummvm_id);
         }
         
+        // Add custom args from DB
+        for arg in &resolved_args {
+            cmd.arg(arg.replace("{install_path}", &game.install_path)
+                .replace("{scummvm_id}", &game.scummvm_id));
+        }
+
         println!("Executing command: {:?}", cmd);
         println!("=====================");
         
@@ -339,26 +350,20 @@ pub async fn launch_game(
     #[cfg(not(target_os = "macos"))]
     {
         // On Windows and Linux, launch the executable directly
-        let mut cmd = Command::new(game_runtime_path(app_data_dir, &game.scummvm_id,
+        let mut cmd = Command::new(game_runtime_path(app_data_dir, if patched { &game.scummvm_id } else { "" },
             PathBuf::from(&scummvm_path)));
         
         // Add default ScummVM args
         add_game_paths(&mut cmd, &game_path, extra_path.as_deref());
-        add_required_game_options(&mut cmd, &game.scummvm_id);
-        add_toon_runtime_data(&mut cmd, app_data_dir, &game.scummvm_id);
+        if patched {
+            add_required_game_options(&mut cmd, &game.scummvm_id);
+            add_toon_runtime_data(&mut cmd, app_data_dir, &game.scummvm_id);
+        }
 
         // Add custom args from DB
-        if let Some(args_json) = &game.launch_args {
-            let args: Vec<String> = serde_json::from_str(args_json)
-                .map_err(|e| format!("Failed to parse launch args: {}", e))?;
-            
-            for arg in normalize_collection_args(&game.scummvm_id, args, collection_patched) {
-                // Template replacement
-                let processed_arg = arg
-                    .replace("{install_path}", &game.install_path)
-                    .replace("{scummvm_id}", &game.scummvm_id);
-                cmd.arg(processed_arg);
-            }
+        for arg in &resolved_args {
+            cmd.arg(arg.replace("{install_path}", &game.install_path)
+                .replace("{scummvm_id}", &game.scummvm_id));
         }
 
         println!("Executing command: {:?}", cmd);
@@ -1216,7 +1221,19 @@ mod kyrandia_tests {
 
 #[cfg(test)]
 mod collection_launch_tests {
-    use super::normalize_collection_args;
+    use super::{launch_args, normalize_collection_args};
+
+    #[test]
+    fn original_launch_does_not_force_patch_language() {
+        let args = vec!["--language=he".into(), "--fullscreen".into(), "--auto-detect".into()];
+        for id in ["pajama", "toonstruck", "pq1", "torin", "sky"] {
+            assert_eq!(launch_args(id, args.clone(), false), vec!["--fullscreen", "--auto-detect"]);
+            assert_eq!(launch_args(id, args.clone(), true), args);
+        }
+        assert_eq!(launch_args("unpatched-game", vec![], false), vec!["--auto-detect"]);
+        assert_eq!(launch_args("kyra1-cd", vec!["kyra:kyra1".into()], false), vec!["kyra:kyra1"]);
+    }
+
     #[test]
     fn patched_sq1_vga_enables_hebrew_with_stale_settings() {
         for args in [vec![], vec!["--language=en".into()], vec!["--language=he".into()]] {
