@@ -37,9 +37,7 @@ Use `type` instead of `interface` for all type definitions.
      extends React.ButtonHTMLAttributes<HTMLButtonElement> {
      variant?: 'primary' | 'secondary';
    }
-   ```
-
-3. For composing multiple types:
+   ```3. For composing multiple types:
    ```typescript
    // Good
    type Combined = BaseProps & VariantProps & {
@@ -50,9 +48,7 @@ Use `type` instead of `interface` for all type definitions.
    interface Combined extends BaseProps, VariantProps {
      extra: string;
    }
-   ```
-
-## Why Types Over Interfaces
+   ```## Why Types Over Interfaces
 
 - More flexible (unions, intersections, mapped types)
 - Consistent syntax throughout codebase
