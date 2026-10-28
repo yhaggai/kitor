@@ -15,7 +15,9 @@ pub async fn launch_game(
 pub async fn download_scummvm_binary(
     state: State<'_, AppState>,
     app_handle: tauri::AppHandle,
+    updates: State<'_, crate::services::app_updates::AppUpdates>,
 ) -> Result<(), String> {
+    let _activity = updates.activity()?;
     scummvm_service::download_scummvm(&state.db, &state.app_data_dir, &app_handle).await
 }
 
@@ -29,7 +31,9 @@ pub async fn check_scummvm_status(
 #[tauri::command]
 pub async fn uninstall_scummvm(
     state: State<'_, AppState>,
+    updates: State<'_, crate::services::app_updates::AppUpdates>,
 ) -> Result<(), String> {
+    let _activity = updates.activity()?;
     scummvm_service::uninstall_scummvm(&state.db, &state.app_data_dir).await
 }
 

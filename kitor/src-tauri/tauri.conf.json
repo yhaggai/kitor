@@ -47,6 +47,44 @@
       "icons/128x128@2x.png",
       "icons/icon.icns",
       "icons/icon.ico"
-    ]
+    ],
+    "shortDescription": "Adventure games, in Hebrew",
+    "category": "Game",
+    "macOS": {
+      "dmg": {
+        "background": "installer/dmg-background.png",
+        "windowSize": {
+          "width": 660,
+          "height": 440
+        },
+        "appPosition": {
+          "x": 180,
+          "y": 250
+        },
+        "applicationFolderPosition": {
+          "x": 480,
+          "y": 250
+        }
+      }
+    },
+    "windows": {
+      "nsis": {
+        "installerIcon": "icons/icon.ico",
+        "headerImage": "installer/windows-header.bmp",
+        "sidebarImage": "installer/windows-sidebar.bmp",
+        "installMode": "currentUser",
+        "languages": ["English", "Hebrew"],
+        "displayLanguageSelector": true
+      }
+    }
+  },
+  "plugins": {
+    "updater": {
+      "pubkey": "dW50cnVzdGVkIGNvbW1lbnQ6IG1pbmlzaWduIHB1YmxpYyBrZXk6IEE4RkU3MDM0MjlGREE0QkEKUldTNnBQMHBOSEQrcU03cEJaVlU4dm4vSSs4UHM2ZnhJNG1wdTVpcXZUSitaVHBCeXlXTnBYVWQK",
+      "windows": {
+        "installMode": "passive"
+      },
+      "endpoints": ["https://github.com/yhaggai/kitor/releases/download/app-updates/latest.json"]
+    }
   }
 }

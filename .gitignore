@@ -22,3 +22,7 @@ __pycache__/
 /assets/**/*.gif
 /assets/**/*.psd
 .DS_Store
+
+# Reproducible desktop application builds.
+!bun.lock
+!kitor/src-tauri/Cargo.lock
