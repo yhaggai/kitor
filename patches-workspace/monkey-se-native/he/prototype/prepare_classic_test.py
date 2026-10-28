@@ -9,7 +9,7 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--game', type=int, choices=(1, 2), required=True)
     a = parser.parse_args()
-    root = Path(__file__).resolve().parents[3]
+    root = Path(__file__).resolve().parents[4]
     source = root / f'dist/monkey-native-tests/mi{a.game}-packaged'
     target = root / f'dist/monkey-native-tests/mi{a.game}-f1'
     candidate = Path(__file__).parent / f'generated/mi{a.game}/classic-candidate'

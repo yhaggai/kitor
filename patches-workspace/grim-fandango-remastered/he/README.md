@@ -14,6 +14,9 @@ The actual Windows lifecycle passed a disposable install/uninstall roundtrip usi
 
 ## Package contents
 
+Build sources are under [prototype/windows](prototype/windows/README.md); the
+earlier macOS experiment is preserved under [prototype/macos](prototype/macos/README.md).
+
 Only the English text table, generated font aliases, font specifications, manifest, and notices are shipped. No game executable, archive, movie, save, or proprietary Arial font is included. Kitor Hebrew is a renamed static derivative of Noto Sans Hebrew under the included SIL OFL 1.1. Translation credits and source are included in `licenses/CREDITS.txt`.
 
 Build the ZIP from the repository root:

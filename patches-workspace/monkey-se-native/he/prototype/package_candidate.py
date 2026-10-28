@@ -12,7 +12,7 @@ import struct
 import os
 import tempfile
 
-ROOT = Path(__file__).resolve().parents[3]
+ROOT = Path(__file__).resolve().parents[4]
 def copy(ops, offset, length):
     if not length:
         return

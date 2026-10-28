@@ -6,7 +6,7 @@ Installable packages are indexed in the Kitor registry. New packages are publish
 
 ## Layout
 
-Patch payloads, reconstruction recipes, build sources, and provenance belong under `patches-workspace/<game>/`. The legacy MI1 installer is retained under `monkey-se/he/legacy/MI1-heb-patch/`. Grim Fandango native candidate files share `grim-fandango-remastered/` with the existing prototype. App catalog metadata and purchase guides remain under `kitor/patches/`; generated archives remain under ignored `dist/`.
+Patch payloads, reconstruction recipes, build sources, and provenance belong under `patches-workspace/<game>/`. The legacy MI1 installer is retained under `monkey-se/he/legacy/MI1-heb-patch/`. Grim Fandango prototype tools are grouped under `grim-fandango-remastered/he/prototype/{windows,macos}/`. Shared native Monkey Island build tools live in `monkey-se-native/he/prototype/`; MI2 links to them. App catalog metadata and purchase guides remain under `kitor/patches/`; generated archives remain under ignored `dist/`.
 
 ## Contract
 

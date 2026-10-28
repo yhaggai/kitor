@@ -6,7 +6,7 @@ from pathlib import Path
 import sqlite3
 import subprocess
 
-ROOT = Path(__file__).resolve().parents[3]
+ROOT = Path(__file__).resolve().parents[4]
 HARNESS = ROOT / 'kitor/tools/lifecycle-harness/target/release/monkey_native_patch.exe'
 
 

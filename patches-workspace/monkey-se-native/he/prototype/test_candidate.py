@@ -14,7 +14,7 @@ from package_candidate import delta
 
 class CandidateTests(unittest.TestCase):
     def test_mi2_package_preserves_executable(self):
-        package = Path(__file__).resolve().parents[2] / 'monkey2-se-native/he/patch.json'
+        package = Path(__file__).resolve().parents[3] / 'monkey2-se-native/he/patch.json'
         manifest = json.loads(package.read_text())
         self.assertEqual([f['path'] for f in manifest['files']], ['monkey2.pak'])
 
