@@ -12,6 +12,7 @@ import {
   XCircle,
 } from "lucide-react";
 import { useCallback, useEffect, useState } from "react";
+import AppUpdateCard from "@/components/AppUpdateCard";
 import GithubAuthCard from "@/components/GithubAuthCard";
 import GogAuthCard from "@/components/GogAuthCard";
 import SteamAuthCard from "@/components/SteamAuthCard";
@@ -210,6 +211,7 @@ export default function Settings() {
         </CardContent>
       </Card>
 
+      <AppUpdateCard />
       <GithubAuthCard />
       <GogAuthCard />
       <SteamAuthCard />
@@ -340,7 +342,6 @@ export default function Settings() {
         </CardHeader>
         <CardContent>
           <div className="text-sm text-muted-foreground space-y-2">
-            <p>Version: 0.1.0</p>
             <p>
               Kitor helps you manage ScummVM games and easily install community translation patches.
             </p>
