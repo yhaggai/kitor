@@ -1,0 +1,18 @@
+{
+  "release_ready": false,
+  "status": "experimental",
+  "translation": "https://github.com/adventurebrew/scummworks",
+  "speech_ids": "https://github.com/jmnunezizu/scummkit/tree/main/third_party/ultimate-talkie",
+  "formats": "https://github.com/ShadowNate/MISETranslator",
+  "runtime": "Native Windows Special Edition, French language slot",
+  "limitations": [
+    "Unmatched dialogue and some interface text remain English",
+    "Full-game playback and RTL paragraph wrapping are not certified",
+    "Existing saves can retain old script positions"
+  ],
+  "redistribution": "Local candidate; not approved for publication",
+  "classic_builder": "https://github.com/BLooperZ/nutcracker",
+  "classic_fonts": "https://github.com/adventurebrew/scummworks",
+  "classic_tool_revision": "1f9e34d1c9e3b9592e39942dc56dda3c1c18f8ae",
+  "classic_translation_revision": "7c8217e3746f3bc92b42623d444001789df6519c"
+}

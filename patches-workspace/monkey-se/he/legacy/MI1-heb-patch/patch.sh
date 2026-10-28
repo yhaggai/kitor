@@ -3,14 +3,14 @@
 # Check if xdelta3 exists
 if ! command -v xdelta3 &> /dev/null; then
     echo "xdelta3 not found. Installing via Homebrew..."
-    
+
     # Check if Homebrew is installed
     if ! command -v brew &> /dev/null; then
         echo "Error: Homebrew is not installed. Please install Homebrew first:"
         echo "Visit: https://brew.sh"
         exit 1
     fi
-    
+
     # Install xdelta3
     brew install xdelta
 else

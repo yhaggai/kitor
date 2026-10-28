@@ -1,0 +1,3 @@
+# Python 3.12 or newer. Pin the SCUMM relocation implementation used in validation.
+nutcracker @ git+https://github.com/BLooperZ/nutcracker.git@1f9e34d1c9e3b9592e39942dc56dda3c1c18f8ae
+python-bidi==0.6.12

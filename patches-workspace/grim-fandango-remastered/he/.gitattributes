@@ -1,0 +1,4 @@
+# Preserve package hashes and native CRLF text tables on every checkout.
+payload/** -text
+licenses/** -text
+*.json text eol=lf

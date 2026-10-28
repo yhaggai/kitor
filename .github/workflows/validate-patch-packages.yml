@@ -17,6 +17,12 @@ on:
       - '.github/workflows/validate-patch-packages.yml'
       - '.github/workflows/deploy-patches.yml'
   workflow_dispatch:
+    inputs:
+      upload_artifacts:
+        description: Upload unverified package ZIPs (requires available artifact storage)
+        type: boolean
+        default: false
+        required: false
 
 permissions:
   contents: read
@@ -70,11 +76,14 @@ jobs:
               subprocess.run([sys.executable, 'kitor/tools/build_patch_packages.py', str(manifest), '--platform', 'windows', '--output', 'dist/candidates'], check=True)
           for manifest in sorted(pathlib.Path('patches-workspace').glob('*/he/patch.osx.candidate.json')):
               subprocess.run([sys.executable, 'kitor/tools/build_patch_packages.py', str(manifest), '--platform', 'osx', '--output', 'dist/candidates'], check=True)
-      - uses: actions/upload-artifact@v4
+      - name: Upload requested unverified package builds
+        if: github.event_name == 'workflow_dispatch' && inputs.upload_artifacts
+        uses: actions/upload-artifact@v4
         with:
           name: unverified-patch-builds-${{ matrix.os }}
           path: |
             dist/patches/*.zip
             dist/candidates/*.zip
+          retention-days: 1
           compression-level: 0
           if-no-files-found: error

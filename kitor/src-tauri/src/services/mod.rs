@@ -29,5 +29,6 @@ pub mod reconstruction;
 pub mod tentacle;
 
 pub mod tentacle_remastered;
+pub mod monkey_native;
 
 pub mod github_download_service;
