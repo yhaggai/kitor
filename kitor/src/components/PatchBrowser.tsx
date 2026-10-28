@@ -3,11 +3,19 @@ import * as Tooltip from "@radix-ui/react-tooltip";
 import { invoke } from "@tauri-apps/api/core";
 import { listen } from "@tauri-apps/api/event";
 import { open as openDialog } from "@tauri-apps/plugin-dialog";
-import { CheckCircle, Download, ExternalLink, MoreVertical, Play } from "lucide-react";
+import {
+  CheckCircle,
+  ChevronDown,
+  Download,
+  ExternalLink,
+  FolderSearch,
+  MoreVertical,
+  Play,
+} from "lucide-react";
 import { useEffect, useState } from "react";
 import AddGameDialog from "@/components/AddGameDialog";
-import { OpenGameFolderMenuItem } from "@/components/OpenGameFolderMenuItem";
 import { GameDetailsBox } from "@/components/GameDetailsBox";
+import { OpenGameFolderMenuItem } from "@/components/OpenGameFolderMenuItem";
 import { PurchaseGuideDialog } from "@/components/PurchaseGuideDialog";
 import { StoreInstallButtons } from "@/components/StoreInstallButtons";
 import { Badge } from "@/components/ui/badge";
@@ -21,6 +29,52 @@ export default function PatchBrowser() {
   const { patches, loading, showAddDialog, selectedGuide } = state;
 
   const { games, setActiveTab, setHighlightedGameId, setGames } = useAppStore();
+  const [isScanning, setIsScanning] = useState(false);
+  const [scanMessage, setScanMessage] = useState("");
+  const [scanWarnings, setScanWarnings] = useState<string[]>([]);
+
+  const handleScanGames = async (automatic: boolean) => {
+    if (isScanning) return;
+    setIsScanning(true);
+    setScanMessage("");
+    setScanWarnings([]);
+    try {
+      if (automatic) {
+        const result = await invoke<{
+          added_count: number;
+          locations: string[];
+          warnings: string[];
+        }>("scan_installed_games");
+        setScanMessage(
+          result.locations.length === 0
+            ? "No Steam or GOG folders found. Try choosing a folder."
+            : `Scanned ${result.locations.length} locations. Added ${result.added_count} games. Only recognized games are added; existing games are skipped.`
+        );
+        setScanWarnings(result.warnings);
+      } else {
+        const selected = await openDialog({
+          directory: true,
+          multiple: false,
+          title: "Select folder to scan for games",
+        });
+        if (!selected) return;
+        const added = await invoke<unknown[]>("scan_games", { scanPath: selected });
+        setScanMessage(
+          `Added ${added.length} games. Only recognized games are added; existing games are skipped.`
+        );
+      }
+    } catch (error) {
+      setScanMessage(`Scan failed: ${String(error)}`);
+    } finally {
+      try {
+        setGames(await invoke<Game[]>("get_games_with_patches"));
+      } catch (error) {
+        setScanWarnings((warnings) => [...warnings, `Could not refresh games: ${String(error)}`]);
+      } finally {
+        setIsScanning(false);
+      }
+    }
+  };
 
   useEffect(() => {
     async function loadPatches() {
@@ -70,9 +124,56 @@ export default function PatchBrowser() {
 
   return (
     <div className="space-y-6">
-      <div>
-        <h2 className="text-2xl font-bold mb-2">Available Patches</h2>
-        <p className="text-muted-foreground">Browse and install community translation patches</p>
+      <div className="flex flex-wrap justify-between items-center gap-4">
+        <div>
+          <h2 className="text-2xl font-bold mb-2">Available Patches</h2>
+          <p className="text-muted-foreground">Browse and install community translation patches</p>
+        </div>
+        <DropdownMenu.Root>
+          <DropdownMenu.Trigger asChild>
+            <Button variant="outline" disabled={isScanning}>
+              <FolderSearch className="mr-2 h-4 w-4" />
+              {isScanning ? "Scanning..." : "Scan for Games"}
+              <ChevronDown className="ml-2 h-4 w-4" />
+            </Button>
+          </DropdownMenu.Trigger>
+          <DropdownMenu.Portal>
+            <DropdownMenu.Content
+              align="end"
+              sideOffset={6}
+              className="z-50 min-w-56 rounded-md border bg-popover p-1 text-popover-foreground shadow-md"
+            >
+              <DropdownMenu.Item
+                disabled={isScanning}
+                onSelect={() => void handleScanGames(true)}
+                className="cursor-pointer rounded-sm px-3 py-2 text-sm outline-none focus:bg-accent focus:text-accent-foreground"
+              >
+                Automatically find Steam &amp; GOG games
+              </DropdownMenu.Item>
+              <DropdownMenu.Item
+                disabled={isScanning}
+                onSelect={() => void handleScanGames(false)}
+                className="cursor-pointer rounded-sm px-3 py-2 text-sm outline-none focus:bg-accent focus:text-accent-foreground"
+              >
+                Choose a folder…
+              </DropdownMenu.Item>
+            </DropdownMenu.Content>
+          </DropdownMenu.Portal>
+        </DropdownMenu.Root>
+      </div>
+      <div aria-live="polite">
+        {isScanning && <p className="text-sm text-muted-foreground">Scanning game folders…</p>}
+        {scanMessage && <p className="text-sm text-muted-foreground">{scanMessage}</p>}
+        {scanWarnings.length > 0 && (
+          <details className="mt-2 text-sm">
+            <summary>Scan warnings ({scanWarnings.length})</summary>
+            <ul className="mt-2 list-disc pl-5">
+              {scanWarnings.map((warning, index) => (
+                <li key={`${index}-${warning}`}>{warning}</li>
+              ))}
+            </ul>
+          </details>
+        )}
       </div>
 
       <AddGameDialog
@@ -261,7 +362,11 @@ function PatchCard({ patch, onViewGame, onShowGuide }: PatchCardProps) {
         </div>
 
         {!patch.game_installed && (
-          <StoreInstallButtons scummvmId={patch.scummvm_id} steamAppId={patch.steam_app_id} gogId={patch.gog_id} />
+          <StoreInstallButtons
+            scummvmId={patch.scummvm_id}
+            steamAppId={patch.steam_app_id}
+            gogId={patch.gog_id}
+          />
         )}
 
         {patch.patch_installed ? (

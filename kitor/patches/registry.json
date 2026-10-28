@@ -1015,7 +1015,7 @@
       "steam_app_id": 388210,
       "title": "Day of the Tentacle Remastered",
       "platforms": {
-        "windows": false,
+        "windows": true,
         "osx": true,
         "linux": false
       },
@@ -1037,10 +1037,48 @@
           "source_type": "bundled",
           "checksum": null,
           "file_size": null,
-          "description": "יומו של הטנטקל — אבטיפוס נפרד לגרסה המחודשת. 5,142 כתוביות ו-348 שמות פריטים ודמויות בעברית. תפריטים, אפשרויות שיחה ו-579 רשומות דיבור עדיין באנגלית. יש לבחור English. הפעלה במנוע המקורי; לא ScummVM. לשימוש מקומי בלבד, ללא הפצה. macOS local candidate only. Windows resource adaptation pending.",
+          "description": "יומו של הטנטקל — אבטיפוס נפרד לגרסה המחודשת. 5,142 כתוביות ו-348 שמות פריטים ודמויות בעברית. תפריטים, אפשרויות שיחה ו-579 רשומות דיבור עדיין באנגלית. יש לבחור English. הפעלה במנוע המקורי; לא ScummVM. לשימוש מקומי בלבד, ללא הפצה. Windows and macOS local candidates.",
           "filename": "DOTT-Remastered-Hebrew-local-kitor1.zip",
           "post_install_script": null,
           "install_manifest": "patch.json"
+        }
+      ]
+    },
+    {
+      "scummvm_id": "grim-fandango-remastered",
+      "title": "Grim Fandango Remastered",
+      "platforms": {
+        "windows": true,
+        "osx": false,
+        "linux": false
+      },
+      "gog": {
+        "id": 1207667183,
+        "slug": "grim_fandango_remastered",
+        "title": "Grim Fandango Remastered",
+        "installers": []
+      },
+      "detection_patterns": {
+        "unique_files": ["GrimFandango.exe"],
+        "file_patterns": []
+      },
+      "launch_config": {
+        "launcher": "native",
+        "args": []
+      },
+      "patches": [
+        {
+          "language": "he",
+          "version": "0.3.0-native-candidate",
+          "author": "Niv Bar and Shani Roz; Kitor native adaptation",
+          "download_url": "bundled://grim-fandango-remastered/he",
+          "source_type": "bundled",
+          "checksum": null,
+          "file_size": null,
+          "description": "Experimental native Windows Hebrew patch for the hash-verified GOG edition. Adds Hebrew as a seventh language; select Hebrew and enable subtitles. Keeps all six original languages and English speech. Includes 401 movie subtitle entries. Requires the supported original executable and archive.",
+          "filename": "grim-fandango-remastered-he-0.3.0-native-candidate-windows.zip",
+          "install_manifest": "patch.json",
+          "post_install_script": null
         }
       ]
     },

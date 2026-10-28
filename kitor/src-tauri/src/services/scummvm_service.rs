@@ -194,6 +194,11 @@ pub async fn launch_game(
         let mut cmd = super::monkey_native::launch_command(Path::new(&game.install_path), &game.scummvm_id)?;
         return start_game_process(&mut cmd, &app_data_dir.join(format!("{}-launch.log", game.scummvm_id))).await;
     }
+    if game.scummvm_id == "grim-fandango-remastered" {
+        let mut cmd = super::grim_remastered::launch_command(Path::new(&game.install_path))?;
+        super::grim_remastered::prepare_launch(Path::new(&game.install_path))?;
+        return start_game_process(&mut cmd, &app_data_dir.join("grim-remastered-launch.log")).await;
+    }
     if game.scummvm_id == "day-of-the-tentacle-remastered" {
         let mut cmd = super::tentacle_remastered::launch_command(Path::new(&game.install_path))?;
         return start_game_process(&mut cmd, &app_data_dir.join("dott-remastered-launch.log")).await;

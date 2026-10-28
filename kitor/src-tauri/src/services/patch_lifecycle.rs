@@ -1009,30 +1009,34 @@ mod tests {
             let root = Path::new("../../patches-workspace")
                 .join(&game.scummvm_id)
                 .join("he");
-            let manifest = if root.join("patch.json").is_file() {
-                root.join("patch.json")
-            } else if root.join("patch.osx.candidate.json").is_file() {
-                root.join("patch.osx.candidate.json")
+            let manifests: Vec<_> = if root.join("patch.json").is_file() {
+                vec![root.join("patch.json")]
             } else {
-                root.join("patch.windows.candidate.json")
+                ["patch.windows.candidate.json", "patch.osx.candidate.json"]
+                    .iter().map(|name| root.join(name)).filter(|path| path.is_file()).collect()
             };
-            let package: Package =
-                serde_json::from_slice(&fs::read(manifest).unwrap()).unwrap();
-            assert_eq!(package.version, game.patches[0].version);
-            assert_eq!(
-                game.patches[0].install_manifest.as_deref(),
-                Some("patch.json")
-            );
+            assert!(!manifests.is_empty(), "Missing package for {}", game.scummvm_id);
+            let packages: Vec<Package> = manifests.iter().map(|manifest| {
+                serde_json::from_slice(&fs::read(manifest).unwrap()).unwrap()
+            }).collect();
+            for package in &packages {
+                assert_eq!(package.version, game.patches[0].version);
+                assert_eq!(package.scummvm_id, game.scummvm_id);
+            }
+            assert_eq!(game.patches[0].install_manifest.as_deref(), Some("patch.json"));
             for platform in ["windows", "osx"] {
                 let supported = game.platforms.as_ref().map(|p| match platform {
                     "windows" => p.windows,
                     _ => p.osx,
                 }).unwrap_or(false);
-                assert_eq!(supported, package.platforms.contains_key(platform),
-                    "Registry platform mismatch for {}: {}", game.scummvm_id, platform);
+                let matching: Vec<_> = packages.iter()
+                    .filter(|package| package.platforms.contains_key(platform)).collect();
+                assert_eq!(matching.len(), usize::from(supported),
+                    "Registry platform mismatch or duplicate plans for {}: {}", game.scummvm_id, platform);
                 if !supported {
                     continue;
                 }
+                let package = matching[0];
                 let plan = package.platforms.get(platform).unwrap();
                 let files = if plan.files.is_empty() {
                     &package.files

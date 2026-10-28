@@ -12,6 +12,21 @@ from fontTools.ttLib import TTFont
 from fontTools.varLib.instancer import instantiateVariableFont
 
 
+def movie_translations(source, supplement):
+    rows = dict(line.split('\t', 1) for line in source.splitlines() if '\t' in line)
+    result = {}
+    for key, entry in supplement.items():
+        if key not in rows:
+            continue
+        if hashlib.sha256(rows[key].encode('utf-8')).hexdigest() != entry['source_sha256']:
+            raise ValueError(f'Movie subtitle source changed: {key}')
+        value = entry['he']
+        if not value or any(c in value for c in '\t\r\n\ufffd'):
+            raise ValueError(f'Invalid movie subtitle: {key}')
+        result[key] = value
+    return result
+
+
 def menu_aliases(source, translations):
     """Reuse existing UI translations only when all matching labels agree."""
     rows = [line.split('\t', 1) for line in source.splitlines() if '\t' in line]
@@ -51,6 +66,10 @@ def main():
     parser.add_argument('--patch', type=Path, required=True)
     parser.add_argument('--font', type=Path, required=True)
     parser.add_argument('--output', type=Path, required=True)
+    parser.add_argument('--separate-language', action='store_true',
+                        help='Build grim.he.tab with Latin-compatible fonts for the native seventh slot.')
+    parser.add_argument('--movie-translations', type=Path,
+                        default=Path(__file__).with_name('movie-he.json'))
     parser.add_argument('--resources', choices=('copy', 'symlink', 'payload'),
                         default='copy' if os.name == 'nt' else 'symlink',
                         help='Windows defaults to copying resources; symlinks require suitable permissions.')
@@ -71,7 +90,23 @@ def main():
     translations = dict(line.split('\t', 1) for line in decoded.splitlines() if '\t' in line)
     original = (game / 'grim.en.tab').read_bytes()
     source = original.decode('cp1252')
+    supplement = json.loads(args.movie_translations.read_text(encoding='utf-8'))
+    # One native cutscene line exists only as a script fallback, not in grim.en.tab.
+    # Add its table entry only after verifying the fallback in this game's script.
+    if (game / 'DATA000.LAB').is_file():
+        script = bytes(c ^ 255 for c in read_lab(game / 'DATA000.LAB')['_cut_scenes.lua'])
+        script_lines = {m.group(1).decode().lower(): m.group(2).decode('cp1252')
+                        for m in re.finditer(rb'/([A-Za-z0-9_]+)/([^\x00]+)', script)}
+        existing = {line.split('\t', 1)[0] for line in source.splitlines() if '\t' in line}
+        for key, entry in supplement.items():
+            if entry.get('script_only') and key not in existing:
+                value = script_lines.get(key)
+                if value is None or hashlib.sha256(value.encode('utf-8')).hexdigest() != entry['source_sha256']:
+                    raise ValueError(f'Movie script source changed: {key}')
+                source = source.rstrip('\r\n') + '\r\n' + key + '\t' + value + '\r\n'
     aliases = menu_aliases(source, translations)
+    movies = movie_translations(source, supplement)
+    movie_added = 0
     fallback_rows = []
     lines, reused = [], 0
     for line in source.splitlines():
@@ -82,6 +117,10 @@ def main():
         translated = translations.get(key)
         if key in aliases:
             translated = translations[aliases[key][0]]
+        # Preserve the original translators' wording whenever it exists.
+        if (not translated or '\ufffd' in translated) and key in movies:
+            translated = movies[key]
+            movie_added += 1
         if translated and '\ufffd' not in translated:
             value = get_display(translated, base_dir='R')
             reused += 1
@@ -98,6 +137,17 @@ def main():
         raise SystemExit('Too many characters for the experimental byte font.')
     mapping = {chr(i): i for i in range(128)}
     mapping.update({c: i + 128 for i, c in enumerate(chars)})
+    if args.separate_language:
+        # Original native language files use no C1 bytes. Reserve those for Hebrew,
+        # retaining ASCII and Latin-1 glyph positions for all six original languages.
+        for table_path in game.glob('grim.*.tab'):
+            if set(table_path.read_bytes()) & set(range(128, 160)):
+                raise ValueError(f'Original language uses reserved font bytes: {table_path.name}')
+        extras = sorted(c for c in chars if ord(c) > 255)
+        if len(extras) > 32:
+            raise ValueError('Too many extra glyphs for Latin-compatible Hebrew font')
+        mapping = {chr(i): i for i in range(256) if i < 128 or i >= 160}
+        mapping.update({c: 128 + i for i, c in enumerate(extras)})
     font = TTFont(args.font)
     if 'fvar' in font:
         font = instantiateVariableFont(font, {axis.axisTag: axis.defaultValue for axis in font['fvar'].axes}, inplace=True)
@@ -113,12 +163,13 @@ def main():
         raise SystemExit(f'Font missing characters: {missing}')
     for table in font['cmap'].tables:
         if table.isUnicode():
-            table.cmap = {byte: cmap[ord(char)] for char, byte in mapping.items() if ord(char) in cmap}
+            remapped = {byte: cmap[ord(char)] for char, byte in mapping.items() if ord(char) in cmap}
+            table.cmap = {**cmap, **remapped} if args.separate_language else remapped
     output.mkdir(parents=True)
     for path in game.iterdir():
         if args.resources == 'payload':
             continue
-        if path.name.lower() not in ('grim.en.tab', 'fontshd'):
+        if path.name.lower() != 'fontshd' and (args.separate_language or path.name.lower() != 'grim.en.tab'):
             destination = output / path.name
             if args.resources == 'symlink':
                 destination.symlink_to(path, target_is_directory=path.is_dir())
@@ -126,7 +177,8 @@ def main():
                 shutil.copytree(path, destination)
             else:
                 shutil.copy2(path, destination)
-    (output / 'grim.en.tab').write_bytes(bytes(mapping[c] for c in text))
+    table_name = 'grim.he.tab' if args.separate_language else 'grim.en.tab'
+    (output / table_name).write_bytes(bytes(mapping[c] for c in text))
     fonts = output / 'FontsHD'
     fonts.mkdir()
     font.save(fonts / 'HebrewPrototype.ttf')
@@ -139,7 +191,10 @@ def main():
         spec = path.read_bytes()
         (fonts / path.name).write_bytes(re.sub(rb'^\S+', b'HebrewPrototype.ttf', spec))
     report = {'status': 'experimental', 'source_game': str(game), 'translated_rows': reused,
-              'direct_id_rows': reused - len(aliases), 'menu_alias_rows': len(aliases),
+              'language_table': table_name,
+              'direct_id_rows': reused - len(aliases) - movie_added, 'menu_alias_rows': len(aliases),
+              'new_movie_rows': movie_added, 'movie_entries_covered': len(movies),
+              'movie_translations_sha256': hashlib.sha256(args.movie_translations.read_bytes()).hexdigest(),
               'menu_aliases': aliases, 'fallback_rows': fallback_rows,
               'total_rows': sum('\t' in line for line in lines),
               'source_table_sha256': hashlib.sha256(original).hexdigest(),

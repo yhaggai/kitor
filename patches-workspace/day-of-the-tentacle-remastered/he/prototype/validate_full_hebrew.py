@@ -5,13 +5,15 @@ import json
 import struct
 from pathlib import Path
 from PIL import Image
-from map_dialogue import extract_speech, speech_rows, digest
+from map_dialogue import extract_speech, speech_rows, speech_layout, digest
 from build_full_hebrew import BYTE_SLOTS
 
 
 def validate(source, output):
     target=output/'DottHebrewFull.app/Contents/Resources/tenta.cle'
     manifest=json.loads((output/'full-manifest.json').read_text())
+    if manifest.get('platform')=='windows':
+        target=output/'game/tenta.cle'
     checked=0
     for item in manifest['changes']:
         name=item['member']
@@ -42,7 +44,9 @@ def validate(source, output):
     target_rows=speech_rows(target_data)
     assert [r['id'] for r in original_rows]==[r['id'] for r in target_rows]
     for i in range(len(original_rows)):
-        assert original_data[8+i*40:32+i*40]==target_data[8+i*40:32+i*40]
+        _,header,stride,_=speech_layout(original_data)
+        base=header+i*stride
+        assert original_data[base:base+24]==target_data[base:base+24]
     unchanged=sum(a==b for a,b in zip(original_rows,target_rows))
     assert unchanged==579
     inverse={v:k for k,v in BYTE_SLOTS.items()}

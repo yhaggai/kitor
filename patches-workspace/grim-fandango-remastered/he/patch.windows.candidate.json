@@ -2,8 +2,8 @@
   "schema_version": 1,
   "scummvm_id": "grim-fandango-remastered",
   "language": "he",
-  "version": "0.1.0-native-candidate",
-  "filename": "grim-fandango-remastered-he-0.1.0-native-candidate-windows.zip",
+  "version": "0.3.0-native-candidate",
+  "filename": "grim-fandango-remastered-he-0.3.0-native-candidate-windows.zip",
   "platforms": {
     "windows": {}
   },
@@ -22,11 +22,11 @@
     {
       "path": "FontsHD/FiraSans-Regular_0.ttf",
       "operation": "modify",
-      "installed_sha256": "0b97bd598e2e10d75a6e71f1e59b688a6063a9b69c7f2083c2db76072fb51847",
+      "installed_sha256": "2ade2bac02c93caf429cf5763cae5c5a30817d6fda92cefd5daa2e583d5e442a",
       "source": {
         "kind": "copy",
         "path": "payload/FontsHD/FiraSans-Regular_0.ttf",
-        "sha256": "0b97bd598e2e10d75a6e71f1e59b688a6063a9b69c7f2083c2db76072fb51847"
+        "sha256": "2ade2bac02c93caf429cf5763cae5c5a30817d6fda92cefd5daa2e583d5e442a"
       },
       "original_sha256": "3c7d2032bafb149b64cc3f94ca07edb0fed1ed9903863ac6c228a85b38824f10"
     },
@@ -44,33 +44,33 @@
     {
       "path": "FontsHD/FuturaStd-Heavy.ttf",
       "operation": "modify",
-      "installed_sha256": "0b97bd598e2e10d75a6e71f1e59b688a6063a9b69c7f2083c2db76072fb51847",
+      "installed_sha256": "2ade2bac02c93caf429cf5763cae5c5a30817d6fda92cefd5daa2e583d5e442a",
       "source": {
         "kind": "copy",
         "path": "payload/FontsHD/FuturaStd-Heavy.ttf",
-        "sha256": "0b97bd598e2e10d75a6e71f1e59b688a6063a9b69c7f2083c2db76072fb51847"
+        "sha256": "2ade2bac02c93caf429cf5763cae5c5a30817d6fda92cefd5daa2e583d5e442a"
       },
       "original_sha256": "2e724750f53bfba1ba52ed39e5762561f24f5f3f69271e6fd8cc0b0602f038bc"
     },
     {
       "path": "FontsHD/FuturaStd-Medium.ttf",
       "operation": "modify",
-      "installed_sha256": "0b97bd598e2e10d75a6e71f1e59b688a6063a9b69c7f2083c2db76072fb51847",
+      "installed_sha256": "2ade2bac02c93caf429cf5763cae5c5a30817d6fda92cefd5daa2e583d5e442a",
       "source": {
         "kind": "copy",
         "path": "payload/FontsHD/FuturaStd-Medium.ttf",
-        "sha256": "0b97bd598e2e10d75a6e71f1e59b688a6063a9b69c7f2083c2db76072fb51847"
+        "sha256": "2ade2bac02c93caf429cf5763cae5c5a30817d6fda92cefd5daa2e583d5e442a"
       },
       "original_sha256": "f0d2f884b9b10b6657d9633531890e29687d1c29be4427ae9d5ea927ba3a6ffd"
     },
     {
       "path": "FontsHD/HebrewPrototype.ttf",
       "operation": "create",
-      "installed_sha256": "0b97bd598e2e10d75a6e71f1e59b688a6063a9b69c7f2083c2db76072fb51847",
+      "installed_sha256": "2ade2bac02c93caf429cf5763cae5c5a30817d6fda92cefd5daa2e583d5e442a",
       "source": {
         "kind": "copy",
         "path": "payload/FontsHD/HebrewPrototype.ttf",
-        "sha256": "0b97bd598e2e10d75a6e71f1e59b688a6063a9b69c7f2083c2db76072fb51847"
+        "sha256": "2ade2bac02c93caf429cf5763cae5c5a30817d6fda92cefd5daa2e583d5e442a"
       }
     },
     {
@@ -87,11 +87,11 @@
     {
       "path": "FontsHD/Koloss.ttf",
       "operation": "modify",
-      "installed_sha256": "0b97bd598e2e10d75a6e71f1e59b688a6063a9b69c7f2083c2db76072fb51847",
+      "installed_sha256": "2ade2bac02c93caf429cf5763cae5c5a30817d6fda92cefd5daa2e583d5e442a",
       "source": {
         "kind": "copy",
         "path": "payload/FontsHD/Koloss.ttf",
-        "sha256": "0b97bd598e2e10d75a6e71f1e59b688a6063a9b69c7f2083c2db76072fb51847"
+        "sha256": "2ade2bac02c93caf429cf5763cae5c5a30817d6fda92cefd5daa2e583d5e442a"
       },
       "original_sha256": "3ba30bfab4bd7f299feb70fe78afc3e1707a81db5c7a4e1bcfb240c68b1ef6b8"
     },
@@ -131,11 +131,11 @@
     {
       "path": "FontsHD/Meredith.ttf",
       "operation": "modify",
-      "installed_sha256": "0b97bd598e2e10d75a6e71f1e59b688a6063a9b69c7f2083c2db76072fb51847",
+      "installed_sha256": "2ade2bac02c93caf429cf5763cae5c5a30817d6fda92cefd5daa2e583d5e442a",
       "source": {
         "kind": "copy",
         "path": "payload/FontsHD/Meredith.ttf",
-        "sha256": "0b97bd598e2e10d75a6e71f1e59b688a6063a9b69c7f2083c2db76072fb51847"
+        "sha256": "2ade2bac02c93caf429cf5763cae5c5a30817d6fda92cefd5daa2e583d5e442a"
       },
       "original_sha256": "031bed60dcf15eb92b2bf83d0e18041e1135a5019959d3c8011bfcec21a2e5e2"
     },
@@ -175,22 +175,22 @@
     {
       "path": "FontsHD/OCRA.ttf",
       "operation": "modify",
-      "installed_sha256": "0b97bd598e2e10d75a6e71f1e59b688a6063a9b69c7f2083c2db76072fb51847",
+      "installed_sha256": "2ade2bac02c93caf429cf5763cae5c5a30817d6fda92cefd5daa2e583d5e442a",
       "source": {
         "kind": "copy",
         "path": "payload/FontsHD/OCRA.ttf",
-        "sha256": "0b97bd598e2e10d75a6e71f1e59b688a6063a9b69c7f2083c2db76072fb51847"
+        "sha256": "2ade2bac02c93caf429cf5763cae5c5a30817d6fda92cefd5daa2e583d5e442a"
       },
       "original_sha256": "a0f58809705d54108fe41409bae70fbb8315a64e989aaf2afa04d5cfbb94f54e"
     },
     {
       "path": "FontsHD/OCRB.ttf",
       "operation": "modify",
-      "installed_sha256": "0b97bd598e2e10d75a6e71f1e59b688a6063a9b69c7f2083c2db76072fb51847",
+      "installed_sha256": "2ade2bac02c93caf429cf5763cae5c5a30817d6fda92cefd5daa2e583d5e442a",
       "source": {
         "kind": "copy",
         "path": "payload/FontsHD/OCRB.ttf",
-        "sha256": "0b97bd598e2e10d75a6e71f1e59b688a6063a9b69c7f2083c2db76072fb51847"
+        "sha256": "2ade2bac02c93caf429cf5763cae5c5a30817d6fda92cefd5daa2e583d5e442a"
       },
       "original_sha256": "a205aa9c752f95a47e6b9823b97917a12ca6dea4601257ca35df131dc4f2d294"
     },
@@ -206,15 +206,38 @@
       "original_sha256": "0839e312f16e86e22f5388313f49b810196ddf36fd3889011c43ce1e0e474747"
     },
     {
-      "path": "grim.en.tab",
-      "operation": "modify",
-      "installed_sha256": "1ccfa643b614759d240b677a11b5806ef721252cc8bfa32f71520696ebbade05",
+      "path": "grim.he.tab",
+      "operation": "create",
+      "installed_sha256": "c9dada640e26274f4d8d0c1847dfb58ba5b7700d9ef3f0137881f0ba2328a2da",
       "source": {
         "kind": "copy",
-        "path": "payload/grim.en.tab",
-        "sha256": "1ccfa643b614759d240b677a11b5806ef721252cc8bfa32f71520696ebbade05"
-      },
-      "original_sha256": "e2bc894fb4ef6cd2901befc052fa57f2741bdc25ccf724df51908ea8f1c98d4b"
+        "path": "payload/grim.he.tab",
+        "sha256": "c9dada640e26274f4d8d0c1847dfb58ba5b7700d9ef3f0137881f0ba2328a2da"
+      }
+    },
+    {
+      "path": "GrimFandango.exe",
+      "operation": "modify",
+      "original_sha256": "b8a3a2e97cdcf8aa8dd345889cf380d44e2ff33cfc69737acf0d284cd37c8a06",
+      "installed_sha256": "80014a6a3c876cf217078bb00df5e35bdb5e3f47df9cb5906d3033c9f0b7fdb1",
+      "source": {
+        "kind": "reconstruct",
+        "input": "GrimFandango.exe",
+        "path": "recipes/GrimFandango.exe.json",
+        "sha256": "6d9278d419b9cbe7fc21ca38cf440d8d290a972fdf1b028234b69faad9b06585"
+      }
+    },
+    {
+      "path": "DATA000.LAB",
+      "operation": "modify",
+      "original_sha256": "d51f4e2af98ea8c3e14efb7b85aa12878940bcd1445fba59e8c10902e67eeb49",
+      "installed_sha256": "910032593a82251c6975c38ad62b03d8c7184e549ebba09876fdd43de3bf9e69",
+      "source": {
+        "kind": "reconstruct",
+        "input": "DATA000.LAB",
+        "path": "recipes/DATA000.LAB.json",
+        "sha256": "83ad0738511edb5f0ba447959447203b24d577c44367605ea1e62d05a9266119"
+      }
     }
   ]
 }

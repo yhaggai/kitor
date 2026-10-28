@@ -12,7 +12,7 @@
   "reused_rows": 7727,
   "direct_id_rows": 7704,
   "menu_alias_rows": 23,
-  "english_fallback_rows": 1912,
+  "english_fallback_rows": 1568,
   "platforms": {
     "windows": "GOG native edition, original file hashes required",
     "osx": "not packaged or tested natively"
@@ -21,11 +21,25 @@
     "prototype_native_hebrew_letters": "user confirmed",
     "prototype_menu_visibility_after_crlf_fix": "user confirmed",
     "packaged_noto_font_gameplay": "not yet visually verified",
-    "selective_lifecycle_roundtrip": "passed on Windows with disposable copies of original affected files"
+    "selective_lifecycle_roundtrip": "passed on Windows with disposable copies of original affected files",
+    "movie_subtitles": "User reported movies working; all 401 native script references covered",
+    "seventh_language": "User confirmed Hebrew option appears and works, 2026-10-27; native launch and reversible lifecycle verified"
   },
   "blockers": [
     "Full-game dialogue and RTL wrapping not verified",
     "Native macOS package outstanding",
     "Public redistribution terms for upstream translation not established; local candidate only"
-  ]
+  ],
+  "translated_rows": 8072,
+  "new_movie_rows": 345,
+  "movie_entries_covered": 401,
+  "movie_translation_credit": "AI-assisted Hebrew additions, draft; original patch wording preserved where present",
+  "native_language_slot": {
+    "index": 6,
+    "label": "Hebrew",
+    "table": "grim.he.tab",
+    "original_languages_preserved": true,
+    "speech": "English",
+    "method": "Hash-guarded executable data references and menu_prefs.lua reconstruction recipes"
+  }
 }

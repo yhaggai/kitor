@@ -38,29 +38,46 @@ def extract_speech(archive, member='localization/en.speech.info'):
     raise ValueError(f'Resource missing: {member}')
 
 
+def speech_layout(data):
+    count, = struct.unpack_from('<I', data)
+    # The native Windows build uses 32-bit counts/pointers; macOS uses 64-bit.
+    wide = struct.unpack_from('<I', data, 4)[0] == 0
+    return count, 8 if wide else 4, 40 if wide else 32, '<Q' if wide else '<I'
+
+
 def speech_rows(data):
-    count, = struct.unpack_from('<Q', data)
-    assert 8 + count * 40 <= len(data)
+    count, header, stride, pointer = speech_layout(data)
+    assert header + count * stride <= len(data)
     rows = []
     for i in range(count):
-        base = 8 + i * 40
+        base = header + i * stride
         strings = []
-        for field in (24, 32):
+        for field in (24, stride - struct.calcsize(pointer)):
             ptr = base + field
-            start = ptr + struct.unpack_from('<Q', data, ptr)[0]
-            assert 8 + count * 40 <= start < len(data)
+            start = ptr + struct.unpack_from(pointer, data, ptr)[0]
+            assert header + count * stride <= start < len(data)
             strings.append(data[start:data.index(0, start)].decode('utf-8', errors='surrogateescape'))
         rows.append({'id': strings[0], 'text': strings[1]})
     return rows
 
 
 def rebuild(data, rows):
-    result = bytearray(data[:8 + len(rows) * 40])
+    count, header, stride, pointer = speech_layout(data)
+    assert len(rows) == count
+    original_end = header + count * stride
+    for i in range(count):
+        for field in (24, stride - struct.calcsize(pointer)):
+            ptr = header + i * stride + field
+            start = ptr + struct.unpack_from(pointer, data, ptr)[0]
+            original_end = max(original_end, data.index(0, start) + 1)
+    result = bytearray(data[:header + count * stride])
     for i, row in enumerate(rows):
-        for field, key in ((24, 'id'), (32, 'text')):
-            ptr = 8 + i * 40 + field
-            struct.pack_into('<Q', result, ptr, len(result) - ptr)
+        for field, key in ((24, 'id'), (stride - struct.calcsize(pointer), 'text')):
+            ptr = header + i * stride + field
+            struct.pack_into(pointer, result, ptr, len(result) - ptr)
             result.extend(row[key].encode('utf-8', errors='surrogateescape') + b'\0')
+    # Windows ships unused trailing strings; retain them without interpreting them.
+    result.extend(data[original_end:])
     return bytes(result)
 
 
@@ -126,7 +143,8 @@ def main():
     assert speech_rows(built) == candidate
     # All non-pointer metadata, IDs, and all untranslated entries stay intact.
     for i in range(len(rows)):
-        base = 8 + i * 40
+        _, header, stride, _ = speech_layout(data)
+        base = header + i * stride
         assert built[base:base+24] == data[base:base+24]
     report = {
         'status': 'offline dialogue candidate; not installed or rendering-tested',

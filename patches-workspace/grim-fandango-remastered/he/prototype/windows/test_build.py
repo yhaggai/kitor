@@ -1,5 +1,6 @@
 """Windows builder integration regression using a tiny synthetic game archive."""
 import os
+import json
 from pathlib import Path
 import struct
 import subprocess
@@ -8,10 +9,42 @@ import tempfile
 import unittest
 
 from fontTools.ttLib import TTFont
-from build import menu_aliases
+from build import menu_aliases, movie_translations
+from native_language import executable_operations, archive_operations, materialize
+import pefile
 
 
 class BuildTests(unittest.TestCase):
+    @unittest.skipUnless(os.environ.get('KITOR_GRIM_APP'), 'Set KITOR_GRIM_APP for native source checks')
+    def test_seventh_language_binary_layout(self):
+        root = Path(os.environ['KITOR_GRIM_APP'])
+        original = (root / 'GrimFandango.exe').read_bytes()
+        updated = materialize(original, executable_operations(original))
+        pe = pefile.PE(data=updated)
+        section = pe.sections[-1]
+        self.assertEqual(section.Name.rstrip(b'\0'), b'.hebrew')
+        self.assertFalse(section.Characteristics & 0x20000000)  # No executable section.
+        names = section.get_data()[:140]
+        self.assertEqual([names[i:i+20].rstrip(b'\0') for i in range(0, 140, 20)],
+                         [f'grim.{language}.tab'.encode() for language in ['en', 'de', 'es', 'fr', 'it', 'pt', 'he']])
+        self.assertEqual(pe.get_data(0x575ae4 - pe.OPTIONAL_HEADER.ImageBase, 4), struct.pack('<f', 7))
+        archive = (root / 'DATA000.LAB').read_bytes()
+        result = materialize(archive, archive_operations(archive))
+        # All preexisting resource bytes stay in place except the selected directory entry.
+        self.assertGreater(len(result), len(archive))
+        with self.assertRaisesRegex(ValueError, 'Unsupported native executable'):
+            executable_operations(original[:-1])
+
+    def test_movie_subtitles_are_source_guarded(self):
+        source = 'intma01\tSorry for the wait, Mr. Flores.\r\n'
+        supplement = json.loads(Path(__file__).with_name('movie-he.json').read_text(encoding='utf-8'))
+        self.assertEqual(len(supplement), 401)
+        self.assertEqual(movie_translations(source, supplement)['intma01'], 'סליחה על ההמתנה, מר פלורס.')
+        with self.assertRaisesRegex(ValueError, 'source changed'):
+            movie_translations(source.replace('Mr. Flores.', 'someone else.'), supplement)
+        for entry in supplement.values():
+            self.assertTrue(any('\u0590' <= c <= '\u05ff' for c in entry['he']))
+
     def test_menu_reuse_is_unambiguous_and_does_not_remap_dialogue(self):
         source = ('sytx240\t&Options\r\nsytx249\tOptions\r\n'
                   'sytx935\tOPTIONS\r\nutxt010\tOptions\r\n'

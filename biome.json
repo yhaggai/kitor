@@ -14,6 +14,7 @@
       "!!**/target",
       "!!**/*.lock",
       "!!patches-workspace/**/payload",
+      "!!patches-workspace/**/recipes",
       "!!patches-workspace/**/upstream"
     ]
   },

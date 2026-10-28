@@ -5,7 +5,7 @@ import json
 from pathlib import Path
 import re
 
-from map_dialogue import digest, extract_speech, rebuild, speech_rows
+from map_dialogue import digest, extract_speech, rebuild, speech_rows, speech_layout
 
 
 def normalized(text):
@@ -136,7 +136,8 @@ def main():
     assert speech_rows(built) == candidate
     for i, row in enumerate(rows):
         assert row['id'] == candidate[i]['id']
-        base = 8 + i * 40
+        _, header, stride, _ = speech_layout(data)
+        base = header + i * stride
         assert data[base:base+24] == built[base:base+24]
         if i not in accepted:
             assert candidate[i] == initial_rows[i]

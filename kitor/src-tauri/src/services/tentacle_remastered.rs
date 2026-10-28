@@ -6,7 +6,12 @@ pub fn stage(destination: &Path, language: &str, version: &str) -> Result<(), St
         return Err("Unknown Remastered patch version".into());
     }
     for (name,bytes) in [
-  ("patch.json",include_bytes!("../../../../patches-workspace/day-of-the-tentacle-remastered/he/patch.osx.candidate.json").as_slice()),
+  ("patch.json",if cfg!(target_os = "windows") {
+      include_bytes!("../../../../patches-workspace/day-of-the-tentacle-remastered/he/patch.windows.candidate.json").as_slice()
+  } else {
+      include_bytes!("../../../../patches-workspace/day-of-the-tentacle-remastered/he/patch.osx.candidate.json").as_slice()
+  }),
+  ("recipes/windows-tenta.cle.json",include_bytes!("../../../../patches-workspace/day-of-the-tentacle-remastered/he/recipes/windows-tenta.cle.json").as_slice()),
   ("recipes/tenta.cle.json",include_bytes!("../../../../patches-workspace/day-of-the-tentacle-remastered/he/recipes/tenta.cle.json").as_slice()),
   ("recipes/signature-0.json",include_bytes!("../../../../patches-workspace/day-of-the-tentacle-remastered/he/recipes/signature-0.json").as_slice()),
   ("recipes/signature-1.json",include_bytes!("../../../../patches-workspace/day-of-the-tentacle-remastered/he/recipes/signature-1.json").as_slice()),

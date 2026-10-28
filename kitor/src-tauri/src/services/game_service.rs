@@ -376,6 +376,10 @@ pub fn detect_game_in_folder(path: &Path) -> Result<Option<DetectedGameInfo>, St
         }
         for candidate in &candidates {
             let mut data_paths = vec![candidate.clone()];
+            // GOG's Windows installer nests the data below its launcher folder.
+            if game_def.scummvm_id == "toonstruck" {
+                data_paths.push(candidate.join("Toonstruck"));
+            }
             if let Some(subdir) = &game_def.detection_patterns.detection_subdirectory {
                 data_paths.push(candidate.join(subdir));
             }
@@ -632,6 +636,31 @@ mod tests {
         assert!(detect_game_in_folder(&fixture.0).unwrap().is_none());
     }
 
+    #[tokio::test]
+    async fn grim_remastered_detection_and_scan() {
+        let fixture = Fixture::new();
+        let root = fixture.0.join("Games/Grim Fandango Remastered");
+        std::fs::create_dir_all(&root).unwrap();
+        assert!(detect_game_in_folder(&root).unwrap().is_none());
+        // A directory with the executable's name must not count as a game.
+        let executable = root.join("grimfandango.EXE");
+        std::fs::create_dir(&executable).unwrap();
+        assert!(detect_game_in_folder(&root).unwrap().is_none());
+        std::fs::remove_dir(&executable).unwrap();
+        std::fs::write(&executable, b"fixture").unwrap();
+        let found = detect_game_for_id(&root, "grim-fandango-remastered").unwrap().unwrap();
+        assert_eq!(PathBuf::from(found.install_path), root);
+        assert!(found.available_patches_count > 0);
+        let db = crate::db::init_db(&fixture.0.join("database")).await.unwrap();
+        for selected in [root.parent().unwrap(), root.as_path()] {
+            scan_directory(&db, selected.to_str().unwrap(), fixture.0.clone()).await.unwrap();
+        }
+        let games = Game::find().all(&db).await.unwrap();
+        assert_eq!(games.len(), 1);
+        assert_eq!(games[0].scummvm_id, "grim-fandango-remastered");
+        assert_eq!(Path::new(&games[0].install_path), root);
+    }
+
     #[test]
     fn detects_toonstruck_data_and_gog_bundle() {
         let fixture = Fixture::new();
@@ -650,6 +679,23 @@ mod tests {
             assert_eq!(detected.scummvm_id, "toonstruck");
             assert_eq!(PathBuf::from(detected.install_path), data);
         }
+    }
+
+    #[tokio::test]
+    async fn scans_toonstruck_gog_windows_library() {
+        let fixture = Fixture::new();
+        let root = fixture.0.join("Games/Toonstruck");
+        let data = root.join("Toonstruck");
+        std::fs::create_dir_all(data.join("MISC")).unwrap();
+        for name in ["TOONFONT.CAF", "TOONSTRK.RES"] {
+            std::fs::write(data.join("MISC").join(name), b"fixture").unwrap();
+        }
+        assert_eq!(PathBuf::from(detect_game_in_folder(&root).unwrap().unwrap().install_path), data);
+        let db = crate::db::init_db(&fixture.0.join("database")).await.unwrap();
+        let games = scan_directory(&db, root.parent().unwrap().to_str().unwrap(), fixture.0.clone()).await.unwrap();
+        assert_eq!(games.len(), 1);
+        assert_eq!(games[0].scummvm_id, "toonstruck");
+        assert_eq!(Path::new(&games[0].install_path), data);
     }
 
     #[tokio::test]
@@ -725,6 +771,29 @@ mod tests {
         let db = crate::db::init_db(&fixture.0.join("database")).await.unwrap();
         for _ in 0..2 { scan_directory(&db, root.to_str().unwrap(), fixture.0.clone()).await.unwrap(); }
         assert_eq!(Game::find().all(&db).await.unwrap().len(), 2);
+    }
+
+    #[cfg(target_os = "windows")]
+    #[tokio::test]
+    async fn tentacle_windows_exposes_both_patches() {
+        let fixture = Fixture::new();
+        let root = fixture.0.join("DOTT");
+        std::fs::create_dir_all(&root).unwrap();
+        std::fs::write(root.join("Dott.exe"), b"fixture").unwrap();
+        std::fs::write(root.join("tenta.cle"),
+            [b"KAPL\0\0\x80?".as_slice(), &[0; 40]].concat()).unwrap();
+        let db = crate::db::init_db(&fixture.0.join("db")).await.unwrap();
+        for _ in 0..2 {
+            scan_directory(&db, root.to_str().unwrap(), fixture.0.clone()).await.unwrap();
+        }
+        let games = get_games_with_patches(&db, fixture.0.clone()).await.unwrap();
+        assert_eq!(games.len(), 2);
+        for id in ["tentacle", "day-of-the-tentacle-remastered"] {
+            let game = games.iter().find(|game| game.scummvm_id == id).unwrap();
+            assert!(game.has_available_patch);
+            assert_eq!(game.available_patches.len(), 1);
+            assert_eq!(game.requires_scummvm, id == "tentacle");
+        }
     }
 
     #[tokio::test]

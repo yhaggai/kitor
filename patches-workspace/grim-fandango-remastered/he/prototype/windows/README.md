@@ -1,3 +1,17 @@
+# Current native Windows candidate: 0.3
+
+The current package adds **Hebrew** as a seventh option under Options ג†’ Language. It uses `grim.he.tab`, preserves the original six tables, and uses English speech. Native executable and menu archive changes are distributed as hash-guarded reconstruction recipes. The running test copy is `runtime/game-native-v2`.
+
+Build the payload with `build.py --separate-language --resources payload` plus the existing game, patch, font, movie, and output arguments. Generate recipes with `native_language.py --game ORIGINAL_GAME --output NEW_RECIPE_DIRECTORY`, then pass `--native-recipes NEW_RECIPE_DIRECTORY --version 0.3.0-native-candidate` to `package_native.py`. Install through the lifecycle so both original binaries can be restored. `build.py` alone does not add the native menu choice.
+
+Four regression tests pass with `KITOR_GRIM_APP` set to the original game directory. The 0.3 lifecycle roundtrip verified all 21 file hashes and exact restoration; English remained untouched. Native startup succeeded. The user confirmed the new Hebrew language option works.
+
+The following notes describe earlier prototypes, including the English-slot and ScummVM experiments; use the native candidate above for current work.
+
+---
+
+Current movie update (0.2.0-native-candidate): all 401 native cutscene subtitle references are covered, with 345 new AI-assisted Hebrew lines and 56 preserved original translations. Movie timings are unchanged. The historical 0.1 test notes below predate movie coverage.
+
 # Grim Fandango Remastered Hebrew prototype
 
 Development handoff, 2026-10-26. This is an experimental Hebrew resource builder, not a released patch or Kitor registry entry. The user confirmed Hebrew letters and visible menu text in the native Windows game after the CRLF fix. Full dialogue layout and playthrough validation remain outstanding.

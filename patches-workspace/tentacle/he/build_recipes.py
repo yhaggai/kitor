@@ -9,7 +9,7 @@ from pathlib import Path
 ROOT=Path(__file__).resolve().parent
 
 def digest(b):return hashlib.sha256(b).hexdigest()
-def save(p,x):p.write_text(json.dumps(x,ensure_ascii=False,indent=2)+'\n')
+def save(p,x):p.write_text(json.dumps(x,ensure_ascii=False,indent=2)+'\n',encoding='utf-8',newline='\n')
 def members(a):
     assert a[:8]==b'KAPL\x00\x00\x80?','Requires KAPL 1.0'
     offsets=struct.unpack_from('<4I',a,8); sizes=struct.unpack_from('<4I',a,24)
@@ -75,8 +75,8 @@ def main():
                 b=bytes.fromhex(op['hex']) if 'hex' in op else a[op['offset']:op['offset']+op['length']]
                 length+=len(b);h.update(b)
             recipe={'schema_version':1,'input_sha256':archive_hash,'output_size':length,'operations':ops}
-            native=ROOT.parents[1]/'day-of-the-tentacle-remastered/he/patch.osx.candidate.json'
-            if args.platform=='osx' and native.exists():recipe['alternate_input_sha256']=[json.loads(native.read_text())['platforms']['osx']['files'][0]['installed_sha256']]
+            native=ROOT.parents[1]/f'day-of-the-tentacle-remastered/he/patch.{args.platform}.candidate.json'
+            if native.exists():recipe['alternate_input_sha256']=[json.loads(native.read_text())['platforms'][args.platform]['files'][0]['installed_sha256']]
             path=ROOT/'recipes'/f'{name if args.platform == 'osx' else 'windows-'+name}.json';save(path,recipe)
             outputs[name]={'recipe_sha256':digest(path.read_bytes()),'sha256':h.hexdigest(),'size':length}
         for ext in ['000','001']:

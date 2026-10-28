@@ -11,6 +11,7 @@ from pathlib import Path
 import plistlib
 import struct
 import subprocess
+import sys
 
 from PIL import Image, ImageDraw, ImageFont
 from map_dialogue import extract_speech, rebuild, speech_rows, digest
@@ -19,6 +20,9 @@ SLOTS = {chr(1488 + i): chr(65 + i) for i in range(27)}
 
 
 def visual(text):
+    if sys.platform == 'win32':
+        from bidi.algorithm import get_display
+        return '\n'.join(get_display(line, base_dir='R') for line in text.split('\n'))
     lib = ctypes.CDLL('/opt/homebrew/lib/libfribidi.dylib')
     u32 = ctypes.c_uint32
     lib.fribidi_log2vis.argtypes = [ctypes.POINTER(u32), ctypes.c_int,

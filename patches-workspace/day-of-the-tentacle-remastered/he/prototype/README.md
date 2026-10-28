@@ -1,5 +1,37 @@
 # Day of the Tentacle Remastered: Hebrew dialogue prototype
 
+## Windows candidate (2026-10-28)
+
+The Windows Steam archive now has a separate native recipe at
+`../patch.windows.candidate.json`. It contains 5,142 translated subtitles and
+348 item/person labels, with all 12,800 original glyphs preserved. The user
+confirmed the disposable Windows test build works. Broader gameplay review,
+remaining dialogue, menus, and dialogue choices are still outstanding.
+
+Windows speech uses a 4-byte count and 32-byte records with relative 32-bit
+pointers at offsets 24/28. UI uses a 4-byte count and pairs of 32-bit pointers.
+Unused trailing resource bytes are retained. Mac layouts remain supported.
+
+Rebuild using Python 3.12+, Pillow, python-bidi (Windows), and the upstream
+revisions below. Run `map_dialogue.py` and `align_dialogue.py` against the Windows
+`tenta.cle`; extract Classic strings with nutcracker and run `map_item_labels.py`
+as described below, also against the Windows resource. Then run:
+
+```sh
+python -X utf8 build_full_hebrew.py --source-windows "PATH/TO/GAME" --output generated/windows-v1 --font "C:/Windows/Fonts/arialbd.ttf" --item-labels generated/en.uitext.info.items
+python -X utf8 validate_full_hebrew.py --archive "PATH/TO/GAME/tenta.cle" --output generated/windows-v1
+python -X utf8 ../build_local_package.py "PATH/TO/GAME/tenta.cle" generated/windows-v1/game/tenta.cle --platform windows
+python -X utf8 -m unittest discover -s . -p "test_*.py"
+```
+
+Build both lifecycle harness binaries in release mode, then run
+`../validate_windows.py GAME_FOLDER HARNESS_BINARY_FOLDER`. It uses a temporary
+copy to verify native install/uninstall, Classic coexistence, and save preservation.
+Refresh the Classic recipes' alternate input hash and manifest recipe hashes when
+rebuilding the native recipe. The original installed Steam files are not modified
+by these build and validation commands. Local font/payload redistribution limits
+still apply.
+
 This is an offline mapping and resource-building prototype for the full remaster,
 not a ScummVM patch or an installable Kitor release. No Steam files are modified.
 

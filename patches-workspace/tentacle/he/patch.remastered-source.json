@@ -14,7 +14,7 @@
           "source": {
             "kind": "reconstruct",
             "path": "recipes/windows-tentacle.000.json",
-            "sha256": "c323f72ff469a0386d512fb33000dbdc47bcd9454cfa055ea9fbdae4e4e37ad9",
+            "sha256": "112e62d2043e440fbcf8e0669403ea9ab8a6554f003eba8058d2b2a7f09420a6",
             "input": "tenta.cle"
           }
         },
@@ -25,7 +25,7 @@
           "source": {
             "kind": "reconstruct",
             "path": "recipes/windows-tentacle.001.json",
-            "sha256": "09ab5632c98b8debcbedf52c9d6163640261a10f59611715df03e2f3b8da5087",
+            "sha256": "8c65923e67df93c5566c666c6678f963318d345292af0f2977c2fadea8c6af0f",
             "input": "tenta.cle"
           }
         },
@@ -36,7 +36,7 @@
           "source": {
             "kind": "reconstruct",
             "path": "recipes/windows-monster.so3.json",
-            "sha256": "f0cfc1ad4ae3b521883aad767becf298bb1f07355a7c40df3a564d8040e5fb84",
+            "sha256": "0ebeb5459d6b9408f3b7fbd560e0918c9b90e30cc8d1637c138eb07ad770e790",
             "input": "tenta.cle"
           }
         }

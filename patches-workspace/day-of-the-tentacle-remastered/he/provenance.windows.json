@@ -1,0 +1,23 @@
+{
+  "status": "resource_validated_user_runtime_confirmed",
+  "release_ready": false,
+  "version": "0.1-local-items-kitor1",
+  "source": "prototype/generated/windows-v1/full-manifest.json",
+  "input_sha256": "e50d476124ce1421441f8115d0b7cc07f3ed98714e37264cd31bdf67aea64841",
+  "installed_sha256": "9b84e69bddbd447622146d81fd51ba049166149be8b1131a8452ed8f5640f1fc",
+  "redistribution": "Local personal-use only. Prototype uses Arial glyphs; do not publish. Classic translation announcement also prohibits redistribution.",
+  "limitations": [
+    "579 dialogue records remain English including commentary",
+    "Menus and dialogue choices remain untranslated",
+    "English language only",
+    "Broader gameplay and long-subtitle review pending"
+  ],
+  "runtime": "Native remastered engine; never ScummVM",
+  "runtime_validation": "User confirmed Windows test build works on 2026-10-28.",
+  "resource_validation": {
+    "translated_subtitles": 5142,
+    "translated_item_labels": 348,
+    "verified_members": 162,
+    "preserved_original_glyphs": 12800
+  }
+}
