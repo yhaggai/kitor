@@ -49,7 +49,13 @@ def api(path):
 
 
 def release(tag):
-    return api(f"releases/tags/{tag}")
+    # The tag endpoint only returns published releases. List with authentication
+    # so uploads and finalization can also find the unpublished draft.
+    pages = json.loads(gh("api", f"repos/{REPO}/releases", "--paginate", "--slurp"))
+    matches = [item for page in pages for item in page if item["tag_name"] == tag]
+    if len(matches) != 1:
+        raise ValueError(f"Expected one accessible release for {tag}, found {len(matches)}")
+    return api(f"releases/{matches[0]['id']}")
 
 
 def filename(version, platform):

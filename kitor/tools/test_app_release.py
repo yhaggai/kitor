@@ -1,9 +1,31 @@
 import copy
+import json
 import unittest
+from unittest.mock import patch
+import app_release
 from app_release import PLATFORMS, REPO, filename, manifest_for, version_tuple
 
 
 class AppReleaseTests(unittest.TestCase):
+    def test_release_lookup_finds_draft_on_later_page_and_fetches_details(self):
+        draft = {"id": 42, "tag_name": "app-v0.2.0", "draft": True, "assets": []}
+        pages = [[{"id": 1, "tag_name": "patch-sq2-v1"}], [draft]]
+        with patch.object(app_release, "gh", return_value=json.dumps(pages)) as gh, \
+             patch.object(app_release, "api", return_value=draft) as api:
+            self.assertEqual(app_release.release("app-v0.2.0"), draft)
+        gh.assert_called_once_with("api", f"repos/{REPO}/releases", "--paginate", "--slurp")
+        api.assert_called_once_with("releases/42")
+
+    def test_release_lookup_rejects_missing_or_ambiguous_release(self):
+        item = {"id": 42, "tag_name": "app-v0.2.0"}
+        for pages in [[], [[]], [[item, item]]]:
+            with self.subTest(pages=pages), \
+                 patch.object(app_release, "gh", return_value=json.dumps(pages)), \
+                 patch.object(app_release, "api") as api:
+                with self.assertRaises(ValueError):
+                    app_release.release("app-v0.2.0")
+                api.assert_not_called()
+
     def setUp(self):
         self.release = {"tag_name": "app-v0.2.0", "prerelease": False, "assets": [], "body": "Release notes"}
         self.signatures = {}
