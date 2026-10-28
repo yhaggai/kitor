@@ -1043,6 +1043,138 @@
           "install_manifest": "patch.json"
         }
       ]
+    },
+    {
+      "scummvm_id": "grim-fandango-remastered",
+      "title": "Grim Fandango Remastered",
+      "platforms": {
+        "windows": true,
+        "osx": false,
+        "linux": false
+      },
+      "gog": {
+        "id": 1207667183,
+        "slug": "grim_fandango_remastered",
+        "title": "Grim Fandango Remastered",
+        "installers": []
+      },
+      "detection_patterns": {
+        "unique_files": ["GrimFandango.exe"],
+        "file_patterns": []
+      },
+      "launch_config": {
+        "launcher": "native",
+        "args": []
+      },
+      "patches": [
+        {
+          "language": "he",
+          "version": "0.3.0-native-candidate",
+          "author": "Niv Bar and Shani Roz; Kitor native adaptation",
+          "download_url": "bundled://grim-fandango-remastered/he",
+          "source_type": "bundled",
+          "checksum": null,
+          "file_size": null,
+          "description": "Experimental native Windows Hebrew patch for the hash-verified GOG edition. Adds Hebrew as a seventh language; select Hebrew and enable subtitles. Keeps all six original languages and English speech. Includes 401 movie subtitle entries. Requires the supported original executable and archive.",
+          "filename": "grim-fandango-remastered-he-0.3.0-native-candidate-windows.zip",
+          "install_manifest": "patch.json",
+          "post_install_script": null
+        }
+      ]
+    },
+    {
+      "scummvm_id": "monkey-se-native",
+      "steam_app_id": 32360,
+      "title": "The Secret of Monkey Island: Special Edition (Native Remastered)",
+      "cover_url": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/monkey-se/b9d8b502a92e.jpg",
+      "platforms": {
+        "windows": true,
+        "osx": false,
+        "linux": false
+      },
+      "gog": {
+        "id": 1207666253,
+        "slug": "the_secret_of_monkey_island_special_edition",
+        "title": "The Secret of Monkey Island™: Special Edition",
+        "installers": [
+          {
+            "id": "",
+            "name": "The Secret of Monkey Island™: Special Edition",
+            "path": "https://www.gog.com/downloads/the_secret_of_monkey_island_special_edition/en1installer0"
+          }
+        ]
+      },
+      "detection_patterns": {
+        "unique_files": ["Monkey1.pak", "Monkey.exe", "MISE.exe"],
+        "file_patterns": ["*.pak"]
+      },
+      "launch_config": {
+        "launcher": "native",
+        "args": []
+      },
+      "purchase_guide": "monkey-se-native.md",
+      "patches": [
+        {
+          "language": "he",
+          "version": "0.2.0-native-candidate",
+          "author": "AdventureBrew; native adaptation and menu translation: Kitor",
+          "download_url": "bundled://monkey-se-native/he",
+          "source_type": "bundled",
+          "checksum": null,
+          "file_size": null,
+          "filename": "monkey-se-native-he.zip",
+          "post_install_script": null,
+          "install_manifest": "patch.json",
+          "description": "Native Windows Hebrew candidate using the classic AdventureBrew dialogue and new Hebrew menus. Select Hebrew (replaces French). Unmatched or conflicting dialogue stays English. Hebrew subtitles and bitmap fonts are included for the F1 classic-mode toggle; unmatched lines remain English. Full-game and RTL wrapping validation are incomplete. Requires a supported original edition; installation is reversible. Steam must be running for Monkey Island 2."
+        }
+      ]
+    },
+    {
+      "scummvm_id": "monkey2-se-native",
+      "steam_app_id": 32460,
+      "title": "Monkey Island 2: LeChuck's Revenge Special Edition (Native Remastered)",
+      "cover_url": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/monkey2-se/edc7e06d30c7.jpg",
+      "platforms": {
+        "windows": true,
+        "osx": false,
+        "linux": false
+      },
+      "gog": {
+        "id": 1425039730,
+        "slug": "monkey_island_2_special_edition_lechucks_revenge",
+        "title": "Monkey Island™ 2 Special Edition: LeChuck's Revenge™",
+        "installers": [
+          {
+            "id": "",
+            "name": "Monkey Island™ 2 Special Edition: LeChuck's Revenge™",
+            "path": "https://www.gog.com/downloads/monkey_island_2_special_edition_lechucks_revenge/en1installer0"
+          }
+        ]
+      },
+      "detection_patterns": {
+        "unique_files": ["Monkey2.pak", "Monkey2.exe"],
+        "file_patterns": ["*.pak"]
+      },
+      "launch_config": {
+        "launcher": "native",
+        "args": []
+      },
+      "purchase_guide": "monkey2-se-native.md",
+      "patches": [
+        {
+          "language": "he",
+          "version": "0.2.0-native-candidate",
+          "author": "AdventureBrew; native adaptation and menu translation: Kitor",
+          "download_url": "bundled://monkey2-se-native/he",
+          "source_type": "bundled",
+          "checksum": null,
+          "file_size": null,
+          "filename": "monkey2-se-native-he.zip",
+          "post_install_script": null,
+          "install_manifest": "patch.json",
+          "description": "Native Windows Hebrew candidate using the classic AdventureBrew dialogue and new Hebrew menus. Select French in Steam to load Hebrew. The original executable is preserved. Unmatched or conflicting dialogue stays English. Hebrew subtitles and bitmap fonts are included for the F1 classic-mode toggle; unmatched lines remain English. Full-game and RTL wrapping validation are incomplete. Requires a supported original edition; installation is reversible. Steam must be running for Monkey Island 2."
+        }
+      ]
     }
   ],
   "metadata": {

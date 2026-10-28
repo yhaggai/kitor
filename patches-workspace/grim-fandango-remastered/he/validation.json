@@ -1,0 +1,35 @@
+{
+  "nativeWindows": true,
+  "results": [
+    {
+      "details": {
+        "affectedFiles": 21,
+        "backedUpFiles": 19,
+        "copiedOriginalFiles": 19,
+        "editionValidation": "incomplete_or_absent_original_fingerprints",
+        "gameplay": "not_run",
+        "guardedFileCount": 19,
+        "selectiveRoundtrip": "passed",
+        "warning": "Pass means disposable install/uninstall roundtrip only; game ownership, complete edition compatibility, and gameplay are not verified"
+      },
+      "gameId": "grim-fandango-remastered",
+      "gameplay": "not_run",
+      "nativeWindows": true,
+      "status": "pass"
+    }
+  ],
+  "schemaVersion": 1,
+  "scope": "Disposable subset install/uninstall only; gameplay not tested",
+  "summary": {
+    "failed": 0,
+    "passed": 1,
+    "skipped": 0
+  },
+  "packageVersion": "0.3.0-native-candidate",
+  "movieSubtitleCoverage": 401,
+  "movieSubtitlePlayback": "user reported working before seventh-language update",
+  "bundledInstallUninstallRoundtrip": "passed 2026-10-27 for 0.3: all 21 files, English untouched",
+  "seventhLanguageMenu": "user confirmed Hebrew option appears and works, 2026-10-27",
+  "nativeLaunch": "PID 327284 started and responding",
+  "automaticHebrewLaunch": "passed fresh profile through production command builder; native current language read back as 6 (Hebrew)"
+}

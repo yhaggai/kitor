@@ -1,0 +1,3997 @@
+{
+  "game": 2,
+  "translated": 6657,
+  "total": 8725,
+  "skipped": [
+    {
+      "index": 21,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 40,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 41,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 42,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 43,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 45,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 47,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 48,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 49,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 50,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 51,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 88,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 89,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 90,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 91,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 92,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 93,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 94,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 101,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 102,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 103,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 104,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 107,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 198,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 280,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 311,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 312,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 314,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 315,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 326,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 327,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 328,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 329,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 391,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 393,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 394,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 395,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 403,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 404,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 405,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 406,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 414,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 415,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 416,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 417,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 423,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 424,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 425,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 426,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 428,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 429,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 430,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 438,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 439,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 450,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 451,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 452,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 453,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 464,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 465,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 466,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 467,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 468,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 469,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 470,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 472,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 473,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 474,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 475,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 490,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 495,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 496,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 497,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 498,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 507,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 508,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 511,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 520,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 521,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 524,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 525,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 526,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 527,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 685,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 686,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 687,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 688,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 689,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 690,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 691,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 692,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 693,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 694,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 695,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 696,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 697,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 701,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 714,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 715,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 717,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 721,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 727,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 751,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 752,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 754,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 775,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 776,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 777,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 778,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 779,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 780,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 812,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 813,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 846,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 860,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 862,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 864,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 865,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 866,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 867,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 1078,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 1118,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 1152,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 1221,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 1222,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 1223,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 1224,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 1225,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 1226,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 1227,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 1240,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 1241,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 1242,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 1253,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 1254,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 1255,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 1256,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 1257,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 1258,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 1259,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 1299,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 1300,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 1301,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 1302,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 1304,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 1305,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 1306,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 1307,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 1309,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 1310,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 1311,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 1312,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 1325,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 1326,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 1327,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 1328,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 1329,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 1330,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 1346,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 1347,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 1348,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 1364,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 1365,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 1366,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 1367,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 1370,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 1371,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 1372,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 1376,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 1377,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 1378,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 1387,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 1388,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 1389,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 1394,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 1395,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 1396,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 1404,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 1405,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 1406,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 1415,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 1416,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 1417,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 1419,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 1420,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 1421,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 1425,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 1426,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 1427,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 1446,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 1447,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 1448,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 1449,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 1450,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 1451,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 1452,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 1453,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 1454,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 1455,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 1456,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 1457,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 1458,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 1459,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 1460,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 1461,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 1582,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 1583,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 1584,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 1585,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 1586,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 1609,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 1610,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 1612,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 1613,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 1623,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 1624,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 1627,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 1628,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 1630,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 1640,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 1657,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 1658,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 1659,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 1660,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 1661,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 1662,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 1681,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 1736,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 1737,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 1738,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 1739,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 1746,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 1747,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 1748,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 1753,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 1754,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 1755,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 1756,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 1757,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 1760,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 1761,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 1762,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 1763,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 1764,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 1768,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 1769,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 1770,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 1771,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 1775,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 1776,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 1777,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 1778,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 1779,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 1781,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 1791,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 1792,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 1794,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 1795,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 1810,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 1811,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 1829,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 1879,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 1882,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 1887,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 1889,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 1945,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 1946,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 1947,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 1948,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 1949,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 1950,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 1951,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 1952,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 1953,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 1954,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 1955,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 1956,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 1957,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 1958,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 2022,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 2023,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 2024,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 2025,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 2057,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 2058,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 2059,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 2060,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 2061,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 2062,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 2063,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 2064,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 2118,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 2119,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 2120,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 2121,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 2188,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 2189,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 2190,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 2191,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 2192,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 2193,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 2194,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 2225,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 2226,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 2227,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 2228,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 2229,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 2230,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 2231,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 2232,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 2288,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 2289,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 2290,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 2291,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 2297,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 2298,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 2299,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 2300,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 2306,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 2307,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 2308,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 2316,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 2317,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 2318,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 2319,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 2320,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 2332,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 2333,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 2334,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 2335,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 2336,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 2341,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 2342,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 2350,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 2351,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 2355,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 2356,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 2357,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 2358,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 2359,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 2371,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 2372,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 2373,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 2381,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 2382,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 2390,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 2391,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 2392,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 2393,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 2412,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 2476,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 2477,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 2478,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 2480,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 2481,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 2482,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 2489,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 2490,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 2491,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 2492,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 2497,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 2498,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 2499,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 2500,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 2503,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 2504,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 2505,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 2506,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 2507,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 2511,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 2512,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 2513,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 2514,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 2515,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 2520,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 2521,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 2522,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 2523,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 2526,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 2527,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 2528,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 2535,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 2536,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 2537,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 2538,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 2543,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 2544,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 2545,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 2546,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 2547,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 2555,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 2556,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 2557,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 2683,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 2684,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 2685,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 2692,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 2693,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 2694,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 2698,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 2699,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 2700,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 2713,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 2714,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 2715,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 2717,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 2718,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 2721,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 2722,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 2943,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 2944,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 2945,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 2964,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 2965,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 2966,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 2968,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 2969,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 2970,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 2971,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 2973,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 2974,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 2975,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 2977,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 2978,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 2979,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 2980,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 2982,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 2983,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 2984,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 3055,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 3056,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 3057,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 3058,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 3059,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 3060,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 3061,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 3062,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 3063,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 3064,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 3065,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 3066,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 3067,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 3068,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 3069,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 3070,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 3071,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 3072,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 3073,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 3074,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 3299,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 3387,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 3388,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 3652,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 3653,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 3654,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 3655,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 3656,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 3657,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 3658,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 3659,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 3660,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 3702,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 3716,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 3717,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 3718,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 3719,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 3720,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 3721,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 3722,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 3723,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 3724,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 3725,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 3726,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 3727,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 3728,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 3729,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 3730,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 3731,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 3732,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 3733,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 3734,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 3735,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 3736,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 3737,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 3738,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 3739,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 3740,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 3741,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 3742,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 3743,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 3744,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 3745,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 3746,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 3747,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 3748,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 3749,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 3750,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 3751,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 3752,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 3753,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 3754,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 3755,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 3756,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 3757,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 3758,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 3759,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 3760,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 3761,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 3762,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 3763,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 3764,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 3765,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 3766,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 3767,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 3768,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 3769,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 3770,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 3771,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 3772,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 3773,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 3774,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 3775,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 3776,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 3777,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 3778,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 3779,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 3780,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 3781,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 3797,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 3882,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 3883,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 3884,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 3885,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 3887,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 4212,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 4250,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 4251,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 4252,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 4253,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 4254,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 4255,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 4256,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 4257,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 4258,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 4259,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 4260,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 4261,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 4262,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 4283,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 4284,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 4289,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 4466,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 4479,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 4543,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 4545,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 4546,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 4547,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 4548,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 4550,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 4551,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 4552,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 4553,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 4560,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 4561,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 4562,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 4563,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 4564,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 4685,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 4686,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 4687,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 4688,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 4695,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 4696,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 4697,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 4698,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 4699,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 4971,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 5032,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 5033,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 5034,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 5035,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 5036,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 5037,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 5038,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 5039,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 5040,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 5041,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 5046,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 5047,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 5048,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 5050,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 5056,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 5057,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 5058,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 5059,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 5065,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 5066,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 5067,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 5069,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 5074,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 5075,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 5076,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 5077,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 5124,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 5125,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 5126,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 5127,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 5128,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 5129,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 5130,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 5131,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 5132,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 5153,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 5154,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 5158,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 5159,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 5160,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 5169,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 5170,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 5171,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 5172,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 5222,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 5223,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 5224,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 5225,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 5243,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 5244,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 5245,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 5246,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 5519,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 5521,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 5522,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 5523,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 5524,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 5525,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 5691,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 5693,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 5707,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 5708,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 5709,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 5711,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 5712,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 5713,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 5716,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 5717,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 5718,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 5757,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 5862,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 5863,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 5864,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 5865,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 5866,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 5867,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 5868,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 5869,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 5870,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 5871,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 5872,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 5873,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 5926,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 5973,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 5974,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 5975,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 5976,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 5977,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 5978,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 5979,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 5993,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 6020,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 6021,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 6022,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 6027,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 6112,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 6113,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 6114,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 6115,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 6116,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 6117,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 6118,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 6121,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 6124,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 6126,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 6127,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 6128,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 6129,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 6141,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 6142,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 6143,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 6144,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 6145,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 6174,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 6175,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 6176,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 6177,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 6180,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 6181,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 6182,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 6183,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 6184,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 6411,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 6660,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 6661,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 6662,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 6667,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 6668,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 6671,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 6673,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 6677,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 6838,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 6839,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 6840,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 6841,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 6842,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 6843,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 6844,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 6845,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 6846,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 6847,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 6848,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 6849,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 6850,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 6851,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 6852,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 6853,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 6854,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 6855,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 6856,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 6857,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 6858,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 6859,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 6860,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 6861,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 6862,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 6863,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 6864,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 6865,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 6866,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 6867,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 6868,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 6869,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 6870,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 6871,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 6872,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 6873,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 6874,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 6875,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 6876,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 6877,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 6878,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 6879,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 6880,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 6881,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 6882,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 6883,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 6884,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 6885,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 6886,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 6887,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 6999,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 7011,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 7138,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 7155,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 7162,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 7165,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 7167,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 7171,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 7174,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 7177,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 7182,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 7190,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 7192,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 7194,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 7198,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 7207,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 7209,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 7219,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 7221,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 7262,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 7263,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 7264,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 7265,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 7293,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 7294,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 7295,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 7296,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 7310,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 7311,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 7312,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 7313,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 7397,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 7410,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 7411,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 7412,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 7491,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 7492,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 7493,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 7494,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 7528,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 7529,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 7530,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 7531,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 7532,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 7533,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 7534,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 7535,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 7536,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 7544,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 7549,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 7550,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 7551,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 7552,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 7553,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 7554,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 7555,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 7556,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 7557,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 7558,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 7559,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 7560,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 7561,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 7562,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 7563,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 7564,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 7565,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 7566,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 7567,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 7568,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 7569,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 7570,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 7571,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 7572,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 7573,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 7574,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 7620,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 7621,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 7622,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 7625,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 7626,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 7627,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 7628,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 7629,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 7630,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 7634,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 7635,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 7636,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 7637,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 7647,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 7648,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 7660,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 7661,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 7662,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 7663,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 7679,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 7680,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 7681,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 7682,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 7683,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 7684,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 7685,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 7686,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 7687,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 7688,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 7689,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 7690,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 7691,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 7692,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 7693,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 7694,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 7695,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 7696,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 7697,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 7698,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 7699,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 7700,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 7701,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 7702,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 7703,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 7704,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 7705,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 7706,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 7707,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 7708,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 7709,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 7710,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 7711,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 7712,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 7713,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 7714,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 7715,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 7716,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 7717,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 7718,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 7719,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 7720,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 7721,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 7722,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 7723,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 7724,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 7725,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 7726,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 7727,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 7729,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 7730,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 7731,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 7732,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 7733,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 7734,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 7735,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 7736,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 7737,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 7738,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 7739,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 7740,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 7741,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 7742,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 7743,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 7744,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 7745,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 7746,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 7747,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 7748,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 7749,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 7750,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 7751,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 7752,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 7753,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 7754,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 7755,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 7756,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 7757,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 7799,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 8066,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 8067,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 8069,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 8095,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 8096,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 8097,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 8098,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 8117,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 8118,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 8119,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 8120,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 8125,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 8128,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 8129,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 8130,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 8136,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 8137,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 8138,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 8155,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 8156,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 8157,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 8158,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 8178,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 8179,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 8180,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 8182,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 8183,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 8184,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 8185,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 8190,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 8191,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 8192,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 8209,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 8210,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 8211,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 8217,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 8218,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 8219,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 8220,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 8229,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 8230,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 8231,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 8311,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 8314,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 8316,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 8318,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 8321,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 8323,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 8325,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 8328,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 8330,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 8332,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 8334,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 8340,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 8341,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 8342,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 8343,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 8344,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 8345,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 8346,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 8347,
+      "reason": "Unresolved source encoding/control sequence"
+    },
+    {
+      "index": 8395,
+      "reason": "Unresolved source encoding/control sequence"
+    }
+  ],
+  "fonts": 97,
+  "runtime": "not_tested",
+  "original_sha256": "64d4c0b71401c60654baea19adb50d726adc7057092dbaf54ee1b6c135a8e0c7",
+  "installed_sha256": "2da22b8b3b101b293fbbc6950d48af15bdfde6993568cd5e19c1fdc1357a2b0e",
+  "limitations": [
+    "Unmatched dialogue and some interface text remain English",
+    "Full-game playback and RTL paragraph wrapping are not certified",
+    "Existing saves can retain old script positions"
+  ],
+  "classic": {
+    "game": 2,
+    "classic_strings": 7945,
+    "translated": 4377,
+    "native_keys_updated": 6996,
+    "font_ids": [1, 2, 3, 4, 5, 6, 7, 8],
+    "relocation_roundtrip": "passed",
+    "runtime": "Opening-scene F1 transitions and speech confirmed by user; MI1 both characters confirmed after repeated-text correction. Additional pause/spacing normalization passed structural checks."
+  }
+}

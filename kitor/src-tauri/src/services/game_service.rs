@@ -376,6 +376,10 @@ pub fn detect_game_in_folder(path: &Path) -> Result<Option<DetectedGameInfo>, St
         }
         for candidate in &candidates {
             let mut data_paths = vec![candidate.clone()];
+            // GOG's Windows installer nests the data below its launcher folder.
+            if game_def.scummvm_id == "toonstruck" {
+                data_paths.push(candidate.join("Toonstruck"));
+            }
             if let Some(subdir) = &game_def.detection_patterns.detection_subdirectory {
                 data_paths.push(candidate.join(subdir));
             }
@@ -410,6 +414,14 @@ pub fn detect_game_in_folder(path: &Path) -> Result<Option<DetectedGameInfo>, St
 }
 
 pub fn detect_game_for_id(path: &Path, id: &str) -> Result<Option<DetectedGameInfo>, String> {
+    if super::monkey_native::supported(id) {
+        let registry = registry_service::load_registry()?;
+        return Ok(super::monkey_native::detect(path, id).and_then(|root|
+            registry.games.into_iter().find(|g|g.scummvm_id == id).map(|g| DetectedGameInfo {
+                install_path: root.to_string_lossy().into_owned(), scummvm_id: g.scummvm_id,
+                title: g.title, available_patches_count: g.patches.len(),
+            })));
+    }
     if matches!(id, "tentacle" | "day-of-the-tentacle-remastered") {
         let root=if id=="tentacle" {super::tentacle::detect(path)} else {super::tentacle::detect_remastered(path)};
         let registry=registry_service::load_registry()?;
@@ -420,6 +432,12 @@ pub fn detect_game_for_id(path: &Path, id: &str) -> Result<Option<DetectedGameIn
     Ok(detect_game_in_folder(path)?.filter(|g|g.scummvm_id==id))
 }
 fn detect_library_games(path: &Path) -> Vec<GameInfo> {
+    for (native, classic) in [("monkey-se-native", "monkey-se"), ("monkey2-se-native", "monkey2-se")] {
+        if super::monkey_native::detect(path, native).is_some() {
+            return [classic, native].iter().filter_map(|id| detect_game_for_id(path, id).ok().flatten())
+                .map(|d|GameInfo {install_path:d.install_path,scummvm_id:d.scummvm_id,title:d.title}).collect();
+        }
+    }
     if super::tentacle::detect_remastered(path).is_some() {
         return ["tentacle", "day-of-the-tentacle-remastered"].iter().filter_map(|id|detect_game_for_id(path,id).ok().flatten()).map(|d|GameInfo {install_path:d.install_path,scummvm_id:d.scummvm_id,title:d.title}).collect();
     }
@@ -618,6 +636,31 @@ mod tests {
         assert!(detect_game_in_folder(&fixture.0).unwrap().is_none());
     }
 
+    #[tokio::test]
+    async fn grim_remastered_detection_and_scan() {
+        let fixture = Fixture::new();
+        let root = fixture.0.join("Games/Grim Fandango Remastered");
+        std::fs::create_dir_all(&root).unwrap();
+        assert!(detect_game_in_folder(&root).unwrap().is_none());
+        // A directory with the executable's name must not count as a game.
+        let executable = root.join("grimfandango.EXE");
+        std::fs::create_dir(&executable).unwrap();
+        assert!(detect_game_in_folder(&root).unwrap().is_none());
+        std::fs::remove_dir(&executable).unwrap();
+        std::fs::write(&executable, b"fixture").unwrap();
+        let found = detect_game_for_id(&root, "grim-fandango-remastered").unwrap().unwrap();
+        assert_eq!(PathBuf::from(found.install_path), root);
+        assert!(found.available_patches_count > 0);
+        let db = crate::db::init_db(&fixture.0.join("database")).await.unwrap();
+        for selected in [root.parent().unwrap(), root.as_path()] {
+            scan_directory(&db, selected.to_str().unwrap(), fixture.0.clone()).await.unwrap();
+        }
+        let games = Game::find().all(&db).await.unwrap();
+        assert_eq!(games.len(), 1);
+        assert_eq!(games[0].scummvm_id, "grim-fandango-remastered");
+        assert_eq!(Path::new(&games[0].install_path), root);
+    }
+
     #[test]
     fn detects_toonstruck_data_and_gog_bundle() {
         let fixture = Fixture::new();
@@ -636,6 +679,23 @@ mod tests {
             assert_eq!(detected.scummvm_id, "toonstruck");
             assert_eq!(PathBuf::from(detected.install_path), data);
         }
+    }
+
+    #[tokio::test]
+    async fn scans_toonstruck_gog_windows_library() {
+        let fixture = Fixture::new();
+        let root = fixture.0.join("Games/Toonstruck");
+        let data = root.join("Toonstruck");
+        std::fs::create_dir_all(data.join("MISC")).unwrap();
+        for name in ["TOONFONT.CAF", "TOONSTRK.RES"] {
+            std::fs::write(data.join("MISC").join(name), b"fixture").unwrap();
+        }
+        assert_eq!(PathBuf::from(detect_game_in_folder(&root).unwrap().unwrap().install_path), data);
+        let db = crate::db::init_db(&fixture.0.join("database")).await.unwrap();
+        let games = scan_directory(&db, root.parent().unwrap().to_str().unwrap(), fixture.0.clone()).await.unwrap();
+        assert_eq!(games.len(), 1);
+        assert_eq!(games[0].scummvm_id, "toonstruck");
+        assert_eq!(Path::new(&games[0].install_path), data);
     }
 
     #[tokio::test]

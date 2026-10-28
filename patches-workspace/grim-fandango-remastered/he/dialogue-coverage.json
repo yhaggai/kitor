@@ -1,0 +1,12 @@
+{
+  "version": "0.2.0-native-candidate",
+  "native_cutscene_script_references": 401,
+  "covered_movie_entries": 401,
+  "new_movie_translations": 345,
+  "preserved_movie_translations": 56,
+  "script_only_rows_added": ["rm3co14a"],
+  "total_translated_rows": 8072,
+  "remaining_english_rows": 1568,
+  "visual_movie_validation": "pending",
+  "gameplay_dialogue": "user confirmed Hebrew before movie update"
+}

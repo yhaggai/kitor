@@ -1,0 +1,57 @@
+{
+  "schema_version": 1,
+  "input_sha256": "d51f4e2af98ea8c3e14efb7b85aa12878940bcd1445fba59e8c10902e67eeb49",
+  "output_size": 30096904,
+  "operations": [
+    {
+      "offset": 0,
+      "length": 7972
+    },
+    {
+      "hex": "de13cb012a2a0000"
+    },
+    {
+      "offset": 7980,
+      "length": 30078130
+    },
+    {
+      "offset": 1447534,
+      "length": 1729
+    },
+    {
+      "hex": "000002ab"
+    },
+    {
+      "offset": 1449267,
+      "length": 406
+    },
+    {
+      "hex": "06"
+    },
+    {
+      "offset": 1449674,
+      "length": 48
+    },
+    {
+      "hex": "19291c0306084e54"
+    },
+    {
+      "offset": 1449722,
+      "length": 220
+    },
+    {
+      "hex": "004f"
+    },
+    {
+      "offset": 1449944,
+      "length": 1255
+    },
+    {
+      "hex": "530007b79a9d8d9a88ff"
+    },
+    {
+      "offset": 1451199,
+      "length": 7111
+    }
+  ]
+}

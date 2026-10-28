@@ -1,0 +1,19 @@
+{
+  "game": "monkey2-se-native",
+  "install_uninstall_roundtrip": "passed",
+  "reinstall": "passed",
+  "affected_files": 2,
+  "unrelated_save": "preserved",
+  "journal": "\\\\?\\C:\\Users\\haggai\\dev\\kitor\\dist\\monkey-native-tests\\recovery\\ca3aa89998a2b53718331bf4017281d0b1ddbc1ceca2cd9202347713078f925a\\install-s8XsqJ",
+  "runtime": "Opening scenes: user confirmed Hebrew in both graphics modes and speech; full-game coverage is incomplete",
+  "scope": "Owned game copies; not original installation",
+  "repair": "Restored original Monkey2.exe and removed its restored record from active journal; pre-repair journal preserved. Future packages modify archive only.",
+  "classic_update": {
+    "version": "0.2.0-native-candidate",
+    "update": "passed",
+    "installed_hashes": "passed",
+    "original_backups": "verified",
+    "unrelated_save": "preserved",
+    "runtime": "User confirmed Hebrew in both graphics modes and working speech in opening scenes; MI1 lookout rechecked"
+  }
+}

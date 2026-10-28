@@ -160,7 +160,14 @@ pub fn discover_locations() -> (Vec<PathBuf>, Vec<String>) {
             r"HKLM\SOFTWARE\GOG.com\Games",
             r"HKLM\SOFTWARE\WOW6432Node\GOG.com\Games",
         ] {
-            gog.extend(registry_paths(key, "path", true));
+            for game in registry_paths(key, "path", true) {
+                // Other games can remain installed in the same GOG library
+                // even when their individual registry entries are missing.
+                if let Some(library) = game.parent() {
+                    gog.push(library.to_path_buf());
+                }
+                gog.push(game);
+            }
         }
         if let Some(drive) = std::env::var_os("SystemDrive") {
             gog.push(PathBuf::from(format!(

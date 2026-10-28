@@ -1,6 +1,0 @@
-Hebrew translation: Niv Bar and Shani Roz, original AdventureBrew patch.
-Source: https://drive.google.com/file/d/1DGyW6h9Szx-rVCRmXkR6lBRGAgpVdQIf/view
-Native Remastered adaptation: Kitor. No new dialogue translation.
-Kitor Hebrew is a renamed, static, byte-remapped derivative of Noto Sans Hebrew.
-Font source: https://github.com/google/fonts/tree/main/ofl/notosanshebrew
-Font derivative remains under the included SIL OFL 1.1.

@@ -124,7 +124,7 @@ function App() {
         </header>
 
         <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
-          <TabsList className="grid w-full grid-cols-3 mb-6">
+          <TabsList className="sticky top-4 z-40 grid w-full grid-cols-3 mb-6 shadow-md">
             <TabsTrigger value="library">Library</TabsTrigger>
             <TabsTrigger value="patches">Patches</TabsTrigger>
             <TabsTrigger value="settings">Settings</TabsTrigger>

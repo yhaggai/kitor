@@ -1,5 +1,9 @@
 #[path = "../../../src-tauri/src/services/owlboy.rs"]
 pub mod owlboy;
+#[path = "../../../src-tauri/src/services/grim_remastered.rs"]
+pub mod grim_remastered;
+#[path = "../../../src-tauri/src/services/monkey_native.rs"]
+pub mod monkey_native;
 #[path = "../../../src-tauri/src/services/drifter_patch.rs"]
 pub mod drifter_patch;
 #[path = "../../../src-tauri/src/services/patch_lifecycle.rs"]

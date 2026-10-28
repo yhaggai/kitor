@@ -1,0 +1,59 @@
+{
+  "schema_version": 1,
+  "scummvm_id": "monkey-se-native",
+  "language": "he",
+  "version": "0.2.0-native-candidate",
+  "filename": "monkey-se-native-he.zip",
+  "platforms": { "windows": {} },
+  "files": [
+    {
+      "path": "Monkey1.pak",
+      "operation": "modify",
+      "original_sha256": "fb66e7b1646f8bcacc097d3ed3c30691495cdd60dcbab0317a9e27dfd7dffa51",
+      "installed_sha256": "21ff03aa55ccfae2734bb1badcca3c1c9276f7155c573412246d9669c2307503",
+      "source": {
+        "kind": "reconstruct",
+        "path": "recipes/0.json",
+        "sha256": "bcc14c68fa1c7547831c0c613be022913cd3b4f6af78621f70673501d1bf1415",
+        "input": "Monkey1.pak"
+      }
+    },
+    {
+      "path": "audio/speech.info",
+      "operation": "modify",
+      "original_sha256": "14dfac82c4f58796a8fbf22501be5c92dcbc4806065bd6a6e78e9d04f72b7096",
+      "installed_sha256": "3ec4f96a7ee8599e9bc7b22ac2ccad71eeb1abefc7a2560b672c7444887d032a",
+      "source": {
+        "kind": "reconstruct",
+        "path": "recipes/1.json",
+        "sha256": "8ae354cc3a7a5a88705f0f471dc546023f00607b350b2f1f23adb13cb76e1242",
+        "input": "audio/speech.info"
+      }
+    },
+    {
+      "path": "localization/uiText.info",
+      "operation": "modify",
+      "original_sha256": "a89b1f911b36825e8cceb8bb2d9ea4a26947506c7371553469d7679dec883584",
+      "installed_sha256": "cd111fb84b4d60ef6e2988e9942ca1796b27379049182180e52b3221e00b39dd",
+      "source": {
+        "kind": "reconstruct",
+        "path": "recipes/2.json",
+        "sha256": "9d48cb189003e67e4774f1faf9014c8d5b35e84371d3c38fa5efad09e66d5639",
+        "input": "localization/uiText.info"
+      }
+    },
+    {
+      "path": "MISE.exe",
+      "operation": "modify",
+      "original_sha256": "88877ee4ac62083861252962753bfd4266bcba90aeabd4743d2a7d36a70cc096",
+      "installed_sha256": "cac99e9fb9a023aff73914a994491797458d6151d5dfa8de1c661a8f4917b1c6",
+      "source": {
+        "kind": "reconstruct",
+        "path": "recipes/3.json",
+        "sha256": "d141409373e04219e7fbac46f8ca118cb8cd2b55b38fd10d5106680bccd1e2a5",
+        "input": "MISE.exe"
+      }
+    }
+  ],
+  "release_revision": 1
+}
