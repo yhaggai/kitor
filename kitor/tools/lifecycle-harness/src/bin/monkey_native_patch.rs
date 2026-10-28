@@ -15,7 +15,7 @@ fn run() -> Result<(), String> {
         "update" => {
             let staging = tempfile::tempdir().map_err(|e|e.to_string())?;
             patch::stage(staging.path(), &args[1], "he", patch::VERSION)?;
-            let journal = lifecycle::update(&storage, staging.path(), "patch.json", &root,
+            let journal = lifecycle::update(&storage, staging.path(), "patch.windows.candidate.json", &root,
                 &args[1], "he", patch::VERSION, lifecycle::platform())?;
             println!("{}", journal.display());
         },
@@ -23,7 +23,7 @@ fn run() -> Result<(), String> {
             patch::launch_command(&root, &args[1])?;
             let staging = tempfile::tempdir().map_err(|e|e.to_string())?;
             patch::stage(staging.path(), &args[1], "he", patch::VERSION)?;
-            let journal = lifecycle::install(staging.path(), "patch.json", &root, &storage,
+            let journal = lifecycle::install(staging.path(), "patch.windows.candidate.json", &root, &storage,
                 &args[1], "he", patch::VERSION, lifecycle::platform())?;
             println!("{}", journal.display());
         },

@@ -154,7 +154,7 @@ def main():
     manifest = dict(schema_version=1, release_revision=1 if a.classic else 0, scummvm_id=game_id, language='he',
                     version='0.2.0-native-candidate' if a.classic else '0.1.0-native-candidate', filename=f'{game_id}-he.zip',
                     platforms={'windows': {}}, files=files)
-    save(a.output / 'patch.json', manifest)
+    save(a.output / 'patch.windows.candidate.json', manifest)
     save(a.output / 'coverage.json', report)
     save(a.output / 'provenance.json', dict(release_ready=False, status='experimental',
          translation='https://github.com/adventurebrew/scummworks',

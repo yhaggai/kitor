@@ -21,7 +21,7 @@ for classic in ('monkey-se', 'monkey2-se'):
     item['patches'] = [dict(language='he', version='0.2.0-native-candidate',
         author='AdventureBrew; native adaptation and menu translation: Kitor',
         download_url=f'bundled://{native}/he', source_type='bundled', checksum=None,
-        file_size=None, filename=f'{native}-he.zip', post_install_script=None, install_manifest='patch.json',
+        file_size=None, filename=f'{native}-he.zip', post_install_script=None, install_manifest='patch.windows.candidate.json',
         description='Native Windows Hebrew candidate using the classic AdventureBrew dialogue and new Hebrew menus. The French slot contains Hebrew. F1 classic graphics include Hebrew subtitles and bitmap fonts. Unmatched or conflicting dialogue stays English. Full-game and RTL wrapping validation are incomplete. Requires a supported original edition; installation is reversible. Steam must be running for Monkey Island 2.')]
     new.append(item)
 if new:

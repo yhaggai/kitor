@@ -1,6 +1,6 @@
 # Monkey Island 2 native Hebrew package
 
-This directory follows the standard `<game-id>/he/` package layout: `patch.json`,
+This directory follows the standard `<game-id>/he/` package layout: `patch.windows.candidate.json`,
 `recipes/`, coverage, provenance, and validation results.
 
 The two Monkey Island editions share their [build tools](../../monkey-se-native/he/prototype/)
