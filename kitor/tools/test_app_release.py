@@ -50,6 +50,23 @@ class AppReleaseTests(unittest.TestCase):
         self.release["published_at"] = "2026-10-28T12:00:00Z"
         self.assertEqual(manifest_for(self.release, self.signatures)["pub_date"], self.release["published_at"])
 
+    def test_draft_temporary_urls_emit_final_tag_urls(self):
+        self.release["draft"] = True
+        for asset in self.release["assets"]:
+            asset["browser_download_url"] = asset["browser_download_url"].replace(
+                "app-v0.2.0", "untagged-03b4939939e7a2f46613"
+            )
+        manifest = manifest_for(self.release, self.signatures)
+        for platform, entry in manifest["platforms"].items():
+            self.assertEqual(entry["url"], f"https://github.com/{REPO}/releases/download/app-v0.2.0/{filename('0.2.0', platform)}")
+        self.release["draft"] = False
+        with self.assertRaises(ValueError):
+            manifest_for(self.release, self.signatures)
+        self.release["draft"] = True
+        self.release["assets"][0]["browser_download_url"] = "https://evil.example/app.exe"
+        with self.assertRaises(ValueError):
+            manifest_for(self.release, self.signatures)
+
     def test_missing_platform_or_signature_blocks_feed(self):
         incomplete = copy.deepcopy(self.release)
         incomplete["assets"].pop()

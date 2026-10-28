@@ -84,7 +84,13 @@ def manifest_for(data, signatures):
             raise ValueError("Missing update content or signature")
         # The bundled updater verifies the signature before installing any bytes.
         expected = f"https://github.com/{REPO}/releases/download/app-v{version}/{name}"
-        if asset["browser_download_url"] != expected:
+        # GitHub assigns temporary untagged URLs to draft release assets.
+        # Emit the final tag URL, while accepting only this repo's draft URL.
+        draft_url = data.get("draft") and re.fullmatch(
+            rf"https://github\.com/{re.escape(REPO)}/releases/download/untagged-[A-Za-z0-9]+/{re.escape(name)}",
+            asset["browser_download_url"],
+        )
+        if asset["browser_download_url"] != expected and not draft_url:
             raise ValueError("Unexpected app update download URL")
         platforms[platform] = {"url": expected, "signature": signature}
     result = {"version": version, "notes": data.get("body") or "", "platforms": platforms}
