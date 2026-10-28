@@ -384,23 +384,49 @@ pub async fn get_installed_patches(
     db: &DatabaseConnection,
     game_id: i32,
 ) -> Result<Vec<installed_patch::Model>, String> {
-    let mut installed = installed_patch::Entity::find()
-        .filter(installed_patch::Column::GameId.eq(game_id))
-        .all(db)
-        .await
+    let game = crate::services::game_service::get_game_by_id(db, game_id).await?
+        .ok_or("Game not found")?;
+    let target = if cfg!(target_os = "macos") && game.scummvm_id == "drifter" {
+        super::drifter_patch::macos_target(
+            &std::env::home_dir().ok_or("Cannot locate home directory")?,
+        )?
+    } else { PathBuf::from(&game.install_path) };
+    // Removing a game preserves its patch and recovery records. A rescan gives
+    // it a new game ID, so recover the association using the journal's exact
+    // installation identity rather than the title or a potentially reused ID.
+    let candidates = installed_patch::Entity::find()
+        .filter(installed_patch::Column::ScummvmId.eq(&game.scummvm_id))
+        .all(db).await
         .map_err(|e| format!("Failed to fetch installed patches: {}", e))?;
-    for row in &mut installed {
-        if let Some(path) = &row.backup_path {
-            // Preserve legacy or damaged records so the UI can report them.
-            if !Path::new(path).join("manifest.json").is_file() { continue; }
-            let (version, _, status, _) = patch_lifecycle::recover_installation(Path::new(path))?;
-            if status == "active" && row.version != version {
-                let mut model: installed_patch::ActiveModel = row.clone().into();
-                model.version = Set(version);
-                model.installed_date = Set(chrono::Utc::now().naive_utc());
-                *row = model.update(db).await.map_err(|e| format!("Translation is installed; database reconciliation failed: {e}"))?;
+    let mut installed = Vec::new();
+    for mut row in candidates {
+        let associated = row.game_id == game_id;
+        let Some(path) = row.backup_path.as_deref().map(Path::new)
+            .filter(|p| p.join("manifest.json").is_file()) else {
+                if associated { installed.push(row); }
+                continue;
+            };
+        match patch_lifecycle::matches_installation(path, &target, &game.scummvm_id) {
+            Ok(false) => continue,
+            // Preserve damaged records already associated with this game, but
+            // never guess which installation owns an unreadable orphan record.
+            Err(_) => {
+                if associated { installed.push(row); }
+                continue;
             }
+            Ok(true) => {}
         }
+        let (version, _, status, _) = patch_lifecycle::recover_installation(path)?;
+        if !associated && status != "active" { continue; }
+        if !associated || (status == "active" && row.version != version) {
+            let mut model: installed_patch::ActiveModel = row.clone().into();
+            model.game_id = Set(game_id);
+            model.version = Set(version);
+            model.status = Set(status);
+            row = model.update(db).await
+                .map_err(|e| format!("Translation is installed; database reconciliation failed: {e}"))?;
+        }
+        installed.push(row);
     }
     Ok(installed)
 }
@@ -613,6 +639,27 @@ mod restore_tests {
         assert_eq!(reconciled.len(), 1);
         assert_eq!(reconciled[0].id, installed.id);
         assert_eq!(reconciled[0].version, "test2");
+        // Removing tracking leaves recovery data on disk. Another copy of the
+        // same title must not inherit that patch, even if SQL reuses the ID.
+        crate::services::game_service::remove_game(&db, game.id).await.unwrap();
+        let other = root.join("other-copy");
+        std::fs::create_dir(&other).unwrap();
+        let other_game = crate::services::game_service::add_game_manually(&db,
+            "kyra1-cd".into(), "Other copy".into(), other.to_string_lossy().into_owned(), root.to_path_buf())
+            .await.unwrap();
+        assert!(get_installed_patches(&db, other_game.id).await.unwrap().is_empty());
+        crate::services::game_service::remove_game(&db, other_game.id).await.unwrap();
+        std::fs::write(data.join("KYRAGEM.PAK"), b"signature").unwrap();
+        let scanned = crate::services::game_service::scan_directory(&db, data.to_str().unwrap(), root.to_path_buf())
+            .await.unwrap();
+        let game = scanned.into_iter().find(|g| g.scummvm_id == "kyra1-cd").unwrap();
+        let library = crate::services::game_service::get_games_with_patches(&db, root.to_path_buf()).await.unwrap();
+        let patched = library.iter().find(|g| g.id == game.id).unwrap();
+        assert_eq!(patched.installed_patches.len(), 1);
+        assert_eq!(patched.installed_patches[0].id, installed.id);
+        assert_eq!(patched.installed_patches[0].version, "test2");
+        assert_eq!(get_installed_patches(&db, game.id).await.unwrap().len(), 1);
+
         std::fs::write(data.join("later.txt"), b"user file").unwrap();
         std::fs::write(data.join("GEMCUT.PAK"), b"another mod").unwrap();
         assert!(restore_backup(&db, installed.id).await.is_err());
