@@ -1,1 +1,14 @@
-{"schema_version":1,"input_sha256":"88877ee4ac62083861252962753bfd4266bcba90aeabd4743d2a7d36a70cc096","output_size":1007616,"operations":[{"offset":0,"length":953624},{"hex":"9c899a8092000000"},{"offset":953632,"length":56},{"hex":"3a83949b209c9a898780"},{"offset":32,"length":18},{"hex":"53656c657a696f6e61206c61"},{"offset":953728,"length":53888}]}
+{
+  "schema_version": 1,
+  "input_sha256": "88877ee4ac62083861252962753bfd4266bcba90aeabd4743d2a7d36a70cc096",
+  "output_size": 1007616,
+  "operations": [
+    { "offset": 0, "length": 953624 },
+    { "hex": "9c899a8092000000" },
+    { "offset": 953632, "length": 56 },
+    { "hex": "3a83949b209c9a898780" },
+    { "offset": 32, "length": 18 },
+    { "hex": "53656c657a696f6e61206c61" },
+    { "offset": 953728, "length": 53888 }
+  ]
+}

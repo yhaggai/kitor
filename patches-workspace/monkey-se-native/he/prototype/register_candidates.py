@@ -3,7 +3,7 @@ import copy
 import json
 from pathlib import Path
 
-root = Path(__file__).resolve().parents[3]
+root = Path(__file__).resolve().parents[4]
 path = root / 'kitor/patches/registry.json'
 text = path.read_text(encoding='utf-8')
 registry = json.loads(text)

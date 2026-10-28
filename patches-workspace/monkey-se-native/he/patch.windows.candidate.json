@@ -38,7 +38,7 @@
       "source": {
         "kind": "reconstruct",
         "path": "recipes/2.json",
-        "sha256": "9d48cb189003e67e4774f1faf9014c8d5b35e84371d3c38fa5efad09e66d5639",
+        "sha256": "14bbb257d73a68178ca9a6ef8da06dc3b65490c4acc8fca7993911461717d061",
         "input": "localization/uiText.info"
       }
     },
@@ -50,7 +50,7 @@
       "source": {
         "kind": "reconstruct",
         "path": "recipes/3.json",
-        "sha256": "d141409373e04219e7fbac46f8ca118cb8cd2b55b38fd10d5106680bccd1e2a5",
+        "sha256": "95177bdd41ce7689007925b0fa2595ffd6a9b77c40f7cfb11fc8dee89bb1496d",
         "input": "MISE.exe"
       }
     }

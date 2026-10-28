@@ -14,6 +14,8 @@ The actual Windows lifecycle passed a disposable install/uninstall roundtrip usi
 
 ## Package contents
 
+Build tools are under [prototype/windows](prototype/windows/README.md); the earlier macOS experiment remains under [prototype/macos](prototype/macos/README.md).
+
 The Hebrew text table, generated font aliases, font specifications, manifest, binary reconstruction recipes, and notices are shipped. No game executable, archive, movie, save, or proprietary Arial font is included. Kitor Hebrew is a renamed static derivative of Noto Sans Hebrew under the included SIL OFL 1.1. Translation credits and source are included in `licenses/CREDITS.txt`.
 
 Build the ZIP from the repository root:
@@ -26,6 +28,6 @@ This is a local experimental candidate, not a published release. macOS native pa
 
 Development integration check (2026-10-27): the bundled stage function passed a real install/uninstall byte-for-byte roundtrip on the separate game copy, was reinstalled, and launched through the same native command builder used by Kitor. The original installation remained unchanged. The Kitor Rust application passed cargo check; UI-driven installation was not exercised.
 
-Movie translations live in `../prototype/movie-he.json`, with per-line source hashes. The builder preserves original patch wording, validates English source lines before applying new Hebrew, and retains native movie timings. Video and audio are unchanged. Version 0.3 reconstructs the native executable with a seventh text-table slot and DATA000.LAB with the seventh menu choice, using hash-guarded recipes against local originals. No complete executable or archive is distributed.
+Movie translations live in `prototype/windows/movie-he.json`, with per-line source hashes. The builder preserves original patch wording, validates English source lines before applying new Hebrew, and retains native movie timings. Video and audio are unchanged. Version 0.3 reconstructs the native executable with a seventh text-table slot and DATA000.LAB with the seventh menu choice, using hash-guarded recipes against local originals. No complete executable or archive is distributed.
 
 Kitor native launch selects Hebrew in the native version-2 settings file before starting a patched game. The game has no language-index command-line argument. This preserves other settings and keeps a one-time `registry.sav.kitor-before-he` backup beside the settings file. Direct launches still use the last language selected in the game menu. Unknown settings formats are rejected without modification.

@@ -4,6 +4,10 @@ Ownership snapshot: 25 October 2026. All 28 catalog matches are represented here
 
 Installable packages are indexed in the Kitor registry. New packages are published as unverified prereleases; game-specific Windows/macOS gameplay validation remains outstanding. Some entries need manual selection/detection support, and modern games must be launched through Steam/GOG.
 
+## Layout
+
+Patch payloads, reconstruction recipes, build sources, and provenance belong under `patches-workspace/<game>/`. The legacy MI1 installer is retained under `monkey-se/he/legacy/MI1-heb-patch/`. Grim Fandango prototype tools are grouped under `grim-fandango-remastered/he/prototype/{windows,macos}/`. Shared native Monkey Island build tools live in `monkey-se-native/he/prototype/`; MI2 links to them. App catalog metadata and purchase guides remain under `kitor/patches/`; generated archives remain under ignored `dist/`.
+
 ## Contract
 
 Every releasable patch needs Windows and macOS artifacts, a declared file plan, source hashes, edition/dependency information, and selective install/uninstall through Kitor. Back up only affected existing files; restore those originals and remove patch-created files. Never copy or clear the entire game directory. See [specification.json](specification.json).

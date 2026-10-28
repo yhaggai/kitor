@@ -39,14 +39,14 @@ pub fn stage(destination: &Path, id: &str, language: &str, version: &str) -> Res
     if language != "he" || version != VERSION { return Err("Unknown native Monkey Island patch version".into()); }
     let resources: &[(&str, &[u8])] = match id {
         "monkey-se-native" => &[
-            ("patch.json", include_bytes!("../../../../patches-workspace/monkey-se-native/he/patch.json")),
+            ("patch.json", include_bytes!("../../../../patches-workspace/monkey-se-native/he/patch.windows.candidate.json")),
             ("recipes/0.json", include_bytes!("../../../../patches-workspace/monkey-se-native/he/recipes/0.json")),
             ("recipes/1.json", include_bytes!("../../../../patches-workspace/monkey-se-native/he/recipes/1.json")),
             ("recipes/2.json", include_bytes!("../../../../patches-workspace/monkey-se-native/he/recipes/2.json")),
             ("recipes/3.json", include_bytes!("../../../../patches-workspace/monkey-se-native/he/recipes/3.json")),
         ],
         "monkey2-se-native" => &[
-            ("patch.json", include_bytes!("../../../../patches-workspace/monkey2-se-native/he/patch.json")),
+            ("patch.json", include_bytes!("../../../../patches-workspace/monkey2-se-native/he/patch.windows.candidate.json")),
             ("recipes/0.json", include_bytes!("../../../../patches-workspace/monkey2-se-native/he/recipes/0.json")),
         ],
         _ => return Err("Unknown native Monkey Island edition".into()),
@@ -57,7 +57,7 @@ pub fn stage(destination: &Path, id: &str, language: &str, version: &str) -> Res
         fs::write(path, bytes).map_err(|e|e.to_string())?;
     }
     fs::create_dir_all(destination.join("licenses")).map_err(|e|e.to_string())?;
-    fs::write(destination.join("licenses/CREDITS.txt"), include_bytes!("../../../../patches-workspace/monkey-special-editions/CREDITS.txt")).map_err(|e|e.to_string())?;
+    fs::write(destination.join("licenses/CREDITS.txt"), include_bytes!("../../../../patches-workspace/monkey-se-native/he/licenses/CREDITS.txt")).map_err(|e|e.to_string())?;
     fs::write(destination.join("licenses/FONT-OFL.txt"), include_bytes!("../../../../patches-workspace/grim-fandango-remastered/he/licenses/FONT-OFL.txt")).map_err(|e|e.to_string())?;
     Ok(())
 }

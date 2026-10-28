@@ -31,6 +31,10 @@ restores those files and leaves unrelated saves alone. See each package's
 `validation.json` for actual lifecycle results; runtime verification is distinct
 from a successful install/uninstall roundtrip.
 
+## Shared build tools
+
+The `prototype/` directory here builds both native Monkey Island packages. MI2 uses the same tools with its own input directory; its installable files remain in `monkey2-se-native/he/`. Translation credits are in `licenses/CREDITS.txt`.
+
 ## Rebuilding
 
 Use Python 3.11+, Pillow and python-bidi. Run `prototype/inspect_resources.py`
@@ -46,4 +50,4 @@ Run `python -m unittest discover -s prototype -p test_candidate.py`.
 
 Generated/ and dist/ contain owned game resources and are ignored by Git.
 These are local candidates; full-game playback and RTL paragraph wrapping are
-not certified. Credits and upstream references are in CREDITS.txt.
+not certified. Credits and upstream references are in licenses/CREDITS.txt.

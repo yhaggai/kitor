@@ -4,7 +4,7 @@ import json
 from pathlib import Path
 import subprocess
 
-ROOT = Path(__file__).resolve().parents[3]
+ROOT = Path(__file__).resolve().parents[4]
 HARNESS = ROOT / 'kitor/tools/lifecycle-harness/target/release/monkey_native_patch.exe'
 TESTS = ROOT / 'dist/monkey-native-tests'
 
@@ -21,7 +21,7 @@ for game, folder in [('monkey-se-native', 'mi1-packaged'), ('monkey2-se-native',
     root = TESTS / folder
     assert root.resolve().is_relative_to(TESTS.resolve())
     package = ROOT / 'patches-workspace' / game / 'he'
-    manifest = json.loads((package / 'patch.json').read_text())
+    manifest = json.loads((package / 'patch.windows.candidate.json').read_text())
     sentinel = root / 'kitor-validation-save.bin'
     sentinel.write_bytes(b'Unrelated save data must survive installation and removal.')
     hashes = {f['path']: digest(root / f['path']) for f in manifest['files']}

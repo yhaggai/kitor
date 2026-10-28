@@ -73,9 +73,11 @@ or altered inputs fail the job. Upload the pinned source assets before running
 CI. Existing local inputs are verified without downloading.
 
 Pushes to `v1`/`main`, pull requests, and manual dispatch build artifact-only
-Windows/macOS packages plus Windows candidate archives. These outputs are named
-`unverified-patch-builds-*`; building them never changes `release_ready` or
-publishes a release. Native CI fixtures do not certify gameplay or edition
+Windows/macOS packages plus Windows candidate archives. Tests and package builds
+are required on every run. Uploading the ZIPs is optional: enable `upload_artifacts`
+on a manual dispatch to retain `unverified-patch-builds-*` for one day. Requested
+upload failures still fail that manual run; ordinary validation does not consume
+artifact storage. Building packages never changes `release_ready` or publishes a release. Native CI fixtures do not certify gameplay or edition
 compatibility. Fork PRs without access to the private input release cannot hydrate
 those files and will fail explicitly.
 
