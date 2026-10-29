@@ -236,6 +236,13 @@ fn load(dir: &Path) -> Result<Journal> {
     }
     Ok(journal)
 }
+/// Match a retained journal before associating it with a newly scanned game.
+/// Reading identity must not recover or modify a different installation.
+pub fn matches_installation(dir: &Path, target: &Path, game: &str) -> Result<bool> {
+    let journal = load(dir)?;
+    Ok(journal.game == game && journal.target == target.canonicalize().map_err(err)?)
+}
+
 /// Recover any interrupted update, then inspect installed bytes.
 pub fn verify_installed(dir: &Path, target: &Path, game: &str, version: &str) -> Result<Vec<String>> {
     let _lock = lock(dir.parent().ok_or("Missing transaction parent")?)?;

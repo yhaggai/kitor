@@ -5,6 +5,8 @@ on:
     paths:
       - 'kitor/src/**'
       - 'kitor/src-tauri/**'
+      - 'kitor/patches/**'
+      - 'patches-workspace/**'
       - 'kitor/tests/**'
       - 'kitor/tools/app_release.py'
       - 'kitor/tools/test_app_release.py'

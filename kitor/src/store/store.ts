@@ -27,7 +27,7 @@ export type GameHealth = {
 };
 
 type Game = {
-  health?: GameHealth;
+  health?: GameHealth | null;
   id: number;
   scummvm_id: string;
   title: string;
@@ -37,6 +37,7 @@ type Game = {
   added_date: string;
   last_played?: string;
   requires_scummvm?: boolean;
+  is_patched?: boolean;
   has_available_patch?: boolean;
   installed_patches?: InstalledPatchInfo[];
   available_patches?: AvailablePatchInfo[];

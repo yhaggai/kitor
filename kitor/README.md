@@ -326,7 +326,7 @@ select the DOS platform and explicit engine/game identity. Unpatched games do
 not inherit the registry's Hebrew language restriction; active patches retain it.
 These are original-game smoke tests, not full playthroughs or Hebrew-patch validation.
 
-`src-tauri/data/space_quest_steam.json` records the exact source directories,
+`src-tauri/data/steam_products.json` records the exact source directories,
 allowlisted files, and SHA-256 digests from that verified Steam manifest.
 The importer stages and verifies independent folders under `games/<id>-steam`
 and retains pristine shared sources under `steam-sources/10110-6725209980292758062`.
@@ -347,3 +347,39 @@ cargo test --manifest-path src-tauri/Cargo.toml live_collection_imports_and_reus
 The separate `import_collection_into_explicit_library` opt-in helper writes to
 an explicitly supplied `KITOR_STEAM_IMPORT_LIBRARY` directory. Normal tests never
 write to the user's library. The app's Steam dialog is the normal import entry point.
+
+
+### Catalog-driven game behavior
+
+`patches/registry.json` defines each game's `behavior`: detection rules or a
+format adapter, original and patched launch profiles, installation target,
+and related library editions. `launch_config` is accepted only for legacy
+registry compatibility; new definitions use `behavior.launch`.
+
+Ordinary ScummVM titles need detection files and launch arguments. A native
+executable can be declared in `behavior.launch.original.commands` and
+`behavior.launch.patched.commands`, keyed by `windows`, `osx`, or `linux`.
+Each command names a relative `program`, argument array, optional environment
+values, and required files. Commands execute directly without a shell.
+Only unusual formats or preparation steps need a new adapter in
+`game_adapters.rs`; shared installation and launch services contain no game-ID
+switches.
+
+Static bundled patches name a `bundled_resource`. The reviewed file map in
+`patches/bundled-assets.json` lists exact source-to-staging paths per platform.
+The build generates the embedded asset index; adding a static package does
+not require a Rust staging function. Packages still pass through the common
+manifest validation and selective backup/restore lifecycle. Tentacle retains
+an adapter because its staged manifest depends on the installed edition.
+
+`src-tauri/data/steam_products.json` owns supported Steam products, depot IDs,
+collection members, import layouts, and verified file recipes. The frontend
+asks `get_steam_download_capabilities` for the same data used by the importer.
+Changing download support requires updating and validating the recipe, not a
+React game allowlist. Verified-file recipes require exact hashes; layout
+imports preserve the existing checked-copy behavior.
+
+The library and launcher share `patch_state::resolve`. It reconnects retained
+installation records using the journal identity and can verify configured
+legacy manual-patch evidence. Manual evidence does not create an artificial
+backup record or enable restore without a recorded backup.

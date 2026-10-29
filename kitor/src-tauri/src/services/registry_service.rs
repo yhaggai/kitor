@@ -40,6 +40,8 @@ pub struct Platforms {
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct GameDefinition {
+    #[serde(default)]
+    pub behavior: super::game_behavior::GameBehavior,
     pub scummvm_id: String,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub steam_app_id: Option<u32>,
@@ -52,6 +54,7 @@ pub struct GameDefinition {
     pub gog: Option<GogInfo>,
     pub detection_patterns: DetectionPatterns,
     pub patches: Vec<PatchDefinition>,
+    // Read-only compatibility with registries created before behavior profiles.
     #[serde(skip_serializing_if = "Option::is_none")]
     pub launch_config: Option<LaunchConfig>,
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -152,7 +155,32 @@ pub fn load_registry() -> Result<Registry, String> {
         registry.games.iter().map(|g| g.patches.len()).sum::<usize>()
     );
 
+    // Older external registries predate behavior profiles. Use the reviewed
+    // built-in behavior for known identities instead of stale saved arguments.
+    let bundled: Registry = serde_json::from_str(include_str!("../../../patches/registry.json"))
+        .map_err(|e| format!("Invalid bundled registry: {e}"))?;
+    prepare_behaviors(&mut registry, &bundled)?;
     updates::merge_cached(&mut registry);
     Ok(registry)
 }
 
+
+fn prepare_behaviors(registry: &mut Registry, bundled: &Registry) -> Result<(), String> {
+    for game in &mut registry.games {
+        if game.behavior.launch.is_none() {
+            if let Some(def) = bundled.games.iter().find(|g| g.scummvm_id == game.scummvm_id) {
+                game.behavior = def.behavior.clone();
+            } else if let Some(legacy) = &game.launch_config {
+                let patched = super::game_behavior::LaunchProfile { args: legacy.args.clone(), subdirectory: legacy.subdirectory.clone(), ..Default::default() };
+                let original = super::game_behavior::LaunchProfile { args: legacy.args.iter().filter(|a| !a.starts_with("--language=")).cloned().collect(), ..Default::default() };
+                game.behavior.launch = Some(super::game_behavior::LaunchProfiles { original, patched });
+            }
+        }
+        game.behavior.validate()?;
+    }
+    Ok(())
+}
+
+#[cfg(test)]
+#[path = "registry_service/tests.rs"]
+mod tests;

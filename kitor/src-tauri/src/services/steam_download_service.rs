@@ -49,20 +49,16 @@ fn copy_checked(source: &Path, dest: &Path) -> Result<(), String> {
     Ok(())
 }
 
-async fn download_monkey(
-    app_id: u32,
+async fn download_layout(
+    product: &SteamProduct,
     state: &crate::AppState,
 ) -> Result<crate::models::game::Model, String> {
-    if !cfg!(target_os = "macos") || app_id != 32460 {
-        return Err(
-            "Windows downloads on Mac are currently supported only for Monkey Island 2.".into(),
-        );
-    }
+    let recipe = product.games.first().ok_or("Missing import recipe")?;
     // Never move an existing installation out from under its patch backups or saves.
     if let Some(game) = super::game_service::get_all_games(&state.db)
         .await?
         .into_iter()
-        .find(|g| g.scummvm_id == "monkey2-se")
+        .find(|g| g.scummvm_id == recipe.id)
     {
         if Path::new(&game.install_path).is_dir() {
             return Ok(game);
@@ -76,36 +72,35 @@ async fn download_monkey(
     if !executable.is_file() {
         return Err("Install Steam and sign in, then try again.".into());
     }
-    download_depot(&steam, &executable, &state.app_data_dir, 32460, 32461).await?;
+    download_depot(&steam, &executable, &state.app_data_dir, product.app_id, product.depot_id).await?;
     let source = [
-        runtime.join("steamapps/content/app_32460/depot_32461"),
-        steam.join("steamapps/content/app_32460/depot_32461"),
+        runtime.join(format!("steamapps/content/app_{}/depot_{}", product.app_id, product.depot_id)),
+        steam.join(format!("steamapps/content/app_{}/depot_{}", product.app_id, product.depot_id)),
     ]
     .into_iter()
     .find(|p| {
-        p.join("Monkey2.exe").is_file()
-            && p.join("monkey2.pak").is_file()
-            && p.join("audio/SFXOriginal.xwb").is_file()
+        product.required_files.iter().all(|name| p.join(name).is_file())
     })
     .ok_or("Steam reported completion, but the expected game files were not found")?;
     let games = state.app_data_dir.join("games");
-    let destination = games.join("monkey2-se-steam");
+    let destination = games.join(format!("{}-steam", recipe.id));
+    let copy_paths = product.copy_paths.clone();
     let import = destination.clone();
     tokio::task::spawn_blocking(move || -> Result<(), String> {
         std::fs::create_dir_all(&games).map_err(|e| e.to_string())?;
         if import.exists() { return Err("The managed game folder already exists. Add it to your library instead of overwriting it.".into()); }
         let staging = tempfile::tempdir_in(&games).map_err(|e| e.to_string())?;
         // Only Steam game content; never import separately installed patches or saves.
-        for name in ["Monkey2.exe", "monkey2.pak", "steam_api.dll", "InstallScript.vdf", "audio", "installers"] {
-            copy_checked(&source.join(name), &staging.path().join(name))?;
+        for name in copy_paths {
+            copy_checked(&source.join(&name), &staging.path().join(&name))?;
         }
         std::fs::rename(staging.path(), &import).map_err(|e| e.to_string())?;
         Ok(())
     }).await.map_err(|e| e.to_string())??;
     super::game_service::add_game_manually(
         &state.db,
-        "monkey2-se".into(),
-        "Monkey Island 2: LeChuck's Revenge Special Edition".into(),
+        recipe.id.clone(),
+        recipe.title.clone(),
         destination.to_string_lossy().into_owned(),
         state.app_data_dir.clone(),
     )
@@ -224,75 +219,10 @@ async fn download_depot(
 }
 
 #[cfg(test)]
-mod tests {
-    use super::*;
-    #[test]
-    fn completion_is_depot_specific() {
-        assert!(completion("Depot download complete : \"/Steam/MacOS\\steamapps\\content\\app_32460\\depot_32461\" (manifest 123)",32460,32461));
-        assert!(!completion(
-            "Downloading depot 32461 (40 files)",
-            32460,
-            32461
-        ));
-        assert!(!completion(
-            "Depot download complete : \"/app_32460/depot_324610\"",
-            32460,
-            32461
-        ));
-        assert!(!completion(
-            "Depot download complete : \"/app_99/depot_32461\"",
-            32460,
-            32461
-        ));
-    }
-    #[test]
-    fn import_preserves_bytes() {
-        let t = tempfile::tempdir().unwrap();
-        let s = t.path().join("source");
-        std::fs::create_dir(&s).unwrap();
-        std::fs::write(s.join("game"), b"game data").unwrap();
-        let d = t.path().join("dest");
-        copy_checked(&s, &d).unwrap();
-        assert_eq!(std::fs::read(d.join("game")).unwrap(), b"game data");
-    }
-    #[cfg(unix)]
-    #[test]
-    fn import_rejects_links() {
-        let t = tempfile::tempdir().unwrap();
-        let s = t.path().join("link");
-        std::os::unix::fs::symlink("/etc/hosts", &s).unwrap();
-        assert!(copy_checked(&s, &t.path().join("dest")).is_err());
-    }
-}
+mod tests;
 
 #[cfg(all(test, target_os = "macos"))]
-mod live_test {
-    #[tokio::test]
-    #[ignore = "Requires signed-in Steam owning app 32460; downloads and imports about 2 GB"]
-    async fn steam_download_and_register() {
-        let dir = tempfile::tempdir().unwrap();
-        let state = crate::AppState {
-            db: crate::db::init_db(&dir.path().to_path_buf()).await.unwrap(),
-            app_data_dir: dir.path().to_path_buf(),
-        };
-        let game = super::download(32460, vec!["monkey2-se".into()], &state)
-            .await
-            .unwrap()
-            .remove(0);
-        assert_eq!(game.scummvm_id, "monkey2-se");
-        assert!(std::path::Path::new(&game.install_path)
-            .join("audio/SFXOriginal.xwb")
-            .is_file());
-        assert!(!std::path::Path::new(&game.install_path)
-            .join("hebrew")
-            .exists());
-        let again = super::download(32460, vec!["monkey2-se".into()], &state)
-            .await
-            .unwrap()
-            .remove(0);
-        assert_eq!(again.id, game.id);
-    }
-}
+mod live_test;
 
 #[derive(serde::Deserialize)]
 struct ImportFile {
@@ -306,9 +236,44 @@ struct ImportRecipe {
     folder: String,
     files: Vec<ImportFile>,
 }
+#[derive(serde::Deserialize)]
+#[serde(rename_all = "snake_case")]
+enum Importer { Layout, VerifiedFiles }
+#[derive(serde::Deserialize)]
+struct SteamProduct {
+    app_id: u32,
+    depot_id: u32,
+    title: String,
+    importer: Importer,
+    cache_key: String,
+    games: Vec<ImportRecipe>,
+    #[serde(default)]
+    required_files: Vec<String>,
+    #[serde(default)]
+    copy_paths: Vec<String>,
+}
+fn products() -> Vec<SteamProduct> {
+    serde_json::from_str(include_str!("../../data/steam_products.json")).expect("reviewed Steam products")
+}
+#[cfg(test)]
 fn recipes() -> Vec<ImportRecipe> {
-    serde_json::from_str(include_str!("../../data/space_quest_steam.json"))
-        .expect("bundled Steam recipes")
+    products().into_iter().find(|p| matches!(p.importer, Importer::VerifiedFiles)).unwrap().games
+}
+#[derive(serde::Serialize)]
+pub struct DownloadCapabilities {
+    supported: bool,
+    title: String,
+    games: Vec<DownloadGame>,
+}
+#[derive(serde::Serialize)]
+struct DownloadGame { id: String, title: String }
+pub fn capabilities(app_id: u32, game_id: &str) -> DownloadCapabilities {
+    let product = products().into_iter().find(|p| p.app_id == app_id && p.games.iter().any(|g| g.id == game_id));
+    match product {
+        Some(product) => DownloadCapabilities { supported: cfg!(target_os = "macos"), title: product.title,
+            games: product.games.into_iter().map(|g| DownloadGame { id: g.id, title: g.title }).collect() },
+        None => DownloadCapabilities { supported: false, title: String::new(), games: Vec::new() },
+    }
 }
 fn reject_links(path: &Path) -> Result<(), String> {
     // Resolve the system temp/home prefix first at call sites where necessary;
@@ -377,16 +342,16 @@ pub async fn download(
     let _guard = DOWNLOAD.try_lock().map_err(|_| {
         "A Steam download/import is already running in Kitor. Reopen its progress dialog."
     })?;
-    if app_id == 32460 && game_ids == ["monkey2-se"] {
-        return Ok(vec![download_monkey(app_id, state).await?]);
+    let product = products().into_iter().find(|p| p.app_id == app_id)
+        .ok_or("Unsupported Steam product")?;
+    if game_ids.is_empty() || game_ids.iter().any(|id| !product.games.iter().any(|g| &g.id == id)) {
+        return Err("Unsupported game edition for this Steam product".into());
     }
-    let all = recipes();
-    if app_id != 10110
-        || game_ids.is_empty()
-        || game_ids.iter().any(|id| !all.iter().any(|r| &r.id == id))
-    {
-        return Err("Unsupported Steam product or game edition".into());
+    if matches!(product.importer, Importer::Layout) {
+        if product.games.len() != 1 || game_ids.len() != 1 { return Err("Layout imports require one game".into()); }
+        return Ok(vec![download_layout(&product, state).await?]);
     }
+    let all = &product.games;
     let existing = super::game_service::get_all_games(&state.db).await?;
     let mut result = Vec::new();
     let mut needed = Vec::new();
@@ -411,14 +376,14 @@ pub async fn download(
     let runtime = steam.join("Steam.AppBundle/Steam/Contents/MacOS");
     let cache = state
         .app_data_dir
-        .join("steam-sources/10110-6725209980292758062");
+        .join("steam-sources").join(&product.cache_key);
     if !needed
         .iter()
         .all(|r| verify_recipe(&cache.join(&r.id), r).is_ok())
     {
         let candidates = [
-            runtime.join("steamapps/content/app_10110/depot_10111"),
-            steam.join("steamapps/content/app_10110/depot_10111"),
+            runtime.join(format!("steamapps/content/app_{}/depot_{}", product.app_id, product.depot_id)),
+            steam.join(format!("steamapps/content/app_{}/depot_{}", product.app_id, product.depot_id)),
         ];
         let valid_source = || {
             candidates
@@ -440,10 +405,10 @@ pub async fn download(
             .into_iter()
             .find(|p| p.is_file())
             .ok_or("Install Steam and sign in first")?;
-            download_depot(&steam, &executable, &state.app_data_dir, 10110, 10111).await?;
+            download_depot(&steam, &executable, &state.app_data_dir, product.app_id, product.depot_id).await?;
             valid_source().ok_or("Steam completed, but this collection's files do not match the verified edition. No games were imported.")?
         };
-        for recipe in &all {
+        for recipe in all {
             let destination = cache.join(&recipe.id);
             if verify_recipe(&destination, recipe).is_ok() {
                 continue;
@@ -482,168 +447,10 @@ pub async fn download(
 }
 
 #[cfg(test)]
-mod collection_tests {
-    use super::*;
-    #[test]
-    fn imports_only_verified_files_and_never_overwrites() {
-        let dir = tempfile::tempdir().unwrap();
-        let root = dir.path().canonicalize().unwrap();
-        let source = root.join("source");
-        std::fs::create_dir(&source).unwrap();
-        std::fs::write(source.join("resource.001"), b"original").unwrap();
-        std::fs::write(source.join("unrelated-patch"), b"excluded").unwrap();
-        let recipe = ImportRecipe {
-            id: "sq3".into(),
-            title: "SQ3".into(),
-            folder: "sq3".into(),
-            files: vec![ImportFile {
-                name: "resource.001".into(),
-                sha256: format!("{:x}", Sha256::digest(b"original")),
-            }],
-        };
-        let destination = root.join("game");
-        import_recipe(&source, &destination, &recipe).unwrap();
-        assert!(!destination.join("unrelated-patch").exists());
-        std::fs::write(destination.join("save"), b"save").unwrap();
-        assert!(import_recipe(&source, &destination, &recipe).is_err());
-        assert_eq!(std::fs::read(destination.join("save")).unwrap(), b"save");
-        std::fs::write(source.join("resource.001"), b"modified").unwrap();
-        assert!(import_recipe(&source, &root.join("bad"), &recipe).is_err());
-        assert!(!root.join("bad").exists());
-    }
-    #[cfg(unix)]
-    #[test]
-    fn rejects_symlinked_parent_directories() {
-        let dir = tempfile::tempdir().unwrap();
-        let root = dir.path().canonicalize().unwrap();
-        std::fs::create_dir(root.join("real")).unwrap();
-        std::os::unix::fs::symlink(root.join("real"), root.join("link")).unwrap();
-        assert!(reject_links(&root.join("link/nested")).is_err());
-    }
-    #[tokio::test]
-    async fn pending_request_resumes_without_spawning_even_after_log_rotation() {
-        for rotate in [false, true] {
-            let dir = tempfile::tempdir().unwrap();
-            let logs = dir.path().join("logs");
-            std::fs::create_dir(&logs).unwrap();
-            let log = logs.join("console_log.txt");
-            std::fs::write(&log, "old log\n").unwrap();
-            let meta = std::fs::metadata(&log).unwrap();
-            let marker = dir.path().join("steam-download-10110-10111.json");
-            std::fs::write(
-                &marker,
-                serde_json::to_vec(&(meta.len(), log_identity(&meta))).unwrap(),
-            )
-            .unwrap();
-            if rotate {
-                std::fs::rename(&log, logs.join("previous.txt")).unwrap();
-            }
-            let prefix = if rotate { "" } else { "old log\n" };
-            std::fs::write(&log, format!("{prefix}Depot download complete : \"/Steam/app_10110/depot_10111\" (manifest 123)\n")).unwrap();
-            // This cannot be spawned: success proves retry resumed the pending request.
-            download_depot(
-                dir.path(),
-                Path::new("/nonexistent-steam"),
-                dir.path(),
-                10110,
-                10111,
-            )
-            .await
-            .unwrap();
-            assert!(!marker.exists());
-        }
-    }
-    #[test]
-    fn bundled_recipes_are_distinct_and_contained() {
-        let recipes = recipes();
-        assert_eq!(recipes.len(), 5);
-        let mut ids = std::collections::HashSet::new();
-        for recipe in recipes {
-            assert!(ids.insert(recipe.id));
-            assert!(!recipe.files.is_empty());
-            for file in recipe.files {
-                assert_eq!(Path::new(&file.name).components().count(), 1);
-                assert!(matches!(
-                    Path::new(&file.name).components().next(),
-                    Some(std::path::Component::Normal(_))
-                ));
-                assert_eq!(file.sha256.len(), 64);
-            }
-        }
-    }
-    #[cfg(target_os = "macos")]
-    #[tokio::test]
-    #[ignore = "Requires the owned Space Quest Steam depot downloaded locally"]
-    async fn live_collection_imports_and_reuses_each_game() {
-        let dir = tempfile::tempdir().unwrap();
-        let root = dir.path().canonicalize().unwrap();
-        let state = crate::AppState {
-            db: crate::db::init_db(&root).await.unwrap(),
-            app_data_dir: root.clone(),
-        };
-        let first = download(10110, vec!["sq1".into()], &state).await.unwrap();
-        assert_eq!(first.len(), 1);
-        assert_eq!(first[0].scummvm_id, "sq1");
-        let original_path = first[0].install_path.clone();
-        // Existing installations may be patched or have saves; retry must preserve them.
-        std::fs::write(Path::new(&original_path).join("VOL.0"), b"patched data").unwrap();
-        std::fs::write(Path::new(&original_path).join("save.test"), b"save").unwrap();
-        let all = download(
-            10110,
-            recipes().iter().map(|r| r.id.clone()).collect(),
-            &state,
-        )
-        .await
-        .unwrap();
-        assert_eq!(all.len(), 5);
-        assert_eq!(
-            super::super::game_service::get_all_games(&state.db)
-                .await
-                .unwrap()
-                .len(),
-            5
-        );
-        assert_eq!(
-            std::fs::read(Path::new(&original_path).join("VOL.0")).unwrap(),
-            b"patched data"
-        );
-        assert_eq!(
-            std::fs::read(Path::new(&original_path).join("save.test")).unwrap(),
-            b"save"
-        );
-        for game in all.iter().filter(|g| g.scummvm_id != "sq1") {
-            let recipe = recipes()
-                .into_iter()
-                .find(|r| r.id == game.scummvm_id)
-                .unwrap();
-            verify_recipe(Path::new(&game.install_path), &recipe).unwrap();
-            assert!(Path::new(&game.install_path).starts_with(root.join("games")));
-        }
-    }
-}
+mod collection_tests;
 
 #[cfg(all(test, target_os = "macos"))]
-mod manual_import {
-    /// Explicit operator utility, separate from the disposable integration test.
-    #[tokio::test]
-    #[ignore = "Writes to KITOR_STEAM_IMPORT_LIBRARY only when explicitly supplied"]
-    async fn import_collection_into_explicit_library() {
-        let path = std::env::var_os("KITOR_STEAM_IMPORT_LIBRARY")
-            .expect("Set the intended Kitor data directory explicitly");
-        let root = std::path::PathBuf::from(path).canonicalize().unwrap();
-        let state = crate::AppState {
-            db: crate::db::init_db(&root).await.unwrap(),
-            app_data_dir: root,
-        };
-        let games = super::download(
-            10110,
-            super::recipes().into_iter().map(|r| r.id).collect(),
-            &state,
-        )
-        .await
-        .unwrap();
-        for game in games {
-            println!("{}: {}", game.scummvm_id, game.install_path);
-        }
-    }
-}
+mod manual_import;
+
+#[cfg(test)]
+mod capability_tests;
