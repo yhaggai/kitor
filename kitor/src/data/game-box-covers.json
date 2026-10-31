@@ -262,5 +262,13 @@
     "he": {
       "src": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/sq4/he/03890265beb3.webp"
     }
+  },
+  "sq6": {
+    "en": {
+      "src": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/sq6/en/c3a436d54e83.jpg"
+    },
+    "he": {
+      "src": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/sq6/en/c3a436d54e83.jpg"
+    }
   }
 }

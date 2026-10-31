@@ -69,9 +69,23 @@ async fn pending_request_resumes_without_spawning_even_after_log_rotation() {
     }
 }
 #[test]
+fn collection_scan_checks_existing_editions_in_preferred_order() {
+    let tmp = tempfile::tempdir().unwrap();
+    let root = tmp.path().join("Space Quest Collection");
+    let modern = root.join("2016_SpaceQuestCollection/sq4");
+    let old = root.join("sq4");
+    let vga = root.join("sq1vga");
+    for path in [&modern, &old, &vga, &root.join("unrelated")] {
+        std::fs::create_dir_all(path).unwrap();
+    }
+    assert_eq!(collection_game_folders(&root), vec![vga, modern, old]);
+    assert!(collection_game_folders(tmp.path()).is_empty());
+}
+
+#[test]
 fn bundled_recipes_are_distinct_and_contained() {
     let recipes = recipes();
-    assert_eq!(recipes.len(), 5);
+    assert_eq!(recipes.len(), 7);
     let mut ids = std::collections::HashSet::new();
     for recipe in recipes {
         assert!(ids.insert(recipe.id));
@@ -85,6 +99,8 @@ fn bundled_recipes_are_distinct_and_contained() {
             assert_eq!(file.sha256.len(), 64);
         }
     }
+    assert_eq!(ids, ["sq1", "sq1sci", "sq2", "sq3", "sq4", "sq5", "sq6"]
+        .into_iter().map(str::to_owned).collect());
 }
 #[cfg(target_os = "macos")]
 #[tokio::test]

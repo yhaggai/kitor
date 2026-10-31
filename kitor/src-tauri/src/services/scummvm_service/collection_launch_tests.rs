@@ -7,7 +7,7 @@ fn original_and_patched_profiles_select_language_and_engine() {
         assert!(!behavior.launch_profile(false).args.iter().any(|arg| arg.starts_with("--language=")), "{id}");
         assert!(behavior.launch_profile(true).args.contains(&"--language=he".to_string()), "{id}");
     }
-    for (id, engine) in [("sq1", "agi"), ("sq1sci", "sci"), ("sq2", "agi"), ("sq3", "sci"), ("sq4", "sci"), ("sq5", "sci")] {
+    for (id, engine) in [("sq1", "agi"), ("sq1sci", "sci"), ("sq2", "agi"), ("sq3", "sci"), ("sq4", "sci"), ("sq5", "sci"), ("sq6", "sci")] {
         for patched in [false, true] {
             let profile = for_game(id).unwrap().launch_profile(patched);
             assert!(profile.args.contains(&format!("{engine}:{id}")));

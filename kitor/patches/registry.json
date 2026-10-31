@@ -615,6 +615,38 @@
       }
     },
     {
+      "scummvm_id": "sq6",
+      "steam_app_id": 10110,
+      "cover_url": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/sq6/en/c3a436d54e83.jpg",
+      "title": "Space Quest 6: Roger Wilco in the Spinal Frontier",
+      "platforms": {
+        "windows": true,
+        "osx": true,
+        "linux": true
+      },
+      "detection_patterns": {
+        "unique_files": [],
+        "file_patterns": []
+      },
+      "purchase_guide": null,
+      "patches": [],
+      "behavior": {
+        "detection": {
+          "adapter": "space_quest"
+        },
+        "launch": {
+          "original": {
+            "args": [
+              "--fullscreen",
+              "--platform=dos",
+              "sci:sq6"
+            ]
+          },
+          "patched": { "args": ["--fullscreen", "--platform=dos", "sci:sq6"] }
+        }
+      }
+    },
+    {
       "scummvm_id": "torin",
       "cover_url": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/torin/344dd7e600d6.jpeg",
       "title": "Torin’s Passage",

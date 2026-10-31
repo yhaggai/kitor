@@ -445,6 +445,49 @@
       }
     },
     {
+      "game_id": "sq6",
+      "title": "Space Quest 6: Roger Wilco in the Spinal Frontier",
+      "covers": {
+        "en": {
+          "file": "covers/sq6/en/c3a436d54e83.jpg",
+          "sha256": "c3a436d54e8352120b61fae7dfe8c4b966bcf8cc4264b556bd3d64f5de855f61",
+          "bytes": 230945,
+          "width": 980,
+          "height": 1231,
+          "object_key": "covers/sq6/en/c3a436d54e83.jpg",
+          "original_url": "https://assets.kitor.click/covers/sq6/en/c3a436d54e83.jpg",
+          "variant_urls": {
+            "240": "https://assets.kitor.click/cdn-cgi/image/width=240,fit=scale-down,quality=85,format=auto/covers/sq6/en/c3a436d54e83.jpg",
+            "480": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/sq6/en/c3a436d54e83.jpg",
+            "960": "https://assets.kitor.click/cdn-cgi/image/width=960,fit=scale-down,quality=85,format=auto/covers/sq6/en/c3a436d54e83.jpg"
+          },
+          "source": "SpaceQuest.Net",
+          "source_page": "https://spacequest.net/misc/boxscans/",
+          "image_url": "https://spacequest.net/misc/boxscans/sq6front.jpg",
+          "kind": "retail-box-front"
+        },
+        "he": {
+          "file": "covers/sq6/en/c3a436d54e83.jpg",
+          "sha256": "c3a436d54e8352120b61fae7dfe8c4b966bcf8cc4264b556bd3d64f5de855f61",
+          "bytes": 230945,
+          "width": 980,
+          "height": 1231,
+          "object_key": "covers/sq6/en/c3a436d54e83.jpg",
+          "original_url": "https://assets.kitor.click/covers/sq6/en/c3a436d54e83.jpg",
+          "variant_urls": {
+            "240": "https://assets.kitor.click/cdn-cgi/image/width=240,fit=scale-down,quality=85,format=auto/covers/sq6/en/c3a436d54e83.jpg",
+            "480": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/sq6/en/c3a436d54e83.jpg",
+            "960": "https://assets.kitor.click/cdn-cgi/image/width=960,fit=scale-down,quality=85,format=auto/covers/sq6/en/c3a436d54e83.jpg"
+          },
+          "source": "SpaceQuest.Net",
+          "source_page": "https://spacequest.net/misc/boxscans/",
+          "image_url": "https://spacequest.net/misc/boxscans/sq6front.jpg",
+          "kind": "retail-box-front",
+          "note": "Original English artwork also used for display; no Hebrew patch registered."
+        }
+      }
+    },
+    {
       "game_id": "sq5",
       "title": "Space Quest V: The Next Mutation",
       "covers": {

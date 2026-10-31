@@ -1063,6 +1063,81 @@
             "sha256": "5b348d5729db48f6e3593f34be677f56fe9ca156ae08db45adbcb17b198dc127"
           }
         ]
+      },
+      {
+        "id": "sq6",
+        "title": "Space Quest 6: Roger Wilco in the Spinal Frontier",
+        "folder": "2016_SpaceQuestCollection/sq6",
+        "files": [
+          {
+            "name": "102.SND",
+            "sha256": "c5f2c0c82b53b4564517855195497997cb3d826fae40d14737707dafee19f357"
+          },
+          {
+            "name": "120.SND",
+            "sha256": "96c29d83ba0fa76a2ee9bf266ee6391cf397d1652e31ed8f445a559a9b50682b"
+          },
+          {
+            "name": "217.SND",
+            "sha256": "8e13f454055a79fa651c7060965950897ff747e9e09706085c1fe4b8c16d8783"
+          },
+          {
+            "name": "250.SND",
+            "sha256": "95c14ce156603a566045f4e8d27f0a4462cd7af750f38c04dd6eff5161a3705d"
+          },
+          {
+            "name": "251.SND",
+            "sha256": "795004e87023b0a6379bac63a8b42d738dd2dab46389cc3685b304281c1bfc2c"
+          },
+          {
+            "name": "280.SND",
+            "sha256": "d8d068aaf07cd0870469069b3728cf3baf5d0c79b712f5a5e9f0fd6164d51b73"
+          },
+          {
+            "name": "370.HEP",
+            "sha256": "58bbcdaf6919cdb967d7b36dd61f0aa5dee42848e3334e5ec0052183ad26de4b"
+          },
+          {
+            "name": "370.SCR",
+            "sha256": "a5f1843394f87612c06be15d396447f07e24dbd3d43b14b209f9931ddb3add19"
+          },
+          {
+            "name": "390.SND",
+            "sha256": "8b6ed1edcb0242c626011da0a94a26ee6646142058a0568cfa99f5541108102f"
+          },
+          {
+            "name": "455.HEP",
+            "sha256": "f577ebfe149e685520351be37b766e32adaab421cd527130fe3a658b3eb54fd0"
+          },
+          {
+            "name": "455.SCR",
+            "sha256": "9de60fb7254a059dd09e8f0056163d2a777cb3b93f76890628dc482887e9920a"
+          },
+          {
+            "name": "620.HEP",
+            "sha256": "18695f40f96af9796a46316e2079cb78ebdb7323cb09d2d44f22e226ffc6711f"
+          },
+          {
+            "name": "620.SCR",
+            "sha256": "97c018f2baebd824b53e7398d7a4f2d23f276ce4faea4cc2d21a4a48301aecdb"
+          },
+          {
+            "name": "RESOURCE.000",
+            "sha256": "74244198781207a1943409a6d4aea65731dc862b594c2c21a2659a1f3fe3e391"
+          },
+          {
+            "name": "RESOURCE.AUD",
+            "sha256": "d961af63e14fc02e3f094952651f8bf20a3fbdf21833b0a98bce08c8fd11d5ca"
+          },
+          {
+            "name": "RESOURCE.MAP",
+            "sha256": "7ec15cbf5501af2b09e62f7a1f34d6a49d2978bf9a7b6f8c1c86c18e41a997b7"
+          },
+          {
+            "name": "RESOURCE.SFX",
+            "sha256": "e0398d6283cf9726a8aac5effed2b8cf95ae98f42639e2eb2c7a2b3adb7b6196"
+          }
+        ]
       }
     ]
   },

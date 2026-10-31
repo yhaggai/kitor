@@ -1,4 +1,5 @@
 export const hebrewTitles: Record<string, string> = {
+  "sq6": "מסע בחלל 6",
   "sq4": "מסע בחלל IV: רוג׳ר וילקו וקורעי הזמן",
   "silver-pines": "סילבר פיינס",
   undertale: "אנדרטייל",

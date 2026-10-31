@@ -198,6 +198,24 @@
     "hebrew": true
   },
   {
+    "id": "sq6",
+    "title": "Space Quest 6: Roger Wilco in the Spinal Frontier",
+    "covers": {
+      "en": {
+        "src": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/sq6/en/c3a436d54e83.jpg"
+      },
+      "he": {
+        "src": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/sq6/en/c3a436d54e83.jpg"
+      }
+    },
+    "platforms": {
+      "windows": true,
+      "osx": true,
+      "linux": true
+    },
+    "hebrew": false
+  },
+  {
     "id": "torin",
     "title": "Torin’s Passage",
     "covers": {
