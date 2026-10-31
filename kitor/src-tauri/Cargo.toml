@@ -1,6 +1,6 @@
 [package]
 name = "kitor"
-version = "0.1.0"
+version = "0.1.1"
 description = "Hebrew patch manager for adventure games"
 authors = ["you"]
 edition = "2021"
@@ -15,6 +15,7 @@ name = "kitor_lib"
 crate-type = ["staticlib", "cdylib", "rlib"]
 
 [build-dependencies]
+serde_json = "1"
 tauri-build = { version = "2", features = [] }
 
 [dependencies]
@@ -38,6 +39,7 @@ md-5 = "0.10"
 tempfile = "3"
 rand = "0.8"
 keyring = { version = "3.6.3", features = ["apple-native", "windows-native", "sync-secret-service", "crypto-rust"] }
+tauri-plugin-updater = "=2.9.0"
 
 [dependencies.migration]
 path = "migration"

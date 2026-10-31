@@ -14,10 +14,6 @@
         "unique_files": ["UNDERTALE.exe"],
         "file_patterns": []
       },
-      "launch_config": {
-        "launcher": "native",
-        "args": []
-      },
       "purchase_guide": null,
       "patches": [
         {
@@ -33,7 +29,36 @@
           "post_install_script": null,
           "install_manifest": "patch.json"
         }
-      ]
+      ],
+      "behavior": {
+        "launch": {
+          "original": {
+            "native": "undertale"
+          },
+          "patched": {
+            "native": "undertale"
+          }
+        },
+        "detection": {
+          "layouts": [
+            {
+              "root": ".",
+              "required_files": ["Contents/Resources/game.ios", "Contents/MacOS/Mac_Runner"],
+              "data": "Contents/Resources"
+            },
+            {
+              "root": "UNDERTALE.app",
+              "required_files": ["Contents/Resources/game.ios", "Contents/MacOS/Mac_Runner"],
+              "data": "Contents/Resources"
+            },
+            {
+              "root": "../..",
+              "required_files": ["Contents/Resources/game.ios", "Contents/MacOS/Mac_Runner"],
+              "data": "Contents/Resources"
+            }
+          ]
+        }
+      }
     },
     {
       "scummvm_id": "monkey-se",
@@ -61,10 +86,6 @@
         "unique_files": ["Monkey1.pak", "Monkey.exe", "MISE.exe"],
         "file_patterns": ["*.pak"]
       },
-      "launch_config": {
-        "subdirectory": "hebrew",
-        "args": ["--language=he", "--fullscreen", "--auto-detect"]
-      },
       "purchase_guide": "monkey-se.md",
       "patches": [
         {
@@ -80,7 +101,19 @@
           "post_install_script": null,
           "install_manifest": "patch.json"
         }
-      ]
+      ],
+      "behavior": {
+        "launch": {
+          "original": {
+            "native": "monkey_native",
+            "native_game_id": "monkey-se-native"
+          },
+          "patched": {
+            "subdirectory": "hebrew",
+            "args": ["--language=he", "--fullscreen", "--auto-detect"]
+          }
+        }
+      }
     },
     {
       "scummvm_id": "monkey2-se",
@@ -108,10 +141,6 @@
         "unique_files": ["Monkey2.pak", "Monkey2.exe"],
         "file_patterns": ["*.pak"]
       },
-      "launch_config": {
-        "subdirectory": "hebrew",
-        "args": ["--language=he", "--fullscreen", "--auto-detect"]
-      },
       "purchase_guide": "monkey2-se.md",
       "patches": [
         {
@@ -127,7 +156,21 @@
           "post_install_script": null,
           "install_manifest": "patch.json"
         }
-      ]
+      ],
+      "behavior": {
+        "launch": {
+          "original": {
+            "native": "monkey_native",
+            "native_game_id": "monkey2-se-native"
+          },
+          "patched": {
+            "subdirectory": "hebrew",
+            "args": ["--language=he", "--fullscreen", "--auto-detect"]
+          }
+        },
+        "health_files": ["Monkey2.exe", "monkey2.pak", "audio/SFXOriginal.xwb"],
+        "manual_patch_manifest": "manual-patches/monkey2-steam-he-1.1-kitor2/manifest.json"
+      }
     },
     {
       "scummvm_id": "sq1sci",
@@ -142,9 +185,6 @@
       "detection_patterns": {
         "unique_files": ["RESOURCE.000", "SCIDHUV.EXE"],
         "file_patterns": ["RESOURCE.*"]
-      },
-      "launch_config": {
-        "args": ["--language=he", "--fullscreen", "--auto-detect"]
       },
       "purchase_guide": null,
       "patches": [
@@ -161,7 +201,20 @@
           "post_install_script": null,
           "install_manifest": "patch.json"
         }
-      ]
+      ],
+      "behavior": {
+        "launch": {
+          "original": {
+            "args": ["--fullscreen", "--platform=dos", "sci:sq1sci"]
+          },
+          "patched": {
+            "args": ["--language=he", "--fullscreen", "--platform=dos", "sci:sq1sci"]
+          }
+        },
+        "detection": {
+          "adapter": "space_quest"
+        }
+      }
     },
     {
       "scummvm_id": "kyra1-cd",
@@ -189,9 +242,6 @@
         "file_patterns": ["*.PAK", "*.VRM"],
         "detection_subdirectory": "DAT"
       },
-      "launch_config": {
-        "args": ["--fullscreen", "kyra:kyra1"]
-      },
       "purchase_guide": null,
       "patches": [
         {
@@ -207,7 +257,19 @@
           "post_install_script": null,
           "install_manifest": "patch.json"
         }
-      ]
+      ],
+      "behavior": {
+        "launch": {
+          "original": {
+            "args": ["--fullscreen", "kyra:kyra1"],
+            "preparation": "kyrandia_signature"
+          },
+          "patched": {
+            "args": ["--fullscreen", "kyra:kyra1"],
+            "preparation": "kyrandia_signature"
+          }
+        }
+      }
     },
     {
       "scummvm_id": "pq1",
@@ -222,9 +284,6 @@
       "detection_patterns": {
         "unique_files": [],
         "file_patterns": []
-      },
-      "launch_config": {
-        "args": ["--language=he", "--fullscreen", "--auto-detect"]
       },
       "purchase_guide": null,
       "patches": [
@@ -241,7 +300,17 @@
           "filename": "pq1-he-kitor1.zip",
           "post_install_script": null
         }
-      ]
+      ],
+      "behavior": {
+        "launch": {
+          "original": {
+            "args": ["--fullscreen", "--auto-detect"]
+          },
+          "patched": {
+            "args": ["--language=he", "--fullscreen", "--auto-detect"]
+          }
+        }
+      }
     },
     {
       "scummvm_id": "sq1",
@@ -256,9 +325,6 @@
       "detection_patterns": {
         "unique_files": [],
         "file_patterns": []
-      },
-      "launch_config": {
-        "args": ["--language=he", "--fullscreen", "--auto-detect"]
       },
       "purchase_guide": null,
       "patches": [
@@ -286,6 +352,19 @@
             "path": "https://www.gog.com/downloads/space_quest_1_the_sarien_encounter/en1installer0"
           }
         ]
+      },
+      "behavior": {
+        "launch": {
+          "original": {
+            "args": ["--fullscreen", "--platform=dos", "agi:sq1"]
+          },
+          "patched": {
+            "args": ["--language=he", "--fullscreen", "--platform=dos", "agi:sq1"]
+          }
+        },
+        "detection": {
+          "adapter": "space_quest"
+        }
       }
     },
     {
@@ -301,9 +380,6 @@
       "detection_patterns": {
         "unique_files": [],
         "file_patterns": []
-      },
-      "launch_config": {
-        "args": ["--language=he", "--fullscreen", "--auto-detect"]
       },
       "purchase_guide": null,
       "patches": [
@@ -331,6 +407,19 @@
             "path": "https://www.gog.com/downloads/space_quest_2_vohauls_revenge/en1installer0"
           }
         ]
+      },
+      "behavior": {
+        "launch": {
+          "original": {
+            "args": ["--fullscreen", "--platform=dos", "agi:sq2"]
+          },
+          "patched": {
+            "args": ["--language=he", "--fullscreen", "--platform=dos", "agi:sq2"]
+          }
+        },
+        "detection": {
+          "adapter": "space_quest"
+        }
       }
     },
     {
@@ -346,9 +435,6 @@
       "detection_patterns": {
         "unique_files": [],
         "file_patterns": []
-      },
-      "launch_config": {
-        "args": ["--language=he", "--fullscreen", "--auto-detect"]
       },
       "purchase_guide": null,
       "patches": [
@@ -376,6 +462,19 @@
             "path": "https://www.gog.com/downloads/space_quest_3_the_pirates_of_pestulon/en1installer0"
           }
         ]
+      },
+      "behavior": {
+        "launch": {
+          "original": {
+            "args": ["--fullscreen", "--platform=dos", "sci:sq3"]
+          },
+          "patched": {
+            "args": ["--language=he", "--fullscreen", "--platform=dos", "sci:sq3"]
+          }
+        },
+        "detection": {
+          "adapter": "space_quest"
+        }
       }
     },
     {
@@ -392,9 +491,6 @@
         "unique_files": [],
         "file_patterns": []
       },
-      "launch_config": {
-        "args": ["--language=he", "--fullscreen", "--auto-detect"]
-      },
       "purchase_guide": null,
       "patches": [
         {
@@ -410,7 +506,20 @@
           "filename": "sq5-he-kitor1.zip",
           "post_install_script": null
         }
-      ]
+      ],
+      "behavior": {
+        "launch": {
+          "original": {
+            "args": ["--fullscreen", "--platform=dos", "sci:sq5"]
+          },
+          "patched": {
+            "args": ["--language=he", "--fullscreen", "--platform=dos", "sci:sq5"]
+          }
+        },
+        "detection": {
+          "adapter": "space_quest"
+        }
+      }
     },
     {
       "scummvm_id": "torin",
@@ -424,9 +533,6 @@
       "detection_patterns": {
         "unique_files": [],
         "file_patterns": []
-      },
-      "launch_config": {
-        "args": ["--language=he", "--fullscreen", "--auto-detect"]
       },
       "purchase_guide": null,
       "patches": [
@@ -454,6 +560,16 @@
             "path": "https://www.gog.com/downloads/torins_passage/en1installer0"
           }
         ]
+      },
+      "behavior": {
+        "launch": {
+          "original": {
+            "args": ["--fullscreen", "--auto-detect"]
+          },
+          "patched": {
+            "args": ["--language=he", "--fullscreen", "--auto-detect"]
+          }
+        }
       }
     },
     {
@@ -470,9 +586,6 @@
         "unique_files": ["spyfox.he0"],
         "file_patterns": []
       },
-      "launch_config": {
-        "args": ["--language=he", "--fullscreen", "--auto-detect"]
-      },
       "purchase_guide": null,
       "patches": [
         {
@@ -488,7 +601,17 @@
           "filename": "spyfox-he-kitor1.zip",
           "post_install_script": null
         }
-      ]
+      ],
+      "behavior": {
+        "launch": {
+          "original": {
+            "args": ["--fullscreen", "--auto-detect"]
+          },
+          "patched": {
+            "args": ["--language=he", "--fullscreen", "--auto-detect"]
+          }
+        }
+      }
     },
     {
       "scummvm_id": "pajama",
@@ -502,9 +625,6 @@
       "detection_patterns": {
         "unique_files": ["pajama.he0"],
         "file_patterns": []
-      },
-      "launch_config": {
-        "args": ["--language=he", "--fullscreen", "--auto-detect"]
       },
       "purchase_guide": null,
       "patches": [
@@ -525,6 +645,16 @@
       "gog": {
         "id": 1435735429,
         "title": "Pajama Sam: No Need to Hide When It’s Dark Outside"
+      },
+      "behavior": {
+        "launch": {
+          "original": {
+            "args": ["--fullscreen", "--auto-detect"]
+          },
+          "patched": {
+            "args": ["--subtitles", "--language=he", "--fullscreen", "--auto-detect"]
+          }
+        }
       }
     },
     {
@@ -539,9 +669,6 @@
       "detection_patterns": {
         "unique_files": [],
         "file_patterns": []
-      },
-      "launch_config": {
-        "args": ["--language=he", "--fullscreen", "--auto-detect"]
       },
       "purchase_guide": null,
       "patches": [
@@ -562,6 +689,22 @@
       "gog": {
         "id": 1207666633,
         "title": "Toonstruck"
+      },
+      "behavior": {
+        "launch": {
+          "original": {
+            "args": ["--fullscreen", "--auto-detect"]
+          },
+          "patched": {
+            "args": ["--language=he", "--fullscreen", "--auto-detect"],
+            "runtime": "scummvm-toon-hebrew",
+            "runtime_data": "toon.dat"
+          }
+        },
+        "detection": {
+          "adapter": "toonstruck",
+          "extra_subdirectories": ["Toonstruck"]
+        }
       }
     },
     {
@@ -576,9 +719,6 @@
       "detection_patterns": {
         "unique_files": [],
         "file_patterns": []
-      },
-      "launch_config": {
-        "args": ["--language=he", "--fullscreen", "--auto-detect"]
       },
       "purchase_guide": null,
       "patches": [
@@ -606,6 +746,16 @@
             "path": "https://www.gog.com/downloads/gobliins_2_the_prince_buffoon/en1installer0"
           }
         ]
+      },
+      "behavior": {
+        "launch": {
+          "original": {
+            "args": ["--fullscreen", "--auto-detect"]
+          },
+          "patched": {
+            "args": ["--language=he", "--fullscreen", "--auto-detect"]
+          }
+        }
       }
     },
     {
@@ -620,9 +770,6 @@
       "detection_patterns": {
         "unique_files": [],
         "file_patterns": []
-      },
-      "launch_config": {
-        "args": ["--language=he", "--fullscreen", "--auto-detect"]
       },
       "purchase_guide": null,
       "patches": [
@@ -655,6 +802,16 @@
             "path": "https://www.gog.com/downloads/the_longest_journey/en1installer1"
           }
         ]
+      },
+      "behavior": {
+        "launch": {
+          "original": {
+            "args": ["--fullscreen", "--auto-detect"]
+          },
+          "patched": {
+            "args": ["--language=he", "--fullscreen", "--auto-detect"]
+          }
+        }
       }
     },
     {
@@ -669,9 +826,6 @@
       "detection_patterns": {
         "unique_files": ["sky.dsk"],
         "file_patterns": []
-      },
-      "launch_config": {
-        "args": ["--language=he", "--fullscreen", "--auto-detect"]
       },
       "purchase_guide": null,
       "patches": [
@@ -692,6 +846,16 @@
       "gog": {
         "id": 1207658695,
         "title": "Beneath a Steel Sky (1994)"
+      },
+      "behavior": {
+        "launch": {
+          "original": {
+            "args": ["--fullscreen", "--auto-detect"]
+          },
+          "patched": {
+            "args": ["--language=he", "--fullscreen", "--auto-detect"]
+          }
+        }
       }
     },
     {
@@ -708,7 +872,6 @@
         "unique_files": [],
         "file_patterns": []
       },
-      "launch_config": null,
       "patches": [
         {
           "language": "he",
@@ -723,7 +886,17 @@
           "install_manifest": "patch.json",
           "post_install_script": null
         }
-      ]
+      ],
+      "behavior": {
+        "launch": {
+          "original": {
+            "args": ["--auto-detect"]
+          },
+          "patched": {
+            "args": ["--auto-detect"]
+          }
+        }
+      }
     },
     {
       "scummvm_id": "tesla-effect",
@@ -739,7 +912,6 @@
         "unique_files": [],
         "file_patterns": []
       },
-      "launch_config": null,
       "patches": [
         {
           "language": "he",
@@ -754,7 +926,17 @@
           "install_manifest": "patch.json",
           "post_install_script": null
         }
-      ]
+      ],
+      "behavior": {
+        "launch": {
+          "original": {
+            "args": ["--auto-detect"]
+          },
+          "patched": {
+            "args": ["--auto-detect"]
+          }
+        }
+      }
     },
     {
       "scummvm_id": "ethan-carter",
@@ -770,7 +952,6 @@
         "unique_files": [],
         "file_patterns": []
       },
-      "launch_config": null,
       "patches": [
         {
           "language": "he",
@@ -785,7 +966,17 @@
           "install_manifest": "patch.json",
           "post_install_script": null
         }
-      ]
+      ],
+      "behavior": {
+        "launch": {
+          "original": {
+            "args": ["--auto-detect"]
+          },
+          "patched": {
+            "args": ["--auto-detect"]
+          }
+        }
+      }
     },
     {
       "scummvm_id": "life-is-strange",
@@ -801,7 +992,6 @@
         "unique_files": [],
         "file_patterns": []
       },
-      "launch_config": null,
       "patches": [
         {
           "language": "he",
@@ -816,7 +1006,17 @@
           "install_manifest": "patch.json",
           "post_install_script": null
         }
-      ]
+      ],
+      "behavior": {
+        "launch": {
+          "original": {
+            "args": ["--auto-detect"]
+          },
+          "patched": {
+            "args": ["--auto-detect"]
+          }
+        }
+      }
     },
     {
       "scummvm_id": "portal2",
@@ -832,7 +1032,6 @@
         "unique_files": ["portal2.exe"],
         "file_patterns": []
       },
-      "launch_config": null,
       "patches": [
         {
           "language": "he",
@@ -847,7 +1046,17 @@
           "install_manifest": "patch.json",
           "post_install_script": null
         }
-      ]
+      ],
+      "behavior": {
+        "launch": {
+          "original": {
+            "args": ["--auto-detect"]
+          },
+          "patched": {
+            "args": ["--auto-detect"]
+          }
+        }
+      }
     },
     {
       "scummvm_id": "journey-down1",
@@ -863,7 +1072,6 @@
         "unique_files": ["jd1.gob"],
         "file_patterns": []
       },
-      "launch_config": null,
       "patches": [
         {
           "language": "he",
@@ -878,7 +1086,17 @@
           "install_manifest": "patch.json",
           "post_install_script": null
         }
-      ]
+      ],
+      "behavior": {
+        "launch": {
+          "original": {
+            "args": ["--auto-detect"]
+          },
+          "patched": {
+            "args": ["--auto-detect"]
+          }
+        }
+      }
     },
     {
       "scummvm_id": "kathy-rain-dc",
@@ -894,7 +1112,6 @@
         "unique_files": [],
         "file_patterns": []
       },
-      "launch_config": null,
       "patches": [
         {
           "language": "he",
@@ -909,7 +1126,17 @@
           "install_manifest": "patch.json",
           "post_install_script": null
         }
-      ]
+      ],
+      "behavior": {
+        "launch": {
+          "original": {
+            "args": ["--auto-detect"]
+          },
+          "patched": {
+            "args": ["--auto-detect"]
+          }
+        }
+      }
     },
     {
       "scummvm_id": "drifter",
@@ -925,7 +1152,6 @@
         "unique_files": [],
         "file_patterns": []
       },
-      "launch_config": null,
       "patches": [
         {
           "language": "he",
@@ -940,7 +1166,37 @@
           "install_manifest": "patch.json",
           "post_install_script": null
         }
-      ]
+      ],
+      "behavior": {
+        "launch": {
+          "original": {
+            "native": "drifter"
+          },
+          "patched": {
+            "native": "drifter"
+          }
+        },
+        "target": "drifter_user_data",
+        "detection": {
+          "layouts": [
+            {
+              "root": ".",
+              "required_files": [
+                "Contents/MacOS/The Drifter",
+                "Contents/Resources/Data/globalgamemanagers"
+              ]
+            },
+            {
+              "root": "TheDrifter.app",
+              "required_files": [
+                "Contents/MacOS/The Drifter",
+                "Contents/Resources/Data/globalgamemanagers"
+              ]
+            }
+          ]
+        },
+        "bundled_resource": "drifter"
+      }
     },
     {
       "scummvm_id": "owlboy",
@@ -954,10 +1210,6 @@
       "detection_patterns": {
         "unique_files": ["Owlboy.exe"],
         "file_patterns": []
-      },
-      "launch_config": {
-        "launcher": "native",
-        "args": []
       },
       "purchase_guide": "owlboy.md",
       "patches": [
@@ -974,7 +1226,21 @@
           "post_install_script": null,
           "install_manifest": "patch.json"
         }
-      ]
+      ],
+      "behavior": {
+        "launch": {
+          "original": {
+            "native": "owlboy"
+          },
+          "patched": {
+            "native": "owlboy"
+          }
+        },
+        "detection": {
+          "adapter": "owlboy"
+        },
+        "bundled_resource": "owlboy"
+      }
     },
     {
       "scummvm_id": "tentacle",
@@ -988,10 +1254,6 @@
       "detection_patterns": {
         "unique_files": ["tenta.cle"],
         "file_patterns": []
-      },
-      "launch_config": {
-        "subdirectory": "hebrew",
-        "args": ["--language=he", "--platform=dos", "--fullscreen", "scumm:tentacle"]
       },
       "purchase_guide": "tentacle.md",
       "patches": [
@@ -1008,7 +1270,24 @@
           "post_install_script": null,
           "install_manifest": "patch.json"
         }
-      ]
+      ],
+      "behavior": {
+        "launch": {
+          "original": {
+            "args": ["--platform=dos", "--fullscreen", "scumm:tentacle"],
+            "preparation": "tentacle_classic"
+          },
+          "patched": {
+            "subdirectory": "hebrew",
+            "args": ["--language=he", "--platform=dos", "--fullscreen", "scumm:tentacle"],
+            "preparation": "tentacle_classic"
+          }
+        },
+        "detection": {
+          "adapter": "tentacle"
+        },
+        "bundled": "tentacle"
+      }
     },
     {
       "scummvm_id": "day-of-the-tentacle-remastered",
@@ -1022,10 +1301,6 @@
       "detection_patterns": {
         "unique_files": ["tenta.cle"],
         "file_patterns": []
-      },
-      "launch_config": {
-        "launcher": "native",
-        "args": []
       },
       "purchase_guide": "tentacle-remastered.md",
       "patches": [
@@ -1042,7 +1317,23 @@
           "post_install_script": null,
           "install_manifest": "patch.json"
         }
-      ]
+      ],
+      "behavior": {
+        "launch": {
+          "original": {
+            "native": "tentacle_remastered"
+          },
+          "patched": {
+            "native": "tentacle_remastered"
+          }
+        },
+        "detection": {
+          "adapter": "tentacle_remastered",
+          "priority": 10
+        },
+        "library_editions": ["tentacle", "day-of-the-tentacle-remastered"],
+        "bundled_resource": "day-of-the-tentacle-remastered"
+      }
     },
     {
       "scummvm_id": "grim-fandango-remastered",
@@ -1062,10 +1353,6 @@
         "unique_files": ["GrimFandango.exe"],
         "file_patterns": []
       },
-      "launch_config": {
-        "launcher": "native",
-        "args": []
-      },
       "patches": [
         {
           "language": "he",
@@ -1080,7 +1367,19 @@
           "install_manifest": "patch.json",
           "post_install_script": null
         }
-      ]
+      ],
+      "behavior": {
+        "launch": {
+          "original": {
+            "native": "grim"
+          },
+          "patched": {
+            "native": "grim",
+            "prepare_hebrew_preferences": true
+          }
+        },
+        "bundled_resource": "grim-fandango-remastered"
+      }
     },
     {
       "scummvm_id": "monkey-se-native",
@@ -1108,10 +1407,6 @@
         "unique_files": ["Monkey1.pak", "Monkey.exe", "MISE.exe"],
         "file_patterns": ["*.pak"]
       },
-      "launch_config": {
-        "launcher": "native",
-        "args": []
-      },
       "purchase_guide": "monkey-se-native.md",
       "patches": [
         {
@@ -1125,9 +1420,25 @@
           "filename": "monkey-se-native-he.zip",
           "post_install_script": null,
           "install_manifest": "patch.json",
-          "description": "Native Windows Hebrew candidate using the classic AdventureBrew dialogue and new Hebrew menus. Select Hebrew (replaces French). Unmatched or conflicting dialogue stays English. Hebrew subtitles and bitmap fonts are included for the F1 classic-mode toggle; unmatched lines remain English. Full-game and RTL wrapping validation are incomplete. Requires a supported original edition; installation is reversible. Steam must be running for Monkey Island 2."
+          "description": "Native Windows Hebrew candidate using the classic AdventureBrew dialogue and new Hebrew menus. Select Hebrew (replaces French). Unmatched or conflicting dialogue stays English. Hebrew subtitles and bitmap fonts are included for the F1 classic-mode toggle; unmatched lines remain English. Full-game and RTL wrapping validation are incomplete. Requires a supported original edition; installation is reversible. Steam must be running for Monkey Island 2.",
+          "release_revision": 1
         }
-      ]
+      ],
+      "behavior": {
+        "launch": {
+          "original": {
+            "native": "monkey_native"
+          },
+          "patched": {
+            "native": "monkey_native"
+          }
+        },
+        "detection": {
+          "adapter": "monkey_native"
+        },
+        "library_editions": ["monkey-se", "monkey-se-native"],
+        "bundled_resource": "monkey-se-native"
+      }
     },
     {
       "scummvm_id": "monkey2-se-native",
@@ -1155,10 +1466,6 @@
         "unique_files": ["Monkey2.pak", "Monkey2.exe"],
         "file_patterns": ["*.pak"]
       },
-      "launch_config": {
-        "launcher": "native",
-        "args": []
-      },
       "purchase_guide": "monkey2-se-native.md",
       "patches": [
         {
@@ -1172,9 +1479,25 @@
           "filename": "monkey2-se-native-he.zip",
           "post_install_script": null,
           "install_manifest": "patch.json",
-          "description": "Native Windows Hebrew candidate using the classic AdventureBrew dialogue and new Hebrew menus. Select French in Steam to load Hebrew. The original executable is preserved. Unmatched or conflicting dialogue stays English. Hebrew subtitles and bitmap fonts are included for the F1 classic-mode toggle; unmatched lines remain English. Full-game and RTL wrapping validation are incomplete. Requires a supported original edition; installation is reversible. Steam must be running for Monkey Island 2."
+          "description": "Native Windows Hebrew candidate using the classic AdventureBrew dialogue and new Hebrew menus. Select French in Steam to load Hebrew. The original executable is preserved. Unmatched or conflicting dialogue stays English. Hebrew subtitles and bitmap fonts are included for the F1 classic-mode toggle; unmatched lines remain English. Full-game and RTL wrapping validation are incomplete. Requires a supported original edition; installation is reversible. Steam must be running for Monkey Island 2.",
+          "release_revision": 1
         }
-      ]
+      ],
+      "behavior": {
+        "launch": {
+          "original": {
+            "native": "monkey_native"
+          },
+          "patched": {
+            "native": "monkey_native"
+          }
+        },
+        "detection": {
+          "adapter": "monkey_native"
+        },
+        "library_editions": ["monkey2-se", "monkey2-se-native"],
+        "bundled_resource": "monkey2-se-native"
+      }
     }
   ],
   "metadata": {

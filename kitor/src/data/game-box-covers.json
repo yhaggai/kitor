@@ -201,10 +201,50 @@
   },
   "owlboy": {
     "en": {
-      "src": "/covers/owlboy/en.jpg"
+      "src": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/owlboy/en/20261b2ad2fb.jpg"
     },
     "he": {
-      "src": "/covers/owlboy/he.png"
+      "src": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/owlboy/he/2e67f2ab5edc.png"
+    }
+  },
+  "tentacle": {
+    "en": {
+      "src": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/tentacle/en/6abd9ff32387.jpg"
+    },
+    "he": {
+      "src": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/tentacle/en/6abd9ff32387.jpg"
+    }
+  },
+  "day-of-the-tentacle-remastered": {
+    "en": {
+      "src": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/day-of-the-tentacle-remastered/en/91ef55d28fc6.jpg"
+    },
+    "he": {
+      "src": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/day-of-the-tentacle-remastered/en/91ef55d28fc6.jpg"
+    }
+  },
+  "grim-fandango-remastered": {
+    "en": {
+      "src": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/grim-fandango-remastered/en/d601cde8ba2e.jpg"
+    },
+    "he": {
+      "src": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/grim-fandango-remastered/en/d601cde8ba2e.jpg"
+    }
+  },
+  "monkey-se-native": {
+    "en": {
+      "src": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/monkey-se/en/b9d8b502a92e.jpg"
+    },
+    "he": {
+      "src": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/monkey-se/he/0808875f8dd2.png"
+    }
+  },
+  "monkey2-se-native": {
+    "en": {
+      "src": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/monkey2-se/en/edc7e06d30c7.jpg"
+    },
+    "he": {
+      "src": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/monkey2-se/he/04849cb6d306.png"
     }
   }
 }

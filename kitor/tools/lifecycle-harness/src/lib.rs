@@ -10,8 +10,12 @@ pub mod drifter_patch;
 pub mod patch_lifecycle;
 #[path = "../../../src-tauri/src/services/registry_service.rs"]
 pub mod registry_service;
+#[path = "../../../src-tauri/src/services/game_behavior.rs"]
+pub mod game_behavior;
+#[path = "../../../src-tauri/src/services/game_adapters.rs"]
+pub mod game_adapters;
 pub mod services {
-    pub use crate::registry_service;
+    pub use crate::{registry_service, game_behavior, game_adapters, patch_lifecycle};
 }
 
 #[cfg(test)]

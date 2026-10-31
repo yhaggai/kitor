@@ -1,11 +1,13 @@
 import { invoke } from "@tauri-apps/api/core";
 import { listen } from "@tauri-apps/api/event";
 import { useCallback, useEffect, useRef } from "react";
+import AppUpdateDialog from "@/components/AppUpdateDialog";
 import BugReportDialog from "@/components/BugReportDialog";
 import GameLibrary from "@/components/GameLibrary";
 import PatchBrowser from "@/components/PatchBrowser";
 import Settings from "@/components/Settings";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { appUpdateStore } from "@/store/appUpdates";
 import { useGogLibrary } from "@/store/gog";
 import { useSteamStore } from "@/store/steam";
 import type { Game, ScummVMDownloadProgress } from "@/store/store";
@@ -24,6 +26,9 @@ type ScummVMStatus = {
 };
 
 function App() {
+  useEffect(() => {
+    void appUpdateStore.getState().check();
+  }, []);
   useEffect(() => {
     const unlisten = listen("gog-login-success", () => {
       useGogLibrary.getState().clear();
@@ -112,6 +117,7 @@ function App() {
 
   return (
     <div className="min-h-screen bg-background">
+      <AppUpdateDialog />
       <div className="container mx-auto p-6">
         <header className="mb-8 flex flex-wrap items-center justify-between gap-4">
           <div>

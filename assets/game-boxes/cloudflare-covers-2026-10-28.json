@@ -1,0 +1,47 @@
+{
+  "verified_on": "2026-10-28",
+  "bucket": "kitor-assets",
+  "covers": [
+    {
+      "game_id": "owlboy",
+      "language": "en",
+      "sha256": "20261b2ad2fb0222edc12e7b8f36b99e924854623ce74a248bbb61d938fb2b7d",
+      "object_key": "covers/owlboy/en/20261b2ad2fb.jpg",
+      "src": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/owlboy/en/20261b2ad2fb.jpg",
+      "verified": true
+    },
+    {
+      "game_id": "owlboy",
+      "language": "he",
+      "sha256": "2e67f2ab5edc707229c8dbc1edbbf242ee932e767da0f1fad4b2a6f142740935",
+      "object_key": "covers/owlboy/he/2e67f2ab5edc.png",
+      "src": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/owlboy/he/2e67f2ab5edc.png",
+      "verified": true
+    },
+    {
+      "game_id": "day-of-the-tentacle-remastered",
+      "language": "en",
+      "sha256": "91ef55d28fc62547a5ab02bb7ccd24905b3e4a388c7760a1ec48b9efba706862",
+      "object_key": "covers/day-of-the-tentacle-remastered/en/91ef55d28fc6.jpg",
+      "src": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/day-of-the-tentacle-remastered/en/91ef55d28fc6.jpg",
+      "verified": true
+    },
+    {
+      "game_id": "grim-fandango-remastered",
+      "language": "en",
+      "sha256": "d601cde8ba2efe42d6c9a2dd347ae0ca3c9994b835dc2d5a6f96f90a3298a6e7",
+      "object_key": "covers/grim-fandango-remastered/en/d601cde8ba2e.jpg",
+      "src": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/grim-fandango-remastered/en/d601cde8ba2e.jpg",
+      "verified": true
+    },
+    {
+      "game_id": "tentacle",
+      "language": "en",
+      "sha256": "6abd9ff32387068cdd25b28bfcc5522751fd927b7895fd9ed518d5838b62f7f5",
+      "object_key": "covers/tentacle/en/6abd9ff32387.jpg",
+      "src": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/tentacle/en/6abd9ff32387.jpg",
+      "verified": true
+    }
+  ],
+  "note": "Tentacle classic artwork from Wikipedia; remastered artwork from Steam library covers (388210 and 316790). English covers are reused on Hebrew sides until localized artwork is available. Owlboy artwork migrated from the app public directory."
+}

@@ -2,7 +2,7 @@ use sea_orm::*;
 use std::path::{Path, PathBuf};
 use tauri::Emitter;
 use crate::models::installed_patch;
-use crate::services::{download_service, file_service, registry_service, image_service, patch_lifecycle};
+use crate::services::{download_service, registry_service, image_service, patch_lifecycle};
 use serde::{Deserialize, Serialize};
 
 // Serialize lifecycle operations through database recording as well as file writes.
@@ -239,13 +239,8 @@ pub async fn download_and_install_patch(
 
     println!("[patch_service] Downloading from: {}", patch.download_url);
     println!("[patch_service] Download destination: {}", download_path.display());
-    let bundled_drifter = patch.source_type == "bundled" && scummvm_id == "drifter";
-    let bundled_grim = patch.source_type == "bundled" && scummvm_id == "grim-fandango-remastered";
-    let bundled_monkey = patch.source_type == "bundled" && super::monkey_native::supported(&scummvm_id);
-    let bundled_owlboy = patch.source_type == "bundled" && scummvm_id == "owlboy";
-    let bundled_tentacle = patch.source_type == "bundled" && scummvm_id == "tentacle";
-    let bundled_dott_remastered = patch.source_type == "bundled" && scummvm_id == "day-of-the-tentacle-remastered";
-    if !bundled_monkey && !bundled_grim && !bundled_drifter && !bundled_owlboy && !bundled_tentacle && !bundled_dott_remastered {
+    let source = super::package_source::PackageSource::resolve(&patch, &game_def.behavior)?;
+    if matches!(source, super::package_source::PackageSource::Download) {
         download_service::download_patch_file(&patch.download_url, &download_path, &app_handle, &scummvm_id)
             .await?;
         if let Some(checksum) = &patch.checksum {
@@ -269,31 +264,14 @@ pub async fn download_and_install_patch(
 
     let manifest_name = patch.install_manifest.as_deref()
         .ok_or("Patch has no file-change manifest; whole-folder installation is no longer supported")?;
-    if download_path.extension().and_then(|s| s.to_str()) != Some("zip") {
+    if matches!(source, super::package_source::PackageSource::Download)
+        && download_path.extension().and_then(|s| s.to_str()) != Some("zip") {
         return Err("Declarative patch packages must be ZIP archives".into());
     }
     // Package tools and source data never enter the game installation.
     let staging = tempfile::Builder::new().prefix("kitor-package-").tempdir().map_err(|e| e.to_string())?;
-    if bundled_monkey {
-        super::monkey_native::stage(staging.path(), &scummvm_id, &language, &version)?;
-    } else if bundled_grim {
-        super::grim_remastered::stage(staging.path(), &language, &version)?;
-    } else if bundled_drifter {
-        super::drifter_patch::stage(staging.path(), &language, &version)?;
-    } else if bundled_dott_remastered {
-        super::tentacle_remastered::stage(staging.path(), &language, &version)?;
-    } else if bundled_tentacle {
-        super::tentacle::stage(staging.path(), &language, &version, &install_target)?;
-    } else if bundled_owlboy {
-        super::owlboy::stage(staging.path(), &language, &version)?;
-    } else {
-        file_service::validate_zip(&download_path)?;
-        file_service::extract_zip(&download_path, staging.path())?;
-    }
-    let install_target = if cfg!(target_os = "macos") && scummvm_id == "drifter" {
-        super::drifter_patch::validate_macos_build(&install_target)?;
-        super::drifter_patch::macos_target(&std::env::home_dir().ok_or("Cannot locate home directory")?)?
-    } else { install_target };
+    source.stage(staging.path(), &download_path, &scummvm_id, &language, &version, &install_target)?;
+    let install_target = game_def.behavior.validate_install_target(&install_target)?;
     let _ = app_handle.emit("install-progress", serde_json::json!({
         "scummvm_id": scummvm_id,
         "progress": 55,
@@ -367,7 +345,9 @@ pub async fn download_and_install_patch(
 
     // Clean up download
     println!("[patch_service] Cleaning up download file");
-    let _ = std::fs::remove_file(&download_path);
+    if matches!(source, super::package_source::PackageSource::Download) {
+        let _ = std::fs::remove_file(&download_path);
+    }
 
     // Emit progress: Complete
     let _ = app_handle.emit("install-progress", serde_json::json!({
@@ -384,23 +364,56 @@ pub async fn get_installed_patches(
     db: &DatabaseConnection,
     game_id: i32,
 ) -> Result<Vec<installed_patch::Model>, String> {
-    let mut installed = installed_patch::Entity::find()
-        .filter(installed_patch::Column::GameId.eq(game_id))
-        .all(db)
-        .await
+    let game = crate::services::game_service::get_game_by_id(db, game_id).await?
+        .ok_or("Game not found")?;
+    let behavior = super::game_behavior::for_game(&game.scummvm_id)?;
+    reconcile_patches(db, &game, &behavior).await
+}
+
+pub(super) async fn reconcile_patches(
+    db: &DatabaseConnection,
+    game: &crate::models::game::Model,
+    behavior: &super::game_behavior::GameBehavior,
+) -> Result<Vec<installed_patch::Model>, String> {
+    let game_id = game.id;
+    // Removing a game preserves its patch and recovery records. A rescan gives
+    // it a new game ID, so recover the association using the journal's exact
+    // installation identity rather than the title or a potentially reused ID.
+    let candidates = installed_patch::Entity::find()
+        .filter(installed_patch::Column::ScummvmId.eq(&game.scummvm_id))
+        .all(db).await
         .map_err(|e| format!("Failed to fetch installed patches: {}", e))?;
-    for row in &mut installed {
-        if let Some(path) = &row.backup_path {
-            // Preserve legacy or damaged records so the UI can report them.
-            if !Path::new(path).join("manifest.json").is_file() { continue; }
-            let (version, _, status, _) = patch_lifecycle::recover_installation(Path::new(path))?;
-            if status == "active" && row.version != version {
-                let mut model: installed_patch::ActiveModel = row.clone().into();
-                model.version = Set(version);
-                model.installed_date = Set(chrono::Utc::now().naive_utc());
-                *row = model.update(db).await.map_err(|e| format!("Translation is installed; database reconciliation failed: {e}"))?;
+    if candidates.is_empty() { return Ok(Vec::new()); }
+    let target = behavior.install_target(Path::new(&game.install_path))?;
+    let mut installed = Vec::new();
+    for mut row in candidates {
+        let associated = row.game_id == game_id;
+        let Some(path) = row.backup_path.as_deref().map(Path::new)
+            .filter(|p| p.join("manifest.json").is_file()) else {
+                if associated { installed.push(row); }
+                continue;
+            };
+        match patch_lifecycle::matches_installation(path, &target, &game.scummvm_id) {
+            Ok(false) => continue,
+            // Preserve damaged records already associated with this game, but
+            // never guess which installation owns an unreadable orphan record.
+            Err(_) => {
+                if associated { installed.push(row); }
+                continue;
             }
+            Ok(true) => {}
         }
+        let (version, _, status, _) = patch_lifecycle::recover_installation(path)?;
+        if !associated && status != "active" { continue; }
+        if !associated || (status == "active" && row.version != version) {
+            let mut model: installed_patch::ActiveModel = row.clone().into();
+            model.game_id = Set(game_id);
+            model.version = Set(version);
+            model.status = Set(status);
+            row = model.update(db).await
+                .map_err(|e| format!("Translation is installed; database reconciliation failed: {e}"))?;
+        }
+        installed.push(row);
     }
     Ok(installed)
 }
@@ -427,9 +440,8 @@ pub async fn restore_backup(
 
     // Use the recorded installation root even if the patch removed a detection
     // signature. The journal validates that this is the correct installation.
-    let target = if cfg!(target_os = "macos") && game.scummvm_id == "drifter" {
-        super::drifter_patch::macos_target(&std::env::home_dir().ok_or("Cannot locate home directory")?)?
-    } else { PathBuf::from(&game.install_path) };
+    let target = super::game_behavior::for_game(&game.scummvm_id)?
+        .install_target(Path::new(&game.install_path))?;
     patch_lifecycle::uninstall(Path::new(&backup_path), &target)?;
 
     // Delete installed patch record
@@ -565,63 +577,4 @@ pub async fn download_and_extract_gog_installer(
 }
 
 #[cfg(test)]
-mod restore_tests {
-    use super::*;
-
-    #[tokio::test]
-    async fn update_reconciles_stale_database_and_restore_preserves_unrelated_files() {
-        let temp = tempfile::tempdir().unwrap();
-        let root = temp.path();
-        let data = root.join("game");
-        let package = root.join("package");
-        std::fs::create_dir(&data).unwrap();
-        std::fs::create_dir(&package).unwrap();
-        std::fs::write(data.join("GEMCUT.PAK"), b"original").unwrap();
-        std::fs::write(data.join("save.dat"), b"saved game").unwrap();
-        std::fs::write(package.join("translated"), b"translated").unwrap();
-        let checksum = patch_lifecycle::hash(&package.join("translated")).unwrap();
-        std::fs::write(package.join("patch.json"), serde_json::to_vec(&serde_json::json!({
-            "schema_version": 1, "scummvm_id": "kyra1-cd", "language": "he", "version": "test",
-            "filename": "test.zip", "platforms": {"osx": {}},
-            "files": [{"path":"GEMCUT.PAK","operation":"modify", "source": {
-                "kind":"copy", "path":"translated", "sha256":checksum
-            }}]
-        })).unwrap()).unwrap();
-        let backup = patch_lifecycle::install(&package, "patch.json", &data,
-            &root.join("transactions"), "kyra1-cd", "he", "test", "osx").unwrap();
-        let db = crate::db::init_db(&root.join("db")).await.unwrap();
-        let game = crate::services::game_service::add_game_manually(&db,
-            "kyra1-cd".into(), "Kyrandia".into(), data.to_string_lossy().into_owned(), root.to_path_buf())
-            .await.unwrap();
-        let installed = installed_patch::ActiveModel {
-            game_id: Set(game.id), scummvm_id: Set("kyra1-cd".into()),
-            version: Set("test".into()), installed_date: Set(chrono::Utc::now().naive_utc()),
-            status: Set("active".into()), backup_path: Set(Some(backup.to_string_lossy().into_owned())),
-            ..Default::default()
-        }.insert(&db).await.unwrap();
-        // Simulate a successful file commit followed by an app exit before SQL
-        // was updated. The next read must use disk identity, not the registry.
-        let mut manifest: serde_json::Value = serde_json::from_slice(&std::fs::read(package.join("patch.json")).unwrap()).unwrap();
-        manifest["version"] = serde_json::json!("test2");
-        manifest["release_revision"] = serde_json::json!(1);
-        std::fs::write(package.join("translated"), b"new translation").unwrap();
-        manifest["files"][0]["source"]["sha256"] = serde_json::json!(patch_lifecycle::hash(&package.join("translated")).unwrap());
-        std::fs::write(package.join("patch.json"), serde_json::to_vec(&manifest).unwrap()).unwrap();
-        patch_lifecycle::update(&backup, &package, "patch.json", &data, "kyra1-cd", "he", "test2", "osx").unwrap();
-        assert_eq!(installed_patch::Entity::find_by_id(installed.id).one(&db).await.unwrap().unwrap().version, "test");
-        let reconciled = get_installed_patches(&db, game.id).await.unwrap();
-        assert_eq!(reconciled.len(), 1);
-        assert_eq!(reconciled[0].id, installed.id);
-        assert_eq!(reconciled[0].version, "test2");
-        std::fs::write(data.join("later.txt"), b"user file").unwrap();
-        std::fs::write(data.join("GEMCUT.PAK"), b"another mod").unwrap();
-        assert!(restore_backup(&db, installed.id).await.is_err());
-        assert_eq!(get_installed_patches(&db, game.id).await.unwrap().len(), 1);
-        std::fs::write(data.join("GEMCUT.PAK"), b"new translation").unwrap();
-        restore_backup(&db, installed.id).await.unwrap();
-        assert_eq!(std::fs::read(data.join("GEMCUT.PAK")).unwrap(), b"original");
-        assert_eq!(std::fs::read(data.join("save.dat")).unwrap(), b"saved game");
-        assert_eq!(std::fs::read(data.join("later.txt")).unwrap(), b"user file");
-        assert!(get_installed_patches(&db, game.id).await.unwrap().is_empty());
-    }
-}
+mod restore_tests;

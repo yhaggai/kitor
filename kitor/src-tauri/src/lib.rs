@@ -18,6 +18,8 @@ pub fn run() {
         .plugin(tauri_plugin_opener::init())
         .plugin(tauri_plugin_dialog::init())
         .plugin(tauri_plugin_fs::init())
+        .plugin(tauri_plugin_updater::Builder::new().build())
+        .manage(services::app_updates::AppUpdates::default())
         .setup(|app| {
             // macOS title bars follow the native application's appearance.
             app.set_theme(Some(tauri::Theme::Dark));
@@ -46,6 +48,9 @@ pub fn run() {
             Ok(())
         })
         .invoke_handler(tauri::generate_handler![
+            commands::app_update_commands::check_app_update,
+            commands::app_update_commands::install_app_update,
+            commands::app_update_commands::restart_after_app_update,
             // Game commands
             commands::game_commands::get_all_games,
             commands::game_commands::refresh_game,
@@ -84,6 +89,7 @@ pub fn run() {
             commands::patch_commands::download_and_extract_gog_installer,
             commands::steam_commands::get_steam_status,
             commands::steam_commands::download_steam_windows_game,
+            commands::steam_commands::get_steam_download_capabilities,
             commands::steam_commands::set_steam_api_key,
             commands::steam_commands::refresh_steam_library,
             commands::steam_commands::connect_steam,

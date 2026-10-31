@@ -29,7 +29,9 @@ pub async fn download_and_install_patch(
     version: String,
     app_handle: AppHandle,
     state: State<'_, AppState>,
+    updates: State<'_, crate::services::app_updates::AppUpdates>,
 ) -> Result<(), String> {
+    let _activity = updates.activity()?;
     patch_service::download_and_install_patch(
         &state.db,
         scummvm_id,
@@ -53,7 +55,9 @@ pub async fn get_installed_patches(
 pub async fn restore_backup(
     installed_patch_id: i32,
     state: State<'_, AppState>,
+    updates: State<'_, crate::services::app_updates::AppUpdates>,
 ) -> Result<(), String> {
+    let _activity = updates.activity()?;
     patch_service::restore_backup(&state.db, installed_patch_id).await
 }
 
@@ -122,7 +126,9 @@ pub async fn download_and_extract_gog_installer(
     dest_dir: String,
     state: tauri::State<'_, crate::AppState>,
     app_handle: tauri::AppHandle,
+    updates: State<'_, crate::services::app_updates::AppUpdates>,
 ) -> Result<(), String> {
+    let _activity = updates.activity()?;
     use std::path::PathBuf;
     crate::services::patch_service::download_and_extract_gog_installer(
         &state.db,

@@ -78,6 +78,17 @@ pub async fn disconnect_steam(
 }
 
 #[tauri::command]
-pub async fn download_steam_windows_game(app_id: u32, game_ids: Vec<String>, app: State<'_, AppState>) -> Result<Vec<crate::models::game::Model>, String> {
+pub async fn download_steam_windows_game(
+    app_id: u32,
+    game_ids: Vec<String>,
+    app: State<'_, AppState>,
+    updates: State<'_, crate::services::app_updates::AppUpdates>,
+) -> Result<Vec<crate::models::game::Model>, String> {
+    let _activity = updates.activity()?;
     crate::services::steam_download_service::download(app_id, game_ids, &app).await
+}
+
+#[tauri::command]
+pub fn get_steam_download_capabilities(app_id: u32, game_id: String) -> crate::services::steam_download_service::DownloadCapabilities {
+    crate::services::steam_download_service::capabilities(app_id, &game_id)
 }
