@@ -1,6 +1,6 @@
 {
-  "release_ready": true,
-  "status": "alpha_release",
+  "release_ready": false,
+  "status": "withdrawn",
   "publication_authorization": "User explicitly requested publication of both Undertale patch options on 2026-10-31.",
   "validation": {
     "package_checks": "passed",
@@ -9,5 +9,6 @@
     "linguistic_review": "draft; nikud machine-generated"
   },
   "supported_platforms": ["windows", "osx"],
-  "source_content_role": "Build provenance, not execution instructions."
+  "source_content_role": "Build provenance, not execution instructions.",
+  "withdrawal_reason": "Withdrawn at user request: nikud is not readable enough in game."
 }

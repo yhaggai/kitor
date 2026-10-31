@@ -7,12 +7,12 @@ ROOT = Path(__file__).resolve().parents[2]
 
 
 class UndertaleOptionsTests(unittest.TestCase):
-    def test_both_options_match_their_own_packages(self):
+    def test_only_regular_hebrew_is_available(self):
         registry = json.loads((ROOT/'kitor/patches/registry.json').read_text(encoding="utf-8"))
         game = next(g for g in registry['games'] if g['scummvm_id'] == 'undertale')
-        self.assertEqual({p['language'] for p in game['patches']}, {'he', 'he-x-nikud'})
+        self.assertEqual({p['language'] for p in game['patches']}, {'he'})
         manifests = []
-        for folder, language in [('he', 'he'), ('he-nikud', 'he-x-nikud')]:
+        for folder, language in [('he', 'he')]:
             root = ROOT/'patches-workspace/undertale'/folder
             manifest = json.loads((root/'patch.json').read_text(encoding="utf-8"))
             patch = next(p for p in game['patches'] if p['language'] == language)
@@ -25,10 +25,9 @@ class UndertaleOptionsTests(unittest.TestCase):
                 payload = root/change['source']['path']
                 self.assertEqual(hashlib.sha256(payload.read_bytes()).hexdigest(), change['source']['sha256'])
             manifests.append(manifest)
-        for platform in ('windows', 'osx'):
-            plain, pointed = [m['platforms'][platform]['files'][0] for m in manifests]
-            self.assertEqual(plain['original_sha256'], pointed['original_sha256'])
-            self.assertNotEqual(plain['installed_sha256'], pointed['installed_sha256'])
+        withdrawn = json.loads((ROOT/'patches-workspace/undertale/he-nikud/provenance.json').read_text(encoding="utf-8"))
+        self.assertFalse(withdrawn['release_ready'])
+        self.assertEqual(withdrawn['status'], 'withdrawn')
 
 
 if __name__ == '__main__':

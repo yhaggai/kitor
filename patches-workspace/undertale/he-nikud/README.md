@@ -1,3 +1,9 @@
+# Withdrawn from distribution
+
+This nikud experiment is not offered in Kitor or published for download.
+The marks are not readable enough in game. Source is retained for future work;
+regular Hebrew remains available. Do not republish without a new review.
+
 # UNDERTALE Hebrew patch
 
 Unofficial Hebrew localization for the macOS and Windows Steam versions of UNDERTALE. **Alpha 3 nikud draft** includes the full text catalog, pointed Hebrew font glyphs, right-to-left rendering and the Flowey speech-bubble margin fix. Steam integration is retained. The Windows build has passed archive and installer checks on macOS; it has **not yet been run on Windows**.

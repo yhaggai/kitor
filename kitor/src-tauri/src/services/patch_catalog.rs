@@ -164,11 +164,21 @@ pub fn validate_advance(previous: &Catalog, next: &Catalog) -> Result<(), String
         return Err("Published registry revision changed in place".into());
     }
     for old in &previous.patches {
-        let new = next
+        let Some(new) = next
             .patches
             .iter()
             .find(|p| p.scummvm_id == old.scummvm_id && p.language == old.language)
-            .ok_or("Registry removed a published translation")?;
+        else {
+            // Accept withdrawals only for options also removed from this app's
+            // bundled registry. A remote catalog cannot withdraw supported options.
+            let bundled: Registry = serde_json::from_str(include_str!("../../../patches/registry.json"))
+                .map_err(|e| e.to_string())?;
+            if bundled.games.iter().any(|game| game.scummvm_id == old.scummvm_id
+                && game.patches.iter().any(|patch| patch.language == old.language)) {
+                return Err("Registry removed a published translation".into());
+            }
+            continue;
+        };
         if new.release_revision < old.release_revision
             || (new.release_revision == old.release_revision
                 && serde_json::to_vec(new).unwrap() != serde_json::to_vec(old).unwrap())

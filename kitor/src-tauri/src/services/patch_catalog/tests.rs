@@ -1,6 +1,6 @@
 use super::*;
 #[test]
-fn nikud_updates_never_replace_unpointed_hebrew() {
+fn withdrawn_nikud_cannot_return_from_cached_catalog() {
     let mut registry: Registry =
         serde_json::from_str(include_str!("../../../../patches/registry.json")).unwrap();
     let game = registry.games.iter().find(|g| g.scummvm_id == "undertale").unwrap();
@@ -16,9 +16,13 @@ fn nikud_updates_never_replace_unpointed_hebrew() {
     merge(&mut registry, &update);
     let game = registry.games.iter().find(|g| g.scummvm_id == "undertale").unwrap();
     assert_eq!(serde_json::to_value(game.patches.iter().find(|p| p.language == "he").unwrap()).unwrap(), plain);
-    if cfg!(any(target_os = "macos", target_os = "windows")) {
-        assert_eq!(game.patches.iter().find(|p| p.language == "he-x-nikud").unwrap().version, "nikud-next");
-    }
+    assert!(!game.patches.iter().any(|p| p.language == "he-x-nikud"));
+    let mut withdrawn = update.clone();
+    withdrawn.catalog_revision += 1;
+    withdrawn.patches.clear();
+    assert!(validate_advance(&update, &withdrawn).is_ok());
+    withdrawn.catalog_revision = update.catalog_revision;
+    assert!(validate_advance(&update, &withdrawn).is_err());
 }
 
 fn catalog() -> Catalog {

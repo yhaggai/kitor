@@ -29,20 +29,6 @@
           "filename": "Undertale-Hebrew-alpha2-steam-kitor3.zip",
           "post_install_script": null,
           "install_manifest": "patch.json"
-        },
-        {
-          "language": "he-x-nikud",
-          "version": "alpha3-nikud-kitor1",
-          "author": "yhaggai",
-          "download_url": "https://github.com/yhaggai/kitor/releases/download/patch-undertale-he-x-nikud-valpha3-nikud-kitor1/Undertale-Hebrew-alpha3-nikud.zip",
-          "source_type": "github",
-          "checksum": "8975db019c02e546adff1af6f4bcf4dd842f51cf36999f011e376559adac5d08",
-          "file_size": 38120809,
-          "description": "Hebrew with nikud for Steam on macOS and Windows. Machine-generated vowelization needs proofreading; in-game testing pending. Keep English selected in-game.",
-          "filename": "Undertale-Hebrew-alpha3-nikud.zip",
-          "post_install_script": null,
-          "install_manifest": "patch.json",
-          "release_revision": 1
         }
       ],
       "behavior": {
