@@ -18,37 +18,18 @@ const read = async (p) => JSON.parse(await readFile(path.join(repo, p), "utf8"))
 const registry = await read("kitor/patches/registry.json");
 const artwork = await read("kitor/src/data/game-box-covers.json");
 const catalog = [];
-await mkdir(path.join(root, "public/covers"), { recursive: true });
 for (const game of registry.games) {
   const covers = artwork[game.scummvm_id];
   if (!covers) throw new Error(`Missing artwork for ${game.scummvm_id}`);
-  const pair = {};
   for (const lang of ["he", "en"]) {
-    const url = covers[lang].src;
-    const suffix = url.includes("/covers/") ? url.slice(url.indexOf("/covers/") + 1) : null;
-    const source = url.startsWith("/")
-      ? path.join(repo, "kitor/public", url)
-      : path.join(repo, "assets/game-boxes", suffix ?? "MISSING");
-    const filename = `${game.scummvm_id}-${lang}.webp`;
-    const output = path.join(root, "public/covers", filename);
-    try {
-      await access(source);
-    } catch {
-      // Fresh checkouts use the committed, optimized artwork snapshot.
-      await access(output);
-      pair[lang] = { ...covers[lang], src: `/covers/${filename}` };
-      continue;
-    }
-    await sharp(source)
-      .resize({ width: 600, withoutEnlargement: true })
-      .webp({ quality: 88 })
-      .toFile(path.join(root, "public/covers", filename));
-    pair[lang] = { ...covers[lang], src: `/covers/${filename}` };
+    const url = new URL(covers[lang].src);
+    if (url.protocol !== "https:" || url.hostname !== "assets.kitor.click")
+      throw new Error(`Expected Cloudflare artwork for ${game.scummvm_id} (${lang})`);
   }
   catalog.push({
     id: game.scummvm_id,
     title: game.title,
-    covers: pair,
+    covers,
     platforms: game.platforms,
     hebrew: game.patches.some((p) => p.language === "he"),
   });
@@ -62,5 +43,5 @@ await sharp(path.join(root, "public/art/night.png"))
   .webp({ quality: 85 })
   .toFile(path.join(root, "public/art/night.webp"));
 console.log(
-  `Synced shared GameBox and ${catalog.length} supported games (${catalog.length * 2} original covers).`
+  `Synced shared GameBox and ${catalog.length} supported games (${catalog.length * 2} Cloudflare covers).`
 );

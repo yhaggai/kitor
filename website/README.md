@@ -12,7 +12,7 @@ npm run build
 
 The landing page is `/`; the complete supported-game gallery is `/games/`.
 
-`npm run sync` runs before development and builds. It reads `../kitor/patches/registry.json`, copies the current desktop `GameBox.tsx` and its CSS without modification into `src/generated`, and produces optimized WebP copies of the real English/Hebrew cover assets. Edit the desktop source, not generated files. When ignored local originals are unavailable, it uses the checked-in optimized covers. The build fails if a supported game has neither a local original nor an optimized cover. The checked-in snapshot allows standalone hosting builds; in the monorepo, the live app catalog is always authoritative.
+`npm run sync` runs before development and builds. It reads `../kitor/patches/registry.json`, copies the current desktop `GameBox.tsx` and its CSS without modification into `src/generated`, and uses the Cloudflare cover URLs from `../kitor/src/data/game-box-covers.json`. Edit the desktop sources, not generated files. The build fails if a supported game is missing Cloudflare artwork. The checked-in catalog snapshot allows standalone hosting builds; in the monorepo, the live app catalog is always authoritative.
 
 The only desktop component addition is an optional `locale` prop for Hebrew viewer controls; English remains the default. The website provides the pure browser `cn` utility so the native Tauri API is not bundled.
 

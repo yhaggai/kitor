@@ -3,11 +3,11 @@
     "id": "undertale",
     "title": "UNDERTALE",
     "covers": {
-      "he": {
-        "src": "/covers/undertale-he.webp"
-      },
       "en": {
-        "src": "/covers/undertale-en.webp"
+        "src": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/undertale/en/9145051fa004.jpg"
+      },
+      "he": {
+        "src": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/undertale/he/7779b0629b75.png"
       }
     },
     "platforms": {
@@ -21,11 +21,11 @@
     "id": "monkey-se",
     "title": "The Secret of Monkey Island: Special Edition",
     "covers": {
-      "he": {
-        "src": "/covers/monkey-se-he.webp"
-      },
       "en": {
-        "src": "/covers/monkey-se-en.webp"
+        "src": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/monkey-se/en/b9d8b502a92e.jpg"
+      },
+      "he": {
+        "src": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/monkey-se/he/0808875f8dd2.png"
       }
     },
     "platforms": {
@@ -39,11 +39,11 @@
     "id": "monkey2-se",
     "title": "Monkey Island 2: LeChuck's Revenge Special Edition",
     "covers": {
-      "he": {
-        "src": "/covers/monkey2-se-he.webp"
-      },
       "en": {
-        "src": "/covers/monkey2-se-en.webp"
+        "src": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/monkey2-se/en/edc7e06d30c7.jpg"
+      },
+      "he": {
+        "src": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/monkey2-se/he/04849cb6d306.png"
       }
     },
     "platforms": {
@@ -57,11 +57,11 @@
     "id": "sq1sci",
     "title": "Space Quest I: Roger Wilco in the Sarien Encounter (VGA Remake)",
     "covers": {
-      "he": {
-        "src": "/covers/sq1sci-he.webp"
-      },
       "en": {
-        "src": "/covers/sq1sci-en.webp"
+        "src": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/sq1sci/en/47ff2f31fadc.jpg"
+      },
+      "he": {
+        "src": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/sq1sci/he/f465b4640811.png"
       }
     },
     "platforms": {
@@ -75,11 +75,11 @@
     "id": "kyra1-cd",
     "title": "The Legend of Kyrandia",
     "covers": {
-      "he": {
-        "src": "/covers/kyra1-cd-he.webp"
-      },
       "en": {
-        "src": "/covers/kyra1-cd-en.webp"
+        "src": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/kyra1-cd/en/dc0a02457e0c.jpg"
+      },
+      "he": {
+        "src": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/kyra1-cd/he/b9f9a5ade25d.jpeg"
       }
     },
     "platforms": {
@@ -93,11 +93,11 @@
     "id": "pq1",
     "title": "Police Quest: In Pursuit of the Death Angel (EGA)",
     "covers": {
-      "he": {
-        "src": "/covers/pq1-he.webp"
-      },
       "en": {
-        "src": "/covers/pq1-en.webp"
+        "src": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/pq1/en/bb3cbf8ffefc.jpg"
+      },
+      "he": {
+        "src": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/pq1/he/02f732721274.png"
       }
     },
     "platforms": {
@@ -111,11 +111,11 @@
     "id": "sq1",
     "title": "Space Quest I: The Sarien Encounter (EGA)",
     "covers": {
-      "he": {
-        "src": "/covers/sq1-he.webp"
-      },
       "en": {
-        "src": "/covers/sq1-en.webp"
+        "src": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/sq1/en/08cf78a61b31.jpg"
+      },
+      "he": {
+        "src": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/sq1/he/14acb546941f.png"
       }
     },
     "platforms": {
@@ -129,11 +129,11 @@
     "id": "sq2",
     "title": "Space Quest II: Vohaul’s Revenge",
     "covers": {
-      "he": {
-        "src": "/covers/sq2-he.webp"
-      },
       "en": {
-        "src": "/covers/sq2-en.webp"
+        "src": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/sq2/en/2f9730d67c73.jpg"
+      },
+      "he": {
+        "src": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/sq2/he/fecca102b63e.png"
       }
     },
     "platforms": {
@@ -147,11 +147,11 @@
     "id": "sq3",
     "title": "Space Quest III: The Pirates of Pestulon",
     "covers": {
-      "he": {
-        "src": "/covers/sq3-he.webp"
-      },
       "en": {
-        "src": "/covers/sq3-en.webp"
+        "src": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/sq3/en/a67b602ab498.jpg"
+      },
+      "he": {
+        "src": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/sq3/he/48f13b56b776.jpeg"
       }
     },
     "platforms": {
@@ -165,11 +165,11 @@
     "id": "sq5",
     "title": "Space Quest V: The Next Mutation",
     "covers": {
-      "he": {
-        "src": "/covers/sq5-he.webp"
-      },
       "en": {
-        "src": "/covers/sq5-en.webp"
+        "src": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/sq5/en/2d1c335322db.jpg"
+      },
+      "he": {
+        "src": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/sq5/he/8d60499f2931.webp"
       }
     },
     "platforms": {
@@ -183,11 +183,11 @@
     "id": "torin",
     "title": "Torin’s Passage",
     "covers": {
-      "he": {
-        "src": "/covers/torin-he.webp"
-      },
       "en": {
-        "src": "/covers/torin-en.webp"
+        "src": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/torin/en/e53a5ae010c8.jpg"
+      },
+      "he": {
+        "src": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/torin/he/344dd7e600d6.jpeg"
       }
     },
     "platforms": {
@@ -201,11 +201,11 @@
     "id": "spyfox",
     "title": "Spy Fox in Dry Cereal",
     "covers": {
-      "he": {
-        "src": "/covers/spyfox-he.webp"
-      },
       "en": {
-        "src": "/covers/spyfox-en.webp"
+        "src": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/spyfox/en/f79e51735fc4.jpg"
+      },
+      "he": {
+        "src": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/spyfox/he/d2bc70a55ef0.png"
       }
     },
     "platforms": {
@@ -219,11 +219,11 @@
     "id": "pajama",
     "title": "Pajama Sam: No Need to Hide When It’s Dark Outside",
     "covers": {
-      "he": {
-        "src": "/covers/pajama-he.webp"
-      },
       "en": {
-        "src": "/covers/pajama-en.webp"
+        "src": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/pajama/en/800dc7a2b316.jpg"
+      },
+      "he": {
+        "src": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/pajama/he/524911dfb89b.png"
       }
     },
     "platforms": {
@@ -237,11 +237,11 @@
     "id": "toonstruck",
     "title": "Toonstruck",
     "covers": {
-      "he": {
-        "src": "/covers/toonstruck-he.webp"
-      },
       "en": {
-        "src": "/covers/toonstruck-en.webp"
+        "src": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/toonstruck/en/fbd6de512350.jpg"
+      },
+      "he": {
+        "src": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/toonstruck/he/c74b163cee09.png"
       }
     },
     "platforms": {
@@ -255,11 +255,11 @@
     "id": "gob2",
     "title": "Gobliins 2: The Prince Buffoon",
     "covers": {
-      "he": {
-        "src": "/covers/gob2-he.webp"
-      },
       "en": {
-        "src": "/covers/gob2-en.webp"
+        "src": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/gob2/en/1e523d396214.jpg"
+      },
+      "he": {
+        "src": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/gob2/he/e7017e6b020e.jpeg"
       }
     },
     "platforms": {
@@ -273,11 +273,11 @@
     "id": "tlj",
     "title": "The Longest Journey",
     "covers": {
-      "he": {
-        "src": "/covers/tlj-he.webp"
-      },
       "en": {
-        "src": "/covers/tlj-en.webp"
+        "src": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/tlj/en/318fdae99f56.png"
+      },
+      "he": {
+        "src": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/tlj/he/7caffc0e3eb6.jpeg"
       }
     },
     "platforms": {
@@ -291,11 +291,11 @@
     "id": "sky",
     "title": "Beneath a Steel Sky",
     "covers": {
-      "he": {
-        "src": "/covers/sky-he.webp"
-      },
       "en": {
-        "src": "/covers/sky-en.webp"
+        "src": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/sky/en/a66d8fcd68f6.jpg"
+      },
+      "he": {
+        "src": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/sky/he/01aa7fd0a807.png"
       }
     },
     "platforms": {
@@ -309,11 +309,11 @@
     "id": "stanley-parable",
     "title": "The Stanley Parable (2013)",
     "covers": {
-      "he": {
-        "src": "/covers/stanley-parable-he.webp"
-      },
       "en": {
-        "src": "/covers/stanley-parable-en.webp"
+        "src": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/stanley-parable/en/924f717e3da0.jpg"
+      },
+      "he": {
+        "src": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/stanley-parable/he/e3715fa6037e.png"
       }
     },
     "platforms": {
@@ -327,11 +327,11 @@
     "id": "tesla-effect",
     "title": "Tesla Effect: A Tex Murphy Adventure",
     "covers": {
-      "he": {
-        "src": "/covers/tesla-effect-he.webp"
-      },
       "en": {
-        "src": "/covers/tesla-effect-en.webp"
+        "src": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/tesla-effect/en/77011ed8d30d.jpg"
+      },
+      "he": {
+        "src": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/tesla-effect/he/2576368ae8b7.png"
       }
     },
     "platforms": {
@@ -345,11 +345,11 @@
     "id": "ethan-carter",
     "title": "The Vanishing of Ethan Carter (original)",
     "covers": {
-      "he": {
-        "src": "/covers/ethan-carter-he.webp"
-      },
       "en": {
-        "src": "/covers/ethan-carter-en.webp"
+        "src": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/ethan-carter/en/1cb9c72fce73.jpg"
+      },
+      "he": {
+        "src": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/ethan-carter/he/92abbf856e40.png"
       }
     },
     "platforms": {
@@ -363,11 +363,11 @@
     "id": "life-is-strange",
     "title": "Life Is Strange — Episodes 1–3",
     "covers": {
-      "he": {
-        "src": "/covers/life-is-strange-he.webp"
-      },
       "en": {
-        "src": "/covers/life-is-strange-en.webp"
+        "src": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/life-is-strange/en/3129cec77590.jpg"
+      },
+      "he": {
+        "src": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/life-is-strange/he/850643e4f7ca.png"
       }
     },
     "platforms": {
@@ -381,11 +381,11 @@
     "id": "portal2",
     "title": "Portal 2",
     "covers": {
-      "he": {
-        "src": "/covers/portal2-he.webp"
-      },
       "en": {
-        "src": "/covers/portal2-en.webp"
+        "src": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/portal2/en/716b26a850c5.jpg"
+      },
+      "he": {
+        "src": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/portal2/he/cbf4cc98e5cb.png"
       }
     },
     "platforms": {
@@ -399,11 +399,11 @@
     "id": "journey-down1",
     "title": "The Journey Down: Chapter One",
     "covers": {
-      "he": {
-        "src": "/covers/journey-down1-he.webp"
-      },
       "en": {
-        "src": "/covers/journey-down1-en.webp"
+        "src": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/journey-down1/en/593bbde1b4e9.jpg"
+      },
+      "he": {
+        "src": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/journey-down1/he/881fae3ed173.png"
       }
     },
     "platforms": {
@@ -417,11 +417,11 @@
     "id": "kathy-rain-dc",
     "title": "Kathy Rain: Director's Cut",
     "covers": {
-      "he": {
-        "src": "/covers/kathy-rain-dc-he.webp"
-      },
       "en": {
-        "src": "/covers/kathy-rain-dc-en.webp"
+        "src": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/kathy-rain-dc/en/4d5873a538fd.jpg"
+      },
+      "he": {
+        "src": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/kathy-rain-dc/he/1804c853528e.png"
       }
     },
     "platforms": {
@@ -435,11 +435,11 @@
     "id": "drifter",
     "title": "The Drifter",
     "covers": {
-      "he": {
-        "src": "/covers/drifter-he.webp"
-      },
       "en": {
-        "src": "/covers/drifter-en.webp"
+        "src": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/drifter/en/8f903a5fb6f8.jpg"
+      },
+      "he": {
+        "src": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/drifter/he/3fe049fcedf2.png"
       }
     },
     "platforms": {
@@ -453,16 +453,106 @@
     "id": "owlboy",
     "title": "ילד הינשוף — Owlboy",
     "covers": {
-      "he": {
-        "src": "/covers/owlboy-he.webp"
-      },
       "en": {
-        "src": "/covers/owlboy-en.webp"
+        "src": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/owlboy/en/20261b2ad2fb.jpg"
+      },
+      "he": {
+        "src": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/owlboy/he/2e67f2ab5edc.png"
       }
     },
     "platforms": {
       "windows": false,
       "osx": true,
+      "linux": false
+    },
+    "hebrew": true
+  },
+  {
+    "id": "tentacle",
+    "title": "Day of the Tentacle (Classic)",
+    "covers": {
+      "en": {
+        "src": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/tentacle/en/6abd9ff32387.jpg"
+      },
+      "he": {
+        "src": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/tentacle/en/6abd9ff32387.jpg"
+      }
+    },
+    "platforms": {
+      "windows": true,
+      "osx": true,
+      "linux": false
+    },
+    "hebrew": true
+  },
+  {
+    "id": "day-of-the-tentacle-remastered",
+    "title": "Day of the Tentacle Remastered",
+    "covers": {
+      "en": {
+        "src": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/day-of-the-tentacle-remastered/en/91ef55d28fc6.jpg"
+      },
+      "he": {
+        "src": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/day-of-the-tentacle-remastered/en/91ef55d28fc6.jpg"
+      }
+    },
+    "platforms": {
+      "windows": true,
+      "osx": true,
+      "linux": false
+    },
+    "hebrew": true
+  },
+  {
+    "id": "grim-fandango-remastered",
+    "title": "Grim Fandango Remastered",
+    "covers": {
+      "en": {
+        "src": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/grim-fandango-remastered/en/d601cde8ba2e.jpg"
+      },
+      "he": {
+        "src": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/grim-fandango-remastered/en/d601cde8ba2e.jpg"
+      }
+    },
+    "platforms": {
+      "windows": true,
+      "osx": false,
+      "linux": false
+    },
+    "hebrew": true
+  },
+  {
+    "id": "monkey-se-native",
+    "title": "The Secret of Monkey Island: Special Edition (Native Remastered)",
+    "covers": {
+      "en": {
+        "src": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/monkey-se/en/b9d8b502a92e.jpg"
+      },
+      "he": {
+        "src": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/monkey-se/he/0808875f8dd2.png"
+      }
+    },
+    "platforms": {
+      "windows": true,
+      "osx": false,
+      "linux": false
+    },
+    "hebrew": true
+  },
+  {
+    "id": "monkey2-se-native",
+    "title": "Monkey Island 2: LeChuck's Revenge Special Edition (Native Remastered)",
+    "covers": {
+      "en": {
+        "src": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/monkey2-se/en/edc7e06d30c7.jpg"
+      },
+      "he": {
+        "src": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/monkey2-se/he/04849cb6d306.png"
+      }
+    },
+    "platforms": {
+      "windows": true,
+      "osx": false,
       "linux": false
     },
     "hebrew": true
