@@ -1,4 +1,5 @@
 export const hebrewTitles: Record<string, string> = {
+  "silver-pines": "סילבר פיינס",
   undertale: "אנדרטייל",
   "monkey-se": "הסוד של אי הקופים",
   "monkey2-se": "אי הקופים 2 נקמתו של לצ׳אק",

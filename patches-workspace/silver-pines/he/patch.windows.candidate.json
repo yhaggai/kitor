@@ -1,0 +1,38 @@
+{
+  "scummvm_id": "silver-pines",
+  "language": "he",
+  "version": "0.1.0",
+  "release_revision": 1,
+  "filename": "silver-pines-he-0.1.0-windows.zip",
+  "schema_version": 1,
+  "platforms": {
+    "windows": {
+      "files": [
+        {
+          "path": "Carpenter_Data/sharedassets0.assets",
+          "operation": "modify",
+          "original_sha256": "5dabba62a22a5bcee6e6b6da891ef6deec694fdf30f701bcb906e7dcf445347b",
+          "installed_sha256": "424ae5561c513d9ab61f4c9cee6c7c9bc4f7ce0157c45e3552a8bf980d50abb9",
+          "source": {
+            "kind": "bsdiff",
+            "path": "deltas/fonts.bsdiff",
+            "sha256": "ff761c0e16e918ae197843a81be9e4fe852562e7c548d02cbe2e9b01dc32d4ee",
+            "input": "Carpenter_Data/sharedassets0.assets"
+          }
+        },
+        {
+          "path": "Carpenter_Data/StreamingAssets/aa/StandaloneWindows64/localization-string-tables-english(en)_assets_all.bundle",
+          "operation": "modify",
+          "original_sha256": "62ac358a59063a9a38b9987a68b6f45fb5dcb8cdf5b851119772c54c8502af9a",
+          "installed_sha256": "beb5486b52c68f17dab225637987ae2d0d8ccee4a78e7fbdd6c2e8de7eeae719",
+          "source": {
+            "kind": "bsdiff",
+            "path": "deltas/strings.bsdiff",
+            "sha256": "e53e289a047615d8be15ede99f97ca3b33020bfec1008772e31018d666ef6666",
+            "input": "Carpenter_Data/StreamingAssets/aa/StandaloneWindows64/localization-string-tables-english(en)_assets_all.bundle"
+          }
+        }
+      ]
+    }
+  }
+}

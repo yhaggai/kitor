@@ -22,7 +22,12 @@ for (const game of registry.games) {
   const covers = artwork[game.scummvm_id];
   if (!covers) throw new Error(`Missing artwork for ${game.scummvm_id}`);
   for (const lang of ["he", "en"]) {
-    const url = new URL(covers[lang].src);
+    const src = covers[lang].src;
+    if (src === `/cover-${game.scummvm_id}-${lang}.svg` && /^\/cover-[a-z0-9-]+\.svg$/.test(src)) {
+      await copyFile(path.join(repo, "kitor/public", src.slice(1)), path.join(root, "public", src.slice(1)));
+      continue;
+    }
+    const url = new URL(src);
     if (url.protocol !== "https:" || url.hostname !== "assets.kitor.click")
       throw new Error(`Expected Cloudflare artwork for ${game.scummvm_id} (${lang})`);
   }

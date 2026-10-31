@@ -556,5 +556,23 @@
       "linux": false
     },
     "hebrew": true
+  },
+  {
+    "id": "silver-pines",
+    "title": "Silver Pines",
+    "covers": {
+      "en": {
+        "src": "/cover-silver-pines-en.svg"
+      },
+      "he": {
+        "src": "/cover-silver-pines-he.svg"
+      }
+    },
+    "platforms": {
+      "windows": true,
+      "osx": false,
+      "linux": false
+    },
+    "hebrew": true
   }
 ]

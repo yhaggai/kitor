@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="480" height="720" viewBox="0 0 480 720" role="img" aria-label="SILVER PINES">
+  <defs>
+    <linearGradient id="sky" x2=".35" y2="1" gradientUnits="objectBoundingBox"><stop stop-color="#111e2c"/><stop offset=".65" stop-color="#476565"/><stop offset="1" stop-color="#132128"/></linearGradient>
+    <linearGradient id="road" x2="0" y2="1"><stop stop-color="#8ca69d"/><stop offset="1" stop-color="#17232c"/></linearGradient>
+    <path id="pine" d="M0 0l-12 34 7-2-19 33 10-3-25 43 34-11v14h10V94l34 11-25-43 10 3-19-33 7 2z"/>
+  </defs>
+  <rect width="480" height="720" fill="url(#sky)"/>
+  <circle cx="321" cy="248" r="48" fill="#d3d9bd" opacity=".85"/>
+  <path d="M0 358l89-59 45 22 69-51 67 40 92-51 118 44v129H0z" fill="#57716e"/>
+  <path d="M0 372l98-41 74 24 64-34 69 17 75-44 100 45v96H0z" fill="#334e50"/>
+  <path d="M0 400q100-30 215-17t265-28v365H0z" fill="#172d31"/>
+  <path d="M253 381q-67 23-19 53t-9 74Q157 554 53 720h305q-108-90-84-151t-8-108q-57-40-13-80z" fill="url(#road)"/>
+  <g fill="#203e40"><use href="#pine" transform="translate(42 221) scale(1.8)"/><use href="#pine" transform="translate(123 284)"/><use href="#pine" transform="translate(403 226) scale(1.65)"/></g>
+  <g fill="#10262a"><use href="#pine" transform="translate(2 150) scale(2.8)"/><use href="#pine" transform="translate(465 125) scale(3.2)"/><use href="#pine" transform="translate(363 303) scale(.85)"/></g>
+  <path d="M212 438l4-7h15l5 7v5h-24z" fill="#101d22"/><path d="M214 438h5m10 0h5" stroke="#ff775d" stroke-width="3"/>
+  <rect x="16" y="16" width="448" height="688" fill="none" stroke="#c3c5a7" opacity=".55"/>
+  <g text-anchor="middle" direction="ltr"><text x="240" y="97" fill="#efead7" font-family="Georgia,serif" font-weight="bold" font-size="51">SILVER PINES</text><text x="240" y="668" fill="#e0dfcc" font-family="Arial,sans-serif" font-size="15">SURVIVAL HORROR</text></g>
+</svg>
