@@ -271,5 +271,11 @@
     "recipes/signature-1.json": "patches-workspace/day-of-the-tentacle-remastered/he/recipes/signature-1.json",
     "recipes/signature-2.json": "patches-workspace/day-of-the-tentacle-remastered/he/recipes/signature-2.json",
     "recipes/signature-3.json": "patches-workspace/day-of-the-tentacle-remastered/he/recipes/signature-3.json"
+  },
+  "silver-pines/windows": {
+    "patch.json": "patches-workspace/silver-pines/he/patch.windows.candidate.json",
+    "licenses/OFL.txt": "patches-workspace/silver-pines/he/licenses/OFL.txt",
+    "deltas/fonts.bsdiff": "patches-workspace/silver-pines/he/deltas/fonts.bsdiff",
+    "deltas/strings.bsdiff": "patches-workspace/silver-pines/he/deltas/strings.bsdiff"
   }
 }

@@ -11,6 +11,11 @@ fn every_embedded_package_matches_its_catalog_identity() {
             let source = PackageSource::resolve(patch, &game.behavior).unwrap();
             if let PackageSource::Embedded(key) = source {
                 for platform in ["windows", "osx"] {
+                    if let Some(support) = &game.platforms {
+                        if (platform == "windows" && !support.windows) || (platform == "osx" && !support.osx) {
+                            continue;
+                        }
+                    }
                     let assets = embedded_assets(&format!("{key}/{platform}")).unwrap();
                     let manifest = assets
                         .iter()
@@ -126,4 +131,19 @@ fn embedded_staging_preserves_existing_package_bytes() {
         assert_eq!(actual.keys().cloned().collect::<std::collections::BTreeSet<_>>(), names, "unexpected staged assets: {id}");
         assert_eq!(expected, actual, "{id}");
     }
+}
+
+#[test]
+fn silver_pines_requires_both_steam_install_markers() {
+    let registry = crate::services::registry_service::load_registry().unwrap();
+    let game = registry.games.iter().find(|g| g.scummvm_id == "silver-pines").unwrap();
+    assert_eq!(game.steam_app_id, Some(2333000));
+    let dir = tempfile::tempdir().unwrap();
+    let root = dir.path();
+    std::fs::write(root.join("Carpenter.exe"), []).unwrap();
+    assert!(crate::services::game_adapters::detect(game, root).is_none());
+    let strings = root.join("Carpenter_Data/StreamingAssets/aa/StandaloneWindows64/localization-string-tables-english(en)_assets_all.bundle");
+    std::fs::create_dir_all(strings.parent().unwrap()).unwrap();
+    std::fs::write(strings, []).unwrap();
+    assert_eq!(crate::services::game_adapters::detect(game, root), Some(root.canonicalize().unwrap()));
 }
