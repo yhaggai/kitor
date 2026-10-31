@@ -59,7 +59,7 @@ fn detects_space_quest_collection() {
             std::fs::copy(source.join(name), fixture.0.join(name.to_lowercase())).unwrap();
         }
         assert_eq!(detect_game_in_folder(&fixture.0).unwrap().unwrap().scummvm_id, id);
-        for other in ["sq1", "sq1sci", "sq2", "sq3", "sq5"] {
+        for other in ["sq1", "sq1sci", "sq2", "sq3", "sq4", "sq5"] {
             assert_eq!(is_space_quest(&fixture.0, other), id == other);
         }
         let file = fixture.0.join(signature["signature"].as_str().unwrap().to_lowercase());
@@ -365,4 +365,14 @@ fn detects_local_kyrandia_installation() {
     let detected = detect_game_in_folder(&path).unwrap().unwrap();
     assert_eq!(detected.scummvm_id, "kyra1-cd");
     assert_eq!(PathBuf::from(detected.install_path), path.join("Contents/Resources/game/game"));
+}
+
+#[test]
+#[ignore = "requires the installed Steam SQ4 CD; set KITOR_SQ4_DIR"]
+fn detects_local_sq4_cd() {
+    let dir = PathBuf::from(std::env::var("KITOR_SQ4_DIR").unwrap());
+    let game = detect_game_in_folder(&dir).unwrap().unwrap();
+    assert_eq!(game.scummvm_id, "sq4");
+    assert_eq!(PathBuf::from(game.install_path), dir);
+    assert!(!is_space_quest(&dir, "sq5"));
 }

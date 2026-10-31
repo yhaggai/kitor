@@ -254,5 +254,13 @@
     "he": {
       "src": "/cover-silver-pines-he.svg"
     }
+  },
+  "sq4": {
+    "en": {
+      "src": "/sq4-en.webp"
+    },
+    "he": {
+      "src": "/sq4-he.webp"
+    }
   }
 }

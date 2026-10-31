@@ -62,6 +62,18 @@
     ]
   },
   {
+    "id": "sq4",
+    "signature": "RESOURCE.MAP",
+    "sha256": [
+      "62384fb1813c1a140072ff84455736c96f28454b3f96a82211ce3dc5844aa4b6"
+    ],
+    "required": [
+      "RESOURCE.000",
+      "RESOURCE.AUD",
+      "RESOURCE.MAP"
+    ]
+  },
+  {
     "id": "sq5",
     "signature": "RESOURCE.MAP",
     "sha256": [

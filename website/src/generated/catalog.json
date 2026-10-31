@@ -162,6 +162,24 @@
     "hebrew": true
   },
   {
+    "id": "sq4",
+    "title": "Space Quest IV: Roger Wilco and the Time Rippers",
+    "covers": {
+      "en": {
+        "src": "/sq4-en.webp"
+      },
+      "he": {
+        "src": "/sq4-he.webp"
+      }
+    },
+    "platforms": {
+      "windows": true,
+      "osx": false,
+      "linux": false
+    },
+    "hebrew": true
+  },
+  {
     "id": "sq5",
     "title": "Space Quest V: The Next Mutation",
     "covers": {
