@@ -1,4 +1,26 @@
 use super::*;
+#[test]
+fn nikud_updates_never_replace_unpointed_hebrew() {
+    let mut registry: Registry =
+        serde_json::from_str(include_str!("../../../../patches/registry.json")).unwrap();
+    let game = registry.games.iter().find(|g| g.scummvm_id == "undertale").unwrap();
+    let plain = serde_json::to_value(game.patches.iter().find(|p| p.language == "he").unwrap()).unwrap();
+    let mut update = catalog();
+    let release = &mut update.patches[0];
+    release.scummvm_id = "undertale".into();
+    release.language = "he-x-nikud".into();
+    release.version = "nikud-next".into();
+    release.release_revision = 2;
+    release.download_url = format!("https://github.com/{}/releases/download/patch-undertale-he-x-nikud-vnikud-next/patch.zip", repository());
+    assert!(parse(&serde_json::to_vec(&update).unwrap()).is_ok());
+    merge(&mut registry, &update);
+    let game = registry.games.iter().find(|g| g.scummvm_id == "undertale").unwrap();
+    assert_eq!(serde_json::to_value(game.patches.iter().find(|p| p.language == "he").unwrap()).unwrap(), plain);
+    if cfg!(any(target_os = "macos", target_os = "windows")) {
+        assert_eq!(game.patches.iter().find(|p| p.language == "he-x-nikud").unwrap().version, "nikud-next");
+    }
+}
+
 fn catalog() -> Catalog {
     Catalog {
         schema_version: 1,

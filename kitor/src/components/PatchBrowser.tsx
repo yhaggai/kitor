@@ -21,6 +21,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import { usePatchBrowserState } from "@/hooks/usePatchBrowserState";
+import { patchOptionLabel } from "@/lib/patchOptions";
 import { type Game, type Patch, type PatchWithStatus, useAppStore } from "@/store/store";
 
 export default function PatchBrowser() {
@@ -110,7 +111,10 @@ export default function PatchBrowser() {
     loadPatches();
   }, [games, actions]);
 
-  const selectedPatch = patches.find((patch) => patch.scummvm_id === selectedGuide?.scummvmId);
+  const selectedPatch = patches.find(
+    (patch) =>
+      patch.scummvm_id === selectedGuide?.scummvmId && patch.language === selectedGuide?.language
+  );
 
   const handleViewGame = (gameId: number) => {
     setActiveTab("library");
@@ -210,7 +214,11 @@ export default function PatchBrowser() {
               patch={patch}
               onViewGame={() => patch.game_id && handleViewGame(patch.game_id)}
               onShowGuide={() =>
-                actions.setSelectedGuide({ scummvmId: patch.scummvm_id, title: patch.game_title })
+                actions.setSelectedGuide({
+                  scummvmId: patch.scummvm_id,
+                  language: patch.language,
+                  title: patch.game_title,
+                })
               }
             />
           ))}
@@ -295,7 +303,7 @@ function PatchCard({ patch, onViewGame, onShowGuide }: PatchCardProps) {
             </Tooltip.Root>
           </Tooltip.Provider>
           <p className="text-xs text-muted-foreground truncate">
-            v{patch.version} • {patch.author}
+            {patchOptionLabel(patch.language, patch.scummvm_id)} · v{patch.version} • {patch.author}
           </p>
         </div>
 

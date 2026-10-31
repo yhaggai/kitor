@@ -1,0 +1,10 @@
+# Owned original assets and generated complete game archives stay local.
+/build/
+/decompiled/
+/translation-work/
+/translation-validation.json
+/full-patch/fonts/
+/full-patch/generated-fonts/
+/full-patch/render-decompiled/
+/full-patch/render-special/
+/full-patch/gml_*.gml

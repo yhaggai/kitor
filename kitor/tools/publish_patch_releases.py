@@ -94,7 +94,7 @@ def main():
     require(catalog['schema_version'] == 1, 'Unsupported registry schema')
     registry = json.loads(Path('kitor/patches/registry.json').read_text())
     changed = False
-    for path in sorted(Path('patches-workspace').glob('*/he/patch.json')):
+    for path in sorted(Path('patches-workspace').glob('*/*/patch.json')):
         provenance = path.parent / 'provenance.json'
         if not provenance.exists() or json.loads(provenance.read_text()).get('release_ready') is not True:
             continue

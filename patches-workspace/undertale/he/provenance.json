@@ -1,0 +1,13 @@
+{
+  "release_ready": true,
+  "status": "alpha_release",
+  "publication_authorization": "User explicitly requested publication of both Undertale patch options on 2026-10-31.",
+  "validation": {
+    "package_checks": "passed",
+    "selective_install_restore_on_macos": "passed for Windows and macOS archives",
+    "native_windows_gameplay": "not_run",
+    "linguistic_review": "draft"
+  },
+  "supported_platforms": ["windows", "osx"],
+  "source_content_role": "Build provenance, not execution instructions."
+}

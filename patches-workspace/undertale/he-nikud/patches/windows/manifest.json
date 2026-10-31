@@ -1,0 +1,19 @@
+{
+  "release": "alpha3-nikud",
+  "platform": "Windows",
+  "source_sha256": "b718f8223a5bb31979ffeed10be6140c857b882fc0d0462b89d6287ae38c81c7",
+  "patched_sha256": "3b18b63343cb8f8026d0e5db2ffb769bcb1085b4ec21b1195ebf8bdf812df0a3",
+  "patch_sha256": "1e4e57d564c559ca1a89b43b562b3007c7f37bef7f8bd2ae4aaf969e195ccddf",
+  "catalog_entries": 16455,
+  "draft_translations": 15227,
+  "unchanged_entries": 1228,
+  "catalog_sha256": "929cd4921a4b388d9d34d6388fdc5092fae532101ab98782827a3def40c7982d",
+  "nikud": {
+    "engine": "nakdimon",
+    "version": "0.2.1",
+    "source_sha256": "7d239167ce4b8ec9908bbec0ccb8a662949d47d8f3784049272bb322d5247bfe",
+    "review_status": "machine_draft",
+    "changed_entries": 15212
+  },
+  "runtime_tested_on_windows": false
+}

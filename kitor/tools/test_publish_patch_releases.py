@@ -9,6 +9,16 @@ from build_patch_packages import InvalidPackage
 
 
 class PublishingTests(unittest.TestCase):
+    def test_nikud_is_an_independent_release_track(self):
+        catalog = {'schema_version': 1, 'catalog_revision': 1, 'patches': []}
+        plain = dict(self.release(), scummvm_id='undertale')
+        pointed = dict(plain, language='he-x-nikud', version='nikud1')
+        publisher.merge_release(catalog, plain)
+        publisher.merge_release(catalog, pointed)
+        publisher.merge_release(catalog, dict(pointed, version='nikud2', release_revision=2))
+        self.assertEqual(len(catalog['patches']), 2)
+        self.assertEqual(next(p for p in catalog['patches'] if p['language'] == 'he'), plain)
+
     def release(self):
         return {'scummvm_id': 'sq1', 'language': 'he', 'version': 'RC1-kitor2',
                 'release_revision': 1, 'filename': 'patch.zip', 'checksum': 'a' * 64}

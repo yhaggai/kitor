@@ -24,6 +24,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import { useDialog } from "@/hooks/useDialog";
 import { type PatchDownloadProgress, useGameCardState } from "@/hooks/useGameCardState";
+import { patchOptionLabel, selectedPatchOption } from "@/lib/patchOptions";
 import type { Game, GameHealth } from "@/store/store";
 import { useAppStore } from "@/store/store";
 
@@ -67,6 +68,7 @@ function PatchVersionTooltip({
 export default function GameCard({ game, onRemove, isHighlighted }: GameCardProps) {
   const [refreshing, setRefreshing] = useState(false);
   const [updateConfirmationOpen, setUpdateConfirmationOpen] = useState(false);
+  const [translationChoice, setTranslationChoice] = useState("");
   const { state, actions } = useGameCardState();
   const { isScummVMReady } = useAppStore();
   const { alert } = useDialog();
@@ -147,8 +149,8 @@ export default function GameCard({ game, onRemove, isHighlighted }: GameCardProp
   const handleInstallPatch = async () => {
     if (!game.available_patches || game.available_patches.length === 0) return;
 
-    // Install the first available patch (you could expand this to show a selection dialog)
-    const patch = updatePatch ?? game.available_patches[0];
+    const patch = selectedPatch;
+    if (!patch) return;
 
     try {
       actions.showInstallDialog();
@@ -188,7 +190,9 @@ export default function GameCard({ game, onRemove, isHighlighted }: GameCardProp
   const handleRestorePatch = async () => {
     if (!game.installed_patches || game.installed_patches.length === 0) return;
 
-    const installedPatch = game.installed_patches[0];
+    const installedPatch =
+      game.installed_patches.find((patch) => patch.status === "active") ??
+      game.installed_patches[0];
 
     try {
       actions.startRestore();
@@ -227,14 +231,24 @@ export default function GameCard({ game, onRemove, isHighlighted }: GameCardProp
   };
 
   const recordedPatch = !!game.installed_patches?.length;
-  const updatePatch = game.available_patches?.find((available) =>
-    game.installed_patches?.some(
-      (installed) =>
-        installed.status === "active" &&
-        installed.language === available.language &&
-        available.release_revision > installed.release_revision &&
-        available.version !== installed.version
-    )
+  const selectedPatch = selectedPatchOption(
+    game.available_patches ?? [],
+    game.installed_patches ?? [],
+    translationChoice
+  );
+  const activePatch = game.installed_patches?.find((patch) => patch.status === "active");
+  const changingTranslation =
+    !!activePatch && !!selectedPatch && activePatch.language !== selectedPatch.language;
+  const updatePatch = game.available_patches?.find(
+    (available) =>
+      available.language === selectedPatch?.language &&
+      game.installed_patches?.some(
+        (installed) =>
+          installed.status === "active" &&
+          installed.language === available.language &&
+          available.release_revision > installed.release_revision &&
+          available.version !== installed.version
+      )
   );
   const gameReady = !game.health || game.health.game_status === "present";
   const hasPatch = game.health
@@ -416,9 +430,52 @@ export default function GameCard({ game, onRemove, isHighlighted }: GameCardProp
               Play
             </Button>
           )}
+          {(game.available_patches?.length ?? 0) > 1 && (
+            <div className="w-full space-y-2">
+              <label className="block text-sm" htmlFor={`translation-${game.id}`}>
+                Translation
+              </label>
+              <select
+                id={`translation-${game.id}`}
+                className="w-full rounded-md border bg-background px-3 py-2 text-sm"
+                value={selectedPatch?.language ?? ""}
+                onChange={(event) => setTranslationChoice(event.target.value)}
+                disabled={busy}
+              >
+                {game.available_patches?.map((patch) => (
+                  <option key={patch.language} value={patch.language}>
+                    {patchOptionLabel(patch.language, game.scummvm_id)}
+                  </option>
+                ))}
+              </select>
+              {activePatch?.language && (
+                <p className="text-xs text-muted-foreground">
+                  Installed: {patchOptionLabel(activePatch.language, game.scummvm_id)}
+                </p>
+              )}
+              <p className="text-xs text-muted-foreground">{selectedPatch?.description}</p>
+              {changingTranslation && canRestore && (
+                <>
+                  <p className="text-xs text-muted-foreground">
+                    Restore the current translation first, then install your selected option.
+                  </p>
+                  <Button
+                    className="w-full"
+                    size="sm"
+                    variant="outline"
+                    disabled={busy}
+                    onClick={() => actions.showRestoreDialog()}
+                  >
+                    <Undo className="mr-2 h-3 w-3" />
+                    Restore to change translation
+                  </Button>
+                </>
+              )}
+            </div>
+          )}
           {canInstall && (
             <PatchVersionTooltip
-              label={`Available patch version: ${game.available_patches?.[0]?.version ?? "Unknown"}`}
+              label={`Available patch version: ${selectedPatch?.version ?? "Unknown"}`}
               disabled={busy}
             >
               <Button
@@ -456,7 +513,7 @@ export default function GameCard({ game, onRemove, isHighlighted }: GameCardProp
               </PatchVersionTooltip>
             </div>
           )}
-          {hasPatch && !canUpdate && (
+          {hasPatch && !canUpdate && !changingTranslation && (
             <PatchVersionTooltip
               label={`Installed patch version: ${game.installed_patches?.find((patch) => patch.status === "active")?.version ?? "Unknown"}`}
               disabled

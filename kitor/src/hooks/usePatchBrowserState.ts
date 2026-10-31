@@ -3,6 +3,7 @@ import type { PatchWithStatus } from "@/store/store";
 
 type SelectedGuide = {
   scummvmId: string;
+  language: string;
   title: string;
 };
 

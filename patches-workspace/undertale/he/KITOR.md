@@ -19,6 +19,10 @@ Kitor does not run upstream `install.py`. That script retains independent
 backup/rollback for standalone users following the upstream README.
 
 The release workflow includes patch.json and publishes
-`patch-undertale-he-valpha2-steam-kitor2/Undertale-Hebrew-alpha2-steam.zip`.
+`patch-undertale-he-valpha2-steam-kitor3/Undertale-Hebrew-alpha2-steam-kitor3.zip`.
 Publish this release before distributing the catalog. Close the game before
 installing or restoring the patch.
+
+This catalog-ready revision adds release identity metadata; the unpointed game
+archive payloads remain byte-for-byte the alpha 2 payloads. Nikud uses its own
+`he-x-nikud` track and package in `../he-nikud/`.

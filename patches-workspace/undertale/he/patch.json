@@ -1,8 +1,8 @@
 {
   "scummvm_id": "undertale",
   "language": "he",
-  "version": "alpha2-steam-kitor2",
-  "filename": "Undertale-Hebrew-alpha2-steam.zip",
+  "version": "alpha2-steam-kitor3",
+  "filename": "Undertale-Hebrew-alpha2-steam-kitor3.zip",
   "schema_version": 1,
   "platforms": {
     "osx": {
@@ -37,5 +37,6 @@
         }
       ]
     }
-  }
+  },
+  "release_revision": 1
 }

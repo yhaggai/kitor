@@ -11,7 +11,7 @@ from build_patch_packages import build, validate, InvalidPackage
 class PackageTests(unittest.TestCase):
     def test_release_manifests_support_both_ci_platforms(self):
         workspace = Path(__file__).resolve().parents[2] / 'patches-workspace'
-        for path in workspace.glob('*/he/patch.json'):
+        for path in workspace.glob('*/*/patch.json'):
             with self.subTest(manifest=str(path)):
                 platforms = json.loads(path.read_text(encoding='utf-8'))['platforms']
                 self.assertTrue({'windows', 'osx'} <= platforms.keys(),
