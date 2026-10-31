@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "catalog_revision": 2,
+  "catalog_revision": 3,
   "patches": [
     {
       "scummvm_id": "owlboy",
@@ -28,22 +28,6 @@
       "file_size": 37317285,
       "author": "yhaggai",
       "description": "Hebrew without nikud for UNDERTALE on Windows and macOS.\n\nThis catalog-ready package retains the original alpha 2 translation and game\narchive payloads. Hebrew with nikud is offered separately; installing updates\nto this option will not switch to nikud.\n\nSelect your translation in Kitor. Restore an installed translation before\ninstalling the other option. Keep English selected in-game.\n\nThe translation remains a draft. Windows gameplay testing is outstanding.",
-      "platforms": [
-        "windows",
-        "osx"
-      ]
-    },
-    {
-      "scummvm_id": "undertale",
-      "language": "he-x-nikud",
-      "version": "alpha3-nikud-kitor1",
-      "release_revision": 1,
-      "download_url": "https://github.com/yhaggai/kitor/releases/download/patch-undertale-he-x-nikud-valpha3-nikud-kitor1/Undertale-Hebrew-alpha3-nikud.zip",
-      "filename": "Undertale-Hebrew-alpha3-nikud.zip",
-      "checksum": "8975db019c02e546adff1af6f4bcf4dd842f51cf36999f011e376559adac5d08",
-      "file_size": 38120809,
-      "author": "yhaggai",
-      "description": "Hebrew with nikud is a separate UNDERTALE translation option for Windows and\nmacOS. The original Hebrew without nikud option remains available and keeps its\nown update track.\n\nSelect the desired option under Translation in Kitor. If another translation is\ninstalled, restore it first, then install the selected option. Both packages\nmodify only the supported game archive and use Kitor's selective backup workflow.\n\nThis is an alpha with machine-generated vowelization. Linguistic review and\nin-game playtesting remain outstanding. Keep English selected in the game.",
       "platforms": [
         "windows",
         "osx"
