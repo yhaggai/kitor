@@ -2575,6 +2575,7 @@ dependencies = [
  "keyring",
  "md-5",
  "migration",
+ "percent-encoding",
  "rand 0.8.5",
  "reqwest",
  "sea-orm",

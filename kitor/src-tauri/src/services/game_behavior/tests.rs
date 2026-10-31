@@ -4,7 +4,7 @@ use super::*;
 fn catalog_profiles_keep_native_and_patched_launches_distinct() {
     for id in ["monkey-se", "monkey2-se"] {
         let behavior = for_game(id).unwrap();
-        assert!(behavior.launch_profile(false).native.is_some());
+        assert_eq!(behavior.launch_profile(false).is_native(), !cfg!(target_os = "macos"));
         assert!(behavior.launch_profile(true).native.is_none());
         assert_eq!(
             behavior.launch_profile(true).subdirectory.as_deref(),
@@ -69,9 +69,26 @@ fn invalid_profiles_fail_before_launch() {
     let behavior = GameBehavior {
         launch: Some(LaunchProfiles {
             original: profile.clone(),
+            original_macos: None,
             patched: profile,
         }),
         ..Default::default()
     };
     assert!(behavior.validate().is_err());
+}
+
+#[test]
+fn monkey_original_macos_uses_classic_scummvm_data() {
+    for (id, target) in [("monkey-se", "scumm:monkey"), ("monkey2-se", "scumm:monkey2")] {
+        let behavior = for_game(id).unwrap();
+        let profiles = behavior.launch.as_ref().unwrap();
+        assert!(profiles.original.is_native());
+        let mac = profiles.original_macos.as_ref().unwrap();
+        assert!(!mac.is_native());
+        assert_eq!(mac.args, vec!["--fullscreen", target]);
+        assert!(mac.subdirectory.is_none());
+        if cfg!(target_os = "macos") {
+            assert_eq!(behavior.launch_profile(false).args, mac.args);
+        }
+    }
 }

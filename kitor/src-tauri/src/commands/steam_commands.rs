@@ -80,12 +80,14 @@ pub async fn disconnect_steam(
 #[tauri::command]
 pub async fn download_steam_windows_game(
     app_id: u32,
+    install_root: Option<String>,
     game_ids: Vec<String>,
+    overwrite: Option<bool>,
     app: State<'_, AppState>,
     updates: State<'_, crate::services::app_updates::AppUpdates>,
 ) -> Result<Vec<crate::models::game::Model>, String> {
     let _activity = updates.activity()?;
-    crate::services::steam_download_service::download(app_id, game_ids, &app).await
+    crate::services::steam_download_service::download_to_confirmed(app_id, game_ids, &app, install_root.map(std::path::PathBuf::from), overwrite.unwrap_or(false)).await
 }
 
 #[tauri::command]

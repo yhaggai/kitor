@@ -43,6 +43,7 @@ pub enum DetectionAdapter {
     MonkeyNative,
     SpaceQuest,
     Toonstruck,
+    Torin,
 }
 #[derive(Debug, Clone, Copy, Serialize, Deserialize)]
 #[serde(rename_all = "snake_case")]
@@ -60,6 +61,8 @@ pub enum InstallTarget {
 #[serde(deny_unknown_fields)]
 pub struct LaunchProfiles {
     pub original: LaunchProfile,
+    #[serde(default)]
+    pub original_macos: Option<LaunchProfile>,
     pub patched: LaunchProfile,
 }
 #[derive(Debug, Clone, Default, Serialize, Deserialize)]
@@ -136,7 +139,7 @@ impl GameBehavior {
             return Err("Choose one bundled package resource or adapter".into());
         }
         if let Some(profiles) = &self.launch {
-            for profile in [&profiles.original, &profiles.patched] {
+            for profile in [&profiles.original, &profiles.patched].into_iter().chain(profiles.original_macos.iter()) {
                 if profile.native.is_some() && !profile.commands.is_empty() {
                     return Err("Choose native commands or a native adapter, not both".into());
                 }
@@ -188,7 +191,11 @@ impl GameBehavior {
                 if patched {
                     profiles.patched.clone()
                 } else {
-                    profiles.original.clone()
+                    if cfg!(target_os = "macos") {
+                        profiles.original_macos.as_ref().unwrap_or(&profiles.original).clone()
+                    } else {
+                        profiles.original.clone()
+                    }
                 }
             })
             .unwrap_or_else(|| LaunchProfile {

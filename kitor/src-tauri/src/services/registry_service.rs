@@ -173,7 +173,7 @@ fn prepare_behaviors(registry: &mut Registry, bundled: &Registry) -> Result<(), 
             } else if let Some(legacy) = &game.launch_config {
                 let patched = super::game_behavior::LaunchProfile { args: legacy.args.clone(), subdirectory: legacy.subdirectory.clone(), ..Default::default() };
                 let original = super::game_behavior::LaunchProfile { args: legacy.args.iter().filter(|a| !a.starts_with("--language=")).cloned().collect(), ..Default::default() };
-                game.behavior.launch = Some(super::game_behavior::LaunchProfiles { original, patched });
+                game.behavior.launch = Some(super::game_behavior::LaunchProfiles { original, patched, original_macos: None });
             }
         }
         game.behavior.validate()?;

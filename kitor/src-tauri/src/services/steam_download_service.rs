@@ -49,9 +49,83 @@ fn copy_checked(source: &Path, dest: &Path) -> Result<(), String> {
     Ok(())
 }
 
+async fn download_collection(
+    product: &SteamProduct,
+    state: &crate::AppState,
+    install_root: &Path,
+    overwrite: bool,
+) -> Result<Vec<crate::models::game::Model>, String> {
+    reject_links(install_root)?;
+    let destination = install_root.join(format!("steam-{}", product.app_id));
+    reject_links(&destination)?;
+    if destination.exists() && !overwrite {
+        return Err(format!("OVERWRITE_REQUIRED:{}", destination.display()));
+    }
+    {
+        let steam = PathBuf::from(std::env::var_os("HOME").ok_or("Cannot locate home folder")?)
+            .join("Library/Application Support/Steam");
+        let runtime = steam.join("Steam.AppBundle/Steam/Contents/MacOS");
+        let candidates = [
+            runtime.join(format!("steamapps/content/app_{}/depot_{}", product.app_id, product.depot_id)),
+            steam.join(format!("steamapps/content/app_{}/depot_{}", product.app_id, product.depot_id)),
+        ];
+        let valid_source = || candidates.iter().find(|path| product.games.iter()
+            .all(|recipe| verify_recipe(&path.join(&recipe.folder), recipe).is_ok())).cloned();
+        let source = if let Some(source) = valid_source() { source } else {
+            let executable = [runtime.join("steam_osx"), PathBuf::from("/Applications/Steam.app/Contents/MacOS/steam_osx")]
+                .into_iter().find(|path| path.is_file()).ok_or("Install Steam and sign in first")?;
+            download_depot(&steam, &executable, &state.app_data_dir, product.app_id, product.depot_id).await?;
+            valid_source().ok_or("Steam completed, but the collection files could not be verified")?
+        };
+        let root = install_root.to_path_buf();
+        let target = destination.clone();
+        tokio::task::spawn_blocking(move || -> Result<(), String> {
+            std::fs::create_dir_all(&root).map_err(|e| e.to_string())?;
+            let staging = tempfile::tempdir_in(&root).map_err(|e| e.to_string())?;
+            let content = staging.path().join("collection");
+            copy_checked(&source, &content)?;
+            // Finish and verify the replacement before touching the existing installation.
+            let previous = staging.path().join("previous");
+            let replacing = target.exists();
+            if replacing && !overwrite {
+                return Err(format!("OVERWRITE_REQUIRED:{}", target.display()));
+            }
+            if replacing {
+                std::fs::rename(&target, &previous).map_err(|e| e.to_string())?;
+            }
+            if let Err(error) = std::fs::rename(content, &target) {
+                if replacing {
+                    if let Err(restore) = std::fs::rename(&previous, &target) {
+                        let retained = staging.keep();
+                        return Err(format!("Replacement failed: {error}; restore failed: {restore}. Original files retained at {}", retained.join("previous").display()));
+                    }
+                }
+                return Err(error.to_string());
+            }
+            Ok(())
+        }).await.map_err(|e| e.to_string())??;
+    }
+    // Detect intact collection contents, including games outside the download recipes.
+    // Existing imports may contain saves and patches and must never be overwritten.
+    let mut pending = vec![destination];
+    let mut games = Vec::new();
+    while let Some(path) = pending.pop() {
+        let metadata = std::fs::symlink_metadata(&path).map_err(|e| e.to_string())?;
+        if metadata.file_type().is_symlink() || !metadata.is_dir() { continue; }
+        games.extend(super::game_service::scan_directory(
+            &state.db, &path.to_string_lossy(), state.app_data_dir.clone(),
+        ).await?);
+        for entry in std::fs::read_dir(&path).map_err(|e| e.to_string())? {
+            pending.push(entry.map_err(|e| e.to_string())?.path());
+        }
+    }
+    Ok(games)
+}
+
 async fn download_layout(
     product: &SteamProduct,
     state: &crate::AppState,
+    install_root: &Path,
 ) -> Result<crate::models::game::Model, String> {
     let recipe = product.games.first().ok_or("Missing import recipe")?;
     // Never move an existing installation out from under its patch backups or saves.
@@ -82,7 +156,7 @@ async fn download_layout(
         product.required_files.iter().all(|name| p.join(name).is_file())
     })
     .ok_or("Steam reported completion, but the expected game files were not found")?;
-    let games = state.app_data_dir.join("games");
+    let games = install_root.to_path_buf();
     let destination = games.join(format!("{}-steam", recipe.id));
     let copy_paths = product.copy_paths.clone();
     let import = destination.clone();
@@ -331,11 +405,33 @@ fn import_recipe(source: &Path, destination: &Path, recipe: &ImportRecipe) -> Re
 
 /// A store product is a download source, not a Kitor game identity.
 /// Serialize imports too, so two cards cannot replace one another's installation.
+#[cfg(test)]
 pub async fn download(
     app_id: u32,
     game_ids: Vec<String>,
     state: &crate::AppState,
 ) -> Result<Vec<crate::models::game::Model>, String> {
+    download_to(app_id, game_ids, state, None).await
+}
+
+pub async fn download_to(
+    app_id: u32,
+    game_ids: Vec<String>,
+    state: &crate::AppState,
+    install_root: Option<PathBuf>,
+) -> Result<Vec<crate::models::game::Model>, String> {
+    download_to_confirmed(app_id, game_ids, state, install_root, false).await
+}
+
+pub async fn download_to_confirmed(
+    app_id: u32,
+    game_ids: Vec<String>,
+    state: &crate::AppState,
+    install_root: Option<PathBuf>,
+    overwrite: bool,
+) -> Result<Vec<crate::models::game::Model>, String> {
+    let install_root = install_root.unwrap_or_else(|| state.app_data_dir.join("games"));
+    if !install_root.is_absolute() { return Err("Choose an absolute installation folder".into()); }
     if !cfg!(target_os = "macos") {
         return Err("This download flow requires macOS".into());
     }
@@ -344,12 +440,15 @@ pub async fn download(
     })?;
     let product = products().into_iter().find(|p| p.app_id == app_id)
         .ok_or("Unsupported Steam product")?;
+    if product.games.len() > 1 {
+        return download_collection(&product, state, &install_root, overwrite).await;
+    }
     if game_ids.is_empty() || game_ids.iter().any(|id| !product.games.iter().any(|g| &g.id == id)) {
         return Err("Unsupported game edition for this Steam product".into());
     }
     if matches!(product.importer, Importer::Layout) {
         if product.games.len() != 1 || game_ids.len() != 1 { return Err("Layout imports require one game".into()); }
-        return Ok(vec![download_layout(&product, state).await?]);
+        return Ok(vec![download_layout(&product, state, &install_root).await?]);
     }
     let all = &product.games;
     let existing = super::game_service::get_all_games(&state.db).await?;
@@ -417,10 +516,7 @@ pub async fn download(
         }
     }
     for recipe in needed {
-        let destination = state
-            .app_data_dir
-            .join("games")
-            .join(format!("{}-steam", recipe.id));
+        let destination = install_root.join(format!("{}-steam", recipe.id));
         // A previous registration failure leaves a pristine, recoverable import.
         if !destination.exists() {
             import_recipe(&cache.join(&recipe.id), &destination, recipe)?;

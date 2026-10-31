@@ -938,5 +938,65 @@
         ]
       }
     ]
+  },
+  {
+    "app_id": 494740,
+    "depot_id": 494741,
+    "title": "Police Quest Collection",
+    "importer": "verified_files",
+    "cache_key": "494740-427993029009177791",
+    "games": [
+      {
+        "id": "pq1",
+        "title": "Police Quest: In Pursuit of the Death Angel (EGA)",
+        "folder": "PQ1/EGA",
+        "files": [
+          {
+            "name": "AGI",
+            "sha256": "29ddd3f3b91d65b6eade156608d7915e3c8b7f47701cb226ff119b717f3e8bd7"
+          },
+          {
+            "name": "AGIDATA.OVL",
+            "sha256": "f7ca256c1c0ab12509d695baabdd44a3c5e72a570b08118d3ead995a47f4c383"
+          },
+          {
+            "name": "LOGDIR",
+            "sha256": "bb8a07fb13a6af30ab587110ee4dfec66fb11f850776be8fdf5d3d55cedda0ec"
+          },
+          {
+            "name": "OBJECT",
+            "sha256": "ed0e6e31fe8f714dcc10243f0b5cdff5f707375ee4b1d55f4b311da3b9803d47"
+          },
+          {
+            "name": "PICDIR",
+            "sha256": "3546dc1692780cc3c9df232c7634be18997720f2931f9dc9a014b695124f4f4f"
+          },
+          {
+            "name": "SNDDIR",
+            "sha256": "ab6325c099a5d8bfcfd19ec561a33b83885b45ac39cb906a69c32e241805bb48"
+          },
+          {
+            "name": "VIEWDIR",
+            "sha256": "e80e7b40535eeaad4b03141613a404329b7bbfd2fef0e9fd08a0a9da3ac457ce"
+          },
+          {
+            "name": "VOL.0",
+            "sha256": "04449e1da52628290906eee1fe81c0cbfdae7a6fb146dfda652c1a7dd6304e52"
+          },
+          {
+            "name": "VOL.1",
+            "sha256": "08927df46a0cf3d4d53e0c83c48a446ea5d81c9c46f6ad63c069a35d179b3ec8"
+          },
+          {
+            "name": "VOL.2",
+            "sha256": "dbac3081ccf1f414cf0e8f5ad58ba6d788b7de8c0830ee317b093f8d4c8f3e90"
+          },
+          {
+            "name": "WORDS.TOK",
+            "sha256": "a95eed1c9b2fcafb5ba63f2424adf05a3a1f7c349089fc22b09277ae020a13c2"
+          }
+        ]
+      }
+    ]
   }
 ]

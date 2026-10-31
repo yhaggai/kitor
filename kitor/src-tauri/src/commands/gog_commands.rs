@@ -133,3 +133,26 @@ pub async fn get_gog_game_installers(
 ) -> Result<Vec<gog_service::OfflineInstaller>, String> {
     gog_service::get_game_installers(&state.db, game_id).await
 }
+
+#[tauri::command]
+pub fn get_gog_install_capabilities(game_id: i64, scummvm_id: String) -> Result<bool, String> {
+    crate::services::gog_download_service::capabilities(game_id, &scummvm_id)
+}
+
+#[tauri::command]
+pub async fn install_gog_game(
+    game_id: i64,
+    install_root: Option<String>,
+    scummvm_id: String,
+    state: State<'_, AppState>,
+    app: AppHandle,
+    updates: State<'_, crate::services::app_updates::AppUpdates>,
+) -> Result<crate::models::game::Model, String> {
+    let _activity = updates.activity()?;
+    crate::services::gog_download_service::install(game_id, scummvm_id, &state, &app, install_root.map(std::path::PathBuf::from)).await
+}
+
+#[tauri::command]
+pub fn get_game_install_root(state: State<'_, AppState>) -> String {
+    state.app_data_dir.join("games").to_string_lossy().into_owned()
+}

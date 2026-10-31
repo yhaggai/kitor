@@ -111,6 +111,9 @@
           "patched": {
             "subdirectory": "hebrew",
             "args": ["--language=he", "--fullscreen", "--auto-detect"]
+          },
+          "original_macos": {
+            "args": ["--fullscreen", "scumm:monkey"]
           }
         }
       }
@@ -166,6 +169,9 @@
           "patched": {
             "subdirectory": "hebrew",
             "args": ["--language=he", "--fullscreen", "--auto-detect"]
+          },
+          "original_macos": {
+            "args": ["--fullscreen", "scumm:monkey2"]
           }
         },
         "health_files": ["Monkey2.exe", "monkey2.pak", "audio/SFXOriginal.xwb"],
@@ -296,12 +302,42 @@
           "source_type": "github",
           "checksum": "6bf874c6fd540c0a4a8f4a27034a25bea80f168a8d365363978ab1db680711be",
           "file_size": 230863,
-          "description": "בני בונדס, שוטר תנועה שרוצה רק לסיים את מכסת הדוחות שלו, מסתבך בחקירה של ארגון פשע שבראשו עומד מלאך המוות. האם יצליח להפליל את ראש הארגון?\n\nקרדיטים ותודות (מהפרסום המקורי):\nבעבודת צוות נפלאה הצלחנו להביא עוד פרויקט מרגש לסיומו הטוב. צביקה הרמתי בנה בגאונותו את כלי התרגום והוסיף תמיכה עברית למנוע, ניב באר אייר במכחולו את הכותרת העברית ותמונות שונות שתגלו לאורך המשחק, ואלעד הלפרין, אלכס מילמן ועומר כהן תרגמו.\n\nOriginal AGI/EGA edition. Catalog cites GOG; owned Steam Collection must match publisher MD5 guards. Requires Python 3 and Hebrew-capable ScummVM. Windows/macOS package plans are built; native gameplay validation is pending. Automatic folder detection recognizes the Toonstruck resources in MISC, including GOG macOS app bundles.",
+          "description": "בני בונדס, שוטר תנועה שרוצה רק לסיים את מכסת הדוחות שלו, מסתבך בחקירה של ארגון פשע שבראשו עומד מלאך המוות. האם יצליח להפליל את ראש הארגון?\n\nקרדיטים ותודות (מהפרסום המקורי):\nבעבודת צוות נפלאה הצלחנו להביא עוד פרויקט מרגש לסיומו הטוב. צביקה הרמתי בנה בגאונותו את כלי התרגום והוסיף תמיכה עברית למנוע, ניב באר אייר במכחולו את הכותרת העברית ותמונות שונות שתגלו לאורך המשחק, ואלעד הלפרין, אלכס מילמן ועומר כהן תרגמו.\n\nOriginal AGI/EGA edition. Catalog cites GOG; owned Steam Collection must match publisher MD5 guards. Requires Python 3 and Hebrew-capable ScummVM. Windows/macOS package plans are built; native gameplay validation is pending. macOS can download and import the Steam Collection EGA files for ScummVM. The published Hebrew patch currently targets different VOL.0 and LOGDIR inputs; Steam translation support is pending a separate validated package.",
           "filename": "pq1-he-kitor1.zip",
           "post_install_script": null
         }
       ],
       "behavior": {
+        "detection": {
+          "layouts": [
+            {
+              "root": "",
+              "required_files": [
+                "LOGDIR",
+                "PICDIR",
+                "SNDDIR",
+                "VIEWDIR",
+                "WORDS.TOK",
+                "VOL.0",
+                "VOL.1",
+                "VOL.2"
+              ]
+            },
+            {
+              "root": "PQ1/EGA",
+              "required_files": [
+                "LOGDIR",
+                "PICDIR",
+                "SNDDIR",
+                "VIEWDIR",
+                "WORDS.TOK",
+                "VOL.0",
+                "VOL.1",
+                "VOL.2"
+              ]
+            }
+          ]
+        },
         "launch": {
           "original": {
             "args": ["--fullscreen", "--auto-detect"]
@@ -562,6 +598,7 @@
         ]
       },
       "behavior": {
+        "detection": { "adapter": "torin" },
         "launch": {
           "original": {
             "args": ["--fullscreen", "--auto-detect"]

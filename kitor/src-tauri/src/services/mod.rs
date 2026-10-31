@@ -40,3 +40,5 @@ pub mod game_behavior;
 pub mod game_adapters;
 pub mod package_source;
 pub mod patch_state;
+
+pub mod gog_download_service;

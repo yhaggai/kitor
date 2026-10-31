@@ -172,7 +172,9 @@
   display: block;
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  /* Scans have different proportions; keep titles and edge text visible. */
+  object-fit: contain;
+  background: #193d49;
   opacity: 0;
   transition: opacity 200ms;
 }

@@ -66,6 +66,7 @@ pub fn detect(def: &GameDefinition, path: &Path) -> Option<PathBuf> {
             let matches = match detection.adapter {
                 DetectionAdapter::SpaceQuest => is_space_quest(&root, &def.scummvm_id),
                 DetectionAdapter::Toonstruck => is_toonstruck(&root),
+                DetectionAdapter::Torin => is_torin(&root),
                 _ => std::fs::read_dir(&root).ok().is_some_and(|entries| {
                     entries.flatten().any(|entry| {
                         entry.file_type().is_ok_and(|t| t.is_file())
@@ -306,4 +307,25 @@ pub fn scummvm_paths(
         }
         _ => Ok((data, None)),
     }
+}
+
+// English GOG/CD signatures from ScummVM's SCI detection tables. ScummVM
+// fingerprints the first 5000 bytes; file sizes distinguish demos and editions.
+fn is_torin(root: &Path) -> bool {
+    use md5::{Digest, Md5};
+    use std::io::Read;
+    let Ok(entries) = std::fs::read_dir(root) else { return false; };
+    let files: std::collections::HashMap<_, _> = entries.flatten()
+        .filter(|entry| entry.file_type().is_ok_and(|kind| kind.is_file()))
+        .map(|entry| (entry.file_name().to_string_lossy().to_ascii_lowercase(), entry.path())).collect();
+    [
+        ("resmap.000", 9799, "bb3b0b22ff08df54fbe2d06263409be6"),
+        ("ressci.000", 55973887, "693a259d346c9360f4a0c11fdaae430a"),
+    ].iter().all(|(name, size, hash)| {
+        let Some(path) = files.get(*name) else { return false; };
+        let Ok(file) = std::fs::File::open(path) else { return false; };
+        if !file.metadata().is_ok_and(|meta| meta.len() == *size) { return false; }
+        let mut prefix = Vec::new();
+        file.take(5000).read_to_end(&mut prefix).is_ok() && format!("{:x}", Md5::digest(prefix)) == *hash
+    })
 }

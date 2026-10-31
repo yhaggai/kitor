@@ -1,7 +1,6 @@
 import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
 import * as Tooltip from "@radix-ui/react-tooltip";
 import { invoke } from "@tauri-apps/api/core";
-import { listen } from "@tauri-apps/api/event";
 import { open as openDialog } from "@tauri-apps/plugin-dialog";
 import {
   CheckCircle,
@@ -228,33 +227,8 @@ type PatchCardProps = {
 };
 
 function PatchCard({ patch, onViewGame, onShowGuide }: PatchCardProps) {
-  const { setGames } = useAppStore();
-  const [isDownloading, setIsDownloading] = useState(false);
-  const [downloadStep, setDownloadStep] = useState<string | null>(null);
-
-  useEffect(() => {
-    let unlisten: () => void;
-    listen<{ step: string; progress: number }>("gog-installer-progress", (event) => {
-      if (isDownloading) {
-        setDownloadStep(`${event.payload.step} ${event.payload.progress}%`);
-      }
-    }).then((fn) => {
-      unlisten = fn;
-    });
-
-    return () => {
-      if (unlisten) unlisten();
-    };
-  }, [isDownloading]);
-
   return (
     <Card className="hover:shadow-lg transition-shadow relative">
-      {isDownloading && (
-        <div className="absolute inset-0 z-20 flex flex-col items-center justify-center bg-background/80 backdrop-blur-sm rounded-lg p-4 text-center">
-          <Download className="h-8 w-8 animate-bounce mb-2 text-primary" />
-          <p className="text-sm font-medium">{downloadStep || "Starting..."}</p>
-        </div>
-      )}
       <CardContent className="p-0 relative">
         <div className="bg-gradient-to-br from-primary/20 to-secondary/20 rounded-t-lg flex items-center justify-center relative overflow-hidden">
           <GameDetailsBox
@@ -291,42 +265,6 @@ function PatchCard({ patch, onViewGame, onShowGuide }: PatchCardProps) {
                 {patch.game_installed && patch.game_id != null && (
                   <OpenGameFolderMenuItem gameId={patch.game_id} />
                 )}
-                {!patch.game_installed && patch.gog_installer_path && (
-                  <DropdownMenu.Item
-                    className="flex cursor-pointer items-center rounded-sm px-2 py-2 text-sm text-foreground outline-none hover:bg-accent focus:bg-accent"
-                    onSelect={async (e) => {
-                      e.preventDefault();
-                      try {
-                        const selectedDir = await openDialog({
-                          directory: true,
-                          multiple: false,
-                          title: "Select Installation Directory",
-                        });
-
-                        if (selectedDir) {
-                          setIsDownloading(true);
-                          setDownloadStep("Starting download...");
-                          await invoke("download_and_extract_gog_installer", {
-                            scummvmId: patch.scummvm_id,
-                            installerPath: patch.gog_installer_path,
-                            destDir: selectedDir,
-                          });
-                          const updatedGames = (await invoke("get_games_with_patches")) as Game[];
-                          setGames(updatedGames);
-                        }
-                      } catch (err) {
-                        console.error(err);
-                        alert(`Failed to download and extract: ${err}`);
-                      } finally {
-                        setIsDownloading(false);
-                        setDownloadStep(null);
-                      }
-                    }}
-                  >
-                    <Download className="mr-2 h-4 w-4" />
-                    Download & Extract GOG
-                  </DropdownMenu.Item>
-                )}
                 <DropdownMenu.Item
                   className="flex cursor-pointer items-center rounded-sm px-2 py-2 text-sm text-foreground outline-none hover:bg-accent focus:bg-accent"
                   onSelect={onShowGuide}
@@ -361,13 +299,12 @@ function PatchCard({ patch, onViewGame, onShowGuide }: PatchCardProps) {
           </p>
         </div>
 
-        {!patch.game_installed && (
-          <StoreInstallButtons
-            scummvmId={patch.scummvm_id}
-            steamAppId={patch.steam_app_id}
-            gogId={patch.gog_id}
-          />
-        )}
+        <StoreInstallButtons
+          installed={patch.game_installed}
+          scummvmId={patch.scummvm_id}
+          steamAppId={patch.steam_app_id}
+          gogId={patch.gog_id}
+        />
 
         {patch.patch_installed ? (
           <Button className="w-full" size="sm" onClick={onViewGame}>

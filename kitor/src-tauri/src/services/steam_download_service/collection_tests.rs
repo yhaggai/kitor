@@ -135,3 +135,55 @@ async fn live_collection_imports_and_reuses_each_game() {
         assert!(Path::new(&game.install_path).starts_with(root.join("games")));
     }
 }
+
+#[cfg(target_os = "macos")]
+#[tokio::test]
+#[ignore = "Requires the owned Police Quest Steam depot downloaded locally"]
+async fn live_police_quest_import_and_detection() {
+    let dir = tempfile::tempdir().unwrap();
+    let root = dir.path().canonicalize().unwrap();
+    let state = crate::AppState {
+        db: crate::db::init_db(&root).await.unwrap(),
+        app_data_dir: root.clone(),
+    };
+    let games = download(494740, vec!["pq1".into()], &state).await.unwrap();
+    assert_eq!(games.len(), 1);
+    let game = &games[0];
+    assert_eq!(game.scummvm_id, "pq1");
+    let recipe = products().into_iter().find(|p| p.app_id == 494740).unwrap().games.remove(0);
+    verify_recipe(Path::new(&game.install_path), &recipe).unwrap();
+    assert!(!Path::new(&game.install_path).join("RESOURCE.MAP").exists());
+    std::fs::write(Path::new(&game.install_path).join("save.test"), b"save").unwrap();
+    let again = download(494740, vec!["pq1".into()], &state).await.unwrap();
+    assert_eq!(again[0].install_path, game.install_path);
+    assert_eq!(std::fs::read(Path::new(&game.install_path).join("save.test")).unwrap(), b"save");
+}
+
+#[test]
+fn police_quest_detects_ega_layouts_without_matching_vga() {
+    let definition = super::super::registry_service::load_registry().unwrap().games
+        .into_iter().find(|g| g.scummvm_id == "pq1").unwrap();
+    let dir = tempfile::tempdir().unwrap();
+    let root = dir.path().canonicalize().unwrap();
+    std::fs::create_dir_all(root.join("PQ1/EGA")).unwrap();
+    std::fs::write(root.join("PQ1/RESOURCE.MAP"), b"VGA").unwrap();
+    assert!(super::super::game_adapters::detect(&definition, &root).is_none());
+    for file in ["LOGDIR", "PICDIR", "SNDDIR", "VIEWDIR", "WORDS.TOK", "VOL.0", "VOL.1", "VOL.2"] {
+        std::fs::write(root.join("PQ1/EGA").join(file), b"EGA").unwrap();
+    }
+    assert_eq!(super::super::game_adapters::detect(&definition, &root), Some(root.join("PQ1/EGA")));
+    assert_eq!(super::super::game_adapters::detect(&definition, &root.join("PQ1/EGA")), Some(root.join("PQ1/EGA")));
+}
+
+#[test]
+fn intact_collection_copy_keeps_games_outside_curated_recipes() {
+    let dir = tempfile::tempdir().unwrap();
+    let source = dir.path().join("source");
+    let game = source.join("2016_SpaceQuestCollection/sq6");
+    std::fs::create_dir_all(&game).unwrap();
+    std::fs::write(game.join("resource.map"), b"game data").unwrap();
+    let destination = dir.path().join("collection");
+    copy_checked(&source, &destination).unwrap();
+    assert_eq!(std::fs::read(destination.join("2016_SpaceQuestCollection/sq6/resource.map")).unwrap(), b"game data");
+    assert!(copy_checked(&source, &destination).is_err());
+}
