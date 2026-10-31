@@ -1,6 +1,8 @@
-# מסע בחלל IV
+﻿# מסע בחלל IV
 
 The patch targets the English voiced CD edition included in Steam's Space Quest Collection (10110). Extract the entire ZIP and open **Play Hebrew.cmd** on Windows with ScummVM installed. The launcher reads the installed Steam game and loads translated resources through ScummVM's extra search path. To go back to English, use the original launcher. Kitor can also install the bundled package and track the installed files for reversal.
+
+See [the Hebrew status bar and wait cursor in ScummVM](https://assets.kitor.click/screenshots/sq4/he/bdb2ac538af3.png).
 
 ## Translation notes
 

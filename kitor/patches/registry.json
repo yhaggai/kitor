@@ -517,7 +517,7 @@
     {
       "scummvm_id": "sq4",
       "steam_app_id": 10110,
-      "cover_url": "/sq4-en.webp",
+      "cover_url": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/sq4/en/7bf2aea312f3c85d.webp",
       "title": "Space Quest IV: Roger Wilco and the Time Rippers",
       "platforms": {
         "windows": true,

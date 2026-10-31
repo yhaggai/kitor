@@ -23,8 +23,7 @@ for (const game of registry.games) {
   if (!covers) throw new Error(`Missing artwork for ${game.scummvm_id}`);
   for (const lang of ["he", "en"]) {
     const src = covers[lang].src;
-    if ((game.scummvm_id === "sq4" && src === `/sq4-${lang}.webp`) ||
-        (src === `/cover-${game.scummvm_id}-${lang}.svg` && /^\/cover-[a-z0-9-]+\.svg$/.test(src))) {
+    if (src === `/cover-${game.scummvm_id}-${lang}.svg` && /^\/cover-[a-z0-9-]+\.svg$/.test(src)) {
       await copyFile(path.join(repo, "kitor/public", src.slice(1)), path.join(root, "public", src.slice(1)));
       continue;
     }
