@@ -127,7 +127,7 @@ mod tests {
   let catalog:serde_json::Value=serde_json::from_str(include_str!("../../../patches/bundled-assets.json")).unwrap();
   for (manifest,platform) in [(MANIFEST,"osx"),(WINDOWS_MANIFEST,"windows")] {
    let assets=&catalog[format!("owlboy/{platform}")];
-   let workspace=Path::new(file!()).canonicalize().unwrap().ancestors().nth(5).unwrap().to_path_buf();
+   let workspace=Path::new(env!("CARGO_MANIFEST_DIR")).join(file!()).canonicalize().unwrap().ancestors().nth(5).unwrap().to_path_buf();
    assert_eq!(fs::read(workspace.join(assets["patch.json"].as_str().unwrap())).unwrap(),manifest);
    let m:serde_json::Value=serde_json::from_slice(manifest).unwrap();
    for f in m["platforms"][platform]["files"].as_array().unwrap(){
