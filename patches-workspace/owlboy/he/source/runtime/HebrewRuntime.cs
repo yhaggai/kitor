@@ -27,7 +27,11 @@ namespace OwlboyHebrew {
   private sealed class Layout { public int[] order; public string visual; }
   public static void Begin(SpeechBubbleRenderer r, Sprite parent) { renderer=r; bubble=parent as SpeechBubbleSprite; }
   public static void End() { bubble=null; renderer=null; }
-  public static bool HasHebrew(string s) { if(s==null)return false; foreach(char c in s) if(c>='\u05d0' && c<='\u05ea') return true; return false; }
+  public static bool HasHebrew(string s) { if(s==null)return false; foreach(char c in s) if((c>='\u05d0' && c<='\u05ea')
+#if NIQQUD_EXPERIMENT
+    || (c>='\ue200' && c<='\uefff')
+#endif
+   ) return true; return false; }
   // Annotate renderer-created substrings, preserving their absolute logical indices.
   // The marker uses no mapped glyphs, so the game's measurement ignores it.
   public static string Slice(string s,int start,int count) {
@@ -51,7 +55,12 @@ namespace OwlboyHebrew {
    if(loaded)return;loaded=true;
    string path=Path.Combine("Data","Localizations","he","layouts.tsv");
    if(!File.Exists(path))throw new FileNotFoundException("Hebrew layout data is missing. Reinstall the Hebrew patch.",path);
-   foreach(string record in File.ReadAllLines(path,Encoding.UTF8)) {
+   var records=new List<string>(File.ReadAllLines(path,Encoding.UTF8));
+#if NIQQUD_EXPERIMENT
+   string extra=Path.Combine("Data","Localizations","hn","layouts.tsv");
+   if(File.Exists(extra))records.AddRange(File.ReadAllLines(extra,Encoding.UTF8));
+#endif
+   foreach(string record in records) {
     string[] fields=record.Split('\t');if(fields.Length!=3)continue;
     string logical=Encoding.UTF8.GetString(Convert.FromBase64String(fields[0]));
     string visual=Encoding.UTF8.GetString(Convert.FromBase64String(fields[1]));

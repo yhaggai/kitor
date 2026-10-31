@@ -129,12 +129,7 @@ pub fn native_command(
             command
         }
         NativeAdapter::TentacleRemastered => super::tentacle_remastered::launch_command(root)?,
-        NativeAdapter::Owlboy => {
-            if !cfg!(target_os = "macos") {
-                return Err("Owlboy native launch currently supports macOS only".into());
-            }
-            super::owlboy::launch_command(root)?
-        }
+        NativeAdapter::Owlboy => super::owlboy::launch_command(root)?,
         NativeAdapter::Undertale => undertale_command(root)?,
     };
     Ok(Some(command))

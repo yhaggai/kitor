@@ -1,0 +1,2 @@
+# Offline draft generation only; ordinary install/build does not need this model.
+nakdimon==0.2.1

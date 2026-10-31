@@ -21,3 +21,14 @@ Check(string.Concat(font.calls.OrderBy(c=>c.x).Select(c=>c.text))=="123 םולש
 font.calls.Clear();bubble.storedText="שלום";bubble.displayText="ש";renderer.CenterText=true;renderer.RenderTextSeparately=false;
 Runtime.Begin(renderer,bubble);Draw("ש",9);Check(font.calls[0].x==18,"Centered partial speech must use full-text anchor");Runtime.End();
 Console.WriteLine("PASS: English fallback, RTL reveal, stable full-line positions, highlight slices, multiline alignment, number ordering");
+
+#if NIQQUD_EXPERIMENT
+font.calls.Clear();
+bubble.storedText="\ue200\ue201 123";bubble.displayText="\ue200";
+renderer.CenterText=false;Runtime.Begin(renderer,bubble);
+Check(Draw(bubble.displayText),"Niqqud-only line must use RTL renderer");
+Check(font.calls.Count==1 && font.calls[0].x==30,"Composite letter/marks reveal as one fixed glyph");
+font.calls.Clear();bubble.displayText=bubble.storedText;Draw(bubble.displayText);
+Check(string.Concat(font.calls.OrderBy(c=>c.x).Select(c=>c.text))=="123 \ue201\ue200","Composite glyphs and numbers keep correct direction");
+Runtime.End();Console.WriteLine("PASS: niqqud composite reveal and mixed-number layout");
+#endif

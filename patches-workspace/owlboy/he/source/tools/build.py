@@ -31,10 +31,12 @@ def wrap(text,widths,limit=210):
    output[last_space]='<nl>';width=sum(widths.get(t,6) for t in output[last_space+1:] if not TOKENS.fullmatch(t));last_space=None
  return ''.join(output)
 
-def compile_runtime(game,out):
+def compile_runtime(game,out,niqqud=False):
  sdk=subprocess.check_output(['dotnet','--list-sdks'],text=True).strip().splitlines()[-1]
  version,location=sdk.split(' [');csc=Path(location.rstrip(']'))/version/'Roslyn/bincore/csc.dll'
- refs=[game/name for name in ['Owlboy.exe','FNA.dll','GamedevUtility.dll']]
+ refs=[game/name for name in ['Owlboy.exe','FNA.dll']]
+ # The Windows FNA edition embeds GamedevUtility in the executable.
+ if (game/'GamedevUtility.dll').exists():refs.append(game/'GamedevUtility.dll')
  for name in ['mscorlib.dll','System.dll','System.Core.dll']:
   path=game/name
   if not path.exists() and sys.platform=='win32':
@@ -43,6 +45,7 @@ def compile_runtime(game,out):
   if not path.exists():raise ValueError('Missing .NET Framework reference: '+str(path))
   refs.append(path)
  command=['dotnet',str(csc),'-nologo','-target:library','-nostdlib+','-langversion:7.3','-out:'+str(out/'OwlboyHebrew.dll'),str(ROOT/'runtime/HebrewRuntime.cs')]+['-reference:'+str(p) for p in refs]
+ if niqqud:command.append('-define:NIQQUD_EXPERIMENT')
  subprocess.run(command,check=True)
  subprocess.run(['dotnet','build',str(ROOT/'patcher/Patcher.csproj'),'-c','Release','--nologo'],check=True)
  subprocess.run(['dotnet',str(ROOT/'patcher/bin/Release/net9.0/Patcher.dll'),str(game/'Owlboy.exe'),str(out/'OwlboyHebrew.dll'),str(out/'Owlboy.exe')],check=True)

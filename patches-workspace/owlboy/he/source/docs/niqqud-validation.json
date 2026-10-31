@@ -1,0 +1,17 @@
+{
+  "version": "niqqud-beta-1",
+  "catalog_entries": 4537,
+  "pointed_hebrew_entries": 4344,
+  "unchanged_expressive_shouts": 6,
+  "non_hebrew_entries": 187,
+  "composite_glyphs": 290,
+  "installed_files": 29,
+  "original_hebrew_locale_byte_identical": true,
+  "python_tests": 28,
+  "runtime_tests": "English fallback, RTL reveal, highlight slices, multiline alignment, numbers, niqqud composite reveal",
+  "selective_roundtrip": "29 paths restored exactly; untouched save sentinel preserved",
+  "visual_check": "Vowels rendered on macOS opening dialogue; corrected bubble-size visual recheck pending",
+  "linguistic_review": "local Nakdimon0.2.1 draft, first100 manually pointed, targeted English-context corrections in all3partitions; not exhaustive proofreading",
+  "windows_gameplay": "not tested",
+  "speech_bubble_height_fix": "hn SpriteFont1 metadata height=20 matches line spacing; initial height16 caused third-line overflow"
+}

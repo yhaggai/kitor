@@ -23,5 +23,5 @@ def write_layouts(strings,path):
  records=[]
  for line in lines:
   visual,order=layout(line);records.append('\t'.join([b64(line),b64(visual),','.join(map(str,order))]))
- path.parent.mkdir(parents=True,exist_ok=True);path.write_text('\n'.join(records)+'\n',encoding='utf-8')
+ path.parent.mkdir(parents=True,exist_ok=True);path.write_bytes(('\n'.join(records)+'\n').encode('utf-8'))
  return len(lines)

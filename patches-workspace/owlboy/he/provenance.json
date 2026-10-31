@@ -9,18 +9,23 @@
   "license": "MIT for original patch code and glyphs; underlying game rights retained by D-Pad Studio",
   "scope": "Full 4537-entry translation, RTL runtime, corrected 142x89 flag",
   "edition": "Steam 1.4 macOS FNA",
-  "version": "0.2.0-beta.2-kitor1",
+  "version": "0.2.0-beta.2-kitor2",
   "platforms": {
     "osx": "Opening dialogue smoke-tested on local Mac",
-    "windows": "Edition/gameplay unverified; no install plan"
+    "windows": "Steam FNA 105-e322; combined he/hn package, native startup verified"
   },
   "install_root": "Owlboy.app/Contents/Resources",
-  "dependencies": [
-    "Python 3 for BSDIFF application"
-  ],
+  "dependencies": ["Python 3 for BSDIFF application"],
   "native_validation": {
     "macOS": "Full translation opening dialogue verified; full playthrough pending",
-    "Windows": "Source CI passed; game edition and gameplay not tested"
+    "Windows": "Native startup and nikud verified in-game by user on 2026-10-31; full playthrough pending"
   },
-  "publication": "Local Kitor candidate only; registry distribution not enabled"
+  "publication": "Local Kitor candidate only; registry distribution not enabled",
+  "niqqud_source": {
+    "url": "https://github.com/yhaggai/owlboy-hebrew/tree/niqqud-beta",
+    "commit": "a9c152404ba43c145ce1fbd49a87a09121193f35",
+    "catalog_entries": 4537,
+    "pointed_hebrew_entries": 4344,
+    "review": "Upstream beta; first 100 lines manually pointed, remaining catalog locally drafted with targeted review, not exhaustively proofread"
+  }
 }

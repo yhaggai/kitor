@@ -1,8 +1,9 @@
 {
-  "edition": "Steam Owlboy 1.4 / installed macOS FNA build",
+  "edition": "Steam Owlboy macOS FNA and Windows FNA 105-e322",
   "executable_sha256": [
-    "e399de418effb376c7c48916f6da19e2aa7fa91a2fea0cce7479e52cb17e653c"
+    "e399de418effb376c7c48916f6da19e2aa7fa91a2fea0cce7479e52cb17e653c",
+    "036eff99b4a693dc090f23fbba781b71a6f747191d8c6ad54e1a7b5e3d2ad073"
   ],
   "source_catalog_sha256": "260c816d6701ef2cc03cd3c0bcfb905a4eb31c853c34318f757dfb99600959b6",
-  "windows": "Same guarded assembly/assets only; native validation pending"
+  "windows": "Steam FNA 105-e322; separate executable/runtime build; full playthrough pending"
 }

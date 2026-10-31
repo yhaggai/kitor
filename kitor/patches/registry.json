@@ -1203,7 +1203,7 @@
       "steam_app_id": 115800,
       "title": "ילד הינשוף — Owlboy",
       "platforms": {
-        "windows": false,
+        "windows": true,
         "osx": true,
         "linux": false
       },
@@ -1215,14 +1215,14 @@
       "patches": [
         {
           "language": "he",
-          "version": "0.2.0-beta.2-kitor1",
+          "version": "0.2.0-beta.2-kitor2",
           "author": "yhaggai (AI-assisted translation)",
           "download_url": "bundled://owlboy/he",
           "source_type": "bundled",
           "checksum": null,
           "file_size": null,
-          "description": "תרגום בטא מלא לעברית: 4,537 רשומות, גופן עברי וכתיבה מימין לשמאל. מיועד לגרסת Steam 1.4 המקורית ל-macOS בלבד. נדרש Python 3. יש לבחור עברית בתפריט השפות. בדיקת משחק מלאה ותמיכה ב-Windows עדיין ממתינות.",
-          "filename": "owlboy-he-0.2.0-beta.2-kitor1-osx.zip",
+          "description": "תרגום בטא מלא לעברית: 4,537 רשומות, גופן עברי וכתיבה מימין לשמאל. לגרסאות Steam FNA התואמות ב-Windows וב-macOS. נדרש Python 3. יש לבחור עברית בתפריט השפות. ב-Windows ניתן לבחור דגל N לעברית עם ניקוד. בדיקת משחק מלאה עדיין ממתינה.",
+          "filename": "owlboy-he-0.2.0-beta.2-kitor2.zip",
           "post_install_script": null,
           "install_manifest": "patch.json"
         }

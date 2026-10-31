@@ -1,0 +1,23 @@
+{
+  "date": "2026-10-31",
+  "version": "0.2.0-beta.2-kitor2",
+  "niqqud_source_commit": "a9c152404ba43c145ce1fbd49a87a09121193f35",
+  "installed_files": 42,
+  "installed_file_hashes": "all verified",
+  "python_tests": {
+    "passed": 27,
+    "skipped": 1
+  },
+  "owlboy_rust_tests": {
+    "passed": 5,
+    "includes": "Windows catalog launch, bundled assets, install/uninstall on owned files, save sentinel, unsupported executable rejection"
+  },
+  "runtime_tests": "RTL reveal, highlight slices, numbers, niqqud composite reveal passed",
+  "cargo_check": "passed; existing warnings",
+  "windows_gameplay": "Startup and nikud confirmed working by user",
+  "limitations": [
+    "Full playthrough pending",
+    "Upstream nikud beta is not exhaustively proofread",
+    "Broader lifecycle harness has three missing-fixture failures outside Owlboy"
+  ]
+}
