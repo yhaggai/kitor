@@ -1554,14 +1554,14 @@
       "patches": [
         {
           "language": "he",
-          "version": "0.1.0",
+          "version": "0.1.1",
           "release_revision": 1,
           "author": "Kitor",
           "download_url": "bundled://silver-pines/he",
           "source_type": "bundled",
           "checksum": null,
           "file_size": null,
-          "filename": "silver-pines-he-0.1.0-windows.zip",
+          "filename": "silver-pines-he-0.1.1-windows.zip",
           "post_install_script": null,
           "install_manifest": "patch.json",
           "description": "Windows Steam Hebrew text patch. Keep English selected. Includes dialogue, menus and clues. Machine-assisted draft with editorial revisions; full playthrough pending."

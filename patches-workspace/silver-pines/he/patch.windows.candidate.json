@@ -1,9 +1,9 @@
 {
   "scummvm_id": "silver-pines",
   "language": "he",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "release_revision": 1,
-  "filename": "silver-pines-he-0.1.0-windows.zip",
+  "filename": "silver-pines-he-0.1.1-windows.zip",
   "schema_version": 1,
   "platforms": {
     "windows": {
@@ -12,11 +12,11 @@
           "path": "Carpenter_Data/sharedassets0.assets",
           "operation": "modify",
           "original_sha256": "5dabba62a22a5bcee6e6b6da891ef6deec694fdf30f701bcb906e7dcf445347b",
-          "installed_sha256": "424ae5561c513d9ab61f4c9cee6c7c9bc4f7ce0157c45e3552a8bf980d50abb9",
+          "installed_sha256": "3de2a5fa2117c316b0927e9d373cc9470ba6c651a6a51043397fd687ea164774",
           "source": {
             "kind": "bsdiff",
             "path": "deltas/fonts.bsdiff",
-            "sha256": "ff761c0e16e918ae197843a81be9e4fe852562e7c548d02cbe2e9b01dc32d4ee",
+            "sha256": "e4ee2cdaa82663e1c07995307d400a693128398c28ba3353d18c6247856326e7",
             "input": "Carpenter_Data/sharedassets0.assets"
           }
         },
