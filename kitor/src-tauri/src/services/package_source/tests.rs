@@ -98,7 +98,7 @@ fn embedded_staging_preserves_existing_package_bytes() {
         fn files(
             root: &Path,
             relative: &Path,
-        ) -> std::collections::BTreeMap<std::path::PathBuf, Vec<u8>> {
+        ) -> std::collections::BTreeMap<std::path::PathBuf, String> {
             let mut found = std::collections::BTreeMap::new();
             for entry in std::fs::read_dir(root.join(relative)).unwrap() {
                 let entry = entry.unwrap();
@@ -106,15 +106,24 @@ fn embedded_staging_preserves_existing_package_bytes() {
                 if entry.file_type().unwrap().is_dir() {
                     found.extend(files(root, &path));
                 } else {
-                    found.insert(path, std::fs::read(entry.path()).unwrap());
+                    found.insert(path, crate::services::patch_lifecycle::hash(&entry.path()).unwrap());
                 }
             }
             found
         }
-        assert_eq!(
-            files(old.path(), Path::new("")),
-            files(new.path(), Path::new("")),
-            "{id}"
-        );
+        // The legacy Owlboy helper stages both platforms. Compare exactly the
+        // current platform's declared assets, including the manifest, rather
+        // than expecting unused assets from the other platform to be shipped.
+        let PackageSource::Embedded(key) = &source else { panic!("Expected embedded package: {id}") };
+        let platform = if cfg!(target_os = "windows") { "windows" } else { "osx" };
+        let names: std::collections::BTreeSet<std::path::PathBuf> =
+            embedded_assets(&format!("{key}/{platform}")).unwrap().iter()
+                .map(|(name, _)| std::path::PathBuf::from(name)).collect();
+        let mut expected = files(old.path(), Path::new(""));
+        expected.retain(|name, _| names.contains(name));
+        let actual = files(new.path(), Path::new(""));
+        assert_eq!(expected.keys().cloned().collect::<std::collections::BTreeSet<_>>(), names, "legacy source missing asset: {id}");
+        assert_eq!(actual.keys().cloned().collect::<std::collections::BTreeSet<_>>(), names, "unexpected staged assets: {id}");
+        assert_eq!(expected, actual, "{id}");
     }
 }
