@@ -3,7 +3,6 @@ use std::path::Path;
 use std::path::PathBuf;
 use serde::{Deserialize, Serialize};
 use crate::models::game::{self, Entity as Game};
-use crate::services::image_service;
 use crate::services::registry_service;
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
@@ -70,7 +69,7 @@ pub async fn get_game_by_id(db: &DatabaseConnection, id: i32) -> Result<Option<g
 pub async fn scan_directory(
     db: &DatabaseConnection,
     scan_path: &str,
-    app_data_dir: PathBuf,
+    _app_data_dir: PathBuf,
 ) -> Result<Vec<game::Model>, String> {
     let path = Path::new(scan_path);
     if !path.exists() || !path.is_dir() {
@@ -109,7 +108,7 @@ pub async fn scan_directory(
                         scummvm_id: Set(game_info.scummvm_id),
                         title: Set(game_info.title),
                         install_path: Set(game_info.install_path),
-                        cover_url: Set(cover_url.clone()),
+                        cover_url: Set(cover_url),
                         detected_version: Set(None),
                         added_date: Set(chrono::Utc::now().naive_utc()),
                         last_played: Set(None),
@@ -121,14 +120,6 @@ pub async fn scan_directory(
                     let result = game.insert(db).await
                         .map_err(|e| format!("Failed to insert game: {}", e))?;
 
-                    if let Some(url) = cover_url {
-                        let scummvm_id = result.scummvm_id.clone();
-                        let app_data_dir = app_data_dir.clone();
-                        tokio::spawn(async move {
-                            let _ = image_service::download_and_cache_cover(&scummvm_id, &url, app_data_dir).await;
-                        });
-                    }
-                    
                     games.push(result);
                 }
             }
@@ -143,7 +134,7 @@ pub async fn add_game_manually(
     scummvm_id: String,
     title: String,
     install_path: String,
-    app_data_dir: PathBuf,
+    _app_data_dir: PathBuf,
 ) -> Result<game::Model, String> {
     let install_path = detect_game_for_id(Path::new(&install_path), &scummvm_id)?
         .filter(|detected| detected.scummvm_id == scummvm_id)
@@ -165,15 +156,7 @@ pub async fn add_game_manually(
         active.launch_subdirectory = Set(subdirectory);
         active.launch_args = Set(args);
         if cover_url.is_some() {
-            active.cover_url = Set(cover_url.clone());
-        }
-
-        if let Some(url) = cover_url {
-            let scummvm_id = scummvm_id.clone();
-            let app_data_dir = app_data_dir.clone();
-            tokio::spawn(async move {
-                let _ = image_service::download_and_cache_cover(&scummvm_id, &url, app_data_dir).await;
-            });
+            active.cover_url = Set(cover_url);
         }
 
         return active
@@ -189,7 +172,7 @@ pub async fn add_game_manually(
         scummvm_id: Set(scummvm_id),
         title: Set(title),
         install_path: Set(install_path),
-        cover_url: Set(cover_url.clone()),
+        cover_url: Set(cover_url),
         detected_version: Set(None),
         added_date: Set(chrono::Utc::now().naive_utc()),
         last_played: Set(None),
@@ -201,13 +184,6 @@ pub async fn add_game_manually(
     let result = game.insert(db)
         .await
         .map_err(|e| format!("Failed to add game: {}", e))?;
-
-    if let Some(url) = cover_url {
-        let scummvm_id = result.scummvm_id.clone();
-        tokio::spawn(async move {
-            let _ = image_service::download_and_cache_cover(&scummvm_id, &url, app_data_dir).await;
-        });
-    }
 
     Ok(result)
 }
@@ -303,7 +279,6 @@ pub async fn get_games_with_patches(
     // Load registry
     let registry = registry_service::load_registry()?;
 
-    let _ = image_service::ensure_covers_dir(&app_data_dir);
     
     let mut games_with_patches = Vec::new();
     
@@ -351,29 +326,7 @@ pub async fn get_games_with_patches(
         
         let has_available_patch = !available_patches.is_empty();
         
-        let registry_cover_url = game_def.and_then(|d| d.cover_url.clone());
-        let cached_cover_path = if let Some(ref url) = registry_cover_url {
-            image_service::get_cached_cover_for_url(&game.scummvm_id, url, &app_data_dir)?
-        } else {
-            image_service::get_cached_cover_path(&game.scummvm_id, &app_data_dir)?
-        };
-
-        if cached_cover_path.is_none() {
-            if let Some(url) = registry_cover_url.clone().or_else(|| game.cover_url.clone()) {
-                let scummvm_id = game.scummvm_id.clone();
-                let app_data_dir = app_data_dir.clone();
-                tokio::spawn(async move {
-                    let _ = image_service::download_and_cache_cover(&scummvm_id, &url, app_data_dir).await;
-                });
-            }
-        }
-
-        let cover_url = if let Some(path) = cached_cover_path {
-            Some(path.to_string_lossy().to_string())
-        } else {
-            registry_cover_url.or(game.cover_url.clone())
-        };
-
+        let cover_url = game_def.and_then(|d| d.cover_url.clone()).or(game.cover_url);
         let requires_scummvm = !behavior.launch_profile(patched).is_native();
 
         games_with_patches.push(GameWithPatches {

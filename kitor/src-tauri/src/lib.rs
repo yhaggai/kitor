@@ -62,8 +62,6 @@ pub fn run() {
             commands::game_commands::remove_game,
             commands::game_commands::get_game_by_id,
             commands::game_commands::get_games_with_patches,
-            commands::game_commands::refresh_cover_image,
-            commands::game_commands::clear_cover_cache,
             // ScummVM commands
             commands::scummvm_commands::launch_game,
             commands::scummvm_commands::download_scummvm_binary,

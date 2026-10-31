@@ -19,7 +19,7 @@ pub async fn get_patches_for_game(
 
 #[tauri::command]
 pub async fn get_all_patches(state: State<'_, AppState>) -> Result<Vec<patch_service::PatchInfo>, String> {
-    patch_service::get_all_patches(&state.db, state.app_data_dir.clone()).await
+    patch_service::get_all_patches(&state.db).await
 }
 
 #[tauri::command]

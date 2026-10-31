@@ -1,8 +1,6 @@
 use tauri::State;
 use crate::models::game;
 use crate::services::game_service::{self, DetectedGameInfo, GameWithPatches};
-use crate::services::image_service;
-use crate::services::registry_service;
 use crate::AppState;
 
 #[tauri::command]
@@ -82,34 +80,6 @@ pub async fn get_game_by_id(
 #[tauri::command]
 pub async fn get_games_with_patches(state: State<'_, AppState>) -> Result<Vec<GameWithPatches>, String> {
     game_service::get_games_with_patches(&state.db, state.app_data_dir.clone()).await
-}
-
-#[tauri::command]
-pub async fn refresh_cover_image(game_id: i32, state: State<'_, AppState>) -> Result<(), String> {
-    let game = game_service::get_game_by_id(&state.db, game_id)
-        .await?
-        .ok_or_else(|| "Game not found".to_string())?;
-
-    let registry = registry_service::load_registry()?;
-    let cover_url = registry
-        .games
-        .iter()
-        .find(|g| g.scummvm_id == game.scummvm_id)
-        .and_then(|g| g.cover_url.clone())
-        .ok_or_else(|| "No cover_url for this game in registry".to_string())?;
-
-    if let Some(existing) = image_service::get_cached_cover_path(&game.scummvm_id, &state.app_data_dir)? {
-        let _ = std::fs::remove_file(existing);
-    }
-
-    let _ = image_service::download_and_cache_cover(&game.scummvm_id, &cover_url, state.app_data_dir.clone()).await?;
-    Ok(())
-}
-
-#[tauri::command]
-pub async fn clear_cover_cache(state: State<'_, AppState>) -> Result<(), String> {
-    image_service::clear_cover_cache(&state.app_data_dir)?;
-    Ok(())
 }
 
 

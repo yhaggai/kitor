@@ -22,7 +22,6 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Progress } from "@/components/ui/progress";
 import { useDialog } from "@/hooks/useDialog";
 import { useSettingsState } from "@/hooks/useSettingsState";
-import type { Game } from "@/store/store";
 import { useAppStore } from "@/store/store";
 
 type ScummVMStatus = {
@@ -35,7 +34,6 @@ export default function Settings() {
   const {
     isScummVMReady,
     setScummVMReady,
-    setGames,
     scummvmDownloadInProgress,
     setScummVMDownloadInProgress,
     scummvmDownloadProgress,
@@ -43,14 +41,8 @@ export default function Settings() {
     scummvmVersion,
     setScummVMVersion,
   } = useAppStore();
-  const {
-    isClearingCovers,
-    isUninstalling,
-    updateAvailable,
-    setIsClearingCovers,
-    setIsUninstalling,
-    setUpdateAvailable,
-  } = useSettingsState();
+  const { isUninstalling, updateAvailable, setIsUninstalling, setUpdateAvailable } =
+    useSettingsState();
   const { alert, confirm } = useDialog();
   const [latestScummVMVersion, setLatestScummVMVersion] = useState<string>("");
 
@@ -160,20 +152,6 @@ export default function Settings() {
     }
   };
 
-  const handleClearCoverCache = async () => {
-    try {
-      setIsClearingCovers(true);
-      await invoke("clear_cover_cache");
-      const games = (await invoke("get_games_with_patches")) as Game[];
-      setGames(games);
-    } catch (error) {
-      console.error("Failed to clear cover cache:", error);
-      await alert({ title: "Clear Cache Failed", description: String(error) });
-    } finally {
-      setIsClearingCovers(false);
-    }
-  };
-
   const handleOpenScummVM = async () => {
     try {
       await invoke("open_scummvm");
@@ -198,18 +176,6 @@ export default function Settings() {
         <h2 className="text-2xl font-bold mb-2">Settings</h2>
         <p className="text-muted-foreground">Configure Kitor and check system requirements</p>
       </div>
-
-      <Card>
-        <CardHeader>
-          <CardTitle>Cover Images</CardTitle>
-          <CardDescription>Clear cached covers to force re-download from registry</CardDescription>
-        </CardHeader>
-        <CardContent className="flex items-center gap-2">
-          <Button variant="outline" onClick={handleClearCoverCache} disabled={isClearingCovers}>
-            {isClearingCovers ? "Clearing..." : "Clear Cover Cache"}
-          </Button>
-        </CardContent>
-      </Card>
 
       <AppUpdateCard />
       <GithubAuthCard />

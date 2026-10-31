@@ -2,7 +2,7 @@ use sea_orm::*;
 use std::path::{Path, PathBuf};
 use tauri::Emitter;
 use crate::models::installed_patch;
-use crate::services::{download_service, registry_service, image_service, patch_lifecycle};
+use crate::services::{download_service, registry_service, patch_lifecycle};
 use serde::{Deserialize, Serialize};
 
 // Serialize lifecycle operations through database recording as well as file writes.
@@ -75,7 +75,7 @@ pub async fn get_patches_for_game(
     Ok(patches)
 }
 
-pub async fn get_all_patches(db: &DatabaseConnection, app_data_dir: PathBuf) -> Result<Vec<PatchInfo>, String> {
+pub async fn get_all_patches(db: &DatabaseConnection) -> Result<Vec<PatchInfo>, String> {
     // Load all games from DB to include game_id in response
     let games = crate::models::game::Entity::find()
         .all(db)
@@ -91,30 +91,6 @@ pub async fn get_all_patches(db: &DatabaseConnection, app_data_dir: PathBuf) -> 
         // Check if this game exists in user's library
         let _game_in_library = games.iter().find(|g| g.scummvm_id == game_def.scummvm_id);
         
-        // Download and cache cover if URL exists
-        let cached_cover = if let Some(ref cover_url) = game_def.cover_url {
-            if cover_url.starts_with("http://") || cover_url.starts_with("https://") {
-                match image_service::get_cached_cover_for_url(&game_def.scummvm_id, cover_url, &app_data_dir) {
-                    Ok(Some(path)) => Some(path.to_string_lossy().to_string()),
-                    _ => {
-                        let id = game_def.scummvm_id.clone();
-                        let url = cover_url.clone();
-                        let cache_dir = app_data_dir.clone();
-                        tokio::spawn(async move {
-                            if let Err(e) = image_service::download_and_cache_cover(&id, &url, cache_dir).await {
-                                eprintln!("Failed to cache cover for {}: {}", id, e);
-                            }
-                        });
-                        Some(cover_url.clone())
-                    }
-                }
-            } else {
-                Some(cover_url.clone())
-            }
-        } else {
-            None
-        };
-        
         for patch in game_def.patches {
             all_patches.push(PatchInfo {
                 scummvm_id: game_def.scummvm_id.clone(),
@@ -129,7 +105,7 @@ pub async fn get_all_patches(db: &DatabaseConnection, app_data_dir: PathBuf) -> 
                 description: patch.description,
                 filename: patch.filename,
                 post_install_script: patch.post_install_script,
-                cover_url: cached_cover.clone(),
+                cover_url: game_def.cover_url.clone(),
                 steam_app_id: game_def.steam_app_id,
                 gog_id: game_def.gog.as_ref().map(|g| g.id),
                 gog_installer_path: game_def.gog.as_ref().and_then(|g| g.installers.as_ref()).and_then(|i| i.first().map(|inst| inst.path.clone())),
