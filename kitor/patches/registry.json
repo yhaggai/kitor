@@ -400,7 +400,8 @@
           }
         },
         "detection": {
-          "adapter": "space_quest"
+          "adapter": "space_quest",
+          "priority": 1
         }
       }
     },
@@ -455,7 +456,8 @@
           }
         },
         "detection": {
-          "adapter": "space_quest"
+          "adapter": "space_quest",
+          "priority": 1
         }
       }
     },
@@ -515,6 +517,62 @@
       }
     },
     {
+      "scummvm_id": "sq4",
+      "steam_app_id": 10110,
+      "cover_url": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/sq4/en/7bf2aea312f3c85d.webp",
+      "title": "Space Quest IV: Roger Wilco and the Time Rippers",
+      "platforms": {
+        "windows": true,
+        "osx": false,
+        "linux": false
+      },
+      "detection_patterns": {
+        "unique_files": [],
+        "file_patterns": []
+      },
+      "purchase_guide": null,
+      "patches": [
+        {
+          "language": "he",
+          "version": "0.1.0",
+          "release_revision": 1,
+          "author": "Kitor",
+          "download_url": "bundled://sq4/he",
+          "source_type": "bundled",
+          "checksum": null,
+          "file_size": null,
+          "filename": "sq4-he-0.1.0.zip",
+          "post_install_script": null,
+          "install_manifest": "patch.json",
+          "description": "מסע בחלל IV: תרגום עברי למהדורת התקליטור של Steam. כולל דיאלוג, תפריטים וגרפיקה. טיוטת תרגום עם עריכה חלקית."
+        }
+      ],
+      "behavior": {
+        "bundled_resource": "sq4",
+        "detection": {
+          "adapter": "space_quest"
+        },
+        "launch": {
+          "original": {
+            "args": [
+              "--fullscreen",
+              "--platform=dos",
+              "sci:sq4"
+            ]
+          },
+          "patched": {
+            "args": [
+              "--language=en",
+              "--subtitles",
+              "--fullscreen",
+              "--platform=dos",
+              "sci:sq4"
+            ]
+          }
+        }
+      }
+    },
+    {
       "scummvm_id": "sq5",
       "steam_app_id": 10110,
       "cover_url": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/sq5/8d60499f2931.webp",
@@ -555,6 +613,38 @@
         },
         "detection": {
           "adapter": "space_quest"
+        }
+      }
+    },
+    {
+      "scummvm_id": "sq6",
+      "steam_app_id": 10110,
+      "cover_url": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/sq6/en/c3a436d54e83.jpg",
+      "title": "Space Quest 6: Roger Wilco in the Spinal Frontier",
+      "platforms": {
+        "windows": true,
+        "osx": true,
+        "linux": true
+      },
+      "detection_patterns": {
+        "unique_files": [],
+        "file_patterns": []
+      },
+      "purchase_guide": null,
+      "patches": [],
+      "behavior": {
+        "detection": {
+          "adapter": "space_quest"
+        },
+        "launch": {
+          "original": {
+            "args": [
+              "--fullscreen",
+              "--platform=dos",
+              "sci:sq6"
+            ]
+          },
+          "patched": { "args": ["--fullscreen", "--platform=dos", "sci:sq6"] }
         }
       }
     },

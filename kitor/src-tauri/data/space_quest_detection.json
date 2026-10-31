@@ -62,6 +62,18 @@
     ]
   },
   {
+    "id": "sq4",
+    "signature": "RESOURCE.MAP",
+    "sha256": [
+      "62384fb1813c1a140072ff84455736c96f28454b3f96a82211ce3dc5844aa4b6"
+    ],
+    "required": [
+      "RESOURCE.000",
+      "RESOURCE.AUD",
+      "RESOURCE.MAP"
+    ]
+  },
+  {
     "id": "sq5",
     "signature": "RESOURCE.MAP",
     "sha256": [
@@ -72,6 +84,19 @@
       "RESOURCE.AUD",
       "RESOURCE.MAP",
       "RESOURCE.MSG"
+    ]
+  },
+  {
+    "id": "sq6",
+    "signature": "RESOURCE.MAP",
+    "sha256": [
+      "7ec15cbf5501af2b09e62f7a1f34d6a49d2978bf9a7b6f8c1c86c18e41a997b7"
+    ],
+    "required": [
+      "RESOURCE.000",
+      "RESOURCE.AUD",
+      "RESOURCE.MAP",
+      "RESOURCE.SFX"
     ]
   }
 ]

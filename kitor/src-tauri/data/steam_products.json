@@ -447,6 +447,133 @@
         ]
       },
       {
+        "id": "sq4",
+        "title": "Space Quest IV: Roger Wilco and the Time Rippers",
+        "folder": "2016_SpaceQuestCollection/sq4",
+        "files": [
+          {
+            "name": "335.HEP",
+            "sha256": "1dcd5169f4aafc81eadf6b5827d5ee76147395885e9fb78c103530d3f9ada08d"
+          },
+          {
+            "name": "335.SCR",
+            "sha256": "3a1b530c6f092174ecabbd69e0734d721ebb7b9cc70161852c14542b3af42796"
+          },
+          {
+            "name": "390.HEP",
+            "sha256": "cdf1e8f50090a72c275dd2b82c7106f2179332587817a412601c66eb80037a11"
+          },
+          {
+            "name": "390.SCR",
+            "sha256": "5c08f1edeea8a6def5b37b41f5c69f76e69659f3fdb2ea12763ffd5195e2d335"
+          },
+          {
+            "name": "410.HEP",
+            "sha256": "2e143ae8c55316aba4418340b64f1907eff89a3a5b06a362ff00f9255896ecc0"
+          },
+          {
+            "name": "410.SCR",
+            "sha256": "9d45b6c0497773edbb4384f49babf2e1d94f5ece93066fa0885a2e6560c79ae3"
+          },
+          {
+            "name": "555.HEP",
+            "sha256": "c185ce743e9c0848b4b38c5db00d4b7e12210cd93c065c56339bb6ad498b9dbf"
+          },
+          {
+            "name": "555.SCR",
+            "sha256": "5071fe6fbacbec1e285af862029d79fa27880f25dc705767d40de6673e2a0010"
+          },
+          {
+            "name": "610.HEP",
+            "sha256": "897fe60d6a21b688578ea0a561c04f4e6f5253a70bde3d8ec149705d8f0d1dd4"
+          },
+          {
+            "name": "610.SCR",
+            "sha256": "0fbad6bed629568fb80f00016a4c40e645e8eb0b5785cf310e1c7c0c6ea9ffeb"
+          },
+          {
+            "name": "701.HEP",
+            "sha256": "6cb22a7151eec7f4597817a87b51331c2d0c522b7f53cbb581f50b57cac971be"
+          },
+          {
+            "name": "701.SCR",
+            "sha256": "9a30bc9b211867c5d76b1bb2ae15ee23d34eedfc1ccff7f7e6344f6559c53c2c"
+          },
+          {
+            "name": "ADL.DRV",
+            "sha256": "cce97cd2859454a3106d0c96895a5edafe1faee04335471d7249e2599b186f3a"
+          },
+          {
+            "name": "AUDBLAST.DRV",
+            "sha256": "6b9b70acc50743a9594071285d9fe94156dbc601d7215ea4243a8f8fe17c1a9b"
+          },
+          {
+            "name": "AUDDISNY.DRV",
+            "sha256": "f2a1ac1ff8e1ec1f69be370047a5dad8d4224564f1da0c7a0d3afd64608b461d"
+          },
+          {
+            "name": "AUDPRO.DRV",
+            "sha256": "e63033b7bd0135626271b28d2fe9b892b657b91315fd1a6c92d42c492969e676"
+          },
+          {
+            "name": "AUDTHUND.DRV",
+            "sha256": "1f9ea58b078366d58a7fa2aa08b84e43455c6116a753b647a8fd7c6c1eddf9d8"
+          },
+          {
+            "name": "GENMIDI.DRV",
+            "sha256": "0b69c26cabb5e48e602c8379aa0690678f933ff7207829b8cdb7722861413b95"
+          },
+          {
+            "name": "IBMKBD.DRV",
+            "sha256": "b02c68cc164145e22b868b1d636d38b8c9c04949e61f39ede8807aa8bd8dbca9"
+          },
+          {
+            "name": "JOYSTICK.DRV",
+            "sha256": "cbf2c98b7bdced90dac636db969a4f963e40eb8525ff18f4d7075b4e989113dc"
+          },
+          {
+            "name": "MT32.DRV",
+            "sha256": "1f3d9f08586ae2c271de51e8fb8b91d93696d411a27ecfa6a1380ce218f13168"
+          },
+          {
+            "name": "PROAUDIO.DRV",
+            "sha256": "33267a6fa380e46f9fab6fa05d4008031b8e2dac5168abeda345ec66babebb70"
+          },
+          {
+            "name": "RESOURCE.000",
+            "sha256": "6eac9cd2ad6689a4ed410aee925914f24ece00a3a2b65c716495789637f1d11b"
+          },
+          {
+            "name": "RESOURCE.AUD",
+            "sha256": "f052aafe8aa7f98c9fe5a74b0cf143f73791c64b4171adad9b1e7279661ad402"
+          },
+          {
+            "name": "RESOURCE.CFG",
+            "sha256": "1756694e95f905e4bb81820df3f23fd09fb4be8988c748dd8ddec512cc54f972"
+          },
+          {
+            "name": "RESOURCE.MAP",
+            "sha256": "62384fb1813c1a140072ff84455736c96f28454b3f96a82211ce3dc5844aa4b6"
+          },
+          {
+            "name": "STD.DRV",
+            "sha256": "013bb07dcb156f13c951bd0fb85d42bb412ed21051946436f6af46a85407764d"
+          },
+          {
+            "name": "VERSION",
+            "sha256": "8a4434489576de41f28a2d1d6e9d15e53deac6b48c2a4f416a52b7584a92964f"
+          },
+          {
+            "name": "VGA320.DRV",
+            "sha256": "7213a2bb542d9bea50355a58686e494fb0ac8aad1b368c40e709975f50ea3a15"
+          },
+          {
+            "name": "VGA320BW.DRV",
+            "sha256": "2822751d54af55d8199f1c729c88cc0d3812bc08e054c3d03d494f2b808bbf0a"
+          }
+        ]
+      },
+      {
         "id": "sq5",
         "title": "Space Quest V: The Next Mutation",
         "folder": "2016_SpaceQuestCollection/sq5",
@@ -934,6 +1061,81 @@
           {
             "name": "readme.txt",
             "sha256": "5b348d5729db48f6e3593f34be677f56fe9ca156ae08db45adbcb17b198dc127"
+          }
+        ]
+      },
+      {
+        "id": "sq6",
+        "title": "Space Quest 6: Roger Wilco in the Spinal Frontier",
+        "folder": "2016_SpaceQuestCollection/sq6",
+        "files": [
+          {
+            "name": "102.SND",
+            "sha256": "c5f2c0c82b53b4564517855195497997cb3d826fae40d14737707dafee19f357"
+          },
+          {
+            "name": "120.SND",
+            "sha256": "96c29d83ba0fa76a2ee9bf266ee6391cf397d1652e31ed8f445a559a9b50682b"
+          },
+          {
+            "name": "217.SND",
+            "sha256": "8e13f454055a79fa651c7060965950897ff747e9e09706085c1fe4b8c16d8783"
+          },
+          {
+            "name": "250.SND",
+            "sha256": "95c14ce156603a566045f4e8d27f0a4462cd7af750f38c04dd6eff5161a3705d"
+          },
+          {
+            "name": "251.SND",
+            "sha256": "795004e87023b0a6379bac63a8b42d738dd2dab46389cc3685b304281c1bfc2c"
+          },
+          {
+            "name": "280.SND",
+            "sha256": "d8d068aaf07cd0870469069b3728cf3baf5d0c79b712f5a5e9f0fd6164d51b73"
+          },
+          {
+            "name": "370.HEP",
+            "sha256": "58bbcdaf6919cdb967d7b36dd61f0aa5dee42848e3334e5ec0052183ad26de4b"
+          },
+          {
+            "name": "370.SCR",
+            "sha256": "a5f1843394f87612c06be15d396447f07e24dbd3d43b14b209f9931ddb3add19"
+          },
+          {
+            "name": "390.SND",
+            "sha256": "8b6ed1edcb0242c626011da0a94a26ee6646142058a0568cfa99f5541108102f"
+          },
+          {
+            "name": "455.HEP",
+            "sha256": "f577ebfe149e685520351be37b766e32adaab421cd527130fe3a658b3eb54fd0"
+          },
+          {
+            "name": "455.SCR",
+            "sha256": "9de60fb7254a059dd09e8f0056163d2a777cb3b93f76890628dc482887e9920a"
+          },
+          {
+            "name": "620.HEP",
+            "sha256": "18695f40f96af9796a46316e2079cb78ebdb7323cb09d2d44f22e226ffc6711f"
+          },
+          {
+            "name": "620.SCR",
+            "sha256": "97c018f2baebd824b53e7398d7a4f2d23f276ce4faea4cc2d21a4a48301aecdb"
+          },
+          {
+            "name": "RESOURCE.000",
+            "sha256": "74244198781207a1943409a6d4aea65731dc862b594c2c21a2659a1f3fe3e391"
+          },
+          {
+            "name": "RESOURCE.AUD",
+            "sha256": "d961af63e14fc02e3f094952651f8bf20a3fbdf21833b0a98bce08c8fd11d5ca"
+          },
+          {
+            "name": "RESOURCE.MAP",
+            "sha256": "7ec15cbf5501af2b09e62f7a1f34d6a49d2978bf9a7b6f8c1c86c18e41a997b7"
+          },
+          {
+            "name": "RESOURCE.SFX",
+            "sha256": "e0398d6283cf9726a8aac5effed2b8cf95ae98f42639e2eb2c7a2b3adb7b6196"
           }
         ]
       }

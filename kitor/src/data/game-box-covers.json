@@ -254,5 +254,21 @@
     "he": {
       "src": "/cover-silver-pines-he.svg"
     }
+  },
+  "sq4": {
+    "en": {
+      "src": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/sq4/en/7bf2aea312f3c85d.webp"
+    },
+    "he": {
+      "src": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/sq4/he/03890265beb3.webp"
+    }
+  },
+  "sq6": {
+    "en": {
+      "src": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/sq6/en/c3a436d54e83.jpg"
+    },
+    "he": {
+      "src": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/sq6/en/c3a436d54e83.jpg"
+    }
   }
 }

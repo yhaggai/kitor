@@ -1,0 +1,1552 @@
+{
+  "schema_version": 1,
+  "scummvm_id": "sq4",
+  "language": "he",
+  "version": "0.1.0",
+  "filename": "sq4-he-0.1.0.zip",
+  "platforms": {
+    "windows": {}
+  },
+  "files": [
+    {
+      "path": "0.fon",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "patch/0.fon",
+        "sha256": "8bac6f36b84ed6ac05ad674c48f8e2c420acfa22db30d56de4557e3f04268377"
+      }
+    },
+    {
+      "path": "0.hep",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "patch/0.hep",
+        "sha256": "3a946300813ac156af1ee8cb1fe73e6fb2a57ade3ddf1a71b6aa5303edd7d57b"
+      }
+    },
+    {
+      "path": "0.msg",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "patch/0.msg",
+        "sha256": "dc9e78ddf5919a2bd01c328713aee86915e22091cb813ea5199d35fd06466e8c"
+      }
+    },
+    {
+      "path": "1.fon",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "patch/1.fon",
+        "sha256": "9fe0230c498f46db3ca8758e65e4cd9be8d7d6d53f7905285cdced48c289e194"
+      }
+    },
+    {
+      "path": "1.p56",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "patch/1.p56",
+        "sha256": "38d40b1d260d924ab143edeff4f6259fe450dd8a17a8d9391b06b0623c96f9e8"
+      }
+    },
+    {
+      "path": "10.fon",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "patch/10.fon",
+        "sha256": "3925a83d9b1a4987aa290cc3ca92e517ef6741e50e1147f0b5d672c47af64869"
+      }
+    },
+    {
+      "path": "10.msg",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "patch/10.msg",
+        "sha256": "086621e1209bc73c1cf75f507ad4fdb9750d53d1b3f21fe74bbd9f8204e6984e"
+      }
+    },
+    {
+      "path": "104.fon",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "patch/104.fon",
+        "sha256": "e3aa8ab70247c28faef7e1a0f98ca52c8691895da4c7a6f6466d3000704b38db"
+      }
+    },
+    {
+      "path": "15.msg",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "patch/15.msg",
+        "sha256": "93c99500520d91d8a3ce90f3ff7a4df4b8ac5c78989d7fd2340353091682a1d2"
+      }
+    },
+    {
+      "path": "15.p56",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "patch/15.p56",
+        "sha256": "67b5df3ece763f947aba44431dff0d8651515fa0e2ea81596777daab3cf477c6"
+      }
+    },
+    {
+      "path": "150.msg",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "patch/150.msg",
+        "sha256": "9e007e93e3c3819894577281b8f7e023863135a04be5b161091052d1f39bff7d"
+      }
+    },
+    {
+      "path": "150.v56",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "patch/150.v56",
+        "sha256": "f820ed1bfe11e8f0672fa94a5256f9fe1581a10adee940632605b3832623b1e3"
+      }
+    },
+    {
+      "path": "151.msg",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "patch/151.msg",
+        "sha256": "3d7cb50c0066453ca06454d7bd22fc1b90068ccc0ee91c0321af552d8402323a"
+      }
+    },
+    {
+      "path": "152.msg",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "patch/152.msg",
+        "sha256": "5ce1b2e0c76bd5e5c81f86f760957190c705f3956a041e779ca0d226a3a40d6e"
+      }
+    },
+    {
+      "path": "152.tex",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "patch/152.tex",
+        "sha256": "a460c851903061c5ec02ef0388e68f4c46d91e511c863cc95f2999e41c94b8f1"
+      }
+    },
+    {
+      "path": "153.msg",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "patch/153.msg",
+        "sha256": "416c29576f98be68ea513565fb575c2c1d81ff59d2b8d942575d2890097838cc"
+      }
+    },
+    {
+      "path": "16.msg",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "patch/16.msg",
+        "sha256": "05f0017549637bc2af7f696beb1a1940ede39e453f9d5cc6ce3780630858c776"
+      }
+    },
+    {
+      "path": "17.msg",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "patch/17.msg",
+        "sha256": "be5ef7145875d2017a6b6c5826bb4edc9e07300e6a1355692bc6541a19a9e656"
+      }
+    },
+    {
+      "path": "19.msg",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "patch/19.msg",
+        "sha256": "ea3596dac08d0463381a8c8706d2c1bfb6c8c98735fc51004c7a05f2599d8d48"
+      }
+    },
+    {
+      "path": "2.fon",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "patch/2.fon",
+        "sha256": "7244d45d6e30edabe0834924a87b8daf0d014403f45a539f1d618723301d3dd9"
+      }
+    },
+    {
+      "path": "20.msg",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "patch/20.msg",
+        "sha256": "67149060844ce41b94140df98d7381bdc18f8bbb07c3334d13699f59a1235e3c"
+      }
+    },
+    {
+      "path": "200.fon",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "patch/200.fon",
+        "sha256": "9974ea8073ada6099977052ebaf5f7e25e41a0ead6603bc40a7c00af4a6b202f"
+      }
+    },
+    {
+      "path": "21.msg",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "patch/21.msg",
+        "sha256": "261dd01a4a9459d6722ab0881fc899094aacf604c3036274e77ec2f1f66cd7ef"
+      }
+    },
+    {
+      "path": "25.msg",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "patch/25.msg",
+        "sha256": "c7bcef5399dcf2060b419330c94c30f2d568e21d342c3ef25d79cf0d020b2218"
+      }
+    },
+    {
+      "path": "271.msg",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "patch/271.msg",
+        "sha256": "34a8592f33af63e504559495082fa539981345d6a45a2f55c825aeda7199d375"
+      }
+    },
+    {
+      "path": "290.hep",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "patch/290.hep",
+        "sha256": "b7957baf5dfa4cc87d64547215a1d0b7b8022c03f3f7f6e41cfe931eff2e98cb"
+      }
+    },
+    {
+      "path": "290.msg",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "patch/290.msg",
+        "sha256": "00d99e811b91967eea5f97107e3beea82d9d10f9e1157031e30aabad19bda356"
+      }
+    },
+    {
+      "path": "290.tex",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "patch/290.tex",
+        "sha256": "2718744adf95da673aba3b8cc5f1e56c45b0f0f18568dbfe275b60030d1f5167"
+      }
+    },
+    {
+      "path": "297.msg",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "patch/297.msg",
+        "sha256": "60a706d8e38077ccc03d225d22c399f6583314de506abf36ce9a07729b0cacb6"
+      }
+    },
+    {
+      "path": "298.msg",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "patch/298.msg",
+        "sha256": "3ced18509462dbe92fe1d17f6d9d1bff2e56a95edd2c2795b0910fe6fde51015"
+      }
+    },
+    {
+      "path": "299.msg",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "patch/299.msg",
+        "sha256": "09c964afd50d6c344cbc8bb083c1ee2ea9ca9f076284465ea9891c160d61a516"
+      }
+    },
+    {
+      "path": "3.fon",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "patch/3.fon",
+        "sha256": "d348248514b7fcd91c402de12fd15267373811eda049b4996df62d57c01ac1b8"
+      }
+    },
+    {
+      "path": "30.fon",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "patch/30.fon",
+        "sha256": "4c429c60cbe7430bbf4ae5dde3364dce30681590945b85a98354f5fd136d2ec0"
+      }
+    },
+    {
+      "path": "30.msg",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "patch/30.msg",
+        "sha256": "6dfd00fa278fece880745bb94489bc5076f46a0b47853ee51822761055677a56"
+      }
+    },
+    {
+      "path": "300.fon",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "patch/300.fon",
+        "sha256": "65bd2f409b2f22f9828257520004cdf9378d2823f6cbef3de44946a17254ce6d"
+      }
+    },
+    {
+      "path": "300.msg",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "patch/300.msg",
+        "sha256": "15f21425e3d03c3342fd8d571eea423e1abea05b1e33db58e5add8d13065d28d"
+      }
+    },
+    {
+      "path": "305.msg",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "patch/305.msg",
+        "sha256": "4383e03120c321a6185b28adaffadad13fcfa5ff0da6a3e34c8b6d0808614f8e"
+      }
+    },
+    {
+      "path": "306.msg",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "patch/306.msg",
+        "sha256": "eb52925e1b93c0b5c691865794f6febb1b43421fb0b86b34f329e31a551673f8"
+      }
+    },
+    {
+      "path": "310.fon",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "patch/310.fon",
+        "sha256": "4a9175c06158795770ee675356f171199a25e8e374bedd7927a59f82dccc6fd9"
+      }
+    },
+    {
+      "path": "310.msg",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "patch/310.msg",
+        "sha256": "a193d1eb4ddb7618745be5ef457ab804962b2badcc93368f14654661de8b8a21"
+      }
+    },
+    {
+      "path": "311.fon",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "patch/311.fon",
+        "sha256": "ce3419c66a042827e64789c701846cbe5fd3d3ca8b61e888c7988c94527592b1"
+      }
+    },
+    {
+      "path": "315.msg",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "patch/315.msg",
+        "sha256": "9a7e6b9bece8aeac69c8dbf3f82126603c4b23d8e90d0a1f82017cc8515b7d57"
+      }
+    },
+    {
+      "path": "320.msg",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "patch/320.msg",
+        "sha256": "9d1ce393e89e7edfcd6f04fcda10dc30c7fb27e7659e315f5ed8a464a64dd695"
+      }
+    },
+    {
+      "path": "321.msg",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "patch/321.msg",
+        "sha256": "f4dbcaa78a8d0b3147dfb77f302d4dc3c70f688b44a2cb6807f15eecaeb18374"
+      }
+    },
+    {
+      "path": "322.msg",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "patch/322.msg",
+        "sha256": "58480debcb7eabe6670dfa532e7b0acfa9ddaf14a110ee60a9560f6cfe57e148"
+      }
+    },
+    {
+      "path": "329.msg",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "patch/329.msg",
+        "sha256": "e482a333fdd277376848634a0a4f02dd8ca864d5ee05c30546da6fa29a55d2a6"
+      }
+    },
+    {
+      "path": "330.msg",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "patch/330.msg",
+        "sha256": "e21fec848794979bb9323fc6437a22ca9807fcdad2ae7fb72feddefa19dbb7aa"
+      }
+    },
+    {
+      "path": "335.msg",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "patch/335.msg",
+        "sha256": "d13b75163144b2c3463fe53dc3e8ee5f9985a14f81b0d1b4b481e34ec180d81a"
+      }
+    },
+    {
+      "path": "340.msg",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "patch/340.msg",
+        "sha256": "794cb704ed26abf3a32910b02d4613b92d22d12417332574c94f1ce7607d16fd"
+      }
+    },
+    {
+      "path": "341.msg",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "patch/341.msg",
+        "sha256": "629510273b86d793e9a1d848c6907445eaae73db9d6ba3c2316b217d6c839fa0"
+      }
+    },
+    {
+      "path": "35.msg",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "patch/35.msg",
+        "sha256": "43f5a7e96dc0d0b791f3e5b6a889f6a110aea4360d00ada963a8c2e65c4a1417"
+      }
+    },
+    {
+      "path": "350.msg",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "patch/350.msg",
+        "sha256": "140be1ec5a24d652030a6538c12272942c5d19b8fa3813a289fac670700f58d0"
+      }
+    },
+    {
+      "path": "355.msg",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "patch/355.msg",
+        "sha256": "30338a2da92264116ebe46c0afb20c82d8bedbae8a8a56bb26c079e32003ddb5"
+      }
+    },
+    {
+      "path": "370.msg",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "patch/370.msg",
+        "sha256": "2823c899c0d59daa99a0d9795620dfbd2c6cf218a4e59a480c63b588cd04494c"
+      }
+    },
+    {
+      "path": "371.hep",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "patch/371.hep",
+        "sha256": "800e2be4f47bc432b9f3a1992c6fb5966025d7c69614f8653634c3fc652f7272"
+      }
+    },
+    {
+      "path": "371.msg",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "patch/371.msg",
+        "sha256": "0f448e279226f6e20c7bda7c1056e4d302d5bddcf8f05b2e8dd8df8f08299518"
+      }
+    },
+    {
+      "path": "372.msg",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "patch/372.msg",
+        "sha256": "1d8d0e41626a2f4cced79f4c34bf1013da719c940f0d57bfe5ece1a734ce3a9e"
+      }
+    },
+    {
+      "path": "375.msg",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "patch/375.msg",
+        "sha256": "c7b4999ac39432d7cb82d0c9e28a48ca9787e549a9ff114e89e4a4a9a6fbb5d3"
+      }
+    },
+    {
+      "path": "375.p56",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "patch/375.p56",
+        "sha256": "2e60ef8769ba015a6b09dc039a8771a7b0bb1942744557bdf9ab054f0c8d6448"
+      }
+    },
+    {
+      "path": "376.msg",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "patch/376.msg",
+        "sha256": "58189dc2fc02dd0137b8ba1a98429b7d9b3e3c7229078eb4e68da3f0e8715c3a"
+      }
+    },
+    {
+      "path": "380.msg",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "patch/380.msg",
+        "sha256": "c94184971d5ba230df3ee242d5cb69c05e7af684c4aa4e806bcac51097b7758f"
+      }
+    },
+    {
+      "path": "381.msg",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "patch/381.msg",
+        "sha256": "3740eb5da9883898252149f50d05a5cfbc87210cf8b0b4e674d36b45a832b03f"
+      }
+    },
+    {
+      "path": "383.msg",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "patch/383.msg",
+        "sha256": "2c6d4805289fd7968efba785391bcf2826e2e9930a72bb89d6ef608f27936370"
+      }
+    },
+    {
+      "path": "385.msg",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "patch/385.msg",
+        "sha256": "4bea3a0c258496a6ca74972b11c0ddcda975e2fc34e773f1b0bedbb1f6332aec"
+      }
+    },
+    {
+      "path": "386.msg",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "patch/386.msg",
+        "sha256": "070abce9fc2c79c1fa0b1541b50b1d9515f6e466ce95a56d13775df0100ab432"
+      }
+    },
+    {
+      "path": "386.p56",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "patch/386.p56",
+        "sha256": "9b511f5a912b6a1a809f95582f255ca901d1af6c30a1de8c49e3a5ccce89279b"
+      }
+    },
+    {
+      "path": "386.tex",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "patch/386.tex",
+        "sha256": "f0eb7225d573190e58877833eba5822a796285212517e12ee1f0aabf84e30af7"
+      }
+    },
+    {
+      "path": "387.hep",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "patch/387.hep",
+        "sha256": "3654042365b68cd32ba734404ece4583c9e9ec6831c007ea6f43615f9a8be38d"
+      }
+    },
+    {
+      "path": "387.msg",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "patch/387.msg",
+        "sha256": "0314e5cda067c06526694e3a5f810141434bea94f4adcf0732f17a76cd510d84"
+      }
+    },
+    {
+      "path": "387.tex",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "patch/387.tex",
+        "sha256": "0bcd95f7b6755b598e006cbad5a3b46258f944e712278070dfcad77f7119b764"
+      }
+    },
+    {
+      "path": "388.msg",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "patch/388.msg",
+        "sha256": "7850e8ca1beaaafddd7d20685cf0e6156c691bed58d75172ba11199afbb13172"
+      }
+    },
+    {
+      "path": "390.msg",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "patch/390.msg",
+        "sha256": "da39dac10bd8ff243a1a123c363710572f6e76d5879042ddea02eb56c5e886ef"
+      }
+    },
+    {
+      "path": "391.hep",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "patch/391.hep",
+        "sha256": "f01a428dfc83fcf1ca0da5e7f2a7dce209073dff4ca5104cc8dca0caaeef2b72"
+      }
+    },
+    {
+      "path": "391.msg",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "patch/391.msg",
+        "sha256": "768a525348107f33715a1b4369cad1c1acb48e0e6906def5816c4861fb11aca0"
+      }
+    },
+    {
+      "path": "392.p56",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "patch/392.p56",
+        "sha256": "8269109a502269fa4c06c3f62df9d700a1814224ff054a7562031af08ff16e1d"
+      }
+    },
+    {
+      "path": "393.v56",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "patch/393.v56",
+        "sha256": "e5b0be14d34cd93451fbbacffff11c918f620c5fe54a8d631f79de991069fe8c"
+      }
+    },
+    {
+      "path": "394.v56",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "patch/394.v56",
+        "sha256": "a56392252524c98f347ea4af511add9bd473129f999930b36ccde9e2a5b8a29a"
+      }
+    },
+    {
+      "path": "395.msg",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "patch/395.msg",
+        "sha256": "c481197a2726605a7735f794baadb6c598aee6fd4c6dd3e9693e4cf1e7cff02f"
+      }
+    },
+    {
+      "path": "395.tex",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "patch/395.tex",
+        "sha256": "fc38a10161a185691a82cde06ef1b42ae3dd1813b05453f08c24dafcbe9a1875"
+      }
+    },
+    {
+      "path": "396.msg",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "patch/396.msg",
+        "sha256": "6d19b1c7d73432bab93fb4131b33f638199f1d9f0c18207f3c16a55e0a44f347"
+      }
+    },
+    {
+      "path": "396.p56",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "patch/396.p56",
+        "sha256": "289bebf7ce50577001412e73419f3ddb9389aeaab66eda22043aeb70047ef2fa"
+      }
+    },
+    {
+      "path": "397.msg",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "patch/397.msg",
+        "sha256": "f66835d7a9a3cf6a3cee55e81256296b5caa37fb69135aea389b56df8a5ec5e4"
+      }
+    },
+    {
+      "path": "398.msg",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "patch/398.msg",
+        "sha256": "50a5dd27595ce90e5a83ae5f44698842567231aa8761fa2904b7c24d45f80db7"
+      }
+    },
+    {
+      "path": "398.p56",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "patch/398.p56",
+        "sha256": "ede4f671d2c8377f9d42e41ea7df7e0379f76c8eff9cd53bf370864dfac2fc23"
+      }
+    },
+    {
+      "path": "4.fon",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "patch/4.fon",
+        "sha256": "4678bf434e1510143e6558f0ece87a4ec4af0cdf357cf1689b731aafcbb8cddf"
+      }
+    },
+    {
+      "path": "40.msg",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "patch/40.msg",
+        "sha256": "fe77bf82c0f75cd2a410e197bbf576f30abd84e7647e9a8d65d0f667c3889260"
+      }
+    },
+    {
+      "path": "400.msg",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "patch/400.msg",
+        "sha256": "bb6ddcad185e27eb2707fd67a6f5a8443158f2e26861d75518efe9be69cf9331"
+      }
+    },
+    {
+      "path": "405.msg",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "patch/405.msg",
+        "sha256": "39cab0e870569679b4a0247d63958d1e9087777742c0d363c70bbb45df868bdc"
+      }
+    },
+    {
+      "path": "406.msg",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "patch/406.msg",
+        "sha256": "219e8d042a316b41e14f4e2a08726509acdabbe3499758f114a271df5a102b49"
+      }
+    },
+    {
+      "path": "410.msg",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "patch/410.msg",
+        "sha256": "ee82343778853bc0629642940b2075ae86cb7a78a30a5966cd923330e5306ce5"
+      }
+    },
+    {
+      "path": "410.tex",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "patch/410.tex",
+        "sha256": "c4e6b5e3e05f45e33a343f7f394e7ad4e6d66943d20325558bebb446bf87bf7d"
+      }
+    },
+    {
+      "path": "45.msg",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "patch/45.msg",
+        "sha256": "52b837d5ac470b6d4c15ddf7b4616c131f48071e068d1974440a95df097a83d7"
+      }
+    },
+    {
+      "path": "5.fon",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "patch/5.fon",
+        "sha256": "f15b1593f970891e713bb357ab97b26b0eaf805a3bb9cfa9661c265dd5ae9904"
+      }
+    },
+    {
+      "path": "50.msg",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "patch/50.msg",
+        "sha256": "e104927797bc404314813dcfae97a2ac37da37b59135dfa83e7f652acf346b20"
+      }
+    },
+    {
+      "path": "500.msg",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "patch/500.msg",
+        "sha256": "bbf192f0a2ecc43c0ee5c644fdff1f001cfcaa5970da6be5e3791ffa95d9c6e9"
+      }
+    },
+    {
+      "path": "514.msg",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "patch/514.msg",
+        "sha256": "342b2e44ebb63e1a753212f5349d9944ffda2878158ff0d611682cd008241535"
+      }
+    },
+    {
+      "path": "530.msg",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "patch/530.msg",
+        "sha256": "8787757746639293c6275eb9ace527e1544b5d604d4e7aa6633d0c69f22e8acb"
+      }
+    },
+    {
+      "path": "531.hep",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "patch/531.hep",
+        "sha256": "0ce038ff9944d5278aa3206bdfdbf1d19648bfa0059d78a87682463e16675c2f"
+      }
+    },
+    {
+      "path": "531.msg",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "patch/531.msg",
+        "sha256": "5eda874605e4a967d016fc73c5cfcc5e3a61d2d563900b011d0743377732c8e8"
+      }
+    },
+    {
+      "path": "535.msg",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "patch/535.msg",
+        "sha256": "181e4ba8bb3d24553b89f14a33ef88928f8bfd0fdd52fa407f635649cc02174b"
+      }
+    },
+    {
+      "path": "540.msg",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "patch/540.msg",
+        "sha256": "09e35fa3d12c3a657cc9daa29037980462b3d96b3baf624ffcac92d7535c28f4"
+      }
+    },
+    {
+      "path": "541.msg",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "patch/541.msg",
+        "sha256": "5dafbace6b6083060e785bae9c07b8b325cc7c40e650775c8fbae2ff420e0600"
+      }
+    },
+    {
+      "path": "544.hep",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "patch/544.hep",
+        "sha256": "b81fde578ca582eb27a9dd8d335cf2c4e89eb3533b4ae3bc39d36db0f61740f4"
+      }
+    },
+    {
+      "path": "544.msg",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "patch/544.msg",
+        "sha256": "b74c70358b83c2e06ca256aaf86fb1a710933ca53c02801dde12c8e06a6b0fc1"
+      }
+    },
+    {
+      "path": "545.hep",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "patch/545.hep",
+        "sha256": "c4eb7d2699f6661577187c036875a8c59b006debd563af326e6e5207d2b1efec"
+      }
+    },
+    {
+      "path": "545.msg",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "patch/545.msg",
+        "sha256": "cd205d36da75b39bd6bcfd490e9a800577aa2d5cee8ec01141f70e32e4c52fb4"
+      }
+    },
+    {
+      "path": "55.msg",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "patch/55.msg",
+        "sha256": "c721a6909e44dba483902a652471eee8a80d9be2145b64cf7da17b477088f796"
+      }
+    },
+    {
+      "path": "555.msg",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "patch/555.msg",
+        "sha256": "1aaa495f05231d1fec661dbad7774ff5f0dec5399089b128f9b8d5223a8f50cd"
+      }
+    },
+    {
+      "path": "557.msg",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "patch/557.msg",
+        "sha256": "2cde77859a282e762f17d79871743f932d8210734fbff02ec4d767f1d18d3796"
+      }
+    },
+    {
+      "path": "558.msg",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "patch/558.msg",
+        "sha256": "dd02cb435bedc4d2de3ff029ec3411fd90f4e0ea7d8096a43014df255c2bf46c"
+      }
+    },
+    {
+      "path": "60.fon",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "patch/60.fon",
+        "sha256": "19822d4f9295b757be58ddb6a619745c0119ec465c837636cad14c6bed5e2e3c"
+      }
+    },
+    {
+      "path": "60.msg",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "patch/60.msg",
+        "sha256": "fc833f719fe7236275976b4f719f56d731510d5000e1f34ede6c7e7e1ba5033a"
+      }
+    },
+    {
+      "path": "600.p56",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "patch/600.p56",
+        "sha256": "ff722fba1da6c96f8b07aa027b96bfaa4a2635f714d981ff9ad23655723f6512"
+      }
+    },
+    {
+      "path": "609.msg",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "patch/609.msg",
+        "sha256": "8b34aed925ca513604266d667c7b63656d732f1578c21357dae3cd27475dcc14"
+      }
+    },
+    {
+      "path": "609.p56",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "patch/609.p56",
+        "sha256": "c7dae691b24529f0ace802f877f4ec4b8885e05c0da633ce298cec01677c9f1d"
+      }
+    },
+    {
+      "path": "61.fon",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "patch/61.fon",
+        "sha256": "5f5c6f5b18edd669f7c579f28f3fdc5c3633beffb570f8a24e7a7f0fef03e1e1"
+      }
+    },
+    {
+      "path": "610.msg",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "patch/610.msg",
+        "sha256": "894785814b2a6709308596af3f5747ddef76adbc914407d17747d0b870904696"
+      }
+    },
+    {
+      "path": "610.v56",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "patch/610.v56",
+        "sha256": "256ca7cfb64b0f4be4c3e9cdd38429788351ea608aa475cb530a536497f37ff1"
+      }
+    },
+    {
+      "path": "611.msg",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "patch/611.msg",
+        "sha256": "cd9eceb1aba9bb27ebd2983bbd3dce8b409de7e61f04c61efedadf2ca1f273cb"
+      }
+    },
+    {
+      "path": "613.msg",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "patch/613.msg",
+        "sha256": "73c86b0521d13428c08364d36b29e4f182e1ce3a14cb24dc2b6f78dad26c525a"
+      }
+    },
+    {
+      "path": "613.tex",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "patch/613.tex",
+        "sha256": "ed714aaee522c33a2f6d89f62589a62f464fb4d5d3cf81e0ba981a299ae444f7"
+      }
+    },
+    {
+      "path": "614.msg",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "patch/614.msg",
+        "sha256": "a0abb343bb2180f768b3f949014286710edf8e86574729c4d7e1a760f1991d27"
+      }
+    },
+    {
+      "path": "614.p56",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "patch/614.p56",
+        "sha256": "d8af7913eacb2eda90ce09eba5640a7b095389783ebb9a074c7e90e3bb10b327"
+      }
+    },
+    {
+      "path": "615.msg",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "patch/615.msg",
+        "sha256": "88892c74c367ae8bd4c5d86c1fb75ea10da7f62c7740bbe0b248f1344eeb7a2d"
+      }
+    },
+    {
+      "path": "620.msg",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "patch/620.msg",
+        "sha256": "6d9314d9fd69e0cbf9ff3e0be27860713a805d91136b088a6cf393e076367da1"
+      }
+    },
+    {
+      "path": "65.msg",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "patch/65.msg",
+        "sha256": "46ba55c7e71662a640574e37a8d1a2c57f45c4b9387ad5c58ed82f94de267a2e"
+      }
+    },
+    {
+      "path": "68.fon",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "patch/68.fon",
+        "sha256": "0ccc51a1185c8e331a612dc69a7ac60b38b5d3bf08740119239cb95ae3e2339b"
+      }
+    },
+    {
+      "path": "69.fon",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "patch/69.fon",
+        "sha256": "fdce636a03d62eaf03511213bc4b0c4226507f8a7d657883f6cdbec03852ee9e"
+      }
+    },
+    {
+      "path": "7.fon",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "patch/7.fon",
+        "sha256": "3004567dd66138aaca56d507271d57d258b58cb45b7ed47eca7177eda23ef63e"
+      }
+    },
+    {
+      "path": "70.msg",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "patch/70.msg",
+        "sha256": "5f3817576506ea1c949a9ac5c37b0aff87d8dc9c3261d7138dff728037811545"
+      }
+    },
+    {
+      "path": "700.hep",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "patch/700.hep",
+        "sha256": "503da2b867244c83511bd4c37579e3b9140419034f83d750a9bfd5cbbbac5d5b"
+      }
+    },
+    {
+      "path": "700.msg",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "patch/700.msg",
+        "sha256": "ca2088b7c75c0ca93e8e62fe003684d5f6d11a34ad8a1af97616c16a44dfca23"
+      }
+    },
+    {
+      "path": "700.p56",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "patch/700.p56",
+        "sha256": "b81c367e235edd78ba3cbc4a7711985a5157a85b413ba4be694bf5f05c6326f1"
+      }
+    },
+    {
+      "path": "701.msg",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "patch/701.msg",
+        "sha256": "8391bc0f22ad80211c37d729638e6994bf9e9d054690fd1ded9099947dc85071"
+      }
+    },
+    {
+      "path": "701.p56",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "patch/701.p56",
+        "sha256": "ccca73fbabb5cf46bf542a54146f0a77f395c531cf40e6a248aa58d2405e323c"
+      }
+    },
+    {
+      "path": "702.msg",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "patch/702.msg",
+        "sha256": "e49ff0493713e9cbdbdce2ccf88dc36076d2999d72d81322b5620594e704f7fb"
+      }
+    },
+    {
+      "path": "702.p56",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "patch/702.p56",
+        "sha256": "c07b58e5a85cb5360e3e998d5ef6bfd580f7c648e47c02a88c32e9ce6c67066c"
+      }
+    },
+    {
+      "path": "703.msg",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "patch/703.msg",
+        "sha256": "537f67aa070426e6e0fb2991ab1918f51bc14b6500c5e28342332073dd69f98d"
+      }
+    },
+    {
+      "path": "703.p56",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "patch/703.p56",
+        "sha256": "cc249dd6abafb9a28886cfba98f0005a1ebe81e291516beeb2c492307e802a0e"
+      }
+    },
+    {
+      "path": "704.hep",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "patch/704.hep",
+        "sha256": "e7f528b2199d753a03c78388aae534a21cc4bb4e7fa02720f6d05a8cc651f70b"
+      }
+    },
+    {
+      "path": "704.msg",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "patch/704.msg",
+        "sha256": "2e82d462fa55d824cbc2dbf5e44014e3f5fba846fa037b307c6e99670d931f7b"
+      }
+    },
+    {
+      "path": "704.p56",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "patch/704.p56",
+        "sha256": "f997be3d103a254c57181c39830eb42aabd0b4e40dddb960cfc01e380207ff76"
+      }
+    },
+    {
+      "path": "704.tex",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "patch/704.tex",
+        "sha256": "745d220bbdcc688d9a0d1b3769c5e673f206a1c9c401a356b1498d9836a5c1e9"
+      }
+    },
+    {
+      "path": "705.msg",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "patch/705.msg",
+        "sha256": "5a98b366a7c78e9a30c43249153176d416bcf2b40327626d038066448139be17"
+      }
+    },
+    {
+      "path": "706.msg",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "patch/706.msg",
+        "sha256": "ce4839a19d78c76662ec0868f1b879796b363892ef38de97f3cdb56acd04bf16"
+      }
+    },
+    {
+      "path": "707.hep",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "patch/707.hep",
+        "sha256": "b124e99ac58b2963c3d80c9a2195e0eba6f40643549e50c44d5ee65064bb5fc2"
+      }
+    },
+    {
+      "path": "707.msg",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "patch/707.msg",
+        "sha256": "1dbbbe29805bb62ed3a6418f7c1fda25bd2d3233befbda548f846a9b500d609a"
+      }
+    },
+    {
+      "path": "708.hep",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "patch/708.hep",
+        "sha256": "c8b6687e745a0258fa48a89f9a783fb6ccec31cf029cda665812b1ecb068134c"
+      }
+    },
+    {
+      "path": "708.msg",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "patch/708.msg",
+        "sha256": "77c96fc843c01dbeeeea346ab535e9234119260ee87fc1d0f882d4e6125caa02"
+      }
+    },
+    {
+      "path": "708.tex",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "patch/708.tex",
+        "sha256": "442f3d42e2ac6c978fd678d2ff7f061491ce5e68bdab6d14822b7ba35b1c713d"
+      }
+    },
+    {
+      "path": "709.msg",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "patch/709.msg",
+        "sha256": "a06257262f16bfb40c0784101f532e359e8f5eaf4d5155175c0ade04b0142aa4"
+      }
+    },
+    {
+      "path": "709.p56",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "patch/709.p56",
+        "sha256": "7045e1ca960e342821fcf255d81012e95ac886c48817cfc01ad769ded9e9f3cc"
+      }
+    },
+    {
+      "path": "710.v56",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "patch/710.v56",
+        "sha256": "2417d9a11c1324d76f1c71a022402058b3048fb38eace8a3b5e06d66e9e668b4"
+      }
+    },
+    {
+      "path": "72.msg",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "patch/72.msg",
+        "sha256": "4e6a2e7a62eb910f04c0bb13e00c1cd99175d90e73db42f5167fa7735ee7b117"
+      }
+    },
+    {
+      "path": "8.fon",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "patch/8.fon",
+        "sha256": "904641f2d82f16911d6a04716a5477028fee352268c160e95ab154029649a137"
+      }
+    },
+    {
+      "path": "80.msg",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "patch/80.msg",
+        "sha256": "eae9496824f005f12d1d8a50eaa407299d9db5d019717671cf4997dbff801803"
+      }
+    },
+    {
+      "path": "800.tex",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "patch/800.tex",
+        "sha256": "bb1b2b200c399196251c37530736e802673339f663801195f8daf2f2fb4283c6"
+      }
+    },
+    {
+      "path": "808.msg",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "patch/808.msg",
+        "sha256": "e86c201011a39cb94d5976eb1e892fcc17b8883522432ad9abf39fa04793253c"
+      }
+    },
+    {
+      "path": "811.msg",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "patch/811.msg",
+        "sha256": "31cd23f69de1d5adba2e1a46e65d2b7bce986328f482072d3d969fce6e2babb3"
+      }
+    },
+    {
+      "path": "815.msg",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "patch/815.msg",
+        "sha256": "10fc763345974eb2715491d53b5706b9322157c6350d070c1b368d1c7eafd602"
+      }
+    },
+    {
+      "path": "818.msg",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "patch/818.msg",
+        "sha256": "bf996ab81d3187d28f6afd1147c55116c9c78d79409bf3290aa1c0db033aa984"
+      }
+    },
+    {
+      "path": "85.msg",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "patch/85.msg",
+        "sha256": "1fe09460fda48e1986fd05c20928691ad054768a34d828073bd437fba0a6e653"
+      }
+    },
+    {
+      "path": "9.msg",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "patch/9.msg",
+        "sha256": "2697088e081d8f0aca8080aaaed1c0a2c1a080fc76bfaf77a1a9eafb238af145"
+      }
+    },
+    {
+      "path": "90.msg",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "patch/90.msg",
+        "sha256": "b4bc6bd4f8f2980d171e88cfc76b015be93732879f158d6ce2b027a83981d70e"
+      }
+    },
+    {
+      "path": "900.msg",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "patch/900.msg",
+        "sha256": "622eb6698afc7935a3036c84d0c261744079f7916a56ae68bcb88a72539b128d"
+      }
+    },
+    {
+      "path": "947.v56",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "patch/947.v56",
+        "sha256": "de43e49066625dd908d92ed8258d36810c8fc3abf84f3ec714ea5ab9067a22a2"
+      }
+    },
+    {
+      "path": "972.v56",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "patch/972.v56",
+        "sha256": "0b76d973462037496172f76ccfbd5f9904a0db0fdd695acf1be2bc349000baf0"
+      }
+    },
+    {
+      "path": "990.msg",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "patch/990.msg",
+        "sha256": "c4dfeacaeffa22e8fad5434b39d80cb3b69318f964086303969903a2192b07a9"
+      }
+    },
+    {
+      "path": "9900.p56",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "patch/9900.p56",
+        "sha256": "96e6ca5b5c63d052e587dc69c894204fcd080fe52355e60c91776da159025671"
+      }
+    },
+    {
+      "path": "994.msg",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "patch/994.msg",
+        "sha256": "13594fd4f66c08307d175773da4890a6529af59f49ceb2b7539e50d0d636c4f6"
+      }
+    },
+    {
+      "path": "999.fon",
+      "operation": "install",
+      "source": {
+        "kind": "copy",
+        "path": "patch/999.fon",
+        "sha256": "807f1660e798eea8a49ba134617cc89e69155bd4c43ff1fde399e7124370b518"
+      }
+    }
+  ],
+  "release_revision": 1
+}

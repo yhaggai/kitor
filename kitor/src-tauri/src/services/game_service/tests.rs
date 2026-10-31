@@ -59,7 +59,7 @@ fn detects_space_quest_collection() {
             std::fs::copy(source.join(name), fixture.0.join(name.to_lowercase())).unwrap();
         }
         assert_eq!(detect_game_in_folder(&fixture.0).unwrap().unwrap().scummvm_id, id);
-        for other in ["sq1", "sq1sci", "sq2", "sq3", "sq5"] {
+        for other in ["sq1", "sq1sci", "sq2", "sq3", "sq4", "sq5", "sq6"] {
             assert_eq!(is_space_quest(&fixture.0, other), id == other);
         }
         let file = fixture.0.join(signature["signature"].as_str().unwrap().to_lowercase());
@@ -365,4 +365,33 @@ fn detects_local_kyrandia_installation() {
     let detected = detect_game_in_folder(&path).unwrap().unwrap();
     assert_eq!(detected.scummvm_id, "kyra1-cd");
     assert_eq!(PathBuf::from(detected.install_path), path.join("Contents/Resources/game/game"));
+}
+
+#[test]
+#[ignore = "requires the installed Steam SQ4 CD; set KITOR_SQ4_DIR"]
+fn detects_local_sq4_cd() {
+    let dir = PathBuf::from(std::env::var("KITOR_SQ4_DIR").unwrap());
+    let game = detect_game_in_folder(&dir).unwrap().unwrap();
+    assert_eq!(game.scummvm_id, "sq4");
+    assert_eq!(PathBuf::from(game.install_path), dir);
+    assert!(!is_space_quest(&dir, "sq5"));
+}
+
+#[tokio::test]
+#[ignore = "requires the Steam CD edition; set KITOR_SQ4_DIR"]
+async fn steam_library_scan_adds_all_space_quest_editions_once() {
+    let game = PathBuf::from(std::env::var("KITOR_SQ4_DIR").unwrap());
+    let collection = game.parent().unwrap().parent().unwrap();
+    let sandbox = Fixture::new();
+    let db = crate::db::init_db(&sandbox.0.join("db")).await.unwrap();
+    scan_directory(&db, collection.parent().unwrap().to_str().unwrap(), sandbox.0.clone()).await.unwrap();
+    let found = get_games_with_patches(&db, sandbox.0.clone()).await.unwrap();
+    let sq4 = found.iter().find(|g| g.scummvm_id == "sq4").unwrap();
+    assert_eq!(Path::new(&sq4.install_path), game);
+    assert!(sq4.has_available_patch);
+    for id in ["sq1", "sq1sci", "sq2", "sq3", "sq4", "sq5", "sq6"] {
+        assert_eq!(found.iter().filter(|g| g.scummvm_id == id).count(), 1, "{id}");
+    }
+    assert!(!found.iter().find(|g| g.scummvm_id == "sq6").unwrap().has_available_patch);
+    assert!(scan_directory(&db, collection.to_str().unwrap(), sandbox.0.clone()).await.unwrap().is_empty());
 }

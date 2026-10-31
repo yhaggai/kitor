@@ -329,6 +329,35 @@ struct SteamProduct {
 fn products() -> Vec<SteamProduct> {
     serde_json::from_str(include_str!("../../data/steam_products.json")).expect("reviewed Steam products")
 }
+// Steam libraries list collections as one installation. Probe the curated
+// game subdirectories, then let each game's detector verify its own files.
+pub(super) fn collection_game_folders(root: &Path) -> Vec<PathBuf> {
+    use std::{collections::HashMap, sync::OnceLock};
+    static FOLDERS: OnceLock<HashMap<String, Vec<PathBuf>>> = OnceLock::new();
+    let Some(name) = root.file_name().and_then(|n| n.to_str()) else {
+        return Vec::new();
+    };
+    let collections = FOLDERS.get_or_init(|| products().into_iter()
+        .filter(|p| matches!(p.importer, Importer::VerifiedFiles))
+        .map(|p| {
+            let mut folders = Vec::new();
+            for recipe in p.games {
+                let folder = PathBuf::from(recipe.folder);
+                folders.push(folder.clone());
+                // Earlier Space Quest Collection releases install sq2-sq6
+                // directly below the collection. Prefer the 2016 copy when both exist.
+                if let Ok(legacy) = folder.strip_prefix("2016_SpaceQuestCollection") {
+                    folders.push(legacy.to_owned());
+                }
+            }
+            (p.title.to_ascii_lowercase(), folders)
+        }).collect());
+    collections.get(&name.to_ascii_lowercase()).into_iter().flatten()
+        .map(|folder| root.join(folder))
+        .filter(|path| path.is_dir())
+        .collect()
+}
+
 #[cfg(test)]
 fn recipes() -> Vec<ImportRecipe> {
     products().into_iter().find(|p| matches!(p.importer, Importer::VerifiedFiles)).unwrap().games

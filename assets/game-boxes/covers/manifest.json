@@ -404,6 +404,90 @@
       }
     },
     {
+      "game_id": "sq4",
+      "title": "Space Quest IV: Roger Wilco and the Time Rippers",
+      "covers": {
+        "en": {
+          "file": "covers/sq4/en/7bf2aea312f3c85d.webp",
+          "sha256": "7bf2aea312f3c85d3fb0898e1bc76b469b2fa9f151eddb27ccd071f50ac485b0",
+          "bytes": 248046,
+          "width": 980,
+          "height": 1218,
+          "object_key": "covers/sq4/en/7bf2aea312f3c85d.webp",
+          "original_url": "https://assets.kitor.click/covers/sq4/en/7bf2aea312f3c85d.webp",
+          "variant_urls": {
+            "240": "https://assets.kitor.click/cdn-cgi/image/width=240,fit=scale-down,quality=85,format=auto/covers/sq4/en/7bf2aea312f3c85d.webp",
+            "480": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/sq4/en/7bf2aea312f3c85d.webp",
+            "960": "https://assets.kitor.click/cdn-cgi/image/width=960,fit=scale-down,quality=85,format=auto/covers/sq4/en/7bf2aea312f3c85d.webp"
+          },
+          "source": "SpaceQuest.Net",
+          "source_page": "https://spacequest.net/misc/boxscans/",
+          "image_url": "https://spacequest.net/misc/boxscans/sq4front.jpg",
+          "kind": "retail-box-front"
+        },
+        "he": {
+          "file": "covers/sq4/he/03890265beb3.webp",
+          "sha256": "03890265beb331424b4a8c92f1910a6c7c14c7f18f8e1f08711e1ce07313a211",
+          "bytes": 213452,
+          "width": 980,
+          "height": 1218,
+          "object_key": "covers/sq4/he/03890265beb3.webp",
+          "original_url": "https://assets.kitor.click/covers/sq4/he/03890265beb3.webp",
+          "variant_urls": {
+            "240": "https://assets.kitor.click/cdn-cgi/image/width=240,fit=scale-down,quality=85,format=auto/covers/sq4/he/03890265beb3.webp",
+            "480": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/sq4/he/03890265beb3.webp",
+            "960": "https://assets.kitor.click/cdn-cgi/image/width=960,fit=scale-down,quality=85,format=auto/covers/sq4/he/03890265beb3.webp"
+          },
+          "source": "AI text localization",
+          "kind": "ai-localized-cover",
+          "derived_from": "https://assets.kitor.click/covers/sq4/en/7bf2aea312f3c85d.webp"
+        }
+      }
+    },
+    {
+      "game_id": "sq6",
+      "title": "Space Quest 6: Roger Wilco in the Spinal Frontier",
+      "covers": {
+        "en": {
+          "file": "covers/sq6/en/c3a436d54e83.jpg",
+          "sha256": "c3a436d54e8352120b61fae7dfe8c4b966bcf8cc4264b556bd3d64f5de855f61",
+          "bytes": 230945,
+          "width": 980,
+          "height": 1231,
+          "object_key": "covers/sq6/en/c3a436d54e83.jpg",
+          "original_url": "https://assets.kitor.click/covers/sq6/en/c3a436d54e83.jpg",
+          "variant_urls": {
+            "240": "https://assets.kitor.click/cdn-cgi/image/width=240,fit=scale-down,quality=85,format=auto/covers/sq6/en/c3a436d54e83.jpg",
+            "480": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/sq6/en/c3a436d54e83.jpg",
+            "960": "https://assets.kitor.click/cdn-cgi/image/width=960,fit=scale-down,quality=85,format=auto/covers/sq6/en/c3a436d54e83.jpg"
+          },
+          "source": "SpaceQuest.Net",
+          "source_page": "https://spacequest.net/misc/boxscans/",
+          "image_url": "https://spacequest.net/misc/boxscans/sq6front.jpg",
+          "kind": "retail-box-front"
+        },
+        "he": {
+          "file": "covers/sq6/en/c3a436d54e83.jpg",
+          "sha256": "c3a436d54e8352120b61fae7dfe8c4b966bcf8cc4264b556bd3d64f5de855f61",
+          "bytes": 230945,
+          "width": 980,
+          "height": 1231,
+          "object_key": "covers/sq6/en/c3a436d54e83.jpg",
+          "original_url": "https://assets.kitor.click/covers/sq6/en/c3a436d54e83.jpg",
+          "variant_urls": {
+            "240": "https://assets.kitor.click/cdn-cgi/image/width=240,fit=scale-down,quality=85,format=auto/covers/sq6/en/c3a436d54e83.jpg",
+            "480": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/sq6/en/c3a436d54e83.jpg",
+            "960": "https://assets.kitor.click/cdn-cgi/image/width=960,fit=scale-down,quality=85,format=auto/covers/sq6/en/c3a436d54e83.jpg"
+          },
+          "source": "SpaceQuest.Net",
+          "source_page": "https://spacequest.net/misc/boxscans/",
+          "image_url": "https://spacequest.net/misc/boxscans/sq6front.jpg",
+          "kind": "retail-box-front",
+          "note": "Original English artwork also used for display; no Hebrew patch registered."
+        }
+      }
+    },
+    {
       "game_id": "sq5",
       "title": "Space Quest V: The Next Mutation",
       "covers": {

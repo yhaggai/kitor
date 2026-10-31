@@ -78,20 +78,23 @@ pub async fn scan_directory(
 
     let mut games = Vec::new();
 
-    // A selected game/app is itself a candidate; otherwise scan its children.
+    // A storefront library normally contains games directly. Collections
+    // additionally expose multiple games under the reviewed Steam layouts.
     let candidates = if detect_scummvm_game(path).is_some() {
         vec![path.to_path_buf()]
     } else {
-        std::fs::read_dir(path)
-            .map_err(|e| format!("Failed to read directory: {}", e))?
-            .map(|entry| entry.map(|entry| entry.path()))
-            .collect::<Result<Vec<_>, _>>()
-            .map_err(|e| format!("Failed to read entry: {}", e))?
+        let mut candidates = super::steam_download_service::collection_game_folders(path);
+        for entry in std::fs::read_dir(path).map_err(|e| format!("Failed to read directory: {e}"))? {
+            let child = entry.map_err(|e| format!("Failed to read entry: {e}"))?.path();
+            candidates.extend(super::steam_download_service::collection_game_folders(&child));
+            candidates.push(child);
+        }
+        candidates
     };
-
+    let mut visited = std::collections::HashSet::new();
     for entry_path in candidates {
 
-        if entry_path.is_dir() {
+        if entry_path.is_dir() && visited.insert(entry_path.clone()) {
             for game_info in detect_library_games(&entry_path) {
                 // Check if game already exists
                 let existing = Game::find()
