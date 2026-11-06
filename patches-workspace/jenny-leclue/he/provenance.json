@@ -19,7 +19,7 @@
   "dependencies": ["Python 3 for BSDIFF40"],
   "art": {
     "english": "Steam library capsule",
-    "hebrew": "ImageGen adaptation of Steam capsule, title ג׳ני לקלו and subtitle הבלשית."
+    "hebrew": "ImageGen adaptation of Steam capsule, title ג׳ני לֶקְלוּ and subtitle הבלשית."
   },
   "validation": "Both platform plans passed Kitor install and uninstall on disposable copies of their respective Steam files on macOS. All original bytes and unrelated sentinels were preserved. The staged Mac application passed codesign verification and booted with Metal. Native Windows gameplay and full playthrough remain pending."
 }

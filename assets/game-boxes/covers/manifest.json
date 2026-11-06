@@ -9756,18 +9756,18 @@
           "kind": "digital-library-cover"
         },
         "he": {
-          "file": "covers/jenny-leclue/he/2e2235534e2f.png",
-          "source_file": "imports/jenny-leclue/exec-30c38323-3327-4861-9576-f3f3cafbc28d.png",
-          "sha256": "2e2235534e2fa617433c1c436f2032c190b670060c0786e117bf8564fa37d9d2",
-          "bytes": 1742451,
+          "file": "covers/jenny-leclue/he/ec40281aaab1.png",
+          "source_file": "imports/jenny-leclue/exec-325dd861-5c23-4aa5-898f-7951beac4a80.png",
+          "sha256": "ec40281aaab19cf933570383c9279e6f279a2265c3ba917c5562e7c47f153973",
+          "bytes": 1578541,
           "width": 1024,
           "height": 1536,
-          "object_key": "covers/jenny-leclue/he/2e2235534e2f.png",
-          "original_url": "https://assets.kitor.click/covers/jenny-leclue/he/2e2235534e2f.png",
+          "object_key": "covers/jenny-leclue/he/ec40281aaab1.png",
+          "original_url": "https://assets.kitor.click/covers/jenny-leclue/he/ec40281aaab1.png",
           "variant_urls": {
-            "240": "https://assets.kitor.click/cdn-cgi/image/width=240,fit=scale-down,quality=85,format=auto/covers/jenny-leclue/he/2e2235534e2f.png",
-            "480": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/jenny-leclue/he/2e2235534e2f.png",
-            "960": "https://assets.kitor.click/cdn-cgi/image/width=960,fit=scale-down,quality=85,format=auto/covers/jenny-leclue/he/2e2235534e2f.png"
+            "240": "https://assets.kitor.click/cdn-cgi/image/width=240,fit=scale-down,quality=85,format=auto/covers/jenny-leclue/he/ec40281aaab1.png",
+            "480": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/jenny-leclue/he/ec40281aaab1.png",
+            "960": "https://assets.kitor.click/cdn-cgi/image/width=960,fit=scale-down,quality=85,format=auto/covers/jenny-leclue/he/ec40281aaab1.png"
           },
           "source": "ImageGen from Steam library cover",
           "source_page": "https://store.steampowered.com/app/319870/",
