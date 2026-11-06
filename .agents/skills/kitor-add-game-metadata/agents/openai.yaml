@@ -1,0 +1,4 @@
+interface:
+  display_name: "Kitor Game Metadata"
+  short_description: "Import game metadata from translation announcements"
+  default_prompt: "Use $kitor-add-game-metadata to add or update patch catalog metadata from this post URL."

@@ -1,0 +1,3 @@
+interface:
+  display_name: "Kitor Patches"
+  short_description: "Cross-platform patches with selective backup and restore"
