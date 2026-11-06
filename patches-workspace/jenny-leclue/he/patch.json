@@ -1,0 +1,110 @@
+{
+  "scummvm_id": "jenny-leclue",
+  "language": "he",
+  "version": "0.1.0",
+  "release_revision": 1,
+  "filename": "jenny-leclue-he-0.1.0.zip",
+  "schema_version": 1,
+  "platforms": {
+    "osx": {
+      "files": [
+        {
+          "path": "Contents/_CodeSignature/CodeResources",
+          "operation": "modify",
+          "original_sha256": "c7b5b8e4bb8872cd547a7982ae4188686079158a28a542c60fa97c72ad1d8c71",
+          "installed_sha256": "89675deab90b3d8dda1db9d2d776a4664e8e98e779d098a21e745750321af023",
+          "source": {
+            "kind": "bsdiff",
+            "path": "deltas/mac-CodeResources.bsdiff",
+            "input": "Contents/_CodeSignature/CodeResources",
+            "sha256": "5fd65198e6c474df8509e81c38f92788573900dcc1d7d4ccc630cc3305b5ece4"
+          }
+        },
+        {
+          "path": "Contents/MacOS/Jenny LeClue - Detectivu",
+          "operation": "modify",
+          "original_sha256": "3e8122cefc39c89b11b0f3e9b0df49fb74074ace2ec142a43a5d939e0f12d9b6",
+          "installed_sha256": "6eee29d04dc5bed8f643c6264a526f6f5c2512953d1c4106e266f04c4e88be01",
+          "source": {
+            "kind": "bsdiff",
+            "path": "deltas/mac-Jenny LeClue - Detectivu.bsdiff",
+            "input": "Contents/MacOS/Jenny LeClue - Detectivu",
+            "sha256": "3b683dfbc7bea0c643e42e206dc91eb825c964c78ef5b562923e1eeab329fa8c"
+          }
+        },
+        {
+          "path": "Contents/Resources/Data/data.unity3d",
+          "operation": "modify",
+          "original_sha256": "5bb35b19dc799417d32070946e37cfd2137dcd24deae300a16f1c72e0d024946",
+          "installed_sha256": "819081aec3f82ae4f51290cdc07b66dcf41ae1743d14b28adb027493c6db861f",
+          "source": {
+            "kind": "bsdiff",
+            "path": "deltas/macos-data.bsdiff",
+            "input": "Contents/Resources/Data/data.unity3d",
+            "sha256": "9095ef850946bd83a001d9667745228663f186fe557d52e6c53269c410ad4c82"
+          }
+        },
+        {
+          "path": "Contents/Resources/Data/Managed/Assembly-CSharp.dll",
+          "operation": "modify",
+          "original_sha256": "8be7539ecd343e8f0f6e686021d53282ded5c277e3acdbe699dcfc1ac4f26d10",
+          "installed_sha256": "066161ae9ea0fc8f41b6bcbf2dfdda12382ba676738c7d39ceb12c281163d11c",
+          "source": {
+            "kind": "bsdiff",
+            "path": "deltas/mac-Assembly-CSharp.dll.bsdiff",
+            "input": "Contents/Resources/Data/Managed/Assembly-CSharp.dll",
+            "sha256": "3024b191b515f5b487def5e2441cee701f3ae5273c488b78f2130f46c5078cb0"
+          }
+        },
+        {
+          "path": "Contents/Resources/Data/Managed/HebrewShortcut.dll",
+          "operation": "create",
+          "installed_sha256": "ae6f3c4fc2a38f5c6ef878f77d2565551c38df5e770987c7c9fad29ea5943a48",
+          "source": {
+            "kind": "copy",
+            "path": "payload/mac-HebrewShortcut.dll",
+            "sha256": "ae6f3c4fc2a38f5c6ef878f77d2565551c38df5e770987c7c9fad29ea5943a48"
+          }
+        }
+      ]
+    },
+    "windows": {
+      "files": [
+        {
+          "path": "Jenny LeClue_Data/Managed/HebrewShortcut.dll",
+          "operation": "create",
+          "installed_sha256": "ae6f3c4fc2a38f5c6ef878f77d2565551c38df5e770987c7c9fad29ea5943a48",
+          "source": {
+            "kind": "copy",
+            "path": "payload/windows-HebrewShortcut.dll",
+            "sha256": "ae6f3c4fc2a38f5c6ef878f77d2565551c38df5e770987c7c9fad29ea5943a48"
+          }
+        },
+        {
+          "path": "Jenny LeClue_Data/Managed/Assembly-CSharp.dll",
+          "operation": "modify",
+          "original_sha256": "9506c9d2b05a70b46597b1874414f257ad443ae7253bd8e2056026b7fc047110",
+          "installed_sha256": "cf1c24c2c0fc70874d01161715d545caf2be636663a31af9bf3f48e779ae5bd1",
+          "source": {
+            "kind": "bsdiff",
+            "path": "deltas/windows-code.bsdiff",
+            "input": "Jenny LeClue_Data/Managed/Assembly-CSharp.dll",
+            "sha256": "9278984ca2ab4096bce8c7c9e9dda30d8b33e71043fcd39179170b8f3cd47dd2"
+          }
+        },
+        {
+          "path": "Jenny LeClue_Data/resources.assets",
+          "operation": "modify",
+          "original_sha256": "d45342027c8d0b9c678c92dfaac46798491753616e89b83c8c63d06a8fef1022",
+          "installed_sha256": "337bfcd75047c428e15132945355f2fd6a4c21665209f749c72d600ab064c9cb",
+          "source": {
+            "kind": "bsdiff",
+            "path": "deltas/windows-data.bsdiff",
+            "input": "Jenny LeClue_Data/resources.assets",
+            "sha256": "b6b9660d4dba0bdd24c461434340926f5a4d157d4f6fe71c25a58a54374c6d75"
+          }
+        }
+      ]
+    }
+  }
+}

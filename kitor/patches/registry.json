@@ -554,20 +554,10 @@
         },
         "launch": {
           "original": {
-            "args": [
-              "--fullscreen",
-              "--platform=dos",
-              "sci:sq4"
-            ]
+            "args": ["--fullscreen", "--platform=dos", "sci:sq4"]
           },
           "patched": {
-            "args": [
-              "--language=en",
-              "--subtitles",
-              "--fullscreen",
-              "--platform=dos",
-              "sci:sq4"
-            ]
+            "args": ["--language=en", "--subtitles", "--fullscreen", "--platform=dos", "sci:sq4"]
           }
         }
       }
@@ -638,11 +628,7 @@
         },
         "launch": {
           "original": {
-            "args": [
-              "--fullscreen",
-              "--platform=dos",
-              "sci:sq6"
-            ]
+            "args": ["--fullscreen", "--platform=dos", "sci:sq6"]
           },
           "patched": { "args": ["--fullscreen", "--platform=dos", "sci:sq6"] }
         }
@@ -1693,6 +1679,110 @@
           }
         },
         "bundled_resource": "silver-pines"
+      }
+    },
+    {
+      "scummvm_id": "jenny-leclue",
+      "steam_app_id": 319870,
+      "title": "Jenny LeClue - Detectivu",
+      "cover_url": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/jenny-leclue/en/2768413b7b5b.jpg",
+      "platforms": {
+        "windows": true,
+        "osx": true,
+        "linux": false
+      },
+      "detection_patterns": {
+        "unique_files": [],
+        "file_patterns": []
+      },
+      "purchase_guide": null,
+      "patches": [
+        {
+          "language": "he",
+          "version": "0.1.0",
+          "release_revision": 1,
+          "author": "Kitor",
+          "download_url": "bundled://jenny-leclue/he",
+          "source_type": "bundled",
+          "filename": "jenny-leclue-he-0.1.0.zip",
+          "file_size": null,
+          "checksum": null,
+          "description": "Hebrew dialogue and menus for Steam. Select Hebrew on the title screen. Machine-assisted draft. Requires Python 3. Windows gameplay validation pending.",
+          "post_install_script": null,
+          "install_manifest": "patch.json"
+        }
+      ],
+      "behavior": {
+        "detection": {
+          "layouts": [
+            {
+              "root": ".",
+              "required_files": [
+                "Jenny LeClue.exe",
+                "Jenny LeClue_Data/resources.assets",
+                "Jenny LeClue_Data/Managed/DialogueSystem.dll"
+              ],
+              "data": "."
+            },
+            {
+              "root": ".",
+              "required_files": [
+                "Contents/MacOS/Jenny LeClue - Detectivu",
+                "Contents/Resources/Data/data.unity3d",
+                "Contents/Resources/Data/Managed/DialogueSystem.dll"
+              ],
+              "data": "."
+            },
+            {
+              "root": "Jenny LeClue - Detectivu.app",
+              "required_files": [
+                "Contents/MacOS/Jenny LeClue - Detectivu",
+                "Contents/Resources/Data/data.unity3d",
+                "Contents/Resources/Data/Managed/DialogueSystem.dll"
+              ],
+              "data": "."
+            }
+          ]
+        },
+        "launch": {
+          "original": {
+            "commands": {
+              "windows": {
+                "program": "Jenny LeClue.exe",
+                "required_files": [
+                  "Jenny LeClue_Data/resources.assets",
+                  "Jenny LeClue_Data/Managed/DialogueSystem.dll"
+                ]
+              },
+              "osx": {
+                "program": "Contents/MacOS/Jenny LeClue - Detectivu",
+                "required_files": [
+                  "Contents/Resources/Data/data.unity3d",
+                  "Contents/Resources/Data/Managed/DialogueSystem.dll"
+                ]
+              }
+            }
+          },
+          "patched": {
+            "commands": {
+              "windows": {
+                "program": "Jenny LeClue.exe",
+                "required_files": [
+                  "Jenny LeClue_Data/resources.assets",
+                  "Jenny LeClue_Data/Managed/DialogueSystem.dll"
+                ]
+              },
+              "osx": {
+                "program": "Contents/MacOS/Jenny LeClue - Detectivu",
+                "required_files": [
+                  "Contents/Resources/Data/data.unity3d",
+                  "Contents/Resources/Data/Managed/DialogueSystem.dll"
+                ]
+              }
+            }
+          }
+        },
+        "bundled_resource": "jenny-leclue"
       }
     }
   ],

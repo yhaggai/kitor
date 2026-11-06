@@ -451,5 +451,19 @@
     "patch/9900.p56": "patches-workspace/sq4/he/patch/9900.p56",
     "patch/994.msg": "patches-workspace/sq4/he/patch/994.msg",
     "patch/999.fon": "patches-workspace/sq4/he/patch/999.fon"
+  },
+  "jenny-leclue/osx": {
+    "patch.json": "patches-workspace/jenny-leclue/he/patch.json",
+    "deltas/mac-CodeResources.bsdiff": "patches-workspace/jenny-leclue/he/deltas/mac-CodeResources.bsdiff",
+    "deltas/mac-Jenny LeClue - Detectivu.bsdiff": "patches-workspace/jenny-leclue/he/deltas/mac-Jenny LeClue - Detectivu.bsdiff",
+    "deltas/macos-data.bsdiff": "patches-workspace/jenny-leclue/he/deltas/macos-data.bsdiff",
+    "deltas/mac-Assembly-CSharp.dll.bsdiff": "patches-workspace/jenny-leclue/he/deltas/mac-Assembly-CSharp.dll.bsdiff",
+    "payload/mac-HebrewShortcut.dll": "patches-workspace/jenny-leclue/he/payload/mac-HebrewShortcut.dll"
+  },
+  "jenny-leclue/windows": {
+    "patch.json": "patches-workspace/jenny-leclue/he/patch.json",
+    "payload/windows-HebrewShortcut.dll": "patches-workspace/jenny-leclue/he/payload/windows-HebrewShortcut.dll",
+    "deltas/windows-code.bsdiff": "patches-workspace/jenny-leclue/he/deltas/windows-code.bsdiff",
+    "deltas/windows-data.bsdiff": "patches-workspace/jenny-leclue/he/deltas/windows-data.bsdiff"
   }
 }

@@ -1,0 +1,25 @@
+{
+  "status": "packaged_unverified",
+  "release_ready": false,
+  "source": "Locally authored Kitor Hebrew translation and language selector, based on the owned Steam edition.",
+  "steam_app_id": 319870,
+  "store_url": "https://store.steampowered.com/app/319870/",
+  "windows_depot": {
+    "id": 319874,
+    "manifest": "2207954257582961902",
+    "engine": "Unity 6000.0.74f1",
+    "architecture": "x86_64"
+  },
+  "macos": {
+    "build": "2.2.0 (1)",
+    "engine": "Unity 2018.4.22f1",
+    "architecture": "x86_64"
+  },
+  "translation": "Argos en_he 1.5 with targeted editorial review. The source catalog retains logical Hebrew and protected game tokens.",
+  "dependencies": ["Python 3 for BSDIFF40"],
+  "art": {
+    "english": "Steam library capsule",
+    "hebrew": "ImageGen adaptation of Steam capsule, title ג׳ני לֶקְלוּ and subtitle הבלשית."
+  },
+  "validation": "Both platform plans passed Kitor install and uninstall on disposable copies of their respective Steam files on macOS. All original bytes and unrelated sentinels were preserved. The staged Mac application passed codesign verification and booted with Metal. Native Windows gameplay and full playthrough remain pending."
+}
