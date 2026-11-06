@@ -329,3 +329,36 @@ fn is_torin(root: &Path) -> bool {
         file.take(5000).read_to_end(&mut prefix).is_ok() && format!("{:x}", Md5::digest(prefix)) == *hash
     })
 }
+
+#[cfg(test)]
+mod jenny_leclue_tests {
+    use super::*;
+
+    #[test]
+    fn resolves_steam_and_manual_roots_only_with_matching_game_data() {
+        let registry = super::super::registry_service::load_registry().unwrap();
+        let game = registry.games.iter().find(|g| g.scummvm_id == "jenny-leclue").unwrap();
+        let library = tempfile::tempdir().unwrap();
+        let steam = library.path();
+        let app = steam.join("Jenny LeClue - Detectivu.app");
+        for (root, markers) in [
+            (app.as_path(), ["Contents/MacOS/Jenny LeClue - Detectivu", "Contents/Resources/Data/data.unity3d", "Contents/Resources/Data/Managed/DialogueSystem.dll"]),
+            (steam, ["Jenny LeClue.exe", "Jenny LeClue_Data/resources.assets", "Jenny LeClue_Data/Managed/DialogueSystem.dll"]),
+        ] {
+            for (index, marker) in markers.iter().enumerate() {
+                let path = root.join(marker);
+                std::fs::create_dir_all(path.parent().unwrap()).unwrap();
+                std::fs::write(path, []).unwrap();
+                if index < 2 {
+                    assert_ne!(detect(game, root), root.canonicalize().ok());
+                }
+            }
+            assert_eq!(detect(game, root), root.canonicalize().ok());
+            if root == app {
+                for _ in 0..2 {
+                    assert_eq!(detect(game, steam), app.canonicalize().ok());
+                }
+            }
+        }
+    }
+}
