@@ -5,7 +5,6 @@ import { FlowDialog } from "../components/FlowDialog";
 import { GameBanner } from "../components/GameBanner";
 import { GameBox } from "../components/GameBox";
 import { GameCover } from "../components/GameCover";
-import { GameDescription } from "../components/GameDescription";
 import { GameGallery } from "../components/GameGallery";
 import { ManageMenu } from "../components/ManageMenu";
 import { StatusBadge } from "../components/StatusBadge";
@@ -75,10 +74,6 @@ export function GameDetailsView({
             {game.title}
           </h1>
           <StatusBadge status={game.status} />
-          <GameDescription
-            key={`${game.id}-${game.description}`}
-            description={game.description || "הרפתקה חדשה מחכה לכם."}
-          />
           <dl className="kt-facts">
             <div>
               <dt>{t("Translation")}</dt>
@@ -98,7 +93,6 @@ export function GameDetailsView({
           </div>
         </FlowDialog>
       )}
-      <GameGallery key={game.id} title={game.title} screenshots={game.screenshots} />
       <div className="kt-detail-tabs" role="tablist" aria-label={t("Game information")}>
         {tabs.map((name, index) => (
           <button
@@ -174,6 +168,7 @@ export function GameDetailsView({
           manage
         )}
       </div>
+      <GameGallery key={game.id} title={game.title} screenshots={game.screenshots} />
     </section>
   );
 }
