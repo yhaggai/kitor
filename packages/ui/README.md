@@ -63,7 +63,10 @@ cream background, navy lettering and orange details. Regenerate it with
 `uv run --with pillow --with vtracer python packages/ui/tools/vectorize_logo.py`. Do not crop the steam or recolor
 the logo. It appears in the shared sidebar and its own Foundations story.
 The inline SVG gives each instance unique title and clip IDs. On pointer hover,
-only the steam billows from the chimney rim; leaving eases it back to rest.
+the original plume crossfades into navy and gold ribbons whose curves travel
+upward from the chimney, spread, and dissipate. Leaving restores the original
+artwork and unmounts the animated overlay after its fade finishes. The ribbons
+update SVG contours directly without React frame renders or an animation library.
 Touch and reduced-motion users see the static artwork, with no idle animation.
 The tracing script preserves the steam layers and rejects an unexpected trace
 so a regenerated asset cannot silently lose the animation.
