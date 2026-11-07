@@ -82,6 +82,9 @@ function App() {
 
   useEffect(() => {
     const initApp = async () => {
+      const minimumSplashDuration = new Promise<void>((resolve) => {
+        window.setTimeout(resolve, 3000);
+      });
       await Promise.all([loadGames(), checkScummVM()]);
       // Discovery is independent of installed records and never blocks offline use.
       void invoke("refresh_patch_registry")
@@ -89,7 +92,8 @@ function App() {
         .catch((error) => {
           console.info("Translation update check unavailable; using cached catalog:", error);
         });
-      // Close splash screen once app is ready
+      // Close only after initialization and the minimum display time finish.
+      await minimumSplashDuration;
       try {
         await invoke("close_splashscreen");
       } catch (error) {
