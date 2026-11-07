@@ -96,6 +96,7 @@ pub fn detect_classic(path: &Path) -> Option<PathBuf> {
 pub fn detect(path: &Path) -> Option<PathBuf> {
     detect_classic(path).or_else(|| detect_remastered(path))
 }
+#[cfg(any(test, feature = "standalone-patch-tools"))]
 pub fn stage(
     destination: &Path,
     language: &str,

@@ -30,6 +30,10 @@ jobs:
           TAURI_SIGNING_PRIVATE_KEY: ${{ secrets.TAURI_SIGNING_PRIVATE_KEY }}
         shell: bash
         run: test -n "$TAURI_SIGNING_PRIVATE_KEY"
+      - name: Verify on-demand patches are published
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python kitor/tools/build_download_packages.py --verify-published
       - name: Create draft app release
         id: release
         env:

@@ -9,6 +9,7 @@ import re
 import subprocess
 import tempfile
 from build_patch_packages import build, require
+from build_download_packages import build_all as build_downloads
 
 
 def gh(*args, input=None):
@@ -87,6 +88,14 @@ def main():
     require(re.fullmatch('[0-9a-f]{40}', commit), 'Exact validated source commit required')
     destination = json.loads(gh('api', f'repos/{repo}'))
     require(not destination['private'], 'Public update distribution starts when yhaggai/kitor is made public')
+    # These packages replace payloads previously distributed in the app. Keep
+    # their existing candidate/platform status; do not promote them into the
+    # stable update catalog merely because their transport changed.
+    with tempfile.TemporaryDirectory() as temp:
+        for artifact, game, metadata in build_downloads(Path(temp)):
+            tag = metadata['download_url'].split('/download/', 1)[1].split('/', 1)[0]
+            publish_asset(repo, commit, tag, artifact,
+                          metadata['description'] + f'\n\nOn-demand package; platform support and validation status are unchanged.\nSource: {repo}@{commit}')
     branch = 'patch-registry'
     existing = optional_api(f'repos/{repo}/contents/registry.json?ref={branch}')
     catalog = json.loads(base64.b64decode(existing['content'])) if existing else {

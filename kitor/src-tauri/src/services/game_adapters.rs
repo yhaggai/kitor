@@ -1,23 +1,10 @@
 //! Format-specific adapters selected by reviewed catalog configuration.
-use super::game_behavior::{BundledAdapter, DetectionAdapter, LaunchProfile, NativeAdapter};
+use super::game_behavior::{DetectionAdapter, LaunchProfile, NativeAdapter};
 use super::registry_service::GameDefinition;
 use std::{
     path::{Path, PathBuf},
     process::Command,
 };
-
-pub fn stage(
-    adapter: BundledAdapter,
-    destination: &Path,
-    _id: &str,
-    language: &str,
-    version: &str,
-    target: &Path,
-) -> Result<(), String> {
-    match adapter {
-        BundledAdapter::Tentacle => super::tentacle::stage(destination, language, version, target),
-    }
-}
 
 pub fn detect(def: &GameDefinition, path: &Path) -> Option<PathBuf> {
     let detection = &def.behavior.detection;

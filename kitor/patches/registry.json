@@ -534,21 +534,20 @@
       "patches": [
         {
           "language": "he",
-          "version": "0.1.0",
-          "release_revision": 1,
+          "version": "0.1.0-download1",
+          "release_revision": 2,
           "author": "Kitor",
-          "download_url": "bundled://sq4/he",
-          "source_type": "bundled",
-          "checksum": null,
-          "file_size": null,
-          "filename": "sq4-he-0.1.0.zip",
+          "download_url": "https://github.com/yhaggai/kitor/releases/download/patch-sq4-he-v0.1.0-download1/sq4-he-0.1.0-download1.zip",
+          "source_type": "github",
+          "checksum": "98149fc0bcfb14671e356bad7544074e9510f1e5319fddab45dd8a045f2534fb",
+          "file_size": 864222,
+          "filename": "sq4-he-0.1.0-download1.zip",
           "post_install_script": null,
           "install_manifest": "patch.json",
           "description": "מסע בחלל IV: תרגום עברי למהדורת התקליטור של Steam. כולל דיאלוג, תפריטים וגרפיקה. טיוטת תרגום עם עריכה חלקית."
         }
       ],
       "behavior": {
-        "bundled_resource": "sq4",
         "detection": {
           "adapter": "space_quest"
         },
@@ -1273,16 +1272,17 @@
       "patches": [
         {
           "language": "he",
-          "version": "2026-07-09-kitor2",
+          "version": "2026-07-09-kitor2-download1",
           "author": "Hebrew Adventure community (upstream credits)",
-          "download_url": "",
-          "source_type": "bundled",
-          "checksum": null,
-          "file_size": null,
-          "description": "מיק קרטר, נווד הבורח מעברו, חוזר לעיר הולדתו ונקלע לרצח מסתורי. כשהוא עצמו נהרג ומתעורר רגעים לפני מותו, עליו לגלות מי רודף אחריו וכיצד הכול קשור לעברו.\n\nקרדיטים ותודות (מהפרסום המקורי):\nתודה לחגי יניב, האיש שגילה לי על קיומו של המשחק והאפשרות לתרגמו, ודחק במפתחים להכיר בקיומה של השפה העברית.\n\nBundled Hebrew translation for Windows and macOS. macOS supports Steam build 22758595 and installs into the game’s existing user-data folder. Start the game once before installing. Selective backup and uninstall; gameplay unverified. Kitor launches the native app directly on macOS; use Steam on Windows.",
-          "filename": "drifter-he-2026-07-09-kitor2.zip",
+          "download_url": "https://github.com/yhaggai/kitor/releases/download/patch-drifter-he-v2026-07-09-kitor2-download1/drifter-he-2026-07-09-kitor2-download1.zip",
+          "source_type": "github",
+          "checksum": "0f8fc1141af36726ed2027fc5c894bb7746e2912bea1facef33e4b0c14f01467",
+          "file_size": 3087988,
+          "description": "מיק קרטר, נווד הבורח מעברו, חוזר לעיר הולדתו ונקלע לרצח מסתורי. כשהוא עצמו נהרג ומתעורר רגעים לפני מותו, עליו לגלות מי רודף אחריו וכיצד הכול קשור לעברו.\n\nקרדיטים ותודות (מהפרסום המקורי):\nתודה לחגי יניב, האיש שגילה לי על קיומו של המשחק והאפשרות לתרגמו, ודחק במפתחים להכיר בקיומה של השפה העברית.\n\nOn-demand Hebrew translation for Windows and macOS. macOS supports Steam build 22758595 and installs into the game’s existing user-data folder. Start the game once before installing. Selective backup and uninstall; gameplay unverified. Kitor launches the native app directly on macOS; use Steam on Windows.",
+          "filename": "drifter-he-2026-07-09-kitor2-download1.zip",
           "install_manifest": "patch.json",
-          "post_install_script": null
+          "post_install_script": null,
+          "release_revision": 1
         }
       ],
       "behavior": {
@@ -1312,8 +1312,7 @@
               ]
             }
           ]
-        },
-        "bundled_resource": "drifter"
+        }
       }
     },
     {
@@ -1333,16 +1332,17 @@
       "patches": [
         {
           "language": "he",
-          "version": "0.2.0-beta.2-kitor2",
+          "version": "0.2.0-beta.2-kitor2-download1",
           "author": "yhaggai (AI-assisted translation)",
-          "download_url": "bundled://owlboy/he",
-          "source_type": "bundled",
-          "checksum": null,
-          "file_size": null,
+          "download_url": "https://github.com/yhaggai/kitor/releases/download/patch-owlboy-he-v0.2.0-beta.2-kitor2-download1/owlboy-he-0.2.0-beta.2-kitor2-download1.zip",
+          "source_type": "github",
+          "checksum": "b66900615e0c07038949604374ca7145d861b7982164fa01bdfba321cc56bfd2",
+          "file_size": 5016145,
           "description": "תרגום בטא מלא לעברית: 4,537 רשומות, גופן עברי וכתיבה מימין לשמאל. לגרסאות Steam FNA התואמות ב-Windows וב-macOS. נדרש Python 3. יש לבחור עברית בתפריט השפות. ב-Windows ניתן לבחור דגל N לעברית עם ניקוד. בדיקת משחק מלאה עדיין ממתינה.",
-          "filename": "owlboy-he-0.2.0-beta.2-kitor2.zip",
+          "filename": "owlboy-he-0.2.0-beta.2-kitor2-download1.zip",
           "post_install_script": null,
-          "install_manifest": "patch.json"
+          "install_manifest": "patch.json",
+          "release_revision": 1
         }
       ],
       "behavior": {
@@ -1356,8 +1356,7 @@
         },
         "detection": {
           "adapter": "owlboy"
-        },
-        "bundled_resource": "owlboy"
+        }
       }
     },
     {
@@ -1377,16 +1376,17 @@
       "patches": [
         {
           "language": "he",
-          "version": "2.0-beta2-kitor1",
+          "version": "2.0-beta2-kitor1-download1",
           "author": "AdventureBrew / Shany Roze, Rafael Ben-Ari, Niv Baehr, Omer Cohen; extraction: BLooperZ",
-          "download_url": "bundled://tentacle/he/2.0-beta2-kitor1",
-          "source_type": "bundled",
-          "checksum": null,
-          "file_size": null,
+          "download_url": "https://github.com/yhaggai/kitor/releases/download/patch-tentacle-he-v2.0-beta2-kitor1-download1/tentacle-he-2.0-beta2-kitor1-download1.zip",
+          "source_type": "github",
+          "checksum": "023c4ce58fbf8c2899eaa14342cafedd6ac7d48c7a7bfc7bfb77dfec11dbebde",
+          "file_size": 6717506,
           "description": "יומו של הטנטקל — הגרסה הקלאסית בעברית. התקנה ישירה על קובצי הגרסה הקלאסית הנתמכת, או חילוץ אופציונלי מתוך Remastered שבבעלותכם; הפעלה באמצעות ScummVM. תרגום בטא DOTT-WIP2 לשימוש אישי בלבד. אין להפיץ.",
-          "filename": "DOTT-Classic-Hebrew-2.0-beta2-kitor1.zip",
+          "filename": "tentacle-he-2.0-beta2-kitor1-download1.zip",
           "post_install_script": null,
-          "install_manifest": "patch.json"
+          "install_manifest": "patch.json",
+          "release_revision": 1
         }
       ],
       "behavior": {
@@ -1403,8 +1403,7 @@
         },
         "detection": {
           "adapter": "tentacle"
-        },
-        "bundled": "tentacle"
+        }
       }
     },
     {
@@ -1424,16 +1423,17 @@
       "patches": [
         {
           "language": "he",
-          "version": "0.1-local-items-kitor1",
+          "version": "0.1-local-items-kitor1-download1",
           "author": "AdventureBrew classic translators; local remastered adaptation",
-          "download_url": "bundled://day-of-the-tentacle-remastered/he/0.1-local-items-kitor1",
-          "source_type": "bundled",
-          "checksum": null,
-          "file_size": null,
+          "download_url": "https://github.com/yhaggai/kitor/releases/download/patch-day-of-the-tentacle-remastered-he-v0.1-local-items-kitor1-download1/day-of-the-tentacle-remastered-he-0.1-local-items-kitor1-download1.zip",
+          "source_type": "github",
+          "checksum": "be28437f06cd0cdde1f641e084a18c7d6024a0666d5c88202da031293aa4a503",
+          "file_size": 10929147,
           "description": "יומו של הטנטקל — אבטיפוס נפרד לגרסה המחודשת. 5,142 כתוביות ו-348 שמות פריטים ודמויות בעברית. תפריטים, אפשרויות שיחה ו-579 רשומות דיבור עדיין באנגלית. יש לבחור English. הפעלה במנוע המקורי; לא ScummVM. לשימוש מקומי בלבד, ללא הפצה. Windows and macOS local candidates.",
-          "filename": "DOTT-Remastered-Hebrew-local-kitor1.zip",
+          "filename": "day-of-the-tentacle-remastered-he-0.1-local-items-kitor1-download1.zip",
           "post_install_script": null,
-          "install_manifest": "patch.json"
+          "install_manifest": "patch.json",
+          "release_revision": 1
         }
       ],
       "behavior": {
@@ -1449,8 +1449,7 @@
           "adapter": "tentacle_remastered",
           "priority": 10
         },
-        "library_editions": ["tentacle", "day-of-the-tentacle-remastered"],
-        "bundled_resource": "day-of-the-tentacle-remastered"
+        "library_editions": ["tentacle", "day-of-the-tentacle-remastered"]
       }
     },
     {
@@ -1474,16 +1473,17 @@
       "patches": [
         {
           "language": "he",
-          "version": "0.3.0-native-candidate",
+          "version": "0.3.0-native-candidate-download1",
           "author": "Niv Bar and Shani Roz; Kitor native adaptation",
-          "download_url": "bundled://grim-fandango-remastered/he",
-          "source_type": "bundled",
-          "checksum": null,
-          "file_size": null,
+          "download_url": "https://github.com/yhaggai/kitor/releases/download/patch-grim-fandango-remastered-he-v0.3.0-native-candidate-download1/grim-fandango-remastered-he-0.3.0-native-candidate-download1.zip",
+          "source_type": "github",
+          "checksum": "28c2760ff5bbf658192d0e97f7c0e5cf2b84e982fbd327429b0e3768cf43aacb",
+          "file_size": 881379,
           "description": "Experimental native Windows Hebrew patch for the hash-verified GOG edition. Adds Hebrew as a seventh language; select Hebrew and enable subtitles. Keeps all six original languages and English speech. Includes 401 movie subtitle entries. Requires the supported original executable and archive.",
-          "filename": "grim-fandango-remastered-he-0.3.0-native-candidate-windows.zip",
+          "filename": "grim-fandango-remastered-he-0.3.0-native-candidate-download1.zip",
           "install_manifest": "patch.json",
-          "post_install_script": null
+          "post_install_script": null,
+          "release_revision": 1
         }
       ],
       "behavior": {
@@ -1495,8 +1495,7 @@
             "native": "grim",
             "prepare_hebrew_preferences": true
           }
-        },
-        "bundled_resource": "grim-fandango-remastered"
+        }
       }
     },
     {
@@ -1529,17 +1528,17 @@
       "patches": [
         {
           "language": "he",
-          "version": "0.2.0-native-candidate",
+          "version": "0.2.0-native-candidate-download1",
           "author": "AdventureBrew; native adaptation and menu translation: Kitor",
-          "download_url": "bundled://monkey-se-native/he",
-          "source_type": "bundled",
-          "checksum": null,
-          "file_size": null,
-          "filename": "monkey-se-native-he.zip",
+          "download_url": "https://github.com/yhaggai/kitor/releases/download/patch-monkey-se-native-he-v0.2.0-native-candidate-download1/monkey-se-native-he-0.2.0-native-candidate-download1.zip",
+          "source_type": "github",
+          "checksum": "e4ca0ea78b3385caf49e678a6a2eb57b3410aecc25f3d982f30282ed26795ae7",
+          "file_size": 8919374,
+          "filename": "monkey-se-native-he-0.2.0-native-candidate-download1.zip",
           "post_install_script": null,
           "install_manifest": "patch.json",
           "description": "Native Windows Hebrew candidate using the classic AdventureBrew dialogue and new Hebrew menus. Select Hebrew (replaces French). Unmatched or conflicting dialogue stays English. Hebrew subtitles and bitmap fonts are included for the F1 classic-mode toggle; unmatched lines remain English. Full-game and RTL wrapping validation are incomplete. Requires a supported original edition; installation is reversible. Steam must be running for Monkey Island 2.",
-          "release_revision": 1
+          "release_revision": 2
         }
       ],
       "behavior": {
@@ -1554,8 +1553,7 @@
         "detection": {
           "adapter": "monkey_native"
         },
-        "library_editions": ["monkey-se", "monkey-se-native"],
-        "bundled_resource": "monkey-se-native"
+        "library_editions": ["monkey-se", "monkey-se-native"]
       }
     },
     {
@@ -1588,17 +1586,17 @@
       "patches": [
         {
           "language": "he",
-          "version": "0.2.0-native-candidate",
+          "version": "0.2.0-native-candidate-download1",
           "author": "AdventureBrew; native adaptation and menu translation: Kitor",
-          "download_url": "bundled://monkey2-se-native/he",
-          "source_type": "bundled",
-          "checksum": null,
-          "file_size": null,
-          "filename": "monkey2-se-native-he.zip",
+          "download_url": "https://github.com/yhaggai/kitor/releases/download/patch-monkey2-se-native-he-v0.2.0-native-candidate-download1/monkey2-se-native-he-0.2.0-native-candidate-download1.zip",
+          "source_type": "github",
+          "checksum": "cc599e66e5680c17a8f2d1b6c7298148ce601a09d0ac71f38deddb866c8fd7fa",
+          "file_size": 8752122,
+          "filename": "monkey2-se-native-he-0.2.0-native-candidate-download1.zip",
           "post_install_script": null,
           "install_manifest": "patch.json",
           "description": "Native Windows Hebrew candidate using the classic AdventureBrew dialogue and new Hebrew menus. Select French in Steam to load Hebrew. The original executable is preserved. Unmatched or conflicting dialogue stays English. Hebrew subtitles and bitmap fonts are included for the F1 classic-mode toggle; unmatched lines remain English. Full-game and RTL wrapping validation are incomplete. Requires a supported original edition; installation is reversible. Steam must be running for Monkey Island 2.",
-          "release_revision": 1
+          "release_revision": 2
         }
       ],
       "behavior": {
@@ -1613,8 +1611,7 @@
         "detection": {
           "adapter": "monkey_native"
         },
-        "library_editions": ["monkey2-se", "monkey2-se-native"],
-        "bundled_resource": "monkey2-se-native"
+        "library_editions": ["monkey2-se", "monkey2-se-native"]
       }
     },
     {
@@ -1634,14 +1631,14 @@
       "patches": [
         {
           "language": "he",
-          "version": "0.1.1",
-          "release_revision": 1,
+          "version": "0.1.1-download1",
+          "release_revision": 2,
           "author": "Kitor",
-          "download_url": "bundled://silver-pines/he",
-          "source_type": "bundled",
-          "checksum": null,
-          "file_size": null,
-          "filename": "silver-pines-he-0.1.1-windows.zip",
+          "download_url": "https://github.com/yhaggai/kitor/releases/download/patch-silver-pines-he-v0.1.1-download1/silver-pines-he-0.1.1-download1.zip",
+          "source_type": "github",
+          "checksum": "93242ea02a5d3ca7789bb9776e54e4ca8dece3d99856139fd3524161b4e52256",
+          "file_size": 1036311,
+          "filename": "silver-pines-he-0.1.1-download1.zip",
           "post_install_script": null,
           "install_manifest": "patch.json",
           "description": "Windows Steam Hebrew text patch. Keep English selected. Includes dialogue, menus and clues. Machine-assisted draft with editorial revisions; full playthrough pending."
@@ -1681,8 +1678,7 @@
               }
             }
           }
-        },
-        "bundled_resource": "silver-pines"
+        }
       }
     },
     {
@@ -1703,14 +1699,14 @@
       "patches": [
         {
           "language": "he",
-          "version": "0.4.6",
-          "release_revision": 11,
+          "version": "0.4.6-download1",
+          "release_revision": 12,
           "author": "Kitor",
-          "download_url": "bundled://jenny-leclue/he",
-          "source_type": "bundled",
-          "filename": "jenny-leclue-he-0.4.6.zip",
-          "file_size": null,
-          "checksum": null,
+          "download_url": "https://github.com/yhaggai/kitor/releases/download/patch-jenny-leclue-he-v0.4.6-download1/jenny-leclue-he-0.4.6-download1.zip",
+          "source_type": "github",
+          "filename": "jenny-leclue-he-0.4.6-download1.zip",
+          "file_size": 11376333,
+          "checksum": "bc08e28d26d10d756be50e23d0d908ab891ca627a389cf671c85e5e735db1d2a",
           "description": "Full Astra Hebrew translation of 5,511 dialogue catalog entries and 1,931 UI entries, including menus, journals, clue descriptions, case notes and letters. Starts automatically in Hebrew; Hebrew with nikud remains available in the game language settings. Nikud is generated from the same Hebrew text. Requires Python 3. Full playthrough and native Windows gameplay verification are pending. First publisher letter uses the localized text layer with right-aligned Hebrew paragraphs in both Hebrew modes. Native RTL dialogue, choices, menus and classroom typewriter in both Hebrew modes, preserving pointed glyphs.",
           "post_install_script": null,
           "install_manifest": "patch.json"
@@ -1785,8 +1781,7 @@
               }
             }
           }
-        },
-        "bundled_resource": "jenny-leclue"
+        }
       }
     }
   ],

@@ -128,17 +128,17 @@ mod tests {
    assert_eq!(format!("{:x}",Sha256::digest(bytes)),f["source"]["sha256"].as_str().unwrap());
   }}assert!(stage(t.path(),"he","unknown").is_err());
  }
- #[test] fn catalog_embeds_platform_specific_payloads(){
+ #[test] fn download_catalog_selects_platform_specific_payloads(){
   use sha2::{Digest,Sha256};
-  let catalog:serde_json::Value=serde_json::from_str(include_str!("../../../patches/bundled-assets.json")).unwrap();
+  let catalog:serde_json::Value=serde_json::from_str(include_str!("../../../patches/download-packages.json")).unwrap();
   for (manifest,platform) in [(MANIFEST,"osx"),(WINDOWS_MANIFEST,"windows")] {
-   let assets=&catalog[format!("owlboy/{platform}")];
+   let source=catalog["owlboy"][platform]["default"].as_str().unwrap();
    let workspace=Path::new(env!("CARGO_MANIFEST_DIR")).join(file!()).canonicalize().unwrap().ancestors().nth(5).unwrap().to_path_buf();
-   assert_eq!(fs::read(workspace.join(assets["patch.json"].as_str().unwrap())).unwrap(),manifest);
+   assert_eq!(fs::read(workspace.join(source)).unwrap(),manifest);
    let m:serde_json::Value=serde_json::from_slice(manifest).unwrap();
    for f in m["platforms"][platform]["files"].as_array().unwrap(){
-    let path=assets[f["source"]["path"].as_str().unwrap()].as_str().unwrap();
-    let bytes=fs::read(workspace.join(path)).unwrap();
+    let path=workspace.join(source).parent().unwrap().join(f["source"]["path"].as_str().unwrap());
+    let bytes=fs::read(path).unwrap();
     assert_eq!(format!("{:x}",Sha256::digest(bytes)),f["source"]["sha256"].as_str().unwrap());
    }
   }

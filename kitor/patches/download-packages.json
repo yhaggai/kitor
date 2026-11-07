@@ -1,0 +1,69 @@
+{
+  "sq4": {
+    "windows": {
+      "default": "patches-workspace/sq4/he/patch.windows.candidate.json"
+    }
+  },
+  "drifter": {
+    "windows": {
+      "default": "patches-workspace/drifter/he/patch.json"
+    },
+    "osx": {
+      "default": "patches-workspace/drifter/he/patch.json"
+    }
+  },
+  "owlboy": {
+    "windows": {
+      "default": "patches-workspace/owlboy/he/patch.windows.candidate.json"
+    },
+    "osx": {
+      "default": "patches-workspace/owlboy/he/patch.osx.candidate.json"
+    }
+  },
+  "tentacle": {
+    "windows": {
+      "classic": "patches-workspace/tentacle/he/patch.json",
+      "remastered": "patches-workspace/tentacle/he/patch.remastered-source.json"
+    },
+    "osx": {
+      "classic": "patches-workspace/tentacle/he/patch.json",
+      "remastered": "patches-workspace/tentacle/he/patch.remastered-source.json"
+    }
+  },
+  "day-of-the-tentacle-remastered": {
+    "windows": {
+      "default": "patches-workspace/day-of-the-tentacle-remastered/he/patch.windows.candidate.json"
+    },
+    "osx": {
+      "default": "patches-workspace/day-of-the-tentacle-remastered/he/patch.osx.candidate.json"
+    }
+  },
+  "grim-fandango-remastered": {
+    "windows": {
+      "default": "patches-workspace/grim-fandango-remastered/he/patch.windows.candidate.json"
+    }
+  },
+  "monkey-se-native": {
+    "windows": {
+      "default": "patches-workspace/monkey-se-native/he/patch.windows.candidate.json"
+    }
+  },
+  "monkey2-se-native": {
+    "windows": {
+      "default": "patches-workspace/monkey2-se-native/he/patch.windows.candidate.json"
+    }
+  },
+  "silver-pines": {
+    "windows": {
+      "default": "patches-workspace/silver-pines/he/patch.windows.candidate.json"
+    }
+  },
+  "jenny-leclue": {
+    "windows": {
+      "default": "patches-workspace/jenny-leclue/he/patch.json"
+    },
+    "osx": {
+      "default": "patches-workspace/jenny-leclue/he/patch.json"
+    }
+  }
+}

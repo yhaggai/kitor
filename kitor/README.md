@@ -365,12 +365,22 @@ Only unusual formats or preparation steps need a new adapter in
 `game_adapters.rs`; shared installation and launch services contain no game-ID
 switches.
 
-Static bundled patches name a `bundled_resource`. The reviewed file map in
-`patches/bundled-assets.json` lists exact source-to-staging paths per platform.
-The build generates the embedded asset index; adding a static package does
-not require a Rust staging function. Packages still pass through the common
-manifest validation and selective backup/restore lifecycle. Tentacle retains
-an adapter because its staged manifest depends on the installed edition.
+All translation payloads are downloaded on demand and verified against the
+catalog checksum before installation. The app embeds catalog metadata only.
+`patches/download-packages.json` lists platform/edition manifests for patches
+that previously shipped inside the executable. Build their deterministic ZIPs
+with `python3 tools/build_download_packages.py` (from `kitor/`). Add
+`--update-registry` after changing package inputs to refresh URLs and checksums;
+published versions are immutable, so payload updates require a new version.
+The first download archive uses the source version plus `-download1` and the
+next release revision; source manifests remain usable by standalone tools.
+These archives retain each platform's file plan and Tentacle's classic versus
+Remastered edition selection. Installation and selective restoration use the
+same journaled lifecycle as other downloads. Standalone developer patch tools
+may still embed fixtures when explicitly built with `standalone-patch-tools`.
+The patch deployment workflow publishes these archives after validation. App
+release preparation downloads and verifies them before creating an app release,
+so publish the patch packages before releasing the corresponding app build.
 
 `src-tauri/data/steam_products.json` owns supported Steam products, depot IDs,
 collection members, import layouts, and verified file recipes. The frontend
