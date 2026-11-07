@@ -28,7 +28,7 @@ export const LoadError: Story = { parameters: { msw: { handlers: errorHandlers }
 export const ZoomAndBack: Story = {
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
-    const tile = await canvas.findByRole("button", { name: /Explore Jenny LeClue/ });
+    const tile = await canvas.findByRole("button", { name: /Explore game Jenny LeClue/ });
     const search = canvas.getByRole("searchbox", { name: "Search games" });
     await userEvent.type(search, "Jenny");
     await userEvent.click(tile);
@@ -39,7 +39,7 @@ export const ZoomAndBack: Story = {
     await expect(search).toHaveValue("Jenny");
     await expect(tile).toHaveFocus();
     await expect(
-      canvas.queryByRole("button", { name: /Explore Space Quest V/ })
+      canvas.queryByRole("button", { name: /Explore game Space Quest V/ })
     ).not.toBeInTheDocument();
   },
 };
@@ -47,10 +47,12 @@ export const DiscoveryZoomAndBack: Story = {
   args: { initialCollection: "discovery" },
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
-    await userEvent.click(await canvas.findByRole("button", { name: /Explore Grim Fandango/ }));
+    await userEvent.click(
+      await canvas.findByRole("button", { name: /Explore game Grim Fandango/ })
+    );
     await expect(canvas.getByRole("button", { name: "Get the game" })).toBeVisible();
     await userEvent.click(canvas.getByRole("button", { name: "Back to discovery" }));
-    await expect(canvas.getByRole("button", { name: /Explore Grim Fandango/ })).toHaveFocus();
+    await expect(canvas.getByRole("button", { name: /Explore game Grim Fandango/ })).toHaveFocus();
   },
 };
 
@@ -59,7 +61,9 @@ export const RetryAfterError: Story = {
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
     await userEvent.click(await canvas.findByRole("button", { name: "Try again" }));
-    await expect(await canvas.findByRole("button", { name: /Explore Jenny LeClue/ })).toBeVisible();
+    await expect(
+      await canvas.findByRole("button", { name: /Explore game Jenny LeClue/ })
+    ).toBeVisible();
     await expect(canvas.queryByRole("alert")).not.toBeInTheDocument();
   },
 };
@@ -68,7 +72,7 @@ export const InstalledFromDiscovery: Story = {
   args: { initialCollection: "discovery" },
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
-    const tile = await canvas.findByRole("button", { name: /Explore Jenny LeClue/ });
+    const tile = await canvas.findByRole("button", { name: /Explore game Jenny LeClue/ });
     const search = canvas.getByRole("searchbox", { name: "Search games" });
     await userEvent.type(search, "Jenny");
     await userEvent.click(tile);
