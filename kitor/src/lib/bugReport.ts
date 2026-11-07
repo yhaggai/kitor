@@ -22,7 +22,12 @@ function wrappedBase64(bytes: Uint8Array) {
 }
 
 // A portable MIME message preserves attachments without an email service or credentials.
-export async function buildEmailDraft(subject: string, body: string, screenshots: File[]) {
+export async function buildEmailDraft(
+  subject: string,
+  body: string,
+  screenshots: File[],
+  diagnostics?: string
+) {
   const boundary = `kitor-${crypto.randomUUID()}`;
   const lines = [
     `To: ${BUG_REPORT_EMAIL}`,
@@ -47,6 +52,16 @@ export async function buildEmailDraft(subject: string, body: string, screenshots
       "Content-Transfer-Encoding: base64",
       "",
       wrappedBase64(new Uint8Array(await file.arrayBuffer()))
+    );
+  }
+  if (diagnostics) {
+    lines.push(
+      `--${boundary}`,
+      'Content-Type: application/json; charset="UTF-8"',
+      'Content-Disposition: attachment; filename="diagnostics.json"',
+      "Content-Transfer-Encoding: base64",
+      "",
+      wrappedBase64(new TextEncoder().encode(diagnostics))
     );
   }
   lines.push(`--${boundary}--`, "");
