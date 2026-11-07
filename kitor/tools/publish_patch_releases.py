@@ -60,11 +60,26 @@ def digest(path):
         return hashlib.file_digest(source, 'sha256').hexdigest()
 
 
-def publish_asset(repo, commit, tag, artifact, notes):
+def find_release(repo, tag):
     release = optional_api(f'repos/{repo}/releases/tags/{tag}')
+    if release is not None:
+        return release
+    # GitHub's by-tag endpoint does not expose unpublished drafts. Search all
+    # pages so an interrupted publication resumes its draft instead of creating
+    # another release with the same tag.
+    pages = json.loads(gh('api', '--paginate', '--slurp', f'repos/{repo}/releases?per_page=100'))
+    matches = [item for page in pages for item in page if item['tag_name'] == tag]
+    require(len(matches) <= 1, f'Multiple releases found for {tag}; resolve duplicates before publishing')
+    return matches[0] if matches else None
+
+
+def publish_asset(repo, commit, tag, artifact, notes):
+    release = find_release(repo, tag)
     if release is None:
-        gh('release', 'create', tag, '--repo', repo, '--target', commit, '--draft', '--title', tag, '--notes', notes)
-        release = json.loads(gh('api', f'repos/{repo}/releases/tags/{tag}'))
+        # Retain the creation response and ID; a new draft cannot be read by tag.
+        release = json.loads(gh('api', f'repos/{repo}/releases', '--method', 'POST', '--input', '-',
+                                input=json.dumps({'tag_name': tag, 'target_commitish': commit,
+                                                  'draft': True, 'name': tag, 'body': notes})))
     require(not release['prerelease'], 'Stable registry cannot reference a prerelease')
     if artifact.name in {a['name'] for a in release['assets']}:
         with tempfile.TemporaryDirectory() as temp:
@@ -75,8 +90,9 @@ def publish_asset(repo, commit, tag, artifact, notes):
         require(release['draft'], f'Published release {tag} is incomplete; do not mutate it')
         gh('release', 'upload', tag, str(artifact), '--repo', repo)
     if release['draft']:
-        gh('release', 'edit', tag, '--repo', repo, '--draft=false')
-    published = json.loads(gh('api', f'repos/{repo}/releases/tags/{tag}'))
+        gh('api', f"repos/{repo}/releases/{release['id']}", '--method', 'PATCH', '--input', '-',
+           input=json.dumps({'draft': False}))
+    published = json.loads(gh('api', f"repos/{repo}/releases/{release['id']}"))
     require(not published['draft'] and any(a['name'] == artifact.name and a['size'] == artifact.stat().st_size
                                          for a in published['assets']), 'Release publication failed')
 
