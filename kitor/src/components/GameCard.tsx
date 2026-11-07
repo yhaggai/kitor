@@ -1,4 +1,4 @@
-import { GameDetailsView, useTranslation } from "@kitor/ui";
+import { type Collection, GameDetailsView, useTranslation } from "@kitor/ui";
 import * as AlertDialog from "@radix-ui/react-alert-dialog";
 import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
 import * as Tooltip from "@radix-ui/react-tooltip";
@@ -30,6 +30,7 @@ import { useAppStore } from "@/store/store";
 
 type GameCardProps = {
   game: Game;
+  collection: Collection;
   onRemove?: () => void;
   onBack: () => void;
 };
@@ -65,7 +66,7 @@ function PatchVersionTooltip({
   );
 }
 
-export default function GameCard({ game, onRemove, onBack }: GameCardProps) {
+export default function GameCard({ game, collection, onRemove, onBack }: GameCardProps) {
   const { t } = useTranslation();
   const [refreshing, setRefreshing] = useState(false);
   const [updateConfirmationOpen, setUpdateConfirmationOpen] = useState(false);
@@ -274,7 +275,7 @@ export default function GameCard({ game, onRemove, onBack }: GameCardProps) {
       <GameDetailsView
         game={gameSummary(game)}
         descriptionCredit={<TranslationCredit gameId={game.scummvm_id} />}
-        collection="library"
+        collection={collection}
         onBack={onBack}
         actions={
           <div className="kt-native-game-actions">

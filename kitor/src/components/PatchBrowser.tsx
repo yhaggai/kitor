@@ -1,14 +1,11 @@
-import { CollectionView, GameDetailsView, useGameNavigation, useTranslation } from "@kitor/ui";
+import { CollectionView, useGameNavigation, useTranslation } from "@kitor/ui";
 import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
 import { invoke } from "@tauri-apps/api/core";
 import { open as openDialog } from "@tauri-apps/plugin-dialog";
-import { ChevronDown, FolderSearch, Settings } from "lucide-react";
+import { ChevronDown, FolderSearch } from "lucide-react";
 import { useEffect, useState } from "react";
 import AddGameDialog from "@/components/AddGameDialog";
-import { OpenGameFolderMenuItem } from "@/components/OpenGameFolderMenuItem";
-import { PurchaseGuideDialog } from "@/components/PurchaseGuideDialog";
-import { StoreInstallButtons } from "@/components/StoreInstallButtons";
-import { TranslationCredit } from "@/components/TranslationCredit";
+import GameDetails from "@/components/GameDetails";
 import { Button } from "@/components/ui/button";
 import { usePatchBrowserState } from "@/hooks/usePatchBrowserState";
 import { patchSummary } from "@/lib/presentation";
@@ -18,9 +15,9 @@ import { type Game, type Patch, useAppStore } from "@/store/store";
 export default function PatchBrowser() {
   const { t } = useTranslation();
   const { state, actions } = usePatchBrowserState();
-  const { patches, loading, showAddDialog, selectedGuide } = state;
+  const { patches, loading, showAddDialog } = state;
 
-  const { games, setActiveTab, setHighlightedGameId, setGames } = useAppStore();
+  const { games, setGames } = useAppStore();
   const navigation = useGameNavigation();
   const selected = patches.find((patch) => patchSummary(patch).id === navigation.selectedId);
   const [loadError, setLoadError] = useState<string>();
@@ -116,16 +113,6 @@ export default function PatchBrowser() {
     loadPatches();
   }, [games, actions]);
 
-  const selectedPatch = patches.find(
-    (patch) =>
-      patch.scummvm_id === selectedGuide?.scummvmId && patch.language === selectedGuide?.language
-  );
-
-  const handleViewGame = (gameId: number) => {
-    setActiveTab("library");
-    setHighlightedGameId(gameId);
-  };
-
   return (
     <div ref={navigation.root}>
       <div hidden={!!selected}>
@@ -201,65 +188,12 @@ export default function PatchBrowser() {
         }}
       />
 
-      <PurchaseGuideDialog
-        scummvmId={selectedGuide?.scummvmId || ""}
-        gameTitle={selectedGuide?.title || ""}
-        steamAppId={selectedPatch?.steam_app_id}
-        gogId={selectedPatch?.gog_id}
-        open={!!selectedGuide}
-        onOpenChange={(open) => !open && actions.clearSelectedGuide()}
-      />
-
       {selected && (
-        <GameDetailsView
-          key={patchSummary(selected).id}
-          game={patchSummary(selected)}
-          descriptionCredit={<TranslationCredit gameId={selected.scummvm_id} />}
+        <GameDetails
+          patch={selected}
+          onRemove={async () => setGames(await invoke<Game[]>("get_games_with_patches"))}
           collection="discovery"
           onBack={navigation.back}
-          actions={
-            <>
-              <StoreInstallButtons
-                installed={selected.game_installed}
-                scummvmId={selected.scummvm_id}
-                steamAppId={selected.steam_app_id}
-                gogId={selected.gog_id}
-              />
-              {selected.game_id != null && (
-                <Button
-                  onClick={() => selected.game_id != null && handleViewGame(selected.game_id)}
-                >
-                  {selected.patch_installed ? t("View Game") : t("Install Translation")}
-                </Button>
-              )}
-              <Button
-                variant="outline"
-                onClick={() =>
-                  actions.setSelectedGuide({
-                    scummvmId: selected.scummvm_id,
-                    language: selected.language,
-                    title: selected.game_title,
-                  })
-                }
-              >
-                {t("Game Description & Purchase Guide")}{" "}
-              </Button>
-              {selected.game_id != null && (
-                <DropdownMenu.Root>
-                  <DropdownMenu.Trigger asChild>
-                    <Button variant="outline" aria-label={t("Manage game")}>
-                      <Settings size={18} />
-                    </Button>
-                  </DropdownMenu.Trigger>
-                  <DropdownMenu.Portal>
-                    <DropdownMenu.Content className="z-50 rounded-md border bg-popover p-1">
-                      <OpenGameFolderMenuItem gameId={selected.game_id} />
-                    </DropdownMenu.Content>
-                  </DropdownMenu.Portal>
-                </DropdownMenu.Root>
-              )}
-            </>
-          }
         />
       )}
     </div>
