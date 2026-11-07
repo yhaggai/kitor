@@ -5,7 +5,11 @@ use super::*;
 pub fn recover_installation(dir: &Path) -> Result<(String, String, String, u64)> {
     let _lock = lock(dir.parent().ok_or("Missing transaction parent")?)?;
     recover(dir)?;
-    let journal = load(dir)?;
+    let mut journal = load(dir)?;
+    if journal.status == "restoring" {
+        restore_inner(dir, &mut journal)?;
+        cleanup_restored(dir, &journal)?;
+    }
     Ok((
         journal.version,
         journal.language,
@@ -17,7 +21,8 @@ pub fn recover_installation(dir: &Path) -> Result<(String, String, String, u64)>
 pub(super) fn recover(dir: &Path) -> Result<()> {
     let pending = safe_path(dir, "pending-update")?;
     if !pending.exists() {
-        return Ok(());
+        cleanup_staging(dir)?;
+        return cleanup_restored(dir, &load(dir)?);
     }
     let active = load(dir)?;
     let next: Journal =
@@ -48,15 +53,42 @@ pub(super) fn recover(dir: &Path) -> Result<()> {
     }
     // Detach cleanup atomically: a crash partway through recursive deletion
     // must not leave a half-deleted directory that looks like pending recovery.
+    // Retired folders are already detached recovery transactions. Clear any
+    // interrupted deletion before reusing this name.
+    cleanup_staging(dir)?;
     let retired = safe_path(dir, &format!("retired-{}", next.originals_dir))?;
     fs::rename(&pending, &retired).map_err(err)?;
     sync_dir(dir)?;
-    let _ = fs::remove_dir_all(retired);
+    fs::remove_dir_all(retired).map_err(err)?;
+    cleanup_restored(dir, &active)
+}
+
+// Call only while holding the installation lock. These directories are never
+// authoritative: pending-update contains all durable rollback data.
+fn cleanup_staging(dir: &Path) -> Result<()> {
+    let journal = load(dir)?;
+    let originals = safe_path(dir, &journal.originals_dir)?;
+    for entry in fs::read_dir(dir).map_err(err)? {
+        let entry = entry.map_err(err)?;
+        let name = entry.file_name();
+        let name = name.to_string_lossy();
+        if ["stage-update-", "prepare-update-", "retired-"]
+            .iter().any(|prefix| name.starts_with(prefix)) {
+            let path = safe_path(dir, &name)?;
+            if path == originals || originals.starts_with(&path) {
+                return Err("Staging cleanup overlaps retained originals".into());
+            }
+            if entry.file_type().map_err(err)?.is_dir() {
+                fs::remove_dir_all(path).map_err(err)?;
+            }
+        }
+    }
     Ok(())
 }
 
-/// Build against a sparse original-game view, then apply one recoverable change
+/// Stage directly from verified original backups, then apply one recoverable change
 /// set. No whole-game copies, unrestricted installer scripts, or live uninstall.
+#[cfg(test)]
 pub fn update(
     dir: &Path,
     package_dir: &Path,
@@ -67,6 +99,20 @@ pub fn update(
     version: &str,
     platform: &str,
 ) -> Result<PathBuf> {
+    update_with_progress(dir, package_dir, manifest_name, target, game, language, version, platform, &|_, _| {})
+}
+
+pub fn update_with_progress(
+    dir: &Path,
+    package_dir: &Path,
+    manifest_name: &str,
+    target: &Path,
+    game: &str,
+    language: &str,
+    version: &str,
+    platform: &str,
+    report: &dyn Fn(u8, &str),
+) -> Result<PathBuf> {
     update_inner(
         dir,
         package_dir,
@@ -76,6 +122,7 @@ pub fn update(
         language,
         version,
         platform,
+        report,
         &|_, _| Ok(()),
     )
 }
@@ -89,6 +136,7 @@ fn update_inner(
     language: &str,
     version: &str,
     platform: &str,
+    report: &dyn Fn(u8, &str),
     checkpoint: &dyn Fn(&Path, bool) -> Result<()>,
 ) -> Result<PathBuf> {
     let _lock = lock(dir.parent().ok_or("Missing transaction parent")?)?;
@@ -103,6 +151,7 @@ fn update_inner(
         return Err("Update does not match the active translation installation".into());
     }
     for (index, record) in old.files.iter().enumerate() {
+        report(55, &format!("Verifying recovery files ({} of {}): {}", index + 1, old.files.len(), record.path));
         if !record.started
             || record.restored
             || current_hash(&safe_path(&target, &record.path)?)? != record.installed_hash
@@ -187,56 +236,98 @@ fn update_inner(
         .prefix("stage-update-")
         .tempdir_in(dir)
         .map_err(err)?;
-    let view = work.path().join("game");
-    fs::create_dir(&view).map_err(err)?;
-    let mut needed = affected.clone();
-    for change in files {
-        if let Some(
-            Source::Bsdiff { input, .. }
-            | Source::Reconstruct { input, .. }
-            | Source::Xdelta { input, .. },
-        ) = &change.source
-        {
-            safe_path(&target, input)?;
-            needed
-                .entry(input.to_lowercase())
-                .or_insert_with(|| input.clone());
-        }
-    }
-    for (key, relative) in &needed {
-        let source = if let Some((index, record)) = old
-            .files
-            .iter()
-            .enumerate()
-            .find(|(_, r)| r.path.to_lowercase() == *key)
-        {
-            record
-                .original_hash
-                .as_ref()
-                .map(|_| original_file(dir, &old, index))
-                .transpose()?
+    let outputs = work.path().join("outputs");
+    fs::create_dir(&outputs).map_err(err)?;
+    // Retained backups were verified above. Their recorded hashes are reusable
+    // for package compatibility checks; no temporary original copies are needed.
+    let original_path = |relative: &str| -> Result<PathBuf> {
+        safe_path(&target, relative)?;
+        if let Some((index, record)) = old.files.iter().enumerate()
+            .find(|(_, r)| r.path.eq_ignore_ascii_case(relative)) {
+            if record.original_hash.is_none() {
+                return Err(format!("Required original is missing: {relative}"));
+            }
+            original_file(dir, &old, index)
         } else {
-            let source = safe_path(&target, relative)?;
-            current_hash(&source)?.map(|_| source)
-        };
-        if let Some(source) = source {
-            copy_durable(&source, &safe_path(&view, relative)?)?;
+            safe_path(&target, relative)
         }
+    };
+    let mut next = Journal {
+        release_revision: package.release_revision,
+        schema_version: 1,
+        target: target.clone(),
+        game: game.into(),
+        language: language.into(),
+        version: version.into(),
+        status: "active".into(),
+        files: vec![],
+        created_dirs: vec![],
+        originals_dir: old.originals_dir.clone(),
+    };
+    if files.is_empty() {
+        return Err("Patch file plan is empty".into());
     }
-    // Existing installer validates package identity, inputs and outputs before
-    // any live file changes. Only the sparse view is modified.
-    let staged = install(
-        package_dir,
-        manifest_name,
-        &view,
-        &work.path().join("transactions"),
-        game,
-        language,
-        version,
-        platform,
-    )?;
-    let mut next = load(&staged)?;
-    next.target = target.clone();
+    let mut paths = HashSet::new();
+    for (index, change) in files.iter().enumerate() {
+        if !paths.insert(change.path.to_lowercase()) {
+            return Err("Duplicate patch target path".into());
+        }
+        report(60, &format!("Preparing updated file ({} of {}): {}", index + 1, files.len(), change.path));
+        let previous = old.files.iter().find(|r| r.path.eq_ignore_ascii_case(&change.path));
+        let original = match previous {
+            Some(record) => record.original_hash.clone(),
+            None => current_hash(&safe_path(&target, &change.path)?)?,
+        };
+        match change.operation {
+            Operation::Create if original.is_some() =>
+                return Err(format!("Creation conflicts with existing file: {}", change.path)),
+            Operation::Modify | Operation::Delete if original.is_none() =>
+                return Err(format!("Required original is missing: {}", change.path)),
+            _ => (),
+        }
+        if let Some(expected) = &change.original_sha256 {
+            if original.as_ref() != Some(expected) {
+                return Err(format!("Unsupported original version: {}", change.path));
+            }
+        }
+        if let Some(expected) = &change.original_md5 {
+            check_md5(&original_path(&change.path)?, expected)?;
+        }
+        let output = outputs.join(index.to_string());
+        let installed_hash = if change.operation == Operation::Delete {
+            if change.source.is_some() {
+                return Err("Delete operations cannot have an output source".into());
+            }
+            None
+        } else {
+            stage_source_with_input(
+                change.source.as_ref().ok_or("Missing patch output source")?,
+                package_dir, &output, &original_path,
+            )?;
+            let checksum = hash(&output)?;
+            if let Some(expected) = &change.installed_sha256 {
+                if &checksum != expected {
+                    return Err(format!("Patched output checksum mismatch: {}", change.path));
+                }
+            }
+            if let Some(expected) = &change.installed_md5 {
+                check_md5(&output, expected)?;
+            }
+            if original.is_some() {
+                fs::set_permissions(&output,
+                    fs::metadata(original_path(&change.path)?).map_err(err)?.permissions()).map_err(err)?;
+            }
+            Some(checksum)
+        };
+        next.files.push(Record {
+            original_backup: None,
+            path: change.path.clone(),
+            original_hash: original,
+            installed_hash,
+            started: true,
+            restored: false,
+        });
+    }
     // Keep legacy numeric backup references stable when the new plan reorders files.
     // Newly touched originals are published only after the recovery journal exists.
     let mut additions = Vec::new();
@@ -275,6 +366,7 @@ fn update_inner(
         originals_dir: default_originals_dir(),
     };
     for (index, relative) in affected.values().enumerate() {
+        report(68, &format!("Preparing recovery copy ({} of {}): {relative}", index + 1, affected.len()));
         let live = safe_path(&target, relative)?;
         let original = current_hash(&live)?;
         if let Some(record) = old
@@ -295,12 +387,21 @@ fn update_inner(
             }
         }
         if let Some(expected) = &original {
+            report(68, &format!("Creating backup (file {} of {}): {relative}", index + 1, affected.len()));
             let backup = pending.join("originals").join(index.to_string());
             copy_durable(&live, &backup)?;
             check_hash(&backup, expected)?;
         }
-        let desired = safe_path(&view, relative)?;
-        let installed_hash = current_hash(&desired)?;
+        report(68, &format!("Preparing updated file ({} of {}): {relative}", index + 1, affected.len()));
+        let (desired, installed_hash) = if let Some((index, record)) = next.files.iter()
+            .enumerate().find(|(_, r)| r.path.eq_ignore_ascii_case(relative)) {
+            (outputs.join(index.to_string()), record.installed_hash.clone())
+        } else {
+            // A path dropped by the new patch returns to its original state.
+            let (index, record) = old.files.iter().enumerate()
+                .find(|(_, r)| r.path.eq_ignore_ascii_case(relative)).unwrap();
+            (original_file(dir, &old, index)?, record.original_hash.clone())
+        };
         if let Some(expected) = &installed_hash {
             let output = pending.join("outputs").join(index.to_string());
             copy_durable(&desired, &output)?;
@@ -344,12 +445,19 @@ fn update_inner(
     let result = (|| {
         for (index, name) in &additions {
             let destination = safe_path(dir, &format!("{}/{name}", next.originals_dir))?;
-            copy_durable(&staged.join("originals").join(index.to_string()), &destination)?;
+            // Newly affected originals are already in the durable rollback
+            // snapshot. Publish from that snapshot, never from mutable live files.
+            let rollback_index = rollback.files.iter().position(|r|
+                r.path.eq_ignore_ascii_case(&next.files[*index].path)).unwrap();
+            copy_durable(&pending.join("originals").join(rollback_index.to_string()), &destination)?;
             check_hash(&destination, next.files[*index].original_hash.as_ref().unwrap())?;
         }
         Ok(())
     })().and_then(|_| checkpoint(&pending, false))
-        .and_then(|_| apply(&pending, &mut rollback))
+        .and_then(|_| {
+            report(70, "Applying prepared update files…");
+            apply(&pending, &mut rollback)
+        })
         .and_then(|_| checkpoint(&pending, true))
         .and_then(|_| {
             for record in &rollback.files {
@@ -546,7 +654,7 @@ mod tests {
             ]));
             // A failed update removes only newly introduced original backups.
             assert!(update_inner(&f.dir, &f.package, "patch.json", &f.game,
-                "test", "he", "RC2-kitor1", platform, &|_, applied| {
+                "test", "he", "RC2-kitor1", platform, &|_, _| {}, &|_, applied| {
                     if applied { Err("injected failure".into()) } else { Ok(()) }
                 }).is_err());
             f.assert_old();
@@ -568,11 +676,17 @@ mod tests {
 
     #[test]
     fn update_rejects_missing_backups_modified_files_bad_payload_and_downgrade() {
-        for case in ["backup", "modified", "payload", "revision"] {
+        for case in ["backup", "corrupt-backup", "original", "modified", "payload", "revision"] {
             let f = Fixture::new("windows");
             f.next();
             match case {
                 "backup" => fs::remove_file(f.dir.join("originals/0")).unwrap(),
+                "corrupt-backup" => fs::write(f.dir.join("originals/0"), b"corrupt!").unwrap(),
+                "original" => {
+                    let mut data = f.copy("data", "modify", b"new translation");
+                    data["original_sha256"] = json!("wrong edition");
+                    f.plan("RC2-kitor1", 1, json!([data]));
+                }
                 "modified" => fs::write(f.game.join("data"), b"Steam updated this").unwrap(),
                 "payload" => {
                     let package: Package =
@@ -601,6 +715,88 @@ mod tests {
     }
 
     #[test]
+    fn stages_delta_from_retained_original_without_temporary_backups() {
+        for platform in ["windows", "osx"] {
+            let f = Fixture::new(platform);
+            let checksum = format!("{:x}", Sha256::digest(b"original"));
+            let recipe = serde_json::to_vec(&json!({
+                "schema_version": 1, "input_sha256": checksum,
+                "output_size": 9,
+                "operations": [{"offset": 0, "length": 8}, {"hex": "21"}]
+            })).unwrap();
+            fs::write(f.package.join("recipe.json"), &recipe).unwrap();
+            f.plan("RC2-kitor1", 1, json!([{
+                "path": "data", "operation": "modify", "original_sha256": checksum,
+                "source": {"kind": "reconstruct", "path": "recipe.json",
+                    "sha256": format!("{:x}", Sha256::digest(&recipe)), "input": "DATA"}
+            }]));
+            update_inner(&f.dir, &f.package, "patch.json", &f.game,
+                "test", "he", "RC2-kitor1", platform, &|_, _| {}, &|pending, applied| {
+                    if !applied {
+                        // Recovery still contains the previous translation, not
+                        // the original game bytes used to build the new output.
+                        assert_eq!(fs::read(pending.join("originals/0")).unwrap(), b"old translation");
+                        let stage = fs::read_dir(&f.dir).unwrap().map(|e| e.unwrap().path())
+                            .find(|p| p.file_name().unwrap().to_string_lossy().starts_with("stage-update-")).unwrap();
+                        assert_eq!(fs::read_dir(&stage).unwrap().count(), 1);
+                        assert!(stage.join("outputs").is_dir());
+                        assert_eq!(fs::read(stage.join("outputs/0")).unwrap(), b"original!");
+                    }
+                    Ok(())
+                }).unwrap();
+            assert_eq!(fs::read(f.game.join("data")).unwrap(), b"original!");
+            uninstall(&f.dir, &f.game).unwrap();
+            assert_eq!(fs::read(f.game.join("data")).unwrap(), b"original");
+        }
+    }
+
+    #[test]
+    fn recovery_cleans_abandoned_staging_only_under_lock() {
+        for platform in ["windows", "osx"] {
+            let f = Fixture::new(platform);
+            for name in ["stage-update-abandoned", "prepare-update-abandoned", "retired-originals"] {
+                fs::create_dir(f.dir.join(name)).unwrap();
+                fs::write(f.dir.join(name).join("partial"), b"temporary copy").unwrap();
+            }
+            fs::create_dir(f.dir.join("unrelated")).unwrap();
+            let guard = lock(f.dir.parent().unwrap()).unwrap();
+            assert!(recover_installation(&f.dir).is_err());
+            assert!(f.dir.join("stage-update-abandoned/partial").is_file());
+            drop(guard);
+            recover_installation(&f.dir).unwrap();
+            for name in ["stage-update-abandoned", "prepare-update-abandoned", "retired-originals"] {
+                assert!(!f.dir.join(name).exists());
+            }
+            assert!(f.dir.join("unrelated").is_dir());
+            assert_eq!(fs::read(f.dir.join("originals/0")).unwrap(), b"original");
+            f.assert_old();
+        }
+    }
+
+    #[test]
+    fn recovery_finishes_interrupted_uninstall_and_backup_cleanup() {
+        for platform in ["windows", "osx"] {
+            for fully_restored in [false, true] {
+                let f = Fixture::new(platform);
+                let mut journal = load(&f.dir).unwrap();
+                if fully_restored {
+                    restore_inner(&f.dir, &mut journal).unwrap();
+                    // Simulate interruption partway through deleting backups.
+                    fs::remove_file(f.dir.join("originals/0")).unwrap();
+                } else {
+                    journal.status = "restoring".into();
+                    save(&f.dir, &journal).unwrap();
+                }
+                assert_eq!(recover_installation(&f.dir).unwrap().2, "restored");
+                assert!(!f.dir.join("originals").exists());
+                assert_eq!(fs::read(f.game.join("data")).unwrap(), b"original");
+                assert_eq!(fs::read(f.game.join("later")).unwrap(), b"unrelated later file");
+                uninstall(&f.dir, &f.game).unwrap();
+            }
+        }
+    }
+
+    #[test]
     fn failed_update_restores_previous_translation() {
         let f = Fixture::new("osx");
         f.next();
@@ -613,6 +809,7 @@ mod tests {
             "he",
             "RC2-kitor1",
             "osx",
+            &|_, _| {},
             &|pending, applied| {
                 if !applied {
                     fs::remove_file(pending.join("outputs/1")).unwrap();
@@ -640,6 +837,7 @@ mod tests {
                     "he",
                     "RC2-kitor1",
                     "osx",
+                    &|_, _| {},
                     &|_, applied| {
                         if applied {
                             panic!("simulated process interruption before commit");
@@ -649,13 +847,19 @@ mod tests {
                 );
             });
             assert!(interrupted.is_err());
+            // Real process exits do not run TempDir destructors.
+            fs::create_dir(f.dir.join("stage-update-interrupted")).unwrap();
+            fs::write(f.dir.join("stage-update-interrupted/partial"), b"staged bytes").unwrap();
             if conflict {
                 fs::write(f.game.join("data"), b"later edit").unwrap();
                 assert!(recover_installation(&f.dir).is_err());
                 assert!(f.dir.join("pending-update/manifest.json").is_file());
+                assert!(f.dir.join("originals/0").is_file());
+                assert!(f.dir.join("stage-update-interrupted/partial").is_file());
                 assert_eq!(fs::read(f.game.join("data")).unwrap(), b"later edit");
             } else {
                 assert_eq!(recover_installation(&f.dir).unwrap().0, "legacy-label");
+                assert!(!f.dir.join("stage-update-interrupted").exists());
                 f.assert_old();
                 f.update("osx").unwrap();
             }
@@ -676,6 +880,7 @@ mod tests {
                 "he",
                 "RC2-kitor1",
                 "osx",
+                &|_, _| {},
                 &|pending, applied| {
                     if applied {
                         let next: Journal =

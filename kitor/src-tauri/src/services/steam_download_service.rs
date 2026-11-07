@@ -443,6 +443,7 @@ pub async fn download(
     download_to(app_id, game_ids, state, None).await
 }
 
+#[cfg(test)]
 pub async fn download_to(
     app_id: u32,
     game_ids: Vec<String>,

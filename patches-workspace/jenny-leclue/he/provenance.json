@@ -1,5 +1,5 @@
 {
-  "status": "packaged_unverified",
+  "status": "revision_11_dynamic_options_rtl",
   "release_ready": false,
   "source": "Locally authored Kitor Hebrew translation and language selector, based on the owned Steam edition.",
   "steam_app_id": 319870,
@@ -15,11 +15,549 @@
     "engine": "Unity 2018.4.22f1",
     "architecture": "x86_64"
   },
-  "translation": "Argos en_he 1.5 with targeted editorial review. The source catalog retains logical Hebrew and protected game tokens.",
+  "translation": "Fresh English-to-Hebrew translation by OpenAI gpt-6-astra, high reasoning: 5,511 dialogue catalog rows and 1,931 UI rows across all 35 collections, including the 89 prior menu labels. One logical Hebrew source; nikud is derived from it using Nakdimon, not separately translated. See ui-provenance.json for intentional cipher data and numeric-format exceptions.",
   "dependencies": ["Python 3 for BSDIFF40"],
   "art": {
     "english": "Steam library capsule",
     "hebrew": "ImageGen adaptation of Steam capsule, title ג׳ני לֶקְלוּ and subtitle הבלשית."
   },
-  "validation": "Both platform plans passed Kitor install and uninstall on disposable copies of their respective Steam files on macOS. All original bytes and unrelated sentinels were preserved. The staged Mac application passed codesign verification and booted with Metal. Native Windows gameplay and full playthrough remain pending."
+  "validation": "Native macOS: menu screenshot inspected, RTL/LTR resets, classroom typing completes 100 plain and 99 pointed character units without body overflow, and both actual dead-text fade clips change alpha 0 to 1. Both platform packages pass upgrade/retry/fresh install/selective backups/exact restore/unrelated-file preservation on macOS. User confirmed intro typing and fade; native Windows gameplay remains pending.",
+  "translation_history": [
+    {
+      "description": "Argos en_he 1.5 with targeted editorial review. The source catalog retains logical Hebrew and protected game tokens. The optional pointed mode uses a local Nakdimon 0.2.1 draft and 300 shaped letter-and-mark combinations in both font atlases.",
+      "status": "superseded draft; prior packaged artifacts"
+    }
+  ],
+  "source_translation_review": {
+    "model_id": "gpt-6-astra",
+    "reasoning_effort": "high",
+    "reasoning_effort_note": "Verified by parent from explicit spawn metadata: model=gpt-6-astra, reasoning_effort=high, fork_turns=none.",
+    "date": "2026-11-07",
+    "method": "Fresh authored translation from English-only scene-ordered source dumps; no comparison against the Argos draft. Exact duplicate random lines reused only after English equality checks in the same context.",
+    "catalog_rows": 5511,
+    "fresh_translation_or_nonverbal_review_rows": 5215,
+    "verbatim_production_cue_rows": 296,
+    "menu_values": 89,
+    "coverage": "all stable catalog IDs and all menu keys",
+    "catalog_sha256": "567fe1e9701c6fa5265bc01db2d9ca872b5c35371af1cf6bd5e15b60df47c002",
+    "menu_sha256": "475db271e41cf62cedd7478ff4f500f26b4d063d77ad1dfc940fa916406de6a3",
+    "validation": {
+      "source_english_matches_extracted_serialized_fields": 5511,
+      "unique_stable_ids": 5511,
+      "protected_tag_and_control_sequence_mismatches": 0,
+      "linebreak_count_mismatches": 0,
+      "randomline_fields_validated": 24,
+      "menu_key_tag_and_linebreak_checks": "passed"
+    },
+    "intentional_numeric_wording_exceptions": [
+      {
+        "id": "dialog14053:432408",
+        "source": "9pm to sunrise? That's ridiculous.",
+        "hebrew": "מתשע בערב עד הזריחה? זה מגוחך."
+      },
+      {
+        "id": "dialog14053:870424",
+        "source": "<color=#00DA9A><i>\"Lake Noware - 1 mile\"</i></color>",
+        "hebrew": "<color=#00DA9A><i>״אגם שום־מקום – מייל אחד״</i></color>"
+      },
+      {
+        "id": "dialog14054:280008",
+        "source": "Oh yes! We were reading <color=#00DA9A><i>50 shady graves.</i></color>",
+        "hebrew": "אה, נכון! קראנו <color=#00DA9A><i>חמישים קברים של צל.</i></color>"
+      },
+      {
+        "id": "dialog14057:1574840",
+        "source": "Answer me! Where were you at 4 pm on Thursday?",
+        "hebrew": "תעני לי! איפה היית בארבע אחר הצהריים ביום חמישי?"
+      },
+      {
+        "id": "dialog14059:764716",
+        "source": "Decommissioned over 100 years ago, but the light mysteriously continued to illuminate the darkness.",
+        "hebrew": "הוא הוצא משימוש לפני יותר ממאה שנה, אבל האור המשיך באורח מסתורי להאיר את החשכה."
+      },
+      {
+        "id": "dialog14070:331676",
+        "source": "<size=120%><i>Quiet down in there! </i></size> \nIt's almost 4 am for Pete's sake!!",
+        "hebrew": "<size=120%><i>שקט שם!</i></size>\nכמעט ארבע בבוקר, למען השם!!"
+      },
+      {
+        "id": "dialog14070:334468",
+        "source": "4 am. Time was almost up...",
+        "hebrew": "ארבע בבוקר. הזמן כמעט אזל..."
+      }
+    ],
+    "plot_sensitive_terms": {
+      "Widows Drop": "דמעת האלמנה; place assumption followed by plant reveal",
+      "Cross family": "משפחת צלב; preserves biggest-cross riddle",
+      "Sazer versus Zazer": "סייזר versus זייזר",
+      "HLC": "Latin cipher initials retained"
+    },
+    "remaining_validation": [
+      "English letter-extraction/codebook puzzle assets and solvability must be checked in the renderer.",
+      "Cross-family image-only gravestone names and other image-only writing require asset review.",
+      "Full playthrough and native Windows gameplay remain pending."
+    ],
+    "pointed_mode": "Derive from the same logical Hebrew source once; no separate translation.",
+    "packaged_artifacts_updated_by_this_pass": true
+  },
+  "manuscript_review": {
+    "model": "gpt-6-astra",
+    "reasoning_effort": "high",
+    "review_date": "2026-11-07",
+    "scope": "All 9 manuscript render entries reviewed in full against exact English extracted from pristine macOS assets. Existing accurate Hebrew accepted. Not a claim of fresh authorship of unchanged text.",
+    "original_source_bundle": "/tmp/jenny-pointed/stock/Contents/Resources/Data/data.unity3d",
+    "prior_plain_sources": [
+      "/tmp/jenny-hebrew.0rNS7c/paper.py",
+      "/tmp/jenny-hebrew.0rNS7c/fix_typing.py"
+    ],
+    "prior_authorship": "Explicit Hebrew literals in scripts; no Argos invocation for manuscript. Exact prior model authorship not established.",
+    "entry_count": 9,
+    "changed_entry_count": 0,
+    "canonical_name_review": "All plain Arthurton occurrences use ארתרטון. No named characters occur.",
+    "rendering_review": "Existing align, pos, line breaks and reversed heading conventions preserved byte-for-byte. This is linguistic review, not a new in-game rendering check.",
+    "nikud_review": "Outside this review; existing manuscript nikud has inconsistent Arthurton vowel marks and should use the same canonical named-entity correction as catalog when regenerating.",
+    "entries": [
+      {
+        "source_id": "level5:150:68",
+        "en": "The sun rose over another perfect day in picturesque Arthurton. To the casual observer, Arthurton seemed like any other small, quiet town.",
+        "previous_rendered": "<align=right>השמש זרחה על עוד יום מושלם בארתרטון הציורית. במבט ראשון נראתה ארתרטון כמו כל עיירה קטנה ושקטה.</align>",
+        "reviewed_rendered": "<align=right>השמש זרחה על עוד יום מושלם בארתרטון הציורית. במבט ראשון נראתה ארתרטון כמו כל עיירה קטנה ושקטה.</align>",
+        "logical_hebrew": "השמש זרחה על עוד יום מושלם בארתרטון הציורית. במבט ראשון נראתה ארתרטון כמו כל עיירה קטנה ושקטה.",
+        "decision": "accepted after full source review",
+        "related_catalog_ids": ["dialog14051:26728", "dialog14051:31196"],
+        "notes": ""
+      },
+      {
+        "source_id": "level7:10831:68",
+        "en": "Chapter 1",
+        "previous_rendered": "פרק ראשון",
+        "reviewed_rendered": "פרק ראשון",
+        "logical_hebrew": "פרק ראשון",
+        "decision": "accepted after full source review",
+        "related_catalog_ids": [],
+        "notes": ""
+      },
+      {
+        "source_id": "level7:10921:68",
+        "en": "The sun rose over another perfect day in picturesque Arthurton. To the casual observer, Arthurton seemed like any other small, quiet town.\n\nIt was nestled in a valley between two mountains, lined by lustrous forests, and perched on the edge of a pristine lake. It had schools, a church, and a police station.\n\nIt had a main street with shops and a place to sip coffee. It even had a museum no one ever visited.\n",
+        "previous_rendered": "<align=right>השמש זרחה על עוד יום מושלם בארתרטון הציורית. במבט ראשון נראתה ארתרטון כמו כל עיירה קטנה ושקטה.\n\nהעיירה שכנה בעמק בין שני הרים, מוקפת יערות ירוקים, על שפת אגם צלול. היו בה בתי ספר, כנסייה ותחנת משטרה.\n\nברחוב הראשי היו חנויות ומקום לשתות בו קפה. היה בה אפילו מוזיאון שאיש לא ביקר בו.</align>",
+        "reviewed_rendered": "<align=right>השמש זרחה על עוד יום מושלם בארתרטון הציורית. במבט ראשון נראתה ארתרטון כמו כל עיירה קטנה ושקטה.\n\nהעיירה שכנה בעמק בין שני הרים, מוקפת יערות ירוקים, על שפת אגם צלול. היו בה בתי ספר, כנסייה ותחנת משטרה.\n\nברחוב הראשי היו חנויות ומקום לשתות בו קפה. היה בה אפילו מוזיאון שאיש לא ביקר בו.</align>",
+        "logical_hebrew": "השמש זרחה על עוד יום מושלם בארתרטון הציורית. במבט ראשון נראתה ארתרטון כמו כל עיירה קטנה ושקטה.\n\nהעיירה שכנה בעמק בין שני הרים, מוקפת יערות ירוקים, על שפת אגם צלול. היו בה בתי ספר, כנסייה ותחנת משטרה.\n\nברחוב הראשי היו חנויות ומקום לשתות בו קפה. היה בה אפילו מוזיאון שאיש לא ביקר בו.",
+        "decision": "accepted after full source review",
+        "related_catalog_ids": [
+          "dialog14051:26728",
+          "dialog14051:31196",
+          "dialog14051:33960",
+          "dialog14051:36084",
+          "dialog14051:37992",
+          "dialog14051:229760",
+          "dialog14051:232500",
+          "dialog14051:234836"
+        ],
+        "notes": "Source manuscript omits college; do not import the extra college from catalog narration."
+      },
+      {
+        "source_id": "level8:8281:68",
+        "en": "And nothing would ever be the same again.",
+        "previous_rendered": "<align=left><pos=18.60em>ו<pos=17.98em>ש<pos=17.36em>ו<pos=16.74em>ם<pos=16.12em> <pos=15.50em>ד<pos=14.88em>ב<pos=14.26em>ר<pos=13.64em> <pos=13.02em>כ<pos=12.40em>ב<pos=11.78em>ר<pos=11.16em> <pos=10.54em>ל<pos=9.92em>א<pos=9.30em> <pos=8.68em>י<pos=8.06em>ח<pos=7.44em>ז<pos=6.82em>ו<pos=6.20em>ר<pos=5.58em> <pos=4.96em>ל<pos=4.34em>ק<pos=3.72em>ד<pos=3.10em>מ<pos=2.48em>ו<pos=1.86em>ת<pos=1.24em>ו<pos=0.62em>.</align>",
+        "reviewed_rendered": "<align=left><pos=18.60em>ו<pos=17.98em>ש<pos=17.36em>ו<pos=16.74em>ם<pos=16.12em> <pos=15.50em>ד<pos=14.88em>ב<pos=14.26em>ר<pos=13.64em> <pos=13.02em>כ<pos=12.40em>ב<pos=11.78em>ר<pos=11.16em> <pos=10.54em>ל<pos=9.92em>א<pos=9.30em> <pos=8.68em>י<pos=8.06em>ח<pos=7.44em>ז<pos=6.82em>ו<pos=6.20em>ר<pos=5.58em> <pos=4.96em>ל<pos=4.34em>ק<pos=3.72em>ד<pos=3.10em>מ<pos=2.48em>ו<pos=1.86em>ת<pos=1.24em>ו<pos=0.62em>.</align>",
+        "logical_hebrew": "ושום דבר כבר לא יחזור לקדמותו.",
+        "decision": "accepted after full source review",
+        "related_catalog_ids": ["dialog14069:617940"],
+        "notes": ""
+      },
+      {
+        "source_id": "level8:8284:68",
+        "en": "It should have been another perfect day in Arthurton.",
+        "previous_rendered": "<align=left><pos=18.60em>ע<pos=17.98em>ו<pos=17.36em>ד<pos=16.74em> <pos=16.12em>י<pos=15.50em>ו<pos=14.88em>ם<pos=14.26em> <pos=13.64em>מ<pos=13.02em>ו<pos=12.40em>ש<pos=11.78em>ל<pos=11.16em>ם<pos=10.54em> <pos=9.92em>ה<pos=9.30em>י<pos=8.68em>ה<pos=8.06em> <pos=7.44em>צ<pos=6.82em>פ<pos=6.20em>ו<pos=5.58em>י<pos=4.96em> <pos=4.34em>ב<pos=3.72em>א<pos=3.10em>ר<pos=2.48em>ת<pos=1.86em>ר<pos=1.24em>ט<pos=0.62em>ו<pos=0.00em>ן<pos=-0.62em>.</align>",
+        "reviewed_rendered": "<align=left><pos=18.60em>ע<pos=17.98em>ו<pos=17.36em>ד<pos=16.74em> <pos=16.12em>י<pos=15.50em>ו<pos=14.88em>ם<pos=14.26em> <pos=13.64em>מ<pos=13.02em>ו<pos=12.40em>ש<pos=11.78em>ל<pos=11.16em>ם<pos=10.54em> <pos=9.92em>ה<pos=9.30em>י<pos=8.68em>ה<pos=8.06em> <pos=7.44em>צ<pos=6.82em>פ<pos=6.20em>ו<pos=5.58em>י<pos=4.96em> <pos=4.34em>ב<pos=3.72em>א<pos=3.10em>ר<pos=2.48em>ת<pos=1.86em>ר<pos=1.24em>ט<pos=0.62em>ו<pos=0.00em>ן<pos=-0.62em>.</align>",
+        "logical_hebrew": "עוד יום מושלם היה צפוי בארתרטון.",
+        "decision": "accepted after full source review",
+        "related_catalog_ids": [],
+        "notes": "Condensed Hebrew preserves the intended expectation; retained for animated line width."
+      },
+      {
+        "source_id": "level8:8289:68",
+        "en": "Chapter One",
+        "previous_rendered": "ןושאר קרפ",
+        "reviewed_rendered": "ןושאר קרפ",
+        "logical_hebrew": "פרק ראשון",
+        "decision": "accepted after full source review",
+        "related_catalog_ids": [],
+        "notes": ""
+      },
+      {
+        "source_id": "level8:8295:68",
+        "en": "It should have been another perfect day in Arthurton. But today was different. And nothing would ever be the same again. \n\nTo begin with,",
+        "previous_rendered": "<align=left><pos=18.60em>ע<pos=17.98em>ו<pos=17.36em>ד<pos=16.74em> <pos=16.12em>י<pos=15.50em>ו<pos=14.88em>ם<pos=14.26em> <pos=13.64em>מ<pos=13.02em>ו<pos=12.40em>ש<pos=11.78em>ל<pos=11.16em>ם<pos=10.54em> <pos=9.92em>ה<pos=9.30em>י<pos=8.68em>ה<pos=8.06em> <pos=7.44em>צ<pos=6.82em>פ<pos=6.20em>ו<pos=5.58em>י<pos=4.96em> <pos=4.34em>ב<pos=3.72em>א<pos=3.10em>ר<pos=2.48em>ת<pos=1.86em>ר<pos=1.24em>ט<pos=0.62em>ו<pos=0.00em>ן<pos=-0.62em>.</align>\n<align=left><pos=18.60em>א<pos=17.98em>ב<pos=17.36em>ל<pos=16.74em> <pos=16.12em>ה<pos=15.50em>י<pos=14.88em>ו<pos=14.26em>ם<pos=13.64em> <pos=13.02em>ה<pos=12.40em>ז<pos=11.78em>ה<pos=11.16em> <pos=10.54em>ה<pos=9.92em>י<pos=9.30em>ה<pos=8.68em> <pos=8.06em>ש<pos=7.44em>ו<pos=6.82em>נ<pos=6.20em>ה<pos=5.58em>.</align>\n<align=left><pos=18.60em>ו<pos=17.98em>ש<pos=17.36em>ו<pos=16.74em>ם<pos=16.12em> <pos=15.50em>ד<pos=14.88em>ב<pos=14.26em>ר<pos=13.64em> <pos=13.02em>כ<pos=12.40em>ב<pos=11.78em>ר<pos=11.16em> <pos=10.54em>ל<pos=9.92em>א<pos=9.30em> <pos=8.68em>י<pos=8.06em>ח<pos=7.44em>ז<pos=6.82em>ו<pos=6.20em>ר<pos=5.58em> <pos=4.96em>ל<pos=4.34em>ק<pos=3.72em>ד<pos=3.10em>מ<pos=2.48em>ו<pos=1.86em>ת<pos=1.24em>ו<pos=0.62em>.</align>\n<align=left></align>\n<align=left><pos=18.60em>ב<pos=17.98em>ת<pos=17.36em>ו<pos=16.74em>ר<pos=16.12em> <pos=15.50em>ה<pos=14.88em>ת<pos=14.26em>ח<pos=13.64em>ל<pos=13.02em>ה<pos=12.40em>,</align>",
+        "reviewed_rendered": "<align=left><pos=18.60em>ע<pos=17.98em>ו<pos=17.36em>ד<pos=16.74em> <pos=16.12em>י<pos=15.50em>ו<pos=14.88em>ם<pos=14.26em> <pos=13.64em>מ<pos=13.02em>ו<pos=12.40em>ש<pos=11.78em>ל<pos=11.16em>ם<pos=10.54em> <pos=9.92em>ה<pos=9.30em>י<pos=8.68em>ה<pos=8.06em> <pos=7.44em>צ<pos=6.82em>פ<pos=6.20em>ו<pos=5.58em>י<pos=4.96em> <pos=4.34em>ב<pos=3.72em>א<pos=3.10em>ר<pos=2.48em>ת<pos=1.86em>ר<pos=1.24em>ט<pos=0.62em>ו<pos=0.00em>ן<pos=-0.62em>.</align>\n<align=left><pos=18.60em>א<pos=17.98em>ב<pos=17.36em>ל<pos=16.74em> <pos=16.12em>ה<pos=15.50em>י<pos=14.88em>ו<pos=14.26em>ם<pos=13.64em> <pos=13.02em>ה<pos=12.40em>ז<pos=11.78em>ה<pos=11.16em> <pos=10.54em>ה<pos=9.92em>י<pos=9.30em>ה<pos=8.68em> <pos=8.06em>ש<pos=7.44em>ו<pos=6.82em>נ<pos=6.20em>ה<pos=5.58em>.</align>\n<align=left><pos=18.60em>ו<pos=17.98em>ש<pos=17.36em>ו<pos=16.74em>ם<pos=16.12em> <pos=15.50em>ד<pos=14.88em>ב<pos=14.26em>ר<pos=13.64em> <pos=13.02em>כ<pos=12.40em>ב<pos=11.78em>ר<pos=11.16em> <pos=10.54em>ל<pos=9.92em>א<pos=9.30em> <pos=8.68em>י<pos=8.06em>ח<pos=7.44em>ז<pos=6.82em>ו<pos=6.20em>ר<pos=5.58em> <pos=4.96em>ל<pos=4.34em>ק<pos=3.72em>ד<pos=3.10em>מ<pos=2.48em>ו<pos=1.86em>ת<pos=1.24em>ו<pos=0.62em>.</align>\n<align=left></align>\n<align=left><pos=18.60em>ב<pos=17.98em>ת<pos=17.36em>ו<pos=16.74em>ר<pos=16.12em> <pos=15.50em>ה<pos=14.88em>ת<pos=14.26em>ח<pos=13.64em>ל<pos=13.02em>ה<pos=12.40em>,</align>",
+        "logical_hebrew": "עוד יום מושלם היה צפוי בארתרטון.\nאבל היום הזה היה שונה.\nושום דבר כבר לא יחזור לקדמותו.\n\nבתור התחלה,",
+        "decision": "accepted after full source review",
+        "related_catalog_ids": ["dialog14069:617940"],
+        "notes": "Condensed Hebrew preserves the intended expectation; retained for animated line width."
+      },
+      {
+        "source_id": "level8:8296:68",
+        "en": "But today was different.",
+        "previous_rendered": "<align=left><pos=18.60em>א<pos=17.98em>ב<pos=17.36em>ל<pos=16.74em> <pos=16.12em>ה<pos=15.50em>י<pos=14.88em>ו<pos=14.26em>ם<pos=13.64em> <pos=13.02em>ה<pos=12.40em>ז<pos=11.78em>ה<pos=11.16em> <pos=10.54em>ה<pos=9.92em>י<pos=9.30em>ה<pos=8.68em> <pos=8.06em>ש<pos=7.44em>ו<pos=6.82em>נ<pos=6.20em>ה<pos=5.58em>.</align>",
+        "reviewed_rendered": "<align=left><pos=18.60em>א<pos=17.98em>ב<pos=17.36em>ל<pos=16.74em> <pos=16.12em>ה<pos=15.50em>י<pos=14.88em>ו<pos=14.26em>ם<pos=13.64em> <pos=13.02em>ה<pos=12.40em>ז<pos=11.78em>ה<pos=11.16em> <pos=10.54em>ה<pos=9.92em>י<pos=9.30em>ה<pos=8.68em> <pos=8.06em>ש<pos=7.44em>ו<pos=6.82em>נ<pos=6.20em>ה<pos=5.58em>.</align>",
+        "logical_hebrew": "אבל היום הזה היה שונה.",
+        "decision": "accepted after full source review",
+        "related_catalog_ids": [],
+        "notes": ""
+      },
+      {
+        "source_id": "level8:8303:68",
+        "en": "To begin with,",
+        "previous_rendered": "<align=left><pos=18.60em>ב<pos=17.98em>ת<pos=17.36em>ו<pos=16.74em>ר<pos=16.12em> <pos=15.50em>ה<pos=14.88em>ת<pos=14.26em>ח<pos=13.64em>ל<pos=13.02em>ה<pos=12.40em>,</align>",
+        "reviewed_rendered": "<align=left><pos=18.60em>ב<pos=17.98em>ת<pos=17.36em>ו<pos=16.74em>ר<pos=16.12em> <pos=15.50em>ה<pos=14.88em>ת<pos=14.26em>ח<pos=13.64em>ל<pos=13.02em>ה<pos=12.40em>,</align>",
+        "logical_hebrew": "בתור התחלה,",
+        "decision": "accepted after full source review",
+        "related_catalog_ids": [],
+        "notes": ""
+      }
+    ]
+  },
+  "patch_build": {
+    "version": "0.4.6",
+    "release_revision": 11,
+    "catalog_sha256": "567fe1e9701c6fa5265bc01db2d9ca872b5c35371af1cf6bd5e15b60df47c002",
+    "menu_sha256": "c141b66fcc6e72a6c96c5e05dbe6653bb2df2631c724e03e0a5bffcf97d31818",
+    "ui_catalog_sha256": "47d581a6243dc47142f66747396e525892e9afba41ba91b9cf4e22c168d969cf",
+    "nikud_sha256": "c49060f00c51269d6ff7b400e076b2ba3fa93cb7acf65fb6231f53eb1e6b1378",
+    "nikud_model": "Nakdimon 0.2.1",
+    "pointed_glyphs_per_atlas": 303,
+    "nikud_review": "54-name English-spelling-based overrides applied to dialogue/UI and manuscript. Ambiguous/invented-name audio confirmation and general nikud proofreading remain pending.",
+    "patch_manifest_sha256": "8459b4d959ef0b893fba2be8b8a9085f05d35c4a1c4e8531fcee8acc9cbfde41",
+    "ui_records": {
+      "windows": 1931,
+      "macos": 1918,
+      "collections": 35
+    },
+    "menu_source_sync": "Legacy 89-menu view synchronized to the UI catalog; eight values regained source trailing spaces only.",
+    "new_fonts": {
+      "journal": "Amatic SC Bold, visible cap height matched to ClaireHandBoldSDF at 87 atlas pixels; 2-pixel letter stroke, unchanged nikud dot weight.",
+      "notes": "Amatic SC Regular, visible cap height matched to MyWritingSDF at 92.5 atlas pixels; 2-pixel letter stroke, unchanged nikud dot weight.",
+      "license": "fonts/OFL-AmaticSC.txt; installed through payload/AmaticSC-OFL.txt on both platforms",
+      "style_checks": "Regular, bold, italic and bold italic captured in native Unity for both fonts."
+    },
+    "automatic_language": {
+      "behavior": "Select plain Hebrew once on each launch when the main menu is ready; no custom overlay. Later in-session language changes are allowed.",
+      "verification": "Compiled against both platform game assemblies; all manifest asset hashes verified; macOS staged app signature verified. Native gameplay not rechecked for revision 5."
+    },
+    "manuscript_sha256": "627d3f237072ad5a9c18367dd2b9bca4ae04c602ce07ea625d2484847af331f3",
+    "name_dictionary_sha256": "19c2351fc4e797c92d523760dc518181f230dc67b86fc668036e5109b95cbc4e",
+    "release_archives": {
+      "jenny-leclue-he-0.4.6-osx.zip": "f01c6c6e5b31a3a961bc5429130a2e09b57e7c3dfe04d62e99790da11c3e06ff",
+      "jenny-leclue-he-0.4.6-windows.zip": "f5e83816a7d05007402feab7d303bfea7233e74cf7cae634411b0a3f2cf77494",
+      "jenny-leclue-he-0.4.6.zip": "6a73d922d5ac25468938df57ebfedd9fe8088619a1630b8717636f417512a01f"
+    },
+    "validation": "Native macOS: menu screenshot inspected, RTL/LTR resets, classroom typing completes 100 plain and 99 pointed character units without body overflow, and both actual dead-text fade clips change alpha 0 to 1. Both platform packages pass upgrade/retry/fresh install/selective backups/exact restore/unrelated-file preservation on macOS. User confirmed intro typing and fade; native Windows gameplay remains pending.",
+    "letter_layout_fix": {
+      "source": ["HebrewShortcut.cs", "PatchLetterLayout.cs"],
+      "cause": "Missing Hebrew layout records fell back to English baked artwork and disabled Other_Langs.",
+      "change": "Only layouts containing TMP_Letter1F_Body1 use the authored ar layout in he/he-x-nikud; actual text lookup stays Hebrew. Left-aligned fields become right aligned, centered captions and vertical anchors are preserved, and original alignment is restored for other languages.",
+      "manual_validation": "User confirmed Hebrew letter and subsequent right-alignment fix in the staged native macOS build on 2026-11-07.",
+      "preserved": "0.4.1 revision 6 resource bundles and proper-name nikud changes are byte-identical."
+    },
+    "native_rtl": {
+      "sources": [
+        "NativeDialogue.cs",
+        "PatchNativeDialogue.cs",
+        "native_dialogue.py",
+        "NATIVE-RTL.md"
+      ],
+      "changed": "Logical-order Hebrew dialogue and choices use the existing native Arabic RTL processing, renderer direction, and type-on animation. Atlas glyphs decode before bidi and encode afterwards.",
+      "verified": "Both platform bundles: 29 dialogue tables changed, every catalog field checked, all other asset objects byte-identical. Native macOS patched SetSubtitle and TypeOn exercised with RTL/LTR switches, pause indices and all 303 pointed glyphs. Both platform packages passed upgrade/retry/fresh install/selective backup/byte-exact restore/unrelated-file preservation on macOS.",
+      "limitations": [
+        "Native Windows gameplay not run",
+        "Full story playthrough not run",
+        "Latin/digit runs display correctly but reveal characters in reverse within the run"
+      ],
+      "mac_signing": "Root signed without --deep against unchanged installed Steam engine libraries. Corrective 0.4.4 revision 9 avoids same-version upgrade skip; no nested engine libraries are modified.",
+      "installed_mac_validation": "Installed 0.4.4 revision 9 via existing Kitor recovery journal; every installed file hash, all original backup hashes, deep/strict macOS signature, and installed_patches database version verified. Existing engine libraries unchanged."
+    },
+    "native_static_rtl": {
+      "sources": ["NativeStatic.cs", "PatchNativeStatic.cs", "native_static.py"],
+      "records": 194,
+      "keys": 97,
+      "change": "Logical-order menus and typewriter use native RTLTMPro processing plus existing nikud glyph adapter. Native classroom controller uses Arabic speed entry. Mac typewriter scene text and displaced line transform restored from stock; per-letter positioning tags removed. Other static screens retain their existing handling.",
+      "verification": "Native macOS: menu screenshot inspected, RTL/LTR resets, classroom typing completes 100 plain and 99 pointed character units without body overflow, and both actual dead-text fade clips change alpha 0 to 1. Both platform packages pass upgrade/retry/fresh install/selective backups/exact restore/unrelated-file preservation on macOS. User confirmed intro typing and fade; native Windows gameplay remains pending.",
+      "installed_mac_validation": "Installed 0.4.6 revision 11 via the existing recovery journal. Installed file hashes, original backup hashes, deep/strict macOS signature, and Kitor version verified. User confirmed intro typing/fade and corrected settings values.",
+      "manual_validation": "User confirmed the intro typing and fade work correctly on the installed macOS 0.4.5 patch on 2026-11-07.",
+      "dynamic_options": "Actual MenuButton setters tested in he, he-x-nikud, en, then he: Hebrew glyph origins progress right-to-left; resolutions and Latin names remain LTR. Options screenshots inspected; user confirmed correction."
+    }
+  },
+  "previous_patch_builds": [
+    {
+      "version": "0.3.0",
+      "release_revision": 3,
+      "catalog_sha256": "567fe1e9701c6fa5265bc01db2d9ca872b5c35371af1cf6bd5e15b60df47c002",
+      "menu_sha256": "475db271e41cf62cedd7478ff4f500f26b4d063d77ad1dfc940fa916406de6a3",
+      "nikud_sha256": "c86d53a9170a06b90d1985825c08755e8bfc063c330540f848b5587c7778c569",
+      "nikud_model": "Nakdimon 0.2.1",
+      "pointed_glyphs_per_atlas": 299,
+      "nikud_review": "Automatically generated draft; manuscript proper-name vowelization remains to be normalized.",
+      "patch_manifest_sha256": "48992c8cf45007839b0a31deb03437d01053092ae2c2d30d4fbf0f55a83e7ef8"
+    },
+    {
+      "version": "0.4.0",
+      "release_revision": 5,
+      "catalog_sha256": "567fe1e9701c6fa5265bc01db2d9ca872b5c35371af1cf6bd5e15b60df47c002",
+      "menu_sha256": "c141b66fcc6e72a6c96c5e05dbe6653bb2df2631c724e03e0a5bffcf97d31818",
+      "ui_catalog_sha256": "47d581a6243dc47142f66747396e525892e9afba41ba91b9cf4e22c168d969cf",
+      "nikud_sha256": "b8bf5d864e9f831b5c12340b08ab04e555cbda4a4791db6cb4d334a9794e5ce3",
+      "nikud_model": "Nakdimon 0.2.1",
+      "pointed_glyphs_per_atlas": 303,
+      "nikud_review": "Automatically generated draft; manual proofreading and manuscript proper-name vowelization remain pending.",
+      "patch_manifest_sha256": "469e0da92a51e6c153012bc9961c064355dc769804e3275c1bb2691a921b7e03",
+      "ui_records": {
+        "windows": 1931,
+        "macos": 1918,
+        "collections": 35
+      },
+      "menu_source_sync": "Legacy 89-menu view synchronized to the UI catalog; eight values regained source trailing spaces only.",
+      "new_fonts": {
+        "journal": "Amatic SC Bold, visible cap height matched to ClaireHandBoldSDF at 87 atlas pixels; 2-pixel letter stroke, unchanged nikud dot weight.",
+        "notes": "Amatic SC Regular, visible cap height matched to MyWritingSDF at 92.5 atlas pixels; 2-pixel letter stroke, unchanged nikud dot weight.",
+        "license": "fonts/OFL-AmaticSC.txt; installed through payload/AmaticSC-OFL.txt on both platforms",
+        "style_checks": "Regular, bold, italic and bold italic captured in native Unity for both fonts."
+      },
+      "automatic_language": {
+        "behavior": "Select plain Hebrew once on each launch when the main menu is ready; no custom overlay. Later in-session language changes are allowed.",
+        "verification": "Compiled against both platform game assemblies; all manifest asset hashes verified; macOS staged app signature verified. Native gameplay not rechecked for revision 5."
+      }
+    },
+    {
+      "version": "0.4.1",
+      "release_revision": 6,
+      "catalog_sha256": "567fe1e9701c6fa5265bc01db2d9ca872b5c35371af1cf6bd5e15b60df47c002",
+      "menu_sha256": "c141b66fcc6e72a6c96c5e05dbe6653bb2df2631c724e03e0a5bffcf97d31818",
+      "ui_catalog_sha256": "47d581a6243dc47142f66747396e525892e9afba41ba91b9cf4e22c168d969cf",
+      "nikud_sha256": "c49060f00c51269d6ff7b400e076b2ba3fa93cb7acf65fb6231f53eb1e6b1378",
+      "nikud_model": "Nakdimon 0.2.1",
+      "pointed_glyphs_per_atlas": 303,
+      "nikud_review": "54-name English-spelling-based overrides applied to dialogue/UI and manuscript. Ambiguous/invented-name audio confirmation and general nikud proofreading remain pending.",
+      "patch_manifest_sha256": "922bad756c3daf2fb0e6e795658803ddaaa06c3f0f60c78fcc6c5a2d117c3bdf",
+      "ui_records": {
+        "windows": 1931,
+        "macos": 1918,
+        "collections": 35
+      },
+      "menu_source_sync": "Legacy 89-menu view synchronized to the UI catalog; eight values regained source trailing spaces only.",
+      "new_fonts": {
+        "journal": "Amatic SC Bold, visible cap height matched to ClaireHandBoldSDF at 87 atlas pixels; 2-pixel letter stroke, unchanged nikud dot weight.",
+        "notes": "Amatic SC Regular, visible cap height matched to MyWritingSDF at 92.5 atlas pixels; 2-pixel letter stroke, unchanged nikud dot weight.",
+        "license": "fonts/OFL-AmaticSC.txt; installed through payload/AmaticSC-OFL.txt on both platforms",
+        "style_checks": "Regular, bold, italic and bold italic captured in native Unity for both fonts."
+      },
+      "automatic_language": {
+        "behavior": "Select plain Hebrew once on each launch when the main menu is ready; no custom overlay. Later in-session language changes are allowed.",
+        "verification": "Compiled against both platform game assemblies; all manifest asset hashes verified; macOS staged app signature verified. Native gameplay not rechecked for revision 5."
+      },
+      "manuscript_sha256": "627d3f237072ad5a9c18367dd2b9bca4ae04c602ce07ea625d2484847af331f3",
+      "name_dictionary_sha256": "19c2351fc4e797c92d523760dc518181f230dc67b86fc668036e5109b95cbc4e",
+      "release_archives": {
+        "jenny-leclue-he-0.4.1-windows.zip": "eb22aad2bed04baf5edac080d3d9b0e819bfb2477fb1465d313624dc593b9117",
+        "jenny-leclue-he-0.4.1-osx.zip": "c462b10aaf6f064b7fbe71364fdd83c46d719e951ab1aa0825fd785e9483a85c",
+        "jenny-leclue-he-0.4.1.zip": "14b81d6e399301f7876a364d32d0d7579848576eeeac129faa8dff65892336d1"
+      },
+      "validation": "Revision 6: all 5,511 dialogue rows per mode, 1,931 Windows and 1,918 macOS UI records, and 303 pointed glyphs in all four font atlases verified in reopened resources. Both platform layouts passed revision 5 to 6 upgrade, retry, fresh install, selective backup, byte-exact restoration and unrelated-file preservation using the current Rust lifecycle library on macOS. macOS staged app passed deep/strict signature verification. Native gameplay and Kitor application binary were not rebuilt/retested in this pass."
+    },
+    {
+      "version": "0.4.2",
+      "release_revision": 7,
+      "catalog_sha256": "567fe1e9701c6fa5265bc01db2d9ca872b5c35371af1cf6bd5e15b60df47c002",
+      "menu_sha256": "c141b66fcc6e72a6c96c5e05dbe6653bb2df2631c724e03e0a5bffcf97d31818",
+      "ui_catalog_sha256": "47d581a6243dc47142f66747396e525892e9afba41ba91b9cf4e22c168d969cf",
+      "nikud_sha256": "c49060f00c51269d6ff7b400e076b2ba3fa93cb7acf65fb6231f53eb1e6b1378",
+      "nikud_model": "Nakdimon 0.2.1",
+      "pointed_glyphs_per_atlas": 303,
+      "nikud_review": "54-name English-spelling-based overrides applied to dialogue/UI and manuscript. Ambiguous/invented-name audio confirmation and general nikud proofreading remain pending.",
+      "patch_manifest_sha256": "48727cef7c80f12ca0440192cec37a7c157ea526927ef7f2b699fc4e72069cc4",
+      "ui_records": {
+        "windows": 1931,
+        "macos": 1918,
+        "collections": 35
+      },
+      "menu_source_sync": "Legacy 89-menu view synchronized to the UI catalog; eight values regained source trailing spaces only.",
+      "new_fonts": {
+        "journal": "Amatic SC Bold, visible cap height matched to ClaireHandBoldSDF at 87 atlas pixels; 2-pixel letter stroke, unchanged nikud dot weight.",
+        "notes": "Amatic SC Regular, visible cap height matched to MyWritingSDF at 92.5 atlas pixels; 2-pixel letter stroke, unchanged nikud dot weight.",
+        "license": "fonts/OFL-AmaticSC.txt; installed through payload/AmaticSC-OFL.txt on both platforms",
+        "style_checks": "Regular, bold, italic and bold italic captured in native Unity for both fonts."
+      },
+      "automatic_language": {
+        "behavior": "Select plain Hebrew once on each launch when the main menu is ready; no custom overlay. Later in-session language changes are allowed.",
+        "verification": "Compiled against both platform game assemblies; all manifest asset hashes verified; macOS staged app signature verified. Native gameplay not rechecked for revision 5."
+      },
+      "manuscript_sha256": "627d3f237072ad5a9c18367dd2b9bca4ae04c602ce07ea625d2484847af331f3",
+      "name_dictionary_sha256": "19c2351fc4e797c92d523760dc518181f230dc67b86fc668036e5109b95cbc4e",
+      "release_archives": {
+        "jenny-leclue-he-0.4.2-windows.zip": "a74d38b155c143afdde5333797400dfbe4fd252e3dc5a2dbd11745251ca64b9d",
+        "jenny-leclue-he-0.4.2.zip": "9d1bd5d8e3992fc9aeb8ed13724b5bf6c8b91181b92d44dbc02740bb0c02e593",
+        "jenny-leclue-he-0.4.2-osx.zip": "6898791a8f0e8eda3325545fb99ccf52714d874dccde4764389df43766950787"
+      },
+      "validation": "Both Windows and macOS packages passed 0.4.1 to 0.4.2 upgrade, retry, fresh installation, selective backups, byte-exact uninstall and unrelated-file preservation using the current Rust lifecycle library on macOS. All asset hashes checked, changed deltas reconstructed, and final macOS app passed deep/strict signature verification. User manually verified the letter and alignment in the Mac staged build. Native Windows gameplay and combined 0.4.2 gameplay remain untested; Kitor application binary was not rebuilt.",
+      "letter_layout_fix": {
+        "source": ["HebrewShortcut.cs", "PatchLetterLayout.cs"],
+        "cause": "Missing Hebrew layout records fell back to English baked artwork and disabled Other_Langs.",
+        "change": "Only layouts containing TMP_Letter1F_Body1 use the authored ar layout in he/he-x-nikud; actual text lookup stays Hebrew. Left-aligned fields become right aligned, centered captions and vertical anchors are preserved, and original alignment is restored for other languages.",
+        "manual_validation": "User confirmed Hebrew letter and subsequent right-alignment fix in the staged native macOS build on 2026-11-07.",
+        "preserved": "0.4.1 revision 6 resource bundles and proper-name nikud changes are byte-identical."
+      }
+    },
+    {
+      "version": "0.4.4",
+      "release_revision": 9,
+      "catalog_sha256": "567fe1e9701c6fa5265bc01db2d9ca872b5c35371af1cf6bd5e15b60df47c002",
+      "menu_sha256": "c141b66fcc6e72a6c96c5e05dbe6653bb2df2631c724e03e0a5bffcf97d31818",
+      "ui_catalog_sha256": "47d581a6243dc47142f66747396e525892e9afba41ba91b9cf4e22c168d969cf",
+      "nikud_sha256": "c49060f00c51269d6ff7b400e076b2ba3fa93cb7acf65fb6231f53eb1e6b1378",
+      "nikud_model": "Nakdimon 0.2.1",
+      "pointed_glyphs_per_atlas": 303,
+      "nikud_review": "54-name English-spelling-based overrides applied to dialogue/UI and manuscript. Ambiguous/invented-name audio confirmation and general nikud proofreading remain pending.",
+      "patch_manifest_sha256": "797543db3be314594ebd55b469414b725cba09b304974689b19f688198952e66",
+      "ui_records": {
+        "windows": 1931,
+        "macos": 1918,
+        "collections": 35
+      },
+      "menu_source_sync": "Legacy 89-menu view synchronized to the UI catalog; eight values regained source trailing spaces only.",
+      "new_fonts": {
+        "journal": "Amatic SC Bold, visible cap height matched to ClaireHandBoldSDF at 87 atlas pixels; 2-pixel letter stroke, unchanged nikud dot weight.",
+        "notes": "Amatic SC Regular, visible cap height matched to MyWritingSDF at 92.5 atlas pixels; 2-pixel letter stroke, unchanged nikud dot weight.",
+        "license": "fonts/OFL-AmaticSC.txt; installed through payload/AmaticSC-OFL.txt on both platforms",
+        "style_checks": "Regular, bold, italic and bold italic captured in native Unity for both fonts."
+      },
+      "automatic_language": {
+        "behavior": "Select plain Hebrew once on each launch when the main menu is ready; no custom overlay. Later in-session language changes are allowed.",
+        "verification": "Compiled against both platform game assemblies; all manifest asset hashes verified; macOS staged app signature verified. Native gameplay not rechecked for revision 5."
+      },
+      "manuscript_sha256": "627d3f237072ad5a9c18367dd2b9bca4ae04c602ce07ea625d2484847af331f3",
+      "name_dictionary_sha256": "19c2351fc4e797c92d523760dc518181f230dc67b86fc668036e5109b95cbc4e",
+      "release_archives": {
+        "jenny-leclue-he-0.4.4-windows.zip": "58191f931955110ef88abeaff3137067bf4f8f59de193ff4e7680bf01efbe0d1",
+        "jenny-leclue-he-0.4.4-osx.zip": "649485c6ffe9a98bc4850b4131be2618ed4cae38ac72cb356f2f926b0258bc68",
+        "jenny-leclue-he-0.4.4.zip": "ad2ec167ab78c7e10dcdb08990a847f2666cbe272f4e3e5eb8cb988e490a6426"
+      },
+      "validation": "Both platform bundles: 29 dialogue tables changed, every catalog field checked, all other asset objects byte-identical. Native macOS patched SetSubtitle and TypeOn exercised with RTL/LTR switches, pause indices and all 303 pointed glyphs. Both platform packages passed upgrade/retry/fresh install/selective backup/byte-exact restore/unrelated-file preservation on macOS.",
+      "letter_layout_fix": {
+        "source": ["HebrewShortcut.cs", "PatchLetterLayout.cs"],
+        "cause": "Missing Hebrew layout records fell back to English baked artwork and disabled Other_Langs.",
+        "change": "Only layouts containing TMP_Letter1F_Body1 use the authored ar layout in he/he-x-nikud; actual text lookup stays Hebrew. Left-aligned fields become right aligned, centered captions and vertical anchors are preserved, and original alignment is restored for other languages.",
+        "manual_validation": "User confirmed Hebrew letter and subsequent right-alignment fix in the staged native macOS build on 2026-11-07.",
+        "preserved": "0.4.1 revision 6 resource bundles and proper-name nikud changes are byte-identical."
+      },
+      "native_rtl": {
+        "sources": [
+          "NativeDialogue.cs",
+          "PatchNativeDialogue.cs",
+          "native_dialogue.py",
+          "NATIVE-RTL.md"
+        ],
+        "changed": "Logical-order Hebrew dialogue and choices use the existing native Arabic RTL processing, renderer direction, and type-on animation. Atlas glyphs decode before bidi and encode afterwards.",
+        "verified": "Both platform bundles: 29 dialogue tables changed, every catalog field checked, all other asset objects byte-identical. Native macOS patched SetSubtitle and TypeOn exercised with RTL/LTR switches, pause indices and all 303 pointed glyphs. Both platform packages passed upgrade/retry/fresh install/selective backup/byte-exact restore/unrelated-file preservation on macOS.",
+        "limitations": [
+          "Native Windows gameplay not run",
+          "Full story playthrough not run",
+          "Latin/digit runs display correctly but reveal characters in reverse within the run"
+        ],
+        "mac_signing": "Root signed without --deep against unchanged installed Steam engine libraries. Corrective 0.4.4 revision 9 avoids same-version upgrade skip; no nested engine libraries are modified.",
+        "installed_mac_validation": "Installed 0.4.4 revision 9 via existing Kitor recovery journal; every installed file hash, all original backup hashes, deep/strict macOS signature, and installed_patches database version verified. Existing engine libraries unchanged."
+      }
+    },
+    {
+      "version": "0.4.5",
+      "release_revision": 10,
+      "catalog_sha256": "567fe1e9701c6fa5265bc01db2d9ca872b5c35371af1cf6bd5e15b60df47c002",
+      "menu_sha256": "c141b66fcc6e72a6c96c5e05dbe6653bb2df2631c724e03e0a5bffcf97d31818",
+      "ui_catalog_sha256": "47d581a6243dc47142f66747396e525892e9afba41ba91b9cf4e22c168d969cf",
+      "nikud_sha256": "c49060f00c51269d6ff7b400e076b2ba3fa93cb7acf65fb6231f53eb1e6b1378",
+      "nikud_model": "Nakdimon 0.2.1",
+      "pointed_glyphs_per_atlas": 303,
+      "nikud_review": "54-name English-spelling-based overrides applied to dialogue/UI and manuscript. Ambiguous/invented-name audio confirmation and general nikud proofreading remain pending.",
+      "patch_manifest_sha256": "e373cb00bb74dd76354d3a4fcfd43abf3e4685d96bedcf86031a8eec9986bf23",
+      "ui_records": {
+        "windows": 1931,
+        "macos": 1918,
+        "collections": 35
+      },
+      "menu_source_sync": "Legacy 89-menu view synchronized to the UI catalog; eight values regained source trailing spaces only.",
+      "new_fonts": {
+        "journal": "Amatic SC Bold, visible cap height matched to ClaireHandBoldSDF at 87 atlas pixels; 2-pixel letter stroke, unchanged nikud dot weight.",
+        "notes": "Amatic SC Regular, visible cap height matched to MyWritingSDF at 92.5 atlas pixels; 2-pixel letter stroke, unchanged nikud dot weight.",
+        "license": "fonts/OFL-AmaticSC.txt; installed through payload/AmaticSC-OFL.txt on both platforms",
+        "style_checks": "Regular, bold, italic and bold italic captured in native Unity for both fonts."
+      },
+      "automatic_language": {
+        "behavior": "Select plain Hebrew once on each launch when the main menu is ready; no custom overlay. Later in-session language changes are allowed.",
+        "verification": "Compiled against both platform game assemblies; all manifest asset hashes verified; macOS staged app signature verified. Native gameplay not rechecked for revision 5."
+      },
+      "manuscript_sha256": "627d3f237072ad5a9c18367dd2b9bca4ae04c602ce07ea625d2484847af331f3",
+      "name_dictionary_sha256": "19c2351fc4e797c92d523760dc518181f230dc67b86fc668036e5109b95cbc4e",
+      "release_archives": {
+        "jenny-leclue-he-0.4.5-osx.zip": "8856cf2ee76e135a77bbe808e3e502d7a3cf0f4386d7530ef5ffec95e1264b5f",
+        "jenny-leclue-he-0.4.5-windows.zip": "e6fc19a0e108aa726870c95305e44c91dff7ddcb7350b246e67b58ef7de31299",
+        "jenny-leclue-he-0.4.5.zip": "eb315de535289d4cf177d206b3787d1eda5e269fb21ef07f20519c9599173126"
+      },
+      "validation": "Native macOS: menu screenshot inspected, RTL/LTR resets, classroom typing completes 100 plain and 99 pointed character units without body overflow, and both actual dead-text fade clips change alpha 0 to 1. Both platform packages pass upgrade/retry/fresh install/selective backups/exact restore/unrelated-file preservation on macOS. User confirmed intro typing and fade; native Windows gameplay remains pending.",
+      "letter_layout_fix": {
+        "source": ["HebrewShortcut.cs", "PatchLetterLayout.cs"],
+        "cause": "Missing Hebrew layout records fell back to English baked artwork and disabled Other_Langs.",
+        "change": "Only layouts containing TMP_Letter1F_Body1 use the authored ar layout in he/he-x-nikud; actual text lookup stays Hebrew. Left-aligned fields become right aligned, centered captions and vertical anchors are preserved, and original alignment is restored for other languages.",
+        "manual_validation": "User confirmed Hebrew letter and subsequent right-alignment fix in the staged native macOS build on 2026-11-07.",
+        "preserved": "0.4.1 revision 6 resource bundles and proper-name nikud changes are byte-identical."
+      },
+      "native_rtl": {
+        "sources": [
+          "NativeDialogue.cs",
+          "PatchNativeDialogue.cs",
+          "native_dialogue.py",
+          "NATIVE-RTL.md"
+        ],
+        "changed": "Logical-order Hebrew dialogue and choices use the existing native Arabic RTL processing, renderer direction, and type-on animation. Atlas glyphs decode before bidi and encode afterwards.",
+        "verified": "Both platform bundles: 29 dialogue tables changed, every catalog field checked, all other asset objects byte-identical. Native macOS patched SetSubtitle and TypeOn exercised with RTL/LTR switches, pause indices and all 303 pointed glyphs. Both platform packages passed upgrade/retry/fresh install/selective backup/byte-exact restore/unrelated-file preservation on macOS.",
+        "limitations": [
+          "Native Windows gameplay not run",
+          "Full story playthrough not run",
+          "Latin/digit runs display correctly but reveal characters in reverse within the run"
+        ],
+        "mac_signing": "Root signed without --deep against unchanged installed Steam engine libraries. Corrective 0.4.4 revision 9 avoids same-version upgrade skip; no nested engine libraries are modified.",
+        "installed_mac_validation": "Installed 0.4.4 revision 9 via existing Kitor recovery journal; every installed file hash, all original backup hashes, deep/strict macOS signature, and installed_patches database version verified. Existing engine libraries unchanged."
+      },
+      "native_static_rtl": {
+        "sources": ["NativeStatic.cs", "PatchNativeStatic.cs", "native_static.py"],
+        "records": 194,
+        "keys": 97,
+        "change": "Logical-order menus and typewriter use native RTLTMPro processing plus existing nikud glyph adapter. Native classroom controller uses Arabic speed entry. Mac typewriter scene text and displaced line transform restored from stock; per-letter positioning tags removed. Other static screens retain their existing handling.",
+        "verification": "Native macOS: menu screenshot inspected, RTL/LTR resets, classroom typing completes 100 plain and 99 pointed character units without body overflow, and both actual dead-text fade clips change alpha 0 to 1. Both platform packages pass upgrade/retry/fresh install/selective backups/exact restore/unrelated-file preservation on macOS. User confirmed intro typing and fade; native Windows gameplay remains pending.",
+        "installed_mac_validation": "Installed 0.4.5 revision 10 via existing recovery journal. All installed file hashes, original backup hashes, deep/strict macOS signature, and Kitor database version verified. User confirmed intro typing and fade on 2026-11-07.",
+        "manual_validation": "User confirmed the intro typing and fade work correctly on the installed macOS 0.4.5 patch on 2026-11-07."
+      }
+    }
+  ],
+  "remaining_validation": [
+    "Native Windows gameplay not run",
+    "Full story playthrough not run",
+    "Latin/digit runs display correctly but reveal characters in reverse within the run"
+  ],
+  "proper_name_nikud_review": {
+    "date": "2026-11-07",
+    "reviewer": "OpenAI Codex (exact model and reasoning effort unavailable)",
+    "basis": "English catalog spellings and established Hebrew glossary; recorded English audio not verified",
+    "dictionary": "nikud/names.json",
+    "changed_strings": {
+      "pointed.json": 894,
+      "manuscript.json": 4
+    },
+    "checks": [
+      "unchanged mapping keys and non-nikud text",
+      "idempotent overrides",
+      "all dictionary entries with attached prefixes",
+      "rich-text-split name and ambiguous common-word protection"
+    ],
+    "packaged_artifacts_rebuilt": true,
+    "remaining": "Audio confirmation for ambiguous/invented names; general nikud proofreading; native gameplay validation"
+  }
 }

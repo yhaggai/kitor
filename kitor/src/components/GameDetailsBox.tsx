@@ -1,7 +1,8 @@
 import * as Dialog from "@radix-ui/react-dialog";
 import { X } from "lucide-react";
 import { useRef } from "react";
-import { GameBox, type GameBoxLanguage, type GameBoxCover } from "@/components/GameBox";
+import jennyHebrewCover from "@/assets/jenny-leclue-he.jpg";
+import { GameBox, type GameBoxCover, type GameBoxLanguage } from "@/components/GameBox";
 import gameBoxCovers from "@/data/game-box-covers.json";
 import { getCoverSrc } from "@/lib/utils";
 
@@ -28,11 +29,15 @@ export function GameDetailsBox({
     en: { src: getCoverSrc(coverUrl) ?? "" },
     he: { src: "" },
   };
+  const displayCovers =
+    gameId === "jenny-leclue"
+      ? { ...covers, he: { ...covers.he, fallbackSrc: jennyHebrewCover } }
+      : covers;
   const box = (location: string) => (
     <GameBox
       key={`${gameId}:${defaultLanguage}:${location}`}
       title={title}
-      covers={covers}
+      covers={displayCovers}
       defaultLanguage={defaultLanguage}
       showLanguageControls={false}
     />

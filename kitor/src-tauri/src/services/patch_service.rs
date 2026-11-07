@@ -251,7 +251,7 @@ pub async fn download_and_install_patch(
     let _ = app_handle.emit("install-progress", serde_json::json!({
         "scummvm_id": scummvm_id,
         "progress": 55,
-        "step": "Validating outputs and backing up affected files..."
+        "step": "Checking patch files..."
     }));
     let previous = get_installed_patches(db, game.id).await?;
     if previous.iter().any(|p| p.backup_path.as_ref().is_none_or(|p| !Path::new(p).join("manifest.json").is_file())) {
@@ -270,19 +270,24 @@ pub async fn download_and_install_patch(
         if installed_language == language && status == "active" { matching.push(installed); }
     }
     if matching.len() > 1 { return Err("Multiple active translations require recovery before updating".into()); }
+    let report = |progress: u8, step: &str| {
+        let _ = app_handle.emit("install-progress", serde_json::json!({
+            "scummvm_id": scummvm_id, "progress": progress, "step": step
+        }));
+    };
     let backup_path = if let Some(installed) = matching.first() {
         let _ = app_handle.emit("install-progress", serde_json::json!({
-            "scummvm_id": scummvm_id, "progress": 60,
+            "scummvm_id": scummvm_id, "progress": 55,
             "step": "Validating translation update and preserving recovery files..."
         }));
-        patch_lifecycle::update(
+        patch_lifecycle::update_with_progress(
             Path::new(installed.backup_path.as_deref().unwrap()), staging.path(), manifest_name,
-            &install_target, &scummvm_id, &language, &version, patch_lifecycle::platform(),
+            &install_target, &scummvm_id, &language, &version, patch_lifecycle::platform(), &report,
         )?
-    } else { patch_lifecycle::install(
+    } else { patch_lifecycle::install_with_progress(
         staging.path(), manifest_name, &install_target,
         &app_data_dir.join("patch-transactions"), &scummvm_id, &language,
-        &version, patch_lifecycle::platform(),
+        &version, patch_lifecycle::platform(), &report,
     )? };
     // Retrying the same version reuses the verified active transaction and its
     // originals. Do not insert a second database record for it.
@@ -380,6 +385,11 @@ pub(super) async fn reconcile_patches(
             Ok(true) => {}
         }
         let (version, _, status, _) = patch_lifecycle::recover_installation(path)?;
+        if status == "restored" {
+            installed_patch::Entity::delete_by_id(row.id).exec(db).await
+                .map_err(|e| format!("Failed to remove restored patch record: {e}"))?;
+            continue;
+        }
         if !associated && status != "active" { continue; }
         if !associated || (status == "active" && row.version != version) {
             let mut model: installed_patch::ActiveModel = row.clone().into();

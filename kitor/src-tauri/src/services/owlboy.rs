@@ -1,8 +1,12 @@
 //! Native Windows/macOS FNA Owlboy support and the bundled Hebrew beta.
 use std::{fs, path::{Path,PathBuf}, process::Command};
+#[cfg(test)]
 pub const VERSION: &str = "0.2.0-beta.2-kitor2";
+#[cfg(test)]
 const MANIFEST: &[u8] = include_bytes!("../../../../patches-workspace/owlboy/he/patch.osx.candidate.json");
+#[cfg(test)]
 const WINDOWS_MANIFEST: &[u8] = include_bytes!("../../../../patches-workspace/owlboy/he/patch.windows.candidate.json");
+#[cfg(test)]
 const ASSETS: &[(&str,&[u8])] = &[
     ("deltas/Data/Localizations/en/Arial/Arial.png.bsdiff",include_bytes!("../../../../patches-workspace/owlboy/he/deltas/Data/Localizations/en/Arial/Arial.png.bsdiff")),
     ("deltas/Data/Localizations/en/Arial/charmap.txt.bsdiff",include_bytes!("../../../../patches-workspace/owlboy/he/deltas/Data/Localizations/en/Arial/charmap.txt.bsdiff")),
@@ -35,6 +39,7 @@ const ASSETS: &[(&str,&[u8])] = &[
     ("assets/OwlboyHebrew.dll",include_bytes!("../../../../patches-workspace/owlboy/he/assets/OwlboyHebrew.dll")),
     ("deltas/Owlboy.exe.bsdiff",include_bytes!("../../../../patches-workspace/owlboy/he/deltas/Owlboy.exe.bsdiff")),
  ];
+#[cfg(test)]
 mod windows_assets { include!("../../../../patches-workspace/owlboy/he/windows/embedded.rs"); }
 fn child(path: &Path,name: &str) -> Option<PathBuf> {
  fs::read_dir(path).ok()?.flatten().find(|e|e.file_name().to_string_lossy().eq_ignore_ascii_case(name)).map(|e|e.path())
@@ -81,6 +86,7 @@ pub fn launch_command(path: &Path) -> Result<Command,String> {
  let bundle=data.parent().and_then(Path::parent).ok_or("Invalid Owlboy bundle")?;
  let mut cmd=Command::new("open");cmd.arg(bundle).current_dir(data);Ok(cmd)
 }
+#[cfg(test)]
 pub fn stage(dir: &Path,language: &str,version: &str)->Result<(),String>{
  if language!="he" || version!=VERSION{return Err("Unknown bundled Owlboy patch version".into());}
  let manifest=if cfg!(target_os="windows"){WINDOWS_MANIFEST}else{MANIFEST};

@@ -1,6 +1,8 @@
 //! Bundled native Windows Grim Fandango Remastered Hebrew candidate.
 use std::{fs, path::Path, process::Command};
+#[cfg(test)]
 pub const VERSION: &str = "0.3.0-native-candidate";
+#[cfg(test)]
 pub fn stage(destination: &Path, language: &str, version: &str) -> Result<(), String> {
     if !cfg!(target_os = "windows") { return Err("Grim Fandango Hebrew supports native Windows only".into()); }
     if language != "he" || version != VERSION { return Err("Unknown Grim Fandango patch version".into()); }

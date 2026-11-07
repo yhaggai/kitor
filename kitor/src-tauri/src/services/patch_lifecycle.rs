@@ -11,7 +11,9 @@ use std::{
 
 #[path = "patch_upgrade.rs"]
 mod upgrade;
-pub use upgrade::{update, recover_installation};
+#[cfg(test)]
+pub use upgrade::update;
+pub use upgrade::{update_with_progress, recover_installation};
 
 type Result<T> = std::result::Result<T, String>;
 fn err(e: impl std::fmt::Display) -> String {
@@ -322,6 +324,17 @@ fn run(mut command: Command) -> Result<()> {
 }
 
 fn stage_source(source: &Source, package: &Path, target: &Path, output: &Path) -> Result<()> {
+    stage_source_with_input(source, package, output, &|input| safe_path(target, input))
+}
+
+// Update staging resolves inputs to retained originals instead of copying a
+// sparse game tree and running a second installation transaction over it.
+fn stage_source_with_input(
+    source: &Source,
+    package: &Path,
+    output: &Path,
+    input_path: &dyn Fn(&str) -> Result<PathBuf>,
+) -> Result<()> {
     let (path, checksum) = match source {
         Source::Copy { path, sha256 }
         | Source::Bsdiff { path, sha256, .. }
@@ -335,11 +348,11 @@ fn stage_source(source: &Source, package: &Path, target: &Path, output: &Path) -
             copy_durable(&asset, output)?;
         }
         Source::Reconstruct { input, .. } => {
-            super::reconstruction::apply(&asset, &safe_path(target, input)?, output)?;
+            super::reconstruction::apply(&asset, &input_path(input)?, output)?;
         }
         Source::Bsdiff { input, .. } => {
             // Only the trusted backend decoder runs, never a package installer.
-            let input = safe_path(target, input)?;
+            let input = input_path(input)?;
             let mut command = if cfg!(target_os = "windows") {
                 let mut c = Command::new("py");
                 c.arg("-3");
@@ -363,7 +376,7 @@ fn stage_source(source: &Source, package: &Path, target: &Path, output: &Path) -
             windows_tool_sha256,
             ..
         } => {
-            let input = safe_path(target, input)?;
+            let input = input_path(input)?;
             let tool = if cfg!(target_os = "windows") {
                 let tool = safe_path(package, windows_tool)?;
                 check_hash(&tool, windows_tool_sha256)?;
@@ -389,6 +402,7 @@ fn stage_source(source: &Source, package: &Path, target: &Path, output: &Path) -
 
 /// Read a package manifest, stage only declared outputs, then apply a durable
 /// transaction. The journal is authoritative even if the database write fails.
+#[cfg(test)]
 pub fn install(
     package_dir: &Path,
     manifest_name: &str,
@@ -398,6 +412,20 @@ pub fn install(
     language: &str,
     version: &str,
     platform: &str,
+) -> Result<PathBuf> {
+    install_with_progress(package_dir, manifest_name, target, storage, game, language, version, platform, &|_, _| {})
+}
+
+pub fn install_with_progress(
+    package_dir: &Path,
+    manifest_name: &str,
+    target: &Path,
+    storage: &Path,
+    game: &str,
+    language: &str,
+    version: &str,
+    platform: &str,
+    report: &dyn Fn(u8, &str),
 ) -> Result<PathBuf> {
     let package: Package =
         serde_json::from_slice(&fs::read(safe_path(package_dir, manifest_name)?).map_err(err)?)
@@ -456,6 +484,7 @@ pub fn install(
         }
         if existing.status != "active" && existing.status != "restored" {
             restore_inner(&dir, &mut existing)?;
+            cleanup_restored(&dir, &existing)?;
         }
         if existing.status == "active" {
             if existing.game == game && existing.language == language && existing.version == version
@@ -496,6 +525,11 @@ pub fn install(
         originals_dir: default_originals_dir(),
     };
     for (index, change) in files.iter().enumerate() {
+        let progress = 55 + (14 * index / files.len()) as u8;
+        let detail = |activity: &str| report(progress, &format!(
+            "{activity} (file {} of {}): {}", index + 1, files.len(), change.path
+        ));
+        detail("Checking original");
         let path = safe_path(&target, &change.path)?;
         let original = current_hash(&path)?;
         match change.operation {
@@ -525,6 +559,7 @@ pub fn install(
             }
             None
         } else {
+            detail("Preparing patched file");
             stage_source(
                 change
                     .source
@@ -551,9 +586,11 @@ pub fn install(
             return Err("Game changed while staging the patch".into());
         }
         if let Some(expected) = &original {
+            detail("Creating backup");
             let backup = dir.join("originals").join(index.to_string());
             copy_durable(&path, &backup)?;
             check_hash(&backup, expected)?;
+            detail("Preparing patched file");
         }
         let relative = path
             .strip_prefix(&target)
@@ -589,6 +626,7 @@ pub fn install(
     // Keep recovery information before the first game mutation.
     save(dir, &journal)?;
     let dir = temp.keep();
+    report(70, "Applying prepared patch files…");
     let result = apply(&dir, &mut journal);
     if let Err(failure) = result {
         return match restore_inner(&dir, &mut journal) {
@@ -686,6 +724,21 @@ fn restore_inner(dir: &Path, journal: &mut Journal) -> Result<()> {
     save(dir, journal)
 }
 
+// Keep the small restored journal as a durable completion receipt: a crash or
+// failed database deletion can then retry without needing the removed backups.
+fn cleanup_restored(dir: &Path, journal: &Journal) -> Result<()> {
+    if journal.status != "restored" {
+        return Ok(());
+    }
+    for relative in [&journal.originals_dir, "outputs"] {
+        let path = safe_path(dir, relative)?;
+        if path.exists() {
+            fs::remove_dir_all(path).map_err(err)?;
+        }
+    }
+    sync_dir(dir)
+}
+
 pub fn uninstall(dir: &Path, target: &Path) -> Result<()> {
     // Deliberately do not interpret old full-directory backups as manifests.
     let _lock = lock(dir.parent().ok_or("Missing transaction parent")?)?;
@@ -695,7 +748,8 @@ pub fn uninstall(dir: &Path, target: &Path) -> Result<()> {
     if journal.target != target {
         return Err("Backup belongs to a different game installation".into());
     }
-    restore_inner(dir, &mut journal)
+    restore_inner(dir, &mut journal)?;
+    cleanup_restored(dir, &journal)
 }
 
 #[cfg(test)]
@@ -794,6 +848,8 @@ mod tests {
             assert_eq!(f.install(platform, "1").unwrap(), dir);
             fs::write(f.game.join("after-install.txt"), b"keep this").unwrap();
             uninstall(&dir, &f.game).unwrap();
+            assert!(!dir.join("originals").exists());
+            assert_eq!(load(&dir).unwrap().status, "restored");
             uninstall(&dir, &f.game).unwrap();
             assert_eq!(fs::read(f.game.join("data.bin")).unwrap(), b"original");
             assert_eq!(fs::read(f.game.join("deleted.bin")).unwrap(), b"restore me");

@@ -15,7 +15,8 @@
       "!!**/*.lock",
       "!!patches-workspace/**/payload",
       "!!patches-workspace/**/recipes",
-      "!!patches-workspace/**/upstream"
+      "!!patches-workspace/**/upstream",
+      "!!assets/game-boxes/imports/**/archived-*.html"
     ]
   },
   "formatter": {

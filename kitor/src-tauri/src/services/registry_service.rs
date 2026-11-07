@@ -159,11 +159,33 @@ pub fn load_registry() -> Result<Registry, String> {
     // built-in behavior for known identities instead of stale saved arguments.
     let bundled: Registry = serde_json::from_str(include_str!("../../../patches/registry.json"))
         .map_err(|e| format!("Invalid bundled registry: {e}"))?;
+    sync_bundled_packages(&mut registry, &bundled);
     prepare_behaviors(&mut registry, &bundled)?;
     updates::merge_cached(&mut registry);
     Ok(registry)
 }
 
+
+// A working-directory catalog can change while the app is running. Resolve
+// bundled options from the same build as their bytes before merging downloads.
+fn sync_bundled_packages(registry: &mut Registry, bundled: &Registry) {
+    for game in &mut registry.games {
+        let built = bundled.games.iter().find(|g| g.scummvm_id == game.scummvm_id);
+        game.patches.retain_mut(|patch| {
+            if patch.source_type != "bundled" {
+                return true;
+            }
+            let Some(def) = built else { return false };
+            let Some(packaged) = def.patches.iter().find(|p| {
+                p.source_type == "bundled" && p.language == patch.language
+            }) else { return false };
+            *patch = packaged.clone();
+            game.behavior.bundled = def.behavior.bundled;
+            game.behavior.bundled_resource = def.behavior.bundled_resource.clone();
+            true
+        });
+    }
+}
 
 fn prepare_behaviors(registry: &mut Registry, bundled: &Registry) -> Result<(), String> {
     for game in &mut registry.games {
