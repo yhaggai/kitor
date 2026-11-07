@@ -4,6 +4,7 @@ import { open } from "@tauri-apps/plugin-dialog";
 import { ChevronDown, FolderSearch } from "lucide-react";
 import { useEffect, useState } from "react";
 import GameCard from "@/components/GameCard";
+import { SearchBar } from "@/components/SearchBar";
 import { Button } from "@/components/ui/button";
 import { useDialog } from "@/hooks/useDialog";
 import { useAppStore } from "@/store/store";
@@ -14,6 +15,11 @@ type GameLibraryProps = {
 
 export default function GameLibrary({ onRefresh }: GameLibraryProps) {
   const { games, highlightedGameId, setHighlightedGameId } = useAppStore();
+  const [searchQuery, setSearchQuery] = useState("");
+  const query = searchQuery.trim().toLowerCase();
+  const filteredGames = games.filter((game) =>
+    [game.title, game.scummvm_id].some((value) => value.toLowerCase().includes(query))
+  );
   const [isScanning, setIsScanning] = useState(false);
   const [isRemoving, setIsRemoving] = useState(false);
   const [checkingUpdates, setCheckingUpdates] = useState(false);
@@ -38,6 +44,10 @@ export default function GameLibrary({ onRefresh }: GameLibraryProps) {
 
   useEffect(() => {
     if (highlightedGameId) {
+      if (searchQuery) {
+        setSearchQuery("");
+        return;
+      }
       const element = document.getElementById(`game-card-${highlightedGameId}`);
       if (element) {
         element.scrollIntoView({ behavior: "smooth", block: "center" });
@@ -48,7 +58,7 @@ export default function GameLibrary({ onRefresh }: GameLibraryProps) {
         return () => clearTimeout(timer);
       }
     }
-  }, [highlightedGameId, setHighlightedGameId]);
+  }, [highlightedGameId, setHighlightedGameId, searchQuery]);
 
   const handleScanGames = async (automatic: boolean) => {
     if (isScanning || isRemoving) return;
@@ -184,6 +194,13 @@ export default function GameLibrary({ onRefresh }: GameLibraryProps) {
         </div>
       </div>
 
+      <SearchBar label="Search library" value={searchQuery} onChange={setSearchQuery} />
+      {query && (
+        <output className="block text-sm text-muted-foreground">
+          Showing {filteredGames.length} of {games.length} games
+        </output>
+      )}
+
       <div aria-live="polite">
         {updateMessage && <p className="text-sm text-muted-foreground">{updateMessage}</p>}
         {isScanning && <p className="text-sm text-muted-foreground">Scanning game folders…</p>}
@@ -207,9 +224,16 @@ export default function GameLibrary({ onRefresh }: GameLibraryProps) {
           <p className="text-muted-foreground mb-4">Scan a folder or add games to your library</p>
           {scanButton()}
         </div>
+      ) : filteredGames.length === 0 ? (
+        <div className="text-center py-12 border-2 border-dashed rounded-lg">
+          <h3 className="text-lg font-semibold mb-2">No games match your search</h3>
+          <Button variant="outline" onClick={() => setSearchQuery("")}>
+            Clear search
+          </Button>
+        </div>
       ) : (
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
-          {games.map((game) => (
+          {filteredGames.map((game) => (
             <GameCard
               key={game.id}
               game={game}

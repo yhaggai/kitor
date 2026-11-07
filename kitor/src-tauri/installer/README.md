@@ -50,3 +50,17 @@ python3 kitor/tools/app_release.py validate
 cargo test --locked --manifest-path kitor/src-tauri/Cargo.toml --lib services::app_updates::tests
 bun run --cwd kitor build
 ```
+
+## SignPath preparation
+
+See the [Code signing policy](../../../CODE_SIGNING_POLICY.md),
+[privacy policy](../../../PRIVACY.md), and
+[application checklist](../../../docs/signpath-application.md).
+SignPath acceptance and integration are pending. Add this link to app release notes:
+
+```markdown
+[Code signing policy](https://github.com/yhaggai/kitor/blob/v1/CODE_SIGNING_POLICY.md)
+```
+
+Finish Windows Authenticode signing before generating the Tauri updater signature
+for the final installer. Never modify installer bytes after generating its `.sig`.

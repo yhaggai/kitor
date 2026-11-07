@@ -16,6 +16,7 @@ import AddGameDialog from "@/components/AddGameDialog";
 import { GameDetailsBox } from "@/components/GameDetailsBox";
 import { OpenGameFolderMenuItem } from "@/components/OpenGameFolderMenuItem";
 import { PurchaseGuideDialog } from "@/components/PurchaseGuideDialog";
+import { SearchBar } from "@/components/SearchBar";
 import { StoreInstallButtons } from "@/components/StoreInstallButtons";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -29,6 +30,17 @@ export default function PatchBrowser() {
   const { patches, loading, showAddDialog, selectedGuide } = state;
 
   const { games, setActiveTab, setHighlightedGameId, setGames } = useAppStore();
+  const [searchQuery, setSearchQuery] = useState("");
+  const query = searchQuery.trim().toLowerCase();
+  const filteredPatches = patches.filter((patch) =>
+    [
+      patch.game_title,
+      patch.scummvm_id,
+      patch.author,
+      patch.language,
+      patchOptionLabel(patch.language, patch.scummvm_id),
+    ].some((value) => value.toLowerCase().includes(query))
+  );
   const [isScanning, setIsScanning] = useState(false);
   const [scanMessage, setScanMessage] = useState("");
   const [scanWarnings, setScanWarnings] = useState<string[]>([]);
@@ -164,6 +176,12 @@ export default function PatchBrowser() {
           </DropdownMenu.Portal>
         </DropdownMenu.Root>
       </div>
+      <SearchBar label="Search patches" value={searchQuery} onChange={setSearchQuery} />
+      {query && (
+        <output className="block text-sm text-muted-foreground">
+          Showing {filteredPatches.length} of {patches.length} patches
+        </output>
+      )}
       <div aria-live="polite">
         {isScanning && <p className="text-sm text-muted-foreground">Scanning game folders…</p>}
         {scanMessage && <p className="text-sm text-muted-foreground">{scanMessage}</p>}
@@ -206,9 +224,18 @@ export default function PatchBrowser() {
             </p>
           </CardContent>
         </Card>
+      ) : filteredPatches.length === 0 ? (
+        <Card>
+          <CardContent className="pt-6 text-center space-y-4">
+            <p className="text-muted-foreground">No patches match your search</p>
+            <Button variant="outline" onClick={() => setSearchQuery("")}>
+              Clear search
+            </Button>
+          </CardContent>
+        </Card>
       ) : (
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
-          {patches.map((patch) => (
+          {filteredPatches.map((patch) => (
             <PatchCard
               key={`${patch.scummvm_id}-${patch.language}-${patch.version}`}
               patch={patch}

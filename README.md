@@ -113,3 +113,13 @@ Thanks to the translators and communities making games accessible in Hebrew, and
 | [`patches-metadata/`](patches-metadata/) | Translation and game metadata / מידע על משחקים ותרגומים |
 | [`assets/`](assets/) | Artwork manifests and tooling / מניפסטים וכלים לניהול איורים |
 | [`.github/workflows/`](.github/workflows/) | Build and release automation / תהליכי בנייה והפצה |
+
+## License and code signing
+
+Original code by Haggai Yaniv is available under the [MIT license](LICENSE).
+See [licensing scope and third-party exclusions](LICENSING.md); community
+translations, game assets, and upstream components retain their own terms.
+
+[Code signing policy](CODE_SIGNING_POLICY.md) · [Desktop privacy policy](PRIVACY.md)
+
+SignPath application preparation is in progress; SignPath signing is not yet enabled.

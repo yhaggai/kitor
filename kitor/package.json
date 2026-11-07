@@ -1,7 +1,8 @@
 {
   "name": "kitor",
   "private": true,
-  "version": "0.1.1",
+  "license": "MIT",
+  "version": "0.1.2",
   "description": "Discover, scan, and patch adventure games with Hebrew support",
   "type": "module",
   "scripts": {
