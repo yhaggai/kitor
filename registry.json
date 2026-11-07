@@ -1,7 +1,23 @@
 {
   "schema_version": 1,
-  "catalog_revision": 3,
+  "catalog_revision": 4,
   "patches": [
+    {
+      "scummvm_id": "jenny-leclue",
+      "language": "he",
+      "version": "0.4.6",
+      "release_revision": 11,
+      "download_url": "https://github.com/yhaggai/kitor/releases/download/patch-jenny-leclue-he-v0.4.6/jenny-leclue-he-0.4.6.zip",
+      "filename": "jenny-leclue-he-0.4.6.zip",
+      "checksum": "6a73d922d5ac25468938df57ebfedd9fe8088619a1630b8717636f417512a01f",
+      "file_size": 11370871,
+      "author": "Kitor",
+      "description": "# Jenny LeClue \u2013 Detectivu: Hebrew patch 0.4.6\n\nHebrew localization for the supported Steam editions on Windows and macOS.\nIncludes 5,511 dialogue catalog entries and 1,931 UI entries, with optional nikud\navailable in the game\u2019s language settings. The game starts in plain Hebrew.\n\nDialogue, choices, menus and the classroom typewriter use the game\u2019s native RTL\nprocessing. This release fixes reversed settings values while preserving numeric\nresolutions and Latin language names. It also includes Hebrew journal/letter\nfonts and reviewed proper-name nikud overrides.\n\n## Install or remove\n\nInstall through Kitor for your owned Steam copy. The ZIP contains Kitor\u2019s\nWindows and macOS installation plans; it is not a standalone installer.\nPython 3 is required. Kitor verifies supported original-file hashes, backs up\nonly affected files, and restores those originals when the patch is removed.\nAn unsupported game build is rejected rather than overwritten.\n\n## Verification and limitations\n\nWindows and macOS package/lifecycle checks and Kitor installer builds passed.\nNative macOS checks covered menus, language switching, dialogue, intro typing\nand fade; the user confirmed the intro and corrected settings screen.\nNative Windows gameplay and a full story playthrough remain unverified.\nTranslation and generated nikud may still need editorial corrections.\nLatin/digit runs display correctly but can reveal in reverse order within the run.",
+      "platforms": [
+        "windows",
+        "osx"
+      ]
+    },
     {
       "scummvm_id": "owlboy",
       "language": "he",
