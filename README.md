@@ -54,7 +54,7 @@ bun run tauri dev
 
 אפשר לתרום באמצעות דיווחי תקלות, בדיקות תאימות, שיפורי נגישות, קוד ועדכוני קטלוג. בדיווח על בעיה כדאי לציין את מערכת ההפעלה, שם המשחק, החנות או המהדורה, גרסת התרגום והשלבים לשחזור. ניתן לפתוח [Issue](https://github.com/yhaggai/kitor/issues) או Pull Request.
 
-תודה למתרגמים ולמתרגמות ולקהילות שמנגישות משחקים בעברית, ולפרויקט ScummVM שמאפשר להריץ רבים ממשחקי ההרפתקאות הקלאסיים. המשחקים, האיורים והתרגומים שייכים לבעלי הזכויות שלהם; יש לכבד את תנאי השימוש של כל מקור.
+תודה לקהילת [הרפתקאה עברית](https://www.facebook.com/groups/hebrewadventure), למתרגמים ולמתרגמות ולכל הקהילות שמנגישות משחקים בעברית, ולפרויקט ScummVM שמאפשר להריץ רבים ממשחקי ההרפתקאות הקלאסיים. המשחקים, האיורים והתרגומים שייכים לבעלי הזכויות שלהם; יש לכבד את תנאי השימוש של כל מקור.
 
 </div>
 
@@ -101,7 +101,7 @@ See the [desktop app documentation](kitor/README.md), [website documentation](we
 
 Contributions can include bug reports, compatibility testing, accessibility improvements, code, and catalog updates. When reporting a problem, include your operating system, game title, store or edition, patch version, and steps to reproduce it. Open an [issue](https://github.com/yhaggai/kitor/issues) or a pull request.
 
-Thanks to the translators and communities making games accessible in Hebrew, and to ScummVM for making so many classic adventures playable. Games, artwork, and translations belong to their respective rights holders; respect each source's terms of use.
+Thanks to the [הרפתקאה עברית (Hebrew Adventure)](https://www.facebook.com/groups/hebrewadventure) community, and to all translators and communities making games accessible in Hebrew, and to ScummVM for making so many classic adventures playable. Games, artwork, and translations belong to their respective rights holders; respect each source's terms of use.
 
 ## Repository / מבנה המאגר
 
