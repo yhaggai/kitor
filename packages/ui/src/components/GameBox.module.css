@@ -1,0 +1,189 @@
+.stage {
+  --box-width: min(320px, 80cqi);
+  --box-height: calc(var(--box-width) * 1.4);
+  --depth: calc(var(--box-width) * 0.1532);
+  --half-depth: calc(var(--depth) / 2);
+  display: grid;
+  place-items: center;
+  position: relative;
+  width: 100%;
+  aspect-ratio: 2 / 3;
+  perspective: calc(var(--box-width) * 4.64);
+}
+.box {
+  position: relative;
+  display: block;
+  width: var(--box-width);
+  height: var(--box-height);
+  transform-style: preserve-3d;
+  transform: rotateX(-7deg) rotateY(var(--turn));
+  scale: var(--zoom, 1);
+  transition:
+    transform 850ms cubic-bezier(0.22, 0.74, 0.2, 1),
+    scale 250ms ease;
+  pointer-events: none;
+}
+.stage[data-rotatable="true"] .box {
+  transition: scale 250ms ease;
+}
+.shadow {
+  position: absolute;
+  bottom: 6%;
+  width: 78%;
+  height: 22px;
+  border-radius: 50%;
+  background: #0009;
+  filter: blur(16px);
+  pointer-events: none;
+}
+@media (hover: hover) and (pointer: fine) {
+  [data-game-tile]:hover .stage[data-language="he"] .box {
+    transform: translateY(-8px) rotateX(-7deg) rotateY(343deg);
+  }
+  [data-game-tile]:hover .stage[data-language="en"] .box {
+    transform: translateY(-8px) rotateX(-7deg) rotateY(163deg);
+  }
+}
+.face {
+  position: absolute;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.cover {
+  inset: 0;
+  overflow: hidden;
+  border-radius: 2px;
+  background: #193d49;
+}
+
+.en {
+  transform: translateZ(var(--half-depth));
+}
+
+.he {
+  transform: rotateY(180deg) translateZ(var(--half-depth));
+}
+
+.art {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  /* Scans have different proportions; keep titles and edge text visible. */
+  object-fit: contain;
+  background: #193d49;
+  opacity: 0;
+  transition: opacity 200ms;
+}
+
+.art[data-loaded="true"] {
+  opacity: 1;
+}
+
+.placeholder {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  padding: 24px;
+  color: #f0e8cf;
+  font-size: 14px;
+  overflow-wrap: anywhere;
+}
+
+.cover::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 2px;
+  box-shadow:
+    inset 1px 0 1px #ffffff90,
+    inset -2px 0 2px #00000070,
+    inset 0 1px 1px #ffffff90,
+    inset 0 -1px 1px #00000075;
+  background: linear-gradient(
+    110deg,
+    #ffffff38 0%,
+    #ffffff08 24%,
+    transparent 42%,
+    #00000008 76%,
+    #ffffff20 100%
+  );
+}
+
+.spine {
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  width: var(--depth);
+  height: var(--box-height);
+  padding: 16px 0;
+  box-shadow:
+    inset 1px 0 1px #ffffff30,
+    inset -1px 0 1px #00000099;
+  background: linear-gradient(90deg, #0a2730, #22525d 16%, #32616b 48%, #122f37 98%);
+  color: #f0dc92;
+}
+
+/* The right spine faces the viewer with the English cover at the resting angle. */
+.spine_en {
+  left: 100%;
+  transform: translateX(-50%) rotateY(90deg);
+}
+
+.spine_he {
+  transform: translateX(-50%) rotateY(-90deg);
+}
+
+.spineTitle {
+  min-height: 0;
+  overflow: hidden;
+  font-family: Georgia, serif;
+  font-size: clamp(11px, 3cqi, 16px);
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+}
+
+.spineMark {
+  flex-shrink: 0;
+  font-size: 9px;
+  letter-spacing: 0.1em;
+}
+
+.lid {
+  top: 0;
+  left: 0;
+  width: var(--box-width);
+  height: var(--depth);
+  transform: translateY(-50%) rotateX(90deg);
+  box-shadow:
+    inset 0 1px #ffffff30,
+    inset 0 -2px #00000080;
+  background: linear-gradient(#437982, #1d454d);
+}
+
+.bottom {
+  top: 100%;
+  transform: translateY(-50%) rotateX(-90deg);
+  background: #0e2934;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .box,
+  .art {
+    transition: none;
+  }
+}

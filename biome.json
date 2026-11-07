@@ -12,6 +12,7 @@
       "!!**/node_modules",
       "!!**/dist",
       "!!**/target",
+      "!!packages/ui/public/mockServiceWorker.js",
       "!!**/*.lock",
       "!!patches-workspace/**/payload",
       "!!patches-workspace/**/recipes",
