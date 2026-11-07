@@ -10,7 +10,7 @@
     },
     "kitor": {
       "name": "kitor",
-      "version": "0.1.2",
+      "version": "0.1.3",
       "dependencies": {
         "@kitor/ui": "workspace:*",
         "@radix-ui/react-alert-dialog": "^1.1.15",
