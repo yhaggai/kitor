@@ -171,7 +171,7 @@ impl GameBehavior {
     pub fn install_target(&self, root: &Path) -> Result<PathBuf, String> {
         match self.target {
             InstallTarget::DrifterUserData if cfg!(target_os = "macos") => {
-                super::drifter_patch::macos_target(
+                super::games::drifter_patch::macos_target(
                     &std::env::home_dir().ok_or("Cannot locate home directory")?,
                 )
             }
@@ -180,7 +180,7 @@ impl GameBehavior {
     }
     pub fn validate_install_target(&self, root: &Path) -> Result<PathBuf, String> {
         if matches!(self.target, InstallTarget::DrifterUserData) && cfg!(target_os = "macos") {
-            super::drifter_patch::validate_macos_build(root)?;
+            super::games::drifter_patch::validate_macos_build(root)?;
         }
         self.install_target(root)
     }

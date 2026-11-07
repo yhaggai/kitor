@@ -1,4 +1,4 @@
-use kitor_patch_lifecycle_harness::{grim_remastered as patch, patch_lifecycle as lifecycle};
+use kitor_patch_lifecycle_harness::{games::grim_remastered as patch, patch_lifecycle as lifecycle};
 use std::path::PathBuf;
 
 fn run() -> Result<(), String> {

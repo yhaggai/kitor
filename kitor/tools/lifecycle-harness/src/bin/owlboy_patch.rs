@@ -1,4 +1,4 @@
-use kitor_patch_lifecycle_harness::{owlboy, patch_lifecycle as lifecycle};
+use kitor_patch_lifecycle_harness::{games::owlboy, patch_lifecycle as lifecycle};
 use std::path::PathBuf;
 
 fn run() -> Result<(), String> {

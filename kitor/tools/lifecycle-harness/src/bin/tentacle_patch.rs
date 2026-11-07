@@ -1,5 +1,5 @@
 //! Standalone native installer sharing Kitor's exact staged transaction engine.
-use kitor_patch_lifecycle_harness::{patch_lifecycle as lifecycle, tentacle};
+use kitor_patch_lifecycle_harness::{patch_lifecycle as lifecycle, games::tentacle};
 use std::path::PathBuf;
 fn run() -> Result<(), String> {
     let args: Vec<_> = std::env::args_os().skip(1).collect();

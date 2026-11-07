@@ -1,5 +1,5 @@
 use kitor_patch_lifecycle_harness::{
-    patch_lifecycle as lifecycle, tentacle, tentacle_remastered as patch,
+    patch_lifecycle as lifecycle, games::tentacle, games::tentacle_remastered as patch,
 };
 use std::path::PathBuf;
 fn run() -> Result<(), String> {

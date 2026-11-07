@@ -1,4 +1,4 @@
-use kitor_patch_lifecycle_harness::{monkey_native as patch, patch_lifecycle as lifecycle};
+use kitor_patch_lifecycle_harness::{games::monkey_native as patch, patch_lifecycle as lifecycle};
 use std::path::PathBuf;
 
 fn run() -> Result<(), String> {

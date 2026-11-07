@@ -17,19 +17,13 @@ pub mod game_discovery_service;
 
 pub mod steam_service;
 
-pub mod drifter_patch;
 pub mod steam_download_service;
 pub mod game_refresh_service;
 
-pub mod owlboy;
 
 pub mod reconstruction;
 
-pub mod tentacle;
 
-pub mod tentacle_remastered;
-pub mod grim_remastered;
-pub mod monkey_native;
 
 pub mod github_download_service;
 
@@ -41,3 +35,5 @@ pub mod package_source;
 pub mod patch_state;
 
 pub mod gog_download_service;
+
+pub mod games;

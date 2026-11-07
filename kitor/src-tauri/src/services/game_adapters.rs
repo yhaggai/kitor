@@ -9,11 +9,11 @@ use std::{
 pub fn detect(def: &GameDefinition, path: &Path) -> Option<PathBuf> {
     let detection = &def.behavior.detection;
     match detection.adapter {
-        DetectionAdapter::Tentacle => return super::tentacle::detect(path),
-        DetectionAdapter::TentacleRemastered => return super::tentacle::detect_remastered(path),
-        DetectionAdapter::Owlboy => return super::owlboy::detect(path),
+        DetectionAdapter::Tentacle => return super::games::tentacle::detect(path),
+        DetectionAdapter::TentacleRemastered => return super::games::tentacle::detect_remastered(path),
+        DetectionAdapter::Owlboy => return super::games::owlboy::detect(path),
         DetectionAdapter::MonkeyNative => {
-            return super::monkey_native::detect(path, &def.scummvm_id)
+            return super::games::monkey_native::detect(path, &def.scummvm_id)
         }
         _ => {}
     }
@@ -105,19 +105,19 @@ pub fn native_command(
     };
     let command = match adapter {
         NativeAdapter::Drifter => drifter_launch_command(root)?,
-        NativeAdapter::MonkeyNative => super::monkey_native::launch_command(
+        NativeAdapter::MonkeyNative => super::games::monkey_native::launch_command(
             root,
             profile.native_game_id.as_deref().unwrap_or(game_id),
         )?,
         NativeAdapter::Grim => {
-            let command = super::grim_remastered::launch_command(root)?;
+            let command = super::games::grim_remastered::launch_command(root)?;
             if profile.prepare_hebrew_preferences {
-                super::grim_remastered::prepare_launch(root)?;
+                super::games::grim_remastered::prepare_launch(root)?;
             }
             command
         }
-        NativeAdapter::TentacleRemastered => super::tentacle_remastered::launch_command(root)?,
-        NativeAdapter::Owlboy => super::owlboy::launch_command(root)?,
+        NativeAdapter::TentacleRemastered => super::games::tentacle_remastered::launch_command(root)?,
+        NativeAdapter::Owlboy => super::games::owlboy::launch_command(root)?,
         NativeAdapter::Undertale => undertale_command(root)?,
     };
     Ok(Some(command))
@@ -277,7 +277,7 @@ pub fn scummvm_paths(
     let use_root = matches!(
         profile.preparation,
         Some(LaunchPreparation::TentacleClassic)
-    ) && super::tentacle::detect_classic(root).is_some();
+    ) && super::games::tentacle::detect_classic(root).is_some();
     let data = if use_root {
         root.to_path_buf()
     } else {
