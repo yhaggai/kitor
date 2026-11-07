@@ -80,7 +80,7 @@ pub fn detect_classic(path: &Path) -> Option<PathBuf> {
             continue;
         };
         if index.is_file() && data.is_file() && fs::metadata(&data).ok()?.len() > 0 {
-            let hash = super::patch_lifecycle::hash(&index).ok()?;
+            let hash = crate::services::patch_lifecycle::hash(&index).ok()?;
             if [
                 "c89a825fcb2c4ea4d9678feab9c23e924ba578293d25a5d098cb3cb39ac86cb9",
                 "21bdb9663389bd01b6bbb1cb50bdce985ec68adcb5fae3efcd6f384288066536",
@@ -110,50 +110,50 @@ pub fn stage(
         (
             "patch.json",
             if detect_classic(target).is_some() {
-                include_bytes!("../../../../patches-workspace/tentacle/he/patch.json").as_slice()
+                include_bytes!("../../../../../patches-workspace/tentacle/he/patch.json").as_slice()
             } else {
                 include_bytes!(
-                    "../../../../patches-workspace/tentacle/he/patch.remastered-source.json"
+                    "../../../../../patches-workspace/tentacle/he/patch.remastered-source.json"
                 )
                 .as_slice()
             },
         ),
         (
             "recipes/classic.000.json",
-            include_bytes!("../../../../patches-workspace/tentacle/he/recipes/classic.000.json"),
+            include_bytes!("../../../../../patches-workspace/tentacle/he/recipes/classic.000.json"),
         ),
         (
             "recipes/classic.001.json",
-            include_bytes!("../../../../patches-workspace/tentacle/he/recipes/classic.001.json"),
+            include_bytes!("../../../../../patches-workspace/tentacle/he/recipes/classic.001.json"),
         ),
         (
             "recipes/tentacle.000.json",
-            include_bytes!("../../../../patches-workspace/tentacle/he/recipes/tentacle.000.json"),
+            include_bytes!("../../../../../patches-workspace/tentacle/he/recipes/tentacle.000.json"),
         ),
         (
             "recipes/tentacle.001.json",
-            include_bytes!("../../../../patches-workspace/tentacle/he/recipes/tentacle.001.json"),
+            include_bytes!("../../../../../patches-workspace/tentacle/he/recipes/tentacle.001.json"),
         ),
         (
             "recipes/monster.so3.json",
-            include_bytes!("../../../../patches-workspace/tentacle/he/recipes/monster.so3.json"),
+            include_bytes!("../../../../../patches-workspace/tentacle/he/recipes/monster.so3.json"),
         ),
         (
             "recipes/windows-tentacle.000.json",
             include_bytes!(
-                "../../../../patches-workspace/tentacle/he/recipes/windows-tentacle.000.json"
+                "../../../../../patches-workspace/tentacle/he/recipes/windows-tentacle.000.json"
             ),
         ),
         (
             "recipes/windows-tentacle.001.json",
             include_bytes!(
-                "../../../../patches-workspace/tentacle/he/recipes/windows-tentacle.001.json"
+                "../../../../../patches-workspace/tentacle/he/recipes/windows-tentacle.001.json"
             ),
         ),
         (
             "recipes/windows-monster.so3.json",
             include_bytes!(
-                "../../../../patches-workspace/tentacle/he/recipes/windows-monster.so3.json"
+                "../../../../../patches-workspace/tentacle/he/recipes/windows-monster.so3.json"
             ),
         ),
     ];
@@ -199,7 +199,7 @@ mod tests {
 
 #[cfg(test)]
 mod owned_tests {
-    use super::super::patch_lifecycle as lifecycle;
+    use crate::services::patch_lifecycle as lifecycle;
     use super::*;
     #[test]
     #[ignore = "requires KITOR_TENTACLE_WINDOWS; validates owned Windows data on disposable copy"]

@@ -3,44 +3,44 @@ use std::{fs, path::{Path,PathBuf}, process::Command};
 #[cfg(any(test, feature = "standalone-patch-tools"))]
 pub const VERSION: &str = "0.2.0-beta.2-kitor2";
 #[cfg(any(test, feature = "standalone-patch-tools"))]
-const MANIFEST: &[u8] = include_bytes!("../../../../patches-workspace/owlboy/he/patch.osx.candidate.json");
+const MANIFEST: &[u8] = include_bytes!("../../../../../patches-workspace/owlboy/he/patch.osx.candidate.json");
 #[cfg(any(test, feature = "standalone-patch-tools"))]
-const WINDOWS_MANIFEST: &[u8] = include_bytes!("../../../../patches-workspace/owlboy/he/patch.windows.candidate.json");
+const WINDOWS_MANIFEST: &[u8] = include_bytes!("../../../../../patches-workspace/owlboy/he/patch.windows.candidate.json");
 #[cfg(any(test, feature = "standalone-patch-tools"))]
 const ASSETS: &[(&str,&[u8])] = &[
-    ("deltas/Data/Localizations/en/Arial/Arial.png.bsdiff",include_bytes!("../../../../patches-workspace/owlboy/he/deltas/Data/Localizations/en/Arial/Arial.png.bsdiff")),
-    ("deltas/Data/Localizations/en/Arial/charmap.txt.bsdiff",include_bytes!("../../../../patches-workspace/owlboy/he/deltas/Data/Localizations/en/Arial/charmap.txt.bsdiff")),
-    ("deltas/Data/Localizations/en/Arial/info.txt.bsdiff",include_bytes!("../../../../patches-workspace/owlboy/he/deltas/Data/Localizations/en/Arial/info.txt.bsdiff")),
-    ("deltas/Data/Localizations/en/Gulim/Gulim.png.bsdiff",include_bytes!("../../../../patches-workspace/owlboy/he/deltas/Data/Localizations/en/Gulim/Gulim.png.bsdiff")),
-    ("deltas/Data/Localizations/en/Gulim/charmap.txt.bsdiff",include_bytes!("../../../../patches-workspace/owlboy/he/deltas/Data/Localizations/en/Gulim/charmap.txt.bsdiff")),
-    ("deltas/Data/Localizations/en/Gulim/info.txt.bsdiff",include_bytes!("../../../../patches-workspace/owlboy/he/deltas/Data/Localizations/en/Gulim/info.txt.bsdiff")),
-    ("deltas/Data/Localizations/en/GulimBold/GulimBold.png.bsdiff",include_bytes!("../../../../patches-workspace/owlboy/he/deltas/Data/Localizations/en/GulimBold/GulimBold.png.bsdiff")),
-    ("deltas/Data/Localizations/en/GulimBold/charmap.txt.bsdiff",include_bytes!("../../../../patches-workspace/owlboy/he/deltas/Data/Localizations/en/GulimBold/charmap.txt.bsdiff")),
-    ("deltas/Data/Localizations/en/GulimBold/info.txt.bsdiff",include_bytes!("../../../../patches-workspace/owlboy/he/deltas/Data/Localizations/en/GulimBold/info.txt.bsdiff")),
-    ("deltas/Data/Localizations/he/SpriteFont1/SpriteFont1.png.bsdiff",include_bytes!("../../../../patches-workspace/owlboy/he/deltas/Data/Localizations/he/SpriteFont1/SpriteFont1.png.bsdiff")),
-    ("deltas/Data/Localizations/he/SpriteFont1/charmap.txt.bsdiff",include_bytes!("../../../../patches-workspace/owlboy/he/deltas/Data/Localizations/he/SpriteFont1/charmap.txt.bsdiff")),
-    ("deltas/Data/Localizations/he/SpriteFont1/info.txt.bsdiff",include_bytes!("../../../../patches-workspace/owlboy/he/deltas/Data/Localizations/he/SpriteFont1/info.txt.bsdiff")),
-    ("deltas/Data/Localizations/en/Unlocalized/Unlocalized.png.bsdiff",include_bytes!("../../../../patches-workspace/owlboy/he/deltas/Data/Localizations/en/Unlocalized/Unlocalized.png.bsdiff")),
-    ("deltas/Data/Localizations/en/Unlocalized/charmap.txt.bsdiff",include_bytes!("../../../../patches-workspace/owlboy/he/deltas/Data/Localizations/en/Unlocalized/charmap.txt.bsdiff")),
-    ("deltas/Data/Localizations/en/Unlocalized/info.txt.bsdiff",include_bytes!("../../../../patches-workspace/owlboy/he/deltas/Data/Localizations/en/Unlocalized/info.txt.bsdiff")),
-    ("deltas/Data/Localizations/en/WarningFont/WarningFont.png.bsdiff",include_bytes!("../../../../patches-workspace/owlboy/he/deltas/Data/Localizations/en/WarningFont/WarningFont.png.bsdiff")),
-    ("deltas/Data/Localizations/en/WarningFont/charmap.txt.bsdiff",include_bytes!("../../../../patches-workspace/owlboy/he/deltas/Data/Localizations/en/WarningFont/charmap.txt.bsdiff")),
-    ("deltas/Data/Localizations/en/WarningFont/info.txt.bsdiff",include_bytes!("../../../../patches-workspace/owlboy/he/deltas/Data/Localizations/en/WarningFont/info.txt.bsdiff")),
-    ("deltas/Data/Localizations/he.csv.bsdiff",include_bytes!("../../../../patches-workspace/owlboy/he/deltas/Data/Localizations/he.csv.bsdiff")),
-    ("deltas/Data/Localizations/Translations.csv.bsdiff",include_bytes!("../../../../patches-workspace/owlboy/he/deltas/Data/Localizations/Translations.csv.bsdiff")),
-    ("assets/Data/Localizations/he/speechBubbleConfig.ini",include_bytes!("../../../../patches-workspace/owlboy/he/assets/Data/Localizations/he/speechBubbleConfig.ini")),
-    ("assets/Data/Localizations/Flags/he.png",include_bytes!("../../../../patches-workspace/owlboy/he/assets/Data/Localizations/Flags/he.png")),
-    ("assets/Data/Localizations/he/Titles/sprTittelVellie_58x37.png",include_bytes!("../../../../patches-workspace/owlboy/he/assets/Data/Localizations/he/Titles/sprTittelVellie_58x37.png")),
-    ("assets/Data/Localizations/he/Titles/sprTitleAdvent_183x37.png",include_bytes!("../../../../patches-workspace/owlboy/he/assets/Data/Localizations/he/Titles/sprTitleAdvent_183x37.png")),
-    ("assets/Data/Localizations/he/Titles/sprTitleOwlTemple_117x48.png",include_bytes!("../../../../patches-workspace/owlboy/he/assets/Data/Localizations/he/Titles/sprTitleOwlTemple_117x48.png")),
-    ("assets/Data/Localizations/he/Titles/sprTittelSvevendeKontinent_232x37.png",include_bytes!("../../../../patches-workspace/owlboy/he/assets/Data/Localizations/he/Titles/sprTittelSvevendeKontinent_232x37.png")),
-    ("assets/Data/Localizations/he/Titles/sprTittelPiratmoderskipet_175x45.png",include_bytes!("../../../../patches-workspace/owlboy/he/assets/Data/Localizations/he/Titles/sprTittelPiratmoderskipet_175x45.png")),
-    ("assets/Data/Localizations/he/layouts.tsv",include_bytes!("../../../../patches-workspace/owlboy/he/assets/Data/Localizations/he/layouts.tsv")),
-    ("assets/OwlboyHebrew.dll",include_bytes!("../../../../patches-workspace/owlboy/he/assets/OwlboyHebrew.dll")),
-    ("deltas/Owlboy.exe.bsdiff",include_bytes!("../../../../patches-workspace/owlboy/he/deltas/Owlboy.exe.bsdiff")),
+    ("deltas/Data/Localizations/en/Arial/Arial.png.bsdiff",include_bytes!("../../../../../patches-workspace/owlboy/he/deltas/Data/Localizations/en/Arial/Arial.png.bsdiff")),
+    ("deltas/Data/Localizations/en/Arial/charmap.txt.bsdiff",include_bytes!("../../../../../patches-workspace/owlboy/he/deltas/Data/Localizations/en/Arial/charmap.txt.bsdiff")),
+    ("deltas/Data/Localizations/en/Arial/info.txt.bsdiff",include_bytes!("../../../../../patches-workspace/owlboy/he/deltas/Data/Localizations/en/Arial/info.txt.bsdiff")),
+    ("deltas/Data/Localizations/en/Gulim/Gulim.png.bsdiff",include_bytes!("../../../../../patches-workspace/owlboy/he/deltas/Data/Localizations/en/Gulim/Gulim.png.bsdiff")),
+    ("deltas/Data/Localizations/en/Gulim/charmap.txt.bsdiff",include_bytes!("../../../../../patches-workspace/owlboy/he/deltas/Data/Localizations/en/Gulim/charmap.txt.bsdiff")),
+    ("deltas/Data/Localizations/en/Gulim/info.txt.bsdiff",include_bytes!("../../../../../patches-workspace/owlboy/he/deltas/Data/Localizations/en/Gulim/info.txt.bsdiff")),
+    ("deltas/Data/Localizations/en/GulimBold/GulimBold.png.bsdiff",include_bytes!("../../../../../patches-workspace/owlboy/he/deltas/Data/Localizations/en/GulimBold/GulimBold.png.bsdiff")),
+    ("deltas/Data/Localizations/en/GulimBold/charmap.txt.bsdiff",include_bytes!("../../../../../patches-workspace/owlboy/he/deltas/Data/Localizations/en/GulimBold/charmap.txt.bsdiff")),
+    ("deltas/Data/Localizations/en/GulimBold/info.txt.bsdiff",include_bytes!("../../../../../patches-workspace/owlboy/he/deltas/Data/Localizations/en/GulimBold/info.txt.bsdiff")),
+    ("deltas/Data/Localizations/he/SpriteFont1/SpriteFont1.png.bsdiff",include_bytes!("../../../../../patches-workspace/owlboy/he/deltas/Data/Localizations/he/SpriteFont1/SpriteFont1.png.bsdiff")),
+    ("deltas/Data/Localizations/he/SpriteFont1/charmap.txt.bsdiff",include_bytes!("../../../../../patches-workspace/owlboy/he/deltas/Data/Localizations/he/SpriteFont1/charmap.txt.bsdiff")),
+    ("deltas/Data/Localizations/he/SpriteFont1/info.txt.bsdiff",include_bytes!("../../../../../patches-workspace/owlboy/he/deltas/Data/Localizations/he/SpriteFont1/info.txt.bsdiff")),
+    ("deltas/Data/Localizations/en/Unlocalized/Unlocalized.png.bsdiff",include_bytes!("../../../../../patches-workspace/owlboy/he/deltas/Data/Localizations/en/Unlocalized/Unlocalized.png.bsdiff")),
+    ("deltas/Data/Localizations/en/Unlocalized/charmap.txt.bsdiff",include_bytes!("../../../../../patches-workspace/owlboy/he/deltas/Data/Localizations/en/Unlocalized/charmap.txt.bsdiff")),
+    ("deltas/Data/Localizations/en/Unlocalized/info.txt.bsdiff",include_bytes!("../../../../../patches-workspace/owlboy/he/deltas/Data/Localizations/en/Unlocalized/info.txt.bsdiff")),
+    ("deltas/Data/Localizations/en/WarningFont/WarningFont.png.bsdiff",include_bytes!("../../../../../patches-workspace/owlboy/he/deltas/Data/Localizations/en/WarningFont/WarningFont.png.bsdiff")),
+    ("deltas/Data/Localizations/en/WarningFont/charmap.txt.bsdiff",include_bytes!("../../../../../patches-workspace/owlboy/he/deltas/Data/Localizations/en/WarningFont/charmap.txt.bsdiff")),
+    ("deltas/Data/Localizations/en/WarningFont/info.txt.bsdiff",include_bytes!("../../../../../patches-workspace/owlboy/he/deltas/Data/Localizations/en/WarningFont/info.txt.bsdiff")),
+    ("deltas/Data/Localizations/he.csv.bsdiff",include_bytes!("../../../../../patches-workspace/owlboy/he/deltas/Data/Localizations/he.csv.bsdiff")),
+    ("deltas/Data/Localizations/Translations.csv.bsdiff",include_bytes!("../../../../../patches-workspace/owlboy/he/deltas/Data/Localizations/Translations.csv.bsdiff")),
+    ("assets/Data/Localizations/he/speechBubbleConfig.ini",include_bytes!("../../../../../patches-workspace/owlboy/he/assets/Data/Localizations/he/speechBubbleConfig.ini")),
+    ("assets/Data/Localizations/Flags/he.png",include_bytes!("../../../../../patches-workspace/owlboy/he/assets/Data/Localizations/Flags/he.png")),
+    ("assets/Data/Localizations/he/Titles/sprTittelVellie_58x37.png",include_bytes!("../../../../../patches-workspace/owlboy/he/assets/Data/Localizations/he/Titles/sprTittelVellie_58x37.png")),
+    ("assets/Data/Localizations/he/Titles/sprTitleAdvent_183x37.png",include_bytes!("../../../../../patches-workspace/owlboy/he/assets/Data/Localizations/he/Titles/sprTitleAdvent_183x37.png")),
+    ("assets/Data/Localizations/he/Titles/sprTitleOwlTemple_117x48.png",include_bytes!("../../../../../patches-workspace/owlboy/he/assets/Data/Localizations/he/Titles/sprTitleOwlTemple_117x48.png")),
+    ("assets/Data/Localizations/he/Titles/sprTittelSvevendeKontinent_232x37.png",include_bytes!("../../../../../patches-workspace/owlboy/he/assets/Data/Localizations/he/Titles/sprTittelSvevendeKontinent_232x37.png")),
+    ("assets/Data/Localizations/he/Titles/sprTittelPiratmoderskipet_175x45.png",include_bytes!("../../../../../patches-workspace/owlboy/he/assets/Data/Localizations/he/Titles/sprTittelPiratmoderskipet_175x45.png")),
+    ("assets/Data/Localizations/he/layouts.tsv",include_bytes!("../../../../../patches-workspace/owlboy/he/assets/Data/Localizations/he/layouts.tsv")),
+    ("assets/OwlboyHebrew.dll",include_bytes!("../../../../../patches-workspace/owlboy/he/assets/OwlboyHebrew.dll")),
+    ("deltas/Owlboy.exe.bsdiff",include_bytes!("../../../../../patches-workspace/owlboy/he/deltas/Owlboy.exe.bsdiff")),
  ];
 #[cfg(any(test, feature = "standalone-patch-tools"))]
-mod windows_assets { include!("../../../../patches-workspace/owlboy/he/windows/embedded.rs"); }
+mod windows_assets { include!("../../../../../patches-workspace/owlboy/he/windows/embedded.rs"); }
 fn child(path: &Path,name: &str) -> Option<PathBuf> {
  fs::read_dir(path).ok()?.flatten().find(|e|e.file_name().to_string_lossy().eq_ignore_ascii_case(name)).map(|e|e.path())
 }
@@ -130,10 +130,10 @@ mod tests {
  }
  #[test] fn download_catalog_selects_platform_specific_payloads(){
   use sha2::{Digest,Sha256};
-  let catalog:serde_json::Value=serde_json::from_str(include_str!("../../../patches/download-packages.json")).unwrap();
+  let catalog:serde_json::Value=serde_json::from_str(include_str!("../../../../patches/download-packages.json")).unwrap();
   for (manifest,platform) in [(MANIFEST,"osx"),(WINDOWS_MANIFEST,"windows")] {
    let source=catalog["owlboy"][platform]["default"].as_str().unwrap();
-   let workspace=Path::new(env!("CARGO_MANIFEST_DIR")).join(file!()).canonicalize().unwrap().ancestors().nth(5).unwrap().to_path_buf();
+   let workspace=Path::new(env!("CARGO_MANIFEST_DIR")).join(file!()).canonicalize().unwrap().ancestors().nth(6).unwrap().to_path_buf();
    assert_eq!(fs::read(workspace.join(source)).unwrap(),manifest);
    let m:serde_json::Value=serde_json::from_slice(manifest).unwrap();
    for f in m["platforms"][platform]["files"].as_array().unwrap(){
@@ -154,10 +154,10 @@ mod tests {
    assert_eq!(cmd.get_current_dir(),Some(root.canonicalize().unwrap().as_path()));
    // Exercise the catalog route as well: it must not reject Windows before
    // reaching this platform-aware launcher (for either language edition).
-   let behavior=super::super::game_behavior::for_game("owlboy").unwrap();
+   let behavior=crate::services::game_behavior::for_game("owlboy").unwrap();
    let profiles=behavior.launch.unwrap();
    for profile in [profiles.original,profiles.patched] {
-    let command=super::super::game_adapters::native_command(&profile,&root,"owlboy").unwrap().unwrap();
+    let command=crate::services::game_adapters::native_command(&profile,&root,"owlboy").unwrap().unwrap();
     assert_eq!(command.get_program(),cmd.get_program());
     assert_eq!(command.get_current_dir(),cmd.get_current_dir());
    }
@@ -167,7 +167,7 @@ mod tests {
  #[test]
  #[ignore = "requires KITOR_OWLBOY_PATH pointing to pristine Windows FNA game files"]
  fn windows_owned_files_roundtrip(){
-  use super::super::patch_lifecycle as lifecycle;
+  use crate::services::patch_lifecycle as lifecycle;
   let original=PathBuf::from(std::env::var_os("KITOR_OWLBOY_PATH").unwrap());
   let t=tempfile::tempdir().unwrap();let game=t.path().join("game");let package=t.path().join("package");
   fs::create_dir_all(&game).unwrap();fs::create_dir_all(&package).unwrap();stage(&package,"he",VERSION).unwrap();

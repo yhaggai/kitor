@@ -46,7 +46,7 @@ fn selected_root(root: &Path, id: &str, target: &Path, platform: &str) -> Result
         return Err("Ambiguous download package layout".into());
     }
     let edition = if id == "tentacle" {
-        if super::tentacle::detect_classic(target).is_some() { "classic" } else { "remastered" }
+        if super::games::tentacle::detect_classic(target).is_some() { "classic" } else { "remastered" }
     } else { "default" };
     let selected = root.join("_platforms").join(platform).join(edition);
     if !selected.join("patch.json").is_file() {

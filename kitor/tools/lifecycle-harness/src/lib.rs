@@ -1,11 +1,5 @@
-#[path = "../../../src-tauri/src/services/owlboy.rs"]
-pub mod owlboy;
-#[path = "../../../src-tauri/src/services/grim_remastered.rs"]
-pub mod grim_remastered;
-#[path = "../../../src-tauri/src/services/monkey_native.rs"]
-pub mod monkey_native;
-#[path = "../../../src-tauri/src/services/drifter_patch.rs"]
-pub mod drifter_patch;
+#[path = "../../../src-tauri/src/services/games/mod.rs"]
+pub mod games;
 #[path = "../../../src-tauri/src/services/patch_lifecycle.rs"]
 pub mod patch_lifecycle;
 #[path = "../../../src-tauri/src/services/registry_service.rs"]
@@ -133,9 +127,3 @@ mod payload_tests {
 
 #[path = "../../../src-tauri/src/services/reconstruction.rs"]
 pub mod reconstruction;
-
-#[path = "../../../src-tauri/src/services/tentacle.rs"]
-pub mod tentacle;
-
-#[path = "../../../src-tauri/src/services/tentacle_remastered.rs"]
-pub mod tentacle_remastered;

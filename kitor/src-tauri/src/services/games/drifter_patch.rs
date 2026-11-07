@@ -1,5 +1,5 @@
 //! The Drifter loads custom translations from Unity's persistent data directory on macOS.
-use super::patch_lifecycle;
+use crate::services::patch_lifecycle;
 #[cfg(any(test, feature = "standalone-patch-tools"))]
 use std::fs;
 use std::path::{Path, PathBuf};
@@ -7,10 +7,10 @@ use std::path::{Path, PathBuf};
 #[cfg(any(test, feature = "standalone-patch-tools"))]
 pub const VERSION: &str = "2026-07-09-kitor2";
 #[cfg(any(test, feature = "standalone-patch-tools"))]
-const MANIFEST: &[u8] = include_bytes!("../../../../patches-workspace/drifter/he/patch.json");
+const MANIFEST: &[u8] = include_bytes!("../../../../../patches-workspace/drifter/he/patch.json");
 #[cfg(any(test, feature = "standalone-patch-tools"))]
 const PAYLOAD: &[u8] =
-    include_bytes!("../../../../patches-workspace/drifter/he/payload/translation.csv");
+    include_bytes!("../../../../../patches-workspace/drifter/he/payload/translation.csv");
 const MAC_ASSEMBLY_SHA256: &str =
     "eafbbb982652ebfdb378d4b4b45d719d906f441716bcb76353754ecdc0616916";
 
