@@ -19,6 +19,8 @@
 
 ### מה אפשר לעשות?
 
+![Steam ו־GOG מתחברים לקיטור — ספרייה של משחקים עם עטיפות בעברית. בוחרים, מתקינים ומשחקים.](docs/images/kitor-library.png)
+
 - **לרכז את הספרייה:** לסרוק תיקיות ולזהות התקנות נתמכות, כולל משחקים מ־Steam ומ־GOG.
 - **לגלות תרגומים:** לעיין בקטלוג המשחקים והתרגומים לעברית.
 - **להתקין תרגום:** להוריד ולהחיל חבילת תרגום שמתאימה למשחק ולגרסה הנתמכת.
@@ -67,6 +69,8 @@ The project brings together classic adventures and other games, using ScummVM or
 
 ### What can it do?
 
+![Steam and GOG connect to Kitor — a library of Hebrew game covers. Choose, install, and play.](docs/images/kitor-library.png)
+
 - **Organize your library:** scan folders and detect supported installations, including games from Steam and GOG.
 - **Discover translations:** browse a catalog of games and Hebrew translation patches.
 - **Install a translation:** download and apply a patch for a supported game and edition.
@@ -96,17 +100,6 @@ See the [desktop app documentation](kitor/README.md), [website documentation](we
 Contributions can include bug reports, compatibility testing, accessibility improvements, code, and catalog updates. When reporting a problem, include your operating system, game title, store or edition, patch version, and steps to reproduce it. Open an [issue](https://github.com/yhaggai/kitor/issues) or a pull request.
 
 Thanks to the [הרפתקאה עברית (Hebrew Adventure)](https://www.facebook.com/groups/hebrewadventure) community, and to all translators and communities making games accessible in Hebrew, and to ScummVM for making so many classic adventures playable. Games, artwork, and translations belong to their respective rights holders; respect each source's terms of use.
-
-## Repository / מבנה המאגר
-
-| Directory | Contents / תוכן |
-| --- | --- |
-| [`kitor/`](kitor/) | Desktop app and runtime catalog / יישום שולחן העבודה וקטלוג ההפעלה |
-| [`website/`](website/) | Website and game gallery / אתר הפרויקט וגלריית המשחקים |
-| [`patches-workspace/`](patches-workspace/) | Per-game patch sources, packaging, and notes / מקורות תרגום, אריזה ותיעוד לכל משחק |
-| [`patches-metadata/`](patches-metadata/) | Translation and game metadata / מידע על משחקים ותרגומים |
-| [`assets/`](assets/) | Artwork manifests and tooling / מניפסטים וכלים לניהול איורים |
-| [`.github/workflows/`](.github/workflows/) | Build and release automation / תהליכי בנייה והפצה |
 
 ## License and code signing
 
