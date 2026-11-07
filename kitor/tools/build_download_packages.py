@@ -71,10 +71,10 @@ def build(game, patch, plans, output):
 
 
 def build_all(output, update_registry=False):
-    previous = REGISTRY.read_text()
+    previous = REGISTRY.read_text(encoding="utf-8")
     registry = json.loads(previous)
     results = []
-    for identity, plans in json.loads(INDEX.read_text()).items():
+    for identity, plans in json.loads(INDEX.read_text(encoding="utf-8")).items():
         game = next(g for g in registry['games'] if g['scummvm_id'] == identity)
         patch = next(p for p in game['patches'] if p['language'] == 'he')
         artifact, metadata = build(game, patch, plans, output)
@@ -87,20 +87,20 @@ def build_all(output, update_registry=False):
                     f'{identity}: download metadata is stale; run with --update-registry')
         results.append((artifact, game, patch))
     if update_registry:
-        REGISTRY.write_text(registry_text(registry, previous))
+        REGISTRY.write_text(registry_text(registry, previous), encoding="utf-8", newline="\n")
     return results
 
 
 def verify_published():
     """App releases must not point users at missing or mismatched ZIPs."""
-    identities = json.loads(INDEX.read_text())
-    for game in json.loads(REGISTRY.read_text())['games']:
+    identities = json.loads(INDEX.read_text(encoding="utf-8"))
+    for game in json.loads(REGISTRY.read_text(encoding="utf-8"))['games']:
         if game['scummvm_id'] not in identities:
             continue
         for patch in game['patches']:
             tag = patch['download_url'].split('/download/', 1)[1].split('/', 1)[0]
             release = json.loads(subprocess.check_output(
-                ['gh', 'api', f'repos/yhaggai/kitor/releases/tags/{tag}'], text=True))
+                ['gh', 'api', f'repos/yhaggai/kitor/releases/tags/{tag}'], text=True, encoding='utf-8'))
             require(not release['draft'] and not release['prerelease'],
                     f'Patch release is not published: {tag}')
             with tempfile.TemporaryDirectory() as temp:

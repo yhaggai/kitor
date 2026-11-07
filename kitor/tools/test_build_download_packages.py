@@ -12,7 +12,7 @@ from build_patch_packages import InvalidPackage, validate
 
 class DownloadPackages(unittest.TestCase):
     def test_all_archives_preserve_supported_file_plans_and_assets(self):
-        index = json.loads(packages.INDEX.read_text())
+        index = json.loads(packages.INDEX.read_text(encoding="utf-8"))
         with tempfile.TemporaryDirectory() as temp:
             results = packages.build_all(Path(temp))
             self.assertEqual(len(results), 10)
@@ -41,17 +41,17 @@ class DownloadPackages(unittest.TestCase):
                 self.assertEqual(hashlib.sha256(artifact.read_bytes()).digest(), hashlib.sha256(rebuilt.read_bytes()).digest())
 
     def test_missing_platform_is_rejected(self):
-        registry = json.loads(packages.REGISTRY.read_text())
+        registry = json.loads(packages.REGISTRY.read_text(encoding="utf-8"))
         game = next(g for g in registry['games'] if g['scummvm_id'] == 'drifter')
         with tempfile.TemporaryDirectory() as temp:
             with self.assertRaises(InvalidPackage):
                 packages.build(game, game['patches'][0], {}, Path(temp))
 
     def test_production_build_has_no_embedded_translation_index(self):
-        build = (packages.ROOT / 'kitor/src-tauri/build.rs').read_text()
+        build = (packages.ROOT / 'kitor/src-tauri/build.rs').read_text(encoding="utf-8")
         self.assertNotIn('include_bytes!', build)
         self.assertNotIn('bundled-assets', build)
-        for game in json.loads(packages.REGISTRY.read_text())['games']:
+        for game in json.loads(packages.REGISTRY.read_text(encoding="utf-8"))['games']:
             for patch in game['patches']:
                 self.assertNotEqual(patch['source_type'], 'bundled')
                 self.assertTrue(patch['download_url'].startswith('https://'))
