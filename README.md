@@ -27,16 +27,13 @@
 
 ### מתחילים לשחק
 
-1. מורידים מתקין מתאים מעמוד [ההפצות](https://github.com/yhaggai/kitor/releases). זמינות המתקינים מפורטת שם.
-2. מוסיפים את תיקיית המשחק או סורקים התקנות קיימות.
-3. בוחרים תרגום מתאים וקוראים את הדרישות וההנחיות שלו.
-4. סוגרים את המשחק, מתקינים את התרגום ומפעילים מהספרייה.
+1. מוסיפים את תיקיית המשחק או סורקים התקנות קיימות.
+2. בוחרים תרגום מתאים וקוראים את הדרישות וההנחיות שלו.
+3. סוגרים את המשחק, מתקינים את התרגום ומפעילים מהספרייה.
 
 צריך עותק משלכם של המשחק; קיטור אינו מספק את המשחקים עצמם. התמיכה ב־Windows וב־macOS, מהדורות המשחק ודרישות ההפעלה משתנות בין כותרים ותרגומים. יש לבדוק את פרטי המשחק באפליקציה; הופעה בקטלוג אינה מבטיחה שכל גרסה נבדקה במלואה.
 
 ### פיתוח ותרומה
-
-יישום שולחן העבודה בנוי עם **Tauri 2, Rust, React ו־TypeScript**, עם מסד נתונים מקומי מסוג SQLite. אתר הפרויקט בנוי עם **Astro**.
 
 להרצת היישום בפיתוח נדרשים Bun, Rust ודרישות הבנייה של Tauri למערכת ההפעלה שלכם. מריצים את הפקודות הבאות משורש המאגר:
 
@@ -78,16 +75,13 @@ The project brings together classic adventures and other games, using ScummVM or
 
 ### Start playing
 
-1. Get a suitable installer from [Releases](https://github.com/yhaggai/kitor/releases). Available installers are listed there.
-2. Add your game folder or scan existing installations.
-3. Choose a compatible translation and read its requirements and instructions.
-4. Close the game, install the translation, and launch it from your library.
+1. Add your game folder or scan existing installations.
+2. Choose a compatible translation and read its requirements and instructions.
+3. Close the game, install the translation, and launch it from your library.
 
 You need your own copy of the game; Kitor does not supply the games themselves. Windows and macOS support, game editions, and runtime requirements vary by title and patch. Check the game's details in the app; a catalog entry does not mean every version has been fully tested.
 
 ### Development and contributions
-
-The desktop app uses **Tauri 2, Rust, React, and TypeScript**, with a local SQLite database. The project website uses **Astro**.
 
 To run the desktop app in development, install Bun, Rust, and the Tauri build prerequisites for your operating system. From the repository root:
 
