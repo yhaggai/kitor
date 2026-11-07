@@ -15,6 +15,7 @@ type InstallStep = {
   id: string;
   label: string;
   status: StepStatus;
+  detail?: string;
 };
 
 type State = {
@@ -52,8 +53,8 @@ type Action =
 const INITIAL_STEPS: InstallStep[] = [
   { id: "preparing", label: "Preparing installation", status: "pending" },
   { id: "downloading", label: "Downloading patch", status: "pending" },
-  { id: "backup", label: "Creating backup", status: "pending" },
-  { id: "installing", label: "Installing patch", status: "pending" },
+  { id: "backup", label: "Preparing updated files", status: "pending" },
+  { id: "installing", label: "Applying updated files", status: "pending" },
   { id: "scripts", label: "Running post-install scripts", status: "pending" },
   { id: "finalizing", label: "Finalizing", status: "pending" },
 ];
@@ -168,7 +169,13 @@ const reducer = (state: State, action: Action): State => {
         );
       }
 
-      return { ...state, installSteps: updatedSteps, installProgress: progress };
+      return {
+        ...state,
+        installSteps: updatedSteps.map((step) =>
+          step.status === "in-progress" ? { ...step, detail: action.step } : step
+        ),
+        installProgress: progress,
+      };
     }
     case "SHOW_DELETE_DIALOG":
       return { ...state, showDeleteDialog: true };

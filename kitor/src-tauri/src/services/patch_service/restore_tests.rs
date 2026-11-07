@@ -71,7 +71,12 @@ async fn update_reconciles_stale_database_and_restore_preserves_unrelated_files(
     assert!(restore_backup(&db, installed.id).await.is_err());
     assert_eq!(get_installed_patches(&db, game.id).await.unwrap().len(), 1);
     std::fs::write(data.join("GEMCUT.PAK"), b"new translation").unwrap();
-    restore_backup(&db, installed.id).await.unwrap();
+    // Simulate exit after successful restoration but before deleting SQL state.
+    patch_lifecycle::uninstall(&backup, &data).unwrap();
+    assert!(!backup.join("originals").exists());
+    assert!(installed_patch::Entity::find_by_id(installed.id).one(&db).await.unwrap().is_some());
+    assert!(get_installed_patches(&db, game.id).await.unwrap().is_empty());
+    assert!(installed_patch::Entity::find_by_id(installed.id).one(&db).await.unwrap().is_none());
     assert_eq!(std::fs::read(data.join("GEMCUT.PAK")).unwrap(), b"original");
     assert_eq!(std::fs::read(data.join("save.dat")).unwrap(), b"saved game");
     assert_eq!(std::fs::read(data.join("later.txt")).unwrap(), b"user file");

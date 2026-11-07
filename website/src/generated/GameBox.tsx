@@ -9,6 +9,7 @@ export type GameBoxLanguage = "en" | "he";
 export type GameBoxCover = {
   /** A browser-ready image URL. Convert native paths with getCoverSrc first. */
   src: string;
+  fallbackSrc?: string;
   /** Localized title, also printed on this side's spine. */
   title?: string;
 };
@@ -81,7 +82,10 @@ export function GameBox({
             {title}
           </span>
           {showLanguageControls && (
-            <fieldset className={styles.languages} aria-label={hebrew ? "שפת הקופסה" : "Starting language"}>
+            <fieldset
+              className={styles.languages}
+              aria-label={hebrew ? "שפת הקופסה" : "Starting language"}
+            >
               {languages.map((side) => (
                 <button
                   key={side}
@@ -130,7 +134,9 @@ export function GameBox({
             {title}
           </Dialog.Title>
           <Dialog.Description className={styles.instructions}>
-            {hebrew ? "גררו לצדדים או השתמשו במקשי החצים לסיבוב. השתמשו ב־+ / − להגדלה והקטנה." : "Hold and drag left or right to rotate. Use arrow keys to rotate and + / − to zoom."}
+            {hebrew
+              ? "גררו לצדדים או השתמשו במקשי החצים לסיבוב. השתמשו ב־+ / − להגדלה והקטנה."
+              : "Hold and drag left or right to rotate. Use arrow keys to rotate and + / − to zoom."}
           </Dialog.Description>
           <div className={cn(styles.stage, styles.viewerStage)}>
             <div className={styles.halo} aria-hidden="true" />
@@ -176,7 +182,11 @@ export function GameBox({
               <BoxFaces title={title} covers={covers} />
             </button>
           </div>
-          <div className={styles.zoomControls} role="toolbar" aria-label={hebrew ? "הגדלת הקופסה" : "Box zoom"}>
+          <div
+            className={styles.zoomControls}
+            role="toolbar"
+            aria-label={hebrew ? "הגדלת הקופסה" : "Box zoom"}
+          >
             <button
               type="button"
               aria-label={hebrew ? "הקטנה" : "Zoom out"}
@@ -200,7 +210,10 @@ export function GameBox({
               {hebrew ? "איפוס הגדלה" : "Reset zoom"}
             </button>
           </div>
-          <Dialog.Close className={styles.close} aria-label={hebrew ? "סגירת תצוגת הקופסה" : "Close game box viewer"}>
+          <Dialog.Close
+            className={styles.close}
+            aria-label={hebrew ? "סגירת תצוגת הקופסה" : "Close game box viewer"}
+          >
             <X size={20} />
           </Dialog.Close>
         </Dialog.Content>
@@ -217,6 +230,7 @@ function BoxFaces({ title, covers }: Pick<GameBoxProps, "title" | "covers">) {
           <BoxArtwork
             key={covers[side].src}
             src={covers[side].src}
+            fallbackSrc={covers[side].fallbackSrc}
             title={covers[side].title ?? title}
           />
         </span>
@@ -236,9 +250,11 @@ function BoxFaces({ title, covers }: Pick<GameBoxProps, "title" | "covers">) {
   );
 }
 
-function BoxArtwork({ src, title }: { src: string; title: string }) {
+function BoxArtwork({ src, fallbackSrc, title }: GameBoxCover & { title: string }) {
   const [loaded, setLoaded] = useState(false);
   const [failed, setFailed] = useState(false);
+
+  const imageSrc = failed ? fallbackSrc : src;
 
   return (
     <>
@@ -246,11 +262,11 @@ function BoxArtwork({ src, title }: { src: string; title: string }) {
         <Package size={36} />
         <span dir="auto">{title}</span>
       </span>
-      {src && !failed && (
+      {imageSrc && (
         <img
           className={styles.art}
           data-loaded={loaded}
-          src={src}
+          src={imageSrc}
           alt=""
           draggable={false}
           decoding="async"

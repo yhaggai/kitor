@@ -1,4 +1,4 @@
-"""Make per-line display strings for Jenny's left-to-right TextMesh Pro labels."""
+"""Logical dialogue for native RTL; visual layout only for static/legacy labels."""
 import re
 from bidi import algorithm
 
@@ -33,16 +33,16 @@ def visual_line(chars):
     return ''.join(output)
 
 
-def display(text, dialogue):
+def display(text, dialogue, pointed_glyphs=None):
     if not re.search('[א-ת]', text):
         return text
     random_line = re.fullmatch(r'\[lua\(RandomLine\("([^"]*)"\)\)\]', text)
     if random_line:
-        options = [display(option, dialogue) for option in random_line[1].split('|')]
+        options = [display(option, dialogue, pointed_glyphs) for option in random_line[1].split('|')]
         return '[lua(RandomLine("'+'|'.join(options)+'"))]'
     prefix = re.match(r'^(?:@(?:VS|VM|VL|S|P)[\d.]+)+', text, re.I)
     if prefix:
-        return prefix[0] + display(text[prefix.end():], dialogue)
+        return prefix[0] + display(text[prefix.end():], dialogue, pointed_glyphs)
     styles = []
     lines = []
     for line in text.split('\n'):
@@ -60,6 +60,9 @@ def display(text, dialogue):
                     styles.append((name, token))
             elif TOKENS.fullmatch(token):
                 chars.append(('\ufffc', tuple(styles), token))
+            elif pointed_glyphs is not None:
+                for cluster in re.findall(r"[א-ת][\u05b0-\u05bd\u05bf\u05c1\u05c2\u05c7]*|.", token):
+                    chars.append((cluster[0], tuple(styles), pointed_glyphs[cluster] if len(cluster) > 1 else ""))
             else:
                 chars.extend((ch, tuple(styles), '') for ch in token if not '\u0591' <= ch <= '\u05c7' or ch in '־׃')
         remaining = chars
@@ -72,3 +75,15 @@ def display(text, dialogue):
         lines.append(visual_line(remaining))
     result = '\n'.join(lines)
     return '<align=right>'+result+'</align>' if dialogue else result
+
+
+def dialogue_display(text, pointed_glyphs=None):
+    """Preserve logical order, authored line breaks, markup and timing positions.
+
+    Native TMP layout owns wrapping and alignment. A pointed atlas cluster is
+    one reveal unit; no reversal or fixed-width line splitting belongs here.
+    """
+    if pointed_glyphs is not None:
+        return re.sub(r'[א-ת][\u05b0-\u05bd\u05bf\u05c1\u05c2\u05c7]+',
+                      lambda match: pointed_glyphs[match[0]], text)
+    return re.sub(r'[\u0591-\u05bd\u05bf-\u05c2\u05c4-\u05c7]', '', text)

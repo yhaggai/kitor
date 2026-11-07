@@ -472,7 +472,7 @@
     "title": "The Drifter",
     "covers": {
       "en": {
-        "src": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/drifter/en/8f903a5fb6f8.jpg"
+        "src": "/cover-drifter.jpg"
       },
       "he": {
         "src": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/drifter/he/3fe049fcedf2.png"
@@ -598,10 +598,10 @@
     "title": "Silver Pines",
     "covers": {
       "en": {
-        "src": "/cover-silver-pines-en.svg"
+        "src": "/cover-silver-pines.jpg"
       },
       "he": {
-        "src": "/cover-silver-pines-he.svg"
+        "src": "/cover-silver-pines.jpg"
       }
     },
     "platforms": {

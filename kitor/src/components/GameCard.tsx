@@ -426,8 +426,19 @@ export default function GameCard({ game, onRemove, isHighlighted }: GameCardProp
           )}
           {canPlay && (
             <Button className="w-full" size="sm" onClick={handleLaunch} disabled={busy}>
-              <Play className="mr-2 h-3 w-3" />
-              Play
+              {state.isRestoring ? (
+                <span>
+                  Restoring
+                  <span className="restore-dots" aria-hidden="true">
+                    ...
+                  </span>
+                </span>
+              ) : (
+                <>
+                  <Play className="mr-2 h-3 w-3" />
+                  Play
+                </>
+              )}
             </Button>
           )}
           {(game.available_patches?.length ?? 0) > 1 && (

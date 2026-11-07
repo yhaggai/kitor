@@ -1,5 +1,6 @@
 import * as AlertDialog from "@radix-ui/react-alert-dialog";
 import { CheckCircle, Loader2 } from "lucide-react";
+import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
 
@@ -11,6 +12,7 @@ type InstallStep = {
   id: string;
   label: string;
   status: StepStatus;
+  detail?: string;
 };
 
 type InstallPatchDialogProps = {
@@ -22,6 +24,27 @@ type InstallPatchDialogProps = {
   progress: number;
   download: PatchDownloadProgress | null;
 };
+
+function PreparationDetail({ detail }: { detail?: string }) {
+  const [seconds, setSeconds] = useState(0);
+  useEffect(() => {
+    const start = performance.now();
+    const timer = window.setInterval(
+      () => setSeconds(Math.floor((performance.now() - start) / 1000)),
+      1000
+    );
+    return () => window.clearInterval(timer);
+  }, []);
+
+  return (
+    <div className="ml-8 w-full space-y-1 text-xs text-muted-foreground">
+      <p className="break-words">{detail}</p>
+      <p className="tabular-nums">
+        {Math.floor(seconds / 60)}:{String(seconds % 60).padStart(2, "0")} elapsed
+      </p>
+    </div>
+  );
+}
 
 export function InstallPatchDialog({
   updating = false,
@@ -68,8 +91,20 @@ export function InstallPatchDialog({
                         : "text-foreground font-medium"
                   }
                 >
-                  {step.label}
+                  {step.id === "backup" &&
+                  step.status === "in-progress" &&
+                  step.detail?.startsWith("Creating backup (")
+                    ? "Creating backup"
+                    : step.label}
                 </span>
+                {step.id === "backup" && step.status === "in-progress" && (
+                  <PreparationDetail detail={step.detail} />
+                )}
+                {step.id === "installing" && step.status === "in-progress" && (
+                  <p className="ml-8 w-full break-all text-xs text-muted-foreground">
+                    {step.detail}
+                  </p>
+                )}
                 {step.id === "downloading" && step.status === "in-progress" && (
                   <div className="ml-8 w-full space-y-2 text-xs text-muted-foreground tabular-nums">
                     <Progress

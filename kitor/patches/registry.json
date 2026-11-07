@@ -630,7 +630,9 @@
           "original": {
             "args": ["--fullscreen", "--platform=dos", "sci:sq6"]
           },
-          "patched": { "args": ["--fullscreen", "--platform=dos", "sci:sq6"] }
+          "patched": {
+            "args": ["--fullscreen", "--platform=dos", "sci:sq6"]
+          }
         }
       }
     },
@@ -675,7 +677,9 @@
         ]
       },
       "behavior": {
-        "detection": { "adapter": "torin" },
+        "detection": {
+          "adapter": "torin"
+        },
         "launch": {
           "original": {
             "args": ["--fullscreen", "--auto-detect"]
@@ -1617,7 +1621,7 @@
       "scummvm_id": "silver-pines",
       "steam_app_id": 2333000,
       "title": "Silver Pines",
-      "cover_url": "/cover-silver-pines-en.svg",
+      "cover_url": "/cover-silver-pines.jpg",
       "platforms": {
         "windows": true,
         "osx": false,
@@ -1699,15 +1703,15 @@
       "patches": [
         {
           "language": "he",
-          "version": "0.1.0",
-          "release_revision": 1,
+          "version": "0.4.6",
+          "release_revision": 11,
           "author": "Kitor",
           "download_url": "bundled://jenny-leclue/he",
           "source_type": "bundled",
-          "filename": "jenny-leclue-he-0.1.0.zip",
+          "filename": "jenny-leclue-he-0.4.6.zip",
           "file_size": null,
           "checksum": null,
-          "description": "Hebrew dialogue and menus for Steam. Select Hebrew on the title screen. Machine-assisted draft. Requires Python 3. Windows gameplay validation pending.",
+          "description": "Full Astra Hebrew translation of 5,511 dialogue catalog entries and 1,931 UI entries, including menus, journals, clue descriptions, case notes and letters. Starts automatically in Hebrew; Hebrew with nikud remains available in the game language settings. Nikud is generated from the same Hebrew text. Requires Python 3. Full playthrough and native Windows gameplay verification are pending. First publisher letter uses the localized text layer with right-aligned Hebrew paragraphs in both Hebrew modes. Native RTL dialogue, choices, menus and classroom typewriter in both Hebrew modes, preserving pointed glyphs.",
           "post_install_script": null,
           "install_manifest": "patch.json"
         }

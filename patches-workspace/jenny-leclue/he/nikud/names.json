@@ -1,0 +1,281 @@
+{
+  "basis": "English source labels and conventional English pronunciation; not verified against recorded game audio. Full Hebrew spelling retained.",
+  "audio_review_pending": [
+    "Aida (איידה): ambiguous English pronunciation; left unchanged",
+    "Theladeus T Pumberbitten (תלדאוס ט׳ פמברביטן): invented name; left unchanged",
+    "Owlmoss-Dunne (אולמוס־דאן): invented place; left unchanged",
+    "Strausberry, LeClue, Zazer/Sazer and other invented names: confirm vowels against game audio"
+  ],
+  "names": [
+    {
+      "english": "Jenny",
+      "hebrew": "ג׳ני",
+      "pointed": "גֶ׳נִי"
+    },
+    {
+      "english": "LeClue",
+      "hebrew": "לקלו",
+      "pointed": "לֶקְלוּ"
+    },
+    {
+      "english": "Julie",
+      "hebrew": "ג׳ולי",
+      "pointed": "ג׳וּלִי"
+    },
+    {
+      "english": "Henry",
+      "hebrew": "הנרי",
+      "pointed": "הֶנְרִי"
+    },
+    {
+      "english": "Arthur",
+      "hebrew": "ארתור",
+      "pointed": "אַרְתוּר"
+    },
+    {
+      "english": "Finklestein",
+      "hebrew": "פינקלשטיין",
+      "pointed": "פִינְקֶלְשְׁטַיְין"
+    },
+    {
+      "english": "Rufus",
+      "hebrew": "רופוס",
+      "pointed": "רוּפוּס"
+    },
+    {
+      "english": "Richard",
+      "hebrew": "ריצ׳רד",
+      "pointed": "רִיצַ׳רְד"
+    },
+    {
+      "english": "Glenda",
+      "hebrew": "גלנדה",
+      "pointed": "גְלֶנְדָה"
+    },
+    {
+      "english": "Susan",
+      "hebrew": "סוזן",
+      "pointed": "סוּזָן"
+    },
+    {
+      "english": "Suzie",
+      "hebrew": "סוזי",
+      "pointed": "סוּזִי"
+    },
+    {
+      "english": "Quincy",
+      "hebrew": "קווינסי",
+      "pointed": "קְווִינְסִי"
+    },
+    {
+      "english": "Glatz",
+      "hebrew": "גלאץ",
+      "pointed": "גְלַאץ"
+    },
+    {
+      "english": "Keith",
+      "hebrew": "קית׳",
+      "pointed": "קִית׳"
+    },
+    {
+      "english": "Strausberry",
+      "hebrew": "שטראוסברי",
+      "pointed": "שְׁטְרָאוּסְבֶּרִי"
+    },
+    {
+      "english": "Tarquin",
+      "hebrew": "טרקווין",
+      "pointed": "טַרְקְווִין"
+    },
+    {
+      "english": "Les",
+      "hebrew": "לס",
+      "pointed": "לֶס"
+    },
+    {
+      "english": "Gerald",
+      "hebrew": "ג׳רלד",
+      "pointed": "גֶ׳רַלְד"
+    },
+    {
+      "english": "Cornelius",
+      "hebrew": "קורנליוס",
+      "pointed": "קוֹרְנִלְיוּס"
+    },
+    {
+      "english": "CJ",
+      "hebrew": "סי־ג׳יי",
+      "pointed": "סִי־גֵ׳יי"
+    },
+    {
+      "english": "Winston",
+      "hebrew": "וינסטון",
+      "pointed": "וִינְסְטוֹן"
+    },
+    {
+      "english": "Florence",
+      "hebrew": "פלורנס",
+      "pointed": "פְלוֹרֶנְס"
+    },
+    {
+      "english": "Nathaniel",
+      "hebrew": "נתניאל",
+      "pointed": "נְתַנְיֶאל"
+    },
+    {
+      "english": "Gail",
+      "hebrew": "גייל",
+      "pointed": "גֵיְיל"
+    },
+    {
+      "english": "Humdrum",
+      "hebrew": "המדראם",
+      "pointed": "הַמְדְרַאם"
+    },
+    {
+      "english": "Dan",
+      "hebrew": "דן",
+      "pointed": "דֶן"
+    },
+    {
+      "english": "Peggy",
+      "hebrew": "פגי",
+      "pointed": "פֶּגִי"
+    },
+    {
+      "english": "Veronica",
+      "hebrew": "ורוניקה",
+      "pointed": "וֶרוֹנִיקָה"
+    },
+    {
+      "english": "Jonathan",
+      "hebrew": "ג׳ונתן",
+      "pointed": "ג׳וֹנָתָן"
+    },
+    {
+      "english": "Ethan",
+      "hebrew": "איתן",
+      "pointed": "אֵיתָן"
+    },
+    {
+      "english": "Brandon",
+      "hebrew": "ברנדון",
+      "pointed": "בְּרַנְדוֹן"
+    },
+    {
+      "english": "Stephen",
+      "hebrew": "סטיבן",
+      "pointed": "סְטִיבֶן"
+    },
+    {
+      "english": "Kevin",
+      "hebrew": "קווין",
+      "pointed": "קֶווִין"
+    },
+    {
+      "english": "Matt",
+      "hebrew": "מאט",
+      "pointed": "מַאט"
+    },
+    {
+      "english": "Owen",
+      "hebrew": "אוון",
+      "pointed": "אוֹוֶן"
+    },
+    {
+      "english": "Mabel",
+      "hebrew": "מייבל",
+      "pointed": "מֵיְיבֶּל"
+    },
+    {
+      "english": "McCarthy",
+      "hebrew": "מקארתי",
+      "pointed": "מֶקַארְתִי"
+    },
+    {
+      "english": "Smith",
+      "hebrew": "סמית",
+      "pointed": "סְמִית"
+    },
+    {
+      "english": "Samuel",
+      "hebrew": "סמואל",
+      "pointed": "סַמוּאֶל"
+    },
+    {
+      "english": "Zazer",
+      "hebrew": "זייזר",
+      "pointed": "זֵיְיזֶר"
+    },
+    {
+      "english": "Sazer",
+      "hebrew": "סייזר",
+      "pointed": "סֵיְיזֶר"
+    },
+    {
+      "english": "Judy",
+      "hebrew": "ג׳ודי",
+      "pointed": "ג׳וּדִי"
+    },
+    {
+      "english": "TIM",
+      "hebrew": "טים",
+      "pointed": "טִים"
+    },
+    {
+      "english": "Claud",
+      "hebrew": "קלוד",
+      "pointed": "קְלוֹד"
+    },
+    {
+      "english": "Maggie",
+      "hebrew": "מגי",
+      "pointed": "מֶגִי"
+    },
+    {
+      "english": "Pelvis",
+      "hebrew": "פלוויס",
+      "pointed": "פֶּלְוִויס"
+    },
+    {
+      "english": "Crestly",
+      "hebrew": "קרסטלי",
+      "pointed": "קְרֶסְטְלִי"
+    },
+    {
+      "english": "Arthurton",
+      "hebrew": "ארתרטון",
+      "pointed": "אַרְתֶרְטוֹן"
+    },
+    {
+      "english": "Gumboldt",
+      "hebrew": "גמבולדט",
+      "pointed": "גַמְבּוֹלְדְט"
+    },
+    {
+      "english": "Karina",
+      "hebrew": "קארינה",
+      "pointed": "קָארִינָה"
+    },
+    {
+      "english": "Casper",
+      "hebrew": "קספר",
+      "pointed": "קַסְפֶּר"
+    },
+    {
+      "english": "Helga",
+      "hebrew": "הלגה",
+      "pointed": "הֶלְגָה"
+    },
+    {
+      "english": "Franz",
+      "hebrew": "פרנס",
+      "pointed": "פְרַנְס"
+    },
+    {
+      "english": "Ivan",
+      "hebrew": "איוון",
+      "pointed": "אִיוָון"
+    }
+  ]
+}
