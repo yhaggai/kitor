@@ -1,0 +1,308 @@
+{
+  "id": 1207666633,
+  "title": "Toonstruck",
+  "purchase_link": "https:\/\/www.gog.com\/en\/checkout\/manual\/toonstruck",
+  "slug": "toonstruck",
+  "content_system_compatibility": { "windows": true, "osx": true, "linux": true },
+  "languages": { "de": "Deutsch", "en": "English", "es": "espa\u00f1ol", "fr": "fran\u00e7ais" },
+  "links": {
+    "purchase_link": "https:\/\/www.gog.com\/en\/checkout\/manual\/toonstruck",
+    "product_card": "https:\/\/www.gog.com\/game\/toonstruck",
+    "support": "https:\/\/www.gog.com\/support\/toonstruck",
+    "forum": "https:\/\/www.gog.com\/forum\/toonstruck"
+  },
+  "in_development": { "active": false, "until": null },
+  "is_secret": false,
+  "is_installable": true,
+  "game_type": "game",
+  "is_pre_order": false,
+  "release_date": "2015-02-10T08:00:00+0100",
+  "images": {
+    "background": "\/\/images-2.gog-statics.com\/4d433578ba5662dfdb2b5ebed5e66b0fea667b56799aecbf281d492fea05fcde.jpg",
+    "logo": "\/\/images-4.gog-statics.com\/ea856a7a7d3e2f6e68e3dff58127424d3404173bf611264d5898450f57f0c360_glx_logo.jpg",
+    "logo2x": "\/\/images-3.gog-statics.com\/ea856a7a7d3e2f6e68e3dff58127424d3404173bf611264d5898450f57f0c360_glx_logo_2x.jpg",
+    "sidebarIcon": "\/\/images-1.gog-statics.com\/7eaaaf76c1e70a379e9f54d15606f66dd5652ee2d58bade53286284dd55ff156_sbicon.png",
+    "sidebarIcon2x": "\/\/images-4.gog-statics.com\/7eaaaf76c1e70a379e9f54d15606f66dd5652ee2d58bade53286284dd55ff156_sbicon_2x.png",
+    "menuNotificationAv": "\/\/images-4.gog-statics.com\/7eaaaf76c1e70a379e9f54d15606f66dd5652ee2d58bade53286284dd55ff156_menu_notification_av.png",
+    "menuNotificationAv2": "\/\/images-1.gog-statics.com\/7eaaaf76c1e70a379e9f54d15606f66dd5652ee2d58bade53286284dd55ff156_menu_notification_av2.png",
+    "icon": "\/\/images-1.gog-statics.com\/7eaaaf76c1e70a379e9f54d15606f66dd5652ee2d58bade53286284dd55ff156.png"
+  },
+  "dlcs": [],
+  "description": {
+    "lead": "Drew Blanc is a cartoon animator and the original creator of the Fluffy Fluffy Bun Bun Show.. Drew\u0027s boss, Sam Schmaltz (played by Ben Stein), sets him the task of designing more bunnies to co-star in the Fluffy Fluffy Bun Bun Show by the next morning. However, the depressed animator soon nods off, suffering from acute artist\u0027s block. He wakes early the next morning to inexplicably find his television switched on, announcing the Fluffy Fluffy Bun Bun Show. Suddenly, Drew is mysteriously drawn into the television screen and transported to an idyllic two-dimensional cartoon world populated by his own creations, among many other cartoon characters.\n\u003Cbr\u003E\u003Cbr\u003E\nTo get home, you\u0027ll need to unravel the secrets of these loony lands before they unravel you permanently. Outsmart demented clowns, shock the socks off cross-dressing livestock, and match wits with a diabolical Count named Nefarious. It\u0027s a mind-reeling toonatopia that\u0027ll have you acting so depraved you might even shock yourself. Send someone an exploding turkey. Watch Spike the Clown torture balloon animals. If you\u0027ve got any energy left after those escapades then try and prevent an all-out war between the cartoon forces of good and evil. Word to the wise: BETTER PACK AN ANVIL!\n\u003Cbr\u003E\n\u003Cul\u003E\u003Cli\u003EA weird and whacky world filled with an insane asylum\u0027s worth of bizarre characters - and that\u0027s just the humans!\u003C\/li\u003E\u003Cli\u003EStarring Christopher Lloyd (Back to the Future, Taxi) and featuring the vocal talents of Dan Castellaneta (TV\u0027s Homer Simpson), Dom DeLuise (All Dogs Go To Heaven I \u0026 II), and the inimitable Tim Curry (Gabriel Knight, Rocky Horror Picture Show)!\u003C\/li\u003E\u003Cli\u003EOver 40,000 of classic 1990s animation and over 75 unique locations crammed full of puzzles!\u003C\/li\u003E\u003C\/ul\u003E",
+    "full": "Drew Blanc is a cartoon animator and the original creator of the Fluffy Fluffy Bun Bun Show.. Drew\u0027s boss, Sam Schmaltz (played by Ben Stein), sets him the task of designing more bunnies to co-star in the Fluffy Fluffy Bun Bun Show by the next morning. However, the depressed animator soon nods off, suffering from acute artist\u0027s block. He wakes early the next morning to inexplicably find his television switched on, announcing the Fluffy Fluffy Bun Bun Show. Suddenly, Drew is mysteriously drawn into the television screen and transported to an idyllic two-dimensional cartoon world populated by his own creations, among many other cartoon characters.\n\u003Cbr\u003E\u003Cbr\u003E\nTo get home, you\u0027ll need to unravel the secrets of these loony lands before they unravel you permanently. Outsmart demented clowns, shock the socks off cross-dressing livestock, and match wits with a diabolical Count named Nefarious. It\u0027s a mind-reeling toonatopia that\u0027ll have you acting so depraved you might even shock yourself. Send someone an exploding turkey. Watch Spike the Clown torture balloon animals. If you\u0027ve got any energy left after those escapades then try and prevent an all-out war between the cartoon forces of good and evil. Word to the wise: BETTER PACK AN ANVIL!\n\u003Cbr\u003E\n\u003Cul\u003E\u003Cli\u003EA weird and whacky world filled with an insane asylum\u0027s worth of bizarre characters - and that\u0027s just the humans!\u003C\/li\u003E\u003Cli\u003EStarring Christopher Lloyd (Back to the Future, Taxi) and featuring the vocal talents of Dan Castellaneta (TV\u0027s Homer Simpson), Dom DeLuise (All Dogs Go To Heaven I \u0026 II), and the inimitable Tim Curry (Gabriel Knight, Rocky Horror Picture Show)!\u003C\/li\u003E\u003Cli\u003EOver 40,000 of classic 1990s animation and over 75 unique locations crammed full of puzzles!\u003C\/li\u003E\u003C\/ul\u003E\n\u003Cbr\u003E\n\u003Cul\u003E\u003Cli\u003EA weird and whacky world filled with an insane asylum\u0027s worth of bizarre characters - and that\u0027s just the humans!\u003C\/li\u003E\u003Cli\u003E\u003Cbr\u003EStarring Christopher Lloyd (Back to the Future, Taxi) and featuring the vocal talents of Dan Castellaneta (TV\u0027s Homer Simpson), Dom DeLuise (All Dogs Go To Heaven I \u0026 II), and the inimitable Tim Curry (Gabriel Knight, Rocky Horror Picture Show)!\u003C\/li\u003E\u003Cli\u003E\u003Cbr\u003EOver 40,000 of classic 1990s animation and over 75 unique locations crammed full of puzzles!\u003C\/li\u003E\u003C\/ul\u003E",
+    "whats_cool_about_it": "A weird and whacky world filled with an insane asylum\u0027s worth of bizarre characters - and that\u0027s just the humans!\n\u003Cbr\u003EStarring Christopher Lloyd (Back to the Future, Taxi) and featuring the vocal talents of Dan Castellaneta (TV\u0027s Homer Simpson), Dom DeLuise (All Dogs Go To Heaven I \u0026 II), and the inimitable Tim Curry (Gabriel Knight, Rocky Horror Picture Show)!\n\u003Cbr\u003EOver 40,000 of classic 1990s animation and over 75 unique locations crammed full of puzzles!"
+  },
+  "screenshots": [
+    {
+      "image_id": "284e0bc5538dfd3cfa6448f60eb6381049cf093ea27ff560c207af2bbbd58a70",
+      "formatter_template_url": "https:\/\/images-3.gog-statics.com\/284e0bc5538dfd3cfa6448f60eb6381049cf093ea27ff560c207af2bbbd58a70_{formatter}.png",
+      "formatted_images": [
+        {
+          "formatter_name": "ggvgt",
+          "image_url": "https:\/\/images-3.gog-statics.com\/284e0bc5538dfd3cfa6448f60eb6381049cf093ea27ff560c207af2bbbd58a70_ggvgt.jpg"
+        },
+        {
+          "formatter_name": "ggvgt_2x",
+          "image_url": "https:\/\/images-1.gog-statics.com\/284e0bc5538dfd3cfa6448f60eb6381049cf093ea27ff560c207af2bbbd58a70_ggvgt_2x.jpg"
+        },
+        {
+          "formatter_name": "ggvgm",
+          "image_url": "https:\/\/images-2.gog-statics.com\/284e0bc5538dfd3cfa6448f60eb6381049cf093ea27ff560c207af2bbbd58a70_ggvgm.jpg"
+        },
+        {
+          "formatter_name": "ggvgm_2x",
+          "image_url": "https:\/\/images-1.gog-statics.com\/284e0bc5538dfd3cfa6448f60eb6381049cf093ea27ff560c207af2bbbd58a70_ggvgm_2x.jpg"
+        },
+        {
+          "formatter_name": "ggvgl",
+          "image_url": "https:\/\/images-2.gog-statics.com\/284e0bc5538dfd3cfa6448f60eb6381049cf093ea27ff560c207af2bbbd58a70_ggvgl.jpg"
+        },
+        {
+          "formatter_name": "ggvgl_2x",
+          "image_url": "https:\/\/images-3.gog-statics.com\/284e0bc5538dfd3cfa6448f60eb6381049cf093ea27ff560c207af2bbbd58a70_ggvgl_2x.jpg"
+        }
+      ]
+    },
+    {
+      "image_id": "2ddf139413356cf65b22f2bdd5745eae6848209adab58e485ba99ba5aba2dee3",
+      "formatter_template_url": "https:\/\/images-3.gog-statics.com\/2ddf139413356cf65b22f2bdd5745eae6848209adab58e485ba99ba5aba2dee3_{formatter}.png",
+      "formatted_images": [
+        {
+          "formatter_name": "ggvgt",
+          "image_url": "https:\/\/images-2.gog-statics.com\/2ddf139413356cf65b22f2bdd5745eae6848209adab58e485ba99ba5aba2dee3_ggvgt.jpg"
+        },
+        {
+          "formatter_name": "ggvgt_2x",
+          "image_url": "https:\/\/images-4.gog-statics.com\/2ddf139413356cf65b22f2bdd5745eae6848209adab58e485ba99ba5aba2dee3_ggvgt_2x.jpg"
+        },
+        {
+          "formatter_name": "ggvgm",
+          "image_url": "https:\/\/images-3.gog-statics.com\/2ddf139413356cf65b22f2bdd5745eae6848209adab58e485ba99ba5aba2dee3_ggvgm.jpg"
+        },
+        {
+          "formatter_name": "ggvgm_2x",
+          "image_url": "https:\/\/images-4.gog-statics.com\/2ddf139413356cf65b22f2bdd5745eae6848209adab58e485ba99ba5aba2dee3_ggvgm_2x.jpg"
+        },
+        {
+          "formatter_name": "ggvgl",
+          "image_url": "https:\/\/images-3.gog-statics.com\/2ddf139413356cf65b22f2bdd5745eae6848209adab58e485ba99ba5aba2dee3_ggvgl.jpg"
+        },
+        {
+          "formatter_name": "ggvgl_2x",
+          "image_url": "https:\/\/images-2.gog-statics.com\/2ddf139413356cf65b22f2bdd5745eae6848209adab58e485ba99ba5aba2dee3_ggvgl_2x.jpg"
+        }
+      ]
+    },
+    {
+      "image_id": "52ad1716fb7a9449b11c5fced763e3ea877d1b195f82205d409fc0c288cd69e1",
+      "formatter_template_url": "https:\/\/images-2.gog-statics.com\/52ad1716fb7a9449b11c5fced763e3ea877d1b195f82205d409fc0c288cd69e1_{formatter}.png",
+      "formatted_images": [
+        {
+          "formatter_name": "ggvgt",
+          "image_url": "https:\/\/images-1.gog-statics.com\/52ad1716fb7a9449b11c5fced763e3ea877d1b195f82205d409fc0c288cd69e1_ggvgt.jpg"
+        },
+        {
+          "formatter_name": "ggvgt_2x",
+          "image_url": "https:\/\/images-1.gog-statics.com\/52ad1716fb7a9449b11c5fced763e3ea877d1b195f82205d409fc0c288cd69e1_ggvgt_2x.jpg"
+        },
+        {
+          "formatter_name": "ggvgm",
+          "image_url": "https:\/\/images-4.gog-statics.com\/52ad1716fb7a9449b11c5fced763e3ea877d1b195f82205d409fc0c288cd69e1_ggvgm.jpg"
+        },
+        {
+          "formatter_name": "ggvgm_2x",
+          "image_url": "https:\/\/images-1.gog-statics.com\/52ad1716fb7a9449b11c5fced763e3ea877d1b195f82205d409fc0c288cd69e1_ggvgm_2x.jpg"
+        },
+        {
+          "formatter_name": "ggvgl",
+          "image_url": "https:\/\/images-4.gog-statics.com\/52ad1716fb7a9449b11c5fced763e3ea877d1b195f82205d409fc0c288cd69e1_ggvgl.jpg"
+        },
+        {
+          "formatter_name": "ggvgl_2x",
+          "image_url": "https:\/\/images-3.gog-statics.com\/52ad1716fb7a9449b11c5fced763e3ea877d1b195f82205d409fc0c288cd69e1_ggvgl_2x.jpg"
+        }
+      ]
+    },
+    {
+      "image_id": "a9717285f6ecb702e45c2a4b3ae4cebe805bc43d435d15c306f4b394269c6e95",
+      "formatter_template_url": "https:\/\/images-1.gog-statics.com\/a9717285f6ecb702e45c2a4b3ae4cebe805bc43d435d15c306f4b394269c6e95_{formatter}.png",
+      "formatted_images": [
+        {
+          "formatter_name": "ggvgt",
+          "image_url": "https:\/\/images-1.gog-statics.com\/a9717285f6ecb702e45c2a4b3ae4cebe805bc43d435d15c306f4b394269c6e95_ggvgt.jpg"
+        },
+        {
+          "formatter_name": "ggvgt_2x",
+          "image_url": "https:\/\/images-4.gog-statics.com\/a9717285f6ecb702e45c2a4b3ae4cebe805bc43d435d15c306f4b394269c6e95_ggvgt_2x.jpg"
+        },
+        {
+          "formatter_name": "ggvgm",
+          "image_url": "https:\/\/images-4.gog-statics.com\/a9717285f6ecb702e45c2a4b3ae4cebe805bc43d435d15c306f4b394269c6e95_ggvgm.jpg"
+        },
+        {
+          "formatter_name": "ggvgm_2x",
+          "image_url": "https:\/\/images-4.gog-statics.com\/a9717285f6ecb702e45c2a4b3ae4cebe805bc43d435d15c306f4b394269c6e95_ggvgm_2x.jpg"
+        },
+        {
+          "formatter_name": "ggvgl",
+          "image_url": "https:\/\/images-4.gog-statics.com\/a9717285f6ecb702e45c2a4b3ae4cebe805bc43d435d15c306f4b394269c6e95_ggvgl.jpg"
+        },
+        {
+          "formatter_name": "ggvgl_2x",
+          "image_url": "https:\/\/images-2.gog-statics.com\/a9717285f6ecb702e45c2a4b3ae4cebe805bc43d435d15c306f4b394269c6e95_ggvgl_2x.jpg"
+        }
+      ]
+    },
+    {
+      "image_id": "71c5c466b672c80d666620d4e0f6b55fef43d8de8aa3c33eb1edccadfbfcbb03",
+      "formatter_template_url": "https:\/\/images-4.gog-statics.com\/71c5c466b672c80d666620d4e0f6b55fef43d8de8aa3c33eb1edccadfbfcbb03_{formatter}.png",
+      "formatted_images": [
+        {
+          "formatter_name": "ggvgt",
+          "image_url": "https:\/\/images-4.gog-statics.com\/71c5c466b672c80d666620d4e0f6b55fef43d8de8aa3c33eb1edccadfbfcbb03_ggvgt.jpg"
+        },
+        {
+          "formatter_name": "ggvgt_2x",
+          "image_url": "https:\/\/images-1.gog-statics.com\/71c5c466b672c80d666620d4e0f6b55fef43d8de8aa3c33eb1edccadfbfcbb03_ggvgt_2x.jpg"
+        },
+        {
+          "formatter_name": "ggvgm",
+          "image_url": "https:\/\/images-1.gog-statics.com\/71c5c466b672c80d666620d4e0f6b55fef43d8de8aa3c33eb1edccadfbfcbb03_ggvgm.jpg"
+        },
+        {
+          "formatter_name": "ggvgm_2x",
+          "image_url": "https:\/\/images-1.gog-statics.com\/71c5c466b672c80d666620d4e0f6b55fef43d8de8aa3c33eb1edccadfbfcbb03_ggvgm_2x.jpg"
+        },
+        {
+          "formatter_name": "ggvgl",
+          "image_url": "https:\/\/images-1.gog-statics.com\/71c5c466b672c80d666620d4e0f6b55fef43d8de8aa3c33eb1edccadfbfcbb03_ggvgl.jpg"
+        },
+        {
+          "formatter_name": "ggvgl_2x",
+          "image_url": "https:\/\/images-3.gog-statics.com\/71c5c466b672c80d666620d4e0f6b55fef43d8de8aa3c33eb1edccadfbfcbb03_ggvgl_2x.jpg"
+        }
+      ]
+    },
+    {
+      "image_id": "4461b7aee4961134d088ee889a7d963c7235e598adb9d5c76bd33f8a881bbde6",
+      "formatter_template_url": "https:\/\/images-1.gog-statics.com\/4461b7aee4961134d088ee889a7d963c7235e598adb9d5c76bd33f8a881bbde6_{formatter}.png",
+      "formatted_images": [
+        {
+          "formatter_name": "ggvgt",
+          "image_url": "https:\/\/images-4.gog-statics.com\/4461b7aee4961134d088ee889a7d963c7235e598adb9d5c76bd33f8a881bbde6_ggvgt.jpg"
+        },
+        {
+          "formatter_name": "ggvgt_2x",
+          "image_url": "https:\/\/images-2.gog-statics.com\/4461b7aee4961134d088ee889a7d963c7235e598adb9d5c76bd33f8a881bbde6_ggvgt_2x.jpg"
+        },
+        {
+          "formatter_name": "ggvgm",
+          "image_url": "https:\/\/images-1.gog-statics.com\/4461b7aee4961134d088ee889a7d963c7235e598adb9d5c76bd33f8a881bbde6_ggvgm.jpg"
+        },
+        {
+          "formatter_name": "ggvgm_2x",
+          "image_url": "https:\/\/images-2.gog-statics.com\/4461b7aee4961134d088ee889a7d963c7235e598adb9d5c76bd33f8a881bbde6_ggvgm_2x.jpg"
+        },
+        {
+          "formatter_name": "ggvgl",
+          "image_url": "https:\/\/images-1.gog-statics.com\/4461b7aee4961134d088ee889a7d963c7235e598adb9d5c76bd33f8a881bbde6_ggvgl.jpg"
+        },
+        {
+          "formatter_name": "ggvgl_2x",
+          "image_url": "https:\/\/images-4.gog-statics.com\/4461b7aee4961134d088ee889a7d963c7235e598adb9d5c76bd33f8a881bbde6_ggvgl_2x.jpg"
+        }
+      ]
+    },
+    {
+      "image_id": "1cd13f410aaf2fd1718a170f881b646a836945926ce7028b2ccf91e753e775c5",
+      "formatter_template_url": "https:\/\/images-4.gog-statics.com\/1cd13f410aaf2fd1718a170f881b646a836945926ce7028b2ccf91e753e775c5_{formatter}.png",
+      "formatted_images": [
+        {
+          "formatter_name": "ggvgt",
+          "image_url": "https:\/\/images-4.gog-statics.com\/1cd13f410aaf2fd1718a170f881b646a836945926ce7028b2ccf91e753e775c5_ggvgt.jpg"
+        },
+        {
+          "formatter_name": "ggvgt_2x",
+          "image_url": "https:\/\/images-4.gog-statics.com\/1cd13f410aaf2fd1718a170f881b646a836945926ce7028b2ccf91e753e775c5_ggvgt_2x.jpg"
+        },
+        {
+          "formatter_name": "ggvgm",
+          "image_url": "https:\/\/images-1.gog-statics.com\/1cd13f410aaf2fd1718a170f881b646a836945926ce7028b2ccf91e753e775c5_ggvgm.jpg"
+        },
+        {
+          "formatter_name": "ggvgm_2x",
+          "image_url": "https:\/\/images-4.gog-statics.com\/1cd13f410aaf2fd1718a170f881b646a836945926ce7028b2ccf91e753e775c5_ggvgm_2x.jpg"
+        },
+        {
+          "formatter_name": "ggvgl",
+          "image_url": "https:\/\/images-1.gog-statics.com\/1cd13f410aaf2fd1718a170f881b646a836945926ce7028b2ccf91e753e775c5_ggvgl.jpg"
+        },
+        {
+          "formatter_name": "ggvgl_2x",
+          "image_url": "https:\/\/images-2.gog-statics.com\/1cd13f410aaf2fd1718a170f881b646a836945926ce7028b2ccf91e753e775c5_ggvgl_2x.jpg"
+        }
+      ]
+    },
+    {
+      "image_id": "8462e1ea0ce96d70cecea6cbbaafe942c21b9373e926cd36a8931faf5bafd3b1",
+      "formatter_template_url": "https:\/\/images-3.gog-statics.com\/8462e1ea0ce96d70cecea6cbbaafe942c21b9373e926cd36a8931faf5bafd3b1_{formatter}.png",
+      "formatted_images": [
+        {
+          "formatter_name": "ggvgt",
+          "image_url": "https:\/\/images-4.gog-statics.com\/8462e1ea0ce96d70cecea6cbbaafe942c21b9373e926cd36a8931faf5bafd3b1_ggvgt.jpg"
+        },
+        {
+          "formatter_name": "ggvgt_2x",
+          "image_url": "https:\/\/images-3.gog-statics.com\/8462e1ea0ce96d70cecea6cbbaafe942c21b9373e926cd36a8931faf5bafd3b1_ggvgt_2x.jpg"
+        },
+        {
+          "formatter_name": "ggvgm",
+          "image_url": "https:\/\/images-1.gog-statics.com\/8462e1ea0ce96d70cecea6cbbaafe942c21b9373e926cd36a8931faf5bafd3b1_ggvgm.jpg"
+        },
+        {
+          "formatter_name": "ggvgm_2x",
+          "image_url": "https:\/\/images-3.gog-statics.com\/8462e1ea0ce96d70cecea6cbbaafe942c21b9373e926cd36a8931faf5bafd3b1_ggvgm_2x.jpg"
+        },
+        {
+          "formatter_name": "ggvgl",
+          "image_url": "https:\/\/images-1.gog-statics.com\/8462e1ea0ce96d70cecea6cbbaafe942c21b9373e926cd36a8931faf5bafd3b1_ggvgl.jpg"
+        },
+        {
+          "formatter_name": "ggvgl_2x",
+          "image_url": "https:\/\/images-1.gog-statics.com\/8462e1ea0ce96d70cecea6cbbaafe942c21b9373e926cd36a8931faf5bafd3b1_ggvgl_2x.jpg"
+        }
+      ]
+    },
+    {
+      "image_id": "e903138e337523b2782468ef67c44d6312d6cb3cb94af2d7bedd74d82c762ed0",
+      "formatter_template_url": "https:\/\/images-1.gog-statics.com\/e903138e337523b2782468ef67c44d6312d6cb3cb94af2d7bedd74d82c762ed0_{formatter}.png",
+      "formatted_images": [
+        {
+          "formatter_name": "ggvgt",
+          "image_url": "https:\/\/images-1.gog-statics.com\/e903138e337523b2782468ef67c44d6312d6cb3cb94af2d7bedd74d82c762ed0_ggvgt.jpg"
+        },
+        {
+          "formatter_name": "ggvgt_2x",
+          "image_url": "https:\/\/images-2.gog-statics.com\/e903138e337523b2782468ef67c44d6312d6cb3cb94af2d7bedd74d82c762ed0_ggvgt_2x.jpg"
+        },
+        {
+          "formatter_name": "ggvgm",
+          "image_url": "https:\/\/images-4.gog-statics.com\/e903138e337523b2782468ef67c44d6312d6cb3cb94af2d7bedd74d82c762ed0_ggvgm.jpg"
+        },
+        {
+          "formatter_name": "ggvgm_2x",
+          "image_url": "https:\/\/images-2.gog-statics.com\/e903138e337523b2782468ef67c44d6312d6cb3cb94af2d7bedd74d82c762ed0_ggvgm_2x.jpg"
+        },
+        {
+          "formatter_name": "ggvgl",
+          "image_url": "https:\/\/images-4.gog-statics.com\/e903138e337523b2782468ef67c44d6312d6cb3cb94af2d7bedd74d82c762ed0_ggvgl.jpg"
+        },
+        {
+          "formatter_name": "ggvgl_2x",
+          "image_url": "https:\/\/images-4.gog-statics.com\/e903138e337523b2782468ef67c44d6312d6cb3cb94af2d7bedd74d82c762ed0_ggvgl_2x.jpg"
+        }
+      ]
+    }
+  ]
+}

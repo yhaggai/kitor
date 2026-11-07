@@ -1,0 +1,701 @@
+{
+  "schema_version": 1,
+  "created_on": "2026-11-07",
+  "bucket": "kitor-assets",
+  "base_url": "https://assets.kitor.click",
+  "language": "he",
+  "generation": {
+    "tool": "OpenAI imagegen",
+    "provenance": "AI-localized adaptations of source artwork; not official Hebrew publisher artwork.",
+    "prompt_specification": "Create a full-bleed 3:1 Hebrew game banner from the supplied edition-specific official source. Preserve recognizable characters, palette and composition. Replace/add the exact Hebrew title with matching typography. No English title, extra lettering, logos or watermarks. Extend portrait cover backgrounds to wide without stretching characters. For faded GOG backgrounds restore colors. Inspect Hebrew, correct spelling/niqqud and remove white borders.",
+    "note": "This is the consolidated generation specification, not a verbatim transcript of individual generation calls."
+  },
+  "games": [
+    {
+      "game_id": "undertale",
+      "title": "UNDERTALE",
+      "hebrew_title": "אנדרטייל",
+      "canonical_artwork_id": "undertale",
+      "local_file": "hebrew/undertale-v2.png",
+      "object_key": "banners/undertale/he/d7fa2e388153.png",
+      "url": "https://assets.kitor.click/banners/undertale/he/d7fa2e388153.png",
+      "sha256": "d7fa2e3881538030c2654521b66257d38d139f44459a8e9043da5a56f8bb53fd",
+      "bytes": 1042981,
+      "width": 2172,
+      "height": 724,
+      "sources": [
+        {
+          "source": "Steam",
+          "source_page": "https://store.steampowered.com/app/391540/",
+          "image_url": "https://cdn.akamai.steamstatic.com/steam/apps/391540/library_hero.jpg"
+        }
+      ]
+    },
+    {
+      "game_id": "monkey-se",
+      "title": "The Secret of Monkey Island — Classic",
+      "hebrew_title": "הסוד של אי הקופים — הגרסה הקלאסית",
+      "canonical_artwork_id": "monkey-se",
+      "local_file": "hebrew/monkey-se-classic-v1.png",
+      "object_key": "banners/monkey-se/he/05d24f5b5f28.png",
+      "url": "https://assets.kitor.click/banners/monkey-se/he/05d24f5b5f28.png",
+      "sha256": "05d24f5b5f2806d3cc6add7eee4502458420b8379cee25526789e58445f0f028",
+      "bytes": 2829828,
+      "width": 2172,
+      "height": 724,
+      "sources": [
+        {
+          "source_page": "https://www.mobygames.com/game/616/the-secret-of-monkey-island/cover/group-4329/cover-43341/",
+          "image_url": "https://cdn.mobygames.com/covers/4529923-the-secret-of-monkey-island-dos-front-cover.jpg"
+        }
+      ]
+    },
+    {
+      "game_id": "monkey2-se",
+      "title": "Monkey Island 2: LeChuck's Revenge — Classic",
+      "hebrew_title": "אי הקופים 2 — נקמתו של לה־צ׳אק — הגרסה הקלאסית",
+      "canonical_artwork_id": "monkey2-se",
+      "local_file": "hebrew/monkey2-se-classic-v1.png",
+      "object_key": "banners/monkey2-se/he/ae3a73c4dbaf.png",
+      "url": "https://assets.kitor.click/banners/monkey2-se/he/ae3a73c4dbaf.png",
+      "sha256": "ae3a73c4dbaf8b579c305ce9e86934b2b7c458e0657a6e220b93b825de5ce9f4",
+      "bytes": 2665309,
+      "width": 2172,
+      "height": 724,
+      "sources": [
+        {
+          "source_page": "https://www.mobygames.com/game/289/monkey-island-2-lechucks-revenge/cover/group-3319/cover-324533/",
+          "image_url": "https://cdn.mobygames.com/covers/1005042-monkey-island-2-lechucks-revenge-dos-front-cover.jpg"
+        }
+      ]
+    },
+    {
+      "game_id": "sq1sci",
+      "title": "Space Quest I: Roger Wilco in the Sarien Encounter (VGA Remake)",
+      "hebrew_title": "מסע בחלל 1 — התקרית הסאריינית — הגרסה המחודשת",
+      "canonical_artwork_id": "sq1sci",
+      "local_file": "hebrew/sq1sci-v1.png",
+      "object_key": "banners/sq1sci/he/90140c038a1d.png",
+      "url": "https://assets.kitor.click/banners/sq1sci/he/90140c038a1d.png",
+      "sha256": "90140c038a1dbebbac42b4f8f5b1932bafd544c04e4ed4dd02179ae1e9500794",
+      "bytes": 2838224,
+      "width": 2172,
+      "height": 724,
+      "sources": [
+        {
+          "source": "MobyGames",
+          "source_page": "https://www.mobygames.com/game/187/space-quest-i-roger-wilco-in-the-sarien-encounter/covers/",
+          "image_url": "https://cdn.mobygames.com/covers/10020-space-quest-i-roger-wilco-in-the-sarien-encounter-dos-front-cove.jpg"
+        }
+      ]
+    },
+    {
+      "game_id": "kyra1-cd",
+      "title": "The Legend of Kyrandia",
+      "hebrew_title": "דברי ימי קירנדיה 1",
+      "canonical_artwork_id": "kyra1-cd",
+      "local_file": "hebrew/kyra1-cd-v2.png",
+      "object_key": "banners/kyra1-cd/he/cf48b870e9fe.png",
+      "url": "https://assets.kitor.click/banners/kyra1-cd/he/cf48b870e9fe.png",
+      "sha256": "cf48b870e9fe57a0ca988719bef1c2f5ae1ce8b54c077544916cf29705e24ea4",
+      "bytes": 2763106,
+      "width": 2172,
+      "height": 724,
+      "sources": [
+        {
+          "source": "GOG",
+          "source_page": "https://www.gog.com/game/legend_of_kyrandia",
+          "image_url": "https://images-2.gog-statics.com/39cdb35e7c546e1592a80ff405b210002fa428cee0d7232cd129d9e251e2a334.jpg"
+        }
+      ]
+    },
+    {
+      "game_id": "pq1",
+      "title": "Police Quest: In Pursuit of the Death Angel (EGA)",
+      "hebrew_title": "משימה משטרתית — במרדף אחר מלאך המוות",
+      "canonical_artwork_id": "pq1",
+      "local_file": "hebrew/pq1-v1.png",
+      "object_key": "banners/pq1/he/190585dcd5fe.png",
+      "url": "https://assets.kitor.click/banners/pq1/he/190585dcd5fe.png",
+      "sha256": "190585dcd5fef6067c630994ad988f31eb1b751b8af061b4842bd4d02e0d3c50",
+      "bytes": 2352677,
+      "width": 2172,
+      "height": 724,
+      "sources": [
+        {
+          "source": "Retro Freak Reviews",
+          "source_page": "https://retrofreakreviews.com/2017/02/15/police-quest-i-review/",
+          "image_url": "https://retrofreakreviews.com/wp-content/uploads/2017/01/223-police-quest-in-pursuit-of-the-death-angel-dos-front-cover.jpg"
+        }
+      ]
+    },
+    {
+      "game_id": "sq1",
+      "title": "Space Quest I: The Sarien Encounter (EGA)",
+      "hebrew_title": "מסע בחלל 1 — התקרית הסאריינית — הגרסה הקלאסית",
+      "canonical_artwork_id": "sq1",
+      "local_file": "hebrew/sq1-v1.png",
+      "object_key": "banners/sq1/he/ad0e5e775751.png",
+      "url": "https://assets.kitor.click/banners/sq1/he/ad0e5e775751.png",
+      "sha256": "ad0e5e775751a7cfe404d4e6dba9a375ccbea1ede66dd0b7929cee9d5150964c",
+      "bytes": 1513509,
+      "width": 2172,
+      "height": 724,
+      "sources": [
+        {
+          "source": "SpaceQuest.Net",
+          "source_page": "https://spacequest.net/misc/boxscans/",
+          "image_url": "https://spacequest.net/misc/boxscans/sq1ver1front.jpg"
+        }
+      ]
+    },
+    {
+      "game_id": "sq2",
+      "title": "Space Quest II: Vohaul’s Revenge",
+      "hebrew_title": "מסע בחלל 2 — נקמתו של ווהול",
+      "canonical_artwork_id": "sq2",
+      "local_file": "hebrew/sq2-v1.png",
+      "object_key": "banners/sq2/he/a07ffcd7dbed.png",
+      "url": "https://assets.kitor.click/banners/sq2/he/a07ffcd7dbed.png",
+      "sha256": "a07ffcd7dbed47d1a9202ee6461974d840fc57961354fe789df3e4853e08c68e",
+      "bytes": 2337547,
+      "width": 2172,
+      "height": 724,
+      "sources": [
+        {
+          "source": "SpaceQuest.Net",
+          "source_page": "https://spacequest.net/misc/boxscans/",
+          "image_url": "https://spacequest.net/misc/boxscans/sq2front.jpg"
+        },
+        {
+          "source": "GOG",
+          "source_page": "https://www.gog.com/game/space_quest_2_vohauls_revenge",
+          "image_url": "https://images-2.gog-statics.com/69d9cfacb46881984901b514e6011aca781ae3cac7298f93ac7aa8f01c7efa90.jpg"
+        }
+      ]
+    },
+    {
+      "game_id": "sq3",
+      "title": "Space Quest III: The Pirates of Pestulon",
+      "hebrew_title": "מסע בחלל 3 — הפיראטים מפסטולון",
+      "canonical_artwork_id": "sq3",
+      "local_file": "hebrew/sq3-v1.png",
+      "object_key": "banners/sq3/he/636987c302a7.png",
+      "url": "https://assets.kitor.click/banners/sq3/he/636987c302a7.png",
+      "sha256": "636987c302a72d92ac85b4e7c6a8bff7420dd3ac65b577238ddda30a99396c25",
+      "bytes": 2351469,
+      "width": 2172,
+      "height": 724,
+      "sources": [
+        {
+          "source_page": "https://spacequest.net/misc/boxscans/",
+          "image_url": "https://spacequest.net/misc/boxscans/sq3front.jpg"
+        },
+        {
+          "source": "GOG",
+          "source_page": "https://www.gog.com/game/space_quest_3_the_pirates_of_pestulon",
+          "image_url": "https://images-4.gog-statics.com/00cbfa2fcd3e82166f1d0917d08874773fbcf6dd7a7994e373ec66f9d8f05a59.jpg"
+        }
+      ]
+    },
+    {
+      "game_id": "sq4",
+      "title": "Space Quest IV: Roger Wilco and the Time Rippers",
+      "hebrew_title": "מסע בחלל 4 — רוג׳ר וילקו וקרעי הזמן",
+      "canonical_artwork_id": "sq4",
+      "local_file": "hebrew/sq4-v1.png",
+      "object_key": "banners/sq4/he/cf5d5bfe6be1.png",
+      "url": "https://assets.kitor.click/banners/sq4/he/cf5d5bfe6be1.png",
+      "sha256": "cf5d5bfe6be11d6dbae89e9e7815b3ad315bf3728bb50283d7cfad6d06e48938",
+      "bytes": 2540413,
+      "width": 2172,
+      "height": 724,
+      "sources": [
+        {
+          "source": "SpaceQuest.Net",
+          "source_page": "https://spacequest.net/misc/boxscans/",
+          "image_url": "https://spacequest.net/misc/boxscans/sq4front.jpg"
+        }
+      ]
+    },
+    {
+      "game_id": "sq5",
+      "title": "Space Quest V: The Next Mutation",
+      "hebrew_title": "מסע בחלל 5 — המוטציה הבאה",
+      "canonical_artwork_id": "sq5",
+      "local_file": "hebrew/sq5-v1.png",
+      "object_key": "banners/sq5/he/9171667bebc2.png",
+      "url": "https://assets.kitor.click/banners/sq5/he/9171667bebc2.png",
+      "sha256": "9171667bebc26e6dc1b66a06c054d171779df6b87b2b8158354e57c4c0dcb28b",
+      "bytes": 2807485,
+      "width": 2172,
+      "height": 724,
+      "sources": [
+        {
+          "source_page": "https://spacequest.net/misc/boxscans/",
+          "image_url": "https://spacequest.net/misc/boxscans/sq5front.jpg"
+        }
+      ]
+    },
+    {
+      "game_id": "torin",
+      "title": "Torin’s Passage",
+      "hebrew_title": "מסעותיו של טורין",
+      "canonical_artwork_id": "torin",
+      "local_file": "hebrew/torin-v1.png",
+      "object_key": "banners/torin/he/27647ea2a41e.png",
+      "url": "https://assets.kitor.click/banners/torin/he/27647ea2a41e.png",
+      "sha256": "27647ea2a41e26229c7de4e86a596946df06902b9115b576713bfd85cc517404",
+      "bytes": 1995575,
+      "width": 2172,
+      "height": 724,
+      "sources": [
+        {
+          "source": "GOG",
+          "source_page": "https://www.gog.com/game/torins_passage",
+          "image_url": "https://images-2.gog-statics.com/35e5c4619dc7e7b83f929f3b07e26641354ca5ea7cc4fed2d6336e499970a647.jpg"
+        }
+      ]
+    },
+    {
+      "game_id": "spyfox",
+      "title": "Spy Fox in Dry Cereal",
+      "hebrew_title": "שועל ריגול — דגנים יבשים",
+      "canonical_artwork_id": "spyfox",
+      "local_file": "hebrew/spyfox-v2.png",
+      "object_key": "banners/spyfox/he/92421a73465d.png",
+      "url": "https://assets.kitor.click/banners/spyfox/he/92421a73465d.png",
+      "sha256": "92421a73465dbf635cb5ae671b5e869013fdc4306a4b53421acb5909acd2af9c",
+      "bytes": 1527270,
+      "width": 2172,
+      "height": 724,
+      "sources": [
+        {
+          "source": "Steam",
+          "source_page": "https://store.steampowered.com/app/283980/",
+          "image_url": "https://cdn.akamai.steamstatic.com/steam/apps/283980/library_hero.jpg"
+        }
+      ]
+    },
+    {
+      "game_id": "pajama",
+      "title": "Pajama Sam: No Need to Hide When It’s Dark Outside",
+      "hebrew_title": "פיג׳מה סם — לא צריך להתחבא כשחשוך בחוץ",
+      "canonical_artwork_id": "pajama",
+      "local_file": "hebrew/pajama-v1.png",
+      "object_key": "banners/pajama/he/e1ba2aaa7688.png",
+      "url": "https://assets.kitor.click/banners/pajama/he/e1ba2aaa7688.png",
+      "sha256": "e1ba2aaa7688e7c8039473289fc7b21c57b8372ba6ddf9e8a0650a89f8a1d2ee",
+      "bytes": 1776587,
+      "width": 2172,
+      "height": 724,
+      "sources": [
+        {
+          "source": "GOG",
+          "source_page": "https://www.gog.com/game/pajama_sam_1",
+          "image_url": "https://images-1.gog-statics.com/9bb258fe28f3a870324ef9d2e61394fc7859191e329be0be3d7a669a61a8d929.jpg"
+        }
+      ]
+    },
+    {
+      "game_id": "toonstruck",
+      "title": "Toonstruck",
+      "hebrew_title": "טוּנסטרק",
+      "canonical_artwork_id": "toonstruck",
+      "local_file": "hebrew/toonstruck-v2.png",
+      "object_key": "banners/toonstruck/he/3a896699b933.png",
+      "url": "https://assets.kitor.click/banners/toonstruck/he/3a896699b933.png",
+      "sha256": "3a896699b9331e0ccc40d74cd622dfbcf1f7e701f4676788abb53c3e58497597",
+      "bytes": 2043157,
+      "width": 2172,
+      "height": 724,
+      "sources": [
+        {
+          "source": "GOG",
+          "source_page": "https://www.gog.com/game/toonstruck",
+          "image_url": "https://images-2.gog-statics.com/4d433578ba5662dfdb2b5ebed5e66b0fea667b56799aecbf281d492fea05fcde.jpg"
+        }
+      ]
+    },
+    {
+      "game_id": "gob2",
+      "title": "Gobliins 2: The Prince Buffoon",
+      "hebrew_title": "גובלינים 2 — הנסיך מוקיון",
+      "canonical_artwork_id": "gob2",
+      "local_file": "hebrew/gob2-v1.png",
+      "object_key": "banners/gob2/he/864d7f4c2ad8.png",
+      "url": "https://assets.kitor.click/banners/gob2/he/864d7f4c2ad8.png",
+      "sha256": "864d7f4c2ad845458fc54cc66b532612b28af5ce40b074acfa615886d10710c8",
+      "bytes": 3413273,
+      "width": 2172,
+      "height": 724,
+      "sources": [
+        {
+          "source": "GOG",
+          "source_page": "https://www.gog.com/game/gobliins_2_the_prince_buffoon",
+          "image_url": "https://images-3.gog-statics.com/378e8e00e2bd34ad76d0974a5bc18fd3a465a919e0ad804cc3387027a4527021.jpg"
+        }
+      ]
+    },
+    {
+      "game_id": "tlj",
+      "title": "The Longest Journey",
+      "hebrew_title": "המסע הארוך ביותר",
+      "canonical_artwork_id": "tlj",
+      "local_file": "hebrew/tlj-v1.png",
+      "object_key": "banners/tlj/he/92f9bfc8b368.png",
+      "url": "https://assets.kitor.click/banners/tlj/he/92f9bfc8b368.png",
+      "sha256": "92f9bfc8b368a4b227bc16888fc44dd39b22b221da23cd26b8da29bbf32a687a",
+      "bytes": 2170365,
+      "width": 2172,
+      "height": 724,
+      "sources": [
+        {
+          "source": "GOG",
+          "source_page": "https://www.gog.com/game/the_longest_journey",
+          "image_url": "https://images-4.gog-statics.com/b853fb5fd540784d92a808c0b081110894b69e548a1216219ddc6c4d5a3895b2.jpg"
+        }
+      ]
+    },
+    {
+      "game_id": "sky",
+      "title": "Beneath a Steel Sky",
+      "hebrew_title": "מתחת לשמי פלדה",
+      "canonical_artwork_id": "sky",
+      "local_file": "hebrew/sky-v1.png",
+      "object_key": "banners/sky/he/77654eee1d8e.png",
+      "url": "https://assets.kitor.click/banners/sky/he/77654eee1d8e.png",
+      "sha256": "77654eee1d8e21f385d35158e93c77d5ce796e72e54e79a8ec5d6d7bba3f9847",
+      "bytes": 2915281,
+      "width": 2172,
+      "height": 724,
+      "sources": [
+        {
+          "source": "GOG",
+          "source_page": "https://www.gog.com/game/beneath_a_steel_sky",
+          "image_url": "https://images-2.gog-statics.com/072e4bd714ee4bebe88f112fab88b4f35df066e7138a6dd76b52a9275543a775.jpg"
+        }
+      ]
+    },
+    {
+      "game_id": "stanley-parable",
+      "title": "The Stanley Parable (2013)",
+      "hebrew_title": "המשל של סטנלי",
+      "canonical_artwork_id": "stanley-parable",
+      "local_file": "hebrew/stanley-parable-v1.png",
+      "object_key": "banners/stanley-parable/he/72ebee5ad1a9.png",
+      "url": "https://assets.kitor.click/banners/stanley-parable/he/72ebee5ad1a9.png",
+      "sha256": "72ebee5ad1a981fb01112aeb66869e8f2ed42a829f93c6541c4d352b78e8f40f",
+      "bytes": 1574844,
+      "width": 2172,
+      "height": 724,
+      "sources": [
+        {
+          "source": "Steam",
+          "source_page": "https://store.steampowered.com/app/221910/",
+          "image_url": "https://cdn.akamai.steamstatic.com/steam/apps/221910/library_hero.jpg"
+        }
+      ]
+    },
+    {
+      "game_id": "tesla-effect",
+      "title": "Tesla Effect: A Tex Murphy Adventure",
+      "hebrew_title": "אפקט טסלה",
+      "canonical_artwork_id": "tesla-effect",
+      "local_file": "hebrew/tesla-effect-v2.png",
+      "object_key": "banners/tesla-effect/he/e3da19cc8027.png",
+      "url": "https://assets.kitor.click/banners/tesla-effect/he/e3da19cc8027.png",
+      "sha256": "e3da19cc802739d82fc2682cc5c909629c82764b0945a16ff1b8fd7c6984abbc",
+      "bytes": 1976516,
+      "width": 2172,
+      "height": 724,
+      "sources": [
+        {
+          "source": "Steam",
+          "source_page": "https://store.steampowered.com/app/261510/",
+          "image_url": "https://cdn.akamai.steamstatic.com/steam/apps/261510/library_hero.jpg"
+        }
+      ]
+    },
+    {
+      "game_id": "ethan-carter",
+      "title": "The Vanishing of Ethan Carter (original)",
+      "hebrew_title": "היעלמותו של אֵיתן קרטר",
+      "canonical_artwork_id": "ethan-carter",
+      "local_file": "hebrew/ethan-carter-v2.png",
+      "object_key": "banners/ethan-carter/he/55f9f27d05e3.png",
+      "url": "https://assets.kitor.click/banners/ethan-carter/he/55f9f27d05e3.png",
+      "sha256": "55f9f27d05e32f04891b2972cde3709082eb3a8441582c190dd4f1f58cfebcc4",
+      "bytes": 2598697,
+      "width": 2172,
+      "height": 724,
+      "sources": [
+        {
+          "source": "Steam",
+          "source_page": "https://store.steampowered.com/app/258520/",
+          "image_url": "https://cdn.akamai.steamstatic.com/steam/apps/258520/library_hero.jpg"
+        }
+      ]
+    },
+    {
+      "game_id": "life-is-strange",
+      "title": "Life Is Strange — Episodes 1–3",
+      "hebrew_title": "החיים מוזרים",
+      "canonical_artwork_id": "life-is-strange",
+      "local_file": "hebrew/life-is-strange-v2.png",
+      "object_key": "banners/life-is-strange/he/1d021c8858c1.png",
+      "url": "https://assets.kitor.click/banners/life-is-strange/he/1d021c8858c1.png",
+      "sha256": "1d021c8858c1dcb4e40a10cc1c749e89696934bb28a498b4b6e2155efb9a8b9a",
+      "bytes": 2416469,
+      "width": 2172,
+      "height": 724,
+      "sources": [
+        {
+          "source": "Steam",
+          "source_page": "https://store.steampowered.com/app/319630/",
+          "image_url": "https://cdn.akamai.steamstatic.com/steam/apps/319630/library_hero.jpg"
+        }
+      ]
+    },
+    {
+      "game_id": "portal2",
+      "title": "Portal 2",
+      "hebrew_title": "פורטל 2",
+      "canonical_artwork_id": "portal2",
+      "local_file": "hebrew/portal2-v1.png",
+      "object_key": "banners/portal2/he/0715bc413735.png",
+      "url": "https://assets.kitor.click/banners/portal2/he/0715bc413735.png",
+      "sha256": "0715bc41373590ef462a668d9e676de4353ad26dabaf3ed60c16bcfd7736c84e",
+      "bytes": 2009718,
+      "width": 2172,
+      "height": 724,
+      "sources": [
+        {
+          "source": "Steam",
+          "source_page": "https://store.steampowered.com/app/620/",
+          "image_url": "https://cdn.akamai.steamstatic.com/steam/apps/620/library_hero.jpg"
+        }
+      ]
+    },
+    {
+      "game_id": "journey-down1",
+      "title": "The Journey Down: Chapter One",
+      "hebrew_title": "המסע למטה — פרק ראשון",
+      "canonical_artwork_id": "journey-down1",
+      "local_file": "hebrew/journey-down1-v1.png",
+      "object_key": "banners/journey-down1/he/0a369fdfc82d.png",
+      "url": "https://assets.kitor.click/banners/journey-down1/he/0a369fdfc82d.png",
+      "sha256": "0a369fdfc82df3ccddb7a5cdb7d284f23aaa95b1c1044076bd473ea8cb5e4149",
+      "bytes": 2096783,
+      "width": 2172,
+      "height": 724,
+      "sources": [
+        {
+          "source": "Steam",
+          "source_page": "https://store.steampowered.com/app/220090/",
+          "image_url": "https://cdn.akamai.steamstatic.com/steam/apps/220090/library_hero.jpg"
+        }
+      ]
+    },
+    {
+      "game_id": "kathy-rain-dc",
+      "title": "Kathy Rain: Director's Cut",
+      "hebrew_title": "קתי ריין — גרסת הבמאי",
+      "canonical_artwork_id": "kathy-rain-dc",
+      "local_file": "hebrew/kathy-rain-dc-v1.png",
+      "object_key": "banners/kathy-rain-dc/he/02be6af12fe1.png",
+      "url": "https://assets.kitor.click/banners/kathy-rain-dc/he/02be6af12fe1.png",
+      "sha256": "02be6af12fe1b7ed04b8bb9f448b53decc70245de79c1fd06ba2de3b771cfadd",
+      "bytes": 1619663,
+      "width": 2172,
+      "height": 724,
+      "sources": [
+        {
+          "source": "Steam",
+          "source_page": "https://store.steampowered.com/app/1395030/",
+          "image_url": "https://cdn.akamai.steamstatic.com/steam/apps/1395030/library_hero.jpg"
+        }
+      ]
+    },
+    {
+      "game_id": "drifter",
+      "title": "The Drifter",
+      "hebrew_title": "הנווד",
+      "canonical_artwork_id": "drifter",
+      "local_file": "hebrew/drifter-v1.png",
+      "object_key": "banners/drifter/he/0e5112782cfb.png",
+      "url": "https://assets.kitor.click/banners/drifter/he/0e5112782cfb.png",
+      "sha256": "0e5112782cfbc76e1cc7ce753d526b25e2e9d2b662ebf2911930742af52838da",
+      "bytes": 1456780,
+      "width": 2172,
+      "height": 724,
+      "sources": [
+        {
+          "source": "Steam",
+          "source_page": "https://store.steampowered.com/app/1170570/",
+          "image_url": "https://cdn.akamai.steamstatic.com/steam/apps/1170570/library_hero.jpg"
+        }
+      ]
+    },
+    {
+      "game_id": "owlboy",
+      "title": "ילד הינשוף — Owlboy",
+      "hebrew_title": "ילד הינשוף",
+      "canonical_artwork_id": "owlboy",
+      "local_file": "hebrew/owlboy-v1.png",
+      "object_key": "banners/owlboy/he/845cfdee5dd8.png",
+      "url": "https://assets.kitor.click/banners/owlboy/he/845cfdee5dd8.png",
+      "sha256": "845cfdee5dd859633a774e8b2901cff5150ab2980fd7e50a9e8763cd2e841ccc",
+      "bytes": 1866963,
+      "width": 2172,
+      "height": 724,
+      "sources": [
+        {
+          "source": "Steam",
+          "source_page": "https://store.steampowered.com/app/115800/",
+          "image_url": "https://cdn.akamai.steamstatic.com/steam/apps/115800/library_hero.jpg"
+        }
+      ]
+    },
+    {
+      "game_id": "tentacle",
+      "title": "Day of the Tentacle (Classic)",
+      "hebrew_title": "יומו של הטנטקל — הגרסה הקלאסית",
+      "canonical_artwork_id": "tentacle",
+      "local_file": "hebrew/tentacle-v1.png",
+      "object_key": "banners/tentacle/he/1296b65d4f53.png",
+      "url": "https://assets.kitor.click/banners/tentacle/he/1296b65d4f53.png",
+      "sha256": "1296b65d4f5331e95bb39f770cb83a6d127f888c722f973bd823277a540270b2",
+      "bytes": 2012035,
+      "width": 2172,
+      "height": 724,
+      "sources": [
+        {
+          "source": "Original 1993 cover via Wikimedia",
+          "source_page": "https://en.wikipedia.org/wiki/Day_of_the_Tentacle",
+          "image_url": "https://upload.wikimedia.org/wikipedia/en/7/79/Day_of_the_Tentacle_artwork.jpg"
+        }
+      ]
+    },
+    {
+      "game_id": "day-of-the-tentacle-remastered",
+      "title": "Day of the Tentacle Remastered",
+      "hebrew_title": "יומו של הטנטקל — הגרסה המחודשת",
+      "canonical_artwork_id": "day-of-the-tentacle-remastered",
+      "local_file": "hebrew/day-of-the-tentacle-remastered-v1.png",
+      "object_key": "banners/day-of-the-tentacle-remastered/he/39500ef8d9b8.png",
+      "url": "https://assets.kitor.click/banners/day-of-the-tentacle-remastered/he/39500ef8d9b8.png",
+      "sha256": "39500ef8d9b8dd99911af1a4856c6693decb58ade84e797fac7e02eb3e6cfac2",
+      "bytes": 1785727,
+      "width": 2172,
+      "height": 724,
+      "sources": [
+        {
+          "source": "Steam",
+          "source_page": "https://store.steampowered.com/app/388210/",
+          "image_url": "https://cdn.akamai.steamstatic.com/steam/apps/388210/library_hero.jpg"
+        }
+      ]
+    },
+    {
+      "game_id": "grim-fandango-remastered",
+      "title": "Grim Fandango Remastered",
+      "hebrew_title": "גרים פנדנגו — הגרסה המחודשת",
+      "canonical_artwork_id": "grim-fandango-remastered",
+      "local_file": "hebrew/grim-fandango-remastered-v1.png",
+      "object_key": "banners/grim-fandango-remastered/he/c1f95d8b730e.png",
+      "url": "https://assets.kitor.click/banners/grim-fandango-remastered/he/c1f95d8b730e.png",
+      "sha256": "c1f95d8b730e2175f979aaec5cfa223d8e5ce13cb713b78f85dd5e6b1f3dabf8",
+      "bytes": 3264978,
+      "width": 2172,
+      "height": 724,
+      "sources": [
+        {
+          "source": "GOG",
+          "source_page": "https://www.gog.com/game/grim_fandango_remastered",
+          "image_url": "https://images-2.gog-statics.com/8ce25a8cdbc73c34246fac31fd9a5f1a22c692baed8556835edcbad8d8146cb7.jpg"
+        }
+      ]
+    },
+    {
+      "game_id": "monkey-se-native",
+      "title": "The Secret of Monkey Island: Special Edition (Native Remastered)",
+      "hebrew_title": "הסוד של אי הקופים — מהדורה מיוחדת",
+      "canonical_artwork_id": "monkey-se-native",
+      "local_file": "hebrew/monkey-se-v1.png",
+      "object_key": "banners/monkey-se-native/he/ede1afee8048.png",
+      "url": "https://assets.kitor.click/banners/monkey-se-native/he/ede1afee8048.png",
+      "sha256": "ede1afee804833460467a8b88b0be0f64c7b2785ab2c527db2f2258d440eb07a",
+      "bytes": 2407609,
+      "width": 2172,
+      "height": 724,
+      "sources": [
+        {
+          "source": "GOG",
+          "source_page": "https://www.gog.com/game/the_secret_of_monkey_island_special_edition",
+          "image_url": "https://images-3.gog-statics.com/c4942dcfae952344a6f6847019751274416fdc3c7946724d3ebf6b7dab80e9fd.jpg"
+        }
+      ]
+    },
+    {
+      "game_id": "monkey2-se-native",
+      "title": "Monkey Island 2: LeChuck's Revenge Special Edition (Native Remastered)",
+      "hebrew_title": "אי הקופים 2 — נקמתו של לה־צ׳אק — מהדורה מיוחדת",
+      "canonical_artwork_id": "monkey2-se-native",
+      "local_file": "hebrew/monkey2-se-v2.png",
+      "object_key": "banners/monkey2-se-native/he/0ab91ddea2cf.png",
+      "url": "https://assets.kitor.click/banners/monkey2-se-native/he/0ab91ddea2cf.png",
+      "sha256": "0ab91ddea2cf8bd8daeae891fb63207b0a3ee1abce75f5b49bdf2b9964eef0e3",
+      "bytes": 2478803,
+      "width": 2172,
+      "height": 724,
+      "sources": [
+        {
+          "source": "GOG",
+          "source_page": "https://www.gog.com/game/monkey_island_2_special_edition_lechucks_revenge",
+          "image_url": "https://images-1.gog-statics.com/326e4d9107bb9a8d83d690fbfc31595885634b35d59d2ba78e2e7cbded597c26.jpg"
+        }
+      ]
+    },
+    {
+      "game_id": "silver-pines",
+      "title": "Silver Pines",
+      "hebrew_title": "סילבר פיינס",
+      "canonical_artwork_id": "silver-pines",
+      "local_file": "hebrew/silver-pines-v1.png",
+      "object_key": "banners/silver-pines/he/9f5bdaa02def.png",
+      "url": "https://assets.kitor.click/banners/silver-pines/he/9f5bdaa02def.png",
+      "sha256": "9f5bdaa02defb1bcd18aeade888f05c55a568b8b04f685aad2917b0d53eb0dd6",
+      "bytes": 1939126,
+      "width": 2172,
+      "height": 724,
+      "sources": [
+        {
+          "source": "Steam",
+          "source_page": "https://store.steampowered.com/app/2333000/",
+          "image_url": "https://cdn.akamai.steamstatic.com/steam/apps/2333000/library_hero.jpg"
+        }
+      ]
+    },
+    {
+      "game_id": "jenny-leclue",
+      "title": "Jenny LeClue - Detectivu",
+      "hebrew_title": "ג׳ני לקלו",
+      "canonical_artwork_id": "jenny-leclue",
+      "local_file": "hebrew/jenny-leclue-v1.png",
+      "object_key": "banners/jenny-leclue/he/64bf594d7ff5.png",
+      "url": "https://assets.kitor.click/banners/jenny-leclue/he/64bf594d7ff5.png",
+      "sha256": "64bf594d7ff5218e2dd9f8da0695a14f1e2bde0819c67aa3d4899113dec7e86a",
+      "bytes": 2001144,
+      "width": 2172,
+      "height": 724,
+      "sources": [
+        {
+          "source": "Steam",
+          "source_page": "https://store.steampowered.com/app/319870/",
+          "image_url": "https://cdn.akamai.steamstatic.com/steam/apps/319870/library_hero.jpg"
+        }
+      ]
+    }
+  ]
+}

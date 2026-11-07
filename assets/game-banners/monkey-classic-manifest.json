@@ -1,0 +1,32 @@
+[
+  {
+    "game_id": "monkey-se",
+    "edition": "classic",
+    "method": "built-in image_gen; generated landscape adaptation of original box scan",
+    "source_page": "https://www.mobygames.com/game/616/the-secret-of-monkey-island/cover/group-4329/cover-43341/",
+    "source_file": "../../kitor/public/monkey-classic-en.jpg",
+    "english": "originals/monkey-classic-en.png",
+    "hebrew": "hebrew/monkey-classic-he.png",
+    "prompts": {
+      "en": "Create a wide 16:9 game library banner adapted from the attached original classic box scan. Use the scan as visual reference, preserving the painted classic character identities, costumes, palette, skull/pirate setting, and period illustration style. Recompose horizontally without stretching the portrait or cropping faces. Main characters on right half, evocative background on left behind clearly readable title \"The Secret of Monkey Island\" with smaller \"CLASSIC\". Match the original cover's lettering design. Remove box edges, wear, platform stickers, publisher badges and fine print. This is the classic edition, do not use remastered character designs. Keep title inside central 80% safe area. Polished flat artwork, not a box mockup.",
+      "he": "Localize only the title lettering in this classic Monkey Island wide banner. Preserve every character, face, pose, background, color, composition and 16:9 aspect ratio. Replace \"The Secret of\" with exact Hebrew \"הסוד של\", replace \"Monkey Island\" with exact Hebrew \"אי הקופים\", and replace \"CLASSIC\" with \"הגרסה הקלאסית\". Match the original purple black-shadow lettering style, keep text readable right to left with comfortable safe margins. No other changes."
+    },
+    "review": "Visually checked Hebrew text and classic illustration identity; generated adaptation changes composition and is not an official banner",
+    "retrieved": "2026-11-07"
+  },
+  {
+    "game_id": "monkey2-se",
+    "edition": "classic",
+    "method": "built-in image_gen; generated landscape adaptation of original box scan",
+    "source_page": "https://www.mobygames.com/game/289/monkey-island-2-lechucks-revenge/cover/group-3319/cover-324533/",
+    "source_file": "../../kitor/public/monkey2-classic-en.jpg",
+    "english": "originals/monkey2-classic-en.png",
+    "hebrew": "hebrew/monkey2-classic-he.png",
+    "prompts": {
+      "en": "Create a wide 16:9 game library banner adapted from the attached original classic box scan. Use the scan as visual reference, preserving the painted classic character identities, costumes, palette, skull/pirate setting, and period illustration style. Recompose horizontally without stretching the portrait or cropping faces. Main characters on right half, evocative background on left behind clearly readable title \"Monkey Island 2: LeChuck's Revenge\" with smaller \"CLASSIC\". Match the original cover's lettering design. Remove box edges, wear, platform stickers, publisher badges and fine print. This is the classic edition, do not use remastered character designs. Keep title inside central 80% safe area. Polished flat artwork, not a box mockup.",
+      "he": "Localize only title lettering in this wide classic Monkey Island 2 banner. Preserve every character, face, pose, background, palette, composition and 16:9 aspect ratio. Replace \"LeChuck’s Revenge\" with exact Hebrew \"נקמתו של לֶה־צַ׳אק\". Replace \"Monkey Island 2\" with exact Hebrew \"אי הקופים 2\", keeping the large red numeral 2. Replace \"CLASSIC\" with \"הגרסה הקלאסית\". Match golden black-shadow logo lettering and parchment subtitle. Hebrew right-to-left, precise vowel marks on לֶה־צַ׳אק, readable safe margins. No other changes."
+    },
+    "review": "Visually checked Hebrew text and classic illustration identity; generated adaptation changes composition and is not an official banner",
+    "retrieved": "2026-11-07"
+  }
+]

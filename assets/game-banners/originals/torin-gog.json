@@ -1,0 +1,398 @@
+{
+  "id": 1207659044,
+  "title": "Torin\u0027s Passage",
+  "purchase_link": "https:\/\/www.gog.com\/en\/checkout\/manual\/torins_passage",
+  "slug": "torins_passage",
+  "content_system_compatibility": { "windows": true, "osx": false, "linux": false },
+  "languages": { "en": "English" },
+  "links": {
+    "purchase_link": "https:\/\/www.gog.com\/en\/checkout\/manual\/torins_passage",
+    "product_card": "https:\/\/www.gog.com\/game\/torins_passage",
+    "support": "https:\/\/www.gog.com\/support\/torins_passage",
+    "forum": "https:\/\/www.gog.com\/forum\/torins_passage"
+  },
+  "in_development": { "active": false, "until": null },
+  "is_secret": false,
+  "is_installable": true,
+  "game_type": "game",
+  "is_pre_order": false,
+  "release_date": "2012-05-17T05:57:00+0200",
+  "images": {
+    "background": "\/\/images-2.gog-statics.com\/35e5c4619dc7e7b83f929f3b07e26641354ca5ea7cc4fed2d6336e499970a647.jpg",
+    "logo": "\/\/images-2.gog-statics.com\/63da946df7e7e0b4d2017967e05a61c6ebcb62f2be95bbcef0abc0c9722928dd_glx_logo.jpg",
+    "logo2x": "\/\/images-4.gog-statics.com\/63da946df7e7e0b4d2017967e05a61c6ebcb62f2be95bbcef0abc0c9722928dd_glx_logo_2x.jpg",
+    "sidebarIcon": "\/\/images-2.gog-statics.com\/5dcd440445ecf234fb527e715a63ea31aa7554d8ebb234d166b66e00e2c41d86_sbicon.png",
+    "sidebarIcon2x": "\/\/images-3.gog-statics.com\/5dcd440445ecf234fb527e715a63ea31aa7554d8ebb234d166b66e00e2c41d86_sbicon_2x.png",
+    "menuNotificationAv": "\/\/images-2.gog-statics.com\/5dcd440445ecf234fb527e715a63ea31aa7554d8ebb234d166b66e00e2c41d86_menu_notification_av.png",
+    "menuNotificationAv2": "\/\/images-2.gog-statics.com\/5dcd440445ecf234fb527e715a63ea31aa7554d8ebb234d166b66e00e2c41d86_menu_notification_av2.png",
+    "icon": "\/\/images-4.gog-statics.com\/5dcd440445ecf234fb527e715a63ea31aa7554d8ebb234d166b66e00e2c41d86.png"
+  },
+  "dlcs": [],
+  "description": {
+    "lead": "Curse the quick thinking of the Arch Authority, snatching the child away before his doom was sealed. Had the lad been with the rest, surely my suffering would have ceased years ago. At last I have found him, but in a world of isolation and innocence. He has no idea of the twists and turns his life has taken thus far, nor the path I have planned for his very short future. Just let him try to discover the truth, and learn the secrets of Strata\u0027s five nested worlds. Watching his struggle will be an amusement. Facing him will be horribly wonderful.\n\u003Cbr\u003E\u003Cbr\u003E\nTorin\u0027s Passage is a game for children, but like all really good games, books, and movies with similar target audience it also has that knowing wink towards older audience, and the best thing about this game is that it \u201cwinks\u201d a lot. This is clearly one the the best adventure games from Sierra, made by a fantastic team that included talents such as Al Lowe and Michel Legrand. So if you are an adventure games fan this is a no-brainer. If not so much, then try it anyway because everyone can use a good laugh and this game is filled with hilarity.\n\u003Cbr\u003E\n\u003Cul\u003E\u003Cli\u003EFunny and fascinating story from the mind of Al Lowe (creator of Leisure Suit Larry), full of comical, twists, and surprises.\u003C\/li\u003E\u003Cli\u003EChallenging puzzles that will put your brain-muscle to hard work; but program on-line hints ensure no one gets \u0022stuck.\u0022\u003C\/li\u003E\u003Cli\u003EBeautiful cartoony graphics and outstanding music--composed by three-time Academy Award-winning composer Michel Legrand.\u003C\/li\u003E\u003C\/ul\u003E",
+    "full": "Curse the quick thinking of the Arch Authority, snatching the child away before his doom was sealed. Had the lad been with the rest, surely my suffering would have ceased years ago. At last I have found him, but in a world of isolation and innocence. He has no idea of the twists and turns his life has taken thus far, nor the path I have planned for his very short future. Just let him try to discover the truth, and learn the secrets of Strata\u0027s five nested worlds. Watching his struggle will be an amusement. Facing him will be horribly wonderful.\n\u003Cbr\u003E\u003Cbr\u003E\nTorin\u0027s Passage is a game for children, but like all really good games, books, and movies with similar target audience it also has that knowing wink towards older audience, and the best thing about this game is that it \u201cwinks\u201d a lot. This is clearly one the the best adventure games from Sierra, made by a fantastic team that included talents such as Al Lowe and Michel Legrand. So if you are an adventure games fan this is a no-brainer. If not so much, then try it anyway because everyone can use a good laugh and this game is filled with hilarity.\n\u003Cbr\u003E\n\u003Cul\u003E\u003Cli\u003EFunny and fascinating story from the mind of Al Lowe (creator of Leisure Suit Larry), full of comical, twists, and surprises.\u003C\/li\u003E\u003Cli\u003EChallenging puzzles that will put your brain-muscle to hard work; but program on-line hints ensure no one gets \u0022stuck.\u0022\u003C\/li\u003E\u003Cli\u003EBeautiful cartoony graphics and outstanding music--composed by three-time Academy Award-winning composer Michel Legrand.\u003C\/li\u003E\u003C\/ul\u003E\n\u003Cbr\u003E\n\u003Cul\u003E\u003Cli\u003EFunny and fascinating story from the mind of Al Lowe (creator of Leisure Suit Larry), full of comical, twists, and surprises.\u003C\/li\u003E\u003Cli\u003E\u003Cbr\u003EChallenging puzzles that will put your brain-muscle to hard work; but program on-line hints ensure no one gets \u0022stuck.\u0022\u003C\/li\u003E\u003Cli\u003E\u003Cbr\u003EBeautiful cartoony graphics and outstanding music--composed by three-time Academy Award-winning composer Michel Legrand.\u003C\/li\u003E\u003C\/ul\u003E",
+    "whats_cool_about_it": "Funny and fascinating story from the mind of Al Lowe (creator of Leisure Suit Larry), full of comical, twists, and surprises.\n\u003Cbr\u003EChallenging puzzles that will put your brain-muscle to hard work; but program on-line hints ensure no one gets \u0022stuck.\u0022\n\u003Cbr\u003EBeautiful cartoony graphics and outstanding music--composed by three-time Academy Award-winning composer Michel Legrand."
+  },
+  "screenshots": [
+    {
+      "image_id": "a5e758ff0fd25709f6d284438c6d72f3c9715b717a1c85016c4f5d25da896e0b",
+      "formatter_template_url": "https:\/\/images-3.gog-statics.com\/a5e758ff0fd25709f6d284438c6d72f3c9715b717a1c85016c4f5d25da896e0b_{formatter}.png",
+      "formatted_images": [
+        {
+          "formatter_name": "ggvgt",
+          "image_url": "https:\/\/images-3.gog-statics.com\/a5e758ff0fd25709f6d284438c6d72f3c9715b717a1c85016c4f5d25da896e0b_ggvgt.jpg"
+        },
+        {
+          "formatter_name": "ggvgt_2x",
+          "image_url": "https:\/\/images-1.gog-statics.com\/a5e758ff0fd25709f6d284438c6d72f3c9715b717a1c85016c4f5d25da896e0b_ggvgt_2x.jpg"
+        },
+        {
+          "formatter_name": "ggvgm",
+          "image_url": "https:\/\/images-2.gog-statics.com\/a5e758ff0fd25709f6d284438c6d72f3c9715b717a1c85016c4f5d25da896e0b_ggvgm.jpg"
+        },
+        {
+          "formatter_name": "ggvgm_2x",
+          "image_url": "https:\/\/images-1.gog-statics.com\/a5e758ff0fd25709f6d284438c6d72f3c9715b717a1c85016c4f5d25da896e0b_ggvgm_2x.jpg"
+        },
+        {
+          "formatter_name": "ggvgl",
+          "image_url": "https:\/\/images-2.gog-statics.com\/a5e758ff0fd25709f6d284438c6d72f3c9715b717a1c85016c4f5d25da896e0b_ggvgl.jpg"
+        },
+        {
+          "formatter_name": "ggvgl_2x",
+          "image_url": "https:\/\/images-3.gog-statics.com\/a5e758ff0fd25709f6d284438c6d72f3c9715b717a1c85016c4f5d25da896e0b_ggvgl_2x.jpg"
+        }
+      ]
+    },
+    {
+      "image_id": "287119e51d0464bf610880c11d44d4a73f164e4575271031bc774c04e8f1ae58",
+      "formatter_template_url": "https:\/\/images-1.gog-statics.com\/287119e51d0464bf610880c11d44d4a73f164e4575271031bc774c04e8f1ae58_{formatter}.png",
+      "formatted_images": [
+        {
+          "formatter_name": "ggvgt",
+          "image_url": "https:\/\/images-4.gog-statics.com\/287119e51d0464bf610880c11d44d4a73f164e4575271031bc774c04e8f1ae58_ggvgt.jpg"
+        },
+        {
+          "formatter_name": "ggvgt_2x",
+          "image_url": "https:\/\/images-4.gog-statics.com\/287119e51d0464bf610880c11d44d4a73f164e4575271031bc774c04e8f1ae58_ggvgt_2x.jpg"
+        },
+        {
+          "formatter_name": "ggvgm",
+          "image_url": "https:\/\/images-1.gog-statics.com\/287119e51d0464bf610880c11d44d4a73f164e4575271031bc774c04e8f1ae58_ggvgm.jpg"
+        },
+        {
+          "formatter_name": "ggvgm_2x",
+          "image_url": "https:\/\/images-4.gog-statics.com\/287119e51d0464bf610880c11d44d4a73f164e4575271031bc774c04e8f1ae58_ggvgm_2x.jpg"
+        },
+        {
+          "formatter_name": "ggvgl",
+          "image_url": "https:\/\/images-1.gog-statics.com\/287119e51d0464bf610880c11d44d4a73f164e4575271031bc774c04e8f1ae58_ggvgl.jpg"
+        },
+        {
+          "formatter_name": "ggvgl_2x",
+          "image_url": "https:\/\/images-2.gog-statics.com\/287119e51d0464bf610880c11d44d4a73f164e4575271031bc774c04e8f1ae58_ggvgl_2x.jpg"
+        }
+      ]
+    },
+    {
+      "image_id": "6ccb91604b82621816444001fd05b11e3100006346603f35c3b58cc29c087c5a",
+      "formatter_template_url": "https:\/\/images-2.gog-statics.com\/6ccb91604b82621816444001fd05b11e3100006346603f35c3b58cc29c087c5a_{formatter}.png",
+      "formatted_images": [
+        {
+          "formatter_name": "ggvgt",
+          "image_url": "https:\/\/images-4.gog-statics.com\/6ccb91604b82621816444001fd05b11e3100006346603f35c3b58cc29c087c5a_ggvgt.jpg"
+        },
+        {
+          "formatter_name": "ggvgt_2x",
+          "image_url": "https:\/\/images-3.gog-statics.com\/6ccb91604b82621816444001fd05b11e3100006346603f35c3b58cc29c087c5a_ggvgt_2x.jpg"
+        },
+        {
+          "formatter_name": "ggvgm",
+          "image_url": "https:\/\/images-1.gog-statics.com\/6ccb91604b82621816444001fd05b11e3100006346603f35c3b58cc29c087c5a_ggvgm.jpg"
+        },
+        {
+          "formatter_name": "ggvgm_2x",
+          "image_url": "https:\/\/images-3.gog-statics.com\/6ccb91604b82621816444001fd05b11e3100006346603f35c3b58cc29c087c5a_ggvgm_2x.jpg"
+        },
+        {
+          "formatter_name": "ggvgl",
+          "image_url": "https:\/\/images-1.gog-statics.com\/6ccb91604b82621816444001fd05b11e3100006346603f35c3b58cc29c087c5a_ggvgl.jpg"
+        },
+        {
+          "formatter_name": "ggvgl_2x",
+          "image_url": "https:\/\/images-1.gog-statics.com\/6ccb91604b82621816444001fd05b11e3100006346603f35c3b58cc29c087c5a_ggvgl_2x.jpg"
+        }
+      ]
+    },
+    {
+      "image_id": "60bfe4da703d46748bac92f51bf7ef89dfff760f67cc800374dbc6fa77f29878",
+      "formatter_template_url": "https:\/\/images-3.gog-statics.com\/60bfe4da703d46748bac92f51bf7ef89dfff760f67cc800374dbc6fa77f29878_{formatter}.png",
+      "formatted_images": [
+        {
+          "formatter_name": "ggvgt",
+          "image_url": "https:\/\/images-2.gog-statics.com\/60bfe4da703d46748bac92f51bf7ef89dfff760f67cc800374dbc6fa77f29878_ggvgt.jpg"
+        },
+        {
+          "formatter_name": "ggvgt_2x",
+          "image_url": "https:\/\/images-4.gog-statics.com\/60bfe4da703d46748bac92f51bf7ef89dfff760f67cc800374dbc6fa77f29878_ggvgt_2x.jpg"
+        },
+        {
+          "formatter_name": "ggvgm",
+          "image_url": "https:\/\/images-3.gog-statics.com\/60bfe4da703d46748bac92f51bf7ef89dfff760f67cc800374dbc6fa77f29878_ggvgm.jpg"
+        },
+        {
+          "formatter_name": "ggvgm_2x",
+          "image_url": "https:\/\/images-4.gog-statics.com\/60bfe4da703d46748bac92f51bf7ef89dfff760f67cc800374dbc6fa77f29878_ggvgm_2x.jpg"
+        },
+        {
+          "formatter_name": "ggvgl",
+          "image_url": "https:\/\/images-3.gog-statics.com\/60bfe4da703d46748bac92f51bf7ef89dfff760f67cc800374dbc6fa77f29878_ggvgl.jpg"
+        },
+        {
+          "formatter_name": "ggvgl_2x",
+          "image_url": "https:\/\/images-2.gog-statics.com\/60bfe4da703d46748bac92f51bf7ef89dfff760f67cc800374dbc6fa77f29878_ggvgl_2x.jpg"
+        }
+      ]
+    },
+    {
+      "image_id": "23ec443d428f6fcbc7409006935a2fc3c625c416846504cecb3a7bf627e0317d",
+      "formatter_template_url": "https:\/\/images-2.gog-statics.com\/23ec443d428f6fcbc7409006935a2fc3c625c416846504cecb3a7bf627e0317d_{formatter}.png",
+      "formatted_images": [
+        {
+          "formatter_name": "ggvgt",
+          "image_url": "https:\/\/images-3.gog-statics.com\/23ec443d428f6fcbc7409006935a2fc3c625c416846504cecb3a7bf627e0317d_ggvgt.jpg"
+        },
+        {
+          "formatter_name": "ggvgt_2x",
+          "image_url": "https:\/\/images-1.gog-statics.com\/23ec443d428f6fcbc7409006935a2fc3c625c416846504cecb3a7bf627e0317d_ggvgt_2x.jpg"
+        },
+        {
+          "formatter_name": "ggvgm",
+          "image_url": "https:\/\/images-2.gog-statics.com\/23ec443d428f6fcbc7409006935a2fc3c625c416846504cecb3a7bf627e0317d_ggvgm.jpg"
+        },
+        {
+          "formatter_name": "ggvgm_2x",
+          "image_url": "https:\/\/images-1.gog-statics.com\/23ec443d428f6fcbc7409006935a2fc3c625c416846504cecb3a7bf627e0317d_ggvgm_2x.jpg"
+        },
+        {
+          "formatter_name": "ggvgl",
+          "image_url": "https:\/\/images-2.gog-statics.com\/23ec443d428f6fcbc7409006935a2fc3c625c416846504cecb3a7bf627e0317d_ggvgl.jpg"
+        },
+        {
+          "formatter_name": "ggvgl_2x",
+          "image_url": "https:\/\/images-3.gog-statics.com\/23ec443d428f6fcbc7409006935a2fc3c625c416846504cecb3a7bf627e0317d_ggvgl_2x.jpg"
+        }
+      ]
+    },
+    {
+      "image_id": "c28ac0893d8cab630039599315e8abfdd65e92b5e00c310a701befb4dca23037",
+      "formatter_template_url": "https:\/\/images-3.gog-statics.com\/c28ac0893d8cab630039599315e8abfdd65e92b5e00c310a701befb4dca23037_{formatter}.png",
+      "formatted_images": [
+        {
+          "formatter_name": "ggvgt",
+          "image_url": "https:\/\/images-4.gog-statics.com\/c28ac0893d8cab630039599315e8abfdd65e92b5e00c310a701befb4dca23037_ggvgt.jpg"
+        },
+        {
+          "formatter_name": "ggvgt_2x",
+          "image_url": "https:\/\/images-2.gog-statics.com\/c28ac0893d8cab630039599315e8abfdd65e92b5e00c310a701befb4dca23037_ggvgt_2x.jpg"
+        },
+        {
+          "formatter_name": "ggvgm",
+          "image_url": "https:\/\/images-1.gog-statics.com\/c28ac0893d8cab630039599315e8abfdd65e92b5e00c310a701befb4dca23037_ggvgm.jpg"
+        },
+        {
+          "formatter_name": "ggvgm_2x",
+          "image_url": "https:\/\/images-2.gog-statics.com\/c28ac0893d8cab630039599315e8abfdd65e92b5e00c310a701befb4dca23037_ggvgm_2x.jpg"
+        },
+        {
+          "formatter_name": "ggvgl",
+          "image_url": "https:\/\/images-1.gog-statics.com\/c28ac0893d8cab630039599315e8abfdd65e92b5e00c310a701befb4dca23037_ggvgl.jpg"
+        },
+        {
+          "formatter_name": "ggvgl_2x",
+          "image_url": "https:\/\/images-4.gog-statics.com\/c28ac0893d8cab630039599315e8abfdd65e92b5e00c310a701befb4dca23037_ggvgl_2x.jpg"
+        }
+      ]
+    },
+    {
+      "image_id": "09fb4467ad06c2ebc8d8e808e3c52999aa2e6305dd950ee32518cb6badd64738",
+      "formatter_template_url": "https:\/\/images-2.gog-statics.com\/09fb4467ad06c2ebc8d8e808e3c52999aa2e6305dd950ee32518cb6badd64738_{formatter}.png",
+      "formatted_images": [
+        {
+          "formatter_name": "ggvgt",
+          "image_url": "https:\/\/images-1.gog-statics.com\/09fb4467ad06c2ebc8d8e808e3c52999aa2e6305dd950ee32518cb6badd64738_ggvgt.jpg"
+        },
+        {
+          "formatter_name": "ggvgt_2x",
+          "image_url": "https:\/\/images-4.gog-statics.com\/09fb4467ad06c2ebc8d8e808e3c52999aa2e6305dd950ee32518cb6badd64738_ggvgt_2x.jpg"
+        },
+        {
+          "formatter_name": "ggvgm",
+          "image_url": "https:\/\/images-4.gog-statics.com\/09fb4467ad06c2ebc8d8e808e3c52999aa2e6305dd950ee32518cb6badd64738_ggvgm.jpg"
+        },
+        {
+          "formatter_name": "ggvgm_2x",
+          "image_url": "https:\/\/images-4.gog-statics.com\/09fb4467ad06c2ebc8d8e808e3c52999aa2e6305dd950ee32518cb6badd64738_ggvgm_2x.jpg"
+        },
+        {
+          "formatter_name": "ggvgl",
+          "image_url": "https:\/\/images-4.gog-statics.com\/09fb4467ad06c2ebc8d8e808e3c52999aa2e6305dd950ee32518cb6badd64738_ggvgl.jpg"
+        },
+        {
+          "formatter_name": "ggvgl_2x",
+          "image_url": "https:\/\/images-2.gog-statics.com\/09fb4467ad06c2ebc8d8e808e3c52999aa2e6305dd950ee32518cb6badd64738_ggvgl_2x.jpg"
+        }
+      ]
+    },
+    {
+      "image_id": "7482c689bb5529028e0dc3c650d51b817fffee86d4708ccbe7eea09e9a876872",
+      "formatter_template_url": "https:\/\/images-2.gog-statics.com\/7482c689bb5529028e0dc3c650d51b817fffee86d4708ccbe7eea09e9a876872_{formatter}.png",
+      "formatted_images": [
+        {
+          "formatter_name": "ggvgt",
+          "image_url": "https:\/\/images-2.gog-statics.com\/7482c689bb5529028e0dc3c650d51b817fffee86d4708ccbe7eea09e9a876872_ggvgt.jpg"
+        },
+        {
+          "formatter_name": "ggvgt_2x",
+          "image_url": "https:\/\/images-1.gog-statics.com\/7482c689bb5529028e0dc3c650d51b817fffee86d4708ccbe7eea09e9a876872_ggvgt_2x.jpg"
+        },
+        {
+          "formatter_name": "ggvgm",
+          "image_url": "https:\/\/images-3.gog-statics.com\/7482c689bb5529028e0dc3c650d51b817fffee86d4708ccbe7eea09e9a876872_ggvgm.jpg"
+        },
+        {
+          "formatter_name": "ggvgm_2x",
+          "image_url": "https:\/\/images-1.gog-statics.com\/7482c689bb5529028e0dc3c650d51b817fffee86d4708ccbe7eea09e9a876872_ggvgm_2x.jpg"
+        },
+        {
+          "formatter_name": "ggvgl",
+          "image_url": "https:\/\/images-3.gog-statics.com\/7482c689bb5529028e0dc3c650d51b817fffee86d4708ccbe7eea09e9a876872_ggvgl.jpg"
+        },
+        {
+          "formatter_name": "ggvgl_2x",
+          "image_url": "https:\/\/images-3.gog-statics.com\/7482c689bb5529028e0dc3c650d51b817fffee86d4708ccbe7eea09e9a876872_ggvgl_2x.jpg"
+        }
+      ]
+    },
+    {
+      "image_id": "9fc632fa0ebaa6aa6ad013159735924547ea1be1897ba6a7087bc5b3e25b4596",
+      "formatter_template_url": "https:\/\/images-1.gog-statics.com\/9fc632fa0ebaa6aa6ad013159735924547ea1be1897ba6a7087bc5b3e25b4596_{formatter}.png",
+      "formatted_images": [
+        {
+          "formatter_name": "ggvgt",
+          "image_url": "https:\/\/images-2.gog-statics.com\/9fc632fa0ebaa6aa6ad013159735924547ea1be1897ba6a7087bc5b3e25b4596_ggvgt.jpg"
+        },
+        {
+          "formatter_name": "ggvgt_2x",
+          "image_url": "https:\/\/images-2.gog-statics.com\/9fc632fa0ebaa6aa6ad013159735924547ea1be1897ba6a7087bc5b3e25b4596_ggvgt_2x.jpg"
+        },
+        {
+          "formatter_name": "ggvgm",
+          "image_url": "https:\/\/images-3.gog-statics.com\/9fc632fa0ebaa6aa6ad013159735924547ea1be1897ba6a7087bc5b3e25b4596_ggvgm.jpg"
+        },
+        {
+          "formatter_name": "ggvgm_2x",
+          "image_url": "https:\/\/images-2.gog-statics.com\/9fc632fa0ebaa6aa6ad013159735924547ea1be1897ba6a7087bc5b3e25b4596_ggvgm_2x.jpg"
+        },
+        {
+          "formatter_name": "ggvgl",
+          "image_url": "https:\/\/images-3.gog-statics.com\/9fc632fa0ebaa6aa6ad013159735924547ea1be1897ba6a7087bc5b3e25b4596_ggvgl.jpg"
+        },
+        {
+          "formatter_name": "ggvgl_2x",
+          "image_url": "https:\/\/images-4.gog-statics.com\/9fc632fa0ebaa6aa6ad013159735924547ea1be1897ba6a7087bc5b3e25b4596_ggvgl_2x.jpg"
+        }
+      ]
+    },
+    {
+      "image_id": "ae90e5041b801aa4b98aa34f9513fc80112dc71454740ef7f536083c5eccf297",
+      "formatter_template_url": "https:\/\/images-1.gog-statics.com\/ae90e5041b801aa4b98aa34f9513fc80112dc71454740ef7f536083c5eccf297_{formatter}.png",
+      "formatted_images": [
+        {
+          "formatter_name": "ggvgt",
+          "image_url": "https:\/\/images-1.gog-statics.com\/ae90e5041b801aa4b98aa34f9513fc80112dc71454740ef7f536083c5eccf297_ggvgt.jpg"
+        },
+        {
+          "formatter_name": "ggvgt_2x",
+          "image_url": "https:\/\/images-3.gog-statics.com\/ae90e5041b801aa4b98aa34f9513fc80112dc71454740ef7f536083c5eccf297_ggvgt_2x.jpg"
+        },
+        {
+          "formatter_name": "ggvgm",
+          "image_url": "https:\/\/images-4.gog-statics.com\/ae90e5041b801aa4b98aa34f9513fc80112dc71454740ef7f536083c5eccf297_ggvgm.jpg"
+        },
+        {
+          "formatter_name": "ggvgm_2x",
+          "image_url": "https:\/\/images-3.gog-statics.com\/ae90e5041b801aa4b98aa34f9513fc80112dc71454740ef7f536083c5eccf297_ggvgm_2x.jpg"
+        },
+        {
+          "formatter_name": "ggvgl",
+          "image_url": "https:\/\/images-4.gog-statics.com\/ae90e5041b801aa4b98aa34f9513fc80112dc71454740ef7f536083c5eccf297_ggvgl.jpg"
+        },
+        {
+          "formatter_name": "ggvgl_2x",
+          "image_url": "https:\/\/images-1.gog-statics.com\/ae90e5041b801aa4b98aa34f9513fc80112dc71454740ef7f536083c5eccf297_ggvgl_2x.jpg"
+        }
+      ]
+    },
+    {
+      "image_id": "83dc62bb136b78b2e94920bb064c80d517f9986f2959e4a4d5aedd6c940600b9",
+      "formatter_template_url": "https:\/\/images-4.gog-statics.com\/83dc62bb136b78b2e94920bb064c80d517f9986f2959e4a4d5aedd6c940600b9_{formatter}.png",
+      "formatted_images": [
+        {
+          "formatter_name": "ggvgt",
+          "image_url": "https:\/\/images-4.gog-statics.com\/83dc62bb136b78b2e94920bb064c80d517f9986f2959e4a4d5aedd6c940600b9_ggvgt.jpg"
+        },
+        {
+          "formatter_name": "ggvgt_2x",
+          "image_url": "https:\/\/images-4.gog-statics.com\/83dc62bb136b78b2e94920bb064c80d517f9986f2959e4a4d5aedd6c940600b9_ggvgt_2x.jpg"
+        },
+        {
+          "formatter_name": "ggvgm",
+          "image_url": "https:\/\/images-1.gog-statics.com\/83dc62bb136b78b2e94920bb064c80d517f9986f2959e4a4d5aedd6c940600b9_ggvgm.jpg"
+        },
+        {
+          "formatter_name": "ggvgm_2x",
+          "image_url": "https:\/\/images-4.gog-statics.com\/83dc62bb136b78b2e94920bb064c80d517f9986f2959e4a4d5aedd6c940600b9_ggvgm_2x.jpg"
+        },
+        {
+          "formatter_name": "ggvgl",
+          "image_url": "https:\/\/images-1.gog-statics.com\/83dc62bb136b78b2e94920bb064c80d517f9986f2959e4a4d5aedd6c940600b9_ggvgl.jpg"
+        },
+        {
+          "formatter_name": "ggvgl_2x",
+          "image_url": "https:\/\/images-2.gog-statics.com\/83dc62bb136b78b2e94920bb064c80d517f9986f2959e4a4d5aedd6c940600b9_ggvgl_2x.jpg"
+        }
+      ]
+    },
+    {
+      "image_id": "157542cceb85dedec783b3da4fd64388e8009c996807a32a45d95f7192262e45",
+      "formatter_template_url": "https:\/\/images-4.gog-statics.com\/157542cceb85dedec783b3da4fd64388e8009c996807a32a45d95f7192262e45_{formatter}.png",
+      "formatted_images": [
+        {
+          "formatter_name": "ggvgt",
+          "image_url": "https:\/\/images-2.gog-statics.com\/157542cceb85dedec783b3da4fd64388e8009c996807a32a45d95f7192262e45_ggvgt.jpg"
+        },
+        {
+          "formatter_name": "ggvgt_2x",
+          "image_url": "https:\/\/images-1.gog-statics.com\/157542cceb85dedec783b3da4fd64388e8009c996807a32a45d95f7192262e45_ggvgt_2x.jpg"
+        },
+        {
+          "formatter_name": "ggvgm",
+          "image_url": "https:\/\/images-3.gog-statics.com\/157542cceb85dedec783b3da4fd64388e8009c996807a32a45d95f7192262e45_ggvgm.jpg"
+        },
+        {
+          "formatter_name": "ggvgm_2x",
+          "image_url": "https:\/\/images-1.gog-statics.com\/157542cceb85dedec783b3da4fd64388e8009c996807a32a45d95f7192262e45_ggvgm_2x.jpg"
+        },
+        {
+          "formatter_name": "ggvgl",
+          "image_url": "https:\/\/images-3.gog-statics.com\/157542cceb85dedec783b3da4fd64388e8009c996807a32a45d95f7192262e45_ggvgl.jpg"
+        },
+        {
+          "formatter_name": "ggvgl_2x",
+          "image_url": "https:\/\/images-3.gog-statics.com\/157542cceb85dedec783b3da4fd64388e8009c996807a32a45d95f7192262e45_ggvgl_2x.jpg"
+        }
+      ]
+    }
+  ]
+}

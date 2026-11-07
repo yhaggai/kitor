@@ -1,0 +1,138 @@
+{
+  "undertale": {
+    "he": "https://assets.kitor.click/banners/undertale/he/d7fa2e388153.png",
+    "aspectRatio": 3
+  },
+  "monkey-se": {
+    "he": "https://assets.kitor.click/banners/monkey-se/he/05d24f5b5f28.png",
+    "aspectRatio": 3
+  },
+  "monkey2-se": {
+    "he": "https://assets.kitor.click/banners/monkey2-se/he/ae3a73c4dbaf.png",
+    "aspectRatio": 3
+  },
+  "sq1sci": {
+    "he": "https://assets.kitor.click/banners/sq1sci/he/90140c038a1d.png",
+    "aspectRatio": 3
+  },
+  "kyra1-cd": {
+    "he": "https://assets.kitor.click/banners/kyra1-cd/he/cf48b870e9fe.png",
+    "aspectRatio": 3
+  },
+  "pq1": {
+    "he": "https://assets.kitor.click/banners/pq1/he/190585dcd5fe.png",
+    "aspectRatio": 3
+  },
+  "sq1": {
+    "he": "https://assets.kitor.click/banners/sq1/he/ad0e5e775751.png",
+    "aspectRatio": 3
+  },
+  "sq2": {
+    "he": "https://assets.kitor.click/banners/sq2/he/a07ffcd7dbed.png",
+    "aspectRatio": 3
+  },
+  "sq3": {
+    "he": "https://assets.kitor.click/banners/sq3/he/636987c302a7.png",
+    "aspectRatio": 3
+  },
+  "sq4": {
+    "he": "https://assets.kitor.click/banners/sq4/he/cf5d5bfe6be1.png",
+    "aspectRatio": 3
+  },
+  "sq5": {
+    "he": "https://assets.kitor.click/banners/sq5/he/9171667bebc2.png",
+    "aspectRatio": 3
+  },
+  "torin": {
+    "he": "https://assets.kitor.click/banners/torin/he/27647ea2a41e.png",
+    "aspectRatio": 3
+  },
+  "spyfox": {
+    "he": "https://assets.kitor.click/banners/spyfox/he/92421a73465d.png",
+    "aspectRatio": 3
+  },
+  "pajama": {
+    "he": "https://assets.kitor.click/banners/pajama/he/e1ba2aaa7688.png",
+    "aspectRatio": 3
+  },
+  "toonstruck": {
+    "he": "https://assets.kitor.click/banners/toonstruck/he/3a896699b933.png",
+    "aspectRatio": 3
+  },
+  "gob2": {
+    "he": "https://assets.kitor.click/banners/gob2/he/864d7f4c2ad8.png",
+    "aspectRatio": 3
+  },
+  "tlj": {
+    "he": "https://assets.kitor.click/banners/tlj/he/92f9bfc8b368.png",
+    "aspectRatio": 3
+  },
+  "sky": {
+    "he": "https://assets.kitor.click/banners/sky/he/77654eee1d8e.png",
+    "aspectRatio": 3
+  },
+  "stanley-parable": {
+    "he": "https://assets.kitor.click/banners/stanley-parable/he/72ebee5ad1a9.png",
+    "aspectRatio": 3
+  },
+  "tesla-effect": {
+    "he": "https://assets.kitor.click/banners/tesla-effect/he/e3da19cc8027.png",
+    "aspectRatio": 3
+  },
+  "ethan-carter": {
+    "he": "https://assets.kitor.click/banners/ethan-carter/he/55f9f27d05e3.png",
+    "aspectRatio": 3
+  },
+  "life-is-strange": {
+    "he": "https://assets.kitor.click/banners/life-is-strange/he/1d021c8858c1.png",
+    "aspectRatio": 3
+  },
+  "portal2": {
+    "he": "https://assets.kitor.click/banners/portal2/he/0715bc413735.png",
+    "aspectRatio": 3
+  },
+  "journey-down1": {
+    "he": "https://assets.kitor.click/banners/journey-down1/he/0a369fdfc82d.png",
+    "aspectRatio": 3
+  },
+  "kathy-rain-dc": {
+    "he": "https://assets.kitor.click/banners/kathy-rain-dc/he/02be6af12fe1.png",
+    "aspectRatio": 3
+  },
+  "drifter": {
+    "he": "https://assets.kitor.click/banners/drifter/he/0e5112782cfb.png",
+    "aspectRatio": 3
+  },
+  "owlboy": {
+    "he": "https://assets.kitor.click/banners/owlboy/he/845cfdee5dd8.png",
+    "aspectRatio": 3
+  },
+  "tentacle": {
+    "he": "https://assets.kitor.click/banners/tentacle/he/1296b65d4f53.png",
+    "aspectRatio": 3
+  },
+  "day-of-the-tentacle-remastered": {
+    "he": "https://assets.kitor.click/banners/day-of-the-tentacle-remastered/he/39500ef8d9b8.png",
+    "aspectRatio": 3
+  },
+  "grim-fandango-remastered": {
+    "he": "https://assets.kitor.click/banners/grim-fandango-remastered/he/c1f95d8b730e.png",
+    "aspectRatio": 3
+  },
+  "monkey-se-native": {
+    "he": "https://assets.kitor.click/banners/monkey-se-native/he/ede1afee8048.png",
+    "aspectRatio": 3
+  },
+  "monkey2-se-native": {
+    "he": "https://assets.kitor.click/banners/monkey2-se-native/he/0ab91ddea2cf.png",
+    "aspectRatio": 3
+  },
+  "silver-pines": {
+    "he": "https://assets.kitor.click/banners/silver-pines/he/9f5bdaa02def.png",
+    "aspectRatio": 3
+  },
+  "jenny-leclue": {
+    "he": "https://assets.kitor.click/banners/jenny-leclue/he/64bf594d7ff5.png",
+    "aspectRatio": 3
+  }
+}

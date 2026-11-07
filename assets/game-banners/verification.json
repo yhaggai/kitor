@@ -1,0 +1,244 @@
+{
+  "verified_on": "2026-11-07",
+  "method": "Downloaded public original URLs and compared full SHA-256 against local generated PNGs; manifest/gallery also byte-matched.",
+  "results": [
+    {
+      "game_id": "undertale",
+      "url": "https://assets.kitor.click/banners/undertale/he/d7fa2e388153.png",
+      "sha256": "d7fa2e3881538030c2654521b66257d38d139f44459a8e9043da5a56f8bb53fd",
+      "bytes": 1042981,
+      "verified": true
+    },
+    {
+      "game_id": "monkey-se",
+      "url": "https://assets.kitor.click/banners/monkey-se/he/05d24f5b5f28.png",
+      "sha256": "05d24f5b5f2806d3cc6add7eee4502458420b8379cee25526789e58445f0f028",
+      "bytes": 2829828,
+      "verified": true
+    },
+    {
+      "game_id": "monkey2-se",
+      "url": "https://assets.kitor.click/banners/monkey2-se/he/ae3a73c4dbaf.png",
+      "sha256": "ae3a73c4dbaf8b579c305ce9e86934b2b7c458e0657a6e220b93b825de5ce9f4",
+      "bytes": 2665309,
+      "verified": true
+    },
+    {
+      "game_id": "sq1sci",
+      "url": "https://assets.kitor.click/banners/sq1sci/he/90140c038a1d.png",
+      "sha256": "90140c038a1dbebbac42b4f8f5b1932bafd544c04e4ed4dd02179ae1e9500794",
+      "bytes": 2838224,
+      "verified": true
+    },
+    {
+      "game_id": "kyra1-cd",
+      "url": "https://assets.kitor.click/banners/kyra1-cd/he/cf48b870e9fe.png",
+      "sha256": "cf48b870e9fe57a0ca988719bef1c2f5ae1ce8b54c077544916cf29705e24ea4",
+      "bytes": 2763106,
+      "verified": true
+    },
+    {
+      "game_id": "pq1",
+      "url": "https://assets.kitor.click/banners/pq1/he/190585dcd5fe.png",
+      "sha256": "190585dcd5fef6067c630994ad988f31eb1b751b8af061b4842bd4d02e0d3c50",
+      "bytes": 2352677,
+      "verified": true
+    },
+    {
+      "game_id": "sq1",
+      "url": "https://assets.kitor.click/banners/sq1/he/ad0e5e775751.png",
+      "sha256": "ad0e5e775751a7cfe404d4e6dba9a375ccbea1ede66dd0b7929cee9d5150964c",
+      "bytes": 1513509,
+      "verified": true
+    },
+    {
+      "game_id": "sq2",
+      "url": "https://assets.kitor.click/banners/sq2/he/a07ffcd7dbed.png",
+      "sha256": "a07ffcd7dbed47d1a9202ee6461974d840fc57961354fe789df3e4853e08c68e",
+      "bytes": 2337547,
+      "verified": true
+    },
+    {
+      "game_id": "sq3",
+      "url": "https://assets.kitor.click/banners/sq3/he/636987c302a7.png",
+      "sha256": "636987c302a72d92ac85b4e7c6a8bff7420dd3ac65b577238ddda30a99396c25",
+      "bytes": 2351469,
+      "verified": true
+    },
+    {
+      "game_id": "sq4",
+      "url": "https://assets.kitor.click/banners/sq4/he/cf5d5bfe6be1.png",
+      "sha256": "cf5d5bfe6be11d6dbae89e9e7815b3ad315bf3728bb50283d7cfad6d06e48938",
+      "bytes": 2540413,
+      "verified": true
+    },
+    {
+      "game_id": "sq5",
+      "url": "https://assets.kitor.click/banners/sq5/he/9171667bebc2.png",
+      "sha256": "9171667bebc26e6dc1b66a06c054d171779df6b87b2b8158354e57c4c0dcb28b",
+      "bytes": 2807485,
+      "verified": true
+    },
+    {
+      "game_id": "torin",
+      "url": "https://assets.kitor.click/banners/torin/he/27647ea2a41e.png",
+      "sha256": "27647ea2a41e26229c7de4e86a596946df06902b9115b576713bfd85cc517404",
+      "bytes": 1995575,
+      "verified": true
+    },
+    {
+      "game_id": "spyfox",
+      "url": "https://assets.kitor.click/banners/spyfox/he/92421a73465d.png",
+      "sha256": "92421a73465dbf635cb5ae671b5e869013fdc4306a4b53421acb5909acd2af9c",
+      "bytes": 1527270,
+      "verified": true
+    },
+    {
+      "game_id": "pajama",
+      "url": "https://assets.kitor.click/banners/pajama/he/e1ba2aaa7688.png",
+      "sha256": "e1ba2aaa7688e7c8039473289fc7b21c57b8372ba6ddf9e8a0650a89f8a1d2ee",
+      "bytes": 1776587,
+      "verified": true
+    },
+    {
+      "game_id": "toonstruck",
+      "url": "https://assets.kitor.click/banners/toonstruck/he/3a896699b933.png",
+      "sha256": "3a896699b9331e0ccc40d74cd622dfbcf1f7e701f4676788abb53c3e58497597",
+      "bytes": 2043157,
+      "verified": true
+    },
+    {
+      "game_id": "gob2",
+      "url": "https://assets.kitor.click/banners/gob2/he/864d7f4c2ad8.png",
+      "sha256": "864d7f4c2ad845458fc54cc66b532612b28af5ce40b074acfa615886d10710c8",
+      "bytes": 3413273,
+      "verified": true
+    },
+    {
+      "game_id": "tlj",
+      "url": "https://assets.kitor.click/banners/tlj/he/92f9bfc8b368.png",
+      "sha256": "92f9bfc8b368a4b227bc16888fc44dd39b22b221da23cd26b8da29bbf32a687a",
+      "bytes": 2170365,
+      "verified": true
+    },
+    {
+      "game_id": "sky",
+      "url": "https://assets.kitor.click/banners/sky/he/77654eee1d8e.png",
+      "sha256": "77654eee1d8e21f385d35158e93c77d5ce796e72e54e79a8ec5d6d7bba3f9847",
+      "bytes": 2915281,
+      "verified": true
+    },
+    {
+      "game_id": "stanley-parable",
+      "url": "https://assets.kitor.click/banners/stanley-parable/he/72ebee5ad1a9.png",
+      "sha256": "72ebee5ad1a981fb01112aeb66869e8f2ed42a829f93c6541c4d352b78e8f40f",
+      "bytes": 1574844,
+      "verified": true
+    },
+    {
+      "game_id": "tesla-effect",
+      "url": "https://assets.kitor.click/banners/tesla-effect/he/e3da19cc8027.png",
+      "sha256": "e3da19cc802739d82fc2682cc5c909629c82764b0945a16ff1b8fd7c6984abbc",
+      "bytes": 1976516,
+      "verified": true
+    },
+    {
+      "game_id": "ethan-carter",
+      "url": "https://assets.kitor.click/banners/ethan-carter/he/55f9f27d05e3.png",
+      "sha256": "55f9f27d05e32f04891b2972cde3709082eb3a8441582c190dd4f1f58cfebcc4",
+      "bytes": 2598697,
+      "verified": true
+    },
+    {
+      "game_id": "life-is-strange",
+      "url": "https://assets.kitor.click/banners/life-is-strange/he/1d021c8858c1.png",
+      "sha256": "1d021c8858c1dcb4e40a10cc1c749e89696934bb28a498b4b6e2155efb9a8b9a",
+      "bytes": 2416469,
+      "verified": true
+    },
+    {
+      "game_id": "portal2",
+      "url": "https://assets.kitor.click/banners/portal2/he/0715bc413735.png",
+      "sha256": "0715bc41373590ef462a668d9e676de4353ad26dabaf3ed60c16bcfd7736c84e",
+      "bytes": 2009718,
+      "verified": true
+    },
+    {
+      "game_id": "journey-down1",
+      "url": "https://assets.kitor.click/banners/journey-down1/he/0a369fdfc82d.png",
+      "sha256": "0a369fdfc82df3ccddb7a5cdb7d284f23aaa95b1c1044076bd473ea8cb5e4149",
+      "bytes": 2096783,
+      "verified": true
+    },
+    {
+      "game_id": "kathy-rain-dc",
+      "url": "https://assets.kitor.click/banners/kathy-rain-dc/he/02be6af12fe1.png",
+      "sha256": "02be6af12fe1b7ed04b8bb9f448b53decc70245de79c1fd06ba2de3b771cfadd",
+      "bytes": 1619663,
+      "verified": true
+    },
+    {
+      "game_id": "drifter",
+      "url": "https://assets.kitor.click/banners/drifter/he/0e5112782cfb.png",
+      "sha256": "0e5112782cfbc76e1cc7ce753d526b25e2e9d2b662ebf2911930742af52838da",
+      "bytes": 1456780,
+      "verified": true
+    },
+    {
+      "game_id": "owlboy",
+      "url": "https://assets.kitor.click/banners/owlboy/he/845cfdee5dd8.png",
+      "sha256": "845cfdee5dd859633a774e8b2901cff5150ab2980fd7e50a9e8763cd2e841ccc",
+      "bytes": 1866963,
+      "verified": true
+    },
+    {
+      "game_id": "tentacle",
+      "url": "https://assets.kitor.click/banners/tentacle/he/1296b65d4f53.png",
+      "sha256": "1296b65d4f5331e95bb39f770cb83a6d127f888c722f973bd823277a540270b2",
+      "bytes": 2012035,
+      "verified": true
+    },
+    {
+      "game_id": "day-of-the-tentacle-remastered",
+      "url": "https://assets.kitor.click/banners/day-of-the-tentacle-remastered/he/39500ef8d9b8.png",
+      "sha256": "39500ef8d9b8dd99911af1a4856c6693decb58ade84e797fac7e02eb3e6cfac2",
+      "bytes": 1785727,
+      "verified": true
+    },
+    {
+      "game_id": "grim-fandango-remastered",
+      "url": "https://assets.kitor.click/banners/grim-fandango-remastered/he/c1f95d8b730e.png",
+      "sha256": "c1f95d8b730e2175f979aaec5cfa223d8e5ce13cb713b78f85dd5e6b1f3dabf8",
+      "bytes": 3264978,
+      "verified": true
+    },
+    {
+      "game_id": "monkey-se-native",
+      "url": "https://assets.kitor.click/banners/monkey-se-native/he/ede1afee8048.png",
+      "sha256": "ede1afee804833460467a8b88b0be0f64c7b2785ab2c527db2f2258d440eb07a",
+      "bytes": 2407609,
+      "verified": true
+    },
+    {
+      "game_id": "monkey2-se-native",
+      "url": "https://assets.kitor.click/banners/monkey2-se-native/he/0ab91ddea2cf.png",
+      "sha256": "0ab91ddea2cf8bd8daeae891fb63207b0a3ee1abce75f5b49bdf2b9964eef0e3",
+      "bytes": 2478803,
+      "verified": true
+    },
+    {
+      "game_id": "silver-pines",
+      "url": "https://assets.kitor.click/banners/silver-pines/he/9f5bdaa02def.png",
+      "sha256": "9f5bdaa02defb1bcd18aeade888f05c55a568b8b04f685aad2917b0d53eb0dd6",
+      "bytes": 1939126,
+      "verified": true
+    },
+    {
+      "game_id": "jenny-leclue",
+      "url": "https://assets.kitor.click/banners/jenny-leclue/he/64bf594d7ff5.png",
+      "sha256": "64bf594d7ff5218e2dd9f8da0695a14f1e2bde0819c67aa3d4899113dec7e86a",
+      "bytes": 2001144,
+      "verified": true
+    }
+  ]
+}
