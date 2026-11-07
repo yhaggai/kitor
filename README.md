@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="docs/images/kitor-logo.gif" width="640" height="320" alt="Kitor logo — a golden chimney with a curl of steam / סמל קיטור — ארובה זהובה עם סליל אדים" />
+  <img src="docs/images/kitor-logo-animated.gif" width="640" height="320" alt="Kitor logo — a golden chimney with a curl of steam / סמל קיטור — ארובה זהובה עם סליל אדים" />
 </p>
 
 <h1 align="center">קיטור · Kitor</h1>
@@ -19,7 +19,7 @@
 
 ### מה אפשר לעשות?
 
-![Steam ו־GOG מתחברים לקיטור — ספרייה של משחקים עם עטיפות בעברית. בוחרים, מתקינים ומשחקים.](docs/images/kitor-library.png)
+![Steam ו־GOG מתחברים לקיטור — ספרייה של משחקים עם עטיפות בעברית. בוחרים, מתקינים טלאי ומשחקים.](docs/images/kitor-library.png)
 
 - **לרכז את הספרייה:** לסרוק תיקיות ולזהות התקנות נתמכות, כולל משחקים מ־Steam ומ־GOG.
 - **לגלות תרגומים:** לעיין בקטלוג המשחקים והתרגומים לעברית.
@@ -69,7 +69,7 @@ The project brings together classic adventures and other games, using ScummVM or
 
 ### What can it do?
 
-![Steam and GOG connect to Kitor — a library of Hebrew game covers. Choose, install, and play.](docs/images/kitor-library.png)
+![Steam and GOG connect to Kitor — a library of Hebrew game covers. Choose, install a patch, and play.](docs/images/kitor-library.png)
 
 - **Organize your library:** scan folders and detect supported installations, including games from Steam and GOG.
 - **Discover translations:** browse a catalog of games and Hebrew translation patches.
