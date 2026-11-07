@@ -1083,7 +1083,15 @@ mod tests {
                 serde_json::from_slice(&fs::read(manifest).unwrap()).unwrap()
             }).collect();
             for package in &packages {
-                assert_eq!(package.version, game.patches[0].version);
+                let downloads: serde_json::Value = serde_json::from_slice(
+                    &fs::read("../patches/download-packages.json").unwrap(),
+                ).unwrap();
+                if downloads.get(&game.scummvm_id).is_some() {
+                    assert_eq!(format!("{}-download1", package.version), game.patches[0].version);
+                    assert_eq!(package.release_revision + 1, game.patches[0].release_revision);
+                } else {
+                    assert_eq!(package.version, game.patches[0].version);
+                }
                 assert_eq!(package.scummvm_id, game.scummvm_id);
             }
             assert_eq!(game.patches[0].install_manifest.as_deref(), Some("patch.json"));

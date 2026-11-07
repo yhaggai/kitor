@@ -89,6 +89,8 @@ jobs:
               subprocess.run([sys.executable, 'kitor/tools/build_patch_packages.py', str(manifest), '--platform', 'windows', '--output', 'dist/candidates'], check=True)
           for manifest in sorted(pathlib.Path('patches-workspace').glob('*/he/patch.osx.candidate.json')):
               subprocess.run([sys.executable, 'kitor/tools/build_patch_packages.py', str(manifest), '--platform', 'osx', '--output', 'dist/candidates'], check=True)
+      - name: Validate on-demand archive checksums and catalog coverage
+        run: python kitor/tools/build_download_packages.py
       - name: Upload requested unverified package builds
         if: github.event_name == 'workflow_dispatch' && inputs.upload_artifacts
         uses: actions/upload-artifact@v4

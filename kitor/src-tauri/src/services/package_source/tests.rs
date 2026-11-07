@@ -1,139 +1,6 @@
 use super::*;
 
 #[test]
-fn every_embedded_package_matches_its_catalog_identity() {
-    let registry = crate::services::registry_service::load_registry().unwrap();
-    for game in registry.games {
-        for patch in &game.patches {
-            if patch.source_type != "bundled" {
-                continue;
-            }
-            let source = PackageSource::resolve(patch, &game.behavior).unwrap();
-            if let PackageSource::Embedded(key) = source {
-                for platform in ["windows", "osx"] {
-                    if let Some(support) = &game.platforms {
-                        if (platform == "windows" && !support.windows) || (platform == "osx" && !support.osx) {
-                            continue;
-                        }
-                    }
-                    let assets = embedded_assets(&format!("{key}/{platform}")).unwrap();
-                    let manifest = assets
-                        .iter()
-                        .find(|(name, _)| *name == "patch.json")
-                        .unwrap()
-                        .1;
-                    let package: crate::services::patch_lifecycle::Package =
-                        serde_json::from_slice(manifest).unwrap();
-                    assert_eq!(package.scummvm_id, game.scummvm_id);
-                    assert_eq!(package.version, patch.version);
-                    assert_eq!(package.language, patch.language);
-                    assert_eq!(package.release_revision, patch.release_revision);
-                    let staging = tempfile::tempdir().unwrap();
-                    for (name, _) in assets {
-                        crate::services::patch_lifecycle::safe_path(staging.path(), name).unwrap();
-                    }
-                }
-            }
-        }
-    }
-}
-
-#[test]
-fn embedded_staging_preserves_existing_package_bytes() {
-    let ids: &[&str] = if cfg!(target_os = "windows") {
-        &[
-            "drifter",
-            "grim-fandango-remastered",
-            "monkey-se-native",
-            "monkey2-se-native",
-            "day-of-the-tentacle-remastered",
-        ]
-    } else if cfg!(target_os = "macos") {
-        &["drifter", "owlboy", "day-of-the-tentacle-remastered"]
-    } else {
-        return;
-    };
-    for &id in ids {
-        let registry = crate::services::registry_service::load_registry().unwrap();
-        let game = registry
-            .games
-            .into_iter()
-            .find(|g| g.scummvm_id == id)
-            .unwrap();
-        let patch = &game.patches[0];
-        let old = tempfile::tempdir().unwrap();
-        let new = tempfile::tempdir().unwrap();
-        match id {
-            "drifter" => {
-                crate::services::drifter_patch::stage(old.path(), &patch.language, &patch.version)
-                    .unwrap()
-            }
-            "owlboy" => {
-                crate::services::owlboy::stage(old.path(), &patch.language, &patch.version).unwrap()
-            }
-            "grim-fandango-remastered" => {
-                crate::services::grim_remastered::stage(old.path(), &patch.language, &patch.version)
-                    .unwrap()
-            }
-            "monkey-se-native" | "monkey2-se-native" => crate::services::monkey_native::stage(
-                old.path(),
-                id,
-                &patch.language,
-                &patch.version,
-            )
-            .unwrap(),
-            _ => crate::services::tentacle_remastered::stage(
-                old.path(),
-                &patch.language,
-                &patch.version,
-            )
-            .unwrap(),
-        }
-        let source = PackageSource::resolve(patch, &game.behavior).unwrap();
-        source
-            .stage(
-                new.path(),
-                Path::new("unused.zip"),
-                id,
-                &patch.language,
-                &patch.version,
-                old.path(),
-            )
-            .unwrap();
-        fn files(
-            root: &Path,
-            relative: &Path,
-        ) -> std::collections::BTreeMap<std::path::PathBuf, String> {
-            let mut found = std::collections::BTreeMap::new();
-            for entry in std::fs::read_dir(root.join(relative)).unwrap() {
-                let entry = entry.unwrap();
-                let path = relative.join(entry.file_name());
-                if entry.file_type().unwrap().is_dir() {
-                    found.extend(files(root, &path));
-                } else {
-                    found.insert(path, crate::services::patch_lifecycle::hash(&entry.path()).unwrap());
-                }
-            }
-            found
-        }
-        // The legacy Owlboy helper stages both platforms. Compare exactly the
-        // current platform's declared assets, including the manifest, rather
-        // than expecting unused assets from the other platform to be shipped.
-        let PackageSource::Embedded(key) = &source else { panic!("Expected embedded package: {id}") };
-        let platform = if cfg!(target_os = "windows") { "windows" } else { "osx" };
-        let names: std::collections::BTreeSet<std::path::PathBuf> =
-            embedded_assets(&format!("{key}/{platform}")).unwrap().iter()
-                .map(|(name, _)| std::path::PathBuf::from(name)).collect();
-        let mut expected = files(old.path(), Path::new(""));
-        expected.retain(|name, _| names.contains(name));
-        let actual = files(new.path(), Path::new(""));
-        assert_eq!(expected.keys().cloned().collect::<std::collections::BTreeSet<_>>(), names, "legacy source missing asset: {id}");
-        assert_eq!(actual.keys().cloned().collect::<std::collections::BTreeSet<_>>(), names, "unexpected staged assets: {id}");
-        assert_eq!(expected, actual, "{id}");
-    }
-}
-
-#[test]
 fn silver_pines_requires_both_steam_install_markers() {
     let registry = crate::services::registry_service::load_registry().unwrap();
     let game = registry.games.iter().find(|g| g.scummvm_id == "silver-pines").unwrap();
@@ -146,4 +13,70 @@ fn silver_pines_requires_both_steam_install_markers() {
     std::fs::create_dir_all(strings.parent().unwrap()).unwrap();
     std::fs::write(strings, []).unwrap();
     assert_eq!(crate::services::game_adapters::detect(game, root), Some(root.canonicalize().unwrap()));
+}
+
+#[test]
+fn all_catalog_patches_are_downloadable() {
+    let registry = crate::services::registry_service::load_registry().unwrap();
+    for game in registry.games {
+        for patch in &game.patches {
+            PackageSource::resolve(patch, &game.behavior).unwrap();
+            if patch.version.ends_with("-download1") {
+                assert!(patch.checksum.as_ref().is_some_and(|s| s.len() == 64), "{}", game.scummvm_id);
+            }
+        }
+    }
+}
+
+#[test]
+fn downloaded_platform_package_uses_selective_lifecycle() {
+    use std::io::Write;
+    use crate::services::patch_lifecycle as lifecycle;
+    let d = tempfile::tempdir().unwrap();
+    let game = d.path().join("game");
+    let staging = d.path().join("staging");
+    fs::create_dir(&game).unwrap();
+    fs::create_dir(&staging).unwrap();
+    fs::write(game.join("text.txt"), b"original").unwrap();
+    fs::write(game.join("save.dat"), b"save").unwrap();
+    let payload = d.path().join("payload");
+    fs::write(&payload, b"translated").unwrap();
+    let manifest = serde_json::json!({
+        "schema_version": 1, "scummvm_id": "fixture", "language": "he", "version": "1",
+        "filename": "fixture.zip", "platforms": {lifecycle::platform(): {"files": [
+            {"path": "text.txt", "operation": "modify", "source": {"kind": "copy", "path": "payload.txt", "sha256": lifecycle::hash(&payload).unwrap()}},
+            {"path": "added.txt", "operation": "install", "source": {"kind": "copy", "path": "payload.txt", "sha256": lifecycle::hash(&payload).unwrap()}}
+        ]}}
+    });
+    let archive = d.path().join("fixture.zip");
+    let mut zip = zip::ZipWriter::new(fs::File::create(&archive).unwrap());
+    for (name, data) in [("patch.json", serde_json::to_vec(&manifest).unwrap()), ("payload.txt", b"translated".to_vec())] {
+        zip.start_file(format!("_platforms/{}/default/{name}", lifecycle::platform()), zip::write::SimpleFileOptions::default()).unwrap();
+        zip.write_all(&data).unwrap();
+    }
+    zip.finish().unwrap();
+    PackageSource::Download.stage(&staging, &archive, "fixture", "he", "1", &game).unwrap();
+    assert!(!staging.join("_platforms").exists());
+    let journal = lifecycle::install(&staging, "patch.json", &game, &d.path().join("backups"), "fixture", "he", "1", lifecycle::platform()).unwrap();
+    assert_eq!(fs::read(game.join("text.txt")).unwrap(), b"translated");
+    assert_eq!(fs::read_dir(journal.join("originals")).unwrap().count(), 1);
+    fs::write(game.join("later.dat"), b"later").unwrap();
+    lifecycle::uninstall(&journal, &game).unwrap();
+    assert_eq!(fs::read(game.join("text.txt")).unwrap(), b"original");
+    assert!(!game.join("added.txt").exists());
+    assert_eq!(fs::read(game.join("save.dat")).unwrap(), b"save");
+    assert_eq!(fs::read(game.join("later.dat")).unwrap(), b"later");
+}
+
+#[test]
+fn platform_and_edition_selection_never_falls_back_to_other_payloads() {
+    let d = tempfile::tempdir().unwrap();
+    let path = d.path().join("_platforms/windows/remastered");
+    fs::create_dir_all(&path).unwrap();
+    fs::write(path.join("patch.json"), b"{}").unwrap();
+    assert_eq!(selected_root(d.path(), "tentacle", d.path(), "windows").unwrap(), path);
+    assert!(selected_root(d.path(), "tentacle", d.path(), "osx").is_err());
+    assert!(selected_root(d.path(), "other", d.path(), "windows").is_err());
+    fs::write(d.path().join("patch.json"), b"{}").unwrap();
+    assert!(selected_root(d.path(), "tentacle", d.path(), "windows").is_err());
 }
