@@ -47,6 +47,8 @@ pub struct GameDefinition {
     pub steam_app_id: Option<u32>,
     pub title: String,
     #[serde(skip_serializing_if = "Option::is_none")]
+    pub title_he: Option<String>,
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub cover_url: Option<String>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub platforms: Option<Platforms>,

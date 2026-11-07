@@ -13,6 +13,7 @@ pub(crate) static PATCH_OPERATION: tokio::sync::Mutex<()> = tokio::sync::Mutex::
 pub struct PatchInfo {
     pub scummvm_id: String,
     pub game_title: String,
+    pub title_he: Option<String>,
     pub language: String,
     pub version: String,
     pub author: String,
@@ -54,6 +55,7 @@ pub async fn get_patches_for_game(
         .map(|p| PatchInfo {
             scummvm_id: game_def.scummvm_id.clone(),
             game_title: game_def.title.clone(),
+            title_he: game_def.title_he.clone(),
             language: p.language,
             version: p.version,
             author: p.author,
@@ -95,6 +97,7 @@ pub async fn get_all_patches(db: &DatabaseConnection) -> Result<Vec<PatchInfo>, 
             all_patches.push(PatchInfo {
                 scummvm_id: game_def.scummvm_id.clone(),
                 game_title: game_def.title.clone(),
+                title_he: game_def.title_he.clone(),
                 language: patch.language,
                 version: patch.version,
                 author: patch.author,

@@ -9,18 +9,18 @@
   },
   "monkey-se": {
     "en": {
-      "src": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/monkey-se/en/b9d8b502a92e.jpg"
+      "src": "/monkey-classic-en.jpg"
     },
     "he": {
-      "src": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/monkey-se/he/0808875f8dd2.png"
+      "src": "/monkey-classic-en.jpg"
     }
   },
   "monkey2-se": {
     "en": {
-      "src": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/monkey2-se/en/edc7e06d30c7.jpg"
+      "src": "/monkey2-classic-en.jpg"
     },
     "he": {
-      "src": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/monkey2-se/he/04849cb6d306.png"
+      "src": "/monkey2-classic-en.jpg"
     }
   },
   "sq1sci": {
