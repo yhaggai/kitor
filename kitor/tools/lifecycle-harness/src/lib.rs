@@ -136,6 +136,8 @@ pub mod reconstruction;
 
 #[path = "../../../src-tauri/src/services/tentacle.rs"]
 pub mod tentacle;
+#[path = "../../../src-tauri/src/services/runtime_cleanup.rs"]
+pub mod runtime_cleanup;
 
 #[path = "../../../src-tauri/src/services/tentacle_remastered.rs"]
 pub mod tentacle_remastered;
