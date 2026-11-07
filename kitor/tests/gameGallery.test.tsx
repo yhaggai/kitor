@@ -1,18 +1,17 @@
 import { expect, test } from "bun:test";
-import { existsSync } from "node:fs";
-import { resolve } from "node:path";
 import { renderToStaticMarkup } from "react-dom/server";
 import { GameGallery } from "../../packages/ui/src/components/GameGallery";
 import galleries from "../src/data/game-galleries.json";
 import { gameSummary, patchSummary } from "../src/lib/presentation";
 
-test("all gallery files are bundled locally and retain their Facebook provenance", () => {
+test("all gallery images use Cloudflare and retain their Facebook provenance", () => {
   for (const images of Object.values(galleries)) {
     expect(images.length).toBeGreaterThan(0);
     expect(new Set(images.map((image) => image.src)).size).toBe(images.length);
     for (const image of images) {
-      expect(image.src).toStartWith("/screenshots/");
-      expect(existsSync(resolve(import.meta.dir, "../public", image.src.slice(1)))).toBe(true);
+      expect(image.src).toMatch(
+        /^https:\/\/assets\.kitor\.click\/screenshots\/[^/]+\/[a-f0-9]{16}\.jpg$/
+      );
       expect(new URL(image.sourceUrl).hostname).toBe("www.facebook.com");
     }
   }
