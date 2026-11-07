@@ -1,4 +1,4 @@
-import { useLayoutEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 
 type Point = { x: number; y: number };
 
@@ -58,7 +58,7 @@ export function BrandSteam({ id, active }: { id: string; active: boolean }) {
   const svg = useRef<SVGSVGElement>(null);
   const fade = useRef<Animation | null>(null);
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     const paths = svg.current?.querySelectorAll<SVGPathElement>(".kt-steam-ribbon");
     if (!paths) return;
     let frame = 0;
@@ -75,13 +75,13 @@ export function BrandSteam({ id, active }: { id: string; active: boolean }) {
     };
   }, []);
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     const element = svg.current;
     if (!element) return;
     const opacity = getComputedStyle(element).opacity;
     fade.current?.cancel();
     fade.current = element.animate([{ opacity }, { opacity: active ? 1 : 0 }], {
-      duration: active ? 0 : 550,
+      duration: active ? 450 : 550,
       easing: "ease",
       fill: "forwards",
     });

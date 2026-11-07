@@ -127,7 +127,6 @@
   transition: opacity 500ms ease;
 }
 .kt-brand-logo[data-steaming] .kt-brand-steam {
-  transition: none;
   opacity: 0;
 }
 .kt-brand-steam-live {
