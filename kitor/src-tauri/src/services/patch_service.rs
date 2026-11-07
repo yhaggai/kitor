@@ -13,6 +13,7 @@ pub(crate) static PATCH_OPERATION: tokio::sync::Mutex<()> = tokio::sync::Mutex::
 pub struct PatchInfo {
     pub scummvm_id: String,
     pub game_title: String,
+    pub title_he: Option<String>,
     pub language: String,
     pub version: String,
     pub author: String,
@@ -54,6 +55,7 @@ pub async fn get_patches_for_game(
         .map(|p| PatchInfo {
             scummvm_id: game_def.scummvm_id.clone(),
             game_title: game_def.title.clone(),
+            title_he: game_def.title_he.clone(),
             language: p.language,
             version: p.version,
             author: p.author,
@@ -95,6 +97,7 @@ pub async fn get_all_patches(db: &DatabaseConnection) -> Result<Vec<PatchInfo>, 
             all_patches.push(PatchInfo {
                 scummvm_id: game_def.scummvm_id.clone(),
                 game_title: game_def.title.clone(),
+                title_he: game_def.title_he.clone(),
                 language: patch.language,
                 version: patch.version,
                 author: patch.author,
@@ -129,6 +132,7 @@ pub async fn download_and_install_patch(
     println!("[patch_service] Starting installation for {} (lang: {}, ver: {})", scummvm_id, language, version);
     
     // Emit progress: Starting
+    crate::services::diagnostics::record(&app_data_dir, "patch", &scummvm_id, "starting");
     let _ = app_handle.emit("install-progress", serde_json::json!({
         "scummvm_id": scummvm_id,
         "progress": 0,
@@ -178,6 +182,7 @@ pub async fn download_and_install_patch(
     .ok_or("Game data folder no longer matches the registered game")?;
 
     // Emit progress: Preparing download
+    crate::services::diagnostics::record(&app_data_dir, "patch", &scummvm_id, "preparing download");
     let _ = app_handle.emit("install-progress", serde_json::json!({
         "scummvm_id": scummvm_id,
         "progress": 10,
@@ -207,6 +212,7 @@ pub async fn download_and_install_patch(
     }
 
     // Emit progress: Downloading
+    crate::services::diagnostics::record(&app_data_dir, "patch", &scummvm_id, "downloading");
     let _ = app_handle.emit("install-progress", serde_json::json!({
         "scummvm_id": scummvm_id,
         "progress": 20,
@@ -230,6 +236,7 @@ pub async fn download_and_install_patch(
     println!("[patch_service] Download complete");
     
     // Emit progress: Download complete
+    crate::services::diagnostics::record(&app_data_dir, "patch", &scummvm_id, "download complete");
     let _ = app_handle.emit("install-progress", serde_json::json!({
         "scummvm_id": scummvm_id,
         "progress": 45,
@@ -271,6 +278,7 @@ pub async fn download_and_install_patch(
     }
     if matching.len() > 1 { return Err("Multiple active translations require recovery before updating".into()); }
     let report = |progress: u8, step: &str| {
+        crate::services::diagnostics::record(&app_data_dir, "patch", &scummvm_id, &format!("install progress: {progress}%"));
         let _ = app_handle.emit("install-progress", serde_json::json!({
             "scummvm_id": scummvm_id, "progress": progress, "step": step
         }));
@@ -294,6 +302,7 @@ pub async fn download_and_install_patch(
     let already_recorded = previous.iter().any(|p| p.backup_path.as_deref() == backup_path.to_str());
 
     // Emit progress: Finalizing
+    crate::services::diagnostics::record(&app_data_dir, "patch", &scummvm_id, "finalizing");
     let _ = app_handle.emit("install-progress", serde_json::json!({
         "scummvm_id": scummvm_id,
         "progress": 90,
@@ -331,6 +340,7 @@ pub async fn download_and_install_patch(
     }
 
     // Emit progress: Complete
+    crate::services::diagnostics::record(&app_data_dir, "patch", &scummvm_id, "complete");
     let _ = app_handle.emit("install-progress", serde_json::json!({
         "scummvm_id": scummvm_id,
         "progress": 100,

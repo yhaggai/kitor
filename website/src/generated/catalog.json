@@ -15,7 +15,8 @@
       "osx": true,
       "linux": false
     },
-    "hebrew": true
+    "hebrew": true,
+    "title_he": "אנדרטייל"
   },
   {
     "id": "monkey-se",
@@ -33,7 +34,8 @@
       "osx": true,
       "linux": false
     },
-    "hebrew": true
+    "hebrew": true,
+    "title_he": "הסוד של אי הקופים"
   },
   {
     "id": "monkey2-se",
@@ -51,7 +53,8 @@
       "osx": true,
       "linux": false
     },
-    "hebrew": true
+    "hebrew": true,
+    "title_he": "אי הקופים 2 נקמתו של לצ׳אק"
   },
   {
     "id": "sq1sci",
@@ -69,7 +72,8 @@
       "osx": true,
       "linux": true
     },
-    "hebrew": true
+    "hebrew": true,
+    "title_he": "מסע בחלל 1 VGA"
   },
   {
     "id": "kyra1-cd",
@@ -87,7 +91,8 @@
       "osx": true,
       "linux": false
     },
-    "hebrew": true
+    "hebrew": true,
+    "title_he": "אגדת קירנדיה"
   },
   {
     "id": "pq1",
@@ -105,7 +110,8 @@
       "osx": true,
       "linux": false
     },
-    "hebrew": true
+    "hebrew": true,
+    "title_he": "משימה משטרתית"
   },
   {
     "id": "sq1",
@@ -123,7 +129,8 @@
       "osx": true,
       "linux": false
     },
-    "hebrew": true
+    "hebrew": true,
+    "title_he": "מסע בחלל 1 EGA"
   },
   {
     "id": "sq2",
@@ -141,7 +148,8 @@
       "osx": true,
       "linux": false
     },
-    "hebrew": true
+    "hebrew": true,
+    "title_he": "מסע בחלל 2"
   },
   {
     "id": "sq3",
@@ -159,7 +167,8 @@
       "osx": true,
       "linux": false
     },
-    "hebrew": true
+    "hebrew": true,
+    "title_he": "מסע בחלל 3"
   },
   {
     "id": "sq4",
@@ -177,7 +186,8 @@
       "osx": false,
       "linux": false
     },
-    "hebrew": true
+    "hebrew": true,
+    "title_he": "מסע בחלל IV: רוג׳ר וילקו וקורעי הזמן"
   },
   {
     "id": "sq5",
@@ -195,7 +205,8 @@
       "osx": true,
       "linux": false
     },
-    "hebrew": true
+    "hebrew": true,
+    "title_he": "מסע בחלל 5"
   },
   {
     "id": "sq6",
@@ -213,7 +224,8 @@
       "osx": true,
       "linux": true
     },
-    "hebrew": false
+    "hebrew": false,
+    "title_he": "מסע בחלל 6"
   },
   {
     "id": "torin",
@@ -231,7 +243,8 @@
       "osx": true,
       "linux": false
     },
-    "hebrew": true
+    "hebrew": true,
+    "title_he": "המסע של טורין"
   },
   {
     "id": "spyfox",
@@ -249,7 +262,8 @@
       "osx": true,
       "linux": false
     },
-    "hebrew": true
+    "hebrew": true,
+    "title_he": "ספיי פוקס"
   },
   {
     "id": "pajama",
@@ -267,7 +281,8 @@
       "osx": true,
       "linux": false
     },
-    "hebrew": true
+    "hebrew": true,
+    "title_he": "פיג׳מה סם"
   },
   {
     "id": "toonstruck",
@@ -285,7 +300,8 @@
       "osx": true,
       "linux": false
     },
-    "hebrew": true
+    "hebrew": true,
+    "title_he": "טונסטרק"
   },
   {
     "id": "gob2",
@@ -303,7 +319,8 @@
       "osx": true,
       "linux": false
     },
-    "hebrew": true
+    "hebrew": true,
+    "title_he": "גובלינים 2"
   },
   {
     "id": "tlj",
@@ -321,7 +338,8 @@
       "osx": true,
       "linux": false
     },
-    "hebrew": true
+    "hebrew": true,
+    "title_he": "המסע הארוך ביותר"
   },
   {
     "id": "sky",
@@ -339,7 +357,8 @@
       "osx": true,
       "linux": false
     },
-    "hebrew": true
+    "hebrew": true,
+    "title_he": "מתחת לשמי הפלדה"
   },
   {
     "id": "stanley-parable",
@@ -357,7 +376,8 @@
       "osx": false,
       "linux": false
     },
-    "hebrew": true
+    "hebrew": true,
+    "title_he": "המשל של סטנלי"
   },
   {
     "id": "tesla-effect",
@@ -375,7 +395,8 @@
       "osx": false,
       "linux": false
     },
-    "hebrew": true
+    "hebrew": true,
+    "title_he": "אפקט טסלה"
   },
   {
     "id": "ethan-carter",
@@ -393,7 +414,8 @@
       "osx": false,
       "linux": false
     },
-    "hebrew": true
+    "hebrew": true,
+    "title_he": "ההיעלמות של איתן קרטר"
   },
   {
     "id": "life-is-strange",
@@ -411,7 +433,8 @@
       "osx": false,
       "linux": false
     },
-    "hebrew": true
+    "hebrew": true,
+    "title_he": "החיים מוזרים"
   },
   {
     "id": "portal2",
@@ -429,7 +452,8 @@
       "osx": false,
       "linux": false
     },
-    "hebrew": true
+    "hebrew": true,
+    "title_he": "פורטל 2"
   },
   {
     "id": "journey-down1",
@@ -447,7 +471,8 @@
       "osx": false,
       "linux": false
     },
-    "hebrew": true
+    "hebrew": true,
+    "title_he": "המסע למטה"
   },
   {
     "id": "kathy-rain-dc",
@@ -465,7 +490,8 @@
       "osx": false,
       "linux": false
     },
-    "hebrew": true
+    "hebrew": true,
+    "title_he": "קתי ריין"
   },
   {
     "id": "drifter",
@@ -483,7 +509,8 @@
       "osx": true,
       "linux": false
     },
-    "hebrew": true
+    "hebrew": true,
+    "title_he": "הנווד"
   },
   {
     "id": "owlboy",
@@ -501,7 +528,8 @@
       "osx": true,
       "linux": false
     },
-    "hebrew": true
+    "hebrew": true,
+    "title_he": "ילד הינשוף"
   },
   {
     "id": "tentacle",
@@ -519,7 +547,8 @@
       "osx": true,
       "linux": false
     },
-    "hebrew": true
+    "hebrew": true,
+    "title_he": "יומו של הטנטקל"
   },
   {
     "id": "day-of-the-tentacle-remastered",
@@ -537,7 +566,8 @@
       "osx": true,
       "linux": false
     },
-    "hebrew": true
+    "hebrew": true,
+    "title_he": "יומו של הטנטקל"
   },
   {
     "id": "grim-fandango-remastered",
@@ -555,7 +585,8 @@
       "osx": false,
       "linux": false
     },
-    "hebrew": true
+    "hebrew": true,
+    "title_he": "גרים פנדנגו"
   },
   {
     "id": "monkey-se-native",
@@ -573,7 +604,8 @@
       "osx": false,
       "linux": false
     },
-    "hebrew": true
+    "hebrew": true,
+    "title_he": "הסוד של אי הקופים"
   },
   {
     "id": "monkey2-se-native",
@@ -591,7 +623,8 @@
       "osx": false,
       "linux": false
     },
-    "hebrew": true
+    "hebrew": true,
+    "title_he": "אי הקופים 2 נקמתו של לצ׳אק"
   },
   {
     "id": "silver-pines",
@@ -609,7 +642,8 @@
       "osx": false,
       "linux": false
     },
-    "hebrew": true
+    "hebrew": true,
+    "title_he": "סילבר פיינס"
   },
   {
     "id": "jenny-leclue",
@@ -627,6 +661,7 @@
       "osx": true,
       "linux": false
     },
-    "hebrew": true
+    "hebrew": true,
+    "title_he": "ג׳ני לקלו – הבלשית"
   }
 ]

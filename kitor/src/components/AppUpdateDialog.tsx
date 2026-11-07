@@ -1,3 +1,4 @@
+import { useTranslation } from "@kitor/ui";
 import { Download, RefreshCw } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
@@ -13,6 +14,7 @@ import { isInstallingUpdate } from "@/lib/appUpdates";
 import { useAppUpdates } from "@/store/appUpdates";
 
 export default function AppUpdateDialog() {
+  const { t } = useTranslation();
   const state = useAppUpdates();
   const busy = isInstallingUpdate(state.status);
   const percentage =
@@ -21,22 +23,22 @@ export default function AppUpdateDialog() {
       : null;
   const title =
     state.status === "upToDate"
-      ? "Kitor is up to date"
+      ? t("Kitor is up to date")
       : state.status === "ready"
-        ? "Kitor is ready to restart"
+        ? t("Kitor is ready to restart")
         : state.update
-          ? `Kitor ${state.update.version} is available`
-          : "Kitor updates";
+          ? t("Kitor {0} is available", [state.update.version])
+          : t("Kitor updates");
   const progressText =
     state.status === "downloading"
       ? percentage === null
-        ? `Downloading update… ${(state.downloaded / 1048576).toFixed(1)} MB`
-        : `Downloading update… ${percentage}%`
+        ? t("Downloading update… {0} MB", [(state.downloaded / 1048576).toFixed(1)])
+        : t("Downloading update… {0}%", [percentage])
       : state.status === "verifying"
-        ? "Verifying the update…"
+        ? t("Verifying the update…")
         : state.status === "installing"
-          ? "Installing the update…"
-          : "Restarting Kitor…";
+          ? t("Installing the update…")
+          : t("Restarting Kitor…");
 
   return (
     <Dialog open={state.open} onOpenChange={state.setOpen}>
@@ -44,16 +46,16 @@ export default function AppUpdateDialog() {
         <DialogHeader>
           <DialogTitle>{title}</DialogTitle>
           <DialogDescription>
-            {state.currentVersion ? `Installed version: ${state.currentVersion}. ` : ""}
+            {state.currentVersion ? t("Installed version: {0}. ", [state.currentVersion]) : ""}
             {state.update
-              ? "Install the latest version and restart Kitor."
-              : "Check for the latest version of Kitor."}
+              ? t("Install the latest version and restart Kitor.")
+              : t("Check for the latest version of Kitor.")}
           </DialogDescription>
         </DialogHeader>
-        {state.status === "checking" && <output>Checking for updates…</output>}
+        {state.status === "checking" && <output>{t("Checking for updates…")}</output>}
         {state.update?.notes && (
           <div className="max-h-60 overflow-y-auto rounded-md bg-muted p-4">
-            <h3 className="mb-2 text-sm font-semibold">What’s new</h3>
+            <h3 className="mb-2 text-sm font-semibold">{t("What’s new")}</h3>
             <p className="whitespace-pre-wrap break-words text-sm text-muted-foreground">
               {state.update.notes}
             </p>
@@ -62,8 +64,12 @@ export default function AppUpdateDialog() {
         {state.status === "available" && (
           <p className="text-sm text-muted-foreground">
             {state.canInstall
-              ? "Finish any game downloads or patch changes before updating. Your library and settings will be kept."
-              : "You’re running a development build. Install a release build to use app updates."}
+              ? t(
+                  "Finish any game downloads or patch changes before updating. Your library and settings will be kept."
+                )
+              : t(
+                  "You’re running a development build. Install a release build to use app updates."
+                )}
           </p>
         )}
         {busy && (
@@ -71,7 +77,7 @@ export default function AppUpdateDialog() {
             <p className="text-sm">{progressText}</p>
             <Progress
               value={state.status === "downloading" ? percentage : null}
-              aria-label="App update progress"
+              aria-label={t("App update progress")}
             />
           </div>
         )}
@@ -83,22 +89,22 @@ export default function AppUpdateDialog() {
         <DialogFooter>
           {!busy && (
             <Button variant="outline" onClick={() => state.setOpen(false)}>
-              {state.status === "available" ? "Later" : "Close"}
+              {state.status === "available" ? t("Later") : t("Close")}
             </Button>
           )}
           {state.status === "available" && (
             <Button disabled={!state.canInstall} onClick={() => void state.install()}>
               <Download className="mr-2 h-4 w-4" />
-              Update and restart
+              {t("Update and restart")}{" "}
             </Button>
           )}
           {state.status === "error" && (
-            <Button onClick={() => void state.check(true)}>Try again</Button>
+            <Button onClick={() => void state.check(true)}>{t("Try again")}</Button>
           )}
           {state.status === "ready" && (
             <Button onClick={() => void state.restart()}>
               <RefreshCw className="mr-2 h-4 w-4" />
-              Restart Kitor
+              {t("Restart Kitor")}{" "}
             </Button>
           )}
         </DialogFooter>

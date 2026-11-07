@@ -32,7 +32,10 @@ pub async fn download_and_install_patch(
     updates: State<'_, crate::services::app_updates::AppUpdates>,
 ) -> Result<(), String> {
     let _activity = updates.activity()?;
-    patch_service::download_and_install_patch(
+    use crate::services::diagnostics;
+    let target = scummvm_id.clone();
+    diagnostics::record(&state.app_data_dir, "patch", &target, "started");
+    let result = patch_service::download_and_install_patch(
         &state.db,
         scummvm_id,
         language,
@@ -40,7 +43,9 @@ pub async fn download_and_install_patch(
         app_handle,
         state.app_data_dir.clone(),
     )
-    .await
+    .await;
+    diagnostics::record(&state.app_data_dir, "patch", &target, diagnostics::outcome(&result));
+    result
 }
 
 #[tauri::command]

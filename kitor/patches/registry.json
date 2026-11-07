@@ -5,6 +5,7 @@
       "steam_app_id": 391540,
       "cover_url": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/undertale/9145051fa004.jpg",
       "title": "UNDERTALE",
+      "title_he": "אנדרטייל",
       "platforms": {
         "windows": true,
         "osx": true,
@@ -64,8 +65,9 @@
     {
       "scummvm_id": "monkey-se",
       "steam_app_id": 32360,
-      "title": "The Secret of Monkey Island: Special Edition",
-      "cover_url": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/monkey-se/b9d8b502a92e.jpg",
+      "title": "The Secret of Monkey Island — Classic",
+      "title_he": "הסוד של אי הקופים",
+      "cover_url": "/monkey-classic-en.jpg",
       "platforms": {
         "windows": true,
         "osx": true,
@@ -122,8 +124,9 @@
     {
       "scummvm_id": "monkey2-se",
       "steam_app_id": 32460,
-      "title": "Monkey Island 2: LeChuck's Revenge Special Edition",
-      "cover_url": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/monkey2-se/edc7e06d30c7.jpg",
+      "title": "Monkey Island 2: LeChuck's Revenge — Classic",
+      "title_he": "אי הקופים 2 נקמתו של לצ׳אק",
+      "cover_url": "/monkey2-classic-en.jpg",
       "platforms": {
         "windows": true,
         "osx": true,
@@ -183,6 +186,7 @@
       "scummvm_id": "sq1sci",
       "steam_app_id": 10110,
       "title": "Space Quest I: Roger Wilco in the Sarien Encounter (VGA Remake)",
+      "title_he": "מסע בחלל 1 VGA",
       "cover_url": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/sq1sci/47ff2f31fadc.jpg",
       "platforms": {
         "windows": true,
@@ -226,6 +230,7 @@
     {
       "scummvm_id": "kyra1-cd",
       "title": "The Legend of Kyrandia",
+      "title_he": "אגדת קירנדיה",
       "cover_url": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/kyra1-cd/b9f9a5ade25d.jpeg",
       "platforms": {
         "windows": true,
@@ -283,6 +288,7 @@
       "steam_app_id": 494740,
       "cover_url": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/pq1/bb3cbf8ffefc.jpg",
       "title": "Police Quest: In Pursuit of the Death Angel (EGA)",
+      "title_he": "משימה משטרתית",
       "platforms": {
         "windows": true,
         "osx": true,
@@ -354,6 +360,7 @@
       "steam_app_id": 10110,
       "cover_url": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/sq1/08cf78a61b31.jpg",
       "title": "Space Quest I: The Sarien Encounter (EGA)",
+      "title_he": "מסע בחלל 1 EGA",
       "platforms": {
         "windows": true,
         "osx": true,
@@ -410,6 +417,7 @@
       "steam_app_id": 10110,
       "cover_url": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/sq2/2f9730d67c73.jpg",
       "title": "Space Quest II: Vohaul’s Revenge",
+      "title_he": "מסע בחלל 2",
       "platforms": {
         "windows": true,
         "osx": true,
@@ -466,6 +474,7 @@
       "steam_app_id": 10110,
       "cover_url": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/sq3/48f13b56b776.jpeg",
       "title": "Space Quest III: The Pirates of Pestulon",
+      "title_he": "מסע בחלל 3",
       "platforms": {
         "windows": true,
         "osx": true,
@@ -521,6 +530,7 @@
       "steam_app_id": 10110,
       "cover_url": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/sq4/en/7bf2aea312f3c85d.webp",
       "title": "Space Quest IV: Roger Wilco and the Time Rippers",
+      "title_he": "מסע בחלל IV: רוג׳ר וילקו וקורעי הזמן",
       "platforms": {
         "windows": true,
         "osx": false,
@@ -566,6 +576,7 @@
       "steam_app_id": 10110,
       "cover_url": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/sq5/8d60499f2931.webp",
       "title": "Space Quest V: The Next Mutation",
+      "title_he": "מסע בחלל 5",
       "platforms": {
         "windows": true,
         "osx": true,
@@ -610,6 +621,7 @@
       "steam_app_id": 10110,
       "cover_url": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/sq6/en/c3a436d54e83.jpg",
       "title": "Space Quest 6: Roger Wilco in the Spinal Frontier",
+      "title_he": "מסע בחלל 6",
       "platforms": {
         "windows": true,
         "osx": true,
@@ -639,6 +651,7 @@
       "scummvm_id": "torin",
       "cover_url": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/torin/344dd7e600d6.jpeg",
       "title": "Torin’s Passage",
+      "title_he": "המסע של טורין",
       "platforms": {
         "windows": true,
         "osx": true,
@@ -694,6 +707,7 @@
       "steam_app_id": 283980,
       "cover_url": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/spyfox/f79e51735fc4.jpg",
       "title": "Spy Fox in Dry Cereal",
+      "title_he": "ספיי פוקס",
       "platforms": {
         "windows": true,
         "osx": true,
@@ -734,6 +748,7 @@
       "scummvm_id": "pajama",
       "cover_url": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/pajama/800dc7a2b316.jpg",
       "title": "Pajama Sam: No Need to Hide When It’s Dark Outside",
+      "title_he": "פיג׳מה סם",
       "platforms": {
         "windows": true,
         "osx": true,
@@ -778,6 +793,7 @@
       "scummvm_id": "toonstruck",
       "cover_url": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/toonstruck/fbd6de512350.jpg",
       "title": "Toonstruck",
+      "title_he": "טונסטרק",
       "platforms": {
         "windows": true,
         "osx": true,
@@ -828,6 +844,7 @@
       "scummvm_id": "gob2",
       "cover_url": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/gob2/e7017e6b020e.jpeg",
       "title": "Gobliins 2: The Prince Buffoon",
+      "title_he": "גובלינים 2",
       "platforms": {
         "windows": true,
         "osx": true,
@@ -879,6 +896,7 @@
       "scummvm_id": "tlj",
       "cover_url": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/tlj/7caffc0e3eb6.jpeg",
       "title": "The Longest Journey",
+      "title_he": "המסע הארוך ביותר",
       "platforms": {
         "windows": true,
         "osx": true,
@@ -935,6 +953,7 @@
       "scummvm_id": "sky",
       "cover_url": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/sky/a66d8fcd68f6.jpg",
       "title": "Beneath a Steel Sky",
+      "title_he": "מתחת לשמי הפלדה",
       "platforms": {
         "windows": true,
         "osx": true,
@@ -980,6 +999,7 @@
       "steam_app_id": 221910,
       "cover_url": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/stanley-parable/924f717e3da0.jpg",
       "title": "The Stanley Parable (2013)",
+      "title_he": "המשל של סטנלי",
       "platforms": {
         "windows": true,
         "osx": false,
@@ -1020,6 +1040,7 @@
       "steam_app_id": 261510,
       "cover_url": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/tesla-effect/77011ed8d30d.jpg",
       "title": "Tesla Effect: A Tex Murphy Adventure",
+      "title_he": "אפקט טסלה",
       "platforms": {
         "windows": true,
         "osx": false,
@@ -1060,6 +1081,7 @@
       "steam_app_id": 258520,
       "cover_url": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/ethan-carter/1cb9c72fce73.jpg",
       "title": "The Vanishing of Ethan Carter (original)",
+      "title_he": "ההיעלמות של איתן קרטר",
       "platforms": {
         "windows": true,
         "osx": false,
@@ -1100,6 +1122,7 @@
       "steam_app_id": 319630,
       "cover_url": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/life-is-strange/3129cec77590.jpg",
       "title": "Life Is Strange — Episodes 1–3",
+      "title_he": "החיים מוזרים",
       "platforms": {
         "windows": true,
         "osx": false,
@@ -1140,6 +1163,7 @@
       "steam_app_id": 620,
       "cover_url": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/portal2/716b26a850c5.jpg",
       "title": "Portal 2",
+      "title_he": "פורטל 2",
       "platforms": {
         "windows": true,
         "osx": false,
@@ -1180,6 +1204,7 @@
       "steam_app_id": 220090,
       "cover_url": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/journey-down1/593bbde1b4e9.jpg",
       "title": "The Journey Down: Chapter One",
+      "title_he": "המסע למטה",
       "platforms": {
         "windows": true,
         "osx": false,
@@ -1220,6 +1245,7 @@
       "steam_app_id": 1395030,
       "cover_url": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/kathy-rain-dc/4d5873a538fd.jpg",
       "title": "Kathy Rain: Director's Cut",
+      "title_he": "קתי ריין",
       "platforms": {
         "windows": true,
         "osx": false,
@@ -1260,6 +1286,7 @@
       "steam_app_id": 1170570,
       "cover_url": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/drifter/8f903a5fb6f8.jpg",
       "title": "The Drifter",
+      "title_he": "הנווד",
       "platforms": {
         "windows": true,
         "osx": true,
@@ -1319,6 +1346,7 @@
       "scummvm_id": "owlboy",
       "steam_app_id": 115800,
       "title": "ילד הינשוף — Owlboy",
+      "title_he": "ילד הינשוף",
       "platforms": {
         "windows": true,
         "osx": true,
@@ -1363,6 +1391,7 @@
       "scummvm_id": "tentacle",
       "steam_app_id": 388210,
       "title": "Day of the Tentacle (Classic)",
+      "title_he": "יומו של הטנטקל",
       "platforms": {
         "windows": true,
         "osx": true,
@@ -1410,6 +1439,7 @@
       "scummvm_id": "day-of-the-tentacle-remastered",
       "steam_app_id": 388210,
       "title": "Day of the Tentacle Remastered",
+      "title_he": "יומו של הטנטקל",
       "platforms": {
         "windows": true,
         "osx": true,
@@ -1455,6 +1485,7 @@
     {
       "scummvm_id": "grim-fandango-remastered",
       "title": "Grim Fandango Remastered",
+      "title_he": "גרים פנדנגו",
       "platforms": {
         "windows": true,
         "osx": false,
@@ -1502,6 +1533,7 @@
       "scummvm_id": "monkey-se-native",
       "steam_app_id": 32360,
       "title": "The Secret of Monkey Island: Special Edition (Native Remastered)",
+      "title_he": "הסוד של אי הקופים",
       "cover_url": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/monkey-se/b9d8b502a92e.jpg",
       "platforms": {
         "windows": true,
@@ -1560,6 +1592,7 @@
       "scummvm_id": "monkey2-se-native",
       "steam_app_id": 32460,
       "title": "Monkey Island 2: LeChuck's Revenge Special Edition (Native Remastered)",
+      "title_he": "אי הקופים 2 נקמתו של לצ׳אק",
       "cover_url": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/monkey2-se/edc7e06d30c7.jpg",
       "platforms": {
         "windows": true,
@@ -1618,6 +1651,7 @@
       "scummvm_id": "silver-pines",
       "steam_app_id": 2333000,
       "title": "Silver Pines",
+      "title_he": "סילבר פיינס",
       "cover_url": "/cover-silver-pines.jpg",
       "platforms": {
         "windows": true,
@@ -1685,6 +1719,7 @@
       "scummvm_id": "jenny-leclue",
       "steam_app_id": 319870,
       "title": "Jenny LeClue - Detectivu",
+      "title_he": "ג׳ני לקלו – הבלשית",
       "cover_url": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/jenny-leclue/en/2768413b7b5b.jpg",
       "platforms": {
         "windows": true,

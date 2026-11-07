@@ -8,7 +8,12 @@ pub async fn launch_game(
     state: State<'_, AppState>,
     app_handle: tauri::AppHandle,
 ) -> Result<(), String> {
-    scummvm_service::launch_game(&state.db, game_id, &state.app_data_dir, &app_handle).await
+    use crate::services::diagnostics;
+    let target = game_id.to_string();
+    diagnostics::record(&state.app_data_dir, "launch", &target, "started");
+    let result = scummvm_service::launch_game(&state.db, game_id, &state.app_data_dir, &app_handle).await;
+    diagnostics::record(&state.app_data_dir, "launch", &target, diagnostics::outcome(&result));
+    result
 }
 
 #[tauri::command]

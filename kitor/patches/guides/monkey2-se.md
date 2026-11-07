@@ -1,3 +1,7 @@
+# Monkey Island 2: LeChuck's Revenge — Classic
+
+This catalog entry plays the classic adventure through ScummVM. Buy and download the Special Edition linked below to supply its game data. On Mac, this entry runs the classic version. The remastered version has its own catalog entry.
+
 # אי הקופים 2: נקמתו של לצ'אק - מהדורה מיוחדת
 
 הולך ברנשצבע מדחי אל דחי

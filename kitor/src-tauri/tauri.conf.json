@@ -15,8 +15,10 @@
       {
         "title": "kitor",
         "theme": "Dark",
-        "width": 800,
-        "height": 600,
+        "width": 1180,
+        "height": 800,
+        "minWidth": 760,
+        "minHeight": 560,
         "visible": false,
         "label": "main"
       },

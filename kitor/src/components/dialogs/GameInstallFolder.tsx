@@ -1,3 +1,4 @@
+import { useTranslation } from "@kitor/ui";
 import { invoke } from "@tauri-apps/api/core";
 import { open } from "@tauri-apps/plugin-dialog";
 import { useEffect, useState } from "react";
@@ -12,6 +13,7 @@ export function GameInstallFolder({
   onChange: (path: string) => void;
   folders: string[];
 }) {
+  const { t } = useTranslation();
   const [error, setError] = useState<string | null>(null);
   const [browsing, setBrowsing] = useState(false);
   useEffect(() => {
@@ -35,7 +37,7 @@ export function GameInstallFolder({
       const path = await open({
         directory: true,
         multiple: false,
-        title: "Choose game installation folder",
+        title: t("Choose game installation folder"),
         ...(value ? { defaultPath: value } : {}),
       });
       if (path) onChange(path);
@@ -48,9 +50,9 @@ export function GameInstallFolder({
   return (
     <div className="space-y-2">
       <div className="flex items-center justify-between gap-3">
-        <span className="text-sm font-medium">Installation folder</span>
+        <span className="text-sm font-medium">{t("Installation folder")}</span>
         <Button variant="outline" size="sm" disabled={browsing} onClick={() => void browse()}>
-          {browsing ? "Opening…" : "Browse…"}
+          {browsing ? t("Opening…") : t("Browse…")}
         </Button>
       </div>
       <div className="rounded-md border border-border bg-muted/40 text-foreground p-3 text-xs break-all font-mono">
@@ -60,12 +62,12 @@ export function GameInstallFolder({
                 {value.replace(/\/$/, "")}/{folder}
               </p>
             ))
-          : "Loading installation folder…"}
+          : t("Loading installation folder…")}
       </div>
-      <p className="text-xs text-muted-foreground">
+      <p dir="auto" className="text-xs text-muted-foreground">
         {folders.length === 1
-          ? "Kitor will create this folder for the download."
-          : "Kitor will create a separate folder for each game here."}
+          ? t("Kitor will create this folder for the download.")
+          : t("Kitor will create a separate folder for each game here.")}
       </p>
       {error && (
         <p role="alert" className="text-sm text-destructive">

@@ -37,3 +37,5 @@ pub mod patch_state;
 pub mod gog_download_service;
 
 pub mod games;
+
+pub mod diagnostics;

@@ -1,3 +1,7 @@
+# The Secret of Monkey Island — Classic
+
+This catalog entry plays the classic adventure through ScummVM. Buy and download the Special Edition linked below to supply its game data. On Mac, this entry runs the classic version. The remastered version has its own catalog entry.
+
 # Where to Purchase
 
 The Secret of Monkey Island: Special Edition is available from:

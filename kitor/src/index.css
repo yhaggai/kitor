@@ -1,49 +1,62 @@
 @import "tailwindcss";
 
 @theme {
-  --color-background: oklch(100% 0 0);
-  --color-foreground: oklch(15% 0 0);
-  --color-card: oklch(100% 0 0);
-  --color-card-foreground: oklch(15% 0 0);
-  --color-popover: oklch(100% 0 0);
-  --color-popover-foreground: oklch(15% 0 0);
-  --color-primary: oklch(15% 0 0);
-  --color-primary-foreground: oklch(98% 0 0);
-  --color-secondary: oklch(96% 0 0);
-  --color-secondary-foreground: oklch(15% 0 0);
-  --color-muted: oklch(96% 0 0);
-  --color-muted-foreground: oklch(55% 0 0);
-  --color-accent: oklch(96% 0 0);
-  --color-accent-foreground: oklch(15% 0 0);
-  --color-destructive: oklch(60% 0.16 29);
-  --color-destructive-foreground: oklch(98% 0 0);
-  --color-border: oklch(92% 0 0);
-  --color-input: oklch(92% 0 0);
-  --color-ring: oklch(15% 0 0);
-  --radius: 0.5rem;
+  --color-background: var(--kt-bg);
+  --color-foreground: var(--kt-text);
+  --color-card: var(--kt-surface);
+  --color-card-foreground: var(--kt-text);
+  --color-popover: var(--kt-surface);
+  --color-popover-foreground: var(--kt-text);
+  --color-primary: var(--kt-accent);
+  --color-primary-foreground: var(--kt-accent-ink);
+  --color-secondary: var(--kt-surface);
+  --color-secondary-foreground: var(--kt-text);
+  --color-muted: var(--kt-surface);
+  --color-muted-foreground: var(--kt-muted);
+  --color-accent: var(--kt-border);
+  --color-accent-foreground: var(--kt-text);
+  --color-destructive: var(--kt-danger);
+  --color-destructive-foreground: var(--kt-bg);
+  --color-border: var(--kt-border);
+  --color-input: var(--kt-border);
+  --color-ring: var(--kt-accent);
+  --radius: 0.625rem;
 }
 
-@media (prefers-color-scheme: dark) {
-  @theme {
-    --color-background: oklch(15% 0 0);
-    --color-foreground: oklch(98% 0 0);
-    --color-card: oklch(15% 0 0);
-    --color-card-foreground: oklch(98% 0 0);
-    --color-popover: oklch(15% 0 0);
-    --color-popover-foreground: oklch(98% 0 0);
-    --color-primary: oklch(98% 0 0);
-    --color-primary-foreground: oklch(15% 0 0);
-    --color-secondary: oklch(22% 0 0);
-    --color-secondary-foreground: oklch(98% 0 0);
-    --color-muted: oklch(22% 0 0);
-    --color-muted-foreground: oklch(70% 0 0);
-    --color-accent: oklch(22% 0 0);
-    --color-accent-foreground: oklch(98% 0 0);
-    --color-destructive: oklch(45% 0.16 29);
-    --color-destructive-foreground: oklch(98% 0 0);
-    --color-border: oklch(22% 0 0);
-    --color-input: oklch(22% 0 0);
-    --color-ring: oklch(84% 0 0);
+body {
+  margin: 0;
+}
+.kitor-theme .kt-request-field:focus-visible {
+  border-color: var(--kt-accent);
+  outline: 1px solid var(--kt-accent);
+  outline-offset: 0;
+}
+.kt-native-game-actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  width: 100%;
+}
+.kt-native-game-actions > .w-full {
+  width: auto;
+  max-width: 420px;
+}
+.kt-native-game-actions > button {
+  width: auto;
+}
+.kt-native-game-actions > [aria-live],
+.kt-native-game-actions > .space-y-2 {
+  flex-basis: 100%;
+}
+.kt-native-settings {
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: 40px;
+}
+@media (max-width: 700px) {
+  .kt-native-settings {
+    padding: 20px;
   }
 }
 
@@ -144,4 +157,41 @@
       clip-path: inset(0 0 0 0);
     }
   }
+}
+
+.kt-native-settings > .rounded-lg {
+  position: relative;
+}
+.kt-native-settings > .rounded-lg > .p-6:first-child {
+  padding-inline-end: 88px;
+}
+.kt-native-settings .kt-manage-menu {
+  position: static;
+}
+.kt-native-settings .kt-manage-trigger {
+  position: absolute;
+  inset-inline-end: 24px;
+  top: 24px;
+}
+.kt-native-settings .kt-manage-dropdown {
+  top: 76px;
+  inset-inline-end: 24px;
+  display: grid;
+  gap: 8px;
+}
+.kt-native-settings .kt-manage-dropdown > button {
+  width: 100%;
+  justify-content: flex-start;
+}
+
+@layer base {
+  *,
+  ::before,
+  ::after {
+    border-color: var(--kt-border);
+  }
+}
+.kt-game-command-bar > .kt-manage-trigger {
+  margin-inline-start: auto;
+  flex-shrink: 0;
 }

@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="kitor/assets/app-icon.png" width="160" height="160" alt="Kitor logo — a golden chimney with a curl of steam / סמל קיטור — ארובה זהובה עם סליל אדים" />
+  <img src="docs/images/kitor-logo.gif" width="640" height="320" alt="Kitor logo — a golden chimney with a curl of steam / סמל קיטור — ארובה זהובה עם סליל אדים" />
 </p>
 
 <h1 align="center">קיטור · Kitor</h1>

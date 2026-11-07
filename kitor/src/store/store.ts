@@ -31,6 +31,7 @@ type Game = {
   id: number;
   scummvm_id: string;
   title: string;
+  title_he?: string | null;
   install_path: string;
   cover_url?: string;
   detected_version?: string;
@@ -46,6 +47,7 @@ type Game = {
 type Patch = {
   scummvm_id: string;
   game_title: string;
+  title_he?: string | null;
   language: string;
   version: string;
   download_url: string;

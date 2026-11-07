@@ -1,3 +1,4 @@
+import { ManageMenu, steamIcon, useTranslation } from "@kitor/ui";
 import { openUrl } from "@tauri-apps/plugin-opener";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
@@ -5,7 +6,9 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { useSteamStore } from "@/store/steam";
 
 export default function SteamAuthCard() {
+  const { t } = useTranslation();
   const { status, busy, error, run } = useSteamStore();
+  const [showKey, setShowKey] = useState(false);
   const [key, setKey] = useState("");
   const [linkError, setLinkError] = useState<string | null>(null);
   const open = async (url: string) => {
@@ -19,30 +22,35 @@ export default function SteamAuthCard() {
   return (
     <Card>
       <CardHeader>
-        <CardTitle>Steam Integration</CardTitle>
+        <CardTitle className="flex items-center gap-3">
+          <img className="h-10 w-10 object-contain" src={steamIcon} alt="" />
+          Steam
+        </CardTitle>
         <CardDescription>
-          Connect Steam to find games you own, including games you haven’t installed.
+          {t("Connect Steam to find games you own, including games you haven’t installed.")}{" "}
         </CardDescription>
       </CardHeader>
       <CardContent className="space-y-4">
         <p className="text-sm text-muted-foreground">
-          Sign in on Steam’s website to share your Steam ID. Kitor never receives your password.
-          Your game details must be public for library lookup; signing in does not grant access to a
-          private library.
+          {t(
+            "Sign in on Steam’s website to share your Steam ID. Kitor never receives your password. Your game details must be public for library lookup; signing in does not grant access to a private library."
+          )}{" "}
         </p>
         <p className="font-medium">
-          {status.steam_id ? `Connected · ${status.steam_id}` : "Not connected"}
+          {status.steam_id ? t("Connected · {0}", [status.steam_id]) : t("Not connected")}
         </p>
         {status.owned_app_ids !== null && (
-          <p className="text-sm">{status.owned_app_ids.length} games in your Steam library</p>
+          <p className="text-sm">
+            {status.owned_app_ids.length} {t("games in your Steam library")}
+          </p>
         )}
         {status.message && (
           <output className="block text-sm text-muted-foreground">{status.message}</output>
         )}
-        <div className="flex flex-wrap gap-2">
+        <ManageMenu label={t("Manage Steam")}>
           {!status.steam_id && (
             <Button disabled={busy} onClick={() => run("connect_steam")}>
-              {status.connecting ? "Waiting for Steam…" : "Connect Steam"}
+              {status.connecting ? t("Waiting for Steam…") : t("Connect Steam")}
             </Button>
           )}
           {(status.steam_id || status.has_api_key || status.connecting) && (
@@ -54,7 +62,11 @@ export default function SteamAuthCard() {
                 run("disconnect_steam");
               }}
             >
-              {status.connecting ? "Cancel sign-in" : status.steam_id ? "Disconnect" : "Clear key"}
+              {status.connecting
+                ? t("Cancel sign-in")
+                : status.steam_id
+                  ? t("Disconnect")
+                  : t("Clear key")}
             </Button>
           )}
           {status.steam_id && (
@@ -63,56 +75,74 @@ export default function SteamAuthCard() {
               disabled={busy || !status.has_api_key}
               onClick={() => run("refresh_steam_library")}
             >
-              Refresh library
+              {t("Refresh library")}{" "}
             </Button>
           )}
-        </div>
-        <form
-          className="space-y-2 border-t pt-4"
-          onSubmit={async (event) => {
-            event.preventDefault();
-            if (await run("set_steam_api_key", { apiKey: key })) setKey("");
-          }}
-        >
-          <label htmlFor="steam-api-key" className="block text-sm font-medium">
-            Your Steam Web API key
-          </label>
-          <p className="text-sm text-muted-foreground">
-            {status.has_api_key ? "Key saved securely." : "Enter your own key to check ownership."}{" "}
-            The key is saved in your system credential store and restored when Kitor starts. It is
-            sent only to Steam. Disconnect removes the saved key and Steam ID.
-          </p>
-          <input
-            id="steam-api-key"
-            type="password"
-            autoComplete="off"
-            spellCheck={false}
-            value={key}
-            onChange={(event) => setKey(event.target.value)}
-            disabled={busy}
-            className="h-10 w-full rounded-md border border-input bg-background px-3 text-sm"
-            placeholder="32-character API key"
-          />
-          <div className="flex flex-wrap gap-2">
-            <Button type="submit" disabled={busy || !key.trim()}>
-              Save key
-            </Button>
+          <Button variant="outline" onClick={() => setShowKey(true)}>
+            {t("Manage Steam API key")}{" "}
+          </Button>
+        </ManageMenu>
+        {showKey && (
+          <form
+            className="space-y-2 border-t pt-4"
+            onSubmit={async (event) => {
+              event.preventDefault();
+              if (await run("set_steam_api_key", { apiKey: key })) setKey("");
+            }}
+          >
+            <label htmlFor="steam-api-key" className="block text-sm font-medium">
+              {t("Your Steam Web API key")}{" "}
+            </label>
+            <p className="text-sm text-muted-foreground">
+              {status.has_api_key
+                ? t("Key saved securely.")
+                : t("Enter your own key to check ownership.")}{" "}
+              {t(
+                "The key is saved in your system credential store and restored when Kitor starts. It is sent only to Steam. Disconnect removes the saved key and Steam ID."
+              )}{" "}
+            </p>
+            <input
+              id="steam-api-key"
+              type="password"
+              autoComplete="off"
+              spellCheck={false}
+              value={key}
+              onChange={(event) => setKey(event.target.value)}
+              disabled={busy}
+              className="h-10 w-full rounded-md border border-input bg-background px-3 text-sm"
+              placeholder={t("32-character API key")}
+            />
+            <div className="flex flex-wrap gap-2">
+              <Button type="submit" disabled={busy || !key.trim()}>
+                {t("Save key")}{" "}
+              </Button>
+              <Button
+                type="button"
+                variant="outline"
+                onClick={() => open("https://steamcommunity.com/dev/apikey")}
+              >
+                {t("Get a Steam API key")}{" "}
+              </Button>
+              <Button
+                type="button"
+                variant="outline"
+                onClick={() => open("https://steamcommunity.com/my/edit/settings")}
+              >
+                {t("Steam privacy settings")}{" "}
+              </Button>
+            </div>
             <Button
               type="button"
               variant="outline"
-              onClick={() => open("https://steamcommunity.com/dev/apikey")}
+              onClick={() => {
+                setShowKey(false);
+                setKey("");
+              }}
             >
-              Get a Steam API key
+              {t("Close")}{" "}
             </Button>
-            <Button
-              type="button"
-              variant="outline"
-              onClick={() => open("https://steamcommunity.com/my/edit/settings")}
-            >
-              Steam privacy settings
-            </Button>
-          </div>
-        </form>
+          </form>
+        )}
         {(error || linkError) && (
           <p role="alert" className="text-sm text-destructive">
             {error || linkError}

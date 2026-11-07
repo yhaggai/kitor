@@ -1,3 +1,4 @@
+import { gogIcon, ManageMenu, useTranslation } from "@kitor/ui";
 import { invoke } from "@tauri-apps/api/core";
 import { listen } from "@tauri-apps/api/event";
 import { CheckCircle, LogIn, LogOut, XCircle } from "lucide-react";
@@ -10,29 +11,34 @@ import { useGogLibrary } from "@/store/gog";
 import { useAppStore } from "@/store/store";
 
 export default function GogAuthCard() {
+  const { t } = useTranslation();
   const { gogAuth } = useAppStore();
   const alert = useDialog();
   const [isLoggingIn, setIsLoggingIn] = useState(false);
   const [isLoggingOut, setIsLoggingOut] = useState(false);
 
-  const { loading: isLoadingGames, error: libraryError, refresh: checkAuthStatus } = useGogLibrary();
+  const {
+    loading: isLoadingGames,
+    error: libraryError,
+    refresh: checkAuthStatus,
+  } = useGogLibrary();
 
   useEffect(() => {
     const unlistenSuccess = listen("gog-login-success", () => {
       setIsLoggingIn(false);
-      alert.alert({ title: "Success", description: "Successfully logged in to GOG" });
+      alert.alert({ title: t("Success"), description: t("Successfully logged in to GOG") });
     });
 
     const unlistenError = listen<string>("gog-login-error", (event) => {
       setIsLoggingIn(false);
-      alert.alert({ title: "Login Failed", description: event.payload });
+      alert.alert({ title: t("Login Failed"), description: event.payload });
     });
 
     return () => {
       unlistenSuccess.then((fn) => fn());
       unlistenError.then((fn) => fn());
     };
-  }, [checkAuthStatus, alert]);
+  }, [alert, t]);
 
   const handleLogin = async () => {
     try {
@@ -40,17 +46,17 @@ export default function GogAuthCard() {
       await invoke("login_to_gog");
     } catch (error) {
       console.error("Failed to initiate GOG login:", error);
-      await alert.alert({ title: "Login Failed", description: String(error) });
+      await alert.alert({ title: t("Login Failed"), description: String(error) });
       setIsLoggingIn(false);
     }
   };
 
   const handleLogout = async () => {
     const confirmed = await alert.confirm({
-      title: "Logout from GOG?",
-      description: "Are you sure you want to logout from GOG?",
-      confirmText: "Logout",
-      cancelText: "Cancel",
+      title: t("Logout from GOG?"),
+      description: t("Are you sure you want to logout from GOG?"),
+      confirmText: t("Logout"),
+      cancelText: t("Cancel"),
     });
 
     if (!confirmed) {
@@ -63,7 +69,7 @@ export default function GogAuthCard() {
       useGogLibrary.getState().clear();
     } catch (error) {
       console.error("Failed to logout from GOG:", error);
-      await alert.alert({ title: "Logout Failed", description: String(error) });
+      await alert.alert({ title: t("Logout Failed"), description: String(error) });
     } finally {
       setIsLoggingOut(false);
     }
@@ -72,9 +78,12 @@ export default function GogAuthCard() {
   return (
     <Card>
       <CardHeader>
-        <CardTitle>GOG Integration</CardTitle>
+        <CardTitle className="flex items-center gap-3">
+          <img className="h-10 w-10 object-contain" src={gogIcon} alt="" />
+          GOG
+        </CardTitle>
         <CardDescription>
-          Connect your GOG account to download games from your library
+          {t("Connect your GOG account to download games from your library")}{" "}
         </CardDescription>
       </CardHeader>
       <CardContent className="space-y-4">
@@ -83,48 +92,64 @@ export default function GogAuthCard() {
             <>
               <CheckCircle className="h-5 w-5 text-green-500" />
               <div className="flex-1">
-                <p className="font-medium">Connected to GOG</p>
+                <p className="font-medium">{t("Connected to GOG")}</p>
                 <p className="text-sm text-muted-foreground">
-                  {isLoadingGames ? "Loading library…" : libraryError ? "Library could not be loaded" : "Ownership synced"}
+                  {isLoadingGames
+                    ? t("Loading library…")
+                    : libraryError
+                      ? t("Library could not be loaded")
+                      : t("Ownership synced")}
                 </p>
               </div>
-              <Badge variant="secondary">Connected</Badge>
+              <Badge variant="secondary">{t("Connected")}</Badge>
             </>
           ) : (
             <>
               <XCircle className="h-5 w-5 text-muted-foreground" />
               <div className="flex-1">
-                <p className="font-medium">Not Connected</p>
-                <p className="text-sm text-muted-foreground">Login to access your GOG library</p>
+                <p className="font-medium">{t("Not Connected")}</p>
+                <p className="text-sm text-muted-foreground">
+                  {t("Login to access your GOG library")}
+                </p>
               </div>
             </>
           )}
         </div>
 
-        {gogAuth.isAuthenticated ? (
-          <Button
-            onClick={handleLogout}
-            variant="outline"
-            disabled={isLoggingOut}
-            className="w-full"
-          >
-            <LogOut className="h-4 w-4 mr-2" />
-            {isLoggingOut ? "Logging out..." : "Logout from GOG"}
-          </Button>
-        ) : (
-          <Button onClick={handleLogin} disabled={isLoggingIn} className="w-full">
-            <LogIn className="h-4 w-4 mr-2" />
-            {isLoggingIn ? "Waiting for login..." : "Login to GOG"}
-          </Button>
-        )}
-
-        {libraryError && <p role="alert" className="text-sm text-destructive">{libraryError}</p>}
-        {gogAuth.isAuthenticated && (
-          <Button variant="outline" className="w-full" disabled={isLoadingGames || isLoggingOut} onClick={() => void checkAuthStatus()}>
-            {isLoadingGames ? "Loading library…" : "Refresh GOG library"}
-          </Button>
-        )}
-
+        <ManageMenu label={t("Manage GOG")}>
+          {" "}
+          {gogAuth.isAuthenticated ? (
+            <Button
+              onClick={handleLogout}
+              variant="outline"
+              disabled={isLoggingOut}
+              className="w-full"
+            >
+              <LogOut className="h-4 w-4 mr-2" />
+              {isLoggingOut ? t("Logging out...") : t("Logout from GOG")}
+            </Button>
+          ) : (
+            <Button onClick={handleLogin} disabled={isLoggingIn} className="w-full">
+              <LogIn className="h-4 w-4 mr-2" />
+              {isLoggingIn ? t("Waiting for login...") : t("Login to GOG")}
+            </Button>
+          )}
+          {libraryError && (
+            <p role="alert" className="text-sm text-destructive">
+              {libraryError}
+            </p>
+          )}
+          {gogAuth.isAuthenticated && (
+            <Button
+              variant="outline"
+              className="w-full"
+              disabled={isLoadingGames || isLoggingOut}
+              onClick={() => void checkAuthStatus()}
+            >
+              {isLoadingGames ? t("Loading library…") : t("Refresh GOG library")}
+            </Button>
+          )}
+        </ManageMenu>
       </CardContent>
     </Card>
   );

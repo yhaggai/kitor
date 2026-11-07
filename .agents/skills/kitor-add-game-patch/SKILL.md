@@ -48,6 +48,10 @@ Cover the supported store layouts, including GOG macOS `.app/Contents/Resources/
 
 Add regression coverage for valid layouts, incomplete or unrelated lookalikes, the resolved install path, and repeated scanning without duplicate entries. When a local installation is available, run the detector and scan against it using a temporary library database without modifying original game files. Record the edition/layout checked. If source data is unavailable or a reliable signature cannot be established, report detection as an onboarding blocker rather than claiming the game is fully integrated. Update any stale registry descriptions that say detection is disabled after enabling it.
 
+## Game banners
+
+Use the installed `hebrew-game-artwork` skill for a matching game-detail banner as part of onboarding, unless the user restricts the work to boxes or metadata. Reuse a verified banner for the exact edition or generate it using that skill; a portrait cover does not replace a landscape banner. Integrate the English/Hebrew variants into `kitor/src/data/game-banners.json` and the active UI asset location, preserve provenance and prompts, and inspect the detail view at desktop and narrow widths. When classic and remastered entries share a store download, keep their displayed titles, boxes and banners edition-specific.
+
 ## Hebrew game box
 
 Read `assets/game-boxes/README.md`, current cover manifests, and the game's existing import queue before generating duplicate assets. Use the catalog's exact `name_he`; resolve missing names or grouped entries before finalizing art. Prefer an existing suitable Hebrew retail cover when available, recording title/edition differences.

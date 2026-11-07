@@ -1,0 +1,13 @@
+# Game galleries
+
+`packages/ui/src/components/GameGallery.tsx` is the shared screenshot carousel used on game details. Thumbnails select a slide; the main image opens the enlarged viewer. Previous/next buttons and Left/Right keys navigate. Escape and Close dismiss the viewer and restore focus. Missing galleries and failed images are omitted.
+
+`kitor/src/data/game-galleries.json` maps the stable game/patch ID to Cloudflare-hosted images at `https://assets.kitor.click/screenshots/`. Both library and discovery presentation adapters use this map. Every image retains its Facebook source URL. Announcement links were resolved from the `patches-metadata/` records referenced by `game-descriptions.he.json`. Images are stored in the `kitor-assets` R2 bucket because Facebook CDN URLs expire. Object keys use `screenshots/<game-id>/<sha256-prefix>.jpg` with immutable caching; screenshot binaries are not bundled in the app.
+
+The initial import contains 105 post images across 23 games, including title screens and announcement artwork. Only attachments belonging to the target post were included; comment photos and suggested posts were excluded. Up to five visible post attachments were imported per game. It is not an exhaustive archive of every post's photo album.
+
+No gallery was assigned to editions without verified matching images. In particular, the linked Grim Fandango post is for the original, not the remastered version. Special Edition/remastered variants do not inherit classic screenshots. Space Quest I EGA and Space Quest II did not yield matching photo attachments during this import. Games without a Facebook announcement in the metadata remain without a gallery.
+
+To extend a gallery, inspect the linked announcement and edition, upload its matching attachments to R2 under content-addressed keys for the game ID, verify the public URLs against the original SHA-256 hashes, and append `{ src, alt, sourceUrl }` entries with Cloudflare `src` URLs to the map. Remove local copies only after verification. Use stable source post/photo URLs, not CDN URLs. Preserve image proportions and do not use Facebook's generated image descriptions as verified captions.
+
+Validation: `bun test kitor/tests/gameGallery.test.tsx`, `bun run ui:check`, and `bun run --cwd kitor build`. Storybook's **Components / Game gallery** includes interactive, single-image, absent-image, and failed-image cases. The interactive story tests selection, enlarged navigation, arrow keys, Close, and focus restoration; native Escape is checked in the browser because synthetic keyboard events do not trigger the browser's dialog default action.

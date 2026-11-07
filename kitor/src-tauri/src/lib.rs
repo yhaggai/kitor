@@ -103,6 +103,7 @@ pub fn run() {
             commands::gog_commands::install_gog_game,
             commands::gog_commands::get_game_install_root,
             commands::bug_report_commands::save_bug_report,
+            commands::bug_report_commands::collect_bug_diagnostics,
             // Window commands
             commands::window_commands::close_splashscreen,
         ])

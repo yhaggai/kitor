@@ -1,0 +1,10 @@
+{
+  "jenny-leclue-en.jpg": "https://cdn.akamai.steamstatic.com/steam/apps/319870/library_hero.jpg",
+  "jenny-leclue-logo-en.png": "https://cdn.akamai.steamstatic.com/steam/apps/319870/logo.png",
+  "jenny-leclue-he.png": {
+    "source": "jenny-leclue-en.jpg",
+    "method": "Built-in image_gen text-localization, 2026-11-07",
+    "prompt": "Preserve the Steam hero scene, character, gate, trees, lighting and composition. Add only the central Hebrew title: first line ג׳ני, second line לקלו. Tall bold white angular lettering with black offset extrusion, following the original English logo. No subtitle, UI, border or watermark. Keep Jenny unobscured. Wide approximately 3:1 banner.",
+    "status": "Generated Hebrew artwork for Storybook design review; original artwork belongs to its respective rights holders."
+  }
+}

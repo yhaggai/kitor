@@ -1,3 +1,4 @@
+import { useTranslation } from "@kitor/ui";
 import * as Dialog from "@radix-ui/react-dialog";
 import { X } from "lucide-react";
 import { useRef } from "react";
@@ -22,6 +23,7 @@ export function GameDetailsBox({
   description,
   isPatched = false,
 }: GameDetailsBoxProps) {
+  const { t } = useTranslation();
   const defaultLanguage = isPatched ? "he" : "en";
   const covers = (gameBoxCovers as Record<string, Record<GameBoxLanguage, GameBoxCover>>)[
     gameId
@@ -71,10 +73,10 @@ export function GameDetailsBox({
           <button
             ref={trigger}
             type="button"
-            aria-label={`About ${title}`}
+            aria-label={t("About {0}", [title])}
             className="w-full px-4 py-3 text-sm font-medium text-muted-foreground hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
           >
-            Explore game
+            {t("Explore game")}{" "}
           </button>
         </Dialog.Trigger>
         <Dialog.Portal>
@@ -89,7 +91,7 @@ export function GameDetailsBox({
                 <div className="min-w-0 p-4 pt-12">{box("details")}</div>
                 <div className="p-6 sm:p-8 sm:pt-12">
                   <p className="mb-3 text-xs font-medium uppercase tracking-widest text-muted-foreground">
-                    About the game
+                    {t("About the game")}{" "}
                   </p>
                   <Dialog.Title
                     dir="auto"
@@ -99,7 +101,9 @@ export function GameDetailsBox({
                   </Dialog.Title>
                   <Dialog.Description asChild>
                     <div className="space-y-4 text-sm leading-7 text-muted-foreground">
-                      {(description?.trim() || "A description isn't available for this game yet.")
+                      {(
+                        description?.trim() || t("A description isn't available for this game yet.")
+                      )
                         .split(/\n\s*\n/)
                         .map((paragraph, index) => (
                           <p
@@ -115,7 +119,7 @@ export function GameDetailsBox({
                 </div>
               </div>
               <Dialog.Close
-                aria-label="Close game description"
+                aria-label={t("Close game description")}
                 className="absolute right-3 top-3 rounded-full border bg-background/90 p-2 text-foreground shadow-sm transition-colors hover:bg-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
               >
                 <X className="h-4 w-4" />

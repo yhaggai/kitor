@@ -39,6 +39,7 @@ for (const game of registry.games) {
   catalog.push({
     id: game.scummvm_id,
     title: game.title,
+    title_he: game.title_he,
     covers,
     platforms: game.platforms,
     hebrew: game.patches.some((p) => p.language === "he"),

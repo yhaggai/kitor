@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="he" dir="rtl">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -21,45 +21,39 @@
     }
 
     .splash-container {
+      position: relative;
+      width: min(100vw, 150vh);
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
+      overflow: hidden;
+      border-radius: 16px;
+      background: #fff0cf;
+      animation: fadeIn 0.6s ease-out;
     }
 
-    .logo {
-      width: 100vh;
+    .scene {
+      display: block;
+      width: 100%;
+      height: auto;
+      aspect-ratio: 3 / 2;
       object-fit: contain;
-      animation: fadeInScale 0.6s ease-out;
-    }
-
-    .title {
-      color: white;
-      font-size: 32px;
-      font-weight: 600;
-      letter-spacing: -0.5px;
-      animation: fadeIn 0.8s ease-out 0.2s both;
     }
 
     .loader {
       position: absolute;
-      width: 40px;
-      height: 40px;
-      border: 3px solid rgba(255, 255, 255, 0.3);
-      border-top-color: white;
+      left: var(--loader-left, 96%);
+      top: var(--loader-top, 95%);
+      width: 3.6%;
+      aspect-ratio: 1;
+      background: #fff0cf;
+      box-shadow: 0 0 0 3px #fff0cf;
+      transform: translate(-50%, -50%);
+      border: 3px solid rgba(17, 54, 79, 0.2);
+      border-top-color: #11364f;
       border-radius: 50%;
       animation: spin 0.8s linear infinite, fadeIn 1s ease-out 0.4s both;
-    }
-
-    @keyframes fadeInScale {
-      from {
-        opacity: 0;
-        transform: scale(0.9);
-      }
-      to {
-        opacity: 1;
-        transform: scale(1);
-      }
     }
 
     @keyframes fadeIn {
@@ -73,16 +67,22 @@
 
     @keyframes spin {
       to {
-        transform: rotate(360deg);
+        transform: translate(-50%, -50%) rotate(360deg);
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .splash-container, .loader {
+        animation: none;
       }
     }
   </style>
 </head>
 <body>
   <div class="splash-container">
-    <img alt="Kitor adventure-game characters" class="logo" id="logo">
-    <div class="loader"></div>
+    <img alt="קִיטוֹר — דמויות ממשחקי הרפתקאות" class="scene" id="logo" width="1536" height="1024">
+    <div class="loader" role="status" aria-label="טוען את קיטור"></div>
   </div>
-  <script src="/splashscreen.js"></script>
+  <script src="/splashscreen.js?v=retro-2"></script>
 </body>
 </html>

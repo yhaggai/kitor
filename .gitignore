@@ -26,3 +26,8 @@ __pycache__/
 # Reproducible desktop application builds.
 !bun.lock
 !kitor/src-tauri/Cargo.lock
+
+# Storybook generated output
+**/storybook-static/
+**/storybook.log
+**/debug-storybook.log
