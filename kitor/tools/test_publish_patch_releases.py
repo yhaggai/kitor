@@ -42,7 +42,7 @@ class PublishingTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as temp:
             artifact = Path(temp) / 'patch.zip'
             artifact.write_bytes(b'payload')
-            draft = {'draft': True, 'prerelease': False, 'assets': []}
+            draft = {'id': 42, 'draft': True, 'prerelease': False, 'assets': []}
             def gh(*args, **kwargs):
                 if args[:2] == ('release', 'upload'):
                     raise RuntimeError('upload failed')
@@ -50,13 +50,13 @@ class PublishingTests(unittest.TestCase):
             with patch.object(publisher, 'optional_api', return_value=draft), patch.object(publisher, 'gh', side_effect=gh) as command:
                 with self.assertRaisesRegex(RuntimeError, 'upload failed'):
                     publisher.publish_asset('owner/repo', 'a' * 40, 'tag', artifact, 'notes')
-                self.assertFalse(any(call.args[:2] == ('release', 'edit') for call in command.call_args_list))
+                self.assertFalse(any('PATCH' in call.args for call in command.call_args_list))
 
     def test_existing_release_asset_is_never_overwritten(self):
         with tempfile.TemporaryDirectory() as temp:
             artifact = Path(temp) / 'patch.zip'
             artifact.write_bytes(b'new bytes')
-            release = {'draft': False, 'prerelease': False, 'assets': [{'name': artifact.name}]}
+            release = {'id': 42, 'draft': False, 'prerelease': False, 'assets': [{'name': artifact.name}]}
             def gh(*args, **kwargs):
                 if args[:2] == ('release', 'download'):
                     Path(args[args.index('--dir') + 1], artifact.name).write_bytes(b'old bytes')
@@ -73,6 +73,43 @@ class PublishingTests(unittest.TestCase):
             with patch.object(publisher, 'optional_api', return_value={'draft': False, 'prerelease': False, 'assets': []}):
                 with self.assertRaisesRegex(InvalidPackage, 'incomplete'):
                     publisher.publish_asset('owner/repo', 'a' * 40, 'tag', artifact, 'notes')
+
+    def test_new_and_existing_drafts_publish_without_by_tag_readback(self):
+        for resume in (False, True):
+            with self.subTest(resume=resume), tempfile.TemporaryDirectory() as temp:
+                artifact = Path(temp) / 'patch.zip'
+                artifact.write_bytes(b'payload')
+                release = {'id': 42, 'tag_name': 'tag', 'draft': True, 'prerelease': False, 'assets': []}
+                def gh(*args, **kwargs):
+                    if '--paginate' in args:
+                        return json.dumps([[{'tag_name': 'unrelated'}], [release] if resume else []])
+                    if 'POST' in args:
+                        self.assertFalse(resume, 'Existing draft must be reused')
+                        body = json.loads(kwargs['input'])
+                        self.assertTrue(body['draft'])
+                        self.assertEqual(body['target_commitish'], 'a' * 40)
+                        return json.dumps(release)
+                    if args[:2] == ('release', 'upload'):
+                        release['assets'].append({'name': artifact.name, 'size': artifact.stat().st_size})
+                        return ''
+                    if 'PATCH' in args:
+                        self.assertEqual(args[1], 'repos/owner/repo/releases/42')
+                        self.assertEqual(json.loads(kwargs['input']), {'draft': False})
+                        self.assertEqual(len(release['assets']), 1)
+                        release['draft'] = False
+                        return json.dumps(release)
+                    self.assertEqual(args, ('api', 'repos/owner/repo/releases/42'))
+                    return json.dumps(release)
+                with patch.object(publisher, 'optional_api', return_value=None), patch.object(publisher, 'gh', side_effect=gh) as command:
+                    publisher.publish_asset('owner/repo', 'a' * 40, 'tag', artifact, 'notes')
+                    self.assertEqual(sum('POST' in c.args for c in command.call_args_list), int(not resume))
+                    self.assertFalse(release['draft'])
+
+    def test_duplicate_drafts_are_rejected(self):
+        pages = [[{'tag_name': 'tag'}], [{'tag_name': 'tag'}]]
+        with patch.object(publisher, 'optional_api', return_value=None), patch.object(publisher, 'gh', return_value=json.dumps(pages)):
+            with self.assertRaisesRegex(InvalidPackage, 'Multiple releases'):
+                publisher.find_release('owner/repo', 'tag')
 
 
 if __name__ == '__main__':
