@@ -57,11 +57,16 @@ navigation moves above the content and game details stack vertically.
 
 `BrandLogo` uses the user-supplied Hebrew Kitor wordmark and steam illustration.
 The original PNG is preserved in `src/assets/kitor-logo.png`. The component uses
-`src/assets/kitor-logo.svg`, a 45-path vector trace with no embedded bitmap or font
+`src/assets/kitor-logo.svg`, a layered vector trace with no embedded bitmap or font
 dependency. Paper grain is simplified into a flat palette while preserving the
 cream background, navy lettering and orange details. Regenerate it with
 `uv run --with pillow --with vtracer python packages/ui/tools/vectorize_logo.py`. Do not crop the steam or recolor
 the logo. It appears in the shared sidebar and its own Foundations story.
+The inline SVG gives each instance unique title and clip IDs. On pointer hover,
+only the steam billows from the chimney rim; leaving eases it back to rest.
+Touch and reduced-motion users see the static artwork, with no idle animation.
+The tracing script preserves the steam layers and rejects an unexpected trace
+so a regenerated asset cannot silently lose the animation.
 
 ## Components and views
 

@@ -25,6 +25,7 @@ export function BrandLogo({ className = "" }: { className?: string }) {
   }, []);
 
   function moveSteam(hovered: boolean) {
+    if (!hovered && !animation.current) return;
     const steam = root.current?.querySelector<SVGGElement>(".kt-brand-steam");
     if (!steam || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
@@ -34,8 +35,8 @@ export function BrandLogo({ className = "" }: { className?: string }) {
     const frames = hovered
       ? [
           { transform: current },
-          { transform: "skewX(-2.4deg) scale(1.018, 1.045)", offset: 0.28 },
-          { transform: "skewX(1.6deg) scale(0.99, 1.015)", offset: 0.58 },
+          { transform: "skewX(-3.5deg) scale(1.018, 1.065)", offset: 0.28 },
+          { transform: "skewX(2.4deg) scale(0.99, 1.015)", offset: 0.58 },
           { transform: "skewX(-1deg) scale(1.012, 1.03)", offset: 0.82 },
           { transform: current },
         ]
