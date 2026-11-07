@@ -19,6 +19,8 @@
 
 ### מה אפשר לעשות?
 
+![Steam ו־GOG מתחברים לקיטור — ספרייה של משחקים עם עטיפות בעברית. בוחרים, מתקינים ומשחקים.](docs/images/kitor-library.png)
+
 - **לרכז את הספרייה:** לסרוק תיקיות ולזהות התקנות נתמכות, כולל משחקים מ־Steam ומ־GOG.
 - **לגלות תרגומים:** לעיין בקטלוג המשחקים והתרגומים לעברית.
 - **להתקין תרגום:** להוריד ולהחיל חבילת תרגום שמתאימה למשחק ולגרסה הנתמכת.
@@ -27,16 +29,13 @@
 
 ### מתחילים לשחק
 
-1. מורידים מתקין מתאים מעמוד [ההפצות](https://github.com/yhaggai/kitor/releases). זמינות המתקינים מפורטת שם.
-2. מוסיפים את תיקיית המשחק או סורקים התקנות קיימות.
-3. בוחרים תרגום מתאים וקוראים את הדרישות וההנחיות שלו.
-4. סוגרים את המשחק, מתקינים את התרגום ומפעילים מהספרייה.
+1. מוסיפים את תיקיית המשחק או סורקים התקנות קיימות.
+2. בוחרים תרגום מתאים וקוראים את הדרישות וההנחיות שלו.
+3. סוגרים את המשחק, מתקינים את התרגום ומפעילים מהספרייה.
 
 צריך עותק משלכם של המשחק; קיטור אינו מספק את המשחקים עצמם. התמיכה ב־Windows וב־macOS, מהדורות המשחק ודרישות ההפעלה משתנות בין כותרים ותרגומים. יש לבדוק את פרטי המשחק באפליקציה; הופעה בקטלוג אינה מבטיחה שכל גרסה נבדקה במלואה.
 
 ### פיתוח ותרומה
-
-יישום שולחן העבודה בנוי עם **Tauri 2, Rust, React ו־TypeScript**, עם מסד נתונים מקומי מסוג SQLite. אתר הפרויקט בנוי עם **Astro**.
 
 להרצת היישום בפיתוח נדרשים Bun, Rust ודרישות הבנייה של Tauri למערכת ההפעלה שלכם. מריצים את הפקודות הבאות משורש המאגר:
 
@@ -54,7 +53,7 @@ bun run tauri dev
 
 אפשר לתרום באמצעות דיווחי תקלות, בדיקות תאימות, שיפורי נגישות, קוד ועדכוני קטלוג. בדיווח על בעיה כדאי לציין את מערכת ההפעלה, שם המשחק, החנות או המהדורה, גרסת התרגום והשלבים לשחזור. ניתן לפתוח [Issue](https://github.com/yhaggai/kitor/issues) או Pull Request.
 
-תודה למתרגמים ולמתרגמות ולקהילות שמנגישות משחקים בעברית, ולפרויקט ScummVM שמאפשר להריץ רבים ממשחקי ההרפתקאות הקלאסיים. המשחקים, האיורים והתרגומים שייכים לבעלי הזכויות שלהם; יש לכבד את תנאי השימוש של כל מקור.
+תודה לקהילת [הרפתקאה עברית](https://www.facebook.com/groups/hebrewadventure), למתרגמים ולמתרגמות ולכל הקהילות שמנגישות משחקים בעברית, ולפרויקט ScummVM שמאפשר להריץ רבים ממשחקי ההרפתקאות הקלאסיים. המשחקים, האיורים והתרגומים שייכים לבעלי הזכויות שלהם; יש לכבד את תנאי השימוש של כל מקור.
 
 </div>
 
@@ -70,6 +69,8 @@ The project brings together classic adventures and other games, using ScummVM or
 
 ### What can it do?
 
+![Steam and GOG connect to Kitor — a library of Hebrew game covers. Choose, install, and play.](docs/images/kitor-library.png)
+
 - **Organize your library:** scan folders and detect supported installations, including games from Steam and GOG.
 - **Discover translations:** browse a catalog of games and Hebrew translation patches.
 - **Install a translation:** download and apply a patch for a supported game and edition.
@@ -78,16 +79,13 @@ The project brings together classic adventures and other games, using ScummVM or
 
 ### Start playing
 
-1. Get a suitable installer from [Releases](https://github.com/yhaggai/kitor/releases). Available installers are listed there.
-2. Add your game folder or scan existing installations.
-3. Choose a compatible translation and read its requirements and instructions.
-4. Close the game, install the translation, and launch it from your library.
+1. Add your game folder or scan existing installations.
+2. Choose a compatible translation and read its requirements and instructions.
+3. Close the game, install the translation, and launch it from your library.
 
 You need your own copy of the game; Kitor does not supply the games themselves. Windows and macOS support, game editions, and runtime requirements vary by title and patch. Check the game's details in the app; a catalog entry does not mean every version has been fully tested.
 
 ### Development and contributions
-
-The desktop app uses **Tauri 2, Rust, React, and TypeScript**, with a local SQLite database. The project website uses **Astro**.
 
 To run the desktop app in development, install Bun, Rust, and the Tauri build prerequisites for your operating system. From the repository root:
 
@@ -101,18 +99,7 @@ See the [desktop app documentation](kitor/README.md), [website documentation](we
 
 Contributions can include bug reports, compatibility testing, accessibility improvements, code, and catalog updates. When reporting a problem, include your operating system, game title, store or edition, patch version, and steps to reproduce it. Open an [issue](https://github.com/yhaggai/kitor/issues) or a pull request.
 
-Thanks to the translators and communities making games accessible in Hebrew, and to ScummVM for making so many classic adventures playable. Games, artwork, and translations belong to their respective rights holders; respect each source's terms of use.
-
-## Repository / מבנה המאגר
-
-| Directory | Contents / תוכן |
-| --- | --- |
-| [`kitor/`](kitor/) | Desktop app and runtime catalog / יישום שולחן העבודה וקטלוג ההפעלה |
-| [`website/`](website/) | Website and game gallery / אתר הפרויקט וגלריית המשחקים |
-| [`patches-workspace/`](patches-workspace/) | Per-game patch sources, packaging, and notes / מקורות תרגום, אריזה ותיעוד לכל משחק |
-| [`patches-metadata/`](patches-metadata/) | Translation and game metadata / מידע על משחקים ותרגומים |
-| [`assets/`](assets/) | Artwork manifests and tooling / מניפסטים וכלים לניהול איורים |
-| [`.github/workflows/`](.github/workflows/) | Build and release automation / תהליכי בנייה והפצה |
+Thanks to the [הרפתקאה עברית (Hebrew Adventure)](https://www.facebook.com/groups/hebrewadventure) community, and to all translators and communities making games accessible in Hebrew, and to ScummVM for making so many classic adventures playable. Games, artwork, and translations belong to their respective rights holders; respect each source's terms of use.
 
 ## License and code signing
 
