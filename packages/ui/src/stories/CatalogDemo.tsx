@@ -390,17 +390,6 @@ export function CatalogDemo({
                         {installed ? "Play in Hebrew" : "Play original"}
                       </Button>
                       {!installed && !unhealthy && actionButton("install", "Install translation")}
-                      {collection === "discovery" && (
-                        <Button
-                          variant="secondary"
-                          onClick={() => {
-                            setCollection("library");
-                            setAdded((prev) => [...prev, game.id]);
-                          }}
-                        >
-                          View in library
-                        </Button>
-                      )}
                     </>
                   ) : (
                     <>

@@ -63,3 +63,19 @@ export const RetryAfterError: Story = {
     await expect(canvas.queryByRole("alert")).not.toBeInTheDocument();
   },
 };
+
+export const InstalledFromDiscovery: Story = {
+  args: { initialCollection: "discovery" },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const tile = await canvas.findByRole("button", { name: /Explore Jenny LeClue/ });
+    const search = canvas.getByRole("searchbox", { name: "Search games" });
+    await userEvent.type(search, "Jenny");
+    await userEvent.click(tile);
+    await expect(canvas.getByRole("button", { name: "Play in Hebrew" })).toBeVisible();
+    await expect(canvas.queryByRole("button", { name: "View in library" })).not.toBeInTheDocument();
+    await userEvent.click(canvas.getByRole("button", { name: "Back to discovery" }));
+    await expect(search).toHaveValue("Jenny");
+    await expect(tile).toHaveFocus();
+  },
+};
