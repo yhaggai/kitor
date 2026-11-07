@@ -1,3 +1,4 @@
+import { useTranslation } from "@kitor/ui";
 import { useState } from "react";
 import { GameInstallFolder } from "@/components/dialogs/GameInstallFolder";
 import { Button } from "@/components/ui/button";
@@ -23,6 +24,7 @@ export function GogDownloadDialog({
   gogId: number;
   gameId: string;
 }) {
+  const { t } = useTranslation();
   const download = useGogDownload();
   const ownsGame = useAppStore(
     (s) => s.gogAuth.isAuthenticated && s.gogGames.some((game) => game.id === gogId)
@@ -41,30 +43,34 @@ export function GogDownloadDialog({
         <DialogHeader>
           <DialogTitle>
             {complete
-              ? "Game installed"
+              ? t("Game installed")
               : download.busy
-                ? "Installing game"
-                : "Install game from GOG"}
+                ? t("Installing game")
+                : t("Install game from GOG")}
           </DialogTitle>
           <DialogDescription>
             {complete
-              ? "Your game is in the library and ready to play through ScummVM. You can install the Hebrew patch separately whenever you want."
+              ? t(
+                  "Your game is in the library and ready to play through ScummVM. You can install the Hebrew patch separately whenever you want."
+                )
               : download.busy
                 ? active
-                  ? "Please wait while Kitor downloads and prepares your game."
-                  : "Another GOG game is being installed. Please wait for it to finish."
-                : "This installer is only supported on Windows. Kitor will download and extract the game files so you can play on your Mac through ScummVM."}
+                  ? t("Please wait while Kitor downloads and prepares your game.")
+                  : t("Another GOG game is being installed. Please wait for it to finish.")
+                : t(
+                    "This installer is only supported on Windows. Kitor will download and extract the game files so you can play on your Mac through ScummVM."
+                  )}
           </DialogDescription>
         </DialogHeader>
         {download.busy || complete ? (
           <div className="space-y-3" aria-live="polite">
             <div
               role="progressbar"
-              aria-label="Game installation"
+              aria-label={t("Game installation")}
               aria-valuemin={0}
               aria-valuemax={100}
               aria-valuenow={active ? (download.percentage ?? undefined) : undefined}
-              aria-valuetext={active ? download.step : "Waiting for another installation"}
+              aria-valuetext={active ? download.step : t("Waiting for another installation")}
               className="h-3 overflow-hidden rounded-full bg-secondary"
             >
               <div
@@ -81,13 +87,14 @@ export function GogDownloadDialog({
               />
             </div>
             <p className="text-sm">
-              {active ? download.step : "Installation in progress…"}
+              {active ? download.step : t("Installation in progress…")}
               {active && download.percentage != null ? ` ${download.percentage}%` : ""}
             </p>
             {!complete && (
               <p className="text-xs text-muted-foreground">
-                Keep Kitor open until installation finishes. You can hide this window and reopen it
-                from Install game.
+                {t(
+                  "Keep Kitor open until installation finishes. You can hide this window and reopen it from Install game."
+                )}{" "}
               </p>
             )}
           </div>
@@ -99,13 +106,15 @@ export function GogDownloadDialog({
               folders={[`${gameId}-gog`]}
             />
             <p className="text-sm text-muted-foreground">
-              Click Next to download and prepare the game. It will appear automatically in your
-              library, ready to play. Installing the Hebrew patch is optional and is a separate
-              step.
+              {t(
+                "Click Next to download and prepare the game. It will appear automatically in your library, ready to play. Installing the Hebrew patch is optional and is a separate step."
+              )}{" "}
             </p>
             {!ownsGame && (
               <p className="text-sm">
-                Connect the GOG account that owns this game in Settings before continuing.
+                {t(
+                  "Connect the GOG account that owns this game in Settings before continuing."
+                )}{" "}
               </p>
             )}
           </div>
@@ -117,17 +126,17 @@ export function GogDownloadDialog({
         )}
         <DialogFooter>
           <Button variant="outline" onClick={() => onOpenChange(false)}>
-            {download.busy ? "Hide" : complete ? "Close" : "Cancel"}
+            {download.busy ? t("Hide") : complete ? t("Close") : t("Cancel")}
           </Button>
           {complete ? (
-            <Button onClick={done}>View library</Button>
+            <Button onClick={done}>{t("View library")}</Button>
           ) : (
             !download.busy && (
               <Button
                 disabled={!ownsGame || !installRoot}
                 onClick={() => void download.start(gogId, gameId, installRoot)}
               >
-                {error ? "Try again" : "Next"}
+                {error ? t("Try again") : t("Next")}
               </Button>
             )
           )}

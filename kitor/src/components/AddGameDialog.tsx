@@ -1,3 +1,4 @@
+import { useTranslation } from "@kitor/ui";
 import * as Dialog from "@radix-ui/react-dialog";
 import * as Toast from "@radix-ui/react-toast";
 import { invoke } from "@tauri-apps/api/core";
@@ -24,6 +25,7 @@ type ToastState =
   | { open: true; title: string; variant: "default" | "destructive" };
 
 export default function AddGameDialog({ open, onOpenChange, onAdded }: AddGameDialogProps) {
+  const { t } = useTranslation();
   const [busy, setBusy] = useState(false);
   const [selectedPath, setSelectedPath] = useState<string | null>(null);
   const [detected, setDetected] = useState<DetectedGameInfo | null>(null);
@@ -53,7 +55,7 @@ export default function AddGameDialog({ open, onOpenChange, onAdded }: AddGameDi
       const selected = await openDialog({
         directory: true,
         multiple: false,
-        title: "Select game installation folder",
+        title: t("Select game installation folder"),
       });
 
       if (!selected) return;
@@ -85,11 +87,11 @@ export default function AddGameDialog({ open, onOpenChange, onAdded }: AddGameDi
       reset();
     } catch (error) {
       console.error("Failed to add game manually:", error);
-      showToast(`Failed to add game: ${error}`, "destructive");
+      showToast(t("Failed to add game: {0}", [String(error)]), "destructive");
     } finally {
       setBusy(false);
     }
-  }, [onAdded, onOpenChange, reset, showToast]);
+  }, [onAdded, onOpenChange, reset, showToast, t]);
 
   return (
     <Toast.Provider swipeDirection="right" duration={3000}>
@@ -104,21 +106,21 @@ export default function AddGameDialog({ open, onOpenChange, onAdded }: AddGameDi
           <Dialog.Overlay className="fixed inset-0 bg-black/50" />
           <Dialog.Content className="fixed left-1/2 top-1/2 w-[min(520px,calc(100vw-32px))] -translate-x-1/2 -translate-y-1/2 rounded-lg border bg-background p-6 shadow-lg">
             <div className="space-y-1">
-              <Dialog.Title className="text-lg font-semibold">Add game</Dialog.Title>
+              <Dialog.Title className="text-lg font-semibold">{t("Add game")}</Dialog.Title>
               <Dialog.Description className="text-sm text-muted-foreground">
-                Pick a game folder. We’ll auto-detect it and add only if a patch exists.
+                {t("Pick a game folder. We’ll auto-detect it and add only if a patch exists.")}{" "}
               </Dialog.Description>
             </div>
 
             <div className="mt-5 space-y-4">
               <Button onClick={handleSelectAndAdd} disabled={busy} className="w-full">
                 <FolderSearch className="mr-2 h-4 w-4" />
-                {busy ? "Detecting..." : "Select folder"}
+                {busy ? t("Detecting...") : t("Select folder")}
               </Button>
 
               {selectedPath && (
                 <div className="rounded-md border bg-muted/40 p-3 text-sm">
-                  <div className="text-muted-foreground">Folder</div>
+                  <div className="text-muted-foreground">{t("Folder")}</div>
                   <div className="mt-1 break-all font-mono text-xs">{selectedPath}</div>
                 </div>
               )}
@@ -129,7 +131,9 @@ export default function AddGameDialog({ open, onOpenChange, onAdded }: AddGameDi
                   <div className="min-w-0">
                     <div className="font-medium">{detected.title}</div>
                     <div className="text-sm text-muted-foreground">
-                      {detected.scummvm_id} · {detected.available_patches_count} patch(es)
+                      {detected.scummvm_id} · {detected.available_patches_count} {t(
+                        "patch(es)"
+                      )}{" "}
                     </div>
                   </div>
                 </div>
@@ -139,9 +143,9 @@ export default function AddGameDialog({ open, onOpenChange, onAdded }: AddGameDi
                 <div className="flex items-start gap-3 rounded-md border border-destructive/40 bg-muted/40 p-3">
                   <XCircle className="mt-0.5 h-5 w-5 text-destructive" />
                   <div className="min-w-0">
-                    <div className="font-medium">No match</div>
+                    <div className="font-medium">{t("No match")}</div>
                     <div className="text-sm text-muted-foreground">
-                      This folder doesn’t match any game with patches in the registry.
+                      {t("This folder doesn’t match any game with patches in the registry.")}{" "}
                     </div>
                   </div>
                 </div>
@@ -151,7 +155,7 @@ export default function AddGameDialog({ open, onOpenChange, onAdded }: AddGameDi
             <div className="mt-6 flex justify-end gap-2">
               <Dialog.Close asChild>
                 <Button variant="outline" disabled={busy}>
-                  Close
+                  {t("Close")}{" "}
                 </Button>
               </Dialog.Close>
             </div>

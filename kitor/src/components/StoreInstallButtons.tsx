@@ -1,3 +1,4 @@
+import { useTranslation } from "@kitor/ui";
 import { invoke } from "@tauri-apps/api/core";
 import { useEffect, useState } from "react";
 import { GogDownloadDialog } from "@/components/dialogs/GogDownloadDialog";
@@ -24,6 +25,7 @@ export function StoreInstallButtons({
   scummvmId,
   installed = false,
 }: StoreInstallButtonsProps) {
+  const { t } = useTranslation();
   const download = useSteamDownload();
   const gogDownload = useGogDownload();
   const [gogSupported, setGogSupported] = useState<boolean | null>(null);
@@ -105,10 +107,10 @@ export function StoreInstallButtons({
             disabled={opening || capabilities === null}
             title={
               canDownload
-                ? "Download this game for your Mac"
+                ? t("Download this game for your Mac")
                 : ownsSteamGame
-                  ? "Open this owned game in your Steam library"
-                  : "Open this game’s store page in Steam"
+                  ? t("Open this owned game in your Steam library")
+                  : t("Open this game’s store page in Steam")
             }
             onClick={() => {
               if (canDownload) {
@@ -125,9 +127,9 @@ export function StoreInstallButtons({
               className="h-8 w-8 shrink-0 rounded-md object-contain"
             />
             {canDownload && download.busy && download.appId === steamAppId
-              ? "Downloading…"
+              ? t("Downloading…")
               : canDownload
-                ? "Install game"
+                ? t("Install game")
                 : "Steam"}
           </Button>
         )}
@@ -139,10 +141,10 @@ export function StoreInstallButtons({
             disabled={opening || gogSupported === null}
             title={
               canInstallGog
-                ? "Install this game for ScummVM on your Mac"
+                ? t("Install this game for ScummVM on your Mac")
                 : ownsGogGame
-                  ? "You own this game on GOG. Open in GOG Galaxy to install."
-                  : "Open this game in GOG Galaxy"
+                  ? t("You own this game on GOG. Open in GOG Galaxy to install.")
+                  : t("Open this game in GOG Galaxy")
             }
             onClick={() => {
               if (canInstallGog) {
@@ -162,10 +164,10 @@ export function StoreInstallButtons({
             />
             {canInstallGog
               ? gogDownload.busy && gogDownload.gameId === scummvmId
-                ? "Installing…"
-                : "Install game"
+                ? t("Installing…")
+                : t("Install game")
               : ownsGogGame
-                ? "GOG · Owned"
+                ? t("GOG · Owned")
                 : "GOG"}
           </Button>
         )}

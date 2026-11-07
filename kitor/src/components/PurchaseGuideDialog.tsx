@@ -1,12 +1,14 @@
+import { useTranslation } from "@kitor/ui";
 import * as Dialog from "@radix-ui/react-dialog";
 import { X } from "lucide-react";
 import { StoreInstallButtons } from "@/components/StoreInstallButtons";
+import { TranslationCredit } from "@/components/TranslationCredit";
 import { Button } from "@/components/ui/button";
+import { gameDescription } from "@/lib/gameDescriptions";
 
 type PurchaseGuideDialogProps = {
   scummvmId: string;
   gameTitle: string;
-  description?: string;
   steamAppId?: number | null;
   gogId?: number | null;
   open: boolean;
@@ -21,12 +23,13 @@ const isHebrew = (text: string): boolean => {
 export function PurchaseGuideDialog({
   scummvmId,
   gameTitle,
-  description,
   steamAppId,
   gogId,
   open,
   onOpenChange,
 }: PurchaseGuideDialogProps) {
+  const { t } = useTranslation();
+  const description = gameDescription(scummvmId).description;
   return (
     <Dialog.Root open={open} onOpenChange={onOpenChange}>
       <Dialog.Portal>
@@ -45,7 +48,7 @@ export function PurchaseGuideDialog({
               {gameTitle}
             </Dialog.Title>
             <Dialog.Close asChild>
-              <Button variant="ghost" size="sm" className="h-6 w-6 p-0" aria-label="Close">
+              <Button variant="ghost" size="sm" className="h-6 w-6 p-0" aria-label={t("Close")}>
                 <X className="h-4 w-4" />
               </Button>
             </Dialog.Close>
@@ -53,7 +56,12 @@ export function PurchaseGuideDialog({
 
           {(steamAppId || gogId) && (
             <div className="mb-6 space-y-2">
-              <StoreInstallButtons scummvmId={scummvmId} key={scummvmId} steamAppId={steamAppId} gogId={gogId} />
+              <StoreInstallButtons
+                scummvmId={scummvmId}
+                key={scummvmId}
+                steamAppId={steamAppId}
+                gogId={gogId}
+              />
             </div>
           )}
 
@@ -66,6 +74,7 @@ export function PurchaseGuideDialog({
               ))}
             </div>
           )}
+          <TranslationCredit gameId={scummvmId} />
         </Dialog.Content>
       </Dialog.Portal>
     </Dialog.Root>

@@ -1,3 +1,4 @@
+import { useTranslation } from "@kitor/ui";
 import { useState } from "react";
 import { GameInstallFolder } from "@/components/dialogs/GameInstallFolder";
 import { Button } from "@/components/ui/button";
@@ -30,6 +31,7 @@ export function SteamDownloadDialog({
   gameId: string;
   capabilities: SteamDownloadCapabilities;
 }) {
+  const { t } = useTranslation();
   const { busy, error, start, appId: activeApp } = useSteamDownload();
   const [installRoot, setInstallRoot] = useState("");
   const collection = capabilities.games.length > 1;
@@ -44,34 +46,43 @@ export function SteamDownloadDialog({
         <DialogHeader>
           <DialogTitle>
             {busy
-              ? "Preparing Steam games"
+              ? t("Preparing Steam games")
               : collection
-                ? `Download ${capabilities.title}`
-                : "Install game from Steam"}
+                ? t("Download {0}", [capabilities.title])
+                : t("Install game from Steam")}
           </DialogTitle>
           <DialogDescription>
             {busy
               ? activeApp === appId
-                ? "Kitor is downloading or reusing the game files, verifying them, and detecting available games for your library."
-                : "Another Steam download is running. Wait for it to finish before starting this one."
+                ? t(
+                    "Kitor is downloading or reusing the game files, verifying them, and detecting available games for your library."
+                  )
+                : t(
+                    "Another Steam download is running. Wait for it to finish before starting this one."
+                  )
               : collection
-                ? "Kitor downloads and extracts the full collection. Game detection identifies the games available to play and patch on your Mac."
-                : "This game is only available for Windows on Steam. Kitor can download that version and run it on your Mac with ScummVM."}
+                ? t(
+                    "Kitor downloads and extracts the full collection. Game detection identifies the games available to play and patch on your Mac."
+                  )
+                : t(
+                    "This game is only available for Windows on Steam. Kitor can download that version and run it on your Mac with ScummVM."
+                  )}
           </DialogDescription>
         </DialogHeader>
         {busy ? (
           <div className="space-y-3">
             <div
               role="progressbar"
-              aria-label="Downloading and verifying game files"
+              aria-label={t("Downloading and verifying game files")}
               aria-valuetext="In progress"
               className="h-3 overflow-hidden rounded-full bg-secondary"
             >
               <div className="steam-download-indicator h-full w-1/3 rounded-full bg-primary" />
             </div>
             <output className="block text-sm text-muted-foreground">
-              Keep Kitor open. Hiding this dialog does not cancel Steam’s download. Reopen it from
-              any Steam button in this collection.
+              {t(
+                "Keep Kitor open. Hiding this dialog does not cancel Steam’s download. Reopen it from any Steam button in this collection."
+              )}{" "}
             </output>
           </div>
         ) : (
@@ -83,13 +94,17 @@ export function SteamDownloadDialog({
             />
             <p className="text-sm text-muted-foreground">
               {collection
-                ? "Click Next to download the collection and detect its games."
-                : "Click Next to download and prepare the game. It will appear automatically in your library, ready to play. You can install the Hebrew patch separately."}
+                ? t("Click Next to download the collection and detect its games.")
+                : t(
+                    "Click Next to download and prepare the game. It will appear automatically in your library, ready to play. You can install the Hebrew patch separately."
+                  )}
             </p>
             <p className="text-sm text-muted-foreground">
-              Sign in to Steam with an account that owns{" "}
-              {collection ? capabilities.title : "the game"}. Steam may open its console. Hebrew
-              patches are installed separately and must support your game edition.
+              {t("Sign in to Steam with an account that owns")}{" "}
+              {collection ? capabilities.title : t("the game")}
+              {t(
+                ". Steam may open its console. Hebrew patches are installed separately and must support your game edition."
+              )}{" "}
             </p>
           </div>
         )}
@@ -100,11 +115,11 @@ export function SteamDownloadDialog({
         )}
         <DialogFooter>
           <Button variant="outline" onClick={() => onOpenChange(false)}>
-            {busy ? "Hide" : "Cancel"}
+            {busy ? t("Hide") : t("Cancel")}
           </Button>
           {!busy && (
             <Button disabled={!installRoot} onClick={() => void next()}>
-              {error ? "Try again" : "Next"}
+              {error ? t("Try again") : t("Next")}
             </Button>
           )}
         </DialogFooter>

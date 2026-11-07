@@ -2,7 +2,9 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App";
 import { DialogProvider } from "./contexts/DialogContext";
+import "@kitor/ui/styles.css";
 import "./index.css";
+document.body.classList.add("kitor-theme");
 
 // Create separate container for dialogs
 const dialogRoot = document.createElement("div");

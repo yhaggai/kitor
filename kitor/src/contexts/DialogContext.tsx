@@ -1,3 +1,4 @@
+import { useTranslation } from "@kitor/ui";
 import { createContext, type ReactNode, useCallback, useState } from "react";
 import { createPortal } from "react-dom";
 import { Button } from "@/components/ui/button";
@@ -48,6 +49,7 @@ type DialogProviderProps = {
 };
 
 export function DialogProvider({ children, dialogRootElement }: DialogProviderProps) {
+  const { t } = useTranslation();
   const [state, setState] = useState<DialogState>({ type: "closed" });
 
   const alert = useCallback((options: AlertOptions): Promise<void> => {
@@ -111,7 +113,7 @@ export function DialogProvider({ children, dialogRootElement }: DialogProviderPr
               )}
             </DialogHeader>
             <DialogFooter>
-              <Button onClick={handleAlertOk}>OK</Button>
+              <Button onClick={handleAlertOk}>{t("OK")}</Button>
             </DialogFooter>
           </DialogContent>
         </Dialog>
@@ -134,9 +136,9 @@ export function DialogProvider({ children, dialogRootElement }: DialogProviderPr
                 onClick={() => handleOpenChange(false)}
                 className="text-white"
               >
-                {state.options.cancelText || "Cancel"}
+                {state.options.cancelText || t("Cancel")}
               </Button>
-              <Button onClick={handleConfirm}>{state.options.confirmText || "Confirm"}</Button>
+              <Button onClick={handleConfirm}>{state.options.confirmText || t("Confirm")}</Button>
             </DialogFooter>
           </DialogContent>
         </Dialog>

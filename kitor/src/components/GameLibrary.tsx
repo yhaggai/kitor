@@ -1,12 +1,13 @@
+import { CollectionView, useGameNavigation, useTranslation } from "@kitor/ui";
 import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
 import { invoke } from "@tauri-apps/api/core";
 import { open } from "@tauri-apps/plugin-dialog";
 import { ChevronDown, FolderSearch } from "lucide-react";
 import { useEffect, useState } from "react";
 import GameCard from "@/components/GameCard";
-import { SearchBar } from "@/components/SearchBar";
 import { Button } from "@/components/ui/button";
 import { useDialog } from "@/hooks/useDialog";
+import { gameSummary } from "@/lib/presentation";
 import { useAppStore } from "@/store/store";
 
 type GameLibraryProps = {
@@ -14,12 +15,10 @@ type GameLibraryProps = {
 };
 
 export default function GameLibrary({ onRefresh }: GameLibraryProps) {
+  const { t } = useTranslation();
   const { games, highlightedGameId, setHighlightedGameId } = useAppStore();
-  const [searchQuery, setSearchQuery] = useState("");
-  const query = searchQuery.trim().toLowerCase();
-  const filteredGames = games.filter((game) =>
-    [game.title, game.scummvm_id].some((value) => value.toLowerCase().includes(query))
-  );
+  const navigation = useGameNavigation();
+  const selected = games.find((game) => String(game.id) === navigation.selectedId);
   const [isScanning, setIsScanning] = useState(false);
   const [isRemoving, setIsRemoving] = useState(false);
   const [checkingUpdates, setCheckingUpdates] = useState(false);
@@ -32,7 +31,9 @@ export default function GameLibrary({ onRefresh }: GameLibraryProps) {
       setUpdateMessage("Translation catalog refreshed. Available updates appear on your games.");
     } catch (error) {
       setUpdateMessage(
-        `Could not check for translation updates. Your cached catalog is still available. ${String(error)}`
+        t("Could not check for translation updates. Your cached catalog is still available. {0}", [
+          String(error),
+        ])
       );
     } finally {
       setCheckingUpdates(false);
@@ -43,22 +44,11 @@ export default function GameLibrary({ onRefresh }: GameLibraryProps) {
   const [scanWarnings, setScanWarnings] = useState<string[]>([]);
 
   useEffect(() => {
-    if (highlightedGameId) {
-      if (searchQuery) {
-        setSearchQuery("");
-        return;
-      }
-      const element = document.getElementById(`game-card-${highlightedGameId}`);
-      if (element) {
-        element.scrollIntoView({ behavior: "smooth", block: "center" });
-        // Clear highlight after animation
-        const timer = setTimeout(() => {
-          setHighlightedGameId(null);
-        }, 2000);
-        return () => clearTimeout(timer);
-      }
+    if (highlightedGameId !== null) {
+      navigation.select(String(highlightedGameId));
+      setHighlightedGameId(null);
     }
-  }, [highlightedGameId, setHighlightedGameId, searchQuery]);
+  }, [highlightedGameId, navigation.select, setHighlightedGameId]);
 
   const handleScanGames = async (automatic: boolean) => {
     if (isScanning || isRemoving) return;
@@ -74,25 +64,30 @@ export default function GameLibrary({ onRefresh }: GameLibraryProps) {
         }>("scan_installed_games");
         setScanMessage(
           result.locations.length === 0
-            ? "No Steam or GOG folders found. Try choosing a folder."
-            : `Scanned ${result.locations.length} locations. Added ${result.added_count} games. Only recognized games are added; existing games are skipped.`
+            ? t("No Steam or GOG folders found. Try choosing a folder.")
+            : t(
+                "Scanned {0} locations. Added {1} games. Only recognized games are added; existing games are skipped.",
+                [result.locations.length, result.added_count]
+              )
         );
         setScanWarnings(result.warnings);
       } else {
         const selected = await open({
           directory: true,
           multiple: false,
-          title: "Select folder to scan for games",
+          title: t("Select folder to scan for games"),
         });
         if (!selected) return;
         const added = await invoke<unknown[]>("scan_games", { scanPath: selected });
         setScanMessage(
-          `Added ${added.length} games. Only recognized games are added; existing games are skipped.`
+          t("Added {0} games. Only recognized games are added; existing games are skipped.", [
+            added.length,
+          ])
         );
       }
       await onRefresh();
     } catch (error) {
-      setScanMessage(`Scan failed: ${String(error)}`);
+      setScanMessage(t("Scan failed: {0}", [String(error)]));
       await onRefresh();
     } finally {
       setIsScanning(false);
@@ -104,11 +99,12 @@ export default function GameLibrary({ onRefresh }: GameLibraryProps) {
     setIsRemoving(true);
     try {
       const confirmed = await confirm({
-        title: "Remove all games from your library?",
-        description:
-          "This only removes tracking in Kitor. Your game files will stay on disk. You can scan your folders to add the games again.",
-        confirmText: "Remove all games",
-        cancelText: "Cancel",
+        title: t("Remove all games from your library?"),
+        description: t(
+          "This only removes tracking in Kitor. Your game files will stay on disk. You can scan your folders to add the games again."
+        ),
+        confirmText: t("Remove all games"),
+        cancelText: t("Cancel"),
       });
       if (!confirmed) return;
       setScanMessage("");
@@ -121,7 +117,7 @@ export default function GameLibrary({ onRefresh }: GameLibraryProps) {
       setHighlightedGameId(null);
       setScanMessage("All games removed from your library. Game files were left on disk.");
     } catch (error) {
-      setScanMessage(`Could not remove all games: ${String(error)}`);
+      setScanMessage(t("Could not remove all games: {0}", [String(error)]));
     } finally {
       try {
         await onRefresh();
@@ -140,7 +136,7 @@ export default function GameLibrary({ onRefresh }: GameLibraryProps) {
           className="text-white"
         >
           <FolderSearch className="mr-2 h-4 w-4" />
-          {isRemoving ? "Removing..." : isScanning ? "Scanning..." : "Scan for Games"}
+          {isRemoving ? t("Removing...") : isScanning ? t("Scanning...") : t("Scan for Games")}
           <ChevronDown className="ml-2 h-4 w-4" />
         </Button>
       </DropdownMenu.Trigger>
@@ -155,14 +151,14 @@ export default function GameLibrary({ onRefresh }: GameLibraryProps) {
             onSelect={() => void handleScanGames(true)}
             className="cursor-pointer rounded-sm px-3 py-2 text-sm outline-none focus:bg-accent focus:text-accent-foreground"
           >
-            Automatically find Steam &amp; GOG games
+            {t("Automatically find Steam & GOG games")}{" "}
           </DropdownMenu.Item>
           <DropdownMenu.Item
             disabled={isScanning}
             onSelect={() => void handleScanGames(false)}
             className="cursor-pointer rounded-sm px-3 py-2 text-sm outline-none focus:bg-accent focus:text-accent-foreground"
           >
-            Choose a folder…
+            {t("Choose a folder…")}{" "}
           </DropdownMenu.Item>
           <DropdownMenu.Separator className="my-1 h-px bg-border" />
           <DropdownMenu.Item
@@ -170,7 +166,7 @@ export default function GameLibrary({ onRefresh }: GameLibraryProps) {
             onSelect={() => void handleRemoveAllGames()}
             className="cursor-pointer rounded-sm px-3 py-2 text-sm text-destructive outline-none focus:bg-accent data-[disabled]:pointer-events-none data-[disabled]:opacity-50"
           >
-            Remove all games
+            {t("Remove all games")}{" "}
           </DropdownMenu.Item>
         </DropdownMenu.Content>
       </DropdownMenu.Portal>
@@ -178,70 +174,44 @@ export default function GameLibrary({ onRefresh }: GameLibraryProps) {
   );
 
   return (
-    <div className="space-y-6">
-      <div className="flex justify-between items-center">
-        <div>
-          <h2 className="text-2xl font-bold">Game Library</h2>
-          <p className="text-muted-foreground">
-            {games.length} {games.length === 1 ? "game" : "games"} in library
-          </p>
-        </div>
-        <div className="flex gap-2">
-          <Button variant="outline" onClick={checkUpdates} disabled={checkingUpdates}>
-            {checkingUpdates ? "Checking…" : "Check Translation Updates"}
-          </Button>
-          {scanButton(true)}
-        </div>
+    <div ref={navigation.root}>
+      <div hidden={!!selected}>
+        <CollectionView
+          collection="library"
+          games={games.map(gameSummary)}
+          onOpen={navigation.open}
+          toolbar={
+            <div className="kt-flow-actions">
+              <Button variant="outline" onClick={checkUpdates} disabled={checkingUpdates}>
+                {checkingUpdates ? t("Checking…") : t("Check Translation Updates")}
+              </Button>
+              {scanButton(true)}
+            </div>
+          }
+          feedback={
+            <div aria-live="polite" className="space-y-2">
+              {updateMessage && <p>{updateMessage}</p>}
+              {isScanning && <p>{t("Scanning game folders…")}</p>}
+              {scanMessage && <p>{t(scanMessage)}</p>}
+              {scanWarnings.length > 0 && (
+                <details>
+                  <summary>
+                    {t("Scan warnings (")}
+                    {scanWarnings.length})
+                  </summary>
+                  <ul>
+                    {scanWarnings.map((warning, i) => (
+                      <li key={`${i}-${warning}`}>{warning}</li>
+                    ))}
+                  </ul>
+                </details>
+              )}
+            </div>
+          }
+        />
       </div>
-
-      <SearchBar label="Search library" value={searchQuery} onChange={setSearchQuery} />
-      {query && (
-        <output className="block text-sm text-muted-foreground">
-          Showing {filteredGames.length} of {games.length} games
-        </output>
-      )}
-
-      <div aria-live="polite">
-        {updateMessage && <p className="text-sm text-muted-foreground">{updateMessage}</p>}
-        {isScanning && <p className="text-sm text-muted-foreground">Scanning game folders…</p>}
-        {scanMessage && <p className="text-sm text-muted-foreground">{scanMessage}</p>}
-        {scanWarnings.length > 0 && (
-          <details className="mt-2 text-sm">
-            <summary>Some locations could not be scanned ({scanWarnings.length})</summary>
-            <ul className="mt-2 list-disc pl-5">
-              {scanWarnings.map((warning, index) => (
-                <li key={`${index}-${warning}`}>{warning}</li>
-              ))}
-            </ul>
-          </details>
-        )}
-      </div>
-
-      {games.length === 0 ? (
-        <div className="text-center py-12 border-2 border-dashed rounded-lg">
-          <FolderSearch className="mx-auto h-12 w-12 text-muted-foreground mb-4" />
-          <h3 className="text-lg font-semibold mb-2">No games found</h3>
-          <p className="text-muted-foreground mb-4">Scan a folder or add games to your library</p>
-          {scanButton()}
-        </div>
-      ) : filteredGames.length === 0 ? (
-        <div className="text-center py-12 border-2 border-dashed rounded-lg">
-          <h3 className="text-lg font-semibold mb-2">No games match your search</h3>
-          <Button variant="outline" onClick={() => setSearchQuery("")}>
-            Clear search
-          </Button>
-        </div>
-      ) : (
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
-          {filteredGames.map((game) => (
-            <GameCard
-              key={game.id}
-              game={game}
-              onRemove={onRefresh}
-              isHighlighted={game.id === highlightedGameId}
-            />
-          ))}
-        </div>
+      {selected && (
+        <GameCard key={selected.id} game={selected} onRemove={onRefresh} onBack={navigation.back} />
       )}
     </div>
   );
