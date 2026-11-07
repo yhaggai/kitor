@@ -11,7 +11,7 @@ use std::{
 
 #[path = "patch_upgrade.rs"]
 mod upgrade;
-#[cfg(test)]
+#[cfg(any(test, feature = "standalone-patch-tools"))]
 pub use upgrade::update;
 pub use upgrade::{update_with_progress, recover_installation};
 
@@ -402,7 +402,7 @@ fn stage_source_with_input(
 
 /// Read a package manifest, stage only declared outputs, then apply a durable
 /// transaction. The journal is authoritative even if the database write fails.
-#[cfg(test)]
+#[cfg(any(test, feature = "standalone-patch-tools"))]
 pub fn install(
     package_dir: &Path,
     manifest_name: &str,

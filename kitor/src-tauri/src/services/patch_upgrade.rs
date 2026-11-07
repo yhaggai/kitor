@@ -88,7 +88,7 @@ fn cleanup_staging(dir: &Path) -> Result<()> {
 
 /// Stage directly from verified original backups, then apply one recoverable change
 /// set. No whole-game copies, unrestricted installer scripts, or live uninstall.
-#[cfg(test)]
+#[cfg(any(test, feature = "standalone-patch-tools"))]
 pub fn update(
     dir: &Path,
     package_dir: &Path,

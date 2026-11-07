@@ -1,10 +1,10 @@
 //! Native Remastered prototype; independent from classic/ScummVM support.
-#[cfg(test)]
+#[cfg(any(test, feature = "standalone-patch-tools"))]
 use std::fs;
 use std::{path::Path, process::Command};
-#[cfg(test)]
+#[cfg(any(test, feature = "standalone-patch-tools"))]
 pub const VERSION: &str = "0.1-local-items-kitor1";
-#[cfg(test)]
+#[cfg(any(test, feature = "standalone-patch-tools"))]
 pub fn stage(destination: &Path, language: &str, version: &str) -> Result<(), String> {
     if language != "he" || version != VERSION {
         return Err("Unknown Remastered patch version".into());

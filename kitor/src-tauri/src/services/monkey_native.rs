@@ -1,9 +1,9 @@
 //! Native Windows Special Edition candidates, separate from classic ScummVM patches.
 use std::{fs, path::{Path, PathBuf}, process::Command};
 
-#[cfg(test)]
+#[cfg(any(test, feature = "standalone-patch-tools"))]
 pub const VERSION: &str = "0.2.0-native-candidate";
-#[cfg(test)]
+#[cfg(any(test, feature = "standalone-patch-tools"))]
 pub fn supported(id: &str) -> bool { matches!(id, "monkey-se-native" | "monkey2-se-native") }
 
 fn names(id: &str) -> Result<(&'static str, &'static str, &'static str), String> {
@@ -36,7 +36,7 @@ pub fn launch_command(root: &Path, id: &str) -> Result<Command, String> {
     Ok(command)
 }
 
-#[cfg(test)]
+#[cfg(any(test, feature = "standalone-patch-tools"))]
 pub fn stage(destination: &Path, id: &str, language: &str, version: &str) -> Result<(), String> {
     if !cfg!(target_os = "windows") { return Err("Native Monkey Island patches currently support Windows only".into()); }
     if language != "he" || version != VERSION { return Err("Unknown native Monkey Island patch version".into()); }
