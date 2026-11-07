@@ -1,6 +1,6 @@
 {
   "status": "revision_11_dynamic_options_rtl",
-  "release_ready": false,
+  "release_ready": true,
   "source": "Locally authored Kitor Hebrew translation and language selector, based on the owned Steam edition.",
   "steam_app_id": 319870,
   "store_url": "https://store.steampowered.com/app/319870/",
@@ -559,5 +559,13 @@
     ],
     "packaged_artifacts_rebuilt": true,
     "remaining": "Audio confirmation for ambiguous/invented names; general nikud proofreading; native gameplay validation"
+  },
+  "release_approval": {
+    "date": "2026-11-07",
+    "authorization": "User requested public release after confirming intro typing/fade and corrected settings values.",
+    "version": "0.4.6",
+    "release_revision": 11,
+    "validation": "Windows and macOS lifecycle/package validation and installer builds passed on PR #17; native macOS gameplay checks completed.",
+    "limitations": "Native Windows gameplay, full story playthrough, and complete editorial/nikud review remain unverified."
   }
 }
