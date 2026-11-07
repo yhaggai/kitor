@@ -551,6 +551,30 @@ mod tests {
         }
     }
     #[test]
+    fn detects_longest_journey_gog_data_without_accepting_incomplete_folders() {
+        // GOG extraction lowercases paths; manual installations retain original case.
+        for markers in [
+            ["global/global.xarc", "08/08.xarc", "static/mainmenulocation/mainmenulocation.xarc"],
+            ["Global/Global.xarc", "08/08.xarc", "Static/MainMenuLocation/MainMenuLocation.xarc"],
+        ] {
+            let dir = tempfile::tempdir().unwrap();
+            let game = dir.path().join("app");
+            std::fs::create_dir_all(&game).unwrap();
+            assert!(find_game(dir.path(), "tlj").is_err());
+            for (index, marker) in markers.iter().enumerate() {
+                let file = game.join(marker);
+                std::fs::create_dir_all(file.parent().unwrap()).unwrap();
+                std::fs::write(file, b"game resource").unwrap();
+                if index < markers.len() - 1 {
+                    assert!(find_game(dir.path(), "tlj").is_err());
+                }
+            }
+            assert_eq!(find_game(dir.path(), "tlj").unwrap(), game.canonicalize().unwrap());
+            assert!(find_game(dir.path(), "torin").is_err());
+        }
+    }
+
+    #[test]
     fn only_offers_games_playable_without_a_patch() {
         let registry = registry_service::load_registry().unwrap();
         assert!(supported(

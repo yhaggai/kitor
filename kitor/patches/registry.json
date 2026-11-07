@@ -939,6 +939,26 @@
         ]
       },
       "behavior": {
+        "detection": {
+          "layouts": [
+            {
+              "root": "",
+              "required_files": [
+                "global/global.xarc",
+                "08/08.xarc",
+                "static/mainmenulocation/mainmenulocation.xarc"
+              ]
+            },
+            {
+              "root": "",
+              "required_files": [
+                "Global/Global.xarc",
+                "08/08.xarc",
+                "Static/MainMenuLocation/MainMenuLocation.xarc"
+              ]
+            }
+          ]
+        },
         "launch": {
           "original": {
             "args": ["--fullscreen", "--auto-detect"]
