@@ -1,7 +1,7 @@
 //! Desktop-only translation drafts and GitHub API submissions. No clone or HTTP server.
 pub mod auth;
 pub mod csv_text;
-mod github;
+pub mod github;
 use csv_text::{apply, hash, rows, Row};
 use serde::{Deserialize, Serialize};
 use std::{

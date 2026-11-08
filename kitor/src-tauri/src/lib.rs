@@ -54,6 +54,7 @@ pub fn run() {
             commands::contribution_commands::preview_translation_submission,
             commands::contribution_commands::submit_translation_draft,
             commands::contribution_commands::contribution_auth_status,
+            commands::contribution_commands::contribution_repository_setup,
             commands::contribution_commands::begin_contribution_login,
             commands::contribution_commands::poll_contribution_login,
             commands::contribution_commands::disconnect_contribution_github,

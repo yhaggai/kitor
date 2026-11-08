@@ -35,6 +35,12 @@ type Preview = {
   revision: number;
   changes: { key: string; english: string; before: string; after: string }[];
 };
+type RepositorySetup = {
+  repository: string | null;
+  message: string;
+  fork_url: string;
+  install_url: string;
+};
 type Auth = { connected: boolean; configured: boolean };
 type Login = { user_code: string; verification_uri: string; interval: number };
 const theme = themeQuartz.withParams({
@@ -58,6 +64,8 @@ export default function TranslationEditor({ onClose }: { onClose: () => void }) 
   const [busy, setBusy] = useState(false);
   const [preview, setPreview] = useState<Preview | null>(null);
   const [auth, setAuth] = useState<Auth>({ connected: false, configured: false });
+  const [repositorySetup, setRepositorySetup] = useState<RepositorySetup | null>(null);
+  const [setupBusy, setSetupBusy] = useState(false);
   const [authBusy, setAuthBusy] = useState(false);
   const [login, setLogin] = useState<Login | null>(null);
   const [pr, setPr] = useState<string | null>(null);
@@ -185,6 +193,22 @@ export default function TranslationEditor({ onClose }: { onClose: () => void }) 
       setBusy(false);
     }
   };
+  const checkRepository = useCallback(async () => {
+    setSetupBusy(true);
+    setRepositorySetup(null);
+    setError("");
+    try {
+      setRepositorySetup(await invoke<RepositorySetup>("contribution_repository_setup"));
+    } catch (e) {
+      setError(String(e));
+    } finally {
+      setSetupBusy(false);
+    }
+  }, []);
+  useEffect(() => {
+    if (auth.connected) void checkRepository();
+    else setRepositorySetup(null);
+  }, [auth.connected, checkRepository]);
   const signIn = async () => {
     setAuthBusy(true);
     setError("");
@@ -388,7 +412,7 @@ export default function TranslationEditor({ onClose }: { onClose: () => void }) 
                 {!auth.configured && (
                   <output>
                     GitHub sign-in is not configured in this build. The developer must supply the
-                    Kitor OAuth app client ID.
+                    Kitor GitHub App client ID.
                   </output>
                 )}
                 {login ? (
@@ -420,6 +444,45 @@ export default function TranslationEditor({ onClose }: { onClose: () => void }) 
                     <Github size={16} /> Sign in with GitHub
                   </Button>
                 )}
+              </div>
+            )}
+            {auth.connected && !pr && (
+              <div className="translation-auth">
+                <h3>Connect only your Kitor repository</h3>
+                <p>
+                  {setupBusy
+                    ? "Checking repository access…"
+                    : (repositorySetup?.message ??
+                      "Check your repository access before submitting.")}
+                </p>
+                <p>
+                  Choose “Only select repositories” on GitHub. The app needs Contents and Pull
+                  requests read/write, plus basic repository metadata. It does not request account
+                  or organization permissions.
+                </p>
+                {repositorySetup && !repositorySetup.repository && (
+                  <>
+                    <Button
+                      variant="outline"
+                      onClick={() => void openUrl(repositorySetup.fork_url)}
+                    >
+                      1. Create your fork on GitHub
+                    </Button>
+                    <Button
+                      variant="outline"
+                      onClick={() => void openUrl(repositorySetup.install_url)}
+                    >
+                      2. Select your Kitor repository
+                    </Button>
+                  </>
+                )}
+                <Button
+                  variant="ghost"
+                  disabled={setupBusy || busy}
+                  onClick={() => void checkRepository()}
+                >
+                  Check access again
+                </Button>
               </div>
             )}
             {pr && (
@@ -462,7 +525,14 @@ export default function TranslationEditor({ onClose }: { onClose: () => void }) 
                   Back to editing
                 </Button>
                 <Button
-                  disabled={busy || !auth.connected || !preview.changes.length || !!pr}
+                  disabled={
+                    busy ||
+                    !auth.connected ||
+                    !repositorySetup?.repository ||
+                    setupBusy ||
+                    !preview.changes.length ||
+                    !!pr
+                  }
                   onClick={() => void submit()}
                 >
                   {busy ? "Submitting…" : "Create draft PR"}

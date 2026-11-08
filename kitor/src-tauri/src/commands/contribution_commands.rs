@@ -61,3 +61,10 @@ pub async fn poll_contribution_login(
 pub async fn disconnect_contribution_github(state: State<'_, Contributions>) -> Result<(), String> {
     auth::disconnect(&state).await
 }
+
+#[tauri::command]
+pub async fn contribution_repository_setup(
+) -> Result<contributions::github::RepositorySetup, String> {
+    let token = auth::token().await?.ok_or("Sign in to GitHub first")?;
+    contributions::github::repository_setup(&token).await
+}

@@ -91,27 +91,13 @@ pub async fn submit(draft: &Draft, csv: String, token: &str) -> Result<Submissio
     {
         return Err("Invalid GitHub login".into());
     }
-    let upstream = api(&format!("repos/{REPO}"), None, token).await?;
-    let (target, owner) = if upstream["permissions"]["push"] == true {
-        (REPO.to_owned(), "yhaggai".to_owned())
-    } else {
-        // GitHub creates the fork remotely. No Git executable or checkout is used.
-        let fork = api(
-            &format!("repos/{REPO}/forks"),
-            Some(json!({"default_branch_only":false})),
-            token,
-        )
-        .await?;
-        let full_name = string(&fork, "full_name")?;
-        if fork["owner"]["login"].as_str() != Some(&login) || fork["fork"] != true {
-            return Err("GitHub did not return your fork".into());
-        }
-        let verified = api(&format!("repos/{full_name}"), None, token).await?;
-        if verified["parent"]["full_name"].as_str() != Some(REPO) {
-            return Err("Repository is not a fork of Kitor".into());
-        }
-        (full_name, login.clone())
-    };
+    let setup = repository_setup(token.unwrap()).await?;
+    let target = setup.repository.ok_or(setup.message)?;
+    let owner = target
+        .split('/')
+        .next()
+        .ok_or("Invalid target repository")?
+        .to_owned();
     let branch = format!(
         "codex/drifter-{}",
         &hash(format!("{}{}", draft.base_sha, csv).as_bytes())[..20]
@@ -237,4 +223,109 @@ pub async fn submit(draft: &Draft, csv: String, token: &str) -> Result<Submissio
         url: string(&pr, "html_url")?,
         existing: false,
     })
+}
+
+#[derive(serde::Serialize)]
+pub struct RepositorySetup {
+    pub repository: Option<String>,
+    pub message: String,
+    pub fork_url: String,
+    pub install_url: String,
+}
+fn selected_installation(installation: &Value, login: &str) -> bool {
+    installation["app_slug"] == "kitor-translation-contributions"
+        && installation["account"]["login"].as_str() == Some(login)
+        && installation["repository_selection"] == "selected"
+        && installation["suspended_at"].is_null()
+        && installation["permissions"]["contents"] == "write"
+        && installation["permissions"]["pull_requests"] == "write"
+}
+pub async fn repository_setup(token: &str) -> Result<RepositorySetup, String> {
+    let token = Some(token);
+    let user = api("user", None, token).await?;
+    let login = string(&user, "login")?;
+    let mut setup = RepositorySetup {
+        repository: None,
+        message: "Create your Kitor fork, then install Kitor Translation Contributions with Only select repositories and select just that fork. Return here and check access.".into(),
+        fork_url: format!("https://github.com/{REPO}/fork"),
+        install_url: "https://github.com/apps/kitor-translation-contributions/installations/new".into(),
+    };
+    for page in 1..=10 {
+        let response = api(
+            &format!("user/installations?per_page=100&page={page}"),
+            None,
+            token,
+        )
+        .await?;
+        let installations = response["installations"]
+            .as_array()
+            .ok_or("Invalid installation response")?;
+        for installation in installations {
+            if installation["app_slug"] != "kitor-translation-contributions"
+                || installation["account"]["login"].as_str() != Some(&login)
+            {
+                continue;
+            }
+            let id = installation["id"]
+                .as_u64()
+                .ok_or("Installation ID missing")?;
+            setup.install_url = format!("https://github.com/settings/installations/{id}");
+            if !selected_installation(installation, &login) {
+                setup.message = "Choose Only select repositories and grant Contents and Pull requests read/write for just your Kitor repository. All repositories access is not accepted by this editor.".into();
+                return Ok(setup);
+            }
+            let repositories = api(
+                &format!("user/installations/{id}/repositories?per_page=100"),
+                None,
+                token,
+            )
+            .await?;
+            if repositories["total_count"].as_u64() != Some(1) {
+                setup.message = "Select exactly one repository for this app: your Kitor fork (or yhaggai/kitor if you own it).".into();
+                return Ok(setup);
+            }
+            let repository = repositories["repositories"]
+                .as_array()
+                .and_then(|r| r.first())
+                .ok_or("Selected repository missing")?;
+            let name = string(repository, "full_name")?;
+            let verified = api(&format!("repos/{name}"), None, token).await?;
+            let own_repo = verified["owner"]["login"].as_str() == Some(&login);
+            let kitor = name == REPO
+                || (verified["fork"] == true && verified["parent"]["full_name"] == REPO);
+            if own_repo && kitor && verified["permissions"]["push"] == true {
+                setup.message = format!("Ready to submit through {name}");
+                setup.repository = Some(name);
+            }
+            return Ok(setup);
+        }
+        if installations.len() < 100 {
+            return Ok(setup);
+        }
+    }
+    Err("Too many GitHub installations to check. Contact the Kitor maintainer.".into())
+}
+
+#[cfg(test)]
+mod permission_tests {
+    use super::*;
+    #[test]
+    fn requires_selected_repository_and_correct_app_and_permissions() {
+        let valid = json!({"app_slug":"kitor-translation-contributions","account":{"login":"contributor"},"repository_selection":"selected","permissions":{"contents":"write","pull_requests":"write"},"suspended_at":null});
+        assert!(selected_installation(&valid, "contributor"));
+        assert!(!selected_installation(&valid, "other-user"));
+        for (field, value) in [
+            ("repository_selection", json!("all")),
+            ("app_slug", json!("another-app")),
+            ("suspended_at", json!("2026-01-01")),
+            (
+                "permissions",
+                json!({"contents":"read","pull_requests":"write"}),
+            ),
+        ] {
+            let mut invalid = valid.clone();
+            invalid[field] = value;
+            assert!(!selected_installation(&invalid, "contributor"));
+        }
+    }
 }

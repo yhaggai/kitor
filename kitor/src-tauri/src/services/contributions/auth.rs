@@ -38,15 +38,15 @@ fn now() -> u64 {
         .as_secs()
 }
 fn entry() -> Result<keyring::Entry, String> {
-    keyring::Entry::new("click.kitor.github", "translation-contribution-oauth")
+    keyring::Entry::new("click.kitor.github", "translation-contribution-github-app")
         .map_err(|_| "Could not open the system credential store".into())
 }
 fn client_id() -> Option<String> {
-    std::env::var("KITOR_GITHUB_CLIENT_ID")
+    std::env::var("KITOR_GITHUB_APP_CLIENT_ID")
         .ok()
-        .or_else(|| option_env!("KITOR_GITHUB_CLIENT_ID").map(str::to_owned))
-        // Public identifier of the registered Kitor Desktop Contributions OAuth app.
-        .or_else(|| Some("Ov23lieTdt9nYcMoFs5B".to_owned()))
+        .or_else(|| option_env!("KITOR_GITHUB_APP_CLIENT_ID").map(str::to_owned))
+        // Public identifier of the registered Kitor Translation Contributions GitHub App.
+        .or_else(|| Some("Iv23liAQvSWojcxSW8wh".to_owned()))
         .filter(|v| {
             !v.is_empty()
                 && v.len() < 150
@@ -87,18 +87,18 @@ pub async fn disconnect(state: &Contributions) -> Result<(), String> {
     .map_err(|_| "Credential task failed")?
 }
 pub async fn begin(state: &Contributions) -> Result<Login, String> {
-    let client_id = client_id().ok_or("GitHub sign-in needs the Kitor OAuth app client ID. Set KITOR_GITHUB_CLIENT_ID when building or running the app.")?;
+    let client_id = client_id().ok_or("GitHub sign-in needs the Kitor GitHub App client ID. Set KITOR_GITHUB_APP_CLIENT_ID when building or running the app.")?;
     let response = github::client()?
         .post("https://github.com/login/device/code")
         .header("Accept", "application/json")
-        .form(&[("client_id", client_id.as_str()), ("scope", "public_repo")])
+        .form(&[("client_id", client_id.as_str())])
         .send()
         .await
         .map_err(|_| "Could not start GitHub sign-in")?;
     let value: Value = serde_json::from_str(&github::bounded(response).await?)
         .map_err(|_| "Invalid sign-in response")?;
     if value.get("error").is_some() {
-        return Err("GitHub device sign-in is unavailable. Check that Device Flow is enabled on the OAuth app.".into());
+        return Err("GitHub device sign-in is unavailable. Check that Device Flow is enabled on the GitHub App.".into());
     }
     let interval = value["interval"].as_u64().unwrap_or(5).max(5);
     let code = github::string(&value, "device_code")?;
