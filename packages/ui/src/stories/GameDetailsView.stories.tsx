@@ -19,14 +19,46 @@ const meta = {
     game: games[0],
     collection: "library",
     onBack: fn(),
-    actions: <Button onClick={fn()}>Play in Hebrew</Button>,
+    actions: <Button onClick={fn()}>Play</Button>,
   },
 } satisfies Meta<typeof GameDetailsView>;
 export default meta;
 type Story = StoryObj<typeof meta>;
 export const Installed: Story = {};
+export const InstalledFromDiscovery: Story = {
+  args: { collection: "discovery" },
+};
+export const TranslationUpdateAvailable: Story = {
+  args: {
+    actions: (
+      <>
+        <Button onClick={fn()}>Play</Button>
+        <Button onClick={fn()}>Install Patch Update</Button>
+      </>
+    ),
+  },
+};
+export const MissingGameFiles: Story = {
+  args: {
+    game: { ...games[0], status: "attention" },
+    actions: (
+      <>
+        <p>Game files missing</p>
+        <Button onClick={fn()}>Refresh game</Button>
+      </>
+    ),
+  },
+};
 export const TranslationAvailable: Story = {
-  args: { game: games[2], actions: <Button onClick={fn()}>Install translation</Button> },
+  args: {
+    game: games[2],
+    actions: (
+      <>
+        <Button onClick={fn()}>Play</Button>
+        <Button onClick={fn()}>Install Patch</Button>
+      </>
+    ),
+  },
 };
 export const Unowned: Story = {
   args: {

@@ -4,7 +4,7 @@ import { invoke } from "@tauri-apps/api/core";
 import { open } from "@tauri-apps/plugin-dialog";
 import { ChevronDown, FolderSearch } from "lucide-react";
 import { useEffect, useState } from "react";
-import GameCard from "@/components/GameCard";
+import GameDetails from "@/components/GameDetails";
 import { Button } from "@/components/ui/button";
 import { useDialog } from "@/hooks/useDialog";
 import { gameSummary } from "@/lib/presentation";
@@ -211,7 +211,13 @@ export default function GameLibrary({ onRefresh }: GameLibraryProps) {
         />
       </div>
       {selected && (
-        <GameCard key={selected.id} game={selected} onRemove={onRefresh} onBack={navigation.back} />
+        <GameDetails
+          key={selected.id}
+          game={selected}
+          collection="library"
+          onRemove={onRefresh}
+          onBack={navigation.back}
+        />
       )}
     </div>
   );

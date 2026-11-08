@@ -65,11 +65,6 @@ export function GameDetailsView({
           </button>
         </div>
         <div className="kt-detail-copy">
-          <p className="kt-eyebrow">
-            {collection === "library"
-              ? t("FROM YOUR COLLECTION")
-              : t("DISCOVER SOMETHING WONDERFUL")}
-          </p>
           <h1 data-detail-heading tabIndex={-1} dir="auto">
             {game.title}
           </h1>
