@@ -45,6 +45,8 @@ fn client_id() -> Option<String> {
     std::env::var("KITOR_GITHUB_CLIENT_ID")
         .ok()
         .or_else(|| option_env!("KITOR_GITHUB_CLIENT_ID").map(str::to_owned))
+        // Public identifier of the registered Kitor Desktop Contributions OAuth app.
+        .or_else(|| Some("Ov23lieTdt9nYcMoFs5B".to_owned()))
         .filter(|v| {
             !v.is_empty()
                 && v.len() < 150

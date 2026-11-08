@@ -13,8 +13,8 @@ Normal Hebrew input conversion and in-game rendering verification remain future 
 
 ## GitHub setup
 
-Register a GitHub OAuth application with Device Flow enabled. Set its public
-client ID as `KITOR_GITHUB_CLIENT_ID` when building or starting Tauri. No client
+The registered Kitor Desktop Contributions OAuth app is configured by default.
+Override its public client ID with `KITOR_GITHUB_CLIENT_ID` when building or starting Tauri. No client
 secret is used or distributed. Example:
 
 ```sh
