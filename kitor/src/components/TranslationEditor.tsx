@@ -58,6 +58,7 @@ export default function TranslationEditor({ onClose }: { onClose: () => void }) 
   const [busy, setBusy] = useState(false);
   const [preview, setPreview] = useState<Preview | null>(null);
   const [auth, setAuth] = useState<Auth>({ connected: false, configured: false });
+  const [authBusy, setAuthBusy] = useState(false);
   const [login, setLogin] = useState<Login | null>(null);
   const [pr, setPr] = useState<string | null>(null);
   const [saved, setSaved] = useState(false);
@@ -185,6 +186,7 @@ export default function TranslationEditor({ onClose }: { onClose: () => void }) 
     }
   };
   const signIn = async () => {
+    setAuthBusy(true);
     setError("");
     try {
       const l = await invoke<Login>("begin_contribution_login");
@@ -192,6 +194,22 @@ export default function TranslationEditor({ onClose }: { onClose: () => void }) 
       await openUrl(l.verification_uri);
     } catch (e) {
       setError(String(e));
+    } finally {
+      setAuthBusy(false);
+    }
+  };
+  const cancelSignIn = async (restart = false) => {
+    setLogin(null);
+    setAuthBusy(true);
+    setError("");
+    try {
+      await invoke("disconnect_contribution_github");
+      setAuth((current) => ({ ...current, connected: false }));
+      if (restart) await signIn();
+    } catch (e) {
+      setError(String(e));
+    } finally {
+      setAuthBusy(false);
     }
   };
   useEffect(() => {
@@ -374,15 +392,31 @@ export default function TranslationEditor({ onClose }: { onClose: () => void }) 
                   </output>
                 )}
                 {login ? (
-                  <p>
-                    Enter <strong className="translation-code">{login.user_code}</strong> on{" "}
-                    <button type="button" onClick={() => void openUrl(login.verification_uri)}>
-                      GitHub’s authorization page ↗
-                    </button>
-                    . Waiting for approval…
-                  </p>
+                  <div>
+                    <p>
+                      Enter <strong className="translation-code">{login.user_code}</strong> on{" "}
+                      <button type="button" onClick={() => void openUrl(login.verification_uri)}>
+                        GitHub’s authorization page ↗
+                      </button>
+                      . Waiting for approval…
+                    </p>
+                    <Button
+                      variant="outline"
+                      disabled={authBusy}
+                      onClick={() => void cancelSignIn()}
+                    >
+                      Cancel sign-in
+                    </Button>
+                    <Button
+                      variant="ghost"
+                      disabled={authBusy}
+                      onClick={() => void cancelSignIn(true)}
+                    >
+                      Start again
+                    </Button>
+                  </div>
                 ) : (
-                  <Button disabled={!auth.configured} onClick={() => void signIn()}>
+                  <Button disabled={!auth.configured || authBusy} onClick={() => void signIn()}>
                     <Github size={16} /> Sign in with GitHub
                   </Button>
                 )}
