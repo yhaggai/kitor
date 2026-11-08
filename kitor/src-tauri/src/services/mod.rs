@@ -39,3 +39,4 @@ pub mod gog_download_service;
 pub mod games;
 
 pub mod diagnostics;
+pub mod contributions;

@@ -20,6 +20,7 @@ pub fn run() {
         .plugin(tauri_plugin_fs::init())
         .plugin(tauri_plugin_updater::Builder::new().build())
         .manage(services::app_updates::AppUpdates::default())
+        .manage(services::contributions::Contributions::default())
         .setup(|app| {
             // macOS title bars follow the native application's appearance.
             app.set_theme(Some(tauri::Theme::Dark));
@@ -48,6 +49,14 @@ pub fn run() {
             Ok(())
         })
         .invoke_handler(tauri::generate_handler![
+            commands::contribution_commands::open_translation_draft,
+            commands::contribution_commands::save_translation_draft,
+            commands::contribution_commands::preview_translation_submission,
+            commands::contribution_commands::submit_translation_draft,
+            commands::contribution_commands::contribution_auth_status,
+            commands::contribution_commands::begin_contribution_login,
+            commands::contribution_commands::poll_contribution_login,
+            commands::contribution_commands::disconnect_contribution_github,
             commands::app_update_commands::check_app_update,
             commands::app_update_commands::install_app_update,
             commands::app_update_commands::restart_after_app_update,

@@ -1,6 +1,7 @@
 import { type Collection, GameDetailsView } from "@kitor/ui";
 import GameCard from "@/components/GameCard";
 import { StoreInstallButtons } from "@/components/StoreInstallButtons";
+import { TranslationContributionButton } from "@/components/TranslationContributionButton";
 import { TranslationCredit } from "@/components/TranslationCredit";
 import { patchSummary } from "@/lib/presentation";
 import { type Game, type PatchWithStatus, useAppStore } from "@/store/store";
@@ -40,12 +41,15 @@ export default function GameDetails({
       onBack={onBack}
       descriptionCredit={<TranslationCredit gameId={patch.scummvm_id} />}
       actions={
-        <StoreInstallButtons
-          installed={false}
-          scummvmId={patch.scummvm_id}
-          steamAppId={patch.steam_app_id}
-          gogId={patch.gog_id}
-        />
+        <div className="space-y-2">
+          <StoreInstallButtons
+            installed={false}
+            scummvmId={patch.scummvm_id}
+            steamAppId={patch.steam_app_id}
+            gogId={patch.gog_id}
+          />
+          <TranslationContributionButton gameId={patch.scummvm_id} />
+        </div>
       }
     />
   );

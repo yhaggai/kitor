@@ -43,6 +43,7 @@ sha2 = "0.10"
 md-5 = "0.10"
 tempfile = "3"
 rand = "0.8"
+csv = "1.3"
 keyring = { version = "3.6.3", features = ["apple-native", "windows-native", "sync-secret-service", "crypto-rust"] }
 tauri-plugin-updater = "=2.9.0"
 
