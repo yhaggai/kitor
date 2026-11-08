@@ -8,7 +8,7 @@ import {
   themeQuartz,
 } from "ag-grid-community";
 import { AgGridReact } from "ag-grid-react";
-import { Github, Redo2, Search, Undo2 } from "lucide-react";
+import { Redo2, Search, Undo2 } from "lucide-react";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogDescription, DialogTitle } from "@/components/ui/dialog";
@@ -35,14 +35,6 @@ type Preview = {
   revision: number;
   changes: { key: string; english: string; before: string; after: string }[];
 };
-type RepositorySetup = {
-  repository: string | null;
-  message: string;
-  fork_url: string;
-  install_url: string;
-};
-type Auth = { connected: boolean; configured: boolean };
-type Login = { user_code: string; verification_uri: string; interval: number };
 const theme = themeQuartz.withParams({
   backgroundColor: "#101827",
   foregroundColor: "#e6edf6",
@@ -63,11 +55,8 @@ export default function TranslationEditor({ onClose }: { onClose: () => void }) 
   const [error, setError] = useState("");
   const [busy, setBusy] = useState(false);
   const [preview, setPreview] = useState<Preview | null>(null);
-  const [auth, setAuth] = useState<Auth>({ connected: false, configured: false });
-  const [repositorySetup, setRepositorySetup] = useState<RepositorySetup | null>(null);
-  const [setupBusy, setSetupBusy] = useState(false);
-  const [authBusy, setAuthBusy] = useState(false);
-  const [login, setLogin] = useState<Login | null>(null);
+  const [botReady, setBotReady] = useState(false);
+  const [botMessage, setBotMessage] = useState("Checking the local contribution bot…");
   const [pr, setPr] = useState<string | null>(null);
   const [saved, setSaved] = useState(false);
   const revision = useRef(0),
@@ -77,13 +66,20 @@ export default function TranslationEditor({ onClose }: { onClose: () => void }) 
   const grid = useRef<AgGridReact<Row>>(null);
   const mounted = useRef(true);
   const generation = useRef(0);
-  const authReady = useCallback(
-    () =>
-      invoke<Auth>("contribution_auth_status")
-        .then(setAuth)
-        .catch((e) => setError(String(e))),
-    []
-  );
+  const checkBot = useCallback(async () => {
+    setBotReady(false);
+    try {
+      const status = await invoke<{ configured: boolean }>("contribution_bot_status");
+      setBotReady(status.configured);
+      setBotMessage(
+        status.configured
+          ? "The bot is ready to open a draft PR."
+          : "The local bot is running. Its GitHub App credentials still need to be configured."
+      );
+    } catch (e) {
+      setBotMessage(String(e));
+    }
+  }, []);
   useEffect(() => {
     mounted.current = true;
     void invoke<Draft>("open_translation_draft")
@@ -99,11 +95,11 @@ export default function TranslationEditor({ onClose }: { onClose: () => void }) 
         setMessage("Saved on this computer");
       })
       .catch((e) => setError(String(e)));
-    void authReady();
+    void checkBot();
     return () => {
       mounted.current = false;
     };
-  }, [authReady]);
+  }, [checkBot]);
 
   // Save every committed cell edit through one ordered queue. Stale writes cannot win.
   const persist = useCallback((next: Record<string, string>) => {
@@ -193,76 +189,6 @@ export default function TranslationEditor({ onClose }: { onClose: () => void }) 
       setBusy(false);
     }
   };
-  const checkRepository = useCallback(async () => {
-    setSetupBusy(true);
-    setRepositorySetup(null);
-    setError("");
-    try {
-      setRepositorySetup(await invoke<RepositorySetup>("contribution_repository_setup"));
-    } catch (e) {
-      setError(String(e));
-    } finally {
-      setSetupBusy(false);
-    }
-  }, []);
-  useEffect(() => {
-    if (auth.connected) void checkRepository();
-    else setRepositorySetup(null);
-  }, [auth.connected, checkRepository]);
-  const signIn = async () => {
-    setAuthBusy(true);
-    setError("");
-    try {
-      const l = await invoke<Login>("begin_contribution_login");
-      setLogin(l);
-      await openUrl(l.verification_uri);
-    } catch (e) {
-      setError(String(e));
-    } finally {
-      setAuthBusy(false);
-    }
-  };
-  const cancelSignIn = async (restart = false) => {
-    setLogin(null);
-    setAuthBusy(true);
-    setError("");
-    try {
-      await invoke("disconnect_contribution_github");
-      setAuth((current) => ({ ...current, connected: false }));
-      if (restart) await signIn();
-    } catch (e) {
-      setError(String(e));
-    } finally {
-      setAuthBusy(false);
-    }
-  };
-  useEffect(() => {
-    if (!login) return;
-    let cancelled = false,
-      timer: ReturnType<typeof setTimeout>;
-    const poll = async () => {
-      try {
-        const status = await invoke<{ connected: boolean; interval: number }>(
-          "poll_contribution_login"
-        );
-        if (cancelled) return;
-        if (status.connected) {
-          setAuth({ connected: true, configured: true });
-          setLogin(null);
-        } else timer = setTimeout(poll, status.interval * 1000);
-      } catch (e) {
-        if (!cancelled) {
-          setError(String(e));
-          setLogin(null);
-        }
-      }
-    };
-    timer = setTimeout(poll, login.interval * 1000);
-    return () => {
-      cancelled = true;
-      clearTimeout(timer);
-    };
-  }, [login]);
   const submit = async () => {
     if (!preview) return;
     setBusy(true);
@@ -280,7 +206,7 @@ export default function TranslationEditor({ onClose }: { onClose: () => void }) 
       );
     } catch (e) {
       setError(String(e));
-      void authReady();
+      void checkBot();
     } finally {
       setBusy(false);
     }
@@ -405,83 +331,16 @@ export default function TranslationEditor({ onClose }: { onClose: () => void }) 
                 </div>
               </article>
             ))}
-            {!auth.connected && (
+            {!pr && (
               <div className="translation-auth">
-                <h3>Sign in to GitHub to submit</h3>
-                <p>No Git installation or local repository is needed.</p>
-                {!auth.configured && (
-                  <output>
-                    GitHub sign-in is not configured in this build. The developer must supply the
-                    Kitor GitHub App client ID.
-                  </output>
-                )}
-                {login ? (
-                  <div>
-                    <p>
-                      Enter <strong className="translation-code">{login.user_code}</strong> on{" "}
-                      <button type="button" onClick={() => void openUrl(login.verification_uri)}>
-                        GitHub’s authorization page ↗
-                      </button>
-                      . Waiting for approval…
-                    </p>
-                    <Button
-                      variant="outline"
-                      disabled={authBusy}
-                      onClick={() => void cancelSignIn()}
-                    >
-                      Cancel sign-in
-                    </Button>
-                    <Button
-                      variant="ghost"
-                      disabled={authBusy}
-                      onClick={() => void cancelSignIn(true)}
-                    >
-                      Start again
-                    </Button>
-                  </div>
-                ) : (
-                  <Button disabled={!auth.configured || authBusy} onClick={() => void signIn()}>
-                    <Github size={16} /> Sign in with GitHub
-                  </Button>
-                )}
-              </div>
-            )}
-            {auth.connected && !pr && (
-              <div className="translation-auth">
-                <h3>Connect only your Kitor repository</h3>
+                <h3>Send through the Kitor bot</h3>
                 <p>
-                  {setupBusy
-                    ? "Checking repository access…"
-                    : (repositorySetup?.message ??
-                      "Check your repository access before submitting.")}
+                  No GitHub sign-in or repository access is needed from you. The bot posts your
+                  reviewed corrections as a public draft PR.
                 </p>
-                <p>
-                  Choose “Only select repositories” on GitHub. The app needs Contents and Pull
-                  requests read/write, plus basic repository metadata. It does not request account
-                  or organization permissions.
-                </p>
-                {repositorySetup && !repositorySetup.repository && (
-                  <>
-                    <Button
-                      variant="outline"
-                      onClick={() => void openUrl(repositorySetup.fork_url)}
-                    >
-                      1. Create your fork on GitHub
-                    </Button>
-                    <Button
-                      variant="outline"
-                      onClick={() => void openUrl(repositorySetup.install_url)}
-                    >
-                      2. Select your Kitor repository
-                    </Button>
-                  </>
-                )}
-                <Button
-                  variant="ghost"
-                  disabled={setupBusy || busy}
-                  onClick={() => void checkRepository()}
-                >
-                  Check access again
+                <p>{botMessage}</p>
+                <Button variant="outline" disabled={busy} onClick={() => void checkBot()}>
+                  Check connection
                 </Button>
               </div>
             )}
@@ -506,36 +365,16 @@ export default function TranslationEditor({ onClose }: { onClose: () => void }) 
             )}
           </div>
           <div className="translation-footer-actions">
-            {auth.connected && (
-              <Button
-                variant="ghost"
-                disabled={busy}
-                onClick={() =>
-                  void invoke("disconnect_contribution_github")
-                    .then(() => authReady())
-                    .catch((e) => setError(String(e)))
-                }
-              >
-                Disconnect GitHub
-              </Button>
-            )}
             {preview ? (
               <>
                 <Button variant="outline" disabled={busy} onClick={() => setPreview(null)}>
                   Back to editing
                 </Button>
                 <Button
-                  disabled={
-                    busy ||
-                    !auth.connected ||
-                    !repositorySetup?.repository ||
-                    setupBusy ||
-                    !preview.changes.length ||
-                    !!pr
-                  }
+                  disabled={busy || !botReady || !preview.changes.length || !!pr}
                   onClick={() => void submit()}
                 >
-                  {busy ? "Submitting…" : "Create draft PR"}
+                  {busy ? "Submitting…" : "Send corrections"}
                 </Button>
               </>
             ) : (

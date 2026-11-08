@@ -1,5 +1,5 @@
 //! Desktop-only translation drafts and GitHub API submissions. No clone or HTTP server.
-pub mod auth;
+
 pub mod csv_text;
 pub mod github;
 use csv_text::{apply, hash, rows, Row};
@@ -12,12 +12,10 @@ use tokio::sync::Mutex;
 
 pub const REPO: &str = "yhaggai/kitor";
 pub const CSV_PATH: &str = "patches-workspace/drifter/he/payload/translation.csv";
-pub const MANIFEST_PATH: &str = "patches-workspace/drifter/he/patch.json";
 
 #[derive(Default)]
 pub struct Contributions {
     pub gate: Mutex<()>,
-    pub device: Mutex<Option<auth::Device>>,
 }
 
 #[derive(Clone, Serialize, Deserialize)]
@@ -50,7 +48,7 @@ pub struct Preview {
     pub revision: u64,
     pub changes: Vec<Change>,
 }
-#[derive(Serialize)]
+#[derive(Serialize, Deserialize)]
 pub struct Submission {
     pub url: String,
     pub existing: bool,
@@ -194,16 +192,40 @@ pub async fn submit(root: &Path, revision: u64, digest: &str) -> Result<Submissi
     if csv == draft.source {
         return Err("There are no corrections to submit".into());
     }
-    let token = auth::token()
-        .await?
-        .ok_or("Sign in to GitHub before submitting")?;
-    // Never trust a locally modified snapshot to overwrite upstream source silently.
-    if github::raw(CSV_PATH, &draft.base_sha, Some(&token)).await? != draft.source {
-        return Err(
-            "Saved source differs from GitHub. Keep your draft and contact the maintainer.".into(),
-        );
+    let response = reqwest::Client::builder()
+        .timeout(std::time::Duration::from_secs(180))
+        .redirect(reqwest::redirect::Policy::none())
+        .build()
+        .map_err(|_| "Could not initialize bot connection")?
+        .post("http://127.0.0.1:47831/submissions")
+        .header("X-Kitor-Client", "desktop-poc")
+        .json(&serde_json::json!({"base_sha":draft.base_sha,"digest":digest,"edits":draft.edits}))
+        .send()
+        .await
+        .map_err(|_| {
+            "The local contribution bot is unavailable. Start it and retry; your draft is saved."
+        })?;
+    let status = response.status();
+    let text = response
+        .text()
+        .await
+        .map_err(|_| "Could not read the bot response")?;
+    if !status.is_success() {
+        let value: serde_json::Value = serde_json::from_str(&text).unwrap_or_default();
+        return Err(value["error"]
+            .as_str()
+            .unwrap_or("The bot could not submit your corrections")
+            .to_owned());
     }
-    github::submit(&draft, csv, &token).await
+    let result: Submission = serde_json::from_str(&text).map_err(|_| "Invalid bot response")?;
+    let suffix = result
+        .url
+        .strip_prefix("https://github.com/yhaggai/kitor/pull/")
+        .ok_or("Unexpected PR link from bot")?;
+    if suffix.is_empty() || !suffix.bytes().all(|b| b.is_ascii_digit()) {
+        return Err("Invalid PR link from bot".into());
+    }
+    Ok(result)
 }
 
 #[cfg(test)]
@@ -241,4 +263,26 @@ mod tests {
         assert!(save(root.path(), 0, BTreeMap::new()).is_err());
         assert_eq!(preview(root.path()).unwrap().changes.len(), 1);
     }
+}
+
+#[derive(Serialize, Deserialize)]
+pub struct BotStatus {
+    pub configured: bool,
+}
+pub async fn bot_status() -> Result<BotStatus, String> {
+    let response = reqwest::Client::builder()
+        .timeout(std::time::Duration::from_secs(3))
+        .redirect(reqwest::redirect::Policy::none())
+        .build()
+        .map_err(|_| "Could not initialize bot connection")?
+        .get("http://127.0.0.1:47831/health")
+        .send()
+        .await
+        .map_err(|_| {
+            "Start the local contribution bot to submit. Your draft stays saved on this computer."
+        })?;
+    response
+        .json::<BotStatus>()
+        .await
+        .map_err(|_| "Invalid local bot response".into())
 }

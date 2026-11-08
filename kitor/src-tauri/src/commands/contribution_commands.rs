@@ -1,5 +1,5 @@
 use crate::{
-    services::contributions::{self, auth, Contributions, EditorData, Preview, Submission},
+    services::contributions::{self, Contributions, EditorData, Preview, Submission},
     AppState,
 };
 use std::collections::BTreeMap;
@@ -42,29 +42,6 @@ pub async fn submit_translation_draft(
     contributions::submit(&app.app_data_dir, revision, &digest).await
 }
 #[tauri::command]
-pub async fn contribution_auth_status() -> Result<auth::Status, String> {
-    auth::status().await
-}
-#[tauri::command]
-pub async fn begin_contribution_login(
-    state: State<'_, Contributions>,
-) -> Result<auth::Login, String> {
-    auth::begin(&state).await
-}
-#[tauri::command]
-pub async fn poll_contribution_login(
-    state: State<'_, Contributions>,
-) -> Result<auth::Poll, String> {
-    auth::poll(&state).await
-}
-#[tauri::command]
-pub async fn disconnect_contribution_github(state: State<'_, Contributions>) -> Result<(), String> {
-    auth::disconnect(&state).await
-}
-
-#[tauri::command]
-pub async fn contribution_repository_setup(
-) -> Result<contributions::github::RepositorySetup, String> {
-    let token = auth::token().await?.ok_or("Sign in to GitHub first")?;
-    contributions::github::repository_setup(&token).await
+pub async fn contribution_bot_status() -> Result<contributions::BotStatus, String> {
+    contributions::bot_status().await
 }

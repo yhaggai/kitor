@@ -31,3 +31,7 @@ __pycache__/
 **/storybook-static/
 **/storybook.log
 **/debug-storybook.log
+
+# Local contribution bot builds and credentials
+!tools/contribution-bot/Cargo.lock
+*.pem
