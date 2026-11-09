@@ -2,10 +2,10 @@ use sea_orm::DatabaseConnection;
 use std::path::PathBuf;
 use tauri::Manager;
 
+mod commands;
 mod db;
 mod models;
 mod services;
-mod commands;
 
 pub struct AppState {
     pub db: DatabaseConnection,
@@ -21,11 +21,14 @@ pub fn run() {
         .plugin(tauri_plugin_updater::Builder::new().build())
         .manage(services::app_updates::AppUpdates::default())
         .manage(services::contributions::Contributions::default())
+        .manage(services::contributions::identity::Identity::default())
         .setup(|app| {
             // macOS title bars follow the native application's appearance.
             app.set_theme(Some(tauri::Theme::Dark));
 
-            let app_data_dir = app.path().app_data_dir()
+            let app_data_dir = app
+                .path()
+                .app_data_dir()
                 .expect("Failed to get app data directory");
 
             // Initialize database
@@ -37,14 +40,12 @@ pub fn run() {
             });
 
             let mut steam = services::steam_service::SteamState::default();
-            steam.session.get_mut().steam_id = services::steam_service::load_identity(&app_data_dir);
+            steam.session.get_mut().steam_id =
+                services::steam_service::load_identity(&app_data_dir);
             app.manage(steam);
 
             // Store state
-            app.manage(AppState {
-                db,
-                app_data_dir,
-            });
+            app.manage(AppState { db, app_data_dir });
 
             Ok(())
         })
@@ -54,6 +55,11 @@ pub fn run() {
             commands::contribution_commands::preview_translation_submission,
             commands::contribution_commands::submit_translation_draft,
             commands::contribution_commands::contribution_bot_status,
+            services::contributions::identity::contributor_status,
+            services::contributions::identity::contributor_sign_in,
+            services::contributions::identity::contributor_poll,
+            services::contributions::identity::contributor_cancel,
+            services::contributions::identity::contributor_sign_out,
             commands::app_update_commands::check_app_update,
             commands::app_update_commands::install_app_update,
             commands::app_update_commands::restart_after_app_update,
@@ -116,4 +122,3 @@ pub fn run() {
         .run(tauri::generate_context!())
         .expect("error while running tauri application");
 }
-

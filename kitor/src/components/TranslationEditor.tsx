@@ -13,6 +13,7 @@ import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogDescription, DialogTitle } from "@/components/ui/dialog";
 import "./TranslationEditor.css";
+import type { Contributor } from "@/store/contributor";
 
 ModuleRegistry.registerModules([AllCommunityModule]);
 type Row = {
@@ -45,7 +46,13 @@ const theme = themeQuartz.withParams({
   fontSize: 14,
 });
 
-export default function TranslationEditor({ onClose }: { onClose: () => void }) {
+export default function TranslationEditor({
+  onClose,
+  contributor,
+}: {
+  onClose: () => void;
+  contributor: Contributor;
+}) {
   const [draft, setDraft] = useState<Draft | null>(null);
   const [data, setData] = useState<Row[]>([]);
   const [edits, setEdits] = useState<Record<string, string>>({});
@@ -82,7 +89,7 @@ export default function TranslationEditor({ onClose }: { onClose: () => void }) 
   }, []);
   useEffect(() => {
     mounted.current = true;
-    void invoke<Draft>("open_translation_draft")
+    void invoke<Draft>("open_translation_draft", { contributorId: contributor.id })
       .then((d) => {
         if (!mounted.current) return;
         revision.current = d.revision;
@@ -99,34 +106,38 @@ export default function TranslationEditor({ onClose }: { onClose: () => void }) 
     return () => {
       mounted.current = false;
     };
-  }, [checkBot]);
+  }, [checkBot, contributor.id]);
 
   // Save every committed cell edit through one ordered queue. Stale writes cannot win.
-  const persist = useCallback((next: Record<string, string>) => {
-    const current = ++generation.current;
-    setSaved(false);
-    setMessage("Saving draft…");
-    queue.current = queue.current
-      .catch(() => {})
-      .then(async () => {
-        const rev = await invoke<number>("save_translation_draft", {
-          revision: revision.current,
-          edits: next,
+  const persist = useCallback(
+    (next: Record<string, string>) => {
+      const current = ++generation.current;
+      setSaved(false);
+      setMessage("Saving draft…");
+      queue.current = queue.current
+        .catch(() => {})
+        .then(async () => {
+          const rev = await invoke<number>("save_translation_draft", {
+            contributorId: contributor.id,
+            revision: revision.current,
+            edits: next,
+          });
+          revision.current = rev;
+          if (mounted.current && current === generation.current) {
+            setSaved(true);
+            setMessage("Saved on this computer");
+            setError("");
+          }
         });
-        revision.current = rev;
-        if (mounted.current && current === generation.current) {
-          setSaved(true);
-          setMessage("Saved on this computer");
-          setError("");
+      void queue.current.catch((e) => {
+        if (mounted.current) {
+          setError(String(e));
+          setMessage("Draft not saved — keep the editor open");
         }
       });
-    void queue.current.catch((e) => {
-      if (mounted.current) {
-        setError(String(e));
-        setMessage("Draft not saved — keep the editor open");
-      }
-    });
-  }, []);
+    },
+    [contributor.id]
+  );
   const onChange = useCallback(
     (event: CellValueChangedEvent<Row>) => {
       const row = event.data;
@@ -181,7 +192,9 @@ export default function TranslationEditor({ onClose }: { onClose: () => void }) 
     setError("");
     try {
       await queue.current;
-      const p = await invoke<Preview>("preview_translation_submission");
+      const p = await invoke<Preview>("preview_translation_submission", {
+        contributorId: contributor.id,
+      });
       setPreview(p);
     } catch (e) {
       setError(String(e));
@@ -195,6 +208,7 @@ export default function TranslationEditor({ onClose }: { onClose: () => void }) 
     setError("");
     try {
       const result = await invoke<{ url: string; existing: boolean }>("submit_translation_draft", {
+        contributorId: contributor.id,
         revision: preview.revision,
         digest: preview.digest,
       });
@@ -333,7 +347,8 @@ export default function TranslationEditor({ onClose }: { onClose: () => void }) 
             ))}
             {!pr && (
               <div className="translation-auth">
-                <h3>Send through the Kitor bot</h3>
+                <h3>Contributing as {contributor.name}</h3>
+                <p>Public contributor ID: {contributor.id}. Your email stays private.</p>
                 <p>
                   No GitHub sign-in or repository access is needed from you. The bot posts your
                   reviewed corrections as a public draft PR.

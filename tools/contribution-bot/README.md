@@ -1,4 +1,7 @@
-# Local Kitor contribution bot
+# Legacy local Kitor contribution bot
+
+The desktop now uses the authenticated [Worker + D1 service](../contribution-worker/README.md).
+This earlier prototype is retained for reference and is not the active endpoint.
 
 Run from the repository root:
 

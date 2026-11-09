@@ -3,7 +3,7 @@
 The Drifter card/details has an **Improve translation · POC** button. The editor
 loads the CSV from the repository's default branch (currently `v1`), pins the
 commit, and keeps committed cell edits in the application data directory under
-`translation-drafts/drifter-he.json`. Reopening restores the same base and edits;
+`contributors/<contributor-id>/translation-drafts/drifter-he.json`. Reopening restores the same base and edits;
 it does not silently replace an unfinished draft with the latest remote version.
 
 Search, column filters, changed-only filtering and session undo/redo work over a
@@ -11,17 +11,18 @@ virtualized grid. Review shows the exact persisted corrections before submission
 The POC edits the CSV's existing **display-order Hebrew**, not logical Hebrew.
 Normal Hebrew input conversion and in-game rendering verification remain future work.
 
-## Local bot setup
+## Sign-in and local Worker setup
 
-Contributors do not sign into GitHub. The desktop sends reviewed edits to a
-separate local backend at `127.0.0.1:47831`. See
-[the bot setup guide](../tools/contribution-bot/README.md).
+Use the top-right **Sign in with Google** control, or open **Improve translation**
+to see the sign-in prompt. Cancel and retry are supported. Each account has its
+own local draft; signing out does not delete it. Existing anonymous drafts remain
+untouched in the old folder.
 
-The maintainer installs Kitor Translation Contributions on only `yhaggai/kitor`.
-Its private key stays in a restricted file outside the repository and desktop
-bundle. The backend obtains short-lived installation tokens restricted to that
-repository, with Contents and Pull requests write access. PRs are authored by
-the bot; contributor identity is not verified in this local POC.
+Start the local Cloudflare Worker and D1 at `127.0.0.1:8787` using
+[the Worker and Google OAuth setup guide](../tools/contribution-worker/README.md).
+Contributors do not sign into GitHub. The bot authors the PR and includes the
+verified session's Google display name and public Kitor ID; email stays private.
+The GitHub private key and Google client secret remain on the backend.
 
 ## Submission
 
@@ -37,8 +38,8 @@ rejected. A submission is limited to 200 corrections. The manifest version is
 unchanged: PRs are labeled **POC — do not merge**. Submission does not build,
 install or release a patch. Merge conflicts remain visible in GitHub.
 
-This backend binds only to loopback. Public deployment needs authentication,
-rate limits and abuse controls; the desktop header is not authentication.
+This POC runs only on loopback. The Worker enforces authentication and rate limits.
+A hosted build must set `KITOR_CONTRIBUTION_API_URL` to its HTTPS endpoint at compile time.
 
 ## Validation
 

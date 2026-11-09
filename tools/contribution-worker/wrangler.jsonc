@@ -1,0 +1,16 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "kitor-contributions",
+  "main": "src/index.ts",
+  "compatibility_date": "2026-11-01",
+  "triggers": { "crons": ["0 * * * *"] },
+  "vars": { "PUBLIC_URL": "http://127.0.0.1:8787", "GITHUB_APP_ID": "5666467" },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "kitor-contributions-local",
+      "database_id": "00000000-0000-0000-0000-000000000000",
+      "migrations_dir": "migrations"
+    }
+  ]
+}

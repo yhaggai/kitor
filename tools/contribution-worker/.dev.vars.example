@@ -1,0 +1,5 @@
+# Copy to .dev.vars (ignored); chmod 600 .dev.vars. Never commit real credentials.
+GOOGLE_CLIENT_ID="your-client-id.apps.googleusercontent.com"
+GOOGLE_CLIENT_SECRET="your-web-client-secret"
+# PKCS8 PEM, with literal \n between lines, or a quoted multiline value.
+GITHUB_PRIVATE_KEY="-----BEGIN PRIVATE KEY-----\n...\n-----END PRIVATE KEY-----\n"

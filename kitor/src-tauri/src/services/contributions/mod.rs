@@ -2,6 +2,7 @@
 
 pub mod csv_text;
 pub mod github;
+pub mod identity;
 use csv_text::{apply, hash, rows, Row};
 use serde::{Deserialize, Serialize};
 use std::{
@@ -180,7 +181,12 @@ pub fn preview(root: &Path) -> Result<Preview, String> {
     })
 }
 
-pub async fn submit(root: &Path, revision: u64, digest: &str) -> Result<Submission, String> {
+pub async fn submit(
+    root: &Path,
+    revision: u64,
+    digest: &str,
+    token: &str,
+) -> Result<Submission, String> {
     let draft = read(root)?;
     if draft.revision != revision {
         return Err("The draft changed. Review your corrections again.".into());
@@ -197,7 +203,8 @@ pub async fn submit(root: &Path, revision: u64, digest: &str) -> Result<Submissi
         .redirect(reqwest::redirect::Policy::none())
         .build()
         .map_err(|_| "Could not initialize bot connection")?
-        .post("http://127.0.0.1:47831/submissions")
+        .post(format!("{}/submissions", identity::endpoint()?))
+        .bearer_auth(token)
         .header("X-Kitor-Client", "desktop-poc")
         .json(&serde_json::json!({"base_sha":draft.base_sha,"digest":digest,"edits":draft.edits}))
         .send()
@@ -275,7 +282,7 @@ pub async fn bot_status() -> Result<BotStatus, String> {
         .redirect(reqwest::redirect::Policy::none())
         .build()
         .map_err(|_| "Could not initialize bot connection")?
-        .get("http://127.0.0.1:47831/health")
+        .get(format!("{}/health", identity::endpoint()?))
         .send()
         .await
         .map_err(|_| {

@@ -4,6 +4,7 @@ import { listen } from "@tauri-apps/api/event";
 import { useCallback, useEffect, useRef } from "react";
 import AppUpdateDialog from "@/components/AppUpdateDialog";
 import BugReportDialog from "@/components/BugReportDialog";
+import ContributorAccount from "@/components/ContributorAccount";
 import GameLibrary from "@/components/GameLibrary";
 import PatchBrowser from "@/components/PatchBrowser";
 import Settings from "@/components/Settings";
@@ -123,6 +124,7 @@ function App() {
 
   return (
     <AppShell
+      account={<ContributorAccount />}
       active={
         activeTab === "patches" ? "discovery" : activeTab === "settings" ? "settings" : "library"
       }
