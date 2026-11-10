@@ -5,6 +5,10 @@ export interface Env {
   GOOGLE_CLIENT_SECRET?: string;
   GITHUB_APP_ID: string;
   GITHUB_PRIVATE_KEY?: string;
+  GITHUB_WEBHOOK_SECRET?: string;
+  NOTIFICATIONS_ENABLED?: string;
+  RESEND_API_KEY?: string;
+  NOTIFICATION_FROM?: string;
 }
 export type Contributor = { id: string; name: string };
 export class HttpError extends Error {

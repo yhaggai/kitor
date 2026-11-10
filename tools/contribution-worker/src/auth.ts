@@ -18,7 +18,7 @@ export async function identity(
   env: Env,
   nonce: string,
   keySet: JWTVerifyGetKey = keys
-): Promise<{ sub: string; name: string }> {
+): Promise<{ sub: string; name: string; email: string }> {
   const { payload } = await jwtVerify(token, keySet, {
     issuer: ["https://accounts.google.com", "accounts.google.com"],
     audience: env.GOOGLE_CLIENT_ID,
@@ -29,6 +29,9 @@ export async function identity(
     payload.nonce !== nonce ||
     !payload.sub ||
     payload.email_verified !== true ||
+    typeof payload.email !== "string" ||
+    !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(payload.email) ||
+    payload.email.length > 254 ||
     (payload.azp && payload.azp !== env.GOOGLE_CLIENT_ID)
   )
     throw new HttpError(401, "Google identity could not be verified");
@@ -39,7 +42,7 @@ export async function identity(
     [...name].some((c) => c.charCodeAt(0) < 32 || c.charCodeAt(0) === 127)
   )
     throw new HttpError(400, "Google profile needs a valid display name");
-  return { sub: payload.sub, name };
+  return { sub: payload.sub, name, email: payload.email as string };
 }
 export async function user(req: Request, env: Env): Promise<Contributor> {
   const token = req.headers.get("authorization")?.match(/^Bearer ([a-f0-9]{64})$/)?.[1];
@@ -126,9 +129,9 @@ export async function auth(req: Request, env: Env, path: string): Promise<Respon
       if (!response.ok || typeof tokens.id_token !== "string") throw new Error("exchange");
       const profile = await identity(tokens.id_token, env, attempt.nonce);
       const contributor = await env.DB.prepare(
-        "INSERT INTO contributors(id,google_sub,name,created_at) VALUES (?,?,?,?) ON CONFLICT(google_sub) DO UPDATE SET name=excluded.name RETURNING id,name"
+        "INSERT INTO contributors(id,google_sub,name,created_at,email) VALUES (?,?,?,?,?) ON CONFLICT(google_sub) DO UPDATE SET name=excluded.name,email=excluded.email RETURNING id,name"
       )
-        .bind(crypto.randomUUID(), profile.sub, profile.name, now())
+        .bind(crypto.randomUUID(), profile.sub, profile.name, now(), profile.email)
         .first<Contributor>();
       if (!contributor) throw new Error("profile");
       const ready = await env.DB.prepare(

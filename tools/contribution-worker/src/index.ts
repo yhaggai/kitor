@@ -1,6 +1,7 @@
 import { auth, user } from "./auth";
 import { apply, validate } from "./csv";
 import { canonical, installation, openPR } from "./github";
+import { drainNotifications, reconcileReleases, webhook } from "./notifications";
 import { body, type Env, HttpError, hash, json, limit, now } from "./shared";
 export default {
   async fetch(req: Request, env: Env): Promise<Response> {
@@ -15,6 +16,7 @@ export default {
           configured: !!env.GITHUB_PRIVATE_KEY,
           google_configured: !!env.GOOGLE_CLIENT_ID && !!env.GOOGLE_CLIENT_SECRET,
         });
+      if (path === "/webhooks/github" && req.method === "POST") return webhook(req, env);
       const login = await auth(req, env, path);
       if (login) return login;
       if (path === "/submissions" && req.method === "POST") {
@@ -50,9 +52,9 @@ export default {
           stage = "github-pr";
           const result = await openPR(input, csv, base.branch, id, contributor, token);
           await env.DB.prepare(
-            "UPDATE submissions SET status='complete',url=?,lease_until=0 WHERE id=?"
+            "UPDATE submissions SET status='complete',url=?,edits_json=?,lease_until=0 WHERE id=?"
           )
-            .bind(result.url, id)
+            .bind(result.url, JSON.stringify(input.edits), id)
             .run();
           return json(result);
         } catch (e) {
@@ -78,6 +80,8 @@ export default {
     }
   },
   async scheduled(_event: ScheduledController, env: Env) {
+    await reconcileReleases(env);
+    await drainNotifications(env);
     await env.DB.batch([
       env.DB.prepare("DELETE FROM sessions WHERE expires_at<?").bind(now()),
       env.DB.prepare("DELETE FROM login_attempts WHERE expires_at<?").bind(now()),

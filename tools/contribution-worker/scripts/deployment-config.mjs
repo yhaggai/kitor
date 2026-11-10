@@ -46,7 +46,12 @@ const config = {
       workers_dev: true,
       preview_urls: false,
       triggers: local.triggers,
-      vars: { PUBLIC_URL: publicUrl.origin, GITHUB_APP_ID: appId },
+      vars: {
+        PUBLIC_URL: publicUrl.origin,
+        GITHUB_APP_ID: appId,
+        NOTIFICATIONS_ENABLED: process.env.NOTIFICATIONS_ENABLED === "true" ? "true" : "false",
+        NOTIFICATION_FROM: process.env.NOTIFICATION_FROM || "Kitor <notifications@kitor.click>",
+      },
       d1_databases: [
         {
           binding: "DB",

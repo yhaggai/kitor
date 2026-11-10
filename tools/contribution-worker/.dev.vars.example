@@ -1,5 +1,13 @@
 # Copy to .dev.vars (ignored); chmod 600 .dev.vars. Never commit real credentials.
 GOOGLE_CLIENT_ID="your-client-id.apps.googleusercontent.com"
 GOOGLE_CLIENT_SECRET="your-web-client-secret"
+# Resend sending-only key restricted to the verified Kitor domain.
+RESEND_API_KEY="your-resend-api-key"
+NOTIFICATION_FROM="Kitor <notifications@kitor.click>"
 # PKCS8 PEM, with literal \n between lines, or a quoted multiline value.
 GITHUB_PRIVATE_KEY="-----BEGIN PRIVATE KEY-----\n...\n-----END PRIVATE KEY-----\n"
+
+# Random secret shared only with the GitHub webhook configuration.
+GITHUB_WEBHOOK_SECRET="replace-with-a-random-secret"
+# Keep disabled locally unless deliberately testing real mail.
+NOTIFICATIONS_ENABLED="false"

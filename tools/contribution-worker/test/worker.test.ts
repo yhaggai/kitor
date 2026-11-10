@@ -62,7 +62,13 @@ test("Google verification requires signed correct audience, issuer, nonce and ve
     iss = "https://accounts.google.com",
     exp = "2m"
   ) =>
-    new SignJWT({ nonce: "nonce", email_verified: true, name: "Test Contributor", ...claims })
+    new SignJWT({
+      nonce: "nonce",
+      email: "test@example.com",
+      email_verified: true,
+      name: "Test Contributor",
+      ...claims,
+    })
       .setProtectedHeader({ alg: "RS256", kid: "test" })
       .setSubject("google-id")
       .setAudience(aud)
@@ -75,6 +81,8 @@ test("Google verification requires signed correct audience, issuer, nonce and ve
     await token({}, "wrong"),
     await token({}, "client", "evil"),
     await token({ email_verified: false }),
+    await token({ email: undefined }),
+    await token({ email: "invalid" }),
     await token({ nonce: "wrong" }),
     await token({}, "client", "https://accounts.google.com", "-2m"),
   ])
@@ -109,7 +117,9 @@ test("real D1: protected endpoints, one-time login handoff, cancellation, sessio
   );
   try {
     const db = await mf.getD1Database("DB");
-    const sql = await readFile("migrations/0001_identity.sql", "utf8");
+    const sql =
+      (await readFile("migrations/0001_identity.sql", "utf8")) +
+      (await readFile("migrations/0002_notifications.sql", "utf8"));
     for (const statement of sql.split(";").filter((s) => s.trim()))
       await db.prepare(statement).run();
     const post = (path: string, b: any, token?: string) =>
@@ -136,7 +146,7 @@ test("real D1: protected endpoints, one-time login handoff, cancellation, sessio
       true
     );
     await db
-      .prepare("INSERT INTO contributors VALUES (?,?,?,?)")
+      .prepare("INSERT INTO contributors(id,google_sub,name,created_at) VALUES (?,?,?,?)")
       .bind("test-user", "sub", "Test Contributor", 0)
       .run();
     await db
@@ -168,7 +178,7 @@ test("real D1: protected endpoints, one-time login handoff, cancellation, sessio
     const lease = () =>
       db
         .prepare(
-          "INSERT INTO submissions VALUES ('same','test-user','pending',9999999999,NULL,0) ON CONFLICT(id) DO UPDATE SET lease_until=9999999999 WHERE submissions.lease_until<1 RETURNING id"
+          "INSERT INTO submissions(id,contributor_id,status,lease_until,url,created_at) VALUES ('same','test-user','pending',9999999999,NULL,0) ON CONFLICT(id) DO UPDATE SET lease_until=9999999999 WHERE submissions.lease_until<1 RETURNING id"
         )
         .first();
     const results = await Promise.all([lease(), lease()]);

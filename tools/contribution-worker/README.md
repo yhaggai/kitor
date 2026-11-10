@@ -62,7 +62,8 @@ converted key must remain restricted local files. Production uses Worker secrets
   and PKCE verifier in D1 for ten minutes.
 - The callback exchanges the code and verifies Google's signed ID token,
   audience, issuer, expiry, nonce, and verified-email claim. It does not retain
-  Google access/refresh tokens or email addresses.
+  Google access/refresh tokens. Verified email addresses are stored privately in
+  D1 for transactional contribution notifications.
 - Only the desktop holding the original handoff verifier can claim the result,
   once. Cancel deletes the attempt; restart creates a new one.
 - A seven-day opaque session is kept in OS credential storage, never in the
@@ -163,3 +164,59 @@ configuration and authentication gating, not a full Google login or PR creation.
 
 This workflow deploys only the backend. Desktop packaging continues separately;
 set `KITOR_CONTRIBUTION_API_URL` to the appropriate HTTPS URL when building Kitor.
+# Resend notification setup
+
+The transport is in `src/email.ts`; signed merge/release webhooks and the D1
+outbox are in `src/notifications.ts`. Sending is disabled unless
+`NOTIFICATIONS_ENABLED="true"`.
+
+- Sender: `Kitor <notifications@kitor.click>`.
+- Verify `kitor.click` in Resend using the exact records shown in its dashboard.
+  Keep the existing Cloudflare inbound MX/SPF records intact. Receiving through
+  Resend is not required.
+- Create a **Sending access** API key restricted to `kitor.click` and put
+  `RESEND_API_KEY` and `NOTIFICATION_FROM` in the ignored, mode-600 `.dev.vars`
+  for local development. Never put the key in desktop configuration or Git.
+- For hosted environments use separate keys and Wrangler secrets.
+- The free plan allows 100 emails/day and 3,000/month. The persistent D1 outbox
+  sends at most four messages per hourly tick and reserves at most 90 attempts/day.
+  Resend's idempotency keys only deduplicate for 24 hours; uncertain deliveries
+  must not be blindly retried beyond that window.
+- The Google-verified email is stored privately after sign-in and never returned
+  in the public contributor profile or PR. Existing users must sign in again.
+
+
+## Activate merge and release emails
+
+1. Apply migration `0002_notifications.sql` locally or to the intended deployed D1.
+2. Set `GITHUB_WEBHOOK_SECRET` to a cryptographically random secret. Keep the
+   existing Resend key private. Configure `NOTIFICATION_FROM` and explicitly set
+   `NOTIFICATIONS_ENABLED=true` only in the intended sending environment.
+3. Deploy to a public HTTPS Worker URL. In the GitHub App webhook configuration,
+   use `https://<worker>/webhooks/github`, the matching secret, and subscribe to
+   **Pull request** and **Release** events. Localhost cannot receive GitHub events.
+   App release subscriptions may need repository Contents read permission (the
+   contribution bot already has Contents write). Do not change other permissions.
+4. Redeliver a signed test event from GitHub and inspect its response. Failed
+   GitHub deliveries need manual redelivery; GitHub does not automatically retry.
+   Nothing in local tests merges or publishes the POC PRs.
+
+Only merged PRs into `yhaggai/kitor:v1` with a matching saved submission/PR URL
+are queued. Closing without merging does nothing. Duplicate events reuse the
+same outbox ID. Emails contain a PR/release link, never OAuth tokens. Existing
+sessions without stored email wait in the queue until the next Google sign-in.
+
+The hourly cron sends queued emails. Release events may arrive before merge
+notifications: they remain in D1 until a matching submission is available.
+One submission/release pair is checked per tick, with negative checks revisited
+after a day. Release checks require published non-prerelease assets, the expected
+manifest filename/version/checksum, merge ancestry, and matching corrected CSV
+values at the tag. A reverted correction does not generate a release email.
+Release emails wait for the approval email to be sent first.
+
+Delivery attempts freeze the recipient, sender, subject and body for Resend's
+24-hour idempotency window. After 23 hours, ambiguous failures move to
+`needs_review` rather than risk duplicate mail; inspect the provider log before
+resolving them. Monitor pending/needs_review counts. The 90/day budget is for this
+Worker only; other applications sharing the Resend account consume its quota too.
+This is transactional contribution mail, not a marketing subscription.
