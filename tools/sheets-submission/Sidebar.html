@@ -1,0 +1,35 @@
+<!doctype html>
+<html><head><base target="_blank"><style>
+body{font:14px system-ui;padding:14px;color:#17212b}button{padding:10px;margin:6px 0;cursor:pointer;width:100%}button.primary{background:#185abc;color:white;border:0;border-radius:5px}button:disabled{opacity:.5;cursor:wait}small{color:#536170}article{border-top:1px solid #ddd;padding:10px 0}p{white-space:pre-wrap;overflow-wrap:anywhere}.error{color:#a31515}code{font-size:20px}a{color:#185abc}
+</style></head><body>
+<h2>Submit corrections</h2>
+<p>Edit column F, then review your changes here.</p>
+<small>Drifter currently stores Hebrew in display order. This POC preserves that format. Submissions create draft PRs, never releases.</small>
+<div id="auth"><button id="connect" onclick="connect()">Connect GitHub</button><p id="device"></p></div>
+<button id="review" onclick="review()" disabled>Review changes</button>
+<div id="changes"></div>
+<button id="submit" class="primary" onclick="submit()" hidden>Create draft pull request</button>
+<p id="status" role="status"></p>
+<script>
+let digest=null, timer=null;
+const el=id=>document.getElementById(id);
+function message(text,error=false){el('status').textContent=text;el('status').className=error?'error':'';}
+function failure(e){message(e.message||String(e),true);el('connect').disabled=false;el('review').disabled=false;el('submit').disabled=false;}
+function connected(){el('auth').hidden=true;el('review').disabled=false;message('GitHub connected.');}
+google.script.run.withSuccessHandler(s=>{if(s.connected)connected();else if(!s.configured)message('Setup needed: the GitHub OAuth client ID has not been configured.',true);}).withFailureHandler(failure).authStatus();
+function connect(){el('connect').disabled=true;message('Starting GitHub authorization…');google.script.run.withSuccessHandler(r=>{
+ const p=el('device');p.replaceChildren();const code=document.createElement('code');code.textContent=r.code;
+ const link=document.createElement('a');link.href=r.url;link.rel='noopener noreferrer';link.textContent='Open GitHub and enter this code';
+ p.append(code,document.createElement('br'),link);message('Waiting for your approval on GitHub…');timer=setTimeout(poll,r.interval*1000);
+}).withFailureHandler(failure).beginGitHubLogin();}
+function poll(){google.script.run.withSuccessHandler(r=>{if(r.connected){connected();return;}timer=setTimeout(poll,r.interval*1000);}).withFailureHandler(failure).finishGitHubLogin();}
+function review(){digest=null;el('submit').hidden=true;el('review').disabled=true;message('Reading your sheet and comparing with the original revision…');google.script.run.withSuccessHandler(r=>{
+ el('review').disabled=false;el('changes').replaceChildren();digest=r.digest;
+ for(const c of r.changes){const article=document.createElement('article');for(const [label,text] of [['English',c.english],['Context',c.context],['Before',c.before],['After',c.after]]){const p=document.createElement('p');p.textContent=label+': '+text;p.dir='auto';article.append(p);}el('changes').append(article);}
+ el('submit').hidden=!r.changes.length;message(r.changes.length+' changed line(s). Review before submitting.');
+}).withFailureHandler(failure).previewSubmission();}
+function submit(){el('submit').disabled=true;el('review').disabled=true;message('Creating draft PR…');google.script.run.withSuccessHandler(r=>{
+ el('submit').disabled=false;el('review').disabled=false;el('submit').hidden=true;
+ message(r.existing?'This submission already has a PR.':'Draft PR created.');const a=document.createElement('a');a.href=r.url;a.rel='noopener noreferrer';a.textContent='Open pull request';el('status').append(document.createElement('br'),a);
+}).withFailureHandler(failure).submitCorrections(digest);}
+</script></body></html>

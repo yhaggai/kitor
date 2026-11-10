@@ -4,7 +4,9 @@ export type Collection = "library" | "discovery";
 export type GameSummary = {
   id: string;
   title: string;
+  titleHe?: string;
   cover?: string;
+  coverLanguage?: "en" | "he";
   banner?: { en?: string; he?: string; logo?: string; aspectRatio?: number };
   covers?: Record<"en" | "he", { src: string; fallbackSrc?: string; title?: string }>;
   screenshots?: { src: string; alt?: string; sourceUrl?: string }[];

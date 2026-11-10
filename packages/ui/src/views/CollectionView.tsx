@@ -42,12 +42,12 @@ export function CollectionView({
   return (
     <section
       className="kt-collection"
-      aria-label={collection === "library" ? t("Game library") : t("Discover translations")}
+      aria-label={collection === "library" ? t("My Games") : t("Home")}
     >
       <header className="kt-page-header">
         <div>
           <p className="kt-eyebrow">{t("YOUR NEXT ADVENTURE")}</p>
-          <h1>{collection === "library" ? t("Your library") : t("Discover translations")}</h1>
+          <h1>{collection === "library" ? t("My Games") : t("Home")}</h1>
           <p>
             {collection === "library"
               ? t("A little adventure awaits.")
@@ -102,7 +102,12 @@ export function CollectionView({
           </output>
           <div className="kt-game-grid">
             {matches.map((game) => (
-              <GameTile key={game.id} game={game} onOpen={onOpen} />
+              <GameTile
+                key={game.id}
+                game={game}
+                onOpen={onOpen}
+                showStatus={collection === "library"}
+              />
             ))}
           </div>
         </>

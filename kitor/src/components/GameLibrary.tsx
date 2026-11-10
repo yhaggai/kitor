@@ -4,6 +4,7 @@ import { invoke } from "@tauri-apps/api/core";
 import { open } from "@tauri-apps/plugin-dialog";
 import { ChevronDown, FolderSearch } from "lucide-react";
 import { useEffect, useState } from "react";
+import BugReportDialog from "@/components/BugReportDialog";
 import GameDetails from "@/components/GameDetails";
 import { Button } from "@/components/ui/button";
 import { useDialog } from "@/hooks/useDialog";
@@ -12,24 +13,28 @@ import { useAppStore } from "@/store/store";
 
 type GameLibraryProps = {
   onRefresh: () => void | Promise<void>;
+  navigationResetKey?: number;
 };
 
-export default function GameLibrary({ onRefresh }: GameLibraryProps) {
+export default function GameLibrary({ onRefresh, navigationResetKey }: GameLibraryProps) {
   const { t } = useTranslation();
   const { games, highlightedGameId, setHighlightedGameId } = useAppStore();
-  const navigation = useGameNavigation();
+  const navigation = useGameNavigation(navigationResetKey);
   const selected = games.find((game) => String(game.id) === navigation.selectedId);
+  const [failure, setFailure] = useState("");
   const [isScanning, setIsScanning] = useState(false);
   const [isRemoving, setIsRemoving] = useState(false);
   const [checkingUpdates, setCheckingUpdates] = useState(false);
   const [updateMessage, setUpdateMessage] = useState("");
   const checkUpdates = async () => {
+    setFailure("");
     setCheckingUpdates(true);
     try {
       await invoke("refresh_patch_registry");
       await onRefresh();
       setUpdateMessage("Translation catalog refreshed. Available updates appear on your games.");
     } catch (error) {
+      setFailure(String(error));
       setUpdateMessage(
         t("Could not check for translation updates. Your cached catalog is still available. {0}", [
           String(error),
@@ -52,6 +57,7 @@ export default function GameLibrary({ onRefresh }: GameLibraryProps) {
 
   const handleScanGames = async (automatic: boolean) => {
     if (isScanning || isRemoving) return;
+    setFailure("");
     setIsScanning(true);
     setScanMessage("");
     setScanWarnings([]);
@@ -87,6 +93,7 @@ export default function GameLibrary({ onRefresh }: GameLibraryProps) {
       }
       await onRefresh();
     } catch (error) {
+      setFailure(String(error));
       setScanMessage(t("Scan failed: {0}", [String(error)]));
       await onRefresh();
     } finally {
@@ -96,6 +103,7 @@ export default function GameLibrary({ onRefresh }: GameLibraryProps) {
 
   const handleRemoveAllGames = async () => {
     if (isScanning || isRemoving) return;
+    setFailure("");
     setIsRemoving(true);
     try {
       const confirmed = await confirm({
@@ -117,6 +125,7 @@ export default function GameLibrary({ onRefresh }: GameLibraryProps) {
       setHighlightedGameId(null);
       setScanMessage("All games removed from your library. Game files were left on disk.");
     } catch (error) {
+      setFailure(String(error));
       setScanMessage(t("Could not remove all games: {0}", [String(error)]));
     } finally {
       try {
@@ -191,6 +200,7 @@ export default function GameLibrary({ onRefresh }: GameLibraryProps) {
           feedback={
             <div aria-live="polite" className="space-y-2">
               {updateMessage && <p>{updateMessage}</p>}
+              {failure && <BugReportDialog details={failure} />}
               {isScanning && <p>{t("Scanning game folders…")}</p>}
               {scanMessage && <p>{t(scanMessage)}</p>}
               {scanWarnings.length > 0 && (
@@ -199,6 +209,7 @@ export default function GameLibrary({ onRefresh }: GameLibraryProps) {
                     {t("Scan warnings (")}
                     {scanWarnings.length})
                   </summary>
+                  <BugReportDialog details={scanWarnings.join("\n")} />
                   <ul>
                     {scanWarnings.map((warning, i) => (
                       <li key={`${i}-${warning}`}>{warning}</li>

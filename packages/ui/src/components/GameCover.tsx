@@ -10,7 +10,7 @@ const cn = (...names: string[]) => names.filter(Boolean).join(" ");
 /** Original Kitor six-face box geometry; interaction belongs to the containing tile/viewer. */
 export function GameCover({
   game,
-  language = "he",
+  language = game.coverLanguage ?? "he",
   rotation,
   zoom = 100,
 }: {

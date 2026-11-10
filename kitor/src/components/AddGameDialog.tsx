@@ -5,6 +5,7 @@ import { invoke } from "@tauri-apps/api/core";
 import { open as openDialog } from "@tauri-apps/plugin-dialog";
 import { CheckCircle, FolderSearch, XCircle } from "lucide-react";
 import { useCallback, useMemo, useState } from "react";
+import BugReportDialog from "@/components/BugReportDialog";
 import { Button } from "@/components/ui/button";
 
 type DetectedGameInfo = {
@@ -26,6 +27,7 @@ type ToastState =
 
 export default function AddGameDialog({ open, onOpenChange, onAdded }: AddGameDialogProps) {
   const { t } = useTranslation();
+  const [failure, setFailure] = useState("");
   const [busy, setBusy] = useState(false);
   const [selectedPath, setSelectedPath] = useState<string | null>(null);
   const [detected, setDetected] = useState<DetectedGameInfo | null>(null);
@@ -45,12 +47,14 @@ export default function AddGameDialog({ open, onOpenChange, onAdded }: AddGameDi
   }, []);
 
   const reset = useCallback(() => {
+    setFailure("");
     setBusy(false);
     setSelectedPath(null);
     setDetected(null);
   }, []);
 
   const handleSelectAndAdd = useCallback(async () => {
+    setFailure("");
     try {
       const selected = await openDialog({
         directory: true,
@@ -86,6 +90,7 @@ export default function AddGameDialog({ open, onOpenChange, onAdded }: AddGameDi
       onOpenChange(false);
       reset();
     } catch (error) {
+      setFailure(String(error));
       console.error("Failed to add game manually:", error);
       showToast(t("Failed to add game: {0}", [String(error)]), "destructive");
     } finally {
@@ -152,6 +157,14 @@ export default function AddGameDialog({ open, onOpenChange, onAdded }: AddGameDi
               )}
             </div>
 
+            {failure && (
+              <div className="mt-4 space-y-2">
+                <p role="alert" className="text-sm text-destructive">
+                  {failure}
+                </p>
+                <BugReportDialog details={failure} game={detected?.title} />
+              </div>
+            )}
             <div className="mt-6 flex justify-end gap-2">
               <Dialog.Close asChild>
                 <Button variant="outline" disabled={busy}>
