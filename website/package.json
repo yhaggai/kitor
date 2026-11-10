@@ -13,20 +13,23 @@
     "prebuild": "npm run sync"
   },
   "dependencies": {
-    "astro": "^5.16.0",
+    "@astrojs/node": "^9.5.5",
     "@astrojs/react": "^4.4.0",
+    "@radix-ui/react-dialog": "^1.1.15",
+    "ag-grid-community": "^36.3.0",
+    "ag-grid-react": "^36.3.0",
+    "astro": "^5.16.0",
+    "clsx": "^2.1.1",
+    "lucide-react": "^0.562.0",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
-    "@radix-ui/react-dialog": "^1.1.15",
-    "lucide-react": "^0.562.0",
-    "clsx": "^2.1.1",
     "tailwind-merge": "^3.4.0"
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.4",
-    "typescript": "~5.8.3",
     "@types/react": "^19.1.8",
     "@types/react-dom": "^19.1.6",
-    "sharp": "^0.34.5"
+    "sharp": "^0.34.5",
+    "typescript": "~5.8.3"
   }
 }
