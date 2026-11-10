@@ -13,7 +13,7 @@ export async function github(
 ): Promise<any> {
   const response = await fetch(`https://api.github.com/${path}`, {
     method: body ? "POST" : "GET",
-    redirect: "error",
+    redirect: "manual",
     headers: {
       Authorization: `Bearer ${token}`,
       "User-Agent": "Kitor-contributions",

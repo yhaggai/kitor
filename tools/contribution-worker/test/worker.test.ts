@@ -219,3 +219,21 @@ test("PR uses bot credentials and server-derived contributor attribution", async
     globalThis.fetch = originalFetch;
   }
 });
+
+test("GitHub redirects are rejected without forwarding bot credentials", async () => {
+  const { github } = await import("../src/github");
+  const originalFetch = globalThis.fetch;
+  let requests = 0;
+  globalThis.fetch = async (_url, options) => {
+    requests++;
+    // Workers supports manual/follow, unlike Node's additional error mode.
+    assert.equal(options?.redirect, "manual");
+    return new Response(null, { status: 302, headers: { Location: "https://example.com" } });
+  };
+  try {
+    await assert.rejects(github("repos/yhaggai/kitor", "test-token"), /GitHub returned 302/);
+    assert.equal(requests, 1);
+  } finally {
+    globalThis.fetch = originalFetch;
+  }
+});
