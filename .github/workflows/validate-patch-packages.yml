@@ -55,8 +55,6 @@ jobs:
         run: cargo build --release --locked --manifest-path kitor/tools/lifecycle-harness/Cargo.toml --bin tentacle_remastered_patch
       - name: Test package safety and reproducibility
         run: python -m unittest discover -s kitor/tools -p "test_*.py"
-      - name: Test SQ1 CSV resource compilation
-        run: python -m unittest discover -s patches-workspace/sq1/he -p "test_*.py"
       - name: Test native selective installation and restoration fixtures
         run: python kitor/tools/run_lifecycle_tests.py
       - name: Test translation update database recovery

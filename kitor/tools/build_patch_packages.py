@@ -1,19 +1,16 @@
 #!/usr/bin/env python3
-"""Compile configured text sources, validate manifests, and package their assets.
+"""Validate Kitor lifecycle manifests and package referenced assets only.
 
-Source builds also include a build report. This builds data packages, not native
-executables or compatibility certifications.
+This builds data packages, not native executables or compatibility certifications.
 Install/uninstall entry points are Kitor's journaled patch lifecycle. Never execute
 upstream installers. BSDIFF needs Python 3; macOS Xdelta needs xdelta3 on PATH.
 """
 import argparse
 import hashlib
-import importlib.util
 import json
 import re
 import stat
 import sys
-import tempfile
 import zipfile
 from pathlib import Path
 
@@ -48,35 +45,6 @@ def checksum(value):
 
 
 def validate(manifest_path, platform):
-    """Compile source-backed patches before validating the generated file plan."""
-    manifest_path = Path(manifest_path)
-    root = manifest_path.parent
-    canonical_sq1 = Path(__file__).resolve().parents[2] / 'patches-workspace/sq1/he/patch.json'
-    config_path = root / 'build-source.json'
-    if manifest_path.resolve() == canonical_sq1 or config_path.exists():
-        require(not config_path.is_symlink(), 'Symlink build-source configuration')
-        require(config_path.is_file(), 'SQ1 requires build-source.json; prebuilt-only packaging is disabled')
-        config = json.loads(config_path.read_text(encoding='utf-8'))
-        require(config.get('schema_version') == 1 and config.get('compiler') == 'sq1-csv',
-                'Unsupported source compiler')
-        # Validate baseline paths/hashes before the compiler reads/writes assets.
-        baseline_manifest, _ = validate_assets(manifest_path, platform)
-        require((baseline_manifest['scummvm_id'], baseline_manifest['language']) == ('sq1', 'he'),
-                'SQ1 compiler cannot build another patch')
-        compiler_path = canonical_sq1.parent / 'text_pipeline.py'
-        spec = importlib.util.spec_from_file_location('sq1_source_compiler', compiler_path)
-        compiler = importlib.util.module_from_spec(spec)
-        spec.loader.exec_module(compiler)
-        with tempfile.TemporaryDirectory(prefix='kitor-sq1-build-') as temporary:
-            generated = Path(temporary) / 'compiled'
-            compiler.prepare_package(root, generated)
-            manifest, assets = validate_assets(generated / 'patch.json', platform)
-            assets['build-report.json'] = (generated / 'build-report.json').read_bytes()
-            return manifest, assets
-    return validate_assets(manifest_path, platform)
-
-
-def validate_assets(manifest_path, platform):
     root = manifest_path.parent.resolve()
     require(not manifest_path.is_symlink(), 'Manifest cannot be a symlink')
     provenance_path = root / 'provenance.json'
