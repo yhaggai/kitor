@@ -1,0 +1,78 @@
+{
+  "schema_version": 1,
+  "validated_on": "2026-11-08",
+  "game": "sq1",
+  "edition": "EGA 2.2, exact original hashes in patch.json",
+  "catalog_sha256": "da4f40510bcb39d5f17c9d5043e3ba1d81219edcbe28d7195d3e6b162111b6d7",
+  "baseline_manifest_sha256": "7cb86c1f9f516013c5e49432d2be916c428f0df2970fe4d2b511eca9d5b835a1",
+  "rows": {
+    "logic_message_slots": 2139,
+    "inventory_names": 25,
+    "view_descriptions": 20,
+    "total": 2184,
+    "nonempty": 1819,
+    "null_message_slots": 356
+  },
+  "tests": {
+    "synthetic": 6,
+    "owned_game_integration": 4,
+    "passed": 10
+  },
+  "unchanged_csv": {
+    "all_12_output_files_byte_identical_to_baseline": true
+  },
+  "edited_csv": {
+    "changed_keys": ["logic.000.message.002", "object.001.name", "view.186.description"],
+    "reextracted_text_matches": true,
+    "logic_bytecode_and_sprite_data_preserved": true,
+    "other_active_text_unchanged": true,
+    "packages_built": ["windows", "osx"],
+    "all_delta_outputs_verified": true,
+    "repeat_packages_byte_identical": true
+  },
+  "lifecycle": {
+    "implementation": "Kitor Rust patch_lifecycle via validate_owned_games",
+    "host": "macOS",
+    "plan_tested": "windows (osx uses identical operations)",
+    "disposable_game_subset": true,
+    "affected_files": 12,
+    "original_files_backed_up_and_restored": 9,
+    "created_files_removed": 3,
+    "unrelated_files_preserved": true,
+    "status": "passed"
+  },
+  "original_game_modified": false,
+  "native_windows": "not_run",
+  "gameplay": "not_run",
+  "release_ready": false,
+  "limitations": [
+    "Vocabulary, fonts, graphics, and gameplay code remain existing baseline assets.",
+    "Runtime rendering and line wrapping require gameplay review.",
+    "Native Windows execution and remote GitHub Actions have not run."
+  ],
+  "local_artifacts": {
+    "baseline": "dist/sq1-csv-proof/baseline/sq1/he",
+    "edited": "dist/sq1-csv-proof/edited/sq1/he",
+    "lifecycle": "dist/sq1-csv-proof/lifecycle-report.json",
+    "default": "dist/sq1-default",
+    "default_edited_lifecycle": "dist/sq1-default-lifecycle/report.json"
+  },
+  "default_build": {
+    "compiler": "sq1-csv",
+    "template_sha256": "fdb390fb178c8710bba83f2e5a545b060d8844dc96e081ee544b1afa15d53609",
+    "version": "1.0-kitor2",
+    "release_revision": 1,
+    "original_archives_required": false,
+    "platform_builds": "passed",
+    "universal_release_build": "passed",
+    "validation_only_build": "passed",
+    "edited_offline_output_matches_owned_game_build": true,
+    "shared_tools_suite_passed": 49,
+    "resource_suite_passed": 10,
+    "invalid_or_missing_csv_rejected": true,
+    "no_stale_csv_cache": true,
+    "actual_lifecycle_on_default_edited_package": "passed on macOS with Windows plan",
+    "native_windows": "not_run",
+    "github_actions": "not_run"
+  }
+}
