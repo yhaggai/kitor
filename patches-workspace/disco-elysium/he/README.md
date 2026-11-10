@@ -4,7 +4,7 @@
 
 The canonical translation is **translations.csv**, UTF-8, with the shared Kitor columns `key,english,hebrew`. Edit this CSV only. Blank Hebrew means untranslated, never reviewed or complete. JSON files contain generated context, validation and provenance; `opening.json` is a historical seed, not an editable translation source. The current author translates directly in Codex without a separate draft model or external translation service.
 
-The extracted scope is 75,767 source entries / 1,073,030 English words. Run `text_pipeline.py status` for current CSV coverage; `translation-progress.json` records conversation completion and the next entry to translate. Completion here means all text-bearing branches have Hebrew text, not that editorial or in-game review is finished. The Arabic slot retains untranslated Arabic until the corresponding CSV row is translated. It is not an English fallback build.
+The extracted scope is 79,586 source entries / 1,129,354 English words. Run `text_pipeline.py status` for current CSV coverage; `translation-progress.json` records conversation completion and the next entry to translate. Completion here means all text-bearing branches have Hebrew text, not that editorial or in-game review is finished. The Arabic slot retains untranslated Arabic until the corresponding CSV row is translated. It is not an English fallback build.
 
 Arial is the selected font. The split Assistant/Frank Ruhl experiment failed in dialogue and is abandoned. Existing user screenshots and confirmation validate the earlier Arial prototype only; the expanded opening batch needs in-game review.
 
@@ -13,8 +13,9 @@ Arial is the selected font. The split Assistant/Frank Ruhl experiment failed in 
 Run from the repository root with Python 3 and UnityPy 1.25.0; font construction also requires Pillow, NumPy and SciPy. This session has SciPy under `/private/tmp/disco-he-python`.
 
 1. `python3 patches-workspace/disco-elysium/he/text_pipeline.py extract` reads the owned installed macOS game and creates the local source index. On an existing CSV it verifies the complete source inventory and retains every translation. A different source build fails rather than silently migrating translations.
+   `extract --expand-source` explicitly permits adding newly mapped keys while rejecting changes or removals to existing English. The 2026-11-10 expansion added 3,819 source-backed alternate dialogue and tooltip rows; existing Hebrew was preserved.
 2. `python3 patches-workspace/disco-elysium/he/text_pipeline.py next --conversation 8 --limit 30` returns untranslated rows with speaker, addressee, branch links, conditions and scripts. Omit the conversation filter to get the next batch globally.
-3. Translate directly into the CSV, preserving stable keys, source English, markup, placeholders and logical Hebrew reading order. Update `translation-provenance.json` and `glossary.json` for each reviewed batch. No automatic translator is used.
+3. Translate directly into the CSV, preserving stable keys, source English, markup, placeholders and logical Hebrew reading order. Update `translation-provenance.json` and `glossary.json` for each reviewed batch. Luna (`gpt-6-luna`) drafts source-backed glossary entries; Astra (`gpt-6-astra`) translates game text directly into the CSV. Preserve separate authorship and mark glossary uncertainties. No automatic translator is used.
 4. `python3 patches-workspace/disco-elysium/he/text_pipeline.py validate` checks source hashes, exact key inventory, duplicate IDs, protected tokens, emphasis and unexpected manual bidi controls. `status` reports exact completion counts.
 5. `python3 patches-workspace/disco-elysium/he/text_pipeline.py build` writes a staged localization bundle under `build/`. The output is reopened and every translated key is checked against the CSV. It refuses to build inside the original source installation.
 6. `python3 patches-workspace/disco-elysium/he/prototype.py` builds from that CSV and updates the existing disposable `/private/tmp/disco-he-test.app` with the Arial atlas. It adds missing characters required by the actual translated text. It is a local development installer, not the distributable Kitor lifecycle installer.
@@ -24,7 +25,7 @@ Run from the repository root with Python 3 and UnityPy 1.25.0; font construction
 
 ## Source audit and remaining onboarding
 
-The source index currently records 193 source keys absent from the shipped Arabic tables and 3,946 localization terms lacking a matched English source, including malformed Arabic keys. These must be reconciled against the English source tables before full coverage is certified. Repeated English strings remain separate stable-ID rows. Non-text branch nodes stay in the game database untouched.
+The source index currently records 193 source keys absent from the shipped Arabic tables and 127 localization terms lacking a matched English source, including malformed Arabic keys. These must be reconciled against the English source tables before full coverage is certified. Repeated English strings remain separate stable-ID rows. Non-text branch nodes stay in the game database untouched.
 
 Steam app 632470, Final Cut. The owned macOS build is 23980936. Windows depot 632471 / manifest 5267467363497400856 completed and its executable and actual bundles were verified. Both platform file plans passed selective install/uninstall on disposable subsets on macOS; this is not a Windows-native gameplay test.
 
@@ -67,3 +68,18 @@ Owned-game source indexes, reconstructed bundles, rollback copies and generated 
 ## Restoration and history
 
 Steam files remain untouched. `font-rollback/` contains the earlier working two-bundle Arial prototype. Restoring its `fonts/arabic` and `lockits/arabic` into the test copy rolls back the complete prototype, including its earlier eight-line translation. It is not a source-game backup. Production install/uninstall must use Kitor's journaled selective lifecycle with original/output hash guards; never package a whole-game backup or full proprietary game bundle.
+
+## Testing through the updated desktop app
+
+The debug-only `KITOR_DISCO_PREVIEW` environment variable points to the private
+universal ZIP. It injects a local preview option for Disco after catalog loading,
+copies that archive into normal staging, checks its checksum, and uses the same
+journaled install/uninstall and database recording as downloaded patches. Other
+local URLs remain unsupported; release builds do not compile this option.
+
+`dist/disco-elysium-preview/Open-Kitor-Preview.command` opens the locally built
+**Kitor Disco Preview.app** with this option enabled. The preview build uses
+`click.kitor.disco-preview` as its application identifier, keeping its library
+and recovery state separate from the installed Kitor app. Scan for games, choose
+Disco Elysium and install the private Hebrew preview. Select Arabic in-game.
+The public registry still has no published download.

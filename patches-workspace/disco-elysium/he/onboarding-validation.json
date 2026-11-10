@@ -47,5 +47,12 @@
     "Exact-commit GitHub Actions run; changes not committed or pushed",
     "Public patch release and enabling download/install in Kitor"
   ],
-  "release_ready": false
+  "release_ready": false,
+  "local_desktop_preview": {
+    "app": "kitor/src-tauri/target/debug/bundle/macos/Kitor Disco Preview.app",
+    "identifier": "click.kitor.disco-preview",
+    "build": "tauri build --debug --bundles app",
+    "local_package": "KITOR_DISCO_PREVIEW debug-only opt-in; checksum checked; shared selective lifecycle",
+    "validation": "4 package-source tests and actual ZIP staging/checksum-rejection test passed; app launched and native UI observed"
+  }
 }

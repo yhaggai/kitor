@@ -1,0 +1,58 @@
+{
+  "model": "gpt-6-luna",
+  "date": "2026-11-10",
+  "reasoning_effort": "not exposed in this delegated workspace task",
+  "artifact": "glossary.json",
+  "scope": "Added luna_voice_draft notes to recurring/narratively important speaker entries; attached up to three source dialogue keys where present in actor evidence. Preserved existing glossary entries and prior author attribution. Added missing recurring/story speaker entries with source-index keys and actor metadata where available. Added seven cross-scene terms tied to source keys in Garte Main conversation 28 and adjacent conversation 29. Added East Delta Commerce Centre, East Delta Pinball Arcade, and Marinella from Garte dialogue; linked the centre as an alias for The Doomed Commercial Area with exact index keys. Added the recurring Moralintern organization term with source keys from conversations 29 and 368+; documented scene-specific Mambo/Jambo aliases for the Inland Empire and Shivers skills. Added source-backed alias drafts for Harrier Du Bois/Harry, Kim/Lieutenant Kitsuragi, and Evrart Claire/Evrart without replacing existing attribution. Added source-backed Seolite demonym/language forms and Cop Off phrase for conversation 29; documented the RCM full-name expansion on the existing acronym entry.",
+  "source_evidence": [
+    "actors.json (speaker IDs and descriptions)",
+    "source-index.json (source keys mapped to speaker/conversation context)",
+    "translations.csv (English dialogue strings keyed by source ID)"
+  ],
+  "uncertainty": "Notes are provisional and based on selected samples, not full-scene validation. No pronunciation was marked verified; no new gender or pronoun claims were introduced. New labels and voice notes are provisional; gender/pronouns follow explicit actor metadata only.",
+  "added_entries": 18,
+  "batches": [
+    {
+      "scope": "Garte Main / nearby scenes, conversations 28–29",
+      "model": "gpt-6-luna",
+      "terms": [
+        "Kras Mazov",
+        "The Doomed Commercial Area",
+        "Seol",
+        "CS Municipal",
+        "the Union",
+        "mess hall",
+        "pinball"
+      ],
+      "source_evidence": "English strings matched in translations.csv; source keys and conversation links read from source-index.json."
+    },
+    {
+      "scope": "Garte Main follow-on terms",
+      "model": "gpt-6-luna",
+      "terms": ["East Delta Commerce Centre", "East Delta Pinball Arcade", "Marinella"],
+      "source_evidence": "translations.csv strings matched to source-index.json context for conversations 28–29; alternates are recorded when indexed."
+    },
+    {
+      "scope": "Recurring faction and skill nicknames",
+      "model": "gpt-6-luna",
+      "terms": ["Moralintern", "Moralist International", "Mambo", "Jambo"],
+      "source_evidence": "Moralintern exact strings matched to source-index.json context (conversation 29 and other indexed expository scenes); Mambo/Jambo mapped to skill-dialogue keys in conversation 29."
+    },
+    {
+      "scope": "Speaker short names and formal reference forms",
+      "model": "gpt-6-luna",
+      "terms": [
+        "Harrier Du Bois / Harry",
+        "Kim Kitsuragi / Lieutenant Kitsuragi",
+        "Evrart Claire / Evrart"
+      ],
+      "source_evidence": "Exact phrases linked through source-index.json and translations.csv; aliases keep reveal and formal-address context notes."
+    },
+    {
+      "scope": "Conversation 29 cultural and police terms",
+      "model": "gpt-6-luna",
+      "terms": ["Seolite", "Cop Off", "Revachol Citizens Militia"],
+      "source_evidence": "Exact dialogue keys in conversations 20 and 29; demonym, language, and RCM expansion distinguished by source wording."
+    }
+  ]
+}

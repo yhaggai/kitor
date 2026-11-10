@@ -23,4 +23,15 @@ class CsvContract(unittest.TestCase):
   with self.assertRaises(ValueError):p.validate()
  def test_release_gate(self):
   with self.assertRaises(ValueError):p.validate(release=True)
+ def test_source_expansion_preserves_translations_and_requires_opt_in(self):
+  source={r['key']:r['english'] for r in self.rows};source['Alternate1/one']='Another choice'
+  with self.assertRaises(AssertionError):p.merge_source(self.rows,source)
+  merged=p.merge_source(self.rows,source,True)
+  self.assertEqual(merged[:len(self.rows)],self.rows)
+  self.assertEqual(merged[-1],{'key':'Alternate1/one','english':'Another choice','hebrew':''})
+ def test_source_expansion_rejects_changes_and_removals(self):
+  source={r['key']:r['english'] for r in self.rows};source[self.rows[0]['key']]='Different'
+  with self.assertRaises(AssertionError):p.merge_source(self.rows,source,True)
+  del source[self.rows[0]['key']]
+  with self.assertRaises(AssertionError):p.merge_source(self.rows,source,True)
 if __name__=='__main__':unittest.main()

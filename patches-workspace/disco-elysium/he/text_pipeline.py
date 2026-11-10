@@ -19,20 +19,26 @@ def readcsv():
 def writecsv(rows):
  with (ROOT/'translations.csv').open('w',newline='',encoding='utf-8') as f:
   w=csv.DictWriter(f,fieldnames=FIELDS);w.writeheader();w.writerows(rows)
-def extract(data):
+def merge_source(previous,entries,allow_additions=False):
+ old={r['key']:r['english'] for r in previous}
+ assert all(k in entries and entries[k]==v for k,v in old.items()),'Existing source changed or removed; explicit migration required'
+ assert allow_additions or old==entries,'Source build differs; explicit CSV migration required'
+ return previous+[{'key':k,'english':v,'hebrew':''} for k,v in entries.items() if k not in old]
+def extract(data,allow_additions=False):
  previous=readcsv() if (ROOT/'translations.csv').exists() else None
  file=next(data.glob('StreamingAssets/aa/*/dialoguebundle*'))
  db=next(o.read_typetree() for o in UnityPy.load(str(file)).objects if o.type.name=='MonoBehaviour')
  actors={str(a['id']):{f['title']:f['value'] for f in a['fields']} for a in db['actors']}
- entries={};context={}
+ entries={};context={};extra={};extra_context={}
  for c in db['conversations']:
   cf={f['title']:f['value'] for f in c['fields']}
   for d in c['dialogueEntries']:
    f={f['title']:f['value'] for f in d['fields']}
-   if not f.get('Dialogue Text'):continue
-   key='Dialogue Text/'+f['Articy Id'];en=f['Dialogue Text']
-   assert key not in entries or entries[key]==en,'Conflicting Articy ID'
-   entries[key]=en;context.setdefault(key,[]).append({'conversation_id':c['id'],'conversation':cf.get('Title'),'entry_id':d['id'],'speaker_id':f.get('Actor'),'speaker':actors.get(f.get('Actor'),{}).get('Name'),'addressee_id':f.get('Conversant'),'outgoing':d['outgoingLinks'],'conditions':d['conditionsString'],'script':d['userScript']})
+   for field,en in f.items():
+    if not en or not (field=='Dialogue Text' or re.fullmatch(r'(Alternate|tooltip)\d+',field)):continue
+    key=field+'/'+f['Articy Id'];target=entries if field=='Dialogue Text' else extra;contexts=context if field=='Dialogue Text' else extra_context
+    assert key not in target or target[key]==en,'Conflicting Articy ID'
+    target[key]=en;contexts.setdefault(key,[]).append({'conversation_id':c['id'],'conversation':cf.get('Title'),'entry_id':d['id'],'speaker_id':f.get('Actor'),'speaker':actors.get(f.get('Actor'),{}).get('Name'),'addressee_id':f.get('Conversant'),'outgoing':d['outgoingLinks'],'conditions':d['conditionsString'],'script':d['userScript']})
  lock= data/'StreamingAssets/AssetBundles/OSX/lockits/arabic'
  missing=[];mapped=set()
  for o in UnityPy.load(str(lock)).objects:
@@ -42,13 +48,16 @@ def extract(data):
   for term in t['mSource']['mTerms']:
    if term['TermType']!=0:continue
    key=term['Term']
+   if key in extra:
+    entries[key]=extra[key];context[key]=extra_context[key]
    if t['m_Name']=='GeneralLockitArabic' and len(term['Languages'])>1 and term['Languages'][1]:
     en=term['Languages'][1];assert key not in entries or entries[key]==en;entries[key]=en
    if key in entries:mapped.add(key)
    else:missing.append({'table':t['m_Name'],'key':key})
  initial={r['key']:r['he'] for r in json.loads((ROOT/'opening.json').read_text())['entries']}
  if previous is not None:
-  assert {r['key']:r['english'] for r in previous}==entries,'Source build differs; explicit CSV migration required'
+  merged=merge_source(previous,entries,allow_additions)
+  if len(merged)!=len(previous):writecsv(merged)
  else:
   writecsv([{'key':k,'english':v,'hebrew':initial.get(k,'')} for k,v in entries.items()])
  writejson(ROOT/'source-index.json',{'schema_version':1,'source_sha256':{k:sha(v) for k,v in entries.items()},'context':context,'unmapped_source_keys':sorted(set(entries)-mapped),'unresolved_localization_terms':missing,'conversations':len(db['conversations'])})
@@ -94,8 +103,8 @@ def build(data,output):
  assert actual==translations,'Serialized translations differ'
  print(json.dumps({'output':str(output),'translated_keys':len(changed),'sha256':hashlib.sha256(output.read_bytes()).hexdigest()}))
 if __name__=='__main__':
- p=argparse.ArgumentParser();p.add_argument('command',choices=['extract','validate','status','next','build','release-check']);p.add_argument('--data',type=Path,default=DEFAULT);p.add_argument('--output',type=Path,default=ROOT/'build/lockits/arabic');p.add_argument('--conversation',type=int);p.add_argument('--limit',type=int,default=30);a=p.parse_args()
- if a.command=='extract':extract(a.data);print(json.dumps(validate()))
+ p=argparse.ArgumentParser();p.add_argument('command',choices=['extract','validate','status','next','build','release-check']);p.add_argument('--expand-source',action='store_true',help='Allow adding newly mapped source keys while preserving all existing English and Hebrew');p.add_argument('--data',type=Path,default=DEFAULT);p.add_argument('--output',type=Path,default=ROOT/'build/lockits/arabic');p.add_argument('--conversation',type=int);p.add_argument('--limit',type=int,default=30);a=p.parse_args()
+ if a.command=='extract':extract(a.data,a.expand_source);print(json.dumps(validate()))
  elif a.command in ['validate','status','release-check']:print(json.dumps(validate(a.command=='release-check')))
  elif a.command=='build':build(a.data,a.output)
  else:

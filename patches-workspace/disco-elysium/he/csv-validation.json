@@ -1,11 +1,11 @@
 {
-  "entries": 75767,
-  "translated": 4165,
-  "remaining": 71602,
-  "source_words": 1073030,
-  "coverage_percent": 5.497,
+  "entries": 79586,
+  "translated": 5747,
+  "remaining": 73839,
+  "source_words": 1129354,
+  "coverage_percent": 7.221,
   "unmapped_source_keys": 193,
-  "unresolved_localization_terms": 3946,
+  "unresolved_localization_terms": 127,
   "errors": [],
   "release_ready": false
 }

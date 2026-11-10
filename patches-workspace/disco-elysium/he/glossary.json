@@ -29,7 +29,18 @@
       "forms_of_address": "masculine singular; address Klaasje in feminine singular",
       "voice": "Player choices range from boastful to ashamed; do not flatten alternative personalities.",
       "mood_by_scene": "Opening: disoriented; mirror: shame or grandiosity; Klaasje: clumsy desire, confusion or investigation.",
-      "status": "editorial working choice"
+      "status": "editorial working choice",
+      "luna_voice_draft": {
+        "note": "Player voice varies by chosen response; preserve bravado, shame, confusion, and tenderness as branches rather than flattening them.",
+        "evidence_keys": [
+          "Dialogue Text/0x01000004000000E5",
+          "Dialogue Text/0x0100000400000096",
+          "Dialogue Text/0x0100000400000131"
+        ],
+        "model": "gpt-6-luna",
+        "status": "draft; scene review required",
+        "evidence_source": "source-index.json speaker context matched to translations.csv English source rows"
+      }
     },
     {
       "english": "Coupris Kineema",
@@ -46,7 +57,7 @@
     {
       "english": "Kim Kitsuragi",
       "hebrew": "קים קיטסוראגי",
-      "aliases": [],
+      "aliases": ["Lieutenant Kitsuragi"],
       "gender": "masculine",
       "pronouns": "הוא",
       "forms_of_address": "אדוני השוטר / סגן",
@@ -61,6 +72,27 @@
       "scene_notes": {
         "14": "Patient professional guidance becomes exhaustion, restrained anger during firearm misuse, camaraderie after successful shot. Do not flatten branches.",
         "15": "Grave historical uncertainty juxtaposed with absurd escalating nodding; dry physical comedy."
+      },
+      "luna_voice_draft": {
+        "note": "Precise, restrained, professional; dry irony rather than overt mockery. Keep distinct from the player’s unfiltered inner voices.",
+        "evidence_keys": [
+          "Dialogue Text/0x01000012000000D6",
+          "Dialogue Text/0x01000012000000C0",
+          "Dialogue Text/0x010000120000009F"
+        ],
+        "model": "gpt-6-luna",
+        "status": "draft; scene review required",
+        "evidence_source": "source-index.json speaker context matched to translations.csv English source rows"
+      },
+      "localized_aliases": {
+        "Lieutenant Kitsuragi": "סגן קיטסוראגי"
+      },
+      "luna_alias_draft": {
+        "model": "gpt-6-luna",
+        "date": "2026-11-10",
+        "source_keys": ["Dialogue Text/cjhloz3rf8r6arq0", "Dialogue Text/0x0100000600013023"],
+        "source_conversation_ids": [28, 29],
+        "note": "Common formal reference to Kim in dialogue; retain Kim as the short name and preserve his rank in formal address."
       }
     },
     {
@@ -190,17 +222,29 @@
     {
       "english": "Inland Empire",
       "hebrew": "האימפריה שבפנים",
-      "aliases": [],
+      "aliases": ["Mambo"],
       "gender": "feminine grammatical label",
       "pronouns": "היא",
       "forms_of_address": "masculine player address",
       "voice": "Intuitive, ominous, imaginative; treats objects as companions and fears revelations.",
       "mood_by_scene": "Fan: attachment and foreboding; mirror: urgent warning; Klaasje: uncanny familiarity.",
       "evidence": {
-        "conversation_ids": [8, 9, 10, 11]
+        "conversation_ids": [8, 9, 10, 11, 29],
+        "source_keys": ["Dialogue Text/0x0100002700000598"]
       },
       "status": "editorial working choice",
-      "speaker_id": 404
+      "speaker_id": 404,
+      "localized_aliases": {
+        "Mambo": "ממבו"
+      },
+      "alias_note": "Conversation 29 frames this shorthand as a choice between inward imagination (Mambo) and shivers (Jambo); keep as conversational nicknames, not replacements for the canonical skill names.",
+      "luna_alias_draft": {
+        "model": "gpt-6-luna",
+        "date": "2026-11-10",
+        "source_keys": ["Dialogue Text/0x0100002700000598"],
+        "source_conversation_ids": [29],
+        "note": "Contextual nickname; retain the existing canonical Hebrew skill name."
+      }
     },
     {
       "english": "Physical Instrument",
@@ -265,17 +309,29 @@
     {
       "english": "Shivers",
       "hebrew": "צמרמורת",
-      "aliases": [],
+      "aliases": ["Jambo"],
       "gender": "feminine grammatical label",
       "pronouns": "היא",
       "forms_of_address": "masculine player address",
       "voice": "Atmospheric, sensory, distant tableaux; avoid explanatory additions.",
       "mood_by_scene": "Mirror: shifts outward to shack, wind and village; Klaasje: physical shiver.",
       "evidence": {
-        "conversation_ids": [10, 11]
+        "conversation_ids": [10, 11, 29],
+        "source_keys": ["Dialogue Text/0x010000270000059E"]
       },
       "status": "editorial working choice",
-      "speaker_id": 411
+      "speaker_id": 411,
+      "localized_aliases": {
+        "Jambo": "ג׳מבו"
+      },
+      "alias_note": "Conversation 29 frames this shorthand as a choice between inward imagination (Mambo) and shivers (Jambo); keep as conversational nicknames, not replacements for the canonical skill names.",
+      "luna_alias_draft": {
+        "model": "gpt-6-luna",
+        "date": "2026-11-10",
+        "source_keys": ["Dialogue Text/0x010000270000059E"],
+        "source_conversation_ids": [29],
+        "note": "Contextual nickname; retain the existing canonical Hebrew skill name."
+      }
     },
     {
       "english": "Esprit de Corps",
@@ -520,10 +576,20 @@
     {
       "english": "RCM",
       "hebrew": "RCM",
-      "aliases": [],
+      "aliases": ["Revachol Citizens Militia"],
       "accepted_hebrew_forms": ["RCM"],
       "evidence": "12:113,158; preserve abbreviation until UI terminology pass",
-      "status": "editorial working choice"
+      "status": "editorial working choice",
+      "localized_aliases": {
+        "Revachol Citizens Militia": "מיליציית אזרחי רבאשול"
+      },
+      "luna_alias_draft": {
+        "model": "gpt-6-luna",
+        "date": "2026-11-10",
+        "source_keys": ["Dialogue Text/0x0100000400008A02", "Dialogue Text/0x01000004000016F4"],
+        "source_conversation_ids": [20, 29],
+        "note": "Expansion of the existing RCM acronym, explicitly spoken in the source; preserve RCM in UI and the full name in explanatory dialogue."
+      }
     },
     {
       "english": "Garte, the Cafeteria Manager",
@@ -539,7 +605,18 @@
       },
       "pronunciation": "working spelling; audio review pending",
       "status": "editorial working choice",
-      "translation_coverage": "13: all 488 source entries translated; renderer review pending"
+      "translation_coverage": "13: all 488 source entries translated; renderer review pending",
+      "luna_voice_draft": {
+        "note": "Practical, terse, and focused on the hotel; dry irritation grows when the detective derails routine business.",
+        "evidence_keys": [
+          "Dialogue Text/0x0100000400006460",
+          "Dialogue Text/0x01000004000064A5",
+          "Dialogue Text/0x010000040000692B"
+        ],
+        "model": "gpt-6-luna",
+        "status": "draft; scene review required",
+        "evidence_source": "source-index.json speaker context matched to translations.csv English source rows"
+      }
     },
     {
       "english": "Lena, the Cryptozoologist's wife",
@@ -554,7 +631,18 @@
         "conversation_ids": [13]
       },
       "pronunciation": "working spelling; audio review pending",
-      "status": "editorial working choice"
+      "status": "editorial working choice",
+      "luna_voice_draft": {
+        "note": "Patient and kindly, with careful explanatory phrasing; warmth grounded in cryptozoology conversations, not generic sentimentality.",
+        "evidence_keys": [
+          "Dialogue Text/0x01000004000071AF",
+          "Dialogue Text/0x010000040000722A",
+          "Dialogue Text/0x01000004000071D8"
+        ],
+        "model": "gpt-6-luna",
+        "status": "draft; scene review required",
+        "evidence_source": "source-index.json speaker context matched to translations.csv English source rows"
+      }
     },
     {
       "english": "Whirling-in-Rags",
@@ -710,7 +798,18 @@
       "mood_by_scene": "Conversation 14: examination, vomiting, gunshot and heckling branches",
       "evidence": "Conversation 14",
       "pronunciation": "Names provisional; audio review pending",
-      "accepted_hebrew_forms": ["קונו"]
+      "accepted_hebrew_forms": ["קונו"],
+      "luna_voice_draft": {
+        "note": "Quick, guarded, and professionally dry; careful factual corrections and understated sarcasm. Keep his restraint even when Harry is absurd.",
+        "evidence_keys": [
+          "Dialogue Text/0x0100001300000007",
+          "Dialogue Text/0x010000040000E621",
+          "Dialogue Text/0x010000040000FD8A"
+        ],
+        "model": "gpt-6-luna",
+        "status": "draft; scene review required",
+        "evidence_source": "source-index.json speaker context matched to translations.csv English source rows"
+      }
     },
     {
       "english": "Cunoesse",
@@ -726,7 +825,18 @@
       "aliases": ["C"],
       "foreign_speech": ["mulkku", "vittupää", "kyrpäle", "kyrpelö", "Jumalauta"],
       "notes": "Retain foreign insults because player explicitly asks what these words mean at 14:341. Source censorship asterisks preserved.",
-      "accepted_hebrew_forms": ["קונואס"]
+      "accepted_hebrew_forms": ["קונואס"],
+      "luna_voice_draft": {
+        "note": "Casual, teasing, and guarded; lets concern and sadness surface briefly. Preserve the gap between her relaxed surface and the weight of her account.",
+        "evidence_keys": [
+          "Dialogue Text/0x010000040000EEED",
+          "Dialogue Text/0x010000040000FB43",
+          "Dialogue Text/0x010000040001191E"
+        ],
+        "model": "gpt-6-luna",
+        "status": "draft; scene review required",
+        "evidence_source": "source-index.json speaker context matched to translations.csv English source rows"
+      }
     },
     {
       "english": "Hand/Eye Coordination",
@@ -767,7 +877,18 @@
       "hebrew": "אווראר קלייר",
       "evidence": "Conversations 13–14",
       "status": "editorial working choice; proper names pending audio review",
-      "accepted_hebrew_forms": ["אווראר קלייר"]
+      "accepted_hebrew_forms": ["אווראר קלייר"],
+      "aliases": ["Evrart"],
+      "localized_aliases": {
+        "Evrart": "אווראר"
+      },
+      "luna_alias_draft": {
+        "model": "gpt-6-luna",
+        "date": "2026-11-10",
+        "source_keys": ["Dialogue Text/0x010000060000E402", "Dialogue Text/0x0100002F00013452"],
+        "source_conversation_ids": [14, 28],
+        "note": "Repeated short reference to the union leader; preserve Claire in full-name contexts."
+      }
     },
     {
       "english": "Wild Pines",
@@ -1415,7 +1536,18 @@
       "hebrew": "הרייר דו בואה",
       "notes": "Player name as self-introduced; Harry = הארי.",
       "evidence": "Conversation 17",
-      "status": "editorial working choice; names pending audio"
+      "status": "editorial working choice; names pending audio",
+      "aliases": ["Harry"],
+      "localized_aliases": {
+        "Harry": "הארי"
+      },
+      "luna_alias_draft": {
+        "model": "gpt-6-luna",
+        "date": "2026-11-10",
+        "source_keys": ["Dialogue Text/0x01000066000004A3", "Dialogue Text/0x0100004C0000B311"],
+        "source_conversation_ids": [17, 797],
+        "note": "Explicitly self-introduced as “Harrier Du Bois, but call me Harry”; use Harry only where the scene permits the player identity/name reveal."
+      }
     },
     {
       "english": "the Pox",
@@ -1619,6 +1751,2017 @@
       "notes": "Place name; spelling-based working form pending audio.",
       "evidence": "Conversations 18–19",
       "status": "working editorial choice; new scenes not renderer-tested"
+    },
+    {
+      "english": "Fysique",
+      "hebrew": "גופניות",
+      "speaker_id": 1,
+      "aliases": [],
+      "gender": "unresolved; do not infer from label",
+      "evidence": {
+        "actor_id": "1",
+        "actor_description": "",
+        "sample_keys": [],
+        "conversation_ids": []
+      },
+      "status": "Astra glossary draft; review voice and addressee in each scene",
+      "pronunciation": "provisional spelling; audio review pending",
+      "model": "gpt-6-astra"
+    },
+    {
+      "english": "Intellect",
+      "hebrew": "שכל",
+      "speaker_id": 2,
+      "aliases": [],
+      "gender": "unresolved; do not infer from label",
+      "evidence": {
+        "actor_id": "2",
+        "actor_description": "",
+        "sample_keys": [],
+        "conversation_ids": []
+      },
+      "status": "Astra glossary draft; review voice and addressee in each scene",
+      "pronunciation": "provisional spelling; audio review pending",
+      "model": "gpt-6-astra"
+    },
+    {
+      "english": "Motorics",
+      "hebrew": "מוטוריקה",
+      "speaker_id": 3,
+      "aliases": [],
+      "gender": "unresolved; do not infer from label",
+      "evidence": {
+        "actor_id": "3",
+        "actor_description": "",
+        "sample_keys": [],
+        "conversation_ids": []
+      },
+      "status": "Astra glossary draft; review voice and addressee in each scene",
+      "pronunciation": "provisional spelling; audio review pending",
+      "model": "gpt-6-astra"
+    },
+    {
+      "english": "Psyche",
+      "hebrew": "נפש",
+      "speaker_id": 4,
+      "aliases": [],
+      "gender": "unresolved; do not infer from label",
+      "evidence": {
+        "actor_id": "4",
+        "actor_description": "",
+        "sample_keys": [],
+        "conversation_ids": []
+      },
+      "status": "Astra glossary draft; review voice and addressee in each scene",
+      "pronunciation": "provisional spelling; audio review pending",
+      "model": "gpt-6-astra"
+    },
+    {
+      "english": "Smoker on the Balcony",
+      "hebrew": "המעשן במרפסת",
+      "speaker_id": 7,
+      "aliases": [],
+      "gender": "masculine",
+      "evidence": {
+        "actor_id": "7",
+        "actor_description": "",
+        "sample_keys": [
+          "Dialogue Text/0x0100000600016DF4",
+          "Dialogue Text/0x010000130000002B",
+          "Dialogue Text/0x0100000700019F14"
+        ],
+        "conversation_ids": [7, 291, 295, 304, 305, 445, 559, 882, 892]
+      },
+      "status": "Astra glossary draft; review voice and addressee in each scene",
+      "pronunciation": "provisional spelling; audio review pending",
+      "model": "gpt-6-astra"
+    },
+    {
+      "english": "Novelty Dicemaker",
+      "hebrew": "יוצרת הקוביות המיוחדות",
+      "speaker_id": 8,
+      "aliases": [],
+      "gender": "feminine",
+      "evidence": {
+        "actor_id": "8",
+        "actor_description": "A jeweller. And a repairing master. FORMERLY named Giulia al-Gindi.",
+        "sample_keys": [
+          "Dialogue Text/0x0100001F000005B5",
+          "Dialogue Text/0x010000570000A4D2",
+          "Dialogue Text/0x010000570000A56D"
+        ],
+        "conversation_ids": [460]
+      },
+      "status": "Astra glossary draft; review voice and addressee in each scene",
+      "pronunciation": "provisional spelling; audio review pending",
+      "model": "gpt-6-astra"
+    },
+    {
+      "english": "Sleeping Dockworker",
+      "hebrew": "הסוור הישן",
+      "speaker_id": 9,
+      "aliases": [],
+      "gender": "masculine",
+      "evidence": {
+        "actor_id": "9",
+        "actor_description": "",
+        "sample_keys": [
+          "Dialogue Text/0x0100002F00002843",
+          "Dialogue Text/0x01000057000221BD",
+          "Dialogue Text/0x0100001600001D0B"
+        ],
+        "conversation_ids": [382, 620]
+      },
+      "status": "Astra glossary draft; review voice and addressee in each scene",
+      "pronunciation": "provisional spelling; audio review pending",
+      "model": "gpt-6-astra"
+    },
+    {
+      "english": "Lilienne, the Net Picker",
+      "hebrew": "ליליאן, מתקנת הרשתות",
+      "speaker_id": 10,
+      "aliases": [],
+      "gender": "feminine",
+      "evidence": {
+        "actor_id": "10",
+        "actor_description": "The net-picker is a middle-aged woman who is of independent nature and carries a sword. Politically, she's a none-too-well developed Revachol nationalist.",
+        "sample_keys": [
+          "Dialogue Text/0x0100000700005F90",
+          "Dialogue Text/0x010000070000FFAE",
+          "Dialogue Text/0x01000007000100CE"
+        ],
+        "conversation_ids": [515, 565, 566, 636, 1249]
+      },
+      "status": "Astra glossary draft; review voice and addressee in each scene",
+      "pronunciation": "provisional spelling; audio review pending",
+      "model": "gpt-6-astra"
+    },
+    {
+      "english": "Racist lorry driver",
+      "hebrew": "נהג המשאית הגזען",
+      "speaker_id": 11,
+      "aliases": [],
+      "gender": "masculine",
+      "evidence": {
+        "actor_id": "11",
+        "actor_description": "A rotund man with cold, pale eyes and short-cropped hair. A lit cigarette lingers between his fingers. The man is wearing a pilot jacket, high-waist jeans and a T-shirt with an unrecognisable image. About 40 years old. Reeks of heavy motor oils and the untold deaths of numerous smokes and alcohol bottles.",
+        "sample_keys": [
+          "Dialogue Text/0x0100000600010C24",
+          "Dialogue Text/0x01000009000019D7",
+          "Dialogue Text/0x0100000900001B24"
+        ],
+        "conversation_ids": [346, 500, 849]
+      },
+      "status": "Astra glossary draft; review voice and addressee in each scene",
+      "pronunciation": "provisional spelling; audio review pending",
+      "model": "gpt-6-astra",
+      "luna_voice_draft": {
+        "note": "Provocative and openly racist; this describes delivery, not endorsement. Preserve the ugly ideology without adding slurs absent from source.",
+        "evidence_keys": [
+          "Dialogue Text/0x0100000600010C24",
+          "Dialogue Text/0x01000009000019D7",
+          "Dialogue Text/0x0100000900001B24"
+        ],
+        "model": "gpt-6-luna",
+        "status": "draft; scene review required",
+        "evidence_source": "source-index.json speaker context matched to translations.csv English source rows"
+      }
+    },
+    {
+      "english": "Annette",
+      "hebrew": "אנט",
+      "speaker_id": 12,
+      "aliases": [],
+      "gender": "feminine",
+      "evidence": {
+        "actor_id": "12",
+        "actor_description": "Annette is the daughter of the book shop clerk. She is standing outside by the book stands, her purpose to lure customers in with all the dated bestsellers and what have they. She is cold.",
+        "sample_keys": [
+          "Dialogue Text/0x010000050000210E",
+          "Dialogue Text/0x0100000900001CA2",
+          "Dialogue Text/0x0100000900001E8B"
+        ],
+        "conversation_ids": [347]
+      },
+      "status": "Astra glossary draft; review voice and addressee in each scene",
+      "pronunciation": "provisional spelling; audio review pending",
+      "model": "gpt-6-astra"
+    },
+    {
+      "english": "Andre",
+      "hebrew": "אנדרה",
+      "speaker_id": 14,
+      "aliases": [],
+      "gender": "masculine",
+      "evidence": {
+        "actor_id": "14",
+        "actor_description": "",
+        "sample_keys": [
+          "Dialogue Text/0x0100001600008C5F",
+          "Dialogue Text/0x0100001600008C91",
+          "Dialogue Text/0x0100001600008CF8"
+        ],
+        "conversation_ids": [183, 299, 351, 352, 353, 380, 558, 998, 1015, 1016]
+      },
+      "status": "Astra glossary draft; review voice and addressee in each scene",
+      "pronunciation": "provisional spelling; audio review pending",
+      "model": "gpt-6-astra"
+    },
+    {
+      "english": "Noid",
+      "hebrew": "נויד",
+      "speaker_id": 15,
+      "aliases": [],
+      "gender": "masculine",
+      "evidence": {
+        "actor_id": "15",
+        "actor_description": "",
+        "sample_keys": [
+          "Dialogue Text/0x0100001600008C4D",
+          "Dialogue Text/0x010000070001A530",
+          "Dialogue Text/0x010000070001A536"
+        ],
+        "conversation_ids": [183, 298, 352, 353, 368, 380, 558, 998, 1015, 1016]
+      },
+      "status": "Astra glossary draft; review voice and addressee in each scene",
+      "pronunciation": "provisional spelling; audio review pending",
+      "model": "gpt-6-astra"
+    },
+    {
+      "english": "Egg Head",
+      "hebrew": "ראש ביצה",
+      "speaker_id": 16,
+      "aliases": [],
+      "gender": "masculine",
+      "evidence": {
+        "actor_id": "16",
+        "actor_description": "Egg Head is the \"party boy\" of a group of proto-rave enthusiasts. He represents the light side of trance culture. He's basically like HP Baxxter. He is emulating a Dutch accent in his shouts.",
+        "sample_keys": [
+          "Dialogue Text/0x0100001600008C66",
+          "Dialogue Text/0x010000070001A5A1",
+          "Dialogue Text/0x010000070001A57D"
+        ],
+        "conversation_ids": [183, 297, 352, 353, 380, 558, 1015, 1016]
+      },
+      "status": "Astra glossary draft; review voice and addressee in each scene",
+      "pronunciation": "provisional spelling; audio review pending",
+      "model": "gpt-6-astra"
+    },
+    {
+      "english": "Plaisance",
+      "hebrew": "פלזאנס",
+      "speaker_id": 17,
+      "aliases": [],
+      "gender": "feminine",
+      "evidence": {
+        "actor_id": "17",
+        "actor_description": "Plaisance runs the book store (of crime, romances, and biographies of famous people). She's a woman in her early fourties, she dons a moss green costume and little golden spectacles, and the look on her face does it's best to appear friendly, but yet it looks mostly disappointed.",
+        "sample_keys": [
+          "Dialogue Text/0x0100000600019B59",
+          "Dialogue Text/0x010000060001AAE4",
+          "Dialogue Text/0x0100002F0000411D"
+        ],
+        "conversation_ids": [428, 429, 459, 483, 511, 572, 573, 574, 575, 576, 582, 775, 1000]
+      },
+      "status": "Astra glossary draft; review voice and addressee in each scene",
+      "pronunciation": "provisional spelling; audio review pending",
+      "model": "gpt-6-astra",
+      "luna_voice_draft": {
+        "note": "Anxious, superstitious, and protective of her shop; wary practical speech with panic rising around the curse.",
+        "evidence_keys": [
+          "Dialogue Text/0x0100000600019B59",
+          "Dialogue Text/0x010000060001AAE4",
+          "Dialogue Text/0x0100002F0000411D"
+        ],
+        "model": "gpt-6-luna",
+        "status": "draft; scene review required",
+        "evidence_source": "source-index.json speaker context matched to translations.csv English source rows"
+      }
+    },
+    {
+      "english": "Measurehead",
+      "hebrew": "מודד הראשים",
+      "speaker_id": 38,
+      "aliases": [],
+      "gender": "masculine",
+      "evidence": {
+        "actor_id": "38",
+        "actor_description": "It's goddamn Measurehead! A black-übermensch monolith guarding the button to the harbour office door. Into \"science\"-anthropometry based racism. Loud, eloquent if need be, antagonistic superiority attitude. Will not lower himself to your inferior level, does not *argue* and *debate* with you -- he is just better in every way. Helps take the dead body down, if you know and say the right things.",
+        "sample_keys": [
+          "Dialogue Text/0x010000450001E555",
+          "Dialogue Text/0x010000450001E8A9",
+          "Dialogue Text/0x010000450001E9B6"
+        ],
+        "conversation_ids": [381, 850]
+      },
+      "status": "Astra glossary draft; review voice and addressee in each scene",
+      "pronunciation": "provisional spelling; audio review pending",
+      "model": "gpt-6-astra",
+      "luna_voice_draft": {
+        "note": "Grandiose and coercive, framing racist pseudo-theory as certainty. Keep his long, declarative rhetoric distinct from ordinary conversation.",
+        "evidence_keys": [
+          "Dialogue Text/0x010000450001E555",
+          "Dialogue Text/0x010000450001E8A9",
+          "Dialogue Text/0x010000450001E9B6"
+        ],
+        "model": "gpt-6-luna",
+        "status": "draft; scene review required",
+        "evidence_source": "source-index.json speaker context matched to translations.csv English source rows"
+      }
+    },
+    {
+      "english": "Call Me Mañana",
+      "hebrew": "קרא לי מניאנה",
+      "speaker_id": 39,
+      "aliases": [],
+      "gender": "masculine",
+      "evidence": {
+        "actor_id": "39",
+        "actor_description": "",
+        "sample_keys": [
+          "Dialogue Text/0x0100002F0000605A",
+          "Dialogue Text/0x010000060001B4E0",
+          "Dialogue Text/0x0100000F000080AF"
+        ],
+        "conversation_ids": [378, 379]
+      },
+      "status": "Astra glossary draft; review voice and addressee in each scene",
+      "pronunciation": "provisional spelling; audio review pending",
+      "model": "gpt-6-astra"
+    },
+    {
+      "english": "Tommy Le Homme",
+      "hebrew": "טומי לה הום",
+      "speaker_id": 56,
+      "aliases": [],
+      "gender": "masculine",
+      "evidence": {
+        "actor_id": "56",
+        "actor_description": "A young family man pacing anxiously near his lorry, stuck in the traffic jam for several days with the others. He is a bit more talented than one might assume, doing a tedious, dead-end job just to keep the family afloat. Tends to wax poetic when gets emotional (stressed, irritated, anxious), especially when discussing his family or FALN, where they live.",
+        "sample_keys": [
+          "Dialogue Text/0x010000060001192C",
+          "Dialogue Text/0x01000006000119D9",
+          "Dialogue Text/0x0100000600015485"
+        ],
+        "conversation_ids": [481, 1112]
+      },
+      "status": "Astra glossary draft; review voice and addressee in each scene",
+      "pronunciation": "provisional spelling; audio review pending",
+      "model": "gpt-6-astra"
+    },
+    {
+      "english": "René Arnoux",
+      "hebrew": "רנה ארנו",
+      "speaker_id": 57,
+      "aliases": [],
+      "gender": "masculine",
+      "evidence": {
+        "actor_id": "57",
+        "actor_description": "Fanatical royalist, ex-army, decorated vet, on and off lover of the beautiful Jeanne-Marie (now deceased) and a life long rival of his neighbour, René Arnoux. Now at almost eighty years of age spends most of his days playing pétanque with his former arch-nemesis and competitor Gaston and reminiscing about the good old times when king Frissel the First was still in charge,",
+        "sample_keys": [
+          "Dialogue Text/0x010000070000DFEC",
+          "Dialogue Text/0x010000070000E015",
+          "Dialogue Text/0x010000070000E180"
+        ],
+        "conversation_ids": [275, 383, 384, 385, 587, 848, 1086, 1087, 1088, 1089, 1090, 1091]
+      },
+      "status": "Astra glossary draft; review voice and addressee in each scene",
+      "pronunciation": "provisional spelling; audio review pending",
+      "model": "gpt-6-astra"
+    },
+    {
+      "english": "Gaston Martin",
+      "hebrew": "גסטון מרטן",
+      "speaker_id": 58,
+      "aliases": [],
+      "gender": "masculine",
+      "evidence": {
+        "actor_id": "58",
+        "actor_description": "A pétanque partner and a former arch-rival of René Arnoux. Contrarian. Didn't fight for The King. Didn't fight for anything. When René went off to fight for Frissel the First, Gaston stayed behind and stuck his dick in their friend Jeanne-Marie for whose attention the boys had been fighting for since they where eight. Now Jeanne-Marie is dead and an old enemy and pétanque are all he has.",
+        "sample_keys": [
+          "Dialogue Text/0x010000070000E07B",
+          "Dialogue Text/0x010000070001B436",
+          "Dialogue Text/0x010000070000E923"
+        ],
+        "conversation_ids": [275, 276, 383, 384, 386, 587, 848, 1086, 1087, 1089, 1090, 1091]
+      },
+      "status": "Astra glossary draft; review voice and addressee in each scene",
+      "pronunciation": "provisional spelling; audio review pending",
+      "model": "gpt-6-astra"
+    },
+    {
+      "english": "Working Class Woman",
+      "hebrew": "אישה ממעמד הפועלים",
+      "speaker_id": 59,
+      "aliases": [],
+      "gender": "feminine",
+      "evidence": {
+        "actor_id": "59",
+        "actor_description": "Anaïs. Just another working class woman, who has kept several jobs and raised two kids and three husbands. She's come out to look for her family, as the supper is nearly ready. Her teenage daughters have been missing for a night - \"A boy trouble,\" she remarks - and her current husband (Mathieu) hasn't been around for a week. You learn about her array of marriages and jobs, as well as about her steady passion for bloody and violent history books.",
+        "sample_keys": [
+          "Dialogue Text/0x0100000700019B52",
+          "Dialogue Text/0x0100000700019EE6",
+          "Dialogue Text/0x0100000700019EDA"
+        ],
+        "conversation_ids": [290, 433, 548, 1406]
+      },
+      "status": "Astra glossary draft; review voice and addressee in each scene",
+      "pronunciation": "provisional spelling; audio review pending",
+      "model": "gpt-6-astra"
+    },
+    {
+      "english": "Working Class Drunk",
+      "hebrew": "שיכור ממעמד הפועלים",
+      "speaker_id": 60,
+      "aliases": [],
+      "gender": "masculine",
+      "evidence": {
+        "actor_id": "60",
+        "actor_description": "A working class drunk. He's passed out.",
+        "sample_keys": [
+          "Dialogue Text/0x0100004000002C39",
+          "Dialogue Text/0x0100004000002C51",
+          "Dialogue Text/0x0100004000002C6A"
+        ],
+        "conversation_ids": [432]
+      },
+      "status": "Astra glossary draft; review voice and addressee in each scene",
+      "pronunciation": "provisional spelling; audio review pending",
+      "model": "gpt-6-astra"
+    },
+    {
+      "english": "Mack Torson",
+      "hebrew": "מאק טורסון",
+      "speaker_id": 61,
+      "aliases": [],
+      "gender": "masculine",
+      "evidence": {
+        "actor_id": "61",
+        "actor_description": "",
+        "sample_keys": [
+          "Dialogue Text/0x01000081000031D4",
+          "Dialogue Text/0x010000040000B2AD",
+          "Dialogue Text/0x010000040000B257"
+        ],
+        "conversation_ids": [39, 575, 780, 944, 1191, 1192]
+      },
+      "status": "Astra glossary draft; review voice and addressee in each scene",
+      "pronunciation": "provisional spelling; audio review pending",
+      "model": "gpt-6-astra"
+    },
+    {
+      "english": "Chester McLaine",
+      "hebrew": "צ׳סטר מקליין",
+      "speaker_id": 62,
+      "aliases": [],
+      "gender": "masculine",
+      "evidence": {
+        "actor_id": "62",
+        "actor_description": "",
+        "sample_keys": [
+          "Dialogue Text/0x010000040000B28B",
+          "Dialogue Text/0x01000081000031DB",
+          "Dialogue Text/0x010000040000B249"
+        ],
+        "conversation_ids": [39, 575, 780, 944, 1191, 1192]
+      },
+      "status": "Astra glossary draft; review voice and addressee in each scene",
+      "pronunciation": "provisional spelling; audio review pending",
+      "model": "gpt-6-astra"
+    },
+    {
+      "english": "Jules Pidieu",
+      "hebrew": "ז׳ול פידייה",
+      "speaker_id": 64,
+      "aliases": [],
+      "gender": "masculine",
+      "evidence": {
+        "actor_id": "64",
+        "actor_description": "Jules \"Oldboy\" Pidieu answers and works the radio at the Precinct 41. Brother of the late \"Cardiac\" Pidieu, Jules took over his duties when the morbidly obese Cardiac past away last year.",
+        "sample_keys": [
+          "Dialogue Text/0x0100004C0000088A",
+          "Dialogue Text/0x0100004C00000A87",
+          "Dialogue Text/0x0100004C00000D6F"
+        ],
+        "conversation_ids": [780]
+      },
+      "status": "Astra glossary draft; review voice and addressee in each scene",
+      "pronunciation": "provisional spelling; audio review pending",
+      "model": "gpt-6-astra"
+    },
+    {
+      "english": "Alice",
+      "hebrew": "אליס",
+      "speaker_id": 65,
+      "aliases": [],
+      "gender": "feminine",
+      "evidence": {
+        "actor_id": "65",
+        "actor_description": "Alice Jarier is the radio officer of the 57th precinct. She is the daughter of one of the senior officers and has been in the station ever since she was old enough for her dad to take her with. She knows the station, the people in it and the many nooks and crannies of police work.",
+        "sample_keys": [
+          "Dialogue Text/0x010000310000AE4F",
+          "Dialogue Text/0x0100004C000018C0",
+          "Dialogue Text/0x0100003100006E45"
+        ],
+        "conversation_ids": [602, 776, 780, 965, 1172, 1176, 1192]
+      },
+      "status": "Astra glossary draft; review voice and addressee in each scene",
+      "pronunciation": "provisional spelling; audio review pending",
+      "model": "gpt-6-astra"
+    },
+    {
+      "english": "Sunday Friend",
+      "hebrew": "החבר של יום ראשון",
+      "speaker_id": 68,
+      "aliases": [],
+      "gender": "masculine",
+      "evidence": {
+        "actor_id": "68",
+        "actor_description": "This is Thomas, a bureaucrat from Sur-la-Clef. He's Smoker on the Balcony's 'friend' and a witness.",
+        "sample_keys": [
+          "Dialogue Text/0x0100000700019F61",
+          "Dialogue Text/0x0100000700019F42",
+          "Dialogue Text/0x0100000700019F56"
+        ],
+        "conversation_ids": [292, 371, 549, 866]
+      },
+      "status": "Astra glossary draft; review voice and addressee in each scene",
+      "pronunciation": "provisional spelling; audio review pending",
+      "model": "gpt-6-astra"
+    },
+    {
+      "english": "The Gardener",
+      "hebrew": "הגננית",
+      "speaker_id": 69,
+      "aliases": [],
+      "gender": "feminine",
+      "evidence": {
+        "actor_id": "69",
+        "actor_description": "",
+        "sample_keys": [
+          "Dialogue Text/0x0100002B0003E17F",
+          "Dialogue Text/0x01000045000202E5",
+          "Dialogue Text/0x010000570002165F"
+        ],
+        "conversation_ids": [617, 818, 819, 821, 822, 823, 1219]
+      },
+      "status": "Astra glossary draft; review voice and addressee in each scene",
+      "pronunciation": "provisional spelling; audio review pending",
+      "model": "gpt-6-astra"
+    },
+    {
+      "english": "Gorący Kubek",
+      "hebrew": "גורונצי קובק",
+      "speaker_id": 70,
+      "aliases": [],
+      "gender": "masculine",
+      "evidence": {
+        "actor_id": "70",
+        "actor_description": "",
+        "sample_keys": [
+          "Dialogue Text/0x0100000600009313",
+          "Dialogue Text/0x0100002F0000E0AF",
+          "Dialogue Text/0x010000580000A423"
+        ],
+        "conversation_ids": [517]
+      },
+      "status": "Astra glossary draft; review voice and addressee in each scene",
+      "pronunciation": "provisional spelling; audio review pending",
+      "model": "gpt-6-astra"
+    },
+    {
+      "english": "Frittte clerk",
+      "hebrew": "המוכרת בפריטטה",
+      "speaker_id": 71,
+      "aliases": [],
+      "gender": "feminine",
+      "evidence": {
+        "actor_id": "71",
+        "actor_description": "",
+        "sample_keys": [
+          "Dialogue Text/0x0100002B00086636",
+          "Dialogue Text/0x0100005700022D3D",
+          "Dialogue Text/0x01000058000089B8"
+        ],
+        "conversation_ids": [446, 447, 474, 475, 902, 1071]
+      },
+      "status": "Astra glossary draft; review voice and addressee in each scene",
+      "pronunciation": "provisional spelling; audio review pending",
+      "model": "gpt-6-astra"
+    },
+    {
+      "english": "Cindy the SKULL",
+      "hebrew": "סינדי הגולגולת",
+      "speaker_id": 72,
+      "aliases": [],
+      "gender": "feminine",
+      "evidence": {
+        "actor_id": "72",
+        "actor_description": "",
+        "sample_keys": [
+          "Dialogue Text/0x0100000700019525",
+          "Dialogue Text/0x0100000700019518",
+          "Dialogue Text/0x010000070001951E"
+        ],
+        "conversation_ids": [282, 361, 636, 944]
+      },
+      "status": "Astra glossary draft; review voice and addressee in each scene",
+      "pronunciation": "provisional spelling; audio review pending",
+      "model": "gpt-6-astra"
+    },
+    {
+      "english": "Onomatopoetic Lorryman",
+      "hebrew": "נהג המשאית האונומטופאי",
+      "speaker_id": 74,
+      "aliases": [],
+      "gender": "masculine",
+      "evidence": {
+        "actor_id": "74",
+        "actor_description": "A lorryman who wanders in the far right corner of the Jam, he's way into lorries and other machinery, and just barks out lorry-related sounds.",
+        "sample_keys": [],
+        "conversation_ids": []
+      },
+      "status": "Astra glossary draft; review voice and addressee in each scene",
+      "pronunciation": "provisional spelling; audio review pending",
+      "model": "gpt-6-astra"
+    },
+    {
+      "english": "Siileng",
+      "hebrew": "סילנג",
+      "speaker_id": 75,
+      "aliases": [],
+      "gender": "masculine",
+      "evidence": {
+        "actor_id": "75",
+        "actor_description": "Humanitarian Aid Guy.",
+        "sample_keys": [
+          "Dialogue Text/0x010000070001A7AC",
+          "Dialogue Text/0x010000070001A7C1",
+          "Dialogue Text/0x010000070001A7B3"
+        ],
+        "conversation_ids": [301, 448, 451, 452, 458]
+      },
+      "status": "Astra glossary draft; review voice and addressee in each scene",
+      "pronunciation": "provisional spelling; audio review pending",
+      "model": "gpt-6-astra"
+    },
+    {
+      "english": "Game Over",
+      "hebrew": "המשחק נגמר",
+      "speaker_id": 76,
+      "aliases": [],
+      "gender": "unresolved; do not infer from label",
+      "evidence": {
+        "actor_id": "76",
+        "actor_description": "",
+        "sample_keys": ["Dialogue Text/0x0100000C00000132"],
+        "conversation_ids": [968]
+      },
+      "status": "Astra glossary draft; review voice and addressee in each scene",
+      "pronunciation": "provisional spelling; audio review pending",
+      "model": "gpt-6-astra"
+    },
+    {
+      "english": "Paledriver",
+      "hebrew": "נהגת החיוורון",
+      "speaker_id": 77,
+      "aliases": [],
+      "gender": "feminine",
+      "evidence": {
+        "actor_id": "77",
+        "actor_description": "Pale-aged long-haul lorry pilot. Completely bonked out of her mind due to the effects of going through the Pale too much.",
+        "sample_keys": [
+          "Dialogue Text/0x010000060000A39A",
+          "Dialogue Text/0x010000060000ABD1",
+          "Dialogue Text/0x010000060000AEBF"
+        ],
+        "conversation_ids": [207]
+      },
+      "status": "Astra glossary draft; review voice and addressee in each scene",
+      "pronunciation": "provisional spelling; audio review pending",
+      "model": "gpt-6-astra"
+    },
+    {
+      "english": "Tare Drunk",
+      "hebrew": "שיכור הבקבוקים",
+      "speaker_id": 78,
+      "aliases": [],
+      "gender": "masculine",
+      "evidence": {
+        "actor_id": "78",
+        "actor_description": "",
+        "sample_keys": [
+          "Dialogue Text/0x0100002B00065091",
+          "Dialogue Text/0x0100006A00004087",
+          "Dialogue Text/0x0100002B00065097"
+        ],
+        "conversation_ids": [43]
+      },
+      "status": "Astra glossary draft; review voice and addressee in each scene",
+      "pronunciation": "provisional spelling; audio review pending",
+      "model": "gpt-6-astra"
+    },
+    {
+      "english": "Easy Leo",
+      "hebrew": "ליאו הנינוח",
+      "speaker_id": 79,
+      "aliases": [],
+      "gender": "masculine",
+      "evidence": {
+        "actor_id": "79",
+        "actor_description": "",
+        "sample_keys": [
+          "Dialogue Text/0x010000070001954C",
+          "Dialogue Text/0x0100000700019558",
+          "Dialogue Text/0x0100000700019546"
+        ],
+        "conversation_ids": [283, 607, 619]
+      },
+      "status": "Astra glossary draft; review voice and addressee in each scene",
+      "pronunciation": "provisional spelling; audio review pending",
+      "model": "gpt-6-astra"
+    },
+    {
+      "english": "Bird's Nest Roy",
+      "hebrew": "רוי קן הציפור",
+      "speaker_id": 80,
+      "aliases": [],
+      "gender": "masculine",
+      "evidence": {
+        "actor_id": "80",
+        "actor_description": "",
+        "sample_keys": [
+          "Dialogue Text/0x0100000F000108C1",
+          "Dialogue Text/0x0100000F0001463E",
+          "Dialogue Text/0x0100002F00012A17"
+        ],
+        "conversation_ids": [827, 828, 829, 832, 839, 841]
+      },
+      "status": "Astra glossary draft; review voice and addressee in each scene",
+      "pronunciation": "provisional spelling; audio review pending",
+      "model": "gpt-6-astra"
+    },
+    {
+      "english": "Tricentennial Electrics",
+      "hebrew": "חשמל שלוש מאות",
+      "speaker_id": 81,
+      "aliases": [],
+      "gender": "unresolved; do not infer from label",
+      "evidence": {
+        "actor_id": "81",
+        "actor_description": "",
+        "sample_keys": [
+          "Dialogue Text/0x010000920000106E",
+          "Dialogue Text/0x01000092000010AB",
+          "Dialogue Text/0x0100009200002084"
+        ],
+        "conversation_ids": [459]
+      },
+      "status": "Astra glossary draft; review voice and addressee in each scene",
+      "pronunciation": "provisional spelling; audio review pending",
+      "model": "gpt-6-astra"
+    },
+    {
+      "english": "Idiot Doom Spiral",
+      "hebrew": "סחרור האבדון האידיוטי",
+      "speaker_id": 89,
+      "aliases": [],
+      "gender": "masculine",
+      "evidence": {
+        "actor_id": "89",
+        "actor_description": "",
+        "sample_keys": [
+          "Dialogue Text/0x0100000700019A42",
+          "Dialogue Text/0x0100000700019A1F",
+          "Dialogue Text/0x0100000700019A3B"
+        ],
+        "conversation_ids": [286, 552, 1030, 1071]
+      },
+      "status": "Astra glossary draft; review voice and addressee in each scene",
+      "pronunciation": "provisional spelling; audio review pending",
+      "model": "gpt-6-astra"
+    },
+    {
+      "english": "Kortenaer",
+      "hebrew": "קורטנאר",
+      "speaker_id": 90,
+      "aliases": [],
+      "gender": "masculine",
+      "evidence": {
+        "actor_id": "90",
+        "actor_description": "ex-scab leader, named Kortenaer, as a mercenary, decked out in his armour, drunk off his ass.",
+        "sample_keys": [
+          "Dialogue Text/0x0100004500018CF1",
+          "Dialogue Text/0x0100004500018ECE",
+          "Dialogue Text/0x0100004500018EE9"
+        ],
+        "conversation_ids": [537, 818, 819, 820, 821, 822, 823, 824]
+      },
+      "status": "Astra glossary draft; review voice and addressee in each scene",
+      "pronunciation": "provisional spelling; audio review pending",
+      "model": "gpt-6-astra"
+    },
+    {
+      "english": "De Paule",
+      "hebrew": "דה פול",
+      "speaker_id": 91,
+      "aliases": [],
+      "gender": "feminine",
+      "evidence": {
+        "actor_id": "91",
+        "actor_description": "The third mercenary guy, radio operator, who has been in the base of operations, bored and irritated.",
+        "sample_keys": [
+          "Dialogue Text/0x0100004C0001892B",
+          "Dialogue Text/0x0100002100002F93",
+          "Dialogue Text/0x0100002100002FB1"
+        ],
+        "conversation_ids": [537, 818, 819, 820, 821, 822, 823]
+      },
+      "status": "Astra glossary draft; review voice and addressee in each scene",
+      "pronunciation": "provisional spelling; audio review pending",
+      "model": "gpt-6-astra"
+    },
+    {
+      "english": "Man with Sunglasses",
+      "hebrew": "איש במשקפי שמש",
+      "speaker_id": 92,
+      "aliases": [],
+      "gender": "masculine",
+      "evidence": {
+        "actor_id": "92",
+        "actor_description": "",
+        "sample_keys": [
+          "Dialogue Text/0x010000640000D3C3",
+          "Dialogue Text/0x010000640000D511",
+          "Dialogue Text/0x010000640000C8E8"
+        ],
+        "conversation_ids": [641, 642, 1103]
+      },
+      "status": "Astra glossary draft; review voice and addressee in each scene",
+      "pronunciation": "provisional spelling; audio review pending",
+      "model": "gpt-6-astra"
+    },
+    {
+      "english": "Horse-Faced Woman",
+      "hebrew": "האישה בעלת פני הסוס",
+      "speaker_id": 93,
+      "aliases": [],
+      "gender": "feminine",
+      "evidence": {
+        "actor_id": "93",
+        "actor_description": "",
+        "sample_keys": [
+          "Dialogue Text/0x010000640000D4C3",
+          "Dialogue Text/0x010000640000C314",
+          "Dialogue Text/0x010000640000C8FC"
+        ],
+        "conversation_ids": [641, 642, 1103]
+      },
+      "status": "Astra glossary draft; review voice and addressee in each scene",
+      "pronunciation": "provisional spelling; audio review pending",
+      "model": "gpt-6-astra"
+    },
+    {
+      "english": "Fuck the World",
+      "hebrew": "שיזדיין העולם",
+      "speaker_id": 95,
+      "aliases": [],
+      "gender": "masculine",
+      "evidence": {
+        "actor_id": "95",
+        "actor_description": "",
+        "sample_keys": [
+          "Dialogue Text/0x0100000700012B80",
+          "Dialogue Text/0x0100008100004212",
+          "Dialogue Text/0x01000007000124CE"
+        ],
+        "conversation_ids": [995]
+      },
+      "status": "Astra glossary draft; review voice and addressee in each scene",
+      "pronunciation": "provisional spelling; audio review pending",
+      "model": "gpt-6-astra"
+    },
+    {
+      "english": "Cleaning Lady",
+      "hebrew": "המנקה",
+      "speaker_id": 96,
+      "aliases": [],
+      "gender": "feminine",
+      "evidence": {
+        "actor_id": "96",
+        "actor_description": "",
+        "sample_keys": [
+          "Dialogue Text/0x010000570001DAA8",
+          "Dialogue Text/0x010000570001E047",
+          "Dialogue Text/0x010000570001E04D"
+        ],
+        "conversation_ids": [888, 889]
+      },
+      "status": "Astra glossary draft; review voice and addressee in each scene",
+      "pronunciation": "provisional spelling; audio review pending",
+      "model": "gpt-6-astra"
+    },
+    {
+      "english": "A Shadow on the Bed",
+      "hebrew": "צל על המיטה",
+      "speaker_id": 97,
+      "aliases": [],
+      "gender": "masculine",
+      "evidence": {
+        "actor_id": "97",
+        "actor_description": "Cuno's dad.",
+        "sample_keys": [],
+        "conversation_ids": []
+      },
+      "status": "Astra glossary draft; review voice and addressee in each scene",
+      "pronunciation": "provisional spelling; audio review pending",
+      "model": "gpt-6-astra"
+    },
+    {
+      "english": "Don't Call Abigail",
+      "hebrew": "אל תקראו לאביגיל",
+      "speaker_id": 98,
+      "aliases": [],
+      "gender": "masculine",
+      "evidence": {
+        "actor_id": "98",
+        "actor_description": "",
+        "sample_keys": [
+          "Dialogue Text/0x01000007000199DD",
+          "Dialogue Text/0x01000007000199CA",
+          "Dialogue Text/0x01000007000199D0"
+        ],
+        "conversation_ids": [287, 551, 1030]
+      },
+      "status": "Astra glossary draft; review voice and addressee in each scene",
+      "pronunciation": "provisional spelling; audio review pending",
+      "model": "gpt-6-astra"
+    },
+    {
+      "english": "Rosemary",
+      "hebrew": "רוזמרי",
+      "speaker_id": 99,
+      "aliases": [],
+      "gender": "masculine",
+      "evidence": {
+        "actor_id": "99",
+        "actor_description": "Previously known as Female drunk, also previously known as Under Control. One of the Union of Moribund Alcoholics, the shopkeeper who sells you booze and smokes and stuff.",
+        "sample_keys": [
+          "Dialogue Text/0x01000007000199F4",
+          "Dialogue Text/0x0100000700019A6C",
+          "Dialogue Text/0x01000007000199FA"
+        ],
+        "conversation_ids": [285, 552, 1030, 1248]
+      },
+      "status": "Astra glossary draft; review voice and addressee in each scene",
+      "pronunciation": "provisional spelling; audio review pending",
+      "model": "gpt-6-astra"
+    },
+    {
+      "english": "The Pigs",
+      "hebrew": "החזירים",
+      "speaker_id": 100,
+      "aliases": [],
+      "gender": "feminine",
+      "evidence": {
+        "actor_id": "100",
+        "actor_description": "",
+        "sample_keys": [
+          "Dialogue Text/0x01000007000148A8",
+          "Dialogue Text/0x0100000700014E29",
+          "Dialogue Text/0x01000007000148EA"
+        ],
+        "conversation_ids": [280, 553]
+      },
+      "status": "Astra glossary draft; review voice and addressee in each scene",
+      "pronunciation": "provisional spelling; audio review pending",
+      "model": "gpt-6-astra"
+    },
+    {
+      "english": "Little Lily",
+      "hebrew": "לילי הקטנה",
+      "speaker_id": 101,
+      "aliases": [],
+      "gender": "feminine",
+      "evidence": {
+        "actor_id": "101",
+        "actor_description": "Lilienne the Net Picker's young kid who is inside the shack doing her thing. She's about 4 you can talk to her about stuff.",
+        "sample_keys": [
+          "Dialogue Text/0x0100004B00000F70",
+          "Dialogue Text/0x0100005A000100D1",
+          "Dialogue Text/0x0100005A0000E6F5"
+        ],
+        "conversation_ids": [1039]
+      },
+      "status": "Astra glossary draft; review voice and addressee in each scene",
+      "pronunciation": "provisional spelling; audio review pending",
+      "model": "gpt-6-astra"
+    },
+    {
+      "english": "Working Class Husband",
+      "hebrew": "בעל ממעמד הפועלים",
+      "speaker_id": 102,
+      "aliases": [],
+      "gender": "masculine",
+      "evidence": {
+        "actor_id": "102",
+        "actor_description": "",
+        "sample_keys": [],
+        "conversation_ids": []
+      },
+      "status": "Astra glossary draft; review voice and addressee in each scene",
+      "pronunciation": "provisional spelling; audio review pending",
+      "model": "gpt-6-astra"
+    },
+    {
+      "english": "Titus Hardie",
+      "hebrew": "טיטוס הארדי",
+      "speaker_id": 103,
+      "aliases": [],
+      "gender": "masculine",
+      "evidence": {
+        "actor_id": "103",
+        "actor_description": "Titus Hardie, leader of the Hardie Boys. Former prizefighter and a rowing enthusiast. Tall guy, wide in the shoulders and narrow at the hips. Hard-ass, stubborn, take-shit-from-no-one type of guy. He's wearing a baseball cap with the \"Martinaise Burning Rhinos\" (a local rugby team) logo (A flaming rhino horn). Also an orange padded west. It's says \"ROWING CLUB\" on the back and \"T. Hardie\" on left side on the chest. He's also wearing fingerless gloves and yellow boots with bluejeans tucked in them.\n\nHe's 39 years old. Short dark hair. Sharp features. Kind of handsome - like Johnny Football Hero once he's past his prime and never moved out of the home town.\n\nQuarterback for the \"Martinaise Flaming Rhinos\".",
+        "sample_keys": [
+          "Dialogue Text/0x0100004C0001888E",
+          "Dialogue Text/0x0100000700008396",
+          "Dialogue Text/0x0100004500018F5D"
+        ],
+        "conversation_ids": [
+          537, 639, 640, 647, 798, 806, 807, 809, 810, 811, 814, 818, 819, 821, 855, 1098, 1218,
+          1219, 1220
+        ]
+      },
+      "status": "Astra glossary draft; review voice and addressee in each scene",
+      "pronunciation": "provisional spelling; audio review pending",
+      "model": "gpt-6-astra",
+      "luna_voice_draft": {
+        "note": "Hard-edged, territorial, and commanding in the group; his sample line softens specifically while reassuring Lizzie. Keep the shift scene-specific.",
+        "evidence_keys": [
+          "Dialogue Text/0x0100004C0001888E",
+          "Dialogue Text/0x0100000700008396",
+          "Dialogue Text/0x0100004500018F5D"
+        ],
+        "model": "gpt-6-luna",
+        "status": "draft; scene review required",
+        "evidence_source": "source-index.json speaker context matched to translations.csv English source rows"
+      }
+    },
+    {
+      "english": "Fat Angus",
+      "hebrew": "אנגוס השמן",
+      "speaker_id": 104,
+      "aliases": [],
+      "gender": "masculine",
+      "evidence": {
+        "actor_id": "104",
+        "actor_description": "Fat-Angus is fat. Period. Big fat guy. Tall too. Think Blob from X-men, but less of a charicature and more of a guy who's gonna have a heart attack at 40. I imagine him wearing a regular dockworker hat, overalls and some stupid bright coloured mittens. Something like pink. His sister made 'em. Fat-Angus lives with his sister. His sister is 50 and single. They have cats and dogs.\n\nUnlike fat people in general (!) Angus is not jolly. He's got podagra. His feet stink like hell and he's stomach is always making annoying loud noises. He's also gassy. And clumsy. Always trying to be super-serious and not liking if the joke is on him on any way.",
+        "sample_keys": [
+          "Dialogue Text/0x0100008200017C23",
+          "Dialogue Text/0x0100007800010A3D",
+          "Dialogue Text/0x010000820001C46B"
+        ],
+        "conversation_ids": [640, 647, 803, 806, 807, 810, 814, 855, 1218, 1219]
+      },
+      "status": "Astra glossary draft; review voice and addressee in each scene",
+      "pronunciation": "provisional spelling; audio review pending",
+      "model": "gpt-6-astra"
+    },
+    {
+      "english": "Theo",
+      "hebrew": "תאו",
+      "speaker_id": 105,
+      "aliases": [],
+      "gender": "masculine",
+      "evidence": {
+        "actor_id": "105",
+        "actor_description": "Theo is an older black dude with a curly beard. He's 55 and has already got some gray in his hair. He smokes a pipe and cracks his knuckles. Doesn't talk much, but when he does he talks in a slow deliberate manner and doesn't waste words.",
+        "sample_keys": [
+          "Dialogue Text/0x010000820001C5A9",
+          "Dialogue Text/0x010000820001C680",
+          "Dialogue Text/0x010000820001C692"
+        ],
+        "conversation_ids": [647, 805, 806, 807, 809, 810, 814, 1219]
+      },
+      "status": "Astra glossary draft; review voice and addressee in each scene",
+      "pronunciation": "provisional spelling; audio review pending",
+      "model": "gpt-6-astra"
+    },
+    {
+      "english": "Glen",
+      "hebrew": "גלן",
+      "speaker_id": 106,
+      "aliases": [],
+      "gender": "masculine",
+      "evidence": {
+        "actor_id": "106",
+        "actor_description": "Glenn is 36 years old. Also a rugby player. As tall and wide as Titus, but with a lushious blonde maine. Like a viking god. He chews tobaco and spits a lot. Kinda a violent and sadistic. Wearing the dockworker overalls, but has the top half off and a dirty white tanktop underneath it.",
+        "sample_keys": [
+          "Dialogue Text/0x0100004500018CE4",
+          "Dialogue Text/0x01000078000118A1",
+          "Dialogue Text/0x010000820001C2FC"
+        ],
+        "conversation_ids": [
+          537, 639, 640, 647, 800, 806, 807, 809, 810, 814, 855, 943, 1218, 1219, 1220
+        ]
+      },
+      "status": "Astra glossary draft; review voice and addressee in each scene",
+      "pronunciation": "provisional spelling; audio review pending",
+      "model": "gpt-6-astra"
+    },
+    {
+      "english": "Shanky",
+      "hebrew": "שאנקי",
+      "speaker_id": 107,
+      "aliases": [],
+      "gender": "masculine",
+      "evidence": {
+        "actor_id": "107",
+        "actor_description": "Shanky, real name Dennis, is a small rat-like guy with dark eyes and a mean face. He's all mean and cunning. Not a nice guy. A former featherweight amateur boxer. The kind of guy who always used to pick fight with big guys who can't fight. Now he carries a shank a sticks people with it. Shanky is 46 years old. Childless, divorced. An alcoholic.",
+        "sample_keys": [
+          "Dialogue Text/0x0100000600008C84",
+          "Dialogue Text/0x010000060001715C",
+          "Dialogue Text/0x0100004C00014B61"
+        ],
+        "conversation_ids": [
+          639, 640, 647, 804, 806, 807, 809, 810, 811, 814, 821, 855, 943, 1218, 1219, 1220
+        ]
+      },
+      "status": "Astra glossary draft; review voice and addressee in each scene",
+      "pronunciation": "provisional spelling; audio review pending",
+      "model": "gpt-6-astra",
+      "luna_voice_draft": {
+        "note": "The sample lines are taunting and antagonistic; use clipped insults and swagger rather than polished formal Hebrew.",
+        "evidence_keys": [
+          "Dialogue Text/0x0100000600008C84",
+          "Dialogue Text/0x010000060001715C",
+          "Dialogue Text/0x0100004C00014B61"
+        ],
+        "model": "gpt-6-luna",
+        "status": "draft; scene review required",
+        "evidence_source": "source-index.json speaker context matched to translations.csv English source rows"
+      }
+    },
+    {
+      "english": "Eugene",
+      "hebrew": "יוג׳ין",
+      "speaker_id": 108,
+      "aliases": [],
+      "gender": "masculine",
+      "evidence": {
+        "actor_id": "108",
+        "actor_description": "",
+        "sample_keys": [
+          "Dialogue Text/0x010000820001C25B",
+          "Dialogue Text/0x0100004C00015429",
+          "Dialogue Text/0x0100008200017C32"
+        ],
+        "conversation_ids": [
+          640, 647, 801, 806, 807, 809, 810, 811, 814, 818, 819, 855, 1098, 1099, 1100, 1218, 1219,
+          1220
+        ]
+      },
+      "status": "Astra glossary draft; review voice and addressee in each scene",
+      "pronunciation": "provisional spelling; audio review pending",
+      "model": "gpt-6-astra",
+      "luna_voice_draft": {
+        "note": "The sample evidence is group-directed and conversational; distinguish his individual voice only where the surrounding exchange supports it.",
+        "evidence_keys": [
+          "Dialogue Text/0x010000820001C25B",
+          "Dialogue Text/0x0100004C00015429",
+          "Dialogue Text/0x0100008200017C32"
+        ],
+        "model": "gpt-6-luna",
+        "status": "draft; scene review required",
+        "evidence_source": "source-index.json speaker context matched to translations.csv English source rows"
+      }
+    },
+    {
+      "english": "Alain",
+      "hebrew": "אלן",
+      "speaker_id": 109,
+      "aliases": [],
+      "gender": "masculine",
+      "evidence": {
+        "actor_id": "109",
+        "actor_description": "",
+        "sample_keys": [
+          "Dialogue Text/0x0100004C00014B5B",
+          "Dialogue Text/0x010000640000BFCF",
+          "Dialogue Text/0x0100004C00014C21"
+        ],
+        "conversation_ids": [
+          640, 647, 799, 806, 807, 809, 810, 811, 814, 823, 855, 1098, 1099, 1101, 1102, 1218, 1219,
+          1220
+        ]
+      },
+      "status": "Astra glossary draft; review voice and addressee in each scene",
+      "pronunciation": "provisional spelling; audio review pending",
+      "model": "gpt-6-astra",
+      "luna_voice_draft": {
+        "note": "Current samples establish his place in the Hardie group, but not enough distinct individual voice. Keep this note provisional pending broader scene review.",
+        "evidence_keys": [
+          "Dialogue Text/0x0100004C00014B5B",
+          "Dialogue Text/0x010000640000BFCF",
+          "Dialogue Text/0x0100004C00014C21"
+        ],
+        "model": "gpt-6-luna",
+        "status": "draft; scene review required",
+        "evidence_source": "source-index.json speaker context matched to translations.csv English source rows"
+      }
+    },
+    {
+      "english": "Elizabeth",
+      "hebrew": "אליזבת",
+      "speaker_id": 110,
+      "aliases": [],
+      "gender": "feminine",
+      "evidence": {
+        "actor_id": "110",
+        "actor_description": "Union Fixer -- previously known as Gardener.",
+        "sample_keys": [
+          "Dialogue Text/0x0100004C00018871",
+          "Dialogue Text/0x0100004C00018903",
+          "Dialogue Text/0x0100004C00018878"
+        ],
+        "conversation_ids": [537, 639, 640, 802, 806, 809, 810, 819, 1218, 1219]
+      },
+      "status": "Astra glossary draft; review voice and addressee in each scene",
+      "pronunciation": "provisional spelling; audio review pending",
+      "model": "gpt-6-astra"
+    },
+    {
+      "english": "Tiago",
+      "hebrew": "טיאגו",
+      "speaker_id": 111,
+      "aliases": [],
+      "gender": "masculine",
+      "evidence": {
+        "actor_id": "111",
+        "actor_description": "A blind sacristan. Exceptional climber.",
+        "sample_keys": [
+          "Dialogue Text/0x01000021000014AA",
+          "Dialogue Text/0x010000580000FBD0",
+          "Dialogue Text/0x0100005A0000E687"
+        ],
+        "conversation_ids": [557, 1029]
+      },
+      "status": "Astra glossary draft; review voice and addressee in each scene",
+      "pronunciation": "provisional spelling; audio review pending",
+      "model": "gpt-6-astra"
+    },
+    {
+      "english": "East-Insulindian Repeater Station",
+      "hebrew": "תחנת הממסר של מזרח אינסולינדה",
+      "speaker_id": 112,
+      "aliases": [],
+      "gender": "feminine",
+      "evidence": {
+        "actor_id": "112",
+        "actor_description": "",
+        "sample_keys": [
+          "Dialogue Text/0x01000021000021A8",
+          "Dialogue Text/0x01000005000003C4",
+          "Dialogue Text/0x01000005000004E5"
+        ],
+        "conversation_ids": [555, 630]
+      },
+      "status": "Astra glossary draft; review voice and addressee in each scene",
+      "pronunciation": "provisional spelling; audio review pending",
+      "model": "gpt-6-astra"
+    },
+    {
+      "english": "Ruud Hoenkloewen",
+      "hebrew": "רוד הונקלובן",
+      "speaker_id": 113,
+      "aliases": [],
+      "gender": "masculine",
+      "evidence": {
+        "actor_id": "113",
+        "actor_description": "",
+        "sample_keys": [
+          "Dialogue Text/0x0100001D000002CB",
+          "Dialogue Text/0x0100004500018E48",
+          "Dialogue Text/0x0100004500018E94"
+        ],
+        "conversation_ids": [537, 818, 823]
+      },
+      "status": "Astra glossary draft; review voice and addressee in each scene",
+      "pronunciation": "provisional spelling; audio review pending",
+      "model": "gpt-6-astra"
+    },
+    {
+      "english": "Mega Rich Light-Bending Guy",
+      "hebrew": "הבחור העשיר בטירוף שמעקם את האור",
+      "speaker_id": 114,
+      "aliases": [],
+      "gender": "masculine",
+      "evidence": {
+        "actor_id": "114",
+        "actor_description": "The Mega Rich Light Bending Guy is in a container in the containeryard.",
+        "sample_keys": [
+          "Dialogue Text/0x010000590000999E",
+          "Dialogue Text/0x0100000F00016505",
+          "Dialogue Text/0x0100000F00016530"
+        ],
+        "conversation_ids": [996, 997]
+      },
+      "status": "Astra glossary draft; review voice and addressee in each scene",
+      "pronunciation": "provisional spelling; audio review pending",
+      "model": "gpt-6-astra"
+    },
+    {
+      "english": "Netpicker's Twins",
+      "hebrew": "התאומים של מתקנת הרשתות",
+      "speaker_id": 115,
+      "aliases": [],
+      "gender": "masculine",
+      "evidence": {
+        "actor_id": "115",
+        "actor_description": "Two Netpicker's twin kids who run around outside, they're about 7 and they talk something about the island.",
+        "sample_keys": [
+          "Dialogue Text/0x010000080000113B",
+          "Dialogue Text/0x0100000800001149",
+          "Dialogue Text/0x0100008100006670"
+        ],
+        "conversation_ids": [1040]
+      },
+      "status": "Astra glossary draft; review voice and addressee in each scene",
+      "pronunciation": "provisional spelling; audio review pending",
+      "model": "gpt-6-astra"
+    },
+    {
+      "english": "Lilienne's Twin",
+      "hebrew": "התאום של ליליאן",
+      "speaker_id": 116,
+      "aliases": [],
+      "gender": "masculine",
+      "evidence": {
+        "actor_id": "116",
+        "actor_description": "",
+        "sample_keys": [
+          "Dialogue Text/0x010000060000E5D0",
+          "Dialogue Text/0x010000450001BDEA",
+          "Dialogue Text/0x010000450001BD2E"
+        ],
+        "conversation_ids": [721]
+      },
+      "status": "Astra glossary draft; review voice and addressee in each scene",
+      "pronunciation": "provisional spelling; audio review pending",
+      "model": "gpt-6-astra"
+    },
+    {
+      "english": "Lilienne's Other Twin",
+      "hebrew": "התאום השני של ליליאן",
+      "speaker_id": 125,
+      "aliases": [],
+      "gender": "unresolved; do not infer from label",
+      "evidence": {
+        "actor_id": "125",
+        "actor_description": "",
+        "sample_keys": [
+          "Dialogue Text/0x010000450001BCBA",
+          "Dialogue Text/0x0100004B0000270E",
+          "Dialogue Text/0x0100005A0001016A"
+        ],
+        "conversation_ids": [721]
+      },
+      "status": "Astra glossary draft; review voice and addressee in each scene",
+      "pronunciation": "provisional spelling; audio review pending",
+      "model": "gpt-6-astra"
+    },
+    {
+      "english": "Real Estate Agent",
+      "hebrew": "סוכנת הנדל״ן",
+      "speaker_id": 117,
+      "aliases": [],
+      "gender": "feminine",
+      "evidence": {
+        "actor_id": "117",
+        "actor_description": "",
+        "sample_keys": [
+          "Dialogue Text/0x010000570001E390",
+          "Dialogue Text/0x010000570001E357",
+          "Dialogue Text/0x010000570001DFE3"
+        ],
+        "conversation_ids": [903]
+      },
+      "status": "Astra glossary draft; review voice and addressee in each scene",
+      "pronunciation": "provisional spelling; audio review pending",
+      "model": "gpt-6-astra"
+    },
+    {
+      "english": "Bloated Corpse of a Drunk",
+      "hebrew": "גופתו הנפוחה של שיכור",
+      "speaker_id": 118,
+      "aliases": [],
+      "gender": "unresolved; do not infer from label",
+      "evidence": {
+        "actor_id": "118",
+        "actor_description": "",
+        "sample_keys": [
+          "Dialogue Text/0x010000450001FB6E",
+          "Dialogue Text/0x010000450001FBA1",
+          "Dialogue Text/0x010000450001FBD1"
+        ],
+        "conversation_ids": [1054]
+      },
+      "status": "Astra glossary draft; review voice and addressee in each scene",
+      "pronunciation": "provisional spelling; audio review pending",
+      "model": "gpt-6-astra"
+    },
+    {
+      "english": "Jamrock Public Library",
+      "hebrew": "הספרייה הציבורית של ג׳מרוק",
+      "speaker_id": 119,
+      "aliases": [],
+      "gender": "masculine",
+      "evidence": {
+        "actor_id": "119",
+        "actor_description": "",
+        "sample_keys": [
+          "Dialogue Text/0x0100007500001273",
+          "Dialogue Text/0x0100007500001110",
+          "Dialogue Text/0x01000075000012D7"
+        ],
+        "conversation_ids": [776, 1176]
+      },
+      "status": "Astra glossary draft; review voice and addressee in each scene",
+      "pronunciation": "provisional spelling; audio review pending",
+      "model": "gpt-6-astra"
+    },
+    {
+      "english": "Barry the Butcher",
+      "hebrew": "בארי הקצב",
+      "speaker_id": 120,
+      "aliases": [],
+      "gender": "masculine",
+      "evidence": {
+        "actor_id": "120",
+        "actor_description": "",
+        "sample_keys": [
+          "Dialogue Text/0x010000210000268E",
+          "Dialogue Text/0x0100005400000332",
+          "Dialogue Text/0x0100004D00003B96"
+        ],
+        "conversation_ids": [842, 844]
+      },
+      "status": "Astra glossary draft; review voice and addressee in each scene",
+      "pronunciation": "provisional spelling; audio review pending",
+      "model": "gpt-6-astra"
+    },
+    {
+      "english": "Nix Gottlieb",
+      "hebrew": "ניקס גוטליב",
+      "speaker_id": 121,
+      "aliases": [],
+      "gender": "masculine",
+      "evidence": {
+        "actor_id": "121",
+        "actor_description": "",
+        "sample_keys": [
+          "Dialogue Text/0x0100008100003149",
+          "Dialogue Text/0x01000081000031A3",
+          "Dialogue Text/0x010000810000051A"
+        ],
+        "conversation_ids": [39, 1191, 1192]
+      },
+      "status": "Astra glossary draft; review voice and addressee in each scene",
+      "pronunciation": "provisional spelling; audio review pending",
+      "model": "gpt-6-astra"
+    },
+    {
+      "english": "Cuno's Dad",
+      "hebrew": "אבא של קונו",
+      "speaker_id": 123,
+      "aliases": [],
+      "gender": "masculine",
+      "evidence": {
+        "actor_id": "123",
+        "actor_description": "",
+        "sample_keys": [
+          "Dialogue Text/0x01000057000215C6",
+          "Dialogue Text/0x0100007500000290",
+          "Dialogue Text/0x010000570002124A"
+        ],
+        "conversation_ids": [550]
+      },
+      "status": "Astra glossary draft; review voice and addressee in each scene",
+      "pronunciation": "provisional spelling; audio review pending",
+      "model": "gpt-6-astra"
+    },
+    {
+      "english": "Mikael Heidelstam",
+      "hebrew": "מיקאל היידלסטם",
+      "speaker_id": 124,
+      "aliases": [],
+      "gender": "masculine",
+      "evidence": {
+        "actor_id": "124",
+        "actor_description": "",
+        "sample_keys": [
+          "Dialogue Text/0x010000080000111C",
+          "Dialogue Text/0x01000011000012C4",
+          "Dialogue Text/0x0100000800001114"
+        ],
+        "conversation_ids": [554, 971, 972]
+      },
+      "status": "Astra glossary draft; review voice and addressee in each scene",
+      "pronunciation": "provisional spelling; audio review pending",
+      "model": "gpt-6-astra"
+    },
+    {
+      "english": "Steban, the Student Communist",
+      "hebrew": "סטבן, הסטודנט הקומוניסט",
+      "speaker_id": 126,
+      "aliases": [],
+      "gender": "masculine",
+      "evidence": {
+        "actor_id": "126",
+        "actor_description": "Steban, the Student Communist is a young, ideologically combative Mazovian. He runs an underground reading group in a disused section of the Capeside Apartments, though recently he's excommunicated most of the reading group's membership over various ideological heresies. Though steeped in theory, at heart he's quite sincere and perhaps less strident than he initially appears.",
+        "sample_keys": [
+          "Dialogue Text/0x0100000F00007701",
+          "Dialogue Text/0x0100000F000090FB",
+          "Dialogue Text/0x0100000F00009120"
+        ],
+        "conversation_ids": [362, 864]
+      },
+      "status": "Astra glossary draft; review voice and addressee in each scene",
+      "pronunciation": "provisional spelling; audio review pending",
+      "model": "gpt-6-astra"
+    },
+    {
+      "english": "Echo Maker",
+      "hebrew": "מחולל ההד",
+      "speaker_id": 127,
+      "aliases": [],
+      "gender": "masculine",
+      "evidence": {
+        "actor_id": "127",
+        "actor_description": "The Echo Maker is the one participant in the underground reading group who hasn't been excommunicated by the Student Communist. He echoes whatever the Student Communist says, much to the Student Communist's irritation. An intellectual hanger-on and toady.",
+        "sample_keys": [
+          "Dialogue Text/0x0100000F000075C5",
+          "Dialogue Text/0x0100000F00009238",
+          "Dialogue Text/0x0100000F0000943D"
+        ],
+        "conversation_ids": [362, 865]
+      },
+      "status": "Astra glossary draft; review voice and addressee in each scene",
+      "pronunciation": "provisional spelling; audio review pending",
+      "model": "gpt-6-astra"
+    },
+    {
+      "english": "Coalition Warship Archer",
+      "hebrew": "ספינת המלחמה של הקואליציה ארצ׳ר",
+      "speaker_id": 128,
+      "aliases": [],
+      "gender": "feminine",
+      "evidence": {
+        "actor_id": "128",
+        "actor_description": "",
+        "sample_keys": [
+          "Dialogue Text/0x0100000F0000CCAD",
+          "Dialogue Text/0x0100000F0000CCBB",
+          "Dialogue Text/0x0100000F0000CD22"
+        ],
+        "conversation_ids": [368, 994]
+      },
+      "status": "Astra glossary draft; review voice and addressee in each scene",
+      "pronunciation": "provisional spelling; audio review pending",
+      "model": "gpt-6-astra"
+    },
+    {
+      "english": "DJ Mesh",
+      "hebrew": "די־ג׳יי מש",
+      "speaker_id": 129,
+      "aliases": [],
+      "gender": "unresolved; do not infer from label",
+      "evidence": {
+        "actor_id": "129",
+        "actor_description": "DJ Mesh is half of Speedfreaks FM, along with DJ Flacio.",
+        "sample_keys": [
+          "Dialogue Text/0x0100004B00001221",
+          "Dialogue Text/0x0100004B00001379",
+          "Dialogue Text/0x0100004B000023FD"
+        ],
+        "conversation_ids": [776]
+      },
+      "status": "Astra glossary draft; review voice and addressee in each scene",
+      "pronunciation": "provisional spelling; audio review pending",
+      "model": "gpt-6-astra"
+    },
+    {
+      "english": "DJ Flacio",
+      "hebrew": "די־ג׳יי פלאסיו",
+      "speaker_id": 130,
+      "aliases": [],
+      "gender": "unresolved; do not infer from label",
+      "evidence": {
+        "actor_id": "130",
+        "actor_description": "One half of the Speedfreaks FM duo.",
+        "sample_keys": [
+          "Dialogue Text/0x0100004C0000215A",
+          "Dialogue Text/0x0100004B000017E7",
+          "Dialogue Text/0x0100004B000017D3"
+        ],
+        "conversation_ids": [776]
+      },
+      "status": "Astra glossary draft; review voice and addressee in each scene",
+      "pronunciation": "provisional spelling; audio review pending",
+      "model": "gpt-6-astra"
+    },
+    {
+      "english": "Woman from Gottwald",
+      "hebrew": "האישה מגוטוואלד",
+      "speaker_id": 131,
+      "aliases": [],
+      "gender": "unresolved; do not infer from label",
+      "evidence": {
+        "actor_id": "131",
+        "actor_description": "",
+        "sample_keys": [],
+        "conversation_ids": []
+      },
+      "status": "Astra glossary draft; review voice and addressee in each scene",
+      "pronunciation": "provisional spelling; audio review pending",
+      "model": "gpt-6-astra"
+    },
+    {
+      "english": "Dolores Dei",
+      "hebrew": "דולורס דאי",
+      "speaker_id": 375,
+      "aliases": [],
+      "gender": "feminine",
+      "evidence": {
+        "actor_id": "375",
+        "actor_name": "Dolores Dei",
+        "actor_gender_flag": "True",
+        "conversation_ids": [767],
+        "sample_keys": [
+          "Dialogue Text/0x010000580001FE11",
+          "Dialogue Text/0x010000720000333D",
+          "Dialogue Text/0x0100007200003808"
+        ]
+      },
+      "voice": "Dream dialogue is intimate and emotionally charged; keep the personal address distinct from historical exposition. (Draft; retain uncertainty and player choice.)",
+      "pronunciation": "provisional spelling; audio review pending",
+      "status": "Luna whole-game glossary draft; review voice and address in scene",
+      "model": "gpt-6-luna",
+      "pronouns": "היא"
+    },
+    {
+      "english": "Judit Minot",
+      "hebrew": "ז׳ודית מינוט",
+      "speaker_id": 381,
+      "aliases": [],
+      "gender": "feminine",
+      "evidence": {
+        "actor_id": "381",
+        "actor_name": "Judit Minot",
+        "actor_gender_flag": "True",
+        "conversation_ids": [39, 204, 270, 540, 780, 1105, 1189, 1191],
+        "sample_keys": [
+          "Dialogue Text/0x0100008100003150",
+          "Dialogue Text/0x010000060000232E",
+          "Dialogue Text/0x0100000600005EC4"
+        ]
+      },
+      "voice": "Professional and steady; concise team-oriented phrasing. (Draft; confirm in full team scenes.)",
+      "pronunciation": "provisional spelling; audio review pending",
+      "status": "Luna whole-game glossary draft; review voice and address in scene",
+      "model": "gpt-6-luna",
+      "pronouns": "היא"
+    },
+    {
+      "english": "Soona, the Programmer",
+      "hebrew": "סונה, המתכנתת",
+      "speaker_id": 387,
+      "aliases": [],
+      "gender": "feminine",
+      "evidence": {
+        "actor_id": "387",
+        "actor_name": "Soona, the Programmer",
+        "actor_gender_flag": "True",
+        "conversation_ids": [183, 300, 352, 353, 368, 555, 558, 897, 994, 1016],
+        "sample_keys": [
+          "Dialogue Text/0x0100001600008C84",
+          "Dialogue Text/0x010000070001A79B",
+          "Dialogue Text/0x010000070001A80E"
+        ]
+      },
+      "voice": "Technical, skeptical, and impatient with supernatural explanations; preserve her precise, pragmatic register. (Draft.)",
+      "pronunciation": "provisional spelling; audio review pending",
+      "status": "Luna whole-game glossary draft; review voice and address in scene",
+      "model": "gpt-6-luna",
+      "pronouns": "היא"
+    },
+    {
+      "english": "Canal Crew",
+      "hebrew": "צוות עובדי התעלה",
+      "speaker_id": 87,
+      "aliases": [],
+      "gender": "masculine",
+      "evidence": {
+        "actor_id": "87",
+        "actor_name": "Canal Crew",
+        "actor_gender_flag": "False",
+        "conversation_ids": [532],
+        "sample_keys": [
+          "Dialogue Text/0x0100004000002CCE",
+          "Dialogue Text/0x0100006B00007DD7",
+          "Dialogue Text/0x0100002F0000EF55"
+        ]
+      },
+      "voice": "Collective crew speaker; keep plural address where the exchange supports it. Individual gender and voice unresolved.",
+      "pronunciation": "provisional spelling; audio review pending",
+      "status": "Luna whole-game glossary draft; review voice and address in scene",
+      "model": "gpt-6-luna",
+      "pronouns": "הוא"
+    },
+    {
+      "english": "Man on water lock",
+      "hebrew": "האיש שעל סכר התעלה",
+      "speaker_id": 85,
+      "aliases": [],
+      "gender": "masculine",
+      "evidence": {
+        "actor_id": "85",
+        "actor_name": "Man on water lock",
+        "actor_gender_flag": "False",
+        "conversation_ids": [842, 843, 1147],
+        "sample_keys": [
+          "Dialogue Text/0x0100006B00007E49",
+          "Dialogue Text/0x0100006B00007DF4",
+          "Dialogue Text/0x0100004D00003AAC"
+        ]
+      },
+      "voice": "Informal and practical in the water-lock exchange; keep his speech grounded and unceremonious. (Draft.)",
+      "pronunciation": "provisional spelling; audio review pending",
+      "status": "Luna whole-game glossary draft; review voice and address in scene",
+      "model": "gpt-6-luna",
+      "pronouns": "הוא"
+    },
+    {
+      "english": "Kras Mazov",
+      "hebrew": "קראס מזוב",
+      "aliases": ["Kras Mazov"],
+      "usage_note": "Proper name and historical figure; the source describes an economist and historical materialist associated with the Revolution. Pronunciation unverified.",
+      "evidence": {
+        "conversation_ids": [28],
+        "source_keys": [
+          "Dialogue Text/0x01000045000004A1",
+          "Dialogue Text/0x0100004500000463",
+          "Dialogue Text/0x010000580000A24D",
+          "Dialogue Text/0x0100004500000476",
+          "Dialogue Text/0x0100004500000331",
+          "Dialogue Text/0x010000450000047C"
+        ]
+      },
+      "pronunciation": "provisional; audio review pending",
+      "status": "Luna whole-game terminology draft",
+      "model": "gpt-6-luna"
+    },
+    {
+      "english": "The Doomed Commercial Area",
+      "hebrew": "המתחם המסחרי המקולל",
+      "aliases": ["Doomed Commercial Area", "East Delta Commerce Centre"],
+      "usage_note": "Named commercial district/building area. Preserve as a proper place name; source dialogue links the Whirling to Building B and gives an intercom/address context.",
+      "evidence": {
+        "conversation_ids": [28, 459, 460],
+        "source_keys": [
+          "Dialogue Text/0x010000060000E265",
+          "Dialogue Text/0x010000580000A076",
+          "Dialogue Text/0x01000058000087F8",
+          "Dialogue Text/0x010000580000A0BB",
+          "Dialogue Text/0x010000060000E238",
+          "Dialogue Text/0x010000580000A206",
+          "Dialogue Text/0x0100009200002093",
+          "Dialogue Text/0x0100009200001B72",
+          "Dialogue Text/0x010000920000181B"
+        ]
+      },
+      "pronunciation": "provisional; audio review pending",
+      "status": "Luna whole-game terminology draft",
+      "model": "gpt-6-luna",
+      "gender": "masculine (מתחם)"
+    },
+    {
+      "english": "Seol",
+      "hebrew": "סאול",
+      "aliases": ["Seol", "Seolite"],
+      "usage_note": "Place name and demonym. Distinguish fictional Seol from Seoul by retaining the game spelling as transliterated here; audio pronunciation pending.",
+      "evidence": {
+        "conversation_ids": [29],
+        "source_keys": [
+          "Dialogue Text/0x01000006000133B1",
+          "Dialogue Text/0x01000006000133AA",
+          "Dialogue Text/0x01000006000133FA",
+          "Dialogue Text/0x01000006000133ED",
+          "Dialogue Text/0x01000006000133BE",
+          "Dialogue Text/0x01000006000133E6",
+          "Dialogue Text/0x01000006000133D8"
+        ]
+      },
+      "pronunciation": "provisional; audio review pending",
+      "status": "Luna whole-game terminology draft",
+      "model": "gpt-6-luna"
+    },
+    {
+      "english": "CS Municipal",
+      "hebrew": "CS Municipal",
+      "aliases": ["CS Municipal", "Trash Collection Service"],
+      "usage_note": "Name/abbreviation used for the municipal trash collection service; preserve CS as Latin initials unless UI constraints require otherwise.",
+      "evidence": {
+        "conversation_ids": [28],
+        "source_keys": [
+          "Dialogue Text/0x010000580000D904",
+          "Dialogue Text/0x010000580000D8E4",
+          "Dialogue Text/0x010000580000D8FE"
+        ]
+      },
+      "pronunciation": "provisional; audio review pending",
+      "status": "Luna whole-game terminology draft",
+      "model": "gpt-6-luna",
+      "gender": "unresolved; initials/name"
+    },
+    {
+      "english": "the Union",
+      "hebrew": "האיגוד",
+      "aliases": ["the Union", "Union"],
+      "usage_note": "In Martinaise scenes, refers to the dockworkers’ union. Avoid replacing it with the entire political faction unless context explicitly does so.",
+      "evidence": {
+        "conversation_ids": [28, 29],
+        "source_keys": [
+          "Dialogue Text/0x0100005800008728",
+          "Dialogue Text/0x01000058000086F1",
+          "Dialogue Text/0x0100005800008718",
+          "Dialogue Text/0x0100005800008720",
+          "Dialogue Text/0x010000580000877F",
+          "Dialogue Text/0x0100000400008CFB",
+          "Dialogue Text/0x0100008100000A73",
+          "Dialogue Text/0x0100000400008B04"
+        ]
+      },
+      "pronunciation": "provisional; audio review pending",
+      "status": "Luna whole-game terminology draft",
+      "model": "gpt-6-luna",
+      "gender": "masculine (איגוד)"
+    },
+    {
+      "english": "mess hall",
+      "hebrew": "חדר האוכל",
+      "aliases": ["mess hall"],
+      "usage_note": "The union-reserved dining room; generic location term, not a separate faction.",
+      "evidence": {
+        "conversation_ids": [28],
+        "source_keys": ["Dialogue Text/0x01000058000086F1", "Dialogue Text/0x0100007800011801"]
+      },
+      "pronunciation": "provisional; audio review pending",
+      "status": "Luna whole-game terminology draft",
+      "model": "gpt-6-luna",
+      "gender": "masculine (חדר)"
+    },
+    {
+      "english": "pinball",
+      "hebrew": "פינבול",
+      "aliases": ["pinball"],
+      "usage_note": "Pinball machines/game mentioned among the Whirling’s machines; keep distinct from karaoke.",
+      "evidence": {
+        "conversation_ids": [28, 29],
+        "source_keys": [
+          "Dialogue Text/0x010000060000E201",
+          "Dialogue Text/0x0100001100001786",
+          "Dialogue Text/0x010000060000E1D0",
+          "Dialogue Text/0x010000580000889F",
+          "Dialogue Text/0x010000060001BD51",
+          "Dialogue Text/0x010000110000178E",
+          "Dialogue Text/0x010000580000A061",
+          "Dialogue Text/0x010000580000A098"
+        ]
+      },
+      "pronunciation": "provisional; audio review pending",
+      "status": "Luna whole-game terminology draft",
+      "model": "gpt-6-luna",
+      "gender": "masculine (game label)"
+    },
+    {
+      "english": "East Delta Commerce Centre",
+      "hebrew": "מרכז המסחר של הדלתא המזרחית",
+      "aliases": ["The Doomed Commercial Area", "East Delta Commerce Centre project"],
+      "usage_note": "Named commercial complex/building area. A dialogue explicitly identifies this as the name of the Doomed Commercial Area; preserve the distinction between the larger complex and the former pinball arcade within it.",
+      "gender": "masculine (מרכז)",
+      "pronunciation": "provisional; audio review pending",
+      "evidence": {
+        "conversation_ids": [28],
+        "source_keys": [
+          "Dialogue Text/0x010000060000E265",
+          "Dialogue Text/0x010000580000A076",
+          "Dialogue Text/0x01000058000087F8",
+          "Dialogue Text/0x010000580000A0BB",
+          "Dialogue Text/0x010000060000E238",
+          "Dialogue Text/0x010000580000A206"
+        ]
+      },
+      "status": "Luna terminology draft; review later-scene consistency",
+      "model": "gpt-6-luna"
+    },
+    {
+      "english": "East Delta Pinball Arcade",
+      "hebrew": "אולם הפינבול של הדלתא המזרחית",
+      "aliases": ["East Delta Pinball"],
+      "usage_note": "The Whirling-in-Rags’ former use/name as a pinball arcade, before it failed; distinct from the wider East Delta Commerce Centre.",
+      "gender": "masculine (אולם)",
+      "pronunciation": "provisional; audio review pending",
+      "evidence": {
+        "conversation_ids": [28],
+        "source_keys": ["Dialogue Text/0x010000580000A061", "Dialogue Text/0x010000580000A068"]
+      },
+      "status": "Luna terminology draft; review later-scene consistency",
+      "model": "gpt-6-luna"
+    },
+    {
+      "english": "Marinella",
+      "hebrew": "מרינלה",
+      "aliases": ["Marinellas"],
+      "usage_note": "Garte refers to serving a Marinella as a drink, including a deliberately absurd choice of serving vessel. Treat as a named drink/product until later context establishes more.",
+      "gender": "feminine (Hebrew transliteration provisional)",
+      "pronunciation": "provisional; audio review pending",
+      "evidence": {
+        "conversation_ids": [28],
+        "source_keys": [
+          "Dialogue Text/0x01000045000003C9",
+          "Dialogue Text/0x01000045000003D9",
+          "Dialogue Text/0x01000045000003B6"
+        ]
+      },
+      "status": "Luna terminology draft; review later-scene consistency",
+      "model": "gpt-6-luna"
+    },
+    {
+      "english": "Moralintern",
+      "hebrew": "מורלינטרן",
+      "aliases": ["Moralist International"],
+      "localized_aliases": {
+        "Moralist International": "האינטרנציונל המורליסטי"
+      },
+      "gender": "masculine (institution label)",
+      "usage_note": "The governing international political organization associated with the Coalition and Moralist ideology. Distinguish the organization from individual moralists and from the Coalition as a military/political alliance.",
+      "evidence": {
+        "conversation_ids": [
+          29, 350, 364, 368, 371, 482, 520, 549, 554, 635, 637, 639, 640, 688, 761, 810, 945, 965,
+          985, 998, 1067, 1120, 1168, 1181, 1218
+        ],
+        "source_keys": [
+          "Dialogue Text/0x0100000F0000F48A",
+          "Dialogue Text/0x0100000F0000F48F",
+          "Dialogue Text/0x010000040000128E",
+          "Dialogue Text/0x0100000F000085D1",
+          "Dialogue Text/0x0100000F0000CCAD",
+          "Dialogue Text/0x0100000F0000CCCC",
+          "Dialogue Text/0x0100000F0000CDD9",
+          "Dialogue Text/0x010000530000378F",
+          "Dialogue Text/0x0100005300003ACB",
+          "Dialogue Text/0x0100000F0000CC86",
+          "Dialogue Text/0x0100000F0000D1D2",
+          "Dialogue Text/0x0100000F0000D194"
+        ]
+      },
+      "pronunciation": "provisional; audio review pending",
+      "status": "Luna whole-game terminology draft; review capitalization and transliteration against later scenes",
+      "model": "gpt-6-luna"
+    },
+    {
+      "english": "Seolite",
+      "hebrew": "סאוליאני",
+      "localized_forms": {
+        "masculine_demonym": "סאוליאני",
+        "feminine_demonym": "סאוליאנית",
+        "language": "סאולית"
+      },
+      "aliases": ["Seolites"],
+      "gender": "masculine demonym; forms vary by referent; language name is grammatically feminine",
+      "usage_note": "Kim uses Seolite for both ancestry and language in one conversation. Use masculine/feminine demonym agreement for people (סאוליאני/סאוליאנית); use סאולית for the language. Do not infer Kim’s ancestry from his joking/uncertain fraction alone.",
+      "evidence": {
+        "conversation_ids": [29],
+        "source_keys": ["Dialogue Text/0x01000006000133AA", "Dialogue Text/0x01000006000133ED"]
+      },
+      "pronunciation": "provisional; audio review pending",
+      "status": "Luna terminology draft; verify later cultural-context scenes",
+      "model": "gpt-6-luna"
+    },
+    {
+      "english": "Cop Off",
+      "hebrew": "דו־קרב שוטרים",
+      "aliases": [],
+      "gender": "masculine phrase (דו־קרב)",
+      "usage_note": "A jokingly named police-versus-police showdown/competition; Kim recounts the 57th precinct using it as a challenge. Preserve the wordplay where feasible; do not confuse it with copotypes or the generic verb “cop off”.",
+      "evidence": {
+        "conversation_ids": [29],
+        "source_keys": ["Dialogue Text/0x0100000400009092", "Dialogue Text/0x0100002700000451"]
+      },
+      "pronunciation": "not applicable; phrase",
+      "status": "Luna terminology draft; contextual pun review required",
+      "model": "gpt-6-luna"
     }
   ],
   "policy": {
@@ -1676,6 +3819,62 @@
     {
       "scope": "18–19",
       "review": "Check scientific taxon/name audio, water-lock label against earlier scenes, wöman caricature and parthenogenesis mispronunciation; Acele continuation pending. Renderer review remains pending."
+    }
+  ],
+  "whole_game_draft": {
+    "model": "gpt-6-astra",
+    "date": "2026-11-10",
+    "scope": "Expanded named speakers across source actor inventory; existing canonical entries preserved. Not an exhaustive terminology or voice review.",
+    "added_entries": 79,
+    "remaining_actor_labels": 295,
+    "uncertainty": "Audio pronunciation and scene-specific voice/gender review pending where not established."
+  },
+  "luna_review": {
+    "model": "gpt-6-luna",
+    "date": "2026-11-10",
+    "scope": "Voice-note draft for recurring and narratively important speakers, based on actor identities and sample dialogue strings in source-index.json and translations.csv. Existing canonical entries and prior Astra attribution preserved.",
+    "updated_speakers": 13,
+    "limits": "Editorial draft from selected sample lines, not exhaustive scene-by-scene review. Pronunciation remains unverified without audio; actor labels and grammatical gender do not alone settle forms of address."
+  },
+  "luna_additions": {
+    "model": "gpt-6-luna",
+    "date": "2026-11-10",
+    "scope": "Added missing recurring/story speakers from actors.json, with source-index conversation and key evidence and provisional Hebrew labels/voice notes.",
+    "added_entries": 5,
+    "ids": [375, 381, 387, 87, 85],
+    "uncertainty": "Names and role labels remain draft transliterations. Gender/pronouns follow explicit IsFemale metadata only; unspecified labels remain unresolved. Voice notes are provisional and require full-scene review."
+  },
+  "luna_batch_28": {
+    "model": "gpt-6-luna",
+    "date": "2026-11-10",
+    "scope": "Terminology draft for the Garte Main scene and nearby encounters; source-backed by exact indexed English dialogue, including alternate source variants where applicable.",
+    "added_entries": 10,
+    "terms": [
+      "Kras Mazov",
+      "The Doomed Commercial Area",
+      "Seol",
+      "CS Municipal",
+      "the Union",
+      "mess hall",
+      "pinball",
+      "East Delta Commerce Centre",
+      "East Delta Pinball Arcade",
+      "Marinella"
+    ],
+    "review": "Check capitalization, final Hebrew orthography, and established franchise/world terminology against later scenes; names and pronunciation remain provisional."
+  },
+  "luna_recurring_terms": [
+    {
+      "model": "gpt-6-luna",
+      "date": "2026-11-10",
+      "terms": ["Moralintern", "Moralist International", "Mambo", "Jambo"],
+      "scope": "Added a missing recurring political organization and attached conversation 29 evidence to the Mambo/Jambo nicknames for the Inland Empire and Shivers skills."
+    },
+    {
+      "model": "gpt-6-luna",
+      "date": "2026-11-10",
+      "terms": ["Seolite", "Cop Off", "Revachol Citizens Militia"],
+      "scope": "Conversation 29 terms: demonym/language distinction; police challenge phrase; explicit RCM expansion."
     }
   ]
 }

@@ -2,8 +2,8 @@
   "branch": "codex/disco-elysium-hebrew",
   "source_of_truth": "translations.csv",
   "authoring": "Direct current-assistant translation; no external draft service",
-  "translated": 4165,
-  "remaining": 71602,
+  "translated": 5747,
+  "remaining": 73839,
   "conversations_with_translations": {
     "5": {
       "total": 14,
@@ -11,79 +11,100 @@
       "name": "KIM SWITCH / flashlight"
     },
     "8": {
-      "total": 70,
-      "translated": 70,
+      "total": 71,
+      "translated": 71,
       "name": "WHIRLING / DREAM1"
     },
     "9": {
-      "total": 58,
-      "translated": 58,
+      "total": 62,
+      "translated": 62,
       "name": "WHIRLING / CEILING FAN"
     },
     "10": {
-      "total": 255,
-      "translated": 255,
+      "total": 283,
+      "translated": 283,
       "name": "WHIRLING / BATHROOM MIRROR"
     },
     "11": {
-      "total": 230,
-      "translated": 230,
+      "total": 246,
+      "translated": 246,
       "name": "WHIRLING F2 / KLAASJE 1"
     },
     "12": {
-      "total": 152,
-      "translated": 152,
+      "total": 168,
+      "translated": 168,
       "name": "WHIRLING / KIM INTRO"
     },
     "13": {
-      "total": 488,
-      "translated": 488,
+      "total": 511,
+      "translated": 511,
       "name": "WHIRLING F1 / GARTE"
     },
     "14": {
-      "total": 1103,
+      "total": 1146,
       "translated": 1103,
       "name": "YARD / HANGED MAN"
     },
     "15": {
-      "total": 95,
+      "total": 101,
       "translated": 95,
       "name": "WESTCOAST / EXECUTIONS VISCAL"
     },
     "16": {
-      "total": 653,
+      "total": 702,
       "translated": 653,
       "name": "WHIRLING F3 / KLAASJE MAIN"
     },
     "17": {
-      "total": 545,
+      "total": 569,
       "translated": 545,
       "name": "VILLAGE / WASHERWOMAN"
     },
     "18": {
-      "total": 453,
+      "total": 478,
       "translated": 453,
       "name": "WESTCOAST / MORELL"
     },
     "19": {
-      "total": 512,
-      "translated": 30,
+      "total": 559,
+      "translated": 512,
       "name": "ICE / ACELE"
+    },
+    "20": {
+      "total": 48,
+      "translated": 47,
+      "name": "ICE / AFTER CRYING KIM"
+    },
+    "26": {
+      "total": 1,
+      "translated": 1,
+      "name": "WHIRLING F2 / KLAASJE Barks"
+    },
+    "28": {
+      "total": 964,
+      "translated": 964,
+      "name": "WHIRLING F1 / GARTE MAIN"
     }
   },
   "resume_at": {
-    "conversation_id": 19,
-    "entry_id": 52,
-    "key": "Dialogue Text/0x01000004000027CD"
+    "conversation_id": 14,
+    "entry_id": 123,
+    "key": "Alternate1/0x01000006000087B6"
   },
-  "glossary_entries": 182,
+  "glossary_entries": 279,
   "validation": {
     "csv_errors": [],
     "pipeline_tests": "6 passed",
     "glossary_warnings": 0,
-    "renderer": "New translations not tested in-game; Arial previously user-verified",
+    "renderer": "Astra batches not built or tested in-game; previous bundle validation applies only to earlier 4165 entries",
     "bundle_translated_keys": 4165,
-    "bundle_sha256": "30822499ec9c1dc102393335a2344a06da71153857fcd62ba1d01ec8ce7d9906"
+    "bundle_sha256": "30822499ec9c1dc102393335a2344a06da71153857fcd62ba1d01ec8ce7d9906",
+    "last_csv_validation": {
+      "translated": 5747,
+      "coverage_percent": 7.221,
+      "errors": []
+    }
   },
-  "pending": "Full translation, contextual editorial review, unresolved source mapping, Windows/macOS packaging and onboarding remain incomplete."
+  "pending": "Full translation, contextual editorial review, unresolved source mapping, Windows/macOS packaging and onboarding remain incomplete.",
+  "active_translation_model": "gpt-6-astra"
 }

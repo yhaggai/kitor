@@ -23,6 +23,14 @@ Use a manual workaround only for a demonstrated gap in the native support, and r
 
 For Jenny LeClue, read [the native RTL implementation notes](../../../patches-workspace/jenny-leclue/he/NATIVE-RTL.md) before changing dialogue direction. Its dialogue, choices, menus, and classroom typewriter reuse native Arabic RTL processing with a nikud adapter. Other static screens and manuscript layouts retain separate handling; do not globally enable RTL on still-reversed text.
 
+## Glossary and translation model roles
+
+For this workspace, use **GPT-6 Luna (`gpt-6-luna`) for glossary drafts** and **GPT-6 Astra (`gpt-6-astra`) for game translation**, unless the user specifies otherwise. Delegate these roles with the explicit model overrides when available; if a requested model is unavailable, report that instead of silently substituting another model. Luna is an OpenAI model, not an open-source model. The Argos configuration below is historical Silver Pines context, not the glossary model.
+
+Give Luna source dialogue, speaker IDs, conversation context and the existing glossary. Preserve established Hebrew names; attach source references to new terms and mark uncertain gender, identity and pronunciation as provisional. Astra should use the saved draft while translating and resolve consequential ambiguities against the source. Record each model's actual contribution separately; do not relabel earlier entries as Luna-authored. Keep glossary and translation writers on separate files to avoid concurrent overwrites.
+
+For Disco Elysium, write translations directly to `patches-workspace/disco-elysium/he/translations.csv` in logical Hebrew order. Preserve source English, stable keys and protected tokens; validate saved batches with `text_pipeline.py validate`. Continue authorized batches without asking for approval between them, and report coverage without treating a partial draft as a complete translation.
+
 ## Establish the voices
 
 Maintain a glossary with the English label, canonical Hebrew name, aliases, grammatical gender, pronouns, forms of address and the source that establishes them. Distinguish speaker, addressee and third-person subject. If a name or role leaves gender unresolved, use natural unmarked wording such as ״אפשר לעזור?״. Preserve what the player knows at that scene.
