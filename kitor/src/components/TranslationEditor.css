@@ -164,15 +164,95 @@
   font-family: monospace;
   font-size: 20px;
 }
-.translation-auth button:not([class]),
-.translation-success button {
-  color: #efb667;
-  text-decoration: underline;
+.translation-celebration {
+  flex: 1;
+  min-height: 0;
+  position: relative;
+  overflow: auto;
+  border: 1px solid #31564e;
+  border-radius: 18px;
+  background: radial-gradient(ellipse at top, #23443f 0%, #132732 45%, #101c2b 85%);
+  text-align: center;
 }
-.translation-success {
-  padding: 14px;
-  background: #16392f;
-  border-radius: 6px;
+.translation-celebration-content {
+  position: relative;
+  max-width: 620px;
+  margin: auto;
+  padding: clamp(24px, 4vh, 48px) 24px;
+}
+.translation-celebration-emoji {
+  display: block;
+  font-size: 64px;
+  margin-bottom: 16px;
+}
+.translation-celebration h3 {
+  font-size: clamp(26px, 3vw, 38px);
+  font-weight: 700;
+  margin: 12px 0;
+  color: #f2fff9;
+}
+.translation-celebration p {
+  color: #bdcedc;
+  line-height: 1.65;
+  margin: 12px 0;
+}
+.translation-celebration .translation-celebration-thanks {
+  color: #e3efe9;
+  font-size: 17px;
+}
+.translation-celebration-next {
+  background: #0c142266;
+  border: 1px solid #365448;
+  border-radius: 12px;
+  padding: 18px 22px;
+  margin: 24px 0;
+}
+.translation-celebration-next strong {
+  color: #a5ebc9;
+}
+.translation-celebration-next small {
+  color: #9daec5;
+  line-height: 1.5;
+  display: block;
+}
+.translation-confetti {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+.translation-confetti i {
+  position: absolute;
+  top: -20px;
+  left: var(--x);
+  width: 8px;
+  height: 14px;
+  background: var(--color);
+  opacity: 0;
+  animation: contribution-confetti 2.8s ease-out var(--delay) both;
+}
+.translation-confetti i:nth-child(3n) {
+  border-radius: 50%;
+  width: 10px;
+  height: 10px;
+}
+@keyframes contribution-confetti {
+  0% {
+    opacity: 1;
+    transform: translate(0, 0) rotate(0);
+  }
+  65% {
+    opacity: 0.9;
+  }
+  100% {
+    opacity: 0;
+    transform: translate(var(--drift), 520px) rotate(600deg);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .translation-confetti {
+    display: none;
+  }
 }
 @media (max-width: 850px) {
   .translation-editor {

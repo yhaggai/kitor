@@ -9,7 +9,7 @@ import {
 } from "ag-grid-community";
 import { AgGridReact } from "ag-grid-react";
 import { Redo2, Search, Undo2 } from "lucide-react";
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { type CSSProperties, useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogDescription, DialogTitle } from "@/components/ui/dialog";
 import "./TranslationEditor.css";
@@ -327,7 +327,7 @@ export default function TranslationEditor({
             </div>
           </>
         )}
-        {preview && (
+        {preview && !pr && (
           <div className="translation-review">
             <h3>Review {preview.changes.length} correction(s)</h3>
             <p>
@@ -359,15 +359,54 @@ export default function TranslationEditor({
                 </Button>
               </div>
             )}
-            {pr && (
-              <p className="translation-success">
-                Ready for review.{" "}
-                <button type="button" onClick={() => void openUrl(pr)}>
-                  Open draft pull request ↗
-                </button>
-              </p>
-            )}
           </div>
+        )}
+        {pr && (
+          <section className="translation-celebration" aria-labelledby="contribution-success-title">
+            <div className="translation-confetti" aria-hidden="true">
+              {Array.from({ length: 48 }, (_, i) => (
+                <i
+                  // biome-ignore lint/suspicious/noArrayIndexKey: Fixed decorative particles never reorder.
+                  key={`confetti-${i}`}
+                  style={
+                    {
+                      "--x": `${(i * 37) % 100}%`,
+                      "--delay": `${(i % 8) * 0.09}s`,
+                      "--drift": `${((i * 23) % 160) - 80}px`,
+                      "--color": ["#efb667", "#83e6bb", "#a69aff", "#83ccff", "#ff9ea9"][i % 5],
+                    } as CSSProperties
+                  }
+                />
+              ))}
+            </div>
+            <div className="translation-celebration-content">
+              <span className="translation-celebration-emoji" aria-hidden="true">
+                🎉
+              </span>
+              <span className="translation-eyebrow">A LITTLE EDIT. A BETTER ADVENTURE.</span>
+              <h3 id="contribution-success-title">Your contribution is in!</h3>
+              <p className="translation-celebration-thanks">
+                Thank you for helping bring The Drifter to life in Hebrew.
+              </p>
+              <p>
+                Your {preview?.changes.length === 1 ? "correction is" : "corrections are"} ready for
+                review. Once approved for release, they can be included in the next patch version.
+              </p>
+              <div className="translation-celebration-next">
+                <strong>What happens next?</strong>
+                <p>
+                  The translation team reviews your changes. You can follow their feedback on your
+                  contribution.
+                </p>
+                <small>
+                  In this preview, approval notifications and patch releases aren’t connected yet.
+                </small>
+              </div>
+              <Button variant="outline" onClick={() => void openUrl(pr)}>
+                View your contribution ↗
+              </Button>
+            </div>
+          </section>
         )}
         <div className="translation-footer">
           <div aria-live="polite">
@@ -380,7 +419,9 @@ export default function TranslationEditor({
             )}
           </div>
           <div className="translation-footer-actions">
-            {preview ? (
+            {pr ? (
+              <Button onClick={() => void close()}>Done — thank you!</Button>
+            ) : preview ? (
               <>
                 <Button variant="outline" disabled={busy} onClick={() => setPreview(null)}>
                   Back to editing
