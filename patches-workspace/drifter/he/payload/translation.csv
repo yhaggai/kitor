@@ -8,13 +8,13 @@ v1.1.4","- Download csv: File->Download->Comma-Separated Values (.csv)
 ,100000,,Translation Setting,Force HD Font (Y/N),Y
 Narr,0,Room- Title,NewGame,I'd jumped the car back in Breaker's Cut,.טאק ס'רקיירבב ןורקה לע יתצפק
 Narr,1,Room- Title,NewGame,Told myself I'd never come back...,...ןאכל רוזחא אל םלועלש ימצעל יתרמא
-Narr,2,Room- Title,NewGame,"But well, shit... Here I am",.בוש ינא הנה ...לזאזעל לבא
+Narr,2,Room- Title,NewGame,"But well, shit... Here I am",sss
 ,0,Room- Title,ContinueGame,Failed to restore game,קחשמה רוזחשב לשכנ
 ,1,Room- Title,ContinueGame,Ok,רושיא
 ,2,Room- Title,Prop Description,New,שדח
 ,3,Room- Title,Prop Description,Continue,ךשמה
 ,4,Room- Title,Prop Description,Select chapter (For testing),
-,5,Room- Title,Hotspot Description,Start,לחתה
+,5,Room- Title,Hotspot Description,Start,111111
 Narr,3,Room- BoxCar,OnWalkTo,"Oh shit, how am I getting out of here?","?ןאכמ אצוי ינא ךיא ,לזאזעל"
 Narr,4,Room- BoxCar,WakeUp,This must be me,.ינא חטב הז
 Mick,0,Room- BoxCar,WakeUp,Damn,.לזאזעל
@@ -41,7 +41,7 @@ Narr,16,Room- BoxCar,Look out the open door (first time),"Squinting into the lig
 .םיחיגשמו םיכחמ "
 Narr,17,Room- BoxCar,Look out the open door (first time),"Can't make out who they are, but not metro security, that's for sure",".תיתחתה תבכרה תחטבא ישנאמ אל חוטב םה לבא ,םה ימ תוהזל רשפא יא"
 ,8,Room- BoxCar,Look out the open door (first time),That flow hatch might be my only way out of here,.ןאכמ תאצל ילש הדיחיה ךרדה תויהל יושע הזה רורוואה חתפ
-,9,Room- BoxCar,Look out the open door (first time),Might be able to dive past the door,.תלדל רבעמ קנזל חילצא ילוא
+,9,Room- BoxCar,Look out the open door (first time),Might be able to dive past the door,.תלדל רבעמ קנזל חילצא ילוא!
 ,10,Room- BoxCar,Look out the open door (first time),"They're out there watching, how much time do I have?",?יל רתונ ןמז המכ .םיפוצו ץוחב םש םידמוע םה
 Narr,18,Room- BoxCar,Look out the open door again,"Nope, not getting out that way",.םשמ אצוי אל ינא .אל
 Mick,8,Room- BoxCar,Look out the open door again,"Christ, what's going on?","?הפ הרוק לזאזעל המ ,םיהולא"
