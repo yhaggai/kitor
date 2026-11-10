@@ -7,8 +7,9 @@ import { type GameBoxLanguage, GameCover } from "./GameCover";
 /** Interactive bilingual box viewer used in the inspection modal. */
 export function GameBox({ game }: { game: GameSummary }) {
   const { t } = useTranslation();
-  const [language, setLanguage] = useState<GameBoxLanguage>("he");
-  const [rotation, setRotation] = useState(163);
+  const initialLanguage = game.coverLanguage ?? "he";
+  const [language, setLanguage] = useState<GameBoxLanguage>(initialLanguage);
+  const [rotation, setRotation] = useState(initialLanguage === "he" ? 163 : -17);
   const [zoom, setZoom] = useState(100);
   const drag = useRef<{ id: number; x: number; rotation: number } | null>(null);
   const changeZoom = (delta: number) =>

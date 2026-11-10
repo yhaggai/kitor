@@ -12,12 +12,13 @@ import { useAppStore } from "@/store/store";
 
 type GameLibraryProps = {
   onRefresh: () => void | Promise<void>;
+  navigationResetKey?: number;
 };
 
-export default function GameLibrary({ onRefresh }: GameLibraryProps) {
+export default function GameLibrary({ onRefresh, navigationResetKey }: GameLibraryProps) {
   const { t } = useTranslation();
   const { games, highlightedGameId, setHighlightedGameId } = useAppStore();
-  const navigation = useGameNavigation();
+  const navigation = useGameNavigation(navigationResetKey);
   const selected = games.find((game) => String(game.id) === navigation.selectedId);
   const [isScanning, setIsScanning] = useState(false);
   const [isRemoving, setIsRemoving] = useState(false);

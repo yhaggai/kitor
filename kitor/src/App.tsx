@@ -1,7 +1,7 @@
 import { AppShell } from "@kitor/ui";
 import { invoke } from "@tauri-apps/api/core";
 import { listen } from "@tauri-apps/api/event";
-import { useCallback, useEffect, useRef } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import AppUpdateDialog from "@/components/AppUpdateDialog";
 import BugReportDialog from "@/components/BugReportDialog";
 import GameLibrary from "@/components/GameLibrary";
@@ -28,6 +28,7 @@ type ScummVMStatus = {
 };
 
 function App() {
+  const [navigationResetKey, setNavigationResetKey] = useState(0);
   useEffect(() => {
     void appUpdateStore.getState().check();
   }, []);
@@ -127,6 +128,7 @@ function App() {
         activeTab === "patches" ? "discovery" : activeTab === "settings" ? "settings" : "library"
       }
       onNavigate={(view) => {
+        setNavigationResetKey((key) => key + 1);
         setActiveTab(view === "discovery" ? "patches" : view);
         window.scrollTo({ top: 0, behavior: "instant" });
       }}
@@ -139,10 +141,10 @@ function App() {
     >
       <AppUpdateDialog />
       <div hidden={activeTab !== "library"}>
-        <GameLibrary onRefresh={loadGames} />
+        <GameLibrary onRefresh={loadGames} navigationResetKey={navigationResetKey} />
       </div>
       <div hidden={activeTab !== "patches"}>
-        <PatchBrowser />
+        <PatchBrowser navigationResetKey={navigationResetKey} />
       </div>
       {activeTab === "settings" && <Settings />}
     </AppShell>

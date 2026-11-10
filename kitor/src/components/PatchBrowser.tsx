@@ -12,13 +12,13 @@ import { patchSummary } from "@/lib/presentation";
 
 import { type Game, type Patch, useAppStore } from "@/store/store";
 
-export default function PatchBrowser() {
+export default function PatchBrowser({ navigationResetKey }: { navigationResetKey?: number }) {
   const { t } = useTranslation();
   const { state, actions } = usePatchBrowserState();
   const { patches, loading, showAddDialog } = state;
 
   const { games, setGames } = useAppStore();
-  const navigation = useGameNavigation();
+  const navigation = useGameNavigation(navigationResetKey);
   const selected = patches.find((patch) => patchSummary(patch).id === navigation.selectedId);
   const [loadError, setLoadError] = useState<string>();
   const [isScanning, setIsScanning] = useState(false);
