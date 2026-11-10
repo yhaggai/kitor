@@ -1,5 +1,6 @@
 import { useTranslation } from "@kitor/ui";
 import { useState } from "react";
+import BugReportDialog from "@/components/BugReportDialog";
 import { GameInstallFolder } from "@/components/dialogs/GameInstallFolder";
 import { Button } from "@/components/ui/button";
 import {
@@ -120,9 +121,12 @@ export function GogDownloadDialog({
           </div>
         )}
         {error && (
-          <p role="alert" className="text-sm text-destructive">
-            {error}
-          </p>
+          <div className="space-y-2">
+            <p role="alert" className="text-sm text-destructive">
+              {error}
+            </p>
+            <BugReportDialog game={gameId} details={error} />
+          </div>
         )}
         <DialogFooter>
           <Button variant="outline" onClick={() => onOpenChange(false)}>

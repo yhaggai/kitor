@@ -1,6 +1,7 @@
 import { useTranslation } from "@kitor/ui";
 import { invoke } from "@tauri-apps/api/core";
 import { useEffect, useState } from "react";
+import BugReportDialog from "@/components/BugReportDialog";
 import { GogDownloadDialog } from "@/components/dialogs/GogDownloadDialog";
 import {
   type SteamDownloadCapabilities,
@@ -190,9 +191,12 @@ export function StoreInstallButtons({
         />
       )}
       {error && (
-        <p role="alert" className="text-sm text-destructive">
-          {error}
-        </p>
+        <div className="space-y-2">
+          <p role="alert" className="text-sm text-destructive">
+            {error}
+          </p>
+          <BugReportDialog game={scummvmId} details={error} />
+        </div>
       )}
     </div>
   );

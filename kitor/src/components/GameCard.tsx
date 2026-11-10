@@ -14,6 +14,7 @@ import {
   Undo,
 } from "lucide-react";
 import { type ReactNode, useEffect, useState } from "react";
+import BugReportDialog from "@/components/BugReportDialog";
 import { DeleteGameDialog } from "@/components/dialogs/DeleteGameDialog";
 import { InstallPatchDialog } from "@/components/dialogs/InstallPatchDialog";
 import { RestoreGameDialog } from "@/components/dialogs/RestoreGameDialog";
@@ -118,7 +119,12 @@ export default function GameCard({ game, collection, onRemove, onBack }: GameCar
         store.games.map((entry) => (entry.id === game.id ? { ...updatedGame, health } : entry))
       );
     } catch (error) {
-      await alert({ title: t("Refresh Failed"), description: String(error) });
+      await alert({
+        failure: true,
+        game: game.title,
+        title: t("Refresh Failed"),
+        description: String(error),
+      });
     } finally {
       setRefreshing(false);
     }
@@ -143,7 +149,12 @@ export default function GameCard({ game, collection, onRemove, onBack }: GameCar
       ) {
         actions.showScummVMDialog();
       } else {
-        await alert({ title: t("Launch Failed"), description: String(error) });
+        await alert({
+          failure: true,
+          game: game.title,
+          title: t("Launch Failed"),
+          description: String(error),
+        });
       }
     }
   };
@@ -168,7 +179,18 @@ export default function GameCard({ game, collection, onRemove, onBack }: GameCar
       );
     } catch (error) {
       console.error("Failed to install patch:", error);
-      await alert({ title: t("Install Failed"), description: String(error) });
+      await alert({
+        failure: true,
+        game: game.title,
+        title: t("Install Failed"),
+        description: [
+          String(error),
+          `Game ID: ${game.scummvm_id}`,
+          `Patch: ${patch.language} ${patch.version}`,
+          `Detected version: ${game.detected_version ?? "unknown"}`,
+          ...(game.health?.details ?? []),
+        ].join("\n"),
+      });
     } finally {
       actions.hideInstallDialog();
       actions.finishInstall();
@@ -183,7 +205,12 @@ export default function GameCard({ game, collection, onRemove, onBack }: GameCar
       onRemove?.();
     } catch (error) {
       console.error("Failed to remove game:", error);
-      await alert({ title: t("Remove Failed"), description: String(error) });
+      await alert({
+        failure: true,
+        game: game.title,
+        title: t("Remove Failed"),
+        description: String(error),
+      });
     } finally {
       actions.finishDelete();
     }
@@ -205,7 +232,12 @@ export default function GameCard({ game, collection, onRemove, onBack }: GameCar
       await refreshPatchStatus("Game restored successfully!");
     } catch (error) {
       console.error("Failed to restore game:", error);
-      await alert({ title: t("Restore Failed"), description: String(error) });
+      await alert({
+        failure: true,
+        game: game.title,
+        title: t("Restore Failed"),
+        description: String(error),
+      });
     } finally {
       actions.finishRestore();
     }
@@ -224,6 +256,8 @@ export default function GameCard({ game, collection, onRemove, onBack }: GameCar
     } catch (error) {
       console.error("Failed to refresh patch status:", error);
       await alert({
+        failure: true,
+        game: game.title,
         title: t("Library Refresh Failed"),
         description: t("{0} The displayed status could not be refreshed: {1}", [
           successMessage,
@@ -268,6 +302,26 @@ export default function GameCard({ game, collection, onRemove, onBack }: GameCar
     (!game.health || game.health.patch_status === "not_installed");
   const canRestore = gameReady && recordedPatch;
   const canUpdate = gameReady && hasPatch && !!updatePatch;
+  const patchBlockReasons = [
+    ...(!gameReady ? [`Game files: ${game.health?.game_status}`] : []),
+    ...(!game.has_available_patch
+      ? ["No compatible patch is available in the current catalog."]
+      : []),
+    ...(recordedPatch && !hasPatch
+      ? ["An existing patch record must be restored or resolved before installation."]
+      : []),
+    ...(game.health && !["installed", "not_installed"].includes(game.health.patch_status)
+      ? [`Patch verification: ${game.health.patch_status}`]
+      : []),
+  ];
+  const blockedPatchDetails = [
+    "Patch installation unavailable",
+    `Game ID: ${game.scummvm_id}`,
+    `Detected version: ${game.detected_version ?? "unknown"}`,
+    ...patchBlockReasons,
+    ...(game.health?.details ?? []),
+    `Available patches: ${game.available_patches?.map((patch) => `${patch.language} ${patch.version}`).join(", ") || "none"}`,
+  ].join("\n");
   const busy = refreshing || state.isInstalling || state.isRestoring || state.isDeleting;
 
   return (
@@ -311,6 +365,9 @@ export default function GameCard({ game, collection, onRemove, onBack }: GameCar
                   {t("Checked")} {new Date(game.health.checked_at).toLocaleTimeString()}
                 </p>
               </div>
+            )}
+            {!busy && !hasPatch && !canInstall && patchBlockReasons.length > 0 && (
+              <BugReportDialog game={game.title} details={blockedPatchDetails} />
             )}
             {canPlay && (
               <Button className="w-full" size="sm" onClick={handleLaunch} disabled={busy}>

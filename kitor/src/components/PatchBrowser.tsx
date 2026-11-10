@@ -5,6 +5,7 @@ import { open as openDialog } from "@tauri-apps/plugin-dialog";
 import { ChevronDown, FolderSearch } from "lucide-react";
 import { useEffect, useState } from "react";
 import AddGameDialog from "@/components/AddGameDialog";
+import BugReportDialog from "@/components/BugReportDialog";
 import GameDetails from "@/components/GameDetails";
 import { Button } from "@/components/ui/button";
 import { usePatchBrowserState } from "@/hooks/usePatchBrowserState";
@@ -21,12 +22,14 @@ export default function PatchBrowser({ navigationResetKey }: { navigationResetKe
   const navigation = useGameNavigation(navigationResetKey);
   const selected = patches.find((patch) => patchSummary(patch).id === navigation.selectedId);
   const [loadError, setLoadError] = useState<string>();
+  const [failure, setFailure] = useState("");
   const [isScanning, setIsScanning] = useState(false);
   const [scanMessage, setScanMessage] = useState("");
   const [scanWarnings, setScanWarnings] = useState<string[]>([]);
 
   const handleScanGames = async (automatic: boolean) => {
     if (isScanning) return;
+    setFailure("");
     setIsScanning(true);
     setScanMessage("");
     setScanWarnings([]);
@@ -61,11 +64,13 @@ export default function PatchBrowser({ navigationResetKey }: { navigationResetKe
         );
       }
     } catch (error) {
+      setFailure(String(error));
       setScanMessage(t("Scan failed: {0}", [String(error)]));
     } finally {
       try {
         setGames(await invoke<Game[]>("get_games_with_patches"));
       } catch (error) {
+        setFailure(String(error));
         setScanWarnings((warnings) => [
           ...warnings,
           t("Could not refresh games: {0}", [String(error)]),
@@ -103,6 +108,7 @@ export default function PatchBrowser({ navigationResetKey }: { navigationResetKe
 
         actions.setPatches(patchesWithStatus);
       } catch (error) {
+        setFailure(String(error));
         console.error("Failed to load patches:", error);
         setLoadError(String(error));
       } finally {
@@ -157,6 +163,7 @@ export default function PatchBrowser({ navigationResetKey }: { navigationResetKe
           }
           feedback={
             <div aria-live="polite">
+              {failure && <BugReportDialog details={failure} />}
               {isScanning && (
                 <p className="text-sm text-muted-foreground">{t("Scanning game folders…")}</p>
               )}
@@ -167,6 +174,7 @@ export default function PatchBrowser({ navigationResetKey }: { navigationResetKe
                     {t("Scan warnings (")}
                     {scanWarnings.length})
                   </summary>
+                  <BugReportDialog details={scanWarnings.join("\n")} />
                   <ul className="mt-2 list-disc pl-5">
                     {scanWarnings.map((warning, index) => (
                       <li key={`${index}-${warning}`}>{warning}</li>

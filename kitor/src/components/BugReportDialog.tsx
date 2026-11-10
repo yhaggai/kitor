@@ -3,7 +3,7 @@ import { getVersion } from "@tauri-apps/api/app";
 import { invoke, isTauri } from "@tauri-apps/api/core";
 import { openUrl } from "@tauri-apps/plugin-opener";
 import { Bug, ImagePlus, Mail, X } from "lucide-react";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useId, useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -50,11 +50,18 @@ function Screenshot({ file, onRemove }: { file: File; onRemove: () => void }) {
   );
 }
 
-export default function BugReportDialog() {
+export default function BugReportDialog({
+  game: initialGame = "",
+  details: initialDetails = "",
+}: {
+  game?: string;
+  details?: string;
+} = {}) {
+  const id = useId();
   const { t } = useTranslation();
   const [open, setOpen] = useState(false);
-  const [game, setGame] = useState("");
-  const [details, setDetails] = useState("");
+  const [game, setGame] = useState(initialGame);
+  const [details, setDetails] = useState(initialDetails);
   const [files, setFiles] = useState<File[]>([]);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState("");
@@ -62,6 +69,28 @@ export default function BugReportDialog() {
   const [diagnostics, setDiagnostics] = useState<string>();
   const [collecting, setCollecting] = useState(false);
   const picker = useRef<HTMLInputElement>(null);
+
+  // Failure entry points supply details; the general report button stays opt-in.
+  useEffect(() => {
+    if (!open || !initialDetails || !isTauri()) return;
+    let active = true;
+    setDiagnostics(undefined);
+    setCollecting(true);
+    void invoke<string>("collect_bug_diagnostics")
+      .then((result) => {
+        if (active) setDiagnostics(result);
+      })
+      .catch(() => {
+        if (active)
+          setError("Could not collect diagnostics. You can still send a report without them.");
+      })
+      .finally(() => {
+        if (active) setCollecting(false);
+      });
+    return () => {
+      active = false;
+    };
+  }, [open, initialDetails]);
 
   function addFiles(incoming: File[]) {
     setError("");
@@ -134,9 +163,21 @@ export default function BugReportDialog() {
   const fieldClass =
     "kt-request-field w-full rounded-md border border-input bg-background px-3 py-2 text-sm";
   return (
-    <Dialog open={open} onOpenChange={setOpen}>
+    <Dialog
+      open={open}
+      onOpenChange={(nextOpen) => {
+        if (nextOpen && initialDetails) {
+          setGame(initialGame);
+          setDetails(initialDetails);
+          setStatus("");
+          setError("");
+        }
+        if (nextOpen && initialDetails && isTauri()) setCollecting(true);
+        setOpen(nextOpen);
+      }}
+    >
       <DialogTrigger asChild>
-        <Button variant="outline">
+        <Button type="button" variant="outline">
           <Bug />
           <span>{t("Report a bug")}</span>
         </Button>
@@ -163,6 +204,7 @@ export default function BugReportDialog() {
           className="space-y-4"
           onSubmit={(event) => {
             event.preventDefault();
+            event.stopPropagation();
             void prepareReport();
           }}
           onPaste={(event) => {
@@ -174,11 +216,11 @@ export default function BugReportDialog() {
           }}
         >
           <div className="space-y-1">
-            <label htmlFor="bug-game" className="text-sm font-medium">
+            <label htmlFor={`${id}-game`} className="text-sm font-medium">
               {t("Game / patch (optional)")}{" "}
             </label>
             <input
-              id="bug-game"
+              id={`${id}-game`}
               className={fieldClass}
               value={game}
               maxLength={200}
@@ -187,11 +229,11 @@ export default function BugReportDialog() {
             />
           </div>
           <div className="space-y-1">
-            <label htmlFor="bug-details" className="text-sm font-medium">
+            <label htmlFor={`${id}-details`} className="text-sm font-medium">
               {t("What went wrong?")}{" "}
             </label>
             <textarea
-              id="bug-details"
+              id={`${id}-details`}
               className={`${fieldClass} min-h-32`}
               required
               maxLength={12000}
@@ -250,7 +292,7 @@ export default function BugReportDialog() {
               <label className="flex items-center gap-2 text-sm">
                 <input
                   type="checkbox"
-                  checked={!!diagnostics}
+                  checked={collecting || !!diagnostics}
                   disabled={busy || collecting}
                   onChange={async (event) => {
                     if (!event.target.checked) {

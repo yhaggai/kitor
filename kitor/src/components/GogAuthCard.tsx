@@ -3,6 +3,7 @@ import { invoke } from "@tauri-apps/api/core";
 import { listen } from "@tauri-apps/api/event";
 import { CheckCircle, LogIn, LogOut, XCircle } from "lucide-react";
 import { useEffect, useState } from "react";
+import BugReportDialog from "@/components/BugReportDialog";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -31,7 +32,7 @@ export default function GogAuthCard() {
 
     const unlistenError = listen<string>("gog-login-error", (event) => {
       setIsLoggingIn(false);
-      alert.alert({ title: t("Login Failed"), description: event.payload });
+      alert.alert({ failure: true, title: t("Login Failed"), description: event.payload });
     });
 
     return () => {
@@ -46,7 +47,7 @@ export default function GogAuthCard() {
       await invoke("login_to_gog");
     } catch (error) {
       console.error("Failed to initiate GOG login:", error);
-      await alert.alert({ title: t("Login Failed"), description: String(error) });
+      await alert.alert({ failure: true, title: t("Login Failed"), description: String(error) });
       setIsLoggingIn(false);
     }
   };
@@ -69,7 +70,7 @@ export default function GogAuthCard() {
       useGogLibrary.getState().clear();
     } catch (error) {
       console.error("Failed to logout from GOG:", error);
-      await alert.alert({ title: t("Logout Failed"), description: String(error) });
+      await alert.alert({ failure: true, title: t("Logout Failed"), description: String(error) });
     } finally {
       setIsLoggingOut(false);
     }
@@ -135,9 +136,12 @@ export default function GogAuthCard() {
             </Button>
           )}
           {libraryError && (
-            <p role="alert" className="text-sm text-destructive">
-              {libraryError}
-            </p>
+            <div className="space-y-2">
+              <p role="alert" className="text-sm text-destructive">
+                {libraryError}
+              </p>
+              <BugReportDialog details={libraryError} />
+            </div>
           )}
           {gogAuth.isAuthenticated && (
             <Button

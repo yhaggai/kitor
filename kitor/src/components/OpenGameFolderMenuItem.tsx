@@ -12,7 +12,11 @@ export function OpenGameFolderMenuItem({ gameId }: { gameId: number }) {
     try {
       await invoke("open_game_folder", { gameId });
     } catch (error) {
-      await alert({ title: t("Could Not Open Game Folder"), description: String(error) });
+      await alert({
+        failure: true,
+        title: t("Could Not Open Game Folder"),
+        description: String(error),
+      });
     }
   };
 
