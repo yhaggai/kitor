@@ -2,3 +2,5 @@ node_modules/
 .wrangler/
 .dev.vars
 .env*
+wrangler.deploy.json
+.deploy-secrets.json

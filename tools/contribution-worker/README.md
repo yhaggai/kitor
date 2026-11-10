@@ -99,3 +99,67 @@ Before public deployment: provision real D1 and secrets, set HTTPS URLs and
 Google production branding, measure Worker CPU with the full CSV, choose limits
 accordingly, and add operational monitoring/account-deletion handling. No patch
 build runs inside this Worker; existing repository CI handles patch validation.
+
+## GitHub Actions deployment
+
+`.github/workflows/deploy-contribution-worker.yml` validates PRs without secrets.
+Pushes to `v1` affecting the Worker deploy staging. For production, run
+**Contribution Worker → Run workflow**, choose branch **v1** and environment
+**production**. Other branches cannot run the deployment job. Deployments to the
+same environment are serialized and are not cancelled mid-migration.
+
+Before the first deployment, create GitHub environments `staging` and `production`.
+Configure **required reviewers** on production and restrict its deployment branches
+to `v1`. These protections are repository settings, not enforced by this YAML alone.
+If your GitHub plan does not support required reviewers for this repository, establish
+an equivalent approval gate before enabling production deployment.
+
+Create two D1 databases once using your Cloudflare account:
+
+```sh
+npx wrangler d1 create kitor-contributions-staging
+npx wrangler d1 create kitor-contributions-production
+```
+
+Record the returned IDs in the corresponding GitHub environment. Never use the
+same D1 ID for both environments. Enable your account's workers.dev subdomain.
+
+Each GitHub environment needs these **variables**:
+
+| Variable | Value |
+| --- | --- |
+| `CLOUDFLARE_ACCOUNT_ID` | Your Cloudflare account ID |
+| `D1_DATABASE_ID` | That environment's provisioned database UUID |
+| `PUBLIC_URL` | `https://kitor-contributions-staging.<subdomain>.workers.dev` or the production equivalent |
+| `BOT_APP_ID` | The contribution bot's app ID (`5666467` for the current bot) |
+
+And these **secrets**:
+
+| Secret | Value |
+| --- | --- |
+| `CLOUDFLARE_API_TOKEN` | Token scoped to the target account with Workers Scripts Edit and D1 Edit |
+| `GOOGLE_CLIENT_ID` | Environment-specific Web OAuth client ID |
+| `GOOGLE_CLIENT_SECRET` | Its client secret |
+| `BOT_PRIVATE_KEY` | Bot private key in PKCS8 PEM format |
+
+Register each OAuth client's exact `${PUBLIC_URL}/auth/google/callback` URI.
+The existing localhost OAuth client stays for local development. Use a sandbox
+GitHub repository/App for staging if real test PRs in `yhaggai/kitor` are unwanted;
+the current backend still targets that repository in both environments.
+
+CI generates `wrangler.deploy.json` from these values and uses its named environment
+for every Wrangler command. The checked-in local configuration is unchanged.
+Missing values, placeholder database IDs, and URLs targeting the other environment
+fail before migrations. Secrets are written to a mode-600 temporary JSON file,
+uploaded with the Worker using `--secrets-file`, and removed even after failure.
+They are never included in artifacts or the desktop bundle.
+
+Deployment order: tests → bundle validation → D1 migrations → Worker/secrets →
+health and unsigned-submission checks. Migrations must be backward compatible with
+the previous Worker because it remains active during migration. A failed deploy or
+health check does not roll back already-applied migrations; repair forward or deploy
+a compatible prior Worker after inspecting the failure. The health check verifies
+configuration and authentication gating, not a full Google login or PR creation.
+
+This workflow deploys only the backend. Desktop packaging continues separately;
+set `KITOR_CONTRIBUTION_API_URL` to the appropriate HTTPS URL when building Kitor.
