@@ -30,12 +30,8 @@
     "vm_notes": null,
     "vm_source": "post",
     "patch_link": "https://drive.google.com/file/d/1RtNeBDx1Pu4sYX243ACwsa8bVhfMFOkb/view",
-    "patch_links": [
-      "https://drive.google.com/file/d/1RtNeBDx1Pu4sYX243ACwsa8bVhfMFOkb/view"
-    ],
-    "other_links": [
-      "https://www.popot.org/get_the_games.php?game=2"
-    ],
+    "patch_links": ["https://drive.google.com/file/d/1RtNeBDx1Pu4sYX243ACwsa8bVhfMFOkb/view"],
+    "other_links": ["https://www.popot.org/get_the_games.php?game=2"],
     "extraction_status": "ok"
   },
   {
@@ -49,9 +45,7 @@
     "vm_notes": null,
     "vm_source": "post",
     "patch_link": "https://github.com/adventurebrew/scummworks/releases/tag/DIG-WIP1",
-    "patch_links": [
-      "https://github.com/adventurebrew/scummworks/releases/tag/DIG-WIP1"
-    ],
+    "patch_links": ["https://github.com/adventurebrew/scummworks/releases/tag/DIG-WIP1"],
     "other_links": [
       "https://www.gog.com/en/game/the_dig",
       "https://www.scummvm.org/downloads/#release"
@@ -69,9 +63,7 @@
     "vm_notes": null,
     "vm_source": "post",
     "patch_link": "https://github.com/adventurebrew/scummworks/releases/tag/MONKEY-1.1",
-    "patch_links": [
-      "https://github.com/adventurebrew/scummworks/releases/tag/MONKEY-1.1"
-    ],
+    "patch_links": ["https://github.com/adventurebrew/scummworks/releases/tag/MONKEY-1.1"],
     "other_links": [
       "https://www.gog.com/game/the_secret_of_monkey_island_special_edition",
       "http://www.gratissaugen.de/ultimatetalkies/monkey1.html",
@@ -90,9 +82,7 @@
     "vm_notes": null,
     "vm_source": "post",
     "patch_link": "https://github.com/adventurebrew/scummworks/releases/tag/MONKEY2-IR",
-    "patch_links": [
-      "https://github.com/adventurebrew/scummworks/releases/tag/MONKEY2-IR"
-    ],
+    "patch_links": ["https://github.com/adventurebrew/scummworks/releases/tag/MONKEY2-IR"],
     "other_links": [
       "https://www.scummvm.org/downloads/#daily",
       "http://gratissaugen.de/ultimatetalkies/monkey2.html"
@@ -110,9 +100,7 @@
     "vm_notes": null,
     "vm_source": "post",
     "patch_link": "https://github.com/adventurebrew/scummworks/releases/tag/COMI-1.1",
-    "patch_links": [
-      "https://github.com/adventurebrew/scummworks/releases/tag/COMI-1.1"
-    ],
+    "patch_links": ["https://github.com/adventurebrew/scummworks/releases/tag/COMI-1.1"],
     "other_links": [
       "https://www.gog.com/game/the_curse_of_monkey_island",
       "https://www.scummvm.org/downloads/#daily"
@@ -130,9 +118,7 @@
     "vm_notes": null,
     "vm_source": "post",
     "patch_link": "https://github.com/adventurebrew/scummworks/releases/tag/ATLANTIS-RC1",
-    "patch_links": [
-      "https://github.com/adventurebrew/scummworks/releases/tag/ATLANTIS-RC1"
-    ],
+    "patch_links": ["https://github.com/adventurebrew/scummworks/releases/tag/ATLANTIS-RC1"],
     "other_links": [
       "http://gog.com/game/indiana_jones_and_the_fate_of_atlantis?pp=22d200f8670dbdb3e253a90eee5098477c95c23d",
       "https://www.scummvm.org/downloads/"
@@ -153,9 +139,7 @@
     "patch_links": [
       "https://drive.google.com/file/d/17wgqfDmn2GI-NK9olO9NGfODyl9eHP_9/view?usp=sharing"
     ],
-    "other_links": [
-      "https://www.old-games.ru/game/download/get.php?fileid=2961&modal=1"
-    ],
+    "other_links": ["https://www.old-games.ru/game/download/get.php?fileid=2961&modal=1"],
     "extraction_status": "ok"
   },
   {
@@ -193,9 +177,7 @@
       "https://drive.google.com/file/d/1Hve3qjbzQHr9ywbis0GIhSRYm_JErex4/view?usp=sharing",
       "https://github.com/BLooperZ/scummvm/releases/tag/scumm-rtl-pred3"
     ],
-    "other_links": [
-      "https://oldgamesdownload.com/game/full-throttle-ns4/"
-    ],
+    "other_links": ["https://oldgamesdownload.com/game/full-throttle-ns4/"],
     "extraction_status": "ok"
   },
   {
@@ -251,12 +233,8 @@
     "vm_notes": null,
     "vm_source": "sheet",
     "patch_link": "https://drive.google.com/file/d/1rD9cZDZMk5Y56v_c6PC6Vt8HVK5nQd05/view",
-    "patch_links": [
-      "https://drive.google.com/file/d/1rD9cZDZMk5Y56v_c6PC6Vt8HVK5nQd05/view"
-    ],
-    "other_links": [
-      "https://www.gog.com/en/game/zak_mckracken_and_the_alien_mindbenders"
-    ],
+    "patch_links": ["https://drive.google.com/file/d/1rD9cZDZMk5Y56v_c6PC6Vt8HVK5nQd05/view"],
+    "other_links": ["https://www.gog.com/en/game/zak_mckracken_and_the_alien_mindbenders"],
     "extraction_status": "ok"
   },
   {
@@ -270,9 +248,7 @@
     "vm_notes": null,
     "vm_source": "post",
     "patch_link": "https://drive.google.com/file/d/1V-pHlVKcmpoJKOtG1zYSowGg39w7bvzP/view",
-    "patch_links": [
-      "https://drive.google.com/file/d/1V-pHlVKcmpoJKOtG1zYSowGg39w7bvzP/view"
-    ],
+    "patch_links": ["https://drive.google.com/file/d/1V-pHlVKcmpoJKOtG1zYSowGg39w7bvzP/view"],
     "other_links": [
       "https://www.old-games.ru/game/download/get.php?fileid=3013",
       "https://www.scummvm.org/downloads/#daily"
@@ -311,9 +287,7 @@
     "vm_notes": null,
     "vm_source": "post",
     "patch_link": "https://github.com/adventurebrew/HebrewAdventure/releases/tag/pq1_v1",
-    "patch_links": [
-      "https://github.com/adventurebrew/HebrewAdventure/releases/tag/pq1_v1"
-    ],
+    "patch_links": ["https://github.com/adventurebrew/HebrewAdventure/releases/tag/pq1_v1"],
     "other_links": [
       "https://www.gog.com/game/police_quest_1_2_3_4",
       "https://www.scummvm.org/downloads/#daily"
@@ -351,9 +325,7 @@
     "vm_notes": null,
     "vm_source": "post",
     "patch_link": "https://github.com/adventurebrew/HebrewAdventure/releases/tag/sq3_hebrew_4",
-    "patch_links": [
-      "https://github.com/adventurebrew/HebrewAdventure/releases/tag/sq3_hebrew_4"
-    ],
+    "patch_links": ["https://github.com/adventurebrew/HebrewAdventure/releases/tag/sq3_hebrew_4"],
     "other_links": [
       "https://www.gog.com/game/space_quest_1_2_3",
       "https://www.scummvm.org/downloads/",
@@ -372,9 +344,7 @@
     "vm_notes": null,
     "vm_source": "sheet",
     "patch_link": "https://drive.google.com/file/d/1Fi_YWNT11kcgRMqBayZzQqkk3UQEqJzq/view",
-    "patch_links": [
-      "https://drive.google.com/file/d/1Fi_YWNT11kcgRMqBayZzQqkk3UQEqJzq/view"
-    ],
+    "patch_links": ["https://drive.google.com/file/d/1Fi_YWNT11kcgRMqBayZzQqkk3UQEqJzq/view"],
     "other_links": [
       "http://gog.com/game/torins_passage?pp=22d200f8670dbdb3e253a90eee5098477c95c23d",
       "http://gog.com/game/torins_passage"
@@ -412,9 +382,7 @@
     "vm_notes": null,
     "vm_source": "post",
     "patch_link": "https://drive.google.com/file/d/1v5WbyzXbrw-wDn9Ok1dN1qaMuH9fYGwj/view",
-    "patch_links": [
-      "https://drive.google.com/file/d/1v5WbyzXbrw-wDn9Ok1dN1qaMuH9fYGwj/view"
-    ],
+    "patch_links": ["https://drive.google.com/file/d/1v5WbyzXbrw-wDn9Ok1dN1qaMuH9fYGwj/view"],
     "other_links": [
       "https://store.steampowered.com/app/496760/The_Beast_Within_A_Gabriel_Knight_Mystery/"
     ],
@@ -452,9 +420,7 @@
       "https://drive.google.com/file/d/174N_bPagQ5EdFKGBKEf2KdqxZVC-OIxL/view",
       "https://drive.google.com/file/d/12Rs6ziCZP_yDtwTHS9jW7kGU1NkF4nk0/view?usp=sharing"
     ],
-    "other_links": [
-      "https://www.gog.com/game/inherit_the_earth"
-    ],
+    "other_links": ["https://www.gog.com/game/inherit_the_earth"],
     "extraction_status": "ok"
   },
   {
@@ -508,12 +474,8 @@
     "vm_notes": null,
     "vm_source": "post",
     "patch_link": "https://drive.google.com/file/d/1rGPAmGxb1GXMQuMbVIdWLBc2Y8W7Ili6/view",
-    "patch_links": [
-      "https://drive.google.com/file/d/1rGPAmGxb1GXMQuMbVIdWLBc2Y8W7Ili6/view"
-    ],
-    "other_links": [
-      "https://www.scummvm.org/games/#games-sword25"
-    ],
+    "patch_links": ["https://drive.google.com/file/d/1rGPAmGxb1GXMQuMbVIdWLBc2Y8W7Ili6/view"],
+    "other_links": ["https://www.scummvm.org/games/#games-sword25"],
     "extraction_status": "ok"
   },
   {
@@ -527,9 +489,7 @@
     "vm_notes": null,
     "vm_source": "post",
     "patch_link": "https://github.com/adventurebrew/fableworks/releases",
-    "patch_links": [
-      "https://github.com/adventurebrew/fableworks/releases"
-    ],
+    "patch_links": ["https://github.com/adventurebrew/fableworks/releases"],
     "other_links": [
       "https://www.gog.com/game/legend_of_kyrandia",
       "https://www.scummvm.org/downloads/#daily"
@@ -547,9 +507,7 @@
     "vm_notes": null,
     "vm_source": "post",
     "patch_link": "https://github.com/adventurebrew/fableworks/releases",
-    "patch_links": [
-      "https://github.com/adventurebrew/fableworks/releases"
-    ],
+    "patch_links": ["https://github.com/adventurebrew/fableworks/releases"],
     "other_links": [
       "https://www.gog.com/game/legend_of_kyrandia_hand_of_fate",
       "https://www.scummvm.org/downloads/#daily"
@@ -567,9 +525,7 @@
     "vm_notes": null,
     "vm_source": "post",
     "patch_link": "https://github.com/adventurebrew/fableworks/releases",
-    "patch_links": [
-      "https://github.com/adventurebrew/fableworks/releases"
-    ],
+    "patch_links": ["https://github.com/adventurebrew/fableworks/releases"],
     "other_links": [
       "https://www.gog.com/en/game/legend_of_kyrandia_malcolms_revenge",
       "https://www.scummvm.org/he/downloads/#daily",
@@ -591,9 +547,7 @@
     "patch_links": [
       "https://drive.google.com/file/d/1Iofzjc2QJaml7RHigjZzngGbU4IcamWX/view?usp=sharing"
     ],
-    "other_links": [
-      "https://store.steampowered.com/app/1440440/Sam__Max_Save_the_World/"
-    ],
+    "other_links": ["https://store.steampowered.com/app/1440440/Sam__Max_Save_the_World/"],
     "extraction_status": "ok"
   },
   {
@@ -610,9 +564,7 @@
     "patch_links": [
       "https://drive.google.com/file/d/1_kfdQ40d1EGBEUgW-jf-IzkF60v2Rz_V/view?usp=sharing"
     ],
-    "other_links": [
-      "https://store.steampowered.com/app/912570/BEAUTIFUL_DESOLATION/"
-    ],
+    "other_links": ["https://store.steampowered.com/app/912570/BEAUTIFUL_DESOLATION/"],
     "extraction_status": "ok"
   },
   {
@@ -630,9 +582,7 @@
       "https://drive.google.com/file/d/1PnwokQOhNertvzt3pPDyANhn4pTLUVBo/view?usp=sharing",
       "https://drive.google.com/file/d/1P7ROdbyFoZ9JQtddruo_YeM9HI4hjkaK/view?usp=sharing"
     ],
-    "other_links": [
-      "https://store.steampowered.com/app/286460/Black_Mirror_II/"
-    ],
+    "other_links": ["https://store.steampowered.com/app/286460/Black_Mirror_II/"],
     "extraction_status": "ok"
   },
   {
@@ -707,9 +657,7 @@
     "vm_notes": null,
     "vm_source": null,
     "patch_link": "https://drive.google.com/file/d/1t7HXMHgFbmSSIp69BYtbWCOE3kTg2IgI/view",
-    "patch_links": [
-      "https://drive.google.com/file/d/1t7HXMHgFbmSSIp69BYtbWCOE3kTg2IgI/view"
-    ],
+    "patch_links": ["https://drive.google.com/file/d/1t7HXMHgFbmSSIp69BYtbWCOE3kTg2IgI/view"],
     "other_links": [
       "https://store.steampowered.com/app/261510/Tesla_Effect_A_Tex_Murphy_Adventure/"
     ],
@@ -726,12 +674,8 @@
     "vm_notes": null,
     "vm_source": null,
     "patch_link": "https://drive.google.com/drive/folders/1Vi2g6a2RqRt4CNjTs52Ne9b5pGDqswmQ",
-    "patch_links": [
-      "https://drive.google.com/drive/folders/1Vi2g6a2RqRt4CNjTs52Ne9b5pGDqswmQ"
-    ],
-    "other_links": [
-      "https://store.steampowered.com/app/344030/Ghost_Pirates_of_Vooju_Island/"
-    ],
+    "patch_links": ["https://drive.google.com/drive/folders/1Vi2g6a2RqRt4CNjTs52Ne9b5pGDqswmQ"],
+    "other_links": ["https://store.steampowered.com/app/344030/Ghost_Pirates_of_Vooju_Island/"],
     "extraction_status": "ok"
   },
   {
@@ -749,9 +693,7 @@
       "https://drive.google.com/open?id=1-wmeDeV6Lq6G9NPdOLlQsOU9iAbEgyYO",
       "https://drive.google.com/open"
     ],
-    "other_links": [
-      "https://store.steampowered.com/app/520720/Dear_Esther_Landmark_Edition/"
-    ],
+    "other_links": ["https://store.steampowered.com/app/520720/Dear_Esther_Landmark_Edition/"],
     "extraction_status": "ok"
   },
   {
@@ -798,9 +740,7 @@
     "patch_links": [
       "https://drive.google.com/file/d/1ZFAXkviDdRrKdIgaAzzAPTudcoKg1C4T/view?usp=sharing"
     ],
-    "other_links": [
-      "https://store.steampowered.com/app/994340/Cat_and_Ghostly_Road/"
-    ],
+    "other_links": ["https://store.steampowered.com/app/994340/Cat_and_Ghostly_Road/"],
     "extraction_status": "ok"
   },
   {
@@ -957,9 +897,7 @@
     "patch_links": [
       "https://drive.google.com/file/d/1yXDkH0zDEevl6GeARxev53i5AbA8qfq7/view?usp=sharing"
     ],
-    "other_links": [
-      "https://store.steampowered.com/app/1283190/Neighbours_back_From_Hell/"
-    ],
+    "other_links": ["https://store.steampowered.com/app/1283190/Neighbours_back_From_Hell/"],
     "extraction_status": "ok"
   },
   {
@@ -1048,9 +986,7 @@
     "patch_links": [
       "https://drive.google.com/drive/folders/1tBl6wB63iwJoNzLFuuWaJjnBZVlFbLY2?usp=sharing"
     ],
-    "other_links": [
-      "https://store.steampowered.com/app/451310/A_Fold_Apart/"
-    ],
+    "other_links": ["https://store.steampowered.com/app/451310/A_Fold_Apart/"],
     "extraction_status": "ok"
   },
   {
@@ -1065,9 +1001,7 @@
     "vm_source": null,
     "patch_link": null,
     "patch_links": [],
-    "other_links": [
-      "https://store.steampowered.com/app/972760/Secret_Saga_Xamadeon_Stone/"
-    ],
+    "other_links": ["https://store.steampowered.com/app/972760/Secret_Saga_Xamadeon_Stone/"],
     "extraction_status": "ok"
   },
   {
@@ -1084,9 +1018,7 @@
     "patch_links": [
       "https://drive.google.com/file/d/101qPBQOHT3oI3TzgnZaT8vI0P_RTSQIh/view?usp=sharing"
     ],
-    "other_links": [
-      "https://store.steampowered.com/app/1089980/The_Henry_Stickmin_Collection/"
-    ],
+    "other_links": ["https://store.steampowered.com/app/1089980/The_Henry_Stickmin_Collection/"],
     "extraction_status": "ok"
   },
   {
@@ -1160,9 +1092,7 @@
     "vm_notes": null,
     "vm_source": "post",
     "patch_link": "https://drive.google.com/file/d/1D4DHCHbENUKGh-9J3KjdiQRt3jVL3SOt/view",
-    "patch_links": [
-      "https://drive.google.com/file/d/1D4DHCHbENUKGh-9J3KjdiQRt3jVL3SOt/view"
-    ],
+    "patch_links": ["https://drive.google.com/file/d/1D4DHCHbENUKGh-9J3KjdiQRt3jVL3SOt/view"],
     "other_links": [
       "https://www.gog.com/en/game/sanitarium",
       "https://www.scummvm.org/downloads/#daily"
@@ -1180,12 +1110,8 @@
     "vm_notes": null,
     "vm_source": "post",
     "patch_link": "https://github.com/adventurebrew/boozook/releases/tag/WEEN-RC1",
-    "patch_links": [
-      "https://github.com/adventurebrew/boozook/releases/tag/WEEN-RC1"
-    ],
-    "other_links": [
-      "https://www.myabandonware.com/game/the-prophecy-225"
-    ],
+    "patch_links": ["https://github.com/adventurebrew/boozook/releases/tag/WEEN-RC1"],
+    "other_links": ["https://www.myabandonware.com/game/the-prophecy-225"],
     "extraction_status": "ok"
   },
   {
@@ -1199,9 +1125,7 @@
     "vm_notes": null,
     "vm_source": "post",
     "patch_link": "https://github.com/adventurebrew/HebrewAdventure/releases/tag/phant1_v1",
-    "patch_links": [
-      "https://github.com/adventurebrew/HebrewAdventure/releases/tag/phant1_v1"
-    ],
+    "patch_links": ["https://github.com/adventurebrew/HebrewAdventure/releases/tag/phant1_v1"],
     "other_links": [
       "https://www.gog.com/en/game/phantasmagoria",
       "https://www.scummvm.org/downloads/#daily"
@@ -1237,9 +1161,7 @@
     "patch_links": [
       "https://drive.google.com/file/d/1e0gryvCu24YQDtUNAW1JvajtKjiF1eCG/view?usp=sharing"
     ],
-    "other_links": [
-      "https://www.gog.com/en/game/atlantis_2_beyond_atlantis"
-    ],
+    "other_links": ["https://www.gog.com/en/game/atlantis_2_beyond_atlantis"],
     "extraction_status": "ok"
   },
   {
@@ -1256,9 +1178,7 @@
     "patch_links": [
       "https://drive.google.com/file/d/1x-ioHD36wIUU4eOrUMedczn8aRS9yPbn/view?usp=sharing"
     ],
-    "other_links": [
-      "https://www.gog.com/en/game/atlantis_3_the_new_world"
-    ],
+    "other_links": ["https://www.gog.com/en/game/atlantis_3_the_new_world"],
     "extraction_status": "ok"
   },
   {
@@ -1272,9 +1192,7 @@
     "vm_notes": null,
     "vm_source": "post",
     "patch_link": "https://github.com/adventurebrew/scummworks/releases/tag/SPYFOX-WIP1",
-    "patch_links": [
-      "https://github.com/adventurebrew/scummworks/releases/tag/SPYFOX-WIP1"
-    ],
+    "patch_links": ["https://github.com/adventurebrew/scummworks/releases/tag/SPYFOX-WIP1"],
     "other_links": [
       "https://store.steampowered.com/app/283980/Spy_Fox_in_Dry_Cereal/",
       "https://www.scummvm.org/downloads/"
@@ -1292,9 +1210,7 @@
     "vm_notes": null,
     "vm_source": "post",
     "patch_link": "https://github.com/adventurebrew/scummworks/releases/tag/PAJAMA-WIP1",
-    "patch_links": [
-      "https://github.com/adventurebrew/scummworks/releases/tag/PAJAMA-WIP1"
-    ],
+    "patch_links": ["https://github.com/adventurebrew/scummworks/releases/tag/PAJAMA-WIP1"],
     "other_links": [
       "https://www.gog.com/en/game/pajama_sam_vol_1",
       "https://www.scummvm.org/downloads/"
@@ -1315,9 +1231,7 @@
     "patch_links": [
       "https://drive.google.com/file/d/1sjT1Lbb3SwN7qqd7rgRjx-LRBvSyd1yn/view?usp=drive_link"
     ],
-    "other_links": [
-      "https://www.scummvm.org/downloads/#daily"
-    ],
+    "other_links": ["https://www.scummvm.org/downloads/#daily"],
     "extraction_status": "ok"
   },
   {
@@ -1372,12 +1286,8 @@
     "vm_notes": null,
     "vm_source": null,
     "patch_link": "https://drive.google.com/file/d/1txr_VLWjMUpxNnMfZX1-GkBGikVnqPw0/view",
-    "patch_links": [
-      "https://drive.google.com/file/d/1txr_VLWjMUpxNnMfZX1-GkBGikVnqPw0/view"
-    ],
-    "other_links": [
-      "https://store.steampowered.com/app/313870/A_Vampyre_Story/"
-    ],
+    "patch_links": ["https://drive.google.com/file/d/1txr_VLWjMUpxNnMfZX1-GkBGikVnqPw0/view"],
+    "other_links": ["https://store.steampowered.com/app/313870/A_Vampyre_Story/"],
     "extraction_status": "ok"
   },
   {
@@ -1413,9 +1323,7 @@
     "patch_links": [
       "https://drive.google.com/file/d/1jv6kP5FrR6a2f6uf84iuP6FwSqHkWWdV/view?usp=sharing"
     ],
-    "other_links": [
-      "https://store.steampowered.com/app/258520/The_Vanishing_of_Ethan_Carter/"
-    ],
+    "other_links": ["https://store.steampowered.com/app/258520/The_Vanishing_of_Ethan_Carter/"],
     "extraction_status": "ok"
   },
   {
@@ -1429,9 +1337,7 @@
     "vm_notes": "daily build",
     "vm_source": "post",
     "patch_link": "https://drive.google.com/file/d/1-zjikxBTvfEZ9jzoji81EwpJgxFoKlga/view",
-    "patch_links": [
-      "https://drive.google.com/file/d/1-zjikxBTvfEZ9jzoji81EwpJgxFoKlga/view"
-    ],
+    "patch_links": ["https://drive.google.com/file/d/1-zjikxBTvfEZ9jzoji81EwpJgxFoKlga/view"],
     "other_links": [
       "https://www.facebook.com/Toonstruck-112079615471637/",
       "https://www.gog.com/game/toonstruck",
@@ -1453,9 +1359,7 @@
     "patch_links": [
       "https://drive.google.com/file/d/16h3o-nraDQ1ymIYAmTZdEp7CdjosmEe7/view?usp=sharing"
     ],
-    "other_links": [
-      "https://store.steampowered.com/sub/56692/"
-    ],
+    "other_links": ["https://store.steampowered.com/sub/56692/"],
     "extraction_status": "ok"
   },
   {
@@ -1469,12 +1373,8 @@
     "vm_notes": null,
     "vm_source": null,
     "patch_link": "https://drive.google.com/file/d/1FPaoyAX6uV-FwFq3LZ-aJmHPZ5eLTYVN/view",
-    "patch_links": [
-      "https://drive.google.com/file/d/1FPaoyAX6uV-FwFq3LZ-aJmHPZ5eLTYVN/view"
-    ],
-    "other_links": [
-      "https://store.steampowered.com/app/244690/Face_Noir/"
-    ],
+    "patch_links": ["https://drive.google.com/file/d/1FPaoyAX6uV-FwFq3LZ-aJmHPZ5eLTYVN/view"],
+    "other_links": ["https://store.steampowered.com/app/244690/Face_Noir/"],
     "extraction_status": "ok"
   },
   {
@@ -1488,13 +1388,8 @@
     "vm_notes": null,
     "vm_source": null,
     "patch_link": "https://xandernt.itch.io/rayman-2-the-great-escape",
-    "patch_links": [
-      "https://xandernt.itch.io/rayman-2-the-great-escape"
-    ],
-    "other_links": [
-      "https://youtu.be/BXq2STmwN5A",
-      "https://youtu.be/H__uK74qC9Q"
-    ],
+    "patch_links": ["https://xandernt.itch.io/rayman-2-the-great-escape"],
+    "other_links": ["https://youtu.be/BXq2STmwN5A", "https://youtu.be/H__uK74qC9Q"],
     "extraction_status": "ok"
   },
   {
@@ -1511,9 +1406,7 @@
     "patch_links": [
       "https://drive.google.com/file/d/12a27-QaF5r--1BN7OAv5x4mmC7wfqf24/view?usp=sharing"
     ],
-    "other_links": [
-      "https://store.steampowered.com/app/257690/JULIA_Among_the_Stars/"
-    ],
+    "other_links": ["https://store.steampowered.com/app/257690/JULIA_Among_the_Stars/"],
     "extraction_status": "ok"
   },
   {
@@ -1530,9 +1423,7 @@
     "patch_links": [
       "https://drive.google.com/file/d/1CglnGCLS0e_WavrGuuT03x-IYfhUeboO/view?usp=sharing"
     ],
-    "other_links": [
-      "https://store.steampowered.com/app/373390/Contradiction_Spot_The_Liar/"
-    ],
+    "other_links": ["https://store.steampowered.com/app/373390/Contradiction_Spot_The_Liar/"],
     "extraction_status": "ok"
   },
   {
@@ -1549,9 +1440,7 @@
     "patch_links": [
       "https://drive.google.com/file/d/1ZAWmL230ydaM4aRb5tUrO0VBNDKg2R3C/view?usp=sharing"
     ],
-    "other_links": [
-      "https://store.steampowered.com/app/272060/Serena/"
-    ],
+    "other_links": ["https://store.steampowered.com/app/272060/Serena/"],
     "extraction_status": "ok"
   },
   {
@@ -1565,12 +1454,8 @@
     "vm_notes": null,
     "vm_source": null,
     "patch_link": "https://drive.google.com/file/d/1U_DIQs6FsGO22q74kkmjhSNBpPvNO6_X/view",
-    "patch_links": [
-      "https://drive.google.com/file/d/1U_DIQs6FsGO22q74kkmjhSNBpPvNO6_X/view"
-    ],
-    "other_links": [
-      "https://store.steampowered.com/app/232430/Gone_Home/"
-    ],
+    "patch_links": ["https://drive.google.com/file/d/1U_DIQs6FsGO22q74kkmjhSNBpPvNO6_X/view"],
+    "other_links": ["https://store.steampowered.com/app/232430/Gone_Home/"],
     "extraction_status": "ok"
   },
   {
@@ -1617,9 +1502,7 @@
     "patch_links": [
       "https://drive.google.com/file/d/1YyQMBd9uL1p6cwY4BWjHmG0NP4DIJEq5/view?usp=sharing"
     ],
-    "other_links": [
-      "http://www.helgagame.com/downloadeng/"
-    ],
+    "other_links": ["http://www.helgagame.com/downloadeng/"],
     "extraction_status": "ok"
   },
   {
@@ -1697,12 +1580,8 @@
     "vm_notes": null,
     "vm_source": null,
     "patch_link": "https://github.com/adventurebrew/boozook/releases/tag/GOB2-RC3",
-    "patch_links": [
-      "https://github.com/adventurebrew/boozook/releases/tag/GOB2-RC3"
-    ],
-    "other_links": [
-      "https://www.gog.com/game/gobliiins_pack"
-    ],
+    "patch_links": ["https://github.com/adventurebrew/boozook/releases/tag/GOB2-RC3"],
+    "other_links": ["https://www.gog.com/game/gobliiins_pack"],
     "extraction_status": "ok"
   },
   {
@@ -1720,9 +1599,7 @@
       "https://drive.google.com/file/d/1yHv7d7zAXJS7EipehMIR6l-C5HKqm-LT/view?usp=sharing",
       "https://drive.google.com/file/d/17av9XqQxL88yXtFqilfZg4jcEFm1-nP6/view?usp=sharing"
     ],
-    "other_links": [
-      "https://store.steampowered.com/app/581300/Black_Mirror/"
-    ],
+    "other_links": ["https://store.steampowered.com/app/581300/Black_Mirror/"],
     "extraction_status": "ok"
   },
   {
@@ -1740,9 +1617,7 @@
       "https://drive.google.com/file/d/1EXmcWxU9jTw-69Z-OZbeYWFWun7xcdYc/view?usp=sharing",
       "https://drive.google.com/file/d/1O1zQudTR28sYxcjUKSF9QN4Lz3kaWeCz/view?usp=sharing"
     ],
-    "other_links": [
-      "https://www.gog.com/en/game/dracula_4_5"
-    ],
+    "other_links": ["https://www.gog.com/en/game/dracula_4_5"],
     "extraction_status": "ok"
   },
   {
@@ -1756,12 +1631,8 @@
     "vm_notes": null,
     "vm_source": null,
     "patch_link": "https://drive.google.com/file/d/1mE5GlbvkDZEOKg7S62TfJePdnLOHRaQh/view",
-    "patch_links": [
-      "https://drive.google.com/file/d/1mE5GlbvkDZEOKg7S62TfJePdnLOHRaQh/view"
-    ],
-    "other_links": [
-      "https://store.steampowered.com/app/301670/Salammb_Battle_for_Carthage/"
-    ],
+    "patch_links": ["https://drive.google.com/file/d/1mE5GlbvkDZEOKg7S62TfJePdnLOHRaQh/view"],
+    "other_links": ["https://store.steampowered.com/app/301670/Salammb_Battle_for_Carthage/"],
     "extraction_status": "ok"
   },
   {
@@ -1796,9 +1667,7 @@
     "patch_links": [
       "https://drive.google.com/file/d/1YbfjQgeEUcnlau144vznNf4T0KSO4gSt/view?usp=sharing"
     ],
-    "other_links": [
-      "https://www.myabandonware.com/game/the-hardy-boys-the-hidden-theft-jls"
-    ],
+    "other_links": ["https://www.myabandonware.com/game/the-hardy-boys-the-hidden-theft-jls"],
     "extraction_status": "ok"
   },
   {
@@ -1815,9 +1684,7 @@
     "patch_links": [
       "https://drive.google.com/file/d/1rejb-PZxRzGdUtwodjSgeoibJMqsoY9f/view?usp=sharing"
     ],
-    "other_links": [
-      "https://www.myabandonware.com/game/ghost-in-the-sheet-fth"
-    ],
+    "other_links": ["https://www.myabandonware.com/game/ghost-in-the-sheet-fth"],
     "extraction_status": "ok"
   },
   {
@@ -1834,9 +1701,7 @@
     "patch_links": [
       "https://drive.google.com/file/d/1QeKpJOTf35GzuraQNaT--SF_JZc_IpCz/view?usp=sharing"
     ],
-    "other_links": [
-      "https://www.gog.com/en/game/the_shivah"
-    ],
+    "other_links": ["https://www.gog.com/en/game/the_shivah"],
     "extraction_status": "ok"
   },
   {
@@ -1853,9 +1718,7 @@
     "patch_links": [
       "https://drive.google.com/file/d/1UiDNIgybOB3E21owtb85xRyqBeFsaLTF/view?usp=sharing"
     ],
-    "other_links": [
-      "https://store.steampowered.com/bundle/13507/Reversion_Trilogy__Soundtracks/"
-    ],
+    "other_links": ["https://store.steampowered.com/bundle/13507/Reversion_Trilogy__Soundtracks/"],
     "extraction_status": "ok"
   },
   {
@@ -1872,9 +1735,7 @@
     "patch_links": [
       "https://drive.google.com/file/d/1tJW5bydh-z_bIOluS-waaK7mYO1exc59/view?usp=drive_link"
     ],
-    "other_links": [
-      "https://store.steampowered.com/app/220090/The_Journey_Down_Chapter_One/"
-    ],
+    "other_links": ["https://store.steampowered.com/app/220090/The_Journey_Down_Chapter_One/"],
     "extraction_status": "ok"
   },
   {
@@ -1944,9 +1805,7 @@
     "patch_links": [
       "https://drive.google.com/file/d/1b5i53Vonfrd5E7fner8l1HfqJiJ-DWBO/view?usp=sharing"
     ],
-    "other_links": [
-      "https://store.steampowered.com/app/308330/Lost_Chronicles_of_Zerzura/"
-    ],
+    "other_links": ["https://store.steampowered.com/app/308330/Lost_Chronicles_of_Zerzura/"],
     "extraction_status": "ok"
   },
   {
@@ -1963,9 +1822,7 @@
     "patch_links": [
       "https://drive.google.com/file/d/1ONVqT8ZNYaCgzzlTzAqdJSiVv1EaA738/view?usp=drive_link"
     ],
-    "other_links": [
-      "https://store.steampowered.com/app/46480/Still_Life/"
-    ],
+    "other_links": ["https://store.steampowered.com/app/46480/Still_Life/"],
     "extraction_status": "ok"
   },
   {
@@ -2012,9 +1869,7 @@
     "vm_notes": "daily build",
     "vm_source": "post",
     "patch_link": "https://drive.google.com/file/d/1foTGVMySIVKRG9HMJdd1AwVrlFaFoxQ4/view",
-    "patch_links": [
-      "https://drive.google.com/file/d/1foTGVMySIVKRG9HMJdd1AwVrlFaFoxQ4/view"
-    ],
+    "patch_links": ["https://drive.google.com/file/d/1foTGVMySIVKRG9HMJdd1AwVrlFaFoxQ4/view"],
     "other_links": [
       "https://www.gog.com/en/game/the_longest_journey",
       "https://buildbot.scummvm.org/#/dailybuilds"
@@ -2035,9 +1890,7 @@
     "patch_links": [
       "https://drive.google.com/file/d/1nDJVQ7moOWYeIQRszPYOCl5ILXgQXUMV/view?usp=sharing"
     ],
-    "other_links": [
-      "https://store.steampowered.com/app/18480/Mata_Hari/"
-    ],
+    "other_links": ["https://store.steampowered.com/app/18480/Mata_Hari/"],
     "extraction_status": "ok"
   },
   {
@@ -2054,9 +1907,7 @@
     "patch_links": [
       "https://drive.google.com/file/d/1U-kBXb8DEO6mRNX8JC4CPhl8--ugTn2C/view?usp=sharing"
     ],
-    "other_links": [
-      "https://www.legendsworld.net/site/download.php?mirror=4788"
-    ],
+    "other_links": ["https://www.legendsworld.net/site/download.php?mirror=4788"],
     "extraction_status": "ok"
   },
   {
@@ -2073,9 +1924,7 @@
     "patch_links": [
       "https://drive.google.com/file/d/1anvaiTz9R4a45pLC90TNwWefyfQunMjj/view?usp=sharing"
     ],
-    "other_links": [
-      "https://store.steampowered.com/app/33990/Alternativa/"
-    ],
+    "other_links": ["https://store.steampowered.com/app/33990/Alternativa/"],
     "extraction_status": "ok"
   },
   {
@@ -2092,9 +1941,7 @@
     "patch_links": [
       "https://drive.google.com/file/d/15Q6q_E4uLIV0DolHtom9yPmYjLK4X0SY/view?usp=drive_link"
     ],
-    "other_links": [
-      "https://www.myabandonware.com/game/the-secrets-of-atlantis-bb0"
-    ],
+    "other_links": ["https://www.myabandonware.com/game/the-secrets-of-atlantis-bb0"],
     "extraction_status": "ok"
   },
   {
@@ -2108,12 +1955,8 @@
     "vm_notes": "daily build",
     "vm_source": "post",
     "patch_link": "https://github.com/adventurebrew/kolminey/releases/tag/BASS-IR",
-    "patch_links": [
-      "https://github.com/adventurebrew/kolminey/releases/tag/BASS-IR"
-    ],
-    "other_links": [
-      "https://buildbot.scummvm.org/#/dailybuilds"
-    ],
+    "patch_links": ["https://github.com/adventurebrew/kolminey/releases/tag/BASS-IR"],
+    "other_links": ["https://buildbot.scummvm.org/#/dailybuilds"],
     "extraction_status": "ok"
   },
   {
@@ -2130,9 +1973,7 @@
     "patch_links": [
       "https://drive.google.com/file/d/1kni0mmB3Maq5CLr9tqZtVqui_b_JK3tq/view?usp=sharing"
     ],
-    "other_links": [
-      "https://store.steampowered.com/app/704860/Keepsake/"
-    ],
+    "other_links": ["https://store.steampowered.com/app/704860/Keepsake/"],
     "extraction_status": "ok"
   },
   {
@@ -2149,9 +1990,7 @@
     "patch_links": [
       "https://drive.google.com/file/d/1bzhru6GqBy41S2I4uJczg_E7TsLtKnpV/view?usp=sharing"
     ],
-    "other_links": [
-      "https://store.steampowered.com/app/809000/Art_of_Murder__FBI_Confidential/"
-    ],
+    "other_links": ["https://store.steampowered.com/app/809000/Art_of_Murder__FBI_Confidential/"],
     "extraction_status": "ok"
   },
   {
@@ -2168,9 +2007,7 @@
     "patch_links": [
       "https://drive.google.com/file/d/1UV7PBbAfwOM2w8Z12aIk7rp6NagmgA0n/view?usp=sharing"
     ],
-    "other_links": [
-      "https://store.steampowered.com/app/40330/Secret_Files_Tunguska/"
-    ],
+    "other_links": ["https://store.steampowered.com/app/40330/Secret_Files_Tunguska/"],
     "extraction_status": "ok"
   },
   {
@@ -2228,9 +2065,7 @@
     "patch_links": [
       "https://drive.google.com/file/d/1XtA-7FJakcUIHiwrbtyfd9hGC56G8wdm/view?usp=sharing"
     ],
-    "other_links": [
-      "https://store.steampowered.com/app/40340/Secret_Files_2_Puritas_Cordis/"
-    ],
+    "other_links": ["https://store.steampowered.com/app/40340/Secret_Files_2_Puritas_Cordis/"],
     "extraction_status": "ok"
   },
   {
@@ -2285,9 +2120,7 @@
     "patch_links": [
       "https://drive.google.com/file/d/1xZpXPcCAS-RIhfwlrXJNBBlPAIuaP_-H/view?usp=drive_link"
     ],
-    "other_links": [
-      "https://store.steampowered.com/app/1395030/Kathy_Rain_Directors_Cut/"
-    ],
+    "other_links": ["https://store.steampowered.com/app/1395030/Kathy_Rain_Directors_Cut/"],
     "extraction_status": "ok"
   },
   {
@@ -2343,9 +2176,7 @@
     "patch_links": [
       "https://drive.google.com/file/d/1hsy60XKvrKU7VbQlJteuzm4kownvld03/view?usp=sharing"
     ],
-    "other_links": [
-      "https://store.steampowered.com/app/40350/Lost_Horizon/"
-    ],
+    "other_links": ["https://store.steampowered.com/app/40350/Lost_Horizon/"],
     "extraction_status": "ok"
   },
   {
@@ -2422,9 +2253,7 @@
     "patch_links": [
       "https://drive.google.com/file/d/1gmqRs48GtWEmSs-1Uqfh-QllG2q58nr_/view?usp=drive_link"
     ],
-    "other_links": [
-      "https://store.steampowered.com/app/260570/Gray_Matter/"
-    ],
+    "other_links": ["https://store.steampowered.com/app/260570/Gray_Matter/"],
     "extraction_status": "ok"
   },
   {
@@ -2441,9 +2270,7 @@
     "patch_links": [
       "https://drive.google.com/file/d/1LtaA9K1aot7917NgsRfs9wkJB0jzDq4n/view?usp=drive_link"
     ],
-    "other_links": [
-      "https://www.gog.com/en/game/ankh_anniversary_edition"
-    ],
+    "other_links": ["https://www.gog.com/en/game/ankh_anniversary_edition"],
     "extraction_status": "ok"
   },
   {
@@ -2457,12 +2284,8 @@
     "vm_notes": null,
     "vm_source": "sheet",
     "patch_link": "https://github.com/SegMash/AGIHebrew",
-    "patch_links": [
-      "https://github.com/SegMash/AGIHebrew"
-    ],
-    "other_links": [
-      "https://www.gog.com/en/game/space_quest_1_2_3"
-    ],
+    "patch_links": ["https://github.com/SegMash/AGIHebrew"],
+    "other_links": ["https://www.gog.com/en/game/space_quest_1_2_3"],
     "extraction_status": "ok"
   },
   {
@@ -2515,12 +2338,8 @@
     "vm_notes": null,
     "vm_source": null,
     "patch_link": "https://shachar700.github.io/bareket/",
-    "patch_links": [
-      "https://shachar700.github.io/bareket/"
-    ],
-    "other_links": [
-      "https://youtu.be/dXBSlF5knC0"
-    ],
+    "patch_links": ["https://shachar700.github.io/bareket/"],
+    "other_links": ["https://youtu.be/dXBSlF5knC0"],
     "extraction_status": "ok"
   },
   {
@@ -2537,9 +2356,7 @@
     "patch_links": [
       "https://drive.google.com/file/d/1bBiY15Jc9T8uz_OkHZV5Rcf55eN0GEw0/view?usp=sharing"
     ],
-    "other_links": [
-      "https://store.steampowered.com/app/6300/Dreamfall_The_Longest_Journey/"
-    ],
+    "other_links": ["https://store.steampowered.com/app/6300/Dreamfall_The_Longest_Journey/"],
     "extraction_status": "ok"
   },
   {
@@ -2558,9 +2375,7 @@
       "https://github.com/SegMash/KQ8HebrewTranslation/releases/download/11_25/KQ8_Hebrew_Patch_Setup_For_3dfx.exe",
       "https://github.com/SegMash/KQ8FixWin11"
     ],
-    "other_links": [
-      "https://www.gog.com/en/game/kings_quest_7_8"
-    ],
+    "other_links": ["https://www.gog.com/en/game/kings_quest_7_8"],
     "extraction_status": "ok (note: 3 of the link hrefs are themselves truncated with \"...\" in the original post, i.e. the author posted shortened urls; kept as found)"
   },
   {
@@ -2574,9 +2389,7 @@
     "vm_notes": "daily build",
     "vm_source": "post",
     "patch_link": "https://github.com/sam-mfb/agi-ivrit-sq1/releases/tag/v1",
-    "patch_links": [
-      "https://github.com/sam-mfb/agi-ivrit-sq1/releases/tag/v1"
-    ],
+    "patch_links": ["https://github.com/sam-mfb/agi-ivrit-sq1/releases/tag/v1"],
     "other_links": [
       "https://www.gog.com/en/game/space_quest_1_2_3",
       "https://buildbot.scummvm.org/#/dailybuilds"
@@ -2636,9 +2449,7 @@
     "patch_links": [
       "https://drive.google.com/file/d/1m6hoZhKSUfREBv5M0kd60aSdOm6La1tH/view?usp=sharing"
     ],
-    "other_links": [
-      "https://store.steampowered.com/app/58200/Jolly_Rover/"
-    ],
+    "other_links": ["https://store.steampowered.com/app/58200/Jolly_Rover/"],
     "extraction_status": "ok"
   },
   {
@@ -2655,9 +2466,7 @@
     "patch_links": [
       "https://drive.google.com/file/d/1qSQ9MxeuyIonXsQB54NXgNkRJ3txaoMJ/view?usp=drive_link"
     ],
-    "other_links": [
-      "https://store.steampowered.com/app/63110/Alter_Ego/"
-    ],
+    "other_links": ["https://store.steampowered.com/app/63110/Alter_Ego/"],
     "extraction_status": "ok"
   },
   {
@@ -2674,9 +2483,7 @@
     "patch_links": [
       "https://drive.google.com/file/d/1QcfrRU10OQs6zH9xPpk3pN9lBZU_5nA_/view?usp=sharing"
     ],
-    "other_links": [
-      "https://store.steampowered.com/app/373240/Black_Sails__The_Ghost_Ship/"
-    ],
+    "other_links": ["https://store.steampowered.com/app/373240/Black_Sails__The_Ghost_Ship/"],
     "extraction_status": "ok"
   },
   {
@@ -2693,9 +2500,7 @@
     "patch_links": [
       "https://drive.google.com/file/d/1ZYX-ADP-il-EH6NbPU50RRH7vYie9090/view?usp=sharing"
     ],
-    "other_links": [
-      "https://store.steampowered.com/app/730830/Escape_from_Monkey_Island/"
-    ],
+    "other_links": ["https://store.steampowered.com/app/730830/Escape_from_Monkey_Island/"],
     "extraction_status": "ok"
   },
   {
@@ -2712,9 +2517,7 @@
     "patch_links": [
       "https://drive.google.com/file/d/1FvQk8WjZTtme4PanFKqtXtlQAXvOTkkL/view?usp=sharing"
     ],
-    "other_links": [
-      "https://store.steampowered.com/app/216210/Secret_Files_3/"
-    ],
+    "other_links": ["https://store.steampowered.com/app/216210/Secret_Files_3/"],
     "extraction_status": "ok"
   },
   {
@@ -2751,9 +2554,7 @@
     "patch_links": [
       "https://drive.google.com/file/d/10ytPM8RbRqxISz8eGL1mrAq0QipAFriX/view?usp=sharing"
     ],
-    "other_links": [
-      "https://www.myabandonware.com/game/next-life-fsm"
-    ],
+    "other_links": ["https://www.myabandonware.com/game/next-life-fsm"],
     "extraction_status": "ok"
   },
   {
@@ -2770,9 +2571,7 @@
     "patch_links": [
       "https://drive.google.com/file/d/19gldA-hJ_UjnVsQLKXqYJZ-srdaCpuDg/view?usp=sharing"
     ],
-    "other_links": [
-      "https://store.steampowered.com/app/836770/Art_of_Murder__Cards_of_Destiny/"
-    ],
+    "other_links": ["https://store.steampowered.com/app/836770/Art_of_Murder__Cards_of_Destiny/"],
     "extraction_status": "ok"
   },
   {
@@ -2789,9 +2588,7 @@
     "patch_links": [
       "https://drive.google.com/file/d/1N2zGICOJxZpa5M-4YygrTQuZ_6G8-k0F/view?usp=sharing"
     ],
-    "other_links": [
-      "https://store.steampowered.com/app/11370/Nikopol_Secrets_of_the_Immortals/"
-    ],
+    "other_links": ["https://store.steampowered.com/app/11370/Nikopol_Secrets_of_the_Immortals/"],
     "extraction_status": "ok"
   },
   {
@@ -2808,9 +2605,7 @@
     "patch_links": [
       "https://drive.google.com/file/d/1O8FSQGS5sxY-dPLvX_EWQiVf8GFrT99h/view?usp=sharing"
     ],
-    "other_links": [
-      "https://www.gog.com/en/game/tales_of_monkey_island"
-    ],
+    "other_links": ["https://www.gog.com/en/game/tales_of_monkey_island"],
     "extraction_status": "ok"
   },
   {
@@ -2827,9 +2622,7 @@
     "patch_links": [
       "https://drive.google.com/file/d/1lj8E7iqtERfHhBWG15dtrTiT7OGqc4Pm/view?usp=sharing"
     ],
-    "other_links": [
-      "https://www.gog.com/en/game/there_is_no_game_wrong_dimension"
-    ],
+    "other_links": ["https://www.gog.com/en/game/there_is_no_game_wrong_dimension"],
     "extraction_status": "ok"
   },
   {
@@ -2846,9 +2639,7 @@
     "patch_links": [
       "https://1drv.ms/u/c/ae1d172a8e1e1469/IQAKZ-MHkLglRJiW1nlrCORFAYY_S7rdQf8Kf8TvYGzor38?e=6zmUb3"
     ],
-    "other_links": [
-      "https://www.gog.com/en/game/dracula_trilogy"
-    ],
+    "other_links": ["https://www.gog.com/en/game/dracula_trilogy"],
     "extraction_status": "ok"
   },
   {
@@ -2902,9 +2693,7 @@
     "patch_links": [
       "https://drive.google.com/file/d/1tARCVgj9XlgJbPbkLZ_1A8RXi5J-h39K/view?usp=drive_link"
     ],
-    "other_links": [
-      "https://store.steampowered.com/app/200490/Memento_Mori/"
-    ],
+    "other_links": ["https://store.steampowered.com/app/200490/Memento_Mori/"],
     "extraction_status": "ok"
   },
   {
@@ -2981,9 +2770,7 @@
     "patch_links": [
       "https://drive.google.com/file/d/11qdt86-cJbBDXOAFS2NhY7gyvl-fLVD1/view?usp=drive_link"
     ],
-    "other_links": [
-      "https://www.gog.com/en/game/the_cat_lady"
-    ],
+    "other_links": ["https://www.gog.com/en/game/the_cat_lady"],
     "extraction_status": "ok"
   },
   {
@@ -3001,9 +2788,7 @@
       "https://github.com/SegMash/SCIHebrew/releases/download/5_26/KQ7_Hebrew_Patch_Setup.exe",
       "https://github.com/nitro-shoe/sc-55-soundfont/releases/tag/v1.32"
     ],
-    "other_links": [
-      "https://www.scummvm.org/downloads/"
-    ],
+    "other_links": ["https://www.scummvm.org/downloads/"],
     "extraction_status": "ok"
   },
   {
@@ -3040,9 +2825,7 @@
     "patch_links": [
       "https://drive.google.com/file/d/1Atx1m7AaFqAUphmnOP4Ke5fdICYgy0FP/view?usp=drive_link"
     ],
-    "other_links": [
-      "https://store.steampowered.com/app/1170570/The_Drifter/"
-    ],
+    "other_links": ["https://store.steampowered.com/app/1170570/The_Drifter/"],
     "extraction_status": "ok"
   },
   {
@@ -3079,9 +2862,7 @@
     "patch_links": [
       "https://drive.google.com/file/d/1RTsYZh3qMz0Gm_AS_-_Rp1ZbdJDKtdqm/view?usp=sharing"
     ],
-    "other_links": [
-      "https://store.steampowered.com/app/257220/Secret_Files_Sam_Peters/"
-    ],
+    "other_links": ["https://store.steampowered.com/app/257220/Secret_Files_Sam_Peters/"],
     "extraction_status": "ok"
   },
   {
@@ -3119,9 +2900,7 @@
     "patch_links": [
       "https://drive.google.com/file/d/1nuhFIKGud_MXSlANHH2NX54YVnVPRva4/view?usp=sharing"
     ],
-    "other_links": [
-      "https://www.gog.com/en/game/gemini_rue"
-    ],
+    "other_links": ["https://www.gog.com/en/game/gemini_rue"],
     "extraction_status": "ok"
   },
   {
@@ -3138,9 +2917,7 @@
     "patch_links": [
       "https://drive.google.com/file/d/1pN_xW5qeKnZfZUNiBe2RoMdKH5zYrH4F/view?usp=sharing"
     ],
-    "other_links": [
-      "https://www.myabandonware.com/game/agatha-christie-evil-under-the-sun-guu"
-    ],
+    "other_links": ["https://www.myabandonware.com/game/agatha-christie-evil-under-the-sun-guu"],
     "extraction_status": "ok"
   },
   {
@@ -3189,9 +2966,7 @@
     "patch_links": [
       "https://drive.google.com/file/d/1-ToybNtkhfZIDlWT5Lb-XDbGJvu9783i/view?usp=sharing"
     ],
-    "other_links": [
-      "https://store.steampowered.com/app/395560/Lost_Horizon_2/"
-    ],
+    "other_links": ["https://store.steampowered.com/app/395560/Lost_Horizon_2/"],
     "extraction_status": "ok"
   },
   {
@@ -3246,9 +3021,7 @@
     "patch_links": [
       "https://www.dropbox.com/scl/fo/atqhwse0zmovx8k2uk1b4/AOyhlRhVNjGddrBCcFZGzDY?rlkey=5cit73b3jqlkhp7d3ei2jtf6l&e=1&dl=0"
     ],
-    "other_links": [
-      "https://www.adventuregamestudio.co.uk/play/game/570"
-    ],
+    "other_links": ["https://www.adventuregamestudio.co.uk/play/game/570"],
     "extraction_status": "ok"
   },
   {
@@ -3305,9 +3078,7 @@
     "patch_links": [
       "https://drive.google.com/file/d/1qms9kd1ZQ1XQDO04xE4mcx7G2GJCqtVU/view?usp=sharing"
     ],
-    "other_links": [
-      "https://store.steampowered.com/app/292930/Black_Mirror_I/"
-    ],
+    "other_links": ["https://store.steampowered.com/app/292930/Black_Mirror_I/"],
     "extraction_status": "ok"
   },
   {
@@ -3344,9 +3115,7 @@
     "vm_notes": "לפי הפוסט, יש להתקין את Day of the Tentacle Remastered (Steam app 388210), לחלץ את המשחק המקורי באמצעות remonstered 1.12.1 (remonster.exe), להתקין את טלאי DOTT-WIP2 ולהפעיל באמצעות הגרסה האחרונה של ScummVM. הטלאי מיועד למשחק הקלאסי שחולץ, ולא למנוע או לגרפיקה של הרמסטרד.",
     "vm_source": "post",
     "patch_link": "https://github.com/adventurebrew/scummworks/releases/tag/DOTT-WIP2",
-    "patch_links": [
-      "https://github.com/adventurebrew/scummworks/releases/tag/DOTT-WIP2"
-    ],
+    "patch_links": ["https://github.com/adventurebrew/scummworks/releases/tag/DOTT-WIP2"],
     "other_links": [
       "https://store.steampowered.com/app/388210/Day_of_the_Tentacle_Remastered/",
       "https://github.com/BLooperZ/remonstered/releases/tag/1.12.1",
@@ -3355,5 +3124,17 @@
       "https://www.facebook.com/photo/?fbid=10213399704376166&set=pcb.342895866314516"
     ],
     "extraction_status": "ok (public post by Omer Cohen; date shown as 1 February 2019, exact time/timezone unavailable; linked store edition is Day of the Tentacle Remastered, but explicit extraction instructions identify the patch target as the embedded classic game running in ScummVM; visible Niv Baehr comment links the same DOTT-WIP2 release and describes an updated preview with all missing fonts; personal-use/no-redistribution restriction preserved; patch installation and platform compatibility not verified)"
+  },
+  {
+    "idx": 177,
+    "name_he": "דיסקו אליסיום",
+    "name_en": "Disco Elysium – The Final Cut",
+    "description": "משחק תפקידים בלשי מאת ZA/UM. תרגום עברי מקורי בהכנה; חבילת בדיקה חלקית ל־The Final Cut ב־Steam. יש לבחור ערבית במשחק כדי להציג את הטקסט העברי. יתר הטקסט עדיין בערבית.",
+    "patch_link": null,
+    "patch_links": [],
+    "other_links": ["https://store.steampowered.com/app/632470/"],
+    "vm": "Native Unity",
+    "vm_notes": "Windows and macOS native game; private partial Hebrew preview. Public release and Windows gameplay validation pending.",
+    "extraction_status": "Original direct CSV translation; user-approved Hebrew title; not a published community patch."
   }
 ]

@@ -53,6 +53,16 @@ def validate(manifest_path, platform):
     root = manifest_path.parent
     canonical_sq1 = Path(__file__).resolve().parents[2] / 'patches-workspace/sq1/he/patch.json'
     config_path = root / 'build-source.json'
+    disco_root = Path(__file__).resolve().parents[2] / 'patches-workspace/disco-elysium/he'
+    if root.resolve() == disco_root or (root / 'package-build.json').is_file():
+        require((root / 'package-build.json').is_file(), 'Disco preview requires package-build.json')
+        require(not (root / 'package-build.json').is_symlink(), 'Symlink build report')
+        report = json.loads((root / 'package-build.json').read_text(encoding='utf-8'))
+        if json.loads(manifest_path.read_text())['scummvm_id'] == 'disco-elysium':
+            for name, field in [('translations.csv', 'csv_sha256'), ('build_package.py', 'compiler_sha256')]:
+                require(not (root / name).is_symlink(), 'Symlink preview source')
+                require(hashlib.sha256((root / name).read_bytes()).hexdigest() == report.get(field),
+                        'Disco preview is stale; rebuild with build_package.py from owned game data')
     if manifest_path.resolve() == canonical_sq1 or config_path.exists():
         require(not config_path.is_symlink(), 'Symlink build-source configuration')
         require(config_path.is_file(), 'SQ1 requires build-source.json; prebuilt-only packaging is disabled')

@@ -222,9 +222,16 @@ pub async fn download_and_install_patch(
     println!("[patch_service] Downloading from: {}", patch.download_url);
     println!("[patch_service] Download destination: {}", download_path.display());
     let source = super::package_source::PackageSource::resolve(&patch, &game_def.behavior)?;
-    if matches!(source, super::package_source::PackageSource::Download) {
-        download_service::download_patch_file(&patch.download_url, &download_path, &app_handle, &scummvm_id)
-            .await?;
+    match &source {
+        super::package_source::PackageSource::Download => {
+            download_service::download_patch_file(&patch.download_url, &download_path, &app_handle, &scummvm_id).await?;
+        }
+        #[cfg(debug_assertions)]
+        super::package_source::PackageSource::LocalPreview(path) => {
+            std::fs::copy(path, &download_path).map_err(|e| e.to_string())?;
+        }
+    }
+    {
         if let Some(checksum) = &patch.checksum {
             if patch_lifecycle::hash(&download_path)? != checksum.to_lowercase() {
                 return Err("Downloaded translation checksum mismatch; game files were not changed".into());
@@ -247,8 +254,7 @@ pub async fn download_and_install_patch(
 
     let manifest_name = patch.install_manifest.as_deref()
         .ok_or("Patch has no file-change manifest; whole-folder installation is no longer supported")?;
-    if matches!(source, super::package_source::PackageSource::Download)
-        && download_path.extension().and_then(|s| s.to_str()) != Some("zip") {
+    if download_path.extension().and_then(|s| s.to_str()) != Some("zip") {
         return Err("Declarative patch packages must be ZIP archives".into());
     }
     // Package tools and source data never enter the game installation.

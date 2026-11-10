@@ -1,0 +1,10 @@
+# Owned-game material and local build outputs; never publish in patch archives.
+/build/
+/font-stage/
+/font-rollback/
+/source-index.json
+/actors.json
+__pycache__/
+
+# Private Arial-derived deltas; do not publish before font rights are resolved.
+/payload/

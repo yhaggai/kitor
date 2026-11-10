@@ -7,6 +7,6 @@ out=['''<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewpor
 for g in m['games']:
  title=g.get('title',g['game_id']);he=g.get('title_he','');out.append(f'<article data-search="{esc(title+" "+he,quote=True)}"><h2>{esc(title)}</h2><div dir="rtl">{esc(he)}</div><div class="pair">')
  for lang,label in [('en','English original'),('he','Hebrew')]:
-  a=g['covers'][lang];out.append(f'<figure><a href="{esc(a["file"],quote=True)}"><img loading="lazy" src="{esc(a["file"],quote=True)}" alt="{esc(title+" — "+label,quote=True)}"></a><figcaption>{label} · <a href="{esc(a["original_url"],quote=True)}">Cloudflare</a></figcaption></figure>')
+  a=g['covers'][lang];out.append(f'<figure><a href="{esc(a["original_url"],quote=True)}"><img loading="lazy" src="{esc(a["original_url"],quote=True)}" alt="{esc(title+" — "+label,quote=True)}"></a><figcaption>{label} · <a href="{esc(a["original_url"],quote=True)}">Cloudflare</a></figcaption></figure>')
  out.append('</div></article>')
 out.append('''</main><script>function update(){let q=document.querySelector('#search').value.toLowerCase(),n=0;document.querySelectorAll('article').forEach(a=>{a.hidden=!a.dataset.search.toLowerCase().includes(q);if(!a.hidden)n++});document.querySelector('#count').textContent=n+' games'}document.querySelector('#search').oninput=update;update()</script></html>''');(root/'review-pairs.html').write_text(''.join(out));print(len(m['games']),'pairs')

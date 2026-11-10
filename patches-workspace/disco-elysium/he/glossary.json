@@ -1,0 +1,1681 @@
+{
+  "schema_version": 2,
+  "entries": [
+    {
+      "english": "Ancient Reptilian Brain",
+      "hebrew": "המוח הזוחלי הקדמון",
+      "speaker_id": 82,
+      "voice": "Intimate, hypnotic, coaxing; bleak images and affectionate address.",
+      "gender": "masculine grammatical voice",
+      "evidence": "Conversation 8"
+    },
+    {
+      "english": "Limbic System",
+      "hebrew": "המערכת הלימבית",
+      "speaker_id": 83,
+      "voice": "Dry, bodily, mocking; increasingly intrusive awareness.",
+      "evidence": "Conversation 8"
+    },
+    {
+      "english": "You",
+      "hebrew": "אתה",
+      "speaker_id": 396,
+      "gender": "masculine",
+      "evidence": {
+        "conversation_ids": [8, 10, 11, 12]
+      },
+      "aliases": [],
+      "pronouns": "אתה",
+      "forms_of_address": "masculine singular; address Klaasje in feminine singular",
+      "voice": "Player choices range from boastful to ashamed; do not flatten alternative personalities.",
+      "mood_by_scene": "Opening: disoriented; mirror: shame or grandiosity; Klaasje: clumsy desire, confusion or investigation.",
+      "status": "editorial working choice"
+    },
+    {
+      "english": "Coupris Kineema",
+      "hebrew": "קופריס קינמה",
+      "pronunciation": "provisional spelling; audio review pending",
+      "evidence": "Conversation 8 entries 57 and 67"
+    },
+    {
+      "english": "Allons-y",
+      "hebrew": "אלונזי",
+      "pronunciation": "French phrase; no nikud in current build",
+      "evidence": "Conversation 8 entries 20 and 59"
+    },
+    {
+      "english": "Kim Kitsuragi",
+      "hebrew": "קים קיטסוראגי",
+      "aliases": [],
+      "gender": "masculine",
+      "pronouns": "הוא",
+      "forms_of_address": "אדוני השוטר / סגן",
+      "voice": "Precise, restrained, professional. Dry irony rather than overt mockery.",
+      "mood_by_scene": "Conversation 5: patient explanation turns dryly sarcastic; conversation 12: professional caution, not immediate intimacy.",
+      "evidence": {
+        "conversation_ids": [5, 12]
+      },
+      "status": "editorial working choice",
+      "speaker_id": 395,
+      "pronunciation": "spelling provisional; in-game audio review pending",
+      "scene_notes": {
+        "14": "Patient professional guidance becomes exhaustion, restrained anger during firearm misuse, camaraderie after successful shot. Do not flatten branches.",
+        "15": "Grave historical uncertainty juxtaposed with absurd escalating nodding; dry physical comedy."
+      }
+    },
+    {
+      "english": "Klaasje (Miss Oranje Disco Dancer)",
+      "hebrew": "קלאסיה (רקדנית הדיסקו מאוראניה)",
+      "aliases": [],
+      "gender": "feminine",
+      "pronouns": "היא",
+      "forms_of_address": "אדוני when addressing the player; feminine second-person player replies",
+      "voice": "Tired, casual, teasing; restrained concern without premature disclosure of identity.",
+      "mood_by_scene": "Conversation 11: amused by failed flirting, momentarily concerned about nausea, guarded and sad when describing the hanging.",
+      "evidence": {
+        "conversation_ids": [11]
+      },
+      "status": "editorial working choice",
+      "speaker_id": 382,
+      "pronunciation": "spelling provisional; in-game audio review pending",
+      "scene_notes": {
+        "16": "Rooftop: guarded composure, cigarette as stress tell; dry humour and self-disgust. Gender female. Keep contradictions/uncertainty and identity reveal timing."
+      }
+    },
+    {
+      "english": "Ceiling Fan",
+      "hebrew": "מאוורר תקרה",
+      "aliases": [],
+      "gender": "masculine label; narrator addresses male player",
+      "pronouns": "הוא",
+      "forms_of_address": "masculine player address",
+      "voice": "Matter-of-fact physical description punctuated by bodily alarm and dry absurdity.",
+      "mood_by_scene": "Conversation 9: neutral object description to sudden pain and recovery.",
+      "evidence": {
+        "conversation_ids": [9]
+      },
+      "status": "editorial working choice",
+      "speaker_id": 133
+    },
+    {
+      "english": "Mirror",
+      "hebrew": "מראה",
+      "aliases": [],
+      "gender": "feminine label; narrator addresses male player",
+      "pronouns": "היא",
+      "forms_of_address": "masculine player address",
+      "voice": "Cruel, intimate second-person observation; deadpan disgust and recognition.",
+      "mood_by_scene": "Conversation 10: apprehension, revelation, mockery; plain description for repeat visits.",
+      "evidence": {
+        "conversation_ids": [10]
+      },
+      "status": "editorial working choice",
+      "speaker_id": 134
+    },
+    {
+      "english": "Pain Threshold",
+      "hebrew": "סף כאב",
+      "aliases": [],
+      "gender": "masculine grammatical label",
+      "pronouns": "הוא",
+      "forms_of_address": "masculine player address",
+      "voice": "Short, stoic coaching; unreliable minimization of physical distress.",
+      "mood_by_scene": "Conversation 9: calm encouragement becomes grudging acknowledgement of worsening pain.",
+      "evidence": {
+        "conversation_ids": [9, 11]
+      },
+      "status": "editorial working choice",
+      "speaker_id": 412
+    },
+    {
+      "english": "Endurance",
+      "hebrew": "סיבולת",
+      "aliases": [],
+      "gender": "feminine grammatical label; skill voice addresses male player",
+      "pronouns": "היא",
+      "forms_of_address": "אחי for bröther; masculine player address",
+      "voice": "Bodily certainty; in the mirror ideology branch, bombastic, archaic, coercive and misogynistic. Preserve the character voice, not narrator endorsement.",
+      "mood_by_scene": "Conversation 8: encouragement; conversation 10: escalating heroic fantasy, contempt, shame and forced vows.",
+      "evidence": {
+        "conversation_ids": [8, 10, 11]
+      },
+      "status": "editorial working choice",
+      "speaker_id": 409
+    },
+    {
+      "english": "Volition",
+      "hebrew": "כוח רצון",
+      "aliases": [],
+      "gender": "masculine grammatical label",
+      "pronouns": "הוא",
+      "forms_of_address": "masculine player address",
+      "voice": "Plain, grounded, protective; firm reassurance rather than grand speeches.",
+      "mood_by_scene": "Mirror: names compulsion and questions harm; Klaasje: reminds player he has agency.",
+      "evidence": {
+        "conversation_ids": [10, 11, 12]
+      },
+      "status": "editorial working choice",
+      "speaker_id": 405
+    },
+    {
+      "english": "Electrochemistry",
+      "hebrew": "אלקטרוכימיה",
+      "aliases": [],
+      "gender": "feminine grammatical label",
+      "pronouns": "היא",
+      "forms_of_address": "masculine player address",
+      "voice": "Appetitive, impulsive, persuasive; switches to bodily explanation and sudden clarity.",
+      "mood_by_scene": "Mirror: entrenched compulsion and release; Klaasje: urges flirtation.",
+      "evidence": {
+        "conversation_ids": [10, 11]
+      },
+      "status": "editorial working choice",
+      "speaker_id": 413
+    },
+    {
+      "english": "Encyclopedia",
+      "hebrew": "אנציקלופדיה",
+      "aliases": [],
+      "gender": "feminine grammatical label",
+      "pronouns": "היא",
+      "forms_of_address": "masculine player address",
+      "voice": "Confident explanatory facts, digressions and occasional sardonic asides.",
+      "mood_by_scene": "Mirror: cultural history; Klaasje: geography and correction of her alcohol claim.",
+      "evidence": {
+        "conversation_ids": [8, 10, 11, 12]
+      },
+      "status": "editorial working choice",
+      "speaker_id": 399
+    },
+    {
+      "english": "Inland Empire",
+      "hebrew": "האימפריה שבפנים",
+      "aliases": [],
+      "gender": "feminine grammatical label",
+      "pronouns": "היא",
+      "forms_of_address": "masculine player address",
+      "voice": "Intuitive, ominous, imaginative; treats objects as companions and fears revelations.",
+      "mood_by_scene": "Fan: attachment and foreboding; mirror: urgent warning; Klaasje: uncanny familiarity.",
+      "evidence": {
+        "conversation_ids": [8, 9, 10, 11]
+      },
+      "status": "editorial working choice",
+      "speaker_id": 404
+    },
+    {
+      "english": "Physical Instrument",
+      "hebrew": "מכשיר גופני",
+      "aliases": [],
+      "gender": "masculine grammatical label",
+      "pronouns": "הוא",
+      "forms_of_address": "masculine player address",
+      "voice": "Blunt physical confidence, commands, impatience.",
+      "mood_by_scene": "Opening: champion encouragement; Kim intro: forceful solution.",
+      "evidence": {
+        "conversation_ids": [8, 12]
+      },
+      "status": "editorial working choice",
+      "speaker_id": 410
+    },
+    {
+      "english": "Savoir Faire",
+      "hebrew": "תושייה",
+      "aliases": [],
+      "gender": "feminine grammatical label",
+      "pronouns": "היא",
+      "forms_of_address": "masculine player address",
+      "voice": "Quick bodily action, then immediate recognition of failure.",
+      "mood_by_scene": "Fan: confident reach becomes alarm or successful catch.",
+      "evidence": {
+        "conversation_ids": [9]
+      },
+      "status": "editorial working choice",
+      "speaker_id": 417
+    },
+    {
+      "english": "Logic",
+      "hebrew": "היגיון",
+      "aliases": [],
+      "gender": "masculine grammatical label",
+      "pronouns": "הוא",
+      "forms_of_address": "masculine player address",
+      "voice": "Short deductions; questions inconsistencies without embellishment.",
+      "mood_by_scene": "Fan: questions why a friend was tied up; Klaasje: notices missing information.",
+      "evidence": {
+        "conversation_ids": [9, 10, 11, 12]
+      },
+      "status": "editorial working choice",
+      "speaker_id": 398
+    },
+    {
+      "english": "Interfacing",
+      "hebrew": "ממשק",
+      "aliases": [],
+      "gender": "masculine grammatical label",
+      "pronouns": "הוא",
+      "forms_of_address": "masculine player address",
+      "voice": "Practical mechanical intuition; tactile detail and satisfaction in tools.",
+      "mood_by_scene": "Fan: actionable advice; mirror: diagnosis, repair, or failed manipulation.",
+      "evidence": {
+        "conversation_ids": [9, 10]
+      },
+      "status": "editorial working choice",
+      "speaker_id": 418
+    },
+    {
+      "english": "Shivers",
+      "hebrew": "צמרמורת",
+      "aliases": [],
+      "gender": "feminine grammatical label",
+      "pronouns": "היא",
+      "forms_of_address": "masculine player address",
+      "voice": "Atmospheric, sensory, distant tableaux; avoid explanatory additions.",
+      "mood_by_scene": "Mirror: shifts outward to shack, wind and village; Klaasje: physical shiver.",
+      "evidence": {
+        "conversation_ids": [10, 11]
+      },
+      "status": "editorial working choice",
+      "speaker_id": 411
+    },
+    {
+      "english": "Esprit de Corps",
+      "hebrew": "רוח היחידה",
+      "aliases": [],
+      "gender": "feminine grammatical label",
+      "pronouns": "היא",
+      "forms_of_address": "masculine player address",
+      "voice": "Police solidarity, distant colleagues, restrained observational cuts.",
+      "mood_by_scene": "Mirror: colleague concern; Kim: intense certainty of loyalty without explanation.",
+      "evidence": {
+        "conversation_ids": [10, 12]
+      },
+      "status": "editorial working choice",
+      "speaker_id": 408,
+      "scene_notes": {
+        "15": "Ideological branches deliberately conflict; preserve attribution to player belief, alongside tender police camaraderie."
+      }
+    },
+    {
+      "english": "Authority",
+      "hebrew": "סמכות",
+      "aliases": [],
+      "gender": "feminine grammatical label",
+      "pronouns": "היא",
+      "forms_of_address": "masculine player address",
+      "voice": "Imperatives and sensitivity to status; confrontational, occasionally grudgingly pragmatic.",
+      "mood_by_scene": "Klaasje: demands self-assertion, then concedes a rebuke is deserved.",
+      "evidence": {
+        "conversation_ids": [10, 11]
+      },
+      "status": "editorial working choice",
+      "speaker_id": 406
+    },
+    {
+      "english": "Empathy",
+      "hebrew": "אמפתיה",
+      "aliases": [],
+      "gender": "feminine grammatical label",
+      "pronouns": "היא",
+      "forms_of_address": "masculine player address",
+      "voice": "Quiet attention to feelings underneath words; mark uncertainty when source does.",
+      "mood_by_scene": "Klaasje: sadness, genuine concern and alienation; Kim: subtle irritation.",
+      "evidence": {
+        "conversation_ids": [11, 12]
+      },
+      "status": "editorial working choice",
+      "speaker_id": 403
+    },
+    {
+      "english": "Rhetoric",
+      "hebrew": "רטוריקה",
+      "aliases": [],
+      "gender": "feminine grammatical label",
+      "pronouns": "היא",
+      "forms_of_address": "masculine player address",
+      "voice": "Examines implication, contradiction and conversational intent.",
+      "mood_by_scene": "Klaasje: challenges slogans and reads irony without certainty.",
+      "evidence": {
+        "conversation_ids": [11, 12]
+      },
+      "status": "editorial working choice",
+      "speaker_id": 400
+    },
+    {
+      "english": "Suggestion",
+      "hebrew": "שכנוע",
+      "aliases": [],
+      "gender": "masculine grammatical label",
+      "pronouns": "הוא",
+      "forms_of_address": "masculine player address",
+      "voice": "Social timing and persuasion; urgent warnings when the player blunders.",
+      "mood_by_scene": "Klaasje: doubts the expression, then recognizes words already escaped.",
+      "evidence": {
+        "conversation_ids": [11]
+      },
+      "status": "editorial working choice",
+      "speaker_id": 407
+    },
+    {
+      "english": "Reaction Speed",
+      "hebrew": "מהירות תגובה",
+      "aliases": [],
+      "gender": "feminine grammatical label",
+      "pronouns": "היא",
+      "forms_of_address": "masculine player address",
+      "voice": "Fast prompts, catches fleeting opportunities; brief, immediate.",
+      "mood_by_scene": "Klaasje: catches her departure and urges questions.",
+      "evidence": {
+        "conversation_ids": [11]
+      },
+      "status": "editorial working choice",
+      "speaker_id": 416
+    },
+    {
+      "english": "Conceptualization",
+      "hebrew": "המשגה",
+      "aliases": [],
+      "gender": "feminine grammatical label",
+      "pronouns": "היא",
+      "forms_of_address": "masculine player address",
+      "voice": "Elaborate images, artistic associations and aesthetic self-invention.",
+      "mood_by_scene": "Mirror: grand allegory; Kim intro: elaborate invented name.",
+      "evidence": {
+        "conversation_ids": [10, 11, 12]
+      },
+      "status": "editorial working choice",
+      "speaker_id": 397
+    },
+    {
+      "english": "Composure",
+      "hebrew": "קור רוח",
+      "aliases": [],
+      "gender": "masculine grammatical label",
+      "pronouns": "הוא",
+      "forms_of_address": "masculine player address",
+      "voice": "Measured presentation awareness, discreet correction and embarrassment.",
+      "mood_by_scene": "Mirror: pointed comparison to the shirt, signaled by throat-clearing.",
+      "evidence": {
+        "conversation_ids": [10]
+      },
+      "status": "editorial working choice",
+      "speaker_id": 419
+    },
+    {
+      "english": "Drama",
+      "hebrew": "דרמה",
+      "aliases": [],
+      "gender": "feminine grammatical label",
+      "pronouns": "היא",
+      "forms_of_address": "masculine player address",
+      "voice": "Performs and detects performance; preserve theatrical touches when present.",
+      "mood_by_scene": "Mirror: pronunciation aside; Kim intro: identifies polite disbelief.",
+      "evidence": {
+        "conversation_ids": [10, 12]
+      },
+      "status": "editorial working choice",
+      "speaker_id": 401
+    },
+    {
+      "english": "Horrific Necktie",
+      "hebrew": "העניבה המחרידה",
+      "aliases": [],
+      "gender": "feminine grammatical label; preserve source persona",
+      "pronouns": "היא",
+      "forms_of_address": "masculine player address",
+      "voice": "Pushy, exuberant encouragement and intimate complicity.",
+      "mood_by_scene": "Kim intro: supports flamboyant self-invention; no premature claim that the tie literally speaks.",
+      "evidence": {
+        "conversation_ids": [12]
+      },
+      "status": "editorial working choice",
+      "speaker_id": 231
+    },
+    {
+      "english": "Revachol",
+      "hebrew": "רבאשול",
+      "aliases": ["Revachol West"],
+      "accepted_hebrew_forms": ["רבאשול"],
+      "evidence": "10: 73, 95, 456; 11: 75, 189",
+      "status": "editorial working choice",
+      "pronunciation": "no audio verification yet; unpointed working spelling"
+    },
+    {
+      "english": "The Expression",
+      "hebrew": "ההבעה",
+      "aliases": [],
+      "accepted_hebrew_forms": ["ההבעה", "הבעה"],
+      "evidence": "10: recurring motif; inflected forms allowed",
+      "status": "editorial working choice"
+    },
+    {
+      "english": "Guillaume le Million",
+      "hebrew": "גיום לה מיליון",
+      "aliases": ["Guillaume Le Million", "Guillaume"],
+      "accepted_hebrew_forms": ["גיום"],
+      "evidence": "10: 47, 70, 456; 11: 73, 297",
+      "status": "editorial working choice",
+      "pronunciation": "no audio verification yet; unpointed working spelling"
+    },
+    {
+      "english": "Martinaise",
+      "hebrew": "מרטינז",
+      "aliases": [],
+      "accepted_hebrew_forms": ["מרטינז"],
+      "evidence": "10:364",
+      "status": "editorial working choice",
+      "pronunciation": "no audio verification yet; unpointed working spelling"
+    },
+    {
+      "english": "Oranje",
+      "hebrew": "אוראניה",
+      "aliases": [],
+      "accepted_hebrew_forms": ["אוראניה"],
+      "evidence": "11:56",
+      "status": "editorial working choice",
+      "pronunciation": "no audio verification yet; unpointed working spelling"
+    },
+    {
+      "english": "Ostentatious Orchestrations",
+      "hebrew": "התזמורים הראוותניים",
+      "aliases": ["OO"],
+      "accepted_hebrew_forms": ["תזמורים"],
+      "evidence": "10:181,354; 11:193,282",
+      "status": "editorial working choice",
+      "pronunciation": "no audio verification yet; unpointed working spelling"
+    },
+    {
+      "english": "Kingsman",
+      "hebrew": "נאמן־מלך",
+      "aliases": ["kingsman", "Kingsmen"],
+      "accepted_hebrew_forms": ["נאמן־מלך", "נאמן־המלך", "נאמני־מלך"],
+      "evidence": "10:31,110,253",
+      "status": "editorial working choice"
+    },
+    {
+      "english": "chaincutters",
+      "hebrew": "חותך השרשראות",
+      "aliases": [],
+      "accepted_hebrew_forms": ["חותך השרשראות", "חותך שרשראות"],
+      "evidence": "10:177,240,305,373",
+      "status": "editorial working choice"
+    },
+    {
+      "english": "Saint-Saëns",
+      "hebrew": "סן־סאנס",
+      "aliases": [],
+      "accepted_hebrew_forms": ["סן־סאנס"],
+      "evidence": "11:268",
+      "status": "editorial working choice",
+      "pronunciation": "no audio verification yet; unpointed working spelling"
+    },
+    {
+      "english": "Raphaël Ambrosius Costeau",
+      "hebrew": "רפאל אמברוזיוס קוסטו",
+      "aliases": [],
+      "accepted_hebrew_forms": ["רפאל אמברוזיוס קוסטו"],
+      "evidence": "12:27,115",
+      "status": "editorial working choice",
+      "pronunciation": "no audio verification yet; unpointed working spelling"
+    },
+    {
+      "english": "RCM",
+      "hebrew": "RCM",
+      "aliases": [],
+      "accepted_hebrew_forms": ["RCM"],
+      "evidence": "12:113,158; preserve abbreviation until UI terminology pass",
+      "status": "editorial working choice"
+    },
+    {
+      "english": "Garte, the Cafeteria Manager",
+      "hebrew": "גארט, מנהל הקפטריה",
+      "speaker_id": 377,
+      "gender": "masculine; הוא",
+      "pronouns": "הוא",
+      "forms_of_address": "Player masculine; use feminine when addressing Lena",
+      "voice": "Clipped, defensive service-worker speech. Sarcasm and resentment toward player; anger around debt and personal questions, embarrassment about Sylvie.",
+      "mood_by_scene": "Conversation 13: debt confrontation / concern after fall",
+      "evidence": {
+        "conversation_ids": [13]
+      },
+      "pronunciation": "working spelling; audio review pending",
+      "status": "editorial working choice",
+      "translation_coverage": "13: all 488 source entries translated; renderer review pending"
+    },
+    {
+      "english": "Lena, the Cryptozoologist's wife",
+      "hebrew": "לנה, אשת הקריפטוזואולוג",
+      "speaker_id": 383,
+      "gender": "feminine; היא",
+      "pronouns": "היא",
+      "forms_of_address": "Player masculine; use feminine when addressing Lena",
+      "voice": "Gentle, concerned, maternal address; reassurance after the fall without condescension.",
+      "mood_by_scene": "Conversation 13: debt confrontation / concern after fall",
+      "evidence": {
+        "conversation_ids": [13]
+      },
+      "pronunciation": "working spelling; audio review pending",
+      "status": "editorial working choice"
+    },
+    {
+      "english": "Whirling-in-Rags",
+      "hebrew": "מערבולת הסחבות",
+      "aliases": [],
+      "evidence": "Conversations 12–13",
+      "status": "editorial working choice; names pending audio verification",
+      "accepted_hebrew_forms": ["מערבולת הסחבות"]
+    },
+    {
+      "english": "Inspectorate General",
+      "hebrew": "הפיקוח הכללי",
+      "aliases": [],
+      "evidence": "Conversations 12–13",
+      "status": "editorial working choice; names pending audio verification"
+    },
+    {
+      "english": "internal affairs",
+      "hebrew": "חקירות פנים",
+      "aliases": [],
+      "evidence": "Conversations 12–13",
+      "status": "editorial working choice; names pending audio verification"
+    },
+    {
+      "english": "rat squad",
+      "hebrew": "יחידת המלשינים",
+      "aliases": [],
+      "evidence": "Conversations 12–13",
+      "status": "editorial working choice; names pending audio verification"
+    },
+    {
+      "english": "reál",
+      "hebrew": "ריאל",
+      "aliases": [],
+      "evidence": "Conversations 12–13",
+      "status": "editorial working choice; names pending audio verification",
+      "accepted_hebrew_forms": ["ריאל"]
+    },
+    {
+      "english": "Sylvie",
+      "hebrew": "סילבי",
+      "aliases": [],
+      "evidence": "Conversations 12–13",
+      "status": "editorial working choice; names pending audio verification",
+      "accepted_hebrew_forms": ["סילבי"]
+    },
+    {
+      "english": "Jean Vicquemare",
+      "hebrew": "ז׳אן ויקמאר",
+      "evidence": "13:187,436",
+      "notes": "Male officer; irritated and exhausted with colleague. Name spelling provisional; audio review pending.",
+      "status": "editorial working choice",
+      "accepted_hebrew_forms": ["ז׳אן ויקמאר"]
+    },
+    {
+      "english": "Jamrock",
+      "hebrew": "ג׳מרוק",
+      "evidence": "13:259,536",
+      "notes": "District; spelling provisional pending audio.",
+      "status": "editorial working choice",
+      "accepted_hebrew_forms": ["ג׳מרוק"]
+    },
+    {
+      "english": "Débardeurs",
+      "hebrew": "סוורים",
+      "evidence": "13:134",
+      "notes": "Dockworkers; preserve distinction between job and union membership.",
+      "status": "editorial working choice"
+    },
+    {
+      "english": "South Safre",
+      "hebrew": "דרום סאפרה",
+      "evidence": "13:239",
+      "notes": "Place; spelling provisional pending audio.",
+      "status": "editorial working choice"
+    },
+    {
+      "english": "Kind Green Ape",
+      "hebrew": "הקוף הירוק החביב",
+      "evidence": "13:239",
+      "notes": "Lena jokes about a creature; not a literal sighting.",
+      "status": "editorial working choice"
+    },
+    {
+      "english": "great skua",
+      "hebrew": "חמסנית גדולה",
+      "evidence": "13:457,501",
+      "notes": "Stuffed seabird, feminine agreement.",
+      "status": "editorial working choice"
+    },
+    {
+      "english": "Potent Blend",
+      "hebrew": "תערובת חזקה",
+      "evidence": "13:480",
+      "notes": "Alcohol brand; quoted label.",
+      "status": "editorial working choice"
+    },
+    {
+      "english": "Royal Extra",
+      "hebrew": "רויאל אקסטרה",
+      "evidence": "13:480",
+      "notes": "Cigarette brand; quoted label.",
+      "status": "editorial working choice"
+    },
+    {
+      "english": "Thought Cabinet",
+      "hebrew": "ארון המחשבות",
+      "evidence": "13:499",
+      "notes": "UI label; internalize = להפנים.",
+      "status": "editorial working choice"
+    },
+    {
+      "english": "Insulindian isola",
+      "hebrew": "האיסולה האינסולינדית",
+      "evidence": "13:501",
+      "notes": "Geographic lore; preserve isola as world term, not ordinary island; names provisional.",
+      "status": "editorial working choice"
+    },
+    {
+      "english": "Innocence Franconegro",
+      "hebrew": "האינוסנס פרנקונגרו",
+      "evidence": "13:504",
+      "notes": "Historical title retained as lore term; provisional pending broader context and audio.",
+      "status": "editorial working choice"
+    },
+    {
+      "english": "Spinal Cord",
+      "hebrew": "חוט השדרה",
+      "evidence": "13:562",
+      "notes": "Personified bodily system, masculine grammatical agreement.",
+      "status": "editorial working choice"
+    },
+    {
+      "english": "The Hanged Man",
+      "hebrew": "האיש התלוי",
+      "speaker_id": 389,
+      "gender": "masculine; הוא",
+      "pronouns": "masculine; הוא",
+      "forms_of_address": "Resolve addressee per branch; player masculine, Cunoesse feminine.",
+      "voice": "Narration is visceral and forensic; imagined speech is intimate, mocking and uncanny. Preserve unrevealed identity.",
+      "mood_by_scene": "Conversation 14: examination, vomiting, gunshot and heckling branches",
+      "evidence": "Conversation 14",
+      "pronunciation": "Names provisional; audio review pending"
+    },
+    {
+      "english": "Cuno",
+      "hebrew": "קונו",
+      "speaker_id": 5,
+      "gender": "masculine; הוא",
+      "pronouns": "masculine; הוא",
+      "forms_of_address": "Resolve addressee per branch; player masculine, Cunoesse feminine.",
+      "voice": "Aggressive street-child bravado, swearing, third-person self-reference; short taunting bursts.",
+      "mood_by_scene": "Conversation 14: examination, vomiting, gunshot and heckling branches",
+      "evidence": "Conversation 14",
+      "pronunciation": "Names provisional; audio review pending",
+      "accepted_hebrew_forms": ["קונו"]
+    },
+    {
+      "english": "Cunoesse",
+      "hebrew": "קונואס",
+      "speaker_id": 6,
+      "gender": "feminine; היא",
+      "pronouns": "feminine; היא",
+      "forms_of_address": "Resolve addressee per branch; player masculine, Cunoesse feminine.",
+      "voice": "Provocative, cruel heckling; retain foreign-language insults as foreign speech where marked.",
+      "mood_by_scene": "Conversation 14: examination, vomiting, gunshot and heckling branches",
+      "evidence": "Conversation 14",
+      "pronunciation": "Names provisional; audio review pending",
+      "aliases": ["C"],
+      "foreign_speech": ["mulkku", "vittupää", "kyrpäle", "kyrpelö", "Jumalauta"],
+      "notes": "Retain foreign insults because player explicitly asks what these words mean at 14:341. Source censorship asterisks preserved.",
+      "accepted_hebrew_forms": ["קונואס"]
+    },
+    {
+      "english": "Hand/Eye Coordination",
+      "hebrew": "תיאום יד־עין",
+      "speaker_id": 415,
+      "gender": "skill label, not person identity",
+      "pronouns": "skill label, not person identity",
+      "forms_of_address": "Resolve addressee per branch; player masculine, Cunoesse feminine.",
+      "voice": "Precise technical judgement of shooting, with performance confidence.",
+      "mood_by_scene": "Conversation 14: examination, vomiting, gunshot and heckling branches",
+      "evidence": "Conversation 14",
+      "pronunciation": "Names provisional; audio review pending"
+    },
+    {
+      "english": "Visual Calculus",
+      "hebrew": "חישוב חזותי",
+      "speaker_id": 402,
+      "gender": "skill label, not person identity",
+      "pronouns": "skill label, not person identity",
+      "forms_of_address": "Resolve addressee per branch; player masculine, Cunoesse feminine.",
+      "voice": "Measured reconstruction from visible evidence; quantities and spatial detail matter.",
+      "mood_by_scene": "Conversation 14: examination, vomiting, gunshot and heckling branches",
+      "evidence": "Conversation 14",
+      "pronunciation": "Names provisional; audio review pending",
+      "scene_notes": {
+        "15": "Careful hypothetical reconstruction; execution victims and perpetrator identities remain uncertain."
+      }
+    },
+    {
+      "english": "Frittte",
+      "hebrew": "פריטטה",
+      "evidence": "Conversations 13–14",
+      "status": "editorial working choice; proper names pending audio review",
+      "accepted_hebrew_forms": ["פריטטה"]
+    },
+    {
+      "english": "Evrart Claire",
+      "hebrew": "אווראר קלייר",
+      "evidence": "Conversations 13–14",
+      "status": "editorial working choice; proper names pending audio review",
+      "accepted_hebrew_forms": ["אווראר קלייר"]
+    },
+    {
+      "english": "Wild Pines",
+      "hebrew": "אורני הבר",
+      "evidence": "Conversations 13–14",
+      "status": "editorial working choice; proper names pending audio review",
+      "accepted_hebrew_forms": ["אורני הבר"]
+    },
+    {
+      "english": "sabatons",
+      "hebrew": "נעלי שריון",
+      "evidence": "Conversations 13–14",
+      "status": "editorial working choice; proper names pending audio review",
+      "accepted_hebrew_forms": ["נעלי שריון", "נעלי השריון"]
+    },
+    {
+      "english": "Moller’s disease",
+      "hebrew": "מחלת מולר",
+      "evidence": "Conversations 13–14",
+      "status": "editorial working choice; proper names pending audio review"
+    },
+    {
+      "english": "Harlequinism",
+      "hebrew": "הרלקיניזם",
+      "evidence": "Conversations 13–14",
+      "status": "editorial working choice; proper names pending audio review"
+    },
+    {
+      "english": "Cobo",
+      "hebrew": "קובו",
+      "evidence": "Conversations 13–14",
+      "status": "editorial working choice; proper names pending audio review"
+    },
+    {
+      "english": "Roonie",
+      "hebrew": "רוני",
+      "evidence": "Conversations 13–14",
+      "status": "editorial working choice; proper names pending audio review"
+    },
+    {
+      "english": "Falostesse",
+      "hebrew": "פאלוסטס",
+      "evidence": "Conversations 13–14",
+      "status": "editorial working choice; proper names pending audio review"
+    },
+    {
+      "english": "interisolary reál",
+      "hebrew": "ריאל בין־איסולרי",
+      "evidence": "Conversations 13–14",
+      "status": "editorial working choice; proper names pending audio review"
+    },
+    {
+      "english": "Hardie boys",
+      "hebrew": "הבחורים של הארדי",
+      "notes": "Group name; preserve nickname.",
+      "evidence": "Conversation 14",
+      "status": "editorial working choice"
+    },
+    {
+      "english": "the pale",
+      "hebrew": "החיוורון",
+      "notes": "World phenomenon; masculine. Provisional until lore-wide review.",
+      "evidence": "Conversation 14",
+      "status": "editorial working choice",
+      "accepted_hebrew_forms": ["חיוורון"]
+    },
+    {
+      "english": "Occidental",
+      "hebrew": "אוקסידנטלי",
+      "notes": "In-world geographic/ethnic designation; explanation retained in 14:320.",
+      "evidence": "Conversation 14",
+      "status": "editorial working choice"
+    },
+    {
+      "english": "Mundi",
+      "hebrew": "מונדי",
+      "notes": "Place name; audio review pending.",
+      "evidence": "Conversation 14",
+      "status": "editorial working choice"
+    },
+    {
+      "english": "Messina",
+      "hebrew": "מסינה",
+      "notes": "Place name; adjective מסיני; audio review pending.",
+      "evidence": "Conversation 14",
+      "status": "editorial working choice"
+    },
+    {
+      "english": "Great Century",
+      "hebrew": "המאה הגדולה",
+      "notes": "Historical period.",
+      "evidence": "Conversation 14",
+      "status": "editorial working choice"
+    },
+    {
+      "english": "White Check",
+      "hebrew": "בדיקה לבנה",
+      "notes": "Gameplay check; consistent UI term.",
+      "evidence": "Conversation 14",
+      "status": "editorial working choice"
+    },
+    {
+      "english": "modifier",
+      "hebrew": "מתאם",
+      "notes": "Gameplay bonus/penalty affecting a check.",
+      "evidence": "Conversation 14",
+      "status": "editorial working choice"
+    },
+    {
+      "english": "Ace’s High",
+      "hebrew": "כיף גבוה",
+      "notes": "Gesture; paired with כיף נמוך; verify UI Thought titles later.",
+      "evidence": "Conversation 14",
+      "status": "editorial working choice"
+    },
+    {
+      "english": "Ace’s Low",
+      "hebrew": "כיף נמוך",
+      "notes": "Gesture following turn away from high five.",
+      "evidence": "Conversation 14",
+      "status": "editorial working choice"
+    },
+    {
+      "english": "Coppo / Copparooni",
+      "hebrew": "קופו / קופארוני",
+      "notes": "Imagined corpse teasing cop with invented names; preserve variation and sound; not actual identity.",
+      "evidence": "Conversation 14",
+      "status": "editorial working choice"
+    },
+    {
+      "english": "Lobo",
+      "hebrew": "לובו",
+      "notes": "Imagined corpse nickname for player.",
+      "evidence": "Conversation 14",
+      "status": "editorial working choice"
+    },
+    {
+      "english": "Krenel",
+      "hebrew": "קרנל",
+      "notes": "Security contractor; audio review pending.",
+      "evidence": "Conversation 14",
+      "status": "editorial working choice; names unverified in audio",
+      "accepted_hebrew_forms": ["קרנל"]
+    },
+    {
+      "english": "Joyce",
+      "hebrew": "ג'ויס",
+      "notes": "Female Wild Pines representative; name spelling provisional.",
+      "evidence": "Conversation 14",
+      "status": "editorial working choice; names unverified in audio",
+      "accepted_hebrew_forms": ["ג'ויס"]
+    },
+    {
+      "english": "Commodore Red",
+      "hebrew": "קומודור רד",
+      "notes": "Alcohol brand.",
+      "evidence": "Conversation 14",
+      "status": "editorial working choice; names unverified in audio",
+      "accepted_hebrew_forms": ["קומודור רד"]
+    },
+    {
+      "english": "La Puta Madre",
+      "hebrew": "לה פוטה מאדרה",
+      "notes": "Crime-group reference; do not translate literal insult.",
+      "evidence": "Conversation 14",
+      "status": "editorial working choice; names unverified in audio"
+    },
+    {
+      "english": "the Mazda",
+      "hebrew": "המאזדה",
+      "notes": "Crime-group reference.",
+      "evidence": "Conversation 14",
+      "status": "editorial working choice; names unverified in audio"
+    },
+    {
+      "english": "the Besmerties",
+      "hebrew": "הבסמרטים",
+      "notes": "Crime-group reference; audio review pending.",
+      "evidence": "Conversation 14",
+      "status": "editorial working choice; names unverified in audio"
+    },
+    {
+      "english": "Armistice A9",
+      "hebrew": "ארמיסטיס A9",
+      "notes": "Firearm model; preserve model code.",
+      "evidence": "Conversation 14",
+      "status": "editorial working choice; names unverified in audio",
+      "accepted_hebrew_forms": ["ארמיסטיס A9"]
+    },
+    {
+      "english": "lividity / hypostasis",
+      "hebrew": "כתמי מוות",
+      "notes": "Forensic postmortem colour; not bruising.",
+      "evidence": "Conversation 14",
+      "status": "editorial working choice; names unverified in audio"
+    },
+    {
+      "english": "rigor mortis",
+      "hebrew": "קשיון מוות",
+      "notes": "Forensic stiffness; preserve source even where character explanation is imprecise.",
+      "evidence": "Conversation 14",
+      "status": "editorial working choice; names unverified in audio"
+    },
+    {
+      "english": "cadaverine",
+      "hebrew": "קדברין",
+      "notes": "Odour compound; no explanation added.",
+      "evidence": "Conversation 14",
+      "status": "editorial working choice; names unverified in audio"
+    },
+    {
+      "english": "radiocomputer",
+      "hebrew": "מחשב־רדיו",
+      "notes": "World technology term.",
+      "evidence": "Conversation 14",
+      "status": "editorial working choice; names unverified in audio"
+    },
+    {
+      "english": "C",
+      "hebrew": "סי",
+      "notes": "Cuno addressing Cunoesse; feminine agreement.",
+      "evidence": "Conversation 14",
+      "status": "editorial working choice; names unverified in audio"
+    },
+    {
+      "english": "Fairweather",
+      "hebrew": "פיירוות'ר",
+      "notes": "Armour maker; preserve T-500 / VE model code.",
+      "evidence": "14:1001–1114",
+      "status": "editorial working choice; proper names pending audio",
+      "accepted_hebrew_forms": ["פיירוות'ר"]
+    },
+    {
+      "english": "Trigat",
+      "hebrew": "טריגאט",
+      "notes": "Camera / communications manufacturer.",
+      "evidence": "14:1001–1114",
+      "status": "editorial working choice; proper names pending audio",
+      "accepted_hebrew_forms": ["טריגאט"]
+    },
+    {
+      "english": "Kiejl",
+      "hebrew": "קייל",
+      "notes": "Firearm manufacturer; audio review pending.",
+      "evidence": "14:1001–1114",
+      "status": "editorial working choice; proper names pending audio"
+    },
+    {
+      "english": "Constabulary",
+      "hebrew": "המשטרה",
+      "notes": "Police institution; distinguish player malapropism.",
+      "evidence": "14:1001–1114",
+      "status": "editorial working choice; proper names pending audio"
+    },
+    {
+      "english": "Constabulatory",
+      "hebrew": "שיטוריה",
+      "notes": "Player malapropism; retain invented form consistently.",
+      "evidence": "14:1001–1114",
+      "status": "editorial working choice; proper names pending audio",
+      "accepted_hebrew_forms": ["שיטוריה"]
+    },
+    {
+      "english": "Processing",
+      "hebrew": "מחלקת הטיפול",
+      "notes": "Police body/evidence processing crew; Kim disparages its destructive methods.",
+      "evidence": "14:1001–1114",
+      "status": "editorial working choice; proper names pending audio",
+      "accepted_hebrew_forms": ["מחלקת הטיפול"]
+    },
+    {
+      "english": "Vermillion",
+      "hebrew": "ורמיליון",
+      "notes": "Brewery / drinks brand.",
+      "evidence": "14:1001–1114",
+      "status": "editorial working choice; proper names pending audio"
+    },
+    {
+      "english": "Golden Spirits",
+      "hebrew": "משקאות הזהב",
+      "notes": "Vermillion product line; preserve emphasis.",
+      "evidence": "14:1001–1114",
+      "status": "editorial working choice; proper names pending audio"
+    },
+    {
+      "english": "Semenese corpse salt",
+      "hebrew": "מלח גופות סמני",
+      "notes": "Lore term; provisional adjective pending broader context.",
+      "evidence": "14:1001–1114",
+      "status": "editorial working choice; proper names pending audio"
+    },
+    {
+      "english": "Trant Heidelstam",
+      "hebrew": "טרנט היידלסטם",
+      "notes": "Male; name spelling provisional pending audio.",
+      "evidence": "Conversations 14–15",
+      "status": "editorial working choice"
+    },
+    {
+      "english": "Feld Electric",
+      "hebrew": "פלד אלקטריק",
+      "notes": "Company; Feld = פלד; R&D Center = מרכז המחקר והפיתוח.",
+      "evidence": "Conversations 14–15",
+      "status": "editorial working choice"
+    },
+    {
+      "english": "Coalition",
+      "hebrew": "הקואליציה",
+      "notes": "Political/military coalition; do not infer guilt when source remains uncertain.",
+      "evidence": "Conversations 14–15",
+      "status": "editorial working choice"
+    },
+    {
+      "english": "moralists",
+      "hebrew": "מורליסטים",
+      "notes": "Political ideology label, not simply morally good people.",
+      "evidence": "Conversations 14–15",
+      "status": "editorial working choice"
+    },
+    {
+      "english": "Mnemotechnique A6",
+      "hebrew": "מנמוטכניק A6",
+      "notes": "Notebook model.",
+      "evidence": "Conversations 14–15",
+      "status": "editorial working choice"
+    },
+    {
+      "english": "Tequila Sunset",
+      "hebrew": "טקילה סאנסט",
+      "notes": "Player persona nickname; do not substitute actual identity.",
+      "evidence": "Conversations 14–15",
+      "status": "editorial working choice",
+      "accepted_hebrew_forms": ["טקילה סאנסט"]
+    },
+    {
+      "english": "conscience round",
+      "hebrew": "כדור למצפון",
+      "notes": "Keep source explanation as spoken; do not silently correct its historical claim.",
+      "evidence": "Conversations 14–15",
+      "status": "editorial working choice"
+    },
+    {
+      "english": "innocentic worship",
+      "hebrew": "פולחן האינוסנסים",
+      "notes": "Religion/lore linked to Innocence title.",
+      "evidence": "Conversations 14–15",
+      "status": "editorial working choice"
+    },
+    {
+      "english": "Interact",
+      "hebrew": "פעולות",
+      "notes": "Inventory tab; align with UI in later pass.",
+      "evidence": "Conversations 14–15",
+      "status": "editorial working choice"
+    },
+    {
+      "english": "Lely",
+      "hebrew": "ללי",
+      "notes": "Hanged man nickname revealed in conversation; do not retroactively reveal in earlier labels.",
+      "evidence": "Conversation 16",
+      "status": "editorial working choice; names pending audio",
+      "accepted_hebrew_forms": ["ללי"]
+    },
+    {
+      "english": "Ruby",
+      "hebrew": "רובי",
+      "notes": "Female; player addresses and references in feminine.",
+      "evidence": "Conversation 16",
+      "status": "editorial working choice; names pending audio",
+      "accepted_hebrew_forms": ["רובי"]
+    },
+    {
+      "english": "Vredefort",
+      "hebrew": "ורדפורט",
+      "notes": "Conference city; provisional spelling pending audio.",
+      "evidence": "Conversation 16",
+      "status": "editorial working choice; names pending audio",
+      "accepted_hebrew_forms": ["ורדפורט"]
+    },
+    {
+      "english": "Antistar",
+      "hebrew": "אנטיסטאר",
+      "notes": "Persona/reference; preserve name pending wider context.",
+      "evidence": "Conversation 16",
+      "status": "editorial working choice; names pending audio"
+    },
+    {
+      "english": "Boogie Street",
+      "hebrew": "רחוב בוגי",
+      "notes": "Street name.",
+      "evidence": "Conversation 16",
+      "status": "editorial working choice; names pending audio",
+      "accepted_hebrew_forms": ["רחוב בוגי"]
+    },
+    {
+      "english": "Patrol Officer Tillbrook",
+      "hebrew": "שוטר הסיור טילברוק",
+      "notes": "Male officer.",
+      "evidence": "Conversation 16",
+      "status": "editorial working choice; names pending audio"
+    },
+    {
+      "english": "Smallest Church",
+      "hebrew": "הכנסייה הקטנה ביותר",
+      "notes": "Tape title; Small Sad Church Song = שיר הכנסייה הקטן והעצוב.",
+      "evidence": "Conversation 16",
+      "status": "editorial working choice; names pending audio"
+    },
+    {
+      "english": "Anti-Object Task Force",
+      "hebrew": "כוח המשימה נגד חפצים",
+      "notes": "Player conceit paired with Anti-Human Task Force = כוח המשימה נגד בני אדם.",
+      "evidence": "Conversation 16",
+      "status": "editorial working choice; names pending audio"
+    },
+    {
+      "english": "Miss Oranje",
+      "hebrew": "מיס אוראניה",
+      "notes": "Beauty title; preserve year punctuation for RTL check.",
+      "evidence": "Conversation 16",
+      "status": "editorial working choice; names pending audio"
+    },
+    {
+      "english": "Preptide",
+      "hebrew": "פרפטיד",
+      "notes": "Drug brand; preserve item emphasis.",
+      "evidence": "Conversation 16",
+      "status": "editorial working choice; proper names pending audio",
+      "accepted_hebrew_forms": ["פרפטיד"]
+    },
+    {
+      "english": "Klaasje Amandou",
+      "hebrew": "קלאסיה אמנדו",
+      "notes": "Claimed name; do not treat assertion as verified identity.",
+      "evidence": "Conversation 16",
+      "status": "editorial working choice; proper names pending audio",
+      "accepted_hebrew_forms": ["קלאסיה אמנדו"]
+    },
+    {
+      "english": "Lelystad",
+      "hebrew": "לליסטאד",
+      "notes": "Victim nickname; Lely = ללי.",
+      "evidence": "Conversation 16",
+      "status": "editorial working choice; proper names pending audio",
+      "accepted_hebrew_forms": ["לליסטאד"]
+    },
+    {
+      "english": "Vesper",
+      "hebrew": "וספר",
+      "notes": "Vespertine adjective translated מווספר.",
+      "evidence": "Conversation 16",
+      "status": "editorial working choice; proper names pending audio"
+    },
+    {
+      "english": "Iilmaraa",
+      "hebrew": "אילמארה",
+      "notes": "Place; spelling provisional.",
+      "evidence": "Conversation 16",
+      "status": "editorial working choice; proper names pending audio"
+    },
+    {
+      "english": "Mesque",
+      "hebrew": "מסק",
+      "notes": "People/state; provisional.",
+      "evidence": "Conversation 16",
+      "status": "editorial working choice; proper names pending audio"
+    },
+    {
+      "english": "Sad",
+      "hebrew": "עצב",
+      "notes": "Personified contamination metaphor; do not flatten to clinical diagnosis.",
+      "evidence": "Conversation 16",
+      "status": "editorial working choice; proper names pending audio"
+    },
+    {
+      "english": "Funkytown",
+      "hebrew": "פאנקיטאון",
+      "notes": "Pop-cultural name; transliteration.",
+      "evidence": "Conversation 16",
+      "status": "editorial working choice; proper names pending audio"
+    },
+    {
+      "english": "Infernum",
+      "hebrew": "אינפרנום",
+      "notes": "Hell reference; preserve distinct Latin term.",
+      "evidence": "Conversation 16",
+      "status": "editorial working choice; proper names pending audio"
+    },
+    {
+      "english": "Titus",
+      "hebrew": "טיטוס",
+      "notes": "Male; proper name.",
+      "evidence": "Conversation 16",
+      "status": "editorial working choice; names pending audio",
+      "accepted_hebrew_forms": ["טיטוס"]
+    },
+    {
+      "english": "Émile Mollins",
+      "hebrew": "אמיל מולינס",
+      "notes": "Male officer; quiet deadpan conversation in Esprit de Corps scene.",
+      "evidence": "Conversation 16",
+      "status": "editorial working choice; names pending audio"
+    },
+    {
+      "english": "Graad",
+      "hebrew": "גראד",
+      "notes": "Place; music-history reference.",
+      "evidence": "Conversation 16",
+      "status": "editorial working choice; names pending audio"
+    },
+    {
+      "english": "Sam Bo",
+      "hebrew": "סאם בו",
+      "notes": "In-world martial art, split source name retained.",
+      "evidence": "Conversation 16",
+      "status": "editorial working choice; names pending audio"
+    },
+    {
+      "english": "may bell",
+      "hebrew": "פעמון מאי",
+      "notes": "Flower clue; use consistent clue label pending full item table.",
+      "evidence": "Conversation 16",
+      "status": "editorial working choice; names pending audio"
+    },
+    {
+      "english": "Sassytown",
+      "hebrew": "סאסיטאון",
+      "notes": "Player invented counterpart to Funkytown.",
+      "evidence": "Conversation 16",
+      "status": "editorial working choice; names pending audio"
+    },
+    {
+      "english": "narcomania",
+      "hebrew": "נרקומניה",
+      "notes": "Keep invented/odd single word versus נרקו מאניה two-word joke; dialogue 16:824–825.",
+      "evidence": "Conversation 16",
+      "status": "editorial working choice; names pending audio"
+    },
+    {
+      "english": "Half Light",
+      "hebrew": "חצי אור",
+      "speaker_id": "414",
+      "voice": "Instinctive threat detection, aggression and fear; imperative bodily responses.",
+      "gender": "Label grammatical gender does not establish voice identity.",
+      "pronouns": "Player addressed as אתה; other referents contextual.",
+      "forms_of_address": "Direct male singular player instructions.",
+      "evidence": "Conversations 13–16",
+      "status": "editorial working choice"
+    },
+    {
+      "english": "Perception (Sight)",
+      "hebrew": "תפיסה (ראייה)",
+      "speaker_id": "424",
+      "voice": "Concrete visual details and tentative deductions; do not turn observations into established identities.",
+      "gender": "Label grammatical gender does not establish voice identity.",
+      "pronouns": "Player addressed as אתה; other referents contextual.",
+      "forms_of_address": "Direct male singular player instructions.",
+      "evidence": "Conversations 13–16",
+      "status": "editorial working choice"
+    },
+    {
+      "english": "Perception (Smell)",
+      "hebrew": "תפיסה (ריח)",
+      "speaker_id": "421",
+      "voice": "Immediate bodily and environmental odours; visceral but precise.",
+      "gender": "Label grammatical gender does not establish voice identity.",
+      "pronouns": "Player addressed as אתה; other referents contextual.",
+      "forms_of_address": "Direct male singular player instructions.",
+      "evidence": "Conversations 13–16",
+      "status": "editorial working choice"
+    },
+    {
+      "english": "Perception (Hearing)",
+      "hebrew": "תפיסה (שמיעה)",
+      "speaker_id": "422",
+      "voice": "Small auditory differences, concrete and attentive.",
+      "gender": "Label grammatical gender does not establish voice identity.",
+      "pronouns": "Player addressed as אתה; other referents contextual.",
+      "forms_of_address": "Direct male singular player instructions.",
+      "evidence": "Conversations 13–16",
+      "status": "editorial working choice"
+    },
+    {
+      "english": "Tutorial Agent",
+      "hebrew": "מדריך",
+      "speaker_id": "354",
+      "voice": "Clear instructions addressing male player; keep UI labels consistent.",
+      "gender": "Label grammatical gender does not establish voice identity.",
+      "pronouns": "Player addressed as אתה; other referents contextual.",
+      "forms_of_address": "Direct male singular player instructions.",
+      "evidence": "Conversations 13–16",
+      "status": "editorial working choice"
+    },
+    {
+      "english": "Astra Menthol",
+      "hebrew": "אסטרה מנטול",
+      "evidence": "16:709,922,963",
+      "status": "editorial working choice"
+    },
+    {
+      "english": "cryptid",
+      "hebrew": "קריפטיד",
+      "evidence": "16:709,922,963",
+      "status": "editorial working choice"
+    },
+    {
+      "english": "Washerwoman",
+      "hebrew": "הכובסת",
+      "notes": "Elderly woman; feminine. Practical, guarded, dryly maternal; protective of village, wary of authorities and redevelopment. Player masculine; Ruby/Lilienne feminine. Preserve her calm firmness.",
+      "evidence": "Conversation 17",
+      "status": "editorial working choice; names pending audio",
+      "speaker_id": "86",
+      "gender": "feminine",
+      "pronouns": "היא",
+      "forms_of_address": "Player masculine, אדוני / ילד according to tone",
+      "voice": "Elderly woman; feminine. Practical, guarded, dryly maternal; protective of village, wary of authorities and redevelopment. Player masculine; Ruby/Lilienne feminine. Preserve her calm firmness.",
+      "mood_by_scene": "17: cautious hospitality; grief and protective refusal under pressure",
+      "aliases": ["Isobel", "Isobel Sadie"],
+      "identity_evidence": "17:271 self-introduction; never substitute name into earlier unrevealed lines.",
+      "translation_coverage": "17: all 545 entries translated; renderer review pending"
+    },
+    {
+      "english": "Lilienne",
+      "hebrew": "ליליאן",
+      "notes": "Female village resident; name provisional pending audio.",
+      "evidence": "Conversation 17",
+      "status": "editorial working choice; names pending audio"
+    },
+    {
+      "english": "La Delta",
+      "hebrew": "לה דלתא",
+      "notes": "Place; provisional spelling.",
+      "evidence": "Conversation 17",
+      "status": "editorial working choice; names pending audio"
+    },
+    {
+      "english": "Land’s End",
+      "hebrew": "קצה היבשה",
+      "notes": "Location name; use same clue label across conversations.",
+      "evidence": "Conversation 17",
+      "status": "editorial working choice; names pending audio"
+    },
+    {
+      "english": "Harrier Du Bois",
+      "hebrew": "הרייר דו בואה",
+      "notes": "Player name as self-introduced; Harry = הארי.",
+      "evidence": "Conversation 17",
+      "status": "editorial working choice; names pending audio"
+    },
+    {
+      "english": "the Pox",
+      "hebrew": "האבעבועות",
+      "notes": "Local place name southwest of village (17:655), not a disease diagnosis. Preserve literal nickname האבעבועות.",
+      "evidence": "17:73,655",
+      "status": "editorial working choice; names pending audio"
+    },
+    {
+      "english": "Isobel Sadie",
+      "hebrew": "איזובל סיידי",
+      "notes": "Washerwoman self-identifies at 17:271; feminine. Keep generic speaker label until revealed.",
+      "evidence": "Conversation 17",
+      "status": "editorial working choice; names pending audio"
+    },
+    {
+      "english": "Dolorian Church of Humanity",
+      "hebrew": "כנסיית האנושות הדולוריאנית",
+      "notes": "Church location / religious name.",
+      "evidence": "Conversation 17",
+      "status": "editorial working choice; names pending audio"
+    },
+    {
+      "english": "Ecclesiastes",
+      "hebrew": "אנשי הכנסייה",
+      "notes": "Institutional clergy reference in 17:214; revisit official institution name with church conversations.",
+      "evidence": "Conversation 17",
+      "status": "editorial working choice; names pending audio"
+    },
+    {
+      "english": "Suzerain",
+      "hebrew": "הסוזרן",
+      "notes": "Historical ruler/title; preserve lore distinction.",
+      "evidence": "Conversation 17",
+      "status": "editorial working choice; names pending audio"
+    },
+    {
+      "english": "lieutenant double-yefreitor",
+      "hebrew": "סגן דאבל־יפרייטור",
+      "notes": "Player formal rank; intentionally unusual stacked title.",
+      "evidence": "Conversation 17",
+      "status": "editorial working choice; names pending audio"
+    },
+    {
+      "english": "Surrender to the Night",
+      "hebrew": "להיכנע ללילה",
+      "notes": "Old Samaran lullaby title.",
+      "evidence": "Conversation 17",
+      "status": "editorial working choice; names pending audio"
+    },
+    {
+      "english": "rusálka",
+      "hebrew": "רוסלקה",
+      "notes": "Mythic creature; unpointed spelling provisional.",
+      "evidence": "Conversation 17",
+      "status": "editorial working choice; names pending audio"
+    },
+    {
+      "english": "apsara",
+      "hebrew": "אפסרה",
+      "notes": "Mythic creature; preserve fantasy framing.",
+      "evidence": "Conversation 17",
+      "status": "editorial working choice; names pending audio"
+    },
+    {
+      "english": "Samara",
+      "hebrew": "סמרה",
+      "notes": "Place; adjective סמרי.",
+      "evidence": "Conversation 17",
+      "status": "editorial working choice; names pending audio"
+    },
+    {
+      "english": "Siigaya",
+      "hebrew": "סיגאיה",
+      "notes": "Place; Apricot Suzerainty = סוזרנות המשמש.",
+      "evidence": "Conversation 17",
+      "status": "editorial working choice; names pending audio"
+    },
+    {
+      "english": "Faubourg",
+      "hebrew": "פובור",
+      "notes": "Place; provisional spelling.",
+      "evidence": "Conversation 17",
+      "status": "editorial working choice; names pending audio"
+    },
+    {
+      "english": "Ignus Nilsen",
+      "hebrew": "איגנוס נילסן",
+      "notes": "Revolutionary; Vaasan = ואסאי.",
+      "evidence": "Conversation 17",
+      "status": "editorial working choice; names pending audio"
+    },
+    {
+      "english": "Speedfreaks FM",
+      "hebrew": "ספידפריקס FM",
+      "notes": "Radio station; preserve FM in mixed-direction text.",
+      "evidence": "Conversation 17",
+      "status": "editorial working choice; names pending audio"
+    },
+    {
+      "english": "Débardeurs Union",
+      "hebrew": "איגוד הסוורים",
+      "notes": "Full union name; generic Union = האיגוד.",
+      "evidence": "Conversation 17",
+      "status": "editorial working choice; names pending audio"
+    },
+    {
+      "english": "Morell, the Cryptozoologist",
+      "hebrew": "מורל, הקריפטוזואולוג",
+      "aliases": ["Morell"],
+      "notes": "Masculine. Earnest, technical, defensive of his research; exhausted in the field and tender toward Lena. Short irritable replies alternate with precise explanations.",
+      "evidence": "Conversations 18–19",
+      "status": "working editorial choice; new scenes not renderer-tested"
+    },
+    {
+      "english": "Gary, the Cryptofascist",
+      "hebrew": "גארי, הקריפטופשיסט",
+      "aliases": ["Gary"],
+      "notes": "Masculine. Anxious around police, impatient to return home; deferential when confronted. Keep prejudices as character speech.",
+      "evidence": "Conversations 18–19",
+      "status": "working editorial choice; new scenes not renderer-tested"
+    },
+    {
+      "english": "Insulindian phasmid",
+      "hebrew": "המקלון האינסולינדי",
+      "aliases": [],
+      "notes": "Mystery insect; generic phasmid = מקלון. Preserve character uncertainty and scientific claims without correcting the fiction.",
+      "evidence": "Conversations 18–19",
+      "status": "working editorial choice; new scenes not renderer-tested",
+      "accepted_hebrew_forms": ["מקלון האינסולינדי"]
+    },
+    {
+      "english": "phantasmodea",
+      "hebrew": "פנטסמודאה",
+      "aliases": [],
+      "notes": "Source taxonomic label, including spelling; ghost insect = חרק רפאים.",
+      "evidence": "Conversations 18–19",
+      "status": "working editorial choice; new scenes not renderer-tested"
+    },
+    {
+      "english": "parthenogenesis",
+      "hebrew": "רביית בתולין",
+      "aliases": [],
+      "notes": "Clear explanatory register. Player mispronunciation Parthonosis = רביית בטולין; retain joke in related branches.",
+      "evidence": "Conversations 18–19",
+      "status": "working editorial choice; new scenes not renderer-tested"
+    },
+    {
+      "english": "water lock",
+      "hebrew": "סכר התעלה",
+      "aliases": [],
+      "notes": "Working choice for canal crossing mechanism; verify against previous/future location labels.",
+      "evidence": "Conversations 18–19",
+      "status": "working editorial choice; new scenes not renderer-tested"
+    },
+    {
+      "english": "Société Cryptozoologique de Revachol",
+      "hebrew": "האגודה הקריפטוזואולוגית של רבאשול",
+      "aliases": [],
+      "notes": "Formal institution name; retain distinction from Chemnie society.",
+      "evidence": "Conversations 18–19",
+      "status": "working editorial choice; new scenes not renderer-tested"
+    },
+    {
+      "english": "Chemnie",
+      "hebrew": "כמני",
+      "aliases": [],
+      "notes": "Place name; spelling-based working form pending audio.",
+      "evidence": "Conversations 18–19",
+      "status": "working editorial choice; new scenes not renderer-tested"
+    },
+    {
+      "english": "Doushantou",
+      "hebrew": "דושנטו",
+      "aliases": [],
+      "notes": "Place name; spelling-based working form pending audio.",
+      "evidence": "Conversations 18–19",
+      "status": "working editorial choice; new scenes not renderer-tested"
+    },
+    {
+      "english": "Acele",
+      "hebrew": "אסל",
+      "aliases": [],
+      "notes": "Feminine. Young, guarded and colloquial; dry replies, then concern when the detective cries. Spelling provisional pending audio.",
+      "evidence": "Conversations 18–19",
+      "status": "working editorial choice; new scenes not renderer-tested"
+    },
+    {
+      "english": "Contact Mike",
+      "hebrew": "קונטקט מייק",
+      "aliases": [],
+      "notes": "Boxing hero referenced in detective rambling; retain name rather than literal contact.",
+      "evidence": "Conversations 18–19",
+      "status": "working editorial choice; new scenes not renderer-tested",
+      "accepted_hebrew_forms": ["קונטקט מייק"]
+    },
+    {
+      "english": "Saint-Batiste",
+      "hebrew": "סן־בטיסט",
+      "aliases": [],
+      "notes": "Place name; spelling-based working form pending audio.",
+      "evidence": "Conversations 18–19",
+      "status": "working editorial choice; new scenes not renderer-tested"
+    }
+  ],
+  "policy": {
+    "speaker_identity": "Use source actor IDs; preserve unrevealed identities.",
+    "gender": "Grammatical label gender does not establish the identity or gender of an inner voice. Address and referents are resolved per line.",
+    "nikud": "No automatic nikud; pronunciation remains unverified until audio review.",
+    "review": "Review glossary and scene mood before each batch; update after each batch; CSV remains sole translation source."
+  },
+  "editorial_review_queue": [
+    {
+      "conversation": 11,
+      "entries": [117, 63, 177, 85],
+      "issue": "Officer / executive officer / military officer wordplay needs a unified Hebrew adaptation; current executive wording loses the shared term."
+    },
+    {
+      "conversation": 10,
+      "entries": [60],
+      "issue": "Source has a double-negative time idiom; review deliberate muddled speech versus natural Hebrew."
+    },
+    {
+      "conversation": 10,
+      "entries": [17, 51, 175, 254, 466],
+      "issue": "bröther / wömen / vöws mock-archaic spelling currently expressed through register, not Hebrew diacritics."
+    },
+    {
+      "conversation": 11,
+      "entries": [132],
+      "issue": "Check year apostrophe ordering in RTL in-game."
+    },
+    {
+      "conversation": 14,
+      "entries": [114],
+      "issue": "Preserve the foreign-language insult mulkku in Latin as a voice cue; verify mixed-direction display."
+    },
+    {
+      "conversation": 14,
+      "entries": [433, 458],
+      "issue": "Gesture names and White Check terminology need later agreement with UI/Thought title table."
+    },
+    {
+      "conversation": 14,
+      "entries": [1029, 1231, 1379],
+      "issue": "Equipment model names and Ace gesture/Thought titles need UI-table and audio alignment."
+    },
+    {
+      "conversation": 16,
+      "entries": [87, 286, 515, 678],
+      "issue": "Verify year apostrophe ordering and beauty-title spelling in renderer."
+    },
+    {
+      "conversation": 16,
+      "entries": [248, 471, 529],
+      "issue": "Review fictional disease, colonial-history reply and flower-clue label with wider lore/item context."
+    },
+    {
+      "scope": "18–19",
+      "review": "Check scientific taxon/name audio, water-lock label against earlier scenes, wöman caricature and parthenogenesis mispronunciation; Acele continuation pending. Renderer review remains pending."
+    }
+  ]
+}

@@ -4,9 +4,19 @@ use std::{fs, path::Path};
 
 pub enum PackageSource {
     Download,
+    #[cfg(debug_assertions)]
+    LocalPreview(std::path::PathBuf),
 }
 impl PackageSource {
     pub fn resolve(patch: &PatchDefinition, _behavior: &GameBehavior) -> Result<Self, String> {
+        #[cfg(debug_assertions)]
+        if patch.source_type == "local-preview" && patch.download_url == "local-preview://disco-elysium" {
+            let path = super::games::disco_elysium::preview_archive()?.ok_or("Local preview is not enabled")?;
+            if patch.checksum.as_deref() != Some(super::patch_lifecycle::hash(&path)?.as_str()) {
+                return Err("Local preview changed; refresh before installing".into());
+            }
+            return Ok(Self::LocalPreview(path));
+        }
         if patch.source_type == "bundled" || !patch.download_url.starts_with("https://") {
             return Err("Patch has no downloadable package; refresh the catalog".into());
         }

@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "csv_sha256": "e5d9405c26c28f2ba7e464596fdacba4b49ef8a9ede40648cd67c1c84e968f79",
+  "compiler_sha256": "11276b60b8a48f4e7c1bb5d1066aed9e3a36b42bb498167218f6fc9808a55cb1",
+  "translated": 4165,
+  "source_entries": 75767,
+  "font": "Arial",
+  "font_sha256": "525979822591a3447cfc49d943d6f7683508e25543407871c0ed8fed05fd2bd9",
+  "font_redistribution": "Not cleared; private prototype only, no public release",
+  "glyphs_added": {
+    "osx": 79,
+    "windows": 79
+  },
+  "platforms": {
+    "osx/lockits": {
+      "source_sha256": "a12dfb24b4f3a8ef135941db1cee8e22b689dfd59a0aeb4471f696f4506fff43",
+      "output_sha256": "78255b890ede5558e00a30abeabedf49cdc92b52a268c67307d2261645ec9455",
+      "delta_bytes": 3921172
+    },
+    "osx/fonts": {
+      "source_sha256": "d31c4206fcffe1265af765d1eb9f7476d8681ea6bdec3d56bb916c2d41b9b1e0",
+      "output_sha256": "caf2cfdb24b2dd9ccfb7c9100cf06ae6f2064fd2ba9e35c5f4ab9777a063e447",
+      "delta_bytes": 4586571
+    },
+    "windows/lockits": {
+      "source_sha256": "80d60af4bf1405590a6f020d33e14d031095b7e3bd9759db6657bfa3f613524d",
+      "output_sha256": "62d29016e77e2b7ba3306a57b123bba3e59f3044e83443ec2ca2eff12bc0ef3f",
+      "delta_bytes": 3921326
+    },
+    "windows/fonts": {
+      "source_sha256": "77d0db6964d25f7eb552fb15b6155bc9416abae4992a3b30023a831fb2ecbdda",
+      "output_sha256": "1d78d5ac2a9ef5f4c421d9b900d8109da217dd97c100ce5882a60fe69a5cc245",
+      "delta_bytes": 4586841
+    }
+  },
+  "release_ready": false
+}

@@ -1,0 +1,51 @@
+{
+  "date": "2026-11-10",
+  "branch": "codex/disco-elysium-hebrew",
+  "catalog_idx": 177,
+  "game_id": "disco-elysium",
+  "version": "0.1.0-preview1",
+  "translation_entries": 4165,
+  "source_entries": 75767,
+  "artifacts": [
+    {
+      "path": "dist/patches/Disco-Elysium-Hebrew-0.1.0-preview1.zip",
+      "sha256": "edd2393382a29f49440c1235172c73d2cab69b1cf4393b2a98d4aea74fbf2f36",
+      "bytes": 17020461
+    },
+    {
+      "path": "dist/patches/disco-elysium-he-0.1.0-preview1-osx.zip",
+      "sha256": "27ca9d14e2eb1147c07d22c8a18cae73b7a2ab1b87a669eb992c9847e7bddee4",
+      "bytes": 8510745
+    },
+    {
+      "path": "dist/patches/disco-elysium-he-0.1.0-preview1-windows.zip",
+      "sha256": "90b6ff37a00cec9ca2a1bf713237651d8a6b36c6e15363249ca95cfaf64e8fc0",
+      "bytes": 8511161
+    }
+  ],
+  "validation": {
+    "package_checks": "Windows, macOS, universal ZIP passed",
+    "csv_staleness_guards": "2 tests passed",
+    "python_tools": "51 tests passed",
+    "detection_fixtures": "2 tests passed; correct root, missing files, unrelated title, case differences",
+    "owned_detection_and_scan": "Mac Steam app and Windows depot both passed manual identification and duplicate-free scans against temporary databases on macOS",
+    "owned_lifecycle": "Both platform plans passed installed hashes, exactly 2 backups, byte-for-byte restore, existing/later save preservation on macOS",
+    "ui_typecheck": "passed",
+    "artwork": "4 hosted originals/hash/size and 6 cover transformations verified; detail component at desktop and 390px; original/Hebrew/uninstalled/failure Storybook states; library cards verified in actual shared component",
+    "shared_lifecycle_suite": "47 passed, 4 ignored, 1 unrelated failure: existing SQ1 manifest 1.0-kitor2 versus registry 1.0-kitor1",
+    "cover_selection": "Actual GameTile components show en before install and he after install; GameCover and GameBox receive installed-state language. Restored state uses en."
+  },
+  "native_installer": {
+    "macos": "built locally; dist/disco-elysium-preview/disco_patch",
+    "windows": "source and native CI compilation step prepared; not compiled on Windows in this session"
+  },
+  "pending": [
+    "Public Arial atlas redistribution clearance",
+    "Windows-native installer/gameplay validation",
+    "Expanded Hebrew scenes, save/load and progressive reveal in-game",
+    "Clean-checkout build inputs after font clearance",
+    "Exact-commit GitHub Actions run; changes not committed or pushed",
+    "Public patch release and enabling download/install in Kitor"
+  ],
+  "release_ready": false
+}

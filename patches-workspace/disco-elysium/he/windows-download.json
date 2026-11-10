@@ -1,0 +1,10 @@
+{
+  "app_id": 632470,
+  "depot_id": 632471,
+  "console_log_offset": 573417,
+  "status": "completed; required executable and data files verified",
+  "manifest_id": "5267467363497400856",
+  "files": 2205,
+  "completion_log": "2026-11-09 22:07:30",
+  "validation": "Windows data install/uninstall on macOS passed; no Windows runtime test"
+}

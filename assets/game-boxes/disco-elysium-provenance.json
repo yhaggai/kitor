@@ -1,0 +1,91 @@
+{
+  "title": "דיסקו אליסיום",
+  "edition": "The Final Cut",
+  "assets": [
+    {
+      "file": "covers/disco-elysium/en/71041ce81990.jpg",
+      "sha256": "71041ce81990bee43c0cddf18988adbfe19d576c4c886b92e334b1aac5b6cb35",
+      "bytes": 244347,
+      "width": 600,
+      "height": 900,
+      "object_key": "covers/disco-elysium/en/71041ce81990.jpg",
+      "original_url": "https://assets.kitor.click/covers/disco-elysium/en/71041ce81990.jpg",
+      "source": "Steam",
+      "source_page": "https://store.steampowered.com/app/632470/",
+      "kind": "official-library-artwork",
+      "retrieved_on": "2026-11-10",
+      "image_url": "https://cdn.akamai.steamstatic.com/steam/apps/632470/library_600x900_2x.jpg",
+      "variant_urls": {
+        "240": "https://assets.kitor.click/cdn-cgi/image/width=240,fit=scale-down,quality=85,format=auto/covers/disco-elysium/en/71041ce81990.jpg",
+        "480": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/disco-elysium/en/71041ce81990.jpg",
+        "960": "https://assets.kitor.click/cdn-cgi/image/width=960,fit=scale-down,quality=85,format=auto/covers/disco-elysium/en/71041ce81990.jpg"
+      },
+      "local_file": "assets/game-boxes/covers/disco-elysium/en/71041ce81990.jpg",
+      "runtime_fallback": "/disco-elysium-cover-en.jpg"
+    },
+    {
+      "file": "covers/disco-elysium/he/cf888621e796.png",
+      "sha256": "cf888621e796fb774959406feedab78622bf688a291c858af02334c0b2ef8cc3",
+      "bytes": 2404429,
+      "width": 1024,
+      "height": 1536,
+      "object_key": "covers/disco-elysium/he/cf888621e796.png",
+      "original_url": "https://assets.kitor.click/covers/disco-elysium/he/cf888621e796.png",
+      "source": "AI text localization",
+      "source_page": "https://store.steampowered.com/app/632470/",
+      "kind": "ai-localized-artwork",
+      "retrieved_on": "2026-11-10",
+      "hebrew_title": "דיסקו אליסיום",
+      "hebrew_subtitle": "הגרסה הסופית",
+      "review": "Hebrew spelling and RTL inspected; generated non-text artwork differs from original.",
+      "variant_urls": {
+        "240": "https://assets.kitor.click/cdn-cgi/image/width=240,fit=scale-down,quality=85,format=auto/covers/disco-elysium/he/cf888621e796.png",
+        "480": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/disco-elysium/he/cf888621e796.png",
+        "960": "https://assets.kitor.click/cdn-cgi/image/width=960,fit=scale-down,quality=85,format=auto/covers/disco-elysium/he/cf888621e796.png"
+      },
+      "local_file": "assets/game-boxes/covers/disco-elysium/he/cf888621e796.png",
+      "runtime_fallback": "/disco-elysium-cover-he.png"
+    },
+    {
+      "file": "banners/disco-elysium/en/fee6aa0d9d43.jpg",
+      "sha256": "fee6aa0d9d4398bac3883766344784b0ae93062d22a9fa20de1507e4eea064e7",
+      "bytes": 59476,
+      "width": 460,
+      "height": 215,
+      "object_key": "banners/disco-elysium/en/fee6aa0d9d43.jpg",
+      "original_url": "https://assets.kitor.click/banners/disco-elysium/en/fee6aa0d9d43.jpg",
+      "source": "Steam",
+      "source_page": "https://store.steampowered.com/app/632470/",
+      "kind": "official-library-artwork",
+      "retrieved_on": "2026-11-10",
+      "image_url": "https://cdn.akamai.steamstatic.com/steam/apps/632470/header.jpg",
+      "local_file": "assets/game-banners/publish/banners/disco-elysium/en/fee6aa0d9d43.jpg",
+      "runtime_fallback": "/disco-elysium-banner-en.jpg"
+    },
+    {
+      "file": "banners/disco-elysium/he/483eff4982ff.png",
+      "sha256": "483eff4982ff281379d812032e53488dbb1b1330efe1523d6aa23972b35f9f6c",
+      "bytes": 2882111,
+      "width": 1834,
+      "height": 858,
+      "object_key": "banners/disco-elysium/he/483eff4982ff.png",
+      "original_url": "https://assets.kitor.click/banners/disco-elysium/he/483eff4982ff.png",
+      "source": "AI text localization",
+      "source_page": "https://store.steampowered.com/app/632470/",
+      "kind": "ai-localized-artwork",
+      "retrieved_on": "2026-11-10",
+      "hebrew_title": "דיסקו אליסיום",
+      "hebrew_subtitle": "הגרסה הסופית",
+      "review": "Hebrew spelling and RTL inspected; generated non-text artwork differs from original.",
+      "local_file": "assets/game-banners/publish/banners/disco-elysium/he/483eff4982ff.png",
+      "runtime_fallback": "/disco-elysium-banner-he.png"
+    }
+  ],
+  "generation_tool": "OpenAI imagegen",
+  "hosting_status": "uploaded and originals/hash/transformations/manifest verified",
+  "review": "Exact unpointed title approved by user; subtitle translates the original edition label. Generated art not pixel-identical.",
+  "generation_prompts": {
+    "cover": "Localize this official Disco Elysium The Final Cut portrait cover into Hebrew. Edit target is supplied cover. Preserve composition, painted characters Kim and Harry, faces, weapons, horse, palette and all non-text artwork as faithfully as possible. Replace main title DISCO ELYSIUM with exact approved Hebrew text: דיסקו אליסיום . Keep matching bold condensed distressed white lettering, turquoise edge and black tilted panel. Replace subtitle THE FINAL CUT with exact Hebrew: הגרסה הסופית . Keep subtitle on the orange-red strip. Correct natural right-to-left ordering, no extra text or vowel marks. Portrait 2:3 ratio. Title entirely visible with margins. This is localized game catalog cover, not new artwork.",
+    "banner": "Text-localize the supplied official Disco Elysium The Final Cut wide Steam header into a high resolution landscape Hebrew game-detail banner, same composition and approximately 460:215 aspect ratio. Preserve painted characters, faces, background, palette and tilted black logo panel. Main title exact Hebrew: דיסקו אליסיום . Subtitle exact Hebrew: הגרסה הסופית . Match heavy condensed distressed white typography with turquoise edges, and orange subtitle strip. Keep title and both faces inside crop-safe central area with generous margins. Correct right-to-left lettering. No additional words, no vowel marks, no watermark. Faithful image edit, not a new scene."
+  }
+}

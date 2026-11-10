@@ -9774,6 +9774,52 @@
           "kind": "localized-cover"
         }
       }
+    },
+    {
+      "game_id": "disco-elysium",
+      "title": "Disco Elysium – The Final Cut",
+      "covers": {
+        "en": {
+          "file": "covers/disco-elysium/en/71041ce81990.jpg",
+          "sha256": "71041ce81990bee43c0cddf18988adbfe19d576c4c886b92e334b1aac5b6cb35",
+          "bytes": 244347,
+          "width": 600,
+          "height": 900,
+          "object_key": "covers/disco-elysium/en/71041ce81990.jpg",
+          "original_url": "https://assets.kitor.click/covers/disco-elysium/en/71041ce81990.jpg",
+          "source": "Steam",
+          "source_page": "https://store.steampowered.com/app/632470/",
+          "kind": "official-library-artwork",
+          "retrieved_on": "2026-11-10",
+          "image_url": "https://cdn.akamai.steamstatic.com/steam/apps/632470/library_600x900_2x.jpg",
+          "variant_urls": {
+            "240": "https://assets.kitor.click/cdn-cgi/image/width=240,fit=scale-down,quality=85,format=auto/covers/disco-elysium/en/71041ce81990.jpg",
+            "480": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/disco-elysium/en/71041ce81990.jpg",
+            "960": "https://assets.kitor.click/cdn-cgi/image/width=960,fit=scale-down,quality=85,format=auto/covers/disco-elysium/en/71041ce81990.jpg"
+          }
+        },
+        "he": {
+          "file": "covers/disco-elysium/he/cf888621e796.png",
+          "sha256": "cf888621e796fb774959406feedab78622bf688a291c858af02334c0b2ef8cc3",
+          "bytes": 2404429,
+          "width": 1024,
+          "height": 1536,
+          "object_key": "covers/disco-elysium/he/cf888621e796.png",
+          "original_url": "https://assets.kitor.click/covers/disco-elysium/he/cf888621e796.png",
+          "source": "AI text localization",
+          "source_page": "https://store.steampowered.com/app/632470/",
+          "kind": "ai-localized-artwork",
+          "retrieved_on": "2026-11-10",
+          "hebrew_title": "דיסקו אליסיום",
+          "hebrew_subtitle": "הגרסה הסופית",
+          "review": "Hebrew spelling and RTL inspected; generated non-text artwork differs from original.",
+          "variant_urls": {
+            "240": "https://assets.kitor.click/cdn-cgi/image/width=240,fit=scale-down,quality=85,format=auto/covers/disco-elysium/he/cf888621e796.png",
+            "480": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/disco-elysium/he/cf888621e796.png",
+            "960": "https://assets.kitor.click/cdn-cgi/image/width=960,fit=scale-down,quality=85,format=auto/covers/disco-elysium/he/cf888621e796.png"
+          }
+        }
+      }
     }
   ],
   "updated_on": "2026-10-25"

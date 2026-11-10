@@ -1,0 +1,89 @@
+{
+  "branch": "codex/disco-elysium-hebrew",
+  "source_of_truth": "translations.csv",
+  "authoring": "Direct current-assistant translation; no external draft service",
+  "translated": 4165,
+  "remaining": 71602,
+  "conversations_with_translations": {
+    "5": {
+      "total": 14,
+      "translated": 14,
+      "name": "KIM SWITCH / flashlight"
+    },
+    "8": {
+      "total": 70,
+      "translated": 70,
+      "name": "WHIRLING / DREAM1"
+    },
+    "9": {
+      "total": 58,
+      "translated": 58,
+      "name": "WHIRLING / CEILING FAN"
+    },
+    "10": {
+      "total": 255,
+      "translated": 255,
+      "name": "WHIRLING / BATHROOM MIRROR"
+    },
+    "11": {
+      "total": 230,
+      "translated": 230,
+      "name": "WHIRLING F2 / KLAASJE 1"
+    },
+    "12": {
+      "total": 152,
+      "translated": 152,
+      "name": "WHIRLING / KIM INTRO"
+    },
+    "13": {
+      "total": 488,
+      "translated": 488,
+      "name": "WHIRLING F1 / GARTE"
+    },
+    "14": {
+      "total": 1103,
+      "translated": 1103,
+      "name": "YARD / HANGED MAN"
+    },
+    "15": {
+      "total": 95,
+      "translated": 95,
+      "name": "WESTCOAST / EXECUTIONS VISCAL"
+    },
+    "16": {
+      "total": 653,
+      "translated": 653,
+      "name": "WHIRLING F3 / KLAASJE MAIN"
+    },
+    "17": {
+      "total": 545,
+      "translated": 545,
+      "name": "VILLAGE / WASHERWOMAN"
+    },
+    "18": {
+      "total": 453,
+      "translated": 453,
+      "name": "WESTCOAST / MORELL"
+    },
+    "19": {
+      "total": 512,
+      "translated": 30,
+      "name": "ICE / ACELE"
+    }
+  },
+  "resume_at": {
+    "conversation_id": 19,
+    "entry_id": 52,
+    "key": "Dialogue Text/0x01000004000027CD"
+  },
+  "glossary_entries": 182,
+  "validation": {
+    "csv_errors": [],
+    "pipeline_tests": "6 passed",
+    "glossary_warnings": 0,
+    "renderer": "New translations not tested in-game; Arial previously user-verified",
+    "bundle_translated_keys": 4165,
+    "bundle_sha256": "30822499ec9c1dc102393335a2344a06da71153857fcd62ba1d01ec8ce7d9906"
+  },
+  "pending": "Full translation, contextual editorial review, unresolved source mapping, Windows/macOS packaging and onboarding remain incomplete."
+}

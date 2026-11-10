@@ -202,5 +202,11 @@
     "metadataSource": "patches-metadata/176_day_of_the_tentacle_classic.json",
     "sourceUrl": "https://www.facebook.com/groups/hebrewadventure/posts/342895866314516/",
     "communityTranslation": true
+  },
+  "disco-elysium": {
+    "description": "משחק תפקידים בלשי מאת ZA/UM. תרגום עברי מקורי בהכנה; חבילת בדיקה חלקית ל־The Final Cut ב־Steam. יש לבחור ערבית במשחק כדי להציג את הטקסט העברי. יתר הטקסט עדיין בערבית.",
+    "metadataSource": "patches-metadata/177_disco_elysium.json",
+    "sourceUrl": "https://store.steampowered.com/app/632470/",
+    "communityTranslation": true
   }
 }

@@ -395,3 +395,18 @@ async fn steam_library_scan_adds_all_space_quest_editions_once() {
     assert!(!found.iter().find(|g| g.scummvm_id == "sq6").unwrap().has_available_patch);
     assert!(scan_directory(&db, collection.to_str().unwrap(), sandbox.0.clone()).await.unwrap().is_empty());
 }
+
+#[tokio::test]
+#[ignore = "Requires DISCO_MAC_ROOT or DISCO_WINDOWS_ROOT; temporary database only"]
+async fn disco_owned_scan_is_repeatable_and_manual_root_matches() {
+    let owned=PathBuf::from(std::env::var_os("DISCO_MAC_ROOT").or_else(||std::env::var_os("DISCO_WINDOWS_ROOT")).unwrap());
+    let expected=owned.canonicalize().unwrap();
+    let manual=detect_game_for_id(&owned,"disco-elysium").unwrap().unwrap();
+    assert_eq!(PathBuf::from(manual.install_path),expected);
+    let tmp=tempfile::tempdir().unwrap();let db=crate::db::init_db(&tmp.path().join("db")).await.unwrap();
+    let first=scan_directory(&db,owned.to_str().unwrap(),tmp.path().to_path_buf()).await.unwrap();
+    assert_eq!(first.len(),1);assert_eq!(first[0].scummvm_id,"disco-elysium");assert_eq!(PathBuf::from(&first[0].install_path),expected);
+    assert!(scan_directory(&db,owned.to_str().unwrap(),tmp.path().to_path_buf()).await.unwrap().is_empty());
+    let library=get_games_with_patches(&db,tmp.path().to_path_buf()).await.unwrap();
+    assert_eq!(library.len(),1);assert!(!library[0].requires_scummvm);
+}

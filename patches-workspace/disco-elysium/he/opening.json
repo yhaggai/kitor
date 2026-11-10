@@ -1,0 +1,73 @@
+{
+  "provenance": {
+    "model": "GPT-6 (session model; exact model ID unavailable)",
+    "reasoning_effort": "unavailable",
+    "status": "draft renderer probe"
+  },
+  "entries": [
+    {
+      "conversation_id": 8,
+      "entry_id": 3,
+      "key": "Dialogue Text/0x0100000400000071",
+      "speaker_id": "82",
+      "source": "An inordinate amount of time passes.  It is utterly void of struggle. No ex-wives are contained within it.",
+      "he": "זמן רב לאין שיעור חולף. אין בו שמץ של מאבק. אין בו נשים לשעבר."
+    },
+    {
+      "conversation_id": 8,
+      "entry_id": 4,
+      "key": "Dialogue Text/0x0100000400000096",
+      "speaker_id": "396",
+      "source": "I like nothing.",
+      "he": "אני אוהב את האין."
+    },
+    {
+      "conversation_id": 8,
+      "entry_id": 12,
+      "key": "Dialogue Text/0x010000040000008E",
+      "speaker_id": "82",
+      "source": "You got it, sweet brother! Nothing upon nothing, upon nothing!",
+      "he": "בדיוק, אחי היקר! אין על גבי אין, על גבי אין!"
+    },
+    {
+      "conversation_id": 8,
+      "entry_id": 23,
+      "key": "Dialogue Text/0x010000040000009D",
+      "speaker_id": "396",
+      "source": "How about you cough up some more of that sweet oblivion?",
+      "he": "מה דעתך לתת לי עוד קצת מהחידלון המתוק הזה?"
+    },
+    {
+      "conversation_id": 8,
+      "entry_id": 32,
+      "key": "Dialogue Text/0x01000004000000A4",
+      "speaker_id": "82",
+      "source": "I know you do, baby... I know...",
+      "he": "אני יודע, מותק... אני יודע..."
+    },
+    {
+      "conversation_id": 8,
+      "entry_id": 39,
+      "key": "Dialogue Text/0x010000040000004C",
+      "speaker_id": "82",
+      "source": "Ever.",
+      "he": "לעולם."
+    },
+    {
+      "conversation_id": 8,
+      "entry_id": 45,
+      "key": "Dialogue Text/0x0100000400000046",
+      "speaker_id": "82",
+      "source": "There is nothing. Only warm, primordial blackness. Your conscience ferments in it -- no larger than a single grain of malt. You don't have to do anything anymore.",
+      "he": "אין דבר. רק אפלה חמימה וקדמונית. המצפון שלך תוסס בתוכה — לא גדול מגרגר לתת אחד. אתה כבר לא צריך לעשות שום דבר."
+    },
+    {
+      "conversation_id": 8,
+      "entry_id": 69,
+      "key": "Dialogue Text/0x0100000400000054",
+      "speaker_id": "82",
+      "source": "Never ever.",
+      "he": "לעולם ועד."
+    }
+  ]
+}

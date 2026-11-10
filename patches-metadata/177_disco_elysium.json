@@ -1,0 +1,12 @@
+{
+  "idx": 177,
+  "name_he": "דיסקו אליסיום",
+  "name_en": "Disco Elysium – The Final Cut",
+  "description": "משחק תפקידים בלשי מאת ZA/UM. תרגום עברי מקורי בהכנה; חבילת בדיקה חלקית ל־The Final Cut ב־Steam. יש לבחור ערבית במשחק כדי להציג את הטקסט העברי. יתר הטקסט עדיין בערבית.",
+  "patch_link": null,
+  "patch_links": [],
+  "other_links": ["https://store.steampowered.com/app/632470/"],
+  "vm": "Native Unity",
+  "vm_notes": "Windows and macOS native game; private partial Hebrew preview. Public release and Windows gameplay validation pending.",
+  "extraction_status": "Original direct CSV translation; user-approved Hebrew title; not a published community patch."
+}

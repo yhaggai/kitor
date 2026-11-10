@@ -1,0 +1,52 @@
+{
+  "faces": [
+    {
+      "name": "NotoSansArabic SDF",
+      "family": "Assistant",
+      "weight": 300,
+      "raster_size": 286,
+      "path_id": 5039636796025186692
+    },
+    {
+      "name": "HebrewMenuBold SDF",
+      "family": "Assistant",
+      "weight": 700,
+      "raster_size": 286,
+      "path_id": 910000002
+    },
+    {
+      "name": "HebrewDialogue SDF",
+      "family": "FrankRuhlLibre",
+      "weight": 500,
+      "raster_size": 284,
+      "path_id": 910000003
+    },
+    {
+      "name": "HebrewDialogueBold SDF",
+      "family": "FrankRuhlLibre",
+      "weight": 700,
+      "raster_size": 284,
+      "path_id": 910000004
+    }
+  ],
+  "routes": {
+    "Dobra-Bold SDF": "HebrewMenuBold SDF",
+    "Dobra-Book SDF": "NotoSansArabic SDF",
+    "Dobra-Light SDF": "NotoSansArabic SDF",
+    "Dobra-Medium SDF": "NotoSansArabic SDF",
+    "Dyslexic SDF": "NotoSansArabic SDF",
+    "GulimChe SDF": "NotoSansArabic SDF",
+    "SinaNova-Bold SDF": "HebrewDialogueBold SDF",
+    "SinaNova-Medium SDF": "HebrewDialogue SDF",
+    "Collage Dialogue SDF": "HebrewDialogue SDF",
+    "Collage UI SDF": "NotoSansArabic SDF",
+    "LiberationSans SDF": "NotoSansArabic SDF"
+  },
+  "italic": "TMP synthetic slant 12; no designed italic face",
+  "atlas": [8192, 4096],
+  "validation": "serialized glyphs, bold pointers, routes, unchanged text",
+  "in_game_verified": false,
+  "rollback": "/Users/haggaiyaniv/dev/kitor/patches-workspace/disco-elysium/he/font-rollback",
+  "status": "superseded: reverted to previously working Arial bundles",
+  "user_test_result": "Menu worked; dialogue showed missing-glyph boxes. User requested Arial."
+}

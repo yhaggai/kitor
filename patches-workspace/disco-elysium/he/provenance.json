@@ -1,0 +1,31 @@
+{
+  "game_id": "disco-elysium",
+  "name_en": "Disco Elysium – The Final Cut",
+  "name_he": "דיסקו אליסיום",
+  "title_source": "explicit user selection",
+  "catalog_idx": 177,
+  "catalog_status": "record and registry integrated; public download gated",
+  "steam_app_id": 632470,
+  "source_type": "owned Steam game; original direct Hebrew translation",
+  "upstream_patch_url": null,
+  "translation_source": "translations.csv",
+  "authoring": "current Codex assistant, no separate draft model",
+  "platforms": {
+    "osx": {
+      "build_id": "23980936",
+      "runtime": "native Unity IL2CPP",
+      "prototype": "Arial confirmed by user; expanded CSV batch awaits visual review"
+    },
+    "windows": {
+      "depot_id": 632471,
+      "status": "depot completion verified; actual Windows file roundtrip passed on macOS; native gameplay pending",
+      "manifest_id": "5267467363497400856"
+    }
+  },
+  "release_ready": false,
+  "status": "packaged_unverified",
+  "publication": "private preview only; not published",
+  "font_redistribution": "Arial atlas redistribution not cleared; private local build only",
+  "package_manifest": "patch.preview.json",
+  "catalog_source": "patches-metadata/177_disco_elysium.json"
+}

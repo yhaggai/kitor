@@ -1,0 +1,71 @@
+{
+  "date": "2026-11-10",
+  "environment": "production",
+  "bucket": "kitor-assets",
+  "service": "Direct R2 custom domain, active TLS; no asset worker route; existing image transformation service reused",
+  "objects": [
+    {
+      "object_key": "covers/disco-elysium/en/71041ce81990.jpg",
+      "url": "https://assets.kitor.click/covers/disco-elysium/en/71041ce81990.jpg",
+      "sha256": "71041ce81990bee43c0cddf18988adbfe19d576c4c886b92e334b1aac5b6cb35",
+      "bytes": 244347,
+      "transformations": [
+        {
+          "url": "https://assets.kitor.click/cdn-cgi/image/width=240,fit=scale-down,quality=85,format=auto/covers/disco-elysium/en/71041ce81990.jpg",
+          "width": 240,
+          "height": 360
+        },
+        {
+          "url": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/disco-elysium/en/71041ce81990.jpg",
+          "width": 480,
+          "height": 720
+        },
+        {
+          "url": "https://assets.kitor.click/cdn-cgi/image/width=960,fit=scale-down,quality=85,format=auto/covers/disco-elysium/en/71041ce81990.jpg",
+          "width": 600,
+          "height": 900
+        }
+      ]
+    },
+    {
+      "object_key": "covers/disco-elysium/he/cf888621e796.png",
+      "url": "https://assets.kitor.click/covers/disco-elysium/he/cf888621e796.png",
+      "sha256": "cf888621e796fb774959406feedab78622bf688a291c858af02334c0b2ef8cc3",
+      "bytes": 2404429,
+      "transformations": [
+        {
+          "url": "https://assets.kitor.click/cdn-cgi/image/width=240,fit=scale-down,quality=85,format=auto/covers/disco-elysium/he/cf888621e796.png",
+          "width": 240,
+          "height": 360
+        },
+        {
+          "url": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/disco-elysium/he/cf888621e796.png",
+          "width": 480,
+          "height": 720
+        },
+        {
+          "url": "https://assets.kitor.click/cdn-cgi/image/width=960,fit=scale-down,quality=85,format=auto/covers/disco-elysium/he/cf888621e796.png",
+          "width": 960,
+          "height": 1440
+        }
+      ]
+    },
+    {
+      "object_key": "banners/disco-elysium/en/fee6aa0d9d43.jpg",
+      "url": "https://assets.kitor.click/banners/disco-elysium/en/fee6aa0d9d43.jpg",
+      "sha256": "fee6aa0d9d4398bac3883766344784b0ae93062d22a9fa20de1507e4eea064e7",
+      "bytes": 59476,
+      "transformations": []
+    },
+    {
+      "object_key": "banners/disco-elysium/he/483eff4982ff.png",
+      "url": "https://assets.kitor.click/banners/disco-elysium/he/483eff4982ff.png",
+      "sha256": "483eff4982ff281379d812032e53488dbb1b1330efe1523d6aa23972b35f9f6c",
+      "bytes": 2882111,
+      "transformations": []
+    }
+  ],
+  "hosted_manifest_verified": true,
+  "hosted_manifest_sha256": "4db946603283a41476e8d9ccb45dc1171af8dc149c2dd95b9ecdfc608a97c347",
+  "app_verification": "Actual Kitor detail/box components in Storybook: hosted en/he images loaded; desktop and 390px no overflow; original and Hebrew preview states, uninstalled state, and missing-image fallback. Full desktop installation state not exercised. Library cards verified: English original and Hebrew installed faces, images decoded successfully."
+}

@@ -48,6 +48,8 @@ jobs:
       - uses: dtolnay/rust-toolchain@stable
       - name: Build disposable validation CLI
         run: cargo build --manifest-path kitor/tools/lifecycle-harness/Cargo.toml --locked --bin validate_owned_games
+      - name: Compile native Disco preview installer
+        run: cargo build --release --locked --manifest-path kitor/tools/lifecycle-harness/Cargo.toml --bin disco_patch
       - name: Compile native classic Tentacle installer
         run: cargo build --release --locked --manifest-path kitor/tools/lifecycle-harness/Cargo.toml --bin tentacle_patch
       - name: Compile native Mac remastered candidate

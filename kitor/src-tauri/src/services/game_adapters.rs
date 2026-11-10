@@ -9,6 +9,7 @@ use std::{
 pub fn detect(def: &GameDefinition, path: &Path) -> Option<PathBuf> {
     let detection = &def.behavior.detection;
     match detection.adapter {
+        DetectionAdapter::DiscoElysium => return super::games::disco_elysium::detect(path),
         DetectionAdapter::Tentacle => return super::games::tentacle::detect(path),
         DetectionAdapter::TentacleRemastered => return super::games::tentacle::detect_remastered(path),
         DetectionAdapter::Owlboy => return super::games::owlboy::detect(path),

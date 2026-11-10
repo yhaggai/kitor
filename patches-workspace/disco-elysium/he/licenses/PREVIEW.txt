@@ -1,0 +1,16 @@
+Disco Elysium – The Final Cut Hebrew preview 0.1.0-preview1
+
+Original direct Hebrew translation by the project author with Codex assistance.
+Source of truth: translations.csv. Partial translation: 4,165 / 75,767 entries.
+Select Arabic in the game. Untranslated text remains Arabic. English voice acting
+and image-only text are unchanged. Native RTL, logical Hebrew, Arial atlas.
+
+Requires the matching owned Steam Final Cut game files and Python 3 on the
+installation machine (Windows: py -3). All input and output files are SHA-256
+checked. Install/uninstall uses Kitor's selective recovery journal.
+
+PRIVATE PROTOTYPE ONLY. Arial comes from the local macOS system installation.
+No permission to redistribute this atlas has been established. Do not publish
+this archive or its font delta as a publicly licensed font asset. No TTF or
+complete original game file is included. All game rights belong to ZA/UM and
+respective rightsholders. Windows gameplay and expanded scenes remain untested.
