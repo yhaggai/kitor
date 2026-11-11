@@ -2,8 +2,8 @@
   "branch": "codex/disco-elysium-localization",
   "source_of_truth": "translations.csv",
   "authoring": "Direct current-assistant translation; no external draft service",
-  "translated": 68186,
-  "remaining": 11400,
+  "translated": 70194,
+  "remaining": 9392,
   "conversations_with_translations": {
     "5": {
       "total": 14,
@@ -2515,6 +2515,26 @@
       "translated": 90,
       "name": "LEDGER WAKEUP"
     },
+    "1150": {
+      "total": 5,
+      "translated": 5,
+      "name": "COAL ORB / labourer jeans equipped"
+    },
+    "1151": {
+      "total": 27,
+      "translated": 27,
+      "name": "INVENTORY / GUM WRAPPER"
+    },
+    "1154": {
+      "total": 35,
+      "translated": 35,
+      "name": "THOUGHT / REMOTE VIEWER"
+    },
+    "1155": {
+      "total": 19,
+      "translated": 19,
+      "name": "THOUGHT / SUICIDE COP"
+    },
     "1156": {
       "total": 10,
       "translated": 10,
@@ -2524,6 +2544,11 @@
       "total": 30,
       "translated": 30,
       "name": "THOUGHT / SOBRIETY DAY ONE"
+    },
+    "1161": {
+      "total": 65,
+      "translated": 65,
+      "name": "COAST / SMALL BUOY"
     },
     "1162": {
       "total": 6,
@@ -2537,29 +2562,119 @@
     },
     "1168": {
       "total": 489,
-      "translated": 400,
+      "translated": 489,
       "name": "SEAFORT / DESERTER MURDER"
+    },
+    "1171": {
+      "total": 17,
+      "translated": 17,
+      "name": "INVENTORY / LIBRARY CARD"
+    },
+    "1172": {
+      "total": 41,
+      "translated": 41,
+      "name": "KINEEMA / REPORTING THE CORPSE ON THE BOARDWALK"
+    },
+    "1174": {
+      "total": 15,
+      "translated": 15,
+      "name": "BOARDWALK / TRASH CAN"
+    },
+    "1176": {
+      "total": 40,
+      "translated": 40,
+      "name": "KINEEMA / CALLING THE LIBRARY"
+    },
+    "1177": {
+      "total": 23,
+      "translated": 23,
+      "name": "BOARDWALK / REPORTING TO KIM"
     },
     "1178": {
       "total": 41,
       "translated": 41,
       "name": "KIM SWITCH / DEAD HUSBAND"
     },
+    "1179": {
+      "total": 33,
+      "translated": 33,
+      "name": "KIM SWITCH / DESERTER TACTICS"
+    },
     "1180": {
       "total": 327,
       "translated": 327,
       "name": "SEAFORT / DESERTER REASONING"
     },
+    "1181": {
+      "total": 482,
+      "translated": 200,
+      "name": "SEAFORT / DESERTER BONUS"
+    },
+    "1182": {
+      "total": 434,
+      "translated": 434,
+      "name": "SEAFORT / DESERTER ARREST"
+    },
     "1189": {
       "total": 625,
       "translated": 625,
       "name": "VILLAGE / POSSE 2"
+    },
+    "1193": {
+      "total": 83,
+      "translated": 83,
+      "name": "KIM SWITCH / VILLAGE AND JACKET"
+    },
+    "1196": {
+      "total": 28,
+      "translated": 28,
+      "name": "PLAZA ORB / col do ma ma daqua afterthought"
+    },
+    "1197": {
+      "total": 26,
+      "translated": 26,
+      "name": "JAM ORB / dlc truck"
+    },
+    "1199": {
+      "total": 34,
+      "translated": 34,
+      "name": "WHIRLING F2 / DREAM 5"
+    },
+    "1200": {
+      "total": 18,
+      "translated": 18,
+      "name": "INVENTORY / BOOTS WITH ROTTING FLESH"
+    },
+    "1204": {
+      "total": 158,
+      "translated": 158,
+      "name": "WESTCOAST / MORELL CRYPTIDS"
+    },
+    "1209": {
+      "total": 208,
+      "translated": 208,
+      "name": "YARD / CUNO BEFRIEND WC"
+    },
+    "1213": {
+      "total": 1,
+      "translated": 1,
+      "name": "YARD / KIM SHACK barks"
+    },
+    "1217": {
+      "total": 79,
+      "translated": 79,
+      "name": "CARGO / NIGHT WATCHMAN BOOTH"
+    },
+    "1219": {
+      "total": 330,
+      "translated": 330,
+      "name": "WHIRLING F1 / HARDIE AUTHORITY WC"
     }
   },
   "resume_at": {
-    "conversation_id": 1150,
-    "entry_id": 2,
-    "key": "Dialogue Text/0x0100006B00009E01"
+    "conversation_id": 1181,
+    "entry_id": 40,
+    "key": "Alternate1/0x010000780000586F"
   },
   "glossary_entries": 467,
   "validation": {
@@ -2571,10 +2686,10 @@
     "bundle_sha256": "30822499ec9c1dc102393335a2344a06da71153857fcd62ba1d01ec8ce7d9906",
     "last_csv_validation": {
       "entries": 79586,
-      "translated": 68186,
-      "remaining": 11400,
+      "translated": 70194,
+      "remaining": 9392,
       "source_words": 1129354,
-      "coverage_percent": 85.676,
+      "coverage_percent": 88.199,
       "unmapped_source_keys": 193,
       "unresolved_localization_terms": 127,
       "errors": [],

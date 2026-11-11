@@ -519,6 +519,26 @@
       {
         "batch": "c001145-00000",
         "notes": "Stone in idiom two birds one stone localized שתי ציפורים במכה אחת. Charlie Spillane צ'רלי ספיליין; Deanna Deneuve דיאנה דנב provisional. Dick Mullen דיק מולן follows canonical book label (root alerted prior Modus Mullen מאלן discrepancy)."
+      },
+      {
+        "batch": "c001171-00000",
+        "notes": "Central Jamrock Public Library explicit Central preserved הספרייה הציבורית המרכזית של ג׳מרוק. Meroe מרואה; M. Thibault מ' טיבו; Radiothriller מותחן רדיו; The Glinting Curve הקימור הנוצץ; Stand a Little Less Between Me and the Sun עמוד קצת פחות ביני לבין השמש provisional."
+      },
+      {
+        "batch": "c001172-00000",
+        "notes": "Central Jamrock Public Library explicit Central preserved הספרייה הציבורית המרכזית של ג׳מרוק. Sequence killer רוצח רצפים as c1043, retaining unusual source wording."
+      },
+      {
+        "batch": "c001174-00000",
+        "notes": "Tare mixed cans/bottles מכלי פיקדון. Red Astra אסטרה אדומה; Livis ליוויס; Potent Porter פורטר חזק (aligned Potent Pilsner פילזנר חזק); Touloula טולולה provisional."
+      },
+      {
+        "batch": "c001179-00000",
+        "notes": "The Deserter preposition inflection בעריק."
+      },
+      {
+        "batch": "c001181-00000",
+        "notes": "Kingsmen definite plural נאמני־המלך. Judit Minot ז׳ודית מינוט follows compact canonical, superseding prior יודית/מינו (root notified). soucriant סוקריאנט; Numb12 נאמב12; Tiphaine Holly טיפן הולי; Betancourt בטנקור; La Noce לה נוֹס; Yekokataa יקוקאטה provisional. Cock René rendered תרנגול רנה for parade/plumage insult. Source Rhetoric malformed3stars preserved."
       }
     ],
     "lane-2-notes": [
@@ -1224,6 +1244,22 @@
       {
         "batch": "c001168-00200",
         "note": "Union in full name איגוד הסוורים. Rèsurrection רסורקסיון; Corbeille קורביי; droite retained foreign דרואט."
+      },
+      {
+        "batch": "c001182-00000",
+        "note": "Shivers physical waves רעידות; Oranjese Passport definite הדרכון האוראנזי. Iosef Lilianovich Dros יוסיף ליליאנוביץ׳ דרוס; Wayfarer rights זכויות עובר האורח provisional exact lookup absent. Row190 deliberately4 Hebrew words to match row85 Four simple words."
+      },
+      {
+        "batch": "c001182-00200",
+        "note": "Cunoesse alias C סי; Shivers waves רעידות. Reused35 exact English translated rows; checked structure entire batch."
+      },
+      {
+        "batch": "c001193-00000",
+        "note": "The Expression ordinary idiom expression הביטוי, not facial grin. Sad ordinary adjective עצוב. Office Harbinger מבשר האבדון המשרדי, regular-core רגיל־קור style jokes."
+      },
+      {
+        "batch": "c001199-00000",
+        "note": "Stained Glass Window definite חלון הזכוכית הצבעונית. Source sister→feminine row16; soul brother male row29 (Limbic System addresses Reptilian Brain)."
       }
     ],
     "lane-3-notes": [
@@ -1690,6 +1726,26 @@
       {
         "batch": "c001189-00400",
         "note": "Union contractions לאיגוד; civilian male אזרח. Indefinite phasmid מקלון אינסולינדי. C/Cunoesse matches C’mon. Shit the bed is idiom פישלת, not literal bed. All censored asterisks retained."
+      },
+      {
+        "batch": "c001204-00000",
+        "note": "Gary and Morell are first names in source, rendered גארי/מורל without speaker epithet. Dread moose אייל האימה, willow people אנשי הערבה, Nnong Okk נונג אוק, professor Mijanou מיז׳אנו, Samarskilt סמרסקילט, Vaasa וואסה, Koko Nur קוקו נור."
+      },
+      {
+        "batch": "c001209-00000",
+        "notes": "C nickname translated סי; C in Cmon is false-positive. Pile of Eternite uses definite ערימת לוחות האטרניט. Näkk נאק, näkkies נאקים, runkkaris רונקארים; foreign starred napakymppi/fägäri retained."
+      },
+      {
+        "batch": "c001209-00200",
+        "notes": "C nickname uses canonical סי rather than full Cunoesse."
+      },
+      {
+        "batch": "c001217-00000",
+        "notes": "Mirror balls כדורי מראות plural; sad ordinary adjective עצוב, not personified Sad."
+      },
+      {
+        "batch": "c001219-00000",
+        "notes": "C in cmon false positive; rear-view mirror idiom translated להשאיר מאחור. Carly קארלי male per surrounding guys, fascha פאשא. No suicide lines omitted; source fictional dialogue preserved."
       }
     ]
   }
