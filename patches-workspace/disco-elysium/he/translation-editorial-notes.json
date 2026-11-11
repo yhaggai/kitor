@@ -307,6 +307,22 @@
       {
         "batch": "c000790-00000",
         "notes": "Washerwoman alias Isobel Sadie rendered איזובל סיידי; Union construct/indefinite איגוד intentional; Hardie’s boys הבחורים של הארדי with prefix מהבחורים; Rainbow Coalition קואליציית הקשת unrelated to Coalition proper faction. Weasel insult consistently נחש; lawyergirl patronizing diminutive עורכדינית. Uncatalogued names Yeesut ייסוט, Semenine סמנין, Saramiriza סרמיריסה, Señorita Pineapple סניוריטה אננס provisional."
+      },
+      {
+        "batch": "c000790-00200",
+        "notes": "Door unlock paraphrase פתיחת המנעול intentional; Union construct איגוד הסוורים; suggestion ordinary noun הצעה, not skill; Washerwoman alias Isobel Sadie איזובל סיידי. La Rocca לה רוקה and Stella Maris סטלה מאריס provisional."
+      },
+      {
+        "batch": "c000810-00000",
+        "notes": "Hardie boys exceptions intentional: singular לבחור של הארדי; emphatic ה*בחורים* של הארדי. Cock carousel קרוסלת זין; fiddle metaphor מנגנים עליכם כמו על כינור preserves mime. Goldmouth פה־זהב provisional skill nickname. Source hunter becomes hunter deliberate failed idiom retained צייד הופך לצייד."
+      },
+      {
+        "batch": "c000810-00200",
+        "notes": "Union construct איגוד עובדי הנמל intentional; C/Cunoesse false positive from C’mon. Atticus אטיקוס, Lucretia לוקרטיה, Tiberius טיבריוס, Glace גלאס provisional."
+      },
+      {
+        "batch": "c000819-00000",
+        "notes": "Radio operator translated קשרית, not literal רדיו. Kipt invented racist slur קיפט; loincloth racist address אזור־חלציים retained. Source eight rounds in barrel anatomical error retained בקנה."
       }
     ],
     "lane-2-notes": [
@@ -840,6 +856,26 @@
       {
         "batch": "c000809-00000",
         "note": "C/Cunoesse flags C’mon→בחייך; bedtime story→סיפור לפני השינה; door frame→משקוף; Union construct איגוד עובדי הנמל. Titus fucker aimed at Klaasje rendered feminine per explicit Rhetoric cue. Whoopty doo→יש-יש-יש; fuck-a-doodle-fine→זיון-של-סבבה."
+      },
+      {
+        "key": "Dialogue Text/0x010000820001B5BE",
+        "note": "The Pigs uses the grammatical prepositional form לחזירים."
+      },
+      {
+        "batch": "c000814-00000",
+        "note": "C/Cunoesse flags match c’mon, translated קדימה. Radio equipment rendered ציוד קשר; generic indefinite locked door rendered דלת נעולה. Balls/ball pit idiom localized ביצים/לול תרנגולות. Source censored slur asterisk count preserved."
+      },
+      {
+        "batch": "c000814-00200",
+        "note": "Logic generic adjective in logic structure rendered לוגי; police radio מכשיר קשר; sad adjective עצוב; C/Cunoesse c’mon false match rendered בחייכם."
+      },
+      {
+        "batch": "c000814-00400",
+        "note": "Locked Door generic indefinite דלת נעולה; C/Cunoesse c’mon false match בחייך."
+      },
+      {
+        "batch": "c000814-00600",
+        "note": "C/Cunoesse flag matches C’mon, translated בחייכם. Revachol Circus Militia deliberate parody מיליציית הקרקס של רבאשול."
       }
     ],
     "lane-3-notes": [
@@ -1154,6 +1190,26 @@
       {
         "batch": "c000806-00000",
         "note": "C/Cunoesse incidental match in c’mon; not character mention. Reunion prison nickname translated איחוד מחדש to retain explicit etymology discussion."
+      },
+      {
+        "batch": "c000820-00000",
+        "note": "The Gardener inflected בגננית after ירו."
+      },
+      {
+        "batch": "c000821-00000",
+        "note": "sad adjective עצוב, not personified Sad. silos retained as mercenary slang סילואים."
+      },
+      {
+        "batch": "c000822-00000",
+        "note": "C/Cunoesse match in C’mon is incidental; no character mention."
+      },
+      {
+        "batch": "c000823-00000",
+        "note": "Radio officer rendered קשרית. Scab leader indefinite מנהיג שוברי שביתה; grammatical inflection of canonical group."
+      },
+      {
+        "batch": "c000827-00200",
+        "note": "Civilian rendered אזרחית for the explicitly female gun buyer; noun inflection intentionally differs from glossary אזרח/ית."
       }
     ]
   }

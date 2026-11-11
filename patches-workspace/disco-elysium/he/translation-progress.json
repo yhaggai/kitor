@@ -2,8 +2,8 @@
   "branch": "codex/disco-elysium-localization",
   "source_of_truth": "translations.csv",
   "authoring": "Direct current-assistant translation; no external draft service",
-  "translated": 49352,
-  "remaining": 30234,
+  "translated": 51384,
+  "remaining": 28202,
   "conversations_with_translations": {
     "5": {
       "total": 14,
@@ -1537,7 +1537,7 @@
     },
     "790": {
       "total": 380,
-      "translated": 200,
+      "translated": 380,
       "name": "CONTAINERYARD / EVRART MURDER"
     },
     "793": {
@@ -1605,10 +1605,25 @@
       "translated": 141,
       "name": "WHIRLING F1 / HARDIE AFTER TALKING TO KLAASJE"
     },
+    "810": {
+      "total": 377,
+      "translated": 377,
+      "name": "WHIRLING F1 / RHETORIC WC"
+    },
     "811": {
       "total": 66,
       "translated": 66,
       "name": "WHIRLING F1 / ADDITIONAL CONTENT"
+    },
+    "812": {
+      "total": 25,
+      "translated": 25,
+      "name": "PLAZA ORB / hardie volition afterthought"
+    },
+    "814": {
+      "total": 689,
+      "translated": 689,
+      "name": "WHIRLING F1 / LOGIC WHITE CHECK"
     },
     "816": {
       "total": 83,
@@ -1624,12 +1639,47 @@
       "total": 48,
       "translated": 48,
       "name": "TRIBUNAL / THIRD GUY?"
+    },
+    "819": {
+      "total": 135,
+      "translated": 135,
+      "name": "TRIBUNAL / THEY DID NOT DO THIS!"
+    },
+    "820": {
+      "total": 21,
+      "translated": 21,
+      "name": "TRIBUNAL / YOU ARE DRUNK!"
+    },
+    "821": {
+      "total": 27,
+      "translated": 27,
+      "name": "TRIBUNAL / JOYCE WOULDN'T LIKE THIS!"
+    },
+    "822": {
+      "total": 48,
+      "translated": 48,
+      "name": "TRIBUNAL / LEGITIMACY OF THIS TRIBUNAL"
+    },
+    "823": {
+      "total": 83,
+      "translated": 83,
+      "name": "TRIBUNAL / I GOT TO KNOW THE HANGED MAN"
+    },
+    "826": {
+      "total": 47,
+      "translated": 47,
+      "name": "CANAL / SAMARAN BUTTER SIGN VISCAL"
+    },
+    "827": {
+      "total": 565,
+      "translated": 400,
+      "name": "PAWNSHOP / ROY"
     }
   },
   "resume_at": {
-    "conversation_id": 790,
-    "entry_id": 34,
-    "key": "Alternate1/0x01000082000206D7"
+    "conversation_id": 824,
+    "entry_id": 2,
+    "key": "Dialogue Text/0x01000078000123C6"
   },
   "glossary_entries": 467,
   "validation": {
@@ -1641,10 +1691,10 @@
     "bundle_sha256": "30822499ec9c1dc102393335a2344a06da71153857fcd62ba1d01ec8ce7d9906",
     "last_csv_validation": {
       "entries": 79586,
-      "translated": 49352,
-      "remaining": 30234,
+      "translated": 51384,
+      "remaining": 28202,
       "source_words": 1129354,
-      "coverage_percent": 62.011,
+      "coverage_percent": 64.564,
       "unmapped_source_keys": 193,
       "unresolved_localization_terms": 127,
       "errors": [],
