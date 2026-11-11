@@ -1,0 +1,32 @@
+name: Check translation changes
+
+on:
+  workflow_call:
+    outputs:
+      translation_only:
+        description: The PR changes only Drifter Hebrew subtitles and their checksum
+        value: ${{ jobs.classify.outputs.translation_only }}
+
+permissions:
+  contents: read
+
+jobs:
+  classify:
+    runs-on: ubuntu-latest
+    outputs:
+      translation_only: ${{ steps.classify.outputs.translation_only }}
+    steps:
+      - uses: actions/checkout@v5
+        if: github.event_name == 'pull_request'
+        with:
+          fetch-depth: 2
+      - name: Validate subtitle-only changes
+        id: classify
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+        run: |
+          translation_only=false
+          if [[ -n "$BASE_SHA" ]]; then
+            translation_only=$(python3 kitor/tools/check_translation_pr.py "$BASE_SHA")
+          fi
+          echo "translation_only=$translation_only" >> "$GITHUB_OUTPUT"

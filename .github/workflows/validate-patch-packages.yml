@@ -12,6 +12,8 @@ on:
       - '.github/workflows/deploy-patches.yml'
   pull_request:
     paths:
+      - '.github/workflows/classify-translation-pr.yml'
+      - 'kitor/tools/check_translation_pr.py'
       - 'patches-workspace/**'
       - 'kitor/tools/**'
       - 'kitor/src-tauri/**'
@@ -30,7 +32,11 @@ permissions:
   contents: read
 
 jobs:
+  translation-scope:
+    uses: ./.github/workflows/classify-translation-pr.yml
   lifecycle-and-packaging:
+    needs: translation-scope
+    if: needs.translation-scope.outputs.translation_only != 'true'
     strategy:
       fail-fast: false
       matrix:

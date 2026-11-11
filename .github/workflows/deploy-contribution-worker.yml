@@ -4,8 +4,6 @@ on:
   pull_request:
     paths:
       - 'tools/contribution-worker/**'
-      - 'patches-workspace/drifter/he/payload/translation.csv'
-      - 'patches-workspace/drifter/he/patch.json'
       - '.github/workflows/deploy-contribution-worker.yml'
   push:
     branches: [v1]

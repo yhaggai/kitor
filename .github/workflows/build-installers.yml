@@ -3,6 +3,8 @@ name: Build Kitor installers
 on:
   pull_request:
     paths:
+      - '.github/workflows/classify-translation-pr.yml'
+      - 'kitor/tools/check_translation_pr.py'
       - 'kitor/src/**'
       - 'kitor/src-tauri/**'
       - 'kitor/patches/**'
@@ -25,7 +27,11 @@ permissions:
   contents: read
 
 jobs:
+  translation-scope:
+    uses: ./.github/workflows/classify-translation-pr.yml
   installer:
+    needs: translation-scope
+    if: needs.translation-scope.outputs.translation_only != 'true'
     strategy:
       fail-fast: false
       matrix:
