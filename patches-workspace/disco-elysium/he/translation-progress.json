@@ -2,8 +2,8 @@
   "branch": "codex/disco-elysium-localization",
   "source_of_truth": "translations.csv",
   "authoring": "Direct current-assistant translation; no external draft service",
-  "translated": 42977,
-  "remaining": 36609,
+  "translated": 45027,
+  "remaining": 34559,
   "conversations_with_translations": {
     "5": {
       "total": 14,
@@ -1345,6 +1345,11 @@
       "translated": 68,
       "name": "LANDS END ORB / lands end shot viscal"
     },
+    "704": {
+      "total": 365,
+      "translated": 365,
+      "name": "WHIRLING F2 / KIM WAKEUP"
+    },
     "705": {
       "total": 242,
       "translated": 242,
@@ -1354,12 +1359,102 @@
       "total": 53,
       "translated": 53,
       "name": "WHIRLING F2 / KIM PAPERWORK"
+    },
+    "717": {
+      "total": 23,
+      "translated": 23,
+      "name": "WHIRLING F2 / KLAASJE'S NOTE"
+    },
+    "718": {
+      "total": 57,
+      "translated": 57,
+      "name": "PLAZA / GRAFFITO"
+    },
+    "721": {
+      "total": 231,
+      "translated": 231,
+      "name": "VILLAGE / LILIENNES TWINS"
+    },
+    "723": {
+      "total": 61,
+      "translated": 61,
+      "name": "SEAFORT ORB / quiet on the island"
+    },
+    "727": {
+      "total": 26,
+      "translated": 26,
+      "name": "SEAFORT ORB / chain afterthought"
+    },
+    "730": {
+      "total": 37,
+      "translated": 37,
+      "name": "LANDS END / DEPOT DOOR"
+    },
+    "735": {
+      "total": 3,
+      "translated": 3,
+      "name": "SEAFORT / KIM FUEL barks"
+    },
+    "737": {
+      "total": 61,
+      "translated": 61,
+      "name": "SEAFORT ORB / ICM logo questions"
+    },
+    "739": {
+      "total": 80,
+      "translated": 80,
+      "name": "SEAFORT INT / MICROGRID GENERATOR"
+    },
+    "740": {
+      "total": 57,
+      "translated": 57,
+      "name": "SEAFORT INT / SPRING MATTRESS"
+    },
+    "742": {
+      "total": 93,
+      "translated": 93,
+      "name": "SEAFORT INT / READING MATERIALS"
+    },
+    "743": {
+      "total": 39,
+      "translated": 39,
+      "name": "SEAFORT INT / BLAST DOOR"
+    },
+    "745": {
+      "total": 131,
+      "translated": 131,
+      "name": "SEAFORT INT / FELD INSULAR CONSOLE"
+    },
+    "751": {
+      "total": 22,
+      "translated": 22,
+      "name": "INVENTORY / PAYS INFERNAL"
+    },
+    "752": {
+      "total": 141,
+      "translated": 141,
+      "name": "SEAFORT / MATTRESS NEST"
+    },
+    "757": {
+      "total": 23,
+      "translated": 23,
+      "name": "SEAFORT ORB / walk into water"
+    },
+    "761": {
+      "total": 654,
+      "translated": 400,
+      "name": "SEAFORT / THE DESERTER"
+    },
+    "767": {
+      "total": 622,
+      "translated": 200,
+      "name": "DREAM SEAFORT / DOLORES DEI"
     }
   },
   "resume_at": {
-    "conversation_id": 704,
-    "entry_id": 2,
-    "key": "Dialogue Text/0x0100004500019DAD"
+    "conversation_id": 761,
+    "entry_id": 13,
+    "key": "Alternate1/0x0100007200007FEA"
   },
   "glossary_entries": 467,
   "validation": {
@@ -1371,10 +1466,10 @@
     "bundle_sha256": "30822499ec9c1dc102393335a2344a06da71153857fcd62ba1d01ec8ce7d9906",
     "last_csv_validation": {
       "entries": 79586,
-      "translated": 42977,
-      "remaining": 36609,
+      "translated": 45027,
+      "remaining": 34559,
       "source_words": 1129354,
-      "coverage_percent": 54.001,
+      "coverage_percent": 56.577,
       "unmapped_source_keys": 193,
       "unresolved_localization_terms": 127,
       "errors": [],
