@@ -563,6 +563,22 @@
       {
         "batch": "c001195-00000",
         "notes": "Fuck-All-Borough רובע־זין־וכלום; Zero-Holm אי־האפס; The Silence הדממה; Dark Centre המרכז האפל. Source and and repetition intentionally retained. 49 rows exact source/star/newline checks passed."
+      },
+      {
+        "batch": "c001201-00000",
+        "notes": "La Revacholière לה רבאשולייר, Vacholiere ואשולייר, Augur of Desolation חוזה השממה provisional (exact canonical lookup absent). 163 rows exact source/star/newline checks passed; no advisory warnings."
+      },
+      {
+        "batch": "c001208-00000",
+        "notes": "Locust city עיר הארבה; murderoonie רוצחוני; Magnesolam מגנזולם, Mag מגנז. 119 rows exact source/star/newline checks passed; no advisory warnings."
+      },
+      {
+        "batch": "c001210-00000",
+        "notes": "Cunoesse advisory shortened C rendered סי; other C/Cunoesse match is C’mon. gimp docky boys עבדים conveys subordinated lackeys, not literal disability; c1208 my gimp נכה refers hanged corpse. pigmeister חזירמייסטר; snuff radio רדיו סנאף. 78 exact source/star/newline checks passed."
+      },
+      {
+        "batch": "c001212-00000",
+        "notes": "Advisories Cunoesse: abbreviated C סי or false C’mon; Sad ordinary עצוב/עלוב. Kuuno rendered קואונו versus Cuno קונו here to preserve explicit spelling correction; full קואונו דה רויטר. Cunn קון shortened alias. Same source f****t/f*g stars retained מ****ם/מ*ם. 200 rows exact source/star/newline checks passed."
       }
     ],
     "lane-2-notes": [
@@ -1308,6 +1324,22 @@
       {
         "batch": "c001231-00000",
         "notes": "Union flags deliberate indefinite איגוד versus corporation, and full איגוד הסוורים. squeaky clean adapted נקיים כל כך שזה חורק alongside chair sound. Previous leader feminine per ensuing woman reference."
+      },
+      {
+        "batch": "c001268-00000",
+        "notes": "C/Cunoesse flags false C’mon → נו."
+      },
+      {
+        "batch": "c001270-00000",
+        "notes": "C/Cunoesse flags false C’mon → נו."
+      },
+      {
+        "batch": "c001276-00000",
+        "notes": "Gary flag short source name → גארי."
+      },
+      {
+        "batch": "c001303-00000",
+        "notes": "C/Cunoesse flags false C’mon → קדימה. Sad ordinary adjective/verb עצוב/מעציבים, not personification."
       }
     ],
     "lane-3-notes": [
@@ -1834,6 +1866,26 @@
       {
         "batch": "c999999-00600",
         "notes": "Definite/construct forms מאוורר התקרה, מראת, החלון השבור; Locked Door title indefinite; C in w-c false positive; Morell first name; interact metadata means object, not UI Actions. Internal conversation titles translated as metadata values, keys preserved. ORB rendered כדור, Signature Skill כישור מובהק."
+      },
+      {
+        "batch": "c999999-00800",
+        "notes": "Trash Container indefinite מכל אשפה; Union compound איגוד הסוורים and אנשי איגוד; Scab Leader plural שוברי השביתה. FinishTask code string retained exactly. Citius Fortis Latin retained as inscription. Spirit is eternal rendered הכוהל נצחי for alcohol quest/pun."
+      },
+      {
+        "batch": "c999999-01000",
+        "notes": "Union placards construct שלטי איגוד. Noland Vingt-Cinq נולנד ואן־סנק. Ruby journal definite היומן של רובי."
+      },
+      {
+        "batch": "c999999-01200",
+        "notes": "Sandcastle definite ארמון החול; Scab Leader plural; Gary/Morell first names; Physical Instrument definite המכשיר הגופני. TASK.get_morell_back_to_lena identifier unchanged. Source mismatched Noid descriptions for Andre/Soona preserved rather than corrected."
+      },
+      {
+        "batch": "c999999-01400",
+        "notes": "Sunday Friend possessive החבר שלו של יום ראשון; Coalition contracted לקואליציה; Stock Certificate definite תעודת המניה; Scab plural; sleeping dockworker indefinite description סוור ישן; Morell/Gary first names; Union paraphernalia חפצי איגוד. MRLBG acronym preserved."
+      },
+      {
+        "batch": "c999999-01600",
+        "notes": "Tare Machine contextual מכונת פיקדון. Doomed Commercial Area contracted במתחם המסחרי המקולל; East Delta alias false-positive on Doomed. Interact prose לתקשר. Definite לוח המפסקים, מכונת הגלידה, ארון התרופות, מוט המשקולות. FRITTTE Latin retained for three-T spelling joke. Ice bear fridge descriptive indefinite מקרר דוב קרח. Morell/Gary first names. antique_rifle/TASK.find_fridge identifiers unchanged."
       }
     ]
   }

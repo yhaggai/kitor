@@ -2,8 +2,8 @@
   "branch": "codex/disco-elysium-localization",
   "source_of_truth": "translations.csv",
   "authoring": "Direct current-assistant translation; no external draft service",
-  "translated": 72788,
-  "remaining": 6798,
+  "translated": 74830,
+  "remaining": 4756,
   "conversations_with_translations": {
     "5": {
       "total": 14,
@@ -2675,6 +2675,11 @@
       "translated": 18,
       "name": "INVENTORY / BOOTS WITH ROTTING FLESH"
     },
+    "1201": {
+      "total": 163,
+      "translated": 163,
+      "name": "ICE / KIM RACISM FINAL TALK"
+    },
     "1203": {
       "total": 319,
       "translated": 319,
@@ -2685,15 +2690,40 @@
       "translated": 158,
       "name": "WESTCOAST / MORELL CRYPTIDS"
     },
+    "1205": {
+      "total": 24,
+      "translated": 24,
+      "name": "SEAFORT ORB / fairweather t500 helmet"
+    },
+    "1206": {
+      "total": 5,
+      "translated": 5,
+      "name": "YARD / CUNO barks lost to cunoesse"
+    },
+    "1208": {
+      "total": 119,
+      "translated": 119,
+      "name": "PARTY / CUNO MAIN"
+    },
     "1209": {
       "total": 208,
       "translated": 208,
       "name": "YARD / CUNO BEFRIEND WC"
     },
+    "1210": {
+      "total": 78,
+      "translated": 78,
+      "name": "YARD / CUNO SHACK"
+    },
     "1211": {
       "total": 100,
       "translated": 100,
       "name": "YARD / CUNO LOCUSTS"
+    },
+    "1212": {
+      "total": 214,
+      "translated": 214,
+      "name": "YARD / CUNO SPEED"
     },
     "1213": {
       "total": 1,
@@ -2725,6 +2755,16 @@
       "translated": 69,
       "name": "CONTAINERYARD / JOYCE"
     },
+    "1248": {
+      "total": 12,
+      "translated": 12,
+      "name": "VILLAGE ORB / spirit necktie"
+    },
+    "1249": {
+      "total": 97,
+      "translated": 97,
+      "name": "VILLAGE / JOYCE"
+    },
     "1258": {
       "total": 36,
       "translated": 36,
@@ -2734,6 +2774,41 @@
       "total": 123,
       "translated": 123,
       "name": "WORLD / WAITING BENCH"
+    },
+    "1261": {
+      "total": 19,
+      "translated": 19,
+      "name": "THOUGHT / MAGNESIUM BASED LIFE FORM"
+    },
+    "1266": {
+      "total": 10,
+      "translated": 10,
+      "name": "GATES / SCAB barks two"
+    },
+    "1268": {
+      "total": 11,
+      "translated": 11,
+      "name": "GATES / SCAB barks four"
+    },
+    "1270": {
+      "total": 12,
+      "translated": 12,
+      "name": "GATES / SCAB barks six"
+    },
+    "1276": {
+      "total": 40,
+      "translated": 40,
+      "name": "KIM ORB / seolite conspiracy"
+    },
+    "1290": {
+      "total": 12,
+      "translated": 12,
+      "name": "PIER ORB / bustedupwalkwaythought"
+    },
+    "1303": {
+      "total": 45,
+      "translated": 45,
+      "name": "JAM ORB / pagetwothought"
     },
     "1305": {
       "total": 17,
@@ -2745,25 +2820,70 @@
       "translated": 27,
       "name": "PIER ORB / searails"
     },
+    "1349": {
+      "total": 14,
+      "translated": 14,
+      "name": "COAST ORB / bunkerthought"
+    },
     "1353": {
       "total": 13,
       "translated": 13,
       "name": "COAST ORB / feldwindows"
+    },
+    "1369": {
+      "total": 7,
+      "translated": 7,
+      "name": "COAST ORB / bluedoororb"
+    },
+    "1374": {
+      "total": 7,
+      "translated": 7,
+      "name": "PLAZA ORB / plazatilecoat"
     },
     "1375": {
       "total": 7,
       "translated": 7,
       "name": "BOOKSTORE ORB / bookstorerug"
     },
+    "1376": {
+      "total": 7,
+      "translated": 7,
+      "name": "WALKWAY ORB / walkwaycoat"
+    },
     "1377": {
       "total": 7,
       "translated": 7,
       "name": "APT ORB / rugcoat"
     },
+    "1406": {
+      "total": 3,
+      "translated": 3,
+      "name": "APT / WCW barks"
+    },
+    "1435": {
+      "total": 16,
+      "translated": 16,
+      "name": "Arx - EasterEggs / Flow – The Arctic Swimmer"
+    },
     "1440": {
       "total": 34,
       "translated": 34,
       "name": "Arx - EasterEggs / Modus Mullen / Flow – INITIATING MODUS: MULLEN"
+    },
+    "1452": {
+      "total": 7,
+      "translated": 7,
+      "name": "Helen - EasterEggs / Pleasure Wheel / Flow – APT ORB / viscal pleasure wheel intro"
+    },
+    "1457": {
+      "total": 8,
+      "translated": 8,
+      "name": "Helen - EasterEggs / Pleasure Wheel / Flow – PLAZA ORB / viscal pleasure wheel intro"
+    },
+    "1458": {
+      "total": 69,
+      "translated": 69,
+      "name": "Flow – PLAZA / SUGGESTION JACKET EPIC / Flow – EPIC SUGGESTION"
     },
     "1459": {
       "total": 57,
@@ -2774,12 +2894,17 @@
       "total": 36,
       "translated": 36,
       "name": "Helen - EasterEggs / Something washes ashore / Flow – INVENTORY / LEOPARD-PATTERNED BODYSUIT"
+    },
+    "1499": {
+      "total": 44,
+      "translated": 43,
+      "name": "Helen - EasterEggs / Flow – WHIRLING / KIM DOOR"
     }
   },
   "resume_at": {
-    "conversation_id": 1201,
+    "conversation_id": 1220,
     "entry_id": 2,
-    "key": "Dialogue Text/0x0100002100002D65"
+    "key": "Dialogue Text/0x010000820001490E"
   },
   "glossary_entries": 467,
   "validation": {
@@ -2791,10 +2916,10 @@
     "bundle_sha256": "30822499ec9c1dc102393335a2344a06da71153857fcd62ba1d01ec8ce7d9906",
     "last_csv_validation": {
       "entries": 79586,
-      "translated": 72788,
-      "remaining": 6798,
+      "translated": 74830,
+      "remaining": 4756,
       "source_words": 1129354,
-      "coverage_percent": 91.458,
+      "coverage_percent": 94.024,
       "unmapped_source_keys": 193,
       "unresolved_localization_terms": 127,
       "errors": [],
