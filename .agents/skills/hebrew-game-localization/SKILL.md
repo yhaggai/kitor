@@ -31,6 +31,14 @@ Give Luna source dialogue, speaker IDs, conversation context and the existing gl
 
 For Disco Elysium, write translations directly to `patches-workspace/disco-elysium/he/translations.csv` in logical Hebrew order. Preserve source English, stable keys and protected tokens; validate saved batches with `text_pipeline.py validate`. Continue authorized batches without asking for approval between them, and report coverage without treating a partial draft as a complete translation.
 
+## Conditional glossary context optimization
+
+Use the full glossary when it is small and relevant to the current translation. Do not create a selector or extra batch artifacts by default. Optimize only when inspection shows substantial repeated or irrelevant context—for example, a large glossary with extensive evidence and unrelated speaker notes. Compare representative batch contexts before deciding; there is no fixed entry-count threshold.
+
+When optimization is warranted, preserve the full canonical glossary and its provenance as part of the patch source. Generate compact batch context from a small shared core, English names and aliases mentioned in the batch, and speaker/addressee IDs. Include relevant Hebrew forms, grammatical guidance, voice and scene-specific notes; omit unrelated evidence and provenance from the translation prompt. Let the translator retrieve individual full entries for ambiguities. Flag terminology differences for contextual review rather than blindly enforcing replacements: Hebrew inflection, wordplay, and story reveals can justify exceptions.
+
+For Disco Elysium, `patches-workspace/disco-elysium/he/glossary_context.py BATCH.source.json --output BATCH.glossary.json` implements this selection. Add `--translations BATCH.csv` for advisory terminology checks. Measure glossary character or token size explicitly; do not equate character reductions with total prompt savings, billing, or unverified cache hits. When switching an active translation to compact contexts, checkpoint and stop the existing workers, then start fresh workers that read the selected context instead of carrying the full glossary forward. Keep parallel batch ownership disjoint and merge through source, protected-token and conflict checks.
+
 ## Establish the voices
 
 Maintain a glossary with the English label, canonical Hebrew name, aliases, grammatical gender, pronouns, forms of address and the source that establishes them. Distinguish speaker, addressee and third-person subject. If a name or role leaves gender unresolved, use natural unmarked wording such as ״אפשר לעזור?״. Preserve what the player knows at that scene.
