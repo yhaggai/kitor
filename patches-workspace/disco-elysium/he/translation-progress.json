@@ -2,8 +2,8 @@
   "branch": "codex/disco-elysium-localization",
   "source_of_truth": "translations.csv",
   "authoring": "Direct current-assistant translation; no external draft service",
-  "translated": 21768,
-  "remaining": 57818,
+  "translated": 23846,
+  "remaining": 55740,
   "conversations_with_translations": {
     "5": {
       "total": 14,
@@ -617,7 +617,7 @@
     },
     "433": {
       "total": 387,
-      "translated": 200,
+      "translated": 387,
       "name": "PLAZA / WORKING CLASS WOMAN"
     },
     "434": {
@@ -665,26 +665,126 @@
       "translated": 151,
       "name": "FRITTE / FRITTE CLERK"
     },
+    "447": {
+      "total": 19,
+      "translated": 19,
+      "name": "FRITTE / TARE MACHINE"
+    },
+    "448": {
+      "total": 307,
+      "translated": 307,
+      "name": "JAM / HUMANITARIAN AID"
+    },
     "451": {
       "total": 59,
       "translated": 59,
       "name": "JAM / faln sneakers on a pedestal of speakers"
+    },
+    "452": {
+      "total": 51,
+      "translated": 51,
+      "name": "JAM / box of sun glasses"
+    },
+    "454": {
+      "total": 28,
+      "translated": 28,
+      "name": "JAM ORB / logic orb"
     },
     "458": {
       "total": 50,
       "translated": 50,
       "name": "JAM / box of clothes"
     },
+    "459": {
+      "total": 214,
+      "translated": 214,
+      "name": "DOOMED / ELECTRONIC DOORBELL"
+    },
     "460": {
       "total": 719,
-      "translated": 200,
+      "translated": 719,
       "name": "DOOMED / DICEMAKER"
+    },
+    "461": {
+      "total": 95,
+      "translated": 95,
+      "name": "DOOMED / CENTRAL FURNACE"
+    },
+    "462": {
+      "total": 32,
+      "translated": 32,
+      "name": "DOOMED / BREAKER BOX"
+    },
+    "463": {
+      "total": 59,
+      "translated": 59,
+      "name": "DOOMED / ICE CREAM MAKER"
+    },
+    "464": {
+      "total": 133,
+      "translated": 133,
+      "name": "DOOMED / ICE BEAR FRIDGE"
+    },
+    "468": {
+      "total": 55,
+      "translated": 55,
+      "name": "DOOMED / HIDDEN WEAPONS CACHE"
+    },
+    "474": {
+      "total": 40,
+      "translated": 40,
+      "name": "FRITTE / KNICK-KNACKS STAND"
+    },
+    "475": {
+      "total": 29,
+      "translated": 29,
+      "name": "FRITTE / APOTHECARY"
+    },
+    "478": {
+      "total": 43,
+      "translated": 43,
+      "name": "DOOMED / BARBELL"
+    },
+    "482": {
+      "total": 145,
+      "translated": 145,
+      "name": "INVENTORY / GREATEST INNOSSENCE"
+    },
+    "489": {
+      "total": 9,
+      "translated": 9,
+      "name": "GATES / BABEONE barks"
+    },
+    "493": {
+      "total": 7,
+      "translated": 7,
+      "name": "GATES / WOMENS RIGHTS first phase barks"
+    },
+    "500": {
+      "total": 8,
+      "translated": 8,
+      "name": "JAM / RACIST barks"
+    },
+    "511": {
+      "total": 19,
+      "translated": 19,
+      "name": "BOOKSTORE / PRIMERBOOK"
+    },
+    "513": {
+      "total": 57,
+      "translated": 57,
+      "name": "WHIRLING F2 / TEQUILA DOOR"
+    },
+    "514": {
+      "total": 22,
+      "translated": 22,
+      "name": "VILLAGE / SHACK DOOR"
     }
   },
   "resume_at": {
-    "conversation_id": 433,
-    "entry_id": 25,
-    "key": "Alternate1/0x010000380000136C"
+    "conversation_id": 481,
+    "entry_id": 2,
+    "key": "Dialogue Text/0x010000040000A921"
   },
   "glossary_entries": 467,
   "validation": {
@@ -696,10 +796,10 @@
     "bundle_sha256": "30822499ec9c1dc102393335a2344a06da71153857fcd62ba1d01ec8ce7d9906",
     "last_csv_validation": {
       "entries": 79586,
-      "translated": 21768,
-      "remaining": 57818,
+      "translated": 23846,
+      "remaining": 55740,
       "source_words": 1129354,
-      "coverage_percent": 27.352,
+      "coverage_percent": 29.963,
       "unmapped_source_keys": 193,
       "unresolved_localization_terms": 127,
       "errors": [],

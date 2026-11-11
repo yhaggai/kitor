@@ -1,0 +1,197 @@
+{
+  "status": "Astra author notes; editorial review pending",
+  "lanes": {
+    "lane-1-notes": [
+      {
+        "key": "Dialogue Text/0x01000045000037FC",
+        "batch": "c000071-00000",
+        "reason": "Ambiguous distant corpse reference: retained literal small one; fuller linked Shivers vignette should confirm referent.",
+        "status": "translated; editorial terminology review pending"
+      },
+      {
+        "key": "Dialogue Text/0x0100004500003742",
+        "batch": "c000071-00200",
+        "reason": "Sao/Saramirizian/Kedreatic ethnonyms transliterated provisionally from spelling; audio pronunciation unverified.",
+        "status": "translated; editorial terminology review pending"
+      },
+      {
+        "key": "Dialogue Text/0x0100004500000CBC",
+        "batch": "c000035-00000",
+        "reason": "Cordon Electrics and Elektra f2 equipment brand spellings provisional; source typography f2 retained.",
+        "status": "translated; editorial terminology review pending"
+      },
+      {
+        "key": "tooltip3/0x010000040000D9AD",
+        "batch": "c000014-00000",
+        "reason": "Cunofied Nonvomitor coined tooltip rendered לא־מקיא, משופר בידי קונו; terminology review across thought/item labels recommended.",
+        "status": "translated; editorial terminology review pending"
+      },
+      {
+        "key": "Dialogue Text/0x0100002F00009F39",
+        "reason": "Harry/hairy pun: retained Harry as הארי and neighbouring hairy as שעיר, but Hebrew sound resemblance weaker; editorial adaptation desirable.",
+        "status": "translated; editorial review pending"
+      },
+      {
+        "key": "Dialogue Text/0x0100000B00004230",
+        "reason": "Marvel Hill rendered גבעת הפלא as provisional expression/place ambiguity. Verify against later home-memory references and glossary.",
+        "status": "translated; editorial review pending"
+      },
+      {
+        "key": "Dialogue Text/0x010000070001ADE6",
+        "reason": "Malay lullaby lines rendered phonetic Hebrew rather than inventing a translation; audio/pronunciation review needed.",
+        "status": "translated; editorial review pending"
+      },
+      {
+        "key": "Dialogue Text/0x0100000F000091D2",
+        "reason": "Fizdale translator name rendered פיזדייל provisionally; pronunciation review.",
+        "status": "translated; editorial terminology review pending"
+      },
+      {
+        "key": "Dialogue Text/0x0100000F0000918B",
+        "reason": "State and Plasm rendered המדינה והפלזמה; infra-materialist technical plasm rendered פלזמה consistently. Review with full political-quest terminology.",
+        "status": "translated; editorial terminology review pending"
+      },
+      {
+        "key": "Dialogue Text/0x0100000F000095C2",
+        "reason": "Econoclards rendered אקונוקלארדים provisionally; retain ideological school distinction from Gottwaldians.",
+        "status": "translated; editorial terminology review pending"
+      },
+      {
+        "key": "Dialogue Text/0x0100000F00009B92",
+        "reason": "Safre rendered סאפרה provisionally; source geographic proper noun.",
+        "status": "translated; editorial terminology review pending"
+      },
+      {
+        "key": "Dialogue Text/0x0100000F00009E08",
+        "reason": "welkin fantasy race rendered וולקין provisionally, distinct from humans in Wirrâl.",
+        "status": "translated; editorial terminology review pending"
+      },
+      {
+        "key": "Dialogue Text/0x01000072000010F2",
+        "reason": "Noid coined false-core rendered זיוף־קור, contrasted with הארדקור; editorial style review.",
+        "status": "translated; editorial review pending"
+      },
+      {
+        "key": "Dialogue Text/0x0100005300004C2D",
+        "reason": "Nay/neigh English homophone cannot map directly: Hebrew לא then נ־נ־נההה horse vocalisation; check paired surrounding Shivers lines for localized joke.",
+        "status": "translated; editorial review pending"
+      },
+      {
+        "key": "Dialogue Text/0x0100007200001248",
+        "reason": "Ecclesiastes faction term rendered אקקלסיאסטים provisionally; no exact glossary entry found.",
+        "status": "translated; editorial review pending"
+      }
+    ],
+    "lane-2-notes": [
+      {
+        "key": "Dialogue Text/0x0100000400009C33",
+        "note": "Retain napakymppi as intentional foreign-language Cunoesse voice; source emphasis preserved."
+      },
+      {
+        "key": "Dialogue Text/0x0100002B000052A7",
+        "note": "Retain Latin ONUC/CUNO and letter names N/C: visual reversed-name graffiti puzzle depends on source letterforms."
+      },
+      {
+        "key": "Dialogue Text/0x010000060001B53B",
+        "note": "Retain Latin ONUC/CUNO and letter names N/C: visual reversed-name graffiti puzzle depends on source letterforms."
+      }
+    ],
+    "lane-3-notes": [
+      {
+        "key": "Dialogue Text/0x010000070001A4AA",
+        "reason": "Intentional German-language lyrics retained as foreign-language voice rather than rendered as ordinary Hebrew; review if project policy requires translation of embedded German.",
+        "english": "\"Die ganze Truppe fliegt mit Mach 3 in den Himmel. Jaaa!!!\""
+      },
+      {
+        "key": "Dialogue Text/0x010000070001A589",
+        "reason": "Intentional German-language lyrics retained as foreign-language voice rather than rendered as ordinary Hebrew; review if project policy requires translation of embedded German.",
+        "english": "\"Wir sind schlecht, wir sind in Gefahr, wir machen Pornos!\""
+      },
+      {
+        "key": "Dialogue Text/0x0100000F0000C138",
+        "reason": "German radio crosstalk intentionally retained as unintelligible foreign-language signal; adjacent Rhetoric explicitly says listener cannot understand it.",
+        "english": "\"Nein, Liebling! Das lasse ich nicht zu … Wie kannst du unseren Jungen bloß auf einem dieser *Dinger* nach Vredefort schicken?\""
+      },
+      {
+        "key": "Dialogue Text/0x0100005300004031",
+        "reason": "German radio crosstalk intentionally retained as unintelligible foreign-language signal; adjacent Rhetoric explicitly says listener cannot understand it.",
+        "english": "\"Liebling, bitte… Er ist unser einziges Kind. Er kann doch auch nächstes Jahr zur Akademie gehen.\""
+      },
+      {
+        "key": "Dialogue Text/0x0100000F0000C13D",
+        "reason": "German radio crosstalk intentionally retained as unintelligible foreign-language signal; adjacent Rhetoric explicitly says listener cannot understand it.",
+        "english": "\"Nein, Liebling! ... unseren Jungen... nach Vredefort ... einem dieser *Dinger*...\""
+      },
+      {
+        "conversation": 368,
+        "terminology": {
+          "Firewalker": "הולך באש",
+          "Committee of Responsibility for Revachol": "ועדת האחריות לרבאשול",
+          "contingency spreads": "מערכי תרחישים",
+          "Coalition Shuttle Laurel": "מעבורת הקואליציה לורל"
+        },
+        "status": "Astra contextual choices; no prior translated canonical matches found."
+      },
+      {
+        "key": "Dialogue Text/0x0100000F0000C551",
+        "reason": "German radio crosstalk retained because protagonist explicitly cannot understand it; preserve reveal and signal context.",
+        "english": "\"Liebling, bitte… Er ist unser einziges Kind...\""
+      },
+      {
+        "key": "Dialogue Text/0x0100000F0000DCE2",
+        "reason": "German radio crosstalk retained because protagonist explicitly cannot understand it; preserve reveal and signal context.",
+        "english": "\"Wie kannst du... unseren Jungen... auf einem dieser *Dinger*...\""
+      },
+      {
+        "key": "Dialogue Text/0x0100005300004FC3",
+        "reason": "German radio crosstalk retained because protagonist explicitly cannot understand it; preserve reveal and signal context.",
+        "english": "\"Liebling, bitte... Er ist unser einziges Kind...\""
+      },
+      {
+        "key": "Dialogue Text/0x0100000F0000C450",
+        "reason": "German radio crosstalk retained because protagonist explicitly cannot understand it; preserve reveal and signal context.",
+        "english": "\"Natürlich halten ihn die Psychologen für vollkommen normal...\""
+      },
+      {
+        "key": "Dialogue Text/0x0100000F0000CB0B",
+        "reason": "German radio crosstalk retained because protagonist explicitly cannot understand it; preserve reveal and signal context.",
+        "english": "\"Nein, Liebling!\""
+      },
+      {
+        "key": "Dialogue Text/0x0100005300003FF7",
+        "reason": "German radio crosstalk retained because protagonist explicitly cannot understand it; preserve reveal and signal context.",
+        "english": "\"Liebling, bitte… Er ist unser einziges Kind. Er kann doch auch nächstes Jahr zur Akademie gehen.\""
+      },
+      {
+        "key": "Dialogue Text/0x0100005300004037",
+        "reason": "German radio crosstalk retained because protagonist explicitly cannot understand it; preserve reveal and signal context.",
+        "english": "\"Liebling, bitte… Er ist unser einziges Kind. Er kann doch auch nächstes Jahr zur Akademie gehen.\""
+      },
+      {
+        "conversation": 368,
+        "keys": [
+          "Dialogue Text/0x0100000F0000C138",
+          "Dialogue Text/0x0100005300004031",
+          "Dialogue Text/0x0100000F0000C13D",
+          "Dialogue Text/0x0100000F0000C551",
+          "Dialogue Text/0x0100000F0000DCE2",
+          "Dialogue Text/0x0100005300004FC3",
+          "Dialogue Text/0x0100000F0000C450",
+          "Dialogue Text/0x0100000F0000CB0B",
+          "Dialogue Text/0x0100005300003FF7",
+          "Dialogue Text/0x0100005300004037",
+          "Dialogue Text/0x010000530000448B",
+          "Dialogue Text/0x0100000F0000CA24",
+          "Dialogue Text/0x0100005300003FE3",
+          "Dialogue Text/0x0100000F0000CBF8",
+          "Dialogue Text/0x0100005300003FC8",
+          "Dialogue Text/0x0100000F0000E0E3",
+          "Dialogue Text/0x0100000F0000C152",
+          "Dialogue Text/0x0100000F0000CB75",
+          "Alternate1/0x0100000F0000C152"
+        ],
+        "reason": "German radio crosstalk deliberately retained: protagonist cannot understand it; Rhetoric explicitly confirms incomprehension. Preserve source foreignness and reveal timing. Complete conversation inventory."
+      }
+    ]
+  }
+}
