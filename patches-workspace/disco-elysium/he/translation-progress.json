@@ -2,8 +2,8 @@
   "branch": "codex/disco-elysium-localization",
   "source_of_truth": "translations.csv",
   "authoring": "Direct current-assistant translation; no external draft service",
-  "translated": 70194,
-  "remaining": 9392,
+  "translated": 72788,
+  "remaining": 6798,
   "conversations_with_translations": {
     "5": {
       "total": 14,
@@ -2607,7 +2607,7 @@
     },
     "1181": {
       "total": 482,
-      "translated": 200,
+      "translated": 482,
       "name": "SEAFORT / DESERTER BONUS"
     },
     "1182": {
@@ -2620,10 +2620,35 @@
       "translated": 625,
       "name": "VILLAGE / POSSE 2"
     },
+    "1190": {
+      "total": 24,
+      "translated": 24,
+      "name": "BOARDWALK / RAILING"
+    },
+    "1191": {
+      "total": 135,
+      "translated": 135,
+      "name": "COAST ORB / snow shivers"
+    },
+    "1192": {
+      "total": 143,
+      "translated": 143,
+      "name": "KINEEMA / LAZARETH CALL"
+    },
     "1193": {
       "total": 83,
       "translated": 83,
       "name": "KIM SWITCH / VILLAGE AND JACKET"
+    },
+    "1194": {
+      "total": 26,
+      "translated": 26,
+      "name": "BOARDWALK ORB / smell of death"
+    },
+    "1195": {
+      "total": 49,
+      "translated": 49,
+      "name": "WHIRLING F2 / DREAM 3"
     },
     "1196": {
       "total": 28,
@@ -2635,6 +2660,11 @@
       "translated": 26,
       "name": "JAM ORB / dlc truck"
     },
+    "1198": {
+      "total": 49,
+      "translated": 49,
+      "name": "WHIRLING F2 / DREAM 4"
+    },
     "1199": {
       "total": 34,
       "translated": 34,
@@ -2644,6 +2674,11 @@
       "total": 18,
       "translated": 18,
       "name": "INVENTORY / BOOTS WITH ROTTING FLESH"
+    },
+    "1203": {
+      "total": 319,
+      "translated": 319,
+      "name": "WHIRLING / LENA CRYPTIDS CHECK"
     },
     "1204": {
       "total": 158,
@@ -2655,6 +2690,11 @@
       "translated": 208,
       "name": "YARD / CUNO BEFRIEND WC"
     },
+    "1211": {
+      "total": 100,
+      "translated": 100,
+      "name": "YARD / CUNO LOCUSTS"
+    },
     "1213": {
       "total": 1,
       "translated": 1,
@@ -2665,16 +2705,81 @@
       "translated": 79,
       "name": "CARGO / NIGHT WATCHMAN BOOTH"
     },
+    "1218": {
+      "total": 181,
+      "translated": 181,
+      "name": "WHIRLING F1 /  HARDIE WC MODIFIERES"
+    },
     "1219": {
       "total": 330,
       "translated": 330,
       "name": "WHIRLING F1 / HARDIE AUTHORITY WC"
+    },
+    "1222": {
+      "total": 60,
+      "translated": 60,
+      "name": "OFFICE / PUNCHCLOCK AND PHONE"
+    },
+    "1231": {
+      "total": 69,
+      "translated": 69,
+      "name": "CONTAINERYARD / JOYCE"
+    },
+    "1258": {
+      "total": 36,
+      "translated": 36,
+      "name": "INVENTORY / FILTHY JACKET"
+    },
+    "1260": {
+      "total": 123,
+      "translated": 123,
+      "name": "WORLD / WAITING BENCH"
+    },
+    "1305": {
+      "total": 17,
+      "translated": 17,
+      "name": "COAST ORB / roadsidethought"
+    },
+    "1323": {
+      "total": 27,
+      "translated": 27,
+      "name": "PIER ORB / searails"
+    },
+    "1353": {
+      "total": 13,
+      "translated": 13,
+      "name": "COAST ORB / feldwindows"
+    },
+    "1375": {
+      "total": 7,
+      "translated": 7,
+      "name": "BOOKSTORE ORB / bookstorerug"
+    },
+    "1377": {
+      "total": 7,
+      "translated": 7,
+      "name": "APT ORB / rugcoat"
+    },
+    "1440": {
+      "total": 34,
+      "translated": 34,
+      "name": "Arx - EasterEggs / Modus Mullen / Flow – INITIATING MODUS: MULLEN"
+    },
+    "1459": {
+      "total": 57,
+      "translated": 57,
+      "name": "Helen - EasterEggs / Pleasure Wheel / Flow – BOARDWALK ORB / viscal pleasure wheel"
+    },
+    "1491": {
+      "total": 36,
+      "translated": 36,
+      "name": "Helen - EasterEggs / Something washes ashore / Flow – INVENTORY / LEOPARD-PATTERNED BODYSUIT"
     }
   },
   "resume_at": {
-    "conversation_id": 1181,
-    "entry_id": 40,
-    "key": "Alternate1/0x010000780000586F"
+    "conversation_id": 1201,
+    "entry_id": 2,
+    "key": "Dialogue Text/0x0100002100002D65"
   },
   "glossary_entries": 467,
   "validation": {
@@ -2686,10 +2791,10 @@
     "bundle_sha256": "30822499ec9c1dc102393335a2344a06da71153857fcd62ba1d01ec8ce7d9906",
     "last_csv_validation": {
       "entries": 79586,
-      "translated": 70194,
-      "remaining": 9392,
+      "translated": 72788,
+      "remaining": 6798,
       "source_words": 1129354,
-      "coverage_percent": 88.199,
+      "coverage_percent": 91.458,
       "unmapped_source_keys": 193,
       "unresolved_localization_terms": 127,
       "errors": [],
