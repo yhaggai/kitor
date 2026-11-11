@@ -2,8 +2,8 @@
   "branch": "codex/disco-elysium-localization",
   "source_of_truth": "translations.csv",
   "authoring": "Direct current-assistant translation; no external draft service",
-  "translated": 51384,
-  "remaining": 28202,
+  "translated": 53534,
+  "remaining": 26052,
   "conversations_with_translations": {
     "5": {
       "total": 14,
@@ -1665,6 +1665,16 @@
       "translated": 83,
       "name": "TRIBUNAL / I GOT TO KNOW THE HANGED MAN"
     },
+    "824": {
+      "total": 13,
+      "translated": 13,
+      "name": "TRIBUNAL / WHERE IS KLAASJE?"
+    },
+    "825": {
+      "total": 347,
+      "translated": 347,
+      "name": "WHIRLING / LENA INTRO"
+    },
     "826": {
       "total": 47,
       "translated": 47,
@@ -1672,14 +1682,134 @@
     },
     "827": {
       "total": 565,
-      "translated": 400,
+      "translated": 565,
       "name": "PAWNSHOP / ROY"
+    },
+    "828": {
+      "total": 146,
+      "translated": 146,
+      "name": "PAWNSHOP / SAWED-OFF STREET LIGHT"
+    },
+    "829": {
+      "total": 68,
+      "translated": 68,
+      "name": "PAWNSHOP / TABLE OF KNICKKNACKS"
+    },
+    "832": {
+      "total": 7,
+      "translated": 7,
+      "name": "PAWNSHOP / ROY barks"
+    },
+    "834": {
+      "total": 1,
+      "translated": 1,
+      "name": "PAWNSHOP / KIM FIRST VISIT barks"
+    },
+    "835": {
+      "total": 36,
+      "translated": 36,
+      "name": "KIM SWITCH / PAWNSHOP"
+    },
+    "837": {
+      "total": 1,
+      "translated": 1,
+      "name": "PAWNSHOP / KIM GLASS barks"
+    },
+    "839": {
+      "total": 68,
+      "translated": 68,
+      "name": "PAWNSHOP / SHELF OF BOOMBOXES"
+    },
+    "840": {
+      "total": 52,
+      "translated": 52,
+      "name": "KIM SWITCH / SAMARAN BUTTER"
+    },
+    "841": {
+      "total": 88,
+      "translated": 88,
+      "name": "PAWNSHOP / RACK OF SECOND-HAND UNIFORMS"
+    },
+    "842": {
+      "total": 66,
+      "translated": 66,
+      "name": "CANAL / MAN ON WATER LOCK"
+    },
+    "843": {
+      "total": 4,
+      "translated": 4,
+      "name": "CANAL / MAN ON WATER LOCK barks"
+    },
+    "844": {
+      "total": 4,
+      "translated": 4,
+      "name": "CANAL / BARRY barks"
+    },
+    "848": {
+      "total": 120,
+      "translated": 120,
+      "name": "PLAZA / RENE TURNING BACK TIME"
+    },
+    "849": {
+      "total": 144,
+      "translated": 144,
+      "name": "RACIST / FASCHA DQ FOLDER"
+    },
+    "851": {
+      "total": 221,
+      "translated": 221,
+      "name": "WESTCOAST / GARY FASCHA DQ"
+    },
+    "852": {
+      "total": 74,
+      "translated": 74,
+      "name": "KIM SWITCH / REJOIN AFTER MEASURHEAD TALK"
+    },
+    "853": {
+      "total": 61,
+      "translated": 61,
+      "name": "KIM SWITCH / PORTRAIT REACTION"
+    },
+    "854": {
+      "total": 17,
+      "translated": 17,
+      "name": "EVRART ORB / communistquest"
+    },
+    "855": {
+      "total": 18,
+      "translated": 18,
+      "name": "WHIRLING F1 / orb communist quest"
+    },
+    "864": {
+      "total": 11,
+      "translated": 11,
+      "name": "APT / STEBAN barks"
+    },
+    "865": {
+      "total": 11,
+      "translated": 11,
+      "name": "APT / ECHO MAKER barks"
+    },
+    "866": {
+      "total": 6,
+      "translated": 6,
+      "name": "WESTCOAST / SUNDAY FRIEND barks"
+    },
+    "868": {
+      "total": 602,
+      "translated": 400,
+      "name": "WHIRLING / LENA MAIN"
+    },
+    "869": {
+      "total": 1,
+      "translated": 1,
+      "name": "WHIRLING F1 / GARTE barks"
     }
   },
   "resume_at": {
-    "conversation_id": 824,
+    "conversation_id": 847,
     "entry_id": 2,
-    "key": "Dialogue Text/0x01000078000123C6"
+    "key": "Dialogue Text/0x0100005100001DA7"
   },
   "glossary_entries": 467,
   "validation": {
@@ -1691,10 +1821,10 @@
     "bundle_sha256": "30822499ec9c1dc102393335a2344a06da71153857fcd62ba1d01ec8ce7d9906",
     "last_csv_validation": {
       "entries": 79586,
-      "translated": 51384,
-      "remaining": 28202,
+      "translated": 53534,
+      "remaining": 26052,
       "source_words": 1129354,
-      "coverage_percent": 64.564,
+      "coverage_percent": 67.266,
       "unmapped_source_keys": 193,
       "unresolved_localization_terms": 127,
       "errors": [],

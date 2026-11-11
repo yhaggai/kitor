@@ -323,6 +323,26 @@
       {
         "batch": "c000819-00000",
         "notes": "Radio operator translated קשרית, not literal רדיו. Kipt invented racist slur קיפט; loincloth racist address אזור־חלציים retained. Source eight rounds in barrel anatomical error retained בקנה."
+      },
+      {
+        "batch": "c000825-00000",
+        "notes": "Sad ordinary adjective עצוב/עצובים, not personified term. Morell/Gary short names מורל/גארי preserve source reveal. Roll With Me song title תתגלגל איתי preserves wheelchair pun; The Fletchers הפלצ׳רס provisional. Paraplegic explanatory משותק בחצי הגוף התחתון."
+      },
+      {
+        "batch": "c000825-00200",
+        "notes": "Perception ordinary noun construct תפיסת המציאות intentional. Paraplegic explanatory form consistent with previous batch."
+      },
+      {
+        "batch": "c000829-00000",
+        "notes": "Sad adjective עצוב intentional. Headless FALN Rider רוכב ה־FALN חסר הראש; Franconigerian פרנקוניגרי provisional, distinct demonym from Francenegro."
+      },
+      {
+        "batch": "c000839-00000",
+        "notes": "Provisional uncatalogued labels: Doorgunner Megamix מגמיקס מקלען הדלת; Harmon Wowshi הרמון וואושי; Requiem For All Lifeforms רקוויאם לכל צורות החיים. Boombox מערכת סטריאו ניידת per shelf label, male pronouns in dialogue refer to מכשיר."
+      },
+      {
+        "batch": "c000842-00000",
+        "notes": "Morell title punctuation omitted in apposition מורל הקריפטוזואולוג; water lock indefinite סכר תעלה intentional. Cryptologists character mistake קריפטולוגים preserved."
       }
     ],
     "lane-2-notes": [
@@ -876,6 +896,22 @@
       {
         "batch": "c000814-00600",
         "note": "C/Cunoesse flag matches C’mon, translated בחייכם. Revachol Circus Militia deliberate parody מיליציית הקרקס של רבאשול."
+      },
+      {
+        "batch": "c000828-00000",
+        "note": "Sad ordinary adjective rendered עצוב, not personified contamination. M-K Mercury Group provisional קבוצת M-K מרקורי; Personal Brand Strategist אסטרטג המותג האישי."
+      },
+      {
+        "batch": "c000841-00000",
+        "note": "Man from Hjelmdall deliberate adjective insertion האיש האמיתי מהיילדמַל / האיש הזה מהיילדמַל. Sad adjective עצוב. Canonical היילדמַל followed throughout. Source malformed quote row59 preserved."
+      },
+      {
+        "batch": "c000851-00000",
+        "note": "Gary alias uses short גארי as source, no premature epithet expansion. Blue door definite הדלת הכחולה. Provisional Semper Maa סמפר מאה; digital castigation ייסור אצבעות; Truth Hunt ציד האמת; Paradox B פרדוקס B. Source malformed quote row136 retained, source stutter row3 retained."
+      },
+      {
+        "batch": "c000851-00200",
+        "note": "Cunoesse false match c’mon rendered בחייך; short Gary source remains גארי."
       }
     ],
     "lane-3-notes": [
@@ -1210,6 +1246,22 @@
       {
         "batch": "c000827-00200",
         "note": "Civilian rendered אזרחית for the explicitly female gun buyer; noun inflection intentionally differs from glossary אזרח/ית."
+      },
+      {
+        "batch": "c000827-00400",
+        "note": "Coalition inflected לקואליציה in reaching the Coalition; deliberate grammatical contraction."
+      },
+      {
+        "batch": "c000855-00000",
+        "note": "the expression is ordinary facial expression of a hardened criminal, not Harry’s named The Expression; rendered הבעה."
+      },
+      {
+        "batch": "c000868-00000",
+        "note": "Dialogue uses first names Morell/Gary only; rendered מורל/גארי, intentionally not expanding speaker glossary titles."
+      },
+      {
+        "batch": "c000868-00200",
+        "note": "First names Morell/Gary rendered מורל/גארי without speaker titles; sad smile adjective עצוב; ordinary perception construct תפיסת, not named skill."
       }
     ]
   }
