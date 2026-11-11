@@ -271,6 +271,22 @@
       {
         "batch": "c000721-00200",
         "note": "Stone plural inflection אבנים. Source dark dialogue and immediate Kim objection retained faithfully."
+      },
+      {
+        "batch": "c000762-00000",
+        "note": "Mirror construct מראת; Insulindian isola inflected לאיסולה האינסולינדית; short Morell מורל without full epithet. Phasmid stridulation צרצור; ryacintha ריאסינתה provisional. ARRIVING arrives as מגיע, follow later IN THE WORLD echo."
+      },
+      {
+        "batch": "c000762-00200",
+        "note": "Mirror construct מראת; short Morell מורל. ON THE SCENE בזירה follows ARRIVING מגיע. Gloaming הדמדומים. Wheel/dominion angelic imagery אופן/מלאך שלטון; phasmid biblical allusion rendered קדוש יהוה צבאות ומלוא כל הארץ כבודו."
+      },
+      {
+        "batch": "c000762-00400",
+        "note": "Mirror construct מראת. DETECTIVE בלש follows other climactic pieces. Seraseolitic סרסאוליתי provisional; cryptologist mistranscription קריפטולוג retained for Cuno joke. Pale fire ordinary אש חיוורת."
+      },
+      {
+        "batch": "c000775-00000",
+        "note": "Door warning door frame translated משקוף. Rue de Saint-Ghislaine רחוב סן־גילן provisional."
       }
     ],
     "lane-2-notes": [
@@ -776,6 +792,18 @@
       {
         "batch": "c000752-00000",
         "note": "Civilian ordinary adjectival use→אזרחי. East Delta Commerce Centre flag from overlapping alias; actual source names Doomed Commercial Area, translated המתחם המסחרי המקולל."
+      },
+      {
+        "batch": "c000767-00000",
+        "note": "Sad ordinary adjective→עצוב; Bed possessive inflection→מיטתה. Source missing closing quote row55 preserved; row65 source says your hand, preserved ידך. Voyager Road provisionally דרך הנוסע."
+      },
+      {
+        "batch": "c000767-00200",
+        "note": "Sad ordinary adjective→עצוב/עצובה. Source unclosed quote row146 preserved. Innocence (political title) provisionally אינוסנס; no exact glossary entry. Letter recitation retains feminine writer Dora addressing masculine Harry."
+      },
+      {
+        "batch": "c000767-00400",
+        "note": "Sad ordinary adjective/verb→עצוב/מעציב/העצבתי, not personified עצב. Morning/mourning homophone rendered literally בוקר/אבל to preserve explicit correction; ex-something uses אקס-משהו."
       }
     ],
     "lane-3-notes": [
@@ -1058,6 +1086,22 @@
       {
         "batch": "c000761-00200",
         "note": "Sad FM is station name סאד FM. Debug-like phasmid line translated directly."
+      },
+      {
+        "batch": "c000761-00400",
+        "note": "Civilian control translated שליטה אזרחית; adjective, not civilian person label. E48 source sound interpreted as coastal shoal from submerged-islet context."
+      },
+      {
+        "batch": "c000769-00000",
+        "note": "Cunoesse nickname C rendered סי per C entry, preserving nickname not expanding to full name."
+      },
+      {
+        "batch": "c000776-00000",
+        "note": "Police radio transceiver uses מכשיר קשר/קשר; broadcast radio רדיו. Stone-faced idiom פנים חתומות. Civilian feminine אזרחית. Coalition בקואליציה inflection; Central Jamrock Public Library includes המרכזית. C/Cunoesse incidental matches not character references."
+      },
+      {
+        "batch": "c000776-00200",
+        "note": "Police radio transceiver rendered מכשיר קשר/קשר, not broadcast רדיו."
       }
     ]
   }

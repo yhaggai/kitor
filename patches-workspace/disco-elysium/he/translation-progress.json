@@ -2,8 +2,8 @@
   "branch": "codex/disco-elysium-localization",
   "source_of_truth": "translations.csv",
   "authoring": "Direct current-assistant translation; no external draft service",
-  "translated": 45027,
-  "remaining": 34559,
+  "translated": 47159,
+  "remaining": 32427,
   "conversations_with_translations": {
     "5": {
       "total": 14,
@@ -1442,19 +1442,64 @@
     },
     "761": {
       "total": 654,
-      "translated": 400,
+      "translated": 654,
       "name": "SEAFORT / THE DESERTER"
+    },
+    "762": {
+      "total": 628,
+      "translated": 628,
+      "name": "SEAFORT / INSULINDIAN PHASMID"
     },
     "767": {
       "total": 622,
-      "translated": 200,
+      "translated": 622,
       "name": "DREAM SEAFORT / DOLORES DEI"
+    },
+    "768": {
+      "total": 14,
+      "translated": 14,
+      "name": "DREAM SEAFORT / NO DOLORES DREAM"
+    },
+    "769": {
+      "total": 50,
+      "translated": 50,
+      "name": "SEAFORT INT / AFTERDOLORES TALK"
+    },
+    "771": {
+      "total": 9,
+      "translated": 9,
+      "name": "WHIRLING F2 ORB / dialogue both shoes"
+    },
+    "775": {
+      "total": 51,
+      "translated": 51,
+      "name": "BOOKSTORE / BACK DOOR"
+    },
+    "776": {
+      "total": 490,
+      "translated": 400,
+      "name": "PLAZA / COUPRIS KINEEMA"
+    },
+    "777": {
+      "total": 63,
+      "translated": 63,
+      "name": "KIM SWITCH / TWINS AND RADIO"
+    },
+    "778": {
+      "total": 41,
+      "translated": 41,
+      "name": "KIM SWITCH / SPOKE TO SPEEDFREAKS"
+    },
+    "780": {
+      "total": 388,
+      "translated": 200,
+      "name": "KINEEMA / STATION CALL"
     }
   },
   "resume_at": {
-    "conversation_id": 761,
-    "entry_id": 13,
-    "key": "Alternate1/0x0100007200007FEA"
+    "conversation_id": 776,
+    "entry_id": 56,
+    "key": "Alternate1/0x0100004B00001333"
   },
   "glossary_entries": 467,
   "validation": {
@@ -1466,10 +1511,10 @@
     "bundle_sha256": "30822499ec9c1dc102393335a2344a06da71153857fcd62ba1d01ec8ce7d9906",
     "last_csv_validation": {
       "entries": 79586,
-      "translated": 45027,
-      "remaining": 34559,
+      "translated": 47159,
+      "remaining": 32427,
       "source_words": 1129354,
-      "coverage_percent": 56.577,
+      "coverage_percent": 59.255,
       "unmapped_source_keys": 193,
       "unresolved_localization_terms": 127,
       "errors": [],
