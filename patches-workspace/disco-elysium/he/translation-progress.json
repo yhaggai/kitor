@@ -2,8 +2,8 @@
   "branch": "codex/disco-elysium-localization",
   "source_of_truth": "translations.csv",
   "authoring": "Direct current-assistant translation; no external draft service",
-  "translated": 36663,
-  "remaining": 42923,
+  "translated": 38844,
+  "remaining": 40742,
   "conversations_with_translations": {
     "5": {
       "total": 14,
@@ -1167,7 +1167,7 @@
     },
     "625": {
       "total": 633,
-      "translated": 400,
+      "translated": 633,
       "name": "INVENTORY / LEDGER OF FAILURE"
     },
     "627": {
@@ -1187,19 +1187,34 @@
     },
     "631": {
       "total": 1058,
-      "translated": 600,
+      "translated": 1058,
       "name": "PIER / JOYCE INTRO"
     },
     "632": {
       "total": 324,
       "translated": 324,
       "name": "PIER / JOYCE LYNCHING AND TATTOOS"
+    },
+    "635": {
+      "total": 624,
+      "translated": 600,
+      "name": "PIER / JOYCE ON EVRART"
+    },
+    "636": {
+      "total": 706,
+      "translated": 706,
+      "name": "PIER / JOYCE REALITY HUB"
+    },
+    "639": {
+      "total": 184,
+      "translated": 184,
+      "name": "WHIRLING F1 / THE GARDENER MAIN"
     }
   },
   "resume_at": {
-    "conversation_id": 625,
-    "entry_id": 44,
-    "key": "Alternate1/0x0100004500002A10"
+    "conversation_id": 635,
+    "entry_id": 46,
+    "key": "Alternate1/0x010000450000DE6A"
   },
   "glossary_entries": 467,
   "validation": {
@@ -1211,10 +1226,10 @@
     "bundle_sha256": "30822499ec9c1dc102393335a2344a06da71153857fcd62ba1d01ec8ce7d9906",
     "last_csv_validation": {
       "entries": 79586,
-      "translated": 36663,
-      "remaining": 42923,
+      "translated": 38844,
+      "remaining": 40742,
       "source_words": 1129354,
-      "coverage_percent": 46.067,
+      "coverage_percent": 48.808,
       "unmapped_source_keys": 193,
       "unresolved_localization_terms": 127,
       "errors": [],

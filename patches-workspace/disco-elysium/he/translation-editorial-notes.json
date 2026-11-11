@@ -199,6 +199,22 @@
       {
         "batch": "c000625-00200",
         "terminology_exception": "the pale in the pale violet dot is adjective חיוורת, not phenomenon החיוורון."
+      },
+      {
+        "batch": "c000625-00600",
+        "terminology_exception": "Payphone definite form הטלפון הציבורי."
+      },
+      {
+        "batch": "c000635-00000",
+        "terminology_exceptions": "great skua definite החמסנית הגדולה; Union prefixed לאיגוד."
+      },
+      {
+        "batch": "c000635-00200",
+        "terminology_exceptions": "Union prefixed לאיגוד or construct אנשי איגוד; Sad ordinary adjective עצוב. French aphorism translated to Hebrew in matching emphasis blocks; literal gris rendered האפור in quote, lore paraphrase החיוורון."
+      },
+      {
+        "batch": "c000635-00400",
+        "terminology_exceptions": "Union prefixed לאיגוד; Gary source short name rendered גארי without unrevealed full epithet; sad ordinary adjective עצוב."
       }
     ],
     "lane-2-notes": [
@@ -408,6 +424,162 @@
           }
         ],
         "note": "Coalition indefinite modifier retained; expression is idiomatic expression, not face; suggestion ordinary proposal. Supersedes prior Executor note: c000631-00000 rows 88/135/181 updated to אקס-/אקסקיוטור/אקס-משהו to preserve parallel with Ex-Wife אקסית revealed in this batch."
+      },
+      {
+        "batch": "c000631-00400",
+        "reviewed_flags": [
+          {
+            "key": "Dialogue Text/0x010000450000757F",
+            "term": "Suzerain",
+            "expected_forms": ["הסוזרן"],
+            "status": "review; inflection, wordplay or context may justify exception"
+          },
+          {
+            "key": "Dialogue Text/0x0100007000002063",
+            "term": "Suggestion",
+            "expected_forms": ["שכנוע"],
+            "status": "review; inflection, wordplay or context may justify exception"
+          },
+          {
+            "key": "Dialogue Text/0x01000045000076AD",
+            "term": "the Union",
+            "expected_forms": ["האיגוד"],
+            "status": "review; inflection, wordplay or context may justify exception"
+          },
+          {
+            "key": "Dialogue Text/0x0100004500007F48",
+            "term": "Sad",
+            "expected_forms": ["עצב"],
+            "status": "review; inflection, wordplay or context may justify exception"
+          }
+        ],
+        "note": "סוזרן indefinite; suggestion ordinary proposal; איגוד הסוורים construct; sad ordinary regret צר לי, not personified Sad. Eel hips/heels odd source joke retained ירכי/עקבי הצלופח."
+      },
+      {
+        "batch": "c000631-00600",
+        "reviewed_flags": [
+          {
+            "key": "Dialogue Text/0x0100004500007DA2",
+            "term": "the Union",
+            "expected_forms": ["האיגוד"],
+            "status": "review; inflection, wordplay or context may justify exception"
+          }
+        ],
+        "note": "מאיגוד עובדי הנמל is prefixed construct phrase. Rank clarified by compact glossary: סגן דאבל־יפרייטור. Prior standalone double-yefreitor normalized to דאבל־יפרייטור in c000631-00000."
+      },
+      {
+        "batch": "c000631-00800",
+        "reviewed_flags": [
+          {
+            "key": "Dialogue Text/0x01000045000076F8",
+            "term": "Sad",
+            "expected_forms": ["עצב"],
+            "status": "review; inflection, wordplay or context may justify exception"
+          },
+          {
+            "key": "Dialogue Text/0x010000450000916A",
+            "term": "Sad",
+            "expected_forms": ["עצב"],
+            "status": "review; inflection, wordplay or context may justify exception"
+          }
+        ],
+        "note": "Sad ordinary adjective/regret, rendered עצוב/צר לי. E-word exploitation adapted initial נ for ניצול. Ordinary sails/boat gender feminine retained."
+      },
+      {
+        "batch": "c000631-01000",
+        "reviewed_flags": [
+          {
+            "key": "Alternate1/0x01000045000076F8",
+            "term": "Sad",
+            "expected_forms": ["עצב"],
+            "status": "review; inflection, wordplay or context may justify exception"
+          }
+        ],
+        "note": "Sad ordinary adjective עצוב. Exact glossary query found no entries for thought labels; provisional coherent Hebrew titles used. c000605-00400 Mañana corrected to מניאנה from later compact context."
+      },
+      {
+        "batch": "c000639-00000",
+        "reviewed_flags": [
+          {
+            "key": "Dialogue Text/0x010000640000BE2C",
+            "term": "the Union",
+            "expected_forms": ["האיגוד"],
+            "status": "review; inflection, wordplay or context may justify exception"
+          },
+          {
+            "key": "Dialogue Text/0x010000640000BE14",
+            "term": "the Union",
+            "expected_forms": ["האיגוד"],
+            "status": "review; inflection, wordplay or context may justify exception"
+          },
+          {
+            "key": "Dialogue Text/0x010000640000BE20",
+            "term": "the Union",
+            "expected_forms": ["האיגוד"],
+            "status": "review; inflection, wordplay or context may justify exception"
+          },
+          {
+            "key": "Dialogue Text/0x0100000600008C41",
+            "term": "Cunoesse",
+            "expected_forms": ["קונואס", "קונואס"],
+            "status": "review; inflection, wordplay or context may justify exception"
+          },
+          {
+            "key": "Dialogue Text/0x0100000600008C41",
+            "term": "C",
+            "expected_forms": ["סי"],
+            "status": "review; inflection, wordplay or context may justify exception"
+          },
+          {
+            "key": "Dialogue Text/0x010000640000BE08",
+            "term": "the Union",
+            "expected_forms": ["האיגוד"],
+            "status": "review; inflection, wordplay or context may justify exception"
+          },
+          {
+            "key": "Dialogue Text/0x010000640000BE1A",
+            "term": "the Union",
+            "expected_forms": ["האיגוד"],
+            "status": "review; inflection, wordplay or context may justify exception"
+          },
+          {
+            "key": "Dialogue Text/0x0100004C0000D81F",
+            "term": "Sad",
+            "expected_forms": ["עצב"],
+            "status": "review; inflection, wordplay or context may justify exception"
+          },
+          {
+            "key": "Dialogue Text/0x010000640000BE0E",
+            "term": "the Union",
+            "expected_forms": ["האיגוד"],
+            "status": "review; inflection, wordplay or context may justify exception"
+          },
+          {
+            "key": "Dialogue Text/0x010000640000BE02",
+            "term": "the Union",
+            "expected_forms": ["האיגוד"],
+            "status": "review; inflection, wordplay or context may justify exception"
+          },
+          {
+            "key": "Dialogue Text/0x010000640000BE6B",
+            "term": "the Union",
+            "expected_forms": ["האיגוד"],
+            "status": "review; inflection, wordplay or context may justify exception"
+          },
+          {
+            "key": "Dialogue Text/0x010000640000BE4A",
+            "term": "the Union",
+            "expected_forms": ["האיגוד"],
+            "status": "review; inflection, wordplay or context may justify exception"
+          },
+          {
+            "key": "Dialogue Text/0x0100004C0000BCE9",
+            "term": "the Union",
+            "expected_forms": ["האיגוד"],
+            "status": "review; inflection, wordplay or context may justify exception"
+          }
+        ],
+        "note": "איגוד עובדי הנמל construct phrases; C match in C’mon false positive rendered בחייך; sad ordinary adjective עצובה. Doux et Sucré retained in French nickname."
       }
     ],
     "lane-3-notes": [
@@ -638,6 +810,10 @@
       {
         "batch": "c000632",
         "exceptions": "Scab inflected plural in leader title; military radio translated קשר / קשרית; sad to say as לצערי; civilian adjectival אזרחית; ordinary authority as רשות and suggestion as הצעה, not skill labels."
+      },
+      {
+        "batch": "c000636",
+        "exceptions": "Locked door is generic indefinite דלת נעולה, not object label; civilian adjectival inflections; authority as institution רשות; suggestion as הצעה; mirror verb as לחקות; Suzerain prefixed בסוזרן. Political infraculture/supraculture distinguished תרבות-תחת / תרבות-העל."
       }
     ]
   }
