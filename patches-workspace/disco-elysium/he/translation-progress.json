@@ -2,8 +2,8 @@
   "branch": "codex/disco-elysium-localization",
   "source_of_truth": "translations.csv",
   "authoring": "Direct current-assistant translation; no external draft service",
-  "translated": 40907,
-  "remaining": 38679,
+  "translated": 42977,
+  "remaining": 36609,
   "conversations_with_translations": {
     "5": {
       "total": 14,
@@ -1265,14 +1265,29 @@
       "translated": 72,
       "name": "WHIRLING F1 ORB / play pinball"
     },
+    "663": {
+      "total": 26,
+      "translated": 26,
+      "name": "WHIRLING F3 ORB / peephole shivers"
+    },
+    "665": {
+      "total": 31,
+      "translated": 31,
+      "name": "WHIRLING F3 ORB / pinball workshop"
+    },
     "666": {
       "total": 48,
       "translated": 48,
       "name": "WHIRLING F3 / FOOTPRINTS IN THE DUST"
     },
+    "675": {
+      "total": 477,
+      "translated": 477,
+      "name": "WHIRLING F3 / KLAASJE RAPE VOLITION"
+    },
     "676": {
       "total": 443,
-      "translated": 200,
+      "translated": 443,
       "name": "WHIRLING F3 / KLAASJE TAPE LELY"
     },
     "680": {
@@ -1304,12 +1319,47 @@
       "total": 50,
       "translated": 50,
       "name": "INVENTORY / LELY TAPE"
+    },
+    "688": {
+      "total": 739,
+      "translated": 739,
+      "name": "WHIRLING F3 / KLAASJE FULL STORY"
+    },
+    "690": {
+      "total": 83,
+      "translated": 83,
+      "name": "WHIRLING F3 ORB / age afterthought"
+    },
+    "691": {
+      "total": 74,
+      "translated": 74,
+      "name": "WHIRLING F3 / KLAASJE END"
+    },
+    "692": {
+      "total": 34,
+      "translated": 34,
+      "name": "WHIRLING F3 ORB / love did him in"
+    },
+    "698": {
+      "total": 68,
+      "translated": 68,
+      "name": "LANDS END ORB / lands end shot viscal"
+    },
+    "705": {
+      "total": 242,
+      "translated": 242,
+      "name": "WHIRLING F2 / CUNO WAKEUP"
+    },
+    "715": {
+      "total": 53,
+      "translated": 53,
+      "name": "WHIRLING F2 / KIM PAPERWORK"
     }
   },
   "resume_at": {
-    "conversation_id": 663,
+    "conversation_id": 704,
     "entry_id": 2,
-    "key": "Dialogue Text/0x0100007800010E32"
+    "key": "Dialogue Text/0x0100004500019DAD"
   },
   "glossary_entries": 467,
   "validation": {
@@ -1321,10 +1371,10 @@
     "bundle_sha256": "30822499ec9c1dc102393335a2344a06da71153857fcd62ba1d01ec8ce7d9906",
     "last_csv_validation": {
       "entries": 79586,
-      "translated": 40907,
-      "remaining": 38679,
+      "translated": 42977,
+      "remaining": 36609,
       "source_words": 1129354,
-      "coverage_percent": 51.4,
+      "coverage_percent": 54.001,
       "unmapped_source_keys": 193,
       "unresolved_localization_terms": 127,
       "errors": [],

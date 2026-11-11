@@ -239,6 +239,22 @@
       {
         "batch": "c000654-00000",
         "note": "Barred Door rendered דלת חסומה בבריח: source explicitly wooden door with internal bar and brackets, no grille. Root alerted canonical label issue. Ace’s High/Low verified exact glossary כיף גבוה/כיף נמוך."
+      },
+      {
+        "batch": "c000665-00000",
+        "note": "East Delta Commerce Centre cross-alias warning: source Doomed Commercial Area correctly המתחם המסחרי המקולל, distinct named forms retained."
+      },
+      {
+        "batch": "c000675-00000",
+        "note": "Sad ordinary adjective עצוב. Rapeable rendered deliberate uncomfortable neologism אנסיבה, followed by source clarification. OO expanded canonical התזמורים הראוותניים; Crownhead בעל הכתר; NACRA preserved."
+      },
+      {
+        "batch": "c000675-00200",
+        "note": "Hardie boys inflected לבחורים של הארדי. Rapeable neologism retained אנסיבה. Crownhead/compromised skill conversation retains contextual masculine/feminine voices."
+      },
+      {
+        "batch": "c000691-00000",
+        "note": "Sad ordinary adjective עצובה. No exact glossary entries for The Return/Le Retour/Gloria/Reál Belt: rendered השיבה / לה רטור / גלוריה / חגורת הריאל. Espérance retained אספרנס for French flavour; Return on investment תשואה על ההשקעה."
       }
     ],
     "lane-2-notes": [
@@ -720,6 +736,22 @@
       {
         "batch": "c000676-00000",
         "note": "Shivers used as ordinary verb for Klaasje trembling, rendered רועדת; Sad in band name is adjective העצובה, not personified עצב."
+      },
+      {
+        "batch": "c000676-00200",
+        "note": "Sad in band title uses feminine adjective העצובה; C/Cunoesse match C’mon, rendered בחייך. Endurance’s faux accented Möther/söldier uses מאמא/זולדאט; loincloths slur rendered אזורניקים."
+      },
+      {
+        "batch": "c000676-00400",
+        "note": "Sad in band name is adjective העצובה, not personified עצב."
+      },
+      {
+        "batch": "c000698-00000",
+        "note": "Popsicle/copsicle pun localized קרחון/שוטרון; Tioumoutiri provisional טיומוטירי, Drouin דרואן, Astra אסטרה. Source unclosed quote preserved at row42."
+      },
+      {
+        "batch": "c000705-00000",
+        "note": "Door flags next door→בחדר ליד. C/Cunoesse flags C’mon→בחייך/קדימה. Sad ordinary adjective→עצוב. Deliberate nicknames: Babybeard זקנקן, Nix Fucklieb ניקס גוטזיון, Cunn קון, Coinslot חריץ-מטבעות, boo-boo wagon עגלת האיה, psycholocomotor פסיכולוקומוטור; censored slur asterisk count retained."
       }
     ],
     "lane-3-notes": [
@@ -962,6 +994,30 @@
       {
         "batch": "c000652",
         "exceptions": "Bed construct inflected מיטת היחיד. Ballistic point symbols and numeric percentages preserved; spelled-out prime labels translated פריים / דאבל פריים / טריפל פריים."
+      },
+      {
+        "batch": "c000686-00000",
+        "note": "Title המיקס הגדול של התותחן appears with prefixed ב and elided article במיקס; deliberate grammatical inflection."
+      },
+      {
+        "batch": "c000688-00000",
+        "note": "C/Cunoesse matches inside RCM or incidental text are not character mentions. sad adjective uses עצוב; not personified Sad."
+      },
+      {
+        "batch": "c000680-00000",
+        "note": "stone-faced is idiomatic facial expression, not literal Stone object."
+      },
+      {
+        "batch": "c000688-00200",
+        "note": "eighth Hardie boy uses singular בחור הארדי השמיני; deliberate singular group-name inflection."
+      },
+      {
+        "batch": "c000688-00400",
+        "note": "C-Suite is executive management, not Cunoesse/C. Barred Door is inflected הדלת המסורגת in prose."
+      },
+      {
+        "batch": "c000688-00600",
+        "note": "C-Suite means executive management, not C/Cunoesse. Barred Door inflected הדלת המסורגת. Milieus retained as music-world מילייה consistent with fictional genre usage."
       }
     ]
   }
