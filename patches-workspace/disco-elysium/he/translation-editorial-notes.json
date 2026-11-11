@@ -343,6 +343,26 @@
       {
         "batch": "c000842-00000",
         "notes": "Morell title punctuation omitted in apposition מורל הקריפטוזואולוג; water lock indefinite סכר תעלה intentional. Cryptologists character mistake קריפטולוגים preserved."
+      },
+      {
+        "batch": "c000847-00000",
+        "notes": "Gary short name גארי preserves source. Richtig foreign word ריכטיג; Praeterita redire retained Latin source. Suzerainty סוזרנות provisional polity noun."
+      },
+      {
+        "batch": "c000850-00000",
+        "notes": "Gary short גארי, Suzerain contracted לסוזרן, Sad adjective עצוב intentional. Provisional terms: Jairzinho ז׳אירזיניו; Sereglee סרגלי; Ile du Fantôme איל דו פנטום; La Royaume לה רויאום; Kojko קויק (plural קויקים/קויקיות); Reality Rhizome קנה השורש של המציאות; S.R.S. acronym preserved, Semen Retention Society האגודה לאצירת זרע; Men of Wö אנשי הוו. Opening unmatched quote row185 mirrors source."
+      },
+      {
+        "batch": "c000850-00200",
+        "notes": "Coalition contracted לקואליציה; bed verb לשכב intentional. Street Racing Syndicate סינדיקט מרוצי הרחוב retains acronym guess without forcing Hebrew initials. Potaat racist smell term פוטאט; Martha מרתה provisional. Unmatched closing quote row164 mirrors source."
+      },
+      {
+        "batch": "c000850-00400",
+        "notes": "Gary short גארי intentional. Welkins ולקינים provisional. Pseudo-SKULL פסאודו־גולגולת; anti-Wirrâl die קובייה נגד ויראל."
+      },
+      {
+        "batch": "c000892-00000",
+        "notes": "Sunday friend possessive החבר שלך של יום ראשון intentional. Coalition contraction בקואליציה/לקואליציה permitted. French la responsabilité and fantasme érotique retained stylistically. Censored f****t keeps four source stars."
       }
     ],
     "lane-2-notes": [
@@ -912,6 +932,34 @@
       {
         "batch": "c000851-00200",
         "note": "Cunoesse false match c’mon rendered בחייך; short Gary source remains גארי."
+      },
+      {
+        "batch": "c000873-00000",
+        "note": "Central Furnace definite התנור המרכזי. c864 names provisional exact targeted glossary search found no entries: אינפרה-מטריאליזם, אולי, מוריס, זוזנה, פאנצ׳ר ווטמן. c866 French slogans transliterated to preserve source rhetoric."
+      },
+      {
+        "batch": "c000874-00000",
+        "note": "The Sun ordinary prepositional בשמש. Provisional Kedran קדרני, Pisantic פיסנטי, Game Master מנחה המשחק, airwidth רוחב שידור."
+      },
+      {
+        "batch": "c000882-00000",
+        "note": "Sunday Friend possessive החבר שלי/שלו של יום ראשון; bed idiom go to bed הולכים לישון; shivers plural צמרמורות; sad adjective עצוב."
+      },
+      {
+        "batch": "c000889-00000",
+        "note": "Padlocked Door definite הדלת הנעולה במנעול; real estate agent indefinite סוכנת נדל״ן; smoker indefinite מעשן במרפסת; C c’mon false match בחייכם. Capital pun uses קפיטל and brief עיר הבירה clarification in reply to retain English dual meaning. de Ruyter דה רויטר, Uuno אונו, Billie Méjean בילי מז׳אן provisional after exact targeted glossary search found no entries."
+      },
+      {
+        "batch": "c000902-00000",
+        "note": "ruby wine colour rendered אודם, not character Ruby. Tutorial provisional Physique גוף, Health בריאות, Morale מורל, Nosaphed נוסאפד, Potent Pilsner פוטנט פילזנר; exact targeted glossary lookup absent."
+      },
+      {
+        "batch": "c000903-00000",
+        "note": "radiocomputer definite compound מחשב־הרדיו. Marielle Charpentier provisional מריאל שרפנטייה, Pericanine פריקנין."
+      },
+      {
+        "batch": "c000940-00000",
+        "note": "Definite/plural forms לוח המפסקים, מכונת הגלידה, מחשב־הרדיו, מחשבי־הרדיו trigger literal flags. Filament memory זיכרון סיב, Sulisław סוליסלב, Luukanen-Kilde לוקנן-קילדה provisional after exact targeted lookup absent. Letter addresses S/Soona feminine without expanding initial."
       }
     ],
     "lane-3-notes": [
@@ -1262,6 +1310,30 @@
       {
         "batch": "c000868-00200",
         "note": "First names Morell/Gary rendered מורל/גארי without speaker titles; sad smile adjective עצוב; ordinary perception construct תפיסת, not named skill."
+      },
+      {
+        "batch": "c000868-00400",
+        "note": "Morell/Gary first names retained without speaker titles. Sad is contextual adjective עצוב/עצובה, not personified noun עצב."
+      },
+      {
+        "batch": "c000945-00000",
+        "note": "Sad is an adjective describing squashed bullet: עצוב, not noun עצב."
+      },
+      {
+        "batch": "c000949-00000",
+        "note": "C / Cunoesse advisory falsely matches C’mon in speech; no character reference."
+      },
+      {
+        "batch": "c000959-00000",
+        "note": "Morell first name retained without title; sad duckies adjective plural עצובים."
+      },
+      {
+        "batch": "c000968-00000",
+        "note": "pale chaos translated התוהו החיוור to retain adjective construction; broken window definite החלון השבור. Estonian radio fragment translated semantically into Hebrew; static and numeric strings retained."
+      },
+      {
+        "batch": "c000968-00200",
+        "note": "Flower bed ערוגה, next door ליד are contextual senses, not object names; Sad adjective עצוב; police radio הקשר המשטרתי. Peone rendered עושה דברו (subordinate agent)."
       }
     ]
   }

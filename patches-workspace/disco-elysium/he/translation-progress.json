@@ -2,8 +2,8 @@
   "branch": "codex/disco-elysium-localization",
   "source_of_truth": "translations.csv",
   "authoring": "Direct current-assistant translation; no external draft service",
-  "translated": 53534,
-  "remaining": 26052,
+  "translated": 55746,
+  "remaining": 23840,
   "conversations_with_translations": {
     "5": {
       "total": 14,
@@ -1745,6 +1745,11 @@
       "translated": 4,
       "name": "CANAL / BARRY barks"
     },
+    "847": {
+      "total": 71,
+      "translated": 71,
+      "name": "WHIRLING F2 ORB / Faschist Quest Initiation"
+    },
     "848": {
       "total": 120,
       "translated": 120,
@@ -1754,6 +1759,11 @@
       "total": 144,
       "translated": 144,
       "name": "RACIST / FASCHA DQ FOLDER"
+    },
+    "850": {
+      "total": 450,
+      "translated": 450,
+      "name": "MEASUREHEAD / FASCHA DQ"
     },
     "851": {
       "total": 221,
@@ -1797,19 +1807,129 @@
     },
     "868": {
       "total": 602,
-      "translated": 400,
+      "translated": 602,
       "name": "WHIRLING / LENA MAIN"
     },
     "869": {
       "total": 1,
       "translated": 1,
       "name": "WHIRLING F1 / GARTE barks"
+    },
+    "870": {
+      "total": 1,
+      "translated": 1,
+      "name": "WHIRLING F1 / LENA barks"
+    },
+    "873": {
+      "total": 30,
+      "translated": 30,
+      "name": "DOOMED / CURTAINS"
+    },
+    "874": {
+      "total": 33,
+      "translated": 33,
+      "name": "DOOMED / FREQUENCY FIREPLACE"
+    },
+    "878": {
+      "total": 11,
+      "translated": 11,
+      "name": "THOUGHT / THE DESTROYER"
+    },
+    "882": {
+      "total": 86,
+      "translated": 86,
+      "name": "APT / SMOKER ON THE BALCONY"
+    },
+    "888": {
+      "total": 53,
+      "translated": 53,
+      "name": "PIER / APARTMENTS PIER DOOR"
+    },
+    "889": {
+      "total": 140,
+      "translated": 140,
+      "name": "APT / CLEANING LADY"
+    },
+    "892": {
+      "total": 173,
+      "translated": 173,
+      "name": "WHIRLING F1 / SMOKER ON THE BALCONY"
+    },
+    "897": {
+      "total": 12,
+      "translated": 12,
+      "name": "CHURCH / WATERBASINS"
+    },
+    "901": {
+      "total": 1,
+      "translated": 1,
+      "name": "BACKYARD / KIM APT DOOR barks"
+    },
+    "902": {
+      "total": 43,
+      "translated": 43,
+      "name": "FRITTE / SHIMMERING WALL OF VICES"
+    },
+    "903": {
+      "total": 50,
+      "translated": 50,
+      "name": "APT / REAL ESTATE AGENT"
+    },
+    "918": {
+      "total": 25,
+      "translated": 25,
+      "name": "APT ORB / encyclo logo of communism"
+    },
+    "930": {
+      "total": 26,
+      "translated": 26,
+      "name": "KIM SWITCH / DOOMED"
+    },
+    "940": {
+      "total": 64,
+      "translated": 64,
+      "name": "INVENTORY / NOTE FROM THE FRIDGE"
+    },
+    "943": {
+      "total": 104,
+      "translated": 104,
+      "name": "WHIRLING F1 / KARAOKE STAND"
+    },
+    "945": {
+      "total": 103,
+      "translated": 103,
+      "name": "INVENTORY / FRACTURED BULLET"
+    },
+    "949": {
+      "total": 40,
+      "translated": 40,
+      "name": "GARYS APARTMENT / COLONIAL MUG COLLECTION"
+    },
+    "959": {
+      "total": 26,
+      "translated": 26,
+      "name": "WHIRLING / BATHTUB"
+    },
+    "964": {
+      "total": 32,
+      "translated": 32,
+      "name": "THOUGHT / FAIRWEATHER T-500"
+    },
+    "967": {
+      "total": 36,
+      "translated": 36,
+      "name": "LAIR / INSTIGATORS TENT"
+    },
+    "968": {
+      "total": 441,
+      "translated": 400,
+      "name": "LAIR / INSTIGATOR"
     }
   },
   "resume_at": {
-    "conversation_id": 847,
-    "entry_id": 2,
-    "key": "Dialogue Text/0x0100005100001DA7"
+    "conversation_id": 904,
+    "entry_id": 3,
+    "key": "Dialogue Text/0x010000570001DE96"
   },
   "glossary_entries": 467,
   "validation": {
@@ -1821,10 +1941,10 @@
     "bundle_sha256": "30822499ec9c1dc102393335a2344a06da71153857fcd62ba1d01ec8ce7d9906",
     "last_csv_validation": {
       "entries": 79586,
-      "translated": 53534,
-      "remaining": 26052,
+      "translated": 55746,
+      "remaining": 23840,
       "source_words": 1129354,
-      "coverage_percent": 67.266,
+      "coverage_percent": 70.045,
       "unmapped_source_keys": 193,
       "unresolved_localization_terms": 127,
       "errors": [],
