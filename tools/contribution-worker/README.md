@@ -235,3 +235,24 @@ items without requiring login. A message already in flight may still arrive.
 A new, explicitly checked submission can resume emails for that submission;
 previous submissions stay opted out. Do not log unsubscribe query tokens.
 Apply `0003_email_consent.sql` before running the updated backend.
+
+## Staging deployment verified 2026-11-11
+
+- Worker: `https://kitor-contributions-staging.yhaggai.workers.dev`
+- D1: `kitor-contributions-staging` (`28a562f7-aaa9-4e80-a0cd-70b4d86a09bd`).
+- Repository webhook: `710452705`, signed JSON, `pull_request` and `release`.
+- Google staging callback registered alongside the existing localhost callback.
+- Final schedule: hourly; merge target defaults to `v1`. `NOTIFICATION_BASE_BRANCH`
+  can temporarily isolate staging tests; it is not set in the final deployment.
+- Controlled PR #30 merged only into `codex/notification-e2e-base`, never `v1`.
+  GitHub delivered HTTP 200; the scheduled Worker sent exactly one approval email,
+  and Resend reported Delivered. Replaying the merge did not duplicate it.
+- The public unsubscribe endpoint cancelled a queued synthetic release follow-up
+  with zero delivery attempts. No patch release was published for this test;
+  tag/CSV inclusion checks remain covered by local tests.
+- The Contribution POC app was rebuilt with `KITOR_CONTRIBUTION_API_URL` pointing
+  to staging. Hosted sign-in uses its own keyring entry; sign in again in the app.
+
+The deployment was performed explicitly from the contribution branch. This does
+not configure GitHub Actions environment secrets or enable automatic deployments.
+Production deployment remains separate. The isolated test account is unsubscribed.

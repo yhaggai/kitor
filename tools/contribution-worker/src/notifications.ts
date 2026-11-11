@@ -60,7 +60,7 @@ export async function webhook(req: Request, env: Env): Promise<Response> {
     if (
       !id ||
       pr.base?.repo?.full_name !== REPO ||
-      pr.base?.ref !== "v1" ||
+      pr.base?.ref !== (env.NOTIFICATION_BASE_BRANCH || "v1") ||
       !/^[a-f0-9]{40}$/.test(pr.merge_commit_sha || "") ||
       !Number.isSafeInteger(pr.number)
     )

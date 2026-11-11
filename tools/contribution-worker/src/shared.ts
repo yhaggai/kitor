@@ -7,6 +7,7 @@ export interface Env {
   GITHUB_PRIVATE_KEY?: string;
   GITHUB_WEBHOOK_SECRET?: string;
   NOTIFICATIONS_ENABLED?: string;
+  NOTIFICATION_BASE_BRANCH?: string;
   RESEND_API_KEY?: string;
   NOTIFICATION_FROM?: string;
 }
