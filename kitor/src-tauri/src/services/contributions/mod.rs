@@ -186,6 +186,7 @@ pub async fn submit(
     revision: u64,
     digest: &str,
     token: &str,
+    email_opt_in: bool,
 ) -> Result<Submission, String> {
     let draft = read(root)?;
     if draft.revision != revision {
@@ -206,7 +207,7 @@ pub async fn submit(
         .post(format!("{}/submissions", identity::endpoint()?))
         .bearer_auth(token)
         .header("X-Kitor-Client", "desktop-poc")
-        .json(&serde_json::json!({"base_sha":draft.base_sha,"digest":digest,"edits":draft.edits}))
+        .json(&serde_json::json!({"base_sha":draft.base_sha,"digest":digest,"edits":draft.edits,"email_opt_in":email_opt_in}))
         .send()
         .await
         .map_err(|_| {

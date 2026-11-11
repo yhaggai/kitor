@@ -48,6 +48,7 @@ pub async fn submit_translation_draft(
     contributor_id: String,
     revision: u64,
     digest: String,
+    email_opt_in: Option<bool>,
 ) -> Result<Submission, String> {
     let _lock = state.gate.lock().await;
     let token = contributions::identity::token_for(&contributor_id)?;
@@ -56,6 +57,7 @@ pub async fn submit_translation_draft(
         revision,
         &digest,
         &token,
+        email_opt_in.unwrap_or(false),
     )
     .await
 }

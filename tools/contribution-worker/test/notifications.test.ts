@@ -5,6 +5,7 @@ import { test } from "node:test";
 import { convertV4MiniflareOptions, Miniflare } from "miniflare";
 import { records } from "../src/csv";
 import { drainNotifications, releaseContains, webhook } from "../src/notifications";
+import { saveConsent, unsubscribe } from "../src/preferences";
 import { type Env, hash } from "../src/shared";
 
 const id = "a".repeat(64);
@@ -48,13 +49,14 @@ test("signed webhook, merge matching, private email, deduplication and retry que
   );
   try {
     const db = await mf.getD1Database("DB");
-    for (const file of ["0001_identity.sql", "0002_notifications.sql"])
+    for (const file of ["0001_identity.sql", "0002_notifications.sql", "0003_email_consent.sql"])
       for (const sql of (await readFile(`migrations/${file}`, "utf8"))
         .split(";")
         .filter((s) => s.trim()))
         await db.prepare(sql).run();
     const env = {
       DB: db,
+      PUBLIC_URL: "http://localhost",
       GITHUB_WEBHOOK_SECRET: secret,
       NOTIFICATIONS_ENABLED: "true",
       RESEND_API_KEY: "test",
@@ -87,6 +89,15 @@ test("signed webhook, merge matching, private email, deduplication and retry que
       (await db.prepare("SELECT COUNT(*) AS n FROM notifications").first<{ n: number }>())!.n,
       1
     );
+    await drainNotifications(env, async () => {
+      throw new Error("Must not send without opt-in");
+    });
+    assert.equal(
+      (await db.prepare("SELECT attempts FROM notifications").first<{ attempts: number }>())!
+        .attempts,
+      0
+    );
+    await saveConsent(env, id, "u", true);
     let sends = 0;
     const send = async (_env: unknown, msg: { to: string; id: string }) => {
       sends++;
@@ -151,6 +162,37 @@ test("signed webhook, merge matching, private email, deduplication and retry que
     assert.equal(
       (await db.prepare("SELECT COUNT(*) AS n FROM patch_releases").first<{ n: number }>())!.n,
       1
+    );
+    const token = (await db
+      .prepare("SELECT unsubscribe_token FROM contributors")
+      .first<{ unsubscribe_token: string }>())!.unsubscribe_token;
+    await unsubscribe(
+      new Request(`http://localhost/notifications/unsubscribe?token=${token}`),
+      env
+    );
+    assert.equal(
+      (await db.prepare("SELECT email_opt_in FROM submissions").first<{ email_opt_in: number }>())!
+        .email_opt_in,
+      1,
+      "GET does not unsubscribe (mail scanners)"
+    );
+    await unsubscribe(
+      new Request(`http://localhost/notifications/unsubscribe?token=${token}`, { method: "POST" }),
+      env
+    );
+    assert.equal(
+      (await db.prepare("SELECT email_opt_in FROM submissions").first<{ email_opt_in: number }>())!
+        .email_opt_in,
+      0
+    );
+    assert.equal(
+      (await db.prepare("SELECT status FROM notifications").first<{ status: string }>())!.status,
+      "cancelled"
+    );
+    await drainNotifications(env, send);
+    assert.equal(sends, 1);
+    await assert.rejects(
+      unsubscribe(new Request("http://localhost/notifications/unsubscribe?token=bad"), env)
     );
   } finally {
     await mf.dispose();

@@ -205,7 +205,7 @@ export async function drainNotifications(env: Env, send = sendEmail) {
     const row =
       await env.DB.prepare(`UPDATE notifications SET lease_until=?, recipient=COALESCE(recipient,(SELECT c.email FROM submissions s JOIN contributors c ON c.id=s.contributor_id WHERE s.id=submission_id)), sender=COALESCE(sender,?)
       WHERE id=(SELECT n.id FROM notifications n JOIN submissions s ON s.id=n.submission_id JOIN contributors c ON c.id=s.contributor_id
-      WHERE n.status='pending' AND n.next_attempt<=? AND n.lease_until<? AND c.email IS NOT NULL
+      WHERE n.status='pending' AND n.next_attempt<=? AND n.lease_until<? AND c.email IS NOT NULL AND s.email_opt_in=1 AND c.email_unsubscribed=0
       AND (n.kind='approved' OR EXISTS(SELECT 1 FROM notifications a WHERE a.submission_id=n.submission_id AND a.kind='approved' AND a.status='sent'))
       ORDER BY n.id LIMIT 1) RETURNING *`)
         .bind(now() + 300, env.NOTIFICATION_FROM, now(), now())
@@ -233,6 +233,24 @@ export async function drainNotifications(env: Env, send = sendEmail) {
     )
       .bind(now(), row.id)
       .run();
+    const consent = await env.DB.prepare(
+      "SELECT c.unsubscribe_token FROM notifications n JOIN submissions s ON s.id=n.submission_id JOIN contributors c ON c.id=s.contributor_id WHERE n.id=? AND s.email_opt_in=1 AND c.email_unsubscribed=0 AND n.status='pending'"
+    )
+      .bind(row.id)
+      .first<{ unsubscribe_token: string }>();
+    if (!consent?.unsubscribe_token) {
+      await env.DB.prepare("UPDATE notifications SET status='cancelled',lease_until=0 WHERE id=?")
+        .bind(row.id)
+        .run();
+      continue;
+    }
+    // Freeze the whole body so provider idempotency retries have identical payloads.
+    if (!row.message.includes("Stop contribution emails:")) {
+      row.message += `\n\nStop contribution emails: ${env.PUBLIC_URL}/notifications/unsubscribe?token=${consent.unsubscribe_token}`;
+      await env.DB.prepare("UPDATE notifications SET message=? WHERE id=?")
+        .bind(row.message, row.id)
+        .run();
+    }
     try {
       const id = await send(
         { ...env, NOTIFICATION_FROM: row.sender },

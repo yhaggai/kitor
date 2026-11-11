@@ -2,12 +2,14 @@ import { auth, user } from "./auth";
 import { apply, validate } from "./csv";
 import { canonical, installation, openPR } from "./github";
 import { drainNotifications, reconcileReleases, webhook } from "./notifications";
+import { saveConsent, unsubscribe } from "./preferences";
 import { body, type Env, HttpError, hash, json, limit, now } from "./shared";
 export default {
   async fetch(req: Request, env: Env): Promise<Response> {
     let stage = "request";
     try {
       const path = new URL(req.url).pathname;
+      if (path === "/notifications/unsubscribe") return unsubscribe(req, env);
       if (req.method === "POST" && req.headers.has("origin"))
         throw new HttpError(403, "Use the Kitor desktop app");
       if (path === "/health")
@@ -41,6 +43,7 @@ export default {
         if (!lease)
           throw new HttpError(409, "This submission is already processing. Retry shortly");
         try {
+          await saveConsent(env, id, contributor.id, input.email_opt_in === true);
           stage = "bot-authentication";
           const token = await installation(env);
           stage = "canonical-source";

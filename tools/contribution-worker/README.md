@@ -220,3 +220,18 @@ Delivery attempts freeze the recipient, sender, subject and body for Resend's
 resolving them. Monitor pending/needs_review counts. The 90/day budget is for this
 Worker only; other applications sharing the Resend account consume its quota too.
 This is transactional contribution mail, not a marketing subscription.
+
+## Optional email consent
+
+The submission review includes an unchecked email checkbox. Missing consent
+(including older app versions and existing submissions) defaults to no email.
+The server stores the per-submission choice and opt-in timestamp, and checks
+consent again immediately before provider dispatch. Resend is disclosed in the
+review UI. No email preference or email address is published in the PR.
+
+Each notification includes a private, random unsubscribe link. GET shows a
+confirmation; POST stops all contribution emails and cancels pending/review
+items without requiring login. A message already in flight may still arrive.
+A new, explicitly checked submission can resume emails for that submission;
+previous submissions stay opted out. Do not log unsubscribe query tokens.
+Apply `0003_email_consent.sql` before running the updated backend.

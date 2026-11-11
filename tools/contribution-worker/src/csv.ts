@@ -92,11 +92,17 @@ export async function apply(source: string, edits: { [key: string]: string }): P
   if (found.size !== Object.keys(edits).length) throw new HttpError(400, "Unknown translation key");
   return output;
 }
-export type Correction = { base_sha: string; digest: string; edits: { [key: string]: string } };
+export type Correction = {
+  email_opt_in?: boolean;
+  base_sha: string;
+  digest: string;
+  edits: { [key: string]: string };
+};
 export function validate(b: Record<string, unknown>): asserts b is Correction {
   if (
     !b ||
-    Object.keys(b).sort().join(",") !== "base_sha,digest,edits" ||
+    Object.keys(b).some((key) => !["base_sha", "digest", "edits", "email_opt_in"].includes(key)) ||
+    (b.email_opt_in !== undefined && typeof b.email_opt_in !== "boolean") ||
     typeof b.base_sha !== "string" ||
     !/^[a-f0-9]{40}$/.test(b.base_sha) ||
     typeof b.digest !== "string" ||

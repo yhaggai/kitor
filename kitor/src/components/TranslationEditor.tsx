@@ -61,6 +61,7 @@ export default function TranslationEditor({
   const [message, setMessage] = useState("Loading translation…");
   const [error, setError] = useState("");
   const [busy, setBusy] = useState(false);
+  const [emailOptIn, setEmailOptIn] = useState(false);
   const [preview, setPreview] = useState<Preview | null>(null);
   const [botReady, setBotReady] = useState(false);
   const [botMessage, setBotMessage] = useState("Checking the local contribution bot…");
@@ -211,6 +212,7 @@ export default function TranslationEditor({
         contributorId: contributor.id,
         revision: preview.revision,
         digest: preview.digest,
+        emailOptIn,
       });
       setPr(result.url);
       setMessage(
@@ -333,6 +335,21 @@ export default function TranslationEditor({
             <p>
               Your changes will be public on GitHub. This experiment opens a draft PR marked “do not
               merge”.
+            </p>
+            <label className="translation-email-opt-in">
+              <input
+                type="checkbox"
+                checked={emailOptIn}
+                disabled={busy}
+                onChange={(event) => setEmailOptIn(event.target.checked)}
+              />
+              Email me when my contribution is approved and included in a patch.
+            </label>
+            <p className="translation-email-disclosure">
+              Optional. You can contribute without emails. If selected, Kitor stores your verified
+              Google email privately and uses Resend to deliver these updates. Each email includes a
+              link to stop contribution emails. Selecting this again resumes emails for this new
+              contribution.
             </p>
             {preview.changes.map((change) => (
               <article key={change.key}>

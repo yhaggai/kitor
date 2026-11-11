@@ -270,3 +270,18 @@
     align-self: flex-end;
   }
 }
+
+.translation-email-opt-in {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  margin-top: 1rem;
+}
+.translation-email-opt-in input {
+  width: auto;
+  flex-shrink: 0;
+}
+.translation-email-disclosure {
+  font-size: 0.85rem;
+  opacity: 0.8;
+}
