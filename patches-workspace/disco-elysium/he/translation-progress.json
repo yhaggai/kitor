@@ -2,8 +2,8 @@
   "branch": "codex/disco-elysium-localization",
   "source_of_truth": "translations.csv",
   "authoring": "Direct current-assistant translation; no external draft service",
-  "translated": 38844,
-  "remaining": 40742,
+  "translated": 40907,
+  "remaining": 38679,
   "conversations_with_translations": {
     "5": {
       "total": 14,
@@ -1197,7 +1197,7 @@
     },
     "635": {
       "total": 624,
-      "translated": 600,
+      "translated": 624,
       "name": "PIER / JOYCE ON EVRART"
     },
     "636": {
@@ -1205,16 +1205,111 @@
       "translated": 706,
       "name": "PIER / JOYCE REALITY HUB"
     },
+    "637": {
+      "total": 244,
+      "translated": 244,
+      "name": "JOYCE / REALITY TIMES"
+    },
     "639": {
       "total": 184,
       "translated": 184,
       "name": "WHIRLING F1 / THE GARDENER MAIN"
+    },
+    "640": {
+      "total": 284,
+      "translated": 284,
+      "name": "WHIRLING F1 / HARDIE"
+    },
+    "641": {
+      "total": 156,
+      "translated": 156,
+      "name": "WHIRLING F1 / HORSE FACED WOMAN"
+    },
+    "642": {
+      "total": 219,
+      "translated": 219,
+      "name": "WHIRLING F1 / MAN WITH SUNGLASSES"
+    },
+    "645": {
+      "total": 56,
+      "translated": 56,
+      "name": "WHIRLING F1 / INDUSTRIAL STOVE"
+    },
+    "647": {
+      "total": 105,
+      "translated": 105,
+      "name": "WHIRLING F1 / SPARE WORKSHOP KEYS"
+    },
+    "652": {
+      "total": 303,
+      "translated": 303,
+      "name": "WHIRLING F3 / CLEAR WINDOW VISCAL DIFFICULT"
+    },
+    "654": {
+      "total": 92,
+      "translated": 92,
+      "name": "WHIRLING F3 / BARRED DOOR"
+    },
+    "656": {
+      "total": 16,
+      "translated": 16,
+      "name": "WHIRLING ROOF ORB / handeye catch"
+    },
+    "658": {
+      "total": 39,
+      "translated": 39,
+      "name": "WHIRLING F1 / ELEVATOR"
+    },
+    "661": {
+      "total": 72,
+      "translated": 72,
+      "name": "WHIRLING F1 ORB / play pinball"
+    },
+    "666": {
+      "total": 48,
+      "translated": 48,
+      "name": "WHIRLING F3 / FOOTPRINTS IN THE DUST"
+    },
+    "676": {
+      "total": 443,
+      "translated": 200,
+      "name": "WHIRLING F3 / KLAASJE TAPE LELY"
+    },
+    "680": {
+      "total": 68,
+      "translated": 68,
+      "name": "KIM SWITCH / KLAASJE REACTION"
+    },
+    "681": {
+      "total": 1,
+      "translated": 1,
+      "name": "WHIRLING F3 / KLAASJE barks"
+    },
+    "683": {
+      "total": 33,
+      "translated": 33,
+      "name": "WHIRLING F3 ORB / narcomania afterthought"
+    },
+    "684": {
+      "total": 26,
+      "translated": 26,
+      "name": "INVENTORY / DRIED MAY BELLS"
+    },
+    "685": {
+      "total": 27,
+      "translated": 27,
+      "name": "KIM SWITCH / DISCUSSING KLAASJE DOWNSTAIRS"
+    },
+    "686": {
+      "total": 50,
+      "translated": 50,
+      "name": "INVENTORY / LELY TAPE"
     }
   },
   "resume_at": {
-    "conversation_id": 635,
-    "entry_id": 46,
-    "key": "Alternate1/0x010000450000DE6A"
+    "conversation_id": 663,
+    "entry_id": 2,
+    "key": "Dialogue Text/0x0100007800010E32"
   },
   "glossary_entries": 467,
   "validation": {
@@ -1226,10 +1321,10 @@
     "bundle_sha256": "30822499ec9c1dc102393335a2344a06da71153857fcd62ba1d01ec8ce7d9906",
     "last_csv_validation": {
       "entries": 79586,
-      "translated": 38844,
-      "remaining": 40742,
+      "translated": 40907,
+      "remaining": 38679,
       "source_words": 1129354,
-      "coverage_percent": 48.808,
+      "coverage_percent": 51.4,
       "unmapped_source_keys": 193,
       "unresolved_localization_terms": 127,
       "errors": [],

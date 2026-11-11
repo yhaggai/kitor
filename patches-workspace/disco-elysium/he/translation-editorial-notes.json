@@ -215,6 +215,30 @@
       {
         "batch": "c000635-00400",
         "terminology_exceptions": "Union prefixed לאיגוד; Gary source short name rendered גארי without unrevealed full epithet; sad ordinary adjective עצוב."
+      },
+      {
+        "batch": "c000635-00600",
+        "terminology_exception": "Union prefixed לאיגוד."
+      },
+      {
+        "batch": "c000637-00000",
+        "terminology_exceptions": "Coalition construct קואליציית האומות; shivers verb מצטמררת; expression idiom איך אומרים; Suzerain indefinite סוזרן; Kingsmen definite plural נאמני־המלך. Tzaraath provisional צרעת, fictional prion disease retained as source."
+      },
+      {
+        "batch": "c000637-00200",
+        "note": "Shivers is an ordinary verb in three narration lines: רועדת קלות. Chad Tillbrook transliterated צ'אד טילברוק."
+      },
+      {
+        "batch": "c000641-00000",
+        "note": "Man with Sunglasses and Horse-Faced Woman inflected for definiteness; sad ordinary adjective עצובה/עצובות. Judit יודית, Jean ז'אן, John and Lance McCoy ג'ון ולאנס מקוי; Archetype אב־טיפוס; Baron Von Kikkenberg הברון פון קיקנברג."
+      },
+      {
+        "batch": "c000647-00000",
+        "note": "Blue door definite הדלת הכחולה. C/Cunoesse warning is C'mon, translated בחייך. Kept source bronze vs brass distinction ארד/פליז."
+      },
+      {
+        "batch": "c000654-00000",
+        "note": "Barred Door rendered דלת חסומה בבריח: source explicitly wooden door with internal bar and brackets, no grille. Root alerted canonical label issue. Ace’s High/Low verified exact glossary כיף גבוה/כיף נמוך."
       }
     ],
     "lane-2-notes": [
@@ -580,6 +604,122 @@
           }
         ],
         "note": "איגוד עובדי הנמל construct phrases; C match in C’mon false positive rendered בחייך; sad ordinary adjective עצובה. Doux et Sucré retained in French nickname."
+      },
+      {
+        "batch": "c000642-00000",
+        "reviewed_flags": [
+          {
+            "key": "Dialogue Text/0x010000640000B503",
+            "term": "Sad",
+            "expected_forms": ["עצב"],
+            "status": "review; inflection, wordplay or context may justify exception"
+          },
+          {
+            "key": "Dialogue Text/0x010000640000C8C3",
+            "term": "the Union",
+            "expected_forms": ["האיגוד"],
+            "status": "review; inflection, wordplay or context may justify exception"
+          },
+          {
+            "key": "Dialogue Text/0x010000640000D99E",
+            "term": "Man with Sunglasses",
+            "expected_forms": ["איש במשקפי שמש"],
+            "status": "review; inflection, wordplay or context may justify exception"
+          },
+          {
+            "key": "Dialogue Text/0x010000640000C96C",
+            "term": "Cunoesse",
+            "expected_forms": ["קונואס", "קונואס"],
+            "status": "review; inflection, wordplay or context may justify exception"
+          },
+          {
+            "key": "Dialogue Text/0x010000640000C96C",
+            "term": "C",
+            "expected_forms": ["סי"],
+            "status": "review; inflection, wordplay or context may justify exception"
+          },
+          {
+            "key": "Dialogue Text/0x010000640000C9D3",
+            "term": "Man with Sunglasses",
+            "expected_forms": ["איש במשקפי שמש"],
+            "status": "review; inflection, wordplay or context may justify exception"
+          },
+          {
+            "key": "Dialogue Text/0x010000640000C899",
+            "term": "Cunoesse",
+            "expected_forms": ["קונואס", "קונואס"],
+            "status": "review; inflection, wordplay or context may justify exception"
+          },
+          {
+            "key": "Dialogue Text/0x010000640000C899",
+            "term": "C",
+            "expected_forms": ["סי"],
+            "status": "review; inflection, wordplay or context may justify exception"
+          },
+          {
+            "key": "Dialogue Text/0x010000640000B97A",
+            "term": "Cunoesse",
+            "expected_forms": ["קונואס", "קונואס"],
+            "status": "review; inflection, wordplay or context may justify exception"
+          },
+          {
+            "key": "Dialogue Text/0x010000640000DA09",
+            "term": "Man with Sunglasses",
+            "expected_forms": ["איש במשקפי שמש"],
+            "status": "review; inflection, wordplay or context may justify exception"
+          },
+          {
+            "key": "Dialogue Text/0x010000640000B999",
+            "term": "Man with Sunglasses",
+            "expected_forms": ["איש במשקפי שמש"],
+            "status": "review; inflection, wordplay or context may justify exception"
+          }
+        ],
+        "note": "sad ordinary adjective; union temporary partnership, not dockworkers. האיש במשקפי השמש definite narrative form. C/Cunoesse matched C’mon false positives."
+      },
+      {
+        "batch": "c000642-00200",
+        "reviewed_flags": [
+          {
+            "key": "Alternate1/0x010000640000B503",
+            "term": "Sad",
+            "expected_forms": ["עצב"],
+            "status": "review; inflection, wordplay or context may justify exception"
+          },
+          {
+            "key": "Alternate1/0x010000640000C96C",
+            "term": "Cunoesse",
+            "expected_forms": ["קונואס", "קונואס"],
+            "status": "review; inflection, wordplay or context may justify exception"
+          },
+          {
+            "key": "Alternate1/0x010000640000C96C",
+            "term": "C",
+            "expected_forms": ["סי"],
+            "status": "review; inflection, wordplay or context may justify exception"
+          }
+        ],
+        "note": "sad ordinary adjective; C/Cunoesse matched C’mon false positive."
+      },
+      {
+        "batch": "c000661-00000",
+        "reviewed_flags": [
+          {
+            "key": "Dialogue Text/0x0100007800010B24",
+            "term": "Sad",
+            "expected_forms": ["עצב"],
+            "status": "review; inflection, wordplay or context may justify exception"
+          }
+        ],
+        "note": "sad ordinary plural adjective עצובות. Kimball wordplay retained קימבול."
+      },
+      {
+        "batch": "c000666-00000",
+        "note": "Blue door and Barred Door use natural definite forms הדלת הכחולה and הדלת המסורגת; glossary substring flags are intentional inflection."
+      },
+      {
+        "batch": "c000676-00000",
+        "note": "Shivers used as ordinary verb for Klaasje trembling, rendered רועדת; Sad in band name is adjective העצובה, not personified עצב."
       }
     ],
     "lane-3-notes": [
@@ -814,6 +954,14 @@
       {
         "batch": "c000636",
         "exceptions": "Locked door is generic indefinite דלת נעולה, not object label; civilian adjectival inflections; authority as institution רשות; suggestion as הצעה; mirror verb as לחקות; Suzerain prefixed בסוזרן. Political infraculture/supraculture distinguished תרבות-תחת / תרבות-העל."
+      },
+      {
+        "batch": "c000640",
+        "exceptions": "radio officer translated קצין קשר; stone cold idiom קר כקרח rather than literal אבן; sad inflected עצוב/עצובות. Censored moral-f*g preserves one asterisk."
+      },
+      {
+        "batch": "c000652",
+        "exceptions": "Bed construct inflected מיטת היחיד. Ballistic point symbols and numeric percentages preserved; spelled-out prime labels translated פריים / דאבל פריים / טריפל פריים."
       }
     ]
   }
