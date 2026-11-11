@@ -1,5 +1,6 @@
 import { useTranslation } from "@kitor/ui";
 import { Download, RefreshCw } from "lucide-react";
+import BugReportDialog from "@/components/BugReportDialog";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -82,9 +83,12 @@ export default function AppUpdateDialog() {
           </div>
         )}
         {state.error && (
-          <p role="alert" className="text-sm text-destructive">
-            {state.error}
-          </p>
+          <div className="space-y-2">
+            <p role="alert" className="text-sm text-destructive">
+              {state.error}
+            </p>
+            <BugReportDialog details={state.error} />
+          </div>
         )}
         <DialogFooter>
           {!busy && (

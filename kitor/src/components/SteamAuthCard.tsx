@@ -1,6 +1,7 @@
 import { ManageMenu, steamIcon, useTranslation } from "@kitor/ui";
 import { openUrl } from "@tauri-apps/plugin-opener";
 import { useState } from "react";
+import BugReportDialog from "@/components/BugReportDialog";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { useSteamStore } from "@/store/steam";
@@ -144,9 +145,12 @@ export default function SteamAuthCard() {
           </form>
         )}
         {(error || linkError) && (
-          <p role="alert" className="text-sm text-destructive">
-            {error || linkError}
-          </p>
+          <div className="space-y-2">
+            <BugReportDialog details={error || linkError || ""} />
+            <p role="alert" className="text-sm text-destructive">
+              {error || linkError}
+            </p>
+          </div>
         )}
       </CardContent>
     </Card>

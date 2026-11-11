@@ -2,6 +2,7 @@ import { useTranslation } from "@kitor/ui";
 import { invoke } from "@tauri-apps/api/core";
 import { open } from "@tauri-apps/plugin-dialog";
 import { useEffect, useState } from "react";
+import BugReportDialog from "@/components/BugReportDialog";
 import { Button } from "@/components/ui/button";
 
 export function GameInstallFolder({
@@ -70,9 +71,12 @@ export function GameInstallFolder({
           : t("Kitor will create a separate folder for each game here.")}
       </p>
       {error && (
-        <p role="alert" className="text-sm text-destructive">
-          {error}
-        </p>
+        <div className="space-y-2">
+          <p role="alert" className="text-sm text-destructive">
+            {error}
+          </p>
+          <BugReportDialog details={error} />
+        </div>
       )}
     </div>
   );

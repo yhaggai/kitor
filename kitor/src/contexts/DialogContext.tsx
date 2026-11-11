@@ -1,6 +1,7 @@
 import { useTranslation } from "@kitor/ui";
 import { createContext, type ReactNode, useCallback, useState } from "react";
 import { createPortal } from "react-dom";
+import BugReportDialog from "@/components/BugReportDialog";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -12,6 +13,8 @@ import {
 } from "@/components/ui/dialog";
 
 type AlertOptions = {
+  failure?: boolean;
+  game?: string;
   title: string;
   description?: string;
 };
@@ -113,6 +116,14 @@ export function DialogProvider({ children, dialogRootElement }: DialogProviderPr
               )}
             </DialogHeader>
             <DialogFooter>
+              {state.options.failure && (
+                <BugReportDialog
+                  game={state.options.game}
+                  details={[state.options.title, state.options.description]
+                    .filter(Boolean)
+                    .join("\n\n")}
+                />
+              )}
               <Button onClick={handleAlertOk}>{t("OK")}</Button>
             </DialogFooter>
           </DialogContent>

@@ -91,7 +91,7 @@ export default function Settings() {
       await checkScummVMStatus();
     } catch (error) {
       console.error("Failed to download ScummVM:", error);
-      await alert({ title: t("Download Failed"), description: String(error) });
+      await alert({ failure: true, title: t("Download Failed"), description: String(error) });
     } finally {
       setScummVMDownloadInProgress(false);
       setScummVMDownloadProgress(null);
@@ -117,7 +117,7 @@ export default function Settings() {
       await checkScummVMStatus();
     } catch (error) {
       console.error("Failed to uninstall ScummVM:", error);
-      await alert({ title: t("Uninstall Failed"), description: String(error) });
+      await alert({ failure: true, title: t("Uninstall Failed"), description: String(error) });
     } finally {
       setIsUninstalling(false);
     }
@@ -146,7 +146,7 @@ export default function Settings() {
       await checkScummVMStatus();
     } catch (error) {
       console.error("Failed to update ScummVM:", error);
-      await alert({ title: t("Update Failed"), description: String(error) });
+      await alert({ failure: true, title: t("Update Failed"), description: String(error) });
     } finally {
       setIsUninstalling(false);
       setScummVMDownloadInProgress(false);
@@ -159,7 +159,7 @@ export default function Settings() {
       await invoke("open_scummvm");
     } catch (error) {
       console.error("Failed to open ScummVM:", error);
-      await alert({ title: t("Open Failed"), description: String(error) });
+      await alert({ failure: true, title: t("Open Failed"), description: String(error) });
     }
   };
 
@@ -168,7 +168,7 @@ export default function Settings() {
       await invoke("open_scummvm_folder");
     } catch (error) {
       console.error("Failed to open ScummVM folder:", error);
-      await alert({ title: t("Open Folder Failed"), description: String(error) });
+      await alert({ failure: true, title: t("Open Folder Failed"), description: String(error) });
     }
   };
 

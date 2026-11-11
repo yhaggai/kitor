@@ -3,6 +3,7 @@ import { isTauri } from "@tauri-apps/api/core";
 import { openUrl } from "@tauri-apps/plugin-opener";
 import { Languages, Mail } from "lucide-react";
 import { useState } from "react";
+import BugReportDialog from "@/components/BugReportDialog";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -132,9 +133,12 @@ export default function TranslationRequestDialog() {
             )}{" "}
           </p>
           {error && (
-            <p role="alert" className="text-sm text-destructive">
-              {t(error)}
-            </p>
+            <div className="space-y-2">
+              <BugReportDialog details={t(error)} />
+              <p role="alert" className="text-sm text-destructive">
+                {t(error)}
+              </p>
+            </div>
           )}
           {status && <output className="block text-sm">{t(status)}</output>}
           <div className="flex flex-wrap justify-end gap-2">

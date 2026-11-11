@@ -2,8 +2,9 @@ import { useLayoutEffect, useRef, useState } from "react";
 import type { GameSummary } from "./types";
 
 /** FLIP the actual cover between grid and detail. No View Transition API dependency (WebKit safe). */
-export function useGameNavigation() {
+export function useGameNavigation(resetKey?: number) {
   const [selectedId, setSelectedId] = useState<string | null>(null);
+  const previousResetKey = useRef(resetKey);
   const root = useRef<HTMLDivElement>(null);
   const origin = useRef<{ button: HTMLButtonElement; rect: DOMRect; scroll: number } | null>(null);
   const returning = useRef<DOMRect | null>(null);
@@ -21,6 +22,15 @@ export function useGameNavigation() {
     setSelectedId(null);
   };
   useLayoutEffect(() => {
+    // Sidebar navigation opens the gallery without restoring a previous game's
+    // focus, scroll position, or cover animation (including in hidden tabs).
+    if (previousResetKey.current !== resetKey) {
+      previousResetKey.current = resetKey;
+      origin.current = null;
+      returning.current = null;
+      setSelectedId(null);
+      return;
+    }
     let animation: Animation | undefined;
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     const cover = selectedId
@@ -51,6 +61,6 @@ export function useGameNavigation() {
         );
     }
     return () => animation?.cancel();
-  }, [selectedId]);
+  }, [selectedId, resetKey]);
   return { root, selectedId, open, back, select: setSelectedId };
 }

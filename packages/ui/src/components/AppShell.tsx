@@ -1,4 +1,4 @@
-import { Compass, Library, Settings } from "lucide-react";
+import { Home, Library, Settings } from "lucide-react";
 import type { ReactNode } from "react";
 import { useTranslation } from "../i18n";
 import type { Collection } from "../types";
@@ -30,8 +30,8 @@ export function AppShell({
         <nav aria-label={t("Main navigation")}>
           {(
             [
-              { id: "library", label: t("Library"), icon: Library },
-              { id: "discovery", label: t("Discover translations"), icon: Compass },
+              { id: "discovery", label: t("Home"), icon: Home },
+              { id: "library", label: t("My Games"), icon: Library },
             ] as const
           ).map(({ id, label, icon: Icon }) => (
             <button

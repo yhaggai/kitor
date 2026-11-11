@@ -40,7 +40,9 @@ export function gameSummary(game: Game): GameSummary {
     id: String(game.id),
     searchTerms: `${game.scummvm_id} ${game.title} ${game.title_he ?? ""}`,
     title: classicTitles[game.scummvm_id] ?? game.title,
+    titleHe: game.title_he ?? undefined,
     ...artwork(game.scummvm_id, game.cover_url),
+    coverLanguage: "he",
     status: unhealthy
       ? "attention"
       : patched
@@ -60,7 +62,9 @@ export function patchSummary(patch: PatchWithStatus): GameSummary {
     id: `${patch.scummvm_id}:${patch.language}:${patch.version}`,
     searchTerms: `${patch.scummvm_id} ${patch.game_title} ${patch.title_he ?? ""}`,
     title: classicTitles[patch.scummvm_id] ?? patch.game_title,
+    titleHe: patch.title_he ?? undefined,
     ...artwork(patch.scummvm_id, patch.cover_url),
+    coverLanguage: "he",
     status: patch.patch_installed ? "ready" : patch.game_installed ? "available" : "unowned",
     description: gameDescription(patch.scummvm_id).description,
     author: gameDescription(patch.scummvm_id).communityTranslation ? undefined : patch.author,
