@@ -415,6 +415,30 @@
       {
         "batch": "c000994-00200",
         "notes": "German/Walder retained verbatim as unintelligible transmission, including Graad/Vredefort terms. Source trailing newlines preserved112/139. Radio call signs deliberately retain branch-specific Firewalker הולך־באש, Tequila Sunset טקילה סאנסט, Costeau קוסטו, Du Bois דו בואה."
+      },
+      {
+        "batch": "c000937-00000",
+        "notes": "Same-author consistency revision: Fortress Accident changed from provisional מבצר התאונה to established פורטרס אקסידנט per root confirmation of lane3 c555. Two occurrences."
+      },
+      {
+        "batch": "c000998-00000",
+        "notes": "Sad ordinary adjectives עצוב/עצובות; Reeds construct קני הבר; stained glass definite חלון הזכוכית הצבעונית; Union in police motto אחדות not dockworkers union. Innocence אינוסנס / Her Innocence הוד אינוסנסותה verified against targeted canonical examples. Therriers תריירים, Advesperascit אדווספרסקיט, Magritte מגריט, Supramundi סופראמונדי provisional. French inscriptions and Latin mare interregnum retained; explanatory lines translated. Bad sines סינוסים רעים intentional Noid audio pun."
+      },
+      {
+        "batch": "c000998-00200",
+        "notes": "Sad ordinary adjective עצוב/עצובות; stained glass definite חלון הזכוכית הצבעונית. Iilmaraan אילמראן provisional. Standard Innocence title retained; motif translated in explanatory English line while French inscriptions in prior batch remain foreign."
+      },
+      {
+        "batch": "c001012-00000",
+        "notes": "C/Cunoesse false positive in C'mon. Mic short colloquial מייק (מייק מגע), full microphone מיקרופון מגע, to retain Contact Mike homophone joke; boxer canonical קונטקט מייק. Paliseum פאליסאום; Arno van Eyck ארנו ואן אייק; Egg אג; Pox פוקס; Villalobos וייאלובוס; Grand-Couron גראן־קורון provisional. Hat dialogue masculine object agreement."
+      },
+      {
+        "batch": "c001012-00000",
+        "notes": "Same-author term refinement after next compact context supplies Egg Head ראש ביצה: abbreviated Egg now ביצה (supersedes provisional אג)."
+      },
+      {
+        "batch": "c001021-00000",
+        "notes": "Hawthorn definite עץ העוזרר and ordinary Sad adjective עצוב/עצובה intentional. madre natura transliterated מאדרה נטורה. Tape alternates קלטת object and סרט magnetic ribbon by context."
       }
     ],
     "lane-2-notes": [
@@ -1052,6 +1076,22 @@
       {
         "batch": "c000997-00000",
         "note": "perception of value = ערך נתפס; sad story = עצוב. Exact-name lookup absent: Mauer-Koshlai Mercury Group קבוצת מאואר־קושלאי מרקורי; Weiss-Wiesemann וייס־ויזמן; karperie קרפרי; Ile-de-Casherbrume איל־דה־קאשרברום; Rehm רהם; Diodore דיודור; Suresne סורן."
+      },
+      {
+        "batch": "c001015-00000",
+        "note": "death’s door = סף המוות; Cmon = בחייך; august adjective נשגב retains grandeur/summer association but not English homonym. Egg rhythmic shout adapted כלוב של זעם, להבה של רעם."
+      },
+      {
+        "batch": "c000997-00200/00400",
+        "note": "Art-ishoo wordplay adapted אמנות אַפּצ׳יו, with issue אישיו in explanation. Fortress Accident provisional מצודת התאונה, exact-name lookup absent. Source missing quote c997-00400:165 retained."
+      },
+      {
+        "batch": "c001030-00000",
+        "note": "Radio novella = תסכית; Union of Moribund Alcoholics = איגוד האלכוהוליסטים הגוססים, separate from dock union; sad ordinary עצוב/עצובות. Drunken malformed Abigail signature adapted אלטקרעו לאביכיל. Source missing quote row43 retained."
+      },
+      {
+        "batch": "c001030-00200",
+        "note": "Union alcoholics separate named joke איגוד האלכוהוליסטים הגוססים; Count C drug slang הרוזן סי not Cunoesse; seagull plural שחפים. Alco-lete/gin-nast adapted אלכוהלתלט/ג׳ימנסטיקאי. Missing quote row81 retained."
       }
     ],
     "lane-3-notes": [
@@ -1466,6 +1506,22 @@
       {
         "batch": "c001016-00200",
         "note": "C/Cunoesse false positive from C’mon; foot in door idiom דריסת רגל. Source’s unmatched emphasis asterisk in row177 retained exactly."
+      },
+      {
+        "batch": "c001016-00400",
+        "note": "C/Cunoesse matches are C’mon, translated בחייך. Mainframe definite inflection המחשב המרכזי preserves term."
+      },
+      {
+        "batch": "c001056-00000",
+        "note": "Broken Window appears as definite החלון השבור, normal Hebrew inflection."
+      },
+      {
+        "batch": "c001065-00000",
+        "note": "Bed appears in construct form מיטת האכסניה. Dick Mullen novel characters: Deanna Deneuve דיאנה דנב, Charlie Spillane צ׳רלי ספיליין, Torvald טורוואלד."
+      },
+      {
+        "batch": "c001070-00000",
+        "note": "C/Cunoesse advisory matched C’mon; rendered קדימה."
       }
     ]
   }

@@ -2,8 +2,8 @@
   "branch": "codex/disco-elysium-localization",
   "source_of_truth": "translations.csv",
   "authoring": "Direct current-assistant translation; no external draft service",
-  "translated": 59925,
-  "remaining": 19661,
+  "translated": 62019,
+  "remaining": 17567,
   "conversations_with_translations": {
     "5": {
       "total": 14,
@@ -2087,8 +2087,13 @@
     },
     "997": {
       "total": 602,
-      "translated": 400,
+      "translated": 602,
       "name": "CONTAINERYARD / LIGHT BENDING GUY"
+    },
+    "998": {
+      "total": 278,
+      "translated": 278,
+      "name": "CHURCH / STAINED GLASS WINDOW VISCAL"
     },
     "1000": {
       "total": 65,
@@ -2120,21 +2125,96 @@
       "translated": 150,
       "name": "ICE / ACELE AND ASSOCIATES"
     },
+    "1012": {
+      "total": 225,
+      "translated": 225,
+      "name": "ICE / ACELE ON ICE"
+    },
     "1013": {
       "total": 149,
       "translated": 149,
       "name": "ICE / ACELE CHURCH STUFF"
     },
+    "1015": {
+      "total": 215,
+      "translated": 215,
+      "name": "ICE / ANDRE TENT CONTENT"
+    },
     "1016": {
       "total": 633,
-      "translated": 400,
+      "translated": 633,
       "name": "ICE / ANDRE WHITE CHECKS"
+    },
+    "1019": {
+      "total": 14,
+      "translated": 14,
+      "name": "KIM SWITCH / FIGHT FAILURE"
+    },
+    "1021": {
+      "total": 62,
+      "translated": 62,
+      "name": "CANAL / HAWTHORN"
+    },
+    "1024": {
+      "total": 1,
+      "translated": 1,
+      "name": "ICE / KIM POST TENT barks"
+    },
+    "1025": {
+      "total": 2,
+      "translated": 2,
+      "name": "ICE / KIM CHURCH barks"
+    },
+    "1030": {
+      "total": 1032,
+      "translated": 400,
+      "name": "VILLAGE / IDIOT DOOM SPIRAL"
+    },
+    "1053": {
+      "total": 20,
+      "translated": 20,
+      "name": "WHIRLING F2 / DREAM 2 INTRO"
+    },
+    "1054": {
+      "total": 45,
+      "translated": 45,
+      "name": "WHIRLING F2 / DREAM 2 HANGED MAN"
+    },
+    "1056": {
+      "total": 31,
+      "translated": 31,
+      "name": "DAYCHANGE / TEQUILA BED"
+    },
+    "1065": {
+      "total": 220,
+      "translated": 220,
+      "name": "INVENTORY / MULLEN IDENTITY"
+    },
+    "1069": {
+      "total": 34,
+      "translated": 34,
+      "name": "INITIATION / ALCOHOL HABIT"
+    },
+    "1070": {
+      "total": 47,
+      "translated": 47,
+      "name": "INITIATION / PYRHOLIDON HABIT"
+    },
+    "1071": {
+      "total": 32,
+      "translated": 32,
+      "name": "INITIATION / SMOKING HABIT"
+    },
+    "1075": {
+      "total": 33,
+      "translated": 33,
+      "name": "BACKYARD ORB / more bullet thoughts"
     }
   },
   "resume_at": {
-    "conversation_id": 997,
-    "entry_id": 9,
-    "key": "Alternate1/0x0100000F0001633E"
+    "conversation_id": 1029,
+    "entry_id": 6,
+    "key": "Dialogue Text/0x0100005A0000DE79"
   },
   "glossary_entries": 467,
   "validation": {
@@ -2146,10 +2226,10 @@
     "bundle_sha256": "30822499ec9c1dc102393335a2344a06da71153857fcd62ba1d01ec8ce7d9906",
     "last_csv_validation": {
       "entries": 79586,
-      "translated": 59925,
-      "remaining": 19661,
+      "translated": 62019,
+      "remaining": 17567,
       "source_words": 1129354,
-      "coverage_percent": 75.296,
+      "coverage_percent": 77.927,
       "unmapped_source_keys": 193,
       "unresolved_localization_terms": 127,
       "errors": [],
