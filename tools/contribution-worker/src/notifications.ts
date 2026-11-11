@@ -80,14 +80,14 @@ export async function webhook(req: Request, env: Env): Promise<Response> {
       .first();
     if (inProgress)
       throw new HttpError(503, "Submission is still processing; redeliver this event");
-    const message = `Thank you for improving The Drifter's Hebrew translation! Your contribution has been reviewed and merged.\n\n${url}\n\nWe'll email you again when a published patch includes your corrections.\n\nThe Kitor team`;
+    const message = `תודה על העזרה בשיפור התרגום לעברית של The Drifter! התיקונים שלך נבדקו ואושרו.\n\nלצפייה בתרומה:\n${url}\n\nנשלח לך עדכון נוסף כשהתיקונים ייכללו בגרסת פאץ׳ שפורסמה.\n\nצוות קיטור\n\n--- English ---\n\nThank you for improving The Drifter's Hebrew translation! Your contribution has been reviewed and merged.\n\n${url}\n\nWe'll email you again when a published patch includes your corrections.\n\nThe Kitor team`;
     await env.DB.batch([
       env.DB.prepare(
         "UPDATE submissions SET merge_sha=COALESCE(merge_sha,?) WHERE url=? AND status='complete'"
       ).bind(pr.merge_commit_sha, url),
       env.DB.prepare(`INSERT OR IGNORE INTO notifications(id,submission_id,kind,subject,message)
         SELECT 'approved/' || id,id,'approved',?,? FROM submissions WHERE url=? AND status='complete'`).bind(
-        "Your Kitor contribution was approved 🎉",
+        "התרומה שלך לקיטור אושרה 🎉 | Your Kitor contribution was approved",
         message,
         url
       ),
@@ -186,8 +186,8 @@ export async function reconcileReleases(env: Env) {
             `released/${row.id}`,
             row.id,
             "released",
-            "Your Kitor corrections are available in a new patch 🎉",
-            `Your corrections to The Drifter's Hebrew translation are included in patch ${tag.slice("patch-drifter-he-v".length)}.\n\nhttps://github.com/${REPO}/releases/tag/${tag}\n\nThank you for helping the community!\nThe Kitor team`
+            "התיקונים שלך זמינים בפאץ׳ החדש 🎉 | Your corrections are available",
+            `התיקונים שלך לתרגום לעברית של The Drifter נכללים בגרסת הפאץ׳ ${tag.slice("patch-drifter-he-v".length)}.\n\nלהורדת הפאץ׳:\nhttps://github.com/${REPO}/releases/tag/${tag}\n\nתודה על העזרה לקהילה!\nצוות קיטור\n\n--- English ---\n\nYour corrections to The Drifter's Hebrew translation are included in patch ${tag.slice("patch-drifter-he-v".length)}.\n\nhttps://github.com/${REPO}/releases/tag/${tag}\n\nThank you for helping the community!\nThe Kitor team`
           ),
           env.DB.prepare("UPDATE submissions SET released_tag=? WHERE id=?").bind(tag, row.id),
         ]);
@@ -251,7 +251,7 @@ export async function drainNotifications(env: Env, send = sendEmail) {
     }
     // Freeze the whole body so provider idempotency retries have identical payloads.
     if (!row.message.includes("Stop contribution emails:")) {
-      row.message += `\n\nStop contribution emails: ${env.PUBLIC_URL}/notifications/unsubscribe?token=${consent.unsubscribe_token}`;
+      row.message += `\n\nלהפסקת עדכוני תרומות בדוא״ל / Stop contribution emails: ${env.PUBLIC_URL}/notifications/unsubscribe?token=${consent.unsubscribe_token}`;
       await env.DB.prepare("UPDATE notifications SET message=? WHERE id=?")
         .bind(row.message, row.id)
         .run();
