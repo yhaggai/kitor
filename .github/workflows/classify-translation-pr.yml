@@ -4,7 +4,7 @@ on:
   workflow_call:
     outputs:
       translation_only:
-        description: The PR changes only Drifter Hebrew subtitles and their checksum
+        description: The PR changes only supported Hebrew translation data and matching checksums
         value: ${{ jobs.classify.outputs.translation_only }}
 
 permissions:
