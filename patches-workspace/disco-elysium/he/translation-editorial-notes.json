@@ -80,6 +80,31 @@
         "key": "Dialogue Text/0x0100007200001248",
         "reason": "Ecclesiastes faction term rendered אקקלסיאסטים provisionally; no exact glossary entry found.",
         "status": "translated; editorial review pending"
+      },
+      {
+        "key": "Dialogue Text/0x0100002B0007CCEE",
+        "reason": "Fortress Accident transliterated פורטרס אקסידנט pending global company-name review; source company identity preserved.",
+        "status": "translated; editorial review pending"
+      },
+      {
+        "key": "Dialogue Text/0x01000005000016B3",
+        "reason": "Filament memory rendered זיכרון נימים; align radiocomputer hardware terminology globally before release.",
+        "status": "translated; editorial review pending"
+      },
+      {
+        "key": "Dialogue Text/0x0100005A00005566",
+        "reason": "Iilmaraan rendered אילמראני; invented ethnogeographic term pronunciation provisional.",
+        "status": "translated; editorial review pending"
+      },
+      {
+        "key": "Dialogue Text/0x0100005A000055AB",
+        "reason": "Uamrao/L’Iramburde rendered אואמראו/ל'אירמבורד; pronunciation needs audio/source review.",
+        "status": "translated; editorial review pending"
+      },
+      {
+        "key": "Dialogue Text/0x0100002F000027BF",
+        "reason": "Frittte spelling joke retains three Latin t letters verbally as שלוש טי despite Hebrew glossary פריטטה.",
+        "status": "translated; editorial review pending"
       }
     ],
     "lane-2-notes": [
@@ -191,6 +216,26 @@
           "Alternate1/0x0100000F0000C152"
         ],
         "reason": "German radio crosstalk deliberately retained: protagonist cannot understand it; Rhetoric explicitly confirms incomprehension. Preserve source foreignness and reveal timing. Complete conversation inventory."
+      },
+      {
+        "conversation": 485,
+        "terminology": {
+          "welkin": "ולקין",
+          "dweorgr": "דוואורג",
+          "iyskel": "איסקל",
+          "maegic": "כשף",
+          "high-Pasternal fantastique": "פנטזיה פסטרנלית עילית"
+        },
+        "reason": "Preserve fictional fantasy species and setting; distinct fantasy vocabulary retained contextually. Canonical glossary title Wirrâl = ויראל."
+      },
+      {
+        "conversation": 517,
+        "keys": [
+          "Dialogue Text/0x010000820001FD6F",
+          "Dialogue Text/0x010000820001FD7F",
+          "Dialogue Text/0x010000820001FD85"
+        ],
+        "reason": "Polish code-switch words Barszcz and wódka retained intentionally; scene is a language-barrier exchange, while English vodka remains translated וודקה."
       }
     ]
   }

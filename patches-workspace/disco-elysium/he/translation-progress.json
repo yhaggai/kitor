@@ -2,8 +2,8 @@
   "branch": "codex/disco-elysium-localization",
   "source_of_truth": "translations.csv",
   "authoring": "Direct current-assistant translation; no external draft service",
-  "translated": 23846,
-  "remaining": 55740,
+  "translated": 25923,
+  "remaining": 53663,
   "conversations_with_translations": {
     "5": {
       "total": 14,
@@ -745,20 +745,50 @@
       "translated": 43,
       "name": "DOOMED / BARBELL"
     },
+    "481": {
+      "total": 527,
+      "translated": 527,
+      "name": "JAM / TOMMY"
+    },
     "482": {
       "total": 145,
       "translated": 145,
       "name": "INVENTORY / GREATEST INNOSSENCE"
+    },
+    "483": {
+      "total": 17,
+      "translated": 17,
+      "name": "BOOKSTORE / COCKATOO"
+    },
+    "484": {
+      "total": 38,
+      "translated": 38,
+      "name": "INVENTORY / HJELMWOMAN"
+    },
+    "485": {
+      "total": 72,
+      "translated": 72,
+      "name": "INVENTORY / WIRRAL MODULE"
     },
     "489": {
       "total": 9,
       "translated": 9,
       "name": "GATES / BABEONE barks"
     },
+    "490": {
+      "total": 8,
+      "translated": 8,
+      "name": "GATES / ANOTHERBABE barks"
+    },
     "493": {
       "total": 7,
       "translated": 7,
       "name": "GATES / WOMENS RIGHTS first phase barks"
+    },
+    "495": {
+      "total": 221,
+      "translated": 221,
+      "name": "GATES / MYSTERIOUS EYES"
     },
     "500": {
       "total": 8,
@@ -779,12 +809,57 @@
       "total": 22,
       "translated": 22,
       "name": "VILLAGE / SHACK DOOR"
+    },
+    "515": {
+      "total": 503,
+      "translated": 503,
+      "name": "VILLAGE / NETPICKER"
+    },
+    "516": {
+      "total": 49,
+      "translated": 49,
+      "name": "VILLAGE / BOAT"
+    },
+    "517": {
+      "total": 81,
+      "translated": 81,
+      "name": "WHIRLING F1 / GORACY KUBEK"
+    },
+    "520": {
+      "total": 420,
+      "translated": 200,
+      "name": "KIM SWITCH / DEBRIEF DAY ONE"
+    },
+    "521": {
+      "total": 43,
+      "translated": 43,
+      "name": "KIM SWITCH / DAY TWO UNION"
+    },
+    "522": {
+      "total": 111,
+      "translated": 111,
+      "name": "WHIRLING F2 / MEDICINE CABINET"
+    },
+    "527": {
+      "total": 52,
+      "translated": 52,
+      "name": "THOUGHT / KINGDOM OF CONSCIENCE"
+    },
+    "530": {
+      "total": 55,
+      "translated": 55,
+      "name": "THOUGHT / HONOUR"
+    },
+    "535": {
+      "total": 100,
+      "translated": 100,
+      "name": "COAST ORB / reeds by feld"
     }
   },
   "resume_at": {
-    "conversation_id": 481,
-    "entry_id": 2,
-    "key": "Dialogue Text/0x010000040000A921"
+    "conversation_id": 520,
+    "entry_id": 51,
+    "key": "Alternate1/0x0100005800009766"
   },
   "glossary_entries": 467,
   "validation": {
@@ -796,10 +871,10 @@
     "bundle_sha256": "30822499ec9c1dc102393335a2344a06da71153857fcd62ba1d01ec8ce7d9906",
     "last_csv_validation": {
       "entries": 79586,
-      "translated": 23846,
-      "remaining": 55740,
+      "translated": 25923,
+      "remaining": 53663,
       "source_words": 1129354,
-      "coverage_percent": 29.963,
+      "coverage_percent": 32.572,
       "unmapped_source_keys": 193,
       "unresolved_localization_terms": 127,
       "errors": [],
