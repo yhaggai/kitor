@@ -5,20 +5,6 @@ on:
     paths:
       - 'tools/contribution-worker/**'
       - '.github/workflows/deploy-contribution-worker.yml'
-  push:
-    branches: [v1]
-    paths:
-      - 'tools/contribution-worker/**'
-      - '.github/workflows/deploy-contribution-worker.yml'
-  workflow_dispatch:
-    inputs:
-      environment:
-        description: Environment to deploy (production requires environment approval)
-        type: choice
-        required: true
-        default: staging
-        options: [staging, production]
-
 permissions:
   contents: read
 
@@ -47,61 +33,5 @@ jobs:
           node --check scripts/deployment-config.mjs
           node --check scripts/deployment-secrets.mjs
           node --check scripts/check-deployment.mjs
-      - name: Build Worker without publishing
+      - name: Validate Worker bundle
         run: npx --no-install wrangler deploy --dry-run --outdir .wrangler/ci-build
-
-  deploy:
-    needs: validate
-    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/v1'
-    runs-on: ubuntu-latest
-    timeout-minutes: 15
-    environment:
-      name: ${{ github.event_name == 'workflow_dispatch' && inputs.environment || 'staging' }}
-      url: ${{ vars.PUBLIC_URL }}
-    concurrency:
-      group: contribution-worker-${{ github.event_name == 'workflow_dispatch' && inputs.environment || 'staging' }}
-      cancel-in-progress: false
-    defaults:
-      run:
-        working-directory: tools/contribution-worker
-    env:
-      DEPLOY_ENV: ${{ github.event_name == 'workflow_dispatch' && inputs.environment || 'staging' }}
-      CLOUDFLARE_ACCOUNT_ID: ${{ vars.CLOUDFLARE_ACCOUNT_ID }}
-      PUBLIC_URL: ${{ vars.PUBLIC_URL }}
-      D1_DATABASE_ID: ${{ vars.D1_DATABASE_ID }}
-      BOT_APP_ID: ${{ vars.BOT_APP_ID }}
-      NOTIFICATIONS_ENABLED: ${{ vars.NOTIFICATIONS_ENABLED }}
-      NOTIFICATION_FROM: ${{ vars.NOTIFICATION_FROM }}
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: '22'
-          cache: npm
-          cache-dependency-path: tools/contribution-worker/package-lock.json
-      - run: npm ci
-      - name: Prepare environment configuration
-        run: node scripts/deployment-config.mjs
-      - name: Prepare Worker secrets
-        env:
-          GOOGLE_CLIENT_ID: ${{ secrets.GOOGLE_CLIENT_ID }}
-          GOOGLE_CLIENT_SECRET: ${{ secrets.GOOGLE_CLIENT_SECRET }}
-          BOT_PRIVATE_KEY: ${{ secrets.BOT_PRIVATE_KEY }}
-          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
-          GITHUB_WEBHOOK_SECRET: ${{ secrets.GITHUB_WEBHOOK_SECRET }}
-        run: node scripts/deployment-secrets.mjs
-      - name: Validate deployment bundle
-        run: npx --no-install wrangler deploy --config wrangler.deploy.json --env "$DEPLOY_ENV" --dry-run --outdir .wrangler/ci-build
-      - name: Apply D1 migrations
-        env:
-          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-        run: npx --no-install wrangler d1 migrations apply DB --remote --config wrangler.deploy.json --env "$DEPLOY_ENV"
-      - name: Deploy Worker and secrets
-        env:
-          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-        run: npx --no-install wrangler deploy --config wrangler.deploy.json --env "$DEPLOY_ENV" --secrets-file .deploy-secrets.json
-      - name: Verify deployment
-        run: node scripts/check-deployment.mjs
-      - name: Remove temporary secrets
-        if: always()
-        run: rm -f .deploy-secrets.json

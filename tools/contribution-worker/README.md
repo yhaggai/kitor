@@ -101,19 +101,11 @@ Google production branding, measure Worker CPU with the full CSV, choose limits
 accordingly, and add operational monitoring/account-deletion handling. No patch
 build runs inside this Worker; existing repository CI handles patch validation.
 
-## GitHub Actions deployment
+## GitHub Actions validation
 
-`.github/workflows/deploy-contribution-worker.yml` validates PRs without secrets.
-Pushes to `v1` affecting the Worker deploy staging. For production, run
-**Contribution Worker → Run workflow**, choose branch **v1** and environment
-**production**. Other branches cannot run the deployment job. Deployments to the
-same environment are serialized and are not cancelled mid-migration.
-
-Before the first deployment, create GitHub environments `staging` and `production`.
-Configure **required reviewers** on production and restrict its deployment branches
-to `v1`. These protections are repository settings, not enforced by this YAML alone.
-If your GitHub plan does not support required reviewers for this repository, establish
-an equivalent approval gate before enabling production deployment.
+`.github/workflows/deploy-contribution-worker.yml` runs tests and validates the
+Worker bundle on pull requests. The hosted Worker URL, GitHub environments,
+and deployment workflow are handled separately.
 
 Create two D1 databases once using your Cloudflare account:
 
