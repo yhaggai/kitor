@@ -204,7 +204,9 @@ test("PR uses bot credentials and server-derived contributor attribution", async
     if (path.includes("/contents/")) return new Response(manifest);
     if (path.includes("/pulls?") || path.includes("/matching-refs/")) return Response.json([]);
     if (path.endsWith("/pulls"))
-      return Response.json({ html_url: "https://github.com/yhaggai/kitor/pull/999" });
+      return Response.json({ number: 999, html_url: "https://github.com/yhaggai/kitor/pull/999" });
+    if (path.endsWith("/labels/translation%20contribution"))
+      return new Response(null, { status: 404 });
     return Response.json({ sha: "a".repeat(40), tree: { sha: "b".repeat(40) } });
   };
   try {
@@ -219,6 +221,13 @@ test("PR uses bot credentials and server-derived contributor attribution", async
     const pr = calls.find((c) => c.url.endsWith("/pulls"))?.body;
     assert.ok(pr);
     assert.equal(pr.draft, true);
+    assert.equal(
+      calls.find((c) => c.url.endsWith("/kitor/labels"))?.body?.name,
+      "translation contribution"
+    );
+    assert.deepEqual(calls.find((c) => c.url.endsWith("/issues/999/labels"))?.body, {
+      labels: ["translation contribution"],
+    });
     assert.match(String(pr.body), /Contributor: \*\*Contributor\*\*/);
     assert.match(String(pr.body), /public-id/);
     const commit = calls.find((c) => c.url.endsWith("/git/commits"))?.body;

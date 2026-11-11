@@ -5,6 +5,12 @@ import { type Contributor, type Env, HttpError, hash, now } from "./shared";
 const REPO = "yhaggai/kitor";
 const CSV = "patches-workspace/drifter/he/payload/translation.csv",
   MANIFEST = "patches-workspace/drifter/he/patch.json";
+class GitHubError extends HttpError {
+  constructor(readonly upstreamStatus: number) {
+    super(502, `GitHub returned ${upstreamStatus}; retry shortly`);
+  }
+}
+
 export async function github(
   path: string,
   token: string,
@@ -25,7 +31,7 @@ export async function github(
     body: body ? JSON.stringify(body) : undefined,
     signal: AbortSignal.timeout(20000),
   });
-  if (!response.ok) throw new HttpError(502, `GitHub returned ${response.status}; retry shortly`);
+  if (!response.ok) throw new GitHubError(response.status);
   const reader = response.body!.getReader();
   let text = "",
     size = 0;
@@ -100,6 +106,7 @@ export async function openPR(
   if (existing.length) {
     if (existing[0].state === "closed")
       throw new HttpError(409, "This PR closed during submission. Retry to create a new PR.");
+    await labelContribution(existing[0], token);
     return { url: existing[0].html_url, existing: true };
   }
   const manifest = manifestChecksum(await source(MANIFEST, input.base_sha, token), input.digest);
@@ -122,17 +129,56 @@ export async function openPR(
     title: `[POC — do not merge] Drifter: ${Object.keys(input.edits).length} correction(s) from Kitor`,
     body: `${attribution(user)}\n\nSubmitted by the Kitor bot. Base: \`${input.base_sha}\`.\n\n**POC: do not merge or publish.** CSV corrections and checksum only; no release version bump or gameplay validation. Hebrew uses Drifter’s stored display order.`,
   });
+  await labelContribution(pr, token);
   return { url: pr.html_url, existing: false };
 }
 
 type OpenPull = {
   number: number;
+  labels?: { name: string }[];
   html_url: string;
   state: string;
   head: { ref: string; sha: string; repo?: { full_name: string } };
   base: { ref: string; repo?: { full_name: string } };
 };
 const endpoint = `repos/${REPO}`;
+
+const CONTRIBUTION_LABEL = "translation contribution";
+
+async function labelContribution(pr: Pick<OpenPull, "number" | "labels">, token: string) {
+  if (
+    !Number.isSafeInteger(pr.number) ||
+    pr.labels?.some((label) => label.name === CONTRIBUTION_LABEL)
+  )
+    return;
+  const labelPath = `${endpoint}/labels/${encodeURIComponent(CONTRIBUTION_LABEL)}`;
+  try {
+    try {
+      await github(labelPath, token);
+    } catch (error) {
+      if (!(error instanceof GitHubError) || error.upstreamStatus !== 404) throw error;
+      try {
+        await github(`${endpoint}/labels`, token, {
+          name: CONTRIBUTION_LABEL,
+          color: "0e8a16",
+          description: "Hebrew translation contribution submitted through Kitor",
+        });
+      } catch (createError) {
+        if (!(createError instanceof GitHubError) || createError.upstreamStatus !== 422)
+          throw createError;
+        // Another submission may have created the label concurrently.
+        await github(labelPath, token);
+      }
+    }
+    await github(`${endpoint}/issues/${pr.number}/labels`, token, { labels: [CONTRIBUTION_LABEL] });
+  } catch (error) {
+    // Labeling is metadata. The contributor still needs the URL of their saved PR.
+    console.warn("Contribution PR label could not be applied", {
+      number: pr.number,
+      status: error instanceof GitHubError ? error.upstreamStatus : undefined,
+    });
+  }
+}
 
 export async function findOpenPR(env: Env, contributor: string, branch: string, token: string) {
   const owned = await env.DB.prepare(
@@ -227,5 +273,6 @@ export async function appendPR(pr: OpenPull, input: Correction, token: string) {
     if (updated.state !== "open" && (!updated.merged || updated.head.sha !== commit))
       throw new HttpError(409, "The PR closed during submission. Retry to create a new PR.");
   }
+  await labelContribution(current, token);
   return { url: pr.html_url, existing: true, updated: csv !== previous };
 }
