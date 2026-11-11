@@ -2,8 +2,8 @@
   "branch": "codex/disco-elysium-localization",
   "source_of_truth": "translations.csv",
   "authoring": "Direct current-assistant translation; no external draft service",
-  "translated": 34420,
-  "remaining": 45166,
+  "translated": 36663,
+  "remaining": 42923,
   "conversations_with_translations": {
     "5": {
       "total": 14,
@@ -1140,21 +1140,66 @@
       "translated": 485,
       "name": "CONTAINERYARD / EVRART"
     },
+    "607": {
+      "total": 214,
+      "translated": 214,
+      "name": "CONTAINERYARD / EASY-LEO"
+    },
     "611": {
       "total": 29,
       "translated": 29,
       "name": "APT / EMPTY ROOM DOOR"
     },
+    "617": {
+      "total": 267,
+      "translated": 267,
+      "name": "PLAZA / THE GARDENER"
+    },
+    "619": {
+      "total": 5,
+      "translated": 5,
+      "name": "CONTAINERYARD / LEO new barks"
+    },
+    "620": {
+      "total": 3,
+      "translated": 3,
+      "name": "WHIRLING / SLEEPER barks"
+    },
+    "625": {
+      "total": 633,
+      "translated": 400,
+      "name": "INVENTORY / LEDGER OF FAILURE"
+    },
     "627": {
       "total": 321,
-      "translated": 200,
+      "translated": 321,
       "name": "YARD / HANGED MAN BULLET"
+    },
+    "629": {
+      "total": 49,
+      "translated": 49,
+      "name": "DOOMED / MOODBOARD"
+    },
+    "630": {
+      "total": 260,
+      "translated": 260,
+      "name": "DOOMED / RADIOCOMPUTER"
+    },
+    "631": {
+      "total": 1058,
+      "translated": 600,
+      "name": "PIER / JOYCE INTRO"
+    },
+    "632": {
+      "total": 324,
+      "translated": 324,
+      "name": "PIER / JOYCE LYNCHING AND TATTOOS"
     }
   },
   "resume_at": {
-    "conversation_id": 607,
-    "entry_id": 2,
-    "key": "Dialogue Text/0x0100000600018651"
+    "conversation_id": 625,
+    "entry_id": 44,
+    "key": "Alternate1/0x0100004500002A10"
   },
   "glossary_entries": 467,
   "validation": {
@@ -1166,10 +1211,10 @@
     "bundle_sha256": "30822499ec9c1dc102393335a2344a06da71153857fcd62ba1d01ec8ce7d9906",
     "last_csv_validation": {
       "entries": 79586,
-      "translated": 34420,
-      "remaining": 45166,
+      "translated": 36663,
+      "remaining": 42923,
       "source_words": 1129354,
-      "coverage_percent": 43.249,
+      "coverage_percent": 46.067,
       "unmapped_source_keys": 193,
       "unresolved_localization_terms": 127,
       "errors": [],

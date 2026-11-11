@@ -183,6 +183,22 @@
       {
         "batch": "c000602-00200",
         "terminology_exceptions": "Union prefixed לאיגוד and construct איגוד עובדי הנמל; radio police קשר; sad adjective עצוב. Door restored explicitly after review."
+      },
+      {
+        "batch": "c000607-00000",
+        "terminology_exceptions": "Union uses construct איש איגוד/איגוד עובדי הנמל/איגוד הסוורים and gardener uses attached prefix לגננית or indefinite כגננית. Miss Bellows localized מיס שאגנית to retain nickname explanation versus Bellams בלאמס."
+      },
+      {
+        "batch": "c000607-00200",
+        "terminology_exception": "the Union → prefixed לאיגוד."
+      },
+      {
+        "batch": "c000625-00000",
+        "terminology_exceptions": "Sad ordinary adjective rendered עצוב or עגום. Ledger generic references shortened פנקס; official named Damaged Ledger preserved פנקס החשבונות הפגום."
+      },
+      {
+        "batch": "c000625-00200",
+        "terminology_exception": "the pale in the pale violet dot is adjective חיוורת, not phenomenon החיוורון."
       }
     ],
     "lane-2-notes": [
@@ -284,6 +300,114 @@
           }
         ],
         "note": "processing means processing surveillance information, not police department. Mega rich light-bending guy rendered indefinite בחור עשיר בטירוף שמעקם את האור per source a/an."
+      },
+      {
+        "batch": "c000627-00000",
+        "reviewed_flags": [
+          {
+            "key": "Dialogue Text/0x0100004500004DC6",
+            "term": "Volition",
+            "expected_forms": ["כוח רצון"],
+            "status": "review; inflection, wordplay or context may justify exception"
+          },
+          {
+            "key": "Dialogue Text/0x0100000600008FC4",
+            "term": "Ice Bear Fridge",
+            "expected_forms": ["מקרר דוב הקרח"],
+            "status": "review; inflection, wordplay or context may justify exception"
+          },
+          {
+            "key": "Dialogue Text/0x0100004500005155",
+            "term": "Cunoesse",
+            "expected_forms": ["קונואס", "קונואס"],
+            "status": "review; inflection, wordplay or context may justify exception"
+          },
+          {
+            "key": "Dialogue Text/0x01000005000022C6",
+            "term": "The Doomed Commercial Area",
+            "expected_forms": ["המתחם המסחרי המקולל"],
+            "status": "review; inflection, wordplay or context may justify exception"
+          },
+          {
+            "key": "Dialogue Text/0x01000005000022C6",
+            "term": "East Delta Commerce Centre",
+            "expected_forms": ["מרכז המסחר של הדלתא המזרחית"],
+            "status": "review; inflection, wordplay or context may justify exception"
+          },
+          {
+            "key": "Dialogue Text/0x01000095000002E6",
+            "term": "Ice Bear Fridge",
+            "expected_forms": ["מקרר דוב הקרח"],
+            "status": "review; inflection, wordplay or context may justify exception"
+          },
+          {
+            "key": "Dialogue Text/0x010000450000510C",
+            "term": "Cunoesse",
+            "expected_forms": ["קונואס", "קונואס"],
+            "status": "review; inflection, wordplay or context may justify exception"
+          }
+        ],
+        "note": "volition ordinary will; C nickname translated סי. Ice bear fridge indefinite noun phrase מקרר דוב קרח. במתחם replaces article after prefix; Doomed Commercial Area is correct source name, not its official-address alias."
+      },
+      {
+        "batch": "c000627-00200",
+        "reviewed_flags": [
+          {
+            "key": "Dialogue Text/0x01000059000066A8",
+            "term": "Hardie boys",
+            "expected_forms": ["הבחורים של הארדי"],
+            "status": "review; inflection, wordplay or context may justify exception"
+          },
+          {
+            "key": "Alternate1/0x0100004500004DC6",
+            "term": "Volition",
+            "expected_forms": ["כוח רצון"],
+            "status": "review; inflection, wordplay or context may justify exception"
+          }
+        ],
+        "note": "לבחורים של הארדי incorporates definite article into ל prefix; ordinary volition is מרצונן."
+      },
+      {
+        "batch": "c000631-00000",
+        "reviewed_flags": [
+          {
+            "key": "Dialogue Text/0x0100007800004E8D",
+            "term": "the Union",
+            "expected_forms": ["האיגוד"],
+            "status": "review; inflection, wordplay or context may justify exception"
+          }
+        ],
+        "note": "איגוד הסוורים is construct phrase. Executor wordplay preserved using מוציא לפועל / מו-משהו. Source malformed emphasis and quotation in communism line preserved."
+      },
+      {
+        "batch": "c000631-00200",
+        "reviewed_flags": [
+          {
+            "key": "Dialogue Text/0x0100004500007126",
+            "term": "Coalition",
+            "expected_forms": ["הקואליציה"],
+            "status": "review; inflection, wordplay or context may justify exception"
+          },
+          {
+            "key": "Dialogue Text/0x01000045000093A3",
+            "term": "The Expression",
+            "expected_forms": ["ההבעה", "ההבעה", "הבעה"],
+            "status": "review; inflection, wordplay or context may justify exception"
+          },
+          {
+            "key": "Dialogue Text/0x0100004500006939",
+            "term": "Suggestion",
+            "expected_forms": ["שכנוע"],
+            "status": "review; inflection, wordplay or context may justify exception"
+          },
+          {
+            "key": "Dialogue Text/0x0100007000002032",
+            "term": "Suggestion",
+            "expected_forms": ["שכנוע"],
+            "status": "review; inflection, wordplay or context may justify exception"
+          }
+        ],
+        "note": "Coalition indefinite modifier retained; expression is idiomatic expression, not face; suggestion ordinary proposal. Supersedes prior Executor note: c000631-00000 rows 88/135/181 updated to אקס-/אקסקיוטור/אקס-משהו to preserve parallel with Ex-Wife אקסית revealed in this batch."
       }
     ],
     "lane-3-notes": [
@@ -502,6 +626,18 @@
       {
         "batch": "c000603-00000",
         "exceptions": "Cunoesse alias C rendered סי without prematurely expanding name; Big C Communist wordplay adapted קו / קומוניזם; ordinary suggestion rendered הצעה, not skill label שכנוע. Fictional slur kipt transliterated קיפט; censored insults retain four asterisks."
+      },
+      {
+        "batch": "c000617",
+        "exceptions": "Civilian inflected feminine אזרחית for the female gardener, not slash-form label."
+      },
+      {
+        "batch": "c000630",
+        "exceptions": "Numeric-only data rows preserved verbatim; suffix and that is it translated. radiocomputer plural inflected מחשבי־רדיו; Stained Glass Window definite form חלון הזכוכית הצבעונית. East Delta Commerce Centre advisory matched source Doomed Commercial Area alias; retained המתחם המסחרי המקולל to match source label."
+      },
+      {
+        "batch": "c000632",
+        "exceptions": "Scab inflected plural in leader title; military radio translated קשר / קשרית; sad to say as לצערי; civilian adjectival אזרחית; ordinary authority as רשות and suggestion as הצעה, not skill labels."
       }
     ]
   }
