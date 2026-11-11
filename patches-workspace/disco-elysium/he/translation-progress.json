@@ -2,8 +2,8 @@
   "branch": "codex/disco-elysium-localization",
   "source_of_truth": "translations.csv",
   "authoring": "Direct current-assistant translation; no external draft service",
-  "translated": 55746,
-  "remaining": 23840,
+  "translated": 57904,
+  "remaining": 21682,
   "conversations_with_translations": {
     "5": {
       "total": 14,
@@ -1875,45 +1875,130 @@
       "translated": 50,
       "name": "APT / REAL ESTATE AGENT"
     },
+    "904": {
+      "total": 11,
+      "translated": 11,
+      "name": "APT / WRITING DESK IN CUNO'S APT"
+    },
+    "906": {
+      "total": 12,
+      "translated": 12,
+      "name": "APT ORB / abandoned apt shivers"
+    },
+    "910": {
+      "total": 10,
+      "translated": 10,
+      "name": "APT ORB / foreclosed apt logic"
+    },
     "918": {
       "total": 25,
       "translated": 25,
       "name": "APT ORB / encyclo logo of communism"
+    },
+    "926": {
+      "total": 10,
+      "translated": 10,
+      "name": "BACKYARD / STONE PERC"
+    },
+    "927": {
+      "total": 35,
+      "translated": 35,
+      "name": "INITIATION / SPEED HABIT"
     },
     "930": {
       "total": 26,
       "translated": 26,
       "name": "KIM SWITCH / DOOMED"
     },
+    "937": {
+      "total": 52,
+      "translated": 52,
+      "name": "KIM SWITCH / FORTRESS ACCIDENT"
+    },
     "940": {
       "total": 64,
       "translated": 64,
       "name": "INVENTORY / NOTE FROM THE FRIDGE"
+    },
+    "942": {
+      "total": 38,
+      "translated": 38,
+      "name": "INVENTORY / COCKATOO"
     },
     "943": {
       "total": 104,
       "translated": 104,
       "name": "WHIRLING F1 / KARAOKE STAND"
     },
+    "944": {
+      "total": 673,
+      "translated": 600,
+      "name": "PIER / CINDY"
+    },
     "945": {
       "total": 103,
       "translated": 103,
       "name": "INVENTORY / FRACTURED BULLET"
+    },
+    "946": {
+      "total": 3,
+      "translated": 3,
+      "name": "WESTCOAST / MORELL barks"
+    },
+    "947": {
+      "total": 3,
+      "translated": 3,
+      "name": "WESTCOAST / GARY barks"
+    },
+    "948": {
+      "total": 99,
+      "translated": 99,
+      "name": "COAST ORB / reeds by camp site"
     },
     "949": {
       "total": 40,
       "translated": 40,
       "name": "GARYS APARTMENT / COLONIAL MUG COLLECTION"
     },
+    "954": {
+      "total": 1,
+      "translated": 1,
+      "name": "GARYS APARTMENT / KIM barks"
+    },
+    "955": {
+      "total": 1,
+      "translated": 1,
+      "name": "WHIRLING F1 / KIM FIRST VISIT barks"
+    },
+    "956": {
+      "total": 12,
+      "translated": 12,
+      "name": "WHIRLING F3 / BARRED DOOR INSIDE"
+    },
     "959": {
       "total": 26,
       "translated": 26,
       "name": "WHIRLING / BATHTUB"
     },
+    "961": {
+      "total": 18,
+      "translated": 18,
+      "name": "KIM SWITCH / END OF DAY"
+    },
+    "963": {
+      "total": 36,
+      "translated": 36,
+      "name": "YARD / HANGED MAN BOOTS"
+    },
     "964": {
       "total": 32,
       "translated": 32,
       "name": "THOUGHT / FAIRWEATHER T-500"
+    },
+    "965": {
+      "total": 106,
+      "translated": 106,
+      "name": "KINEEMA / SERIAL NUMBER"
     },
     "967": {
       "total": 36,
@@ -1922,14 +2007,69 @@
     },
     "968": {
       "total": 441,
-      "translated": 400,
+      "translated": 441,
       "name": "LAIR / INSTIGATOR"
+    },
+    "970": {
+      "total": 74,
+      "translated": 74,
+      "name": "LAIR ORB / beware shivers"
+    },
+    "971": {
+      "total": 232,
+      "translated": 232,
+      "name": "BOARDWALK / FELD MURAL"
+    },
+    "972": {
+      "total": 74,
+      "translated": 74,
+      "name": "BOARDWALK / LADDER"
+    },
+    "984": {
+      "total": 124,
+      "translated": 124,
+      "name": "INVENTORY / RUBY'S JOURNAL"
+    },
+    "990": {
+      "total": 35,
+      "translated": 35,
+      "name": "SHACK ORB / locust city logic"
+    },
+    "995": {
+      "total": 387,
+      "translated": 387,
+      "name": "PLAZA / PISSFLAUBERT AND FTW"
+    },
+    "1000": {
+      "total": 65,
+      "translated": 65,
+      "name": "BOOKSTORE / PARANORMAL"
+    },
+    "1002": {
+      "total": 10,
+      "translated": 10,
+      "name": "JAM ORB / fuckoffafterthought"
+    },
+    "1003": {
+      "total": 10,
+      "translated": 10,
+      "name": "DOOMED F2 ORB / conceptstream"
+    },
+    "1008": {
+      "total": 16,
+      "translated": 16,
+      "name": "WHIRLING / MONEYMAN barks"
+    },
+    "1010": {
+      "total": 43,
+      "translated": 43,
+      "name": "KIM SWITCH / LORRY CONCLUSIONS"
     }
   },
   "resume_at": {
-    "conversation_id": 904,
-    "entry_id": 3,
-    "key": "Dialogue Text/0x010000570001DE96"
+    "conversation_id": 944,
+    "entry_id": 28,
+    "key": "Alternate1/0x0100001600003572"
   },
   "glossary_entries": 467,
   "validation": {
@@ -1941,10 +2081,10 @@
     "bundle_sha256": "30822499ec9c1dc102393335a2344a06da71153857fcd62ba1d01ec8ce7d9906",
     "last_csv_validation": {
       "entries": 79586,
-      "translated": 55746,
-      "remaining": 23840,
+      "translated": 57904,
+      "remaining": 21682,
       "source_words": 1129354,
-      "coverage_percent": 70.045,
+      "coverage_percent": 72.757,
       "unmapped_source_keys": 193,
       "unresolved_localization_terms": 127,
       "errors": [],

@@ -363,6 +363,34 @@
       {
         "batch": "c000892-00000",
         "notes": "Sunday friend possessive החבר שלך של יום ראשון intentional. Coalition contraction בקואליציה/לקואליציה permitted. French la responsabilité and fantasme érotique retained stylistically. Censored f****t keeps four source stars."
+      },
+      {
+        "batch": "c000906-00000",
+        "notes": "C and Cunoesse advisory are false positives from Celsius °C; no character name occurs in the source."
+      },
+      {
+        "batch": "c000910-00000",
+        "notes": "Sad adjective עצוב is contextual inflection, not personified noun label."
+      },
+      {
+        "batch": "c000937-00000",
+        "notes": "radiocomputer plural מחשבי־רדיו intentional; two-way radio מכשיר קשר דו־כיווני contextual. Fortress Accident provisional מבצר התאונה (root queried for prior usage); Königstein קניגשטיין."
+      },
+      {
+        "batch": "c000942-00000",
+        "notes": "fuckupatoo/fuckatoo wordplay קקדפוק; Major Majestic רב־סרן הוד; bang-bang באנג־באנג; funeral cockatoo קקדו ההלוויה; Face-à-la-Mer פאס־א־לה־מר; James Fournier ג׳יימס פורנייה. Latin species preserved."
+      },
+      {
+        "batch": "c000944-00000",
+        "notes": "Sad warnings reflect ordinary adjectives עצובה/עצוב and idiomatic sad sack מסכן, damaged plastic עלוב; no personified noun. Chester straight apostrophe צ'סטר matches pronunciation. Hobocop שוטר־הומלס; brickman בנאי; Moritz Metzger מוריץ מצגר; Abadanaiz אבאדנאיס provisional. Cindy uses pig insult חזיר / diminutive חזרזיר consistently."
+      },
+      {
+        "batch": "c000944-00200",
+        "notes": "Sad warnings ordinary adjective עצוב/עצובה, not personified noun. C/Cunoesse false alias match; no such name in flagged dialogue. Nasenbonbon נאזנבונבון; Porta Rosa פורטה רוזה; Savvy סאבי provisional. Mismatched closing quote row102 mirrors source. Portuguese man o war translated שלפוחן מצוי, the colonial organism metaphor."
+      },
+      {
+        "batch": "c000944-00400",
+        "notes": "Cunoesse false alias C matches c'mon / Hep C, not character. Hep C retained הפטיטיס C. Art-ishoo pun אמנ־אפצ׳י. Mismatched quote row188 mirrors source. Piss and Fuck abbreviated פיס ופאק, distinct from full names."
       }
     ],
     "lane-2-notes": [
@@ -960,6 +988,34 @@
       {
         "batch": "c000940-00000",
         "note": "Definite/plural forms לוח המפסקים, מכונת הגלידה, מחשב־הרדיו, מחשבי־הרדיו trigger literal flags. Filament memory זיכרון סיב, Sulisław סוליסלב, Luukanen-Kilde לוקנן-קילדה provisional after exact targeted lookup absent. Letter addresses S/Soona feminine without expanding initial."
+      },
+      {
+        "batch": "c000946-00000",
+        "note": "Short Gary source remains גארי, not epithet expansion."
+      },
+      {
+        "batch": "c000948-00000",
+        "note": "Morell is short מורל as in source; no full epithet added."
+      },
+      {
+        "batch": "c000956-00000",
+        "note": "Definite הדלת המסורגת; operational barred/unbar refers to inside bolt, rendered בריח."
+      },
+      {
+        "batch": "c000970-00000",
+        "note": "Short Morell מורל; definite Union preposition לאיגוד intentional."
+      },
+      {
+        "batch": "c000971-00000",
+        "note": "Big sea/Big C pun preserved with literal ים and Latin C referring to Communism, not Cunoesse. Short Morell מורל."
+      },
+      {
+        "batch": "c000971-00200",
+        "note": "pale of morning is ordinary אור הבוקר החיוור, not world phenomenon."
+      },
+      {
+        "batch": "c000972-00000",
+        "note": "Cmon is בחייך, not C/Cunoesse."
       }
     ],
     "lane-3-notes": [
@@ -1334,6 +1390,34 @@
       {
         "batch": "c000968-00200",
         "note": "Flower bed ערוגה, next door ליד are contextual senses, not object names; Sad adjective עצוב; police radio הקשר המשטרתי. Peone rendered עושה דברו (subordinate agent)."
+      },
+      {
+        "batch": "c000968-00400",
+        "note": "Radio conversational communications rendered קשר, in contrast to broadcast radio רדיו. Shower head neck-wrapping retains source metonymy."
+      },
+      {
+        "batch": "c000990-00000",
+        "note": "Morell used by first name only, without full speaker title."
+      },
+      {
+        "batch": "c000995-00000",
+        "note": "C/Cunoesse matches are C’mon, not character references. Death’s door idiom סף המוות. SKULLS rendered הגולגולות; shortened nicknames Fuck/Piss rendered זין/פיס to preserve irreverence and relation to full jacket labels. Four censorship asterisks retained."
+      },
+      {
+        "batch": "c000995-00200",
+        "note": "processing a question = מעכל, not named Processing dept. Sad inflected adjective העצוב / verb מעציבים. Standalone censored slur f****ts rendered מ****מים, preserving four asterisks."
+      },
+      {
+        "batch": "c001000-00000",
+        "note": "next door idiom ליד, not literal door object. Fictional medical claims retained as in-game book content."
+      },
+      {
+        "batch": "c001003-00000",
+        "note": "How sad adjective כמה עצוב, not personified Sad."
+      },
+      {
+        "batch": "c001010-00000",
+        "note": "Union grammatical contraction לאיגוד. Suggestion ordinary proposal הצעה, not skill שכנוע. Restored explicit radio in radio transmitter."
       }
     ]
   }
