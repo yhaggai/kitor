@@ -236,6 +236,19 @@
           "Dialogue Text/0x010000820001FD85"
         ],
         "reason": "Polish code-switch words Barszcz and wódka retained intentionally; scene is a language-barrier exchange, while English vodka remains translated וודקה."
+      },
+      {
+        "conversation": 528,
+        "keys": [
+          "Dialogue Text/0x010000060000FB95",
+          "Dialogue Text/0x010000060000FB9C",
+          "Dialogue Text/0x010000060000FA3F",
+          "Dialogue Text/0x010000060000FB7C",
+          "Dialogue Text/0x010000060000FA17",
+          "Dialogue Text/0x010000060000FBBD",
+          "Dialogue Text/0x010000060000FA38"
+        ],
+        "reason": "Greek apocalyptic phrases retained exactly: user asks what phrase means, and later opts out without knowing; Hebrew explanation would remove deliberate incomprehension and ritual tone."
       }
     ]
   }

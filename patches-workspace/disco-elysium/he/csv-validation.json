@@ -1,9 +1,9 @@
 {
   "entries": 79586,
-  "translated": 25923,
-  "remaining": 53663,
+  "translated": 28053,
+  "remaining": 51533,
   "source_words": 1129354,
-  "coverage_percent": 32.572,
+  "coverage_percent": 35.249,
   "unmapped_source_keys": 193,
   "unresolved_localization_terms": 127,
   "errors": [],

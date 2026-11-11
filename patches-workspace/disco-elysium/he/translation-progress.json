@@ -2,8 +2,8 @@
   "branch": "codex/disco-elysium-localization",
   "source_of_truth": "translations.csv",
   "authoring": "Direct current-assistant translation; no external draft service",
-  "translated": 25923,
-  "remaining": 53663,
+  "translated": 28053,
+  "remaining": 51533,
   "conversations_with_translations": {
     "5": {
       "total": 14,
@@ -827,7 +827,7 @@
     },
     "520": {
       "total": 420,
-      "translated": 200,
+      "translated": 420,
       "name": "KIM SWITCH / DEBRIEF DAY ONE"
     },
     "521": {
@@ -840,26 +840,126 @@
       "translated": 111,
       "name": "WHIRLING F2 / MEDICINE CABINET"
     },
+    "523": {
+      "total": 67,
+      "translated": 67,
+      "name": "THOUGHT / GOSSAMER STATE"
+    },
+    "524": {
+      "total": 50,
+      "translated": 50,
+      "name": "THOUGHT / WORLD REPUBLIC"
+    },
+    "525": {
+      "total": 21,
+      "translated": 21,
+      "name": "THOUGHT / BORING COP"
+    },
+    "526": {
+      "total": 22,
+      "translated": 22,
+      "name": "THOUGHT / SUPERSTAR COP"
+    },
     "527": {
       "total": 52,
       "translated": 52,
       "name": "THOUGHT / KINGDOM OF CONSCIENCE"
+    },
+    "528": {
+      "total": 20,
+      "translated": 20,
+      "name": "THOUGHT / APOCALYPSE COP"
+    },
+    "529": {
+      "total": 34,
+      "translated": 34,
+      "name": "THOUGHT / SORRY COP"
     },
     "530": {
       "total": 55,
       "translated": 55,
       "name": "THOUGHT / HONOUR"
     },
+    "531": {
+      "total": 46,
+      "translated": 46,
+      "name": "THOUGHT / REVACHOLIAN NATIONHOOD"
+    },
+    "532": {
+      "total": 8,
+      "translated": 8,
+      "name": "CANAL / WORKER barks"
+    },
+    "533": {
+      "total": 486,
+      "translated": 486,
+      "name": "WESTCOAST / GARY"
+    },
+    "534": {
+      "total": 101,
+      "translated": 101,
+      "name": "COAST ORB / reeds at lands end"
+    },
     "535": {
       "total": 100,
       "translated": 100,
       "name": "COAST ORB / reeds by feld"
+    },
+    "536": {
+      "total": 103,
+      "translated": 103,
+      "name": "COAST ORB / reeds near sunken car"
+    },
+    "537": {
+      "total": 412,
+      "translated": 412,
+      "name": "PLAZA / KORTENAER"
+    },
+    "539": {
+      "total": 17,
+      "translated": 17,
+      "name": "SEAFORT / BOAT"
+    },
+    "540": {
+      "total": 1,
+      "translated": 1,
+      "name": "VILLAGE / JUDIT MINOT barks"
+    },
+    "541": {
+      "total": 1,
+      "translated": 1,
+      "name": "VILLAGE / TRANT HEIDELSTAM barks"
+    },
+    "542": {
+      "total": 1,
+      "translated": 1,
+      "name": "WHIRLING F2 / KIM DOOR"
+    },
+    "543": {
+      "total": 45,
+      "translated": 45,
+      "name": "HQ / WASHBASIN"
+    },
+    "544": {
+      "total": 305,
+      "translated": 200,
+      "name": "SOUTHCOAST / SUNKEN MOTOR CARRIAGE"
+    },
+    "547": {
+      "total": 75,
+      "translated": 75,
+      "name": "APT / MAZOV BUST"
+    },
+    "549": {
+      "total": 680,
+      "translated": 200,
+      "name": "APT / TOMAS THE SPONSOR"
     }
   },
   "resume_at": {
-    "conversation_id": 520,
-    "entry_id": 51,
-    "key": "Alternate1/0x0100005800009766"
+    "conversation_id": 544,
+    "entry_id": 46,
+    "key": "Alternate1/0x01000007000063D4"
   },
   "glossary_entries": 467,
   "validation": {
@@ -871,10 +971,10 @@
     "bundle_sha256": "30822499ec9c1dc102393335a2344a06da71153857fcd62ba1d01ec8ce7d9906",
     "last_csv_validation": {
       "entries": 79586,
-      "translated": 25923,
-      "remaining": 53663,
+      "translated": 28053,
+      "remaining": 51533,
       "source_words": 1129354,
-      "coverage_percent": 32.572,
+      "coverage_percent": 35.249,
       "unmapped_source_keys": 193,
       "unresolved_localization_terms": 127,
       "errors": [],
