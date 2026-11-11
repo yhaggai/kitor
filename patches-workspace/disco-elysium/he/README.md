@@ -83,3 +83,7 @@ local URLs remain unsupported; release builds do not compile this option.
 and recovery state separate from the installed Kitor app. Scan for games, choose
 Disco Elysium and install the private Hebrew preview. Select Arabic in-game.
 The public registry still has no published download.
+
+## Compact translation glossary context
+
+`glossary.json` is the canonical glossary shipped with this patch source, with attribution in `glossary-draft-provenance.json`. Keep the full glossary here for editorial review and reproducibility; it is not a runtime game payload. `glossary_context.py BATCH.source.json --output BATCH.glossary.json` generates a compact context using core terminology, exact English names/aliases, and speaker/addressee IDs. It includes relevant voice/grammar guidance and retains localized aliases/forms. Workers use this selected context, consulting full entries only for ambiguities. Generated batch files are temporary working inputs, not a second glossary source of truth. Reported savings are character reductions, not measured token billing or cache savings.

@@ -2,8 +2,8 @@
   "branch": "codex/disco-elysium-localization",
   "source_of_truth": "translations.csv",
   "authoring": "Direct current-assistant translation; no external draft service",
-  "translated": 30386,
-  "remaining": 49200,
+  "translated": 32379,
+  "remaining": 47207,
   "conversations_with_translations": {
     "5": {
       "total": 14,
@@ -992,24 +992,89 @@
     },
     "554": {
       "total": 291,
-      "translated": 200,
+      "translated": 291,
       "name": "BOARDWALK / TRANT HEIDELSTAM INTRO"
     },
     "555": {
       "total": 224,
-      "translated": 200,
+      "translated": 224,
       "name": "CHURCH / MAINFRAME"
+    },
+    "556": {
+      "total": 385,
+      "translated": 385,
+      "name": "BOARDWALK / PAYPHONE"
+    },
+    "557": {
+      "total": 367,
+      "translated": 367,
+      "name": "CHURCH / TIAGO"
     },
     "558": {
       "total": 999,
-      "translated": 400,
+      "translated": 999,
       "name": "CHURCH / SOONA"
+    },
+    "559": {
+      "total": 40,
+      "translated": 40,
+      "name": "APT / SMOKER DOOR"
+    },
+    "560": {
+      "total": 38,
+      "translated": 38,
+      "name": "APT / WCW DOOR"
+    },
+    "561": {
+      "total": 39,
+      "translated": 39,
+      "name": "APT / CUNO DAD DOOR"
+    },
+    "562": {
+      "total": 36,
+      "translated": 36,
+      "name": "APT / MAZOV DOOR"
+    },
+    "564": {
+      "total": 6,
+      "translated": 6,
+      "name": "VILLAGE / JOYCE barks"
+    },
+    "565": {
+      "total": 8,
+      "translated": 8,
+      "name": "VILLAGE / NETPICKER barks"
+    },
+    "566": {
+      "total": 185,
+      "translated": 185,
+      "name": "LANDS END / NETPICKER"
+    },
+    "570": {
+      "total": 43,
+      "translated": 43,
+      "name": "HQ / EXIT BULLET difficult"
+    },
+    "572": {
+      "total": 59,
+      "translated": 59,
+      "name": "BOOKSTORE / MAP WALL"
+    },
+    "573": {
+      "total": 49,
+      "translated": 49,
+      "name": "BOOKSTORE / HJELMSERIES"
+    },
+    "604": {
+      "total": 24,
+      "translated": 24,
+      "name": "YARD / PILE OF ETERNITE"
     }
   },
   "resume_at": {
-    "conversation_id": 554,
-    "entry_id": 33,
-    "key": "Alternate1/0x010000580000C45E"
+    "conversation_id": 574,
+    "entry_id": 2,
+    "key": "Dialogue Text/0x0100004B00002A9D"
   },
   "glossary_entries": 467,
   "validation": {
@@ -1021,10 +1086,10 @@
     "bundle_sha256": "30822499ec9c1dc102393335a2344a06da71153857fcd62ba1d01ec8ce7d9906",
     "last_csv_validation": {
       "entries": 79586,
-      "translated": 30386,
-      "remaining": 49200,
+      "translated": 32379,
+      "remaining": 47207,
       "source_words": 1129354,
-      "coverage_percent": 38.18,
+      "coverage_percent": 40.684,
       "unmapped_source_keys": 193,
       "unresolved_localization_terms": 127,
       "errors": [],
