@@ -53,6 +53,8 @@ pub struct Preview {
 pub struct Submission {
     pub url: String,
     pub existing: bool,
+    #[serde(default)]
+    pub updated: bool,
 }
 
 fn path(root: &Path) -> PathBuf {

@@ -208,17 +208,22 @@ export default function TranslationEditor({
     setBusy(true);
     setError("");
     try {
-      const result = await invoke<{ url: string; existing: boolean }>("submit_translation_draft", {
-        contributorId: contributor.id,
-        revision: preview.revision,
-        digest: preview.digest,
-        emailOptIn,
-      });
+      const result = await invoke<{ url: string; existing: boolean; updated?: boolean }>(
+        "submit_translation_draft",
+        {
+          contributorId: contributor.id,
+          revision: preview.revision,
+          digest: preview.digest,
+          emailOptIn,
+        }
+      );
       setPr(result.url);
       setMessage(
-        result.existing
-          ? "This submission already has a pull request"
-          : "Draft pull request created"
+        result.updated
+          ? "Corrections added to your open pull request"
+          : result.existing
+            ? "This submission already has a pull request"
+            : "Draft pull request created"
       );
     } catch (e) {
       setError(String(e));
@@ -333,8 +338,8 @@ export default function TranslationEditor({
           <div className="translation-review">
             <h3>Review {preview.changes.length} correction(s)</h3>
             <p>
-              Your changes will be public on GitHub. This experiment opens a draft PR marked “do not
-              merge”.
+              Your changes will be public on GitHub. Kitor adds them to your open draft PR for The
+              Drifter, or opens a new draft if needed.
             </p>
             <label className="translation-email-opt-in">
               <input

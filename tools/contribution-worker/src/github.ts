@@ -1,6 +1,6 @@
 import { importPKCS8, SignJWT } from "jose";
-import { type Correction, manifestChecksum } from "./csv";
-import { type Contributor, type Env, HttpError, now } from "./shared";
+import { apply, type Correction, manifestChecksum } from "./csv";
+import { type Contributor, type Env, HttpError, hash, now } from "./shared";
 
 const REPO = "yhaggai/kitor";
 const CSV = "patches-workspace/drifter/he/payload/translation.csv",
@@ -9,10 +9,11 @@ export async function github(
   path: string,
   token: string,
   body?: unknown,
-  raw = false
+  raw = false,
+  method = body ? "POST" : "GET"
 ): Promise<any> {
   const response = await fetch(`https://api.github.com/${path}`, {
-    method: body ? "POST" : "GET",
+    method,
     redirect: "manual",
     headers: {
       Authorization: `Bearer ${token}`,
@@ -96,7 +97,11 @@ export async function openPR(
     `${endpoint}/pulls?state=all&head=${encodeURIComponent(`yhaggai:${head}`)}&base=${encodeURIComponent(branch)}`,
     token
   );
-  if (existing.length) return { url: existing[0].html_url, existing: true };
+  if (existing.length) {
+    if (existing[0].state === "closed")
+      throw new HttpError(409, "This PR closed during submission. Retry to create a new PR.");
+    return { url: existing[0].html_url, existing: true };
+  }
   const manifest = manifestChecksum(await source(MANIFEST, input.base_sha, token), input.digest);
   const refs = await github(`${endpoint}/git/matching-refs/heads/${head}`, token);
   const ref = refs.find((r: any) => r.ref === `refs/heads/${head}`);
@@ -107,22 +112,8 @@ export async function openPR(
     )
       throw new HttpError(409, "Submission branch differs from expected corrections");
   } else {
-    const base = await github(`${endpoint}/git/commits/${input.base_sha}`, token);
-    const tree = [];
-    for (const [path, content] of [
-      [CSV, csv],
-      [MANIFEST, manifest],
-    ]) {
-      const blob = await github(`${endpoint}/git/blobs`, token, { content, encoding: "utf-8" });
-      tree.push({ path, mode: "100644", type: "blob", sha: blob.sha });
-    }
-    const t = await github(`${endpoint}/git/trees`, token, { base_tree: base.tree.sha, tree });
-    const commit = await github(`${endpoint}/git/commits`, token, {
-      message: "POC: Drifter translation corrections from Kitor",
-      tree: t.sha,
-      parents: [input.base_sha],
-    });
-    await github(`${endpoint}/git/refs`, token, { ref: `refs/heads/${head}`, sha: commit.sha });
+    const commit = await correctionCommit(input.base_sha, csv, manifest, token);
+    await github(`${endpoint}/git/refs`, token, { ref: `refs/heads/${head}`, sha: commit });
   }
   const pr = await github(`${endpoint}/pulls`, token, {
     head,
@@ -132,4 +123,109 @@ export async function openPR(
     body: `${attribution(user)}\n\nSubmitted by the Kitor bot. Base: \`${input.base_sha}\`.\n\n**POC: do not merge or publish.** CSV corrections and checksum only; no release version bump or gameplay validation. Hebrew uses Drifter’s stored display order.`,
   });
   return { url: pr.html_url, existing: false };
+}
+
+type OpenPull = {
+  number: number;
+  html_url: string;
+  state: string;
+  head: { ref: string; sha: string; repo?: { full_name: string } };
+  base: { ref: string; repo?: { full_name: string } };
+};
+const endpoint = `repos/${REPO}`;
+
+export async function findOpenPR(env: Env, contributor: string, branch: string, token: string) {
+  const owned = await env.DB.prepare(
+    "SELECT DISTINCT url FROM submissions WHERE contributor_id=? AND status='complete' AND url IS NOT NULL"
+  )
+    .bind(contributor)
+    .all<{ url: string }>();
+  if (!owned.results.length) return null;
+  const urls = new Set(owned.results.map((row) => row.url));
+  for (let page = 1; ; page++) {
+    const pulls: OpenPull[] = await github(
+      `${endpoint}/pulls?state=open&base=${encodeURIComponent(branch)}&sort=created&direction=desc&per_page=100&page=${page}`,
+      token
+    );
+    const match = pulls.find(
+      (pr) =>
+        urls.has(pr.html_url) &&
+        pr.state === "open" &&
+        pr.base.ref === branch &&
+        pr.base.repo?.full_name === REPO &&
+        pr.head.repo?.full_name === REPO &&
+        /^kitor-contributions\/[a-f0-9]{64}$/.test(pr.head.ref)
+    );
+    if (match) return match;
+    if (pulls.length < 100) return null;
+  }
+}
+
+async function correctionCommit(
+  parent: string,
+  csv: string,
+  manifest: string,
+  token: string
+): Promise<string> {
+  const base = await github(`${endpoint}/git/commits/${parent}`, token);
+  const tree = [];
+  for (const [path, content] of [
+    [CSV, csv],
+    [MANIFEST, manifest],
+  ]) {
+    const blob = await github(`${endpoint}/git/blobs`, token, { content, encoding: "utf-8" });
+    tree.push({ path, mode: "100644", type: "blob", sha: blob.sha });
+  }
+  const createdTree = await github(`${endpoint}/git/trees`, token, {
+    base_tree: base.tree.sha,
+    tree,
+  });
+  const commit = await github(`${endpoint}/git/commits`, token, {
+    message: "POC: Drifter translation corrections from Kitor",
+    tree: createdTree.sha,
+    parents: [parent],
+  });
+  return commit.sha;
+}
+
+export async function appendPR(pr: OpenPull, input: Correction, token: string) {
+  const path = `${endpoint}/pulls/${pr.number}`;
+  const current: OpenPull = await github(path, token);
+  if (
+    current.state !== "open" ||
+    current.head.sha !== pr.head.sha ||
+    current.head.ref !== pr.head.ref ||
+    current.head.repo?.full_name !== REPO ||
+    current.base.ref !== pr.base.ref ||
+    current.base.repo?.full_name !== REPO
+  )
+    throw new HttpError(409, "The PR changed during submission. Retry shortly.");
+  const previous = await source(CSV, current.head.sha, token);
+  const csv = await apply(previous, input.edits);
+  if (csv !== previous) {
+    const manifest = manifestChecksum(
+      await source(MANIFEST, current.head.sha, token),
+      await hash(csv)
+    );
+    const commit = await correctionCommit(current.head.sha, csv, manifest, token);
+    const latest: OpenPull = await github(path, token);
+    if (
+      latest.state !== "open" ||
+      latest.head.sha !== current.head.sha ||
+      latest.base.ref !== current.base.ref ||
+      latest.head.ref !== current.head.ref
+    )
+      throw new HttpError(409, "The PR changed during submission. Retry shortly.");
+    await github(
+      `${endpoint}/git/refs/heads/${current.head.ref}`,
+      token,
+      { sha: commit, force: false },
+      false,
+      "PATCH"
+    );
+    const updated = await github(path, token);
+    if (updated.state !== "open" && (!updated.merged || updated.head.sha !== commit))
+      throw new HttpError(409, "The PR closed during submission. Retry to create a new PR.");
+  }
+  return { url: pr.html_url, existing: true, updated: csv !== previous };
 }

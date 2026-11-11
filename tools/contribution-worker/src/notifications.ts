@@ -73,18 +73,23 @@ export async function webhook(req: Request, env: Env): Promise<Response> {
     if (submission.status !== "complete")
       throw new HttpError(503, "Submission is still processing; redeliver this event");
     if (submission.url !== url) return json({ ignored: true });
+    const inProgress = await env.DB.prepare(
+      "SELECT id FROM submissions WHERE url=? AND status='pending' AND lease_until>? LIMIT 1"
+    )
+      .bind(url, now())
+      .first();
+    if (inProgress)
+      throw new HttpError(503, "Submission is still processing; redeliver this event");
+    const message = `Thank you for improving The Drifter's Hebrew translation! Your contribution has been reviewed and merged.\n\n${url}\n\nWe'll email you again when a published patch includes your corrections.\n\nThe Kitor team`;
     await env.DB.batch([
-      env.DB.prepare("UPDATE submissions SET merge_sha=COALESCE(merge_sha,?) WHERE id=?").bind(
-        pr.merge_commit_sha,
-        id
-      ),
-      queue(
-        env,
-        `approved/${id}`,
-        id,
-        "approved",
+      env.DB.prepare(
+        "UPDATE submissions SET merge_sha=COALESCE(merge_sha,?) WHERE url=? AND status='complete'"
+      ).bind(pr.merge_commit_sha, url),
+      env.DB.prepare(`INSERT OR IGNORE INTO notifications(id,submission_id,kind,subject,message)
+        SELECT 'approved/' || id,id,'approved',?,? FROM submissions WHERE url=? AND status='complete'`).bind(
         "Your Kitor contribution was approved 🎉",
-        `Thank you for improving The Drifter's Hebrew translation! Your contribution has been reviewed and merged.\n\n${url}\n\nWe'll email you again when a published patch includes your corrections.\n\nThe Kitor team`
+        message,
+        url
       ),
     ]);
   }

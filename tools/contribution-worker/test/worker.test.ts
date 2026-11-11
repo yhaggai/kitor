@@ -247,3 +247,78 @@ test("GitHub redirects are rejected without forwarding bot credentials", async (
     globalThis.fetch = originalFetch;
   }
 });
+
+test("open PR reuse preserves earlier corrections and skips closed or foreign PRs", async () => {
+  const { appendPR, findOpenPR } = await import("../src/github");
+  const repo = { full_name: "yhaggai/kitor" };
+  const url = "https://github.com/yhaggai/kitor/pull/123";
+  const parent = "a".repeat(40);
+  const pr = {
+    number: 123,
+    html_url: url,
+    state: "open",
+    head: { ref: `kitor-contributions/${"b".repeat(64)}`, sha: parent, repo },
+    base: { ref: "v1", repo },
+  };
+  const env = {
+    DB: { prepare: () => ({ bind: () => ({ all: async () => ({ results: [{ url }] }) }) }) },
+  } as unknown as Env;
+  const [first, second] = records(source).slice(3, 5);
+  const firstKey = await hash(JSON.stringify(first.fields.slice(0, 5)));
+  const secondKey = await hash(JSON.stringify(second.fields.slice(0, 5)));
+  const priorEdit = `${first.fields[5]} א`;
+  const nextEdit = `${second.fields[5]} ב`;
+  const current = await apply(source, { [firstKey]: priorEdit });
+  const manifest = await readFile(
+    new URL("../../../patches-workspace/drifter/he/patch.json", import.meta.url),
+    "utf8"
+  );
+  const original = globalThis.fetch;
+  let state = "open";
+  let pushed = false;
+  let csv = "";
+  globalThis.fetch = async (target, options) => {
+    const path = String(target);
+    const body = options?.body ? JSON.parse(String(options.body)) : undefined;
+    if (path.includes("/pulls?"))
+      return Response.json([
+        { ...pr, html_url: url + "4" },
+        { ...pr, state },
+      ]);
+    if (path.endsWith("/pulls/123")) return Response.json({ ...pr, state });
+    if (path.includes("/contents/"))
+      return new Response(path.includes("translation.csv") ? current : manifest);
+    if (path.endsWith("/git/blobs") && body.content.startsWith("Character,")) csv = body.content;
+    if (path.endsWith("/git/commits")) assert.deepEqual(body.parents, [parent]);
+    if (path.includes("/git/refs/heads/")) {
+      assert.equal(options?.method, "PATCH");
+      assert.equal(body.force, false);
+      pushed = true;
+    }
+    return Response.json({ sha: "c".repeat(40), tree: { sha: "d".repeat(40) } });
+  };
+  try {
+    assert.deepEqual(await findOpenPR(env, "contributor", "v1", "token"), pr);
+    const result = await appendPR(
+      pr,
+      { base_sha: parent, digest: "e".repeat(64), edits: { [secondKey]: nextEdit } },
+      "token"
+    );
+    assert.equal(result.url, url);
+    assert.equal(result.updated, true);
+    assert.equal(pushed, true);
+    assert.equal(csv, await apply(source, { [firstKey]: priorEdit, [secondKey]: nextEdit }));
+    state = "closed";
+    assert.equal(await findOpenPR(env, "contributor", "v1", "token"), null);
+    await assert.rejects(
+      appendPR(
+        pr,
+        { base_sha: parent, digest: "e".repeat(64), edits: { [secondKey]: nextEdit } },
+        "token"
+      ),
+      /PR changed/
+    );
+  } finally {
+    globalThis.fetch = original;
+  }
+});
