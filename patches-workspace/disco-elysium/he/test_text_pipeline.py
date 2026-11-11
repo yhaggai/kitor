@@ -21,6 +21,15 @@ class CsvContract(unittest.TestCase):
  def test_lost_emphasis_rejected(self):
   self.rows[0]['hebrew']='מילה {0}';p.writecsv(self.rows)
   with self.assertRaises(ValueError):p.validate()
+ def test_visible_wait_label_exception_is_exact(self):
+  key='Dialogue Text/0x0100008900001D3B'
+  self.rows=[{'key':key,'english':'Wait. [Wait 15 minutes.] {0}','hebrew':'המתן. [המתן 15 דקות.] {0}'}]
+  p.writejson(p.ROOT/'source-index.json',{'source_sha256':{key:p.sha(self.rows[0]['english'])},'unmapped_source_keys':[],'unresolved_localization_terms':[]})
+  p.writecsv(self.rows);self.assertEqual(p.validate()['errors'],[])
+  self.rows[0]['hebrew']='המתן. [המתן 30 דקות.] {0}';p.writecsv(self.rows)
+  with self.assertRaises(ValueError):p.validate()
+  self.rows[0]['hebrew']='המתן. [המתן 15 דקות.]';p.writecsv(self.rows)
+  with self.assertRaises(ValueError):p.validate()
  def test_release_gate(self):
   with self.assertRaises(ValueError):p.validate(release=True)
  def test_source_expansion_preserves_translations_and_requires_opt_in(self):

@@ -9,6 +9,13 @@ import UnityPy
 ROOT=Path(__file__).resolve().parent
 DEFAULT=Path.home()/'Library/Application Support/Steam/steamapps/common/Disco Elysium/disco.app/Contents/Resources/Data'
 FIELDS=['key','english','hebrew']
+# Visible time-choice labels, not engine placeholders; exact reviewed pairs only.
+TIME_CHOICE_LABELS={
+ 'Dialogue Text/0x0100008900001D45':('[Wait 1 hour.]','[המתן שעה.]'),
+ 'Dialogue Text/0x0100008900001D3B':('[Wait 15 minutes.]','[המתן 15 דקות.]'),
+ 'Dialogue Text/0x0100008900001D40':('[Wait 30 minutes.]','[המתן 30 דקות.]'),
+}
+
 def sha(s):return hashlib.sha256(s.encode()).hexdigest()
 def writejson(p,obj):p.write_text(json.dumps(obj,ensure_ascii=False,indent=2)+'\n')
 def readcsv():
@@ -68,8 +75,12 @@ def validate(release=False):
  for r in rows:
   if sha(r['english'])!=idx['source_sha256'].get(r['key']):errors.append('Changed English source: '+r['key'])
   if not r['hebrew']:continue
+  protected_hebrew=r['hebrew']
+  if r['key'] in TIME_CHOICE_LABELS:
+   source_label,translated_label=TIME_CHOICE_LABELS[r['key']]
+   if translated_label in protected_hebrew:protected_hebrew=protected_hebrew.replace(translated_label,source_label)
   for pattern in [r'<[^>]+>',r'\{[^{}]+\}',r'\[[^\]]*\d[^\]]*\]']:
-   if Counter(re.findall(pattern,r['english']))!=Counter(re.findall(pattern,r['hebrew'])):errors.append('Protected token mismatch: '+r['key'])
+   if Counter(re.findall(pattern,r['english']))!=Counter(re.findall(pattern,protected_hebrew)):errors.append('Protected token mismatch: '+r['key'])
   if r['english'].count('*')!=r['hebrew'].count('*'):errors.append('Emphasis mismatch: '+r['key'])
   if re.search('[\u202a-\u202e\u2066-\u2069]',r['hebrew']):errors.append('Manual bidi control: '+r['key'])
  done=[r for r in rows if r['hebrew']];unmapped=idx['unmapped_source_keys']
