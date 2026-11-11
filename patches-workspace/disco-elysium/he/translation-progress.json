@@ -2,8 +2,8 @@
   "branch": "codex/disco-elysium-localization",
   "source_of_truth": "translations.csv",
   "authoring": "Direct current-assistant translation; no external draft service",
-  "translated": 62019,
-  "remaining": 17567,
+  "translated": 64080,
+  "remaining": 15506,
   "conversations_with_translations": {
     "5": {
       "total": 14,
@@ -2165,10 +2165,60 @@
       "translated": 2,
       "name": "ICE / KIM CHURCH barks"
     },
+    "1029": {
+      "total": 80,
+      "translated": 80,
+      "name": "CHURCH ORB / cone of silence"
+    },
     "1030": {
       "total": 1032,
-      "translated": 400,
+      "translated": 1032,
       "name": "VILLAGE / IDIOT DOOM SPIRAL"
+    },
+    "1032": {
+      "total": 32,
+      "translated": 32,
+      "name": "HQ ORB / new home shivers"
+    },
+    "1038": {
+      "total": 16,
+      "translated": 16,
+      "name": "NETHOUSE ORB / fireplace phasmid"
+    },
+    "1039": {
+      "total": 146,
+      "translated": 146,
+      "name": "VILLAGE / LITTLE LILY"
+    },
+    "1040": {
+      "total": 8,
+      "translated": 8,
+      "name": "VILLAGE / LILIENNES TWINS barks"
+    },
+    "1042": {
+      "total": 16,
+      "translated": 16,
+      "name": "VILLAGE ORB / aerograffito afterthought"
+    },
+    "1043": {
+      "total": 156,
+      "translated": 156,
+      "name": "BOARDWALK / WCH"
+    },
+    "1045": {
+      "total": 12,
+      "translated": 12,
+      "name": "THOUGHT / COACH PHYSICAL INSTRUMENT"
+    },
+    "1049": {
+      "total": 32,
+      "translated": 32,
+      "name": "WALKWAY ORB / party scene afterthought"
+    },
+    "1052": {
+      "total": 89,
+      "translated": 89,
+      "name": "INVENTORY / HJELMDALLERMANN"
     },
     "1053": {
       "total": 20,
@@ -2209,12 +2259,57 @@
       "total": 33,
       "translated": 33,
       "name": "BACKYARD ORB / more bullet thoughts"
+    },
+    "1076": {
+      "total": 27,
+      "translated": 27,
+      "name": "THOUGHT / ART COP"
+    },
+    "1085": {
+      "total": 18,
+      "translated": 18,
+      "name": "INVENTORY / CODEX URIK"
+    },
+    "1086": {
+      "total": 82,
+      "translated": 82,
+      "name": "PLAZA / RENE PETANQUE"
+    },
+    "1087": {
+      "total": 40,
+      "translated": 40,
+      "name": "PLAZA / RENE CASE MONEY RAT"
+    },
+    "1089": {
+      "total": 76,
+      "translated": 76,
+      "name": "PLAZA / GASTON CHEATING"
+    },
+    "1091": {
+      "total": 142,
+      "translated": 142,
+      "name": "PLAZA / GASTON SANDWICH WC"
+    },
+    "1094": {
+      "total": 91,
+      "translated": 91,
+      "name": "YARD / CUNO FRIDGE"
+    },
+    "1098": {
+      "total": 166,
+      "translated": 166,
+      "name": "WHIRLING F1 / TITUS ALAIN AND EUGENE"
+    },
+    "1105": {
+      "total": 602,
+      "translated": 200,
+      "name": "VILLAGE / POSSE"
     }
   },
   "resume_at": {
-    "conversation_id": 1029,
-    "entry_id": 6,
-    "key": "Dialogue Text/0x0100005A0000DE79"
+    "conversation_id": 1055,
+    "entry_id": 2,
+    "key": "Dialogue Text/0x0100005A000123E3"
   },
   "glossary_entries": 467,
   "validation": {
@@ -2226,10 +2321,10 @@
     "bundle_sha256": "30822499ec9c1dc102393335a2344a06da71153857fcd62ba1d01ec8ce7d9906",
     "last_csv_validation": {
       "entries": 79586,
-      "translated": 62019,
-      "remaining": 17567,
+      "translated": 64080,
+      "remaining": 15506,
       "source_words": 1129354,
-      "coverage_percent": 77.927,
+      "coverage_percent": 80.517,
       "unmapped_source_keys": 193,
       "unresolved_localization_terms": 127,
       "errors": [],
