@@ -2,8 +2,8 @@
   "branch": "codex/disco-elysium-localization",
   "source_of_truth": "translations.csv",
   "authoring": "Direct current-assistant translation; no external draft service",
-  "translated": 32379,
-  "remaining": 47207,
+  "translated": 34420,
+  "remaining": 45166,
   "conversations_with_translations": {
     "5": {
       "total": 14,
@@ -1065,16 +1065,96 @@
       "translated": 49,
       "name": "BOOKSTORE / HJELMSERIES"
     },
+    "574": {
+      "total": 27,
+      "translated": 27,
+      "name": "BOOKSTORE / ROMANCE"
+    },
+    "575": {
+      "total": 66,
+      "translated": 66,
+      "name": "BOOKSTORE / CRIME"
+    },
+    "576": {
+      "total": 37,
+      "translated": 37,
+      "name": "BOOKSTORE / BOARD GAME MOUNTAIN"
+    },
+    "582": {
+      "total": 29,
+      "translated": 29,
+      "name": "BOOKSTORE / BIOGRAPHIES"
+    },
+    "583": {
+      "total": 23,
+      "translated": 23,
+      "name": "KIM SWITCH / JOYCE DRUGS"
+    },
+    "584": {
+      "total": 13,
+      "translated": 13,
+      "name": "LAIR / Door to Outside"
+    },
+    "585": {
+      "total": 13,
+      "translated": 13,
+      "name": "LAIR / Door to Stairwell"
+    },
+    "586": {
+      "total": 83,
+      "translated": 83,
+      "name": "LAIR ORB / dark celebration 2"
+    },
+    "587": {
+      "total": 223,
+      "translated": 223,
+      "name": "PLAZA / GASTON"
+    },
+    "588": {
+      "total": 57,
+      "translated": 57,
+      "name": "YARD / CUNOESSE"
+    },
+    "601": {
+      "total": 134,
+      "translated": 134,
+      "name": "KINEEMA ORB / torque talk"
+    },
+    "602": {
+      "total": 319,
+      "translated": 319,
+      "name": "KINEEMA / SYLVIE"
+    },
+    "603": {
+      "total": 303,
+      "translated": 303,
+      "name": "YARD / CUNO"
+    },
     "604": {
       "total": 24,
       "translated": 24,
       "name": "YARD / PILE OF ETERNITE"
+    },
+    "605": {
+      "total": 485,
+      "translated": 485,
+      "name": "CONTAINERYARD / EVRART"
+    },
+    "611": {
+      "total": 29,
+      "translated": 29,
+      "name": "APT / EMPTY ROOM DOOR"
+    },
+    "627": {
+      "total": 321,
+      "translated": 200,
+      "name": "YARD / HANGED MAN BULLET"
     }
   },
   "resume_at": {
-    "conversation_id": 574,
+    "conversation_id": 607,
     "entry_id": 2,
-    "key": "Dialogue Text/0x0100004B00002A9D"
+    "key": "Dialogue Text/0x0100000600018651"
   },
   "glossary_entries": 467,
   "validation": {
@@ -1086,10 +1166,10 @@
     "bundle_sha256": "30822499ec9c1dc102393335a2344a06da71153857fcd62ba1d01ec8ce7d9906",
     "last_csv_validation": {
       "entries": 79586,
-      "translated": 32379,
-      "remaining": 47207,
+      "translated": 34420,
+      "remaining": 45166,
       "source_words": 1129354,
-      "coverage_percent": 40.684,
+      "coverage_percent": 43.249,
       "unmapped_source_keys": 193,
       "unresolved_localization_terms": 127,
       "errors": [],

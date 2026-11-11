@@ -130,6 +130,59 @@
         "key": "Dialogue Text/0x010000060001CFC1",
         "reason": "Antecentennial Revolution rendered מהפכת טרום־המאה, distinct source phrasing from Turn-of-the-Century Revolution; editorial lore term review needed.",
         "status": "translated; editorial review pending"
+      },
+      {
+        "key": "Dialogue Text/0x0100001100001239",
+        "reason": "Wompty-Dompty-Dom Centre rendered מרכז וומפטי־דומפטי־דום; spelling provisional, preserve repeated absurd name consistently.",
+        "status": "translated; editorial review pending"
+      },
+      {
+        "key": "Dialogue Text/0x0100000F0000F552",
+        "reason": "Comité de Responsabilité de Revachol rendered ועדת האחריות לרבאשול; align with moralist political quest lane.",
+        "status": "translated; editorial review pending"
+      },
+      {
+        "key": "Dialogue Text/0x01000016000093B5",
+        "reason": "Feld Playback Experiment rendered ניסוי הפלייבק של פלד; preserve Experiment/Experience correction as ניסוי/חוויה.",
+        "status": "translated; editorial review pending"
+      },
+      {
+        "key": "Dialogue Text/0x010000570001D940",
+        "reason": "würm rendered וירם (plural וירמים) to preserve fictional creature label distinct from ordinary worm; pronunciation provisional.",
+        "status": "translated; editorial review pending"
+      },
+      {
+        "key": "Dialogue Text/0x01000072000023CE",
+        "reason": "Alec Tricity electricity pun localized חיים שמל (חיים + שמל approximates חשמל). Response electricity unchanged; audio pun alignment/editorial review needed.",
+        "status": "translated; editorial review pending"
+      },
+      {
+        "key": "Dialogue Text/0x0100007200002402",
+        "reason": "Al Kickurass retaliatory prank name localized מר פוצץ־לך־ת'תחת to retain threat/name joke rather than opaque phonetic name.",
+        "status": "translated; editorial review pending"
+      },
+      {
+        "batch": "c000584-00000",
+        "key": "Dialogue Text/0x0100002F000126F2",
+        "term": "Sad",
+        "note": "Ordinary adjective sad translated עצוב; not personified Sad metaphor."
+      },
+      {
+        "batch": "c000585-00000",
+        "note": "Same dialogue as c000584 under distinct keys; reused reviewed translation. Sad remains ordinary adjective עצוב."
+      },
+      {
+        "batch": "c000587-00000",
+        "terminology_exceptions": "Civilian clothes → בגדים אזרחיים; ordinary sad adjective → עצוב; neither is named speaker/personification.",
+        "provisional_names": "Jeannie ז׳ני; Jeanne-Marie Beaulieu ז׳אן־מארי בולייה; compact selector had no entry."
+      },
+      {
+        "batch": "c000602-00000",
+        "terminology_exceptions": "Radio refers to police radio call: קשר. great skua uses definite feminine החמסנית הגדולה. Sad is song adjective עצוב."
+      },
+      {
+        "batch": "c000602-00200",
+        "terminology_exceptions": "Union prefixed לאיגוד and construct איגוד עובדי הנמל; radio police קשר; sad adjective עצוב. Door restored explicitly after review."
       }
     ],
     "lane-2-notes": [
@@ -148,6 +201,89 @@
       {
         "key": "Dialogue Text/0x0100000F000103F3",
         "note": "English Nay/neigh phonetic reveal cannot be reproduced directly in Hebrew: earlier Nay rendered לא, final reveal rendered Hebrew neigh הי־הי־הי. Meaning and reveal timing retained; phonetic joke weakened. Scene review advisable."
+      },
+      {
+        "batch": "c000605-00000",
+        "key": "Dialogue Text/0x0100004C000085E9",
+        "note": "האיגוד inflected as איגוד הסוורים in construct phrase; deliberate grammatical exception."
+      },
+      {
+        "batch": "c000605-00200",
+        "reviewed_flags": [
+          {
+            "key": "Dialogue Text/0x0100000600018873",
+            "term": "rigor mortis",
+            "expected_forms": ["קשיון מוות"],
+            "status": "review; inflection, wordplay or context may justify exception"
+          },
+          {
+            "key": "Dialogue Text/0x0100004C00008598",
+            "term": "the Union",
+            "expected_forms": ["האיגוד"],
+            "status": "review; inflection, wordplay or context may justify exception"
+          },
+          {
+            "key": "Dialogue Text/0x0100004C000099DD",
+            "term": "the Union",
+            "expected_forms": ["האיגוד"],
+            "status": "review; inflection, wordplay or context may justify exception"
+          },
+          {
+            "key": "Dialogue Text/0x0100000F00013114",
+            "term": "Stock Certificate",
+            "expected_forms": ["תעודת מניה"],
+            "status": "review; inflection, wordplay or context may justify exception"
+          },
+          {
+            "key": "Dialogue Text/0x0100004C00008592",
+            "term": "the Union",
+            "expected_forms": ["האיגוד"],
+            "status": "review; inflection, wordplay or context may justify exception"
+          },
+          {
+            "key": "Dialogue Text/0x0100004C000084BC",
+            "term": "the Union",
+            "expected_forms": ["האיגוד"],
+            "status": "review; inflection, wordplay or context may justify exception"
+          },
+          {
+            "key": "Dialogue Text/0x0100000400015AD4",
+            "term": "Bed",
+            "expected_forms": ["מיטה"],
+            "status": "review; inflection, wordplay or context may justify exception"
+          },
+          {
+            "key": "Dialogue Text/0x0100004C000089DA",
+            "term": "the Union",
+            "expected_forms": ["האיגוד"],
+            "status": "review; inflection, wordplay or context may justify exception"
+          }
+        ],
+        "note": "All intentional: קשיון המוות and תעודת המניה are definite inflections; איגוד הסוורים/איש איגוד construct phrases; put this to bed is idiom rendered תשים לזה סוף."
+      },
+      {
+        "batch": "c000605-00400",
+        "reviewed_flags": [
+          {
+            "key": "Dialogue Text/0x01000007000062A7",
+            "term": "Processing",
+            "expected_forms": ["מחלקת הטיפול", "מחלקת הטיפול"],
+            "status": "review; inflection, wordplay or context may justify exception"
+          },
+          {
+            "key": "Dialogue Text/0x0100000700005DE0",
+            "term": "Mega Rich Light-Bending Guy",
+            "expected_forms": ["הבחור העשיר בטירוף שמעקם את האור"],
+            "status": "review; inflection, wordplay or context may justify exception"
+          },
+          {
+            "key": "Alternate1/0x0100000700005DE0",
+            "term": "Mega Rich Light-Bending Guy",
+            "expected_forms": ["הבחור העשיר בטירוף שמעקם את האור"],
+            "status": "review; inflection, wordplay or context may justify exception"
+          }
+        ],
+        "note": "processing means processing surveillance information, not police department. Mega rich light-bending guy rendered indefinite בחור עשיר בטירוף שמעקם את האור per source a/an."
       }
     ],
     "lane-3-notes": [
@@ -278,6 +414,94 @@
           "Dialogue Text/0x010000060000FA38"
         ],
         "reason": "Greek apocalyptic phrases retained exactly: user asks what phrase means, and later opts out without knowing; Hebrew explanation would remove deliberate incomprehension and ritual tone."
+      },
+      {
+        "key": "Dialogue Text/0x01000021000014AA",
+        "batch": "c000557-00000",
+        "reason": "Intentional Spanish/Mesque code-switch retained from source; preserves Tiago voice and delayed Rhetoric explanation of viejita. Surrounding English translated directly."
+      },
+      {
+        "key": "Dialogue Text/0x0100007100002213",
+        "batch": "c000557-00000",
+        "reason": "Intentional Spanish/Mesque code-switch retained from source; preserves Tiago voice and delayed Rhetoric explanation of viejita. Surrounding English translated directly."
+      },
+      {
+        "key": "Dialogue Text/0x0100005A0000E64F",
+        "batch": "c000557-00000",
+        "reason": "Intentional Spanish/Mesque code-switch retained from source; preserves Tiago voice and delayed Rhetoric explanation of viejita. Surrounding English translated directly."
+      },
+      {
+        "key": "Dialogue Text/0x0100007100004266",
+        "batch": "c000557-00000",
+        "reason": "Intentional Spanish/Mesque code-switch retained from source; preserves Tiago voice and delayed Rhetoric explanation of viejita. Surrounding English translated directly."
+      },
+      {
+        "key": "Dialogue Text/0x010000710000426C",
+        "batch": "c000557-00000",
+        "reason": "Intentional Spanish/Mesque code-switch retained from source; preserves Tiago voice and delayed Rhetoric explanation of viejita. Surrounding English translated directly."
+      },
+      {
+        "key": "Dialogue Text/0x010000060001E487",
+        "batch": "c000557-00000",
+        "reason": "Intentional Spanish/Mesque code-switch retained from source; preserves Tiago voice and delayed Rhetoric explanation of viejita. Surrounding English translated directly."
+      },
+      {
+        "key": "Dialogue Text/0x010000580000F7E4",
+        "batch": "c000557-00000",
+        "reason": "Intentional Spanish/Mesque code-switch retained from source; preserves Tiago voice and delayed Rhetoric explanation of viejita. Surrounding English translated directly."
+      },
+      {
+        "key": "Dialogue Text/0x0100005A0000DEAD",
+        "batch": "c000557-00000",
+        "reason": "Intentional Spanish/Mesque code-switch retained from source; preserves Tiago voice and delayed Rhetoric explanation of viejita. Surrounding English translated directly."
+      },
+      {
+        "key": "Dialogue Text/0x010000580000FD6F",
+        "batch": "c000557-00000",
+        "reason": "Intentional Spanish/Mesque code-switch retained from source; preserves Tiago voice and delayed Rhetoric explanation of viejita. Surrounding English translated directly."
+      },
+      {
+        "key": "Dialogue Text/0x01000021000014A4",
+        "batch": "c000557-00000",
+        "reason": "Intentional Spanish/Mesque code-switch retained from source; preserves Tiago voice and delayed Rhetoric explanation of viejita. Surrounding English translated directly."
+      },
+      {
+        "key": "Dialogue Text/0x010000580000F7AC",
+        "batch": "c000557-00000",
+        "reason": "Intentional Spanish/Mesque code-switch retained from source; preserves Tiago voice and delayed Rhetoric explanation of viejita. Surrounding English translated directly."
+      },
+      {
+        "key": "Dialogue Text/0x01000071000018A8",
+        "batch": "c000557-00000",
+        "reason": "Intentional Spanish/Mesque code-switch retained from source; preserves Tiago voice and delayed Rhetoric explanation of viejita. Surrounding English translated directly."
+      },
+      {
+        "key": "Dialogue Text/0x01000071000028AC",
+        "batch": "c000557-00200",
+        "reason": "Intentional Spanish/Mesque code-switch retained from source; preserves Tiago voice and delayed Rhetoric explanation of viejita. Surrounding English translated directly."
+      },
+      {
+        "key": "Dialogue Text/0x010000580000F7D5",
+        "batch": "c000557-00200",
+        "reason": "Intentional Spanish/Mesque code-switch retained from source; preserves Tiago voice and delayed Rhetoric explanation of viejita. Surrounding English translated directly."
+      },
+      {
+        "key": "Dialogue Text/0x010000710000222B",
+        "batch": "c000557-00200",
+        "reason": "Intentional Spanish/Mesque code-switch retained from source; preserves Tiago voice and delayed Rhetoric explanation of viejita. Surrounding English translated directly."
+      },
+      {
+        "key": "Dialogue Text/0x010000580000F812",
+        "batch": "c000557-00000",
+        "reason": "False pussy/pusillanimous etymology joke adapted as כוסית/כסיסת ציפורניים מפחד; preceding insult and subsequent objection about female sexual organs preserved as כוסית. Deliberately dubious character claim, not a translator factual assertion."
+      },
+      {
+        "batch": "c000575-00000",
+        "exceptions": "Civilian translated as contextual masculine אזרח / אזרחים, not literal slash-gender label אזרח/ית."
+      },
+      {
+        "batch": "c000603-00000",
+        "exceptions": "Cunoesse alias C rendered סי without prematurely expanding name; Big C Communist wordplay adapted קו / קומוניזם; ordinary suggestion rendered הצעה, not skill label שכנוע. Fictional slur kipt transliterated קיפט; censored insults retain four asterisks."
       }
     ]
   }
