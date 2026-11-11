@@ -391,6 +391,30 @@
       {
         "batch": "c000944-00400",
         "notes": "Cunoesse false alias C matches c'mon / Hep C, not character. Hep C retained הפטיטיס C. Art-ishoo pun אמנ־אפצ׳י. Mismatched quote row188 mirrors source. Piss and Fuck abbreviated פיס ופאק, distinct from full names."
+      },
+      {
+        "batch": "c000944-00600",
+        "notes": "People's Pile הכור העממי; Uncle Maynard דוד מיינרד; Wompty-Dompty Dom וומפטי־דומפטי דום provisional. fuck-a-doodle-doo פאק־ריקי־קו preserves rooster pun. Source trailing newlines preserved rows58/59."
+      },
+      {
+        "batch": "c000975-00000",
+        "notes": "Sad eyes עיניים עצובות ordinary adjective. Antecentennial Revolution מהפכת טרום־המאה; Turn-of-the-Century Revolution מהפכת מפנה המאה; Eleven Day Government ממשלת אחד־עשר הימים provisional source-specific forms."
+      },
+      {
+        "batch": "c000987-00000",
+        "notes": "Sad adjective עצוב. Running out of shits idiom נגמר לי הזין; Cuno reply retains vulgar word echo. Source censored slur retains four asterisks."
+      },
+      {
+        "batch": "c000988-00000",
+        "notes": "Door unlocks rendered המנעול נפתח, natural Hebrew action; doorway referent remains clear. Weasel insult remains נחש / מאורת הנחש to match Evrart lane c790. Royal Lion האריה המלכותי; Guillaume's Kitten החתלתול של גיום."
+      },
+      {
+        "batch": "c000994-00000",
+        "notes": "Walder German transmissions preserved verbatim intentionally: player explicitly cannot understand them; Vredefort/Graad within those transmissions remain Latin. Electronic Doorbell definite פעמון הדלת האלקטרוני. Firewalker הולך־באש; Walder ואלדרית; entroponetic crosstalk זליגת אותות אנטרופונטית. No reveal acceleration."
+      },
+      {
+        "batch": "c000994-00200",
+        "notes": "German/Walder retained verbatim as unintelligible transmission, including Graad/Vredefort terms. Source trailing newlines preserved112/139. Radio call signs deliberately retain branch-specific Firewalker הולך־באש, Tequila Sunset טקילה סאנסט, Costeau קוסטו, Du Bois דו בואה."
       }
     ],
     "lane-2-notes": [
@@ -1016,6 +1040,18 @@
       {
         "batch": "c000972-00000",
         "note": "Cmon is בחייך, not C/Cunoesse."
+      },
+      {
+        "batch": "c000985-00000",
+        "note": "Union preceded by definite preposition לאיגוד. Trigger-Happy Jack’s adapted ג׳ק קל־ההדק, abbreviated followup ג׳ק. Ruby feminine; drug trafficking claims retained as dialogue."
+      },
+      {
+        "batch": "c000996-00000",
+        "note": "Interact is ordinary להתעסק, not inventory tab; Cmon is נו, not Cunoesse. Savvy סאווי (two v / two ו wordplay)."
+      },
+      {
+        "batch": "c000997-00000",
+        "note": "perception of value = ערך נתפס; sad story = עצוב. Exact-name lookup absent: Mauer-Koshlai Mercury Group קבוצת מאואר־קושלאי מרקורי; Weiss-Wiesemann וייס־ויזמן; karperie קרפרי; Ile-de-Casherbrume איל־דה־קאשרברום; Rehm רהם; Diodore דיודור; Suresne סורן."
       }
     ],
     "lane-3-notes": [
@@ -1418,6 +1454,18 @@
       {
         "batch": "c001010-00000",
         "note": "Union grammatical contraction לאיגוד. Suggestion ordinary proposal הצעה, not skill שכנוע. Restored explicit radio in radio transmitter."
+      },
+      {
+        "batch": "c001013-00000",
+        "note": "C/Cunoesse are C’mon false positives; face is stone idiom פניו חתומות; shivers verb מצטמררת, not named skill."
+      },
+      {
+        "batch": "c001016-00000",
+        "note": "C/Cunoesse matches C’mon; foot in door idiom דריסת רגל. Personified city voice consistently feminine. Text’s racist insult and drug references retained as fictional dialogue; no source changes."
+      },
+      {
+        "batch": "c001016-00200",
+        "note": "C/Cunoesse false positive from C’mon; foot in door idiom דריסת רגל. Source’s unmatched emphasis asterisk in row177 retained exactly."
       }
     ]
   }

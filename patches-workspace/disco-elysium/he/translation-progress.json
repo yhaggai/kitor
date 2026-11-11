@@ -2,8 +2,8 @@
   "branch": "codex/disco-elysium-localization",
   "source_of_truth": "translations.csv",
   "authoring": "Direct current-assistant translation; no external draft service",
-  "translated": 57904,
-  "remaining": 21682,
+  "translated": 59925,
+  "remaining": 19661,
   "conversations_with_translations": {
     "5": {
       "total": 14,
@@ -1932,7 +1932,7 @@
     },
     "944": {
       "total": 673,
-      "translated": 600,
+      "translated": 673,
       "name": "PIER / CINDY"
     },
     "945": {
@@ -2025,20 +2025,70 @@
       "translated": 74,
       "name": "BOARDWALK / LADDER"
     },
+    "973": {
+      "total": 1,
+      "translated": 1,
+      "name": "LAIR / KIM DOOR barks"
+    },
+    "975": {
+      "total": 45,
+      "translated": 45,
+      "name": "LAIR / KRAS MAZOV PORTRAIT"
+    },
+    "982": {
+      "total": 25,
+      "translated": 25,
+      "name": "LAIR ORB / shot viscal"
+    },
     "984": {
       "total": 124,
       "translated": 124,
       "name": "INVENTORY / RUBY'S JOURNAL"
+    },
+    "985": {
+      "total": 211,
+      "translated": 211,
+      "name": "LAIR / INSTIGATOR CASE"
+    },
+    "986": {
+      "total": 19,
+      "translated": 19,
+      "name": "LIFELINE / HEART ATTACK"
+    },
+    "987": {
+      "total": 29,
+      "translated": 29,
+      "name": "LIFELINE / GIVING UP"
+    },
+    "988": {
+      "total": 73,
+      "translated": 73,
+      "name": "GARYS APARTMENT / DOOR"
     },
     "990": {
       "total": 35,
       "translated": 35,
       "name": "SHACK ORB / locust city logic"
     },
+    "994": {
+      "total": 359,
+      "translated": 359,
+      "name": "JAM / COALITION WARSHIP ARCHER -- SOONA VERSION"
+    },
     "995": {
       "total": 387,
       "translated": 387,
       "name": "PLAZA / PISSFLAUBERT AND FTW"
+    },
+    "996": {
+      "total": 87,
+      "translated": 87,
+      "name": "CONTAINERYARD / RICH GUY CONTAINER DOOR"
+    },
+    "997": {
+      "total": 602,
+      "translated": 400,
+      "name": "CONTAINERYARD / LIGHT BENDING GUY"
     },
     "1000": {
       "total": 65,
@@ -2064,12 +2114,27 @@
       "total": 43,
       "translated": 43,
       "name": "KIM SWITCH / LORRY CONCLUSIONS"
+    },
+    "1011": {
+      "total": 150,
+      "translated": 150,
+      "name": "ICE / ACELE AND ASSOCIATES"
+    },
+    "1013": {
+      "total": 149,
+      "translated": 149,
+      "name": "ICE / ACELE CHURCH STUFF"
+    },
+    "1016": {
+      "total": 633,
+      "translated": 400,
+      "name": "ICE / ANDRE WHITE CHECKS"
     }
   },
   "resume_at": {
-    "conversation_id": 944,
-    "entry_id": 28,
-    "key": "Alternate1/0x0100001600003572"
+    "conversation_id": 997,
+    "entry_id": 9,
+    "key": "Alternate1/0x0100000F0001633E"
   },
   "glossary_entries": 467,
   "validation": {
@@ -2081,10 +2146,10 @@
     "bundle_sha256": "30822499ec9c1dc102393335a2344a06da71153857fcd62ba1d01ec8ce7d9906",
     "last_csv_validation": {
       "entries": 79586,
-      "translated": 57904,
-      "remaining": 21682,
+      "translated": 59925,
+      "remaining": 19661,
       "source_words": 1129354,
-      "coverage_percent": 72.757,
+      "coverage_percent": 75.296,
       "unmapped_source_keys": 193,
       "unresolved_localization_terms": 127,
       "errors": [],
