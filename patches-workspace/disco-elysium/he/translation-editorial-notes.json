@@ -105,6 +105,31 @@
         "key": "Dialogue Text/0x0100002F000027BF",
         "reason": "Frittte spelling joke retains three Latin t letters verbally as שלוש טי despite Hebrew glossary פריטטה.",
         "status": "translated; editorial review pending"
+      },
+      {
+        "key": "Dialogue Text/0x0100000600013CC2",
+        "reason": "Gary hard-k pronunciation of Revachol deliberately רבאקול in his direct speech, while canonical narrative remains רבאשול. Match this character idiolect on other lanes.",
+        "status": "translated; editorial review pending"
+      },
+      {
+        "key": "Dialogue Text/0x0100005800004B28",
+        "reason": "topping pie rendered פאי עם תוספות to retain invented pizza-equivalent naming; global food item alignment needed.",
+        "status": "translated; editorial review pending"
+      },
+      {
+        "key": "Dialogue Text/0x0100000F00015E07",
+        "reason": "penumbral griever artwork rendered האבל שבצללית; align title with art quest authored elsewhere.",
+        "status": "translated; editorial review pending"
+      },
+      {
+        "key": "Dialogue Text/0x0100000F00015E2A",
+        "reason": "formless complexion artwork rendered החזות חסרת הצורה; align with corresponding art quest.",
+        "status": "translated; editorial review pending"
+      },
+      {
+        "key": "Dialogue Text/0x010000060001CFC1",
+        "reason": "Antecentennial Revolution rendered מהפכת טרום־המאה, distinct source phrasing from Turn-of-the-Century Revolution; editorial lore term review needed.",
+        "status": "translated; editorial review pending"
       }
     ],
     "lane-2-notes": [
@@ -119,6 +144,10 @@
       {
         "key": "Dialogue Text/0x010000060001B53B",
         "note": "Retain Latin ONUC/CUNO and letter names N/C: visual reversed-name graffiti puzzle depends on source letterforms."
+      },
+      {
+        "key": "Dialogue Text/0x0100000F000103F3",
+        "note": "English Nay/neigh phonetic reveal cannot be reproduced directly in Hebrew: earlier Nay rendered לא, final reveal rendered Hebrew neigh הי־הי־הי. Meaning and reveal timing retained; phonetic joke weakened. Scene review advisable."
       }
     ],
     "lane-3-notes": [

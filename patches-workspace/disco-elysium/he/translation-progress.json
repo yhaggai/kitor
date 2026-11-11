@@ -2,8 +2,8 @@
   "branch": "codex/disco-elysium-localization",
   "source_of_truth": "translations.csv",
   "authoring": "Direct current-assistant translation; no external draft service",
-  "translated": 28053,
-  "remaining": 51533,
+  "translated": 30386,
+  "remaining": 49200,
   "conversations_with_translations": {
     "5": {
       "total": 14,
@@ -942,24 +942,74 @@
     },
     "544": {
       "total": 305,
-      "translated": 200,
+      "translated": 305,
       "name": "SOUTHCOAST / SUNKEN MOTOR CARRIAGE"
+    },
+    "545": {
+      "total": 57,
+      "translated": 57,
+      "name": "WHIRLING F1 / STEEL DOOR"
+    },
+    "546": {
+      "total": 118,
+      "translated": 118,
+      "name": "JAM / HORSEBACK MONUMENT"
     },
     "547": {
       "total": 75,
       "translated": 75,
       "name": "APT / MAZOV BUST"
     },
+    "548": {
+      "total": 265,
+      "translated": 265,
+      "name": "APT / WCW MAIN"
+    },
     "549": {
       "total": 680,
-      "translated": 200,
+      "translated": 680,
       "name": "APT / TOMAS THE SPONSOR"
+    },
+    "550": {
+      "total": 94,
+      "translated": 94,
+      "name": "APT / CUNO DAD"
+    },
+    "551": {
+      "total": 44,
+      "translated": 44,
+      "name": "VILLAGE / ABIGAIL"
+    },
+    "552": {
+      "total": 170,
+      "translated": 170,
+      "name": "VILLAGE / ROSEMARY"
+    },
+    "553": {
+      "total": 200,
+      "translated": 200,
+      "name": "BOARDWALK / THE PIGS"
+    },
+    "554": {
+      "total": 291,
+      "translated": 200,
+      "name": "BOARDWALK / TRANT HEIDELSTAM INTRO"
+    },
+    "555": {
+      "total": 224,
+      "translated": 200,
+      "name": "CHURCH / MAINFRAME"
+    },
+    "558": {
+      "total": 999,
+      "translated": 400,
+      "name": "CHURCH / SOONA"
     }
   },
   "resume_at": {
-    "conversation_id": 544,
-    "entry_id": 46,
-    "key": "Alternate1/0x01000007000063D4"
+    "conversation_id": 554,
+    "entry_id": 33,
+    "key": "Alternate1/0x010000580000C45E"
   },
   "glossary_entries": 467,
   "validation": {
@@ -971,10 +1021,10 @@
     "bundle_sha256": "30822499ec9c1dc102393335a2344a06da71153857fcd62ba1d01ec8ce7d9906",
     "last_csv_validation": {
       "entries": 79586,
-      "translated": 28053,
-      "remaining": 51533,
+      "translated": 30386,
+      "remaining": 49200,
       "source_words": 1129354,
-      "coverage_percent": 35.249,
+      "coverage_percent": 38.18,
       "unmapped_source_keys": 193,
       "unresolved_localization_terms": 127,
       "errors": [],
