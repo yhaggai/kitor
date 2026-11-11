@@ -491,6 +491,34 @@
       {
         "batch": "c001090-00000",
         "notes": "Union preposition inflections באיגוד/שבאיגוד intentional; C/Cunoesse false match in C'mon. Gauche caviar שמאל הקוויאר; caviar socialist סוציאליסט של קוויאר; gymnasium גימנסיה preserves gym word association."
+      },
+      {
+        "batch": "c001092-00000",
+        "notes": "Cunoesse alias C localized short סי with feminine address; Sad ordinary adjective עצוב. Censored f****t מ****ם, f*g מ*ם preserve star counts. Fiddle molesting taunt למשמש; pipo פיפו hat; foreign banaanipoika באנאניפויקה retained foreign. Amends mishearing adapted פיוס־פאקינג־מה to match translated פיוס."
+      },
+      {
+        "batch": "c001092-00200",
+        "notes": "Taivaan tähden preserved as foreign Finnish. Rue Saint-Cispare רחוב סן־סיספאר; Madre מאדרה provisional. Cuno reply entry405 feminine תגידי to Cunoesse: incoming entry467 confirmed, despite broad source addressee396. Kuuno/Cuno orthographic difference is same Hebrew קונו."
+      },
+      {
+        "batch": "c001101-00000",
+        "notes": "Sad ordinary adjective עצוב. Unfuckable boast בלתי ניתנים לזיון preserves vulgar impossibility."
+      },
+      {
+        "batch": "c001102-00000",
+        "notes": "C/Cunoesse false C'mere match; Sad ordinary adjective עצוב. Foreign cobarde קובארדה and madre מאדרה retained foreign register. T abbreviated Titus טי; Glenny גלני."
+      },
+      {
+        "batch": "c001103-00000",
+        "notes": "Man with Sunglasses definite האיש במשקפי השמש inflection. Head nurse אח ראשי preserves head/senior pun after neck/chin. Ether אתר ambiguous drug/metaphysical same spelling."
+      },
+      {
+        "batch": "c001067-00000,c001067-00200",
+        "notes": "Same-author Safre spelling refinement ספרה→סאפרה from c1131 canonical South Safre דרום סאפרה; supersedes provisional ספרה."
+      },
+      {
+        "batch": "c001145-00000",
+        "notes": "Stone in idiom two birds one stone localized שתי ציפורים במכה אחת. Charlie Spillane צ'רלי ספיליין; Deanna Deneuve דיאנה דנב provisional. Dick Mullen דיק מולן follows canonical book label (root alerted prior Modus Mullen מאלן discrepancy)."
       }
     ],
     "lane-2-notes": [
@@ -1180,6 +1208,22 @@
       {
         "batch": "c001123-00000",
         "note": "Cunoesse false match literal alphabet C. Alphabet retains Latin letters and transliterates fictional International Language vocabulary, including Sinus→סינוס to preserve explicit definition."
+      },
+      {
+        "batch": "c001147-00000",
+        "note": "Morell short מורל, full מורל הקריפטוזואולוג no comma in Hebrew apposition deliberate."
+      },
+      {
+        "batch": "c001149-00000",
+        "note": "Sad ordinary sad brother אח עצוב. Provisional exact lookup absent: Voyager Road דרך הנוסע; Ledger of Failure and Hatred פנקס הכישלון והשנאה; Apricot Chewing Gum Scented One זו בניחוח מסטיק המשמש; bow collector אספן קשתות. Cool/cold pun קול/קרירות retained semantic shift."
+      },
+      {
+        "batch": "c001168-00000",
+        "note": "C/Cunoesse false cmon matches; Sad ordinary עצוב. Provisional absent exact lookup May bells פעמוני מאי; Radio Gauche רדיו גוש; Triangong4-46 טריאנגונג4-46; topfaller טופפאלר. fasces/fascha פאשס/פאשה retains bundle-twig political metaphor. Row178 source missing quote retained."
+      },
+      {
+        "batch": "c001168-00200",
+        "note": "Union in full name איגוד הסוורים. Rèsurrection רסורקסיון; Corbeille קורביי; droite retained foreign דרואט."
       }
     ],
     "lane-3-notes": [
@@ -1634,6 +1678,18 @@
       {
         "batch": "c001105-00400",
         "note": "Civilian modifies adviser: יועץ אזרחי. Scab leader indefinite מנהיג שוברי שביתה in list."
+      },
+      {
+        "batch": "c001189-00000",
+        "note": "Union inflects לאיגוד / איגוד הסוורים. Censored slurs retain original asterisk runs. Bower rendered סוכת חיזור / סוכה; kairomones קיירומונים; parthenogenesis רביית בתולין."
+      },
+      {
+        "batch": "c001189-00200",
+        "note": "East Delta alias not inserted into Doomed Commercial Area. Cunoesse called C, translated סי to preserve nickname. Civilian is male אזרח. Insulindian phasmid indefinite מקלון אינסולינדי. Exact named-title glossary האיש מהיילדמַל used in c1189; earlier descriptive Hjelmdall used היאלמדאל."
+      },
+      {
+        "batch": "c001189-00400",
+        "note": "Union contractions לאיגוד; civilian male אזרח. Indefinite phasmid מקלון אינסולינדי. C/Cunoesse matches C’mon. Shit the bed is idiom פישלת, not literal bed. All censored asterisks retained."
       }
     ]
   }
