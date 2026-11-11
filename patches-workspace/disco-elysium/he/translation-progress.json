@@ -2,8 +2,8 @@
   "branch": "codex/disco-elysium-localization",
   "source_of_truth": "translations.csv",
   "authoring": "Direct current-assistant translation; no external draft service",
-  "translated": 47159,
-  "remaining": 32427,
+  "translated": 49352,
+  "remaining": 30234,
   "conversations_with_translations": {
     "5": {
       "total": 14,
@@ -1477,7 +1477,7 @@
     },
     "776": {
       "total": 490,
-      "translated": 400,
+      "translated": 490,
       "name": "PLAZA / COUPRIS KINEEMA"
     },
     "777": {
@@ -1492,14 +1492,144 @@
     },
     "780": {
       "total": 388,
-      "translated": 200,
+      "translated": 388,
       "name": "KINEEMA / STATION CALL"
+    },
+    "781": {
+      "total": 136,
+      "translated": 136,
+      "name": "CONTAINERYARD / CLOAK JUMP"
+    },
+    "783": {
+      "total": 59,
+      "translated": 59,
+      "name": "OFFICE / FILE CABINET"
+    },
+    "784": {
+      "total": 36,
+      "translated": 36,
+      "name": "CONTAINERYARD / EVRART FAVORS"
+    },
+    "785": {
+      "total": 130,
+      "translated": 130,
+      "name": "CONTAINERYARD / EVRART ME"
+    },
+    "786": {
+      "total": 18,
+      "translated": 18,
+      "name": "CONTAINERYARD / EVRART MR DU BOIS"
+    },
+    "787": {
+      "total": 37,
+      "translated": 37,
+      "name": "CONTAINERYARD / EVRART HOW I GOT HERE"
+    },
+    "788": {
+      "total": 27,
+      "translated": 27,
+      "name": "CONTAINERYARD / EVRART GUN"
+    },
+    "789": {
+      "total": 234,
+      "translated": 234,
+      "name": "CONTAINERYARD / EVRART UNION"
+    },
+    "790": {
+      "total": 380,
+      "translated": 200,
+      "name": "CONTAINERYARD / EVRART MURDER"
+    },
+    "793": {
+      "total": 1,
+      "translated": 1,
+      "name": "COAST / KIM barks"
+    },
+    "797": {
+      "total": 113,
+      "translated": 113,
+      "name": "INVENTORY / BADGE"
+    },
+    "798": {
+      "total": 14,
+      "translated": 14,
+      "name": "WHIRLING F1 / TITUS HARDIE barks"
+    },
+    "799": {
+      "total": 22,
+      "translated": 22,
+      "name": "WHIRLING F1 / ALAIN barks"
+    },
+    "800": {
+      "total": 8,
+      "translated": 8,
+      "name": "WHIRLING F1 / GLEN barks"
+    },
+    "801": {
+      "total": 14,
+      "translated": 14,
+      "name": "WHIRLING F1 / EUGENE barks"
+    },
+    "802": {
+      "total": 6,
+      "translated": 6,
+      "name": "WHIRLING F1 / FIXER barks"
+    },
+    "803": {
+      "total": 6,
+      "translated": 6,
+      "name": "WHIRLING F1 / ANGUS barks"
+    },
+    "804": {
+      "total": 8,
+      "translated": 8,
+      "name": "WHIRLING F1 / SHANKY barks"
+    },
+    "805": {
+      "total": 6,
+      "translated": 6,
+      "name": "WHIRLING F1 / THEO barks"
+    },
+    "806": {
+      "total": 349,
+      "translated": 349,
+      "name": "WHIRLING F1 / HARDIE TELLS YOU ABOUT LYNCHING"
+    },
+    "807": {
+      "total": 79,
+      "translated": 79,
+      "name": "WHIRLING F1 / HARDIE SCAN THE ROOM"
+    },
+    "809": {
+      "total": 141,
+      "translated": 141,
+      "name": "WHIRLING F1 / HARDIE AFTER TALKING TO KLAASJE"
+    },
+    "811": {
+      "total": 66,
+      "translated": 66,
+      "name": "WHIRLING F1 / ADDITIONAL CONTENT"
+    },
+    "816": {
+      "total": 83,
+      "translated": 83,
+      "name": "LAIR ORB / dark celebration"
+    },
+    "817": {
+      "total": 74,
+      "translated": 74,
+      "name": "PLAZA ORB / spirit bomb ready"
+    },
+    "818": {
+      "total": 48,
+      "translated": 48,
+      "name": "TRIBUNAL / THIRD GUY?"
     }
   },
   "resume_at": {
-    "conversation_id": 776,
-    "entry_id": 56,
-    "key": "Alternate1/0x0100004B00001333"
+    "conversation_id": 790,
+    "entry_id": 34,
+    "key": "Alternate1/0x01000082000206D7"
   },
   "glossary_entries": 467,
   "validation": {
@@ -1511,10 +1641,10 @@
     "bundle_sha256": "30822499ec9c1dc102393335a2344a06da71153857fcd62ba1d01ec8ce7d9906",
     "last_csv_validation": {
       "entries": 79586,
-      "translated": 47159,
-      "remaining": 32427,
+      "translated": 49352,
+      "remaining": 30234,
       "source_words": 1129354,
-      "coverage_percent": 59.255,
+      "coverage_percent": 62.011,
       "unmapped_source_keys": 193,
       "unresolved_localization_terms": 127,
       "errors": [],

@@ -287,6 +287,26 @@
       {
         "batch": "c000775-00000",
         "note": "Door warning door frame translated משקוף. Rue de Saint-Ghislaine רחוב סן־גילן provisional."
+      },
+      {
+        "batch": "c000781-00000",
+        "note": "Logic leap of logic rendered נקפוץ למסקנה; Sad ordinary adjective עצובה. Horrific Necktie direct vocative עניבה מחרידה. Kvalsund קוואלסונד; Francenegro פרנקונגרו provisional. Censored slur keeps exact4 stars; TORQUE/TARE מומנט/משקל עצמי."
+      },
+      {
+        "batch": "c000783-00000",
+        "note": "File cabinet definite ארון התיקים; Union construct איגוד הסוורים. Couron קורון, Coal City עיר הפחם, Modus Mullen מודוס מאלן provisional. Todo bullet stars and linebreaks preserved."
+      },
+      {
+        "batch": "c000784-00000",
+        "note": "Union inflected לאיגוד. Brew refers borscht scheme, תבשיל; Jean-Luc ז'אן־לוק."
+      },
+      {
+        "batch": "c000785-00000",
+        "notes": "C/Cunoesse matches are false positives from C’mon; Union construct איש איגוד and File Cabinet definite ארון התיקים intentional."
+      },
+      {
+        "batch": "c000790-00000",
+        "notes": "Washerwoman alias Isobel Sadie rendered איזובל סיידי; Union construct/indefinite איגוד intentional; Hardie’s boys הבחורים של הארדי with prefix מהבחורים; Rainbow Coalition קואליציית הקשת unrelated to Coalition proper faction. Weasel insult consistently נחש; lawyergirl patronizing diminutive עורכדינית. Uncatalogued names Yeesut ייסוט, Semenine סמנין, Saramiriza סרמיריסה, Señorita Pineapple סניוריטה אננס provisional."
       }
     ],
     "lane-2-notes": [
@@ -804,6 +824,22 @@
       {
         "batch": "c000767-00400",
         "note": "Sad ordinary adjective/verb→עצוב/מעציב/העצבתי, not personified עצב. Morning/mourning homophone rendered literally בוקר/אבל to preserve explicit correction; ex-something uses אקס-משהו."
+      },
+      {
+        "batch": "c000780-00000",
+        "note": "Cunoesse matches C’mon ordinary בחייך. Radio in police-radio context is קשר/קשרן (operator קשר), distinct from stable object label רדיו. Villiers provisional וילייה; Armistice weapon model שביתת נשק; Blaasma בלאזמה. Gun/fun meanings retained without invented unrelated rhyme."
+      },
+      {
+        "batch": "c000780-00200",
+        "note": "Sad ordinary adjective→עצוב. Radio police context→קשר, microphone→מיקרופון הקשר. Firewalker/Firewater mishearing uses הולך באש/מי אש; Oldboy nickname הוותיק. Hjelmdallermann provisional האיש מהיילמדאל."
+      },
+      {
+        "batch": "c000789-00000",
+        "note": "Union flags reflect construct איגוד הסוורים / חברי איגוד, deliberate grammar. Raw materials medicinal names provisional בנאפד/ריספריזול. Incorporated socialism→סוציאליזם תאגידי; large volume column→טור הכמויות הגדולות followed by explicit source explanation."
+      },
+      {
+        "batch": "c000809-00000",
+        "note": "C/Cunoesse flags C’mon→בחייך; bedtime story→סיפור לפני השינה; door frame→משקוף; Union construct איגוד עובדי הנמל. Titus fucker aimed at Klaasje rendered feminine per explicit Rhetoric cue. Whoopty doo→יש-יש-יש; fuck-a-doodle-fine→זיון-של-סבבה."
       }
     ],
     "lane-3-notes": [
@@ -1102,6 +1138,22 @@
       {
         "batch": "c000776-00200",
         "note": "Police radio transceiver rendered מכשיר קשר/קשר, not broadcast רדיו."
+      },
+      {
+        "batch": "c000776-00400",
+        "note": "Police radio uses מכשיר קשר. Central Jamrock Public Library adds המרכזית to preserve full source name; direct library name otherwise canonical."
+      },
+      {
+        "batch": "c000799-00000",
+        "note": "sad adjective עצוב, not personified Sad."
+      },
+      {
+        "batch": "c000800-00000",
+        "note": "Cunoesse/C incidental match in C’mon, not character reference."
+      },
+      {
+        "batch": "c000806-00000",
+        "note": "C/Cunoesse incidental match in c’mon; not character mention. Reunion prison nickname translated איחוד מחדש to retain explicit etymology discussion."
       }
     ]
   }
