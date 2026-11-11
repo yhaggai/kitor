@@ -1,9 +1,9 @@
 {
-  "branch": "codex/disco-elysium-hebrew",
+  "branch": "codex/disco-elysium-localization",
   "source_of_truth": "translations.csv",
   "authoring": "Direct current-assistant translation; no external draft service",
-  "translated": 5747,
-  "remaining": 73839,
+  "translated": 21768,
+  "remaining": 57818,
   "conversations_with_translations": {
     "5": {
       "total": 14,
@@ -42,37 +42,37 @@
     },
     "14": {
       "total": 1146,
-      "translated": 1103,
+      "translated": 1146,
       "name": "YARD / HANGED MAN"
     },
     "15": {
       "total": 101,
-      "translated": 95,
+      "translated": 101,
       "name": "WESTCOAST / EXECUTIONS VISCAL"
     },
     "16": {
       "total": 702,
-      "translated": 653,
+      "translated": 702,
       "name": "WHIRLING F3 / KLAASJE MAIN"
     },
     "17": {
       "total": 569,
-      "translated": 545,
+      "translated": 569,
       "name": "VILLAGE / WASHERWOMAN"
     },
     "18": {
       "total": 478,
-      "translated": 453,
+      "translated": 478,
       "name": "WESTCOAST / MORELL"
     },
     "19": {
       "total": 559,
-      "translated": 512,
+      "translated": 559,
       "name": "ICE / ACELE"
     },
     "20": {
       "total": 48,
-      "translated": 47,
+      "translated": 48,
       "name": "ICE / AFTER CRYING KIM"
     },
     "26": {
@@ -84,27 +84,634 @@
       "total": 964,
       "translated": 964,
       "name": "WHIRLING F1 / GARTE MAIN"
+    },
+    "29": {
+      "total": 783,
+      "translated": 783,
+      "name": "WHIRLING / KIM MAIN"
+    },
+    "33": {
+      "total": 36,
+      "translated": 36,
+      "name": "WHIRLING F1 ORB / dialogue karaoke inspiration"
+    },
+    "35": {
+      "total": 303,
+      "translated": 303,
+      "name": "YARD / TRASH"
+    },
+    "37": {
+      "total": 4,
+      "translated": 4,
+      "name": "YARD / CUNO barks"
+    },
+    "38": {
+      "total": 15,
+      "translated": 15,
+      "name": "YARD / CUNOESSE barks"
+    },
+    "39": {
+      "total": 122,
+      "translated": 122,
+      "name": "PLAZA ORB / rain shivers"
+    },
+    "40": {
+      "total": 315,
+      "translated": 315,
+      "name": "YARD / FOOTPRINTS VISCAL"
+    },
+    "42": {
+      "total": 43,
+      "translated": 43,
+      "name": "WHIRLING F2 / BROKEN WINDOW VISCAL"
+    },
+    "43": {
+      "total": 8,
+      "translated": 8,
+      "name": "PLAZA / TARE DRUNK barks"
+    },
+    "45": {
+      "total": 47,
+      "translated": 47,
+      "name": "PLAZA / TIRETRACKS VISCAL"
+    },
+    "67": {
+      "total": 21,
+      "translated": 21,
+      "name": "PLAZA ORB / bulletholes esprit"
+    },
+    "68": {
+      "total": 53,
+      "translated": 53,
+      "name": "PLAZA / mailbox"
+    },
+    "70": {
+      "total": 27,
+      "translated": 27,
+      "name": "BACKYARD ORB / painting the wall"
+    },
+    "71": {
+      "total": 787,
+      "translated": 787,
+      "name": "YARD / HANGED MAN AUTOPSY"
+    },
+    "89": {
+      "total": 3,
+      "translated": 3,
+      "name": "SEAFORT / CUNO FUEL barks"
+    },
+    "101": {
+      "total": 1,
+      "translated": 1,
+      "name": "BACKYARD / KIM BREAKING AND ENTERING barks"
+    },
+    "105": {
+      "total": 1,
+      "translated": 1,
+      "name": "DOOMED S1 / KIM WEAPON CACHE barks"
+    },
+    "119": {
+      "total": 15,
+      "translated": 15,
+      "name": "LAIR ORB / wiresinglass"
+    },
+    "121": {
+      "total": 24,
+      "translated": 24,
+      "name": "COAST ORB / redchairconvo"
+    },
+    "142": {
+      "total": 1,
+      "translated": 1,
+      "name": "COAST / KIM WRECKED CAR barks"
+    },
+    "183": {
+      "total": 21,
+      "translated": 21,
+      "name": "CHURCH ORB / drug lab realization"
+    },
+    "204": {
+      "total": 395,
+      "translated": 395,
+      "name": "VILLAGE / POSSE 3"
+    },
+    "207": {
+      "total": 382,
+      "translated": 382,
+      "name": "JAM / PALEDRIVER"
+    },
+    "225": {
+      "total": 26,
+      "translated": 26,
+      "name": "COAST ORB / abandoned summer house"
+    },
+    "226": {
+      "total": 22,
+      "translated": 22,
+      "name": "COAST ORB / living under the boat"
+    },
+    "229": {
+      "total": 15,
+      "translated": 15,
+      "name": "INVENTORY / MUG"
+    },
+    "271": {
+      "total": 149,
+      "translated": 149,
+      "name": "INVENTORY / DOCUMENTS"
+    },
+    "273": {
+      "total": 11,
+      "translated": 11,
+      "name": "YARD / CUNOESSE postbody barks"
+    },
+    "274": {
+      "total": 11,
+      "translated": 11,
+      "name": "YARD / CUNO postbody barks"
+    },
+    "275": {
+      "total": 85,
+      "translated": 85,
+      "name": "PLAZA / RIVER CRATER"
+    },
+    "276": {
+      "total": 5,
+      "translated": 5,
+      "name": "PLAZA / GASTON rene dead barks"
+    },
+    "279": {
+      "total": 11,
+      "translated": 11,
+      "name": "VILLAGE / LILLY SANDCASTLE"
+    },
+    "280": {
+      "total": 156,
+      "translated": 156,
+      "name": "BOARDWALK / THE PIGS RED CHECK"
+    },
+    "281": {
+      "total": 4,
+      "translated": 4,
+      "name": "WHIRLING / LENA DAY 2 BARKS"
+    },
+    "282": {
+      "total": 3,
+      "translated": 3,
+      "name": "PIER / CINDY BARKS"
+    },
+    "283": {
+      "total": 5,
+      "translated": 5,
+      "name": "CONTAINERYARD / LEO barks"
+    },
+    "284": {
+      "total": 6,
+      "translated": 6,
+      "name": "GATES / SCAB LEADER barks"
+    },
+    "285": {
+      "total": 8,
+      "translated": 8,
+      "name": "VILLAGE / ROSEMARY barks"
+    },
+    "286": {
+      "total": 8,
+      "translated": 8,
+      "name": "VILLAGE / IDIOT barks"
+    },
+    "287": {
+      "total": 8,
+      "translated": 8,
+      "name": "VILLAGE / ABBY barks"
+    },
+    "288": {
+      "total": 7,
+      "translated": 7,
+      "name": "COAST / GARY barks coast"
+    },
+    "289": {
+      "total": 8,
+      "translated": 8,
+      "name": "BOARDWALK / TRANT HEIDELSTAM barks"
+    },
+    "290": {
+      "total": 9,
+      "translated": 9,
+      "name": "PLAZA / WORKING CLASS WOMAN barks"
+    },
+    "291": {
+      "total": 5,
+      "translated": 5,
+      "name": "BACKYARD / SMOKER ON THE BALCONY barks balcony"
+    },
+    "292": {
+      "total": 12,
+      "translated": 12,
+      "name": "APT / TOMAS THE SPONSOR barks apt"
+    },
+    "293": {
+      "total": 7,
+      "translated": 7,
+      "name": "COAST / GARY barks whirling"
+    },
+    "294": {
+      "total": 8,
+      "translated": 8,
+      "name": "COAST / MORELL barks whirling"
+    },
+    "295": {
+      "total": 8,
+      "translated": 8,
+      "name": "BACKYARD / SMOKER ON THE BALCONY barks whirling"
+    },
+    "296": {
+      "total": 9,
+      "translated": 9,
+      "name": "ICE / ACELE barks"
+    },
+    "297": {
+      "total": 17,
+      "translated": 17,
+      "name": "ICE / EGGHEAD barks tent"
+    },
+    "298": {
+      "total": 6,
+      "translated": 6,
+      "name": "ICE / NOID barks"
+    },
+    "299": {
+      "total": 7,
+      "translated": 7,
+      "name": "ICE / ANDRE barks"
+    },
+    "300": {
+      "total": 6,
+      "translated": 6,
+      "name": "ICE / SOONA barks"
+    },
+    "301": {
+      "total": 8,
+      "translated": 8,
+      "name": "JAM / HUMANITARIAN AID barks"
+    },
+    "302": {
+      "total": 30,
+      "translated": 30,
+      "name": "PLAZA ORB / neither man clicked"
+    },
+    "304": {
+      "total": 6,
+      "translated": 6,
+      "name": "BACKYARD / SMOKER ON THE BALCONY barks apartment"
+    },
+    "305": {
+      "total": 8,
+      "translated": 8,
+      "name": "BACKYARD / SMOKER ON THE BALCONY barks whirling"
+    },
+    "306": {
+      "total": 4,
+      "translated": 4,
+      "name": "VILLAGE / WASHERWOMAN barks"
+    },
+    "307": {
+      "total": 24,
+      "translated": 24,
+      "name": "EVRART ORB / fishing rod dialogue OBSOLETE"
+    },
+    "308": {
+      "total": 24,
+      "translated": 24,
+      "name": "EVRART ORB / fishing rod convo"
+    },
+    "322": {
+      "total": 15,
+      "translated": 15,
+      "name": "COAST ORB / laughingatscene"
+    },
+    "346": {
+      "total": 428,
+      "translated": 428,
+      "name": "JAM / RACIST"
+    },
+    "347": {
+      "total": 562,
+      "translated": 562,
+      "name": "PLAZA / ANNETTE"
+    },
+    "348": {
+      "total": 23,
+      "translated": 23,
+      "name": "JAM / RACIST CABIN"
+    },
+    "349": {
+      "total": 52,
+      "translated": 52,
+      "name": "KIM SWITCH / RACIST KITSURAGI"
+    },
+    "350": {
+      "total": 131,
+      "translated": 131,
+      "name": "ICE / CHURCH DOOR"
+    },
+    "351": {
+      "total": 13,
+      "translated": 13,
+      "name": "ICE / TENT FLAP"
+    },
+    "352": {
+      "total": 548,
+      "translated": 548,
+      "name": "ICE / EGGHEAD"
+    },
+    "353": {
+      "total": 476,
+      "translated": 476,
+      "name": "ICE / ANDRE"
+    },
+    "354": {
+      "total": 57,
+      "translated": 57,
+      "name": "BACKYARD / MOTHER OF ALL WALLS"
+    },
+    "356": {
+      "total": 20,
+      "translated": 20,
+      "name": "WHIRLING F2 ORB / dialogue cigarette stub"
+    },
+    "357": {
+      "total": 37,
+      "translated": 37,
+      "name": "WHIRLING F1 ORB / dialogue home"
+    },
+    "358": {
+      "total": 63,
+      "translated": 63,
+      "name": "WHIRLING F2 ORB / Communist Quest Initiation"
+    },
+    "360": {
+      "total": 56,
+      "translated": 56,
+      "name": "GATES ORB / communistquest"
+    },
+    "361": {
+      "total": 78,
+      "translated": 78,
+      "name": "APT / COMMUNIST MEETING DOOR"
+    },
+    "362": {
+      "total": 1309,
+      "translated": 1309,
+      "name": "APT / STUDENT COMMUNIST"
+    },
+    "363": {
+      "total": 52,
+      "translated": 52,
+      "name": "PIER ORB / communistquest"
+    },
+    "364": {
+      "total": 166,
+      "translated": 166,
+      "name": "INVENTORY / LA FUMEE"
+    },
+    "365": {
+      "total": 189,
+      "translated": 189,
+      "name": "INVENTORY / INFRA-MATERIALISM GUIDE"
+    },
+    "366": {
+      "total": 56,
+      "translated": 56,
+      "name": "WHIRLING F2 ORB / Moralist Quest Initiation"
+    },
+    "368": {
+      "total": 1413,
+      "translated": 1413,
+      "name": "JAM / COALITION WARSHIP ARCHER -- NOID VERSION"
+    },
+    "369": {
+      "total": 65,
+      "translated": 65,
+      "name": "OFFICE / SECRETARYS RADIO"
+    },
+    "371": {
+      "total": 171,
+      "translated": 171,
+      "name": "WESTCOAST / SUNDAY FRIEND"
+    },
+    "372": {
+      "total": 92,
+      "translated": 92,
+      "name": "WHIRLING F2 ORB / Ultraliberal Quest Initiation"
+    },
+    "374": {
+      "total": 49,
+      "translated": 49,
+      "name": "PIER ORB / ultraliberal quest pre-cindy"
+    },
+    "375": {
+      "total": 31,
+      "translated": 31,
+      "name": "CONTAINERYARD ORB / ultraliberal dream quest"
+    },
+    "376": {
+      "total": 32,
+      "translated": 32,
+      "name": "INVENTORY / STOCK CERTIFICATE"
+    },
+    "377": {
+      "total": 590,
+      "translated": 590,
+      "name": "JAM / MONUMENT REFLECTION"
+    },
+    "378": {
+      "total": 280,
+      "translated": 280,
+      "name": "GATES / SCAB LEADER"
+    },
+    "379": {
+      "total": 627,
+      "translated": 627,
+      "name": "GATES / MANANA"
+    },
+    "380": {
+      "total": 738,
+      "translated": 738,
+      "name": "ICE / NOID"
+    },
+    "381": {
+      "total": 646,
+      "translated": 646,
+      "name": "GATES / MEASUREHEAD"
+    },
+    "382": {
+      "total": 133,
+      "translated": 133,
+      "name": "WHIRLING / SLEEPING DOCKWORKER"
+    },
+    "383": {
+      "total": 373,
+      "translated": 373,
+      "name": "PLAZA / RENE"
+    },
+    "384": {
+      "total": 7,
+      "translated": 7,
+      "name": "PLAZA ORB / gaston cheating"
+    },
+    "385": {
+      "total": 12,
+      "translated": 12,
+      "name": "PLAZA / RENE barks"
+    },
+    "386": {
+      "total": 9,
+      "translated": 9,
+      "name": "PLAZA / GASTON barks"
+    },
+    "405": {
+      "total": 4,
+      "translated": 4,
+      "name": "WHIRLING F2 ORB / dialogue pants"
+    },
+    "406": {
+      "total": 1,
+      "translated": 1,
+      "name": "WHIRLING / Kim barks"
+    },
+    "417": {
+      "total": 10,
+      "translated": 10,
+      "name": "WHIRLING F1 ORB / royalism theme"
+    },
+    "419": {
+      "total": 47,
+      "translated": 47,
+      "name": "WHIRLING F1 ORB / alcohol impulse"
+    },
+    "427": {
+      "total": 292,
+      "translated": 292,
+      "name": "JAM / INSTIGATOR CABIN"
+    },
+    "428": {
+      "total": 643,
+      "translated": 643,
+      "name": "BOOKSTORE / PLAISANCE"
+    },
+    "429": {
+      "total": 84,
+      "translated": 84,
+      "name": "BOOKSTORE / CURTAINS"
+    },
+    "430": {
+      "total": 67,
+      "translated": 67,
+      "name": "WHIRLING F2 / KLAASJE DOOR"
+    },
+    "432": {
+      "total": 17,
+      "translated": 17,
+      "name": "PLAZA / WORKING CLASS DRUNK barks"
+    },
+    "433": {
+      "total": 387,
+      "translated": 200,
+      "name": "PLAZA / WORKING CLASS WOMAN"
+    },
+    "434": {
+      "total": 11,
+      "translated": 11,
+      "name": "PLAZA ORB / get a drink"
+    },
+    "435": {
+      "total": 23,
+      "translated": 23,
+      "name": "PLAZA ORB / working class husband"
+    },
+    "436": {
+      "total": 33,
+      "translated": 33,
+      "name": "PLAZA / COIN-OPERATED VIEWER I"
+    },
+    "437": {
+      "total": 17,
+      "translated": 17,
+      "name": "PLAZA / COIN-OPERATED VIEWER II"
+    },
+    "439": {
+      "total": 15,
+      "translated": 15,
+      "name": "WHIRLING F2 / RADIO barks"
+    },
+    "443": {
+      "total": 10,
+      "translated": 10,
+      "name": "BACKYARD / STONE"
+    },
+    "444": {
+      "total": 2,
+      "translated": 2,
+      "name": "BACKYARD / KIM barks"
+    },
+    "445": {
+      "total": 138,
+      "translated": 138,
+      "name": "BACKYARD / SMOKER ON THE BALCONY"
+    },
+    "446": {
+      "total": 151,
+      "translated": 151,
+      "name": "FRITTE / FRITTE CLERK"
+    },
+    "451": {
+      "total": 59,
+      "translated": 59,
+      "name": "JAM / faln sneakers on a pedestal of speakers"
+    },
+    "458": {
+      "total": 50,
+      "translated": 50,
+      "name": "JAM / box of clothes"
+    },
+    "460": {
+      "total": 719,
+      "translated": 200,
+      "name": "DOOMED / DICEMAKER"
     }
   },
   "resume_at": {
-    "conversation_id": 14,
-    "entry_id": 123,
-    "key": "Alternate1/0x01000006000087B6"
+    "conversation_id": 433,
+    "entry_id": 25,
+    "key": "Alternate1/0x010000380000136C"
   },
-  "glossary_entries": 279,
+  "glossary_entries": 467,
   "validation": {
     "csv_errors": [],
-    "pipeline_tests": "6 passed",
+    "pipeline_tests": "8 passed",
     "glossary_warnings": 0,
     "renderer": "Astra batches not built or tested in-game; previous bundle validation applies only to earlier 4165 entries",
     "bundle_translated_keys": 4165,
     "bundle_sha256": "30822499ec9c1dc102393335a2344a06da71153857fcd62ba1d01ec8ce7d9906",
     "last_csv_validation": {
-      "translated": 5747,
-      "coverage_percent": 7.221,
-      "errors": []
+      "entries": 79586,
+      "translated": 21768,
+      "remaining": 57818,
+      "source_words": 1129354,
+      "coverage_percent": 27.352,
+      "unmapped_source_keys": 193,
+      "unresolved_localization_terms": 127,
+      "errors": [],
+      "release_ready": false
     }
   },
   "pending": "Full translation, contextual editorial review, unresolved source mapping, Windows/macOS packaging and onboarding remain incomplete.",
-  "active_translation_model": "gpt-6-astra"
+  "active_translation_model": "gpt-6-astra",
+  "parallel_translation": {
+    "glossary_model": "gpt-6-luna",
+    "translation_model": "gpt-6-astra",
+    "batch_directory": "/private/tmp/disco-parallel-20261111",
+    "merge_policy": "Single canonical writer; exact English and stable key checks; conflicting translations rejected; protected tokens validated before atomic replacement"
+  }
 }

@@ -1,16 +1,16 @@
 {
   "model": "gpt-6-luna",
-  "date": "2026-11-10",
+  "date": "2026-11-11",
   "reasoning_effort": "not exposed in this delegated workspace task",
   "artifact": "glossary.json",
-  "scope": "Added luna_voice_draft notes to recurring/narratively important speaker entries; attached up to three source dialogue keys where present in actor evidence. Preserved existing glossary entries and prior author attribution. Added missing recurring/story speaker entries with source-index keys and actor metadata where available. Added seven cross-scene terms tied to source keys in Garte Main conversation 28 and adjacent conversation 29. Added East Delta Commerce Centre, East Delta Pinball Arcade, and Marinella from Garte dialogue; linked the centre as an alias for The Doomed Commercial Area with exact index keys. Added the recurring Moralintern organization term with source keys from conversations 29 and 368+; documented scene-specific Mambo/Jambo aliases for the Inland Empire and Shivers skills. Added source-backed alias drafts for Harrier Du Bois/Harry, Kim/Lieutenant Kitsuragi, and Evrart Claire/Evrart without replacing existing attribution. Added source-backed Seolite demonym/language forms and Cop Off phrase for conversation 29; documented the RCM full-name expansion on the existing acronym entry.",
+  "scope": "Added luna_voice_draft notes to recurring/narratively important speaker entries; attached up to three source dialogue keys where present in actor evidence. Preserved existing glossary entries and prior author attribution. Added missing recurring/story speaker entries with source-index keys and actor metadata where available. Added seven cross-scene terms tied to source keys in Garte Main conversation 28 and adjacent conversation 29. Added East Delta Commerce Centre, East Delta Pinball Arcade, and Marinella from Garte dialogue; linked the centre as an alias for The Doomed Commercial Area with exact index keys. Added the recurring Moralintern organization term with source keys from conversations 29 and 368+; documented scene-specific Mambo/Jambo aliases for the Inland Empire and Shivers skills. Added source-backed alias drafts for Harrier Du Bois/Harry, Kim/Lieutenant Kitsuragi, and Evrart Claire/Evrart without replacing existing attribution. Added source-backed Seolite demonym/language forms and Cop Off phrase for conversation 29; documented the RCM full-name expansion on the existing acronym entry. Completed an actor-inventory audit against 79,586 CSV source rows and 73,836 indexed source-key contexts. Added every remaining source-backed NPC label with at least one line, enriched matching canonical entries, and recorded labels with no source rows. Added the remaining 127 source speaker labels with at least five indexed CSV rows (objects, books, locations, mechanics and environmental narration), and recorded all lower-frequency/unlabelled IDs for follow-up. Added remaining source-speaker labels occurring in at least three indexed CSV rows; refreshed residual low-frequency/unlabelled speaker inventory and unique-ID coverage counts. Added the final 10 low-frequency (one- to two-row) labelled source speakers. Only unlabeled source speaker ID 0 remains outside the source-speaker glossary; actor labels with no dialogue remain separately listed.",
   "source_evidence": [
     "actors.json (speaker IDs and descriptions)",
     "source-index.json (source keys mapped to speaker/conversation context)",
     "translations.csv (English dialogue strings keyed by source ID)"
   ],
   "uncertainty": "Notes are provisional and based on selected samples, not full-scene validation. No pronunciation was marked verified; no new gender or pronoun claims were introduced. New labels and voice notes are provisional; gender/pronouns follow explicit actor metadata only.",
-  "added_entries": 18,
+  "added_entries": 206,
   "batches": [
     {
       "scope": "Garte Main / nearby scenes, conversations 28–29",
@@ -53,6 +53,92 @@
       "model": "gpt-6-luna",
       "terms": ["Seolite", "Cop Off", "Revachol Citizens Militia"],
       "source_evidence": "Exact dialogue keys in conversations 20 and 29; demonym, language, and RCM expansion distinguished by source wording."
+    },
+    {
+      "scope": "Whole-game actor inventory coverage audit",
+      "model": "gpt-6-luna",
+      "date": "2026-11-11",
+      "new_glossary_rows": 23,
+      "canonical_entries_enriched": 12,
+      "source_backed_actor_ids_added": 35,
+      "source_evidence": "actors.json + source-index.json speaker IDs/conversations + translations.csv English rows; direct source keys stored per record."
+    },
+    {
+      "scope": "Whole-game source speaker audit",
+      "model": "gpt-6-luna",
+      "date": "2026-11-11",
+      "new_rows": 127,
+      "selection": "All missing stable speaker labels with at least five exact indexed English source rows; exact source keys and conversation IDs attached.",
+      "residual_review_queue": 38,
+      "source_evidence": "source-index.json plus translations.csv; labels read from actor records or source-index speaker fields."
+    },
+    {
+      "scope": "Whole-game source-speaker audit continuation",
+      "model": "gpt-6-luna",
+      "date": "2026-11-11",
+      "new_rows": 27,
+      "selection": "Every remaining stable speaker label with three or four indexed CSV rows; exact source keys and conversation IDs stored.",
+      "remaining_review_queue": 12
+    },
+    {
+      "scope": "Final low-frequency source labels",
+      "model": "gpt-6-luna",
+      "date": "2026-11-11",
+      "new_rows": 10,
+      "selection": "All remaining labelled source speaker IDs with one or two CSV rows; evidence keys attached."
+    },
+    {
+      "scope": "Final indexed environment label",
+      "model": "gpt-6-luna",
+      "date": "2026-11-11",
+      "new_rows": 1,
+      "terms": ["Seagull"],
+      "source_evidence": "Two indexed CSV rows under source speaker ID 392."
+    }
+  ],
+  "unresolved_actor_labels_without_source_rows": [
+    {
+      "actor_id": "46",
+      "english": "Bookkeeper",
+      "reason": "No indexed source dialogue row; omitted from the source-backed speaker glossary."
+    },
+    {
+      "actor_id": "47",
+      "english": "Unionista",
+      "reason": "No indexed source dialogue row; omitted from the source-backed speaker glossary."
+    },
+    {
+      "actor_id": "48",
+      "english": "Former Sailor",
+      "reason": "No indexed source dialogue row; omitted from the source-backed speaker glossary."
+    },
+    {
+      "actor_id": "49",
+      "english": "Union Veteran",
+      "reason": "No indexed source dialogue row; omitted from the source-backed speaker glossary."
+    },
+    {
+      "actor_id": "50",
+      "english": "Cleaning Woman",
+      "reason": "No indexed source dialogue row; omitted from the source-backed speaker glossary."
+    },
+    {
+      "actor_id": "52",
+      "english": "Union Rookie",
+      "reason": "No indexed source dialogue row; omitted from the source-backed speaker glossary."
+    },
+    {
+      "actor_id": "122",
+      "english": "MrDeleteMe",
+      "reason": "No indexed source dialogue row; omitted from the source-backed speaker glossary."
+    }
+  ],
+  "remaining_low_frequency_or_unlabelled_speaker_ids": [
+    {
+      "speaker_id": "0",
+      "label": null,
+      "csv_source_row_count": 16,
+      "reason": "No stable source speaker label exists in indexed context."
     }
   ]
 }
