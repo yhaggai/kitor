@@ -467,6 +467,30 @@
       {
         "batch": "c001052-00000",
         "notes": "Hjelmdallermann retained canonical היילדמַלרמן. Tyrbald טירבאלד; Nachtherrer נאכטהררים; Wrôthgär רותגאר; Yezzdor ייזדור; zweihänder צווייהנדר; Sturm שטורם and Drang דראנג provisional. Katlan דמו הקטלני derived from Katla קטלה, not lethal. Man from Hjelmdall warning inspected as compound title inflection."
+      },
+      {
+        "batch": "c001055-00000",
+        "notes": "Sad ordinary adjective עצובה modifying feminine קליפת אדם; player masculine throughout."
+      },
+      {
+        "batch": "c001064-00000",
+        "notes": "Agiogenous zones אזורים אגיוגניים; pharmacopoeia פרמקופיאה in question, explanatory ספר תרופות elsewhere; entroponaut אנטרופונאוט. Fictional medical book claims preserved in voice."
+      },
+      {
+        "batch": "c001066-00000",
+        "notes": "Sad ordinary adjective עצובה; Processing ordinary fish processing עיבוד דגים. Provisional Yekartina Dahl יקארטינה דאל; Yugo-Graad יוגו־גראד; Ferdydyrke פרדידירקה; Lenka Polyfabricate לנקה פוליפבריקייט; Sosnovor סוסנובור."
+      },
+      {
+        "batch": "c001067-00000",
+        "notes": "C/Cunoesse false match in C'mon. Game title follows compact סוזרניות (root notified conflict with prior סוזרנות). Safre ספרה; Ile Marat איל מאראט provisional. Game terminology: victory points נקודות ניצחון, victory column עמוד הניצחון, trade war מלחמת סחר, worker tokens אסימוני פועלים."
+      },
+      {
+        "batch": "c001067-00200",
+        "notes": "Suzerain warnings are preposition inflection לסוזרן; Cunoesse false C alias in C'mon. Historical suzerainty סוזרנות and game title סוזרניות follow previous/canonical label distinction pending root standardization. Iilmaraa אילמארה canonical place, Iilmaraan prior demonym אילמראן."
+      },
+      {
+        "batch": "c001090-00000",
+        "notes": "Union preposition inflections באיגוד/שבאיגוד intentional; C/Cunoesse false match in C'mon. Gauche caviar שמאל הקוויאר; caviar socialist סוציאליסט של קוויאר; gymnasium גימנסיה preserves gym word association."
       }
     ],
     "lane-2-notes": [
@@ -1132,6 +1156,30 @@
       {
         "batch": "c001030-00800",
         "note": "C/Cunoesse flag is cmon, translated קדימה; row69 preserves missing source closing quote."
+      },
+      {
+        "batch": "c001088-00000",
+        "note": "Sad ordinary adjective עצוב. Exact lookup Al Gul/Setting Sun absent: אל גול / השמש השוקעת provisional. c1087 cop pejorative מנאייק versus policemen שוטרים."
+      },
+      {
+        "batch": "c001093-00000",
+        "note": "Bed→מיטתו inflection. Foreign insults phonetic מולקופאה/פגארי; source4 censorship stars preserved. Night City עיר הלילה; popophone מנאייקופון; contusion technical קונטוזיה supports explanation and Cuno pronunciation joke."
+      },
+      {
+        "batch": "c001095-00000",
+        "note": "Review exceptions: Cunoesse alias C→סי; Gary short גארי; indefinite trash container מכל אשפה; Sad ordinary עצוב; gardener indefinite גננית. Star Chamber חדר הכוכבים; eternite אטרניט; Mirova מירובה."
+      },
+      {
+        "batch": "c001099-00000",
+        "note": "Review Union indefinite אנשי איגוד; Hardie boys definite contracted לבחורים/indefinite בחורים in no more/without Hardie wordplay. Nicknames retained Angie אנגי, Lizzie ליזי, Al אל."
+      },
+      {
+        "batch": "c001116-00000",
+        "note": "Sad ordinary adjective עצוב/מעציבה inflection. porta-reel exact lookup absent → נגן הסלילים הנייד. Commencer button translated התחלה."
+      },
+      {
+        "batch": "c001123-00000",
+        "note": "Cunoesse false match literal alphabet C. Alphabet retains Latin letters and transliterates fictional International Language vocabulary, including Sinus→סינוס to preserve explicit definition."
       }
     ],
     "lane-3-notes": [
@@ -1578,6 +1626,14 @@
       {
         "batch": "c001105-00000",
         "note": "C/Cunoesse match C’mon, rendered בחייכם. Sad ordinary adjective עצוב. Kuuno vs Cuno is represented קוּוּנוֹ vs קונו to preserve the revealed real-name contrast. Shitkid ילד חרא; Major Crimes Unit היחידה לפשעים חמורים; psychotraumatic amnesia אמנזיה פסיכוטראומטית."
+      },
+      {
+        "batch": "c001105-00200",
+        "note": "Scab Leader is indefinite מנהיג שוברי שביתה in a list; same term."
+      },
+      {
+        "batch": "c001105-00400",
+        "note": "Civilian modifies adviser: יועץ אזרחי. Scab leader indefinite מנהיג שוברי שביתה in list."
       }
     ]
   }

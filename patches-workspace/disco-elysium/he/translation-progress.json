@@ -2,8 +2,8 @@
   "branch": "codex/disco-elysium-localization",
   "source_of_truth": "translations.csv",
   "authoring": "Direct current-assistant translation; no external draft service",
-  "translated": 64080,
-  "remaining": 15506,
+  "translated": 66093,
+  "remaining": 13493,
   "conversations_with_translations": {
     "5": {
       "total": 14,
@@ -2230,15 +2230,40 @@
       "translated": 45,
       "name": "WHIRLING F2 / DREAM 2 HANGED MAN"
     },
+    "1055": {
+      "total": 32,
+      "translated": 32,
+      "name": "WHIRLING F2 ORB / speed hangover"
+    },
     "1056": {
       "total": 31,
       "translated": 31,
       "name": "DAYCHANGE / TEQUILA BED"
     },
+    "1057": {
+      "total": 24,
+      "translated": 24,
+      "name": "WHIRLING F2 / BLACKOUT DREAM"
+    },
+    "1064": {
+      "total": 106,
+      "translated": 106,
+      "name": "INVENTORY / PALE MEDICINE"
+    },
     "1065": {
       "total": 220,
       "translated": 220,
       "name": "INVENTORY / MULLEN IDENTITY"
+    },
+    "1066": {
+      "total": 40,
+      "translated": 40,
+      "name": "INVENTORY / BAD ROMANCE"
+    },
+    "1067": {
+      "total": 358,
+      "translated": 358,
+      "name": "INVENTORY / SUZERAINTY GAME"
     },
     "1069": {
       "total": 34,
@@ -2280,36 +2305,116 @@
       "translated": 40,
       "name": "PLAZA / RENE CASE MONEY RAT"
     },
+    "1088": {
+      "total": 113,
+      "translated": 113,
+      "name": "PLAZA / RENE WC HERO STORY"
+    },
     "1089": {
       "total": 76,
       "translated": 76,
       "name": "PLAZA / GASTON CHEATING"
+    },
+    "1090": {
+      "total": 74,
+      "translated": 74,
+      "name": "PLAZA / GASTON CASE"
     },
     "1091": {
       "total": 142,
       "translated": 142,
       "name": "PLAZA / GASTON SANDWICH WC"
     },
+    "1093": {
+      "total": 140,
+      "translated": 140,
+      "name": "YARD / CUNO BODY"
+    },
     "1094": {
       "total": 91,
       "translated": 91,
       "name": "YARD / CUNO FRIDGE"
+    },
+    "1095": {
+      "total": 129,
+      "translated": 129,
+      "name": "YARD / CUNO SCENE"
     },
     "1098": {
       "total": 166,
       "translated": 166,
       "name": "WHIRLING F1 / TITUS ALAIN AND EUGENE"
     },
+    "1099": {
+      "total": 103,
+      "translated": 103,
+      "name": "WHIRLING F1 / EUGENE AND ALAIN"
+    },
+    "1104": {
+      "total": 10,
+      "translated": 10,
+      "name": "WHIRLING F1 ORB / vicquemare esprit afterthought"
+    },
     "1105": {
       "total": 602,
-      "translated": 200,
+      "translated": 602,
       "name": "VILLAGE / POSSE"
+    },
+    "1107": {
+      "total": 13,
+      "translated": 13,
+      "name": "COAST / WOMENS RIGHTS second stage barks"
+    },
+    "1110": {
+      "total": 12,
+      "translated": 12,
+      "name": "WHIRLING F1 / EXIT DOOR"
+    },
+    "1111": {
+      "total": 20,
+      "translated": 20,
+      "name": "WHIRLING F2 / TAPE PLAYER"
+    },
+    "1112": {
+      "total": 1,
+      "translated": 1,
+      "name": "JAM / TOMMY barks"
+    },
+    "1116": {
+      "total": 31,
+      "translated": 31,
+      "name": "INVENTORY / SMALLEST CHURCH TAPE"
+    },
+    "1119": {
+      "total": 6,
+      "translated": 6,
+      "name": "LAIR ORB / wearing revolutionary hat"
+    },
+    "1121": {
+      "total": 7,
+      "translated": 7,
+      "name": "APT ORB / wearing fancy loafers"
+    },
+    "1123": {
+      "total": 24,
+      "translated": 24,
+      "name": "INVENTORY / PRIMER"
+    },
+    "1178": {
+      "total": 41,
+      "translated": 41,
+      "name": "KIM SWITCH / DEAD HUSBAND"
+    },
+    "1180": {
+      "total": 327,
+      "translated": 327,
+      "name": "SEAFORT / DESERTER REASONING"
     }
   },
   "resume_at": {
-    "conversation_id": 1055,
-    "entry_id": 2,
-    "key": "Dialogue Text/0x0100005A000123E3"
+    "conversation_id": 1092,
+    "entry_id": 5,
+    "key": "Dialogue Text/0x0100004C00002554"
   },
   "glossary_entries": 467,
   "validation": {
@@ -2321,10 +2426,10 @@
     "bundle_sha256": "30822499ec9c1dc102393335a2344a06da71153857fcd62ba1d01ec8ce7d9906",
     "last_csv_validation": {
       "entries": 79586,
-      "translated": 64080,
-      "remaining": 15506,
+      "translated": 66093,
+      "remaining": 13493,
       "source_words": 1129354,
-      "coverage_percent": 80.517,
+      "coverage_percent": 83.046,
       "unmapped_source_keys": 193,
       "unresolved_localization_terms": 127,
       "errors": [],
