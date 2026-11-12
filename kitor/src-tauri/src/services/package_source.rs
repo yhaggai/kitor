@@ -55,12 +55,37 @@ impl PackageSource {
             .map_err(|e| e.to_string())?;
         super::file_service::extract_zip(archive, extracted.path())?;
         let root = selected_root(extracted.path(), id, target, super::patch_lifecycle::platform())?;
+        if matches!(self, Self::OwlboyMacSteam) {
+            select_owlboy_catalog(&root, target)?;
+        }
         for entry in fs::read_dir(root).map_err(|e| e.to_string())? {
             let entry = entry.map_err(|e| e.to_string())?;
             fs::rename(entry.path(), destination.join(entry.file_name())).map_err(|e| e.to_string())?;
         }
         Ok(())
     }
+}
+
+fn select_owlboy_catalog(root: &Path, target: &Path) -> Result<(), String> {
+    const CSV: &str = "Data/Localizations/Translations.csv";
+    // The current Steam depot can leave a duplicate final fragment ("ini,-1\r\n").
+    // The delta only reads the shared prefix; the journal still backs up the exact input.
+    const WITH_TRAILING_FRAGMENT: &str =
+        "baa0c87bdb64d3d3c4324f99d9075af088a8b7e39550f46d72e134e1fad874e6";
+    let csv = target.join(CSV);
+    if !csv.is_file() || super::patch_lifecycle::hash(&csv)? != WITH_TRAILING_FRAGMENT {
+        return Ok(());
+    }
+    let manifest = root.join("patch.json");
+    let mut package: super::patch_lifecycle::Package =
+        serde_json::from_slice(&fs::read(&manifest).map_err(|e| e.to_string())?)
+            .map_err(|e| e.to_string())?;
+    let change = package.platforms.get_mut("osx")
+        .and_then(|plan| plan.files.iter_mut().find(|change| change.path == CSV))
+        .ok_or("Missing Owlboy translation file in patch manifest")?;
+    change.original_sha256 = Some(WITH_TRAILING_FRAGMENT.into());
+    fs::write(manifest, serde_json::to_vec(&package).map_err(|e| e.to_string())?)
+        .map_err(|e| e.to_string())
 }
 
 fn selected_root(root: &Path, id: &str, target: &Path, platform: &str) -> Result<std::path::PathBuf, String> {
