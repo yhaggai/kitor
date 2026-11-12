@@ -20,11 +20,16 @@ export const useSteamStore = create<{
   status: SteamStatus;
   busy: boolean;
   error: string | null;
+  reset: () => void;
   run: (command: string, args?: Record<string, unknown>) => Promise<boolean>;
 }>((set) => ({
   status: empty,
   busy: false,
   error: null,
+  reset: () => {
+    request += 1;
+    set({ status: { ...empty }, busy: false, error: null });
+  },
   run: async (command, args) => {
     const current = ++request;
     set({ busy: true, error: null });
@@ -35,7 +40,10 @@ export const useSteamStore = create<{
       return true;
     } catch (error) {
       if (current === request)
-        set((s) => ({ error: String(error), status: { ...s.status, connecting: false } }));
+        set((s) => ({
+          error: String(error),
+          status: { ...s.status, connecting: false, owned_app_ids: null },
+        }));
       return false;
     } finally {
       if (current === request) set({ busy: false });

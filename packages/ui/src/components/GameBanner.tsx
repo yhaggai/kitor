@@ -1,9 +1,12 @@
 import { useState } from "react";
+import { gameTitle } from "../hebrewTitle";
 import { useTranslation } from "../i18n";
 import type { GameSummary } from "../types";
 
 export function GameBanner({ game }: { game: GameSummary }) {
-  const { t } = useTranslation();
+  const { t, language: appLanguage } = useTranslation();
+  const title = gameTitle(game, appLanguage);
+  const titleIsHebrew = /[\u0590-\u05FF]/.test(title);
   const [language, setLanguage] = useState<"he" | "en">(game.banner?.he ? "he" : "en");
   const [failedSrc, setFailedSrc] = useState<string>();
   const activeLanguage = game.banner?.[language] ? language : game.banner?.he ? "he" : "en";
@@ -20,7 +23,7 @@ export function GameBanner({ game }: { game: GameSummary }) {
             className="kt-game-banner-art"
             src={src}
             alt={t("{0} · {1} banner", [
-              game.title,
+              title,
               activeLanguage === "he" ? t("Hebrew") : t("English"),
             ])}
             onError={() => setFailedSrc(src)}
@@ -30,8 +33,12 @@ export function GameBanner({ game }: { game: GameSummary }) {
           )}
         </>
       ) : (
-        <div className="kt-banner-fallback-title" dir="auto">
-          {game.title}
+        <div
+          className="kt-banner-fallback-title"
+          dir={titleIsHebrew ? "rtl" : "auto"}
+          lang={titleIsHebrew ? "he" : undefined}
+        >
+          {title}
         </div>
       )}
       {game.banner?.he && game.banner?.en && (

@@ -1,6 +1,6 @@
 ---
 name: kitor-add-game-patch
-description: Add a new game patch to Kitor from the JSON catalog, including Hebrew box art, local source import, Windows and macOS packaging and runtime compatibility, registry integration, and GitHub Actions verification. Use for onboarding a game; use kitor-patches for isolated patch lifecycle changes.
+description: Add a new game patch to Kitor from the JSON catalog, including Hebrew box art, local source import, Windows and macOS packaging and runtime compatibility, registry integration, direct Steam or GOG downloads, and GitHub Actions verification. Use for onboarding a game; use kitor-patches for isolated patch lifecycle changes.
 ---
 
 # Add a Kitor game patch
@@ -39,6 +39,14 @@ Then determine the viable route for the exact downloaded edition:
 On Windows, install the matching edition through Steam and locate its files through Steam’s library. When obtaining Windows files on macOS, follow the [Steam download skill](../steam-windows-download-macos/SKILL.md). Use the authenticated Steam client, verify every required depot finishes, and import verified data into a stable managed location. For GOG, use the user's entitled installer/download route and validate extraction and layout. Ownership, downloading, installation and launch are distinct states. Do not acquire base games from patch mirrors or bypass entitlement; runtime purchases or account login may require user action.
 
 Keep edition/platform limitations visible in metadata and the relevant app flow. Gate download, patch and launch controls using verified per-game capabilities; include manual folder selection when normal detection cannot find imported data.
+
+## Direct download in Kitor
+
+Add at least one Kitor-managed download route for the exact patch-compatible edition on each platform advertised as supporting direct install. Choose Steam or GOG based on edition, entitlement and runtime support. An installed-game detector, a store link, and opening the store client's install screen do not complete this step.
+
+- **Steam:** Add or extend the recipe in `kitor/src-tauri/data/steam_products.json`. Verify the app ID, every required depot and platform, expected files, managed import layout and game ID mapping. For collections, verify the requested edition is the one imported. Inspect the current recipe schema and importer. Preserve executable permissions and declare native launchers in `executable_paths` where the importer supports it, so missing depot flags do not leave the game unlaunchable. Use Kitor's existing authenticated download path.
+- **GOG:** Wire the exact product ID in `kitor/patches/registry.json` and verify that Kitor's GOG downloader accepts the edition, platform, offline installer and extracted layout. If the capability gate or extractor does not support the title, add and validate the missing integration before advertising direct install.
+- **Verify from the game page:** On the intended branch and build, check that the in-app download option is available for the correct store. With an entitled account and a fresh managed folder, verify download, import, detection, patch installation and launch in Hebrew. Confirm launch uses the managed copy and does not send the user to the store to install it again. Record the store, edition, OS and which stages passed. If a supported edition, account, or platform is unavailable, name the missing route or unverified stage explicitly and keep direct install gated accordingly.
 
 ## Installed-game detection
 

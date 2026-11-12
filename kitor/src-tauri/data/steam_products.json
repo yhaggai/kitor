@@ -1,5 +1,513 @@
 [
   {
+    "app_id": 221910,
+    "depot_id": 221911,
+    "platform": "windows",
+    "title": "The Stanley Parable (2013)",
+    "importer": "layout",
+    "cache_key": "221910-221911",
+    "games": [
+      {
+        "id": "stanley-parable",
+        "title": "The Stanley Parable (2013)",
+        "folder": "",
+        "files": []
+      }
+    ],
+    "required_files": ["stanley.exe", "thestanleyparable/gameinfo.txt"],
+    "copy_depot": true,
+    "additional_depots": [221912]
+  },
+  {
+    "app_id": 261510,
+    "depot_id": 261511,
+    "platform": "windows",
+    "title": "Tesla Effect: A Tex Murphy Adventure",
+    "importer": "layout",
+    "cache_key": "261510-261511",
+    "games": [
+      {
+        "id": "tesla-effect",
+        "title": "Tesla Effect: A Tex Murphy Adventure",
+        "folder": "",
+        "files": []
+      }
+    ],
+    "required_files": [
+      "TeslaEffect.exe",
+      "TeslaEffect_Data/ExternalData/Data/CutsceneSubtitlesData/Ault5_CS82_APath.XML"
+    ],
+    "copy_depot": true
+  },
+  {
+    "app_id": 258520,
+    "depot_id": 258521,
+    "platform": "windows",
+    "title": "The Vanishing of Ethan Carter (original)",
+    "importer": "layout",
+    "cache_key": "258520-258521",
+    "games": [
+      {
+        "id": "ethan-carter",
+        "title": "The Vanishing of Ethan Carter (original)",
+        "folder": "",
+        "files": []
+      }
+    ],
+    "required_files": [
+      "Binaries/Win64/AstronautsGame-Win64-Shipping.exe",
+      "AstronautsGame/Localization/AstronautsGame.enu"
+    ],
+    "copy_depot": true
+  },
+  {
+    "app_id": 319630,
+    "depot_id": 319631,
+    "platform": "windows",
+    "title": "Life Is Strange — Episodes 1–3",
+    "importer": "layout",
+    "cache_key": "319630-319631",
+    "games": [
+      {
+        "id": "life-is-strange",
+        "title": "Life Is Strange — Episodes 1–3",
+        "folder": "",
+        "files": []
+      }
+    ],
+    "required_files": [
+      "Binaries/Win32/LifeIsStrange.exe",
+      "LifeIsStrangeGame/Localization/INT/CU_E1_1A.INT"
+    ],
+    "copy_depot": true,
+    "additional_depots": [329880, 329910, 329920, 329930]
+  },
+  {
+    "app_id": 620,
+    "depot_id": 621,
+    "platform": "windows",
+    "title": "Portal 2",
+    "importer": "layout",
+    "cache_key": "620-621",
+    "games": [
+      {
+        "id": "portal2",
+        "title": "Portal 2",
+        "folder": "",
+        "files": []
+      }
+    ],
+    "required_files": ["portal2.exe", "portal2/bin/client.dll", "portal2/gameinfo.txt"],
+    "copy_depot": true,
+    "additional_depots": [622, 624]
+  },
+  {
+    "app_id": 220090,
+    "depot_id": 220091,
+    "platform": "windows",
+    "title": "The Journey Down: Chapter One",
+    "importer": "layout",
+    "cache_key": "220090-220091",
+    "games": [
+      {
+        "id": "journey-down1",
+        "title": "The Journey Down: Chapter One",
+        "folder": "",
+        "files": []
+      }
+    ],
+    "required_files": ["JourneyDown1.exe", "jd1.gob"],
+    "copy_depot": true
+  },
+  {
+    "app_id": 1395030,
+    "depot_id": 1395031,
+    "platform": "windows",
+    "title": "Kathy Rain: Director's Cut",
+    "importer": "layout",
+    "cache_key": "1395030-1395031",
+    "games": [
+      {
+        "id": "kathy-rain-dc",
+        "title": "Kathy Rain: Director's Cut",
+        "folder": "",
+        "files": []
+      }
+    ],
+    "required_files": ["KathyRainDirectorsCut.exe", "KathyRainDirectorsCut_Data/resources.assets"],
+    "copy_depot": true
+  },
+  {
+    "app_id": 2333000,
+    "depot_id": 2333001,
+    "platform": "windows",
+    "title": "Silver Pines",
+    "importer": "layout",
+    "cache_key": "2333000-2333001",
+    "games": [
+      {
+        "id": "silver-pines",
+        "title": "Silver Pines",
+        "folder": "",
+        "files": []
+      }
+    ],
+    "required_files": [
+      "Carpenter.exe",
+      "Carpenter_Data/StreamingAssets/aa/StandaloneWindows64/localization-string-tables-english(en)_assets_all.bundle"
+    ],
+    "copy_depot": true
+  },
+  {
+    "app_id": 1170570,
+    "depot_id": 1170571,
+    "platform": "windows",
+    "title": "The Drifter",
+    "importer": "layout",
+    "cache_key": "1170570-1170571",
+    "games": [
+      {
+        "id": "drifter",
+        "title": "The Drifter",
+        "folder": "",
+        "files": []
+      }
+    ],
+    "required_files": ["TheDrifter.exe", "TheDrifter_Data/globalgamemanagers"],
+    "copy_depot": true
+  },
+  {
+    "app_id": 391540,
+    "depot_id": 391541,
+    "platform": "windows",
+    "title": "UNDERTALE",
+    "importer": "layout",
+    "cache_key": "391540-391541",
+    "games": [
+      {
+        "id": "undertale",
+        "title": "UNDERTALE",
+        "folder": "",
+        "files": []
+      }
+    ],
+    "required_files": ["UNDERTALE.exe", "data.win"],
+    "copy_depot": true
+  },
+  {
+    "app_id": 115800,
+    "depot_id": 115801,
+    "platform": "windows",
+    "title": "Owlboy",
+    "importer": "layout",
+    "cache_key": "115800-115801",
+    "games": [
+      {
+        "id": "owlboy",
+        "title": "Owlboy",
+        "folder": "",
+        "files": []
+      }
+    ],
+    "required_files": [
+      "Owlboy.exe",
+      "FNA.dll",
+      "FNA3D.dll",
+      "SDL2.dll",
+      "Data/versioninfo.txt",
+      "Data/Localizations/de.csv"
+    ],
+    "copy_depot": true
+  },
+  {
+    "app_id": 388210,
+    "depot_id": 388211,
+    "platform": "windows",
+    "title": "Day of the Tentacle",
+    "importer": "layout",
+    "cache_key": "388210-388211",
+    "games": [
+      {
+        "id": "tentacle",
+        "title": "Day of the Tentacle",
+        "folder": "",
+        "files": []
+      }
+    ],
+    "required_files": ["Dott.exe", "tenta.cle"],
+    "copy_depot": true
+  },
+  {
+    "app_id": 388210,
+    "depot_id": 388211,
+    "platform": "windows",
+    "title": "Day of the Tentacle Remastered",
+    "importer": "layout",
+    "cache_key": "388210-388211",
+    "games": [
+      {
+        "id": "day-of-the-tentacle-remastered",
+        "title": "Day of the Tentacle Remastered",
+        "folder": "",
+        "files": []
+      }
+    ],
+    "required_files": ["Dott.exe", "tenta.cle"],
+    "copy_depot": true
+  },
+  {
+    "app_id": 319870,
+    "depot_id": 319874,
+    "platform": "windows",
+    "title": "Jenny LeClue – Detectivu",
+    "importer": "layout",
+    "cache_key": "319870-319874",
+    "games": [
+      {
+        "id": "jenny-leclue",
+        "title": "Jenny LeClue – Detectivu",
+        "folder": "",
+        "files": []
+      }
+    ],
+    "required_files": [
+      "Jenny LeClue.exe",
+      "Jenny LeClue_Data/resources.assets",
+      "Jenny LeClue_Data/Managed/DialogueSystem.dll"
+    ],
+    "copy_depot": true
+  },
+  {
+    "app_id": 32360,
+    "depot_id": 32361,
+    "title": "The Secret of Monkey Island: Special Edition",
+    "importer": "layout",
+    "cache_key": "32360-32361",
+    "games": [
+      {
+        "id": "monkey-se",
+        "title": "The Secret of Monkey Island: Special Edition",
+        "folder": "",
+        "files": []
+      }
+    ],
+    "required_files": ["MISE.exe", "Monkey1.pak", "audio/SFXOriginal.xwb"],
+    "copy_paths": ["MISE.exe", "Monkey1.pak", "audio", "directx"],
+    "platform": "windows"
+  },
+  {
+    "app_id": 32460,
+    "depot_id": 32461,
+    "title": "Monkey Island 2: Special Edition",
+    "importer": "layout",
+    "cache_key": "32460-32461",
+    "games": [
+      {
+        "id": "monkey2-se",
+        "title": "Monkey Island 2: LeChuck’s Revenge Special Edition",
+        "folder": "",
+        "files": []
+      }
+    ],
+    "required_files": ["Monkey2.exe", "monkey2.pak", "audio/SFXOriginal.xwb"],
+    "copy_paths": [
+      "Monkey2.exe",
+      "monkey2.pak",
+      "steam_api.dll",
+      "InstallScript.vdf",
+      "audio",
+      "installers"
+    ],
+    "platform": "windows"
+  },
+  {
+    "app_id": 32360,
+    "depot_id": 32361,
+    "title": "The Secret of Monkey Island: Special Edition",
+    "importer": "layout",
+    "cache_key": "32360-32361",
+    "games": [
+      {
+        "id": "monkey-se-native",
+        "title": "The Secret of Monkey Island: Special Edition",
+        "folder": "",
+        "files": []
+      }
+    ],
+    "required_files": ["MISE.exe", "Monkey1.pak", "audio/SFXOriginal.xwb"],
+    "copy_paths": ["MISE.exe", "Monkey1.pak", "audio", "directx"],
+    "platform": "windows"
+  },
+  {
+    "app_id": 32460,
+    "depot_id": 32461,
+    "title": "Monkey Island 2: Special Edition",
+    "importer": "layout",
+    "cache_key": "32460-32461",
+    "games": [
+      {
+        "id": "monkey2-se-native",
+        "title": "Monkey Island 2: LeChuck’s Revenge Special Edition",
+        "folder": "",
+        "files": []
+      }
+    ],
+    "required_files": ["Monkey2.exe", "monkey2.pak", "audio/SFXOriginal.xwb"],
+    "copy_paths": [
+      "Monkey2.exe",
+      "monkey2.pak",
+      "steam_api.dll",
+      "InstallScript.vdf",
+      "audio",
+      "installers"
+    ],
+    "platform": "windows"
+  },
+  {
+    "app_id": 32360,
+    "depot_id": 32361,
+    "title": "The Secret of Monkey Island: Special Edition",
+    "importer": "layout",
+    "cache_key": "32360-32361",
+    "games": [
+      {
+        "id": "monkey-se",
+        "title": "The Secret of Monkey Island: Special Edition",
+        "folder": "",
+        "files": []
+      }
+    ],
+    "required_files": ["MISE.exe", "Monkey1.pak", "audio/SFXOriginal.xwb"],
+    "copy_paths": ["MISE.exe", "Monkey1.pak", "audio"]
+  },
+  {
+    "app_id": 1170570,
+    "depot_id": 1170572,
+    "title": "The Drifter",
+    "importer": "layout",
+    "cache_key": "1170570-1170572",
+    "games": [
+      {
+        "id": "drifter",
+        "title": "The Drifter",
+        "folder": "",
+        "files": []
+      }
+    ],
+    "required_files": [
+      "TheDrifter.app/Contents/MacOS/The Drifter",
+      "TheDrifter.app/Contents/Resources/Data/globalgamemanagers"
+    ],
+    "executable_paths": ["TheDrifter.app/Contents/MacOS/The Drifter"],
+    "copy_paths": ["TheDrifter.app"]
+  },
+  {
+    "app_id": 388210,
+    "depot_id": 388214,
+    "title": "Day of the Tentacle",
+    "importer": "layout",
+    "cache_key": "388210-388214",
+    "games": [
+      {
+        "id": "tentacle",
+        "title": "Day of the Tentacle",
+        "folder": "",
+        "files": []
+      }
+    ],
+    "required_files": ["Dott.app/Contents/MacOS/Dott", "Dott.app/Contents/Resources/tenta.cle"],
+    "executable_paths": ["Dott.app/Contents/MacOS/Dott"],
+    "copy_paths": ["Dott.app"]
+  },
+  {
+    "app_id": 388210,
+    "depot_id": 388214,
+    "title": "Day of the Tentacle Remastered",
+    "importer": "layout",
+    "cache_key": "388210-388214",
+    "games": [
+      {
+        "id": "day-of-the-tentacle-remastered",
+        "title": "Day of the Tentacle Remastered",
+        "folder": "",
+        "files": []
+      }
+    ],
+    "required_files": ["Dott.app/Contents/MacOS/Dott", "Dott.app/Contents/Resources/tenta.cle"],
+    "executable_paths": ["Dott.app/Contents/MacOS/Dott"],
+    "copy_paths": ["Dott.app"]
+  },
+  {
+    "app_id": 319870,
+    "depot_id": 319872,
+    "title": "Jenny LeClue – Detectivu",
+    "importer": "layout",
+    "cache_key": "319870-319872",
+    "games": [
+      {
+        "id": "jenny-leclue",
+        "title": "Jenny LeClue – Detectivu",
+        "folder": "",
+        "files": []
+      }
+    ],
+    "required_files": [
+      "Jenny LeClue - Detectivu.app/Contents/MacOS/Jenny LeClue - Detectivu",
+      "Jenny LeClue - Detectivu.app/Contents/Resources/Data/data.unity3d",
+      "Jenny LeClue - Detectivu.app/Contents/Resources/Data/Managed/DialogueSystem.dll"
+    ],
+    "executable_paths": ["Jenny LeClue - Detectivu.app/Contents/MacOS/Jenny LeClue - Detectivu"],
+    "copy_paths": ["Jenny LeClue - Detectivu.app"]
+  },
+  {
+    "app_id": 391540,
+    "depot_id": 391542,
+    "title": "UNDERTALE",
+    "importer": "layout",
+    "cache_key": "391540-391542",
+    "games": [
+      {
+        "id": "undertale",
+        "title": "UNDERTALE",
+        "folder": "",
+        "files": []
+      }
+    ],
+    "required_files": [
+      "UNDERTALE.app/Contents/Info.plist",
+      "UNDERTALE.app/Contents/MacOS/Mac_Runner",
+      "UNDERTALE.app/Contents/Resources/game.ios"
+    ],
+    "executable_paths": ["UNDERTALE.app/Contents/MacOS/Mac_Runner"],
+    "copy_paths": ["UNDERTALE.app"]
+  },
+  {
+    "app_id": 283980,
+    "platform": "desktop",
+    "depot_id": 283984,
+    "title": "Spy Fox in Dry Cereal",
+    "importer": "layout",
+    "cache_key": "283980-283984",
+    "games": [{ "id": "spyfox", "title": "Spy Fox in Dry Cereal", "folder": "", "files": [] }],
+    "required_files": ["SPYFOX.HE0", "SPYFOX.HE1", "SPYFOX.HE2", "SPYFOX.HE4"],
+    "copy_paths": ["SPYFOX.HE0", "SPYFOX.HE1", "SPYFOX.HE2", "SPYFOX.HE4"],
+    "lowercase_copy_paths": true
+  },
+  {
+    "app_id": 115800,
+    "depot_id": 115805,
+    "title": "Owlboy",
+    "importer": "layout",
+    "cache_key": "115800-115805",
+    "games": [{ "id": "owlboy", "title": "Owlboy", "folder": "", "files": [] }],
+    "required_files": [
+      "Owlboy.app/Contents/MacOS/Owlboy",
+      "Owlboy.app/Contents/Resources/Owlboy.exe"
+    ],
+    "executable_paths": ["Owlboy.app/Contents/MacOS/Owlboy"],
+    "copy_paths": ["Owlboy.app"]
+  },
+  {
     "app_id": 32460,
     "depot_id": 32461,
     "title": "Monkey Island 2: Special Edition",
@@ -25,6 +533,7 @@
   },
   {
     "app_id": 10110,
+    "platform": "desktop",
     "depot_id": 10111,
     "title": "Space Quest Collection",
     "importer": "verified_files",
@@ -1143,6 +1652,7 @@
   },
   {
     "app_id": 494740,
+    "platform": "desktop",
     "depot_id": 494741,
     "title": "Police Quest Collection",
     "importer": "verified_files",

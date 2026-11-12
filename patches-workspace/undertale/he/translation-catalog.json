@@ -3063,7 +3063,7 @@
     {
       "key": "SCR_TEXT_429",
       "english": "\\E0* I wonder if you can&  solve it?/%",
-      "hebrew": "\\E0* מעניין אם תצליח&  לפתור אותה?/%",
+      "hebrew": "\\E0* מעניין אם תצליחי&  לפתור אותה?/%",
       "status": "draft"
     },
     {
@@ -3093,7 +3093,7 @@
     {
       "key": "SCR_TEXT_446",
       "english": "\\E2* Greetings,^1 my child^2.&* Do not worry^1, I did&  not leave you./",
-      "hebrew": "\\E2* שלום,^1 ילדי^2.&* אין מה לדאוג^1,&  לא עזבתי אותך./",
+      "hebrew": "\\E2* שלום,^1 ילדתי^2.&* אין מה לדאוג^1,&  לא עזבתי אותך./",
       "status": "draft"
     },
     {
@@ -3153,7 +3153,7 @@
     {
       "key": "SCR_TEXT_459",
       "english": "\\E0* You have done&  excellently thus&  far^1, my child./",
-      "hebrew": "\\E0* עד עכשיו&  הצלחת&  מצוין^1, ילדי./",
+      "hebrew": "\\E0* עד עכשיו&  הצלחת&  מצוין^1, ילדתי./",
       "status": "draft"
     },
     {
@@ -5295,7 +5295,7 @@
     {
       "key": "SCR_TEXT_1562",
       "english": "* WHOA there^1, pardner^2!&* Who said you could push&  me around?/",
-      "hebrew": "* הופה^1, חבוב^2!&* מי הרשה לך&  לדחוף אותי?/",
+      "hebrew": "* הופה^1, חבובה^2!&* מי הרשה לך&  לדחוף אותי?/",
       "status": "draft"
     },
     {
@@ -7276,7 +7276,7 @@
     {
       "key": "SCR_TEXT_2442",
       "english": "* hey^1, pal./",
-      "hebrew": "* היי^1, חבוב./",
+      "hebrew": "* היי^1, חבובה./",
       "status": "draft"
     },
     {
@@ -9330,7 +9330,7 @@
     {
       "key": "SCR_TEXT_3524",
       "english": "Hey buddy^1,&you missed them./",
-      "hebrew": "היי חבוב^1,&פספסת אותם./",
+      "hebrew": "היי חבובה^1,&פספסת אותם./",
       "status": "draft"
     },
     {
@@ -9360,13 +9360,13 @@
     {
       "key": "SCR_TEXT_3535",
       "english": "\\E1What a terrible&creature^1, torturing&such a poor^1,&innocent youth.../",
-      "hebrew": "\\E1איזה יצור&נורא^1, לענות&ילד מסכן^1,&ותמים כזה.../",
+      "hebrew": "\\E1איזה יצור&נורא^1, לענות&ילדה מסכנה^1,&ותמימה כזאת.../",
       "status": "draft"
     },
     {
       "key": "SCR_TEXT_3536",
       "english": "\\E2Ah, do not be&afraid^1, my child./",
-      "hebrew": "\\E2אה, אין סיבה&לפחד^1, ילדי./",
+      "hebrew": "\\E2אה, אין סיבה&לפחד^1, ילדתי./",
       "status": "draft"
     },
     {
@@ -9552,7 +9552,7 @@
     {
       "key": "SCR_TEXT_3630",
       "english": "* hey buddy^1, what's up^1?&* wanna buy a hot dog?/",
-      "hebrew": "* היי חבוב^1, מה נשמע^1?&* בא לך לקנות נקניקייה?/",
+      "hebrew": "* היי חבובה^1, מה נשמע^1?&* בא לך לקנות נקניקייה?/",
       "status": "draft"
     },
     {
@@ -9624,13 +9624,13 @@
     {
       "key": "SCR_TEXT_3687",
       "english": "* thanks, kid^1.&* here's your hot dog./%%",
-      "hebrew": "* תודה, חבוב^1.&* הנה הנקניקייה שלך./%%",
+      "hebrew": "* תודה, חבובה^1.&* הנה הנקניקייה שלך./%%",
       "status": "draft"
     },
     {
       "key": "SCR_TEXT_3690",
       "english": "* thanks, kid^1.&* here's your 'dog./",
-      "hebrew": "* תודה, חבוב^1.&* הנה הנקניקי' שלך./",
+      "hebrew": "* תודה, חבובה^1.&* הנה הנקניקי' שלך./",
       "status": "draft"
     },
     {
@@ -12624,7 +12624,7 @@
     {
       "key": "SCR_TEXT_4957",
       "english": "\\E0* Here^1, l-look at&  this!/",
-      "hebrew": "\\E0* הנה^1, ת-תראה&  את זה!/",
+      "hebrew": "\\E0* הנה^1, ת-תראי&  את זה!/",
       "status": "draft"
     },
     {
@@ -12996,7 +12996,7 @@
     {
       "key": "SCR_TEXT_5073",
       "english": "* (If you leave here^1, your&  adventure will really&  be over.)/",
-      "hebrew": "* (אם תצא מכאן^1,&  ההרפתקה שלך&  באמת תיגמר.)/",
+      "hebrew": "* (אם תצאי מכאן^1,&  ההרפתקה שלך&  באמת תיגמר.)/",
       "status": "draft"
     },
     {
@@ -13518,7 +13518,7 @@
     {
       "key": "SCR_TEXT_5293",
       "english": "\\E1* ... wait^1.&* Do not tell me./",
-      "hebrew": "\\E1* ... רגע^1.&* אל תגיד לי./",
+      "hebrew": "\\E1* ... רגע^1.&* אל תגידי לי./",
       "status": "draft"
     },
     {
@@ -13986,7 +13986,7 @@
     {
       "key": "SCR_TEXT_5448",
       "english": "* If you gave it a&  chance!!/",
-      "hebrew": "* אם רק תיתן לזה&  הזדמנות!!/",
+      "hebrew": "* אם רק תיתני לזה&  הזדמנות!!/",
       "status": "draft"
     },
     {
@@ -15636,7 +15636,7 @@
     {
       "key": "SCR_TEXT_6911",
       "english": "* Hello^1, my child./",
-      "hebrew": "* שלום^1, ילדי./",
+      "hebrew": "* שלום^1, ילדתי./",
       "status": "draft"
     },
     {
@@ -19951,7 +19951,7 @@
     {
       "key": "obj_asgore_lastcutscene_251",
       "english": "\\E3Why..^1.&You.../%%",
-      "hebrew": "\\E3מה..^1.&אתה.../%%",
+      "hebrew": "\\E3מה..^1.&את.../%%",
       "status": "draft"
     },
     {
@@ -20077,7 +20077,7 @@
     {
       "key": "obj_asgore_lastcutscene_302",
       "english": "Please..^1.&Young one.../",
-      "hebrew": "בבקשה..^1.&ילדי.../",
+      "hebrew": "בבקשה..^1.&ילדתי.../",
       "status": "draft"
     },
     {
@@ -20143,7 +20143,7 @@
     {
       "key": "obj_asgore_lastcutscene_354",
       "english": "\\E7For as long as&you remain here.../",
-      "hebrew": "\\E7כל עוד&תישאר כאן.../",
+      "hebrew": "\\E7כל עוד&תישארי כאן.../",
       "status": "draft"
     },
     {
@@ -20323,7 +20323,7 @@
     {
       "key": "obj_asgore_lastcutscene_833",
       "english": "\\E1Young one^1, when I&look at you.../",
-      "hebrew": "\\E1ילדי^1, כשאני&מביט בך.../",
+      "hebrew": "\\E1ילדתי^1, כשאני&מביט בך.../",
       "status": "draft"
     },
     {
@@ -20851,7 +20851,7 @@
     {
       "key": "obj_asriel_overworldanim_498",
       "english": "* No matter what you&  do./",
-      "hebrew": "* לא משנה&  מה תעשה./",
+      "hebrew": "* לא משנה&  מה תעשי./",
       "status": "draft"
     },
     {
@@ -21985,7 +21985,7 @@
     {
       "key": "obj_bara01_253",
       "english": "Like,&\"you're&dead\"&and all.",
-      "hebrew": "כאילו,&\"אתה&מת\"&וכאלה.",
+      "hebrew": "כאילו,&\"את&מתה\"&וכאלה.",
       "status": "draft"
     },
     {
@@ -23011,19 +23011,19 @@
     {
       "key": "obj_boysnightout_80",
       "english": "* Hey^1! You^1!&* Stop!/%%",
-      "hebrew": "* היי^1! אתה^1!&* עצור!/%%",
+      "hebrew": "* היי^1! את^1!&* עצרי!/%%",
       "status": "draft"
     },
     {
       "key": "obj_boysnightout_113",
       "english": "* We've^1, like^1, received an&  anonymous tip about a human&  wearing a striped shirt./",
-      "hebrew": "* קיבלנו^1, כאילו^1, ידיעה&  אנונימית על אדם&  בחולצת פסים./",
+      "hebrew": "* קיבלנו^1, כאילו^1, ידיעה&  אנונימית על בת אדם&  בחולצת פסים./",
       "status": "draft"
     },
     {
       "key": "obj_boysnightout_114",
       "english": "* They told us they were&  wandering around Hotland&  right now.../",
-      "hebrew": "* סיפרו לנו שהוא&  מסתובב בארץ החום&  ממש עכשיו.../",
+      "hebrew": "* סיפרו לנו שהיא&  מסתובבת בארץ החום&  ממש עכשיו.../",
       "status": "draft"
     },
     {
@@ -23035,7 +23035,7 @@
     {
       "key": "obj_boysnightout_116",
       "english": "* Well^1, just stay chill^1.&* We'll bring you someplace&  safe^1, OK?/%%",
-      "hebrew": "* טוב^1, להישאר רגועים^1.&* ניקח אותך למקום&  בטוח^1, טוב?/%%",
+      "hebrew": "* טוב^1, תישארי רגועה^1.&* ניקח אותך למקום&  בטוח^1, טוב?/%%",
       "status": "draft"
     },
     {
@@ -23053,7 +23053,7 @@
     {
       "key": "obj_boysnightout_157",
       "english": "* The shirt they're wearing?/",
-      "hebrew": "* החולצה שעליו?/",
+      "hebrew": "* החולצה שעליה?/",
       "status": "draft"
     },
     {
@@ -23293,7 +23293,7 @@
     {
       "key": "obj_chilldrake_255",
       "english": "I don't&think&you...",
-      "hebrew": "לא נראה&לי&שאתה...",
+      "hebrew": "לא נראה&לי&שאת...",
       "status": "draft"
     },
     {
@@ -23317,7 +23317,7 @@
     {
       "key": "obj_chilldrake_266",
       "english": "You&ain't&Snowy.",
-      "hebrew": "אתה&לא&סנואי.",
+      "hebrew": "את&לא&סנואי.",
       "status": "draft"
     },
     {
@@ -23659,7 +23659,7 @@
     {
       "key": "obj_clamgirl_105",
       "english": "* Take my neighbor's blessing^1!&* And consider this blessing&  for anything you like!/%%",
-      "hebrew": "* הנה ברכת השכן שלי^1!&* היא תקפה לכל&  מה שרק תרצה!/%%",
+      "hebrew": "* הנה ברכת השכן שלי^1!&* היא תקפה לכל&  מה שרק תרצי!/%%",
       "status": "draft"
     },
     {
@@ -24145,19 +24145,19 @@
     {
       "key": "obj_cookshowevent_300",
       "english": "* Couldn't you make&  a.../",
-      "hebrew": "* אולי תוכל&  להכין.../",
+      "hebrew": "* אולי תוכלי&  להכין.../",
       "status": "draft"
     },
     {
       "key": "obj_cookshowevent_301",
       "english": "\\E6* Couldn't you use&  a.../",
-      "hebrew": "\\E6* אולי תוכל&  להשתמש ב.../",
+      "hebrew": "\\E6* אולי תוכלי&  להשתמש ב.../",
       "status": "draft"
     },
     {
       "key": "obj_cookshowevent_302",
       "english": "\\E4* Couldn't you make&  a substitution in&  the recipe?!/",
-      "hebrew": "\\E4* אולי תוכל&  להשתמש בתחליף&  במתכון?!/",
+      "hebrew": "\\E4* אולי תוכלי&  להשתמש בתחליף&  במתכון?!/",
       "status": "draft"
     },
     {
@@ -24253,7 +24253,7 @@
     {
       "key": "obj_cookshowevent_376",
       "english": "* WELL, DARLING?&* WHY DON'T YOU GO GET IT?/%%",
-      "hebrew": "* נו, מותק?&* אולי תלך להביא אותה?/%%",
+      "hebrew": "* נו, מותק?&* אולי תלכי להביא אותה?/%%",
       "status": "draft"
     },
     {
@@ -25797,7 +25797,7 @@
     {
       "key": "obj_disembodiedfoxhead_63",
       "english": "* Why don't you try^1?&* Try using the console?/%%",
-      "hebrew": "* אולי תנסה^1?&* להשתמש במסוף?/%%",
+      "hebrew": "* אולי תנסי^1?&* להשתמש במסוף?/%%",
       "status": "draft"
     },
     {
@@ -26398,7 +26398,7 @@
     {
       "key": "obj_doublesans_75",
       "english": "* say.../",
-      "hebrew": "* תגיד.../",
+      "hebrew": "* תגידי.../",
       "status": "draft"
     },
     {
@@ -26477,7 +26477,7 @@
     {
       "key": "obj_dummytrigger_223",
       "english": "* FOOL^1!&* You think you can hurt&  ME???/",
-      "hebrew": "* טיפש^1!&* נראה לך שאפשר לפגוע&  בי???/",
+      "hebrew": "* טיפשה^1!&* נראה לך שאפשר לפגוע&  בי???/",
       "status": "draft"
     },
     {
@@ -26543,7 +26543,7 @@
     {
       "key": "obj_dummytrigger_236",
       "english": "* HUMAN^1!&* I'll show you what REAL&  heartbreak is!/%%",
-      "hebrew": "* בן אדם^1!&* אראה לך מה זה&  שברון לב אמיתי!/%%",
+      "hebrew": "* בת אדם^1!&* אראה לך מה זה&  שברון לב אמיתי!/%%",
       "status": "draft"
     },
     {
@@ -26591,7 +26591,7 @@
     {
       "key": "obj_dummytrigger_252",
       "english": "* HUMAN^1!&* I hope you're not too&  attached to YOUR body.../",
-      "hebrew": "* בן אדם^1!&* אני מקווה שאין לך&  קשר חזק מדי לגוף שלך.../",
+      "hebrew": "* בת אדם^1!&* אני מקווה שאין לך&  קשר חזק מדי לגוף שלך.../",
       "status": "draft"
     },
     {
@@ -26633,7 +26633,7 @@
     {
       "key": "obj_dummytrigger_262",
       "english": "* HUMAN^1!&* I'll scare your SOUL&  out of your body!/%%",
-      "hebrew": "* בן אדם^1!&* אפחיד את הנשמה שלך&  עד שתברח מהגוף!/%%",
+      "hebrew": "* בת אדם^1!&* אפחיד את הנשמה שלך&  עד שתברח מהגוף!/%%",
       "status": "draft"
     },
     {
@@ -26675,7 +26675,7 @@
     {
       "key": "obj_dummytrigger_273",
       "english": "* Human!/",
-      "hebrew": "* בן אדם!/",
+      "hebrew": "* בת אדם!/",
       "status": "draft"
     },
     {
@@ -26693,7 +26693,7 @@
     {
       "key": "obj_dummytrigger_280",
       "english": "* FOOL^1!&* You think you can hurt&  ME???/",
-      "hebrew": "* טיפש^1!&* נראה לך שאפשר לפגוע&  בי???/",
+      "hebrew": "* טיפשה^1!&* נראה לך שאפשר לפגוע&  בי???/",
       "status": "draft"
     },
     {
@@ -26838,7 +26838,7 @@
     {
       "key": "obj_dummytrigger_428",
       "english": "* Human^1.&* That moment of unbridled&  emotion./",
-      "hebrew": "* בן אדם^1.&* הרגע הזה של רגש&  חסר מעצורים./",
+      "hebrew": "* בת אדם^1.&* הרגע הזה של רגש&  חסר מעצורים./",
       "status": "draft"
     },
     {
@@ -27342,7 +27342,7 @@
     {
       "key": "obj_endflowey_192",
       "english": "\\E0Look at yourself./",
-      "hebrew": "\\E0תראה מה קרה לך./",
+      "hebrew": "\\E0תראי מה קרה לך./",
       "status": "draft"
     },
     {
@@ -27420,7 +27420,7 @@
     {
       "key": "obj_endflowey_205",
       "english": "\\E0Say./",
-      "hebrew": "\\E0תגיד./",
+      "hebrew": "\\E0תגידי./",
       "status": "draft"
     },
     {
@@ -27822,7 +27822,7 @@
     {
       "key": "obj_endflowey_353",
       "english": "\\E0Though..^1. are you&REALLY gonna keep&doing things halfway?/",
-      "hebrew": "\\E0אבל..^1. באמת&תמשיך לעשות&חצי עבודה?/",
+      "hebrew": "\\E0אבל..^1. באמת&תמשיכי לעשות&חצי עבודה?/",
       "status": "draft"
     },
     {
@@ -27840,7 +27840,7 @@
     {
       "key": "obj_endflowey_356",
       "english": "\\E8You IDIOT./",
-      "hebrew": "\\E8איזה אידיוט./",
+      "hebrew": "\\E8איזו אידיוטית./",
       "status": "draft"
     },
     {
@@ -27966,7 +27966,7 @@
     {
       "key": "obj_endflowey_398",
       "english": "\\E8I know you'll come&back eventually./",
-      "hebrew": "\\E8אני יודע שבסוף&עוד תחזור./",
+      "hebrew": "\\E8אני יודע שבסוף&עוד תחזרי./",
       "status": "draft"
     },
     {
@@ -28062,7 +28062,7 @@
     {
       "key": "obj_endflowey_427",
       "english": "\\E0Say./",
-      "hebrew": "\\E0תגיד./",
+      "hebrew": "\\E0תגידי./",
       "status": "draft"
     },
     {
@@ -28200,7 +28200,7 @@
     {
       "key": "obj_endflowey_476",
       "english": "\\E4Say./",
-      "hebrew": "\\E4תקשיב./",
+      "hebrew": "\\E4תקשיבי./",
       "status": "draft"
     },
     {
@@ -29082,7 +29082,7 @@
     {
       "key": "obj_f_frasier_49",
       "english": "* Pathetic..^1.&* Now you're REALLY&  gonna die!/%%",
-      "hebrew": "* עלוב..^1.&* עכשיו באמת&  תמות!/%%",
+      "hebrew": "* עלובה..^1.&* עכשיו באמת&  תמותי!/%%",
       "status": "draft"
     },
     {
@@ -29545,7 +29545,7 @@
     {
       "key": "obj_flowey_master_1124",
       "english": "* You^2 IDIOT^5. %%",
-      "hebrew": "* איזה^2 אידיוט^5. %%",
+      "hebrew": "* איזו^2 אידיוטית^5. %%",
       "status": "draft"
     },
     {
@@ -29671,7 +29671,7 @@
     {
       "key": "obj_flowey_master_1218",
       "english": "\\E6* Anyway^1, YOU!/",
-      "hebrew": "\\E6* בכל אופן^1, אתה!/",
+      "hebrew": "\\E6* בכל אופן^1, את!/",
       "status": "draft"
     },
     {
@@ -30031,7 +30031,7 @@
     {
       "key": "obj_floweytrigger_124",
       "english": "\\E2* Ah, do not be&  afraid^1, my child./",
-      "hebrew": "\\E2* אה, אין ממה&  לפחד^1, ילדי./",
+      "hebrew": "\\E2* אה, אין ממה&  לפחד^1, ילדתי./",
       "status": "draft"
     },
     {
@@ -30379,7 +30379,7 @@
     {
       "key": "obj_floweytrigger2_204",
       "english": "\\E4* You naive idiot./",
-      "hebrew": "\\E4* איזה אידיוט תמים./",
+      "hebrew": "\\E4* איזו אידיוטית תמימה./",
       "status": "draft"
     },
     {
@@ -30481,7 +30481,7 @@
     {
       "key": "obj_floweytrigger2_231",
       "english": "* Listen^1.&* I have a plan to become&  all powerful./",
-      "hebrew": "* תקשיב^1.&* יש לי תוכנית להיות&  כל יכול./",
+      "hebrew": "* תקשיבי^1.&* יש לי תוכנית להיות&  כל יכול./",
       "status": "draft"
     },
     {
@@ -30607,7 +30607,7 @@
     {
       "key": "obj_floweytrigger2_267",
       "english": "* You'll die and you'll&  die and you'll&  die./",
-      "hebrew": "* תמות ושוב&  תמות ושוב&  תמות./",
+      "hebrew": "* תמותי ושוב&  תמותי ושוב&  תמותי./",
       "status": "draft"
     },
     {
@@ -30691,7 +30691,7 @@
     {
       "key": "obj_floweytrigger2_288",
       "english": "\\E5* You naive idiot./",
-      "hebrew": "\\E5* איזה אידיוט תמים./",
+      "hebrew": "\\E5* איזו אידיוטית תמימה./",
       "status": "draft"
     },
     {
@@ -30993,13 +30993,13 @@
     {
       "key": "obj_friendscene_182",
       "english": "\\E4What a miserable&creature^1, torturing&such a poor^1,&innocent, youth.../",
-      "hebrew": "\\E4איזה יצור עלוב^1,&מענה ילד כה&מסכן^1,&ותמים.../",
+      "hebrew": "\\E4איזה יצור עלוב^1,&מענה ילדה כה&מסכנה^1,&ותמימה.../",
       "status": "draft"
     },
     {
       "key": "obj_friendscene_183",
       "english": "\\E0Do not be afraid^1,&my child./",
-      "hebrew": "\\E0אין ממה לפחד^1,&ילדי./",
+      "hebrew": "\\E0אין ממה לפחד^1,&ילדתי./",
       "status": "draft"
     },
     {
@@ -31179,7 +31179,7 @@
     {
       "key": "obj_friendscene_353",
       "english": "Ngahhhhhh!!^1!&ASGORE^1! Human!!/",
-      "hebrew": "נגאהההה!!^1!&אסגור^1! בן אדם!!/",
+      "hebrew": "נגאהההה!!^1!&אסגור^1! בת אדם!!/",
       "status": "draft"
     },
     {
@@ -31341,7 +31341,7 @@
     {
       "key": "obj_friendscene_583",
       "english": "PSST^1!&HEY^1, HUMAN.../",
-      "hebrew": "פססט^1!&היי^1, בן אדם.../",
+      "hebrew": "פססט^1!&היי^1, בת אדם.../",
       "status": "draft"
     },
     {
@@ -31678,7 +31678,7 @@
     {
       "key": "obj_friendscene_1083",
       "english": "My child^1, it&seems as if you&must stay here&for a while./",
-      "hebrew": "ילדי^1, נראה&שיהיה עליך&להישאר כאן&לזמן מה./",
+      "hebrew": "ילדתי^1, נראה&שיהיה עליך&להישאר כאן&לזמן מה./",
       "status": "draft"
     },
     {
@@ -31912,7 +31912,7 @@
     {
       "key": "obj_friendscene_1221",
       "english": "\\E1Listen./",
-      "hebrew": "\\E1תקשיב./",
+      "hebrew": "\\E1תקשיבי./",
       "status": "draft"
     },
     {
@@ -31948,7 +31948,7 @@
     {
       "key": "obj_friendscene_1227",
       "english": "\\E8You...!/",
-      "hebrew": "\\E8אתה...!/",
+      "hebrew": "\\E8את...!/",
       "status": "draft"
     },
     {
@@ -31972,7 +31972,7 @@
     {
       "key": "obj_friendscene_1375",
       "english": "Do not be afraid^1,&my child.../",
-      "hebrew": "אין ממה לפחד^1,&ילדי.../",
+      "hebrew": "אין ממה לפחד^1,&ילדתי.../",
       "status": "draft"
     },
     {
@@ -31990,7 +31990,7 @@
     {
       "key": "obj_friendscene_1434",
       "english": "THAT'S RIGHT^1,&HUMAN^1!&YOU CAN&WIN!!/",
-      "hebrew": "נכון מאוד^1,&בן אדם^1!&הניצחון&אפשרי!!/",
+      "hebrew": "נכון מאוד^1,&בת אדם^1!&הניצחון&אפשרי!!/",
       "status": "draft"
     },
     {
@@ -32008,7 +32008,7 @@
     {
       "key": "obj_friendscene_1449",
       "english": "Hey^1! Human^1! If&you got past&ME^1, you can&do ANYTHING!/",
-      "hebrew": "היי^1! בן אדם^1! אם&עברת&אותי^1, הכל&אפשרי!/",
+      "hebrew": "היי^1! בת אדם^1! אם&עברת&אותי^1, הכל&אפשרי!/",
       "status": "draft"
     },
     {
@@ -32044,7 +32044,7 @@
     {
       "key": "obj_friendscene_1532",
       "english": "Human^1, for the&future of&humans and&monsters...!/",
-      "hebrew": "בן אדם^1, למען&עתידם של&בני האדם&והמפלצות...!/",
+      "hebrew": "בת אדם^1, למען&עתידם של&בני האדם&והמפלצות...!/",
       "status": "draft"
     },
     {
@@ -33412,7 +33412,7 @@
     {
       "key": "obj_grillbynpc_mandog_75",
       "english": "* You better watch where you&  sit down in here^1, kid./",
-      "hebrew": "* כדאי להיזהר איפה&  מתיישבים כאן^1, ילד./",
+      "hebrew": "* כדאי להיזהר איפה&  מתיישבים כאן^1, ילדה./",
       "status": "draft"
     },
     {
@@ -35261,7 +35261,7 @@
     {
       "key": "obj_jetpackchara_330",
       "english": "* Wh..^1.&* What are you...%",
-      "hebrew": "* מ..^1.&* מה אתה...%",
+      "hebrew": "* מ..^1.&* מה את...%",
       "status": "draft"
     },
     {
@@ -36625,7 +36625,7 @@
     {
       "key": "obj_lastsans_trigger_201",
       "english": "* When you kill someone^1,&  your EXP increases./",
-      "hebrew": "* כשאתה הורג מישהו^1,&  ה-EXP שלך עולה./",
+      "hebrew": "* כשאת הורגת מישהו^1,&  ה-EXP שלך עולה./",
       "status": "draft"
     },
     {
@@ -36878,7 +36878,7 @@
     {
       "key": "obj_lastsans_trigger_298",
       "english": "* so as long as you&  do what's in your&  heart.../",
-      "hebrew": "* אז כל עוד&  תלך בעקבות&  הלב שלך.../",
+      "hebrew": "* אז כל עוד&  תלכי בעקבות&  הלב שלך.../",
       "status": "draft"
     },
     {
@@ -36896,7 +36896,7 @@
     {
       "key": "obj_lastsans_trigger_301",
       "english": "\\E0* we're all counting&  on you, kid./",
-      "hebrew": "\\E0* כולנו סומכים&  עליך, ילד./",
+      "hebrew": "\\E0* כולנו סומכים&  עליך, ילדה./",
       "status": "draft"
     },
     {
@@ -37088,7 +37088,7 @@
     {
       "key": "obj_lastsans_trigger_456",
       "english": "\\E1* but don't think that&  means you're still 50-&  percent good./",
-      "hebrew": "\\E1* אבל שלא תחשוב&  שנשארו בך&  חמישים אחוז טוב./",
+      "hebrew": "\\E1* אבל שלא תחשבי&  שנשארו בך&  חמישים אחוז טוב./",
       "status": "draft"
     },
     {
@@ -38969,7 +38969,7 @@
     {
       "key": "obj_maddummy_262",
       "english": "\\XHey^1!&You^1! \\E2Forget&I said anything&about \\RMAGIC\\X!!!/%%",
-      "hebrew": "\\Xהיי^1!&אתה^1! \\E2תשכח&שאמרתי משהו&על \\Rקסם\\X!!!/%%",
+      "hebrew": "\\Xהיי^1!&את^1! \\E2תשכחי&שאמרתי משהו&על \\Rקסם\\X!!!/%%",
       "status": "draft"
     },
     {
@@ -39714,7 +39714,7 @@
     {
       "key": "obj_mainend_294",
       "english": "\\E0ATTENTION^1, HUMAN!/",
-      "hebrew": "\\E0הקשב^1, בן אדם!/",
+      "hebrew": "\\E0הקשיבי^1, בת אדם!/",
       "status": "draft"
     },
     {
@@ -39798,7 +39798,7 @@
     {
       "key": "obj_mainend_311",
       "english": "\\E0HEY!!^1! HUMAN!!!/",
-      "hebrew": "\\E0היי!!^1! בן אדם!!!/",
+      "hebrew": "\\E0היי!!^1! בת אדם!!!/",
       "status": "draft"
     },
     {
@@ -40122,7 +40122,7 @@
     {
       "key": "obj_mainend_371",
       "english": "\\E0YOU KNOW^1, SO I&COULD SEE YOU&AGAIN./",
-      "hebrew": "\\E0אתה יודע^1, כדי&שאוכל לראות&אותך שוב./",
+      "hebrew": "\\E0את יודעת^1, כדי&שאוכל לראות&אותך שוב./",
       "status": "draft"
     },
     {
@@ -40308,7 +40308,7 @@
     {
       "key": "obj_mainend_410",
       "english": "\\E0YOU KNOW^1, SO I&COULD SEE YOU&AGAIN./",
-      "hebrew": "\\E0אתה יודע^1, כדי&שאוכל לראות&אותך שוב./",
+      "hebrew": "\\E0את יודעת^1, כדי&שאוכל לראות&אותך שוב./",
       "status": "draft"
     },
     {
@@ -41082,7 +41082,7 @@
     {
       "key": "obj_mainend_680",
       "english": "\\E3* but it's not really&  easy^1, you know?/",
-      "hebrew": "\\E3* אבל זה לא ממש&  קל^1, אתה יודע?/",
+      "hebrew": "\\E3* אבל זה לא ממש&  קל^1, את יודעת?/",
       "status": "draft"
     },
     {
@@ -41238,7 +41238,7 @@
     {
       "key": "obj_mainend_734",
       "english": "\\E0* well^1, i hope things&  are better where&  you are./",
-      "hebrew": "\\E0* טוב^1, מקווה&  שהמצב טוב יותר&  איפה שאתה./",
+      "hebrew": "\\E0* טוב^1, מקווה&  שהמצב טוב יותר&  איפה שאת./",
       "status": "draft"
     },
     {
@@ -41274,7 +41274,7 @@
     {
       "key": "obj_mainend_744",
       "english": "\\E1* so she won't have&  to read the same&  ones./",
-      "hebrew": "\\E1* כדי שלא תצטרך&  לקרוא תמיד&  את אותם ספרים./",
+      "hebrew": "\\E1* כדי שלא תצטרכי&  לקרוא תמיד&  את אותם ספרים./",
       "status": "draft"
     },
     {
@@ -41292,7 +41292,7 @@
     {
       "key": "obj_mainend_747",
       "english": "\\E1* you know./",
-      "hebrew": "\\E1* אתה יודע./",
+      "hebrew": "\\E1* את יודעת./",
       "status": "draft"
     },
     {
@@ -41352,7 +41352,7 @@
     {
       "key": "obj_mainend_757",
       "english": "\\E1* anyway^1, never come&  back here./",
-      "hebrew": "\\E1* בכל אופן^1, לעולם&  אל תחזור לכאן./",
+      "hebrew": "\\E1* בכל אופן^1, לעולם&  אל תחזרי לכאן./",
       "status": "draft"
     },
     {
@@ -41490,7 +41490,7 @@
     {
       "key": "obj_mainend_807",
       "english": "\\E4* you'd better watch&  yourself^1, kid./",
-      "hebrew": "\\E4* כדאי לך&  להיזהר^1, ילד./",
+      "hebrew": "\\E4* כדאי לך&  להיזהר^1, ילדה./",
       "status": "draft"
     },
     {
@@ -41652,7 +41652,7 @@
     {
       "key": "obj_mainend_843",
       "english": "THANK YOU^1, HUMAN!/",
-      "hebrew": "תודה לך^1, בן אדם!/",
+      "hebrew": "תודה לך^1, בת אדם!/",
       "status": "draft"
     },
     {
@@ -41754,7 +41754,7 @@
     {
       "key": "obj_mainend_896",
       "english": "\\E0* HEY THERE^1, DARLING!/",
-      "hebrew": "\\E0* שלום לך^1, יקירי!/",
+      "hebrew": "\\E0* שלום לך^1, יקירתי!/",
       "status": "draft"
     },
     {
@@ -41904,7 +41904,7 @@
     {
       "key": "obj_mainend_921",
       "english": "\\E4* TRUST ME.&* I LOOKED./",
-      "hebrew": "\\E4* תאמין לי.&* חיפשתי./",
+      "hebrew": "\\E4* תאמיני לי.&* חיפשתי./",
       "status": "draft"
     },
     {
@@ -42048,7 +42048,7 @@
     {
       "key": "obj_mainend_952",
       "english": "\\E0IF YOU SEE HER^1,&CAN YOU TELL HER&I SAID HI?/",
-      "hebrew": "\\E0אם תראה אותה^1,&אפשר למסור לה&שלום ממני?/",
+      "hebrew": "\\E0אם תראי אותה^1,&אפשר למסור לה&שלום ממני?/",
       "status": "draft"
     },
     {
@@ -42126,7 +42126,7 @@
     {
       "key": "obj_mainend_996",
       "english": "\\E0HELLO!!^1!&HUMAN!!!/",
-      "hebrew": "\\E0שלום!!^1!&בן אדם!!!/",
+      "hebrew": "\\E0שלום!!^1!&בת אדם!!!/",
       "status": "draft"
     },
     {
@@ -42294,7 +42294,7 @@
     {
       "key": "obj_mainend_1026",
       "english": "\\E6YOU KNOW.../",
-      "hebrew": "\\E6אתה יודע.../",
+      "hebrew": "\\E6את יודעת.../",
       "status": "draft"
     },
     {
@@ -42474,7 +42474,7 @@
     {
       "key": "obj_mainend_1065",
       "english": "\\E2* i like to take it&  easy^1, you know?/",
-      "hebrew": "\\E2* אני אוהב לקחת&  בקלות^1, אתה יודע?/",
+      "hebrew": "\\E2* אני אוהב לקחת&  בקלות^1, את יודעת?/",
       "status": "draft"
     },
     {
@@ -42768,7 +42768,7 @@
     {
       "key": "obj_mainend_1156",
       "english": "\\E2* It's strange^1.&* You know?/",
-      "hebrew": "\\E2* זה מוזר^1.&* אתה יודע?/",
+      "hebrew": "\\E2* זה מוזר^1.&* את יודעת?/",
       "status": "draft"
     },
     {
@@ -42798,7 +42798,7 @@
     {
       "key": "obj_mainend_1161",
       "english": "\\E2* I think I have some&  good policies^1, but^1,&  y-you know.../",
-      "hebrew": "\\E2* נראה לי שיש לי&  מדיניות טובה^1, אבל^1,&  א-אתה יודע.../",
+      "hebrew": "\\E2* נראה לי שיש לי&  מדיניות טובה^1, אבל^1,&  א-את יודעת.../",
       "status": "draft"
     },
     {
@@ -42810,7 +42810,7 @@
     {
       "key": "obj_mainend_1163",
       "english": "\\E0* I'm no ASGORE^1,&  you know?/",
-      "hebrew": "\\E0* אני לא אסגור^1,&  אתה מבין?/",
+      "hebrew": "\\E0* אני לא אסגור^1,&  את מבינה?/",
       "status": "draft"
     },
     {
@@ -42882,7 +42882,7 @@
     {
       "key": "obj_mainend_1175",
       "english": "\\E1* You know^1.&* Just daydreaming here^1.&* But.../",
-      "hebrew": "\\E1* אתה יודע^1.&* סתם חלום בהקיץ^1.&* אבל.../",
+      "hebrew": "\\E1* את יודעת^1.&* סתם חלום בהקיץ^1.&* אבל.../",
       "status": "draft"
     },
     {
@@ -42930,7 +42930,7 @@
     {
       "key": "obj_mandog_264",
       "english": "Paws off&you&smelly&human.",
-      "hebrew": "כפות&ממך והלאה,&בן אדם&מסריח.",
+      "hebrew": "כפות&ממך והלאה,&בת אדם&מסריחה.",
       "status": "draft"
     },
     {
@@ -43284,7 +43284,7 @@
     {
       "key": "obj_mettaton_neo_538",
       "english": "\\E4I KNOW.&I CAN TELL FROM&THAT STRIKE, DARLING./",
-      "hebrew": "\\E4אני יודע.&אני מרגיש את זה&במכה הזאת, יקירי./",
+      "hebrew": "\\E4אני יודע.&אני מרגיש את זה&במכה הזאת, יקירתי./",
       "status": "draft"
     },
     {
@@ -43459,13 +43459,13 @@
     {
       "key": "obj_mettatonb_second_256",
       "english": "THIS IS IT, DARLING!&SAY GOODBYE!/%%",
-      "hebrew": "זהו זה, יקירי!&זמן להיפרד!/%%",
+      "hebrew": "זהו זה, יקירתי!&זמן להיפרד!/%%",
       "status": "draft"
     },
     {
       "key": "obj_mettatonb_second_265",
       "english": "HA!&THAT BUTTON WON'T&SAVE YOU NOW, DARLING!/%%",
-      "hebrew": "חה!&הכפתור הזה לא&יציל אותך עכשיו, יקירי!/%%",
+      "hebrew": "חה!&הכפתור הזה לא&יציל אותך עכשיו, יקירתי!/%%",
       "status": "draft"
     },
     {
@@ -43483,7 +43483,7 @@
     {
       "key": "obj_mettatonb_second_274",
       "english": "WITHOUT THAT BUTTON,&YOU ARE INCHING&CLOSER AND CLOSER&TO YOUR DEMISE!/%%",
-      "hebrew": "בלי הכפתור הזה,&אתה מתקרב&יותר ויותר&אל מותך!/%%",
+      "hebrew": "בלי הכפתור הזה,&את מתקרבת&יותר ויותר&אל מותך!/%%",
       "status": "draft"
     },
     {
@@ -43621,7 +43621,7 @@
     {
       "key": "obj_mettatonb_third_214",
       "english": "THIS IS IT, DARLING!&SAY GOODBYE!/%%",
-      "hebrew": "זהו זה, יקירי!&זמן להיפרד!/%%",
+      "hebrew": "זהו זה, יקירתי!&זמן להיפרד!/%%",
       "status": "draft"
     },
     {
@@ -43657,7 +43657,7 @@
     {
       "key": "obj_mettatonb_third_233",
       "english": "LISTEN, DARLING.&I'VE SEEN YOU FIGHT./",
-      "hebrew": "תקשיב, יקירי.&ראיתי אותך נלחם./",
+      "hebrew": "תקשיבי, יקירתי.&ראיתי אותך נלחמת./",
       "status": "draft"
     },
     {
@@ -43669,7 +43669,7 @@
     {
       "key": "obj_mettatonb_third_235",
       "english": "IF YOU CONTINUE&FORWARD, ASGORE WILL&TAKE YOUR SOUL./",
-      "hebrew": "אם תמשיך&קדימה, אסגור&ייקח את נשמתך./",
+      "hebrew": "אם תמשיכי&קדימה, אסגור&ייקח את נשמתך./",
       "status": "draft"
     },
     {
@@ -43801,7 +43801,7 @@
     {
       "key": "obj_mettatonb_third_651",
       "english": "S-s-so if y-y-you&c-c-can turn him&around... um.../",
-      "hebrew": "א-א-אז אם&תצליח ל-לסובב&אותו... אממ.../",
+      "hebrew": "א-א-אז אם&תצליחי ל-לסובב&אותו... אממ.../",
       "status": "draft"
     },
     {
@@ -43873,7 +43873,7 @@
     {
       "key": "obj_mettatonb_third_943",
       "english": "THAT WORTHLESS PEA-&SHOOTER WON'T WORK&ON ME, DARLING. ^3 %",
-      "hebrew": "רובה הצעצוע העלוב&הזה לא יעבוד&עליי, יקירי. ^3 %",
+      "hebrew": "רובה הצעצוע העלוב&הזה לא יעבוד&עליי, יקירתי. ^3 %",
       "status": "draft"
     },
     {
@@ -43993,7 +43993,7 @@
     {
       "key": "obj_mettatonex_274",
       "english": "We've grown so&distant, darling.../",
-      "hebrew": "כל כך התרחקנו,&יקירי.../",
+      "hebrew": "כל כך התרחקנו,&יקירתי.../",
       "status": "draft"
     },
     {
@@ -44059,7 +44059,7 @@
     {
       "key": "obj_mettatonex_354",
       "english": "Well, darling!&It's either me&or you!/",
-      "hebrew": "טוב, יקירי!&זה או אני&או אתה!/",
+      "hebrew": "טוב, יקירתי!&זה או אני&או את!/",
       "status": "draft"
     },
     {
@@ -44083,7 +44083,7 @@
     {
       "key": "obj_mettatonex_369",
       "english": "\\E8Are YOU the star?/",
-      "hebrew": "\\E8הכוכב הוא אתה?/",
+      "hebrew": "\\E8הכוכבת היא את?/",
       "status": "draft"
     },
     {
@@ -44197,7 +44197,7 @@
     {
       "key": "obj_mettatonex_772",
       "english": "Darling.../",
-      "hebrew": "יקירי.../",
+      "hebrew": "יקירתי.../",
       "status": "draft"
     },
     {
@@ -44257,7 +44257,7 @@
     {
       "key": "obj_mettatonex_782",
       "english": "So, thank you,&darling.../%%",
-      "hebrew": "אז, תודה לך,&יקירי.../%%",
+      "hebrew": "אז, תודה לך,&יקירתי.../%%",
       "status": "draft"
     },
     {
@@ -44449,7 +44449,7 @@
     {
       "key": "obj_mettatonex_969",
       "english": "\\E0DARLING./",
-      "hebrew": "\\E0יקירי./",
+      "hebrew": "\\E0יקירתי./",
       "status": "draft"
     },
     {
@@ -44557,7 +44557,7 @@
     {
       "key": "obj_mettatonex_987",
       "english": "\\E5KNOCK 'EM DEAD^1,&DARLING./",
-      "hebrew": "\\E5תשאיר אותם בהלם^1,&יקירי./",
+      "hebrew": "\\E5תשאירי אותם בהלם^1,&יקירתי./",
       "status": "draft"
     },
     {
@@ -44587,7 +44587,7 @@
     {
       "key": "obj_mettboss_event_230",
       "english": "* OH YES.&* THERE YOU ARE, DARLING./",
-      "hebrew": "* אה כן.&* הנה הגעת, יקירי./",
+      "hebrew": "* אה כן.&* הנה הגעת, יקירתי./",
       "status": "draft"
     },
     {
@@ -44953,7 +44953,7 @@
     {
       "key": "obj_mettdestroyed_event_249",
       "english": "\\E5* Why don't you go&  on ahead?/%%",
-      "hebrew": "\\E5* אולי תמשיך&  קדימה?/%%",
+      "hebrew": "\\E5* אולי תמשיכי&  קדימה?/%%",
       "status": "draft"
     },
     {
@@ -44977,7 +44977,7 @@
     {
       "key": "obj_mettdestroyed_event_257",
       "english": "\\E6* I m-mean^1, h-hey^1, it's&  n-^1no problem^1, you&  know?/",
-      "hebrew": "\\E6* כ-כלומר^1, ה-היי^1,&  א-^1אין בעיה^1,&  אתה יודע?/",
+      "hebrew": "\\E6* כ-כלומר^1, ה-היי^1,&  א-^1אין בעיה^1,&  את יודעת?/",
       "status": "draft"
     },
     {
@@ -45001,7 +45001,7 @@
     {
       "key": "obj_mettdestroyed_event_261",
       "english": "* Why don't you go&  on ahead?/%%",
-      "hebrew": "* אולי תמשיך&  קדימה?/%%",
+      "hebrew": "* אולי תמשיכי&  קדימה?/%%",
       "status": "draft"
     },
     {
@@ -45735,7 +45735,7 @@
     {
       "key": "obj_mettnewsevent_734",
       "english": "* GOOD LUCK^1, DARLING!!/%%",
-      "hebrew": "* בהצלחה^1, יקירי!!/%%",
+      "hebrew": "* בהצלחה^1, יקירתי!!/%%",
       "status": "draft"
     },
     {
@@ -45777,7 +45777,7 @@
     {
       "key": "obj_mettnewsevent_925",
       "english": "* WELL DONE^1, DARLING!/",
-      "hebrew": "* כל הכבוד^1, יקירי!/",
+      "hebrew": "* כל הכבוד^1, יקירתי!/",
       "status": "draft"
     },
     {
@@ -45807,13 +45807,13 @@
     {
       "key": "obj_mettnewsevent_930",
       "english": "* GOODBYE^1, DARLING!/%%",
-      "hebrew": "* שלום לך^1, יקירי!/%%",
+      "hebrew": "* שלום לך^1, יקירתי!/%%",
       "status": "draft"
     },
     {
       "key": "obj_mettnewsevent_934",
       "english": "* TOO BAD^1, DARLING!/",
-      "hebrew": "* חבל מאוד^1, יקירי!/",
+      "hebrew": "* חבל מאוד^1, יקירתי!/",
       "status": "draft"
     },
     {
@@ -45843,7 +45843,7 @@
     {
       "key": "obj_mettnewsevent_939",
       "english": "* GOODBYE^1, DARLING!/%%",
-      "hebrew": "* שלום לך^1, יקירי!/%%",
+      "hebrew": "* שלום לך^1, יקירתי!/%%",
       "status": "draft"
     },
     {
@@ -45915,7 +45915,7 @@
     {
       "key": "obj_mettnewsevent_1000",
       "english": "* CURSE YOU^1, HUMAN^1!&* CURSE YOU^1, DR. ALPHYS^1,&  FOR HELPING SO MUCH!/",
-      "hebrew": "* ארור תהיה^1, בן אדם^1!&* ארורה תהיי^1, ד\"ר אלפיס^1,&  על כל העזרה שלך!/",
+      "hebrew": "* ארורה תהיי^1, בת אדם^1!&* ארורה תהיי^1, ד\"ר אלפיס^1,&  על כל העזרה שלך!/",
       "status": "draft"
     },
     {
@@ -45927,7 +45927,7 @@
     {
       "key": "obj_mettnewsevent_1002",
       "english": "* UNTIL NEXT TIME^1, DARLING!/%%",
-      "hebrew": "* עד הפעם הבאה^1, יקירי!/%%",
+      "hebrew": "* עד הפעם הבאה^1, יקירתי!/%%",
       "status": "draft"
     },
     {
@@ -46570,7 +46570,7 @@
     {
       "key": "obj_mkid_battle_707",
       "english": "\\E6A burning feeling&that WON'T let me&die./",
-      "hebrew": "\\E6תחושה בוערת&שלא תיתן לי&למות./",
+      "hebrew": "\\E6תחושה בוערת&שלא תיתני לי&למות./",
       "status": "draft"
     },
     {
@@ -46582,7 +46582,7 @@
     {
       "key": "obj_mkid_battle_709",
       "english": "If you get past&me^1, you'll.../",
-      "hebrew": "אם תעבור&אותי^1, אתה.../",
+      "hebrew": "אם תעברי&אותי^1, את.../",
       "status": "draft"
     },
     {
@@ -46660,7 +46660,7 @@
     {
       "key": "obj_mkid_battle_883",
       "english": "You.../",
-      "hebrew": "אתה.../",
+      "hebrew": "את.../",
       "status": "draft"
     },
     {
@@ -46720,7 +46720,7 @@
     {
       "key": "obj_mkid_goner_109",
       "english": "* You know^1, that does make&  me feel a little better&  about this./",
-      "hebrew": "* אתה יודע^1, זה באמת&  משפר קצת&  את ההרגשה שלי./",
+      "hebrew": "* את יודעת^1, זה באמת&  משפר קצת&  את ההרגשה שלי./",
       "status": "draft"
     },
     {
@@ -47741,7 +47741,7 @@
     {
       "key": "obj_muffetnpc2_75",
       "english": "* There you are^1, dearie^1.&* You are always welcome in&  my parlor!/",
-      "hebrew": "* הנה הגעת^1, יקירי^1.&* תמיד יש לך מקום&  בטרקלין שלי!/",
+      "hebrew": "* הנה הגעת^1, יקירתי^1.&* תמיד יש לך מקום&  בטרקלין שלי!/",
       "status": "draft"
     },
     {
@@ -47753,7 +47753,7 @@
     {
       "key": "obj_muffetnpc2_81",
       "english": "* Bonjour^1, dearie^1~&* I just finished tallying up&  all of our donations!/",
-      "hebrew": "* בונז'ור^1, יקירי^1~&* בדיוק סיימתי לספור&  את כל התרומות שלנו!/",
+      "hebrew": "* בונז'ור^1, יקירתי^1~&* בדיוק סיימתי לספור&  את כל התרומות שלנו!/",
       "status": "draft"
     },
     {
@@ -47813,7 +47813,7 @@
     {
       "key": "obj_muffetnpc2_99",
       "english": "* A brand new bakery^1!&* Thank you so much^1, dearie!/",
-      "hebrew": "* מאפייה חדשה לגמרי^1!&* תודה רבה^1, יקירי!/",
+      "hebrew": "* מאפייה חדשה לגמרי^1!&* תודה רבה^1, יקירתי!/",
       "status": "draft"
     },
     {
@@ -47904,7 +47904,7 @@
     {
       "key": "obj_multitileevent_164",
       "english": "\\W* BECAUSE IF YOU DON'T GET&  THROUGH IN \\Y30 SECONDS\\W.../%%",
-      "hebrew": "\\W* כי אם לא&  תעבור תוך \\Y30 שניות\\W.../%%",
+      "hebrew": "\\W* כי אם לא&  תעברי תוך \\Y30 שניות\\W.../%%",
       "status": "draft"
     },
     {
@@ -47928,7 +47928,7 @@
     {
       "key": "obj_multitileevent_195",
       "english": "* GOOD LUCK, DARLING!/%%",
-      "hebrew": "* בהצלחה, יקירי!/%%",
+      "hebrew": "* בהצלחה, יקירתי!/%%",
       "status": "draft"
     },
     {
@@ -47940,7 +47940,7 @@
     {
       "key": "obj_multitileevent_304",
       "english": "* HERE COME THE FLAMES, DARLING!/%%",
-      "hebrew": "* הנה באות הלהבות, יקירי!/%%",
+      "hebrew": "* הנה באות הלהבות, יקירתי!/%%",
       "status": "draft"
     },
     {
@@ -48030,7 +48030,7 @@
     {
       "key": "obj_multitileevent_468",
       "english": "* You'll never be&  able to defeat&  us.../",
-      "hebrew": "* לעולם&  לא תוכל&  להביס אותנו.../",
+      "hebrew": "* לעולם&  לא תוכלי&  להביס אותנו.../",
       "status": "draft"
     },
     {
@@ -48078,7 +48078,7 @@
     {
       "key": "obj_multitileevent_476",
       "english": "* WELL, DARLING...&* THAT MONSTER.../",
-      "hebrew": "* ובכן, יקירי...&* המפלצת הזאת.../",
+      "hebrew": "* ובכן, יקירתי...&* המפלצת הזאת.../",
       "status": "draft"
     },
     {
@@ -48090,7 +48090,7 @@
     {
       "key": "obj_multitileevent_480",
       "english": "* WELL, DARLING...!/",
-      "hebrew": "* ובכן, יקירי...!/",
+      "hebrew": "* ובכן, יקירתי...!/",
       "status": "draft"
     },
     {
@@ -48126,7 +48126,7 @@
     {
       "key": "obj_multitileevent_486",
       "english": "* AND NOW YOU'RE GOING TO DIE./%%",
-      "hebrew": "* ועכשיו תמות./%%",
+      "hebrew": "* ועכשיו תמותי./%%",
       "status": "draft"
     },
     {
@@ -48168,19 +48168,19 @@
     {
       "key": "obj_multitileevent_617",
       "english": "* THAT'S RIGHT, DARLING!/",
-      "hebrew": "* נכון מאוד, יקירי!/",
+      "hebrew": "* נכון מאוד, יקירתי!/",
       "status": "draft"
     },
     {
       "key": "obj_multitileevent_618",
       "english": "* EVEN IF YOU MANAGE TO BEAT&  THE HEAT.../",
-      "hebrew": "* גם אם תצליח&  לעמוד בחום.../",
+      "hebrew": "* גם אם תצליחי&  לעמוד בחום.../",
       "status": "draft"
     },
     {
       "key": "obj_multitileevent_619",
       "english": "* YOU'LL NEVER BE ABLE TO&  WITHSTAND MY HOT METAL&  BODY!/",
-      "hebrew": "* לעולם לא&  תעמוד בפני&  הגוף המתכתי הלוהט שלי!/",
+      "hebrew": "* לעולם לא&  תעמדי בפני&  הגוף המתכתי הלוהט שלי!/",
       "status": "draft"
     },
     {
@@ -48666,7 +48666,7 @@
     {
       "key": "obj_napstablook_actor_163",
       "english": "* human...^1.&* i'll never forget when you&  cheered me on/",
-      "hebrew": "* בן אדם...^1.&* לעולם לא אשכח&  איך עודדת אותי/",
+      "hebrew": "* בת אדם...^1.&* לעולם לא אשכח&  איך עודדת אותי/",
       "status": "draft"
     },
     {
@@ -48684,7 +48684,7 @@
     {
       "key": "obj_napstablook_actor_171",
       "english": "* human..^1.&* i'll never forget.../",
-      "hebrew": "* בן אדם..^1.&* לעולם לא אשכח.../",
+      "hebrew": "* בת אדם..^1.&* לעולם לא אשכח.../",
       "status": "draft"
     },
     {
@@ -49446,7 +49446,7 @@
     {
       "key": "obj_nicesnowman_162",
       "english": "* Traveller^1, if you could.../",
-      "hebrew": "* נוסע^1, אם תוכל.../",
+      "hebrew": "* נוסעת^1, אם תוכלי.../",
       "status": "draft"
     },
     {
@@ -49772,7 +49772,7 @@
     {
       "key": "obj_npc_room_305",
       "english": "* Are you a star?/%%",
-      "hebrew": "* אתה כוכב?/%%",
+      "hebrew": "* את כוכבת?/%%",
       "status": "draft"
     },
     {
@@ -52653,7 +52653,7 @@
     {
       "key": "obj_papdate_1175",
       "english": "OH^1, AND IF YOU&EVER NEED TO&REACH ME.../",
-      "hebrew": "אה^1, ואם&אי פעם תרצה&להשיג אותי.../",
+      "hebrew": "אה^1, ואם&אי פעם תרצי&להשיג אותי.../",
       "status": "draft"
     },
     {
@@ -52809,20 +52809,20 @@
     {
       "key": "obj_papmailbox_101",
       "english": "* Fine^1, you want a&  letter!?/",
-      "hebrew": "* טוב^1, אתה רוצה&  מכתב!?/",
+      "hebrew": "* טוב^1, את רוצה&  מכתב!?/",
       "status": "draft"
     },
     {
       "key": "obj_papmailbox_102",
       "english": "* I'll give you a&  letter!!!/",
-      "hebrew": "* תקבל&  אות!!!/",
+      "hebrew": "* תקבלי&  אות!!!/",
       "status": "draft",
       "translator_note": "English letter means both correspondence and alphabet letter; Hebrew transition adapts it to an alphabet letter but loses the ambiguity."
     },
     {
       "key": "obj_papmailbox_103",
       "english": "\\E6* YOU GET AN \"F\"!/",
-      "hebrew": "\\E6* תקבל \"ח\"!/",
+      "hebrew": "\\E6* תקבלי \"ח\"!/",
       "status": "draft",
       "translator_note": "F becomes ח for חברות. English failing-grade implication is lost; adapted wordplay requires review."
     },
@@ -53057,7 +53057,7 @@
     {
       "key": "obj_papyrus1_444",
       "english": "A HUMAN!?!?&!??!?!/%%",
-      "hebrew": "בן אדם!?!?&!??!?!/%%",
+      "hebrew": "בת אדם!?!?&!??!?!/%%",
       "status": "draft"
     },
     {
@@ -53069,7 +53069,7 @@
     {
       "key": "obj_papyrus1_454",
       "english": "A HUMAN!?!?&!??!?!/",
-      "hebrew": "בן אדם!?!?&!??!?!/",
+      "hebrew": "בת אדם!?!?&!??!?!/",
       "status": "draft"
     },
     {
@@ -53153,7 +53153,7 @@
     {
       "key": "obj_papyrus1_579",
       "english": "(IS... IS THAT&A HUMAN)/%%",
-      "hebrew": "(זה... זה&בן אדם)/%%",
+      "hebrew": "(זה... זה&בת אדם)/%%",
       "status": "draft"
     },
     {
@@ -53219,7 +53219,7 @@
     {
       "key": "obj_papyrus1_614",
       "english": "\\E1HUMAN^1! YOU&SHALL NOT PASS&THIS AREA!/",
-      "hebrew": "\\E1אדם^1!&לא תעבור&באזור הזה!/",
+      "hebrew": "\\E1בת אדם^1!&לא תעברי&באזור הזה!/",
       "status": "draft"
     },
     {
@@ -53279,7 +53279,7 @@
     {
       "key": "obj_papyrus1_626",
       "english": "\\E0THAT MEANS IT'S&A HUMAN!!!/",
-      "hebrew": "\\E0זה אומר שזה&בן אדם!!!/",
+      "hebrew": "\\E0זה אומר שזה&בת אדם!!!/",
       "status": "draft"
     },
     {
@@ -53333,7 +53333,7 @@
     {
       "key": "obj_papyrus1_668",
       "english": "* don't sweat it^1, kid./",
-      "hebrew": "* אין מה להזיע^1, ילד./",
+      "hebrew": "* אין מה להזיע^1, ילדה./",
       "status": "draft"
     },
     {
@@ -53393,13 +53393,13 @@
     {
       "key": "obj_papyrus2_216",
       "english": "* do you not know.../",
-      "hebrew": "* אתה לא יודע.../",
+      "hebrew": "* את לא יודעת.../",
       "status": "draft"
     },
     {
       "key": "obj_papyrus2_217",
       "english": "\\E1* who you know?/",
-      "hebrew": "\\E1* את מי אתה מכיר?/",
+      "hebrew": "\\E1* את מי את מכירה?/",
       "status": "draft"
     },
     {
@@ -53417,7 +53417,7 @@
     {
       "key": "obj_papyrus2_221",
       "english": "I WANTED TO KNOW IF&YOU KNOW.../",
-      "hebrew": "רציתי לדעת אם&אתה יודע.../",
+      "hebrew": "רציתי לדעת אם&את יודעת.../",
       "status": "draft"
     },
     {
@@ -53429,7 +53429,7 @@
     {
       "key": "obj_papyrus2_223",
       "english": "\\E2...YOU KNOW?/%%",
-      "hebrew": "\\E2...אתה מבין?/%%",
+      "hebrew": "\\E2...את מבינה?/%%",
       "status": "draft"
     },
     {
@@ -53909,7 +53909,7 @@
     {
       "key": "obj_papyrus4_430",
       "english": "\\E0HERE^1, WHY DON'T&YOU DO THIS&PUZZLE YOURSELF./%%",
-      "hebrew": "\\E0הנה^1, אולי&תנסה לפתור&את החידה לבד./%%",
+      "hebrew": "\\E0הנה^1, אולי&תנסי לפתור&את החידה לבד./%%",
       "status": "draft"
     },
     {
@@ -54509,7 +54509,7 @@
     {
       "key": "obj_papyrus8_205",
       "english": "THE DESIRE TO HAVE&A COOL^1, SMART PERSON&THINK YOU ARE COOL./",
-      "hebrew": "הרצון שאדם מגניב^1,&וחכם יחשוב&שאתה מגניב./",
+      "hebrew": "הרצון שאדם מגניב^1,&וחכם יחשוב&שאת מגניבה./",
       "status": "draft"
     },
     {
@@ -54545,7 +54545,7 @@
     {
       "key": "obj_papyrus8_211",
       "english": "I PITY YOU..^1.&LONELY HUMAN.../",
-      "hebrew": "אני מרחם עליך..^1.&אדם בודד.../",
+      "hebrew": "אני מרחם עליך..^1.&בת אדם בודדה.../",
       "status": "draft"
     },
     {
@@ -55116,7 +55116,7 @@
     {
       "key": "obj_papyrus_friendc_95",
       "english": "\\E1* no matter how hard&  you try to get&  rid of him./",
-      "hebrew": "\\E1* לא משנה כמה&  תנסה להיפטר&  ממנו./",
+      "hebrew": "\\E1* לא משנה כמה&  תנסי להיפטר&  ממנו./",
       "status": "draft"
     },
     {
@@ -55656,7 +55656,7 @@
     {
       "key": "obj_papyrus_room_264",
       "english": "\\E3YOU'RE LEAVING&SOON^1, RIGHT!?/",
-      "hebrew": "\\E3בקרוב&תעזוב^1, נכון!?/",
+      "hebrew": "\\E3בקרוב&תעזבי^1, נכון!?/",
       "status": "draft"
     },
     {
@@ -55800,7 +55800,7 @@
     {
       "key": "obj_papyrusboss_402",
       "english": " WELL...! *HUFF^1*& IT'S CLEAR...& YOU CAN'T^1! *HUFF^1*& DEFEAT ME!!!/",
-      "hebrew": " טוב...! *התנשפות^1*& ברור...& שלא תצליח^1! *התנשפות^1*& להביס אותי!!!/",
+      "hebrew": " טוב...! *התנשפות^1*& ברור...& שלא תצליחי^1! *התנשפות^1*& להביס אותי!!!/",
       "status": "draft"
     },
     {
@@ -55818,7 +55818,7 @@
     {
       "key": "obj_papyrusboss_405",
       "english": "\\X I WILL \\RSPARE\\X YOU,& HUMAN!!!/",
-      "hebrew": "\\X אני \\Rאחוס\\X עליך,& אדם!!!/",
+      "hebrew": "\\X אני \\Rאחוס\\X עליך,& בת אדם!!!/",
       "status": "draft"
     },
     {
@@ -55920,7 +55920,7 @@
     {
       "key": "obj_papyrusboss_559",
       "english": " SO YOU WON'T& FIGHT.../",
-      "hebrew": " אז לא& תילחם.../",
+      "hebrew": " אז לא& תילחמי.../",
       "status": "draft"
     },
     {
@@ -58897,13 +58897,13 @@
     {
       "key": "obj_questionasker_706",
       "english": "PERSON^1, IF YOU'RE&OUT THERE.../",
-      "hebrew": "אדם^1, אם&יש שם מישהו.../",
+      "hebrew": "בת אדם^1, אם&יש שם מישהי.../",
       "status": "draft"
     },
     {
       "key": "obj_questionasker_707",
       "english": "HOW ABOUT GIVING US&A SIGN^1, RIGHT NOW?/%%",
-      "hebrew": "אולי תיתן לנו&סימן^1, עכשיו?/%%",
+      "hebrew": "אולי תיתני לנו&סימן^1, עכשיו?/%%",
       "status": "draft"
     },
     {
@@ -61244,13 +61244,13 @@
     {
       "key": "obj_readable_room2_516",
       "english": "* What^1, lemme guess./",
-      "hebrew": "* מה^1, תן לי לנחש./",
+      "hebrew": "* מה^1, תני לי לנחש./",
       "status": "draft"
     },
     {
       "key": "obj_readable_room2_517",
       "english": "\\E6* Sometimes you cut a&  hot dog into the&  dog food^1, right?/",
-      "hebrew": "\\E6* לפעמים אתה חותך&  נקניקייה לתוך&  מזון הכלבים^1, נכון?/",
+      "hebrew": "\\E6* לפעמים את חותכת&  נקניקייה לתוך&  מזון הכלבים^1, נכון?/",
       "status": "draft"
     },
     {
@@ -61268,7 +61268,7 @@
     {
       "key": "obj_readable_room2_522",
       "english": "* OH MY GOD^1! NO^1!&* I WAS JOKING!!^1!&* DON'T DO THIS!!!/%%",
-      "hebrew": "* אלוהים^1! לא^1!&* זאת הייתה בדיחה!!^1!&* אל תעשה את זה!!!/%%",
+      "hebrew": "* אלוהים^1! לא^1!&* זאת הייתה בדיחה!!^1!&* אל תעשי את זה!!!/%%",
       "status": "draft"
     },
     {
@@ -63296,7 +63296,7 @@
     {
       "key": "obj_ripoff_papyrus_774",
       "english": "nah^1, i'm rootin for&ya^1, kid./*",
-      "hebrew": "לא^1, אני בעדך^1,&ילד./*",
+      "hebrew": "לא^1, אני בעדך^1,&ילדה./*",
       "status": "draft"
     },
     {
@@ -63638,7 +63638,7 @@
     {
       "key": "obj_ripoff_undyne_289",
       "english": "You're&our&real&enemy.",
-      "hebrew": "האויב&האמיתי&שלנו&זה אתה.",
+      "hebrew": "האויבת&האמיתית&שלנו&זו את.",
       "status": "draft"
     },
     {
@@ -64484,7 +64484,7 @@
     {
       "key": "obj_sans_room_259",
       "english": "\\E2* say^1, i've been&  thinking./",
-      "hebrew": "\\E2* תגיד^1,&  חשבתי קצת./",
+      "hebrew": "\\E2* תגידי^1,&  חשבתי קצת./",
       "status": "draft"
     },
     {
@@ -64700,7 +64700,7 @@
     {
       "key": "obj_sansb_337",
       "english": "\\E4listen./",
-      "hebrew": "\\E4תקשיב./",
+      "hebrew": "\\E4תקשיבי./",
       "status": "draft"
     },
     {
@@ -64796,7 +64796,7 @@
     {
       "key": "obj_sansb_356",
       "english": "\\E4listen./",
-      "hebrew": "\\E4תקשיב./",
+      "hebrew": "\\E4תקשיבי./",
       "status": "draft"
     },
     {
@@ -64916,7 +64916,7 @@
     {
       "key": "obj_sansb_417",
       "english": "\\E5you'll keep&consuming timelines&over and over^1,&until.../",
-      "hebrew": "\\E5תמשיך לבלוע&צירי זמן&שוב ושוב^1,&עד.../",
+      "hebrew": "\\E5תמשיכי לבלוע&צירי זמן&שוב ושוב^1,&עד.../",
       "status": "draft"
     },
     {
@@ -64934,7 +64934,7 @@
     {
       "key": "obj_sansb_420",
       "english": "\\E3take it from me^1,&kid./",
-      "hebrew": "\\E3מילה שלי^1,&ילד./",
+      "hebrew": "\\E3מילה שלי^1,&ילדה./",
       "status": "draft"
     },
     {
@@ -65618,7 +65618,7 @@
     {
       "key": "obj_sansbyetrigger_135",
       "english": "\\E1* if you kept pretending&  to be one./%%",
-      "hebrew": "\\E1* אם תמשיך להעמיד&  פנים שאתה כזה./%%",
+      "hebrew": "\\E1* אם תמשיכי להעמיד&  פנים שאת כזאת./%%",
       "status": "draft"
     },
     {
@@ -65708,7 +65708,7 @@
     {
       "key": "obj_sansdate3_151",
       "english": "\\E0* i'm rootin' for&  ya^1, kid./%%",
-      "hebrew": "\\E0* אני בעדך^1,&  ילד./%%",
+      "hebrew": "\\E0* אני בעדך^1,&  ילדה./%%",
       "status": "draft"
     },
     {
@@ -65956,13 +65956,13 @@
     {
       "key": "obj_sansdate3_226",
       "english": "* \"... could you please^1,&  please promise&  something?\"/",
-      "hebrew": "* \"... תוכל בבקשה^1,&  בבקשה להבטיח&  משהו?\"/",
+      "hebrew": "* \"... תוכלי בבקשה^1,&  בבקשה להבטיח&  משהו?\"/",
       "status": "draft"
     },
     {
       "key": "obj_sansdate3_227",
       "english": "* \"watch over them^1,&  and protect them^1,&  will you not?\"/",
-      "hebrew": "* \"להשגיח^1,&  ולהגן עליו^1,&  תסכים?\"/",
+      "hebrew": "* \"להשגיח^1,&  ולהגן עליו^1,&  תסכימי?\"/",
       "status": "draft"
     },
     {
@@ -66058,7 +66058,7 @@
     {
       "key": "obj_sansdate3_309",
       "english": "* i mean^1, look at&  yourself./",
-      "hebrew": "* הרי^1, תראה&  את עצמך./",
+      "hebrew": "* הרי^1, תראי&  את עצמך./",
       "status": "draft"
     },
     {
@@ -66106,7 +66106,7 @@
     {
       "key": "obj_sansdate3_381",
       "english": "\\E1* take care of&  yourself^1, kid./",
-      "hebrew": "\\E1* שמור על עצמך^1,&  ילד./",
+      "hebrew": "\\E1* שמרי על עצמך^1,&  ילדה./",
       "status": "draft"
     },
     {
@@ -66478,7 +66478,7 @@
     {
       "key": "obj_shop1_352",
       "english": "\\E0What would&you like&to buy?/*",
-      "hebrew": "\\E0מה&תרצה&לקנות?/*",
+      "hebrew": "\\E0מה&תרצי&לקנות?/*",
       "status": "draft"
     },
     {
@@ -66922,7 +66922,7 @@
     {
       "key": "obj_shop2_454",
       "english": "* Be careful out there^1, kid!/%%",
-      "hebrew": "* לשמור על עצמך שם בחוץ^1, ילד!/%%",
+      "hebrew": "* לשמור על עצמך שם בחוץ^1, ילדה!/%%",
       "status": "draft"
     },
     {
@@ -67253,7 +67253,7 @@
     {
       "key": "obj_shop2_556",
       "english": "\\E2* Try it^1, kiddo!/",
-      "hebrew": "\\E2* קדימה^1, ילד!/",
+      "hebrew": "\\E2* קדימה^1, ילדה!/",
       "status": "draft"
     },
     {
@@ -67301,7 +67301,7 @@
     {
       "key": "obj_shop2_569",
       "english": "* But if you come back much&  later^1, I'm sure I'll have&  remembered by then./%%",
-      "hebrew": "* אבל אם תחזור&  הרבה אחר כך^1, בטח&  כבר אזכר./%%",
+      "hebrew": "* אבל אם תחזרי&  הרבה אחר כך^1, בטח&  כבר אזכר./%%",
       "status": "draft"
     },
     {
@@ -67391,7 +67391,7 @@
     {
       "key": "obj_shop2_598",
       "english": "\\E0* I'd watch your back^1, kid^1.&* And buy some items..^1.&* It might just save your hide^1!&* Wa ha ha!/%%",
-      "hebrew": "\\E0* כדאי להיזהר^1, ילד^1.&* ולקנות כמה חפצים..^1.&* אולי זה יציל את עורך^1!&* וואה חה חה!/%%",
+      "hebrew": "\\E0* כדאי להיזהר^1, ילדה^1.&* ולקנות כמה חפצים..^1.&* אולי זה יציל את עורך^1!&* וואה חה חה!/%%",
       "status": "draft"
     },
     {
@@ -68597,7 +68597,7 @@
     {
       "key": "obj_shop4_250",
       "english": "\\E3* What can I do for you^1,&  little buddy?/*",
-      "hebrew": "\\E3* מה אפשר לעשות בשבילך^1,&  חבר קטן?/*",
+      "hebrew": "\\E3* מה אפשר לעשות בשבילך^1,&  חברה קטנה?/*",
       "status": "draft"
     },
     {
@@ -69041,7 +69041,7 @@
     {
       "key": "obj_shop4_625",
       "english": "\\E3* You somehow understand comedy&  EVEN LESS than that guy who&  keeps going on stage and&  crying about his family./",
-      "hebrew": "\\E3* אתה מבין בקומדיה&  אפילו פחות מההוא&  שכל הזמן עולה לבמה&  ובוכה על המשפחה שלו./",
+      "hebrew": "\\E3* את מבינה בקומדיה&  אפילו פחות מההוא&  שכל הזמן עולה לבמה&  ובוכה על המשפחה שלו./",
       "status": "draft"
     },
     {
@@ -69125,7 +69125,7 @@
     {
       "key": "obj_shop4_651",
       "english": "\\E6* Listen^1.&* I like you^1, little buddy^1.&* So I'm gonna save you a lot&  of trouble./",
-      "hebrew": "\\E6* תקשיב^1.&* אני מחבב אותך^1, חבר קטן^1.&* אז אחסוך לך&  הרבה צרות./",
+      "hebrew": "\\E6* תקשיבי^1.&* אני מחבב אותך^1, חברה קטנה^1.&* אז אחסוך לך&  הרבה צרות./",
       "status": "draft"
     },
     {
@@ -70581,7 +70581,7 @@
     {
       "key": "obj_smallfrog_xadvice_67",
       "english": "* Ribbit^1, ribbit^1.&* (Say...)/",
-      "hebrew": "* קרקור^1, קרקור^1.&* (תגיד...)/",
+      "hebrew": "* קרקור^1, קרקור^1.&* (תגידי...)/",
       "status": "draft"
     },
     {
@@ -71512,7 +71512,7 @@
     {
       "key": "obj_sosorry_312",
       "english": "\\E5Look, stranger/",
-      "hebrew": "\\E5תקשיב, זר/",
+      "hebrew": "\\E5תקשיבי, זרה/",
       "status": "draft"
     },
     {
@@ -71596,7 +71596,7 @@
     {
       "key": "obj_sosorry_330",
       "english": "\\E7If you stop killing&me, I'll pay you&200G./%%",
-      "hebrew": "\\E7אם תפסיק להרוג&אותי, אשלם לך&200G./%%",
+      "hebrew": "\\E7אם תפסיקי להרוג&אותי, אשלם לך&200G./%%",
       "status": "draft"
     },
     {
@@ -71836,7 +71836,7 @@
     {
       "key": "obj_sosorry_406",
       "english": "\\E7I'm quite the artist,&you know./",
-      "hebrew": "\\E7אני ממש אמן,&אתה יודע./",
+      "hebrew": "\\E7אני ממש אמן,&את יודעת./",
       "status": "draft"
     },
     {
@@ -72184,7 +72184,7 @@
     {
       "key": "obj_spagnot_100",
       "english": "HUMAN!^1!&PLEASE ENJOY THIS&SPAGHETTI./",
-      "hebrew": "בן אדם!^1!&בתיאבון עם&הספגטי הזה./",
+      "hebrew": "בת אדם!^1!&בתיאבון עם&הספגטי הזה./",
       "status": "draft"
     },
     {
@@ -75709,7 +75709,7 @@
     {
       "key": "obj_torielboss_402",
       "english": "Pathetic^1, is it not^2?&I cannot save even&a single child.",
-      "hebrew": "עלוב^1, נכון^2?&איני יכולה להציל&אפילו ילד אחד.",
+      "hebrew": "עלוב^1, נכון^2?&איני יכולה להציל&אפילו ילדה אחת.",
       "status": "draft"
     },
     {
@@ -75751,7 +75751,7 @@
     {
       "key": "obj_torielboss_421",
       "english": "For you^1, my child...&I will put them aside./%%",
-      "hebrew": "למענך^1, ילדי...&אניח אותם בצד./%%",
+      "hebrew": "למענך^1, ילדתי...&אניח אותם בצד./%%",
       "status": "draft"
     },
     {
@@ -75823,7 +75823,7 @@
     {
       "key": "obj_torielboss_456",
       "english": "\\E3My child.      %%",
-      "hebrew": "\\E3ילדי.      %%",
+      "hebrew": "\\E3ילדתי.      %%",
       "status": "draft"
     },
     {
@@ -76375,7 +76375,7 @@
     {
       "key": "obj_torieltrigger10_82",
       "english": "* You naive child..^1.&* If you leave the&  RUINS.../",
-      "hebrew": "* ילדי התמים..^1.&* אם תעזוב&  את החורבות.../",
+      "hebrew": "* ילדתי התמימה..^1.&* אם תעזבי&  את החורבות.../",
       "status": "draft"
     },
     {
@@ -76411,7 +76411,7 @@
     {
       "key": "obj_torieltrigger12_86",
       "english": "\\E0* Goodbye^1, my child./%%",
-      "hebrew": "\\E0* להתראות^1, ילדי./%%",
+      "hebrew": "\\E0* להתראות^1, ילדתי./%%",
       "status": "draft"
     },
     {
@@ -76555,7 +76555,7 @@
     {
       "key": "obj_torieltrigger5_185",
       "english": "* How did you get&  here^1, my child^1?&* Are you hurt?/",
-      "hebrew": "* איך הגעת&  לכאן^1, ילדי^1?&* יש פציעות?/",
+      "hebrew": "* איך הגעת&  לכאן^1, ילדתי^1?&* יש פציעות?/",
       "status": "draft"
     },
     {
@@ -78362,7 +78362,7 @@
     {
       "key": "obj_townnpc_weirdfish_100",
       "english": "* So kid^1, take it from me.../",
-      "hebrew": "* אז ילד^1, מילה ממני.../",
+      "hebrew": "* אז ילדה^1, מילה ממני.../",
       "status": "draft"
     },
     {
@@ -78940,7 +78940,7 @@
     {
       "key": "obj_tsunderplane_236",
       "english": "Id...&Idiot!",
-      "hebrew": "ט...&טיפש!",
+      "hebrew": "ט...&טיפשה!",
       "status": "draft"
     },
     {
@@ -78952,31 +78952,31 @@
     {
       "key": "obj_tsunderplane_238",
       "english": ">_<...&Human&...",
-      "hebrew": ">_<...&בן אדם&...",
+      "hebrew": ">_<...&בת אדם&...",
       "status": "draft"
     },
     {
       "key": "obj_tsunderplane_242",
       "english": "...&H-human&...&...?",
-      "hebrew": "...&ב-בן אדם&...&...?",
+      "hebrew": "...&ב-בת אדם&...&...?",
       "status": "draft"
     },
     {
       "key": "obj_tsunderplane_243",
       "english": "Id...&Idiot!",
-      "hebrew": "ט...&טיפש!",
+      "hebrew": "ט...&טיפשה!",
       "status": "draft"
     },
     {
       "key": "obj_tsunderplane_250",
       "english": "Eeeeh?&H-human&...?",
-      "hebrew": "אההה?&ב-בן אדם&...?",
+      "hebrew": "אההה?&ב-בת אדם&...?",
       "status": "draft"
     },
     {
       "key": "obj_tsunderplane_251",
       "english": "Human,&I...",
-      "hebrew": "בן אדם,&אני...",
+      "hebrew": "בת אדם,&אני...",
       "status": "draft"
     },
     {
@@ -79000,7 +79000,7 @@
     {
       "key": "obj_tsunderplane_263",
       "english": "Human,&I...",
-      "hebrew": "בן אדם,&אני...",
+      "hebrew": "בת אדם,&אני...",
       "status": "draft"
     },
     {
@@ -79120,7 +79120,7 @@
     {
       "key": "obj_tsunderplanenpc_83",
       "english": "* A-ah..^1. H-human..^1.&* You're leaving?/",
-      "hebrew": "* א-אה..^1. ב-בן אדם..^1.&* כבר עוזבים?/",
+      "hebrew": "* א-אה..^1. ב-בת אדם..^1.&* כבר עוזבת?/",
       "status": "draft"
     },
     {
@@ -79180,7 +79180,7 @@
     {
       "key": "obj_tsunderplanenpc_93",
       "english": "* Y..^1. y-you i-idiot./%%",
-      "hebrew": "* א..^1. א-איזה ט-טיפש./%%",
+      "hebrew": "* א..^1. א-איזו ט-טיפשה./%%",
       "status": "draft"
     },
     {
@@ -79228,7 +79228,7 @@
     {
       "key": "obj_tsunderplanenpc_113",
       "english": "* Idiot..^1.&* Quit following me!/%%",
-      "hebrew": "* טיפש..^1.&* די לעקוב אחריי!/%%",
+      "hebrew": "* טיפשה..^1.&* די לעקוב אחריי!/%%",
       "status": "draft"
     },
     {
@@ -79954,7 +79954,7 @@
     {
       "key": "obj_undyne_lettercall_117",
       "english": "\\E1* HUMAN^1!&* You have to deliver&  something for me!/",
-      "hebrew": "\\E1* בן אדם^1!&* צריך למסור&  משהו בשבילי!/",
+      "hebrew": "\\E1* בת אדם^1!&* צריך למסור&  משהו בשבילי!/",
       "status": "draft"
     },
     {
@@ -80164,13 +80164,13 @@
     {
       "key": "obj_undynebattle2_674",
       "english": "\\E7Now I know you&aren't just some&wimpy loser./",
-      "hebrew": "\\E7עכשיו אני יודעת&שאתה לא סתם&מפסידן חלשלוש./",
+      "hebrew": "\\E7עכשיו אני יודעת&שאת לא סתם&מפסידנית חלשלושה./",
       "status": "draft"
     },
     {
       "key": "obj_undynebattle2_678",
       "english": "\\E9You're a wimpy&loser with a&big heart!/",
-      "hebrew": "\\E9אתה מפסידן&חלשלוש עם&לב גדול!/",
+      "hebrew": "\\E9את מפסידנית&חלשלושה עם&לב גדול!/",
       "status": "draft"
     },
     {
@@ -80188,7 +80188,7 @@
     {
       "key": "obj_undynebattle2_681",
       "english": "\\E3Listen^1, human./",
-      "hebrew": "\\E3תקשיב לי^1, בן אדם./",
+      "hebrew": "\\E3תקשיבי לי^1, בת אדם./",
       "status": "draft"
     },
     {
@@ -80446,7 +80446,7 @@
     {
       "key": "obj_undyneboss_470",
       "english": "\\E4  Look./",
-      "hebrew": "\\E4  תראה./",
+      "hebrew": "\\E4  תראי./",
       "status": "draft"
     },
     {
@@ -81035,7 +81035,7 @@
     {
       "key": "obj_undyneboss_1401",
       "english": "Human!/",
-      "hebrew": "בן אדם!/",
+      "hebrew": "בת אדם!/",
       "status": "draft"
     },
     {
@@ -81545,7 +81545,7 @@
     {
       "key": "obj_undynedate_inside_372",
       "english": "\\E3* Listen up^1, human./",
-      "hebrew": "\\E3* תקשיבו טוב^1, בן אדם./",
+      "hebrew": "\\E3* תקשיבי טוב^1, בת אדם./",
       "status": "draft"
     },
     {
@@ -81935,7 +81935,7 @@
     {
       "key": "obj_undynedate_inside_1477",
       "english": "\\E4* I can't force you to&  like me^1, human./",
-      "hebrew": "\\E4* אני לא יכולה להכריח&  אותך לחבב אותי^1, בן אדם./",
+      "hebrew": "\\E4* אני לא יכולה להכריח&  אותך לחבב אותי^1, בת אדם./",
       "status": "draft"
     },
     {
@@ -82661,13 +82661,13 @@
     {
       "key": "obj_undynetrigger_boss_325",
       "english": "* YOU!/",
-      "hebrew": "* אתה!/",
+      "hebrew": "* את!/",
       "status": "draft"
     },
     {
       "key": "obj_undynetrigger_boss_326",
       "english": "* You're standing in&  the way of everybody's&  hopes and dreams!/",
-      "hebrew": "* אתה עומד&  בדרך לתקוות&  ולחלומות של כולם!/",
+      "hebrew": "* את עומדת&  בדרך לתקוות&  ולחלומות של כולם!/",
       "status": "draft"
     },
     {
@@ -82685,13 +82685,13 @@
     {
       "key": "obj_undynetrigger_boss_329",
       "english": "\\E1* BUT YOU?/",
-      "hebrew": "\\E1* אבל אתה?/",
+      "hebrew": "\\E1* אבל את?/",
       "status": "draft"
     },
     {
       "key": "obj_undynetrigger_boss_330",
       "english": "\\E2* You're just a coward!/",
-      "hebrew": "\\E2* אתה סתם פחדן!/",
+      "hebrew": "\\E2* את סתם פחדנית!/",
       "status": "draft"
     },
     {
@@ -82733,7 +82733,7 @@
     {
       "key": "obj_undynetrigger_boss_339",
       "english": "\\E0* That's right^1, human^1!&* Your continued&  existence is a crime!/",
-      "hebrew": "\\E0* נכון^1, בן אדם^1!&* עצם קיומך&  הוא פשע!/",
+      "hebrew": "\\E0* נכון^1, בת אדם^1!&* עצם קיומך&  הוא פשע!/",
       "status": "draft"
     },
     {
@@ -82769,7 +82769,7 @@
     {
       "key": "obj_undynetrigger_boss_345",
       "english": "\\E5* Now^1, human^1!&* Let's end this^1,&  right here^1, right now./",
-      "hebrew": "\\E5* עכשיו^1, בן אדם^1!&* נסיים את זה^1,&  כאן^1 ועכשיו./",
+      "hebrew": "\\E5* עכשיו^1, בת אדם^1!&* נסיים את זה^1,&  כאן^1 ועכשיו./",
       "status": "draft"
     },
     {
@@ -82829,13 +82829,13 @@
     {
       "key": "obj_undynetrigger_boss_358",
       "english": "\\E6I WOULD NEVER GET&  CHUMMY WITH A COWARD&  LIKE YOU!/",
-      "hebrew": "\\E6לעולם לא אתיידד&  עם פחדן&  כמוך!/",
+      "hebrew": "\\E6לעולם לא אתיידד&  עם פחדנית&  כמוך!/",
       "status": "draft"
     },
     {
       "key": "obj_undynetrigger_boss_359",
       "english": "\\E1* You^1!&* You must have been&  mind-controlling me!/",
-      "hebrew": "\\E1* אתה^1!&* בטח השתלטת&  לי על המוח!/",
+      "hebrew": "\\E1* את^1!&* בטח השתלטת&  לי על המוח!/",
       "status": "draft"
     },
     {
@@ -82865,13 +82865,13 @@
     {
       "key": "obj_undynetrigger_boss_369",
       "english": "* YOU!/",
-      "hebrew": "* אתה!/",
+      "hebrew": "* את!/",
       "status": "draft"
     },
     {
       "key": "obj_undynetrigger_boss_370",
       "english": "* You're standing in&  the way of everybody's&  hopes and dreams!/",
-      "hebrew": "* אתה עומד&  בדרך לתקוות&  ולחלומות של כולם!/",
+      "hebrew": "* את עומדת&  בדרך לתקוות&  ולחלומות של כולם!/",
       "status": "draft"
     },
     {
@@ -82883,19 +82883,19 @@
     {
       "key": "obj_undynetrigger_boss_372",
       "english": "\\E1* BUT YOU?/",
-      "hebrew": "\\E1* אבל אתה?/",
+      "hebrew": "\\E1* אבל את?/",
       "status": "draft"
     },
     {
       "key": "obj_undynetrigger_boss_373",
       "english": "\\E5* You're just a&  remorseless criminal!/",
-      "hebrew": "\\E5* אתה סתם&  פושע חסר חרטה!/",
+      "hebrew": "\\E5* את סתם&  פושעת חסרת חרטה!/",
       "status": "draft"
     },
     {
       "key": "obj_undynetrigger_boss_374",
       "english": "* You wander through the&  caverns^1, attacking&  anyone in your path./",
-      "hebrew": "* אתה משוטט&  במערות^1, ותוקף&  כל מי שבדרכך./",
+      "hebrew": "* את משוטטת&  במערות^1, ותוקפת&  כל מי שבדרכך./",
       "status": "draft"
     },
     {
@@ -83099,7 +83099,7 @@
     {
       "key": "obj_undynetrigger_boss_490",
       "english": "* Look./",
-      "hebrew": "* תראה./",
+      "hebrew": "* תראי./",
       "status": "draft"
     },
     {
@@ -83291,7 +83291,7 @@
     {
       "key": "obj_vegetoid_182",
       "english": "Plants&Can't&Talk&Dummy",
-      "hebrew": "צמחים&לא&מדברים&טיפש",
+      "hebrew": "צמחים&לא&מדברים&טיפשה",
       "status": "draft"
     },
     {
@@ -88862,7 +88862,7 @@
     {
       "key": "scr_papcall_2269",
       "english": "* Well^1, you're gonna&  END as my great&  friend!!/",
-      "hebrew": "* טוב^1, אתה תסיים&  בתור החבר&  הכי טוב שלי!!/",
+      "hebrew": "* טוב^1, את תסיימי&  בתור החברה&  הכי טוב שלי!!/",
       "status": "draft"
     },
     {
@@ -91807,7 +91807,7 @@
     {
       "key": "scr_papcall_3761",
       "english": "\\E3WHAT WILL YOU DO&WITHOUT US...?/",
-      "hebrew": "\\E3מה תעשה&בלעדינו...?/",
+      "hebrew": "\\E3מה תעשי&בלעדינו...?/",
       "status": "draft"
     },
     {
@@ -95966,7 +95966,7 @@
     {
       "key": "shop3_talk6_title",
       "english": "I'm a human",
-      "hebrew": "אני בן אדם",
+      "hebrew": "אני בת אדם",
       "status": "draft"
     },
     {
@@ -96515,7 +96515,7 @@
     {
       "key": "mett_operacomment_2",
       "english": "(Dance with me, darling.)",
-      "hebrew": "(לרקוד איתי, יקירי.)",
+      "hebrew": "(לרקוד איתי, יקירתי.)",
       "status": "draft"
     },
     {
@@ -96617,7 +96617,7 @@
     {
       "key": "mett_operacomment_7",
       "english": "(Dancing with... A human.)",
-      "hebrew": "(לרקוד עם... בן אדם.)",
+      "hebrew": "(לרקוד עם... בת אדם.)",
       "status": "draft"
     },
     {

@@ -7,9 +7,9 @@ const listeners = new Set<() => void>();
 
 export function readLanguage(): AppLanguage {
   try {
-    return globalThis.localStorage?.getItem(LANGUAGE_STORAGE_KEY) === "he" ? "he" : "en";
+    return globalThis.localStorage?.getItem(LANGUAGE_STORAGE_KEY) === "en" ? "en" : "he";
   } catch {
-    return "en";
+    return "he";
   }
 }
 let language: AppLanguage = readLanguage();

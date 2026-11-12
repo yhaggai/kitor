@@ -202,5 +202,10 @@
     "metadataSource": "patches-metadata/176_day_of_the_tentacle_classic.json",
     "sourceUrl": "https://www.facebook.com/groups/hebrewadventure/posts/342895866314516/",
     "communityTranslation": true
+  },
+  "dig": {
+    "description": "אסטרואיד בגודל של ירח קטן דוהר לעבר כדור הארץ, ומפקד המשימה בוסטון לאו יוצא לעצור אותו יחד עם העיתונאית מגי רובינס והגיאולוג לודגר ברינק. אחרי שהאסטרואיד משנה את מסלולו, השלושה מוצאים את עצמם בעולם זר ונטוש, מלא בטכנולוגיה של תרבות שנעלמה. כדי לשוב הביתה עליהם להבין מה קרה שם, ומה הם מוכנים להשאיר מאחור.",
+    "sourceUrl": "https://www.gog.com/en/game/the_dig",
+    "communityTranslation": false
   }
 }

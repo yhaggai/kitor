@@ -1,5 +1,7 @@
 import { Package } from "lucide-react";
 import { type CSSProperties, useState } from "react";
+import { gameTitle } from "../hebrewTitle";
+import { useTranslation } from "../i18n";
 import type { GameSummary } from "../types";
 import styles from "./GameBox.module.css";
 export type GameBoxLanguage = "en" | "he";
@@ -19,7 +21,9 @@ export function GameCover({
   rotation?: number;
   zoom?: number;
 }) {
+  const { language: appLanguage } = useTranslation();
   const covers = game.covers ?? { en: { src: game.cover ?? "" }, he: { src: game.cover ?? "" } };
+  const title = gameTitle(game, appLanguage);
   return (
     <span
       className={styles.stage}
@@ -35,7 +39,7 @@ export function GameCover({
       }
     >
       <span className={styles.shadow} />
-      <BoxFaces title={game.title} covers={covers} />
+      <BoxFaces title={title} covers={covers} />
     </span>
   );
 }

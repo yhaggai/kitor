@@ -245,6 +245,31 @@ pub fn matches_installation(dir: &Path, target: &Path, game: &str) -> Result<boo
     Ok(journal.game == game && journal.target == target.canonicalize().map_err(err)?)
 }
 
+/// A fresh installation at a previously patched path must not inherit its badge.
+/// Retain the old journal and backups; only inspect the files it affected.
+pub fn matches_original_files(dir: &Path, target: &Path) -> Result<bool> {
+    let journal = load(dir)?;
+    if journal.files.is_empty() || journal.target != target.canonicalize().map_err(err)? {
+        return Ok(false);
+    }
+    for record in journal.files {
+        if current_hash(&safe_path(target, &record.path)?)? != record.original_hash {
+            return Ok(false);
+        }
+    }
+    Ok(true)
+}
+
+pub fn archive_replaced_installation(dir: &Path, target: &Path) -> Result<()> {
+    let _lock = lock(dir.parent().ok_or("Missing transaction parent")?)?;
+    if !matches_original_files(dir, target)? {
+        return Err("Game files changed while checking the previous installation".into());
+    }
+    let mut journal = load(dir)?;
+    journal.status = "superseded".into();
+    save(dir, &journal)
+}
+
 /// Recover any interrupted update, then inspect installed bytes.
 pub fn verify_installed(dir: &Path, target: &Path, game: &str, version: &str) -> Result<Vec<String>> {
     let _lock = lock(dir.parent().ok_or("Missing transaction parent")?)?;
@@ -482,6 +507,7 @@ pub fn install_with_progress(
         if existing.target != target {
             return Err("Recovery manifest target mismatch".into());
         }
+        if existing.status == "superseded" { continue; }
         if existing.status != "active" && existing.status != "restored" {
             restore_inner(&dir, &mut existing)?;
             cleanup_restored(&dir, &existing)?;

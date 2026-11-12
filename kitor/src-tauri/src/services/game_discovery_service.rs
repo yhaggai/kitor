@@ -96,7 +96,7 @@ fn discover(steam_roots: Vec<PathBuf>, gog_roots: Vec<PathBuf>) -> (Vec<PathBuf>
 }
 
 #[cfg(target_os = "windows")]
-fn registry_paths(key: &str, value: &str, recursive: bool) -> Vec<PathBuf> {
+pub(super) fn registry_paths(key: &str, value: &str, recursive: bool) -> Vec<PathBuf> {
     let mut command = std::process::Command::new("reg");
     command.args(["query", key, "/v", value]);
     if recursive {
@@ -183,7 +183,27 @@ pub async fn scan_installed_games(
     db: &sea_orm::DatabaseConnection,
     app_data_dir: PathBuf,
 ) -> Result<ScanResult, String> {
-    let (locations, warnings) = tokio::task::spawn_blocking(discover_locations)
+    let managed_games = app_data_dir.join("games");
+    let (locations, warnings) = tokio::task::spawn_blocking(move || {
+        let (mut locations, mut warnings) = discover_locations();
+        let mut seen = locations.iter().cloned().collect();
+        // Direct downloads live outside the storefront libraries. Include each
+        // installation as a scan root too, for extracted games nested in app/.
+        add_directory(managed_games.clone(), &mut locations, &mut seen);
+        match std::fs::read_dir(&managed_games) {
+            Ok(entries) => {
+                for entry in entries {
+                    match entry {
+                        Ok(entry) => add_directory(entry.path(), &mut locations, &mut seen),
+                        Err(error) => warnings.push(format!("{}: {}", managed_games.display(), error)),
+                    }
+                }
+            }
+            Err(error) if error.kind() == std::io::ErrorKind::NotFound => {}
+            Err(error) => warnings.push(format!("{}: {}", managed_games.display(), error)),
+        }
+        (locations, warnings)
+    })
         .await
         .map_err(|e| e.to_string())?;
     let mut result = ScanResult {

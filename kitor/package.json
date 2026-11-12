@@ -10,7 +10,8 @@
     "build": "tsc && vite build",
     "preview": "vite preview",
     "tauri": "tauri",
-    "tauri:dev": "tauri dev",
+    "tauri:dev": "bun tools/tauri-dev.ts",
+    "tauri:build:local": "APPLE_SIGNING_IDENTITY='Kitor Local Development' tauri build --bundles app",
     "lint": "biome check .",
     "lint:fix": "biome check --write --unsafe .",
     "format": "biome format --write ."

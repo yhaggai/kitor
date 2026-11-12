@@ -66,93 +66,14 @@ export function InstallPatchDialog({
           <AlertDialog.Title className="text-lg font-semibold mb-4">
             {updating ? t("Updating Translation") : t("Installing Patch")} {t("for")} {gameTitle}
           </AlertDialog.Title>
-          <div className="mb-5 space-y-2">
-            <AlertDialog.Description className="flex items-center justify-between text-sm text-muted-foreground">
-              <span>{t("Installation progress")}</span>
-              <span className="font-medium tabular-nums text-foreground">
-                {Math.round(progress)}%
-              </span>
-            </AlertDialog.Description>
-            <Progress
-              value={progress}
-              aria-label={t("Patch installation progress")}
-              className="h-2"
-            />
-          </div>
-          <div className="space-y-3">
-            {installSteps.map((step) => (
-              <div key={step.id} className="flex flex-wrap items-center gap-3 py-2">
-                <div className="flex-shrink-0 w-5 h-5">
-                  {step.status === "complete" && <CheckCircle className="w-5 h-5 text-green-600" />}
-                  {step.status === "in-progress" && (
-                    <Loader2 className="w-5 h-5 text-primary animate-spin" />
-                  )}
-                  {step.status === "pending" && <div className="w-5 h-5" />}
-                </div>
-                <span
-                  className={
-                    step.status === "pending"
-                      ? "text-muted-foreground"
-                      : step.status === "complete"
-                        ? "text-foreground"
-                        : "text-foreground font-medium"
-                  }
-                >
-                  {step.id === "backup" &&
-                  step.status === "in-progress" &&
-                  step.detail?.startsWith("Creating backup (")
-                    ? t("Creating backup")
-                    : step.label}
-                </span>
-                {step.id === "backup" && step.status === "in-progress" && (
-                  <PreparationDetail detail={step.detail} />
-                )}
-                {step.id === "installing" && step.status === "in-progress" && (
-                  <p className="ml-8 w-full break-all text-xs text-muted-foreground">
-                    {step.detail}
-                  </p>
-                )}
-                {step.id === "downloading" && step.status === "in-progress" && (
-                  <div className="ml-8 w-full space-y-2 text-xs text-muted-foreground tabular-nums">
-                    <Progress
-                      value={download && download.total > 0 ? download.percentage : null}
-                      aria-label={t("Patch download progress")}
-                      className={`h-2 ${!download || download.total === 0 ? "animate-pulse" : ""}`}
-                    />
-                    {download ? (
-                      <>
-                        <div className="flex justify-between gap-2">
-                          <span>
-                            {(download.downloaded / 1_000_000).toFixed(1)} MB
-                            {download.total > 0 &&
-                              ` / ${(download.total / 1_000_000).toFixed(1)} MB`}
-                          </span>
-                          <span>
-                            {download.total > 0 ? `${download.percentage}%` : t("Size unknown")}
-                          </span>
-                        </div>
-                        <div className="flex justify-between gap-2">
-                          <span>
-                            {(download.bytes_per_second / 1_000_000).toFixed(2)}{" "}
-                            {t("MB/s (average)")}{" "}
-                          </span>
-                          <span>
-                            {download.percentage === 100
-                              ? t("Download complete")
-                              : download.seconds_remaining !== null
-                                ? t("About {0}s remaining", [Math.ceil(download.seconds_remaining)])
-                                : t("Estimating time remaining…")}
-                          </span>
-                        </div>
-                      </>
-                    ) : (
-                      <p>{t("Connecting to download…")}</p>
-                    )}
-                  </div>
-                )}
-              </div>
-            ))}
-          </div>
+          <AlertDialog.Description className="sr-only">
+            {t("Installation progress")}
+          </AlertDialog.Description>
+          <PatchInstallProgress
+            installSteps={installSteps}
+            progress={progress}
+            download={download}
+          />
           <div className="mt-6 flex justify-end">
             <AlertDialog.Cancel asChild>
               <Button variant="outline" className="text-foreground">
@@ -163,5 +84,96 @@ export function InstallPatchDialog({
         </AlertDialog.Content>
       </AlertDialog.Portal>
     </AlertDialog.Root>
+  );
+}
+
+export function PatchInstallProgress({
+  installSteps,
+  progress,
+  download,
+}: Pick<InstallPatchDialogProps, "installSteps" | "progress" | "download">) {
+  const { t } = useTranslation();
+  return (
+    <>
+      <div className="mb-5 space-y-2">
+        <div className="flex items-center justify-between text-sm text-muted-foreground">
+          <span>{t("Installation progress")}</span>
+          <span className="font-medium tabular-nums text-foreground">{Math.round(progress)}%</span>
+        </div>
+        <Progress value={progress} aria-label={t("Patch installation progress")} className="h-2" />
+      </div>
+      <div className="space-y-3">
+        {installSteps.map((step) => (
+          <div key={step.id} className="flex flex-wrap items-center gap-3 py-2">
+            <div className="flex-shrink-0 w-5 h-5">
+              {step.status === "complete" && <CheckCircle className="w-5 h-5 text-green-600" />}
+              {step.status === "in-progress" && (
+                <Loader2 className="w-5 h-5 text-primary animate-spin" />
+              )}
+              {step.status === "pending" && <div className="w-5 h-5" />}
+            </div>
+            <span
+              className={
+                step.status === "pending"
+                  ? "text-muted-foreground"
+                  : step.status === "complete"
+                    ? "text-foreground"
+                    : "text-foreground font-medium"
+              }
+            >
+              {step.id === "backup" &&
+              step.status === "in-progress" &&
+              step.detail?.startsWith("Creating backup (")
+                ? t("Creating backup")
+                : t(step.label)}
+            </span>
+            {step.id === "backup" && step.status === "in-progress" && (
+              <PreparationDetail detail={step.detail} />
+            )}
+            {step.id === "installing" && step.status === "in-progress" && (
+              <p className="ml-8 w-full break-all text-xs text-muted-foreground">{step.detail}</p>
+            )}
+            {step.id === "downloading" && step.status === "in-progress" && (
+              <div className="ml-8 w-full space-y-2 text-xs text-muted-foreground tabular-nums">
+                <Progress
+                  value={download && download.total > 0 ? download.percentage : null}
+                  aria-label={t("Patch download progress")}
+                  className={`h-2 ${!download || download.total === 0 ? "animate-pulse" : ""}`}
+                />
+                {download ? (
+                  <>
+                    <div className="flex justify-between gap-2">
+                      <span>
+                        {(download.downloaded / 1_000_000).toFixed(1)} MB
+                        {download.total > 0 && ` / ${(download.total / 1_000_000).toFixed(1)} MB`}
+                      </span>
+                      <span>
+                        {download.total > 0 ? `${download.percentage}%` : t("Size unknown")}
+                      </span>
+                    </div>
+                    <div className="flex justify-between gap-2">
+                      <span>
+                        {(download.bytes_per_second / 1_000_000).toFixed(2)} {t(
+                          "MB/s (average)"
+                        )}{" "}
+                      </span>
+                      <span>
+                        {download.percentage === 100
+                          ? t("Download complete")
+                          : download.seconds_remaining !== null
+                            ? t("About {0}s remaining", [Math.ceil(download.seconds_remaining)])
+                            : t("Estimating time remaining…")}
+                      </span>
+                    </div>
+                  </>
+                ) : (
+                  <p>{t("Connecting to download…")}</p>
+                )}
+              </div>
+            )}
+          </div>
+        ))}
+      </div>
+    </>
   );
 }

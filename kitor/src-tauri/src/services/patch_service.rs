@@ -1,9 +1,9 @@
+use crate::models::installed_patch;
+use crate::services::{download_service, patch_lifecycle, registry_service};
 use sea_orm::*;
+use serde::{Deserialize, Serialize};
 use std::path::{Path, PathBuf};
 use tauri::Emitter;
-use crate::models::installed_patch;
-use crate::services::{download_service, registry_service, patch_lifecycle};
-use serde::{Deserialize, Serialize};
 
 // Serialize lifecycle operations through database recording as well as file writes.
 pub(crate) static PATCH_OPERATION: tokio::sync::Mutex<()> = tokio::sync::Mutex::const_new(());
@@ -28,7 +28,10 @@ pub struct PatchInfo {
     pub gog_id: Option<i64>,
     pub steam_app_id: Option<u32>,
     pub gog_installer_path: Option<String>,
+    pub add_to_cart_url: Option<String>,
     pub platforms: Option<registry_service::Platforms>,
+    #[serde(default)]
+    pub tags: Vec<String>,
 }
 
 pub async fn get_patches_for_game(
@@ -41,16 +44,18 @@ pub async fn get_patches_for_game(
         .await
         .map_err(|e| format!("Database error: {}", e))?
         .ok_or("Game not found")?;
-    
+
     // Load patches from registry for this game
     let registry = registry_service::load_registry()?;
-    
-    let game_def = registry.games
+
+    let game_def = registry
+        .games
         .into_iter()
         .find(|g| g.scummvm_id == game.scummvm_id)
         .ok_or("Game not found in registry")?;
-    
-    let patches: Vec<PatchInfo> = game_def.patches
+
+    let patches: Vec<PatchInfo> = game_def
+        .patches
         .into_iter()
         .map(|p| PatchInfo {
             scummvm_id: game_def.scummvm_id.clone(),
@@ -69,12 +74,47 @@ pub async fn get_patches_for_game(
             cover_url: game_def.cover_url.clone(),
             steam_app_id: game_def.steam_app_id,
             gog_id: game_def.gog.as_ref().map(|g| g.id),
-            gog_installer_path: game_def.gog.as_ref().and_then(|g| g.installers.as_ref()).and_then(|i| i.first().map(|inst| inst.path.clone())),
+            gog_installer_path: game_def
+                .gog
+                .as_ref()
+                .and_then(|g| g.installers.as_ref())
+                .and_then(|i| i.first().map(|inst| inst.path.clone())),
+            add_to_cart_url: game_def.add_to_cart_url.clone(),
             platforms: game_def.platforms.clone(),
+            tags: game_def.tags.clone(),
         })
         .collect();
-    
+
     Ok(patches)
+}
+
+fn store_catalog_entry(game: &registry_service::GameDefinition) -> PatchInfo {
+    PatchInfo {
+        scummvm_id: game.scummvm_id.clone(),
+        game_title: game.title.clone(),
+        title_he: game.title_he.clone(),
+        language: String::new(),
+        version: String::new(),
+        author: String::new(),
+        download_url: String::new(),
+        source_type: "store".into(),
+        checksum: None,
+        file_size: None,
+        description: String::new(),
+        filename: None,
+        post_install_script: None,
+        cover_url: game.cover_url.clone(),
+        gog_id: game.gog.as_ref().map(|gog| gog.id),
+        steam_app_id: game.steam_app_id,
+        gog_installer_path: game
+            .gog
+            .as_ref()
+            .and_then(|gog| gog.installers.as_ref())
+            .and_then(|installers| installers.first().map(|installer| installer.path.clone())),
+        add_to_cart_url: game.add_to_cart_url.clone(),
+        platforms: game.platforms.clone(),
+        tags: game.tags.clone(),
+    }
 }
 
 pub async fn get_all_patches(db: &DatabaseConnection) -> Result<Vec<PatchInfo>, String> {
@@ -83,16 +123,24 @@ pub async fn get_all_patches(db: &DatabaseConnection) -> Result<Vec<PatchInfo>, 
         .all(db)
         .await
         .map_err(|e| format!("Database error: {}", e))?;
-    
+
     // Load patches from registry
     let registry = registry_service::load_registry()?;
-    
+
     let mut all_patches = Vec::new();
-    
+
     for game_def in registry.games {
         // Check if this game exists in user's library
         let _game_in_library = games.iter().find(|g| g.scummvm_id == game_def.scummvm_id);
-        
+
+        // A store listing lets someone buy a game before a translation exists.
+        if game_def.patches.is_empty() {
+            if game_def.gog.is_some() || game_def.steam_app_id.is_some() {
+                all_patches.push(store_catalog_entry(&game_def));
+            }
+            continue;
+        }
+
         for patch in game_def.patches {
             all_patches.push(PatchInfo {
                 scummvm_id: game_def.scummvm_id.clone(),
@@ -111,12 +159,18 @@ pub async fn get_all_patches(db: &DatabaseConnection) -> Result<Vec<PatchInfo>, 
                 cover_url: game_def.cover_url.clone(),
                 steam_app_id: game_def.steam_app_id,
                 gog_id: game_def.gog.as_ref().map(|g| g.id),
-                gog_installer_path: game_def.gog.as_ref().and_then(|g| g.installers.as_ref()).and_then(|i| i.first().map(|inst| inst.path.clone())),
+                gog_installer_path: game_def
+                    .gog
+                    .as_ref()
+                    .and_then(|g| g.installers.as_ref())
+                    .and_then(|i| i.first().map(|inst| inst.path.clone())),
+                add_to_cart_url: game_def.add_to_cart_url.clone(),
                 platforms: game_def.platforms.clone(),
+                tags: game_def.tags.clone(),
             });
         }
     }
-    
+
     Ok(all_patches)
 }
 
@@ -129,15 +183,21 @@ pub async fn download_and_install_patch(
     app_data_dir: PathBuf,
 ) -> Result<(), String> {
     let _operation = PATCH_OPERATION.lock().await;
-    println!("[patch_service] Starting installation for {} (lang: {}, ver: {})", scummvm_id, language, version);
-    
+    println!(
+        "[patch_service] Starting installation for {} (lang: {}, ver: {})",
+        scummvm_id, language, version
+    );
+
     // Emit progress: Starting
     crate::services::diagnostics::record(&app_data_dir, "patch", &scummvm_id, "starting");
-    let _ = app_handle.emit("install-progress", serde_json::json!({
-        "scummvm_id": scummvm_id,
-        "progress": 0,
-        "step": "Starting installation..."
-    }));
+    let _ = app_handle.emit(
+        "install-progress",
+        serde_json::json!({
+            "scummvm_id": scummvm_id,
+            "progress": 0,
+            "step": "Starting installation..."
+        }),
+    );
 
     // Get game from DB
     println!("[patch_service] Fetching game from database");
@@ -147,35 +207,48 @@ pub async fn download_and_install_patch(
         .await
         .map_err(|e| format!("Database error: {}", e))?
         .ok_or("Game not found in library")?;
-    
-    println!("[patch_service] Game found: {} at {}", game.title, game.install_path);
-    
+
+    println!(
+        "[patch_service] Game found: {} at {}",
+        game.title, game.install_path
+    );
+
     // Get patch from registry
     println!("[patch_service] Loading patch registry");
     let registry = registry_service::load_registry()?;
-    let game_def = registry.games
+    let game_def = registry
+        .games
         .into_iter()
         .find(|g| g.scummvm_id == scummvm_id)
         .ok_or("Game not found in registry")?;
-    
+
     if let Some(platforms) = &game_def.platforms {
-        let supported = if cfg!(target_os = "windows") { platforms.windows }
-            else if cfg!(target_os = "macos") { platforms.osx }
-            else { platforms.linux };
+        let supported = if cfg!(target_os = "windows") {
+            platforms.windows
+        } else if cfg!(target_os = "macos") {
+            platforms.osx
+        } else {
+            platforms.linux
+        };
         if !supported {
             return Err("This patch does not support the current operating system".into());
         }
     }
 
-    let patch = game_def.patches
+    let patch = game_def
+        .patches
         .into_iter()
         .find(|p| p.language == language && p.version == version)
         .ok_or("Patch not found in registry")?;
 
-    println!("[patch_service] Patch found: {} by {}", patch.description, patch.author);
+    println!(
+        "[patch_service] Patch found: {} by {}",
+        patch.description, patch.author
+    );
 
     let install_target = crate::services::game_service::detect_game_for_id(
-        Path::new(&game.install_path), &game.scummvm_id,
+        Path::new(&game.install_path),
+        &game.scummvm_id,
     )?
     .filter(|detected| detected.scummvm_id == game.scummvm_id)
     .map(|detected| PathBuf::from(detected.install_path))
@@ -183,131 +256,212 @@ pub async fn download_and_install_patch(
 
     // Emit progress: Preparing download
     crate::services::diagnostics::record(&app_data_dir, "patch", &scummvm_id, "preparing download");
-    let _ = app_handle.emit("install-progress", serde_json::json!({
-        "scummvm_id": scummvm_id,
-        "progress": 10,
-        "step": "Preparing download..."
-    }));
+    let _ = app_handle.emit(
+        "install-progress",
+        serde_json::json!({
+            "scummvm_id": scummvm_id,
+            "progress": 10,
+            "step": "Preparing download..."
+        }),
+    );
 
     // Create downloads directory
     let downloads_dir = app_data_dir.join("downloads");
-    println!("[patch_service] Creating downloads directory: {}", downloads_dir.display());
+    println!(
+        "[patch_service] Creating downloads directory: {}",
+        downloads_dir.display()
+    );
     std::fs::create_dir_all(&downloads_dir)
         .map_err(|e| format!("Failed to create downloads directory: {}", e))?;
 
     // Download patch
-    let file_name = patch.filename
-        .clone()
-        .unwrap_or_else(|| {
-            patch.download_url
-                .split('/')
-                .last()
-                .unwrap_or("patch.zip")
-                .to_string()
-        });
+    let file_name = patch.filename.clone().unwrap_or_else(|| {
+        patch
+            .download_url
+            .split('/')
+            .last()
+            .unwrap_or("patch.zip")
+            .to_string()
+    });
     let download_path = downloads_dir.join(&file_name);
     if Path::new(&file_name).file_name().and_then(|s| s.to_str()) != Some(file_name.as_str())
-        || file_name.contains(['/', '\\', ':']) {
+        || file_name.contains(['/', '\\', ':'])
+    {
         return Err("Unsafe patch download filename".into());
     }
 
     // Emit progress: Downloading
     crate::services::diagnostics::record(&app_data_dir, "patch", &scummvm_id, "downloading");
-    let _ = app_handle.emit("install-progress", serde_json::json!({
-        "scummvm_id": scummvm_id,
-        "progress": 20,
-        "step": "Downloading patch..."
-    }));
+    let _ = app_handle.emit(
+        "install-progress",
+        serde_json::json!({
+            "scummvm_id": scummvm_id,
+            "progress": 20,
+            "step": "Downloading patch..."
+        }),
+    );
 
     println!("[patch_service] Downloading from: {}", patch.download_url);
-    println!("[patch_service] Download destination: {}", download_path.display());
+    println!(
+        "[patch_service] Download destination: {}",
+        download_path.display()
+    );
     let source = super::package_source::PackageSource::resolve(&patch, &game_def.behavior)?;
-    if matches!(source, super::package_source::PackageSource::Download) {
-        download_service::download_patch_file(&patch.download_url, &download_path, &app_handle, &scummvm_id)
-            .await?;
+    if matches!(source, super::package_source::PackageSource::Download | super::package_source::PackageSource::SpaceQuest4Scummvm) {
+        download_service::download_patch_file(
+            &patch.download_url,
+            &download_path,
+            &app_handle,
+            &scummvm_id,
+        )
+        .await?;
         if let Some(checksum) = &patch.checksum {
             if patch_lifecycle::hash(&download_path)? != checksum.to_lowercase() {
-                return Err("Downloaded translation checksum mismatch; game files were not changed".into());
+                return Err(
+                    "Downloaded translation checksum mismatch; game files were not changed".into(),
+                );
             }
         } else if patch.release_revision > 0 {
             return Err("Published translation is missing its package checksum".into());
         }
     }
     println!("[patch_service] Download complete");
-    
+
     // Emit progress: Download complete
     crate::services::diagnostics::record(&app_data_dir, "patch", &scummvm_id, "download complete");
-    let _ = app_handle.emit("install-progress", serde_json::json!({
-        "scummvm_id": scummvm_id,
-        "progress": 45,
-        "step": "Download complete!"
-    }));
+    let _ = app_handle.emit(
+        "install-progress",
+        serde_json::json!({
+            "scummvm_id": scummvm_id,
+            "progress": 45,
+            "step": "Download complete!"
+        }),
+    );
 
-
-
-    let manifest_name = patch.install_manifest.as_deref()
-        .ok_or("Patch has no file-change manifest; whole-folder installation is no longer supported")?;
-    if matches!(source, super::package_source::PackageSource::Download)
-        && download_path.extension().and_then(|s| s.to_str()) != Some("zip") {
+    let manifest_name = patch.install_manifest.as_deref().ok_or(
+        "Patch has no file-change manifest; whole-folder installation is no longer supported",
+    )?;
+    if matches!(source, super::package_source::PackageSource::Download | super::package_source::PackageSource::SpaceQuest4Scummvm)
+        && download_path.extension().and_then(|s| s.to_str()) != Some("zip")
+    {
         return Err("Declarative patch packages must be ZIP archives".into());
     }
     // Package tools and source data never enter the game installation.
-    let staging = tempfile::Builder::new().prefix("kitor-package-").tempdir().map_err(|e| e.to_string())?;
-    source.stage(staging.path(), &download_path, &scummvm_id, &language, &version, &install_target)?;
+    let staging = tempfile::Builder::new()
+        .prefix("kitor-package-")
+        .tempdir()
+        .map_err(|e| e.to_string())?;
+    source.stage(
+        staging.path(),
+        &download_path,
+        &scummvm_id,
+        &language,
+        &version,
+        &install_target,
+    )?;
     let install_target = game_def.behavior.validate_install_target(&install_target)?;
-    let _ = app_handle.emit("install-progress", serde_json::json!({
-        "scummvm_id": scummvm_id,
-        "progress": 55,
-        "step": "Checking patch files..."
-    }));
+    let _ = app_handle.emit(
+        "install-progress",
+        serde_json::json!({
+            "scummvm_id": scummvm_id,
+            "progress": 55,
+            "step": "Checking patch files..."
+        }),
+    );
     let previous = get_installed_patches(db, game.id).await?;
-    if previous.iter().any(|p| p.backup_path.as_ref().is_none_or(|p| !Path::new(p).join("manifest.json").is_file())) {
+    if previous.iter().any(|p| {
+        p.backup_path
+            .as_ref()
+            .is_none_or(|p| !Path::new(p).join("manifest.json").is_file())
+    }) {
         return Err("This installation has a legacy folder backup. Resolve the legacy installation before applying a new patch; its backup has been preserved.".into());
     }
     let package: patch_lifecycle::Package = serde_json::from_slice(
-        &std::fs::read(patch_lifecycle::safe_path(staging.path(), manifest_name)?).map_err(|e| e.to_string())?
-    ).map_err(|e| e.to_string())?;
+        &std::fs::read(patch_lifecycle::safe_path(staging.path(), manifest_name)?)
+            .map_err(|e| e.to_string())?,
+    )
+    .map_err(|e| e.to_string())?;
     if package.release_revision != patch.release_revision {
         return Err("Package revision does not match the registry".into());
     }
     let mut matching = Vec::new();
     for installed in &previous {
-        let path = Path::new(installed.backup_path.as_deref().ok_or("Missing installation manifest")?);
+        let path = Path::new(
+            installed
+                .backup_path
+                .as_deref()
+                .ok_or("Missing installation manifest")?,
+        );
         let (_, installed_language, status, _) = patch_lifecycle::recover_installation(path)?;
-        if installed_language == language && status == "active" { matching.push(installed); }
+        if installed_language == language && status == "active" {
+            matching.push(installed);
+        }
     }
-    if matching.len() > 1 { return Err("Multiple active translations require recovery before updating".into()); }
+    if matching.len() > 1 {
+        return Err("Multiple active translations require recovery before updating".into());
+    }
     let report = |progress: u8, step: &str| {
-        crate::services::diagnostics::record(&app_data_dir, "patch", &scummvm_id, &format!("install progress: {progress}%"));
-        let _ = app_handle.emit("install-progress", serde_json::json!({
-            "scummvm_id": scummvm_id, "progress": progress, "step": step
-        }));
+        crate::services::diagnostics::record(
+            &app_data_dir,
+            "patch",
+            &scummvm_id,
+            &format!("install progress: {progress}%"),
+        );
+        let _ = app_handle.emit(
+            "install-progress",
+            serde_json::json!({
+                "scummvm_id": scummvm_id, "progress": progress, "step": step
+            }),
+        );
     };
     let backup_path = if let Some(installed) = matching.first() {
-        let _ = app_handle.emit("install-progress", serde_json::json!({
-            "scummvm_id": scummvm_id, "progress": 55,
-            "step": "Validating translation update and preserving recovery files..."
-        }));
+        let _ = app_handle.emit(
+            "install-progress",
+            serde_json::json!({
+                "scummvm_id": scummvm_id, "progress": 55,
+                "step": "Validating translation update and preserving recovery files..."
+            }),
+        );
         patch_lifecycle::update_with_progress(
-            Path::new(installed.backup_path.as_deref().unwrap()), staging.path(), manifest_name,
-            &install_target, &scummvm_id, &language, &version, patch_lifecycle::platform(), &report,
+            Path::new(installed.backup_path.as_deref().unwrap()),
+            staging.path(),
+            manifest_name,
+            &install_target,
+            &scummvm_id,
+            &language,
+            &version,
+            patch_lifecycle::platform(),
+            &report,
         )?
-    } else { patch_lifecycle::install_with_progress(
-        staging.path(), manifest_name, &install_target,
-        &app_data_dir.join("patch-transactions"), &scummvm_id, &language,
-        &version, patch_lifecycle::platform(), &report,
-    )? };
+    } else {
+        patch_lifecycle::install_with_progress(
+            staging.path(),
+            manifest_name,
+            &install_target,
+            &app_data_dir.join("patch-transactions"),
+            &scummvm_id,
+            &language,
+            &version,
+            patch_lifecycle::platform(),
+            &report,
+        )?
+    };
     // Retrying the same version reuses the verified active transaction and its
     // originals. Do not insert a second database record for it.
-    let already_recorded = previous.iter().any(|p| p.backup_path.as_deref() == backup_path.to_str());
+    let already_recorded = previous
+        .iter()
+        .any(|p| p.backup_path.as_deref() == backup_path.to_str());
 
     // Emit progress: Finalizing
     crate::services::diagnostics::record(&app_data_dir, "patch", &scummvm_id, "finalizing");
-    let _ = app_handle.emit("install-progress", serde_json::json!({
-        "scummvm_id": scummvm_id,
-        "progress": 90,
-        "step": "Finalizing..."
-    }));
+    let _ = app_handle.emit(
+        "install-progress",
+        serde_json::json!({
+            "scummvm_id": scummvm_id,
+            "progress": 90,
+            "step": "Finalizing..."
+        }),
+    );
 
     // Record installation
     println!("[patch_service] Recording installation in database");
@@ -335,17 +489,20 @@ pub async fn download_and_install_patch(
 
     // Clean up download
     println!("[patch_service] Cleaning up download file");
-    if matches!(source, super::package_source::PackageSource::Download) {
+    if matches!(source, super::package_source::PackageSource::Download | super::package_source::PackageSource::SpaceQuest4Scummvm) {
         let _ = std::fs::remove_file(&download_path);
     }
 
     // Emit progress: Complete
     crate::services::diagnostics::record(&app_data_dir, "patch", &scummvm_id, "complete");
-    let _ = app_handle.emit("install-progress", serde_json::json!({
-        "scummvm_id": scummvm_id,
-        "progress": 100,
-        "step": "Installation complete!"
-    }));
+    let _ = app_handle.emit(
+        "install-progress",
+        serde_json::json!({
+            "scummvm_id": scummvm_id,
+            "progress": 100,
+            "step": "Installation complete!"
+        }),
+    );
 
     println!("[patch_service] Installation complete for {}", scummvm_id);
     Ok(())
@@ -355,7 +512,8 @@ pub async fn get_installed_patches(
     db: &DatabaseConnection,
     game_id: i32,
 ) -> Result<Vec<installed_patch::Model>, String> {
-    let game = crate::services::game_service::get_game_by_id(db, game_id).await?
+    let game = crate::services::game_service::get_game_by_id(db, game_id)
+        .await?
         .ok_or("Game not found")?;
     let behavior = super::game_behavior::for_game(&game.scummvm_id)?;
     reconcile_patches(db, &game, &behavior).await
@@ -372,42 +530,77 @@ pub(super) async fn reconcile_patches(
     // installation identity rather than the title or a potentially reused ID.
     let candidates = installed_patch::Entity::find()
         .filter(installed_patch::Column::ScummvmId.eq(&game.scummvm_id))
-        .all(db).await
+        .all(db)
+        .await
         .map_err(|e| format!("Failed to fetch installed patches: {}", e))?;
-    if candidates.is_empty() { return Ok(Vec::new()); }
+    if candidates.is_empty() {
+        return Ok(Vec::new());
+    }
     let target = behavior.install_target(Path::new(&game.install_path))?;
     let mut installed = Vec::new();
     for mut row in candidates {
         let associated = row.game_id == game_id;
-        let Some(path) = row.backup_path.as_deref().map(Path::new)
-            .filter(|p| p.join("manifest.json").is_file()) else {
-                if associated { installed.push(row); }
-                continue;
-            };
+        let Some(path) = row
+            .backup_path
+            .as_deref()
+            .map(Path::new)
+            .filter(|p| p.join("manifest.json").is_file())
+        else {
+            if associated {
+                row.status = "unverified".into();
+                installed.push(row);
+            }
+            continue;
+        };
         match patch_lifecycle::matches_installation(path, &target, &game.scummvm_id) {
             Ok(false) => continue,
             // Preserve damaged records already associated with this game, but
             // never guess which installation owns an unreadable orphan record.
             Err(_) => {
-                if associated { installed.push(row); }
+                if associated {
+                    row.status = "unverified".into();
+                    installed.push(row);
+                }
                 continue;
             }
             Ok(true) => {}
         }
         let (version, _, status, _) = patch_lifecycle::recover_installation(path)?;
+        if status == "superseded" { continue; }
         if status == "restored" {
-            installed_patch::Entity::delete_by_id(row.id).exec(db).await
+            installed_patch::Entity::delete_by_id(row.id)
+                .exec(db)
+                .await
                 .map_err(|e| format!("Failed to remove restored patch record: {e}"))?;
             continue;
         }
-        if !associated && status != "active" { continue; }
-        if !associated || (status == "active" && row.version != version) {
+        if !associated && status != "active" {
+            continue;
+        }
+        if status == "active" {
+            match patch_lifecycle::verify_installed(path, &target, &game.scummvm_id, &version) {
+                Ok(problems) if problems.is_empty() => {}
+                result => {
+                    if patch_lifecycle::matches_original_files(path, &target).unwrap_or(false) {
+                        patch_lifecycle::archive_replaced_installation(path, &target)?;
+                        // The path now contains the original game again. Keep recovery
+                        // data, but do not associate its old translation with this install.
+                        continue;
+                    }
+                    row.status = if result.is_ok() { "damaged" } else { "unverified" }.into();
+                    installed.push(row);
+                    continue;
+                }
+            }
+        }
+        if !associated || row.status != status || (status == "active" && row.version != version) {
             let mut model: installed_patch::ActiveModel = row.clone().into();
             model.game_id = Set(game_id);
             model.version = Set(version);
             model.status = Set(status);
-            row = model.update(db).await
-                .map_err(|e| format!("Translation is installed; database reconciliation failed: {e}"))?;
+            row = model.update(db).await.map_err(|e| {
+                format!("Translation is installed; database reconciliation failed: {e}")
+            })?;
         }
         installed.push(row);
     }
@@ -425,8 +618,7 @@ pub async fn restore_backup(
         .map_err(|e| format!("Database error: {}", e))?
         .ok_or("Installed patch not found")?;
 
-    let backup_path = installed.backup_path.clone()
-        .ok_or("No backup available")?;
+    let backup_path = installed.backup_path.clone().ok_or("No backup available")?;
 
     let game = crate::models::game::Entity::find_by_id(installed.game_id)
         .one(db)
@@ -457,33 +649,44 @@ pub async fn download_and_extract_gog_installer(
     app_handle: tauri::AppHandle,
     app_data_dir: PathBuf,
 ) -> Result<(), String> {
-    use crate::services::{gog_service, game_service};
+    use crate::services::{game_service, gog_service};
     use std::process::Command;
-    
+
     // 1. Verify innoextract is installed
     let innoextract_check = Command::new("innoextract").arg("--version").output();
     if innoextract_check.is_err() {
         // Attempt to brew install on macos
         #[cfg(target_os = "macos")]
         {
-            let _ = app_handle.emit("gog-installer-progress", serde_json::json!({
-                "step": "Installing innoextract...",
-                "progress": 0
-            }));
-            let brew_install = Command::new("brew").arg("install").arg("innoextract").output();
+            let _ = app_handle.emit(
+                "gog-installer-progress",
+                serde_json::json!({
+                    "step": "Installing innoextract...",
+                    "progress": 0
+                }),
+            );
+            let brew_install = Command::new("brew")
+                .arg("install")
+                .arg("innoextract")
+                .output();
             if brew_install.is_err() || !brew_install.unwrap().status.success() {
-                return Err("innoextract is not installed. Please try 'brew install innoextract' manually.".to_string());
+                return Err(
+                    "innoextract is not installed. Please try 'brew install innoextract' manually."
+                        .to_string(),
+                );
             }
         }
         #[cfg(not(target_os = "macos"))]
         {
-            return Err("innoextract is not installed. Please install it and try again.".to_string());
+            return Err(
+                "innoextract is not installed. Please install it and try again.".to_string(),
+            );
         }
     }
 
     // 2. Get GOG access token
     let token = gog_service::get_valid_token(db).await?;
-    
+
     // 3. Download the installer
     // Append the access token as a query parameter
     let url = if installer_path.contains("?") {
@@ -491,36 +694,43 @@ pub async fn download_and_extract_gog_installer(
     } else {
         format!("{}?access_token={}", installer_path, token)
     };
-    
+
     let downloads_dir = app_data_dir.join("downloads");
     std::fs::create_dir_all(&downloads_dir)
         .map_err(|e| format!("Failed to create downloads directory: {}", e))?;
-    
+
     let file_name = std::path::Path::new(url.split('?').next().unwrap_or(&url))
         .file_name()
         .and_then(|n| n.to_str())
         .unwrap_or("gog_installer.exe");
-        
+
     let download_path = downloads_dir.join(file_name);
-    
-    let _ = app_handle.emit("gog-installer-progress", serde_json::json!({
-        "step": "Downloading installer...",
-        "progress": 10
-    }));
-    
+
+    let _ = app_handle.emit(
+        "gog-installer-progress",
+        serde_json::json!({
+            "step": "Downloading installer...",
+            "progress": 10
+        }),
+    );
+
     // Use download_service to download the file
-    crate::services::download_service::download_file(&url, &download_path, &app_handle).await
+    crate::services::download_service::download_file(&url, &download_path, &app_handle)
+        .await
         .map_err(|e| format!("Failed to download installer: {}", e))?;
-        
-    let _ = app_handle.emit("gog-installer-progress", serde_json::json!({
-        "step": "Extracting game files...",
-        "progress": 50
-    }));
+
+    let _ = app_handle.emit(
+        "gog-installer-progress",
+        serde_json::json!({
+            "step": "Extracting game files...",
+            "progress": 50
+        }),
+    );
 
     // 4. Extract using innoextract to dest_dir
     std::fs::create_dir_all(&dest_dir)
         .map_err(|e| format!("Failed to create destination directory: {}", e))?;
-        
+
     let extract_output = Command::new("innoextract")
         .arg("-d")
         .arg(&dest_dir)
@@ -529,19 +739,25 @@ pub async fn download_and_extract_gog_installer(
         .arg(&download_path)
         .output()
         .map_err(|e| format!("Failed to execute innoextract: {}", e))?;
-        
+
     if !extract_output.status.success() {
         let _ = std::fs::remove_file(&download_path);
-        return Err(format!("innoextract failed: {}", String::from_utf8_lossy(&extract_output.stderr)));
+        return Err(format!(
+            "innoextract failed: {}",
+            String::from_utf8_lossy(&extract_output.stderr)
+        ));
     }
-    
+
     // 5. Clean up the installer
     let _ = std::fs::remove_file(&download_path);
-    
-    let _ = app_handle.emit("gog-installer-progress", serde_json::json!({
-        "step": "Adding to library...",
-        "progress": 90
-    }));
+
+    let _ = app_handle.emit(
+        "gog-installer-progress",
+        serde_json::json!({
+            "step": "Adding to library...",
+            "progress": 90
+        }),
+    );
 
     // Innoextract typically extracts to a folder like "app". We should point to that if it exists.
     let mut game_path = dest_dir.clone();
@@ -551,7 +767,9 @@ pub async fn download_and_extract_gog_installer(
 
     // 6. Add game to library
     let registry = registry_service::load_registry()?;
-    let title = registry.games.iter()
+    let title = registry
+        .games
+        .iter()
         .find(|g| g.scummvm_id == scummvm_id)
         .map(|g| g.title.clone())
         .unwrap_or_else(|| scummvm_id.clone());
@@ -562,15 +780,49 @@ pub async fn download_and_extract_gog_installer(
         title,
         game_path.to_string_lossy().to_string(),
         app_data_dir,
-    ).await.map_err(|e| format!("Failed to add game to library: {}", e))?;
-    
-    let _ = app_handle.emit("gog-installer-progress", serde_json::json!({
-        "step": "Complete",
-        "progress": 100
-    }));
+    )
+    .await
+    .map_err(|e| format!("Failed to add game to library: {}", e))?;
+
+    let _ = app_handle.emit(
+        "gog-installer-progress",
+        serde_json::json!({
+            "step": "Complete",
+            "progress": 100
+        }),
+    );
 
     Ok(())
 }
 
 #[cfg(test)]
 mod restore_tests;
+
+#[cfg(test)]
+mod store_catalog_tests {
+    use super::store_catalog_entry;
+
+    #[test]
+    fn the_dig_is_listed_for_purchase_without_a_translation() {
+        let registry = crate::services::registry_service::load_registry().unwrap();
+        let game = registry
+            .games
+            .iter()
+            .find(|entry| entry.scummvm_id == "dig")
+            .unwrap();
+        assert!(game.patches.is_empty());
+        assert_eq!(game.gog.as_ref().map(|gog| gog.id), Some(1425299904));
+        let listing = store_catalog_entry(game);
+        assert_eq!(listing.language, "");
+        assert_eq!(listing.download_url, "");
+        assert_eq!(listing.source_type, "store");
+        assert_eq!(
+            listing.gog_installer_path.as_deref(),
+            Some("https://www.gog.com/downloads/the_dig/en1installer0")
+        );
+        assert_eq!(
+            listing.add_to_cart_url.as_deref(),
+            Some("https://www.gog.com/checkout/widget/52756712356612660/1425299904?price=undefined%2018.60")
+        );
+    }
+}

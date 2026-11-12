@@ -186,6 +186,7 @@ export default function GameLibrary({ onRefresh, navigationResetKey }: GameLibra
     <div ref={navigation.root}>
       <div hidden={!!selected}>
         <CollectionView
+          navigationResetKey={navigationResetKey}
           collection="library"
           games={games.map(gameSummary)}
           onOpen={navigation.open}

@@ -1,4 +1,4 @@
-//! Curated Windows depot downloads through the user's authenticated Steam client.
+//! Curated game depot downloads through the user's authenticated Steam client.
 use sha2::{Digest, Sha256};
 use std::{
     io::{Read, Seek, SeekFrom},
@@ -49,11 +49,71 @@ fn copy_checked(source: &Path, dest: &Path) -> Result<(), String> {
     Ok(())
 }
 
+// Only consume Kitor-owned temporary content after Steam verification succeeds.
+// External client installations and reusable caches must remain untouched.
+fn transfer_verified(source: &Path, dest: &Path, consume: bool) -> Result<(), String> {
+    if consume {
+        reject_links(source)?;
+        if dest.exists() {
+            return Err(format!("Import destination already exists: {}", dest.display()));
+        }
+        match std::fs::rename(source, dest) {
+            Ok(()) => return Ok(()),
+            Err(error) if error.kind() == std::io::ErrorKind::CrossesDevices => {}
+            Err(error) => return Err(error.to_string()),
+        }
+    }
+    copy_checked(source, dest)
+}
+
+async fn native_source(
+    product: &SteamProduct,
+    state: &crate::AppState,
+    progress_app: Option<&tauri::AppHandle>,
+) -> Result<Option<(tempfile::TempDir, PathBuf)>, String> {
+    native_depot_source(product.app_id, product.depot_id, state, progress_app).await
+}
+
+async fn native_depot_source(
+    app_id: u32,
+    depot_id: u32,
+    state: &crate::AppState,
+    progress_app: Option<&tauri::AppHandle>,
+) -> Result<Option<(tempfile::TempDir, PathBuf)>, String> {
+    if !kitor_steam::connected().await.map_err(|e| e.to_string())? { return Ok(None); }
+    let staging = tempfile::tempdir_in(&state.app_data_dir).map_err(|e| e.to_string())?;
+    let source = staging.path().join("content");
+    kitor_steam::download(app_id, depot_id, &source, |event| {
+        if let Some(app) = progress_app {
+            use tauri::Emitter;
+            let _ = app.emit("native-steam-download", &event);
+        }
+    }).await.map_err(|e| e.to_string())?;
+    Ok(Some((staging, source)))
+}
+
+fn depot_candidates(steam: &Path, executable: &Path, product: &SteamProduct) -> Vec<PathBuf> {
+    depot_paths(steam, executable, product.app_id, product.depot_id)
+}
+
+fn depot_paths(steam: &Path, executable: &Path, app_id: u32, depot_id: u32) -> Vec<PathBuf> {
+    let relative = format!("steamapps/content/app_{app_id}/depot_{depot_id}");
+    let mut candidates = vec![steam.join(&relative)];
+    if let Some(runtime) = executable.parent() {
+        let candidate = runtime.join(relative);
+        if !candidates.contains(&candidate) {
+            candidates.insert(0, candidate);
+        }
+    }
+    candidates
+}
+
 async fn download_collection(
     product: &SteamProduct,
     state: &crate::AppState,
     install_root: &Path,
     overwrite: bool,
+    progress_app: Option<&tauri::AppHandle>,
 ) -> Result<Vec<crate::models::game::Model>, String> {
     reject_links(install_root)?;
     let destination = install_root.join(format!("steam-{}", product.app_id));
@@ -62,28 +122,36 @@ async fn download_collection(
         return Err(format!("OVERWRITE_REQUIRED:{}", destination.display()));
     }
     {
-        let steam = PathBuf::from(std::env::var_os("HOME").ok_or("Cannot locate home folder")?)
-            .join("Library/Application Support/Steam");
-        let runtime = steam.join("Steam.AppBundle/Steam/Contents/MacOS");
-        let candidates = [
-            runtime.join(format!("steamapps/content/app_{}/depot_{}", product.app_id, product.depot_id)),
-            steam.join(format!("steamapps/content/app_{}/depot_{}", product.app_id, product.depot_id)),
-        ];
-        let valid_source = || candidates.iter().find(|path| product.games.iter()
-            .all(|recipe| verify_recipe(&path.join(&recipe.folder), recipe).is_ok())).cloned();
-        let source = if let Some(source) = valid_source() { source } else {
-            let executable = [runtime.join("steam_osx"), PathBuf::from("/Applications/Steam.app/Contents/MacOS/steam_osx")]
-                .into_iter().find(|path| path.is_file()).ok_or("Install Steam and sign in first")?;
-            download_depot(&steam, &executable, &state.app_data_dir, product.app_id, product.depot_id).await?;
-            valid_source().ok_or("Steam completed, but the collection files could not be verified")?
+        let native_staging = native_source(product, state, progress_app).await?;
+        let source = if let Some((_, source)) = &native_staging {
+            for recipe in &product.games { verify_recipe(&source.join(&recipe.folder), recipe)?; }
+            source.clone()
+        } else {
+            let (steam, executable) = layout_steam_client()?;
+            let candidates = depot_candidates(&steam, &executable, product);
+            let valid_source = || candidates.iter().find(|path| product.games.iter()
+                .all(|recipe| verify_recipe(&path.join(&recipe.folder), recipe).is_ok())).cloned();
+            if let Some(source) = valid_source() {
+                source
+            } else {
+                download_depot(&steam, &executable, &state.app_data_dir, product.app_id, product.depot_id).await?;
+                valid_source().ok_or("Steam completed, but the collection files could not be verified")?
+            }
         };
+        if let Some(app) = progress_app {
+            use tauri::Emitter;
+            for recipe in &product.games {
+                let _ = app.emit("steam-game-importing", &recipe.id);
+            }
+        }
+        let consume = native_staging.is_some();
         let root = install_root.to_path_buf();
         let target = destination.clone();
         tokio::task::spawn_blocking(move || -> Result<(), String> {
             std::fs::create_dir_all(&root).map_err(|e| e.to_string())?;
             let staging = tempfile::tempdir_in(&root).map_err(|e| e.to_string())?;
             let content = staging.path().join("collection");
-            copy_checked(&source, &content)?;
+            transfer_verified(&source, &content, consume)?;
             // Finish and verify the replacement before touching the existing installation.
             let previous = staging.path().join("previous");
             let replacing = target.exists();
@@ -122,10 +190,100 @@ async fn download_collection(
     Ok(games)
 }
 
+fn layout_steam_client() -> Result<(PathBuf, PathBuf), String> {
+    #[cfg(target_os = "macos")]
+    {
+        let home = std::env::var_os("HOME").ok_or("Cannot locate your home folder")?;
+        let steam = PathBuf::from(home).join("Library/Application Support/Steam");
+        let executables = [
+            steam.join("Steam.AppBundle/Steam/Contents/MacOS/steam_osx"),
+            PathBuf::from("/Applications/Steam.app/Contents/MacOS/steam_osx"),
+        ];
+        if let Some(executable) = executables.into_iter().find(|path| path.is_file()) {
+            return Ok((steam, executable));
+        }
+    }
+    #[cfg(target_os = "windows")]
+    {
+        let roots = super::game_discovery_service::registry_paths(
+            r"HKCU\Software\Valve\Steam", "SteamPath", false,
+        );
+        for steam in roots.into_iter().chain(
+            ["ProgramFiles(x86)", "ProgramFiles"].into_iter()
+                .filter_map(std::env::var_os)
+                .map(|root| PathBuf::from(root).join("Steam")),
+        ) {
+            let executable = steam.join("steam.exe");
+            if steam.is_absolute() && executable.is_file() {
+                return Ok((steam, executable));
+            }
+        }
+    }
+    Err("Install Steam and sign in, then try again.".into())
+}
+
+// Shared and platform depots may contain the same directories. Reject conflicting
+// files so a partial or mismatched build never overwrites another depot's files.
+fn merge_depot(source: &Path, destination: &Path, consume: bool) -> Result<(), String> {
+    reject_links(source)?;
+    for entry in std::fs::read_dir(source).map_err(|error| error.to_string())? {
+        let entry = entry.map_err(|error| error.to_string())?;
+        let from = entry.path();
+        let to = destination.join(entry.file_name());
+        let kind = entry.file_type().map_err(|error| error.to_string())?;
+        if !to.exists() {
+            if kind.is_dir() {
+                std::fs::create_dir(&to).map_err(|error| error.to_string())?;
+                merge_depot(&from, &to, consume)?;
+            } else if kind.is_file() {
+                transfer_verified(&from, &to, consume)?;
+            } else {
+                return Err(format!("Unexpected Steam depot file type: {}", from.display()));
+            }
+        } else if kind.is_dir() && to.is_dir() {
+            merge_depot(&from, &to, consume)?;
+        } else if !kind.is_file() || !to.is_file()
+            || super::patch_lifecycle::hash(&from)? != super::patch_lifecycle::hash(&to)?
+        {
+            return Err(format!("Conflicting Steam depot file: {}", to.display()));
+        }
+    }
+    Ok(())
+}
+
+async fn download_depot_set(
+    product: &SteamProduct,
+    state: &crate::AppState,
+    progress_app: Option<&tauri::AppHandle>,
+) -> Result<(tempfile::TempDir, PathBuf), String> {
+    let staging = tempfile::tempdir_in(&state.app_data_dir).map_err(|error| error.to_string())?;
+    let destination = staging.path().join("content");
+    std::fs::create_dir(&destination).map_err(|error| error.to_string())?;
+    for depot in std::iter::once(product.depot_id).chain(product.additional_depots.iter().copied()) {
+        let native = native_depot_source(product.app_id, depot, state, progress_app).await?;
+        let source = if let Some((_, source)) = &native {
+            source.clone()
+        } else {
+            let (steam, executable) = layout_steam_client()?;
+            download_depot(&steam, &executable, &state.app_data_dir, product.app_id, depot).await?;
+            depot_paths(&steam, &executable, product.app_id, depot)
+                .into_iter()
+                .find(|path| path.is_dir())
+                .ok_or_else(|| format!("Steam did not provide depot {depot}"))?
+        };
+        let target = destination.clone();
+        let consume = native.is_some();
+        tokio::task::spawn_blocking(move || merge_depot(&source, &target, consume))
+            .await.map_err(|error| error.to_string())??;
+    }
+    Ok((staging, destination))
+}
+
 async fn download_layout(
     product: &SteamProduct,
     state: &crate::AppState,
     install_root: &Path,
+    progress_app: Option<&tauri::AppHandle>,
 ) -> Result<crate::models::game::Model, String> {
     let recipe = product.games.first().ok_or("Missing import recipe")?;
     // Never move an existing installation out from under its patch backups or saves.
@@ -139,36 +297,72 @@ async fn download_layout(
         }
         return Err("This game's registered folder is missing. Remove that library entry before downloading again.".into());
     }
-    let home = std::env::var_os("HOME").ok_or("Cannot locate your home folder")?;
-    let steam = PathBuf::from(home).join("Library/Application Support/Steam");
-    let runtime = steam.join("Steam.AppBundle/Steam/Contents/MacOS");
-    let executable = runtime.join("steam_osx");
-    if !executable.is_file() {
-        return Err("Install Steam and sign in, then try again.".into());
+    let native_staging = if product.additional_depots.is_empty() {
+        native_source(product, state, progress_app).await?
+    } else {
+        Some(download_depot_set(product, state, progress_app).await?)
+    };
+    let source = if let Some((_, source)) = &native_staging {
+        if !product.required_files.iter().all(|name| source.join(name).is_file()) {
+            return Err("Downloaded Steam files do not match the supported game edition".into());
+        }
+        source.clone()
+    } else {
+        let (steam, executable) = layout_steam_client()?;
+        download_depot(&steam, &executable, &state.app_data_dir, product.app_id, product.depot_id).await?;
+        depot_candidates(&steam, &executable, product)
+        .into_iter()
+        .find(|p| {
+            product.required_files.iter().all(|name| p.join(name).is_file())
+        })
+        .ok_or("Steam reported completion, but the expected game files were not found")?
+
+    };
+    if let Some(app) = progress_app {
+        use tauri::Emitter;
+        let _ = app.emit("steam-game-importing", &recipe.id);
     }
-    download_depot(&steam, &executable, &state.app_data_dir, product.app_id, product.depot_id).await?;
-    let source = [
-        runtime.join(format!("steamapps/content/app_{}/depot_{}", product.app_id, product.depot_id)),
-        steam.join(format!("steamapps/content/app_{}/depot_{}", product.app_id, product.depot_id)),
-    ]
-    .into_iter()
-    .find(|p| {
-        product.required_files.iter().all(|name| p.join(name).is_file())
-    })
-    .ok_or("Steam reported completion, but the expected game files were not found")?;
+    let consume = native_staging.is_some();
     let games = install_root.to_path_buf();
     let destination = games.join(format!("{}-steam", recipe.id));
     let copy_paths = product.copy_paths.clone();
+    let copy_depot = product.copy_depot;
+    let lowercase_copy_paths = product.lowercase_copy_paths;
+    #[cfg(unix)]
+    let executable_paths = product.executable_paths.clone();
+    let game_id = recipe.id.clone();
     let import = destination.clone();
     tokio::task::spawn_blocking(move || -> Result<(), String> {
         std::fs::create_dir_all(&games).map_err(|e| e.to_string())?;
         if import.exists() { return Err("The managed game folder already exists. Add it to your library instead of overwriting it.".into()); }
         let staging = tempfile::tempdir_in(&games).map_err(|e| e.to_string())?;
-        // Only Steam game content; never import separately installed patches or saves.
-        for name in copy_paths {
-            copy_checked(&source.join(&name), &staging.path().join(&name))?;
+        let staged_game = staging.path().join("game");
+        if copy_depot {
+            transfer_verified(&source, &staged_game, consume)?;
+        } else {
+            std::fs::create_dir(&staged_game).map_err(|error| error.to_string())?;
+            for name in copy_paths {
+                let destination_name = if lowercase_copy_paths {
+                    name.to_ascii_lowercase()
+                } else {
+                    name.clone()
+                };
+                transfer_verified(&source.join(&name), &staged_game.join(destination_name), consume)?;
+            }
         }
-        std::fs::rename(staging.path(), &import).map_err(|e| e.to_string())?;
+        #[cfg(unix)]
+        for path in &executable_paths {
+            restore_owner_execute(&staged_game, path)?;
+        }
+        if super::game_service::detect_game_for_id(&staged_game, &game_id)?.is_none() {
+            return Err("Steam files do not match the supported game edition.".into());
+        }
+        if game_id == "owlboy" {
+            // Validate the platform and prepare the native bundle's executable
+            // permission before publishing the installation or applying a patch.
+            super::games::owlboy::launch_command(&staged_game)?;
+        }
+        std::fs::rename(&staged_game, &import).map_err(|e| e.to_string())?;
         Ok(())
     }).await.map_err(|e| e.to_string())??;
     super::game_service::add_game_manually(
@@ -179,6 +373,34 @@ async fn download_layout(
         state.app_data_dir.clone(),
     )
     .await
+}
+
+// Some depots omit the executable flag on a native launcher. Repair only
+// reviewed launcher paths inside the staged install before publishing it.
+#[cfg(unix)]
+fn restore_owner_execute(root: &Path, relative: &str) -> Result<(), String> {
+    use std::{os::unix::fs::PermissionsExt, path::Component};
+
+    let relative = Path::new(relative);
+    if relative.as_os_str().is_empty()
+        || !relative.components().all(|part| matches!(part, Component::Normal(_)))
+    {
+        return Err("Invalid executable path in Steam recipe".into());
+    }
+    let path = root.join(relative);
+    reject_links(&path)?;
+    let metadata = std::fs::symlink_metadata(&path)
+        .map_err(|error| format!("Could not read Steam launcher {}: {error}", path.display()))?;
+    if !metadata.is_file() {
+        return Err(format!("Steam launcher is not a regular file: {}", path.display()));
+    }
+    let mut permissions = metadata.permissions();
+    if permissions.mode() & 0o100 == 0 {
+        permissions.set_mode(permissions.mode() | 0o100);
+        std::fs::set_permissions(&path, permissions)
+            .map_err(|error| format!("Could not make {} executable: {error}", path.display()))?;
+    }
+    Ok(())
 }
 
 fn log_identity(metadata: &std::fs::Metadata) -> u64 {
@@ -317,6 +539,10 @@ enum Importer { Layout, VerifiedFiles }
 struct SteamProduct {
     app_id: u32,
     depot_id: u32,
+    #[serde(default)]
+    additional_depots: Vec<u32>,
+    #[serde(default)]
+    platform: Option<String>,
     title: String,
     importer: Importer,
     cache_key: String,
@@ -325,6 +551,23 @@ struct SteamProduct {
     required_files: Vec<String>,
     #[serde(default)]
     copy_paths: Vec<String>,
+    #[serde(default)]
+    lowercase_copy_paths: bool,
+    #[serde(default)]
+    copy_depot: bool,
+    #[cfg(unix)]
+    #[serde(default)]
+    executable_paths: Vec<String>,
+}
+impl SteamProduct {
+    fn supports_current_platform(&self) -> bool {
+        match self.platform.as_deref() {
+            Some("windows") => cfg!(target_os = "windows"),
+            Some("desktop") => cfg!(any(target_os = "macos", target_os = "windows")),
+            None => cfg!(target_os = "macos"),
+            _ => false,
+        }
+    }
 }
 fn products() -> Vec<SteamProduct> {
     serde_json::from_str(include_str!("../../data/steam_products.json")).expect("reviewed Steam products")
@@ -371,9 +614,9 @@ pub struct DownloadCapabilities {
 #[derive(serde::Serialize)]
 struct DownloadGame { id: String, title: String }
 pub fn capabilities(app_id: u32, game_id: &str) -> DownloadCapabilities {
-    let product = products().into_iter().find(|p| p.app_id == app_id && p.games.iter().any(|g| g.id == game_id));
+    let product = products().into_iter().find(|p| p.app_id == app_id && p.supports_current_platform() && p.games.iter().any(|g| g.id == game_id));
     match product {
-        Some(product) => DownloadCapabilities { supported: cfg!(target_os = "macos"), title: product.title,
+        Some(product) => DownloadCapabilities { supported: product.supports_current_platform(), title: product.title,
             games: product.games.into_iter().map(|g| DownloadGame { id: g.id, title: g.title }).collect() },
         None => DownloadCapabilities { supported: false, title: String::new(), games: Vec::new() },
     }
@@ -414,6 +657,10 @@ fn verify_recipe(root: &Path, recipe: &ImportRecipe) -> Result<(), String> {
     Ok(())
 }
 fn import_recipe(source: &Path, destination: &Path, recipe: &ImportRecipe) -> Result<(), String> {
+    import_recipe_transfer(source, destination, recipe, false)
+}
+
+fn import_recipe_transfer(source: &Path, destination: &Path, recipe: &ImportRecipe, consume: bool) -> Result<(), String> {
     verify_recipe(source, recipe)?;
     reject_links(destination)?;
     let parent = destination.parent().ok_or("Missing import parent")?;
@@ -426,9 +673,9 @@ fn import_recipe(source: &Path, destination: &Path, recipe: &ImportRecipe) -> Re
     }
     let staging = tempfile::tempdir_in(parent).map_err(|e| e.to_string())?;
     for file in &recipe.files {
-        copy_checked(&source.join(&file.name), &staging.path().join(&file.name))?;
+        transfer_verified(&source.join(&file.name), &staging.path().join(&file.name), consume)?;
     }
-    verify_recipe(staging.path(), recipe)?;
+    if !consume { verify_recipe(staging.path(), recipe)?; }
     std::fs::rename(staging.path(), destination).map_err(|e| e.to_string())
 }
 
@@ -450,7 +697,7 @@ pub async fn download_to(
     state: &crate::AppState,
     install_root: Option<PathBuf>,
 ) -> Result<Vec<crate::models::game::Model>, String> {
-    download_to_confirmed(app_id, game_ids, state, install_root, false).await
+    download_to_confirmed(app_id, game_ids, state, install_root, false, None).await
 }
 
 pub async fn download_to_confirmed(
@@ -459,26 +706,28 @@ pub async fn download_to_confirmed(
     state: &crate::AppState,
     install_root: Option<PathBuf>,
     overwrite: bool,
+    progress_app: Option<&tauri::AppHandle>,
 ) -> Result<Vec<crate::models::game::Model>, String> {
     let install_root = install_root.unwrap_or_else(|| state.app_data_dir.join("games"));
     if !install_root.is_absolute() { return Err("Choose an absolute installation folder".into()); }
-    if !cfg!(target_os = "macos") {
-        return Err("This download flow requires macOS".into());
-    }
     let _guard = DOWNLOAD.try_lock().map_err(|_| {
         "A Steam download/import is already running in Kitor. Reopen its progress dialog."
     })?;
-    let product = products().into_iter().find(|p| p.app_id == app_id)
-        .ok_or("Unsupported Steam product")?;
+    let product = products()
+        .into_iter()
+        .find(|product| {
+            product.app_id == app_id
+                && product.supports_current_platform()
+                && !game_ids.is_empty()
+                && game_ids.iter().all(|id| product.games.iter().any(|game| &game.id == id))
+        })
+        .ok_or("Unsupported game edition for this Steam product")?;
     if product.games.len() > 1 {
-        return download_collection(&product, state, &install_root, overwrite).await;
-    }
-    if game_ids.is_empty() || game_ids.iter().any(|id| !product.games.iter().any(|g| &g.id == id)) {
-        return Err("Unsupported game edition for this Steam product".into());
+        return download_collection(&product, state, &install_root, overwrite, progress_app).await;
     }
     if matches!(product.importer, Importer::Layout) {
         if product.games.len() != 1 || game_ids.len() != 1 { return Err("Layout imports require one game".into()); }
-        return Ok(vec![download_layout(&product, state, &install_root).await?]);
+        return Ok(vec![download_layout(&product, state, &install_root, progress_app).await?]);
     }
     let all = &product.games;
     let existing = super::game_service::get_all_games(&state.db).await?;
@@ -500,9 +749,6 @@ pub async fn download_to_confirmed(
     if needed.is_empty() {
         return Ok(result);
     }
-    let steam = PathBuf::from(std::env::var_os("HOME").ok_or("Cannot locate home folder")?)
-        .join("Library/Application Support/Steam");
-    let runtime = steam.join("Steam.AppBundle/Steam/Contents/MacOS");
     let cache = state
         .app_data_dir
         .join("steam-sources").join(&product.cache_key);
@@ -510,39 +756,29 @@ pub async fn download_to_confirmed(
         .iter()
         .all(|r| verify_recipe(&cache.join(&r.id), r).is_ok())
     {
-        let candidates = [
-            runtime.join(format!("steamapps/content/app_{}/depot_{}", product.app_id, product.depot_id)),
-            steam.join(format!("steamapps/content/app_{}/depot_{}", product.app_id, product.depot_id)),
-        ];
-        let valid_source = || {
-            candidates
-                .iter()
-                .find(|p| {
-                    all.iter()
-                        .all(|r| verify_recipe(&p.join(&r.folder), r).is_ok())
-                })
-                .cloned()
-        };
         // Exact known bytes can be reused even without an appmanifest or old console logs.
-        let source = if let Some(source) = valid_source() {
-            source
+        let native_staging = native_source(&product, state, progress_app).await?;
+        let source = if let Some((_, source)) = &native_staging {
+            for recipe in all { verify_recipe(&source.join(&recipe.folder), recipe)?; }
+            source.clone()
         } else {
-            let executable = [
-                runtime.join("steam_osx"),
-                PathBuf::from("/Applications/Steam.app/Contents/MacOS/steam_osx"),
-            ]
-            .into_iter()
-            .find(|p| p.is_file())
-            .ok_or("Install Steam and sign in first")?;
-            download_depot(&steam, &executable, &state.app_data_dir, product.app_id, product.depot_id).await?;
-            valid_source().ok_or("Steam completed, but this collection's files do not match the verified edition. No games were imported.")?
+            let (steam, executable) = layout_steam_client()?;
+            let candidates = depot_candidates(&steam, &executable, &product);
+            let valid_source = || candidates.iter().find(|path| all.iter()
+                .all(|recipe| verify_recipe(&path.join(&recipe.folder), recipe).is_ok())).cloned();
+            if let Some(source) = valid_source() {
+                source
+            } else {
+                download_depot(&steam, &executable, &state.app_data_dir, product.app_id, product.depot_id).await?;
+                valid_source().ok_or("Steam completed, but the files do not match the verified edition. No games were imported.")?
+            }
         };
         for recipe in all {
             let destination = cache.join(&recipe.id);
             if verify_recipe(&destination, recipe).is_ok() {
                 continue;
             }
-            import_recipe(&source.join(&recipe.folder), &destination, recipe)?;
+            import_recipe_transfer(&source.join(&recipe.folder), &destination, recipe, native_staging.is_some())?;
         }
     }
     for recipe in needed {

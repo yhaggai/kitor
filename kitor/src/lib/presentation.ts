@@ -35,7 +35,7 @@ export function gameSummary(game: Game): GameSummary {
       ["damaged", "unverified"].includes(game.health.patch_status));
   const patched = game.health
     ? game.health.patch_status === "installed"
-    : (game.is_patched ?? !!installed);
+    : (game.is_patched ?? false);
   return {
     id: String(game.id),
     searchTerms: `${game.scummvm_id} ${game.title} ${game.title_he ?? ""}`,
@@ -60,7 +60,8 @@ export function gameSummary(game: Game): GameSummary {
 export function patchSummary(patch: PatchWithStatus): GameSummary {
   return {
     id: `${patch.scummvm_id}:${patch.language}:${patch.version}`,
-    searchTerms: `${patch.scummvm_id} ${patch.game_title} ${patch.title_he ?? ""}`,
+    searchTerms: `${patch.scummvm_id} ${patch.game_title} ${patch.title_he ?? ""} ${(patch.tags ?? []).join(" ")}`,
+    tags: patch.tags ?? [],
     title: classicTitles[patch.scummvm_id] ?? patch.game_title,
     titleHe: patch.title_he ?? undefined,
     ...artwork(patch.scummvm_id, patch.cover_url),
