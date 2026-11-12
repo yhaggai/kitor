@@ -1,7 +1,10 @@
 {
   "sq4": {
     "windows": {
-      "default": "patches-workspace/sq4/he/patch.windows.candidate.json"
+      "default": "patches-workspace/sq4/he/patch.json"
+    },
+    "osx": {
+      "default": "patches-workspace/sq4/he/patch.json"
     }
   },
   "drifter": {

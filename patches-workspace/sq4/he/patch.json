@@ -2,10 +2,11 @@
   "schema_version": 1,
   "scummvm_id": "sq4",
   "language": "he",
-  "version": "0.1.0",
-  "filename": "sq4-he-0.1.0.zip",
+  "version": "0.1.1",
+  "filename": "sq4-he-0.1.1.zip",
   "platforms": {
-    "windows": {}
+    "windows": {},
+    "osx": {}
   },
   "files": [
     {
@@ -1548,5 +1549,5 @@
       }
     }
   ],
-  "release_revision": 1
+  "release_revision": 2
 }

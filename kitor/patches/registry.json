@@ -564,14 +564,14 @@
       "patches": [
         {
           "language": "he",
-          "version": "0.1.0-download1",
-          "release_revision": 2,
+          "version": "0.1.1-download1",
+          "release_revision": 3,
           "author": "Kitor",
-          "download_url": "https://github.com/yhaggai/kitor/releases/download/patch-sq4-he-v0.1.0-download1/sq4-he-0.1.0-download1.zip",
+          "download_url": "https://github.com/yhaggai/kitor/releases/download/patch-sq4-he-v0.1.1-download1/sq4-he-0.1.1-download1.zip",
           "source_type": "github",
-          "checksum": "98149fc0bcfb14671e356bad7544074e9510f1e5319fddab45dd8a045f2534fb",
-          "file_size": 864222,
-          "filename": "sq4-he-0.1.0-download1.zip",
+          "checksum": "a5e10bb26e0e2bfa0a6d10650c4478c774c3d253843b90b582195eaed84489fb",
+          "file_size": 1727042,
+          "filename": "sq4-he-0.1.1-download1.zip",
           "post_install_script": null,
           "install_manifest": "patch.json",
           "description": "מסע בחלל IV: תרגום עברי למהדורת התקליטור של Steam. כולל דיאלוג, תפריטים וגרפיקה. טיוטת תרגום עם עריכה חלקית."
