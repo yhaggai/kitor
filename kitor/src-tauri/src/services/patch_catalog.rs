@@ -171,10 +171,16 @@ pub fn validate_advance(previous: &Catalog, next: &Catalog) -> Result<(), String
         else {
             // Accept withdrawals only for options also removed from this app's
             // bundled registry. A remote catalog cannot withdraw supported options.
-            let bundled: Registry = serde_json::from_str(include_str!("../../../patches/registry.json"))
-                .map_err(|e| e.to_string())?;
-            if bundled.games.iter().any(|game| game.scummvm_id == old.scummvm_id
-                && game.patches.iter().any(|patch| patch.language == old.language)) {
+            let bundled: Registry =
+                serde_json::from_str(include_str!("../../../patches/registry.json"))
+                    .map_err(|e| e.to_string())?;
+            if bundled.games.iter().any(|game| {
+                game.scummvm_id == old.scummvm_id
+                    && game
+                        .patches
+                        .iter()
+                        .any(|patch| patch.language == old.language)
+            }) {
                 return Err("Registry removed a published translation".into());
             }
             continue;
