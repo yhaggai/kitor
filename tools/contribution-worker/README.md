@@ -138,7 +138,7 @@ And these **secrets**:
 | `GOOGLE_CLIENT_ID` | Environment-specific Web OAuth client ID |
 | `GOOGLE_CLIENT_SECRET` | Its client secret |
 | `BOT_PRIVATE_KEY` | Bot private key in PKCS8 PEM format |
-| `GITHUB_WEBHOOK_SECRET` | Shared secret for validating GitHub deliveries |
+| `CONTRIBUTION_WEBHOOK_SECRET` | Shared secret for validating GitHub deliveries, passed to the Worker as `GITHUB_WEBHOOK_SECRET` |
 | `RESEND_API_KEY` | Sending-only key for the verified domain, required when email delivery is enabled |
 
 Set the **repository Actions variable** `KITOR_CONTRIBUTION_API_URL` to the

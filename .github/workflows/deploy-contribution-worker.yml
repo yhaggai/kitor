@@ -83,7 +83,7 @@ jobs:
           GOOGLE_CLIENT_SECRET: ${{ secrets.GOOGLE_CLIENT_SECRET }}
           BOT_PRIVATE_KEY: ${{ secrets.BOT_PRIVATE_KEY }}
           RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
-          GITHUB_WEBHOOK_SECRET: ${{ secrets.GITHUB_WEBHOOK_SECRET }}
+          GITHUB_WEBHOOK_SECRET: ${{ secrets.CONTRIBUTION_WEBHOOK_SECRET }}
         run: node scripts/deployment-secrets.mjs
       - name: Validate deployment bundle
         run: npx --no-install wrangler deploy --config wrangler.deploy.json --env "$DEPLOY_ENV" --dry-run --outdir .wrangler/ci-build
