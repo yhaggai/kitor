@@ -1,18 +1,22 @@
 [
   {
+    "app_id": 283980,
+    "depot_id": 283984,
+    "title": "Spy Fox in Dry Cereal",
+    "importer": "layout",
+    "cache_key": "283980-283984",
+    "games": [{ "id": "spyfox", "title": "Spy Fox in Dry Cereal", "folder": "", "files": [] }],
+    "required_files": ["SPYFOX.HE0", "SPYFOX.HE1", "SPYFOX.HE2", "SPYFOX.HE4"],
+    "copy_paths": ["SPYFOX.HE0", "SPYFOX.HE1", "SPYFOX.HE2", "SPYFOX.HE4"],
+    "lowercase_copy_paths": true
+  },
+  {
     "app_id": 115800,
     "depot_id": 115805,
     "title": "Owlboy",
     "importer": "layout",
     "cache_key": "115800-115805",
-    "games": [
-      {
-        "id": "owlboy",
-        "title": "Owlboy",
-        "folder": "",
-        "files": []
-      }
-    ],
+    "games": [{ "id": "owlboy", "title": "Owlboy", "folder": "", "files": [] }],
     "required_files": [
       "Owlboy.app/Contents/MacOS/Owlboy",
       "Owlboy.app/Contents/Resources/Owlboy.exe"

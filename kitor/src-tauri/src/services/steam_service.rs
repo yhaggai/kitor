@@ -39,6 +39,17 @@ pub struct Status {
     owned_app_ids: Option<Vec<u32>>,
     message: Option<String>,
 }
+impl Status {
+    pub fn native(library: Option<kitor_steam::OwnedLibrary>) -> Self {
+        Self {
+            steam_id: library.as_ref().map(|library| library.steam_id.clone()),
+            owned_app_ids: library.map(|library| library.owned_app_ids),
+            has_api_key: false,
+            connecting: false,
+            message: None,
+        }
+    }
+}
 impl Session {
     pub fn begin_login(&mut self) {
         self.generation += 1;

@@ -53,3 +53,18 @@ path = "migration"
 
 
 
+[dependencies.kitor-steam]
+path = "../native-steam"
+
+# Keep content decoding representative of release speed in the desktop dev app.
+[profile.dev.package.lzma-rs]
+opt-level = 3
+[profile.dev.package.sha1]
+opt-level = 3
+[profile.dev.package.aes]
+opt-level = 3
+[profile.dev.package.cbc]
+opt-level = 3
+
+[profile.dev.package.kitor-steam]
+opt-level = 3

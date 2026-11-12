@@ -35,3 +35,6 @@ __pycache__/
 # Local contribution bot builds and credentials
 !tools/contribution-bot/Cargo.lock
 *.pem
+
+# Native Steam transport reproducible builds.
+!kitor/native-steam/Cargo.lock
