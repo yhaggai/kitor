@@ -321,6 +321,9 @@
   border-color: var(--kt-accent);
   color: var(--kt-accent-ink);
 }
+.kt-filters--categories {
+  flex-basis: 100%;
+}
 .kt-game-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
@@ -873,7 +876,7 @@ fieldset.kt-manage-dropdown {
   aspect-ratio: 3 / 1;
   margin-top: 20px;
   overflow: hidden;
-  border-radius: 12px 12px 0 0;
+  border-radius: 12px;
   background: #18252e;
 }
 .kt-game-banner-art {
@@ -947,11 +950,43 @@ fieldset.kt-manage-dropdown {
 }
 .kt-detail-hero.kt-detail-hero--banner {
   grid-template-columns: minmax(160px, 240px) minmax(0, 1fr);
+  align-items: start;
   margin-top: 32px;
   gap: 40px;
 }
 .kt-detail-hero--banner .kt-detail-copy h1 {
   font-size: clamp(28px, 3vw, 42px);
+}
+.kt-detail-title-row {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--kt-space-4);
+}
+.kt-detail-title-row > h1 {
+  flex: 1;
+  margin-bottom: 0;
+}
+.kt-detail-copy > .kt-detail-intro {
+  white-space: pre-line;
+}
+.kt-detail-description {
+  margin-top: 24px;
+  max-width: 80ch;
+}
+.kt-detail-description > p {
+  margin: 0;
+  color: var(--kt-muted);
+  line-height: 1.85;
+  white-space: pre-line;
+  overflow-wrap: anywhere;
+}
+.kt-detail-hero--banner .kt-detail-art {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+.kt-detail-hero--banner .kt-primary-actions {
+  margin-top: 16px;
 }
 @media (max-width: 700px) {
   .kt-game-banner {

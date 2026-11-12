@@ -45,7 +45,6 @@ All components have been successfully implemented according to the plan.
    - Login/logout UI
    - Authentication status display
    - Game library listing
-   - Manual code input fallback
    - Event listeners for login success/error
 
 3. **Settings Integration**
@@ -56,15 +55,18 @@ All components have been successfully implemented according to the plan.
 
 1. User clicks "Login to GOG" in Settings
 2. Webview window opens with GOG login page
-3. User enters credentials on GOG
-4. GOG redirects to embed.gog.com with code parameter
-5. Options:
-   - **Automatic**: User manually copies code and closes window, then clicks "Enter code manually"
-   - **Manual**: User pastes code into input field
-6. Backend exchanges code for access/refresh tokens
-7. Tokens stored encrypted in database
-8. User's game library fetched and displayed
-9. Tokens auto-refresh before expiry
+3. Email/password stays in the GOG webview. Google, Apple, Steam, Discord and Xbox provider buttons use GOG's external login process:
+   - POST `/login_process/{provider}` in the existing GOG session.
+   - Open the returned, allowlisted `external-accounts.gog.com` process URL in the system browser.
+   - Poll `/login_process/{process_id}` in the webview until GOG returns a login token.
+   - Resume at `/on_login_success_external` inside that same webview.
+4. Capture the final `https://embed.gog.com/on_login_success` authorization code with Tauri's navigation callback.
+5. Exchange it for access/refresh tokens and store them. No URL copying is required.
+6. Emit login success so the app refreshes the library. Closing the login window or reaching the five-minute timeout emits an error and releases the pending attempt.
+
+The external process follows GOG's published login-page implementation in
+[common.js](https://static-login.gog-statics.com/bundles/gogloginlogin/js/common.js).
+Its creation and pending-status endpoints were checked without credentials; automated tests cover the browser handoff, polling, retry, duplicate-click handling and URL validation. A real provider sign-in still needs manual end-to-end verification on macOS and Windows.
 
 ## Security Features
 
@@ -82,7 +84,7 @@ All components have been successfully implemented according to the plan.
 ## Testing Checklist
 
 - [ ] Login flow opens webview
-- [ ] Manual code input works
+- [ ] Google sign-in completes automatically through the system browser
 - [ ] Tokens stored in database
 - [ ] Auth status persists across app restarts
 - [ ] Game library fetches correctly
@@ -91,7 +93,7 @@ All components have been successfully implemented according to the plan.
 
 ## Known Limitations
 
-1. User must manually copy code from redirect URL (SOLVED via JS injection)
+1. External sign-in depends on GOG’s login-page process endpoints and button markup.
 2. GOG API game library structure may need adjustment based on actual response
 3. Token encryption is basic base64 (sufficient for local storage, can be upgraded)
 

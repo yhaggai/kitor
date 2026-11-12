@@ -1,21 +1,37 @@
 import { invoke } from "@tauri-apps/api/core";
+import { listen } from "@tauri-apps/api/event";
 import { ask } from "@tauri-apps/plugin-dialog";
 import { create } from "zustand";
 import { type Game, useAppStore } from "./store";
 
 export const useSteamDownload = create<{
+  downloadedBytes: number | null;
+  totalBytes: number | null;
   busy: boolean;
   appId: number | null;
   error: string | null;
   start: (appId: number, gameIds: string[], installRoot: string) => Promise<void>;
 }>((set, get) => ({
+  downloadedBytes: null,
+  totalBytes: null,
   busy: false,
   appId: null,
   error: null,
   start: async (appId, gameIds, installRoot) => {
     if (get().busy) return;
-    set({ busy: true, appId, error: null });
+    set({ busy: true, appId, error: null, downloadedBytes: null, totalBytes: null });
+    let unlisten: (() => void) | undefined;
     try {
+      unlisten = await listen<{ kind: string; downloaded_bytes?: number; total_bytes?: number }>(
+        "native-steam-download",
+        ({ payload }) => {
+          if (payload.kind === "progress")
+            set({
+              downloadedBytes: payload.downloaded_bytes ?? null,
+              totalBytes: payload.total_bytes ?? null,
+            });
+        }
+      );
       const download = (overwrite = false) =>
         invoke<Game[]>("download_steam_windows_game", {
           appId,
@@ -51,6 +67,7 @@ export const useSteamDownload = create<{
     } catch (error) {
       set({ error: String(error) });
     } finally {
+      unlisten?.();
       try {
         useAppStore.getState().setGames(await invoke<Game[]>("get_games_with_patches"));
       } catch {

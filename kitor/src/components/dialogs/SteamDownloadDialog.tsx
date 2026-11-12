@@ -1,5 +1,5 @@
 import { useTranslation } from "@kitor/ui";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import BugReportDialog from "@/components/BugReportDialog";
 import { GameInstallFolder } from "@/components/dialogs/GameInstallFolder";
 import { Button } from "@/components/ui/button";
@@ -11,6 +11,8 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
+import { useGogInstallFlow } from "@/store/gogInstallFlow";
+import { useNativeSteam } from "@/store/nativeSteam";
 import { useSteamDownload } from "@/store/steamDownload";
 
 export type SteamDownloadCapabilities = {
@@ -33,12 +35,40 @@ export function SteamDownloadDialog({
   capabilities: SteamDownloadCapabilities;
 }) {
   const { t } = useTranslation();
-  const { busy, error: downloadError, start, appId: activeApp } = useSteamDownload();
+  const {
+    busy,
+    error: downloadError,
+    start,
+    appId: activeApp,
+    downloadedBytes,
+    totalBytes,
+  } = useSteamDownload();
   const error = activeApp === appId ? downloadError : null;
   const [installRoot, setInstallRoot] = useState("");
+  const { connected: direct, refresh } = useNativeSteam();
+  const [connecting, setConnecting] = useState(false);
+  useEffect(() => {
+    if (open) void refresh();
+  }, [open, refresh]);
   const collection = capabilities.games.length > 1;
+  const nativeOwlboy = appId === 115800 && gameId === "owlboy";
+  const guided = nativeOwlboy || (appId === 32460 && gameId === "monkey2-se");
   async function next() {
-    if (useSteamDownload.getState().busy) return;
+    if (useSteamDownload.getState().busy || connecting) return;
+    setConnecting(true);
+    onOpenChange(false);
+    const ready = await useNativeSteam.getState().ensureConnected();
+    setConnecting(false);
+    if (!ready) {
+      onOpenChange(true);
+      return;
+    }
+    if (guided) {
+      onOpenChange(false);
+      useGogInstallFlow.getState().show({ steamAppId: appId, gameId, installRoot });
+      return;
+    }
+    onOpenChange(true);
     await start(appId, [gameId], installRoot);
     if (!useSteamDownload.getState().error) onOpenChange(false);
   }
@@ -66,9 +96,11 @@ export function SteamDownloadDialog({
                 ? t(
                     "Kitor downloads and extracts the full collection. Game detection identifies the games available to play and patch on your Mac."
                   )
-                : t(
-                    "This game is only available for Windows on Steam. Kitor can download that version and run it on your Mac with ScummVM."
-                  )}
+                : nativeOwlboy
+                  ? t("Kitor downloads the native macOS edition of Owlboy from Steam.")
+                  : t(
+                      "This game is only available for Windows on Steam. Kitor can download that version and run it on your Mac with ScummVM."
+                    )}
           </DialogDescription>
         </DialogHeader>
         {busy ? (
@@ -81,6 +113,12 @@ export function SteamDownloadDialog({
             >
               <div className="steam-download-indicator h-full w-1/3 rounded-full bg-primary" />
             </div>
+            {downloadedBytes !== null && (
+              <output className="block text-sm" dir="ltr">
+                {(downloadedBytes / 1_000_000).toFixed(1)} /{" "}
+                {((totalBytes ?? 0) / 1_000_000).toFixed(1)} MB
+              </output>
+            )}
             <output className="block text-sm text-muted-foreground">
               {t(
                 "Keep Kitor open. Hiding this dialog does not cancel Steam’s download. Reopen it from any Steam button in this collection."
@@ -95,18 +133,20 @@ export function SteamDownloadDialog({
               folders={[collection ? `steam-${appId}` : `${gameId}-steam`]}
             />
             <p className="text-sm text-muted-foreground">
-              {collection
-                ? t("Click Next to download the collection and detect its games.")
-                : t(
-                    "Click Next to download and prepare the game. It will appear automatically in your library, ready to play. You can install the Hebrew patch separately."
-                  )}
+              {guided
+                ? t("Kitor will install the game and its Hebrew patch.")
+                : collection
+                  ? t("Click Next to download the collection and detect its games.")
+                  : t(
+                      "Click Next to download and prepare the game. It will appear automatically in your library, ready to play. You can install the Hebrew patch separately."
+                    )}
             </p>
             <p className="text-sm text-muted-foreground">
-              {t("Sign in to Steam with an account that owns")}{" "}
-              {collection ? capabilities.title : t("the game")}
               {t(
-                ". Steam may open its console. Hebrew patches are installed separately and must support your game edition."
-              )}{" "}
+                direct
+                  ? "Direct downloads are connected. Steam will verify access to this game."
+                  : "Next, connect Steam by scanning a QR code in Kitor. Your account must own this game."
+              )}
             </p>
           </div>
         )}
@@ -123,7 +163,7 @@ export function SteamDownloadDialog({
             {busy ? t("Hide") : t("Cancel")}
           </Button>
           {!busy && (
-            <Button disabled={!installRoot} onClick={() => void next()}>
+            <Button disabled={!installRoot || connecting} onClick={() => void next()}>
               {error ? t("Try again") : t("Next")}
             </Button>
           )}

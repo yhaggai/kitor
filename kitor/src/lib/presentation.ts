@@ -60,7 +60,8 @@ export function gameSummary(game: Game): GameSummary {
 export function patchSummary(patch: PatchWithStatus): GameSummary {
   return {
     id: `${patch.scummvm_id}:${patch.language}:${patch.version}`,
-    searchTerms: `${patch.scummvm_id} ${patch.game_title} ${patch.title_he ?? ""}`,
+    searchTerms: `${patch.scummvm_id} ${patch.game_title} ${patch.title_he ?? ""} ${(patch.tags ?? []).join(" ")}`,
+    tags: patch.tags ?? [],
     title: classicTitles[patch.scummvm_id] ?? patch.game_title,
     titleHe: patch.title_he ?? undefined,
     ...artwork(patch.scummvm_id, patch.cover_url),

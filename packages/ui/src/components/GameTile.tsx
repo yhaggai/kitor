@@ -1,3 +1,4 @@
+import { gameTitle } from "../hebrewTitle";
 import { useTranslation } from "../i18n";
 import type { GameSummary } from "../types";
 import { GameCover } from "./GameCover";
@@ -14,8 +15,8 @@ export function GameTile({
   highlighted?: boolean;
   showStatus?: boolean;
 }) {
-  const { t } = useTranslation();
-  const title = game.titleHe?.trim() || game.covers?.he.title?.trim() || game.title;
+  const { t, language } = useTranslation();
+  const title = gameTitle(game, language);
   return (
     <button
       type="button"

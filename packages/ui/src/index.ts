@@ -1,3 +1,4 @@
+export { default as kitorIcon } from "./assets/kitor-logo.svg";
 export { default as gogIcon } from "./assets/providers/gog.png";
 export { default as scummvmIcon } from "./assets/providers/scummvm.svg";
 export { default as steamIcon } from "./assets/providers/steam.png";
@@ -12,6 +13,7 @@ export { GameGallery } from "./components/GameGallery";
 export { GameTile } from "./components/GameTile";
 export { ManageMenu } from "./components/ManageMenu";
 export { StatusBadge } from "./components/StatusBadge";
+export { gameTitle } from "./hebrewTitle";
 export { type AppLanguage, setAppLanguage, translate, useTranslation } from "./i18n";
 export type { Collection, GameStatus, GameSummary } from "./types";
 export { useGameNavigation } from "./useGameNavigation";

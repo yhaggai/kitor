@@ -2,11 +2,18 @@ import { afterEach, expect, test } from "bun:test";
 import { renderToStaticMarkup } from "react-dom/server";
 import GameDetails from "../src/components/GameDetails";
 import { DialogContext } from "../src/contexts/DialogContext";
+import { useSteamStore } from "../src/store/steam";
 import { type Game, type PatchWithStatus, useAppStore } from "../src/store/store";
 
-const initialGames = useAppStore.getInitialState().games;
+const appInitial = useAppStore.getInitialState();
+const initialGames = appInitial.games;
+const steamInitial = useSteamStore.getInitialState();
+const initialSteam = steamInitial.status;
 afterEach(() => {
-  useAppStore.getInitialState().games = initialGames;
+  appInitial.games = initialGames;
+  appInitial.gogAuth = { isAuthenticated: false };
+  appInitial.gogGames = [];
+  steamInitial.status = initialSteam;
 });
 const game: Game = {
   id: 7,
@@ -26,9 +33,10 @@ const patch = {
   version: "2",
   game_installed: false,
   patch_installed: false,
+  steam_app_id: 319870,
 } as PatchWithStatus;
 function render(collection: "library" | "discovery", installed?: Game) {
-  useAppStore.getInitialState().games = installed ? [installed] : [];
+  appInitial.games = installed ? [installed] : [];
   return renderToStaticMarkup(
     <DialogContext.Provider
       value={{
@@ -51,14 +59,29 @@ test("installed games have identical details and actions from either collection"
   const library = render("library", game);
   const discovery = render("discovery", game);
   expect(discovery.replace("Back to discovery", "Back to library")).toBe(library);
-  expect(discovery).toContain("Play");
-  expect(discovery).toContain("Install Patch");
+  expect(discovery).toContain("Install Hebrew translation");
+  expect(discovery).toContain("Play without translation");
+  expect(discovery).not.toContain("Play!");
   expect(discovery).not.toContain("Purchase Guide");
 });
 
 test("discovery actions follow current library state despite stale catalog flags", () => {
   const uninstalled = render("discovery");
-  expect(uninstalled).not.toContain(">Play<");
+  expect(uninstalled).toContain("Get the game");
+  expect(uninstalled).toContain("I already have the game");
+  expect(uninstalled).not.toContain(">Install<");
+  expect(uninstalled).not.toContain("Play!");
+  steamInitial.status = {
+    steam_id: "1",
+    has_api_key: true,
+    connecting: false,
+    owned_app_ids: [319870],
+    message: null,
+  };
+  const owned = render("discovery");
+  expect(owned).toContain(">Install<");
+  expect(owned).not.toContain("Get the game");
+  expect(owned).not.toContain("I already have the game");
   const patched = render("discovery", {
     ...game,
     is_patched: true,
@@ -74,7 +97,8 @@ test("discovery actions follow current library state despite stale catalog flags
       },
     ],
   });
-  expect(patched).toContain("Play");
+  expect(patched).toContain("Play!");
+  expect(patched).toContain("With Hebrew translation");
   expect(patched).toContain("Install Patch Update");
   const missing = render("discovery", {
     ...game,
@@ -85,6 +109,7 @@ test("discovery actions follow current library state despite stale catalog flags
       checked_at: "2026-01-01",
     },
   });
-  expect(missing).not.toContain(">Play<");
+  expect(missing).not.toContain("Play!");
+  expect(missing).not.toContain("Play without translation");
   expect(missing).toContain("Game files missing");
 });

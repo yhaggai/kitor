@@ -25,6 +25,7 @@ import { TranslationCredit } from "@/components/TranslationCredit";
 import { Button } from "@/components/ui/button";
 import { useDialog } from "@/hooks/useDialog";
 import { type PatchDownloadProgress, useGameCardState } from "@/hooks/useGameCardState";
+import { primaryGameAction } from "@/lib/gameAction";
 import { patchOptionLabel, selectedPatchOption } from "@/lib/patchOptions";
 import { gameSummary } from "@/lib/presentation";
 import type { Game, GameHealth } from "@/store/store";
@@ -69,7 +70,8 @@ function PatchVersionTooltip({
 }
 
 export default function GameCard({ game, collection, onRemove, onBack }: GameCardProps) {
-  const { t } = useTranslation();
+  const { t, language } = useTranslation();
+  const displayTitle = language === "he" ? game.title_he?.trim() || game.title : game.title;
   const [refreshing, setRefreshing] = useState(false);
   const [updateConfirmationOpen, setUpdateConfirmationOpen] = useState(false);
   const [translationChoice, setTranslationChoice] = useState("");
@@ -109,6 +111,18 @@ export default function GameCard({ game, collection, onRemove, onBack }: GameCar
     setRefreshing(true);
     try {
       const health = await invoke<GameHealth>("refresh_game", { gameId: game.id });
+      // Store uninstallers can leave an empty folder or unrelated files behind.
+      // Keep patch recovery records when verification is damaged or uncertain.
+      const noInstallation =
+        health.game_status === "missing" ||
+        (health.game_status === "unrecognized" && health.patch_status === "not_installed");
+      if (noInstallation) {
+        await invoke("remove_game", { id: game.id });
+        const store = useAppStore.getState();
+        store.setGames(store.games.filter((entry) => entry.id !== game.id));
+        onRemove?.();
+        return;
+      }
       const games = await invoke<Game[]>("get_games_with_patches");
       const updatedGame = games.find((entry) => entry.id === game.id);
       if (!updatedGame) throw new Error("Updated game was not found in the library.");
@@ -122,7 +136,7 @@ export default function GameCard({ game, collection, onRemove, onBack }: GameCar
     } catch (error) {
       await alert({
         failure: true,
-        game: game.title,
+        game: displayTitle,
         title: t("Refresh Failed"),
         description: String(error),
       });
@@ -152,7 +166,7 @@ export default function GameCard({ game, collection, onRemove, onBack }: GameCar
       } else {
         await alert({
           failure: true,
-          game: game.title,
+          game: displayTitle,
           title: t("Launch Failed"),
           description: String(error),
         });
@@ -182,7 +196,7 @@ export default function GameCard({ game, collection, onRemove, onBack }: GameCar
       console.error("Failed to install patch:", error);
       await alert({
         failure: true,
-        game: game.title,
+        game: displayTitle,
         title: t("Install Failed"),
         description: [
           String(error),
@@ -208,7 +222,7 @@ export default function GameCard({ game, collection, onRemove, onBack }: GameCar
       console.error("Failed to remove game:", error);
       await alert({
         failure: true,
-        game: game.title,
+        game: displayTitle,
         title: t("Remove Failed"),
         description: String(error),
       });
@@ -235,7 +249,7 @@ export default function GameCard({ game, collection, onRemove, onBack }: GameCar
       console.error("Failed to restore game:", error);
       await alert({
         failure: true,
-        game: game.title,
+        game: displayTitle,
         title: t("Restore Failed"),
         description: String(error),
       });
@@ -258,7 +272,7 @@ export default function GameCard({ game, collection, onRemove, onBack }: GameCar
       console.error("Failed to refresh patch status:", error);
       await alert({
         failure: true,
-        game: game.title,
+        game: displayTitle,
         title: t("Library Refresh Failed"),
         description: t("{0} The displayed status could not be refreshed: {1}", [
           successMessage,
@@ -294,13 +308,23 @@ export default function GameCard({ game, collection, onRemove, onBack }: GameCar
   const hasPatch = game.health
     ? game.health.patch_status === "installed"
     : (game.is_patched ?? recordedPatch);
-  const canPlay = gameReady;
   const canInstall =
     gameReady &&
     game.has_available_patch &&
     !hasPatch &&
     !recordedPatch &&
     (!game.health || game.health.patch_status === "not_installed");
+  const action = primaryGameAction({
+    inLibrary: true,
+    filesReady: gameReady,
+    patched: hasPatch,
+    patchAvailable: !!game.has_available_patch,
+    purchased: true,
+  });
+  const showPlay = action === "play";
+  const showInstallPatch = action === "install-patch" && canInstall;
+  const showPlayWithout = action === "install-patch";
+  const canPlay = showPlay || showPlayWithout;
   const canRestore = gameReady && recordedPatch;
   const canUpdate = gameReady && hasPatch && !!updatePatch;
   const patchBlockReasons = [
@@ -333,60 +357,42 @@ export default function GameCard({ game, collection, onRemove, onBack }: GameCar
         collection={collection}
         onBack={onBack}
         actions={
-          <div className="kt-native-game-actions">
+          <div className="kt-game-actions">
             <TranslationContributionButton gameId={game.scummvm_id} />
             {refreshing && (
-              <p aria-live="polite" className="text-xs text-muted-foreground">
-                {t("Checking game and patch files…")}{" "}
+              <p aria-live="polite" className="kt-game-action-status">
+                {t("Checking game and patch files…")}
               </p>
             )}
-            {game.health && (
-              <div aria-live="polite" className="w-full space-y-1 text-xs">
-                <p className={gameReady ? "text-muted-foreground" : "text-destructive"}>
-                  {game.health.game_status === "present"
-                    ? t("Game files found")
-                    : game.health.game_status === "missing"
-                      ? t("Game files missing")
-                      : t("Game could not be identified")}
-                  {" · "}
-                  {
+            {game.health &&
+              (!gameReady || ["damaged", "unverified"].includes(game.health.patch_status)) && (
+                <div aria-live="polite" className="kt-game-action-status">
+                  <p className={gameReady ? undefined : "text-destructive"}>
+                    {game.health.game_status === "present"
+                      ? t("Game files found")
+                      : game.health.game_status === "missing"
+                        ? t("Game files missing")
+                        : t("Game could not be identified")}
+                    {" · "}
                     {
-                      installed: "Patch verified",
-                      not_installed: "No recorded patch",
-                      damaged: "Patch files missing or changed",
-                      unverified: "Patch could not be verified",
-                    }[game.health.patch_status]
-                  }
-                </p>
-                {game.health.details.map((detail, index) => (
-                  <p key={`${index}-${detail}`} className="break-words text-muted-foreground">
-                    {detail}
+                      {
+                        installed: "Patch verified",
+                        not_installed: "No recorded patch",
+                        damaged: "Patch files missing or changed",
+                        unverified: "Patch could not be verified",
+                      }[game.health.patch_status]
+                    }
                   </p>
-                ))}
-                <p className="text-muted-foreground">
-                  {t("Checked")} {new Date(game.health.checked_at).toLocaleTimeString()}
-                </p>
-              </div>
-            )}
+                  {game.health.details.map((detail, index) => (
+                    <p key={`${index}-${detail}`}>{detail}</p>
+                  ))}
+                  <p>
+                    {t("Checked")} {new Date(game.health.checked_at).toLocaleTimeString()}
+                  </p>
+                </div>
+              )}
             {!busy && !hasPatch && !canInstall && patchBlockReasons.length > 0 && (
-              <BugReportDialog game={game.title} details={blockedPatchDetails} />
-            )}
-            {canPlay && (
-              <Button className="w-full" size="sm" onClick={handleLaunch} disabled={busy}>
-                {state.isRestoring ? (
-                  <span>
-                    {t("Restoring")}{" "}
-                    <span className="restore-dots" aria-hidden="true">
-                      ...
-                    </span>
-                  </span>
-                ) : (
-                  <>
-                    <Play className="mr-2 h-3 w-3" />
-                    {t("Play")}{" "}
-                  </>
-                )}
-              </Button>
+              <BugReportDialog game={displayTitle} details={blockedPatchDetails} />
             )}
             {(game.available_patches?.length ?? 0) > 1 && (
               <div className="w-full space-y-2">
@@ -433,68 +439,65 @@ export default function GameCard({ game, collection, onRemove, onBack }: GameCar
                 )}
               </div>
             )}
-            {canInstall && (
+            {showInstallPatch && (
               <PatchVersionTooltip
                 label={t("Available patch version: {0}", [selectedPatch?.version ?? t("Unknown")])}
                 disabled={busy}
               >
-                <Button
-                  className="w-full"
-                  size="sm"
-                  variant="outline"
+                <button
+                  type="button"
+                  className="kt-game-action kt-game-action--solid"
                   onClick={handleInstallPatch}
                   disabled={busy}
                 >
-                  <DownloadIcon className="mr-2 h-3 w-3" />
-                  {t("Install Patch")}{" "}
-                </Button>
+                  {state.isInstalling ? t("Installing...") : t("Install Hebrew translation")}
+                </button>
               </PatchVersionTooltip>
+            )}
+            {showPlay && (
+              <button
+                type="button"
+                className="kt-game-action kt-game-action--play"
+                onClick={handleLaunch}
+                disabled={busy}
+              >
+                {state.isRestoring ? (
+                  <span>
+                    {t("Restoring")}{" "}
+                    <span className="restore-dots" aria-hidden="true">
+                      ...
+                    </span>
+                  </span>
+                ) : (
+                  t("Play!")
+                )}
+              </button>
+            )}
+            {showPlay && hasPatch && (
+              <p className="kt-game-action-note">
+                <CheckCircle size={15} aria-hidden="true" />
+                {t("With Hebrew translation")}
+              </p>
+            )}
+            {showPlayWithout && (
+              <button
+                type="button"
+                className={`kt-game-action ${showInstallPatch ? "kt-game-action--link" : "kt-game-action--play"}`}
+                onClick={handleLaunch}
+                disabled={busy}
+              >
+                {t("Play without translation")}
+              </button>
             )}
             {canUpdate && (
-              <div className="w-full space-y-2">
-                <p className="text-xs text-muted-foreground">
-                  {t("Translation update:")}{" "}
-                  {
-                    game.installed_patches?.find((p) => p.language === updatePatch?.language)
-                      ?.version
-                  }{" "}
-                  → {updatePatch?.version}
-                </p>
-                <PatchVersionTooltip
-                  label={t("Installed version: {0} → Available version: {1}", [
-                    game.installed_patches?.find(
-                      (patch) =>
-                        patch.status === "active" && patch.language === updatePatch?.language
-                    )?.version ?? t("Unknown"),
-                    updatePatch?.version ?? t("Unknown"),
-                  ])}
-                  disabled={busy}
-                >
-                  <Button
-                    className="w-full"
-                    size="sm"
-                    onClick={() => setUpdateConfirmationOpen(true)}
-                    disabled={busy}
-                  >
-                    <DownloadIcon className="mr-2 h-3 w-3" />
-                    {t("Install Patch Update")}{" "}
-                  </Button>
-                </PatchVersionTooltip>
-              </div>
-            )}
-            {hasPatch && !canUpdate && !changingTranslation && (
-              <PatchVersionTooltip
-                label={t("Installed patch version: {0}", [
-                  game.installed_patches?.find((patch) => patch.status === "active")?.version ??
-                    t("Unknown"),
-                ])}
-                disabled
+              <button
+                type="button"
+                className="kt-game-action kt-game-action--link"
+                onClick={() => setUpdateConfirmationOpen(true)}
+                disabled={busy}
               >
-                <Button className="w-full" size="sm" variant="outline" disabled>
-                  <CheckCircle className="mr-2 h-3 w-3" />
-                  {t("Patch Installed")}{" "}
-                </Button>
-              </PatchVersionTooltip>
+                {t("Install Patch Update")}
+              </button>
             )}
           </div>
         }
@@ -531,17 +534,17 @@ export default function GameCard({ game, collection, onRemove, onBack }: GameCar
                     disabled={busy}
                   >
                     <Play className="mr-2 h-4 w-4" />
-                    {t("Play")}{" "}
+                    {showPlay ? t("Play!") : t("Play without translation")}
                   </DropdownMenu.Item>
                 )}
-                {canInstall && (
+                {showInstallPatch && (
                   <DropdownMenu.Item
                     className="flex cursor-pointer items-center rounded-sm px-2 py-2 text-sm text-foreground outline-none hover:bg-accent focus:bg-accent"
                     onSelect={handleInstallPatch}
                     disabled={busy}
                   >
                     <DownloadIcon className="mr-2 h-4 w-4" />
-                    {state.isInstalling ? t("Installing...") : t("Install Patch")}
+                    {state.isInstalling ? t("Installing...") : t("Install Hebrew translation")}
                   </DropdownMenu.Item>
                 )}
                 {canRestore && (
@@ -574,7 +577,7 @@ export default function GameCard({ game, collection, onRemove, onBack }: GameCar
           <AlertDialog.Overlay className="fixed inset-0 z-50 bg-black/50" />
           <AlertDialog.Content className="fixed left-1/2 top-1/2 z-50 max-h-[85vh] w-[min(520px,calc(100vw-32px))] -translate-x-1/2 -translate-y-1/2 overflow-y-auto rounded-lg border bg-background p-6 shadow-lg">
             <AlertDialog.Title className="text-lg font-semibold">
-              {t("Install Patch Update —")} {game.title}
+              {t("Install Patch Update —")} {displayTitle}
             </AlertDialog.Title>
             <AlertDialog.Description className="mt-2 text-sm text-muted-foreground">
               {t("Installed version:")}{" "}
@@ -600,7 +603,7 @@ export default function GameCard({ game, collection, onRemove, onBack }: GameCar
       </AlertDialog.Root>
 
       <DeleteGameDialog
-        gameTitle={game.title}
+        gameTitle={displayTitle}
         open={state.showDeleteDialog}
         onOpenChange={(open) => (open ? actions.showDeleteDialog() : actions.hideDeleteDialog())}
         onConfirm={handleRemoveGame}
@@ -608,7 +611,7 @@ export default function GameCard({ game, collection, onRemove, onBack }: GameCar
       />
 
       <RestoreGameDialog
-        gameTitle={game.title}
+        gameTitle={displayTitle}
         open={state.showRestoreDialog}
         onOpenChange={(open) => (open ? actions.showRestoreDialog() : actions.hideRestoreDialog())}
         onConfirm={handleRestorePatch}
@@ -617,7 +620,7 @@ export default function GameCard({ game, collection, onRemove, onBack }: GameCar
 
       <InstallPatchDialog
         updating={!!updatePatch}
-        gameTitle={game.title}
+        gameTitle={displayTitle}
         open={state.showInstallDialog}
         onOpenChange={(open) => (open ? actions.showInstallDialog() : actions.hideInstallDialog())}
         installSteps={state.installSteps}

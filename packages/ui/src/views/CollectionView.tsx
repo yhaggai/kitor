@@ -1,5 +1,6 @@
 import { Search } from "lucide-react";
 import { type ReactNode, useState } from "react";
+import { categoryLabel, hasCategory, orderedCategories } from "../categories";
 import { Button } from "../components/Button";
 import { GameTile } from "../components/GameTile";
 import { useTranslation } from "../i18n";
@@ -27,17 +28,22 @@ export function CollectionView({
   const { t } = useTranslation();
   const [query, setQuery] = useState("");
   const [filter, setFilter] = useState("all");
+  const [category, setCategory] = useState("all");
   const filters = [
     { id: "all", label: t("All games") },
     { id: "ready", label: t("Translation installed") },
     { id: "available", label: t("Translation available") },
   ];
+  const categories = collection === "discovery" ? orderedCategories(games) : [];
+  const inStatus = (game: GameSummary, status: string) =>
+    status === "all" || game.status === status;
+  const haystack = (game: GameSummary) =>
+    `${game.title} ${game.author ?? ""} ${game.language ?? ""} ${game.searchTerms ?? ""} ${(game.tags ?? []).map((tag) => `${tag} ${t(categoryLabel(tag))}`).join(" ")}`.toLowerCase();
   const matches = games.filter(
     (game) =>
-      (filter === "all" || game.status === filter) &&
-      `${game.title} ${game.author ?? ""} ${game.language ?? ""} ${game.searchTerms ?? ""}`
-        .toLowerCase()
-        .includes(query.trim().toLowerCase())
+      inStatus(game, filter) &&
+      hasCategory(game.tags, category) &&
+      haystack(game).includes(query.trim().toLowerCase())
   );
   return (
     <section
@@ -79,10 +85,43 @@ export function CollectionView({
               onClick={() => setFilter(id)}
             >
               {label}
-              <span>{games.filter((game) => id === "all" || game.status === id).length}</span>
+              <span>
+                {
+                  games.filter((game) => inStatus(game, id) && hasCategory(game.tags, category))
+                    .length
+                }
+              </span>
             </button>
           ))}
         </fieldset>
+        {categories.length > 0 && (
+          <fieldset className="kt-filters kt-filters--categories" aria-label={t("Categories")}>
+            <button
+              type="button"
+              aria-pressed={category === "all"}
+              onClick={() => setCategory("all")}
+            >
+              {t("All categories")}
+              <span>{games.filter((game) => inStatus(game, filter)).length}</span>
+            </button>
+            {categories.map((id) => (
+              <button
+                type="button"
+                key={id}
+                aria-pressed={category === id}
+                onClick={() => setCategory(id)}
+              >
+                {t(categoryLabel(id))}
+                <span>
+                  {
+                    games.filter((game) => inStatus(game, filter) && hasCategory(game.tags, id))
+                      .length
+                  }
+                </span>
+              </button>
+            ))}
+          </fieldset>
+        )}
       </div>
       {feedback}
       {loading ? (
@@ -125,6 +164,7 @@ export function CollectionView({
               onClick={() => {
                 setQuery("");
                 setFilter("all");
+                setCategory("all");
               }}
             >
               {t("Clear filters")}{" "}
