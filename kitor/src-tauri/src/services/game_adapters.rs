@@ -124,8 +124,17 @@ pub fn native_command(
 }
 
 pub fn drifter_launch_command(install_path: &Path) -> Result<Command, String> {
+    if cfg!(target_os = "windows") {
+        let executable = install_path.join("TheDrifter.exe");
+        if !executable.is_file() {
+            return Err("The Drifter executable was not found".into());
+        }
+        let mut command = Command::new(executable);
+        command.current_dir(install_path);
+        return Ok(command);
+    }
     if !cfg!(target_os = "macos") {
-        return Err("The Drifter native launcher currently supports macOS only".into());
+        return Err("The Drifter native launcher supports macOS and Windows".into());
     }
     let bundle = [
         install_path.to_path_buf(),
@@ -152,11 +161,24 @@ fn undertale_command(data: &Path) -> Result<Command, String> {
             .parent()
             .and_then(Path::parent)
             .ok_or("Invalid UNDERTALE app path")?;
-        if !bundle.join("Contents/MacOS/Mac_Runner").is_file() {
-            return Err("UNDERTALE Mac runner not found".into());
+        use std::os::unix::fs::PermissionsExt;
+
+        let runner = bundle.join("Contents/MacOS/Mac_Runner");
+        let metadata = std::fs::symlink_metadata(&runner)
+            .map_err(|error| format!("Could not read the UNDERTALE Mac runner: {error}"))?;
+        if !metadata.is_file() {
+            return Err("UNDERTALE Mac runner is not a regular file".into());
         }
-        let mut cmd = Command::new("open");
-        cmd.arg(bundle);
+        let mut permissions = metadata.permissions();
+        if permissions.mode() & 0o100 == 0 {
+            permissions.set_mode(permissions.mode() | 0o100);
+            std::fs::set_permissions(&runner, permissions)
+                .map_err(|error| format!("Could not make the UNDERTALE Mac runner executable: {error}"))?;
+        }
+        // Give Steamworks the app ID when launching a Kitor-managed copy.
+        // Otherwise the runner asks Steam to relaunch from its own library.
+        let mut cmd = Command::new(runner);
+        cmd.env("SteamAppId", "391540").env("SteamGameId", "391540");
         cmd
     };
     #[cfg(target_os = "windows")]

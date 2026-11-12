@@ -553,7 +553,7 @@
       "title_he": "מסע בחלל IV: רוג׳ר וילקו וקורעי הזמן",
       "platforms": {
         "windows": true,
-        "osx": false,
+        "osx": true,
         "linux": false
       },
       "detection_patterns": {
@@ -1082,12 +1082,41 @@
         }
       ],
       "behavior": {
+        "detection": {
+          "layouts": [
+            {
+              "root": ".",
+              "required_files": ["stanley.exe", "thestanleyparable/gameinfo.txt"],
+              "data": "."
+            }
+          ]
+        },
         "launch": {
           "original": {
-            "args": ["--auto-detect"]
+            "commands": {
+              "windows": {
+                "program": "stanley.exe",
+                "required_files": ["thestanleyparable/gameinfo.txt"],
+                "env": {
+                  "SteamAppId": "221910",
+                  "SteamGameId": "221910"
+                },
+                "args": ["-game", "thestanleyparable"]
+              }
+            }
           },
           "patched": {
-            "args": ["--auto-detect"]
+            "commands": {
+              "windows": {
+                "program": "stanley.exe",
+                "required_files": ["thestanleyparable/gameinfo.txt"],
+                "env": {
+                  "SteamAppId": "221910",
+                  "SteamGameId": "221910"
+                },
+                "args": ["-game", "thestanleyparable"]
+              }
+            }
           }
         }
       }
@@ -1125,12 +1154,46 @@
         }
       ],
       "behavior": {
+        "detection": {
+          "layouts": [
+            {
+              "root": ".",
+              "required_files": [
+                "TeslaEffect.exe",
+                "TeslaEffect_Data/ExternalData/Data/CutsceneSubtitlesData/Ault5_CS82_APath.XML"
+              ],
+              "data": "."
+            }
+          ]
+        },
         "launch": {
           "original": {
-            "args": ["--auto-detect"]
+            "commands": {
+              "windows": {
+                "program": "TeslaEffect.exe",
+                "required_files": [
+                  "TeslaEffect_Data/ExternalData/Data/CutsceneSubtitlesData/Ault5_CS82_APath.XML"
+                ],
+                "env": {
+                  "SteamAppId": "261510",
+                  "SteamGameId": "261510"
+                }
+              }
+            }
           },
           "patched": {
-            "args": ["--auto-detect"]
+            "commands": {
+              "windows": {
+                "program": "TeslaEffect.exe",
+                "required_files": [
+                  "TeslaEffect_Data/ExternalData/Data/CutsceneSubtitlesData/Ault5_CS82_APath.XML"
+                ],
+                "env": {
+                  "SteamAppId": "261510",
+                  "SteamGameId": "261510"
+                }
+              }
+            }
           }
         }
       }
@@ -1168,12 +1231,42 @@
         }
       ],
       "behavior": {
+        "detection": {
+          "layouts": [
+            {
+              "root": ".",
+              "required_files": [
+                "Binaries/Win64/AstronautsGame-Win64-Shipping.exe",
+                "AstronautsGame/Localization/AstronautsGame.enu"
+              ],
+              "data": "."
+            }
+          ]
+        },
         "launch": {
           "original": {
-            "args": ["--auto-detect"]
+            "commands": {
+              "windows": {
+                "program": "Binaries/Win64/AstronautsGame-Win64-Shipping.exe",
+                "required_files": ["AstronautsGame/Localization/AstronautsGame.enu"],
+                "env": {
+                  "SteamAppId": "258520",
+                  "SteamGameId": "258520"
+                }
+              }
+            }
           },
           "patched": {
-            "args": ["--auto-detect"]
+            "commands": {
+              "windows": {
+                "program": "Binaries/Win64/AstronautsGame-Win64-Shipping.exe",
+                "required_files": ["AstronautsGame/Localization/AstronautsGame.enu"],
+                "env": {
+                  "SteamAppId": "258520",
+                  "SteamGameId": "258520"
+                }
+              }
+            }
           }
         }
       }
@@ -1211,12 +1304,42 @@
         }
       ],
       "behavior": {
+        "detection": {
+          "layouts": [
+            {
+              "root": ".",
+              "required_files": [
+                "Binaries/Win32/LifeIsStrange.exe",
+                "LifeIsStrangeGame/Localization/INT/CU_E1_1A.INT"
+              ],
+              "data": "."
+            }
+          ]
+        },
         "launch": {
           "original": {
-            "args": ["--auto-detect"]
+            "commands": {
+              "windows": {
+                "program": "Binaries/Win32/LifeIsStrange.exe",
+                "required_files": ["LifeIsStrangeGame/Localization/INT/CU_E1_1A.INT"],
+                "env": {
+                  "SteamAppId": "319630",
+                  "SteamGameId": "319630"
+                }
+              }
+            }
           },
           "patched": {
-            "args": ["--auto-detect"]
+            "commands": {
+              "windows": {
+                "program": "Binaries/Win32/LifeIsStrange.exe",
+                "required_files": ["LifeIsStrangeGame/Localization/INT/CU_E1_1A.INT"],
+                "env": {
+                  "SteamAppId": "319630",
+                  "SteamGameId": "319630"
+                }
+              }
+            }
           }
         }
       }
@@ -1253,12 +1376,39 @@
         }
       ],
       "behavior": {
+        "detection": {
+          "layouts": [
+            {
+              "root": ".",
+              "required_files": ["portal2.exe", "portal2/bin/client.dll", "portal2/gameinfo.txt"],
+              "data": "."
+            }
+          ]
+        },
         "launch": {
           "original": {
-            "args": ["--auto-detect"]
+            "commands": {
+              "windows": {
+                "program": "portal2.exe",
+                "required_files": ["portal2/bin/client.dll", "portal2/gameinfo.txt"],
+                "env": {
+                  "SteamAppId": "620",
+                  "SteamGameId": "620"
+                }
+              }
+            }
           },
           "patched": {
-            "args": ["--auto-detect"]
+            "commands": {
+              "windows": {
+                "program": "portal2.exe",
+                "required_files": ["portal2/bin/client.dll", "portal2/gameinfo.txt"],
+                "env": {
+                  "SteamAppId": "620",
+                  "SteamGameId": "620"
+                }
+              }
+            }
           }
         }
       }
@@ -1296,12 +1446,39 @@
         }
       ],
       "behavior": {
+        "detection": {
+          "layouts": [
+            {
+              "root": ".",
+              "required_files": ["JourneyDown1.exe", "jd1.gob"],
+              "data": "."
+            }
+          ]
+        },
         "launch": {
           "original": {
-            "args": ["--auto-detect"]
+            "commands": {
+              "windows": {
+                "program": "JourneyDown1.exe",
+                "required_files": ["jd1.gob"],
+                "env": {
+                  "SteamAppId": "220090",
+                  "SteamGameId": "220090"
+                }
+              }
+            }
           },
           "patched": {
-            "args": ["--auto-detect"]
+            "commands": {
+              "windows": {
+                "program": "JourneyDown1.exe",
+                "required_files": ["jd1.gob"],
+                "env": {
+                  "SteamAppId": "220090",
+                  "SteamGameId": "220090"
+                }
+              }
+            }
           }
         }
       }
@@ -1339,12 +1516,42 @@
         }
       ],
       "behavior": {
+        "detection": {
+          "layouts": [
+            {
+              "root": ".",
+              "required_files": [
+                "KathyRainDirectorsCut.exe",
+                "KathyRainDirectorsCut_Data/resources.assets"
+              ],
+              "data": "."
+            }
+          ]
+        },
         "launch": {
           "original": {
-            "args": ["--auto-detect"]
+            "commands": {
+              "windows": {
+                "program": "KathyRainDirectorsCut.exe",
+                "required_files": ["KathyRainDirectorsCut_Data/resources.assets"],
+                "env": {
+                  "SteamAppId": "1395030",
+                  "SteamGameId": "1395030"
+                }
+              }
+            }
           },
           "patched": {
-            "args": ["--auto-detect"]
+            "commands": {
+              "windows": {
+                "program": "KathyRainDirectorsCut.exe",
+                "required_files": ["KathyRainDirectorsCut_Data/resources.assets"],
+                "env": {
+                  "SteamAppId": "1395030",
+                  "SteamGameId": "1395030"
+                }
+              }
+            }
           }
         }
       }
@@ -1375,7 +1582,7 @@
           "source_type": "github",
           "checksum": "0f8fc1141af36726ed2027fc5c894bb7746e2912bea1facef33e4b0c14f01467",
           "file_size": 3087988,
-          "description": "מיק קרטר, נווד הבורח מעברו, חוזר לעיר הולדתו ונקלע לרצח מסתורי. כשהוא עצמו נהרג ומתעורר רגעים לפני מותו, עליו לגלות מי רודף אחריו וכיצד הכול קשור לעברו.\n\nקרדיטים ותודות (מהפרסום המקורי):\nתודה לחגי יניב, האיש שגילה לי על קיומו של המשחק והאפשרות לתרגמו, ודחק במפתחים להכיר בקיומה של השפה העברית.\n\nOn-demand Hebrew translation for Windows and macOS. macOS supports Steam build 22758595 and installs into the game’s existing user-data folder. Start the game once before installing. Selective backup and uninstall; gameplay unverified. Kitor launches the native app directly on macOS; use Steam on Windows.",
+          "description": "מיק קרטר, נווד הבורח מעברו, חוזר לעיר הולדתו ונקלע לרצח מסתורי. כשהוא עצמו נהרג ומתעורר רגעים לפני מותו, עליו לגלות מי רודף אחריו וכיצד הכול קשור לעברו.\n\nקרדיטים ותודות (מהפרסום המקורי):\nתודה לחגי יניב, האיש שגילה לי על קיומו של המשחק והאפשרות לתרגמו, ודחק במפתחים להכיר בקיומה של השפה העברית.\n\nOn-demand Hebrew translation for Windows and macOS. macOS supports Steam build 22758595 and installs into the game’s existing user-data folder. Start the game once before installing. Selective backup and uninstall; gameplay unverified. Kitor launches the native game on macOS and Windows.",
           "filename": "drifter-he-2026-07-09-kitor2-download1.zip",
           "install_manifest": "patch.json",
           "post_install_script": null,
@@ -1394,6 +1601,10 @@
         "target": "drifter_user_data",
         "detection": {
           "layouts": [
+            {
+              "root": ".",
+              "required_files": ["TheDrifter.exe", "TheDrifter_Data/globalgamemanagers"]
+            },
             {
               "root": ".",
               "required_files": [
@@ -1780,7 +1991,12 @@
                 "program": "Carpenter.exe",
                 "required_files": [
                   "Carpenter_Data/StreamingAssets/aa/StandaloneWindows64/localization-string-tables-english(en)_assets_all.bundle"
-                ]
+                ],
+                "env": {
+                  "SteamAppId": "2333000",
+                  "SteamGameId": "2333000"
+                },
+                "args": ["-force-d3d11"]
               }
             }
           },
@@ -1790,7 +2006,12 @@
                 "program": "Carpenter.exe",
                 "required_files": [
                   "Carpenter_Data/StreamingAssets/aa/StandaloneWindows64/localization-string-tables-english(en)_assets_all.bundle"
-                ]
+                ],
+                "env": {
+                  "SteamAppId": "2333000",
+                  "SteamGameId": "2333000"
+                },
+                "args": ["-force-d3d11"]
               }
             }
           }

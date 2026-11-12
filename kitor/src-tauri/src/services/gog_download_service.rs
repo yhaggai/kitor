@@ -10,11 +10,13 @@ use tokio::io::AsyncWriteExt;
 static INSTALL: tokio::sync::Mutex<()> = tokio::sync::Mutex::const_new(());
 
 fn supported(def: &registry_service::GameDefinition) -> bool {
-    def.gog.is_some() && !def.behavior.launch_profile(false).is_native()
+    def.gog.is_some()
+        && (!def.behavior.launch_profile(false).is_native()
+            || (cfg!(target_os = "windows") && def.scummvm_id == "grim-fandango-remastered"))
 }
 
 pub fn capabilities(id: i64, game_id: &str) -> Result<bool, String> {
-    Ok(cfg!(target_os = "macos")
+    Ok(cfg!(any(target_os = "macos", target_os = "windows"))
         && registry_service::load_registry()?.games.iter().any(|g| {
             g.scummvm_id == game_id && g.gog.as_ref().is_some_and(|g| g.id == id) && supported(g)
         }))
@@ -172,6 +174,9 @@ async fn extractor(app: &tauri::AppHandle, id: &str) -> Result<PathBuf, String> 
     if let Some(path) = find().await {
         return Ok(path);
     }
+    if cfg!(target_os = "windows") {
+        return Err("GOG installation requires innoextract. Install it and add it to PATH, then retry.".into());
+    }
     progress(app, id, "Preparing installation tools…", None);
     for brew in ["/opt/homebrew/bin/brew", "/usr/local/bin/brew"] {
         if Path::new(brew).is_file() {
@@ -229,7 +234,9 @@ fn find_game(root: &Path, id: &str) -> Result<PathBuf, String> {
             if !detected.starts_with(&root) {
                 return Err("Extracted game path escapes its installation".into());
             }
-            found.get_or_insert(detected);
+            if id != "grim-fandango-remastered" || detected.join("grim.en.tab").is_file() {
+                found.get_or_insert(detected);
+            }
         }
         for entry in std::fs::read_dir(&path).map_err(|e| e.to_string())? {
             let entry = entry.map_err(|e| e.to_string())?;
@@ -259,7 +266,7 @@ pub async fn install(
         .try_lock()
         .map_err(|_| "Another GOG installation is running")?;
     if !capabilities(id, &game_id)? {
-        return Err("This game does not support automatic GOG installation on Mac".into());
+        return Err("This game does not support automatic GOG installation on this platform".into());
     }
     if let Some(game) = game_service::get_all_games(&state.db)
         .await?
@@ -596,7 +603,7 @@ mod tests {
         for id in ["monkey-se", "monkey2-se"] {
             assert_eq!(supported(
                 registry.games.iter().find(|g| g.scummvm_id == id).unwrap()
-            ), cfg!(target_os = "macos"));
+            ), cfg!(any(target_os = "macos", target_os = "windows")));
         }
         assert!(!supported(
             registry

@@ -307,7 +307,7 @@ pub async fn download_and_install_patch(
         download_path.display()
     );
     let source = super::package_source::PackageSource::resolve(&patch, &game_def.behavior)?;
-    if matches!(source, super::package_source::PackageSource::Download) {
+    if matches!(source, super::package_source::PackageSource::Download | super::package_source::PackageSource::SpaceQuest4Scummvm) {
         download_service::download_patch_file(
             &patch.download_url,
             &download_path,
@@ -341,7 +341,7 @@ pub async fn download_and_install_patch(
     let manifest_name = patch.install_manifest.as_deref().ok_or(
         "Patch has no file-change manifest; whole-folder installation is no longer supported",
     )?;
-    if matches!(source, super::package_source::PackageSource::Download)
+    if matches!(source, super::package_source::PackageSource::Download | super::package_source::PackageSource::SpaceQuest4Scummvm)
         && download_path.extension().and_then(|s| s.to_str()) != Some("zip")
     {
         return Err("Declarative patch packages must be ZIP archives".into());
@@ -489,7 +489,7 @@ pub async fn download_and_install_patch(
 
     // Clean up download
     println!("[patch_service] Cleaning up download file");
-    if matches!(source, super::package_source::PackageSource::Download) {
+    if matches!(source, super::package_source::PackageSource::Download | super::package_source::PackageSource::SpaceQuest4Scummvm) {
         let _ = std::fs::remove_file(&download_path);
     }
 
@@ -547,6 +547,7 @@ pub(super) async fn reconcile_patches(
             .filter(|p| p.join("manifest.json").is_file())
         else {
             if associated {
+                row.status = "unverified".into();
                 installed.push(row);
             }
             continue;
@@ -557,6 +558,7 @@ pub(super) async fn reconcile_patches(
             // never guess which installation owns an unreadable orphan record.
             Err(_) => {
                 if associated {
+                    row.status = "unverified".into();
                     installed.push(row);
                 }
                 continue;
@@ -564,6 +566,7 @@ pub(super) async fn reconcile_patches(
             Ok(true) => {}
         }
         let (version, _, status, _) = patch_lifecycle::recover_installation(path)?;
+        if status == "superseded" { continue; }
         if status == "restored" {
             installed_patch::Entity::delete_by_id(row.id)
                 .exec(db)
@@ -574,7 +577,23 @@ pub(super) async fn reconcile_patches(
         if !associated && status != "active" {
             continue;
         }
-        if !associated || (status == "active" && row.version != version) {
+        if status == "active" {
+            match patch_lifecycle::verify_installed(path, &target, &game.scummvm_id, &version) {
+                Ok(problems) if problems.is_empty() => {}
+                result => {
+                    if patch_lifecycle::matches_original_files(path, &target).unwrap_or(false) {
+                        patch_lifecycle::archive_replaced_installation(path, &target)?;
+                        // The path now contains the original game again. Keep recovery
+                        // data, but do not associate its old translation with this install.
+                        continue;
+                    }
+                    row.status = if result.is_ok() { "damaged" } else { "unverified" }.into();
+                    installed.push(row);
+                    continue;
+                }
+            }
+        }
+        if !associated || row.status != status || (status == "active" && row.version != version) {
             let mut model: installed_patch::ActiveModel = row.clone().into();
             model.game_id = Set(game_id);
             model.version = Set(version);

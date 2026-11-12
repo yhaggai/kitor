@@ -61,6 +61,8 @@ path = "../native-steam"
 opt-level = 3
 [profile.dev.package.sha1]
 opt-level = 3
+[profile.dev.package.sha2]
+opt-level = 3
 [profile.dev.package.aes]
 opt-level = 3
 [profile.dev.package.cbc]

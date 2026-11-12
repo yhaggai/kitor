@@ -96,7 +96,7 @@ fn discover(steam_roots: Vec<PathBuf>, gog_roots: Vec<PathBuf>) -> (Vec<PathBuf>
 }
 
 #[cfg(target_os = "windows")]
-fn registry_paths(key: &str, value: &str, recursive: bool) -> Vec<PathBuf> {
+pub(super) fn registry_paths(key: &str, value: &str, recursive: bool) -> Vec<PathBuf> {
     let mut command = std::process::Command::new("reg");
     command.args(["query", key, "/v", value]);
     if recursive {

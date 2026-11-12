@@ -22,7 +22,11 @@ Files are downloaded into a temporary directory, with bounded parallel requests,
 AES decryption, chunk and whole-file SHA-1 verification against the manifest, and
 path validation. The directory is published only after all files verify. Existing
 destinations are rejected. Importers then perform their existing edition checks,
-register games, and hand off to the existing patch installer.
+register games, and hand off to the existing patch installer. Kitor-owned verified
+temporary content is moved into installation staging on the same filesystem,
+avoiding a second copy and checksum pass. Cross-filesystem imports retain the
+verified-copy fallback. Existing Steam-client content and reusable caches are
+never consumed. Patch verification and backup checks remain unchanged.
 
 The current transport supports public-branch manifests and the compression
 formats ZIP, Valve LZMA, and Valve Zstandard. Symlink entries are rejected. It does

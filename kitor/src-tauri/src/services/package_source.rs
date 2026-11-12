@@ -5,6 +5,7 @@ use std::{fs, path::Path};
 pub enum PackageSource {
     Download,
     OwlboyMacSteam,
+    SpaceQuest4Scummvm,
 }
 impl PackageSource {
     pub fn resolve(patch: &PatchDefinition, _behavior: &GameBehavior) -> Result<Self, String> {
@@ -13,6 +14,13 @@ impl PackageSource {
             && patch.filename.as_deref() == Some("owlboy-he-0.2.0-beta.2-kitor2-download1.zip")
         {
             return Ok(Self::OwlboyMacSteam);
+        }
+        if cfg!(target_os = "macos")
+            && patch.version == "0.1.0-download1"
+            && patch.filename.as_deref() == Some("sq4-he-0.1.0-download1.zip")
+            && patch.checksum.as_deref() == Some("98149fc0bcfb14671e356bad7544074e9510f1e5319fddab45dd8a045f2534fb")
+        {
+            return Ok(Self::SpaceQuest4Scummvm);
         }
         if patch.source_type == "bundled" || !patch.download_url.starts_with("https://") {
             return Err("Patch has no downloadable package; refresh the catalog".into());
@@ -54,7 +62,25 @@ impl PackageSource {
             .tempdir_in(destination.parent().ok_or("Missing staging parent")?)
             .map_err(|e| e.to_string())?;
         super::file_service::extract_zip(archive, extracted.path())?;
-        let root = selected_root(extracted.path(), id, target, super::patch_lifecycle::platform())?;
+        let resource_only = matches!(self, Self::SpaceQuest4Scummvm);
+        let root = selected_root(extracted.path(), id, target,
+            if resource_only { "windows" } else { super::patch_lifecycle::platform() })?;
+        if resource_only {
+            use super::patch_lifecycle::{Package, Operation, Source};
+            let manifest = root.join("patch.json");
+            let mut package: Package = serde_json::from_slice(&fs::read(&manifest).map_err(|e| e.to_string())?)
+                .map_err(|e| e.to_string())?;
+            if id != "sq4" || package.scummvm_id != id || package.language != _language || package.version != _version {
+                return Err("Unexpected Space Quest IV patch identity".into());
+            }
+            let plan = package.platforms.get("windows").ok_or("Missing ScummVM resource plan")?.clone();
+            if plan.files.is_empty() || plan.files.iter().any(|file|
+                file.operation != Operation::Install || !matches!(file.source, Some(Source::Copy { .. }))) {
+                return Err("Space Quest IV package is not a resource-only patch".into());
+            }
+            package.platforms.insert("osx".into(), plan);
+            fs::write(manifest, serde_json::to_vec(&package).map_err(|e| e.to_string())?).map_err(|e| e.to_string())?;
+        }
         if matches!(self, Self::OwlboyMacSteam) {
             select_owlboy_catalog(&root, target)?;
         }
