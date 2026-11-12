@@ -650,5 +650,117 @@
   "Messages/ERROR_SETTINGS_FILE_CORRUPTED": {
     "english": "Settings file is corrupted and can not be read, generating new one.",
     "hebrew": "קובץ ההגדרות פגום ואי אפשר לקרוא אותו. נוצר קובץ חדש."
+  },
+  "F1_SCREEN_QUICKSAVE_TITLE": {
+    "english": "QUICK SAVE",
+    "hebrew": "שמירה מהירה"
+  },
+  "F1_SCREEN_QUICKLOAD_TITLE": {
+    "english": "QUICK LOAD",
+    "hebrew": "טעינה מהירה"
+  },
+  "Messages/NOTIFICATION_QUICKSAVE": {
+    "english": "Quicksave",
+    "hebrew": "שמירה מהירה"
+  },
+  "MENU_CONSOLES_LOAD": {
+    "english": "LOAD",
+    "hebrew": "טעינה"
+  },
+  "Messages/ERROR_SELECT_LOAD": {
+    "english": "Select a save game to load!",
+    "hebrew": "בחרו משחק שמור לטעינה!"
+  },
+  "SAVELOAD_LOAD_TITLE": {
+    "english": "Load game",
+    "hebrew": "טעינת משחק"
+  },
+  "QUIT_TO_MAIN_MENU_CONFIRMATION": {
+    "english": "Do you really want to go back to main menu?",
+    "hebrew": "באמת לחזור לתפריט הראשי?"
+  },
+  "Skills/SKILL_NAME_ENCYCLOPEDIA": {
+    "english": "Encyclopedia",
+    "hebrew": "אנציקלופדיה"
+  },
+  "Skills/SKILL_NAME_ENCYCLOPEDIA_UPPER": {
+    "english": "Encyclopedia",
+    "hebrew": "אנציקלופדיה"
+  },
+  "INTRO_FURIES_QUOTE": {
+    "english": "’The furies are at home in the mirror; it is their address. Even the clearest water, if deep enough can drown.” - R. S. Thomas",
+    "hebrew": "״האריניות שוכנות במראה. זו כתובתן. גם במים הצלולים ביותר אפשר לטבוע, אם הם עמוקים מספיק.״ — ר׳ ס׳ תומאס"
+  },
+  "Tips/TIP_1": {
+    "english": "Don't be afraid to say *weird* things. People are more forgiving to persons of power -- like police officers.",
+    "hebrew": "אל תפחדו להגיד דברים *מוזרים*. אנשים סלחנים יותר כלפי בעלי סמכות, כמו שוטרים."
+  },
+  "Tips/TIP_2": {
+    "english": "Need to pass time? Buy a book. Reading passes time quickly.",
+    "hebrew": "צריכים להעביר את הזמן? קנו ספר. הקריאה מעבירה את הזמן במהירות."
+  },
+  "Tips/TIP_5": {
+    "english": "Can't put more points in a skill? Drugs raise learning caps, but they're *bad* for your health.",
+    "hebrew": "לא מצליחים להשקיע עוד נקודות בכישור? סמים מעלים את תקרת הלמידה, אבל הם *מזיקים* לבריאות."
+  },
+  "Tips/TIP_6": {
+    "english": "Red checks can be tried only once. Failed White checks can be re-tried by increasing the relevant Skill.",
+    "hebrew": "אפשר לנסות בדיקות אדומות פעם אחת בלבד. כדי לנסות שוב בדיקה לבנה שנכשלה, שפרו את הכישור המתאים."
+  },
+  "Tips/TIP_7": {
+    "english": "Most checks have secret difficulty modifiers. Talking to the right person can re-open a closed White check.",
+    "hebrew": "לרוב הבדיקות יש גורמים סמויים שמשפיעים על הקושי. שיחה עם האדם הנכון יכולה לפתוח מחדש בדיקה לבנה."
+  },
+  "Tips/TIP_8": {
+    "english": "Short on money? Equip a plastic bag, collect bottles, and sell them at Frittte!",
+    "hebrew": "חסר לכם כסף? הצטיידו בשקית פלסטיק, אספו בקבוקים ומכרו אותם בפריטט!"
+  },
+  "Tips/TIP_9": {
+    "english": "Need to do something behind Ltn Kitsuragi's back? Sneak out after he's gone to sleep.",
+    "hebrew": "צריכים לעשות משהו מאחורי גבו של סגן קיצוראגי? חמקו החוצה אחרי שהוא הולך לישון."
+  },
+  "Tips/TIP_10": {
+    "english": "Pick dialogue options that begin with \"hold on\" or \"wait\" to gain additional information before the conversation moves on.",
+    "hebrew": "בחרו באפשרויות שיחה שמתחילות ב״רגע״ או ״חכו״ כדי לקבל מידע נוסף לפני שהשיחה מתקדמת."
+  },
+  "Tips/TIP_11": {
+    "english": "The 'Map' tab in your Journal lists all the White checks you can re-attempt.",
+    "hebrew": "בלשונית ״מפה״ ביומן מופיעות כל הבדיקות הלבנות שאפשר לנסות שוב."
+  },
+  "Tips/TIP_12": {
+    "english": "Skill points can also buy new Thought Cabinet slots, or forget old Thoughts!",
+    "hebrew": "נקודות כישורים מאפשרות גם לפתוח מקומות בארון המחשבות או לשכוח מחשבות ישנות!"
+  },
+  "Tips/TIP_13": {
+    "english": "Equip a flashlight in low light areas.",
+    "hebrew": "הצטיידו בפנס באזורים חשוכים."
+  },
+  "Tips/TIP_14": {
+    "english": "Low on Morale? Put points into Volition!",
+    "hebrew": "המורל נמוך? השקיעו נקודות בכוח רצון!"
+  },
+  "Tips/TIP_15": {
+    "english": "Low on Health? Put points into Endurance!",
+    "hebrew": "הבריאות נמוכה? השקיעו נקודות בסיבולת!"
+  },
+  "Tips/TIP_16": {
+    "english": "Police work is tough. Take breaks – talk to strangers, explore!",
+    "hebrew": "עבודת המשטרה קשה. קחו הפסקות, דברו עם זרים וצאו לחקור!"
+  },
+  "Tips/TIP_17": {
+    "english": "You can sleep after 21.00 Sleeping heals all your Health and Morale.",
+    "hebrew": "אפשר לישון אחרי 21:00. השינה משקמת את כל הבריאות והמורל."
+  },
+  "Tips/TIP_18": {
+    "english": "Most people settle for bed after 21.00 or not long after. At night the streets are emptier. By 02.00 everyone’s asleep.",
+    "hebrew": "רוב האנשים הולכים לישון ב־21:00 או קצת אחר כך. בלילה הרחובות מתרוקנים. ב־02:00 כולם כבר ישנים."
+  },
+  "Tips/TIP_19": {
+    "english": "See a container you can't open? Equip a prybar!",
+    "hebrew": "מצאתם מכולה שלא נפתחת? הצטיידו בלום!"
+  },
+  "Tips/TIP_20": {
+    "english": "Revachol is pronounced \"RE-va-shol\"; Oranje is pronounced \"O-RAN-yeh\"; Klaasje is pronounced “KLAAS-yeh”",
+    "hebrew": "כך הוגים את השמות: רֶבַשׁוֹל, אוֹרַנְיֶה וקְלָאסְיֶה."
   }
 }

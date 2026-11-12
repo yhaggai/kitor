@@ -10,8 +10,10 @@ import numpy as np
 from PIL import Image, ImageDraw, ImageFont
 from scipy.ndimage import distance_transform_edt
 import text_pipeline as text
+from loading_literal import replace_loading_label
+from language_display_name import replace_language_display_name
 ROOT=Path(__file__).resolve().parent
-VERSION='0.1.0'
+VERSION='0.1.2'
 FALLBACK=ROOT/'NotoSans.ttf'
 def sha(data):return hashlib.sha256(data).hexdigest()
 def font_bundle(source,translations,font_path):
@@ -20,6 +22,8 @@ def font_bundle(source,translations,font_path):
  assert (t['m_AtlasWidth'],t['m_AtlasHeight'])==(4096,4096)
  atlas=Image.new('RGBA',(8192,4096),(255,255,255,0));atlas.paste(texture.image,(0,0))
  fonts=[ImageFont.truetype(str(path),256) for path in (font_path,FALLBACK)]
+ # Assistant defaults to ExtraLight, which makes orange dialogue choices hard to read.
+ fonts[0].set_variation_by_axes([600])
  missing=[bytes(font.getmask(chr(0x10ffff))) for font in fonts]
  pad=20
  existing={c['m_Unicode'] for c in t['m_CharacterTable']}
@@ -82,12 +86,34 @@ def interface_image_bundle(source, translations, font_path):
   'saving-panel-ar':'שומר',
   'button-reset-settings-ar':translations['Buttons/SETTINGS_BUTTON_RESET_SETTINGS_TEXT'],
  }
+ button_labels={
+  'continue-tight-ar':(232,511,translations['Buttons/ARCHETYPE_BUTTON_CONTINUE_TEXT']),
+  'button_back-ar':(0,220,'הקודם'),
+  'button_cancel-ar':(312,511,translations['Buttons/CONFIRMATION_BUTTON_CANCEL_TEXT']),
+  'button_confirm-ar':(322,511,translations['Buttons/CONFIRMATION_BUTTON_CONFIRM_TEXT']),
+
+ }
  rebuilt={}
  for obj in env.objects:
   name=obj.peek_name() if obj.type.name=='Texture2D' else None
-  if name not in labels:continue
+  if name not in labels and name not in button_labels:continue
   texture=obj.read()
   original=texture.image.convert('RGBA')
+  if name in button_labels:
+   left,right,label=button_labels[name]
+   panel=original.copy()
+   draw=ImageDraw.Draw(panel)
+   background=panel.getpixel((left+2,10))
+   draw.rectangle((left,20,right-1,110),fill=background)
+   font=ImageFont.truetype(str(font_path),57)
+   font.set_variation_by_axes([500])
+   alignment='lm' if name=='button_back-ar' else 'rm'
+   x=left+35 if alignment=='lm' else right-37
+   draw.text((x,61),label,font=font,anchor=alignment,fill='white',direction='rtl')
+   texture.set_image(panel,target_format=4)
+   texture.save()
+   rebuilt[name]=panel.tobytes()
+   continue
   alpha=original.getchannel('A')
   is_button=name=='button-reset-settings-ar'
   _,top,right,bottom=alpha.getbbox()
@@ -113,9 +139,10 @@ def interface_image_bundle(source, translations, font_path):
   texture.set_image(panel,target_format=4)
   texture.save()
   rebuilt[name]=panel.tobytes()
- assert rebuilt.keys()==labels.keys(),'Missing expected interface images'
+ expected=labels.keys()|button_labels.keys()
+ assert rebuilt.keys()==expected,'Missing expected interface images'
  output=env.file.save(packer='lz4')
- actual={o.peek_name():o.read().image.convert('RGBA').tobytes() for o in UnityPy.load(output).objects if o.type.name=='Texture2D' and o.peek_name() in labels}
+ actual={o.peek_name():o.read().image.convert('RGBA').tobytes() for o in UnityPy.load(output).objects if o.type.name=='Texture2D' and o.peek_name() in expected}
  assert actual==rebuilt
  return output
 
@@ -127,7 +154,7 @@ def build(mac,windows,font_path):
  for key,override in overrides.items():
   assert rows[key]['english']==override['english'],f'Interface source text changed: {key}'
   translations[key]=override['hebrew']
- manifest={'schema_version':1,'scummvm_id':'disco-elysium','language':'he','version':VERSION,'release_revision':1,'filename':f'Disco-Elysium-Hebrew-{VERSION}.zip','platforms':{}}
+ manifest={'schema_version':1,'scummvm_id':'disco-elysium','language':'he','version':VERSION,'release_revision':3,'filename':f'Disco-Elysium-Hebrew-{VERSION}.zip','platforms':{}}
  fingerprints={};glyphs={}
  for platform,root,base in [('osx',mac,'Contents/Resources/Data/StreamingAssets/AssetBundles/OSX'),('windows',windows,'disco_Data/StreamingAssets/AssetBundles/Windows')]:
   assert root.is_dir();files=[]
@@ -138,6 +165,20 @@ def build(mac,windows,font_path):
    else:after=interface_image_bundle(source,translations,font_path)
    delta=bsdiff4.diff(before,after);assert bsdiff4.patch(before,delta)==after
    target=ROOT/'payload'/platform/(kind+'.bsdiff');target.parent.mkdir(parents=True,exist_ok=True);target.write_bytes(delta)
+   files.append({'path':rel,'operation':'modify','original_sha256':sha(before),'installed_sha256':sha(after),'source':{'kind':'bsdiff','path':str(target.relative_to(ROOT)),'sha256':sha(delta),'input':rel}})
+   fingerprints[f'{platform}/{kind}']={'source_sha256':sha(before),'output_sha256':sha(after),'delta_bytes':len(delta)}
+  data_root=Path(base).parents[2]
+  for kind,relative_path,transform in [
+   ('loading-literal','il2cpp_data/Metadata/global-metadata.dat',replace_loading_label),
+   ('language-display-name','resources.assets',replace_language_display_name),
+  ]:
+   rel=(data_root/relative_path).as_posix()
+   before=(root/rel).read_bytes()
+   after=transform(before)
+   delta=bsdiff4.diff(before,after)
+   assert bsdiff4.patch(before,delta)==after
+   target=ROOT/'payload'/platform/(kind+'.bsdiff')
+   target.write_bytes(delta)
    files.append({'path':rel,'operation':'modify','original_sha256':sha(before),'installed_sha256':sha(after),'source':{'kind':'bsdiff','path':str(target.relative_to(ROOT)),'sha256':sha(delta),'input':rel}})
    fingerprints[f'{platform}/{kind}']={'source_sha256':sha(before),'output_sha256':sha(after),'delta_bytes':len(delta)}
   manifest['platforms'][platform]={'files':files}

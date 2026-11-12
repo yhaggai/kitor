@@ -1,6 +1,6 @@
 # Disco Elysium Hebrew patch
 
-Kitor downloads the ZIP listed in its registry and applies three binary deltas. The installer verifies the original Steam files and backs up only the files it changes. Uninstall restores those files from the journal. Python 3 is required. Select Arabic in the game's language settings to activate Hebrew.
+Kitor downloads the ZIP listed in its registry and applies five binary deltas. The installer verifies the original Steam files and backs up only the files it changes. Uninstall restores those files from the journal. Python 3 is required. Select עברית in the game's language settings to activate Hebrew.
 
 The patch uses the committed translation snapshot at `6b71fce` on the Disco Elysium localization branch and the interface text in `interface-text.json`. The package uses the original game's RTL renderer. The Hebrew and Greek atlas additions use Assistant and Noto Sans under the SIL Open Font License. The notices are in `licenses/`.
 
