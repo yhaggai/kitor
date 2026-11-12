@@ -1386,7 +1386,7 @@
           "source_type": "github",
           "checksum": "b66900615e0c07038949604374ca7145d861b7982164fa01bdfba321cc56bfd2",
           "file_size": 5016145,
-          "description": "תרגום בטא מלא לעברית: 4,537 רשומות, גופן עברי וכתיבה מימין לשמאל. לגרסאות Steam FNA התואמות ב-Windows וב-macOS. נדרש Python 3. יש לבחור עברית בתפריט השפות. ב-Windows ניתן לבחור דגל N לעברית עם ניקוד. בדיקת משחק מלאה עדיין ממתינה.",
+          "description": "תרגום בטא מלא לעברית עם גופן עברי וכתיבה מימין לשמאל, לגרסאות Steam FNA התואמות ב-Windows וב-macOS. נדרש Python 3. בתפריט השפות בחרו את דגל ישראל לעברית רגילה או את הדגל עם N לעברית עם ניקוד. בדיקת משחק מלאה עדיין ממתינה.",
           "filename": "owlboy-he-0.2.0-beta.2-kitor2-download1.zip",
           "post_install_script": null,
           "install_manifest": "patch.json",

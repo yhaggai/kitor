@@ -1,5 +1,25 @@
 [
   {
+    "app_id": 115800,
+    "depot_id": 115805,
+    "title": "Owlboy",
+    "importer": "layout",
+    "cache_key": "115800-115805",
+    "games": [
+      {
+        "id": "owlboy",
+        "title": "Owlboy",
+        "folder": "",
+        "files": []
+      }
+    ],
+    "required_files": [
+      "Owlboy.app/Contents/MacOS/Owlboy",
+      "Owlboy.app/Contents/Resources/Owlboy.exe"
+    ],
+    "copy_paths": ["Owlboy.app"]
+  },
+  {
     "app_id": 32460,
     "depot_id": 32461,
     "title": "Monkey Island 2: Special Edition",
