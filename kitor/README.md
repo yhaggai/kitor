@@ -49,7 +49,7 @@ Before running Kitor, you need to install:
 
 3. **Run development server**:
    ```bash
-   bun run tauri dev
+   bun tauri:dev
    ```
 
 ## Building for Production
@@ -80,6 +80,9 @@ Then open `src-tauri/target/release/bundle/macos/kitor.app`. If Kitor asks for
 access to an existing Steam credential, choose **Always Allow** in that prompt
 too. Reuse the same signing identity and bundle identifier across rebuilds so
 Keychain can recognize Kitor.
+
+On macOS, `bun tauri:dev` also uses this identity when it is installed. Cargo
+signs the executable before launch, including after a Rust reload.
 
 ## Project Structure
 
