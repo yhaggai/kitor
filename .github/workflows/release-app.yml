@@ -155,6 +155,13 @@ jobs:
           PYTHON
           xcrun stapler staple "${images[0]}"
           xcrun stapler validate "${images[0]}"
+      - name: Save verified disk image
+        if: inputs.verify_macos && runner.os == 'macOS'
+        uses: actions/upload-artifact@v4
+        with:
+          name: kitor-${{ matrix.platform }}
+          path: kitor/src-tauri/target/${{ matrix.target }}/release/bundle/dmg/*.dmg
+          if-no-files-found: error
       - name: Upload to draft release
         if: ${{ !inputs.verify_macos }}
         env:
