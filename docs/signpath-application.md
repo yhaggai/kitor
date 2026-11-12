@@ -1,67 +1,29 @@
-# SignPath application preparation
+# SignPath application draft for Kitor
 
-Prepared 7 November 2026. Not submitted; approval is not guaranteed.
+Updated 12 November 2026. The draft is ready for maintainer review. Resolve the submission items below before making eligibility or compliance claims.
 
-## Application draft
+## Application answers
 
-- Project: Kitor
-- Maintainer: Haggai Yaniv / GitHub `yhaggai`
-- Repository: https://github.com/yhaggai/kitor
-- Description: An open-source desktop launcher and Hebrew translation manager
-  for users' own games. It detects installations, downloads compatible community
-  patches, backs up affected files, restores managed patches, and launches games.
-- Code license: MIT for maintainer-owned code; third-party exclusions are
-  documented in `LICENSING.md`. A complete component audit is pending.
-- Requested signing: Kitor Windows x64 executable and NSIS installer.
-- Existing Windows release: https://github.com/yhaggai/kitor/releases/tag/app-v0.1.1
-- Build: GitHub Actions, `.github/workflows/release-app.yml`, branch `v1`;
-  Bun frontend build and Rust/Tauri build with locked dependencies.
-- Policy: https://github.com/yhaggai/kitor/blob/v1/CODE_SIGNING_POLICY.md
-- Privacy: https://github.com/yhaggai/kitor/blob/v1/PRIVACY.md
-- Signing approver: proposed maintainer `yhaggai`; MFA confirmation pending.
-- Contact email: maintainer must supply directly in the application.
-
-The policy links become usable after these changes are merged to `v1`.
-Disclose community patch downloads, game artwork, store authentication,
-automatic network requests, and any separately downloaded runtime tools.
-Do not represent these as independently approved or covered by the MIT license.
+- **Project and maintainer** — Kitor, maintained by Haggai Yaniv ([yhaggai](https://github.com/yhaggai)).
+- **Source and project homepage** — [Public GitHub repository](https://github.com/yhaggai/kitor), default branch `v1`.
+- **Description** — Kitor is a desktop launcher and Hebrew translation manager for adventure games users already own. It detects supported installations, downloads compatible community translations, backs up files before patching, and restores those files when a patch is removed. Optional integrations support Steam, GOG, and translation contributions.
+- **License** — The maintainer's original code is MIT licensed. Third-party components and assets retain their own terms. See the [licensing scope](https://github.com/yhaggai/kitor/blob/v1/LICENSING.md). The Windows release inventory is still under review.
+- **Release and requested signing scope** — [Kitor 0.1.3](https://github.com/yhaggai/kitor/releases/tag/app-v0.1.3) includes a Windows x64 NSIS installer. Request Authenticode signing for Kitor's own `kitor.exe` and its x64 NSIS setup executable. Community patches and independently downloaded runtimes are part of Kitor's functionality and should be disclosed.
+- **Build provenance** — The [release workflow](https://github.com/yhaggai/kitor/blob/v1/.github/workflows/release-app.yml) checks out the release source, installs the locked Bun dependencies, and builds the Rust/Tauri app and NSIS installer in GitHub Actions. Proposed signing approval is manual for every release.
+- **Policies and roles** — [Code signing policy](https://github.com/yhaggai/kitor/blob/v1/CODE_SIGNING_POLICY.md) and [desktop privacy policy](https://github.com/yhaggai/kitor/blob/v1/PRIVACY.md). Haggai Yaniv is the listed maintainer and reviewer and the proposed signing approver.
+- **Release history and adoption** — GitHub listed three published Windows installers, for 0.1.1, 0.1.2, and 0.1.3. Before the audit download on 12 November 2026, their asset counters were 2, 1, and 1 respectively. These are download events. Add independently verifiable evidence of adoption or community use if available.
+- **Contact email** — The maintainer supplies the preferred address in the form.
 
 ## Before submitting
 
-- [ ] Merge/publish licensing and policy documents, and verify their public links.
-- [ ] Confirm copyright ownership of code covered by MIT and retain upstream notices.
-- [ ] Inventory the actual Windows installer: compiled dependencies, embedded
-  frontend assets, fonts, images, scripts, and any bundled runtime components.
-  Record source, version, license, and redistribution evidence for each.
-  Resolve missing permissions or remove/replace affected content.
-- [ ] Review patch provenance and restrictions separately. In particular the
-  classic Tentacle registry entry says personal use only / do not distribute;
-  resolve that restriction against actual published packages before claiming
-  application readiness. Credits alone are not a redistribution license.
-- [ ] Review automatic update/catalog, GOG refresh, and remote image requests
-  against SignPath's privacy requirements. Implement installation disclosure and
-  disable controls if required; a Markdown policy alone does not satisfy them.
-- [ ] Confirm MFA for every repository/signing team member and role assignments.
-- [ ] Provide truthful project history and usage/reputation evidence. Do not
-  invent download counts or claim that public-source availability guarantees approval.
-- [ ] Submit using https://signpath.org/apply after outstanding items are resolved.
+1. **Document the classic Tentacle permission.** The maintainer confirmed permission to distribute the Kitor recipe package. The [updated recipe archive](https://github.com/yhaggai/kitor/releases/tag/patch-tentacle-he-v2.0-beta2-kitor1-download2) carries the corrected notice. Retain any record of the permission and check the other published patch packages for documented permissions.
+2. **Complete the Windows release inventory.** A listing of the published 0.1.3 installer showed `kitor.exe`, six NSIS/Tauri plug-in DLLs, and two wizard bitmaps. Finish the inventory of compiled Rust dependencies, embedded frontend dependencies and assets, fonts or artwork if present, installer resources and plug-ins, and the WebView2 install path. Record each item's origin, version, license and applicable notices. Check both open-source eligibility and redistribution rights. Obtain SignPath's guidance on any ambiguous component and replace or remove items that cannot meet the requirements.
+3. **Review actual data flows and installer behavior.** Reconcile the privacy policy with the release code, including startup update/catalog requests, remote images, GOG refresh, and optional contribution sign-in and submissions. SignPath requires disclosure in the policy and during installation, plus installation-time disable options, where its user-data transfer rule applies. Confirm applicability with SignPath if needed. Verify the current Windows installer warns about applicable system changes and provides a working uninstall.
+4. **Confirm the account and project details.** Confirm the contact email, signing approver, and MFA for all team members on GitHub and SignPath. Check that the public homepage and release/download pages expose the code signing policy, and add genuine public usage or community references if available. SignPath reviews project reputation for executable apps.
+5. **Submit the reviewed answers** through the [SignPath application](https://signpath.org/apply). Update the provider attribution when SignPath authorizes the project to use it.
 
 ## After acceptance
 
-Configure the approved SignPath project, artifact configuration and signing
-policy, GitHub build provenance integration, and manual approval. Restrict product
-name/version metadata. Sign only the approved Kitor artifacts. Integrate signing
-before Tauri generates the final installer's updater signature; then test
-Authenticode verification, clean installation, uninstall, and an update from an
-older release. Verify all platforms before publication.
+Configure the SignPath project and GitHub build provenance, require manual approval for each signing request, and enforce Kitor product name and version metadata. Sign the app before bundling it. Sign and timestamp the final Windows installer before Tauri generates its updater signature. Verify both Authenticode signatures, fresh installation and launch, uninstall, and updating from an older release.
 
-Activate the provider attribution in the code signing policy only when true.
-Include a Code signing policy link in release notes and the project homepage.
-Do not rotate or replace the independent Tauri updater key for this integration.
-
-## Sources
-
-- https://signpath.org/terms.html
-- https://signpath.org/apply
-
-This is a readiness record, not a certification of compliance or legal ownership.
+[SignPath Foundation requirements](https://signpath.org/terms.html)
