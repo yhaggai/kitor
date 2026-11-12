@@ -12,6 +12,7 @@ from scipy.ndimage import distance_transform_edt
 import text_pipeline as text
 from loading_literal import replace_loading_label
 from language_display_name import replace_language_display_name
+from interface_font import build_interface_font_recipe
 ROOT=Path(__file__).resolve().parent
 VERSION='0.1.2'
 FALLBACK=ROOT/'NotoSans.ttf'
@@ -146,6 +147,20 @@ def interface_image_bundle(source, translations, font_path):
  assert actual==rebuilt
  return output
 
+def interface_font_plan(root, data_root, platform, font_path):
+ relative=(data_root/'sharedassets2.assets').as_posix()
+ source=(root/relative).read_bytes()
+ recipe,installed_sha=build_interface_font_recipe(source,font_path)
+ target=ROOT/'payload'/platform/'interface-font.json'
+ text.writejson(target,recipe)
+ return {
+  'path':relative,
+  'operation':'modify',
+  'original_sha256':recipe['input_sha256'],
+  'installed_sha256':installed_sha,
+  'source':{'kind':'reconstruct','path':str(target.relative_to(ROOT)),'sha256':sha(target.read_bytes()),'input':relative},
+ }
+
 def build(mac,windows,font_path):
  report=text.validate()
  rows={r['key']:r for r in text.readcsv()}
@@ -181,6 +196,9 @@ def build(mac,windows,font_path):
    target.write_bytes(delta)
    files.append({'path':rel,'operation':'modify','original_sha256':sha(before),'installed_sha256':sha(after),'source':{'kind':'bsdiff','path':str(target.relative_to(ROOT)),'sha256':sha(delta),'input':rel}})
    fingerprints[f'{platform}/{kind}']={'source_sha256':sha(before),'output_sha256':sha(after),'delta_bytes':len(delta)}
+  font_plan=interface_font_plan(root,data_root,platform,font_path)
+  files.append(font_plan)
+  fingerprints[f'{platform}/interface-font']={'source_sha256':font_plan['original_sha256'],'output_sha256':font_plan['installed_sha256']}
   manifest['platforms'][platform]={'files':files}
  text.writejson(ROOT/'patch.json',manifest)
  text.writejson(ROOT/'package-build.json',{'schema_version':1,'csv_sha256':sha((ROOT/'translations.csv').read_bytes()),'compiler_sha256':sha(Path(__file__).read_bytes()),'translated':len(translations),'source_entries':report['entries'],'font':'Assistant and Noto Sans','font_sha256':sha(font_path.read_bytes()),'fallback_font_sha256':sha(FALLBACK.read_bytes()),'font_license':'SIL Open Font License 1.1','glyphs_added':glyphs,'platforms':fingerprints,'release_ready':False})

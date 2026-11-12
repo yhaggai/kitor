@@ -67,6 +67,18 @@
             "sha256": "acb78f761a42870d6f852ad176dc17100c9d7f6751a57eb0ac17fdb42b71ae3d",
             "input": "Contents/Resources/Data/resources.assets"
           }
+        },
+        {
+          "path": "Contents/Resources/Data/sharedassets2.assets",
+          "operation": "modify",
+          "original_sha256": "9e1b1bd765fcbc03b5c12d4d7cbc795460fbcbe3f5582425ddc4085cc3c5e749",
+          "installed_sha256": "389791aa0cc9f3696c5839c873a9acb8379de88bd9d4f3b5c2463fe3fc62ce7e",
+          "source": {
+            "kind": "reconstruct",
+            "path": "payload/osx/interface-font.json",
+            "sha256": "68d1da3241ea04d639dccc7b4f4bba3b7e02c27f8f4730eb600c048c2a6da8b6",
+            "input": "Contents/Resources/Data/sharedassets2.assets"
+          }
         }
       ]
     },
@@ -130,6 +142,18 @@
             "path": "payload/windows/language-display-name.bsdiff",
             "sha256": "3d26869f9e141d68a96ff28e0729465d57f024ba9f235520ac9193bac4418065",
             "input": "disco_Data/resources.assets"
+          }
+        },
+        {
+          "path": "disco_Data/sharedassets2.assets",
+          "operation": "modify",
+          "original_sha256": "1200628ffe1efdf5deb67d96fe6adc608d9c4fd811b1dc988613a6e0866fcce6",
+          "installed_sha256": "8f8d9c3fae413180dcc46935dcf7d516fdd1029a191d184012fd48bf19b1d885",
+          "source": {
+            "kind": "reconstruct",
+            "path": "payload/windows/interface-font.json",
+            "sha256": "6c6a1a33a125295c2d89010295862ba9f021f0d49247739186d347dc3a9813f3",
+            "input": "disco_Data/sharedassets2.assets"
           }
         }
       ]

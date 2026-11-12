@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "csv_sha256": "be122ff7937ec5d47f6d6bab292124a022db3f0ad81a308617d830ac53f4c9aa",
-  "compiler_sha256": "fcf4a18b6ecefb993d584a60abb209c62b7c927f54de0d9f806c751f3ee82e3c",
+  "compiler_sha256": "92cc031b79f635d469f29429d1105070ea4d3f5fc794ecaebde135f0228db459",
   "translated": 75021,
   "source_entries": 79586,
   "font": "Assistant and Noto Sans",
@@ -62,6 +62,14 @@
       "source_sha256": "fa045eec590ee1fb9e6fe8228d1a7fdb13c12f4c62443cb0b4b4234917f137c3",
       "output_sha256": "e2f24827c3dbc0836d79ea0f9359b8dee85845ca1b02c348b23b85f58a87b1e0",
       "delta_bytes": 223
+    },
+    "osx/interface-font": {
+      "source_sha256": "9e1b1bd765fcbc03b5c12d4d7cbc795460fbcbe3f5582425ddc4085cc3c5e749",
+      "output_sha256": "389791aa0cc9f3696c5839c873a9acb8379de88bd9d4f3b5c2463fe3fc62ce7e"
+    },
+    "windows/interface-font": {
+      "source_sha256": "1200628ffe1efdf5deb67d96fe6adc608d9c4fd811b1dc988613a6e0866fcce6",
+      "output_sha256": "8f8d9c3fae413180dcc46935dcf7d516fdd1029a191d184012fd48bf19b1d885"
     }
   },
   "release_ready": false

@@ -2180,8 +2180,8 @@
           "download_url": "https://github.com/yhaggai/kitor/releases/download/patch-disco-elysium-he-v0.1.2/Disco-Elysium-Hebrew-0.1.2.zip",
           "source_type": "github",
           "filename": "Disco-Elysium-Hebrew-0.1.2.zip",
-          "file_size": 23748392,
-          "checksum": "5bc78a2ecf1c96d0dd0867435fab9bfd335bbbcf5c5e78195e97bb737a7f20f1",
+          "file_size": 29881151,
+          "checksum": "b5f3d84cfea066834e0df71c589c066739dd7125456702f8361dac6bab94228a",
           "description": "Partial Hebrew translation for the Steam edition of Disco Elysium – The Final Cut on Windows and macOS. Includes 75,021 translated entries, a heavier Hebrew font, a Hebrew label in the language menu, and translated loading, saving, and interface labels. Select עברית in the game's language settings after installing. Some unfinished content can still appear in Arabic. Python 3 is required.",
           "post_install_script": null,
           "install_manifest": "patch.json"
