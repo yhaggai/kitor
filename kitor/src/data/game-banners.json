@@ -134,5 +134,10 @@
   "jenny-leclue": {
     "he": "https://assets.kitor.click/banners/jenny-leclue/he/64bf594d7ff5.png",
     "aspectRatio": 3
+  },
+  "disco-elysium": {
+    "en": "https://assets.kitor.click/banners/disco-elysium/en/fee6aa0d9d43.jpg",
+    "he": "https://assets.kitor.click/banners/disco-elysium/he/483eff4982ff.png",
+    "aspectRatio": 2.1375291375291376
   }
 }

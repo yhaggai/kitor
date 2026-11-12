@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "csv_sha256": "be122ff7937ec5d47f6d6bab292124a022db3f0ad81a308617d830ac53f4c9aa",
+  "compiler_sha256": "fcf4a18b6ecefb993d584a60abb209c62b7c927f54de0d9f806c751f3ee82e3c",
+  "translated": 75021,
+  "source_entries": 79586,
+  "font": "Assistant and Noto Sans",
+  "font_sha256": "1c3b393884f8fb133a1b17f41d26178adae1050a4f86d7a429d1b5658c314fa3",
+  "fallback_font_sha256": "bfb7bb691513f12e734dc346c03a03f784912432d7e3fa8e56efcf906fe86b3d",
+  "font_license": "SIL Open Font License 1.1",
+  "glyphs_added": {
+    "osx": 166,
+    "windows": 166
+  },
+  "platforms": {
+    "osx/lockits": {
+      "source_sha256": "a12dfb24b4f3a8ef135941db1cee8e22b689dfd59a0aeb4471f696f4506fff43",
+      "output_sha256": "0e4ab657fdef7844eaa8d59e872baff3331273676568bb2d7ec95969c2a7e9d3",
+      "delta_bytes": 3580823
+    },
+    "osx/fonts": {
+      "source_sha256": "d31c4206fcffe1265af765d1eb9f7476d8681ea6bdec3d56bb916c2d41b9b1e0",
+      "output_sha256": "cb8761366a986a7aa3e6ee38759b93c1bdfce9864703f2f776aaf839384477c7",
+      "delta_bytes": 4876095
+    },
+    "osx/images": {
+      "source_sha256": "5efadd11be1e8d2b37adfe293a7336119ea56eef6b195d3bfec5fec1c6503712",
+      "output_sha256": "7c591534573a505ed8ce953021dca987aebdd5669a1269432b7573abe03e8113",
+      "delta_bytes": 3408249
+    },
+    "osx/loading-literal": {
+      "source_sha256": "182882d0ef82ca09bbbe556c04cf4759a700bc80a9ab2e306eb998cd29a43f5c",
+      "output_sha256": "af0ddcf024e36b7b4d7bcb54204c20d5e5d070f9a9e0f1e1ec4944e2f8ad1a05",
+      "delta_bytes": 194
+    },
+    "osx/language-display-name": {
+      "source_sha256": "e331daf53d2b78a1dc86e9ac415d70e61095d3b2db0f66406d95867bef50a4f1",
+      "output_sha256": "db715bf70ec224a93ed856ebbaef7d718fb9dd9e09c4a5bd2e31fea097b214c7",
+      "delta_bytes": 276
+    },
+    "windows/lockits": {
+      "source_sha256": "80d60af4bf1405590a6f020d33e14d031095b7e3bd9759db6657bfa3f613524d",
+      "output_sha256": "822e4396c397153c608edf2b4053026ab13f33eb97a56f38940f4e8ba25c88f4",
+      "delta_bytes": 3581008
+    },
+    "windows/fonts": {
+      "source_sha256": "77d0db6964d25f7eb552fb15b6155bc9416abae4992a3b30023a831fb2ecbdda",
+      "output_sha256": "dd0e231270ef9b738ee0aac04b5164d2c64609aae99749e41448c1c5ce8da5bb",
+      "delta_bytes": 4876001
+    },
+    "windows/images": {
+      "source_sha256": "5e8d834faa900b0deadf0b2a8d2ec5196b717f02b51ad510745750a2f7058ef4",
+      "output_sha256": "d17e8fa9c70496b9e99056be78a3c115954b9b6de96bdca74f72dd1be4409049",
+      "delta_bytes": 3408080
+    },
+    "windows/loading-literal": {
+      "source_sha256": "21f9c3aba9957a42ea8570e5f9c9bc550f4c6546c7f5ff21d188d8b6069528dc",
+      "output_sha256": "193f0fec4738abad5df26d39078787247293a0029d244b3fbc6b5872bcc9da9e",
+      "delta_bytes": 194
+    },
+    "windows/language-display-name": {
+      "source_sha256": "fa045eec590ee1fb9e6fe8228d1a7fdb13c12f4c62443cb0b4b4234917f137c3",
+      "output_sha256": "0d5e593db5fbc2985a9b58bf4d130e7e9bf25b14b52f6a895dcf40324a40029a",
+      "delta_bytes": 274
+    }
+  },
+  "release_ready": false
+}

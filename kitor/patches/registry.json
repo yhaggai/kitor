@@ -2154,6 +2154,79 @@
       },
       "purchase_guide": null,
       "patches": []
+    },
+    {
+      "scummvm_id": "disco-elysium",
+      "steam_app_id": 632470,
+      "title": "Disco Elysium – The Final Cut",
+      "title_he": "דיסקו אליסיום",
+      "cover_url": "/disco-elysium-cover-en.jpg",
+      "platforms": {
+        "windows": true,
+        "osx": true,
+        "linux": false
+      },
+      "detection_patterns": {
+        "unique_files": [],
+        "file_patterns": []
+      },
+      "purchase_guide": "disco-elysium.md",
+      "patches": [
+        {
+          "language": "he",
+          "version": "0.1.2",
+          "release_revision": 3,
+          "author": "Kitor",
+          "download_url": "https://github.com/yhaggai/kitor/releases/download/patch-disco-elysium-he-v0.1.2/Disco-Elysium-Hebrew-0.1.2.zip",
+          "source_type": "github",
+          "filename": "Disco-Elysium-Hebrew-0.1.2.zip",
+          "file_size": 23748456,
+          "checksum": "231744c20dd09aee30585066706e8bebf4a2ba2ae51e612281a19c4fb34a536b",
+          "description": "Partial Hebrew translation for the Steam edition of Disco Elysium – The Final Cut on Windows and macOS. Includes 75,021 translated entries, a heavier Hebrew font, and translated startup, saving, and interface labels. Select HEBREW in the game's language settings after installing. The illustrated scene transition displays Loading in English. Some unfinished content can still appear in Arabic. Python 3 is required.",
+          "post_install_script": null,
+          "install_manifest": "patch.json"
+        }
+      ],
+      "behavior": {
+        "detection": {
+          "adapter": "disco_elysium",
+          "priority": 20
+        },
+        "launch": {
+          "original": {
+            "commands": {
+              "windows": {
+                "program": "disco.exe",
+                "required_files": [
+                  "disco_Data/app.info"
+                ]
+              },
+              "osx": {
+                "program": "Contents/MacOS/Disco Elysium",
+                "required_files": [
+                  "Contents/Resources/Data/app.info"
+                ]
+              }
+            }
+          },
+          "patched": {
+            "commands": {
+              "windows": {
+                "program": "disco.exe",
+                "required_files": [
+                  "disco_Data/app.info"
+                ]
+              },
+              "osx": {
+                "program": "Contents/MacOS/Disco Elysium",
+                "required_files": [
+                  "Contents/Resources/Data/app.info"
+                ]
+              }
+            }
+          }
+        }
+      }
     }
   ],
   "metadata": {

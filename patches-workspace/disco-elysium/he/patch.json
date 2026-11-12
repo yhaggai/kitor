@@ -1,0 +1,138 @@
+{
+  "schema_version": 1,
+  "scummvm_id": "disco-elysium",
+  "language": "he",
+  "version": "0.1.2",
+  "release_revision": 3,
+  "filename": "Disco-Elysium-Hebrew-0.1.2.zip",
+  "platforms": {
+    "osx": {
+      "files": [
+        {
+          "path": "Contents/Resources/Data/StreamingAssets/AssetBundles/OSX/lockits/arabic",
+          "operation": "modify",
+          "original_sha256": "a12dfb24b4f3a8ef135941db1cee8e22b689dfd59a0aeb4471f696f4506fff43",
+          "installed_sha256": "0e4ab657fdef7844eaa8d59e872baff3331273676568bb2d7ec95969c2a7e9d3",
+          "source": {
+            "kind": "bsdiff",
+            "path": "payload/osx/lockits.bsdiff",
+            "sha256": "bafbc80e7d830a734bc4b381ddc5ab74712ebb709444add76ecdf50f46c066cd",
+            "input": "Contents/Resources/Data/StreamingAssets/AssetBundles/OSX/lockits/arabic"
+          }
+        },
+        {
+          "path": "Contents/Resources/Data/StreamingAssets/AssetBundles/OSX/fonts/arabic",
+          "operation": "modify",
+          "original_sha256": "d31c4206fcffe1265af765d1eb9f7476d8681ea6bdec3d56bb916c2d41b9b1e0",
+          "installed_sha256": "cb8761366a986a7aa3e6ee38759b93c1bdfce9864703f2f776aaf839384477c7",
+          "source": {
+            "kind": "bsdiff",
+            "path": "payload/osx/fonts.bsdiff",
+            "sha256": "e5d9bdc471f61eb7980751376717dac399b2958a62ffbb3a2819088209daa7ea",
+            "input": "Contents/Resources/Data/StreamingAssets/AssetBundles/OSX/fonts/arabic"
+          }
+        },
+        {
+          "path": "Contents/Resources/Data/StreamingAssets/AssetBundles/OSX/images/arabic",
+          "operation": "modify",
+          "original_sha256": "5efadd11be1e8d2b37adfe293a7336119ea56eef6b195d3bfec5fec1c6503712",
+          "installed_sha256": "7c591534573a505ed8ce953021dca987aebdd5669a1269432b7573abe03e8113",
+          "source": {
+            "kind": "bsdiff",
+            "path": "payload/osx/images.bsdiff",
+            "sha256": "7bfdf35eb7114561a691b5d74706896d3ccb461d2eb21f439a7eba53aa5bb440",
+            "input": "Contents/Resources/Data/StreamingAssets/AssetBundles/OSX/images/arabic"
+          }
+        },
+        {
+          "path": "Contents/Resources/Data/il2cpp_data/Metadata/global-metadata.dat",
+          "operation": "modify",
+          "original_sha256": "182882d0ef82ca09bbbe556c04cf4759a700bc80a9ab2e306eb998cd29a43f5c",
+          "installed_sha256": "af0ddcf024e36b7b4d7bcb54204c20d5e5d070f9a9e0f1e1ec4944e2f8ad1a05",
+          "source": {
+            "kind": "bsdiff",
+            "path": "payload/osx/loading-literal.bsdiff",
+            "sha256": "1a72b6bad2b2947b9b9e4435092a76a207e51cc2ebc644df3a7f5ea791ef23dc",
+            "input": "Contents/Resources/Data/il2cpp_data/Metadata/global-metadata.dat"
+          }
+        },
+        {
+          "path": "Contents/Resources/Data/resources.assets",
+          "operation": "modify",
+          "original_sha256": "e331daf53d2b78a1dc86e9ac415d70e61095d3b2db0f66406d95867bef50a4f1",
+          "installed_sha256": "db715bf70ec224a93ed856ebbaef7d718fb9dd9e09c4a5bd2e31fea097b214c7",
+          "source": {
+            "kind": "bsdiff",
+            "path": "payload/osx/language-display-name.bsdiff",
+            "sha256": "d537a65dbbc67b15cfc4c0df729fdbf48eea0e6b7120af949b200a65fbbd1d1c",
+            "input": "Contents/Resources/Data/resources.assets"
+          }
+        }
+      ]
+    },
+    "windows": {
+      "files": [
+        {
+          "path": "disco_Data/StreamingAssets/AssetBundles/Windows/lockits/arabic",
+          "operation": "modify",
+          "original_sha256": "80d60af4bf1405590a6f020d33e14d031095b7e3bd9759db6657bfa3f613524d",
+          "installed_sha256": "822e4396c397153c608edf2b4053026ab13f33eb97a56f38940f4e8ba25c88f4",
+          "source": {
+            "kind": "bsdiff",
+            "path": "payload/windows/lockits.bsdiff",
+            "sha256": "8c36a287a11d0690a75234f633ce0dad7afa6179944824ef5659cd584df4b455",
+            "input": "disco_Data/StreamingAssets/AssetBundles/Windows/lockits/arabic"
+          }
+        },
+        {
+          "path": "disco_Data/StreamingAssets/AssetBundles/Windows/fonts/arabic",
+          "operation": "modify",
+          "original_sha256": "77d0db6964d25f7eb552fb15b6155bc9416abae4992a3b30023a831fb2ecbdda",
+          "installed_sha256": "dd0e231270ef9b738ee0aac04b5164d2c64609aae99749e41448c1c5ce8da5bb",
+          "source": {
+            "kind": "bsdiff",
+            "path": "payload/windows/fonts.bsdiff",
+            "sha256": "cfccea01c7e6d7f8d8527ff645ef87cf6a782641a7af2de3ee9c7051f114b895",
+            "input": "disco_Data/StreamingAssets/AssetBundles/Windows/fonts/arabic"
+          }
+        },
+        {
+          "path": "disco_Data/StreamingAssets/AssetBundles/Windows/images/arabic",
+          "operation": "modify",
+          "original_sha256": "5e8d834faa900b0deadf0b2a8d2ec5196b717f02b51ad510745750a2f7058ef4",
+          "installed_sha256": "d17e8fa9c70496b9e99056be78a3c115954b9b6de96bdca74f72dd1be4409049",
+          "source": {
+            "kind": "bsdiff",
+            "path": "payload/windows/images.bsdiff",
+            "sha256": "9f04978b724e000ad0615334f1ca71554bb68471c5c4ab16650e202344b11f7b",
+            "input": "disco_Data/StreamingAssets/AssetBundles/Windows/images/arabic"
+          }
+        },
+        {
+          "path": "disco_Data/il2cpp_data/Metadata/global-metadata.dat",
+          "operation": "modify",
+          "original_sha256": "21f9c3aba9957a42ea8570e5f9c9bc550f4c6546c7f5ff21d188d8b6069528dc",
+          "installed_sha256": "193f0fec4738abad5df26d39078787247293a0029d244b3fbc6b5872bcc9da9e",
+          "source": {
+            "kind": "bsdiff",
+            "path": "payload/windows/loading-literal.bsdiff",
+            "sha256": "7104fd2debd2bad367aab9ac599578c26b6e55857240b4c395f7d90fd1fb92a7",
+            "input": "disco_Data/il2cpp_data/Metadata/global-metadata.dat"
+          }
+        },
+        {
+          "path": "disco_Data/resources.assets",
+          "operation": "modify",
+          "original_sha256": "fa045eec590ee1fb9e6fe8228d1a7fdb13c12f4c62443cb0b4b4234917f137c3",
+          "installed_sha256": "0d5e593db5fbc2985a9b58bf4d130e7e9bf25b14b52f6a895dcf40324a40029a",
+          "source": {
+            "kind": "bsdiff",
+            "path": "payload/windows/language-display-name.bsdiff",
+            "sha256": "1e24124e5d6b066dc8731b4897957e2803d88e582cb58f143da972be15ab4d98",
+            "input": "disco_Data/resources.assets"
+          }
+        }
+      ]
+    }
+  }
+}

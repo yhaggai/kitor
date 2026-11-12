@@ -1,0 +1,766 @@
+{
+  "LEGAL_TEXT_PC": {
+    "english": "Disco Elysium © 2019-2024 Published by Zaum Studio OU.\n DISCO ELYSIUM is a registered trade mark of Zaum Studio OU.\n All rights reserved.",
+    "hebrew": "Disco Elysium © 2019-2024. בהוצאת Zaum Studio OU.\n DISCO ELYSIUM הוא סימן מסחר רשום של Zaum Studio OU.\n כל הזכויות שמורות."
+  },
+  "LEGAL_TEXT_CONSOLES": {
+    "english": "Disco Elysium © 2019-2024 Published by Zaum Studio Limited.\n DISCO ELYSIUM is a registered trade mark of Zaum Studio OU.\n All rights reserved.",
+    "hebrew": "Disco Elysium © 2019-2024. בהוצאת Zaum Studio Limited.\n DISCO ELYSIUM הוא סימן מסחר רשום של Zaum Studio OU.\n כל הזכויות שמורות."
+  },
+  "SETTINGS_ANTI_ALIASING": {
+    "english": "Anti-aliasing",
+    "hebrew": "החלקת קצוות"
+  },
+  "SETTINGS_ANTI_ALIASING_2X": {
+    "english": "2x",
+    "hebrew": "2x"
+  },
+  "SETTINGS_ANTI_ALIASING_4X": {
+    "english": "4x",
+    "hebrew": "4x"
+  },
+  "SETTINGS_ANTI_ALIASING_8X": {
+    "english": "8x",
+    "hebrew": "8x"
+  },
+  "SETTINGS_ANTI_ALIASING_OFF": {
+    "english": "Off",
+    "hebrew": "כבוי"
+  },
+  "SETTINGS_AUTOSAVE_INTERVAL": {
+    "english": "Autosave interval",
+    "hebrew": "מרווח בין שמירות אוטומטיות"
+  },
+  "SETTINGS_BRIGHTNESS": {
+    "english": "Brightness",
+    "hebrew": "בהירות"
+  },
+  "SETTINGS_CAPTURE_MOUSE": {
+    "english": "Capture mouse",
+    "hebrew": "נעילת הסמן לחלון"
+  },
+  "SETTINGS_CLICK_X": {
+    "english": "Click {0}",
+    "hebrew": "לחצו על {0}"
+  },
+  "SETTINGS_CONTROLS_ACTION": {
+    "english": "Action / Interact",
+    "hebrew": "פעולה / אינטראקציה"
+  },
+  "SETTINGS_CONTROLS_BACK": {
+    "english": "Back",
+    "hebrew": "חזרה"
+  },
+  "SETTINGS_CONTROLS_BACK_CLOSE": {
+    "english": "Back / Close menu",
+    "hebrew": "חזרה / סגירת תפריט"
+  },
+  "SETTINGS_CONTROLS_CHARSHEET": {
+    "english": "Character sheet",
+    "hebrew": "דף דמות"
+  },
+  "SETTINGS_CONTROLS_CHARSHEET_MENU": {
+    "english": "CHARACTER SHEET / OPEN MENU",
+    "hebrew": "דף דמות / פתיחת תפריט"
+  },
+  "SETTINGS_CONTROLS_CLOSE": {
+    "english": "Close",
+    "hebrew": "סגירה"
+  },
+  "SETTINGS_CONTROLS_CONTEXT": {
+    "english": "Context sensitive",
+    "hebrew": "לפי ההקשר"
+  },
+  "SETTINGS_CONTROLS_CONTROLLER": {
+    "english": "Controller",
+    "hebrew": "בקר"
+  },
+  "SETTINGS_CONTROLS_DIALOGUE_NAVIGATION": {
+    "english": "Dialogue / Menu navigation",
+    "hebrew": "ניווט בשיחות ובתפריטים"
+  },
+  "SETTINGS_CONTROLS_DUALSENSE": {
+    "english": "DualSense",
+    "hebrew": "DualSense"
+  },
+  "SETTINGS_CONTROLS_DUALSHOCK": {
+    "english": "DualShock",
+    "hebrew": "DualShock"
+  },
+  "SETTINGS_CONTROLS_GAMEPAD": {
+    "english": "Gamepad",
+    "hebrew": "בקר משחק"
+  },
+  "SETTINGS_CONTROLS_HEAL_HEALTH": {
+    "english": "Heal health",
+    "hebrew": "שיקום בריאות"
+  },
+  "SETTINGS_CONTROLS_HEAL_MORALE": {
+    "english": "Heal morale",
+    "hebrew": "שיקום מורל"
+  },
+  "SETTINGS_CONTROLS_HELP": {
+    "english": "Help",
+    "hebrew": "עזרה"
+  },
+  "SETTINGS_CONTROLS_HIGHLIGHT": {
+    "english": "Highlight",
+    "hebrew": "הדגשה"
+  },
+  "SETTINGS_CONTROLS_HIGHLIGHT_HELP": {
+    "english": "Highlight / Hold for help overlay",
+    "hebrew": "הדגשה / לחיצה ממושכת להצגת עזרה"
+  },
+  "SETTINGS_CONTROLS_INVENTORY": {
+    "english": "Inventory",
+    "hebrew": "מלאי"
+  },
+  "SETTINGS_CONTROLS_JOURNAL": {
+    "english": "Journal",
+    "hebrew": "יומן"
+  },
+  "SETTINGS_CONTROLS_KEYBOARD_AND_MOUSE": {
+    "english": "Keyboard and mouse",
+    "hebrew": "מקלדת ועכבר"
+  },
+  "SETTINGS_CONTROLS_LEFT_ITEM": {
+    "english": "Left hand item",
+    "hebrew": "פריט ביד שמאל"
+  },
+  "SETTINGS_CONTROLS_LOGITECH": {
+    "english": "Logitech",
+    "hebrew": "Logitech"
+  },
+  "SETTINGS_CONTROLS_MAP": {
+    "english": "Map",
+    "hebrew": "מפה"
+  },
+  "SETTINGS_CONTROLS_MOVEMENT": {
+    "english": "Movement",
+    "hebrew": "תנועה"
+  },
+  "SETTINGS_CONTROLS_MOVEMENT_NAVIGATION": {
+    "english": "Movement",
+    "hebrew": "תנועה"
+  },
+  "SETTINGS_CONTROLS_NINTENDO_SWITCH_PRO": {
+    "english": "Nintendo Switch Pro",
+    "hebrew": "Nintendo Switch Pro"
+  },
+  "SETTINGS_CONTROLS_OPEN": {
+    "english": "Open",
+    "hebrew": "פתיחה"
+  },
+  "SETTINGS_CONTROLS_PAUSE": {
+    "english": "Pause menu",
+    "hebrew": "תפריט השהיה"
+  },
+  "SETTINGS_CONTROLS_QUICKSAVE": {
+    "english": "Quicksave",
+    "hebrew": "שמירה מהירה"
+  },
+  "SETTINGS_CONTROLS_RIGHT_ITEM": {
+    "english": "Right hand item",
+    "hebrew": "פריט ביד ימין"
+  },
+  "SETTINGS_CONTROLS_STADIA": {
+    "english": "Stadia",
+    "hebrew": "Stadia"
+  },
+  "SETTINGS_CONTROLS_STEAM": {
+    "english": "Steam",
+    "hebrew": "Steam"
+  },
+  "SETTINGS_CONTROLS_TARGETING_SELECTION": {
+    "english": "Targeting / Selection",
+    "hebrew": "כיוון / בחירה"
+  },
+  "SETTINGS_CONTROLS_THOUGHTS_CABINET": {
+    "english": "Thought Cabinet",
+    "hebrew": "ארון המחשבות"
+  },
+  "SETTINGS_CONTROLS_TITLE": {
+    "english": "CONTROLS",
+    "hebrew": "מקשים ובקרים"
+  },
+  "SETTINGS_CONTROLS_TOGGLE_CATEGORY": {
+    "english": "Toggle menu category",
+    "hebrew": "מעבר בין קטגוריות בתפריט"
+  },
+  "SETTINGS_CONTROLS_XBOX": {
+    "english": "Xbox",
+    "hebrew": "Xbox"
+  },
+  "SETTINGS_CONTROLS_X_TO_HIGHLIGHT": {
+    "english": "Use {0} to highlight interactable objects",
+    "hebrew": "לחצו על {0} כדי להדגיש עצמים שאפשר לפעול עליהם"
+  },
+  "SETTINGS_CONTROLS_X_TO_INTERACT": {
+    "english": "Use {0} to interact",
+    "hebrew": "לחצו על {0} כדי לבצע פעולה"
+  },
+  "SETTINGS_CONTROLS_X_TO_SELECT": {
+    "english": "Use {0} to make your selection",
+    "hebrew": "לחצו על {0} כדי לבחור"
+  },
+  "SETTINGS_CONTROLS_ZOOM_IN": {
+    "english": "Zoom camera in",
+    "hebrew": "קירוב המצלמה"
+  },
+  "SETTINGS_CONTROLS_ZOOM_IN_MENU": {
+    "english": "ZOOM IN / MENU NAVIGATION",
+    "hebrew": "קירוב המצלמה / ניווט בתפריט"
+  },
+  "SETTINGS_CONTROLS_ZOOM_IN_OUT": {
+    "english": "Zoom In / Zoom Out",
+    "hebrew": "קירוב / הרחקה"
+  },
+  "SETTINGS_CONTROLS_ZOOM_OUT": {
+    "english": "Zoom camera out",
+    "hebrew": "הרחקת המצלמה"
+  },
+  "SETTINGS_CONTROLS_ZOOM_OUT_MENU": {
+    "english": "ZOOM OUT / MENU NAVIGATION",
+    "hebrew": "הרחקת המצלמה / ניווט בתפריט"
+  },
+  "SETTINGS_CONTROLS_ZOOM_RESET": {
+    "english": "Reset camera zoom",
+    "hebrew": "איפוס מרחק המצלמה"
+  },
+  "SETTINGS_DETECTIVE_MODE": {
+    "english": "Detective mode",
+    "hebrew": "מצב בלש"
+  },
+  "SETTINGS_DETECTIVE_MODE_DESCRIPTION": {
+    "english": "With Detective Mode active, interactable objects and characters in the game are automatically highlighted with a light border when the player character approaches them.",
+    "hebrew": "במצב בלש, מסגרת בהירה מופיעה סביב עצמים ודמויות שאפשר לפעול איתם כשהדמות מתקרבת אליהם."
+  },
+  "SETTINGS_DETECTIVE_MODE_UPPER": {
+    "english": "Detective mode",
+    "hebrew": "מצב בלש"
+  },
+  "SETTINGS_DIALOGUE_MENU_SIZE": {
+    "english": "Menu Size",
+    "hebrew": "גודל התפריט"
+  },
+  "SETTINGS_DIALOGUE_MENU_SIZE_DESCRIPTION": {
+    "english": "Adjusts the text size of menus",
+    "hebrew": "שינוי גודל הטקסט בתפריטים"
+  },
+  "SETTINGS_DIALOGUE_TEXT_SIZE": {
+    "english": "Dialogue Text Size",
+    "hebrew": "גודל הטקסט בשיחות"
+  },
+  "SETTINGS_DIALOGUE_TEXT_SIZE_DESCRIPTION": {
+    "english": "Adjusts the size of in-game elements.",
+    "hebrew": "שינוי הגודל של רכיבים במשחק."
+  },
+  "SETTINGS_DIALOGUE_TEXT_SIZE_UPPER": {
+    "english": "Dialogue Text Size",
+    "hebrew": "גודל הטקסט בשיחות"
+  },
+  "SETTINGS_DIALOGUE_VOLUME": {
+    "english": "Dialogue FX volume",
+    "hebrew": "עוצמת אפקטים בשיחות"
+  },
+  "SETTINGS_DISPLAY_MODE": {
+    "english": "Display mode",
+    "hebrew": "מצב תצוגה"
+  },
+  "SETTINGS_DISPLAY_MODE_FULLSCREEN": {
+    "english": "Fullscreen",
+    "hebrew": "מסך מלא"
+  },
+  "SETTINGS_DISPLAY_MODE_WINDOWED": {
+    "english": "Windowed",
+    "hebrew": "חלון"
+  },
+  "SETTINGS_DYNAMIC_SHADOWS": {
+    "english": "Dynamic shadows",
+    "hebrew": "צללים דינמיים"
+  },
+  "SETTINGS_DYSLEXIC_FONT": {
+    "english": "Dyslexic font",
+    "hebrew": "גופן לדיסלקסיה"
+  },
+  "SETTINGS_DYSLEXIC_FONT_DESCRIPTION": {
+    "english": "Make reading easier for those with dyslexia.\n Unavailable in Chinese and Arabic.",
+    "hebrew": "מקל על הקריאה לאנשים עם דיסלקסיה.\n אינו זמין בסינית ובערבית."
+  },
+  "SETTINGS_DYSLEXIC_FONT_UPPER": {
+    "english": "Dyslexic font",
+    "hebrew": "גופן לדיסלקסיה"
+  },
+  "SETTINGS_ENVIRONMENT_FX": {
+    "english": "Environment FX",
+    "hebrew": "אפקטים סביבתיים"
+  },
+  "SETTINGS_ENVIRONMENT_VOLUME": {
+    "english": "Environment volume",
+    "hebrew": "עוצמת צלילי הסביבה"
+  },
+  "SETTINGS_GAME_TIP": {
+    "english": "Game tip",
+    "hebrew": "טיפ למשחק"
+  },
+  "SETTINGS_GAMMA_CORRECTION": {
+    "english": "Gamma correction",
+    "hebrew": "תיקון גאמה"
+  },
+  "SETTINGS_HDR": {
+    "english": "HDR",
+    "hebrew": "HDR"
+  },
+  "SETTINGS_HELP_ACTION": {
+    "english": "ACTION",
+    "hebrew": "פעולה"
+  },
+  "SETTINGS_HELP_BACK": {
+    "english": "BACK",
+    "hebrew": "חזרה"
+  },
+  "SETTINGS_HELP_HEALTH": {
+    "english": "HEALTH",
+    "hebrew": "בריאות"
+  },
+  "SETTINGS_HELP_HOLD_TO_REMAP": {
+    "english": "HOLD TO REMAP",
+    "hebrew": "לחיצה ממושכת לשינוי שיוך"
+  },
+  "SETTINGS_HELP_JOURNAL": {
+    "english": "OPEN JOURNAL MENU",
+    "hebrew": "פתיחת היומן"
+  },
+  "SETTINGS_HELP_MENU_TAP_RESET": {
+    "english": "DOUBLE TAP RESETS",
+    "hebrew": "לחיצה כפולה לאיפוס"
+  },
+  "SETTINGS_HELP_OPEN_BUBBLE": {
+    "english": "OPEN THOUGHT BUBBLE",
+    "hebrew": "פתיחת בועת מחשבה"
+  },
+  "SETTINGS_HELP_READ_DESCRIPTION": {
+    "english": "READ DESCRIPTION",
+    "hebrew": "קריאת תיאור"
+  },
+  "SETTINGS_HELP_SKILL": {
+    "english": "OPEN SKILL MENU",
+    "hebrew": "פתיחת תפריט כישורים"
+  },
+  "SETTINGS_HELP_SKILL_CHECKS_DESCRIPTION": {
+    "english": "EXPLORE OPTIONS OR LEVEL UP TO TRY AGAIN",
+    "hebrew": "חפשו אפשרויות נוספות או עלו דרגה כדי לנסות שוב"
+  },
+  "SETTINGS_HELP_SKILL_CHECKS_DESCRIPTION_2": {
+    "english": "RED SKILL CHECKS ARE PERMANENT",
+    "hebrew": "בדיקות כישורים אדומות הן חד־פעמיות"
+  },
+  "SETTINGS_HELP_SKILL_CHECKS_TITLE": {
+    "english": "SKILL CHECKS",
+    "hebrew": "בדיקות כישורים"
+  },
+  "SETTINGS_HELP_SKILL_POINTS_DESCRIPTION": {
+    "english": "USE POINTS TO UNLOCK SKILLS OR UNLOCK OR FORGET THOUGHTS",
+    "hebrew": "השתמשו בנקודות כדי לפתוח כישורים ומחשבות או לשכוח מחשבות"
+  },
+  "SETTINGS_HELP_SKILL_POINTS_DESCRIPTION_2": {
+    "english": "WHITE SKILL CHECKS CAN BE REROLLED",
+    "hebrew": "אפשר לנסות שוב בדיקות כישורים לבנות"
+  },
+  "SETTINGS_HELP_SKILL_POINTS_TITLE": {
+    "english": "SKILL POINTS",
+    "hebrew": "נקודות כישורים"
+  },
+  "SETTINGS_HELP_TARGETING_INTERACTABLES": {
+    "english": "TARGETING INTERACTABLES",
+    "hebrew": "בחירת עצמים שאפשר לפעול עליהם"
+  },
+  "SETTINGS_HELP_TASKS_DESCRIPTION": {
+    "english": "GAIN EXPERIENCE BY COMPLETING TASKS OR BY EXPLORING",
+    "hebrew": "צברו ניסיון באמצעות השלמת משימות או סיור"
+  },
+  "SETTINGS_HELP_TASKS_DESCRIPTION_2": {
+    "english": "LEVELLING UP GRANTS YOU SKILL POINTS",
+    "hebrew": "עלייה בדרגה מעניקה נקודות כישורים"
+  },
+  "SETTINGS_HELP_TASKS_TITLE": {
+    "english": "TASKS",
+    "hebrew": "משימות"
+  },
+  "SETTINGS_HELP_THOUGHTS_DESCRIPTION": {
+    "english": "ACTIVE THOUGHTS ALTER DIALOGUE OPTIONS",
+    "hebrew": "מחשבות פעילות משנות את אפשרויות השיחה"
+  },
+  "SETTINGS_HELP_THOUGHTS_DESCRIPTION_2": {
+    "english": "THOUGHT BONUSES DIFFER FOR RESEARCH AND COMPLETION",
+    "hebrew": "השפעת המחשבות משתנה בין שלב העיון להשלמה"
+  },
+  "SETTINGS_HELP_THOUGHTS_TITLE": {
+    "english": "THOUGHTS",
+    "hebrew": "מחשבות"
+  },
+  "SETTINGS_HELP_TIME_DESCRIPTION": {
+    "english": "TIME PASSES WHEN PICKING NEW DIALOGUE OPTIONS",
+    "hebrew": "הזמן עובר כשבוחרים אפשרויות חדשות בשיחה"
+  },
+  "SETTINGS_HELP_TIME_DESCRIPTION_2": {
+    "english": "READ BOOKS TO PASS TIME QUICKER",
+    "hebrew": "קראו ספרים כדי להעביר את הזמן מהר יותר"
+  },
+  "SETTINGS_HELP_TIME_TITLE": {
+    "english": "TIME",
+    "hebrew": "זמן"
+  },
+  "SETTINGS_HELP_TOOLS_DESCRIPTION": {
+    "english": "SUBSTANCES CAN BE ADMINISTERED DURING DIALOGUE",
+    "hebrew": "אפשר להשתמש בחומרים במהלך שיחות"
+  },
+  "SETTINGS_HELP_TOOLS_DESCRIPTION_2": {
+    "english": "TOOLS ARE CONTEXT SENSITIVE - EQUIP THEM BEFORE USE",
+    "hebrew": "השימוש בכלים תלוי בהקשר. הצטיידו בהם לפני השימוש"
+  },
+  "SETTINGS_HELP_TOOLS_TITLE": {
+    "english": "TOOLS",
+    "hebrew": "כלים"
+  },
+  "SETTINGS_HIDE_HELP": {
+    "english": "Hide help",
+    "hebrew": "הסתרת עזרה"
+  },
+  "SETTINGS_HOLD_X": {
+    "english": "Hold {0}",
+    "hebrew": "לחצו לחיצה ממושכת על {0}"
+  },
+  "SETTINGS_KEYBAORD_MAPPING": {
+    "english": "Keyboard mapping",
+    "hebrew": "מיפוי מקשים"
+  },
+  "SETTINGS_LANGUAGE": {
+    "english": "Language",
+    "hebrew": "שפה"
+  },
+  "SETTINGS_LANGUAGE_SWITCH": {
+    "english": "Language Switch",
+    "hebrew": "החלפת שפה"
+  },
+  "SETTINGS_LANGUAGE_SWITCH_AND": {
+    "english": "And",
+    "hebrew": "וגם"
+  },
+  "SETTINGS_LANGUAGE_SWITCH_TOOLTIP": {
+    "english": "TAP \"{0}\" OR \"{1}\" TO SEAMLESSLY SWITCH LANGUAGES IN GAME",
+    "hebrew": "לחצו על \"{0}\" או על \"{1}\" כדי להחליף שפה בזמן המשחק"
+  },
+  "SETTINGS_MASTER_VOLUME": {
+    "english": "Master volume",
+    "hebrew": "עוצמה כללית"
+  },
+  "SETTINGS_MUSIC_VOLUME": {
+    "english": "Music volume",
+    "hebrew": "עוצמת המוזיקה"
+  },
+  "SETTINGS_ON_OFF": {
+    "english": "On / Off",
+    "hebrew": "מופעל / כבוי"
+  },
+  "SETTINGS_OPTION_FX_HIGH": {
+    "english": "High",
+    "hebrew": "גבוהה"
+  },
+  "SETTINGS_OPTION_FX_LOW": {
+    "english": "Low",
+    "hebrew": "נמוכה"
+  },
+  "SETTINGS_OPTION_FX_MEDIUM": {
+    "english": "Medium",
+    "hebrew": "בינונית"
+  },
+  "SETTINGS_OPTION_NO": {
+    "english": "No",
+    "hebrew": "לא"
+  },
+  "SETTINGS_OPTION_OFF": {
+    "english": "Off",
+    "hebrew": "כבוי"
+  },
+  "SETTINGS_OPTION_ON": {
+    "english": "On",
+    "hebrew": "מופעל"
+  },
+  "SETTINGS_OPTION_YES": {
+    "english": "Yes",
+    "hebrew": "כן"
+  },
+  "SETTINGS_OVERSCAN": {
+    "english": "Overscan",
+    "hebrew": "חיתוך שולי התצוגה"
+  },
+  "SETTINGS_PUSH_X": {
+    "english": "Push {0}",
+    "hebrew": "לחצו על {0}"
+  },
+  "SETTINGS_REMAP": {
+    "english": "Remap",
+    "hebrew": "שינוי שיוך"
+  },
+  "SETTINGS_REMAP_CONTROLLS": {
+    "english": "Remap controls",
+    "hebrew": "שינוי מקשים"
+  },
+  "SETTINGS_RESET": {
+    "english": "Reset",
+    "hebrew": "איפוס"
+  },
+  "SETTINGS_RESOLUTION": {
+    "english": "Resolution",
+    "hebrew": "רזולוציה"
+  },
+  "SETTINGS_SHADER_QUALITY": {
+    "english": "Shader quality",
+    "hebrew": "איכות הצללה"
+  },
+  "SETTINGS_SHADER_QUALITY_BRILLIANT": {
+    "english": "Brilliant",
+    "hebrew": "גבוהה"
+  },
+  "SETTINGS_SHADER_QUALITY_MODEST": {
+    "english": "Modest",
+    "hebrew": "בסיסית"
+  },
+  "SETTINGS_SIZE_DESCRIPTION_SWITCH_SPECIFIC": {
+    "english": "Setting for current play mode ({0})",
+    "hebrew": "הגדרה למצב המשחק הנוכחי ({0})"
+  },
+  "SETTINGS_STREAMER_MODE": {
+    "english": "Streamer mode",
+    "hebrew": "מצב שידור"
+  },
+  "SETTINGS_STREAMER_MODE_DESCRIPTION": {
+    "english": "Streamer Mode replaces certain copyrighted pieces of music with alternative tracks safe for streaming.",
+    "hebrew": "מצב שידור מחליף חלק מהקטעים המוגנים בזכויות יוצרים במוזיקה שמותר לשדר."
+  },
+  "SETTINGS_TAP_X": {
+    "english": "Tap {0}",
+    "hebrew": "לחצו לחיצה קצרה על {0}"
+  },
+  "SETTINGS_TEXT_SIZE": {
+    "english": "Text size",
+    "hebrew": "גודל הטקסט"
+  },
+  "SETTINGS_TITLE_CONTROLS": {
+    "english": "Controls",
+    "hebrew": "מקשים ובקרים"
+  },
+  "SETTINGS_TITLE_SETTINGS": {
+    "english": "Settings",
+    "hebrew": "הגדרות"
+  },
+  "SETTINGS_TOGGLE": {
+    "english": "Toggle",
+    "hebrew": "הפעלה וכיבוי"
+  },
+  "SETTINGS_TUTORIAL_AGENT": {
+    "english": "Tutorial agent",
+    "hebrew": "עוזר ההדרכה"
+  },
+  "SETTINGS_TUTORIAL_AGENT_DESCRIPTION": {
+    "english": "The Tutorial Agent gives new players unsolicited advice. Untick this box to set some boundaries.",
+    "hebrew": "עוזר ההדרכה נותן לשחקנים חדשים עצות גם בלי שביקשו. בטלו את הסימון אם אתם רוצים קצת מרחב."
+  },
+  "SETTINGS_TUTORIAL_AGENT_UPPER": {
+    "english": "Tutorial agent",
+    "hebrew": "עוזר ההדרכה"
+  },
+  "SETTINGS_TWITCH_INTEGRATION": {
+    "english": "Twitch Integration",
+    "hebrew": "שילוב עם Twitch"
+  },
+  "SETTINGS_TWITCH_INTEGRATION_DESCRIPTION": {
+    "english": "With Twitch Integration, streamers can create polls so their viewers can influence gameplay. Viewers can vote for their favorite dialogue options and give temporary bonuses and penalties to the streamer's main attributes. They can also view the streamer's Character Sheet and Journal at any time.",
+    "hebrew": "השילוב עם Twitch מאפשר לשדרנים לערוך סקרים כדי שהצופים ישפיעו על המשחק. הצופים יכולים להצביע על אפשרויות בשיחה ולהעניק תוספות והפחתות זמניות לתכונות העיקריות של הדמות. הם גם יכולים לעיין בדף הדמות וביומן בכל עת."
+  },
+  "SETTINGS_UI_VOLUME": {
+    "english": "UI volume",
+    "hebrew": "עוצמת צלילי הממשק"
+  },
+  "SETTINGS_VIBRATION_DESCRIPTION": {
+    "english": "Feel things in your hands, as if you were there, as if this were real.",
+    "hebrew": "תרגישו את המשחק בידיים, כאילו אתם שם והכול אמיתי."
+  },
+  "SETTINGS_VOICEOVER": {
+    "english": "Voiceover",
+    "hebrew": "דיבוב"
+  },
+  "SETTINGS_VOICEOVER_CLASSIC": {
+    "english": "only greetings",
+    "hebrew": "ברכות בלבד"
+  },
+  "SETTINGS_VOICEOVER_FULL": {
+    "english": "all voiced dialogue",
+    "hebrew": "כל השורות המדובבות"
+  },
+  "SETTINGS_VOICEOVER_MODE": {
+    "english": "Voice Over Mode",
+    "hebrew": "מצב דיבוב"
+  },
+  "SETTINGS_VOICEOVER_MODE_CLASSIC": {
+    "english": "Classic",
+    "hebrew": "קלאסי"
+  },
+  "SETTINGS_VOICEOVER_MODE_FULL": {
+    "english": "Full",
+    "hebrew": "מלא"
+  },
+  "SETTINGS_VOICEOVER_MODE_PSYCHOLOGICAL": {
+    "english": "Psychological",
+    "hebrew": "פסיכולוגי"
+  },
+  "SETTINGS_VOICEOVER_MODE_UPPER": {
+    "english": "Voice Over Mode",
+    "hebrew": "מצב דיבוב"
+  },
+  "SETTINGS_VOICEOVER_PSYCHOLOGIC": {
+    "english": "everything except narration",
+    "hebrew": "הכול מלבד הקריינות"
+  },
+  "SETTINGS_VOICEOVER_TOOLTIP": {
+    "english": "Full - all voiced dialogue\n Psychological - everything except narration\nClassic - only voice introductions",
+    "hebrew": "מלא — כל השורות המדובבות\n פסיכולוגי — הכול מלבד הקריינות\nקלאסי — רק משפטי הפתיחה המדובבים"
+  },
+  "SETTINGS_VOICEOVER_VOLUME": {
+    "english": "Voiceover volume",
+    "hebrew": "עוצמת הדיבוב"
+  },
+  "SETTINGS_VSYNC": {
+    "english": "Vsync",
+    "hebrew": "סנכרון אנכי"
+  },
+  "SETTINGS_WEATHER_VOLUME": {
+    "english": "Weather volume",
+    "hebrew": "עוצמת צלילי מזג האוויר"
+  },
+  "SETTINGS_X_MINUTES": {
+    "english": "{0} minutes",
+    "hebrew": "{0} דקות"
+  },
+  "Messages/CONFIRMATION_RESET_SETTINGS": {
+    "english": "Do you want to reset settings?",
+    "hebrew": "לאפס את ההגדרות?"
+  },
+  "Messages/ERROR_SETTINGS_FILE_CORRUPTED": {
+    "english": "Settings file is corrupted and can not be read, generating new one.",
+    "hebrew": "קובץ ההגדרות פגום ואי אפשר לקרוא אותו. נוצר קובץ חדש."
+  },
+  "F1_SCREEN_QUICKSAVE_TITLE": {
+    "english": "QUICK SAVE",
+    "hebrew": "שמירה מהירה"
+  },
+  "F1_SCREEN_QUICKLOAD_TITLE": {
+    "english": "QUICK LOAD",
+    "hebrew": "טעינה מהירה"
+  },
+  "Messages/NOTIFICATION_QUICKSAVE": {
+    "english": "Quicksave",
+    "hebrew": "שמירה מהירה"
+  },
+  "MENU_CONSOLES_LOAD": {
+    "english": "LOAD",
+    "hebrew": "טעינה"
+  },
+  "Messages/ERROR_SELECT_LOAD": {
+    "english": "Select a save game to load!",
+    "hebrew": "בחרו משחק שמור לטעינה!"
+  },
+  "SAVELOAD_LOAD_TITLE": {
+    "english": "Load game",
+    "hebrew": "טעינת משחק"
+  },
+  "QUIT_TO_MAIN_MENU_CONFIRMATION": {
+    "english": "Do you really want to go back to main menu?",
+    "hebrew": "באמת לחזור לתפריט הראשי?"
+  },
+  "Skills/SKILL_NAME_ENCYCLOPEDIA": {
+    "english": "Encyclopedia",
+    "hebrew": "אנציקלופדיה"
+  },
+  "Skills/SKILL_NAME_ENCYCLOPEDIA_UPPER": {
+    "english": "Encyclopedia",
+    "hebrew": "אנציקלופדיה"
+  },
+  "INTRO_FURIES_QUOTE": {
+    "english": "’The furies are at home in the mirror; it is their address. Even the clearest water, if deep enough can drown.” - R. S. Thomas",
+    "hebrew": "״האריניות שוכנות במראה. זו כתובתן. גם במים הצלולים ביותר אפשר לטבוע, אם הם עמוקים מספיק.״ — ר׳ ס׳ תומאס"
+  },
+  "Tips/TIP_1": {
+    "english": "Don't be afraid to say *weird* things. People are more forgiving to persons of power -- like police officers.",
+    "hebrew": "אל תפחדו להגיד דברים *מוזרים*. אנשים סלחנים יותר כלפי בעלי סמכות, כמו שוטרים."
+  },
+  "Tips/TIP_2": {
+    "english": "Need to pass time? Buy a book. Reading passes time quickly.",
+    "hebrew": "צריכים להעביר את הזמן? קנו ספר. הקריאה מעבירה את הזמן במהירות."
+  },
+  "Tips/TIP_5": {
+    "english": "Can't put more points in a skill? Drugs raise learning caps, but they're *bad* for your health.",
+    "hebrew": "לא מצליחים להשקיע עוד נקודות בכישור? סמים מעלים את תקרת הלמידה, אבל הם *מזיקים* לבריאות."
+  },
+  "Tips/TIP_6": {
+    "english": "Red checks can be tried only once. Failed White checks can be re-tried by increasing the relevant Skill.",
+    "hebrew": "אפשר לנסות בדיקות אדומות פעם אחת בלבד. כדי לנסות שוב בדיקה לבנה שנכשלה, שפרו את הכישור המתאים."
+  },
+  "Tips/TIP_7": {
+    "english": "Most checks have secret difficulty modifiers. Talking to the right person can re-open a closed White check.",
+    "hebrew": "לרוב הבדיקות יש גורמים סמויים שמשפיעים על הקושי. שיחה עם האדם הנכון יכולה לפתוח מחדש בדיקה לבנה."
+  },
+  "Tips/TIP_8": {
+    "english": "Short on money? Equip a plastic bag, collect bottles, and sell them at Frittte!",
+    "hebrew": "חסר לכם כסף? הצטיידו בשקית פלסטיק, אספו בקבוקים ומכרו אותם בפריטט!"
+  },
+  "Tips/TIP_9": {
+    "english": "Need to do something behind Ltn Kitsuragi's back? Sneak out after he's gone to sleep.",
+    "hebrew": "צריכים לעשות משהו מאחורי גבו של סגן קיצוראגי? חמקו החוצה אחרי שהוא הולך לישון."
+  },
+  "Tips/TIP_10": {
+    "english": "Pick dialogue options that begin with \"hold on\" or \"wait\" to gain additional information before the conversation moves on.",
+    "hebrew": "בחרו באפשרויות שיחה שמתחילות ב״רגע״ או ״חכו״ כדי לקבל מידע נוסף לפני שהשיחה מתקדמת."
+  },
+  "Tips/TIP_11": {
+    "english": "The 'Map' tab in your Journal lists all the White checks you can re-attempt.",
+    "hebrew": "בלשונית ״מפה״ ביומן מופיעות כל הבדיקות הלבנות שאפשר לנסות שוב."
+  },
+  "Tips/TIP_12": {
+    "english": "Skill points can also buy new Thought Cabinet slots, or forget old Thoughts!",
+    "hebrew": "נקודות כישורים מאפשרות גם לפתוח מקומות בארון המחשבות או לשכוח מחשבות ישנות!"
+  },
+  "Tips/TIP_13": {
+    "english": "Equip a flashlight in low light areas.",
+    "hebrew": "הצטיידו בפנס באזורים חשוכים."
+  },
+  "Tips/TIP_14": {
+    "english": "Low on Morale? Put points into Volition!",
+    "hebrew": "המורל נמוך? השקיעו נקודות בכוח רצון!"
+  },
+  "Tips/TIP_15": {
+    "english": "Low on Health? Put points into Endurance!",
+    "hebrew": "הבריאות נמוכה? השקיעו נקודות בסיבולת!"
+  },
+  "Tips/TIP_16": {
+    "english": "Police work is tough. Take breaks – talk to strangers, explore!",
+    "hebrew": "עבודת המשטרה קשה. קחו הפסקות, דברו עם זרים וצאו לחקור!"
+  },
+  "Tips/TIP_17": {
+    "english": "You can sleep after 21.00 Sleeping heals all your Health and Morale.",
+    "hebrew": "אפשר לישון אחרי 21:00. השינה משקמת את כל הבריאות והמורל."
+  },
+  "Tips/TIP_18": {
+    "english": "Most people settle for bed after 21.00 or not long after. At night the streets are emptier. By 02.00 everyone’s asleep.",
+    "hebrew": "רוב האנשים הולכים לישון ב־21:00 או קצת אחר כך. בלילה הרחובות מתרוקנים. ב־02:00 כולם כבר ישנים."
+  },
+  "Tips/TIP_19": {
+    "english": "See a container you can't open? Equip a prybar!",
+    "hebrew": "מצאתם מכולה שלא נפתחת? הצטיידו בלום!"
+  },
+  "Tips/TIP_20": {
+    "english": "Revachol is pronounced \"RE-va-shol\"; Oranje is pronounced \"O-RAN-yeh\"; Klaasje is pronounced “KLAAS-yeh”",
+    "hebrew": "כך הוגים את השמות: רֶבַשׁוֹל, אוֹרַנְיֶה וקְלָאסְיֶה."
+  }
+}

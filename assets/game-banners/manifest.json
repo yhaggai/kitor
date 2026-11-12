@@ -696,6 +696,58 @@
           "image_url": "https://cdn.akamai.steamstatic.com/steam/apps/319870/library_hero.jpg"
         }
       ]
+    },
+    {
+      "game_id": "disco-elysium",
+      "title": "Disco Elysium – The Final Cut",
+      "hebrew_title": "דיסקו אליסיום",
+      "variants": {
+        "en": {
+          "file": "banners/disco-elysium/en/fee6aa0d9d43.jpg",
+          "sha256": "fee6aa0d9d4398bac3883766344784b0ae93062d22a9fa20de1507e4eea064e7",
+          "bytes": 59476,
+          "width": 460,
+          "height": 215,
+          "object_key": "banners/disco-elysium/en/fee6aa0d9d43.jpg",
+          "original_url": "https://assets.kitor.click/banners/disco-elysium/en/fee6aa0d9d43.jpg",
+          "source": "Steam",
+          "source_page": "https://store.steampowered.com/app/632470/",
+          "kind": "official-library-artwork",
+          "retrieved_on": "2026-11-10",
+          "image_url": "https://cdn.akamai.steamstatic.com/steam/apps/632470/header.jpg"
+        },
+        "he": {
+          "file": "banners/disco-elysium/he/483eff4982ff.png",
+          "sha256": "483eff4982ff281379d812032e53488dbb1b1330efe1523d6aa23972b35f9f6c",
+          "bytes": 2882111,
+          "width": 1834,
+          "height": 858,
+          "object_key": "banners/disco-elysium/he/483eff4982ff.png",
+          "original_url": "https://assets.kitor.click/banners/disco-elysium/he/483eff4982ff.png",
+          "source": "AI text localization",
+          "source_page": "https://store.steampowered.com/app/632470/",
+          "kind": "ai-localized-artwork",
+          "retrieved_on": "2026-11-10",
+          "hebrew_title": "דיסקו אליסיום",
+          "hebrew_subtitle": "הגרסה הסופית",
+          "review": "Hebrew spelling and RTL inspected; generated non-text artwork differs from original."
+        }
+      },
+      "file": "banners/disco-elysium/he/483eff4982ff.png",
+      "sha256": "483eff4982ff281379d812032e53488dbb1b1330efe1523d6aa23972b35f9f6c",
+      "bytes": 2882111,
+      "width": 1834,
+      "height": 858,
+      "object_key": "banners/disco-elysium/he/483eff4982ff.png",
+      "original_url": "https://assets.kitor.click/banners/disco-elysium/he/483eff4982ff.png",
+      "source": "AI text localization",
+      "source_page": "https://store.steampowered.com/app/632470/",
+      "kind": "ai-localized-artwork",
+      "retrieved_on": "2026-11-10",
+      "hebrew_subtitle": "הגרסה הסופית",
+      "review": "Hebrew spelling and RTL inspected; generated non-text artwork differs from original.",
+      "local_file": "assets/game-banners/publish/banners/disco-elysium/he/483eff4982ff.png",
+      "url": "https://assets.kitor.click/banners/disco-elysium/he/483eff4982ff.png"
     }
   ]
 }
