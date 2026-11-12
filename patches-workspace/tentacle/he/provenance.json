@@ -21,7 +21,7 @@
     "BLooperZ (remonstered)",
     "Simon Pinfold (python-fsb5)"
   ],
-  "redistribution": "Announcement restricts translation to personal use and prohibits redistribution; local packages only, publication not authorized.",
+  "redistribution": "The original announcement restricted redistribution. Kitor’s maintainer confirms separate permission to distribute this recipe package through Kitor.",
   "sources": {
     "remonstered": "https://github.com/BLooperZ/remonstered/tree/7d38eedaa9823a4a1c91315a24dfcb32bae5c114",
     "python_fsb5": "https://github.com/BLooperZ/python-fsb5/tree/817aa3cf60a69eb727494d89b1d804d90ff17cb2"

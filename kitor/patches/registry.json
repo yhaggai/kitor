@@ -1689,17 +1689,17 @@
       "patches": [
         {
           "language": "he",
-          "version": "2.0-beta2-kitor1-download1",
+          "version": "2.0-beta2-kitor1-download2",
           "author": "AdventureBrew / Shany Roze, Rafael Ben-Ari, Niv Baehr, Omer Cohen; extraction: BLooperZ",
-          "download_url": "https://github.com/yhaggai/kitor/releases/download/patch-tentacle-he-v2.0-beta2-kitor1-download1/tentacle-he-2.0-beta2-kitor1-download1.zip",
+          "download_url": "https://github.com/yhaggai/kitor/releases/download/patch-tentacle-he-v2.0-beta2-kitor1-download2/tentacle-he-2.0-beta2-kitor1-download2.zip",
           "source_type": "github",
-          "checksum": "023c4ce58fbf8c2899eaa14342cafedd6ac7d48c7a7bfc7bfb77dfec11dbebde",
-          "file_size": 6717506,
-          "description": "יומו של הטנטקל — הגרסה הקלאסית בעברית. התקנה ישירה על קובצי הגרסה הקלאסית הנתמכת, או חילוץ אופציונלי מתוך Remastered שבבעלותכם; הפעלה באמצעות ScummVM. תרגום בטא DOTT-WIP2 לשימוש אישי בלבד. אין להפיץ.",
-          "filename": "tentacle-he-2.0-beta2-kitor1-download1.zip",
+          "checksum": "5471ba338ba3099b7c20ac0209b8e804fbff255b773b4f209d83e0d3101a34dc",
+          "file_size": 6717350,
+          "description": "יומו של הטנטקל — הגרסה הקלאסית בעברית. התקנה ישירה על קובצי הגרסה הקלאסית הנתמכת, או חילוץ אופציונלי מתוך Remastered שבבעלותכם; הפעלה באמצעות ScummVM. תרגום בטא DOTT-WIP2. הפצת חבילת התרגום דרך קיטור נעשית באישור.",
+          "filename": "tentacle-he-2.0-beta2-kitor1-download2.zip",
           "post_install_script": null,
           "install_manifest": "patch.json",
-          "release_revision": 1
+          "release_revision": 2
         }
       ],
       "behavior": {

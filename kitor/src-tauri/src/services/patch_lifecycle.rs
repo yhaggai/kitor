@@ -1113,8 +1113,11 @@ mod tests {
                     &fs::read("../patches/download-packages.json").unwrap(),
                 ).unwrap();
                 if downloads.get(&game.scummvm_id).is_some() {
-                    assert_eq!(format!("{}-download1", package.version), game.patches[0].version);
-                    assert_eq!(package.release_revision + 1, game.patches[0].release_revision);
+                    let patch = &game.patches[0];
+                    let download_revision = patch.release_revision.checked_sub(package.release_revision)
+                        .filter(|revision| *revision > 0)
+                        .expect("Download revision must follow the source revision");
+                    assert_eq!(format!("{}-download{download_revision}", package.version), patch.version);
                 } else {
                     assert_eq!(package.version, game.patches[0].version);
                 }

@@ -21,7 +21,7 @@ fn all_catalog_patches_are_downloadable() {
     for game in registry.games {
         for patch in &game.patches {
             PackageSource::resolve(patch, &game.behavior).unwrap();
-            if patch.version.ends_with("-download1") {
+            if patch.version.rsplit_once("-download").is_some_and(|(_, suffix)| suffix.parse::<u64>().is_ok()) {
                 assert!(patch.checksum.as_ref().is_some_and(|s| s.len() == 64), "{}", game.scummvm_id);
             }
         }
