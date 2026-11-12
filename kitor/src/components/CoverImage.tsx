@@ -1,6 +1,5 @@
 import { Package } from "lucide-react";
 import { useState } from "react";
-import placeholders from "@/data/cover-placeholders.json";
 import { getCoverSrc } from "@/lib/utils";
 
 type CoverImageProps = {
@@ -14,22 +13,20 @@ export function CoverImage(props: CoverImageProps) {
   return <ProgressiveCover key={`${props.gameId}:${props.coverUrl}`} {...props} />;
 }
 
-function ProgressiveCover({ gameId, coverUrl, title }: CoverImageProps) {
+function ProgressiveCover({ coverUrl, title }: CoverImageProps) {
   const [loaded, setLoaded] = useState(false);
   const [failed, setFailed] = useState(false);
   const src = getCoverSrc(coverUrl);
-  const placeholder = (placeholders as Record<string, string>)[gameId];
 
   return (
     <div className="relative w-full h-full overflow-hidden rounded-t-lg flex items-center justify-center">
-      {placeholder ? (
-        <img
-          src={placeholder}
-          alt=""
-          aria-hidden="true"
-          className="absolute inset-0 w-full h-full object-cover blur-sm scale-105"
-        />
-      ) : <Package aria-hidden="true" className="h-16 w-16 text-muted-foreground" />}
+      <div
+        className="flex flex-col items-center gap-2 p-3 text-center text-muted-foreground"
+        aria-hidden={!!src && loaded && !failed}
+      >
+        <Package aria-hidden="true" className="h-12 w-12" />
+        <span dir="auto">{title}</span>
+      </div>
       {src && !failed ? (
         <img
           src={src}
@@ -40,7 +37,7 @@ function ProgressiveCover({ gameId, coverUrl, title }: CoverImageProps) {
           onError={() => setFailed(true)}
           className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-300 motion-reduce:transition-none ${loaded ? "opacity-100" : "opacity-0"}`}
         />
-      ) : <span className="sr-only">{title}</span>}
+      ) : null}
     </div>
   );
 }

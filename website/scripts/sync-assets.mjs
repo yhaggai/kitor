@@ -26,10 +26,7 @@ for (const game of registry.games) {
     const localCover =
       src === `/cover-${game.scummvm_id}.jpg` || src === `/cover-${game.scummvm_id}-${lang}.svg`;
     if (localCover && /^\/cover-[a-z0-9-]+\.(jpg|svg)$/.test(src)) {
-      await copyFile(
-        path.join(repo, "kitor/public", src.slice(1)),
-        path.join(root, "public", src.slice(1))
-      );
+      await access(path.join(root, "public", src.slice(1)));
       continue;
     }
     const url = new URL(src);

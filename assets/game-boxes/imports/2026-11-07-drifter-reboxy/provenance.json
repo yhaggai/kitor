@@ -160,7 +160,8 @@
     "inputs": ["img-02.jpg", "img-01.jpg"],
     "method": "Built-in image_gen perspective restoration",
     "note": "AI reconstruction, not a pixel-exact scan. Tiny footer award lettering is not a reliable transcription. Original Steam and Hebrew covers retained.",
-    "runtime_files": ["kitor/public/cover-drifter.jpg", "website/public/cover-drifter.jpg"],
+    "source_archive": "assets/game-boxes/desktop-sources/cover-drifter.jpg",
+    "runtime_files": ["website/public/cover-drifter.jpg"],
     "width": 1024,
     "height": 1536,
     "runtime_sha256": "d8935a578e2594ea1e01e090e08cc5977109c5635b612e65e6a8d699ec3306d2"

@@ -2,10 +2,8 @@ import { useTranslation } from "@kitor/ui";
 import * as Dialog from "@radix-ui/react-dialog";
 import { X } from "lucide-react";
 import { useRef } from "react";
-import jennyHebrewCover from "@/assets/jenny-leclue-he.jpg";
-import { GameBox, type GameBoxCover, type GameBoxLanguage } from "@/components/GameBox";
-import gameBoxCovers from "@/data/game-box-covers.json";
-import { getCoverSrc } from "@/lib/utils";
+import { GameBox } from "@/components/GameBox";
+import { getCatalogCovers, getCoverSrc } from "@/lib/utils";
 
 type GameDetailsBoxProps = {
   gameId: string;
@@ -25,21 +23,15 @@ export function GameDetailsBox({
 }: GameDetailsBoxProps) {
   const { t } = useTranslation();
   const defaultLanguage = isPatched ? "he" : "en";
-  const covers = (gameBoxCovers as Record<string, Record<GameBoxLanguage, GameBoxCover>>)[
-    gameId
-  ] ?? {
+  const covers = getCatalogCovers(gameId) ?? {
     en: { src: getCoverSrc(coverUrl) ?? "" },
     he: { src: "" },
   };
-  const displayCovers =
-    gameId === "jenny-leclue"
-      ? { ...covers, he: { ...covers.he, fallbackSrc: jennyHebrewCover } }
-      : covers;
   const box = (location: string) => (
     <GameBox
       key={`${gameId}:${defaultLanguage}:${location}`}
       title={title}
-      covers={displayCovers}
+      covers={covers}
       defaultLanguage={defaultLanguage}
       showLanguageControls={false}
     />

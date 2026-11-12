@@ -1,10 +1,9 @@
 import type { GameSummary } from "@kitor/ui";
 import banners from "@/data/game-banners.json";
-import covers from "@/data/game-box-covers.json";
 import galleries from "@/data/game-galleries.json";
 import { gameDescription } from "@/lib/gameDescriptions";
 import { patchOptionLabel } from "@/lib/patchOptions";
-import { getCoverSrc } from "@/lib/utils";
+import { getCatalogCovers, getCoverSrc } from "@/lib/utils";
 import type { Game, PatchWithStatus } from "@/store/store";
 
 const classicTitles: Record<string, string> = {
@@ -20,7 +19,7 @@ function artwork(
     screenshots: (galleries as Record<string, GameSummary["screenshots"]>)[id],
     banner: (banners as Record<string, GameSummary["banner"]>)[id],
     cover: getCoverSrc(cover) ?? undefined,
-    covers: (covers as Record<string, GameSummary["covers"]>)[id],
+    covers: getCatalogCovers(id),
   };
 }
 
