@@ -4,6 +4,35 @@ import { ask } from "@tauri-apps/plugin-dialog";
 import { create } from "zustand";
 import { type Game, useAppStore } from "./store";
 
+export async function downloadSteamGames(
+  appId: number,
+  gameIds: string[],
+  installRoot: string
+): Promise<Game[] | null> {
+  const download = (overwrite: boolean) =>
+    invoke<Game[]>("download_steam_windows_game", { appId, gameIds, installRoot, overwrite });
+
+  try {
+    return await download(false);
+  } catch (error) {
+    const message = String(error);
+    const prefix = "OVERWRITE_REQUIRED:";
+    if (!message.startsWith(prefix)) throw error;
+
+    const path = message.slice(prefix.length);
+    const confirmed = await ask(
+      `The installation folder already exists:\n${path}\n\nContinuing will replace this folder and delete any saves, patches, or other files inside it.`,
+      {
+        title: "Replace existing installation?",
+        kind: "warning",
+        okLabel: "Replace folder",
+        cancelLabel: "Cancel",
+      }
+    );
+    return confirmed ? download(true) : null;
+  }
+}
+
 export const useSteamDownload = create<{
   downloadedBytes: number | null;
   totalBytes: number | null;
@@ -32,32 +61,8 @@ export const useSteamDownload = create<{
             });
         }
       );
-      const download = (overwrite = false) =>
-        invoke<Game[]>("download_steam_windows_game", {
-          appId,
-          gameIds,
-          installRoot,
-          overwrite,
-        });
-      let games: Game[];
-      try {
-        games = await download();
-      } catch (error) {
-        const message = String(error);
-        if (!message.startsWith("OVERWRITE_REQUIRED:")) throw error;
-        const path = message.slice("OVERWRITE_REQUIRED:".length);
-        const confirmed = await ask(
-          `The installation folder already exists:\n${path}\n\nContinuing will replace this folder and delete any saves, patches, or other files inside it.`,
-          {
-            title: "Replace existing installation?",
-            kind: "warning",
-            okLabel: "Replace folder",
-            cancelLabel: "Cancel",
-          }
-        );
-        if (!confirmed) return;
-        games = await download(true);
-      }
+      const games = await downloadSteamGames(appId, gameIds, installRoot);
+      if (games === null) return;
       const store = useAppStore.getState();
       store.setGames(await invoke<Game[]>("get_games_with_patches"));
       store.setHighlightedGameId(

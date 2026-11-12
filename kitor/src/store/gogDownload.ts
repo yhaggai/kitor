@@ -2,6 +2,7 @@ import { invoke } from "@tauri-apps/api/core";
 import { listen } from "@tauri-apps/api/event";
 import { create } from "zustand";
 import type { PatchDownloadProgress } from "@/hooks/useGameCardState";
+import { downloadSteamGames } from "./steamDownload";
 import { type Game, type GameHealth, useAppStore } from "./store";
 
 type InstallProgress = {
@@ -28,7 +29,7 @@ export const useGogDownload = create<{
     source: number | { steamAppId: number } | { installedGameId: number },
     gameId: string,
     installRoot?: string
-  ) => Promise<void>;
+  ) => Promise<"cancelled" | undefined>;
 }>((set, get) => ({
   phase: "download",
   installedGameId: null,
@@ -119,11 +120,8 @@ export const useGogDownload = create<{
             }
           )
         );
-        const imported = await invoke<Game[]>("download_steam_windows_game", {
-          appId: source.steamAppId,
-          gameIds: [gameId],
-          installRoot: root,
-        });
+        const imported = await downloadSteamGames(source.steamAppId, [gameId], root);
+        if (imported === null) return "cancelled";
         const importedLibrary = await invoke<Game[]>("get_games_with_patches");
         useAppStore.getState().setGames(importedLibrary);
         const selected = imported.find((entry) => entry.scummvm_id === gameId);

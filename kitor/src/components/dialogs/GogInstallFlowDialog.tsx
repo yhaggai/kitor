@@ -98,9 +98,15 @@ export function GogInstallFlowDialog() {
       if (installedGameId !== null) {
         await previous.start({ installedGameId }, target.gameId);
       } else if (target.steamAppId !== undefined) {
-        await useGogDownload
-          .getState()
-          .start({ steamAppId: target.steamAppId }, target.gameId, target.installRoot);
+        const result = await previous.start(
+          { steamAppId: target.steamAppId },
+          target.gameId,
+          target.installRoot
+        );
+        if (result === "cancelled" && useGogInstallFlow.getState().target === target) {
+          useGogInstallFlow.setState({ open: false, target: null });
+          useGogDownload.setState({ gameId: null, step: "", percentage: null });
+        }
       } else {
         await useGogDownload.getState().start(target.gogId, target.gameId);
       }
@@ -116,7 +122,7 @@ export function GogInstallFlowDialog() {
       (steam ||
         (checked === target.gameId && !library.loading && !library.error && owned && supported)) &&
       !error &&
-      !installing &&
+      !active &&
       !download.busy
     ) {
       void start();
@@ -131,7 +137,7 @@ export function GogInstallFlowDialog() {
     error,
     owned,
     supported,
-    installing,
+    active,
     download.busy,
     start,
   ]);
