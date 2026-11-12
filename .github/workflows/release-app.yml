@@ -137,9 +137,9 @@ jobs:
           fi
 
           requirement="anchor apple generic and certificate leaf[field.1.2.840.113635.100.6.1.13] exists and certificate leaf[subject.OU] = \"$APPLE_TEAM_ID\""
-          codesign --verify --deep --strict -R "$requirement" "${apps[0]}"
+          codesign --verify --deep --strict -R="$requirement" "${apps[0]}"
           xcrun stapler validate "${apps[0]}"
-          codesign --verify --strict -R "$requirement" "${images[0]}"
+          codesign --verify --strict -R="$requirement" "${images[0]}"
           xcrun notarytool submit "${images[0]}" --wait --output-format json \
             --apple-id "$APPLE_ID" --password "$APPLE_PASSWORD" --team-id "$APPLE_TEAM_ID" \
             > "$RUNNER_TEMP/kitor-dmg-notarization.json"
