@@ -1,0 +1,10 @@
+{
+  "status": "partial_translation",
+  "release_ready": true,
+  "translation_source": "https://github.com/yhaggai/kitor/tree/6b71fce/patches-workspace/disco-elysium/he",
+  "steam_app_id": 632470,
+  "source_validation": "Owned Steam Windows and macOS data, original and installed SHA-256 for each changed bundle",
+  "font_license": "SIL Open Font License 1.1 (Assistant and Noto Sans)",
+  "validation_scope": "Disposable install and uninstall on macOS for both Steam layouts. Native Windows gameplay is pending.",
+  "interface_text": "Hebrew startup notices, loading and saving labels, and Settings and Controls. The game still identifies the underlying language slot as Arabic."
+}

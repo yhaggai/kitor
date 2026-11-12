@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "csv_sha256": "be122ff7937ec5d47f6d6bab292124a022db3f0ad81a308617d830ac53f4c9aa",
+  "compiler_sha256": "6b808f0a9912f3dcf5ca243de6ffea180cf1478076af184b55accb2618f82638",
+  "translated": 74993,
+  "source_entries": 79586,
+  "font": "Assistant and Noto Sans",
+  "font_sha256": "1c3b393884f8fb133a1b17f41d26178adae1050a4f86d7a429d1b5658c314fa3",
+  "fallback_font_sha256": "bfb7bb691513f12e734dc346c03a03f784912432d7e3fa8e56efcf906fe86b3d",
+  "font_license": "SIL Open Font License 1.1",
+  "glyphs_added": {
+    "osx": 165,
+    "windows": 165
+  },
+  "platforms": {
+    "osx/lockits": {
+      "source_sha256": "a12dfb24b4f3a8ef135941db1cee8e22b689dfd59a0aeb4471f696f4506fff43",
+      "output_sha256": "3f6035fff23f01fb887978aa00abd601f2dbc3330b94e8563c8b93f49e16fe94",
+      "delta_bytes": 3580984
+    },
+    "osx/fonts": {
+      "source_sha256": "d31c4206fcffe1265af765d1eb9f7476d8681ea6bdec3d56bb916c2d41b9b1e0",
+      "output_sha256": "03583f6eec5468a60d974b0946ce21e002d72bdad5b23f10608eb6cac33b95a6",
+      "delta_bytes": 4784710
+    },
+    "osx/images": {
+      "source_sha256": "5efadd11be1e8d2b37adfe293a7336119ea56eef6b195d3bfec5fec1c6503712",
+      "output_sha256": "6ebccfac688f4eecbc1b6c8b1c7c7361921b97653e17ed3bfb0de1df21094a75",
+      "delta_bytes": 3388563
+    },
+    "windows/lockits": {
+      "source_sha256": "80d60af4bf1405590a6f020d33e14d031095b7e3bd9759db6657bfa3f613524d",
+      "output_sha256": "d944d5e12e80300773e41c6868e386b17a03e97f733a47ef5596ebece64f9b5d",
+      "delta_bytes": 3581114
+    },
+    "windows/fonts": {
+      "source_sha256": "77d0db6964d25f7eb552fb15b6155bc9416abae4992a3b30023a831fb2ecbdda",
+      "output_sha256": "7661a6fecb6c729e0d8c49af8e2f254062d30907f4b3656c437b192f87e9646d",
+      "delta_bytes": 4784593
+    },
+    "windows/images": {
+      "source_sha256": "5e8d834faa900b0deadf0b2a8d2ec5196b717f02b51ad510745750a2f7058ef4",
+      "output_sha256": "845e7903d5582bf6c43aa16e1889df785e65ec4ba3b09dbd73a4ea793dadb5e5",
+      "delta_bytes": 3388671
+    }
+  },
+  "release_ready": false
+}

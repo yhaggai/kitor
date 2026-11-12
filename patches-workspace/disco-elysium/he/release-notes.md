@@ -1,0 +1,1 @@
+Partial Hebrew translation for the Steam edition of Disco Elysium – The Final Cut on Windows and macOS. Includes 74,993 translated entries and Hebrew startup, loading, saving, Settings, and Controls text. Other unfinished text and image labels can still appear in Arabic. Select Arabic in the game's language settings after installing. Python 3 is required.

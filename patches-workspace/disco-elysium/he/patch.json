@@ -1,0 +1,90 @@
+{
+  "schema_version": 1,
+  "scummvm_id": "disco-elysium",
+  "language": "he",
+  "version": "0.1.0",
+  "release_revision": 1,
+  "filename": "Disco-Elysium-Hebrew-0.1.0.zip",
+  "platforms": {
+    "osx": {
+      "files": [
+        {
+          "path": "Contents/Resources/Data/StreamingAssets/AssetBundles/OSX/lockits/arabic",
+          "operation": "modify",
+          "original_sha256": "a12dfb24b4f3a8ef135941db1cee8e22b689dfd59a0aeb4471f696f4506fff43",
+          "installed_sha256": "3f6035fff23f01fb887978aa00abd601f2dbc3330b94e8563c8b93f49e16fe94",
+          "source": {
+            "kind": "bsdiff",
+            "path": "payload/osx/lockits.bsdiff",
+            "sha256": "4a4730799f81e463076df6768d83fd9a3088d646ae149b4ad9d2dc6ec8e21683",
+            "input": "Contents/Resources/Data/StreamingAssets/AssetBundles/OSX/lockits/arabic"
+          }
+        },
+        {
+          "path": "Contents/Resources/Data/StreamingAssets/AssetBundles/OSX/fonts/arabic",
+          "operation": "modify",
+          "original_sha256": "d31c4206fcffe1265af765d1eb9f7476d8681ea6bdec3d56bb916c2d41b9b1e0",
+          "installed_sha256": "03583f6eec5468a60d974b0946ce21e002d72bdad5b23f10608eb6cac33b95a6",
+          "source": {
+            "kind": "bsdiff",
+            "path": "payload/osx/fonts.bsdiff",
+            "sha256": "564d16843107c69b1040ff3e6369c69b584b06a1f5b46c4aa75a0ef802cae886",
+            "input": "Contents/Resources/Data/StreamingAssets/AssetBundles/OSX/fonts/arabic"
+          }
+        },
+        {
+          "path": "Contents/Resources/Data/StreamingAssets/AssetBundles/OSX/images/arabic",
+          "operation": "modify",
+          "original_sha256": "5efadd11be1e8d2b37adfe293a7336119ea56eef6b195d3bfec5fec1c6503712",
+          "installed_sha256": "6ebccfac688f4eecbc1b6c8b1c7c7361921b97653e17ed3bfb0de1df21094a75",
+          "source": {
+            "kind": "bsdiff",
+            "path": "payload/osx/images.bsdiff",
+            "sha256": "8c44ab3b8d9610077bef646400633d7a4b4d7fafe586a0dd07f92fc430d7c39e",
+            "input": "Contents/Resources/Data/StreamingAssets/AssetBundles/OSX/images/arabic"
+          }
+        }
+      ]
+    },
+    "windows": {
+      "files": [
+        {
+          "path": "disco_Data/StreamingAssets/AssetBundles/Windows/lockits/arabic",
+          "operation": "modify",
+          "original_sha256": "80d60af4bf1405590a6f020d33e14d031095b7e3bd9759db6657bfa3f613524d",
+          "installed_sha256": "d944d5e12e80300773e41c6868e386b17a03e97f733a47ef5596ebece64f9b5d",
+          "source": {
+            "kind": "bsdiff",
+            "path": "payload/windows/lockits.bsdiff",
+            "sha256": "0433ae8f0a67dee708b524c6e80d630b6af0bff75dfa505755e2c2fc81e897df",
+            "input": "disco_Data/StreamingAssets/AssetBundles/Windows/lockits/arabic"
+          }
+        },
+        {
+          "path": "disco_Data/StreamingAssets/AssetBundles/Windows/fonts/arabic",
+          "operation": "modify",
+          "original_sha256": "77d0db6964d25f7eb552fb15b6155bc9416abae4992a3b30023a831fb2ecbdda",
+          "installed_sha256": "7661a6fecb6c729e0d8c49af8e2f254062d30907f4b3656c437b192f87e9646d",
+          "source": {
+            "kind": "bsdiff",
+            "path": "payload/windows/fonts.bsdiff",
+            "sha256": "65e5a5f8b59588e4ca52f24d0b2e225be82b1ea6b395b34c26b673f81ee54cb2",
+            "input": "disco_Data/StreamingAssets/AssetBundles/Windows/fonts/arabic"
+          }
+        },
+        {
+          "path": "disco_Data/StreamingAssets/AssetBundles/Windows/images/arabic",
+          "operation": "modify",
+          "original_sha256": "5e8d834faa900b0deadf0b2a8d2ec5196b717f02b51ad510745750a2f7058ef4",
+          "installed_sha256": "845e7903d5582bf6c43aa16e1889df785e65ec4ba3b09dbd73a4ea793dadb5e5",
+          "source": {
+            "kind": "bsdiff",
+            "path": "payload/windows/images.bsdiff",
+            "sha256": "0b3f585ac5478fd0380c750202e4b6a18122469070d7758ad812846cbee026b7",
+            "input": "disco_Data/StreamingAssets/AssetBundles/Windows/images/arabic"
+          }
+        }
+      ]
+    }
+  }
+}

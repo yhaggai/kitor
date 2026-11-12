@@ -1,0 +1,5 @@
+__pycache__/
+actors.json
+source-index.json
+translations.csv
+csv-validation.json

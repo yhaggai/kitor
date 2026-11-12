@@ -1,0 +1,16 @@
+{
+  "idx": 177,
+  "name_he": "דיסקו אליסיום",
+  "name_en": "Disco Elysium – The Final Cut",
+  "description": "משחק תפקידים בלשי מאת ZA/UM. אתם מגלמים בלש שאיבד את זיכרונו ונשלח לחקור רצח ברוואשול. הטלאי העברי החלקי מיועד לגרסת The Final Cut ב־Steam.",
+  "patch_link": "https://github.com/yhaggai/kitor/releases/download/patch-disco-elysium-he-v0.1.0/Disco-Elysium-Hebrew-0.1.0.zip",
+  "patch_links": [
+    "https://github.com/yhaggai/kitor/releases/download/patch-disco-elysium-he-v0.1.0/Disco-Elysium-Hebrew-0.1.0.zip"
+  ],
+  "other_links": [
+    "https://store.steampowered.com/app/632470/"
+  ],
+  "vm": "Native Unity",
+  "vm_notes": "Windows and macOS Steam edition. Requires Python 3. Select Arabic in game to enable the partial Hebrew translation.",
+  "extraction_status": "Original Kitor Hebrew translation."
+}

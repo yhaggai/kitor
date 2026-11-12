@@ -207,5 +207,11 @@
     "description": "אסטרואיד בגודל של ירח קטן דוהר לעבר כדור הארץ, ומפקד המשימה בוסטון לאו יוצא לעצור אותו יחד עם העיתונאית מגי רובינס והגיאולוג לודגר ברינק. אחרי שהאסטרואיד משנה את מסלולו, השלושה מוצאים את עצמם בעולם זר ונטוש, מלא בטכנולוגיה של תרבות שנעלמה. כדי לשוב הביתה עליהם להבין מה קרה שם, ומה הם מוכנים להשאיר מאחור.",
     "sourceUrl": "https://www.gog.com/en/game/the_dig",
     "communityTranslation": false
+  },
+  "disco-elysium": {
+    "description": "משחק תפקידים בלשי מאת ZA/UM. אתם מגלמים בלש שאיבד את זיכרונו ונשלח לחקור רצח ברוואשול. אפשר להתקין תרגום חלקי לעברית דרך קיטור.",
+    "metadataSource": "patches-metadata/177_disco_elysium.json",
+    "sourceUrl": "https://store.steampowered.com/app/632470/",
+    "communityTranslation": false
   }
 }

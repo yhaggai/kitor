@@ -278,5 +278,13 @@
     "he": {
       "src": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/jenny-leclue/he/ec40281aaab1.png"
     }
+  },
+  "disco-elysium": {
+    "en": {
+      "src": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/disco-elysium/en/71041ce81990.jpg"
+    },
+    "he": {
+      "src": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/disco-elysium/he/cf888621e796.png"
+    }
   }
 }
