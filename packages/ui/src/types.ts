@@ -16,4 +16,6 @@ export type GameSummary = {
   language?: string;
   author?: string;
   version?: string;
+  /** Registry keywords. A game may belong to more than one category. */
+  tags?: string[];
 };

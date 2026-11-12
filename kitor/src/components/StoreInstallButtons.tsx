@@ -9,8 +9,8 @@ import {
 } from "@/components/dialogs/SteamDownloadDialog";
 import { Button } from "@/components/ui/button";
 import { useGogDownload } from "@/store/gogDownload";
+import { useGogInstallFlow } from "@/store/gogInstallFlow";
 import { useSteamStore } from "@/store/steam";
-import { useSteamDownload } from "@/store/steamDownload";
 import { useAppStore } from "@/store/store";
 
 type StoreInstallButtonsProps = {
@@ -27,7 +27,8 @@ export function StoreInstallButtons({
   installed = false,
 }: StoreInstallButtonsProps) {
   const { t } = useTranslation();
-  const download = useSteamDownload();
+  const activeSteamApp = useGogInstallFlow((state) => state.target?.steamAppId);
+  const steamInstalling = useGogDownload((state) => state.busy) && activeSteamApp === steamAppId;
   const gogDownload = useGogDownload();
   const [gogSupported, setGogSupported] = useState<boolean | null>(null);
   const [gogOpen, setGogOpen] = useState(false);
@@ -108,14 +109,17 @@ export function StoreInstallButtons({
             disabled={opening || capabilities === null}
             title={
               canDownload
-                ? t("Download this game for your Mac")
+                ? t("Install game from Steam")
                 : ownsSteamGame
                   ? t("Open this owned game in your Steam library")
                   : t("Open this game’s store page in Steam")
             }
             onClick={() => {
               if (canDownload) {
-                if (!download.busy) useSteamDownload.setState({ error: null });
+                if (steamInstalling) {
+                  useGogInstallFlow.getState().setOpen(true);
+                  return;
+                }
                 setDownloadOpen(true);
               } else {
                 void openClient("Steam");
@@ -127,7 +131,7 @@ export function StoreInstallButtons({
               alt="Steam"
               className="h-8 w-8 shrink-0 rounded-md object-contain"
             />
-            {canDownload && download.busy && download.appId === steamAppId
+            {canDownload && steamInstalling
               ? t("Downloading…")
               : canDownload
                 ? t("Install game")
@@ -142,7 +146,7 @@ export function StoreInstallButtons({
             disabled={opening || gogSupported === null}
             title={
               canInstallGog
-                ? t("Install this game for ScummVM on your Mac")
+                ? t("Install game from GOG")
                 : ownsGogGame
                   ? t("You own this game on GOG. Open in GOG Galaxy to install.")
                   : t("Open this game in GOG Galaxy")

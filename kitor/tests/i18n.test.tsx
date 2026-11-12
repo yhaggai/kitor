@@ -15,12 +15,12 @@ test("Hebrew and English render through the same navigation and collection compo
         <CollectionView collection="library" games={[]} onOpen={() => {}} />
       </AppShell>
     );
-  expect(render()).toContain("Your library");
+  expect(render()).toContain("My Games");
   setAppLanguage("he");
-  expect(render()).toContain("הספרייה שלכם");
-  expect(render()).toContain("גילוי תרגומים");
+  expect(render()).toContain("המשחקים שלי");
+  expect(render()).toContain("בית");
   setAppLanguage("en");
-  expect(render()).toContain("Your library");
+  expect(render()).toContain("My Games");
 });
 
 test("translations preserve interpolation slots and isolate mixed-direction values", () => {
@@ -67,17 +67,54 @@ test("language persists and invalid or inaccessible storage falls back to Englis
   }
 });
 
-test("translated tabs retain stable IDs and accessible panel relationships", () => {
+test("the game description is shown once, above the gallery", () => {
   setAppLanguage("he");
   const html = renderToStaticMarkup(
     <GameDetailsView
-      game={{ id: "test", title: "Test", status: "ready" }}
+      game={{
+        id: "test",
+        title: "Test",
+        description: "פסקה מלאה על המשחק.",
+        status: "ready",
+        screenshots: [{ src: "https://example.com/shot.png", alt: "scene" }],
+      }}
       collection="library"
       onBack={() => {}}
+      actions={<button type="button">Play!</button>}
     />
   );
-  expect(html).toContain("סקירה");
-  expect(html).toContain('-overview"');
-  expect(html).not.toContain('-סקירה"');
-  expect(html).toContain("התרגום מותקן");
+  expect(html.match(/פסקה מלאה על המשחק\./g)).toHaveLength(1);
+  expect(html).not.toContain("על המשחק<");
+  expect(html).not.toContain("סקירה");
+  const art = html.slice(html.indexOf("kt-detail-art"), html.indexOf("kt-detail-copy"));
+  expect(art).toContain("Play!");
+  expect(html.indexOf("פסקה מלאה על המשחק.")).toBeLessThan(html.indexOf("kt-gallery"));
+  expect(html).toContain("תרגום קהילתי");
+  expect(html).toContain('-translation"');
+  expect(html).not.toContain('-תרגום"');
+});
+
+test("the game view title follows the interface language", () => {
+  const view = () =>
+    renderToStaticMarkup(
+      <GameDetailsView
+        game={{
+          id: "jenny",
+          title: "Jenny LeClue - Detectivu",
+          titleHe: "ג׳ני לקלו – הבלשית",
+          description: "תעלומה בעיירה קטנה.",
+          status: "unowned",
+        }}
+        collection="discovery"
+        onBack={() => {}}
+      />
+    );
+  setAppLanguage("en");
+  const english = view();
+  expect(english).toContain("Jenny LeClue - Detectivu");
+  expect(english).not.toContain("ג׳ני לקלו – הבלשית");
+  setAppLanguage("he");
+  const hebrew = view();
+  expect(hebrew).toContain("ג׳ני לקלו – הבלשית");
+  expect(hebrew).not.toContain("Jenny LeClue - Detectivu");
 });

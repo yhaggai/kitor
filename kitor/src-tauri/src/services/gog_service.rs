@@ -32,10 +32,84 @@ pub struct OfflineInstaller {
 }
 
 pub fn build_auth_url() -> String {
-    format!(
-        "{}?client_id={}&redirect_uri={}&response_type=code&layout=client2",
-        AUTH_URL, CLIENT_ID, REDIRECT_URI
-    )
+    let mut url = url::Url::parse(AUTH_URL).expect("valid GOG auth URL");
+    url.query_pairs_mut().extend_pairs([
+        ("client_id", CLIENT_ID),
+        ("redirect_uri", REDIRECT_URI),
+        ("response_type", "code"),
+        ("layout", "client2"),
+    ]);
+    url.to_string()
+}
+
+pub fn code_from_callback_url(value: &str) -> Result<String, String> {
+    let invalid = "Invalid GOG authorization callback.";
+    let url = url::Url::parse(value.trim()).map_err(|_| invalid.to_string())?;
+    if url.scheme() != "https" || url.host_str() != Some("embed.gog.com")
+        || url.path() != "/on_login_success" || url.port_or_known_default() != Some(443)
+        || !url.username().is_empty() || url.password().is_some()
+    {
+        return Err(invalid.into());
+    }
+    let codes: Vec<_> = url.query_pairs().filter(|(key, _)| key == "code").collect();
+    if codes.len() != 1 || codes[0].1.trim().is_empty() {
+        return Err(invalid.into());
+    }
+    Ok(codes[0].1.to_string())
+}
+
+pub fn is_external_login_url(url: &url::Url) -> bool {
+    url.scheme() == "https"
+        && url.host_str() == Some("external-accounts.gog.com")
+        && url.port_or_known_default() == Some(443)
+        && url.username().is_empty()
+        && url.password().is_none()
+        && ["google", "apple", "steam", "discord", "xbox"].iter()
+            .any(|provider| url.path() == format!("/login/providers/{provider}/init"))
+}
+
+#[cfg(test)]
+mod callback_tests {
+    use super::*;
+
+    #[test]
+    fn accepts_only_the_gog_callback_with_one_code() {
+        assert_eq!(code_from_callback_url(" https://embed.gog.com/on_login_success?origin=client&code=a%2Bb%3D ").unwrap(), "a+b=");
+        for value in [
+            "https://accounts.google.com/on_login_success?code=provider-code",
+            "https://embed.gog.com.evil.example/on_login_success?code=x",
+            "http://embed.gog.com/on_login_success?code=x",
+            "https://embed.gog.com/other?code=x",
+            "https://embed.gog.com/on_login_success?code=",
+            "https://embed.gog.com/on_login_success?code=a&code=b",
+            "https://embed.gog.com/on_login_success?error=denied",
+            "raw-code",
+        ] {
+            assert!(code_from_callback_url(value).is_err());
+        }
+    }
+
+    #[test]
+    fn external_browser_destinations_are_restricted() {
+        assert!(is_external_login_url(&url::Url::parse("https://external-accounts.gog.com/login/providers/google/init?redirect_uri=test").unwrap()));
+        for value in [
+            "http://external-accounts.gog.com/login/providers/google/init",
+            "https://external-accounts.gog.com.evil.example/login/providers/google/init",
+            "https://external-accounts.gog.com:8443/login/providers/google/init",
+            "https://user@external-accounts.gog.com/login/providers/google/init",
+            "https://external-accounts.gog.com/login/providers/unknown/init",
+            "https://external-accounts.gog.com/other",
+            "file:///tmp/login",
+        ] {
+            assert!(!is_external_login_url(&url::Url::parse(value).unwrap()));
+        }
+    }
+
+    #[test]
+    fn auth_url_preserves_the_registered_redirect() {
+        let url = url::Url::parse(&build_auth_url()).unwrap();
+        assert_eq!(url.query_pairs().find(|(key, _)| key == "redirect_uri").unwrap().1, REDIRECT_URI);
+    }
 }
 
 pub async fn exchange_code_for_token(code: &str) -> Result<TokenResponse, String> {

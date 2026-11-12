@@ -10,11 +10,13 @@ use tokio::io::AsyncWriteExt;
 static INSTALL: tokio::sync::Mutex<()> = tokio::sync::Mutex::const_new(());
 
 fn supported(def: &registry_service::GameDefinition) -> bool {
-    def.gog.is_some() && !def.behavior.launch_profile(false).is_native()
+    def.gog.is_some()
+        && (!def.behavior.launch_profile(false).is_native()
+            || (cfg!(target_os = "windows") && def.scummvm_id == "grim-fandango-remastered"))
 }
 
 pub fn capabilities(id: i64, game_id: &str) -> Result<bool, String> {
-    Ok(cfg!(target_os = "macos")
+    Ok(cfg!(any(target_os = "macos", target_os = "windows"))
         && registry_service::load_registry()?.games.iter().any(|g| {
             g.scummvm_id == game_id && g.gog.as_ref().is_some_and(|g| g.id == id) && supported(g)
         }))
@@ -138,10 +140,15 @@ fn validate_transfer_size(received: u64, expected: Option<u64>) -> Result<(), St
 }
 
 fn progress(app: &tauri::AppHandle, id: &str, step: &str, percentage: Option<u64>) {
+    emit_progress(app, id, step, percentage, None);
+}
+
+fn emit_progress(app: &tauri::AppHandle, id: &str, step: &str, percentage: Option<u64>, downloaded_bytes: Option<u64>) {
     let _ = app.emit(
         "gog-game-install-progress",
         serde_json::json!({
-            "game_id": id, "step": step, "percentage": percentage
+            "game_id": id, "step": step, "percentage": percentage, "downloaded_bytes": downloaded_bytes,
+            "phase": if matches!(step, "Preparing game files…" | "Adding game to library…" | "Ready to play") { "install" } else { "download" }
         }),
     );
 }
@@ -166,6 +173,9 @@ async fn extractor(app: &tauri::AppHandle, id: &str) -> Result<PathBuf, String> 
     }
     if let Some(path) = find().await {
         return Ok(path);
+    }
+    if cfg!(target_os = "windows") {
+        return Err("GOG installation requires innoextract. Install it and add it to PATH, then retry.".into());
     }
     progress(app, id, "Preparing installation tools…", None);
     for brew in ["/opt/homebrew/bin/brew", "/usr/local/bin/brew"] {
@@ -224,7 +234,9 @@ fn find_game(root: &Path, id: &str) -> Result<PathBuf, String> {
             if !detected.starts_with(&root) {
                 return Err("Extracted game path escapes its installation".into());
             }
-            found.get_or_insert(detected);
+            if id != "grim-fandango-remastered" || detected.join("grim.en.tab").is_file() {
+                found.get_or_insert(detected);
+            }
         }
         for entry in std::fs::read_dir(&path).map_err(|e| e.to_string())? {
             let entry = entry.map_err(|e| e.to_string())?;
@@ -254,7 +266,7 @@ pub async fn install(
         .try_lock()
         .map_err(|_| "Another GOG installation is running")?;
     if !capabilities(id, &game_id)? {
-        return Err("This game does not support automatic GOG installation on Mac".into());
+        return Err("This game does not support automatic GOG installation on this platform".into());
     }
     if let Some(game) = game_service::get_all_games(&state.db)
         .await?
@@ -320,6 +332,7 @@ pub async fn install(
             .read_timeout(std::time::Duration::from_secs(120))
             .build()
             .map_err(|e| e.to_string())?;
+        let mut downloaded_bytes = 0u64;
         for (index, part) in installer.files.into_iter().enumerate() {
             let resolved = json(&client, https_url(&part.downlink, true)?, &token).await?;
             let url = https_url(
@@ -354,31 +367,34 @@ pub async fn install(
             let mut size = 0u64;
             let mut last = std::time::Instant::now();
             let step = format!("Downloading game… (file {} of {part_count})", index + 1);
-            progress(
+            emit_progress(
                 app,
                 &game_id,
                 &step,
                 expected_bytes.filter(|n| *n > 0).map(|_| 0),
+                Some(downloaded_bytes),
             );
             while let Some(chunk) = stream.next().await {
                 let chunk = chunk.map_err(|_| "Game download was interrupted. Please retry.")?;
                 file.write_all(&chunk).await.map_err(|e| e.to_string())?;
                 size += chunk.len() as u64;
                 if last.elapsed().as_millis() >= 250 {
-                    progress(
+                    emit_progress(
                         app,
                         &game_id,
                         &step,
                         expected_bytes
                             .filter(|n| *n > 0)
                             .map(|total| (size.saturating_mul(100) / total).min(100)),
+                        Some(downloaded_bytes + size),
                     );
                     last = std::time::Instant::now();
                 }
             }
             file.flush().await.map_err(|e| e.to_string())?;
             validate_transfer_size(size, expected_bytes)?;
-            progress(app, &game_id, &step, Some(100));
+            downloaded_bytes += size;
+            emit_progress(app, &game_id, &step, Some(100), Some(downloaded_bytes));
         }
         if executables.len() != 1 {
             return Err("This GOG release needs an unsupported installer layout".into());
@@ -587,7 +603,7 @@ mod tests {
         for id in ["monkey-se", "monkey2-se"] {
             assert_eq!(supported(
                 registry.games.iter().find(|g| g.scummvm_id == id).unwrap()
-            ), cfg!(target_os = "macos"));
+            ), cfg!(any(target_os = "macos", target_os = "windows")));
         }
         assert!(!supported(
             registry

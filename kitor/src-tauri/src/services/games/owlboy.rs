@@ -77,6 +77,24 @@ fn windows_root(path:&Path)->bool {
 }
 pub fn launch_command(path: &Path) -> Result<Command,String> {
  let data=detect(path).ok_or("Complete native Owlboy FNA installation not found")?;
+ // The macOS FNA bundle also ships Windows DLLs. Its native launcher takes
+ // precedence over the shared data files used by Windows edition detection.
+ if let Some(bundle)=data.parent().and_then(Path::parent).filter(|bundle|
+  bundle.extension().is_some_and(|ext|ext.eq_ignore_ascii_case("app")) &&
+  descend(bundle,&["Contents","MacOS","Owlboy"]).is_some_and(|p|p.is_file())
+ ) {
+  if !cfg!(target_os="macos"){return Err("The macOS Owlboy edition requires macOS".into());}
+  #[cfg(unix)] {
+   use std::os::unix::fs::PermissionsExt;
+   let runner=descend(bundle,&["Contents","MacOS","Owlboy"]).ok_or("Owlboy launcher missing")?;
+   let mut permissions=fs::metadata(&runner).map_err(|e|e.to_string())?.permissions();
+   if permissions.mode() & 0o100 == 0 {
+    permissions.set_mode(permissions.mode() | 0o100);
+    fs::set_permissions(&runner,permissions).map_err(|e|format!("Could not make the Owlboy launcher executable: {e}"))?;
+   }
+  }
+  let mut cmd=Command::new("open");cmd.arg(bundle).current_dir(data);return Ok(cmd);
+ }
  if windows_root(&data) {
   if !cfg!(target_os="windows"){return Err("The Windows Owlboy edition requires Windows".into());}
   let mut cmd=Command::new(child(&data,"Owlboy.exe").ok_or("Owlboy.exe not found")?);

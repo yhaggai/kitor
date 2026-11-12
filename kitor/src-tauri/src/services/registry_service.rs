@@ -48,12 +48,18 @@ pub struct GameDefinition {
     pub title: String,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub title_he: Option<String>,
+    /// Catalog keywords such as `classic` or `detective`. A game may have several.
+    #[serde(default, skip_serializing_if = "Vec::is_empty")]
+    pub tags: Vec<String>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub cover_url: Option<String>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub platforms: Option<Platforms>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub gog: Option<GogInfo>,
+    /// GOG checkout link that adds this game, or the pack that sells it, to the cart.
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub add_to_cart_url: Option<String>,
     pub detection_patterns: DetectionPatterns,
     pub patches: Vec<PatchDefinition>,
     // Read-only compatibility with registries created before behavior profiles.
@@ -128,14 +134,16 @@ pub fn load_registry() -> Result<Registry, String> {
     };
 
     println!("Attempting to load registry from: {:?}", registry_path);
-    
+
     let content = std::fs::read_to_string(registry_path)
         .or_else(|error| {
             // Finder-launched bundles have no project working directory.
             // Keep the reviewed registry available without relying on cwd.
             if error.kind() == std::io::ErrorKind::NotFound {
                 Ok(include_str!("../../../patches/registry.json").to_owned())
-            } else { Err(error) }
+            } else {
+                Err(error)
+            }
         })
         .map_err(|e| {
             let err_msg = format!("Failed to read registry file: {}", e);
@@ -144,17 +152,21 @@ pub fn load_registry() -> Result<Registry, String> {
         })?;
 
     println!("Registry file loaded successfully, parsing JSON...");
-    
-    let mut registry: Registry = serde_json::from_str(&content)
-        .map_err(|e| {
-            let err_msg = format!("Failed to parse registry JSON: {}", e);
-            println!("Registry parse error: {}", err_msg);
-            err_msg
-        })?;
 
-    println!("Registry loaded: {} games, {} total patches", 
+    let mut registry: Registry = serde_json::from_str(&content).map_err(|e| {
+        let err_msg = format!("Failed to parse registry JSON: {}", e);
+        println!("Registry parse error: {}", err_msg);
+        err_msg
+    })?;
+
+    println!(
+        "Registry loaded: {} games, {} total patches",
         registry.games.len(),
-        registry.games.iter().map(|g| g.patches.len()).sum::<usize>()
+        registry
+            .games
+            .iter()
+            .map(|g| g.patches.len())
+            .sum::<usize>()
     );
 
     // Older external registries predate behavior profiles. Use the reviewed
@@ -167,20 +179,26 @@ pub fn load_registry() -> Result<Registry, String> {
     Ok(registry)
 }
 
-
 // Migrate saved catalogs from embedded patches to the reviewed download entry.
 // Unknown legacy entries are removed because this build contains no payloads.
 fn migrate_bundled_packages(registry: &mut Registry, bundled: &Registry) {
     for game in &mut registry.games {
-        let built = bundled.games.iter().find(|g| g.scummvm_id == game.scummvm_id);
+        let built = bundled
+            .games
+            .iter()
+            .find(|g| g.scummvm_id == game.scummvm_id);
         game.patches.retain_mut(|patch| {
             if patch.source_type != "bundled" {
                 return true;
             }
             let Some(def) = built else { return false };
-            let Some(packaged) = def.patches.iter().find(|p| {
-                p.source_type != "bundled" && p.language == patch.language
-            }) else { return false };
+            let Some(packaged) = def
+                .patches
+                .iter()
+                .find(|p| p.source_type != "bundled" && p.language == patch.language)
+            else {
+                return false;
+            };
             *patch = packaged.clone();
             game.behavior.bundled = def.behavior.bundled;
             game.behavior.bundled_resource = def.behavior.bundled_resource.clone();
@@ -192,12 +210,32 @@ fn migrate_bundled_packages(registry: &mut Registry, bundled: &Registry) {
 fn prepare_behaviors(registry: &mut Registry, bundled: &Registry) -> Result<(), String> {
     for game in &mut registry.games {
         if game.behavior.launch.is_none() {
-            if let Some(def) = bundled.games.iter().find(|g| g.scummvm_id == game.scummvm_id) {
+            if let Some(def) = bundled
+                .games
+                .iter()
+                .find(|g| g.scummvm_id == game.scummvm_id)
+            {
                 game.behavior = def.behavior.clone();
             } else if let Some(legacy) = &game.launch_config {
-                let patched = super::game_behavior::LaunchProfile { args: legacy.args.clone(), subdirectory: legacy.subdirectory.clone(), ..Default::default() };
-                let original = super::game_behavior::LaunchProfile { args: legacy.args.iter().filter(|a| !a.starts_with("--language=")).cloned().collect(), ..Default::default() };
-                game.behavior.launch = Some(super::game_behavior::LaunchProfiles { original, patched, original_macos: None });
+                let patched = super::game_behavior::LaunchProfile {
+                    args: legacy.args.clone(),
+                    subdirectory: legacy.subdirectory.clone(),
+                    ..Default::default()
+                };
+                let original = super::game_behavior::LaunchProfile {
+                    args: legacy
+                        .args
+                        .iter()
+                        .filter(|a| !a.starts_with("--language="))
+                        .cloned()
+                        .collect(),
+                    ..Default::default()
+                };
+                game.behavior.launch = Some(super::game_behavior::LaunchProfiles {
+                    original,
+                    patched,
+                    original_macos: None,
+                });
             }
         }
         game.behavior.validate()?;

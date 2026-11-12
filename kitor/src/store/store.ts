@@ -63,11 +63,13 @@ type Patch = {
   steam_app_id?: number | null;
   gog_id?: number | null;
   gog_installer_path?: string | null;
+  add_to_cart_url?: string | null;
   platforms?: {
     windows: boolean;
     osx: boolean;
     linux: boolean;
   };
+  tags?: string[];
 };
 
 type DownloadProgress = {
@@ -129,7 +131,7 @@ export const useAppStore = create<AppStore>((set) => ({
   scummvmDownloadInProgress: false,
   scummvmDownloadProgress: null,
   scummvmVersion: null,
-  activeTab: "library",
+  activeTab: "patches",
   highlightedGameId: null,
   gogAuth: { isAuthenticated: false },
   gogGames: [],
@@ -157,6 +159,7 @@ export type PatchWithStatus = Patch & {
   steam_app_id?: number | null;
   gog_id?: number | null;
   gog_installer_path?: string | null;
+  add_to_cart_url?: string | null;
   platforms?: {
     windows: boolean;
     osx: boolean;

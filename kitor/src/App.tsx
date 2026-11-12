@@ -5,6 +5,8 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import AppUpdateDialog from "@/components/AppUpdateDialog";
 import BugReportDialog from "@/components/BugReportDialog";
 import ContributorAccount from "@/components/ContributorAccount";
+import { GogInstallFlowDialog } from "@/components/dialogs/GogInstallFlowDialog";
+import SteamConnectDialog from "@/components/dialogs/SteamConnectDialog";
 import GameLibrary from "@/components/GameLibrary";
 import PatchBrowser from "@/components/PatchBrowser";
 import Settings from "@/components/Settings";
@@ -124,32 +126,36 @@ function App() {
   }, [loadGames, checkScummVM, setDownloadProgress, setScummVMDownloadProgress]);
 
   return (
-    <AppShell
-      account={<ContributorAccount />}
-      active={
-        activeTab === "patches" ? "discovery" : activeTab === "settings" ? "settings" : "library"
-      }
-      onNavigate={(view) => {
-        setNavigationResetKey((key) => key + 1);
-        setActiveTab(view === "discovery" ? "patches" : view);
-        window.scrollTo({ top: 0, behavior: "instant" });
-      }}
-      footer={
-        <>
-          <BugReportDialog />
-          <TranslationRequestDialog />
-        </>
-      }
-    >
-      <AppUpdateDialog />
-      <div hidden={activeTab !== "library"}>
-        <GameLibrary onRefresh={loadGames} navigationResetKey={navigationResetKey} />
-      </div>
-      <div hidden={activeTab !== "patches"}>
-        <PatchBrowser navigationResetKey={navigationResetKey} />
-      </div>
-      {activeTab === "settings" && <Settings />}
-    </AppShell>
+    <>
+      <GogInstallFlowDialog />
+      <SteamConnectDialog />
+      <AppShell
+        account={<ContributorAccount />}
+        active={
+          activeTab === "patches" ? "discovery" : activeTab === "settings" ? "settings" : "library"
+        }
+        onNavigate={(view) => {
+          setNavigationResetKey((key) => key + 1);
+          setActiveTab(view === "discovery" ? "patches" : view);
+          window.scrollTo({ top: 0, behavior: "instant" });
+        }}
+        footer={
+          <>
+            <BugReportDialog />
+            <TranslationRequestDialog />
+          </>
+        }
+      >
+        <AppUpdateDialog />
+        <div hidden={activeTab !== "library"}>
+          <GameLibrary onRefresh={loadGames} navigationResetKey={navigationResetKey} />
+        </div>
+        <div hidden={activeTab !== "patches"}>
+          <PatchBrowser navigationResetKey={navigationResetKey} />
+        </div>
+        {activeTab === "settings" && <Settings />}
+      </AppShell>
+    </>
   );
 }
 

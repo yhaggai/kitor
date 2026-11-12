@@ -1,0 +1,43 @@
+[package]
+name = "kitor-steam"
+version = "0.1.0"
+edition = "2021"
+license = "MIT"
+
+[dependencies]
+anyhow = "1"
+aes = "0.8"
+cbc = { version = "0.1", features = ["alloc", "block-padding"] }
+base64 = "0.22"
+flate2 = "1"
+futures = "0.3"
+keyring = { version = "3.6.3", features = ["apple-native", "windows-native", "sync-secret-service", "crypto-rust"] }
+lzma-rs = "0.3"
+qrcode = { version = "0.14", default-features = false, features = ["svg"] }
+reqwest = { version = "0.12", default-features = false, features = ["json", "rustls-tls", "stream", "http2"] }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+sha1 = "0.10"
+tempfile = "3"
+tokio = { version = "1", features = ["full"] }
+tokio-tungstenite = { version = "0.26", features = ["rustls-tls-native-roots"] }
+zip = "2.2"
+zstd = "0.13"
+
+# Keep content decoding representative of release speed in the desktop dev app.
+[profile.dev.package.lzma-rs]
+opt-level = 3
+[profile.dev.package.sha1]
+opt-level = 3
+[profile.dev.package.aes]
+opt-level = 3
+[profile.dev.package.cbc]
+opt-level = 3
+
+[profile.dev.package.kitor-steam]
+opt-level = 3
+
+[dependencies.rsa]
+version = "0.9"
+[dependencies.zeroize]
+version = "1"
