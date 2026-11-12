@@ -1,4 +1,5 @@
 {
+  "Kitor downloads the Steam files for this game and adds it to your library.": "קיטור יוריד את קובצי המשחק מ־Steam ויוסיף אותו לספרייה שלכם.",
   "Steam ID: {0}": "מזהה Steam: {0}",
   "Logout from Steam": "התנתקות מ־Steam",
   "Connected to Steam": "מחובר ל־Steam",
@@ -280,7 +281,7 @@
   "Kitor is downloading or reusing the game files, verifying them, and detecting available games for your library.": "קיטור מוריד את קובצי המשחק או משתמש בקבצים קיימים, מאמת אותם ומזהה משחקים זמינים לספרייה.",
   "Another Steam download is running. Wait for it to finish before starting this one.": "הורדה אחרת מ־Steam פועלת כעת. המתינו לסיומה לפני התחלת הורדה זו.",
   "Kitor downloads and extracts the full collection. Game detection identifies the games available to play and patch on your Mac.": "קיטור מוריד ומחלץ את האוסף המלא, ומזהה אילו משחקים זמינים להפעלה ולתרגום ב־Mac שלכם.",
-  "This game is only available for Windows on Steam. Kitor can download that version and run it on your Mac with ScummVM.": "המשחק זמין ב־Steam רק עבור Windows. קיטור יכול להוריד את הגרסה הזו ולהפעיל אותה ב־Mac באמצעות ScummVM.",
+  "Kitor downloads the game files from Steam and prepares them to play on your Mac with ScummVM.": "קיטור מוריד את קובצי המשחק מ־Steam ומכין אותם להפעלה ב־Mac באמצעות ScummVM.",
   "Downloading and verifying game files": "מוריד ומאמת את קובצי המשחק",
   "Keep Kitor open. Hiding this dialog does not cancel Steam’s download. Reopen it from any Steam button in this collection.": "השאירו את קיטור פתוח. הסתרת החלון אינה מבטלת את ההורדה מ־Steam. אפשר לפתוח אותו שוב מכל כפתור Steam באוסף.",
   "Click Next to download the collection and detect its games.": "לחצו על ״הבא״ להורדת האוסף ולזיהוי המשחקים שבו.",

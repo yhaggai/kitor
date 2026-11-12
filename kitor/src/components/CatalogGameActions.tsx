@@ -18,10 +18,10 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import { gogStoreUrl } from "@/lib/gameAction";
+import { useGogDownload } from "@/store/gogDownload";
 import { useGogInstallFlow } from "@/store/gogInstallFlow";
 import { useNativeSteam } from "@/store/nativeSteam";
 import { useSteamStore } from "@/store/steam";
-import { useSteamDownload } from "@/store/steamDownload";
 import { type Game, useAppStore } from "@/store/store";
 
 type CatalogGameActionsProps = {
@@ -40,7 +40,8 @@ export function CatalogGameActions({
   addToCartUrl,
 }: CatalogGameActionsProps) {
   const { t } = useTranslation();
-  const download = useSteamDownload();
+  const activeSteamApp = useGogInstallFlow((state) => state.target?.steamAppId);
+  const steamInstalling = useGogDownload((state) => state.busy) && activeSteamApp === steamAppId;
   const steam = useSteamStore((state) => state.status);
   const gogGames = useAppStore((state) => state.gogGames);
   const gogAuthenticated = useAppStore((state) => state.gogAuth.isAuthenticated);
@@ -77,8 +78,6 @@ export function CatalogGameActions({
     };
   }, [steamAppId, scummvmId]);
 
-  const steamBusy = download.busy && download.appId === steamAppId;
-
   async function chooseStore(provider: "gog" | "steam") {
     setError(null);
     if (provider === "gog" && gogId) {
@@ -91,7 +90,10 @@ export function CatalogGameActions({
     }
     if (provider !== "steam" || !steamAppId) return;
     if (capabilities?.supported) {
-      if (!download.busy) useSteamDownload.setState({ error: null });
+      if (steamInstalling) {
+        useGogInstallFlow.getState().setOpen(true);
+        return;
+      }
       setDownloadOpen(true);
       return;
     }
@@ -127,10 +129,10 @@ export function CatalogGameActions({
   const installLabel = (provider: "gog" | "steam") =>
     t(
       provider === "steam"
-        ? steam.owned_app_ids === null
-          ? "Play on Steam"
-          : ownsSteam
-            ? "Install from Steam"
+        ? capabilities?.supported || ownsSteam
+          ? "Install from Steam"
+          : steam.owned_app_ids === null
+            ? "Play on Steam"
             : "Buy on Steam"
         : !gogAuthenticated
           ? "Play on GOG"
@@ -143,6 +145,10 @@ export function CatalogGameActions({
     setError(null);
     if (provider === "steam") {
       if (!steamAppId) return;
+      if (capabilities?.supported) {
+        setInstallSource(provider);
+        return;
+      }
       setOpening(true);
       try {
         if (!(await useNativeSteam.getState().ensureConnected())) return;
@@ -199,7 +205,9 @@ export function CatalogGameActions({
               alt=""
               className="h-6 w-6 shrink-0 object-contain"
             />
-            {steamBusy && primaryStore === "steam" ? t("Downloading…") : installLabel(primaryStore)}
+            {steamInstalling && primaryStore === "steam"
+              ? t("Downloading…")
+              : installLabel(primaryStore)}
           </button>
           {
             <DropdownMenu.Root>

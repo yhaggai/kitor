@@ -124,6 +124,8 @@ export const useGogDownload = create<{
           gameIds: [gameId],
           installRoot: root,
         });
+        const importedLibrary = await invoke<Game[]>("get_games_with_patches");
+        useAppStore.getState().setGames(importedLibrary);
         const selected = imported.find((entry) => entry.scummvm_id === gameId);
         if (!selected) throw new Error("Installed game was not found in the library.");
         game = selected;

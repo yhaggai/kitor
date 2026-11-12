@@ -91,10 +91,12 @@ export function GogInstallFlowDialog() {
     if (!target || useGogDownload.getState().busy) return;
     setError(null);
     try {
-      if (target.installedGameId !== undefined) {
-        await useGogDownload
-          .getState()
-          .start({ installedGameId: target.installedGameId }, target.gameId);
+      const previous = useGogDownload.getState();
+      const installedGameId =
+        target.installedGameId ??
+        (previous.gameId === target.gameId ? previous.installedGameId : null);
+      if (installedGameId !== null) {
+        await previous.start({ installedGameId }, target.gameId);
       } else if (target.steamAppId !== undefined) {
         await useGogDownload
           .getState()

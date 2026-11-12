@@ -290,8 +290,10 @@
   color: var(--kt-text);
   background: transparent;
   border: 0;
-  outline: none;
   min-width: 0;
+}
+.kt-search input:focus-visible {
+  outline: none;
 }
 .kt-search input::placeholder {
   color: var(--kt-muted);

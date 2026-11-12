@@ -35,7 +35,7 @@ export function gameSummary(game: Game): GameSummary {
       ["damaged", "unverified"].includes(game.health.patch_status));
   const patched = game.health
     ? game.health.patch_status === "installed"
-    : (game.is_patched ?? !!installed);
+    : (game.is_patched ?? false);
   return {
     id: String(game.id),
     searchTerms: `${game.scummvm_id} ${game.title} ${game.title_he ?? ""}`,

@@ -1,5 +1,5 @@
 import { Search } from "lucide-react";
-import { type ReactNode, useState } from "react";
+import { type ReactNode, useEffect, useState } from "react";
 import { categoryLabel, hasCategory, orderedCategories } from "../categories";
 import { Button } from "../components/Button";
 import { GameTile } from "../components/GameTile";
@@ -8,6 +8,7 @@ import type { Collection, GameSummary } from "../types";
 
 export function CollectionView({
   collection,
+  navigationResetKey,
   games,
   loading = false,
   error,
@@ -17,6 +18,7 @@ export function CollectionView({
   feedback,
 }: {
   collection: Collection;
+  navigationResetKey?: number;
   games: GameSummary[];
   loading?: boolean;
   error?: string;
@@ -29,6 +31,10 @@ export function CollectionView({
   const [query, setQuery] = useState("");
   const [filter, setFilter] = useState("all");
   const [category, setCategory] = useState("all");
+  // biome-ignore lint/correctness/useExhaustiveDependencies: Navigation explicitly resets the search.
+  useEffect(() => {
+    setQuery("");
+  }, [navigationResetKey]);
   const filters = [
     { id: "all", label: t("All games") },
     { id: "ready", label: t("Translation installed") },

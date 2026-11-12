@@ -93,9 +93,14 @@ export default function PatchBrowser({ navigationResetKey }: { navigationResetKe
           const game = games.find((g) => g.scummvm_id === patch.scummvm_id);
           const isGameInstalled = !!game;
           const isPatchInstalled =
-            game?.installed_patches?.some(
-              (p) => p.language === patch.language && p.version === patch.version
-            ) ?? false;
+            (game?.health ? game.health.patch_status === "installed" : game?.is_patched === true) &&
+            (game?.installed_patches?.some(
+              (p) =>
+                p.status === "active" &&
+                p.language === patch.language &&
+                p.version === patch.version
+            ) ??
+              false);
 
           return {
             ...patch,
@@ -123,6 +128,7 @@ export default function PatchBrowser({ navigationResetKey }: { navigationResetKe
     <div ref={navigation.root}>
       <div hidden={!!selected}>
         <CollectionView
+          navigationResetKey={navigationResetKey}
           collection="discovery"
           games={patches.map(patchSummary)}
           loading={loading}

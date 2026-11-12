@@ -307,7 +307,7 @@ export default function GameCard({ game, collection, onRemove, onBack }: GameCar
   const gameReady = !game.health || game.health.game_status === "present";
   const hasPatch = game.health
     ? game.health.patch_status === "installed"
-    : (game.is_patched ?? recordedPatch);
+    : (game.is_patched ?? false);
   const canInstall =
     gameReady &&
     game.has_available_patch &&
@@ -321,9 +321,9 @@ export default function GameCard({ game, collection, onRemove, onBack }: GameCar
     patchAvailable: !!game.has_available_patch,
     purchased: true,
   });
-  const showPlay = action === "play";
+  const showPlay = action === "play" && hasPatch;
   const showInstallPatch = action === "install-patch" && canInstall;
-  const showPlayWithout = action === "install-patch";
+  const showPlayWithout = action === "install-patch" || (action === "play" && !hasPatch);
   const canPlay = showPlay || showPlayWithout;
   const canRestore = gameReady && recordedPatch;
   const canUpdate = gameReady && hasPatch && !!updatePatch;
