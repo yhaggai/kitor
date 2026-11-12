@@ -24,7 +24,6 @@ pub mod reconstruction;
 
 
 
-pub mod github_download_service;
 
 pub mod app_updates;
 

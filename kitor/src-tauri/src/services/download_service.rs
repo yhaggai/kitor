@@ -55,11 +55,8 @@ async fn download_with_progress(
     let temp_path = dest_path.with_extension(format!("download-{}-{}",
         std::process::id(), chrono::Utc::now().timestamp_nanos_opt().unwrap_or_default()));
     let result = async {
-        let response = match super::github_download_service::download(url).await? {
-            Some(response) => response,
-            None => reqwest::Client::new().get(url).send().await
-                .map_err(|_| "Could not download file. Check your connection.".to_string())?,
-        };
+        let response = reqwest::Client::new().get(url).send().await
+            .map_err(|_| "Could not download file. Check your connection.".to_string())?;
         let status = response.status();
         {
             response.error_for_status_ref()
@@ -162,19 +159,19 @@ mod tests {
     }
 
     #[tokio::test]
-    #[ignore = "requires network and a saved GitHub token for the private patch repository"]
-    async fn downloads_real_kyrandia_release() {
-        let dir = std::env::temp_dir().join(format!("kitor-release-test-{}", std::process::id()));
-        std::fs::create_dir_all(&dir).unwrap();
-        let path = dir.join("patch.zip");
-        // Reproduce and replace the old nine-byte failed download.
+    #[ignore = "requires network access to a public GitHub release"]
+    async fn downloads_public_tentacle_release() {
+        let dir = tempfile::tempdir().unwrap();
+        let path = dir.path().join("patch.zip");
         std::fs::write(&path, b"Not Found").unwrap();
         download_with_progress(
-            "https://github.com/yhaggai/kitor/releases/download/patch-kyra1-cd-he-v1.0-beta/KyraHebPatch-BETA.zip",
-            &path, |_| {}).await.unwrap();
-        crate::services::file_service::extract_zip(&path, &dir.join("extracted")).unwrap();
-        assert!(dir.join("extracted/GEMCUT.PAK").is_file());
-        assert!(dir.join("extracted/8FAT.FNT").is_file());
-        std::fs::remove_dir_all(dir).unwrap();
+            "https://github.com/yhaggai/kitor/releases/download/patch-tentacle-he-v2.0-beta2-kitor1-download2/tentacle-he-2.0-beta2-kitor1-download2.zip",
+            &path,
+            |_| {},
+        ).await.unwrap();
+        let extracted = dir.path().join("extracted");
+        crate::services::file_service::extract_zip(&path, &extracted).unwrap();
+        assert!(extracted.join("_platforms/windows/classic/patch.json").is_file());
+        assert!(extracted.join("_platforms/osx/classic/patch.json").is_file());
     }
 }
