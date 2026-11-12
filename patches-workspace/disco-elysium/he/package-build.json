@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "csv_sha256": "be122ff7937ec5d47f6d6bab292124a022db3f0ad81a308617d830ac53f4c9aa",
-  "compiler_sha256": "92cc031b79f635d469f29429d1105070ea4d3f5fc794ecaebde135f0228db459",
+  "compiler_sha256": "fcf4a18b6ecefb993d584a60abb209c62b7c927f54de0d9f806c751f3ee82e3c",
   "translated": 75021,
   "source_entries": 79586,
   "font": "Assistant and Noto Sans",
@@ -30,13 +30,13 @@
     },
     "osx/loading-literal": {
       "source_sha256": "182882d0ef82ca09bbbe556c04cf4759a700bc80a9ab2e306eb998cd29a43f5c",
-      "output_sha256": "5ea360e204aa9c89e264b7cf3d8d56b13b98cedc4dd37a7d77e1a678271669ab",
-      "delta_bytes": 186
+      "output_sha256": "af0ddcf024e36b7b4d7bcb54204c20d5e5d070f9a9e0f1e1ec4944e2f8ad1a05",
+      "delta_bytes": 194
     },
     "osx/language-display-name": {
       "source_sha256": "e331daf53d2b78a1dc86e9ac415d70e61095d3b2db0f66406d95867bef50a4f1",
-      "output_sha256": "db311ffdd424ee3d59f9a119e18f75aed1bb970dcf95c504372ed9f57119c7f3",
-      "delta_bytes": 279
+      "output_sha256": "db715bf70ec224a93ed856ebbaef7d718fb9dd9e09c4a5bd2e31fea097b214c7",
+      "delta_bytes": 276
     },
     "windows/lockits": {
       "source_sha256": "80d60af4bf1405590a6f020d33e14d031095b7e3bd9759db6657bfa3f613524d",
@@ -55,21 +55,13 @@
     },
     "windows/loading-literal": {
       "source_sha256": "21f9c3aba9957a42ea8570e5f9c9bc550f4c6546c7f5ff21d188d8b6069528dc",
-      "output_sha256": "a6d5d5dfbc90802188a9eb161ab73adb4dd0c3039687450aee4e586061cde7e8",
-      "delta_bytes": 186
+      "output_sha256": "193f0fec4738abad5df26d39078787247293a0029d244b3fbc6b5872bcc9da9e",
+      "delta_bytes": 194
     },
     "windows/language-display-name": {
       "source_sha256": "fa045eec590ee1fb9e6fe8228d1a7fdb13c12f4c62443cb0b4b4234917f137c3",
-      "output_sha256": "e2f24827c3dbc0836d79ea0f9359b8dee85845ca1b02c348b23b85f58a87b1e0",
-      "delta_bytes": 223
-    },
-    "osx/interface-font": {
-      "source_sha256": "9e1b1bd765fcbc03b5c12d4d7cbc795460fbcbe3f5582425ddc4085cc3c5e749",
-      "output_sha256": "389791aa0cc9f3696c5839c873a9acb8379de88bd9d4f3b5c2463fe3fc62ce7e"
-    },
-    "windows/interface-font": {
-      "source_sha256": "1200628ffe1efdf5deb67d96fe6adc608d9c4fd811b1dc988613a6e0866fcce6",
-      "output_sha256": "8f8d9c3fae413180dcc46935dcf7d516fdd1029a191d184012fd48bf19b1d885"
+      "output_sha256": "0d5e593db5fbc2985a9b58bf4d130e7e9bf25b14b52f6a895dcf40324a40029a",
+      "delta_bytes": 274
     }
   },
   "release_ready": false

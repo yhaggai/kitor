@@ -6,5 +6,5 @@
   "source_validation": "Owned Steam Windows and macOS data, original and installed SHA-256 for each changed bundle",
   "font_license": "SIL Open Font License 1.1 (Assistant and Noto Sans)",
   "validation_scope": "Disposable install and uninstall on macOS for both Steam layouts. Native Windows gameplay is pending.",
-  "interface_text": "Hebrew language selector, compiled loading label, startup notices, saving labels, Settings and Controls. The Arabic slot supplies the RTL renderer."
+  "interface_text": "HEBREW language selector, English scene-transition label, and Hebrew startup notices, saving labels, Settings and Controls. The Arabic slot supplies the RTL renderer."
 }

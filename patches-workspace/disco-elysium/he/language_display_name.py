@@ -12,7 +12,7 @@ def unity_string(value: str) -> bytes:
 def replace_language_display_name(source: bytes) -> bytes:
     env = UnityPy.load(source)
     old = unity_string("العربية")
-    new = unity_string("עברית")
+    new = unity_string("HEBREW")
     marker = unity_string("LanguagesNamesLockit")
     matches = [
         (obj, raw)

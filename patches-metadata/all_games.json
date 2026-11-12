@@ -3369,7 +3369,7 @@
       "https://store.steampowered.com/app/632470/"
     ],
     "vm": "Native Unity",
-    "vm_notes": "Windows and macOS Steam edition. Requires Python 3. Select עברית in game to enable the partial Hebrew translation.",
+    "vm_notes": "Windows and macOS Steam edition. Requires Python 3. Select HEBREW in game to enable the partial Hebrew translation.",
     "extraction_status": "Original Kitor Hebrew translation."
   }
 ]
