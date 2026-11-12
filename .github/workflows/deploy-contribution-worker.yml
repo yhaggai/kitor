@@ -1,0 +1,37 @@
+name: Contribution Worker
+
+on:
+  pull_request:
+    paths:
+      - 'tools/contribution-worker/**'
+      - '.github/workflows/deploy-contribution-worker.yml'
+permissions:
+  contents: read
+
+env:
+  WRANGLER_SEND_METRICS: 'false'
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    defaults:
+      run:
+        working-directory: tools/contribution-worker
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+          cache-dependency-path: tools/contribution-worker/package-lock.json
+      - run: npm ci
+      - run: npm run check
+      - run: npm test
+      - name: Check deployment scripts
+        run: |
+          node --check scripts/deployment-config.mjs
+          node --check scripts/deployment-secrets.mjs
+          node --check scripts/check-deployment.mjs
+      - name: Validate Worker bundle
+        run: npx --no-install wrangler deploy --dry-run --outdir .wrangler/ci-build

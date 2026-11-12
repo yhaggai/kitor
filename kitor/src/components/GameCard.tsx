@@ -20,6 +20,7 @@ import { InstallPatchDialog } from "@/components/dialogs/InstallPatchDialog";
 import { RestoreGameDialog } from "@/components/dialogs/RestoreGameDialog";
 import { ScummVMDialog } from "@/components/dialogs/ScummVMDialog";
 import { OpenGameFolderMenuItem } from "@/components/OpenGameFolderMenuItem";
+import { TranslationContributionButton } from "@/components/TranslationContributionButton";
 import { TranslationCredit } from "@/components/TranslationCredit";
 import { Button } from "@/components/ui/button";
 import { useDialog } from "@/hooks/useDialog";
@@ -333,6 +334,7 @@ export default function GameCard({ game, collection, onRemove, onBack }: GameCar
         onBack={onBack}
         actions={
           <div className="kt-native-game-actions">
+            <TranslationContributionButton gameId={game.scummvm_id} />
             {refreshing && (
               <p aria-live="polite" className="text-xs text-muted-foreground">
                 {t("Checking game and patch files…")}{" "}

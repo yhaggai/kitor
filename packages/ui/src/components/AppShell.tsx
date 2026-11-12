@@ -9,11 +9,13 @@ export function AppShell({
   onNavigate,
   children,
   footer,
+  account,
 }: {
   active: Collection | "settings";
   onNavigate: (view: Collection | "settings") => void;
   children: ReactNode;
   footer?: ReactNode;
+  account?: ReactNode;
 }) {
   const { t } = useTranslation();
   return (
@@ -56,6 +58,7 @@ export function AppShell({
         </div>
       </aside>
       <main id="kitor-main" className="kt-main" tabIndex={-1}>
+        {account}
         {children}
       </main>
     </div>

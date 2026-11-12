@@ -91,3 +91,11 @@ declares its exact output length, and contains only copy ranges and literal byte
 The manifest also pins the recipe and final output SHA-256. No external runtime
 is required. Tentacle direct-classic and optional Remastered extraction plans are
 separate manifests; use `patch.remastered-source.json` for the latter.
+
+Hebrew text proposals can use `patches-workspace/<game>/he/translations/<name>.json`
+with a JSON object mapping source text or stable IDs to Hebrew strings. This path
+also works for a game that does not have a patch manifest yet. Translation-only
+PRs using this format, existing translation catalogs, or the supported subtitle
+CSV format take the lightweight CI path. Packaged CSV changes need matching
+manifest checksums. New package manifests, binary assets, and installer changes
+run the full checks.
