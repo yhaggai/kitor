@@ -101,11 +101,13 @@ Google production branding, measure Worker CPU with the full CSV, choose limits
 accordingly, and add operational monitoring/account-deletion handling. No patch
 build runs inside this Worker; existing repository CI handles patch validation.
 
-## GitHub Actions validation
+## GitHub Actions deployment
 
-`.github/workflows/deploy-contribution-worker.yml` runs tests and validates the
-Worker bundle on pull requests. The hosted Worker URL, GitHub environments,
-and deployment workflow are handled separately.
+`.github/workflows/deploy-contribution-worker.yml` validates changes on pull requests.
+To deploy, run **Contribution Worker → Run workflow** from **v1**, then choose
+**staging** or **production**. Each environment serializes its deployments.
+Configure the deployment branch restriction to `v1` in both GitHub environments
+and set required reviewers for production where supported.
 
 Create two D1 databases once using your Cloudflare account:
 
@@ -125,6 +127,8 @@ Each GitHub environment needs these **variables**:
 | `D1_DATABASE_ID` | That environment's provisioned database UUID |
 | `PUBLIC_URL` | `https://kitor-contributions-staging.<subdomain>.workers.dev` or the production equivalent |
 | `BOT_APP_ID` | The contribution bot's app ID (`5666467` for the current bot) |
+| `NOTIFICATIONS_ENABLED` | Set to `true` to enable email delivery |
+| `NOTIFICATION_FROM` | Optional sender override for the verified Resend domain |
 
 And these **secrets**:
 
@@ -134,6 +138,13 @@ And these **secrets**:
 | `GOOGLE_CLIENT_ID` | Environment-specific Web OAuth client ID |
 | `GOOGLE_CLIENT_SECRET` | Its client secret |
 | `BOT_PRIVATE_KEY` | Bot private key in PKCS8 PEM format |
+| `CONTRIBUTION_WEBHOOK_SECRET` | Shared secret for validating GitHub deliveries, passed to the Worker as `GITHUB_WEBHOOK_SECRET` |
+| `RESEND_API_KEY` | Sending-only key for the verified domain, required when email delivery is enabled |
+
+Set the **repository Actions variable** `KITOR_CONTRIBUTION_API_URL` to the
+same HTTPS origin as the production environment's `PUBLIC_URL`. The app
+release workflow validates it before creating a draft release and embeds it
+in each signed installer. Use a build-time override for staging desktop builds.
 
 Register each OAuth client's exact `${PUBLIC_URL}/auth/google/callback` URI.
 The existing localhost OAuth client stays for local development. Use a sandbox

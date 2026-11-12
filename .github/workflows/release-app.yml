@@ -25,6 +25,19 @@ jobs:
       - uses: actions/setup-python@v6
         with:
           python-version: '3.12'
+      - name: Validate hosted contribution URL
+        env:
+          KITOR_CONTRIBUTION_API_URL: ${{ vars.KITOR_CONTRIBUTION_API_URL }}
+        shell: python
+        run: |
+          import os
+          from urllib.parse import urlsplit
+
+          url = urlsplit(os.environ.get("KITOR_CONTRIBUTION_API_URL", ""))
+          if (url.scheme != "https" or not url.hostname or url.username is not None
+                  or url.password is not None or url.query or url.fragment
+                  or url.path not in ("", "/")):
+              raise SystemExit("Set KITOR_CONTRIBUTION_API_URL to the production Worker HTTPS origin")
       - name: Require update signing key
         env:
           TAURI_SIGNING_PRIVATE_KEY: ${{ secrets.TAURI_SIGNING_PRIVATE_KEY }}
@@ -77,6 +90,7 @@ jobs:
       - name: Build signed installer and update
         working-directory: kitor
         env:
+          KITOR_CONTRIBUTION_API_URL: ${{ vars.KITOR_CONTRIBUTION_API_URL }}
           TAURI_SIGNING_PRIVATE_KEY: ${{ secrets.TAURI_SIGNING_PRIVATE_KEY }}
           TAURI_SIGNING_PRIVATE_KEY_PASSWORD: ${{ secrets.TAURI_SIGNING_PRIVATE_KEY_PASSWORD }}
         run: bun run tauri build --config src-tauri/tauri.release.conf.json --target ${{ matrix.target }} --bundles ${{ matrix.bundles }} -- --locked
