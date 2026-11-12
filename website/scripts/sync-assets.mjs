@@ -19,14 +19,20 @@ const registry = await read("kitor/patches/registry.json");
 const artwork = await read("kitor/src/data/game-box-covers.json");
 const catalog = [];
 for (const game of registry.games) {
-  const covers = artwork[game.scummvm_id];
-  if (!covers) throw new Error(`Missing artwork for ${game.scummvm_id}`);
+  const covers = artwork[game.scummvm_id] ?? { he: { src: "" }, en: { src: "" } };
   for (const lang of ["he", "en"]) {
     const src = covers[lang].src;
+    if (!src) continue;
     const localCover =
-      src === `/cover-${game.scummvm_id}.jpg` || src === `/cover-${game.scummvm_id}-${lang}.svg`;
-    if (localCover && /^\/cover-[a-z0-9-]+\.(jpg|svg)$/.test(src)) {
-      await access(path.join(root, "public", src.slice(1)));
+      src === `/cover-${game.scummvm_id}.jpg` ||
+      src === `/cover-${game.scummvm_id}-${lang}.svg` ||
+      (game.scummvm_id === "monkey-se" && src === "/monkey-classic-en.jpg") ||
+      (game.scummvm_id === "monkey2-se" && src === "/monkey2-classic-en.jpg");
+    if (localCover && /^\/[a-z0-9-]+\.(jpg|svg)$/.test(src)) {
+      await copyFile(
+        path.join(repo, "assets/game-boxes/desktop-sources", src.slice(1)),
+        path.join(root, "public", src.slice(1))
+      );
       continue;
     }
     const url = new URL(src);
@@ -50,6 +56,4 @@ await sharp(path.join(root, "public/art/night.png"))
   .resize({ width: 1920, withoutEnlargement: true })
   .webp({ quality: 85 })
   .toFile(path.join(root, "public/art/night.webp"));
-console.log(
-  `Synced shared GameBox and ${catalog.length} supported games (${catalog.length * 2} Cloudflare covers).`
-);
+console.log(`Synced shared GameBox and ${catalog.length} supported games.`);
