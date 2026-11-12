@@ -168,6 +168,6 @@ the localization prompt are in `public/banners/sources.json`.
 
 The app reads `kitor/src/data/game-banners.json`, keyed by the registry game ID.
 Each entry contains `en`, optional `he`, and optional `logo` image URLs. Local
-assets live in `kitor/public/banners/` and use `/banners/...` URLs. Missing or
+assets live in `packages/ui/public/banners/` and use `/banners/...` URLs. Missing or
 failed banners display a title fallback. Add generated banners to this manifest
 without changing the game action code.

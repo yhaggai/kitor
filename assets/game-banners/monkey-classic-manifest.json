@@ -4,7 +4,7 @@
     "edition": "classic",
     "method": "built-in image_gen; generated landscape adaptation of original box scan",
     "source_page": "https://www.mobygames.com/game/616/the-secret-of-monkey-island/cover/group-4329/cover-43341/",
-    "source_file": "../../kitor/public/monkey-classic-en.jpg",
+    "source_file": "../game-boxes/desktop-sources/monkey-classic-en.jpg",
     "english": "originals/monkey-classic-en.png",
     "hebrew": "hebrew/monkey-classic-he.png",
     "prompts": {
@@ -19,7 +19,7 @@
     "edition": "classic",
     "method": "built-in image_gen; generated landscape adaptation of original box scan",
     "source_page": "https://www.mobygames.com/game/289/monkey-island-2-lechucks-revenge/cover/group-3319/cover-324533/",
-    "source_file": "../../kitor/public/monkey2-classic-en.jpg",
+    "source_file": "../game-boxes/desktop-sources/monkey2-classic-en.jpg",
     "english": "originals/monkey2-classic-en.png",
     "hebrew": "hebrew/monkey2-classic-he.png",
     "prompts": {
