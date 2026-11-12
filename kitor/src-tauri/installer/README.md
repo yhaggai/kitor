@@ -37,7 +37,26 @@ Do not publish an incomplete draft. The feed workflow refuses incomplete release
 
 `TAURI_SIGNING_PRIVATE_KEY` is a GitHub Actions repository secret. `TAURI_SIGNING_PRIVATE_KEY_PASSWORD` is optional for password-protected keys. The committed Tauri config contains only the matching public key. Keep a secure backup of the private key; generating a replacement would prevent existing installations from verifying future updates.
 
-These update signatures are separate from Apple Developer ID/notarization and Windows Authenticode signing. The workflows currently provide Tauri update signatures; platform signing/notarization still needs the corresponding certificates before broad public distribution.
+These update signatures are separate from Apple Developer ID signing and Windows Authenticode signing.
+
+## macOS release signing
+
+Configure these Actions secrets in the Kitor repository before running **Release Kitor app**:
+
+- `APPLE_CERTIFICATE` is the base64-encoded, password-protected `.p12` export of the Developer ID Application identity (certificate and private key).
+- `APPLE_CERTIFICATE_PASSWORD` is the export password.
+- `APPLE_ID` is the Apple Account email used for notarization.
+- `APPLE_PASSWORD` is an [app-specific password](https://support.apple.com/en-us/102654) for notarization.
+
+Set the Actions **variable** `APPLE_TEAM_ID` to the Team ID shown in Apple Developer Membership details. Export only the Developer ID Application identity from Keychain Access. With the GitHub CLI authenticated as a repository administrator, send the encoded export directly to the secret without writing a plaintext base64 file:
+
+```sh
+openssl base64 -A -in /path/to/developer-id.p12 | gh secret set APPLE_CERTIFICATE --repo yhaggai/kitor
+```
+
+Set the other secrets through GitHub Actions settings or the interactive `gh secret set` prompt. Keep the private key and passwords out of Git, terminal output, and chat.
+
+Tauri signs the app and disk image, and notarizes and staples the app before packaging it for updates. The workflow verifies both signatures and the app's ticket, then submits, staples, and verifies the disk image before upload. A failure blocks that Mac build's upload.
 
 ## Validation
 
