@@ -1,6 +1,6 @@
 # Kitor desktop privacy policy
 
-Updated: 7 November 2026.
+Updated: 12 November 2026.
 
 Kitor stores its game library, local installation paths, settings, patch history,
 and related account state on the user's computer. Scanning and patching operate
@@ -9,39 +9,48 @@ local folder inventories to the project maintainer.
 
 ## Network activity
 
-Kitor is not an offline-only application. On startup it checks GitHub for app
-updates and refreshes the patch catalog. A connected GOG account may refresh
-automatically. These requests are not all initiated by a separate click.
-Remote cover images can also be requested when displaying the library/catalog.
+On startup, Kitor checks GitHub for app updates and refreshes the patch catalog.
+The public patch catalog and public patch downloads use unauthenticated requests.
+Remote cover and banner images may load when you view the
+catalog or library. Requests expose your IP address and ordinary connection
+metadata. An image or download URL can identify the game or item requested.
 
-User-requested features can contact GitHub and other catalog-listed patch hosts,
-Steam, GOG and their download servers, and ScummVM download infrastructure.
-Requests expose the user's IP address and normal HTTP metadata to the recipient;
-URLs can identify the requested game, image, patch, or release.
+After you connect Steam or GOG, Kitor can refresh the connected library when the
+app starts. Steam receives the account ID and the credentials needed to retrieve
+the library. GOG receives the access token and, when needed, the refresh token.
+Kitor stores native Steam credentials in the operating-system credential store
+and GOG tokens in its local application database. An optional Steam Web API key
+also uses the credential store.
 
-Steam connection/library features use Steam authentication and, when configured,
-a Steam Web API key. The API key is stored using the operating-system credential
-store. GOG authentication and refresh tokens are stored in the local application
-database and used to access the connected account. Do not share that database.
-Steam-client downloads are also subject to the Steam client's behavior.
+Requested downloads may contact GitHub, other catalog-listed patch hosts, Steam,
+GOG, or ScummVM. On Windows, the installer downloads Microsoft's WebView2
+bootstrapper if the required runtime is missing. Microsoft handles that download
+and installation. Kitor does not include dedicated analytics or automatic crash
+reporting.
 
-This policy does not promise that no information leaves the device. The reviewed application code contains no dedicated analytics or automatic
-crash-reporting integration. Introducing one requires a fresh implementation
-review and policy update.
+## Translation contributions
+
+The editor keeps drafts on your device. If you sign in to contribute, Google
+authenticates you and Kitor's contribution service stores your Google account
+identifier, display name and verified email. Kitor stores its contribution session
+in the operating-system credential store. When you submit edits, the service
+receives the edits and your email notification preference and creates or updates
+a GitHub pull request. The submission displays your name and Kitor contributor
+ID. The service keeps your Google account identifier and email private.
 
 ## Controls and third parties
 
-Store connections are optional. Use the application's disconnect controls to
-remove the connection; do not initiate downloads or store connections you do not
-want. The current installer does not provide a privacy screen or a switch to
-disable all automatic network activity. This is an outstanding SignPath review
-item, not a claim of compliance with its installation-consent requirements.
+You can disconnect Steam or GOG in Kitor to stop future library refreshes for
+that account. The Windows installer currently has no switches for startup update
+checks, catalog refreshes or remote artwork.
 
 Third-party handling is governed by the respective providers, including
 [GitHub](https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement),
-[Steam](https://store.steampowered.com/privacy_agreement/), and
-[GOG](https://www.gog.com/en/policies/privacy).
-Other patch/image hosts and externally opened sites have their own policies.
+[Steam](https://store.steampowered.com/privacy_agreement/),
+[GOG](https://www.gog.com/en/policies/privacy),
+[Google](https://policies.google.com/privacy), and
+[Microsoft](https://privacy.microsoft.com/privacystatement).
+Other patch and image hosts have their own policies.
 
 Removing the app may leave application data and patch backups. Restore installed
 patches through Kitor before deleting their backups. Reports submitted to the

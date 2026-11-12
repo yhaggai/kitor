@@ -160,11 +160,8 @@ installation, set `KITOR_KYRANDIA_APP` to the app bundle path and run
 3. Click "Install Patch" to download and apply
 4. Only affected existing files are backed up; newly created files are tracked for uninstall
 
-Private GitHub release assets require GitHub CLI (`gh`) on Kitor's PATH and an
-account signed in with `gh auth login` that can access the repository. Kitor
-tries the public URL first and uses the existing CLI login if GitHub returns
-404 for a release asset. Public downloads need no GitHub login. Failed downloads
-are discarded, and ZIP contents are validated before installation begins.
+Kitor downloads patches from public URLs. Failed downloads are discarded, and
+ZIP contents are validated before installation begins.
 
 ### Launching Games
 

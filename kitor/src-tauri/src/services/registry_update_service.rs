@@ -1,10 +1,20 @@
 use super::registry_service::updates;
-use std::io::Write;
+use std::{io::Write, time::Duration};
+
+const REGISTRY_URL: &str = "https://raw.githubusercontent.com/yhaggai/kitor/patch-registry/registry.json";
 static REFRESH: tokio::sync::Mutex<()> = tokio::sync::Mutex::const_new(());
 
 pub async fn refresh() -> Result<(), String> {
     let _lock = REFRESH.lock().await;
-    let mut response = super::github_download_service::registry().await?;
+    let mut response = reqwest::Client::builder()
+        .timeout(Duration::from_secs(20))
+        .build()
+        .map_err(|_| "Could not initialize the patch catalog download")?
+        .get(REGISTRY_URL)
+        .send()
+        .await
+        .map_err(|_| "Could not reach GitHub. Check your connection.")?;
+    response.error_for_status_ref().map_err(|error| error.to_string())?;
     let mut bytes = Vec::new();
     while let Some(chunk) = response.chunk().await.map_err(|e| e.to_string())? {
         if bytes.len() + chunk.len() > 2_000_000 {
