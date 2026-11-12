@@ -2,6 +2,11 @@ name: Release Kitor app
 
 on:
   workflow_dispatch:
+    inputs:
+      verify_macos:
+        description: Build and verify signed macOS installers without creating a release
+        type: boolean
+        default: false
   release:
     types: [published]
 
@@ -14,7 +19,7 @@ concurrency:
 
 jobs:
   prepare:
-    if: github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/v1'
+    if: github.event_name == 'workflow_dispatch' && (github.ref == 'refs/heads/v1' || inputs.verify_macos)
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -26,6 +31,7 @@ jobs:
         with:
           python-version: '3.12'
       - name: Validate hosted contribution URL
+        if: ${{ !inputs.verify_macos }}
         env:
           KITOR_CONTRIBUTION_API_URL: ${{ vars.KITOR_CONTRIBUTION_API_URL }}
         shell: python
@@ -44,10 +50,12 @@ jobs:
         shell: bash
         run: test -n "$TAURI_SIGNING_PRIVATE_KEY"
       - name: Verify on-demand patches are published
+        if: ${{ !inputs.verify_macos }}
         env:
           GH_TOKEN: ${{ github.token }}
         run: python kitor/tools/build_download_packages.py --verify-published
       - name: Create draft app release
+        if: ${{ !inputs.verify_macos }}
         id: release
         env:
           GH_TOKEN: ${{ github.token }}
@@ -88,6 +96,7 @@ jobs:
       - name: Install frontend dependencies
         run: bun install --frozen-lockfile
       - name: Build signed installer and update
+        if: ${{ !inputs.verify_macos || runner.os == 'macOS' }}
         working-directory: kitor
         env:
           KITOR_CONTRIBUTION_API_URL: ${{ vars.KITOR_CONTRIBUTION_API_URL }}
@@ -147,11 +156,13 @@ jobs:
           xcrun stapler staple "${images[0]}"
           xcrun stapler validate "${images[0]}"
       - name: Upload to draft release
+        if: ${{ !inputs.verify_macos }}
         env:
           GH_TOKEN: ${{ github.token }}
         run: python kitor/tools/app_release.py upload --platform ${{ matrix.platform }}
 
   finalize:
+    if: ${{ !inputs.verify_macos }}
     needs: [prepare, build]
     runs-on: ubuntu-latest
     permissions:
