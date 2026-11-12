@@ -44,10 +44,11 @@ def build(game, patch, plans, output):
         for edition, source in editions.items():
             manifest, files = validate(ROOT / source, platform)
             require(manifest['language'] == patch['language'], f'Mismatched language: {source}')
-            require(manifest['version'] + '-download1' == patch['version'], f'Mismatched version: {source}')
+            download_revision = patch.get('release_revision', 0) - manifest.get('release_revision', 0)
+            require(download_revision > 0, 'Download revision must follow the source revision')
+            require(f"{manifest['version']}-download{download_revision}" == patch['version'],
+                    f'Mismatched download version or revision: {source}')
             require(manifest['scummvm_id'] == game['scummvm_id'], 'Mismatched game identity')
-            require(manifest.get('release_revision', 0) + 1 == patch.get('release_revision', 0),
-                    'Mismatched release revision')
             packaged = json.loads(files['patch.json'])
             packaged.update(version=patch['version'], release_revision=patch['release_revision'], filename=filename)
             files['patch.json'] = (json.dumps(packaged, indent=2, ensure_ascii=False) + '\n').encode()

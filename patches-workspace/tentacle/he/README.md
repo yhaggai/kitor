@@ -47,9 +47,9 @@ all sound bytes are read from the user's archive at installation time.
 `recipe-build.json` pins input/output hashes. See `provenance.json` for source
 URLs, source revisions, credits, restrictions, and actual validation status.
 
-The upstream announcement permits personal use and prohibits redistribution.
-These are local test artifacts. `release_ready` remains false; do not publish
-translation payloads or compiled binaries containing them without permission.
+The original announcement restricted redistribution. Kitor’s maintainer confirms
+separate permission to distribute the recipe package. See `provenance.json`
+for the package’s validation status.
 
 ## Edition separation
 
