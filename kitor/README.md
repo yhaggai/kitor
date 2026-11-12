@@ -60,6 +60,27 @@ bun run tauri build
 
 The compiled application will be in `src-tauri/target/release/`.
 
+### Signed local macOS builds
+
+Create a signing identity once in your login Keychain. In **Keychain Access**,
+choose **Keychain Access → Certificate Assistant → Create a Certificate**.
+Name it **Kitor Local Development**, choose **Self Signed Root** as the identity
+type and **Code Signing** as the certificate type, then click **Create**.
+If you already have this identity, reuse it. [Apple's certificate instructions](https://support.apple.com/guide/keychain-access/kyca8916/mac)
+
+From this directory, run `bun run tauri:build:local`. The equivalent manual
+command is:
+
+```sh
+APPLE_SIGNING_IDENTITY="Kitor Local Development" bun run tauri build --bundles app
+```
+
+If macOS asks whether `codesign` can use the signing key, choose **Always Allow**.
+Then open `src-tauri/target/release/bundle/macos/kitor.app`. If Kitor asks for
+access to an existing Steam credential, choose **Always Allow** in that prompt
+too. Reuse the same signing identity and bundle identifier across rebuilds so
+Keychain can recognize Kitor.
+
 ## Project Structure
 
 ```
