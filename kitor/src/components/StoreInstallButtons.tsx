@@ -85,7 +85,6 @@ export function StoreInstallButtons({
     try {
       if (store === "Steam") {
         await invoke("open_steam_client", { appId: steamAppId });
-        if (!useSteamStore.getState().busy) void useSteamStore.getState().run("get_steam_status");
       } else {
         await invoke("open_gog_client", { gameId: gogId });
       }

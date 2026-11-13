@@ -75,6 +75,7 @@
         "headerImage": "installer/windows-header.bmp",
         "sidebarImage": "installer/windows-sidebar.bmp",
         "installMode": "currentUser",
+        "installerHooks": "installer/privacy.nsh",
         "languages": ["English", "Hebrew"],
         "displayLanguageSelector": true
       }
