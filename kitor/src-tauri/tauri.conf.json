@@ -53,6 +53,10 @@
     "shortDescription": "Adventure games, in Hebrew",
     "category": "Game",
     "macOS": {
+      "files": {
+        "MacOS/xdelta3": "vendor/xdelta/xdelta3",
+        "Resources/xdelta3-LICENSE": "vendor/xdelta/LICENSE"
+      },
       "dmg": {
         "background": "installer/dmg-background.png",
         "windowSize": {
