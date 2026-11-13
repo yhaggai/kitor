@@ -21,7 +21,7 @@
         "960": "https://assets.kitor.click/cdn-cgi/image/width=960,fit=scale-down,quality=85,format=auto/covers/disco-elysium/en/71041ce81990.jpg"
       },
       "local_file": "assets/game-boxes/covers/disco-elysium/en/71041ce81990.jpg",
-      "runtime_fallback": "/disco-elysium-cover-en.jpg"
+      "source_archive": "assets/game-boxes/desktop-sources/disco-elysium-cover-en.jpg"
     },
     {
       "file": "covers/disco-elysium/he/cf888621e796.png",
@@ -44,7 +44,7 @@
         "960": "https://assets.kitor.click/cdn-cgi/image/width=960,fit=scale-down,quality=85,format=auto/covers/disco-elysium/he/cf888621e796.png"
       },
       "local_file": "assets/game-boxes/covers/disco-elysium/he/cf888621e796.png",
-      "runtime_fallback": "/disco-elysium-cover-he.png"
+      "source_archive": "assets/game-boxes/desktop-sources/disco-elysium-cover-he.png"
     },
     {
       "file": "banners/disco-elysium/en/fee6aa0d9d43.jpg",
@@ -60,7 +60,7 @@
       "retrieved_on": "2026-11-10",
       "image_url": "https://cdn.akamai.steamstatic.com/steam/apps/632470/header.jpg",
       "local_file": "assets/game-banners/publish/banners/disco-elysium/en/fee6aa0d9d43.jpg",
-      "runtime_fallback": "/disco-elysium-banner-en.jpg"
+      "source_archive": "assets/game-banners/desktop-sources/disco-elysium-banner-en.jpg"
     },
     {
       "file": "banners/disco-elysium/he/483eff4982ff.png",
@@ -78,7 +78,7 @@
       "hebrew_subtitle": "הגרסה הסופית",
       "review": "Hebrew spelling and RTL inspected; generated non-text artwork differs from original.",
       "local_file": "assets/game-banners/publish/banners/disco-elysium/he/483eff4982ff.png",
-      "runtime_fallback": "/disco-elysium-banner-he.png"
+      "source_archive": "assets/game-banners/desktop-sources/disco-elysium-banner-he.png"
     }
   ],
   "generation_tool": "OpenAI imagegen",
