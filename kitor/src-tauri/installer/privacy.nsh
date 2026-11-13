@@ -23,13 +23,13 @@ Function KitorPrivacyPage
     nsDialogs::SetRTL 1
     ${NSD_CreateLabel} 0 0 100% 17u "פרטיות ב־Kitor"
     Pop $0
-    ${NSD_CreateLabel} 0 22u 100% 85u "חיבור ל־Steam או ל־GOG והתחברות עם Google לצורך תרומות הם אופציונליים ונפתחים מתוך Kitor. אפשר להפעיל בהגדרות רענון אוטומטי של ספריות Steam ו־GOG.$\r$\n$\r$\nKitor בודקת עדכונים וקטלוג תרגומים ומציגה תמונות מרוחקות. אם WebView2 חסר, המתקין יוריד ויתקין אותו מ־Microsoft."
+    ${NSD_CreateLabel} 0 22u 100% 85u "חיבור ל־Steam או ל־GOG והתחברות עם Google לצורך תרומות הם אופציונליים ונפתחים מתוך Kitor. לאחר חיבור Steam או GOG, קיטור מרעננת את הספרייה בפתיחה. אפשר לנתק את החשבון בהגדרות.$\r$\n$\r$\nKitor בודקת עדכונים וקטלוג תרגומים ומציגה תמונות מרוחקות. אם WebView2 חסר, המתקין יוריד ויתקין אותו מ־Microsoft."
     Pop $0
     ${NSD_CreateLink} 0 115u 100% 14u "מדיניות הפרטיות המלאה"
   ${Else}
     ${NSD_CreateLabel} 0 0 100% 17u "Kitor privacy"
     Pop $0
-    ${NSD_CreateLabel} 0 22u 100% 85u "Connecting to Steam or GOG and signing in with Google to contribute are optional. You can start these connections from Kitor and enable automatic Steam or GOG library refresh in Settings.$\r$\n$\r$\nKitor checks for app and translation catalog updates and displays remote artwork. Setup downloads and installs Microsoft's WebView2 runtime if it is missing."
+    ${NSD_CreateLabel} 0 22u 100% 85u "Connecting to Steam or GOG and signing in with Google to contribute are optional. After you connect Steam or GOG, Kitor refreshes that library on startup. You can disconnect in Settings.$\r$\n$\r$\nKitor checks for app and translation catalog updates and displays remote artwork. Setup downloads and installs Microsoft's WebView2 runtime if it is missing."
     Pop $0
     ${NSD_CreateLink} 0 115u 100% 14u "Read the full privacy policy"
   ${EndIf}

@@ -4,7 +4,6 @@ import { listen } from "@tauri-apps/api/event";
 import { CheckCircle, Gamepad2, LogIn, LogOut, XCircle } from "lucide-react";
 import { useEffect, useState } from "react";
 import BugReportDialog from "@/components/BugReportDialog";
-import { LibraryRefreshPreference } from "@/components/LibraryRefreshPreference";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -86,7 +85,9 @@ export default function GogAuthCard() {
           GOG
         </CardTitle>
         <CardDescription>
-          {t("Connect your GOG account to download games from your library")}{" "}
+          {t(
+            "Connect GOG to download your games and refresh your library when Kitor opens. You can disconnect in Settings."
+          )}{" "}
         </CardDescription>
       </CardHeader>
       <CardContent className="space-y-4">
@@ -134,8 +135,6 @@ export default function GogAuthCard() {
             </Button>
           )}
         </div>
-
-        {gogAuth.isAuthenticated && <LibraryRefreshPreference provider="gog" />}
 
         {(gogAuth.isAuthenticated || libraryError) && (
           <ManageMenu label={t("Manage GOG")}>

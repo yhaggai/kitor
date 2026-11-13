@@ -1,7 +1,6 @@
 import { ManageMenu, useTranslation } from "@kitor/ui";
 import { CheckCircle2, Loader2 } from "lucide-react";
 import { useEffect } from "react";
-import { LibraryRefreshPreference } from "@/components/LibraryRefreshPreference";
 import { Button } from "@/components/ui/button";
 import { useNativeSteam } from "@/store/nativeSteam";
 import { useSteamStore } from "@/store/steam";
@@ -36,7 +35,7 @@ export default function NativeSteamConnection() {
         {t(
           connected
             ? "You’re ready to download supported Steam games in Kitor."
-            : "Kitor signs in to Steam to read your owned games and enable downloads. You can disconnect in Settings."
+            : "Kitor refreshes your game library from Steam when it opens and uses the connection to download games. You can disconnect in Settings."
         )}
       </p>
       <Button
@@ -51,7 +50,6 @@ export default function NativeSteamConnection() {
       </Button>
       {connected && (
         <div className="space-y-2">
-          <LibraryRefreshPreference provider="steam" />
           <output className="text-sm text-muted-foreground">
             {library.busy
               ? t("Loading library…")
