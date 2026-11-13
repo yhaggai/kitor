@@ -120,7 +120,7 @@ select:focus-visible {
   background:
     linear-gradient(0deg, #080f1d, transparent 30%),
     linear-gradient(90deg, #080f1d10, #080f1d25),
-    url("/art/night.webp") center/cover no-repeat;
+    url("/art/night.webp") center / cover no-repeat;
   opacity: 0.85;
 }
 .hero-content {

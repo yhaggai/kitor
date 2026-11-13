@@ -7,8 +7,7 @@ The legacy Windows XNA edition and Linux are not supported.
 Install Owlboy through Steam, then use Scan or select the Owlboy installation,
 Owlboy.app, or its Contents/Resources folder. Kitor resolves the same resource
 folder for patching and launch. On Windows, select the folder containing Owlboy.exe
-and Data (or Data itself). Python 3 must be available for the bundled delta decoder;
-Windows uses the Python launcher (`py -3`). Unknown or modified executables are refused.
+and Data (or Data itself). Unknown or modified executables are refused.
 
 Close the game before installing. Choose Hebrew (the Israeli flag) in Languages.
 On Windows, choose the Israeli flag marked **N** for Hebrew with nikud, or the

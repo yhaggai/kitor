@@ -1,9 +1,9 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Box from '../components/Box';
-import Character from '../components/Character.astro';
-import { featured, games } from '../lib/catalog';
-import { fallbackInstallerUrl, fallbackReleaseUrl, installers } from '../lib/downloads';
+import Box from "../components/Box";
+import Character from "../components/Character.astro";
+import Layout from "../layouts/Layout.astro";
+import { featured, games } from "../lib/catalog";
+import { fallbackInstallerUrl, fallbackReleaseUrl, installers } from "../lib/downloads";
 ---
 <Layout><main id="main"><section class="hero"><div class="scene" aria-hidden="true"></div><div class="hero-content wrap"><div class="hero-copy"><p class="eyebrow">הרפתקאות מוכרות. מילים חדשות.</p><h1>המשחקים שאהבת.<br/><em>עכשיו בעברית.</em></h1><p class="lead">כל המשחקים והתרגומים במקום אחד.<br/>מוסיפים לספרייה, מתקינים תרגום ומתחילים לשחק.</p><div class="actions"><a class="button" id="recommended-download" href="#download"><span>להורדת קיטור</span> <span aria-hidden="true">↓</span></a><a class="button secondary" href="#download" hidden>כל הגרסאות</a></div><a class="text-link" href="/games/">לכל המשחקים <span aria-hidden="true">←</span></a><p class="quiet hero-note">המשחקים שלכם. התרגומים של הקהילה. מקום אחד לכולם.</p></div><div class="shelves" aria-label="מבחר מתוך ספריית המשחקים"><div class="shelf">{featured.slice(0,3).map(game => <Box title={game.title} covers={game.covers} showLanguageControls={false} client:load />)}</div><div class="shelf lower">{featured.slice(3).map(game => <Box title={game.title} covers={game.covers} showLanguageControls={false} client:load />)}</div><p class="shelf-caption">העבירו את העכבר כדי להפוך קופסה · לחצו כדי להסתכל מקרוב</p></div></div><Character kind="pirate" side="left"/></section>
 <section id="how" class="section how"><div class="wrap"><p class="eyebrow">פחות הגדרות, יותר הרפתקאות</p><h2>ההרפתקה מתחילה כאן</h2><div class="steps"><article><span class="step-icon">▣</span><span class="number">01</span><h3>מוסיפים משחקים</h3><p>מאתרים את המשחקים שכבר נמצאים במחשב ומוסיפים אותם לספרייה שלכם.</p></article><article><span class="step-icon">א</span><span class="number">02</span><h3>מתקינים תרגום</h3><p>בוחרים תרגום זמין מהקהילה. קיטור מנהל את ההתקנה ואת גיבוי הקבצים שהשתנו.</p></article><article><span class="step-icon">✦</span><span class="number">03</span><h3>מתחילים לשחק</h3><p>פותחים את המשחק מתוך הספרייה, וחוזרים לעולמות שאוהבים — בעברית.</p></article></div></div><Character kind="tentacle" side="right"/></section>

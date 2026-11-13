@@ -20,25 +20,29 @@ type Browser = Pick<Navigator, "userAgent" | "maxTouchPoints"> & {
     platform?: string;
     mobile?: boolean;
     getHighEntropyValues?: (
-      hints: string[],
+      hints: string[]
     ) => Promise<{ architecture?: string; bitness?: string }>;
   };
 };
 
-export async function detectDownload(browser: Browser): Promise<InstallerId | "mac" | "windows" | undefined> {
+export async function detectDownload(
+  browser: Browser
+): Promise<InstallerId | "mac" | "windows" | undefined> {
   const { userAgent, userAgentData, maxTouchPoints } = browser;
   if (
     userAgentData?.mobile ||
     /Android|iPhone|iPad|iPod|Windows Phone/i.test(userAgent) ||
     (/Macintosh/i.test(userAgent) && maxTouchPoints > 1)
-  ) return;
+  )
+    return;
 
   const platform = userAgentData?.platform?.toLowerCase();
   const mac = platform ? platform === "macos" : /Macintosh/i.test(userAgent);
   const windows = platform ? platform === "windows" : /Windows NT/i.test(userAgent);
   if (!mac && !windows) return;
 
-  const hints = await userAgentData?.getHighEntropyValues?.(["architecture", "bitness"])
+  const hints = await userAgentData
+    ?.getHighEntropyValues?.(["architecture", "bitness"])
     .catch(() => undefined);
   if (mac) {
     // Apple Silicon browsers can report "Intel Mac" in the legacy user agent.
@@ -80,13 +84,20 @@ export async function latestInstallers() {
       for (const { id, suffix } of installers) {
         const name = `kitor-${version.join(".")}-${id}${suffix}`;
         const expected = `${releasesUrl}/download/${release.tag_name}/${name}`;
-        if (release.assets.some((asset) => asset.name === name && asset.browser_download_url === expected)) {
+        if (
+          release.assets.some(
+            (asset) => asset.name === name && asset.browser_download_url === expected
+          )
+        ) {
           urls.set(id, expected);
         }
       }
       if (urls.size === installers.length) latest = { version, urls };
     }
-    url = response.headers.get("Link")?.match(/<(https:\/\/api\.github\.com\/[^>]+)>; rel="next"/)?.[1] ?? "";
+    url =
+      response.headers
+        .get("Link")
+        ?.match(/<(https:\/\/api\.github\.com\/[^>]+)>; rel="next"/)?.[1] ?? "";
   }
   return latest;
 }

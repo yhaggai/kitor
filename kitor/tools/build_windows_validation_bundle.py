@@ -19,7 +19,7 @@ def main():
                 files[str(path.relative_to(ROOT))] = path
     for relative in ['kitor/src-tauri/src/services/patch_lifecycle.rs',
                      'kitor/src-tauri/src/services/registry_service.rs',
-                     'kitor/src-tauri/src/services/apply_bsdiff.py',
+                     'kitor/src-tauri/src/services/bsdiff.rs',
                      'kitor/patches/registry.json',
                      'patches-workspace/specification.json',
                      'patches-workspace/owned-catalog.json',
