@@ -4,6 +4,7 @@ import { listen } from "@tauri-apps/api/event";
 import { CheckCircle, LogIn, LogOut, XCircle } from "lucide-react";
 import { useEffect, useState } from "react";
 import BugReportDialog from "@/components/BugReportDialog";
+import { LibraryRefreshPreference } from "@/components/LibraryRefreshPreference";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -20,6 +21,7 @@ export default function GogAuthCard() {
 
   const {
     loading: isLoadingGames,
+    loaded,
     error: libraryError,
     refresh: checkAuthStatus,
   } = useGogLibrary();
@@ -99,7 +101,9 @@ export default function GogAuthCard() {
                     ? t("Loading library…")
                     : libraryError
                       ? t("Library could not be loaded")
-                      : t("Owned games: {0}", [gogGames.length])}
+                      : loaded
+                        ? t("Owned games: {0}", [gogGames.length])
+                        : t("Refresh the library to see your owned games.")}
                 </p>
               </div>
               <Badge variant="secondary">{t("Connected")}</Badge>
@@ -130,6 +134,8 @@ export default function GogAuthCard() {
             </Button>
           )}
         </div>
+
+        {gogAuth.isAuthenticated && <LibraryRefreshPreference provider="gog" />}
 
         {(gogAuth.isAuthenticated || libraryError) && (
           <ManageMenu label={t("Manage GOG")}>

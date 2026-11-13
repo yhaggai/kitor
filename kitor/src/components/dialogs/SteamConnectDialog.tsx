@@ -54,7 +54,9 @@ export default function SteamConnectDialog() {
             {t("Connect Steam")}
           </DialogTitle>
           <DialogDescription>
-            {t("Sign in once to download your Steam games directly in Kitor.")}
+            {t(
+              "Kitor signs in to Steam to read your owned games and enable downloads. You can disconnect in Settings."
+            )}
           </DialogDescription>
         </DialogHeader>
         <fieldset className="grid grid-cols-2 gap-2" aria-label={t("Sign-in method")}>
@@ -97,7 +99,7 @@ export default function SteamConnectDialog() {
             </div>
             <ol className="list-inside list-decimal space-y-2 text-sm">
               <li>{t("Open the Steam app on your phone.")}</li>
-              <li>{t("Go to Steam Guard and scan this QR code.")}</li>
+              <li>{t("Generate a QR code here and scan it with Steam Guard.")}</li>
               <li>{t("Approve the Kitor sign-in. We’ll continue automatically.")}</li>
             </ol>
             {busy && (
@@ -206,9 +208,9 @@ export default function SteamConnectDialog() {
           <Button variant="outline" onClick={() => void cancel()}>
             {t("Cancel")}
           </Button>
-          {method === "qr" && !busy && error && (
+          {method === "qr" && !busy && (
             <Button disabled={changing} onClick={() => void retry()}>
-              {t("Generate a new code")}
+              {t(error ? "Generate a new code" : "Generate Steam QR code")}
             </Button>
           )}
         </div>

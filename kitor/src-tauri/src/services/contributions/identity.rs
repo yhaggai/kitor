@@ -110,11 +110,7 @@ pub async fn request(
 }
 #[tauri::command]
 pub async fn contributor_status() -> Result<Option<Contributor>, String> {
-    let Some(s) = stored()? else { return Ok(None) };
-    let value = request("/auth/me", None, Some(&s.token)).await?;
-    serde_json::from_value(value)
-        .map(Some)
-        .map_err(|_| "Invalid contributor profile".into())
+    Ok(stored()?.map(|session| session.contributor))
 }
 #[tauri::command]
 pub async fn contributor_sign_in(state: tauri::State<'_, Identity>) -> Result<String, String> {

@@ -18,6 +18,7 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import { gogStoreUrl } from "@/lib/gameAction";
+import { useGogLibrary } from "@/store/gog";
 import { useGogDownload } from "@/store/gogDownload";
 import { useGogInstallFlow } from "@/store/gogInstallFlow";
 import { useNativeSteam } from "@/store/nativeSteam";
@@ -44,6 +45,7 @@ export function CatalogGameActions({
   const steamInstalling = useGogDownload((state) => state.busy) && activeSteamApp === steamAppId;
   const steam = useSteamStore((state) => state.status);
   const gogGames = useAppStore((state) => state.gogGames);
+  const gogLibraryLoaded = useGogLibrary((state) => state.loaded);
   const gogAuthenticated = useAppStore((state) => state.gogAuth.isAuthenticated);
   const ownsSteam = steamAppId != null && (steam.owned_app_ids?.includes(steamAppId) ?? false);
   const ownsGog = gogId != null && gogAuthenticated && gogGames.some((game) => game.id === gogId);
@@ -134,7 +136,7 @@ export function CatalogGameActions({
           : steam.owned_app_ids === null
             ? "Play on Steam"
             : "Buy on Steam"
-        : !gogAuthenticated
+        : !gogAuthenticated || !gogLibraryLoaded
           ? "Play on GOG"
           : ownsGog
             ? "Install from GOG"
@@ -170,7 +172,7 @@ export function CatalogGameActions({
       return;
     }
     if (provider === "gog" && !ownsGog) {
-      if (!gogAuthenticated) {
+      if (!gogAuthenticated || !useGogLibrary.getState().loaded) {
         await chooseStore(provider);
       } else {
         const url =

@@ -72,7 +72,6 @@ export const useNativeSteam = create<{
         return;
       }
       set({ open: true, error: null, method: "qr" });
-      await get().retry();
     })();
     return result;
   },
