@@ -28,7 +28,7 @@
           "source_type": "github",
           "checksum": "22e1a7095949cae495ae586369f357eae0f22415c27a8e4ba61c0e6f6aa26eb2",
           "file_size": 37291181,
-          "description": "Hebrew without nikud for Steam on macOS and Windows. Requires Python 3.10+. Draft translation; Windows runtime testing pending. Keep English selected in-game.",
+          "description": "Hebrew without nikud for Steam on macOS and Windows. Draft translation; Windows runtime testing pending. Keep English selected in-game.",
           "filename": "Undertale-Hebrew-alpha2-steam-kitor6.zip",
           "post_install_script": null,
           "install_manifest": "patch.json"
@@ -321,7 +321,7 @@
           "source_type": "github",
           "checksum": "6bf874c6fd540c0a4a8f4a27034a25bea80f168a8d365363978ab1db680711be",
           "file_size": 230863,
-          "description": "בני בונדס, שוטר תנועה שרוצה רק לסיים את מכסת הדוחות שלו, מסתבך בחקירה של ארגון פשע שבראשו עומד מלאך המוות. האם יצליח להפליל את ראש הארגון?\n\nקרדיטים ותודות (מהפרסום המקורי):\nבעבודת צוות נפלאה הצלחנו להביא עוד פרויקט מרגש לסיומו הטוב. צביקה הרמתי בנה בגאונותו את כלי התרגום והוסיף תמיכה עברית למנוע, ניב באר אייר במכחולו את הכותרת העברית ותמונות שונות שתגלו לאורך המשחק, ואלעד הלפרין, אלכס מילמן ועומר כהן תרגמו.\n\nOriginal AGI/EGA edition. Catalog cites GOG; owned Steam Collection must match publisher MD5 guards. Requires Python 3 and Hebrew-capable ScummVM. Windows/macOS package plans are built; native gameplay validation is pending. macOS can download and import the Steam Collection EGA files for ScummVM. The published Hebrew patch currently targets different VOL.0 and LOGDIR inputs; Steam translation support is pending a separate validated package.",
+          "description": "בני בונדס, שוטר תנועה שרוצה רק לסיים את מכסת הדוחות שלו, מסתבך בחקירה של ארגון פשע שבראשו עומד מלאך המוות. האם יצליח להפליל את ראש הארגון?\n\nקרדיטים ותודות (מהפרסום המקורי):\nבעבודת צוות נפלאה הצלחנו להביא עוד פרויקט מרגש לסיומו הטוב. צביקה הרמתי בנה בגאונותו את כלי התרגום והוסיף תמיכה עברית למנוע, ניב באר אייר במכחולו את הכותרת העברית ותמונות שונות שתגלו לאורך המשחק, ואלעד הלפרין, אלכס מילמן ועומר כהן תרגמו.\n\nOriginal AGI/EGA edition. Catalog cites GOG; owned Steam Collection must match publisher MD5 guards. Requires Hebrew-capable ScummVM. Windows/macOS package plans are built; native gameplay validation is pending. macOS can download and import the Steam Collection EGA files for ScummVM. The published Hebrew patch currently targets different VOL.0 and LOGDIR inputs; Steam translation support is pending a separate validated package.",
           "filename": "pq1-he-kitor1.zip",
           "post_install_script": null
         }
@@ -395,7 +395,7 @@
           "source_type": "github",
           "checksum": "fa16c5dbb079787afb5cdc01f7913c170e68b89a56c1054138743fd71fd5d7af",
           "file_size": 320489,
-          "description": "ההרפתקה הראשונה של רוג׳ר ווילקו בגרסת EGA המקורית: קווסט חלל מלא הומור, סכנות ודרכים משונות למות, בכיכובו של שרת שהופך לגיבור.\n\nקרדיטים ותודות (מהפרסום המקורי):\nתודה לשי גרינברג שעזר לי לשפר את התרגום. תודה לכל האנשים בקבוצת הרפתקה עברית על כמה הצעות לשיפור התרגום.\n\nOriginal DOS EGA version 2.2 from GOG. Exact original/final SHA-256 guards. Requires Python 3 and a ScummVM daily build with Hebrew AGI support. Windows/macOS package plans are built; native gameplay validation is pending. Automatic folder detection recognizes the Toonstruck resources in MISC, including GOG macOS app bundles.",
+          "description": "ההרפתקה הראשונה של רוג׳ר ווילקו בגרסת EGA המקורית: קווסט חלל מלא הומור, סכנות ודרכים משונות למות, בכיכובו של שרת שהופך לגיבור.\n\nקרדיטים ותודות (מהפרסום המקורי):\nתודה לשי גרינברג שעזר לי לשפר את התרגום. תודה לכל האנשים בקבוצת הרפתקה עברית על כמה הצעות לשיפור התרגום.\n\nOriginal DOS EGA version 2.2 from GOG. Exact original/final SHA-256 guards. Requires a ScummVM daily build with Hebrew AGI support. Windows/macOS package plans are built; native gameplay validation is pending. Automatic folder detection recognizes the Toonstruck resources in MISC, including GOG macOS app bundles.",
           "filename": "sq1-he-kitor1.zip",
           "post_install_script": null
         }
@@ -454,7 +454,7 @@
           "source_type": "github",
           "checksum": "37a47cf0186557e0e1f71ac8be2d73777f20de56de9478452485c63663bb523d",
           "file_size": 460690,
-          "description": "הפרק השני בסדרת מסע בחלל, נקמתו של ווהאל, בתרגום לעברית.\n\nקרדיטים ותודות (מהפרסום המקורי):\nתודה לשגב (Segev Mashraky) שלימד אותי איך לעשות תרגומים למשחקי AGI. שימו לב לgithub שלו--אני מאוד ממליץ [https://github.com/SegMash/AGIHebrew](https://github.com/SegMash/AGIHebrew)\nתודה לניב באר, שיצר את מסך ״נקמתו של ווהאל״ (באמת הרבה יותר טוב ממה שאני יכולתי לעשות).\nתודה לכל קהילת ״הרפתקה עברית״ שעזרה לי עם התרגום (וסובלת את העברית שלי), כולל shingimel, scars-shawn ופינגימר.\n\nGOG original AGI edition; Steam edition is unverified. Publisher MD5 edition guards. Requires Python 3 and Hebrew-capable ScummVM. Windows/macOS package plans are built; native gameplay validation is pending. Automatic folder detection recognizes the Toonstruck resources in MISC, including GOG macOS app bundles.",
+          "description": "הפרק השני בסדרת מסע בחלל, נקמתו של ווהאל, בתרגום לעברית.\n\nקרדיטים ותודות (מהפרסום המקורי):\nתודה לשגב (Segev Mashraky) שלימד אותי איך לעשות תרגומים למשחקי AGI. שימו לב לgithub שלו--אני מאוד ממליץ [https://github.com/SegMash/AGIHebrew](https://github.com/SegMash/AGIHebrew)\nתודה לניב באר, שיצר את מסך ״נקמתו של ווהאל״ (באמת הרבה יותר טוב ממה שאני יכולתי לעשות).\nתודה לכל קהילת ״הרפתקה עברית״ שעזרה לי עם התרגום (וסובלת את העברית שלי), כולל shingimel, scars-shawn ופינגימר.\n\nGOG original AGI edition; Steam edition is unverified. Publisher MD5 edition guards. Requires Hebrew-capable ScummVM. Windows/macOS package plans are built; native gameplay validation is pending. Automatic folder detection recognizes the Toonstruck resources in MISC, including GOG macOS app bundles.",
           "filename": "sq2-he-kitor2.zip",
           "post_install_script": null
         }
@@ -1649,7 +1649,7 @@
           "source_type": "github",
           "checksum": "b66900615e0c07038949604374ca7145d861b7982164fa01bdfba321cc56bfd2",
           "file_size": 5016145,
-          "description": "תרגום בטא מלא לעברית עם גופן עברי וכתיבה מימין לשמאל, לגרסאות Steam FNA התואמות ב-Windows וב-macOS. נדרש Python 3. בתפריט השפות בחרו את דגל ישראל לעברית רגילה או את הדגל עם N לעברית עם ניקוד. בדיקת משחק מלאה עדיין ממתינה.",
+          "description": "תרגום בטא מלא לעברית עם גופן עברי וכתיבה מימין לשמאל, לגרסאות Steam FNA התואמות ב-Windows וב-macOS. בתפריט השפות בחרו את דגל ישראל לעברית רגילה או את הדגל עם N לעברית עם ניקוד. בדיקת משחק מלאה עדיין ממתינה.",
           "filename": "owlboy-he-0.2.0-beta.2-kitor2-download1.zip",
           "post_install_script": null,
           "install_manifest": "patch.json",
@@ -2047,7 +2047,7 @@
           "filename": "jenny-leclue-he-0.4.6-download1.zip",
           "file_size": 11376333,
           "checksum": "bc08e28d26d10d756be50e23d0d908ab891ca627a389cf671c85e5e735db1d2a",
-          "description": "Full Astra Hebrew translation of 5,511 dialogue catalog entries and 1,931 UI entries, including menus, journals, clue descriptions, case notes and letters. Starts automatically in Hebrew; Hebrew with nikud remains available in the game language settings. Nikud is generated from the same Hebrew text. Requires Python 3. Full playthrough and native Windows gameplay verification are pending. First publisher letter uses the localized text layer with right-aligned Hebrew paragraphs in both Hebrew modes. Native RTL dialogue, choices, menus and classroom typewriter in both Hebrew modes, preserving pointed glyphs.",
+          "description": "Full Astra Hebrew translation of 5,511 dialogue catalog entries and 1,931 UI entries, including menus, journals, clue descriptions, case notes and letters. Starts automatically in Hebrew; Hebrew with nikud remains available in the game language settings. Nikud is generated from the same Hebrew text. Full playthrough and native Windows gameplay verification are pending. First publisher letter uses the localized text layer with right-aligned Hebrew paragraphs in both Hebrew modes. Native RTL dialogue, choices, menus and classroom typewriter in both Hebrew modes, preserving pointed glyphs.",
           "post_install_script": null,
           "install_manifest": "patch.json"
         }
@@ -2182,7 +2182,7 @@
           "filename": "Disco-Elysium-Hebrew-0.1.2.zip",
           "file_size": 23748456,
           "checksum": "231744c20dd09aee30585066706e8bebf4a2ba2ae51e612281a19c4fb34a536b",
-          "description": "Partial Hebrew translation for the Steam edition of Disco Elysium – The Final Cut on Windows and macOS. Includes 75,021 translated entries, a heavier Hebrew font, and translated startup, saving, and interface labels. Select HEBREW in the game's language settings after installing. The illustrated scene transition displays Loading in English. Some unfinished content can still appear in Arabic. Python 3 is required.",
+          "description": "Partial Hebrew translation for the Steam edition of Disco Elysium – The Final Cut on Windows and macOS. Includes 75,021 translated entries, a heavier Hebrew font, and translated startup, saving, and interface labels. Select HEBREW in the game's language settings after installing. The illustrated scene transition displays Loading in English. Some unfinished content can still appear in Arabic.",
           "post_install_script": null,
           "install_manifest": "patch.json"
         }

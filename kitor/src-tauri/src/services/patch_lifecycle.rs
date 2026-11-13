@@ -9,6 +9,9 @@ use std::{
     process::Command,
 };
 
+#[path = "bsdiff.rs"]
+mod bsdiff;
+
 #[path = "patch_upgrade.rs"]
 mod upgrade;
 #[cfg(any(test, feature = "standalone-patch-tools"))]
@@ -335,7 +338,7 @@ fn installation_dir(storage: &Path, target: &Path) -> PathBuf {
 fn run(mut command: Command) -> Result<()> {
     let output = command.output().map_err(|e| {
         format!(
-            "Patch tool could not run: {e}. Install the required Python 3 or xdelta3 dependency."
+            "Patch tool could not run: {e}. Check that the required xdelta3 executable is available."
         )
     })?;
     if !output.status.success() {
@@ -376,24 +379,7 @@ fn stage_source_with_input(
             super::reconstruction::apply(&asset, &input_path(input)?, output)?;
         }
         Source::Bsdiff { input, .. } => {
-            // Only the trusted backend decoder runs, never a package installer.
-            let input = input_path(input)?;
-            let mut command = if cfg!(target_os = "windows") {
-                let mut c = Command::new("py");
-                c.arg("-3");
-                c
-            } else {
-                Command::new("python3")
-            };
-            command
-                .arg("-I")
-                .arg("-c")
-                .arg(include_str!("apply_bsdiff.py"))
-                .arg(&input)
-                .arg(&asset)
-                .arg(output)
-                .current_dir(output.parent().unwrap());
-            run(command)?;
+            bsdiff::apply(&input_path(input)?, &asset, output).map_err(err)?;
         }
         Source::Xdelta {
             input,
@@ -1207,7 +1193,7 @@ mod tests {
         }
     }
     #[test]
-    #[ignore = "requires KITOR_UNDERTALE_ARCHIVE pointing to a supported original archive and Python 3"]
+    #[ignore = "requires KITOR_UNDERTALE_ARCHIVE pointing to a supported original archive"]
     fn real_undertale_archive_roundtrip_on_disposable_copy() {
         let original = PathBuf::from(std::env::var_os("KITOR_UNDERTALE_ARCHIVE").unwrap());
         let platform = if original.extension().unwrap() == "win" {
