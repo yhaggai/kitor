@@ -178,6 +178,12 @@ pub fn load_registry() -> Result<Registry, String> {
     migrate_bundled_packages(&mut registry, &bundled);
     prepare_behaviors(&mut registry, &bundled)?;
     updates::merge_cached(&mut registry);
+    #[cfg(debug_assertions)]
+    if let Some(path) = super::games::disco_elysium::preview_archive()? {
+        if let Some(game) = registry.games.iter_mut().find(|g| g.scummvm_id == "disco-elysium") {
+            game.patches = vec![super::games::disco_elysium::preview_definition(&path)?];
+        }
+    }
     Ok(registry)
 }
 
