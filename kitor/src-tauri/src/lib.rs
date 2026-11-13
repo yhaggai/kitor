@@ -93,7 +93,6 @@ pub fn run() {
             commands::patch_commands::get_os,
             commands::patch_commands::open_gog_client,
             commands::patch_commands::open_steam_client,
-            commands::patch_commands::download_and_extract_gog_installer,
             commands::steam_commands::get_steam_status,
             commands::steam_commands::get_native_steam_status,
             commands::steam_commands::connect_native_steam,
