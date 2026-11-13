@@ -120,7 +120,7 @@ select:focus-visible {
   background:
     linear-gradient(0deg, #080f1d, transparent 30%),
     linear-gradient(90deg, #080f1d10, #080f1d25),
-    url("/art/night.webp") center/cover no-repeat;
+    url("/art/night.webp") center / cover no-repeat;
   opacity: 0.85;
 }
 .hero-content {
@@ -720,4 +720,47 @@ select {
 .download-platforms .quiet {
   max-width: 36ch;
   margin: 12px auto 0;
+}
+
+.nav {
+  gap: clamp(15px, 4vw, 60px);
+}
+.brand {
+  display: inline-flex;
+  flex-shrink: 0;
+}
+.brand img {
+  display: block;
+  height: auto;
+}
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-inline-start: auto;
+}
+.language-switch {
+  display: inline-flex;
+  align-items: center;
+  min-height: 40px;
+  padding-inline: 12px;
+  border: 1px solid #3c4b60;
+  border-radius: 6px;
+}
+@media (max-width: 760px) {
+  .nav .brand img {
+    width: 104px;
+  }
+}
+@media (max-width: 520px) {
+  .nav {
+    flex-wrap: wrap;
+    height: auto;
+    padding-block: 12px;
+    row-gap: 8px;
+  }
+  .nav nav {
+    order: 1;
+    width: 100%;
+  }
 }

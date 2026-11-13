@@ -1,0 +1,61 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { games } from "../lib/catalog";
+import Box from "./Box";
+
+const platformLabels: Record<string, string> = { windows: "Windows", osx: "macOS", linux: "Linux" };
+
+const { locale } = Astro.props as { locale: "he" | "en" };
+const en = locale === "en";
+const t = (hebrew: string, english: string) => (en ? english : hebrew);
+---
+
+<Layout locale={locale} page="games" title={t("כל המשחקים — קיטור", "All games — Kitor")}>
+  <main id="main" class="wrap catalog">
+    <a class="text-link" href={en ? "/en/" : "/"}>{t("→ בחזרה לבית", "← Back to home")}</a>
+    <p class="eyebrow">{t("הספרייה של קיטור", "The Kitor library")}</p>
+    <h1>{t("קופסה אחת.", "One box.")}<br /><em>{t("עולם שלם.", "A whole world.")}</em></h1>
+    <p class="lead">{t("כל ", "All ")}{games.length}{t(" המשחקים הנתמכים כרגע באפליקציה, עם הקופסאות המקוריות מהספרייה.", " games currently supported in Kitor, with the original boxes from the library.")}</p>
+    <div class="filters">
+      <label>
+        {t("חיפוש משחק", "Search games")}
+        <input id="search" type="search" placeholder={t("שם המשחק בעברית או באנגלית…", "Game title in Hebrew or English…")} />
+      </label>
+      <p id="count" role="status" aria-live="polite">{games.length} {t("משחקים", "games")}</p>
+    </div>
+    <div class="game-grid">
+      {games.map((game) => (
+        <article class="game-entry" data-title={`${game.title} ${game.title_he ?? ""} ${game.id}`.toLocaleLowerCase("he")}>
+          <Box locale={locale} showLanguageControls={false} title={game.title} covers={game.covers} client:visible />
+          <div class="game-meta">
+            <span>{t("תרגום לעברית", "Hebrew translation")}</span>
+            <span dir="ltr">{Object.entries(game.platforms).filter(([, supported]) => supported).map(([key]) => platformLabels[key]).join(" · ")}</span>
+          </div>
+        </article>
+      ))}
+    </div>
+    <p id="empty" hidden>{t("לא נמצאו משחקים מתאימים. נסו שם אחר.", "No matching games. Try another title.")}</p>
+    <noscript><p>{t("כל המשחקים מוצגים כאן. הפעלת JavaScript מאפשרת חיפוש וסיבוב הקופסאות.", "All games are shown here. Enable JavaScript to search and rotate the boxes.")}</p></noscript>
+  </main>
+
+  <script>
+    const search = document.querySelector<HTMLInputElement>("#search")!;
+    const entries = document.querySelectorAll<HTMLElement>(".game-entry");
+    const countLabel = document.querySelector("#count")!;
+    const empty = document.querySelector<HTMLElement>("#empty")!;
+
+    search.addEventListener("input", () => {
+      const query = search.value.trim().toLocaleLowerCase("he");
+      let count = 0;
+      for (const entry of entries) {
+        const visible = entry.dataset.title!.includes(query);
+        entry.hidden = !visible;
+        if (visible) count++;
+      }
+      countLabel.textContent = document.documentElement.lang === "en"
+        ? `${count} ${count === 1 ? "game" : "games"}`
+        : count === 1 ? "משחק אחד" : `${count} משחקים`;
+      empty.hidden = count !== 0;
+    });
+  </script>
+</Layout>

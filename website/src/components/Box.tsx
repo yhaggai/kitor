@@ -3,9 +3,9 @@ import { GameBox, type GameBoxProps } from "../generated/GameBox";
 export default function Box(props: GameBoxProps) {
   return (
     <GameBox
-      {...props}
-      defaultLanguage="he"
+      defaultLanguage={props.locale ?? "he"}
       locale="he"
+      {...props}
       className={`site-box ${props.className ?? ""}`}
     />
   );
