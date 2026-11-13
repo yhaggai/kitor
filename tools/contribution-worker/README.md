@@ -141,6 +141,31 @@ And these **secrets**:
 | `CONTRIBUTION_WEBHOOK_SECRET` | Shared secret for validating GitHub deliveries, passed to the Worker as `GITHUB_WEBHOOK_SECRET` |
 | `RESEND_API_KEY` | Sending-only key for the verified domain, required when email delivery is enabled |
 
+### Pull deployment secrets from Infisical
+
+Create a dedicated Infisical Secrets Management project for this Worker. Store the
+deployment secrets listed above in its `staging` and `prod` environments. The
+existing GitHub environment variables still provide deployment configuration.
+
+Create a read-only machine identity for each environment. Set its OIDC issuer to
+`https://token.actions.githubusercontent.com` and bind its subject to
+`repo:yhaggai/kitor:environment:staging` or
+`repo:yhaggai/kitor:environment:production`, respectively. In each GitHub
+environment, set `INFISICAL_IDENTITY_ID` to the matching identity ID and
+`INFISICAL_PROJECT_SLUG` to enable the remote pull. Until the project slug is
+set, deployments use the existing GitHub environment secrets.
+
+To pull the production environment as dotenv on your Mac, run
+`infisical login` and then:
+
+```sh
+infisical export --projectId <project-id> --env prod --format dotenv
+```
+
+The export writes secrets to standard output. To save them locally, use an
+ignored file and a restrictive umask. The Worker’s local Wrangler setup uses
+`GITHUB_PRIVATE_KEY` for the value stored as `BOT_PRIVATE_KEY` in Infisical.
+
 Set the **repository Actions variable** `KITOR_CONTRIBUTION_API_URL` to the
 same HTTPS origin as the production environment's `PUBLIC_URL`. The app
 release workflow validates it before creating a draft release and embeds it
