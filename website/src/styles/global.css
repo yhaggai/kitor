@@ -700,3 +700,24 @@ select {
 .site-box img {
   opacity: 1;
 }
+
+#recommended-download + [hidden] {
+  display: none;
+}
+.download-platforms {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 24px 36px;
+  margin-block: 26px;
+}
+.download-platforms > div {
+  scroll-margin-top: 24px;
+}
+.download-platforms .button {
+  margin: 4px;
+}
+.download-platforms .quiet {
+  max-width: 36ch;
+  margin: 12px auto 0;
+}
