@@ -1,7 +1,7 @@
-import { ManageMenu, useTranslation } from "@kitor/ui";
+import { gogIcon, ManageMenu, useTranslation } from "@kitor/ui";
 import { invoke } from "@tauri-apps/api/core";
 import { listen } from "@tauri-apps/api/event";
-import { CheckCircle, Gamepad2, LogIn, LogOut, XCircle } from "lucide-react";
+import { CheckCircle, LogIn, LogOut, XCircle } from "lucide-react";
 import { useEffect, useState } from "react";
 import BugReportDialog from "@/components/BugReportDialog";
 import { LibraryRefreshPreference } from "@/components/LibraryRefreshPreference";
@@ -82,7 +82,7 @@ export default function GogAuthCard() {
     <Card>
       <CardHeader>
         <CardTitle className="flex items-center gap-3">
-          <Gamepad2 className="h-10 w-10 object-contain" aria-hidden="true" />
+          <img className="h-10 w-10 object-contain" src={gogIcon} alt="" />
           GOG
         </CardTitle>
         <CardDescription>
