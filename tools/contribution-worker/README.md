@@ -192,6 +192,20 @@ configuration and authentication gating, not a full Google login or PR creation.
 
 This workflow deploys only the backend. Desktop packaging continues separately;
 set `KITOR_CONTRIBUTION_API_URL` to the appropriate HTTPS URL when building Kitor.
+
+To build a separate macOS app for staging, run this from the repository root:
+
+```sh
+cd kitor
+KITOR_CONTRIBUTION_API_URL=https://kitor-contributions-staging.yhaggai.workers.dev \
+  bun run tauri build --debug --bundles app \
+  --config '{"productName":"Kitor Staging","identifier":"click.kitor.staging"}'
+```
+
+Open `kitor/src-tauri/target/debug/bundle/macos/Kitor Staging.app` from the
+repository root. The URL is compiled into the app, so changing the variable
+requires a rebuild.
+
 # Resend notification setup
 
 The transport is in `src/email.ts`; signed merge/release webhooks and the D1
