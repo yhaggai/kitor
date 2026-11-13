@@ -49,3 +49,13 @@ fn saved_bundled_entry_migrates_to_reviewed_download() {
     assert_eq!(resolved.version, original.version);
     assert_eq!(resolved.release_revision, original.release_revision);
 }
+
+#[cfg(not(debug_assertions))]
+#[test]
+fn production_registry_ignores_external_catalog() {
+    let dir = tempfile::tempdir().unwrap();
+    let external = dir.path().join("registry.json");
+    std::fs::write(&external, r#"{"games":[],"attacker":"override"}"#).unwrap();
+    assert_eq!(registry_content(&external).unwrap(),
+        include_str!("../../../../patches/registry.json"));
+}

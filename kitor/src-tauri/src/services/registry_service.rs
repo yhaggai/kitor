@@ -125,33 +125,21 @@ pub struct RegistryMetadata {
     pub source: String,
 }
 
+fn registry_content(development_path: &Path) -> Result<String, String> {
+    if cfg!(debug_assertions) {
+        match std::fs::read_to_string(development_path) {
+            Ok(content) => return Ok(content),
+            Err(error) if error.kind() == std::io::ErrorKind::NotFound => {},
+            Err(error) => return Err(format!("Registry load error: {error}")),
+        }
+    }
+    Ok(include_str!("../../../patches/registry.json").to_owned())
+}
+
 pub fn load_registry() -> Result<Registry, String> {
-    // Get the registry file path relative to the executable
-    let registry_path = if cfg!(debug_assertions) {
-        // In development, look in the workspace root (one level up from src-tauri)
-        Path::new("../patches/registry.json")
-    } else {
-        // In production, look relative to the executable
-        Path::new("patches/registry.json")
-    };
-
-    println!("Attempting to load registry from: {:?}", registry_path);
-
-    let content = std::fs::read_to_string(registry_path)
-        .or_else(|error| {
-            // Finder-launched bundles have no project working directory.
-            // Keep the reviewed registry available without relying on cwd.
-            if error.kind() == std::io::ErrorKind::NotFound {
-                Ok(include_str!("../../../patches/registry.json").to_owned())
-            } else {
-                Err(error)
-            }
-        })
-        .map_err(|e| {
-            let err_msg = format!("Failed to read registry file: {}", e);
-            println!("Registry load error: {}", err_msg);
-            err_msg
-        })?;
+    // Production trust starts with the compiled catalog. A working-directory
+    // file must never replace package URLs, checksums, or launch metadata.
+    let content = registry_content(Path::new("../patches/registry.json"))?;
 
     println!("Registry file loaded successfully, parsing JSON...");
 

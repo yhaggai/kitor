@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Run actual lifecycle tests without Tauri, from their required fixture cwd."""
 import json
+import os
 from pathlib import Path
 import subprocess
 import sys
@@ -18,6 +19,9 @@ for line in build.stdout.splitlines():
         binaries.append(event['executable'])
 if not binaries:
     raise SystemExit('No lifecycle test binaries built')
+# Exercise the same reviewed macOS decoder shipped in the app bundle.
+if sys.platform == 'darwin':
+    os.environ['PATH'] = str(root.parent / 'src-tauri/vendor/xdelta') + os.pathsep + os.environ.get('PATH', '')
 for binary in binaries:
     result = subprocess.run([binary, *sys.argv[1:]], cwd=root.parent / 'src-tauri')
     if result.returncode:
