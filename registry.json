@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "catalog_revision": 5,
+  "catalog_revision": 6,
   "patches": [
     {
       "scummvm_id": "disco-elysium",
@@ -52,14 +52,14 @@
     {
       "scummvm_id": "undertale",
       "language": "he",
-      "version": "alpha2-steam-kitor3",
-      "release_revision": 1,
-      "download_url": "https://github.com/yhaggai/kitor/releases/download/patch-undertale-he-valpha2-steam-kitor3/Undertale-Hebrew-alpha2-steam-kitor3.zip",
-      "filename": "Undertale-Hebrew-alpha2-steam-kitor3.zip",
-      "checksum": "06d9ad7ad143bd21056d90da8dddc60e7286702b71626615731dee86427ca5f8",
-      "file_size": 37317285,
+      "version": "alpha2-steam-kitor4",
+      "release_revision": 2,
+      "download_url": "https://github.com/yhaggai/kitor/releases/download/patch-undertale-he-valpha2-steam-kitor4/Undertale-Hebrew-alpha2-steam-kitor4.zip",
+      "filename": "Undertale-Hebrew-alpha2-steam-kitor4.zip",
+      "checksum": "4dce79d39bb21d4c565f3a358c2ecd9d183141d5149448f3f30b688f4a57e4ec",
+      "file_size": 37316776,
       "author": "yhaggai",
-      "description": "Hebrew without nikud for UNDERTALE on Windows and macOS.\n\nThis catalog-ready package retains the original alpha 2 translation and game\narchive payloads. Hebrew with nikud is offered separately; installing updates\nto this option will not switch to nikud.\n\nSelect your translation in Kitor. Restore an installed translation before\ninstalling the other option. Keep English selected in-game.\n\nThe translation remains a draft. Windows gameplay testing is outstanding.",
+      "description": "Hebrew without nikud for UNDERTALE on Steam for Windows and macOS.\n\nDialogue now uses feminine Hebrew in more scenes where characters address\nthe child. This release includes rebuilt game patches for both platforms.\n\nSelect Hebrew in Kitor and keep English selected in-game. The translation\nremains a draft. A complete playthrough and native Windows gameplay testing\nare still outstanding.",
       "platforms": [
         "windows",
         "osx"
