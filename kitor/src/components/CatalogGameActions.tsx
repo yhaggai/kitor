@@ -1,8 +1,8 @@
-import { kitorIcon, ManageMenu, useTranslation } from "@kitor/ui";
+import { gogIcon, kitorIcon, ManageMenu, steamIcon, useTranslation } from "@kitor/ui";
 import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
 import { invoke } from "@tauri-apps/api/core";
 import { openUrl } from "@tauri-apps/plugin-opener";
-import { ChevronDown, Download, RefreshCw } from "lucide-react";
+import { ChevronDown, RefreshCw } from "lucide-react";
 import { useEffect, useState } from "react";
 import AddGameDialog from "@/components/AddGameDialog";
 import {
@@ -202,7 +202,11 @@ export function CatalogGameActions({
             disabled={opening || waitingForSteam}
             aria-busy={waitingForSteam || undefined}
           >
-            <Download aria-hidden="true" className="h-6 w-6 shrink-0 object-contain" />
+            <img
+              src={primaryStore === "steam" ? steamIcon : gogIcon}
+              alt=""
+              className="h-6 w-6 shrink-0 object-contain"
+            />
             {steamInstalling && primaryStore === "steam"
               ? t("Downloading…")
               : installLabel(primaryStore)}
@@ -237,7 +241,11 @@ export function CatalogGameActions({
                         void selectStore(provider);
                       }}
                     >
-                      <Download aria-hidden="true" className="h-6 w-6 shrink-0 object-contain" />
+                      <img
+                        src={provider === "steam" ? steamIcon : gogIcon}
+                        alt=""
+                        className="h-6 w-6 shrink-0 object-contain"
+                      />
                       {installLabel(provider)}
                     </DropdownMenu.Item>
                   ))}
@@ -332,7 +340,11 @@ export function CatalogGameActions({
                 }
               }}
             >
-              <Download aria-hidden="true" className="h-6 w-6 object-contain" />
+              <img
+                src={installSource === "steam" ? steamIcon : gogIcon}
+                alt=""
+                className="h-6 w-6 object-contain"
+              />
               {t(installSource === "steam" ? "Use Steam client" : "Use GOG Galaxy")}
             </Button>
             {installSource === "steam" && capabilities?.supported === false && (
