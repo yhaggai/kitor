@@ -1,8 +1,6 @@
 import { invoke } from "@tauri-apps/api/core";
-import { listen } from "@tauri-apps/api/event";
 import { ask } from "@tauri-apps/plugin-dialog";
-import { create } from "zustand";
-import { type Game, useAppStore } from "./store";
+import type { Game } from "./store";
 
 export async function downloadSteamGames(
   appId: number,
@@ -32,53 +30,3 @@ export async function downloadSteamGames(
     return confirmed ? download(true) : null;
   }
 }
-
-export const useSteamDownload = create<{
-  downloadedBytes: number | null;
-  totalBytes: number | null;
-  busy: boolean;
-  appId: number | null;
-  error: string | null;
-  start: (appId: number, gameIds: string[], installRoot: string) => Promise<void>;
-}>((set, get) => ({
-  downloadedBytes: null,
-  totalBytes: null,
-  busy: false,
-  appId: null,
-  error: null,
-  start: async (appId, gameIds, installRoot) => {
-    if (get().busy) return;
-    set({ busy: true, appId, error: null, downloadedBytes: null, totalBytes: null });
-    let unlisten: (() => void) | undefined;
-    try {
-      unlisten = await listen<{ kind: string; downloaded_bytes?: number; total_bytes?: number }>(
-        "native-steam-download",
-        ({ payload }) => {
-          if (payload.kind === "progress")
-            set({
-              downloadedBytes: payload.downloaded_bytes ?? null,
-              totalBytes: payload.total_bytes ?? null,
-            });
-        }
-      );
-      const games = await downloadSteamGames(appId, gameIds, installRoot);
-      if (games === null) return;
-      const store = useAppStore.getState();
-      store.setGames(await invoke<Game[]>("get_games_with_patches"));
-      store.setHighlightedGameId(
-        games.find((game) => game.scummvm_id === gameIds[0])?.id ?? games[0]?.id ?? null
-      );
-      store.setActiveTab("library");
-    } catch (error) {
-      set({ error: String(error) });
-    } finally {
-      unlisten?.();
-      try {
-        useAppStore.getState().setGames(await invoke<Game[]>("get_games_with_patches"));
-      } catch {
-        /* Preserve the original error. */
-      }
-      set({ busy: false });
-    }
-  },
-}));
