@@ -47,6 +47,9 @@ jobs:
 
   deploy:
     needs: validate
+    permissions:
+      contents: read
+      id-token: write
     if: github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/v1'
     runs-on: ubuntu-latest
     timeout-minutes: 15
@@ -75,25 +78,35 @@ jobs:
           cache: npm
           cache-dependency-path: tools/contribution-worker/package-lock.json
       - run: npm ci
+      - name: Fetch deployment secrets from Infisical
+        if: vars.INFISICAL_PROJECT_SLUG != ''
+        uses: Infisical/secrets-action@8802effbe453d0576cd923567dcc2c97a1f54058 # v1.0.15
+        with:
+          method: oidc
+          identity-id: ${{ vars.INFISICAL_IDENTITY_ID }}
+          project-slug: ${{ vars.INFISICAL_PROJECT_SLUG }}
+          env-slug: ${{ inputs.environment == 'production' && 'prod' || 'staging' }}
+          export-type: env
+          include-imports: 'false'
       - name: Prepare environment configuration
         run: node scripts/deployment-config.mjs
       - name: Prepare Worker secrets
         env:
-          GOOGLE_CLIENT_ID: ${{ secrets.GOOGLE_CLIENT_ID }}
-          GOOGLE_CLIENT_SECRET: ${{ secrets.GOOGLE_CLIENT_SECRET }}
-          BOT_PRIVATE_KEY: ${{ secrets.BOT_PRIVATE_KEY }}
-          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
-          GITHUB_WEBHOOK_SECRET: ${{ secrets.CONTRIBUTION_WEBHOOK_SECRET }}
+          GOOGLE_CLIENT_ID: ${{ vars.INFISICAL_PROJECT_SLUG == '' && secrets.GOOGLE_CLIENT_ID || env.GOOGLE_CLIENT_ID }}
+          GOOGLE_CLIENT_SECRET: ${{ vars.INFISICAL_PROJECT_SLUG == '' && secrets.GOOGLE_CLIENT_SECRET || env.GOOGLE_CLIENT_SECRET }}
+          BOT_PRIVATE_KEY: ${{ vars.INFISICAL_PROJECT_SLUG == '' && secrets.BOT_PRIVATE_KEY || env.BOT_PRIVATE_KEY }}
+          RESEND_API_KEY: ${{ vars.INFISICAL_PROJECT_SLUG == '' && secrets.RESEND_API_KEY || env.RESEND_API_KEY }}
+          GITHUB_WEBHOOK_SECRET: ${{ vars.INFISICAL_PROJECT_SLUG == '' && secrets.CONTRIBUTION_WEBHOOK_SECRET || env.CONTRIBUTION_WEBHOOK_SECRET }}
         run: node scripts/deployment-secrets.mjs
       - name: Validate deployment bundle
         run: npx --no-install wrangler deploy --config wrangler.deploy.json --env "$DEPLOY_ENV" --dry-run --outdir .wrangler/ci-build
       - name: Apply D1 migrations
         env:
-          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_API_TOKEN: ${{ vars.INFISICAL_PROJECT_SLUG == '' && secrets.CLOUDFLARE_API_TOKEN || env.CLOUDFLARE_API_TOKEN }}
         run: npx --no-install wrangler d1 migrations apply DB --remote --config wrangler.deploy.json --env "$DEPLOY_ENV"
       - name: Deploy Worker and secrets
         env:
-          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_API_TOKEN: ${{ vars.INFISICAL_PROJECT_SLUG == '' && secrets.CLOUDFLARE_API_TOKEN || env.CLOUDFLARE_API_TOKEN }}
         run: npx --no-install wrangler deploy --config wrangler.deploy.json --env "$DEPLOY_ENV" --secrets-file .deploy-secrets.json
       - name: Verify deployment
         run: node scripts/check-deployment.mjs
