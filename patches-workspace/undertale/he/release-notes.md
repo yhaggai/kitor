@@ -1,10 +1,8 @@
-Hebrew without nikud for UNDERTALE on Windows and macOS.
+Hebrew without nikud for UNDERTALE on Steam for Windows and macOS.
 
-This catalog-ready package retains the original alpha 2 translation and game
-archive payloads. Hebrew with nikud is offered separately; installing updates
-to this option will not switch to nikud.
+Dialogue now uses feminine Hebrew in more scenes where characters address
+the child. This release includes rebuilt game patches for both platforms.
 
-Select your translation in Kitor. Restore an installed translation before
-installing the other option. Keep English selected in-game.
-
-The translation remains a draft. Windows gameplay testing is outstanding.
+Select Hebrew in Kitor and keep English selected in-game. The translation
+remains a draft. A complete playthrough and native Windows gameplay testing
+are still outstanding.
