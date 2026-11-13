@@ -1,4 +1,5 @@
-import { steamIcon, useTranslation } from "@kitor/ui";
+import { useTranslation } from "@kitor/ui";
+import { Gamepad2 } from "lucide-react";
 import NativeSteamConnection from "@/components/NativeSteamConnection";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 
@@ -8,7 +9,7 @@ export default function SteamAuthCard() {
     <Card>
       <CardHeader>
         <CardTitle className="flex items-center gap-3">
-          <img className="h-10 w-10 object-contain" src={steamIcon} alt="" />
+          <Gamepad2 className="h-10 w-10 object-contain" aria-hidden="true" />
           Steam
         </CardTitle>
         <CardDescription>

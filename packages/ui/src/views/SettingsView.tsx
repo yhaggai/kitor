@@ -3,19 +3,18 @@ import {
   Download,
   ExternalLink,
   FolderOpen,
+  Gamepad2,
   KeyRound,
   LogIn,
   LogOut,
   type LucideIcon,
+  Monitor,
   RefreshCw,
   Shield,
   Trash2,
 } from "lucide-react";
 import type { ReactNode } from "react";
 import kitorIcon from "../assets/kitor-logo.svg";
-import gogIcon from "../assets/providers/gog.png";
-import scummvmIcon from "../assets/providers/scummvm.svg";
-import steamIcon from "../assets/providers/steam.png";
 import { Button } from "../components/Button";
 import { ManageMenu } from "../components/ManageMenu";
 import { useTranslation } from "../i18n";
@@ -127,7 +126,7 @@ export function SettingsView({
         <SettingsCard
           title="Steam"
           status={!state.steam ? "unavailable" : state.steamKey ? "ready" : "attention"}
-          icon={<img src={steamIcon} alt="" />}
+          icon={<Gamepad2 aria-hidden="true" />}
           detail="Sign in on Steam’s website. Your game details must be public for library lookup."
           description={
             state.steam
@@ -153,7 +152,7 @@ export function SettingsView({
         <SettingsCard
           title="GOG"
           status={state.gog ? "ready" : "unavailable"}
-          icon={<img src={gogIcon} alt="" />}
+          icon={<Gamepad2 aria-hidden="true" />}
           description={
             state.gog
               ? "Connected · 8 games in your library"
@@ -171,7 +170,7 @@ export function SettingsView({
         <SettingsCard
           title="ScummVM"
           status={!state.runtime ? "unavailable" : state.runtimeUpdated ? "ready" : "attention"}
-          icon={<img src={scummvmIcon} alt="" />}
+          icon={<Monitor aria-hidden="true" />}
           description={
             state.runtime
               ? t("Ready · {0}", [
