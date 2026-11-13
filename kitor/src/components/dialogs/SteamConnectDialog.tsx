@@ -55,7 +55,7 @@ export default function SteamConnectDialog() {
           </DialogTitle>
           <DialogDescription>
             {t(
-              "Kitor signs in to Steam to read your owned games and enable downloads. You can disconnect in Settings."
+              "Kitor refreshes your game library from Steam when it opens and uses the connection to download games. You can disconnect in Settings."
             )}
           </DialogDescription>
         </DialogHeader>

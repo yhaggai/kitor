@@ -8,22 +8,12 @@ let pending: Promise<void> | null = null;
 export const useGogLibrary = create<{
   loading: boolean;
   loaded: boolean;
-  checkConnection: () => Promise<void>;
   error: string | null;
   refresh: () => Promise<void>;
   clear: () => void;
 }>((set) => ({
   loading: false,
   loaded: false,
-  checkConnection: async () => {
-    const current = generation;
-    try {
-      const isAuthenticated = await invoke<boolean>("check_gog_auth_status");
-      if (current === generation) useAppStore.getState().setGogAuth({ isAuthenticated });
-    } catch (error) {
-      if (current === generation) set({ error: String(error) });
-    }
-  },
   error: null,
   refresh: () => {
     if (pending) return pending;
