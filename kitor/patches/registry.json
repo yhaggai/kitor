@@ -21,15 +21,15 @@
       "patches": [
         {
           "language": "he",
-          "version": "alpha2-steam-kitor5",
-          "release_revision": 3,
+          "version": "alpha2-steam-kitor6",
+          "release_revision": 4,
           "author": "yhaggai",
-          "download_url": "https://github.com/yhaggai/kitor/releases/download/patch-undertale-he-valpha2-steam-kitor5/Undertale-Hebrew-alpha2-steam-kitor5.zip",
+          "download_url": "https://github.com/yhaggai/kitor/releases/download/patch-undertale-he-valpha2-steam-kitor6/Undertale-Hebrew-alpha2-steam-kitor6.zip",
           "source_type": "github",
-          "checksum": "f99aefe3ca66b9435c1d5b70971550760a3e2c19d24bb992705657f3fc4b130d",
-          "file_size": 37316685,
+          "checksum": "22e1a7095949cae495ae586369f357eae0f22415c27a8e4ba61c0e6f6aa26eb2",
+          "file_size": 37291181,
           "description": "Hebrew without nikud for Steam on macOS and Windows. Requires Python 3.10+. Draft translation; Windows runtime testing pending. Keep English selected in-game.",
-          "filename": "Undertale-Hebrew-alpha2-steam-kitor5.zip",
+          "filename": "Undertale-Hebrew-alpha2-steam-kitor6.zip",
           "post_install_script": null,
           "install_manifest": "patch.json"
         }

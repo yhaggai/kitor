@@ -10,3 +10,5 @@ are still outstanding.
 This revision keeps the ACT menu's last choice beside the heart, makes room
 for the heart in Toriel's choice menu, and fits Froggit's dialogue to its
 speech bubble. Toriel now says "תחזרי לחדר".
+
+Papyrus uses tighter spacing around narrow Hebrew letters.
