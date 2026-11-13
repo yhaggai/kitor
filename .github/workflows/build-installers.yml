@@ -37,11 +37,14 @@ jobs:
       matrix:
         include:
           - os: macos-latest
-            bundle: dmg
+            # Keep `app` so Tauri does not delete kitor.app before verify.
+            bundle: app,dmg
+            bundle_dir: dmg
             artifact: macos-apple-silicon
             extension: dmg
           - os: windows-latest
             bundle: nsis
+            bundle_dir: nsis
             artifact: windows-x64
             extension: exe
     runs-on: ${{ matrix.os }}
@@ -82,6 +85,6 @@ jobs:
         if: github.event_name == 'workflow_dispatch' && inputs.upload_artifacts
         with:
           name: kitor-${{ matrix.artifact }}
-          path: kitor/src-tauri/target/release/bundle/${{ matrix.bundle }}/*.${{ matrix.extension }}
+          path: kitor/src-tauri/target/release/bundle/${{ matrix.bundle_dir }}/*.${{ matrix.extension }}
           if-no-files-found: error
           retention-days: 7
