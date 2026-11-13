@@ -37,11 +37,14 @@ jobs:
       matrix:
         include:
           - os: macos-latest
-            bundle: dmg
+            # Keep `app` so Tauri does not delete kitor.app before verify.
+            bundle: app,dmg
+            bundle_dir: dmg
             artifact: macos-apple-silicon
             extension: dmg
           - os: windows-latest
             bundle: nsis
+            bundle_dir: nsis
             artifact: windows-x64
             extension: exe
     runs-on: ${{ matrix.os }}
@@ -64,13 +67,24 @@ jobs:
       - name: Test installation coordination
         working-directory: kitor/src-tauri
         run: cargo test --locked --lib services::app_updates::tests
+      - name: Smoke test bundled GOG extractor on Windows
+        if: runner.os == 'Windows'
+        shell: pwsh
+        run: |
+          & ./kitor/src-tauri/vendor/innoextract/innoextract-x86_64-pc-windows-msvc.exe --version
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
       - name: Build installer
         working-directory: kitor
         run: bun run tauri build --bundles ${{ matrix.bundle }} -- --locked
+      - name: Verify the macOS bundle contains a working GOG extractor
+        if: runner.os == 'macOS'
+        run: |
+          tool=kitor/src-tauri/target/release/bundle/macos/kitor.app/Contents/MacOS/innoextract
+          env PATH=/usr/bin:/bin "$tool" --version
       - uses: actions/upload-artifact@v4
         if: github.event_name == 'workflow_dispatch' && inputs.upload_artifacts
         with:
           name: kitor-${{ matrix.artifact }}
-          path: kitor/src-tauri/target/release/bundle/${{ matrix.bundle }}/*.${{ matrix.extension }}
+          path: kitor/src-tauri/target/release/bundle/${{ matrix.bundle_dir }}/*.${{ matrix.extension }}
           if-no-files-found: error
           retention-days: 7

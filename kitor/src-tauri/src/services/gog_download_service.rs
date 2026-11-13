@@ -153,55 +153,6 @@ fn emit_progress(app: &tauri::AppHandle, id: &str, step: &str, percentage: Optio
     );
 }
 
-async fn extractor(app: &tauri::AppHandle, id: &str) -> Result<PathBuf, String> {
-    async fn find() -> Option<PathBuf> {
-        for path in [
-            "innoextract",
-            "/opt/homebrew/bin/innoextract",
-            "/usr/local/bin/innoextract",
-        ] {
-            if tokio::process::Command::new(path)
-                .arg("--version")
-                .output()
-                .await
-                .is_ok_and(|o| o.status.success())
-            {
-                return Some(path.into());
-            }
-        }
-        None
-    }
-    if let Some(path) = find().await {
-        return Ok(path);
-    }
-    if cfg!(target_os = "windows") {
-        return Err("GOG installation requires innoextract. Install it and add it to PATH, then retry.".into());
-    }
-    progress(app, id, "Preparing installation tools…", None);
-    for brew in ["/opt/homebrew/bin/brew", "/usr/local/bin/brew"] {
-        if Path::new(brew).is_file() {
-            let status = tokio::process::Command::new(brew)
-                .args(["install", "innoextract"])
-                .env("HOMEBREW_NO_AUTO_UPDATE", "1")
-                .output()
-                .await
-                .map_err(|_| "Could not prepare the GOG extraction tool")?;
-            if status.status.success() {
-                if let Some(path) = find().await {
-                    return Ok(path);
-                }
-            }
-            return Err(
-                "Could not install the GOG extraction tool. Check Homebrew and retry.".into(),
-            );
-        }
-    }
-    Err(
-        "GOG installation requires innoextract. Install Homebrew or innoextract, then retry."
-            .into(),
-    )
-}
-
 async fn json(
     client: &reqwest::Client,
     url: url::Url,
@@ -304,7 +255,7 @@ pub async fn install(
         {
             return Err("Connect the GOG account that owns this game, then retry.".into());
         }
-        let tool = extractor(app, &game_id).await?;
+        let tool = super::innoextract::bundled_path()?;
         let token = gog_service::get_valid_token(&state.db).await?;
         let client = reqwest::Client::builder()
             .connect_timeout(std::time::Duration::from_secs(30))

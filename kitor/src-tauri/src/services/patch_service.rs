@@ -650,39 +650,7 @@ pub async fn download_and_extract_gog_installer(
     app_data_dir: PathBuf,
 ) -> Result<(), String> {
     use crate::services::{game_service, gog_service};
-    use std::process::Command;
-
-    // 1. Verify innoextract is installed
-    let innoextract_check = Command::new("innoextract").arg("--version").output();
-    if innoextract_check.is_err() {
-        // Attempt to brew install on macos
-        #[cfg(target_os = "macos")]
-        {
-            let _ = app_handle.emit(
-                "gog-installer-progress",
-                serde_json::json!({
-                    "step": "Installing innoextract...",
-                    "progress": 0
-                }),
-            );
-            let brew_install = Command::new("brew")
-                .arg("install")
-                .arg("innoextract")
-                .output();
-            if brew_install.is_err() || !brew_install.unwrap().status.success() {
-                return Err(
-                    "innoextract is not installed. Please try 'brew install innoextract' manually."
-                        .to_string(),
-                );
-            }
-        }
-        #[cfg(not(target_os = "macos"))]
-        {
-            return Err(
-                "innoextract is not installed. Please install it and try again.".to_string(),
-            );
-        }
-    }
+    let extractor = super::innoextract::bundled_path()?;
 
     // 2. Get GOG access token
     let token = gog_service::get_valid_token(db).await?;
@@ -731,13 +699,14 @@ pub async fn download_and_extract_gog_installer(
     std::fs::create_dir_all(&dest_dir)
         .map_err(|e| format!("Failed to create destination directory: {}", e))?;
 
-    let extract_output = Command::new("innoextract")
+    let extract_output = tokio::process::Command::new(extractor)
         .arg("-d")
         .arg(&dest_dir)
         .arg("--lowercase")
         .arg("-e")
         .arg(&download_path)
         .output()
+        .await
         .map_err(|e| format!("Failed to execute innoextract: {}", e))?;
 
     if !extract_output.status.success() {
