@@ -6,8 +6,11 @@ header='''// Hebrew full-text alpha: cache layout once per resolved message and 
 // writingxend is an old wrapping threshold, not the last glyph's origin.
 // Reserve the entire final cell and keep unbounded writers inside the viewport.
 var he_right = min(writingxend, view_xview[view_current] + view_wview[view_current] - 12);
-var he_bubble = instance_nearest(writingx, writingy, obj_blconwdflowey);
-if (instance_exists(he_bubble)) {
+for (var he_kind = 0; he_kind < 2; he_kind++) {
+    var he_object = obj_blconwdflowey;
+    if (he_kind == 1) he_object = obj_blconsm;
+    var he_bubble = instance_nearest(writingx, writingy, he_object);
+    if (!instance_exists(he_bubble)) continue;
     var he_bx = he_bubble.x - sprite_get_xoffset(he_bubble.sprite_index) * he_bubble.image_xscale;
     var he_by = he_bubble.y - sprite_get_yoffset(he_bubble.sprite_index) * he_bubble.image_yscale;
     var he_bw = sprite_get_width(he_bubble.sprite_index) * he_bubble.image_xscale;

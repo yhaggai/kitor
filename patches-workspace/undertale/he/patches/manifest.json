@@ -2,8 +2,8 @@
   "release": "alpha2-steam",
   "platform": "macOS",
   "source_sha256": "91a8acf1f40bd7c45d0bdb978de55187e7fb2cd76a1e2cda41c078dd44d3565e",
-  "patched_sha256": "00189831dc41eb3a551a4737549e86792bb1e3bce4ec6bbffcb1dc7b41d45fd0",
-  "patch_sha256": "f4efeb2086aa651678bba77c57b43ed515ae1167aab71d74ec3c226f1a329711",
+  "patched_sha256": "b1280b106a0ea33d9cd7212c541c6c55a0e6d2cb6f822330b68270576246ffdb",
+  "patch_sha256": "c439df3d43c0ed70e21d94c50f6fd40260d78fe6f82189ea8fc2d38cec67ab2b",
   "catalog_entries": 16455,
   "draft_translations": 15227,
   "unchanged_entries": 1228

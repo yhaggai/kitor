@@ -5824,7 +5824,7 @@
     {
       "key": "SCR_TEXT_1882",
       "english": "* What is it?&               When can&  Nothing      I go home?\\C ",
-      "hebrew": "* מה העניין?&               מתי אפשר&  כלום      לחזור הביתה?\\C ",
+      "hebrew": "* מה העניין?&               מתי אפשר&  כלום       לשוב הביתה?\\C ",
       "status": "draft"
     },
     {
@@ -76393,7 +76393,7 @@
     {
       "key": "obj_torieltrigger10_85",
       "english": "* ... go to your room./%%",
-      "hebrew": "* ... לחזור לחדר./%%",
+      "hebrew": "* ... תחזרי לחדר./%%",
       "status": "draft"
     },
     {
