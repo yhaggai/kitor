@@ -1,4 +1,5 @@
 import { afterEach, beforeEach, expect, mock, test } from "bun:test";
+import { Resource } from "@tauri-apps/api/core";
 import { createElement } from "react";
 import { renderToStaticMarkup } from "react-dom/server";
 
@@ -7,7 +8,11 @@ let report:
   | ((event: { payload: { game_id: string; step: string; percentage: number | null } }) => void)
   | undefined;
 const unlisten = mock(() => {});
-mock.module("@tauri-apps/api/core", () => ({ invoke, convertFileSrc: (path: string) => path }));
+mock.module("@tauri-apps/api/core", () => ({
+  Resource,
+  invoke,
+  convertFileSrc: (path: string) => path,
+}));
 mock.module("@tauri-apps/api/event", () => ({
   listen: async (_event: string, callback: typeof report) => {
     report = callback;
@@ -168,7 +173,7 @@ test("an open GOG dialog disables installation when ownership is absent", () => 
   expect(html).toMatch(/<button[^>]*disabled[^>]*>Next<\/button>/);
 });
 
-const { useSteamDownload } = await import("../src/store/steamDownload");
+const { downloadSteamGames } = await import("../src/store/steamDownload");
 test("Steam replacement requires confirmation and cancellation never overwrites", async () => {
   invoke.mockImplementation((command) =>
     command === "download_steam_windows_game"
@@ -176,12 +181,11 @@ test("Steam replacement requires confirmation and cancellation never overwrites"
       : Promise.resolve([])
   );
   ask.mockResolvedValue(false);
-  await useSteamDownload.getState().start(10110, ["sq1"], "/Games");
+  expect(await downloadSteamGames(10110, ["sq1"], "/Games")).toBeNull();
   expect(ask).toHaveBeenCalled();
   expect(
     invoke.mock.calls.filter(([command]) => command === "download_steam_windows_game")
   ).toHaveLength(1);
-  expect(useSteamDownload.getState().error).toBeNull();
 });
 
 test("Steam replacement retries with overwrite only after confirmation", async () => {
@@ -191,12 +195,11 @@ test("Steam replacement retries with overwrite only after confirmation", async (
       : Promise.resolve([])
   );
   ask.mockResolvedValue(true);
-  await useSteamDownload.getState().start(10110, ["sq1"], "/Games");
+  expect(await downloadSteamGames(10110, ["sq1"], "/Games")).toEqual([]);
   expect(invoke).toHaveBeenCalledWith("download_steam_windows_game", {
     appId: 10110,
     gameIds: ["sq1"],
     installRoot: "/Games",
     overwrite: true,
   });
-  expect(useSteamDownload.getState().error).toBeNull();
 });
