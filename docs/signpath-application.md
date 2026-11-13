@@ -18,6 +18,8 @@ Updated 12 November 2026. The draft is ready for maintainer review. Resolve the 
 
 ## Before submitting
 
+See the [Windows release audit](signpath-windows-audit.md) for the installer inventory and the source revisions reviewed.
+
 1. **Document the classic Tentacle permission.** The maintainer confirmed permission to distribute the Kitor recipe package. The [updated recipe archive](https://github.com/yhaggai/kitor/releases/tag/patch-tentacle-he-v2.0-beta2-kitor1-download2) carries the corrected notice. Retain any record of the permission and check the other published patch packages for documented permissions.
 2. **Complete the Windows release inventory.** A listing of the published 0.1.3 installer showed `kitor.exe`, six NSIS/Tauri plug-in DLLs, and two wizard bitmaps. Finish the inventory of compiled Rust dependencies, embedded frontend dependencies and assets, fonts or artwork if present, installer resources and plug-ins, and the WebView2 install path. Record each item's origin, version, license and applicable notices. Check both open-source eligibility and redistribution rights. Obtain SignPath's guidance on any ambiguous component and replace or remove items that cannot meet the requirements.
    - [PR #42](https://github.com/yhaggai/kitor/pull/42) removes bundled Steam and GOG logos, replaces the desktop provider marks with generic icons, and moves Disco Elysium artwork outside the desktop public directory. The frontend build was checked for the removed assets. Build and inspect a fresh Windows installer from v1 before making claims about the distributed artifact.
