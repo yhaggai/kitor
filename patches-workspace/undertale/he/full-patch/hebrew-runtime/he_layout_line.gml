@@ -15,8 +15,9 @@ for (i = 1; i <= count; i++) {
         i = j-1;
     }
 }
+// Leading padding can anchor a lone choice to the original cursor column.
 var offset = 0;
-if (rtl && !plain && !hascolumns && anchor == -1) offset = max(0,capacity-count);
+if (rtl && !plain && !hascolumns && anchor == -1 && string_copy(text,1,2) != "  ") offset = max(0,capacity-count);
 // Preserve leading/trailing padding and every multiple-space column gap.
 // Run text within each fixed field through bidi; never exchange field order.
 i = 1;

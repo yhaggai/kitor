@@ -137,7 +137,7 @@ def layout(text,capacity,plain=False):
             content = ''.join(t[1] for t in tokens[pos:limit])
             columns = bool(re.search(r'[^ ] {2,}[^ ]',content))
             rtl = any(typ(c)==1 for c in content)
-            offset = max(0,capacity-len(content)) if rtl and not plain and not columns and anchor == -1 else 0
+            offset = max(0,capacity-len(content)) if rtl and not plain and not columns and anchor == -1 and not content.startswith("  ") else 0
             # Match GML fixed leading/trailing/multiple whitespace fields.
             cursor = 0
             for m in re.finditer(r'^ +| {2,}| +$',content):
@@ -163,6 +163,14 @@ def visual(text):
     return '#'.join(''.join(v['char'] for _,v in sorted(result.items(),key=lambda x:x[1]['col']) if v['col']>=0 and v['row']==row) for row in range(meta['rows']))
 
 class RuntimeTests(unittest.TestCase):
+    def test_single_choice_keeps_its_column(self):
+        result, _ = layout("   * בדיקה         * מחמאה&   * איום", 35)
+        columns = [
+            min(g["col"] for g in result.values() if g["row"] == row and g["char"] not in ("", " "))
+            for row in (0, 1)
+        ]
+        self.assertEqual(columns, [3, 3])
+
     def test_hebrew(self): self.assertEqual(visual('שלום'), 'םולש')
     def test_latin_noop(self): self.assertEqual(visual('HP 10/20#100%'), 'HP 10/20#100%')
     def test_number_order(self): self.assertEqual(visual('שלום 123'), '123 םולש')
