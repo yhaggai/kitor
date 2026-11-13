@@ -85,6 +85,7 @@
   "Translation updated successfully!": "התרגום עודכן בהצלחה!",
   "Patch installed successfully!": "התרגום הותקן בהצלחה!",
   "Install Failed": "ההתקנה נכשלה",
+  "This patch doesn't recognize your installed game files.": "הטלאי לא מזהה את קובצי המשחק המותקנים.",
   "Remove Failed": "ההסרה נכשלה",
   "Restore Failed": "השחזור נכשל",
   "Library Refresh Failed": "רענון הספרייה נכשל",
