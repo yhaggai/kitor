@@ -194,17 +194,27 @@ export default function GameCard({ game, collection, onRemove, onBack }: GameCar
       );
     } catch (error) {
       console.error("Failed to install patch:", error);
+      const reason = String(error);
+      const unrecognizedGameFiles = [
+        "Unsupported original version:",
+        "Legacy edition checksum mismatch:",
+        "Required original is missing:",
+      ].some((prefix) => reason.startsWith(prefix));
+      const reportDetails = [
+        reason,
+        `Game ID: ${game.scummvm_id}`,
+        `Patch: ${patch.language} ${patch.version}`,
+        `Detected version: ${game.detected_version ?? "unknown"}`,
+        ...(game.health?.details ?? []),
+      ].join("\n");
       await alert({
         failure: true,
         game: displayTitle,
         title: t("Install Failed"),
-        description: [
-          String(error),
-          `Game ID: ${game.scummvm_id}`,
-          `Patch: ${patch.language} ${patch.version}`,
-          `Detected version: ${game.detected_version ?? "unknown"}`,
-          ...(game.health?.details ?? []),
-        ].join("\n"),
+        description: unrecognizedGameFiles
+          ? t("This patch doesn't recognize your installed game files.")
+          : reportDetails,
+        reportDetails,
       });
     } finally {
       actions.hideInstallDialog();
