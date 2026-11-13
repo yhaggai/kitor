@@ -2160,7 +2160,7 @@
       "steam_app_id": 632470,
       "title": "Disco Elysium – The Final Cut",
       "title_he": "דיסקו אליסיום",
-      "cover_url": "/disco-elysium-cover-en.jpg",
+      "cover_url": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/disco-elysium/en/71041ce81990.jpg",
       "platforms": {
         "windows": true,
         "osx": true,
@@ -2197,15 +2197,11 @@
             "commands": {
               "windows": {
                 "program": "disco.exe",
-                "required_files": [
-                  "disco_Data/app.info"
-                ]
+                "required_files": ["disco_Data/app.info"]
               },
               "osx": {
                 "program": "Contents/MacOS/Disco Elysium",
-                "required_files": [
-                  "Contents/Resources/Data/app.info"
-                ]
+                "required_files": ["Contents/Resources/Data/app.info"]
               }
             }
           },
@@ -2213,15 +2209,11 @@
             "commands": {
               "windows": {
                 "program": "disco.exe",
-                "required_files": [
-                  "disco_Data/app.info"
-                ]
+                "required_files": ["disco_Data/app.info"]
               },
               "osx": {
                 "program": "Contents/MacOS/Disco Elysium",
-                "required_files": [
-                  "Contents/Resources/Data/app.info"
-                ]
+                "required_files": ["Contents/Resources/Data/app.info"]
               }
             }
           }

@@ -1,4 +1,4 @@
-import { ManageMenu, scummvmIcon, useTranslation } from "@kitor/ui";
+import { ManageMenu, useTranslation } from "@kitor/ui";
 
 import { invoke } from "@tauri-apps/api/core";
 import {
@@ -7,6 +7,7 @@ import {
   Download,
   ExternalLink,
   FolderOpen,
+  Monitor,
   RefreshCw,
   Trash2,
   XCircle,
@@ -214,7 +215,7 @@ export default function Settings() {
       <Card>
         <CardHeader>
           <CardTitle className="flex items-center gap-3">
-            <img className="h-10 w-10 object-contain" src={scummvmIcon} alt="" />
+            <Monitor className="h-10 w-10 object-contain" aria-hidden="true" />
             ScummVM
           </CardTitle>
           <CardDescription>

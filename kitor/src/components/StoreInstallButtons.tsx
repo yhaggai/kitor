@@ -125,16 +125,12 @@ export function StoreInstallButtons({
               }
             }}
           >
-            <img
-              src="/store-logos/steam.png"
-              alt="Steam"
-              className="h-8 w-8 shrink-0 rounded-md object-contain"
-            />
+            <span className="shrink-0">Steam</span>
             {canDownload && steamInstalling
               ? t("Downloading…")
               : canDownload
                 ? t("Install game")
-                : "Steam"}
+                : null}
           </Button>
         )}
         {gogId && (
@@ -161,18 +157,14 @@ export function StoreInstallButtons({
               }
             }}
           >
-            <img
-              src="/store-logos/gog.png"
-              alt="GOG"
-              className="h-8 w-8 shrink-0 rounded-md object-cover"
-            />
+            <span className="shrink-0">GOG</span>
             {canInstallGog
               ? gogDownload.busy && gogDownload.gameId === scummvmId
                 ? t("Installing…")
                 : t("Install game")
               : ownsGogGame
-                ? t("GOG · Owned")
-                : "GOG"}
+                ? t("Owned")
+                : null}
           </Button>
         )}
       </div>
