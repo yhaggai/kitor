@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "catalog_revision": 6,
+  "catalog_revision": 7,
   "patches": [
     {
       "scummvm_id": "disco-elysium",
@@ -52,14 +52,14 @@
     {
       "scummvm_id": "undertale",
       "language": "he",
-      "version": "alpha2-steam-kitor4",
-      "release_revision": 2,
-      "download_url": "https://github.com/yhaggai/kitor/releases/download/patch-undertale-he-valpha2-steam-kitor4/Undertale-Hebrew-alpha2-steam-kitor4.zip",
-      "filename": "Undertale-Hebrew-alpha2-steam-kitor4.zip",
-      "checksum": "4dce79d39bb21d4c565f3a358c2ecd9d183141d5149448f3f30b688f4a57e4ec",
-      "file_size": 37316776,
+      "version": "alpha2-steam-kitor6",
+      "release_revision": 4,
+      "download_url": "https://github.com/yhaggai/kitor/releases/download/patch-undertale-he-valpha2-steam-kitor6/Undertale-Hebrew-alpha2-steam-kitor6.zip",
+      "filename": "Undertale-Hebrew-alpha2-steam-kitor6.zip",
+      "checksum": "22e1a7095949cae495ae586369f357eae0f22415c27a8e4ba61c0e6f6aa26eb2",
+      "file_size": 37291181,
       "author": "yhaggai",
-      "description": "Hebrew without nikud for UNDERTALE on Steam for Windows and macOS.\n\nDialogue now uses feminine Hebrew in more scenes where characters address\nthe child. This release includes rebuilt game patches for both platforms.\n\nSelect Hebrew in Kitor and keep English selected in-game. The translation\nremains a draft. A complete playthrough and native Windows gameplay testing\nare still outstanding.",
+      "description": "Hebrew without nikud for UNDERTALE on Steam for Windows and macOS.\n\nDialogue now uses feminine Hebrew in more scenes where characters address\nthe child. This release includes rebuilt game patches for both platforms.\n\nSelect Hebrew in Kitor and keep English selected in-game. The translation\nremains a draft. A complete playthrough and native Windows gameplay testing\nare still outstanding.\n\nThis revision keeps the ACT menu's last choice beside the heart, makes room\nfor the heart in Toriel's choice menu, and fits Froggit's dialogue to its\nspeech bubble. Toriel now says \"\u05ea\u05d7\u05d6\u05e8\u05d9 \u05dc\u05d7\u05d3\u05e8\".\n\nPapyrus uses tighter spacing around narrow Hebrew letters.",
       "platforms": [
         "windows",
         "osx"
