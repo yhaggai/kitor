@@ -16,6 +16,6 @@ The landing page is `/`; the complete supported-game gallery is `/games/`.
 
 The only desktop component addition is an optional `locale` prop for Hebrew viewer controls; English remains the default. The website provides the pure browser `cn` utility so the native Tauri API is not bundled.
 
-Search uses English catalog titles and Hebrew search aliases in `src/lib/hebrew-titles.ts`. Platform filters reflect registry flags; they are not a claim of full playthrough validation. Download buttons lead to the release section and then the actual GitHub releases page, because installer availability must come from published releases.
+Search uses English catalog titles and Hebrew search aliases in `src/lib/hebrew-titles.ts`. Platform filters reflect registry flags; they are not a claim of full playthrough validation. The landing page recommends a desktop installer using browser platform and architecture hints. It selects the highest published stable `app-vX.Y.Z` GitHub release that contains all three installers. The download section always shows all builds and falls back to verified installer links if the API is unavailable. Update the fallback version in `src/lib/downloads.ts` after publishing a new stable desktop release.
 
 Generated night scenery is in `public/art`; source game art lives in the ignored local `assets/` workspace. Edge characters are lightweight SVG pixel illustrations, animated with IntersectionObserver and disabled motion for reduced-motion preferences.
