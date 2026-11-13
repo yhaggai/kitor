@@ -335,11 +335,15 @@ fn installation_dir(storage: &Path, target: &Path) -> PathBuf {
         Sha256::digest(target.to_string_lossy().as_bytes())
     ))
 }
-fn run(mut command: Command) -> Result<()> {
+fn run(mut command: Command, dependency_hint: &str) -> Result<()> {
+    let tool = command.get_program().to_string_lossy().into_owned();
     let output = command.output().map_err(|e| {
-        format!(
-            "Patch tool could not run: {e}. Check that the required xdelta3 executable is available."
-        )
+        let detail = if e.kind() == std::io::ErrorKind::NotFound && !dependency_hint.is_empty() {
+            format!(" {dependency_hint}")
+        } else {
+            String::new()
+        };
+        format!("Could not start patch tool {tool}: {e}.{detail}")
     })?;
     if !output.status.success() {
         return Err(format!(
@@ -395,14 +399,36 @@ fn stage_source_with_input(
             } else {
                 PathBuf::from("xdelta3")
             };
+            #[cfg(target_os = "macos")]
+            let tool = {
+                let bundled = std::env::current_exe().map_err(err)?.with_file_name("xdelta3");
+                if bundled.is_file() { bundled } else { tool }
+            };
             let mut command = Command::new(tool);
+            // Apps launched from Finder do not inherit the user's shell PATH.
+            #[cfg(target_os = "macos")]
+            {
+                let inherited = std::env::var_os("PATH").unwrap_or_default();
+                let paths = std::env::split_paths(&inherited)
+                    .filter(|path| path.is_absolute())
+                    .chain([PathBuf::from("/opt/homebrew/bin"), PathBuf::from("/usr/local/bin")]);
+                command.env("PATH", std::env::join_paths(paths).map_err(err)?);
+            }
             command
                 .args(["-d", "-s"])
                 .arg(&input)
                 .arg(&asset)
                 .arg(output)
+                .env_remove("XDELTA")
                 .current_dir(output.parent().unwrap());
-            run(command)?;
+            let hint = if cfg!(target_os = "macos") {
+                "Install xdelta3 with Homebrew (brew install xdelta), then retry."
+            } else if cfg!(target_os = "windows") {
+                ""
+            } else {
+                "Install xdelta3 and make it available on PATH, then retry."
+            };
+            run(command, hint)?;
         }
     }
     if !output.is_file() {

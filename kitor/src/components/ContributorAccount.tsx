@@ -1,38 +1,52 @@
+import { useTranslation } from "@kitor/ui";
 import { UserRound } from "lucide-react";
-import { useEffect } from "react";
+import { useEffect, useId, useState } from "react";
 import { Button } from "@/components/ui/button";
+import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 import { useContributor } from "@/store/contributor";
+
 export function GoogleSignIn() {
+  const { t } = useTranslation();
   const { pending, error, signIn, cancel } = useContributor();
+  const disclosureId = useId();
   return (
     <div className="space-y-3">
-      <p>
-        Sign in with Google to contribute. Your display name and Kitor contributor ID will appear on
-        the public pull request. Your email stays private.
+      <p id={disclosureId}>
+        {t(
+          "Google verifies your account. Kitor’s contribution service stores your Google account ID, display name and verified email. If you submit edits, your display name and Kitor contributor ID appear on the public pull request. Signing in is optional."
+        )}
       </p>
       {error && (
-        <p role="alert" className="text-red-300">
-          {error}
+        <p role="alert" className="text-destructive">
+          {t(error)}
         </p>
       )}
       {pending ? (
         <>
-          <output>Finish signing in in your browser…</output>
+          <output>{t("Finish signing in in your browser…")}</output>
           <Button variant="outline" onClick={() => void cancel()}>
-            Cancel sign-in
+            {t("Cancel sign-in")}
           </Button>
         </>
       ) : (
-        <Button onClick={() => void signIn()}>Sign in with Google</Button>
+        <Button aria-describedby={disclosureId} onClick={() => void signIn()}>
+          {t("Sign in with Google")}
+        </Button>
       )}
     </div>
   );
 }
+
 export default function ContributorAccount() {
-  const { user, pending, error, refresh, signIn, signOut, cancel } = useContributor();
+  const { t } = useTranslation();
+  const { user, pending, error, refresh, signOut, cancel } = useContributor();
+  const [open, setOpen] = useState(false);
   useEffect(() => {
     void refresh();
   }, [refresh]);
+  useEffect(() => {
+    if (user) setOpen(false);
+  }, [user]);
   return (
     <div className="flex flex-wrap items-center justify-end gap-3 px-6 py-3">
       {user ? (
@@ -42,19 +56,31 @@ export default function ContributorAccount() {
             {user.name}
           </span>
           <Button variant="outline" size="sm" onClick={() => void signOut()}>
-            Sign out
+            {t("Sign out")}
           </Button>
         </>
       ) : (
-        <Button variant="outline" size="sm" onClick={() => void (pending ? cancel() : signIn())}>
-          {pending ? "Cancel sign-in" : "Sign in with Google"}
+        <Button variant="outline" size="sm" onClick={() => setOpen(true)}>
+          {t("Contributor sign-in")}
         </Button>
       )}
-      {error && (
-        <span role="alert" className="text-sm text-red-300">
-          {error}
+      {error && !open && (
+        <span role="alert" className="text-sm text-destructive">
+          {t(error)}
         </span>
       )}
+      <Dialog
+        open={open && !user}
+        onOpenChange={(visible) => {
+          setOpen(visible);
+          if (!visible && pending) void cancel();
+        }}
+      >
+        <DialogContent aria-describedby={undefined}>
+          <DialogTitle>{t("Contributor sign-in")}</DialogTitle>
+          <GoogleSignIn />
+        </DialogContent>
+      </Dialog>
     </div>
   );
 }

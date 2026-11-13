@@ -35,7 +35,7 @@ export default function NativeSteamConnection() {
         {t(
           connected
             ? "You’re ready to download supported Steam games in Kitor."
-            : "Scan a QR code with the Steam app on your phone to get started."
+            : "Kitor refreshes your game library from Steam when it opens and uses the connection to download games. You can disconnect in Settings."
         )}
       </p>
       <Button
@@ -55,7 +55,9 @@ export default function NativeSteamConnection() {
               ? t("Loading library…")
               : library.status.owned_app_ids !== null
                 ? t("Owned games: {0}", [library.status.owned_app_ids.length])
-                : t("Library could not be loaded")}
+                : library.error
+                  ? t("Library could not be loaded")
+                  : t("Refresh the library to see your owned games.")}
           </output>
           <ManageMenu label={t("Manage Steam")}>
             <Button

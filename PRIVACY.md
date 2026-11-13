@@ -15,12 +15,15 @@ Remote cover and banner images may load when you view the
 catalog or library. Requests expose your IP address and ordinary connection
 metadata. An image or download URL can identify the game or item requested.
 
-After you connect Steam or GOG, Kitor can refresh the connected library when the
-app starts. Steam receives the account ID and the credentials needed to retrieve
-the library. GOG receives the access token and, when needed, the refresh token.
-Kitor stores native Steam credentials in the operating-system credential store
-and GOG tokens in its local application database. An optional Steam Web API key
-also uses the credential store.
+Connecting Steam or GOG is optional. Steam receives the account ID and the
+credentials needed to retrieve the library. GOG receives the access token and,
+when needed, the refresh token. Kitor stores native Steam credentials in the
+operating system credential store and GOG tokens in its local application
+database. An optional Steam Web API key also uses the credential store.
+
+After you connect a store account, Kitor refreshes its library on startup.
+Connecting an account, refreshing its library manually or using it to install
+a game can also contact that store.
 
 Requested downloads may contact GitHub, other catalog-listed patch hosts, Steam,
 GOG, or ScummVM. On Windows, the installer downloads Microsoft's WebView2
@@ -33,7 +36,8 @@ reporting.
 The editor keeps drafts on your device. If you sign in to contribute, Google
 authenticates you and Kitor's contribution service stores your Google account
 identifier, display name and verified email. Kitor stores its contribution session
-in the operating-system credential store. When you submit edits, the service
+in the operating system credential store and reads the saved profile locally
+on startup. When you submit edits, the service
 receives the edits and your email notification preference and creates or updates
 a GitHub pull request. The submission displays your name and Kitor contributor
 ID. The service keeps your Google account identifier and email private.
@@ -41,8 +45,9 @@ ID. The service keeps your Google account identifier and email private.
 ## Controls and third parties
 
 You can disconnect Steam or GOG in Kitor to stop future library refreshes for
-that account. The Windows installer currently has no switches for startup update
-checks, catalog refreshes or remote artwork.
+that account. The
+interactive Windows installer describes the optional connections, update checks,
+remote artwork and WebView2 prerequisite, and links to this policy.
 
 Third-party handling is governed by the respective providers, including
 [GitHub](https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement),

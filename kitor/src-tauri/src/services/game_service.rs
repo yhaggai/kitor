@@ -332,6 +332,16 @@ pub async fn get_games_with_patches(
         
         let cover_url = game_def.and_then(|d| d.cover_url.clone()).or(game.cover_url);
         let requires_scummvm = !behavior.launch_profile(patched).is_native();
+        let detected_version = game_def
+            .and_then(|def| def.steam_app_id)
+            .and_then(|app_id| {
+                super::game_discovery_service::installed_steam_build(
+                    Path::new(&game.install_path),
+                    app_id,
+                )
+            })
+            .map(|build| format!("Steam build {build}"))
+            .or(game.detected_version);
 
         games_with_patches.push(GameWithPatches {
             id: game.id,
@@ -340,7 +350,7 @@ pub async fn get_games_with_patches(
             title_he: game_def.and_then(|def| def.title_he.clone()),
             install_path: game.install_path,
             cover_url,
-            detected_version: game.detected_version,
+            detected_version,
             added_date: game.added_date.format("%Y-%m-%d %H:%M:%S").to_string(),
             last_played: game.last_played.map(|d| d.format("%Y-%m-%d %H:%M:%S").to_string()),
             requires_scummvm,

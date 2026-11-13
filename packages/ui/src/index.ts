@@ -1,4 +1,6 @@
 export { default as kitorIcon } from "./assets/kitor-logo.svg";
+export { default as gogIcon } from "./assets/providers/gog.png";
+export { default as steamIcon } from "./assets/providers/steam.png";
 export { AppShell } from "./components/AppShell";
 export { BrandLogo } from "./components/BrandLogo";
 export { Button, type ButtonProps } from "./components/Button";

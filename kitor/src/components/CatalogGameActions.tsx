@@ -1,8 +1,8 @@
-import { kitorIcon, ManageMenu, useTranslation } from "@kitor/ui";
+import { gogIcon, kitorIcon, ManageMenu, steamIcon, useTranslation } from "@kitor/ui";
 import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
 import { invoke } from "@tauri-apps/api/core";
 import { openUrl } from "@tauri-apps/plugin-opener";
-import { ChevronDown, Download, RefreshCw } from "lucide-react";
+import { ChevronDown, RefreshCw } from "lucide-react";
 import { useEffect, useState } from "react";
 import AddGameDialog from "@/components/AddGameDialog";
 import {
@@ -18,6 +18,7 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import { gogStoreUrl } from "@/lib/gameAction";
+import { useGogLibrary } from "@/store/gog";
 import { useGogDownload } from "@/store/gogDownload";
 import { useGogInstallFlow } from "@/store/gogInstallFlow";
 import { useNativeSteam } from "@/store/nativeSteam";
@@ -44,6 +45,7 @@ export function CatalogGameActions({
   const steamInstalling = useGogDownload((state) => state.busy) && activeSteamApp === steamAppId;
   const steam = useSteamStore((state) => state.status);
   const gogGames = useAppStore((state) => state.gogGames);
+  const gogLibraryLoaded = useGogLibrary((state) => state.loaded);
   const gogAuthenticated = useAppStore((state) => state.gogAuth.isAuthenticated);
   const ownsSteam = steamAppId != null && (steam.owned_app_ids?.includes(steamAppId) ?? false);
   const ownsGog = gogId != null && gogAuthenticated && gogGames.some((game) => game.id === gogId);
@@ -134,7 +136,7 @@ export function CatalogGameActions({
           : steam.owned_app_ids === null
             ? "Play on Steam"
             : "Buy on Steam"
-        : !gogAuthenticated
+        : !gogAuthenticated || !gogLibraryLoaded
           ? "Play on GOG"
           : ownsGog
             ? "Install from GOG"
@@ -170,7 +172,7 @@ export function CatalogGameActions({
       return;
     }
     if (provider === "gog" && !ownsGog) {
-      if (!gogAuthenticated) {
+      if (!gogAuthenticated || !useGogLibrary.getState().loaded) {
         await chooseStore(provider);
       } else {
         const url =
@@ -200,7 +202,11 @@ export function CatalogGameActions({
             disabled={opening || waitingForSteam}
             aria-busy={waitingForSteam || undefined}
           >
-            <Download aria-hidden="true" className="h-6 w-6 shrink-0 object-contain" />
+            <img
+              src={primaryStore === "steam" ? steamIcon : gogIcon}
+              alt=""
+              className="h-6 w-6 shrink-0 object-contain"
+            />
             {steamInstalling && primaryStore === "steam"
               ? t("Downloading…")
               : installLabel(primaryStore)}
@@ -235,7 +241,11 @@ export function CatalogGameActions({
                         void selectStore(provider);
                       }}
                     >
-                      <Download aria-hidden="true" className="h-6 w-6 shrink-0 object-contain" />
+                      <img
+                        src={provider === "steam" ? steamIcon : gogIcon}
+                        alt=""
+                        className="h-6 w-6 shrink-0 object-contain"
+                      />
                       {installLabel(provider)}
                     </DropdownMenu.Item>
                   ))}
@@ -330,7 +340,11 @@ export function CatalogGameActions({
                 }
               }}
             >
-              <Download aria-hidden="true" className="h-6 w-6 object-contain" />
+              <img
+                src={installSource === "steam" ? steamIcon : gogIcon}
+                alt=""
+                className="h-6 w-6 object-contain"
+              />
               {t(installSource === "steam" ? "Use Steam client" : "Use GOG Galaxy")}
             </Button>
             {installSource === "steam" && capabilities?.supported === false && (
