@@ -3,7 +3,6 @@ import {
   Download,
   ExternalLink,
   FolderOpen,
-  Gamepad2,
   KeyRound,
   LogIn,
   LogOut,
@@ -15,6 +14,8 @@ import {
 } from "lucide-react";
 import type { ReactNode } from "react";
 import kitorIcon from "../assets/kitor-logo.svg";
+import gogIcon from "../assets/providers/gog.png";
+import steamIcon from "../assets/providers/steam.png";
 import { Button } from "../components/Button";
 import { ManageMenu } from "../components/ManageMenu";
 import { useTranslation } from "../i18n";
@@ -126,7 +127,7 @@ export function SettingsView({
         <SettingsCard
           title="Steam"
           status={!state.steam ? "unavailable" : state.steamKey ? "ready" : "attention"}
-          icon={<Gamepad2 aria-hidden="true" />}
+          icon={<img src={steamIcon} alt="" />}
           detail="Sign in on Steam’s website. Your game details must be public for library lookup."
           description={
             state.steam
@@ -152,7 +153,7 @@ export function SettingsView({
         <SettingsCard
           title="GOG"
           status={state.gog ? "ready" : "unavailable"}
-          icon={<Gamepad2 aria-hidden="true" />}
+          icon={<img src={gogIcon} alt="" />}
           description={
             state.gog
               ? "Connected · 8 games in your library"

@@ -14,7 +14,6 @@ import TranslationRequestDialog from "@/components/TranslationRequestDialog";
 
 import { appUpdateStore } from "@/store/appUpdates";
 import { useGogLibrary } from "@/store/gog";
-import { refreshLibraryOnStartup } from "@/store/libraryRefresh";
 import { useSteamStore } from "@/store/steam";
 import type { Game, ScummVMDownloadProgress } from "@/store/store";
 import { useAppStore } from "@/store/store";
@@ -41,16 +40,13 @@ function App() {
       useGogLibrary.getState().clear();
       void useGogLibrary.getState().refresh();
     });
-    if (refreshLibraryOnStartup("gog")) void useGogLibrary.getState().refresh();
-    else void useGogLibrary.getState().checkConnection();
+    void useGogLibrary.getState().refresh();
     return () => {
       void unlisten.then((stop) => stop());
     };
   }, []);
   useEffect(() => {
-    if (refreshLibraryOnStartup("steam")) {
-      void useSteamStore.getState().run("refresh_steam_library");
-    }
+    void useSteamStore.getState().run("refresh_steam_library");
   }, []);
   const {
     setGames,

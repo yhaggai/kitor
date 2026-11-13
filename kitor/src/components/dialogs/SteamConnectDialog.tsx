@@ -1,5 +1,5 @@
-import { useTranslation } from "@kitor/ui";
-import { Gamepad2, Loader2, Smartphone } from "lucide-react";
+import { steamIcon, useTranslation } from "@kitor/ui";
+import { Loader2, Smartphone } from "lucide-react";
 import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import {
@@ -50,12 +50,12 @@ export default function SteamConnectDialog() {
       >
         <DialogHeader>
           <DialogTitle className="flex items-center gap-3">
-            <Gamepad2 aria-hidden="true" className="h-9 w-9" />
+            <img src={steamIcon} alt="" className="h-9 w-9" />
             {t("Connect Steam")}
           </DialogTitle>
           <DialogDescription>
             {t(
-              "Kitor signs in to Steam to read your owned games and enable downloads. You can disconnect in Settings."
+              "Kitor refreshes your game library from Steam when it opens and uses the connection to download games. You can disconnect in Settings."
             )}
           </DialogDescription>
         </DialogHeader>

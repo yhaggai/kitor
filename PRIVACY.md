@@ -21,9 +21,9 @@ when needed, the refresh token. Kitor stores native Steam credentials in the
 operating system credential store and GOG tokens in its local application
 database. An optional Steam Web API key also uses the credential store.
 
-Automatic library refresh on startup is off by default for both stores. You can
-enable each store separately in Settings. Connecting an account, refreshing
-its library manually or using it to install a game can also contact that store.
+After you connect a store account, Kitor refreshes its library on startup.
+Connecting an account, refreshing its library manually or using it to install
+a game can also contact that store.
 
 Requested downloads may contact GitHub, other catalog-listed patch hosts, Steam,
 GOG, or ScummVM. On Windows, the installer downloads Microsoft's WebView2
@@ -45,7 +45,7 @@ ID. The service keeps your Google account identifier and email private.
 ## Controls and third parties
 
 You can disconnect Steam or GOG in Kitor to stop future library refreshes for
-that account, or turn off automatic library refresh in Settings. The
+that account. The
 interactive Windows installer describes the optional connections, update checks,
 remote artwork and WebView2 prerequisite, and links to this policy.
 

@@ -268,7 +268,9 @@ export function GogInstallFlowDialog() {
                     : checking
                       ? t("Checking your GOG library…")
                       : !authenticated
-                        ? t("Connect your GOG account to install and play this game.")
+                        ? t(
+                            "Connect GOG to install this game. Kitor refreshes your GOG library when it opens. You can disconnect in Settings."
+                          )
                         : !owned
                           ? t("Buy the game on GOG, then return here to continue.")
                           : supported === false
