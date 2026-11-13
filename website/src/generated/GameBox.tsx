@@ -1,3 +1,4 @@
+import { useTranslation } from "@kitor/ui";
 import * as Dialog from "@radix-ui/react-dialog";
 import { Package, X, ZoomIn, ZoomOut } from "lucide-react";
 import { type CSSProperties, useRef, useState } from "react";
@@ -45,6 +46,7 @@ export function GameBox({
   className,
   style,
 }: GameBoxProps) {
+  const { t } = useTranslation();
   const hebrew = locale === "he";
   const [selectedLanguage, setSelectedLanguage] = useState(defaultLanguage);
   const [hovering, setHovering] = useState(false);
@@ -74,7 +76,7 @@ export function GameBox({
       <section
         className={cn(styles.root, className)}
         style={style}
-        aria-label={hebrew ? `קופסת המשחק ${title}` : `${title} bilingual game box`}
+        aria-label={hebrew ? `קופסת המשחק ${title}` : t("{0} bilingual game box", [title])}
         dir="ltr"
       >
         <div className={styles.header}>
@@ -84,7 +86,7 @@ export function GameBox({
           {showLanguageControls && (
             <fieldset
               className={styles.languages}
-              aria-label={hebrew ? "שפת הקופסה" : "Starting language"}
+              aria-label={hebrew ? "שפת הקופסה" : t("Starting language")}
             >
               {languages.map((side) => (
                 <button
@@ -110,7 +112,9 @@ export function GameBox({
               type="button"
               className={styles.target}
               data-language={visibleLanguage}
-              aria-label={hebrew ? `הגדלת קופסת המשחק ${title}` : `Enlarge ${title} game box`}
+              aria-label={
+                hebrew ? `הגדלת קופסת המשחק ${title}` : t("Enlarge {0} game box", [title])
+              }
               onPointerEnter={(event) => {
                 if (event.pointerType === "mouse" || event.pointerType === "pen") setHovering(true);
               }}
@@ -136,7 +140,9 @@ export function GameBox({
           <Dialog.Description className={styles.instructions}>
             {hebrew
               ? "גררו לצדדים או השתמשו במקשי החצים לסיבוב. השתמשו ב־+ / − להגדלה והקטנה."
-              : "Hold and drag left or right to rotate. Use arrow keys to rotate and + / − to zoom."}
+              : t(
+                  "Hold and drag left or right to rotate. Use arrow keys to rotate and + / − to zoom."
+                )}
           </Dialog.Description>
           <div className={cn(styles.stage, styles.viewerStage)}>
             <div className={styles.halo} aria-hidden="true" />
@@ -144,7 +150,7 @@ export function GameBox({
             <button
               type="button"
               className={cn(styles.target, styles.rotationTarget)}
-              aria-label={hebrew ? "סיבוב קופסת המשחק" : "Rotate game box"}
+              aria-label={hebrew ? "סיבוב קופסת המשחק" : t("Rotate game box")}
               style={{ "--turn": `${rotation}deg`, "--zoom": zoom / 100 } as CSSProperties}
               onKeyDown={(event) => {
                 if (["+", "=", "-", "0"].includes(event.key)) {
@@ -185,34 +191,34 @@ export function GameBox({
           <div
             className={styles.zoomControls}
             role="toolbar"
-            aria-label={hebrew ? "הגדלת הקופסה" : "Box zoom"}
+            aria-label={hebrew ? "הגדלת הקופסה" : t("Box zoom")}
           >
             <button
               type="button"
-              aria-label={hebrew ? "הקטנה" : "Zoom out"}
+              aria-label={hebrew ? "הקטנה" : t("Zoom out")}
               disabled={zoom === 50}
               onClick={() => changeZoom(-25)}
             >
               <ZoomOut size={18} />
             </button>
-            <output aria-live="polite" aria-label={hebrew ? "רמת הגדלה" : "Zoom level"}>
+            <output aria-live="polite" aria-label={hebrew ? "רמת הגדלה" : t("Zoom level")}>
               {zoom}%
             </output>
             <button
               type="button"
-              aria-label={hebrew ? "הגדלה" : "Zoom in"}
+              aria-label={hebrew ? "הגדלה" : t("Zoom in")}
               disabled={zoom === 200}
               onClick={() => changeZoom(25)}
             >
               <ZoomIn size={18} />
             </button>
             <button type="button" onClick={() => setZoom(100)} disabled={zoom === 100}>
-              {hebrew ? "איפוס הגדלה" : "Reset zoom"}
+              {hebrew ? "איפוס הגדלה" : t("Reset zoom")}
             </button>
           </div>
           <Dialog.Close
             className={styles.close}
-            aria-label={hebrew ? "סגירת תצוגת הקופסה" : "Close game box viewer"}
+            aria-label={hebrew ? "סגירת תצוגת הקופסה" : t("Close game box viewer")}
           >
             <X size={20} />
           </Dialog.Close>

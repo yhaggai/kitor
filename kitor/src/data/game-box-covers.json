@@ -9,18 +9,18 @@
   },
   "monkey-se": {
     "en": {
-      "src": "/monkey-classic-en.jpg"
+      "src": "https://assets.kitor.click/covers/the-secret-of-monkey-island/en/bdb3276b36cf.png"
     },
     "he": {
-      "src": "/monkey-classic-en.jpg"
+      "src": "https://assets.kitor.click/covers/the-secret-of-monkey-island/he/f16669f4012f.png"
     }
   },
   "monkey2-se": {
     "en": {
-      "src": "/monkey2-classic-en.jpg"
+      "src": "https://assets.kitor.click/covers/monkey-island-2-lechuck-s-revenge/en/c6a42adc2047.png"
     },
     "he": {
-      "src": "/monkey2-classic-en.jpg"
+      "src": "https://assets.kitor.click/covers/monkey-island-2-lechuck-s-revenge/he/926eac6d9534.jpg"
     }
   },
   "sq1sci": {
@@ -212,7 +212,7 @@
       "src": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/tentacle/en/6abd9ff32387.jpg"
     },
     "he": {
-      "src": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/tentacle/en/6abd9ff32387.jpg"
+      "src": "https://assets.kitor.click/covers/tentacle/he/b6408a56abfe.png?v=1"
     }
   },
   "day-of-the-tentacle-remastered": {
@@ -220,7 +220,7 @@
       "src": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/day-of-the-tentacle-remastered/en/91ef55d28fc6.jpg"
     },
     "he": {
-      "src": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/day-of-the-tentacle-remastered/en/91ef55d28fc6.jpg"
+      "src": "https://assets.kitor.click/covers/day-of-the-tentacle-remastered/he/aa8b5a6b1c67.png?v=1"
     }
   },
   "grim-fandango-remastered": {
@@ -228,7 +228,7 @@
       "src": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/grim-fandango-remastered/en/d601cde8ba2e.jpg"
     },
     "he": {
-      "src": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/grim-fandango-remastered/en/d601cde8ba2e.jpg"
+      "src": "https://assets.kitor.click/covers/grim-fandango-remastered/he/a1c08634f446.png"
     }
   },
   "monkey-se-native": {
@@ -249,10 +249,10 @@
   },
   "silver-pines": {
     "en": {
-      "src": "/cover-silver-pines.jpg"
+      "src": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/silver-pines/en/d277d9e48633.jpg"
     },
     "he": {
-      "src": "/cover-silver-pines.jpg"
+      "src": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/silver-pines/he/5a22025b1608.jpg"
     }
   },
   "sq4": {
@@ -268,7 +268,8 @@
       "src": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/sq6/en/c3a436d54e83.jpg"
     },
     "he": {
-      "src": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/sq6/en/c3a436d54e83.jpg"
+      "src": "/cover-sq6-he.jpg",
+      "fallbackSrc": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/sq6/en/c3a436d54e83.jpg"
     }
   },
   "jenny-leclue": {

@@ -1,8 +1,8 @@
-import { useTranslation } from "@kitor/ui";
+import { type AnimatedIconHandle, BugIcon, useTranslation } from "@kitor/ui";
 import { getVersion } from "@tauri-apps/api/app";
 import { invoke, isTauri } from "@tauri-apps/api/core";
 import { openUrl } from "@tauri-apps/plugin-opener";
-import { Bug, ImagePlus, Mail, X } from "lucide-react";
+import { ImagePlus, Mail, X } from "lucide-react";
 import { useEffect, useId, useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 import {
@@ -69,6 +69,7 @@ export default function BugReportDialog({
   const [diagnostics, setDiagnostics] = useState<string>();
   const [collecting, setCollecting] = useState(false);
   const picker = useRef<HTMLInputElement>(null);
+  const iconRef = useRef<AnimatedIconHandle>(null);
 
   // Failure entry points supply details; the general report button stays opt-in.
   useEffect(() => {
@@ -177,8 +178,13 @@ export default function BugReportDialog({
       }}
     >
       <DialogTrigger asChild>
-        <Button type="button" variant="outline">
-          <Bug />
+        <Button
+          type="button"
+          variant="outline"
+          onMouseEnter={() => iconRef.current?.startAnimation()}
+          onMouseLeave={() => iconRef.current?.stopAnimation()}
+        >
+          <BugIcon ref={iconRef} size={16} />
           <span>{t("Report a bug")}</span>
         </Button>
       </DialogTrigger>

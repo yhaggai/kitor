@@ -1,10 +1,11 @@
 import { Search } from "lucide-react";
 import { type ReactNode, useEffect, useState } from "react";
-import { categoryLabel, hasCategory, orderedCategories } from "../categories";
+import { categoryLabel, orderedCategories } from "../categories";
 import { Button } from "../components/Button";
 import { GameTile } from "../components/GameTile";
 import { useTranslation } from "../i18n";
 import type { Collection, GameSummary } from "../types";
+import { CategoryRow } from "./CategoryRow";
 
 export function CollectionView({
   collection,
@@ -30,7 +31,6 @@ export function CollectionView({
   const { t } = useTranslation();
   const [query, setQuery] = useState("");
   const [filter, setFilter] = useState("all");
-  const [category, setCategory] = useState("all");
   // biome-ignore lint/correctness/useExhaustiveDependencies: Navigation explicitly resets the search.
   useEffect(() => {
     setQuery("");
@@ -40,17 +40,16 @@ export function CollectionView({
     { id: "ready", label: t("Translation installed") },
     { id: "available", label: t("Translation available") },
   ];
-  const categories = collection === "discovery" ? orderedCategories(games) : [];
   const inStatus = (game: GameSummary, status: string) =>
     status === "all" || game.status === status;
   const haystack = (game: GameSummary) =>
     `${game.title} ${game.author ?? ""} ${game.language ?? ""} ${game.searchTerms ?? ""} ${(game.tags ?? []).map((tag) => `${tag} ${t(categoryLabel(tag))}`).join(" ")}`.toLowerCase();
   const matches = games.filter(
-    (game) =>
-      inStatus(game, filter) &&
-      hasCategory(game.tags, category) &&
-      haystack(game).includes(query.trim().toLowerCase())
+    (game) => inStatus(game, filter) && haystack(game).includes(query.trim().toLowerCase())
   );
+  const categories = collection === "discovery" ? orderedCategories(matches) : [];
+  const uncategorized = categories.length ? matches.filter((game) => !game.tags?.length) : matches;
+
   return (
     <section
       className="kt-collection"
@@ -91,43 +90,10 @@ export function CollectionView({
               onClick={() => setFilter(id)}
             >
               {label}
-              <span>
-                {
-                  games.filter((game) => inStatus(game, id) && hasCategory(game.tags, category))
-                    .length
-                }
-              </span>
+              <span>{games.filter((game) => inStatus(game, id)).length}</span>
             </button>
           ))}
         </fieldset>
-        {categories.length > 0 && (
-          <fieldset className="kt-filters kt-filters--categories" aria-label={t("Categories")}>
-            <button
-              type="button"
-              aria-pressed={category === "all"}
-              onClick={() => setCategory("all")}
-            >
-              {t("All categories")}
-              <span>{games.filter((game) => inStatus(game, filter)).length}</span>
-            </button>
-            {categories.map((id) => (
-              <button
-                type="button"
-                key={id}
-                aria-pressed={category === id}
-                onClick={() => setCategory(id)}
-              >
-                {t(categoryLabel(id))}
-                <span>
-                  {
-                    games.filter((game) => inStatus(game, filter) && hasCategory(game.tags, id))
-                      .length
-                  }
-                </span>
-              </button>
-            ))}
-          </fieldset>
-        )}
       </div>
       {feedback}
       {loading ? (
@@ -145,16 +111,32 @@ export function CollectionView({
           <output className="kt-sr-only">
             {matches.length} {t("games")}
           </output>
-          <div className="kt-game-grid">
-            {matches.map((game) => (
-              <GameTile
-                key={game.id}
-                game={game}
-                onOpen={onOpen}
-                showStatus={collection === "library"}
-              />
-            ))}
-          </div>
+          {collection === "discovery" ? (
+            <div className="kt-category-rows" key={navigationResetKey}>
+              {categories.map((id) => (
+                <CategoryRow
+                  key={id}
+                  category={id}
+                  title={t(categoryLabel(id))}
+                  games={matches.filter((game) => game.tags?.includes(id))}
+                  onOpen={onOpen}
+                />
+              ))}
+              {uncategorized.length > 0 && (
+                <CategoryRow
+                  title={t(categories.length ? "Other games" : "All games")}
+                  games={uncategorized}
+                  onOpen={onOpen}
+                />
+              )}
+            </div>
+          ) : (
+            <div className="kt-game-grid">
+              {matches.map((game) => (
+                <GameTile key={game.id} game={game} onOpen={onOpen} showStatus />
+              ))}
+            </div>
+          )}
         </>
       ) : (
         <div className="kt-empty">
@@ -170,7 +152,6 @@ export function CollectionView({
               onClick={() => {
                 setQuery("");
                 setFilter("all");
-                setCategory("all");
               }}
             >
               {t("Clear filters")}{" "}

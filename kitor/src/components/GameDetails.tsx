@@ -1,18 +1,22 @@
-import { type Collection, GameDetailsView } from "@kitor/ui";
+import { type Collection, GameDetailsView, useTranslation } from "@kitor/ui";
 import { invoke } from "@tauri-apps/api/core";
 import { useEffect } from "react";
 import { CatalogGameActions } from "@/components/CatalogGameActions";
 import GameCard from "@/components/GameCard";
 import { TranslationContributionButton } from "@/components/TranslationContributionButton";
 import { TranslationCredit } from "@/components/TranslationCredit";
-import { patchSummary } from "@/lib/presentation";
+import { type CatalogGame, catalogGameSummary, patchSummary } from "@/lib/presentation";
 import { type Game, type PatchWithStatus, useAppStore } from "@/store/store";
 
 type GameDetailsProps = {
   collection: Collection;
   onBack: () => void;
   onRemove?: () => void;
-} & ({ game: Game; patch?: never } | { game?: never; patch: PatchWithStatus });
+} & (
+  | { game: Game; patch?: never; catalogGame?: never }
+  | { game?: never; patch: PatchWithStatus; catalogGame?: never }
+  | { game?: never; patch?: never; catalogGame: CatalogGame }
+);
 
 // Share an active scan across page changes and React effect remounts.
 let installationScan: Promise<void> | undefined;
@@ -33,14 +37,16 @@ function scanInstallations() {
 export default function GameDetails({
   game,
   patch,
+  catalogGame,
   collection,
   onBack,
   onRemove,
 }: GameDetailsProps) {
+  const { t } = useTranslation();
   const games = useAppStore((state) => state.games);
-  const installed = game ?? games.find((entry) => entry.scummvm_id === patch?.scummvm_id);
+  const gameId = game?.scummvm_id ?? patch?.scummvm_id ?? catalogGame?.scummvm_id;
+  const installed = game ?? games.find((entry) => entry.scummvm_id === gameId);
   const installedId = installed?.id;
-  const gameId = game?.scummvm_id ?? patch?.scummvm_id;
   useEffect(() => {
     if (!gameId || installedId !== undefined) return;
     void scanInstallations().catch((error) => {
@@ -55,6 +61,26 @@ export default function GameDetails({
         collection={collection}
         onBack={onBack}
         onRemove={onRemove}
+      />
+    );
+  }
+  if (catalogGame) {
+    return (
+      <GameDetailsView
+        game={catalogGameSummary(catalogGame)}
+        collection={collection}
+        onBack={onBack}
+        actions={
+          <div className="space-y-2">
+            <CatalogGameActions
+              scummvmId={catalogGame.scummvm_id}
+              steamAppId={catalogGame.steam_app_id}
+            />
+            <p className="text-sm text-muted-foreground">
+              {t("No compatible patch is available in the current catalog.")}
+            </p>
+          </div>
+        }
       />
     );
   }

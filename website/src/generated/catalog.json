@@ -2,6 +2,7 @@
   {
     "id": "undertale",
     "title": "UNDERTALE",
+    "title_he": "אנדרטייל",
     "covers": {
       "en": {
         "src": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/undertale/en/9145051fa004.jpg"
@@ -15,18 +16,18 @@
       "osx": true,
       "linux": false
     },
-    "hebrew": true,
-    "title_he": "אנדרטייל"
+    "hebrew": true
   },
   {
     "id": "monkey-se",
-    "title": "The Secret of Monkey Island: Special Edition",
+    "title": "The Secret of Monkey Island — Classic",
+    "title_he": "הסוד של אי הקופים",
     "covers": {
       "en": {
-        "src": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/monkey-se/en/b9d8b502a92e.jpg"
+        "src": "https://assets.kitor.click/covers/the-secret-of-monkey-island/en/bdb3276b36cf.png"
       },
       "he": {
-        "src": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/monkey-se/he/0808875f8dd2.png"
+        "src": "https://assets.kitor.click/covers/the-secret-of-monkey-island/he/f16669f4012f.png"
       }
     },
     "platforms": {
@@ -34,18 +35,18 @@
       "osx": true,
       "linux": false
     },
-    "hebrew": true,
-    "title_he": "הסוד של אי הקופים"
+    "hebrew": true
   },
   {
     "id": "monkey2-se",
-    "title": "Monkey Island 2: LeChuck's Revenge Special Edition",
+    "title": "Monkey Island 2: LeChuck's Revenge — Classic",
+    "title_he": "אי הקופים 2 נקמתו של לצ׳אק",
     "covers": {
       "en": {
-        "src": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/monkey2-se/en/edc7e06d30c7.jpg"
+        "src": "https://assets.kitor.click/covers/monkey-island-2-lechuck-s-revenge/en/c6a42adc2047.png"
       },
       "he": {
-        "src": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/monkey2-se/he/04849cb6d306.png"
+        "src": "https://assets.kitor.click/covers/monkey-island-2-lechuck-s-revenge/he/926eac6d9534.jpg"
       }
     },
     "platforms": {
@@ -53,12 +54,12 @@
       "osx": true,
       "linux": false
     },
-    "hebrew": true,
-    "title_he": "אי הקופים 2 נקמתו של לצ׳אק"
+    "hebrew": true
   },
   {
     "id": "sq1sci",
     "title": "Space Quest I: Roger Wilco in the Sarien Encounter (VGA Remake)",
+    "title_he": "מסע בחלל 1 VGA",
     "covers": {
       "en": {
         "src": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/sq1sci/en/47ff2f31fadc.jpg"
@@ -72,12 +73,12 @@
       "osx": true,
       "linux": true
     },
-    "hebrew": true,
-    "title_he": "מסע בחלל 1 VGA"
+    "hebrew": true
   },
   {
     "id": "kyra1-cd",
     "title": "The Legend of Kyrandia",
+    "title_he": "אגדת קירנדיה",
     "covers": {
       "en": {
         "src": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/kyra1-cd/en/dc0a02457e0c.jpg"
@@ -91,12 +92,12 @@
       "osx": true,
       "linux": false
     },
-    "hebrew": true,
-    "title_he": "אגדת קירנדיה"
+    "hebrew": true
   },
   {
     "id": "pq1",
     "title": "Police Quest: In Pursuit of the Death Angel (EGA)",
+    "title_he": "משימה משטרתית",
     "covers": {
       "en": {
         "src": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/pq1/en/bb3cbf8ffefc.jpg"
@@ -110,12 +111,12 @@
       "osx": true,
       "linux": false
     },
-    "hebrew": true,
-    "title_he": "משימה משטרתית"
+    "hebrew": true
   },
   {
     "id": "sq1",
     "title": "Space Quest I: The Sarien Encounter (EGA)",
+    "title_he": "מסע בחלל 1 EGA",
     "covers": {
       "en": {
         "src": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/sq1/en/08cf78a61b31.jpg"
@@ -129,12 +130,12 @@
       "osx": true,
       "linux": false
     },
-    "hebrew": true,
-    "title_he": "מסע בחלל 1 EGA"
+    "hebrew": true
   },
   {
     "id": "sq2",
     "title": "Space Quest II: Vohaul’s Revenge",
+    "title_he": "מסע בחלל 2",
     "covers": {
       "en": {
         "src": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/sq2/en/2f9730d67c73.jpg"
@@ -148,12 +149,12 @@
       "osx": true,
       "linux": false
     },
-    "hebrew": true,
-    "title_he": "מסע בחלל 2"
+    "hebrew": true
   },
   {
     "id": "sq3",
     "title": "Space Quest III: The Pirates of Pestulon",
+    "title_he": "מסע בחלל 3",
     "covers": {
       "en": {
         "src": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/sq3/en/a67b602ab498.jpg"
@@ -167,12 +168,12 @@
       "osx": true,
       "linux": false
     },
-    "hebrew": true,
-    "title_he": "מסע בחלל 3"
+    "hebrew": true
   },
   {
     "id": "sq4",
     "title": "Space Quest IV: Roger Wilco and the Time Rippers",
+    "title_he": "מסע בחלל IV: רוג׳ר וילקו וקורעי הזמן",
     "covers": {
       "en": {
         "src": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/sq4/en/7bf2aea312f3c85d.webp"
@@ -183,15 +184,15 @@
     },
     "platforms": {
       "windows": true,
-      "osx": false,
+      "osx": true,
       "linux": false
     },
-    "hebrew": true,
-    "title_he": "מסע בחלל IV: רוג׳ר וילקו וקורעי הזמן"
+    "hebrew": true
   },
   {
     "id": "sq5",
     "title": "Space Quest V: The Next Mutation",
+    "title_he": "מסע בחלל 5",
     "covers": {
       "en": {
         "src": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/sq5/en/2d1c335322db.jpg"
@@ -205,18 +206,19 @@
       "osx": true,
       "linux": false
     },
-    "hebrew": true,
-    "title_he": "מסע בחלל 5"
+    "hebrew": true
   },
   {
     "id": "sq6",
     "title": "Space Quest 6: Roger Wilco in the Spinal Frontier",
+    "title_he": "מסע בחלל 6",
     "covers": {
       "en": {
         "src": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/sq6/en/c3a436d54e83.jpg"
       },
       "he": {
-        "src": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/sq6/en/c3a436d54e83.jpg"
+        "src": "/cover-sq6-he.jpg",
+        "fallbackSrc": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/sq6/en/c3a436d54e83.jpg"
       }
     },
     "platforms": {
@@ -224,12 +226,12 @@
       "osx": true,
       "linux": true
     },
-    "hebrew": false,
-    "title_he": "מסע בחלל 6"
+    "hebrew": false
   },
   {
     "id": "torin",
     "title": "Torin’s Passage",
+    "title_he": "המסע של טורין",
     "covers": {
       "en": {
         "src": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/torin/en/e53a5ae010c8.jpg"
@@ -243,12 +245,12 @@
       "osx": true,
       "linux": false
     },
-    "hebrew": true,
-    "title_he": "המסע של טורין"
+    "hebrew": true
   },
   {
     "id": "spyfox",
     "title": "Spy Fox in Dry Cereal",
+    "title_he": "ספיי פוקס",
     "covers": {
       "en": {
         "src": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/spyfox/en/f79e51735fc4.jpg"
@@ -262,12 +264,12 @@
       "osx": true,
       "linux": false
     },
-    "hebrew": true,
-    "title_he": "ספיי פוקס"
+    "hebrew": true
   },
   {
     "id": "pajama",
     "title": "Pajama Sam: No Need to Hide When It’s Dark Outside",
+    "title_he": "פיג׳מה סם",
     "covers": {
       "en": {
         "src": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/pajama/en/800dc7a2b316.jpg"
@@ -281,12 +283,12 @@
       "osx": true,
       "linux": false
     },
-    "hebrew": true,
-    "title_he": "פיג׳מה סם"
+    "hebrew": true
   },
   {
     "id": "toonstruck",
     "title": "Toonstruck",
+    "title_he": "טונסטרק",
     "covers": {
       "en": {
         "src": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/toonstruck/en/fbd6de512350.jpg"
@@ -300,12 +302,12 @@
       "osx": true,
       "linux": false
     },
-    "hebrew": true,
-    "title_he": "טונסטרק"
+    "hebrew": true
   },
   {
     "id": "gob2",
     "title": "Gobliins 2: The Prince Buffoon",
+    "title_he": "גובלינים 2",
     "covers": {
       "en": {
         "src": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/gob2/en/1e523d396214.jpg"
@@ -319,12 +321,12 @@
       "osx": true,
       "linux": false
     },
-    "hebrew": true,
-    "title_he": "גובלינים 2"
+    "hebrew": true
   },
   {
     "id": "tlj",
     "title": "The Longest Journey",
+    "title_he": "המסע הארוך ביותר",
     "covers": {
       "en": {
         "src": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/tlj/en/318fdae99f56.png"
@@ -338,12 +340,12 @@
       "osx": true,
       "linux": false
     },
-    "hebrew": true,
-    "title_he": "המסע הארוך ביותר"
+    "hebrew": true
   },
   {
     "id": "sky",
     "title": "Beneath a Steel Sky",
+    "title_he": "מתחת לשמי הפלדה",
     "covers": {
       "en": {
         "src": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/sky/en/a66d8fcd68f6.jpg"
@@ -357,12 +359,12 @@
       "osx": true,
       "linux": false
     },
-    "hebrew": true,
-    "title_he": "מתחת לשמי הפלדה"
+    "hebrew": true
   },
   {
     "id": "stanley-parable",
     "title": "The Stanley Parable (2013)",
+    "title_he": "המשל של סטנלי",
     "covers": {
       "en": {
         "src": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/stanley-parable/en/924f717e3da0.jpg"
@@ -376,12 +378,12 @@
       "osx": false,
       "linux": false
     },
-    "hebrew": true,
-    "title_he": "המשל של סטנלי"
+    "hebrew": true
   },
   {
     "id": "tesla-effect",
     "title": "Tesla Effect: A Tex Murphy Adventure",
+    "title_he": "אפקט טסלה",
     "covers": {
       "en": {
         "src": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/tesla-effect/en/77011ed8d30d.jpg"
@@ -395,12 +397,12 @@
       "osx": false,
       "linux": false
     },
-    "hebrew": true,
-    "title_he": "אפקט טסלה"
+    "hebrew": true
   },
   {
     "id": "ethan-carter",
     "title": "The Vanishing of Ethan Carter (original)",
+    "title_he": "ההיעלמות של איתן קרטר",
     "covers": {
       "en": {
         "src": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/ethan-carter/en/1cb9c72fce73.jpg"
@@ -414,12 +416,12 @@
       "osx": false,
       "linux": false
     },
-    "hebrew": true,
-    "title_he": "ההיעלמות של איתן קרטר"
+    "hebrew": true
   },
   {
     "id": "life-is-strange",
     "title": "Life Is Strange — Episodes 1–3",
+    "title_he": "החיים מוזרים",
     "covers": {
       "en": {
         "src": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/life-is-strange/en/3129cec77590.jpg"
@@ -433,12 +435,12 @@
       "osx": false,
       "linux": false
     },
-    "hebrew": true,
-    "title_he": "החיים מוזרים"
+    "hebrew": true
   },
   {
     "id": "portal2",
     "title": "Portal 2",
+    "title_he": "פורטל 2",
     "covers": {
       "en": {
         "src": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/portal2/en/716b26a850c5.jpg"
@@ -452,12 +454,12 @@
       "osx": false,
       "linux": false
     },
-    "hebrew": true,
-    "title_he": "פורטל 2"
+    "hebrew": true
   },
   {
     "id": "journey-down1",
     "title": "The Journey Down: Chapter One",
+    "title_he": "המסע למטה",
     "covers": {
       "en": {
         "src": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/journey-down1/en/593bbde1b4e9.jpg"
@@ -471,12 +473,12 @@
       "osx": false,
       "linux": false
     },
-    "hebrew": true,
-    "title_he": "המסע למטה"
+    "hebrew": true
   },
   {
     "id": "kathy-rain-dc",
     "title": "Kathy Rain: Director's Cut",
+    "title_he": "קתי ריין",
     "covers": {
       "en": {
         "src": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/kathy-rain-dc/en/4d5873a538fd.jpg"
@@ -490,12 +492,12 @@
       "osx": false,
       "linux": false
     },
-    "hebrew": true,
-    "title_he": "קתי ריין"
+    "hebrew": true
   },
   {
     "id": "drifter",
     "title": "The Drifter",
+    "title_he": "הנווד",
     "covers": {
       "en": {
         "src": "/cover-drifter.jpg"
@@ -509,12 +511,12 @@
       "osx": true,
       "linux": false
     },
-    "hebrew": true,
-    "title_he": "הנווד"
+    "hebrew": true
   },
   {
     "id": "owlboy",
     "title": "ילד הינשוף — Owlboy",
+    "title_he": "ילד הינשוף",
     "covers": {
       "en": {
         "src": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/owlboy/en/20261b2ad2fb.jpg"
@@ -524,22 +526,22 @@
       }
     },
     "platforms": {
-      "windows": false,
+      "windows": true,
       "osx": true,
       "linux": false
     },
-    "hebrew": true,
-    "title_he": "ילד הינשוף"
+    "hebrew": true
   },
   {
     "id": "tentacle",
     "title": "Day of the Tentacle (Classic)",
+    "title_he": "יומו של הטנטקל",
     "covers": {
       "en": {
         "src": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/tentacle/en/6abd9ff32387.jpg"
       },
       "he": {
-        "src": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/tentacle/en/6abd9ff32387.jpg"
+        "src": "https://assets.kitor.click/covers/tentacle/he/b6408a56abfe.png?v=1"
       }
     },
     "platforms": {
@@ -547,18 +549,18 @@
       "osx": true,
       "linux": false
     },
-    "hebrew": true,
-    "title_he": "יומו של הטנטקל"
+    "hebrew": true
   },
   {
     "id": "day-of-the-tentacle-remastered",
     "title": "Day of the Tentacle Remastered",
+    "title_he": "יומו של הטנטקל",
     "covers": {
       "en": {
         "src": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/day-of-the-tentacle-remastered/en/91ef55d28fc6.jpg"
       },
       "he": {
-        "src": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/day-of-the-tentacle-remastered/en/91ef55d28fc6.jpg"
+        "src": "https://assets.kitor.click/covers/day-of-the-tentacle-remastered/he/aa8b5a6b1c67.png?v=1"
       }
     },
     "platforms": {
@@ -566,18 +568,18 @@
       "osx": true,
       "linux": false
     },
-    "hebrew": true,
-    "title_he": "יומו של הטנטקל"
+    "hebrew": true
   },
   {
     "id": "grim-fandango-remastered",
     "title": "Grim Fandango Remastered",
+    "title_he": "גרים פנדנגו",
     "covers": {
       "en": {
         "src": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/grim-fandango-remastered/en/d601cde8ba2e.jpg"
       },
       "he": {
-        "src": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/grim-fandango-remastered/en/d601cde8ba2e.jpg"
+        "src": "https://assets.kitor.click/covers/grim-fandango-remastered/he/a1c08634f446.png"
       }
     },
     "platforms": {
@@ -585,12 +587,12 @@
       "osx": false,
       "linux": false
     },
-    "hebrew": true,
-    "title_he": "גרים פנדנגו"
+    "hebrew": true
   },
   {
     "id": "monkey-se-native",
     "title": "The Secret of Monkey Island: Special Edition (Native Remastered)",
+    "title_he": "הסוד של אי הקופים",
     "covers": {
       "en": {
         "src": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/monkey-se/en/b9d8b502a92e.jpg"
@@ -604,12 +606,12 @@
       "osx": false,
       "linux": false
     },
-    "hebrew": true,
-    "title_he": "הסוד של אי הקופים"
+    "hebrew": true
   },
   {
     "id": "monkey2-se-native",
     "title": "Monkey Island 2: LeChuck's Revenge Special Edition (Native Remastered)",
+    "title_he": "אי הקופים 2 נקמתו של לצ׳אק",
     "covers": {
       "en": {
         "src": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/monkey2-se/en/edc7e06d30c7.jpg"
@@ -623,18 +625,18 @@
       "osx": false,
       "linux": false
     },
-    "hebrew": true,
-    "title_he": "אי הקופים 2 נקמתו של לצ׳אק"
+    "hebrew": true
   },
   {
     "id": "silver-pines",
     "title": "Silver Pines",
+    "title_he": "סילבר פיינס",
     "covers": {
       "en": {
-        "src": "/cover-silver-pines.jpg"
+        "src": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/silver-pines/en/d277d9e48633.jpg"
       },
       "he": {
-        "src": "/cover-silver-pines.jpg"
+        "src": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/silver-pines/he/5a22025b1608.jpg"
       }
     },
     "platforms": {
@@ -642,12 +644,12 @@
       "osx": false,
       "linux": false
     },
-    "hebrew": true,
-    "title_he": "סילבר פיינס"
+    "hebrew": true
   },
   {
     "id": "jenny-leclue",
     "title": "Jenny LeClue - Detectivu",
+    "title_he": "ג׳ני לקלו – הבלשית",
     "covers": {
       "en": {
         "src": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/jenny-leclue/en/2768413b7b5b.jpg"
@@ -661,7 +663,44 @@
       "osx": true,
       "linux": false
     },
-    "hebrew": true,
-    "title_he": "ג׳ני לקלו – הבלשית"
+    "hebrew": true
+  },
+  {
+    "id": "dig",
+    "title": "The Dig",
+    "title_he": "התגלית",
+    "covers": {
+      "he": {
+        "src": ""
+      },
+      "en": {
+        "src": ""
+      }
+    },
+    "platforms": {
+      "windows": true,
+      "osx": true,
+      "linux": true
+    },
+    "hebrew": false
+  },
+  {
+    "id": "disco-elysium",
+    "title": "Disco Elysium – The Final Cut",
+    "title_he": "דיסקו אליסיום",
+    "covers": {
+      "en": {
+        "src": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/disco-elysium/en/71041ce81990.jpg"
+      },
+      "he": {
+        "src": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/disco-elysium/he/cf888621e796.png"
+      }
+    },
+    "platforms": {
+      "windows": true,
+      "osx": true,
+      "linux": false
+    },
+    "hebrew": true
   }
 ]

@@ -4,6 +4,7 @@ import type { GameSummary } from "../types";
 const fixtures: GameSummary[] = [
   {
     id: "jenny-leclue",
+    tags: ["detective"],
     banner: {
       en: "/banners/jenny-leclue-en.jpg",
       he: "/banners/jenny-leclue-he.png",
@@ -20,6 +21,7 @@ const fixtures: GameSummary[] = [
   },
   {
     id: "monkey-se",
+    tags: ["classic", "comedy"],
     banner: {
       en: "/banners/monkey-classic-en.png",
       he: "/banners/monkey-classic-he.png",
@@ -33,6 +35,7 @@ const fixtures: GameSummary[] = [
   },
   {
     id: "tentacle",
+    tags: ["classic", "comedy"],
     title: "Day of the Tentacle",
     cover: "/covers/tentacle.jpg",
     status: "available",
@@ -41,6 +44,7 @@ const fixtures: GameSummary[] = [
   },
   {
     id: "grim-fandango-remastered",
+    tags: ["classic"],
     title: "Grim Fandango",
     cover: "/covers/grim-fandango-remastered.jpg",
     status: "available",
@@ -49,6 +53,7 @@ const fixtures: GameSummary[] = [
   },
   {
     id: "sq5",
+    tags: ["classic", "sci-fi"],
     title: "Space Quest V",
     cover: "/covers/sq5.jpg",
     status: "ready",
@@ -57,6 +62,7 @@ const fixtures: GameSummary[] = [
   },
   {
     id: "drifter",
+    tags: ["thriller"],
     title: "The Drifter",
     cover: "/covers/drifter.jpg",
     status: "attention",
@@ -66,6 +72,7 @@ const fixtures: GameSummary[] = [
   },
   {
     id: "monkey2-se",
+    tags: ["classic", "comedy"],
     title: "Monkey Island 2: LeChuck's Revenge — Classic",
     cover: "/covers/monkey2-classic-en.jpg",
     banner: {

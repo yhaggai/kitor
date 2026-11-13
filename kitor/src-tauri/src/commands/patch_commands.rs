@@ -22,6 +22,33 @@ pub async fn get_all_patches(state: State<'_, AppState>) -> Result<Vec<patch_ser
     patch_service::get_all_patches(&state.db).await
 }
 
+#[derive(serde::Serialize)]
+pub struct CatalogGame {
+    scummvm_id: String,
+    title: String,
+    title_he: Option<String>,
+    cover_url: Option<String>,
+    steam_app_id: u32,
+}
+
+#[tauri::command]
+pub fn get_catalog_games_without_patches() -> Result<Vec<CatalogGame>, String> {
+    Ok(registry_service::load_registry()?
+        .games
+        .into_iter()
+        .filter(|game| game.discover_without_patch && game.patches.is_empty())
+        .filter_map(|game| {
+            Some(CatalogGame {
+                steam_app_id: game.steam_app_id?,
+                scummvm_id: game.scummvm_id,
+                title: game.title,
+                title_he: game.title_he,
+                cover_url: game.cover_url,
+            })
+        })
+        .collect())
+}
+
 #[tauri::command]
 pub async fn download_and_install_patch(
     scummvm_id: String,

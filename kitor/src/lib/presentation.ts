@@ -72,3 +72,24 @@ export function patchSummary(patch: PatchWithStatus): GameSummary {
     language: patchOptionLabel(patch.language, patch.scummvm_id),
   };
 }
+
+export type CatalogGame = {
+  scummvm_id: string;
+  title: string;
+  title_he: string | null;
+  cover_url: string | null;
+  steam_app_id: number;
+};
+
+export function catalogGameSummary(game: CatalogGame): GameSummary {
+  return {
+    id: game.scummvm_id,
+    searchTerms: `${game.scummvm_id} ${game.title} ${game.title_he ?? ""}`,
+    title: game.title,
+    titleHe: game.title_he ?? undefined,
+    ...artwork(game.scummvm_id, game.cover_url ?? undefined),
+    coverLanguage: "he",
+    status: "original",
+    description: gameDescription(game.scummvm_id).description,
+  };
+}

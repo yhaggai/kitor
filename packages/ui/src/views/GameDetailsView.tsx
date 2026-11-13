@@ -1,5 +1,5 @@
 import { ArrowLeft, Expand } from "lucide-react";
-import { type ReactNode, useId, useState } from "react";
+import { type ReactNode, useEffect, useId, useState } from "react";
 import { Button } from "../components/Button";
 import { FlowDialog } from "../components/FlowDialog";
 import { GameBanner } from "../components/GameBanner";
@@ -35,6 +35,17 @@ export function GameDetailsView({
   const id = useId();
   const title = gameTitle(game, language);
   const titleIsHebrew = /[\u0590-\u05FF]/.test(title);
+  useEffect(() => {
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key !== "Escape" || event.defaultPrevented) return;
+      // Leave Escape to open modals (game box, gallery, confirms).
+      if (document.querySelector("dialog[open], [role='dialog']")) return;
+      event.preventDefault();
+      onBack();
+    };
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
+  }, [onBack]);
   return (
     <section className="kt-details" aria-label={t("{0} details", [title])}>
       <Button variant="ghost" onClick={onBack}>
