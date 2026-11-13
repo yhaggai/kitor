@@ -1,9 +1,14 @@
 import { useTranslation } from "@kitor/ui";
-import { UserRound } from "lucide-react";
 import { useEffect, useId, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 import { useContributor } from "@/store/contributor";
+
+function nameInitial(name: string): string {
+  const trimmed = name.trim();
+  if (!trimmed) return "?";
+  return ([...trimmed][0] ?? "?").toLocaleUpperCase();
+}
 
 export function GoogleSignIn() {
   const { t } = useTranslation();
@@ -51,9 +56,13 @@ export default function ContributorAccount() {
     <div className="flex flex-wrap items-center justify-end gap-3 px-6 py-3">
       {user ? (
         <>
-          <span className="flex items-center gap-2">
-            <UserRound size={18} />
-            {user.name}
+          <span
+            role="img"
+            aria-label={user.name}
+            title={user.name}
+            className="inline-flex size-8 shrink-0 items-center justify-center rounded-full bg-muted text-sm font-medium text-foreground"
+          >
+            {nameInitial(user.name)}
           </span>
           <Button variant="outline" size="sm" onClick={() => void signOut()}>
             {t("Sign out")}

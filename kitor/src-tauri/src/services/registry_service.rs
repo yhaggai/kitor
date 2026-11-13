@@ -62,6 +62,8 @@ pub struct GameDefinition {
     pub add_to_cart_url: Option<String>,
     pub detection_patterns: DetectionPatterns,
     pub patches: Vec<PatchDefinition>,
+    #[serde(default, skip_serializing_if = "std::ops::Not::not")]
+    pub discover_without_patch: bool,
     // Read-only compatibility with registries created before behavior profiles.
     #[serde(skip_serializing_if = "Option::is_none")]
     pub launch_config: Option<LaunchConfig>,

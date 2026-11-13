@@ -23,6 +23,13 @@ for (const game of registry.games) {
   for (const lang of ["he", "en"]) {
     const src = covers[lang].src;
     if (!src) continue;
+    if (game.scummvm_id === "sq6" && lang === "he" && src === "/cover-sq6-he.jpg") {
+      await copyFile(
+        path.join(repo, "kitor/public", src.slice(1)),
+        path.join(root, "public", src.slice(1))
+      );
+      continue;
+    }
     const localCover =
       src === `/cover-${game.scummvm_id}.jpg` ||
       src === `/cover-${game.scummvm_id}-${lang}.svg` ||

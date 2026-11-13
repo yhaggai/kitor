@@ -14,6 +14,11 @@ export { ManageMenu } from "./components/ManageMenu";
 export { StatusBadge } from "./components/StatusBadge";
 export { gameTitle } from "./hebrewTitle";
 export { type AppLanguage, setAppLanguage, translate, useTranslation } from "./i18n";
+export {
+  type AnimatedIconHandle,
+  BugIcon,
+  LanguagesIcon,
+} from "./icons";
 export type { Collection, GameStatus, GameSummary } from "./types";
 export { useGameNavigation } from "./useGameNavigation";
 export { CollectionView } from "./views/CollectionView";

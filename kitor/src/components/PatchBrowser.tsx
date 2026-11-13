@@ -9,7 +9,7 @@ import BugReportDialog from "@/components/BugReportDialog";
 import GameDetails from "@/components/GameDetails";
 import { Button } from "@/components/ui/button";
 import { usePatchBrowserState } from "@/hooks/usePatchBrowserState";
-import { patchSummary } from "@/lib/presentation";
+import { type CatalogGame, catalogGameSummary, patchSummary } from "@/lib/presentation";
 
 import { type Game, type Patch, useAppStore } from "@/store/store";
 
@@ -21,6 +21,10 @@ export default function PatchBrowser({ navigationResetKey }: { navigationResetKe
   const { games, setGames } = useAppStore();
   const navigation = useGameNavigation(navigationResetKey);
   const selected = patches.find((patch) => patchSummary(patch).id === navigation.selectedId);
+  const [catalogGames, setCatalogGames] = useState<CatalogGame[]>([]);
+  const selectedCatalogGame = catalogGames.find(
+    (game) => game.scummvm_id === navigation.selectedId
+  );
   const [loadError, setLoadError] = useState<string>();
   const [failure, setFailure] = useState("");
   const [isScanning, setIsScanning] = useState(false);
@@ -86,7 +90,11 @@ export default function PatchBrowser({ navigationResetKey }: { navigationResetKe
       try {
         actions.setLoading(true);
         setLoadError(undefined);
-        const allPatches = (await invoke("get_all_patches")) as Patch[];
+        const [allPatches, gamesWithoutPatches] = await Promise.all([
+          invoke<Patch[]>("get_all_patches"),
+          invoke<CatalogGame[]>("get_catalog_games_without_patches"),
+        ]);
+        setCatalogGames(gamesWithoutPatches);
 
         // Map status to patches
         const patchesWithStatus = allPatches.map((patch) => {
@@ -126,11 +134,11 @@ export default function PatchBrowser({ navigationResetKey }: { navigationResetKe
 
   return (
     <div ref={navigation.root}>
-      <div hidden={!!selected}>
+      <div hidden={!!(selected || selectedCatalogGame)}>
         <CollectionView
           navigationResetKey={navigationResetKey}
           collection="discovery"
-          games={patches.map(patchSummary)}
+          games={[...patches.map(patchSummary), ...catalogGames.map(catalogGameSummary)]}
           loading={loading}
           error={loadError}
           onOpen={navigation.open}
@@ -202,6 +210,14 @@ export default function PatchBrowser({ navigationResetKey }: { navigationResetKe
         }}
       />
 
+      {selectedCatalogGame && (
+        <GameDetails
+          catalogGame={selectedCatalogGame}
+          onRemove={async () => setGames(await invoke<Game[]>("get_games_with_patches"))}
+          collection="discovery"
+          onBack={navigation.back}
+        />
+      )}
       {selected && (
         <GameDetails
           patch={selected}
