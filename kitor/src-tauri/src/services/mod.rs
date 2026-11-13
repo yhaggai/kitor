@@ -33,6 +33,7 @@ pub mod package_source;
 pub mod patch_state;
 
 pub mod gog_download_service;
+mod innoextract;
 
 pub mod games;
 
