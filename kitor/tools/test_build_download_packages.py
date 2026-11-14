@@ -47,14 +47,37 @@ class DownloadPackages(unittest.TestCase):
             with self.assertRaises(InvalidPackage):
                 packages.build(game, game['patches'][0], {}, Path(temp))
 
-    def test_production_build_has_no_embedded_translation_index(self):
+    def test_production_embedded_assets_are_moomin_delta_allowlist_only(self):
         build = (packages.ROOT / 'kitor/src-tauri/build.rs').read_text(encoding="utf-8")
-        self.assertNotIn('include_bytes!', build)
-        self.assertNotIn('bundled-assets', build)
+        self.assertIn('include_bytes!', build)
+        self.assertIn('source.starts_with(repo.canonicalize().unwrap())', build)
+        index_path = packages.ROOT / 'kitor/patches/bundled-assets.json'
+        index = json.loads(index_path.read_text(encoding="utf-8"))
+        self.assertEqual(set(index), {'moomin-midsummer-madness/windows'})
+        assets = index['moomin-midsummer-madness/windows']
+        manifest_path = 'patches-workspace/moomin-midsummer-madness/he/patch.windows.candidate.json'
+        self.assertEqual(assets.get('patch.json'), manifest_path)
+        for name, source in assets.items():
+            path = (packages.ROOT / source).resolve(strict=True)
+            approved = (packages.ROOT / 'patches-workspace/moomin-midsummer-madness/he').resolve()
+            self.assertTrue(path.is_relative_to(approved), source)
+            self.assertTrue(path.is_file(), source)
+            self.assertIn(name, {'patch.json'} | {
+                f"deltas/{p.name}" for p in (approved / 'deltas').iterdir() if p.is_file()
+            })
+        manifest = json.loads((packages.ROOT / manifest_path).read_text(encoding="utf-8"))
+        listed_deltas = {
+            change['source']['path']
+            for change in manifest['platforms']['windows']['files']
+        }
+        self.assertEqual(set(assets) - {'patch.json'}, listed_deltas)
         for game in json.loads(packages.REGISTRY.read_text(encoding="utf-8"))['games']:
             for patch in game['patches']:
-                self.assertNotEqual(patch['source_type'], 'bundled')
-                self.assertTrue(patch['download_url'].startswith('https://'))
+                if patch['source_type'] == 'bundled':
+                    self.assertEqual(game['scummvm_id'], 'moomin-midsummer-madness')
+                    self.assertEqual(game['behavior'].get('bundled_resource'), 'moomin-midsummer-madness')
+                else:
+                    self.assertTrue(patch['download_url'].startswith('https://'))
 
     def test_app_release_gate_rejects_mismatched_published_bytes(self):
         with tempfile.TemporaryDirectory() as temp:
