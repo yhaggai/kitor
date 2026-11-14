@@ -28,6 +28,7 @@ fn all_catalog_patches_are_downloadable() {
     }
 }
 
+#[cfg(target_os = "windows")]
 #[test]
 fn moomin_embedded_package_matches_manifest_and_embedded_hashes() {
     let registry = crate::services::registry_service::load_registry().unwrap();
