@@ -290,10 +290,10 @@
   },
   "moomin-midsummer-madness": {
     "en": {
-      "src": "/covers/moomin-midsummer-madness/cover-en.svg"
+      "src": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/moomin-midsummer-madness/en/4e88fbccb315.png"
     },
     "he": {
-      "src": "/covers/moomin-midsummer-madness/cover-he.svg",
+      "src": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/moomin-midsummer-madness/he/5829993e2434.png",
       "title": "מומינים: טירוף אמצע הקיץ"
     }
   }

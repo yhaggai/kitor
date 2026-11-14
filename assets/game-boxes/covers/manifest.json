@@ -9820,6 +9820,46 @@
           }
         }
       }
+    },
+    {
+      "game_id": "moomin-midsummer-madness",
+      "title": "Moomin: Midsummer Madness",
+      "covers": {
+        "en": {
+          "file": "covers/moomin-midsummer-madness/en/4e88fbccb315.png",
+          "sha256": "4e88fbccb315883ad63433a0f843e7d28db5aefad6142dc57166178e7e1b9625",
+          "bytes": 291343,
+          "width": 600,
+          "height": 900,
+          "object_key": "covers/moomin-midsummer-madness/en/4e88fbccb315.png",
+          "original_url": "https://assets.kitor.click/covers/moomin-midsummer-madness/en/4e88fbccb315.png",
+          "variant_urls": {
+            "240": "https://assets.kitor.click/cdn-cgi/image/width=240,fit=scale-down,quality=85,format=auto/covers/moomin-midsummer-madness/en/4e88fbccb315.png",
+            "480": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/moomin-midsummer-madness/en/4e88fbccb315.png",
+            "960": "https://assets.kitor.click/cdn-cgi/image/width=960,fit=scale-down,quality=85,format=auto/covers/moomin-midsummer-madness/en/4e88fbccb315.png"
+          },
+          "source": "Steam header artwork adapted for Kitor",
+          "source_page": "https://store.steampowered.com/app/4463520/",
+          "kind": "portrait-layout"
+        },
+        "he": {
+          "file": "covers/moomin-midsummer-madness/he/5829993e2434.png",
+          "sha256": "5829993e2434619604144e92160640a0ced84b4dd7b8e542d969fc0bca4f6617",
+          "bytes": 289029,
+          "width": 600,
+          "height": 900,
+          "object_key": "covers/moomin-midsummer-madness/he/5829993e2434.png",
+          "original_url": "https://assets.kitor.click/covers/moomin-midsummer-madness/he/5829993e2434.png",
+          "variant_urls": {
+            "240": "https://assets.kitor.click/cdn-cgi/image/width=240,fit=scale-down,quality=85,format=auto/covers/moomin-midsummer-madness/he/5829993e2434.png",
+            "480": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/moomin-midsummer-madness/he/5829993e2434.png",
+            "960": "https://assets.kitor.click/cdn-cgi/image/width=960,fit=scale-down,quality=85,format=auto/covers/moomin-midsummer-madness/he/5829993e2434.png"
+          },
+          "source": "Steam header artwork adapted for Kitor",
+          "source_page": "https://store.steampowered.com/app/4463520/",
+          "kind": "portrait-layout"
+        }
+      }
     }
   ],
   "updated_on": "2026-10-25"

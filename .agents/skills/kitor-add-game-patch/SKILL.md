@@ -98,6 +98,8 @@ Test on representative supported game data on each native OS. Use disposable ins
 
 ## GitHub Actions and publication
 
+Before pushing or merging an onboarding change with artwork, inspect the staged game ID in the cover catalog, banner catalog (when a banner was supplied), and registry fallback. For Cloudflare publication, confirm each points to the verified public asset, and check that the recorded public download hashes match the intended files. A local image under `public/` or a successful frontend build does not satisfy hosted artwork verification. When publication is unavailable or out of scope, identify it as pending in the PR and keep any working artwork references.
+
 “Make sure the action resolves” means inspect the actual GitHub Actions conclusion and artifacts for the exact submitted commit. Inspect `.github/workflows/validate-patch-packages.yml` and `deploy-patches.yml` before changes; reuse their workflows and extend triggers/matrices only where the new game requires it. Ensure new payloads and build steps are included on both Windows and macOS runners.
 
 Within the user's authorized Git scope, submit the relevant changes or dispatch validation on the intended ref, record commit SHA/run URL, and follow both native jobs to completion. Inspect failing logs, repair task-related causes, rerun, and verify downloadable artifacts correspond to that commit. Do not equate a workflow file, local pass, queued job, skipped game, or older green run with success. Avoid blind repeated reruns of unchanged failures; report credential, unavailable runner/input, or reproducible external blockers precisely.
