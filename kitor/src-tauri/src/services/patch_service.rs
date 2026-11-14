@@ -318,13 +318,14 @@ pub async fn download_and_install_patch(
             )
             .await?;
         }
+        super::package_source::PackageSource::Embedded(_) => {}
         #[cfg(debug_assertions)]
         super::package_source::PackageSource::LocalPreview(path) => {
             std::fs::copy(path, &download_path).map_err(|e| e.to_string())?;
         }
         super::package_source::PackageSource::OwlboyMacSteam => {}
     }
-    if !matches!(source, super::package_source::PackageSource::OwlboyMacSteam) {
+    if !matches!(source, super::package_source::PackageSource::OwlboyMacSteam | super::package_source::PackageSource::Embedded(_)) {
         if let Some(checksum) = &patch.checksum {
             if patch_lifecycle::hash(&download_path)? != checksum.to_lowercase() {
                 return Err(
@@ -351,7 +352,7 @@ pub async fn download_and_install_patch(
     let manifest_name = patch.install_manifest.as_deref().ok_or(
         "Patch has no file-change manifest; whole-folder installation is no longer supported",
     )?;
-    if !matches!(source, super::package_source::PackageSource::OwlboyMacSteam)
+    if !matches!(source, super::package_source::PackageSource::OwlboyMacSteam | super::package_source::PackageSource::Embedded(_))
         && download_path.extension().and_then(|s| s.to_str()) != Some("zip")
     {
         return Err("Declarative patch packages must be ZIP archives".into());
