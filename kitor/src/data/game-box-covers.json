@@ -287,5 +287,14 @@
     "he": {
       "src": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/disco-elysium/he/cf888621e796.png"
     }
+  },
+  "moomin-midsummer-madness": {
+    "en": {
+      "src": "/covers/moomin-midsummer-madness/cover-en.svg"
+    },
+    "he": {
+      "src": "/covers/moomin-midsummer-madness/cover-he.svg",
+      "title": "מומינים: טירוף אמצע הקיץ"
+    }
   }
 }

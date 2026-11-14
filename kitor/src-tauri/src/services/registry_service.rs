@@ -192,6 +192,11 @@ fn migrate_bundled_packages(registry: &mut Registry, bundled: &Registry) {
                 .patches
                 .iter()
                 .find(|p| p.source_type != "bundled" && p.language == patch.language)
+                .or_else(|| {
+                    (def.behavior.bundled.is_some() || def.behavior.bundled_resource.is_some())
+                        .then(|| def.patches.iter().find(|p| p.language == patch.language))
+                        .flatten()
+                })
             else {
                 return false;
             };

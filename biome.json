@@ -17,6 +17,11 @@
       "!!patches-workspace/**/payload",
       "!!patches-workspace/**/recipes",
       "!!patches-workspace/**/upstream",
+      "!!patches-workspace/moomin-midsummer-madness/he/catalog.json",
+      "!!patches-workspace/moomin-midsummer-madness/he/catalog-niqqud.json",
+      "!!patches-workspace/moomin-midsummer-madness/he/source.json",
+      "!!patches-workspace/moomin-midsummer-madness/he/niqqud-glyphs.json",
+      "!!patches-workspace/moomin-midsummer-madness/he/dialogue-font-advances.json",
       "!!assets/game-boxes/imports/**/archived-*.html"
     ]
   },

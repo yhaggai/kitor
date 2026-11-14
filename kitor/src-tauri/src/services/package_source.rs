@@ -1,6 +1,7 @@
 //! Stage verified translation packages before touching game files.
 use super::{game_behavior::GameBehavior, registry_service::PatchDefinition};
 use std::{fs, path::Path};
+include!(concat!(env!("OUT_DIR"), "/bundled_assets.rs"));
 
 pub enum PackageSource {
     Download,
@@ -8,9 +9,10 @@ pub enum PackageSource {
     LocalPreview(std::path::PathBuf),
     OwlboyMacSteam,
     SpaceQuest4Scummvm,
+    Embedded(String),
 }
 impl PackageSource {
-    pub fn resolve(patch: &PatchDefinition, _behavior: &GameBehavior) -> Result<Self, String> {
+    pub fn resolve(patch: &PatchDefinition, behavior: &GameBehavior) -> Result<Self, String> {
         if cfg!(target_os = "macos")
             && patch.version == "0.2.0-beta.2-kitor2-download1"
             && patch.filename.as_deref() == Some("owlboy-he-0.2.0-beta.2-kitor2-download1.zip")
@@ -23,6 +25,12 @@ impl PackageSource {
             && patch.checksum.as_deref() == Some("98149fc0bcfb14671e356bad7544074e9510f1e5319fddab45dd8a045f2534fb")
         {
             return Ok(Self::SpaceQuest4Scummvm);
+        }
+        if patch.source_type == "bundled" {
+            if let (Some(key), None) = (&behavior.bundled_resource, behavior.bundled) {
+                return Ok(Self::Embedded(key.clone()));
+            }
+            return Err("Bundled patch has no reviewed embedded resource".into());
         }
         #[cfg(debug_assertions)]
         if patch.source_type == "local-preview" && patch.download_url == "local-preview://disco-elysium" {
@@ -48,6 +56,18 @@ impl PackageSource {
         target: &Path,
     ) -> Result<(), String> {
         let bundled;
+        if let Self::Embedded(key) = self {
+            let key = format!("{key}/{}", super::patch_lifecycle::platform());
+            let assets = embedded_assets(&key)
+                .ok_or("Bundled patch is unavailable for this platform")?;
+            for (name, bytes) in assets {
+                let path = super::patch_lifecycle::safe_path(destination, name)?;
+                fs::create_dir_all(path.parent().ok_or("Invalid asset path")?)
+                    .map_err(|e| e.to_string())?;
+                fs::write(path, bytes).map_err(|e| e.to_string())?;
+            }
+            return Ok(());
+        }
         let archive = if matches!(self, Self::OwlboyMacSteam) {
             if id != "owlboy" || _language != "he" {
                 return Err("Unexpected Owlboy patch identity".into());

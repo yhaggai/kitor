@@ -29,6 +29,55 @@ fn all_catalog_patches_are_downloadable() {
 }
 
 #[test]
+fn moomin_embedded_package_matches_manifest_and_embedded_hashes() {
+    let registry = crate::services::registry_service::load_registry().unwrap();
+    let game = registry
+        .games
+        .iter()
+        .find(|game| game.scummvm_id == "moomin-midsummer-madness")
+        .expect("Moomin game is registered");
+    let patch = game.patches.iter().find(|patch| patch.language == "he").unwrap();
+    let PackageSource::Embedded(key) = PackageSource::resolve(patch, &game.behavior).unwrap() else {
+        panic!("Moomin patch must use the embedded package")
+    };
+    assert_eq!(key, "moomin-midsummer-madness");
+    let staging = tempfile::tempdir().unwrap();
+    PackageSource::Embedded(key.clone())
+        .stage(
+            staging.path(),
+            Path::new("unused.zip"),
+            &game.scummvm_id,
+            "he",
+            &patch.version,
+            Path::new("."),
+        )
+        .unwrap();
+    assert!(staging.path().join("patch.json").is_file());
+    let assets = embedded_assets("moomin-midsummer-madness/windows").unwrap();
+    let manifest = assets
+        .iter()
+        .find(|(path, _)| *path == "patch.json")
+        .expect("embedded package has its patch manifest");
+    let package: crate::services::patch_lifecycle::Package =
+        serde_json::from_slice(manifest.1).unwrap();
+    assert_eq!(package.scummvm_id, game.scummvm_id);
+    assert_eq!(package.version, patch.version);
+    use sha2::Digest;
+    for file in &package.platforms["windows"].files {
+        let Some(crate::services::patch_lifecycle::Source::Bsdiff { path, sha256, .. }) =
+            file.source.as_ref()
+        else {
+            panic!("Moomin package files use BSDIFF sources")
+        };
+        let bytes = assets
+            .iter()
+            .find(|(name, _)| *name == path)
+            .expect("every manifest delta is bundled");
+        assert_eq!(format!("{:x}", sha2::Sha256::digest(bytes.1)), *sha256);
+    }
+}
+
+#[test]
 fn downloaded_platform_package_uses_selective_lifecycle() {
     use std::io::Write;
     use crate::services::patch_lifecycle as lifecycle;

@@ -2221,6 +2221,74 @@
           }
         }
       }
+    },
+    {
+      "scummvm_id": "moomin-midsummer-madness",
+      "steam_app_id": 4463520,
+      "title": "Moomin: Midsummer Madness",
+      "cover_url": "/covers/moomin-midsummer-madness/header.jpg",
+      "platforms": {
+        "windows": true,
+        "osx": false,
+        "linux": false
+      },
+      "detection_patterns": {
+        "unique_files": [],
+        "file_patterns": []
+      },
+      "patches": [
+        {
+          "language": "he",
+          "version": "0.1.0",
+          "release_revision": 1,
+          "author": "Kitor",
+          "download_url": "bundled://moomin-midsummer-madness/windows",
+          "source_type": "bundled",
+          "checksum": null,
+          "file_size": null,
+          "filename": "moomin-midsummer-madness-he-0.1.0-windows.zip",
+          "post_install_script": null,
+          "install_manifest": "patch.json",
+          "description": "Hebrew translation with niqqud and right-to-left layout for Windows Steam build 26355427. Includes dialogue, menus, journal, credits and game fonts. Machine-generated first pass; full linguistic proofreading pending."
+        }
+      ],
+      "behavior": {
+        "detection": {
+          "layouts": [
+            {
+              "root": ".",
+              "required_files": [
+                "Summer/Adventure_UE5.exe",
+                "Summer/Adventure_UE5_Data/StreamingAssets/aa/StandaloneWindows64/database_assets_all_c77c9f4b2caf03eae7708be1f1ce7d43.bundle"
+              ],
+              "data": "."
+            }
+          ]
+        },
+        "launch": {
+          "original": {
+            "commands": {
+              "windows": {
+                "program": "Summer/Adventure_UE5.exe",
+                "required_files": [
+                  "Summer/Adventure_UE5_Data/StreamingAssets/aa/StandaloneWindows64/database_assets_all_c77c9f4b2caf03eae7708be1f1ce7d43.bundle"
+                ]
+              }
+            }
+          },
+          "patched": {
+            "commands": {
+              "windows": {
+                "program": "Summer/Adventure_UE5.exe",
+                "required_files": [
+                  "Summer/Adventure_UE5_Data/StreamingAssets/aa/StandaloneWindows64/database_assets_all_c77c9f4b2caf03eae7708be1f1ce7d43.bundle"
+                ]
+              }
+            }
+          }
+        },
+        "bundled_resource": "moomin-midsummer-madness"
+      }
     }
   ],
   "metadata": {

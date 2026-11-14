@@ -1,4 +1,23 @@
 use super::*;
+
+#[test]
+fn moomin_steam_product_matches_verified_windows_layout() {
+    let product = products()
+        .into_iter()
+        .find(|product| product.app_id == 4463520)
+        .expect("Moomin Steam product is registered");
+    assert_eq!(product.depot_id, 4463521);
+    assert_eq!(product.platform.as_deref(), Some("windows"));
+    assert_eq!(product.games[0].id, "moomin-midsummer-madness");
+    assert!(product.required_files.contains(
+        &"Summer/Adventure_UE5.exe".to_owned()
+    ));
+    assert!(product.required_files.contains(
+        &"Summer/Adventure_UE5_Data/StreamingAssets/aa/StandaloneWindows64/database_assets_all_c77c9f4b2caf03eae7708be1f1ce7d43.bundle".to_owned()
+    ));
+    assert_eq!(product.copy_paths, ["Summer"]);
+}
+
 #[test]
 fn imports_only_verified_files_and_never_overwrites() {
     let dir = tempfile::tempdir().unwrap();
