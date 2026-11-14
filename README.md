@@ -8,6 +8,10 @@
 
 <p align="center"><a href="#hebrew">עברית</a> · <a href="#english">English</a> · <a href="https://github.com/yhaggai/kitor/releases">הורדות / Downloads</a></p>
 
+<p align="center">
+  <img src="docs/images/kitor-home.jpg" width="960" alt="Kitor Home showing Hebrew game covers in Classics, Detectives, and Thriller / מסך הבית של קיטור עם עטיפות בעברית בקטגוריות קלאסיקות, בלשים ומתח" />
+</p>
+
 <a id="hebrew"></a>
 <div dir="rtl" lang="he">
 
@@ -18,8 +22,6 @@
 הפרויקט מרכז משחקי הרפתקאות קלאסיים ומשחקים נוספים, ומשלב הפעלה באמצעות ScummVM או באמצעות המשחק עצמו, בהתאם לכותר ולגרסה. קיטור נועד להנגיש את עבודת המתרגמים; הקרדיט על כל תרגום שייך ליוצריו.
 
 ### מה אפשר לעשות?
-
-![Steam ו־GOG מתחברים לקיטור — ספרייה של משחקים עם עטיפות בעברית. בוחרים, מתקינים טלאי ומשחקים.](docs/images/kitor-library.png)
 
 - **לרכז את הספרייה:** לסרוק תיקיות ולזהות התקנות נתמכות, כולל משחקים מ־Steam ומ־GOG.
 - **לגלות תרגומים:** לעיין בקטלוג המשחקים והתרגומים לעברית.
@@ -68,8 +70,6 @@ Kitor is a desktop app that connects your game library with community-made Hebre
 The project brings together classic adventures and other games, using ScummVM or the game's own runtime depending on the title and edition. Kitor helps people access translators' work; credit for each translation belongs to its creators.
 
 ### What can it do?
-
-![Steam and GOG connect to Kitor — a library of Hebrew game covers. Choose, install a patch, and play.](docs/images/kitor-library.png)
 
 - **Organize your library:** scan folders and detect supported installations, including games from Steam and GOG.
 - **Discover translations:** browse a catalog of games and Hebrew translation patches.
