@@ -2240,17 +2240,17 @@
       "patches": [
         {
           "language": "he",
-          "version": "0.1.0",
-          "release_revision": 1,
+          "version": "0.1.1",
+          "release_revision": 2,
           "author": "Kitor",
           "download_url": "bundled://moomin-midsummer-madness/windows",
           "source_type": "bundled",
           "checksum": null,
           "file_size": null,
-          "filename": "moomin-midsummer-madness-he-0.1.0-windows.zip",
+          "filename": "moomin-midsummer-madness-he-0.1.1-windows.zip",
           "post_install_script": null,
           "install_manifest": "patch.json",
-          "description": "Hebrew translation with niqqud and right-to-left layout for Windows Steam build 26355427. Includes dialogue, menus, journal, credits and game fonts. Machine-generated first pass; full linguistic proofreading pending."
+          "description": "Hebrew translation with niqqud and right-to-left layout for Windows Steam build 26355427. Includes dialogue, menus, journal, credits and game fonts. Corrects Hebrew gender and number agreement in 169 lines; full linguistic proofreading pending."
         }
       ],
       "behavior": {
