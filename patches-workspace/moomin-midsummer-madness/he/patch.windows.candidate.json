@@ -2,9 +2,9 @@
   "schema_version": 1,
   "scummvm_id": "moomin-midsummer-madness",
   "language": "he",
-  "version": "0.1.0",
-  "release_revision": 1,
-  "filename": "moomin-midsummer-madness-he-0.1.0-windows.zip",
+  "version": "0.1.1",
+  "release_revision": 2,
+  "filename": "moomin-midsummer-madness-he-0.1.1-windows.zip",
   "platforms": {
     "windows": {
       "files": [
@@ -12,11 +12,11 @@
           "path": "Summer/Adventure_UE5_Data/StreamingAssets/aa/StandaloneWindows64/database_assets_all_c77c9f4b2caf03eae7708be1f1ce7d43.bundle",
           "operation": "modify",
           "original_sha256": "96b1575ccf2148a8d8514aae8d345bf32ee834cac343af794b38c87196856a42",
-          "installed_sha256": "d107bc447fc8fff2def88b54b2496886ade72ecb7cbc4c640a593beb9e297f59",
+          "installed_sha256": "20cd5ce52f71b47f956055cf57af92c2818b789b56133948687e33f496909514",
           "source": {
             "kind": "bsdiff",
             "path": "deltas/00-database_assets_all_c77c9f4b2caf03eae7708be1f1ce7d43.bundle.bsdiff",
-            "sha256": "5410ed1f78b0131eb1cc3946b08dac59b9bda5fe105743f46e3c9c0b636e9071",
+            "sha256": "0852fa7ffcfa4c3f730d35d3bdd51b9bdfb7a3cc5baf5afd0a269bffb9c3514b",
             "input": "Summer/Adventure_UE5_Data/StreamingAssets/aa/StandaloneWindows64/database_assets_all_c77c9f4b2caf03eae7708be1f1ce7d43.bundle"
           }
         },

@@ -37,6 +37,10 @@ def main() -> None:
                         help="Use the freshly built database bundle as the patched database input")
     args = parser.parse_args()
 
+    manifest_path = HERE / "patch.windows.candidate.json"
+    previous = json.loads(manifest_path.read_text(encoding="utf-8")) if manifest_path.exists() else {}
+    version = previous.get("version", "0.1.0")
+    release_revision = previous.get("release_revision", 1)
     deltas = HERE / "deltas"
     deltas.mkdir(exist_ok=True)
     files = []
@@ -66,12 +70,12 @@ def main() -> None:
         "schema_version": 1,
         "scummvm_id": "moomin-midsummer-madness",
         "language": "he",
-        "version": "0.1.0",
-        "release_revision": 1,
-        "filename": "moomin-midsummer-madness-he-0.1.0-windows.zip",
+        "version": version,
+        "release_revision": release_revision,
+        "filename": f"moomin-midsummer-madness-he-{version}-windows.zip",
         "platforms": {"windows": {"files": files}},
     }
-    (HERE / "patch.windows.candidate.json").write_text(
+    manifest_path.write_text(
         json.dumps(manifest, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
     )
     print(f"Wrote {len(files)} verified bsdiff files and patch.windows.candidate.json")
