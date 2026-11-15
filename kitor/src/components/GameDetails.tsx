@@ -70,6 +70,7 @@ export default function GameDetails({
         game={catalogGameSummary(catalogGame)}
         collection={collection}
         onBack={onBack}
+        translationCredit={<TranslationCredit gameId={catalogGame.scummvm_id} />}
         actions={
           <div className="space-y-2">
             <CatalogGameActions
@@ -90,7 +91,7 @@ export default function GameDetails({
       game={patchSummary({ ...patch, game_installed: false, patch_installed: false })}
       collection={collection}
       onBack={onBack}
-      descriptionCredit={<TranslationCredit gameId={patch.scummvm_id} />}
+      translationCredit={<TranslationCredit gameId={patch.scummvm_id} />}
       actions={
         <div className="space-y-2">
           <CatalogGameActions

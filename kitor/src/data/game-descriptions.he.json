@@ -208,6 +208,11 @@
     "sourceUrl": "https://www.gog.com/en/game/the_dig",
     "communityTranslation": false
   },
+  "moomin-midsummer-madness": {
+    "description": "שיטפון פתאומי מציף את עמק המומינים וסוחף את משפחת מומין אל תיאטרון ישן שצף על המים. הצטרפו למומינטרול ולמאי הקטנה כשהם חוקרים את התיאטרון, פוגשים חברים ותיקים ופותרים חידות בדרך הביתה. ההרפתקה המאוירת מבוססת על ספרה של טובה ינסון.",
+    "sourceUrl": "https://store.steampowered.com/app/4463520/",
+    "communityTranslation": false
+  },
   "disco-elysium": {
     "description": "משחק תפקידים בלשי מאת ZA/UM. אתם מגלמים בלש שאיבד את זיכרונו ונשלח לחקור רצח ברוואשול. אפשר להתקין תרגום חלקי לעברית דרך קיטור.",
     "metadataSource": "patches-metadata/177_disco_elysium.json",

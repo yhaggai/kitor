@@ -2,6 +2,7 @@ import { useTranslation } from "@kitor/ui";
 import * as AlertDialog from "@radix-ui/react-alert-dialog";
 import { CheckCircle, Loader2 } from "lucide-react";
 import { useEffect, useState } from "react";
+import { TranslationCredit } from "@/components/TranslationCredit";
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
 
@@ -18,6 +19,7 @@ type InstallStep = {
 
 type InstallPatchDialogProps = {
   updating?: boolean;
+  gameId: string;
   gameTitle: string;
   open: boolean;
   onOpenChange: (open: boolean) => void;
@@ -50,6 +52,7 @@ function PreparationDetail({ detail }: { detail?: string }) {
 
 export function InstallPatchDialog({
   updating = false,
+  gameId,
   gameTitle,
   open,
   onOpenChange,
@@ -69,6 +72,7 @@ export function InstallPatchDialog({
           <AlertDialog.Description className="sr-only">
             {t("Installation progress")}
           </AlertDialog.Description>
+          <TranslationCredit key={gameId} gameId={gameId} />
           <PatchInstallProgress
             installSteps={installSteps}
             progress={progress}
