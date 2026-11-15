@@ -17,6 +17,8 @@ try {
 const read = async (p) => JSON.parse(await readFile(path.join(repo, p), "utf8"));
 const registry = await read("kitor/patches/registry.json");
 const artwork = await read("kitor/src/data/game-box-covers.json");
+const descriptions = await read("kitor/src/data/game-descriptions.he.json");
+const galleries = await read("kitor/src/data/game-galleries.json");
 const catalog = [];
 for (const game of registry.games) {
   const covers = artwork[game.scummvm_id] ?? { he: { src: "" }, en: { src: "" } };
@@ -46,19 +48,36 @@ for (const game of registry.games) {
     if (url.protocol !== "https:" || url.hostname !== "assets.kitor.click")
       throw new Error(`Expected Cloudflare artwork for ${game.scummvm_id} (${lang})`);
   }
+  const translation = game.patches.find((patch) => patch.language === "he");
+  const description = descriptions[game.scummvm_id];
   catalog.push({
     id: game.scummvm_id,
     title: game.title,
     title_he: game.title_he,
     covers,
     platforms: game.platforms,
-    hebrew: game.patches.some((p) => p.language === "he"),
+    hebrew: Boolean(translation),
+    descriptionHe: description?.description,
+    sourceUrl: description?.sourceUrl,
+    screenshot: galleries[game.scummvm_id]?.[0]?.src,
+    translationCredit: translation?.author,
+    steamAppId: game.steam_app_id,
+    gogSlug: game.gog?.slug,
   });
 }
 await writeFile(path.join(generated, "catalog.json"), JSON.stringify(catalog, null, 2) + "\n");
-// Mechanical snapshot: the desktop component remains the single maintained source.
-for (const file of ["GameBox.tsx", "GameBox.module.css"])
-  await copyFile(path.join(repo, "kitor/src/components", file), path.join(generated, file));
+// The desktop remains the maintained source; the website supplies its own translator.
+const components = path.join(repo, "kitor/src/components");
+const gameBox = await readFile(path.join(components, "GameBox.tsx"), "utf8");
+await writeFile(
+  path.join(generated, "GameBox.tsx"),
+  gameBox.replace('from "@kitor/ui"', 'from "../lib/game-box-translation"')
+);
+await copyFile(path.join(components, "GameBox.module.css"), path.join(generated, "GameBox.module.css"));
+await copyFile(
+  path.join(repo, "packages/ui/src/assets/kitor-logo.svg"),
+  path.join(generated, "kitor-logo.svg")
+);
 await sharp(path.join(root, "public/art/night.png"))
   .resize({ width: 1920, withoutEnlargement: true })
   .webp({ quality: 85 })

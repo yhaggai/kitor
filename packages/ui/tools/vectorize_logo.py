@@ -28,7 +28,8 @@ def layer_steam(svg):
              + '\n'.join(paths[i] for i in sorted(steam_indices)) + '\n</g>')
     body = '\n'.join(path for i, path in enumerate(paths)
                      if i not in steam_indices and i not in {0, 1})
-    return '\n'.join([header + title, clips, paths[0], chimney, steam, body, '</svg>', ''])
+    paper = paths[0].replace('<path ', '<path id="kitor-logo-paper" ', 1)
+    return '\n'.join([header + title, clips, paper, chimney, steam, body, '</svg>', ''])
 
 
 assets = Path(__file__).resolve().parents[1] / 'src' / 'assets'

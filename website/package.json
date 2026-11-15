@@ -10,7 +10,9 @@
     "check": "astro check",
     "sync": "node scripts/sync-assets.mjs",
     "predev": "npm run sync",
-    "prebuild": "npm run sync"
+    "prebuild": "npm run sync",
+    "postbuild": "npm run check:game-pages",
+    "check:game-pages": "node scripts/check-game-pages.mjs"
   },
   "dependencies": {
     "@astrojs/node": "^9.5.5",

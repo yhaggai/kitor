@@ -16,7 +16,11 @@
       "osx": true,
       "linux": false
     },
-    "hebrew": true
+    "hebrew": true,
+    "descriptionHe": "ילדה נופלת אל עולם תת־קרקעי המאוכלס במפלצות ומחפשת דרך לשוב הביתה. בדרך היא פוגשת דמויות מצחיקות ומרגשות, והבחירות שלה משפיעות על הקשרים שהיא יוצרת ועל המשך המסע.\n\nמשחק תפקידים שמשלב חקירה, הומור ועימותים שאפשר לפתור גם בלי להילחם.",
+    "sourceUrl": "https://store.steampowered.com/app/391540/Undertale/",
+    "translationCredit": "yhaggai",
+    "steamAppId": 391540
   },
   {
     "id": "monkey-se",
@@ -35,7 +39,13 @@
       "osx": true,
       "linux": false
     },
-    "hebrew": true
+    "hebrew": true,
+    "descriptionHe": "גייבראש ת׳ריפווד חולם להפוך לפיראט אימתני, אבל הדרך אל התואר רצופה מבחנים מגוחכים, דו־קרבות עלבונות ודמויות בלתי נשכחות. כשהפיראט לה־צ׳אק מאיים על המושלת איליין, החלום הופך למסע הצלה באיים הקריביים.\n\nהרפתקת הצבע־והקלק קומית של חידות, אוצרות וסודות, שבה לשון חדה מועילה לא פחות מחרב.",
+    "sourceUrl": "https://www.facebook.com/groups/200491360554968/permalink/418070868797015/",
+    "screenshot": "https://assets.kitor.click/screenshots/monkey-se/e1e05efcb2815923.jpg",
+    "translationCredit": "AdventureBrew",
+    "steamAppId": 32360,
+    "gogSlug": "the_secret_of_monkey_island_special_edition"
   },
   {
     "id": "monkey2-se",
@@ -54,7 +64,13 @@
       "osx": true,
       "linux": false
     },
-    "hebrew": true
+    "hebrew": true,
+    "descriptionHe": "גייבראש ת׳ריפווד יוצא לחפש אוצר אגדי, אך לה־צ׳אק חוזר לחייו ומאיים להפוך את ההרפתקה לסיוט. בין איים משונים, חידות ערמומיות ופיראטים בעלי חוש הומור מפוקפק, עליו להקדים את יריבו ולגלות מה מסתתר מאחורי האוצר.\n\nהפרק השני בסדרת אי הקופים משלב הומור פרוע, דמויות צבעוניות וסיפור מלא תפניות.",
+    "sourceUrl": "https://www.facebook.com/groups/200491360554968/posts/1105072610096834/",
+    "screenshot": "https://assets.kitor.click/screenshots/monkey2-se/01671e6d3b0127dd.jpg",
+    "translationCredit": "AdventureBrew",
+    "steamAppId": 32460,
+    "gogSlug": "monkey_island_2_special_edition_lechucks_revenge"
   },
   {
     "id": "sq1sci",
@@ -73,7 +89,12 @@
       "osx": true,
       "linux": true
     },
-    "hebrew": true
+    "hebrew": true,
+    "descriptionHe": "אנו לוקחים אתכם שוב למסע בזמן אל אותו יום גורלי שדומה במפתיע לקודמיו. רוג'ר, שרת ספינת החלל, שוב נרדם בארון השירות, נותן לאבק הקוסמי להיסחף באקראיות בריק החלל. אולם הפעם משהו בכל זאת שונה, רחשים מבוהלים נשמעים מעבר לדלת, וצפירות אזעקה מחרישות את חלל האוויר. רוג'ר מתעורר בבהלה ויוצא מהארון כשהוא משפשף את עיניו לבדוק את המתרחש. את מה שהוא מגלה שם הוא לא ישכח לעולם ועד, וגם אנחנו לא.",
+    "sourceUrl": "https://www.facebook.com/groups/200491360554968/posts/1017911895479573",
+    "screenshot": "https://assets.kitor.click/screenshots/sq1sci/6c041c3b9983892c.jpg",
+    "translationCredit": "AdventureBrew",
+    "steamAppId": 10110
   },
   {
     "id": "kyra1-cd",
@@ -92,7 +113,12 @@
       "osx": true,
       "linux": false
     },
-    "hebrew": true
+    "hebrew": true,
+    "descriptionHe": "קרני שמש ראשונות מלטפות את יערות העד המוריקים, פלגי מים זכים מפכים בין חגווי הסלע, אדמת היער העשירה מתכסה באדרת פריחה שופעת, ציפורי השיר מצייצות בחן, ובעלי חיים זריזים וחמקמקים מקפצים בין השיחים, בוקר חדש וססגוני עלה על ממלכת קירנדיה.\n\nברנדון הצעיר משכים קום לעבודת יומו ואץ רץ הוא לבקר את סבא חיליק במרומי בית העץ. אך אבוי שוד ושבר! סבא הפך לפסל אבן על ידי מלקולם ליצן החצר שסרח והפך למכשף אכזר ונטול מעצורים. ברנדון נשבע כי לא ינוח ולא ישקוט עד אשר יציל את יושבי היער והממלכה מידי הליצן המרושע.",
+    "sourceUrl": "https://www.facebook.com/groups/200491360554968/permalink/840226783248086/",
+    "screenshot": "https://assets.kitor.click/screenshots/kyra1-cd/ecb0f67239d31c6b.jpg",
+    "translationCredit": "AdventureBrew",
+    "gogSlug": "legend_of_kyrandia"
   },
   {
     "id": "pq1",
@@ -111,7 +137,12 @@
       "osx": true,
       "linux": false
     },
-    "hebrew": true
+    "hebrew": true,
+    "descriptionHe": "בני בונדס הוא שוטר תנועה חביב שבסך הכול רוצה למלא את מכסת הדוחות היומית ולבלות את הערב במועדון השוטרים המקומי. אבל רצה הגורל ואיכשהו הצטלבו דרכיו עם ארגון פשע רב זרועות שבראשו עומד מלאך המוות בכבודו ובעצמו! האם בני יצליח להכריע ולהפליל את ראש הנחש? הכל כרגיל תלוי בכם.",
+    "sourceUrl": "https://www.facebook.com/groups/200491360554968/permalink/834363283834436/",
+    "screenshot": "https://assets.kitor.click/screenshots/pq1/54972047fbfc056d.jpg",
+    "translationCredit": "AdventureBrew",
+    "steamAppId": 494740
   },
   {
     "id": "sq1",
@@ -130,7 +161,11 @@
       "osx": true,
       "linux": false
     },
-    "hebrew": true
+    "hebrew": true,
+    "descriptionHe": "תצטרפו להרפתקה הראשונה של רוג׳ר וילקו בגרסה המקורית עם גרפיקה של EGA. כמובן, מדובר במסע בחלל פרק ראשון (Space Quest 1). תיהנו מכל ההומור, מכל הדרכים למות, ומכל הניקיון של השרת האס!",
+    "sourceUrl": "https://www.facebook.com/groups/hebrewadventure/posts/1893489874588433/",
+    "translationCredit": "sam-mfb",
+    "steamAppId": 10110
   },
   {
     "id": "sq2",
@@ -149,7 +184,11 @@
       "osx": true,
       "linux": false
     },
-    "hebrew": true
+    "hebrew": true,
+    "descriptionHe": "רוג׳ר וילקו, השרת שהפך לגיבור בעל כורחו, נקלע שוב לצרות כשווהאל מבקש לנקום בו. מסע ההיחלצות מוביל אותו דרך ג׳ונגל מסוכן ומתקנים מאיימים, עם חידות, מלכודות והומור חללי בכל פינה.",
+    "sourceUrl": "https://www.facebook.com/groups/hebrewadventure/posts/1864116760859078/",
+    "translationCredit": "sam-mfb",
+    "steamAppId": 10110
   },
   {
     "id": "sq3",
@@ -168,7 +207,12 @@
       "osx": true,
       "linux": false
     },
-    "hebrew": true
+    "hebrew": true,
+    "descriptionHe": "רוג'ר ווילקו מצוייד בכישורי שרת מקצועי משייט לו בספינת חלל ששטה לה במסלול לא מוגדר, כשלפתע צצה מולם מיכלית עצומה לאיסוף אשפה שמיימית ששואבת את הספינה אל קירבה. מכאן העניינים רק מתחילים להתדרדר.",
+    "sourceUrl": "https://www.facebook.com/groups/200491360554968/permalink/715358449068254/",
+    "screenshot": "https://assets.kitor.click/screenshots/sq3/b62764b09d8faabe.jpg",
+    "translationCredit": "AdventureBrew",
+    "steamAppId": 10110
   },
   {
     "id": "sq4",
@@ -187,7 +231,11 @@
       "osx": true,
       "linux": false
     },
-    "hebrew": true
+    "hebrew": true,
+    "descriptionHe": "רוג׳ר וילקו מסתבך בהרפתקה שמדלגת בין תקופות שונות של מסע בחלל. סכנות מהעבר ומהעתיד רודפות אחריו, והשרת המפורסם צריך להסתמך על תושייה ומזל כדי לשרוד.\n\nקומדיית מדע בדיוני עם חידות, מסע בזמן ובדיחות על משחקי מחשב ועל הגיבור עצמו.",
+    "sourceUrl": "https://www.gog.com/en/game/space_quest_4_5_6",
+    "translationCredit": "Kitor",
+    "steamAppId": 10110
   },
   {
     "id": "sq5",
@@ -206,7 +254,12 @@
       "osx": true,
       "linux": false
     },
-    "hebrew": true
+    "hebrew": true,
+    "descriptionHe": "הפעם רוג'ר ווילקו, גיבורנו שבימים כתיקונם נושא מטאטא ודלי, מצליח להתקבל למשרת פיקוד על ספינת חלל - טוב, מכולת אשפה - ונקלע למאבק מול מוטנטים שמנסים לרייר את היקום הידוע, בזמן שהוא צריך להתמודד עם הטרמינייטורית מרשות הדואר, הגרסא היותר-חמודה של הנוסע השמיני, תאונות משגר, והכל מבלי לשכוח את המשימה המרכזית שלו - לאסוף זבל מהחלל.",
+    "sourceUrl": "https://www.facebook.com/groups/hebrewadventure/permalink/1360601411210618/",
+    "screenshot": "https://assets.kitor.click/screenshots/sq5/da4611d35005409a.jpg",
+    "translationCredit": "AdventureBrew",
+    "steamAppId": 10110
   },
   {
     "id": "sq6",
@@ -226,7 +279,10 @@
       "osx": true,
       "linux": true
     },
-    "hebrew": false
+    "hebrew": false,
+    "descriptionHe": "רוג׳ר וילקו חוזר לעוד הרפתקה חללית מלאה צרות, מפגשים מוזרים וחידות. גם כשהוא מנסה להתרחק מהסתבכויות, היקום מוצא דרכים חדשות להעמיד את השרת חסר המזל במבחן.\n\nהפרק השישי בסדרה ממשיך את מסורת ההומור הפרוע והפרודיה על עולם המדע הבדיוני.",
+    "sourceUrl": "https://www.gog.com/en/game/space_quest_4_5_6",
+    "steamAppId": 10110
   },
   {
     "id": "torin",
@@ -245,7 +301,11 @@
       "osx": true,
       "linux": false
     },
-    "hebrew": true
+    "hebrew": true,
+    "descriptionHe": "טורין יוצא לחפש את הוריו שנחטפו, ויורד אל עולמות קסומים החבויים במעמקי האדמה. לצדו בוגל, חברו הנאמן, שמסייע לו להתמודד עם המכשולים בדרך.\n\nהרפתקה מצוירת מבית סיירה, המשלבת פנטזיה, חידות והומור בסיפור על משפחה, אומץ וגילוי עצמי.",
+    "sourceUrl": "https://www.facebook.com/groups/200491360554968/permalink/591304524806981/",
+    "screenshot": "https://assets.kitor.click/screenshots/torin/5f9bafc24c5303fa.jpg",
+    "translationCredit": "AdventureBrew"
   },
   {
     "id": "spyfox",
@@ -264,7 +324,12 @@
       "osx": true,
       "linux": false
     },
-    "hebrew": true
+    "hebrew": true,
+    "descriptionHe": "באי הבדיוני אצידופילוס השוכן בארכיפלג יוון, וויליאם הנער מנכ\"ל תאגיד צוף עיזים, זומם לחסל לחלוטין את מוצרי חלב הפרה ולהשליט את תנובת העיזים הפגומה שלו על תעשיית החלב העולמית. שועל חשאי שבמקרה שוהה בטיסה מעל האי, מקבל שיחה מקופה פרוטה המודיעה לו על המצב החמור ומטילה עליו את משימת חייו, מניעת ייבוש קערות הקורנפלקס של ילדי העולם המורעבים.",
+    "sourceUrl": "https://www.facebook.com/groups/hebrewadventure/posts/1352741975329895/",
+    "screenshot": "https://assets.kitor.click/screenshots/spyfox/a203dd3acef73bd6.jpg",
+    "translationCredit": "AdventureBrew",
+    "steamAppId": 283980
   },
   {
     "id": "pajama",
@@ -283,7 +348,11 @@
       "osx": true,
       "linux": false
     },
-    "hebrew": true
+    "hebrew": true,
+    "descriptionHe": "סאם הקטן מאד מפחד לישון בחושך. אבל כשאמא אומרת שהלילה הוא ילד גדול ומכבה לו את האור, סאם מחליט להתחפש לגיבור על. הוא חוגר את כלי הנשק שלו (קופסת אוכל, מסיכה ופנס) ויוצא להילחם בחושך בכבודו ובעצמו!",
+    "sourceUrl": "https://www.facebook.com/groups/hebrewadventure/posts/1353949765209116",
+    "screenshot": "https://assets.kitor.click/screenshots/pajama/e81b658b487e721d.jpg",
+    "translationCredit": "AdventureBrew"
   },
   {
     "id": "toonstruck",
@@ -302,7 +371,11 @@
       "osx": true,
       "linux": false
     },
-    "hebrew": true
+    "hebrew": true,
+    "descriptionHe": "דרו בלנק הוא אנימטור סרטים ממורמר שמאייר סדרת ארנבונים מצליחה. אך יום אחד מנהלו הקשוח דורש ממנו לעדכן את העיצוב למשהו יותר חדשני. כשהוא אפוף בהתקף היסטריה וייאוש הוא נשאב לתוך העולם המצויר שם הוא פוגש את יצירי כפיו הצבעוניים ובראשם את הארנב המוטרף פלקס ווילדלי. ביחד הם יוצאים למסע הצלת הממלכה המאושרת והעליזה מידי הרוזן נפריוס המרושע המאיים להפוך אותה למקום קודר ואפל.",
+    "sourceUrl": "https://www.facebook.com/groups/hebrewadventure/posts/1396014141002678",
+    "screenshot": "https://assets.kitor.click/screenshots/toonstruck/d439cb75c5e8c0ad.jpg",
+    "translationCredit": "AdventureBrew"
   },
   {
     "id": "gob2",
@@ -321,7 +394,11 @@
       "osx": true,
       "linux": false
     },
-    "hebrew": true
+    "hebrew": true,
+    "descriptionHe": "בפרק זה אנו שולטים בשני גובלינים - פינגוּס החכם והביישן, ווינקל הטיפש והאמיץ, שמטרתם היא לחלץ את הנסיך הצעיר שנחטף על ידי שד שהפכו לשוטה החצר ולהחזירו בריא ושלם לאביו המלך. כל חידה וחידה במשחק ניתנת לפתרון על ידי אחד מהגובלינים בהתאם לתכונותיו הייחודיות ולעיתים בשילוב של שניהם ביחד.",
+    "sourceUrl": "https://www.facebook.com/groups/hebrewadventure/posts/926432064627557",
+    "screenshot": "https://assets.kitor.click/screenshots/gob2/93cf6d3d8e2801d6.jpg",
+    "translationCredit": "AdventureBrew"
   },
   {
     "id": "tlj",
@@ -340,7 +417,11 @@
       "osx": true,
       "linux": false
     },
-    "hebrew": true
+    "hebrew": true,
+    "descriptionHe": "אפריל ריאן נשאבת למסע בין סטארק וארקדיה, שני עולמות שהאיזון ביניהם מתערער. מפגשים עם דמויות יוצאות דופן, חלומות וחידות חושפים בהדרגה את תפקידה בסיפור גדול ממנה.\n\nהמסע הארוך ביותר הוא הרפתקת הצבע־והקלק עשירה בדיאלוגים, הומור וקסם, שמחברת בין עולמות ובין שאלות על זהות וגורל.",
+    "sourceUrl": "https://www.facebook.com/groups/hebrewadventure/permalink/1680515765885846/",
+    "screenshot": "https://assets.kitor.click/screenshots/tlj/cd4a47ae8ff8f7bc.jpg",
+    "translationCredit": "AdventureBrew"
   },
   {
     "id": "sky",
@@ -359,7 +440,11 @@
       "osx": true,
       "linux": false
     },
-    "hebrew": true
+    "hebrew": true,
+    "descriptionHe": "החיים לא האירו פנים לרוברט פוסטר. כילד קטן וחינני מסוקו התרסק מעל מדבריות השממה והוא היחיד ששרד את ההתרסקות מכל משפחתו. שבט מקומי מאמץ את רוברט ומגדלו כאחד מבניו. רוברט גדל לנער חסון ומוכשר ושוכח את חייו הישנים בעיר הגדולה.\n\nכעבור שנים רבות נוחת שוב מסוק ועליו חיילי איגוד הערים במחנה השבט, חוטף את רוברט ומשמיד את הכפר כולו על תושביו. הדבר היחיד שרוברט מצליח להציל מבין ההריסות בטרם נגרר באכזריות, זה את לוח האם של חברו הטוב ביותר, ג'ואי הרובוט. לוח אם זה משמש כמוחו ואישיותו של ג'ואי ועתיד להיכנס לכל מיני מכשירי חשמל וללוות אותו בכל עת צרה ומצוקה.\n\nהמסוק ועליו רוברט השבוי מתקרב לשמי העיר הגדולה, לוח הפיקוד מתחיל להשתבש והוא מתרסק לתוך הקומה ה-100 של אחד מגורדי השחקים הרבים הענקיים הפזורים בעיר. כמו תמיד גם הפעם רוברט הוא היחיד ששורד (תזכרו בפעם הבאה כשאתם עולים על מסוק, לא לקחת אותו איתכם).\n\nמכאן ואילך רוברט נאלץ לשרוד לבדו בעיר הענקית כשהוא נרדף על ידי צבא מרושע, מערכת מחשבי על בשם חניבעל ששולטת על כל פרט ופרט מחיי היומיום, ושאר תלאות ומכאובים. ביחד עם חברו הרובוט שמתפקד עכשיו כשואב אבק ביתי, הם יוצאים למסע בעיר העגומה בניסיון להציל את עצמם ואת יתר התושבים מידי שלטון העריצות.",
+    "sourceUrl": "https://www.facebook.com/groups/hebrewadventure/posts/1709390876331668",
+    "screenshot": "https://assets.kitor.click/screenshots/sky/6e20c304d27583d8.jpg",
+    "translationCredit": "AdventureBrew"
   },
   {
     "id": "stanley-parable",
@@ -378,7 +463,12 @@
       "osx": false,
       "linux": false
     },
-    "hebrew": true
+    "hebrew": true,
+    "descriptionHe": "אחת התגובות המעניינות שעלו לגבי התרגום של \"סטנלי כמשל\" היא שלא מדובר במשחק. ובכן, בעיני הוא לא סתם משחק - הוא משחק הרפתקאות, שמושפע באופן מאוד ברור מהקודמים לו בז'אנר, וספציפית משחקי טקסט. נכון, מה שהשחקן עושה במשחק זה בעיקר ללכת, וההנאה מתקבלת מגילוי עלילתי ולא מפתרון חידות, ועדיין - הוא בו בעת פארודיה ואמירה על האם השליטה בנראטיב היא של השחקן או היוצר, בזמן שהוא בכל זאת משחק עם נראטיב מתפצל, ומאוד מהנה בתור שכזה.",
+    "sourceUrl": "https://www.facebook.com/groups/200491360554968/posts/1107855336485228/",
+    "screenshot": "https://assets.kitor.click/screenshots/stanley-parable/545da591ec8e906a.jpg",
+    "translationCredit": "sigmagamma and Hebrew Adventure contributors",
+    "steamAppId": 221910
   },
   {
     "id": "tesla-effect",
@@ -397,7 +487,12 @@
       "osx": false,
       "linux": false
     },
-    "hebrew": true
+    "hebrew": true,
+    "descriptionHe": "טקס מרפי חוזר להרפתקה בלשית המשלבת חקירה, חידות וסיפור קולנועי. המשחק ממשיך את סדרת הקווסטים הוותיקה ומזמין אתכם לפגוש מחדש את הבלש בעולם עתידני אפל ומלא הומור.",
+    "sourceUrl": "https://www.facebook.com/groups/200491360554968/permalink/356128024991300/",
+    "screenshot": "https://assets.kitor.click/screenshots/tesla-effect/e8ca617b7708ec30.jpg",
+    "translationCredit": "Hebrew Adventure community (upstream credits)",
+    "steamAppId": 261510
   },
   {
     "id": "ethan-carter",
@@ -416,7 +511,12 @@
       "osx": false,
       "linux": false
     },
-    "hebrew": true
+    "hebrew": true,
+    "descriptionHe": "פול פרוספרו, בלש המתפרנס מחקירת תופעות על טבעיות, רגיל לקבל מכתבי מעריצים רבים מדי יום ביומו. אולם באחד הימים מבצבץ מתיבת הדואר שלו מכתב מאת ילד בשם איתן קרטר וכבר ממילות הפתיחה מבין פול שאין זה מקרה ככל המקרים. איתן משדר אותות מצוקה ומספר לו על האימה האורבת בעמק מסתורי החבוי בינות להרים שם מתגורר הוא ביחד עם בני משפחתו.\n\nפול שם פעמיו לדרך ומגיע לחבל ארץ רחב ידיים פורה ורענן, מעיינות מים ונהרות בוקעים בבקעה ובהר, יערות עד ושדות מוריקים מנוקדים בכפרים ובתים, אולם נפש חיה אין - המקום שומם מאדם. פול אוזר מותניו ומגייס את כוחותיו המיוחדים כדי לחקור את פלאי ומסתורי המקום ולפתור את תעלומת התושבים הנעדרים. אין שום דרך לתאר את ההרפתקאות המסעירות המחכות לכם שם, רק דבר אחד מובטח, בסופו של דבר אף עין לא תישאר יבשה.",
+    "sourceUrl": "https://www.facebook.com/groups/hebrewadventure/permalink/1388383521765740/?mibextid=rS40aB7S9Ucbxw6v",
+    "screenshot": "https://assets.kitor.click/screenshots/ethan-carter/7e645616e133929e.jpg",
+    "translationCredit": "Hebrew Adventure community (upstream credits)",
+    "steamAppId": 258520
   },
   {
     "id": "life-is-strange",
@@ -435,7 +535,12 @@
       "osx": false,
       "linux": false
     },
-    "hebrew": true
+    "hebrew": true,
+    "descriptionHe": "מקס היא נערה ביישנית וחביבה ששבה לעיירת הולדתה בלקוול שבמפרץ ארקדיה לאחר שעקרה משם עם הוריה בהיותה ילדה, כדי ללמוד בבית הספר לצילום אצל מורה מפורסם שנחשב לאחד הטובים במדינה. מקס עושה צעדים ראשונים להתחבב על מוריה וחבריה אך בשלב מסוים היא מבינה שיש לה כוח מיוחד שעתיד לשנות את חייה, היא מסוגלת להשיב את הזמן לאחור ולהשפיע ולעצב אירועים שונים כפי ראות עיניה. מכאן מתחילה עלילה סוערת ומפותלת שמשתרעת על פני חמישה פרקים גדושים באירועים מרתקים ובלתי נשכחים.",
+    "sourceUrl": "https://www.facebook.com/groups/hebrewadventure/posts/1399725470631545",
+    "screenshot": "https://assets.kitor.click/screenshots/life-is-strange/54047ceb01d62bfb.jpg",
+    "translationCredit": "Hebrew Adventure community (upstream credits)",
+    "steamAppId": 319630
   },
   {
     "id": "portal2",
@@ -454,7 +559,12 @@
       "osx": false,
       "linux": false
     },
-    "hebrew": true
+    "hebrew": true,
+    "descriptionHe": "אף אחד לא ציפה שפורטל הראשון יהיה הצלחה גדולה כפי שהיה. אבל משחקיות מבריקה, שמלמדת את השחקן בהדרגתיות איך לנצח את המשחק, המונולוגים המשעשעים של גלאדוס, ועוגה אחת (או פחות) שהפכה למם ויראלי, הפכו את פורטל לאחד המשחקים המוערכים והמצליחים אי פעם. המשחק השני עשה דרך ארוכה ומפותלת יותר אלינו, וכמעט נגנז, אבל התוצר הסופי שקיבלנו הוא כל מה שיכולנו לבקש בעקבות הראשון, ויותר מזה:\n\nהחידות נותנות לנו אתגרים וחפצים חדשים לשחק איתם, העלילה מתרחבת לעולם משחק עם היסטוריה, ו(טוב, מספר בודד של) דמויות, שמדובבות באופן נפלא ונראות נושמות וחיות על המסך כמו היו משהו מסרט של פיקסאר. נוסף על כך, חברת Valve העניקה לנו מצב משחק לשני משתתפים, כלי לייצור פשוט של שלבים, ועוד המון דברים שיכולתי למנות כאן אבל אתם כנראה כאן בשביל לשמוע על הגרסא העברית.",
+    "sourceUrl": "https://www.facebook.com/groups/hebrewadventure/posts/1523199624950795",
+    "screenshot": "https://assets.kitor.click/screenshots/portal2/e81fd6a442c4cfae.jpg",
+    "translationCredit": "sigmagamma and Hebrew Adventure contributors",
+    "steamAppId": 620
   },
   {
     "id": "journey-down1",
@@ -473,7 +583,12 @@
       "osx": false,
       "linux": false
     },
-    "hebrew": true
+    "hebrew": true,
+    "descriptionHe": "בפינה שכוחה במפרץ קינגספורט בואכה הכרך הסואן סנט ארמנדו, שוכנת לה תחנת דלק מוזנחת אותה מנהלים האחים בוואנה וקיטו, שני נערים שגדלו ברחובות ואומצו על ידי אבא קואננדודו הרחום והחנון. לא מזמן הוא נעלם מעל פני האדמה והוריש להם את התחנה הדולפת.\n\nלקוחות אין וכסף מנלן, חברת החשמל מאבדת סבלנות ומאיימת בניתוק, והאחים לא יודעים את נפשם מרוב תסכול. ואז כשערב אחד נכנסת לקוחה ומציעה להם הצעה שאין לסרב לה, הם כמובן נעתרים בשמחה, רק שהם לא יודעים לאיזו הרפתקה מסמרת שיער הם נכנסים...\n\n\"המסע לארץ תחתיות\" הוא קווסט הצבע והקלק קלאסי באווירה אפרו-קריבית, מלא בדמויות משעשעות ומרתקות בהשראת משחקי אי הקופים ודומיו, והרבה אתגרים שיתנו לדמיונכם הפרוע לעבוד שעות נוספות.",
+    "sourceUrl": "https://www.facebook.com/groups/hebrewadventure/posts/1627312777872812/",
+    "screenshot": "https://assets.kitor.click/screenshots/journey-down1/61a7274691b0b160.jpg",
+    "translationCredit": "Hebrew Adventure community (upstream credits)",
+    "steamAppId": 220090
   },
   {
     "id": "kathy-rain-dc",
@@ -492,7 +607,12 @@
       "osx": false,
       "linux": false
     },
-    "hebrew": true
+    "hebrew": true,
+    "descriptionHe": "סיפורנו מתרחש בשנות התשעים. קת'י ריין, סטונדטית לתקשורת נחושה וציניקנית, המתמודדת עם עבר לא פשוט והורות מנוכרת, מתבשרת על מותו הפתאומי של סבה האהוב יוסף ריין. כשהיא חמושה באופנוע הארלי (המכונה בשפתה קייטנוע) חפיסת סיגריות תמידית ופנקס, יוצאת קת'י אל עיירת הולדתה על מנת להיפרד מסבה ולחקור את תעלומת מותו והמורשת המסתורית שהותיר אחריו.\n\nתוך כדי שהיא עוקבת אחר שובל הרמזים, צצות ועולות שאלות כבדות משקל: מה חיפש יוסף באמת באותו לילה לפני שנים רבות? מה הפך אותו לצל אדם, מרותק לכיסא גלגלים? איזה סוד לקחה איתה אל הקבר אמנית צעירה שהתאבדה, ומדוע כל כך הרבה אנשים בעינות קונוול נעדרים, מתים, או מאבדים את שפיותם?\n\nקת'י ריין הוא משחק הצבע והקלק עם המון נוסטלגיה ואהבה לימי הזוהר של הקווסטים, גרפיקה נוטפת צבעוניות ופיקסלים, פסקול ואפקטים שיכניסו אתכם ישירות לאווירה הגשומה והכפרית אפופת המסתורין, ושליטה פשוטה אינטואיטיבית וקולחת נטולת סיבוכים מיותרים. זהו משחק שמשלב בין נוסטלגיה לאיכות מודרנית - כזה שירגישו בו בבית גם לוחמי הרפתקאות למודי קרבות, וגם שחקנים חדשים שעושים זה עתה את צעדיהם הראשונים בז'אנר.",
+    "sourceUrl": "https://www.facebook.com/groups/hebrewadventure/posts/1797129740891114",
+    "screenshot": "https://assets.kitor.click/screenshots/kathy-rain-dc/5401ca953090cb1c.jpg",
+    "translationCredit": "Hebrew Adventure community (upstream credits)",
+    "steamAppId": 1395030
   },
   {
     "id": "drifter",
@@ -511,7 +631,12 @@
       "osx": true,
       "linux": false
     },
-    "hebrew": true
+    "hebrew": true,
+    "descriptionHe": "מיק קרטר, אדם בודד שנדד במשך שנים ממקום למקום, מנסה לברוח מעברו ולהשאיר מאחור את חייו העגומים. לאחר שנים בדרכים, הוא נאלץ לחזור לעיר הולדתו בעקבות פטירתה של אמו, אך מהר מאוד מגלה שהחזרה הביתה תהפוך לסיוט הגדול ביותר שלו.\n\nכבר בתחילת המסע שלו, מיק נקלע במקרה (או שלא?) לרצח אלים ומסתורי. רגעים לאחר מכן הוא עצמו מוצא את מותו… אבל המוות הוא רק ההתחלה. באופן בלתי מוסבר, מיק חוזר אחורה בזמן ומתעורר זמן קצר לפני הרגע שבו נהרג. כעת עליו להבין מה באמת קורה סביבו, מי רודף אחריו, ומה הקשר בין האירועים המוזרים שהוא חווה לבין העבר שממנו ניסה לברוח.",
+    "sourceUrl": "https://www.facebook.com/share/p/1LEcjZ4Kyj/",
+    "screenshot": "https://assets.kitor.click/screenshots/drifter/e83dc806f9231ff5.jpg",
+    "translationCredit": "Hebrew Adventure community (upstream credits)",
+    "steamAppId": 1170570
   },
   {
     "id": "owlboy",
@@ -530,7 +655,11 @@
       "osx": true,
       "linux": false
     },
-    "hebrew": true
+    "hebrew": true,
+    "descriptionHe": "הרפתקת פלטפורמות עלילתית בעולם השוכן בין העננים. עופו בשמים, חקרו מקומות חדשים וקחו את חבריכם למסע כדי להיעזר בכישוריהם.\n\nעולם מפורט באמנות פיקסלים מחבר בין גילוי, פעולה וקשרים עם הדמויות שפוגשים בדרך.",
+    "sourceUrl": "https://store.steampowered.com/app/115800/Owlboy/",
+    "translationCredit": "yhaggai (AI-assisted translation)",
+    "steamAppId": 115800
   },
   {
     "id": "tentacle",
@@ -549,7 +678,12 @@
       "osx": true,
       "linux": false
     },
-    "hebrew": true
+    "hebrew": true,
+    "descriptionHe": "ברנרד, הוגי ולוורן יוצאים לעצור טנטקל סגול שזומם להשתלט על העולם. תקלה במכונת הזמן מפזרת אותם בתקופות שונות, והדרך להצלת העתיד עוברת בשיתוף פעולה בין העבר, ההווה והעתיד.\n\nהרפתקה מצוירת ומשעשעת של לוקאסארטס, שבה שינוי קטן בעבר יכול להפוך לפתרון מפתיע מאות שנים אחר כך.",
+    "sourceUrl": "https://www.facebook.com/groups/hebrewadventure/posts/342895866314516/",
+    "screenshot": "https://assets.kitor.click/screenshots/tentacle/d2ccea3d6da92d5a.jpg",
+    "translationCredit": "AdventureBrew / Shany Roze, Rafael Ben-Ari, Niv Baehr, Omer Cohen; extraction: BLooperZ",
+    "steamAppId": 388210
   },
   {
     "id": "day-of-the-tentacle-remastered",
@@ -568,7 +702,11 @@
       "osx": true,
       "linux": false
     },
-    "hebrew": true
+    "hebrew": true,
+    "descriptionHe": "ברנרד, הוגי ולוורן יוצאים לעצור טנטקל סגול שזומם להשתלט על העולם. תקלה במכונת הזמן מפזרת אותם בתקופות שונות, והדרך להצלת העתיד עוברת בשיתוף פעולה בין העבר, ההווה והעתיד.\n\nהרפתקה מצוירת ומשעשעת של לוקאסארטס, שבה שינוי קטן בעבר יכול להפוך לפתרון מפתיע מאות שנים אחר כך.",
+    "sourceUrl": "https://www.facebook.com/groups/hebrewadventure/posts/342895866314516/",
+    "translationCredit": "AdventureBrew classic translators; local remastered adaptation",
+    "steamAppId": 388210
   },
   {
     "id": "grim-fandango-remastered",
@@ -587,7 +725,11 @@
       "osx": false,
       "linux": false
     },
-    "hebrew": true
+    "hebrew": true,
+    "descriptionHe": "מני קלאוורה עובד כסוכן נסיעות בארץ המתים, אבל מפגש עם לקוחה חדשה מסבך אותו בפרשה גדולה בהרבה מהעבודה היומיומית. במסע מלא מזימות, חברות וגעגוע הוא מנסה לחשוף את האמת ולתקן עוול.\n\nגרים פנדנגו משלב הומור שחור, אווירת סרטי בלשים ועולם חזותי בהשראת יום המתים המקסיקני.",
+    "sourceUrl": "https://www.facebook.com/groups/200491360554968/permalink/356883714915731/",
+    "translationCredit": "Niv Bar and Shani Roz; Kitor native adaptation",
+    "gogSlug": "grim_fandango_remastered"
   },
   {
     "id": "monkey-se-native",
@@ -606,7 +748,12 @@
       "osx": false,
       "linux": false
     },
-    "hebrew": true
+    "hebrew": true,
+    "descriptionHe": "גייבראש ת׳ריפווד חולם להפוך לפיראט אימתני, אבל הדרך אל התואר רצופה מבחנים מגוחכים, דו־קרבות עלבונות ודמויות בלתי נשכחות. כשהפיראט לה־צ׳אק מאיים על המושלת איליין, החלום הופך למסע הצלה באיים הקריביים.\n\nהרפתקת הצבע־והקלק קומית של חידות, אוצרות וסודות, שבה לשון חדה מועילה לא פחות מחרב.",
+    "sourceUrl": "https://www.facebook.com/groups/200491360554968/permalink/418070868797015/",
+    "translationCredit": "AdventureBrew; native adaptation and menu translation: Kitor",
+    "steamAppId": 32360,
+    "gogSlug": "the_secret_of_monkey_island_special_edition"
   },
   {
     "id": "monkey2-se-native",
@@ -625,7 +772,12 @@
       "osx": false,
       "linux": false
     },
-    "hebrew": true
+    "hebrew": true,
+    "descriptionHe": "גייבראש ת׳ריפווד יוצא לחפש אוצר אגדי, אך לה־צ׳אק חוזר לחייו ומאיים להפוך את ההרפתקה לסיוט. בין איים משונים, חידות ערמומיות ופיראטים בעלי חוש הומור מפוקפק, עליו להקדים את יריבו ולגלות מה מסתתר מאחורי האוצר.\n\nהפרק השני בסדרת אי הקופים משלב הומור פרוע, דמויות צבעוניות וסיפור מלא תפניות.",
+    "sourceUrl": "https://www.facebook.com/groups/200491360554968/posts/1105072610096834/",
+    "translationCredit": "AdventureBrew; native adaptation and menu translation: Kitor",
+    "steamAppId": 32460,
+    "gogSlug": "monkey_island_2_special_edition_lechucks_revenge"
   },
   {
     "id": "silver-pines",
@@ -644,7 +796,11 @@
       "osx": false,
       "linux": false
     },
-    "hebrew": true
+    "hebrew": true,
+    "descriptionHe": "בעיירה אמריקאית קטנה מסתתרות תעלומות וסכנות מסויטות. חקרו את סביבותיה, פתרו חידות והתמודדו עם האיומים שבדרך תוך ניהול זהיר של המשאבים המעטים שברשותכם.\n\nהרפתקת אימה והישרדות המשלבת חקירה וגילוי של אזורים מחוברים.",
+    "sourceUrl": "https://store.steampowered.com/app/2333000/Silver_Pines/",
+    "translationCredit": "Kitor",
+    "steamAppId": 2333000
   },
   {
     "id": "jenny-leclue",
@@ -663,7 +819,11 @@
       "osx": true,
       "linux": false
     },
-    "hebrew": true
+    "hebrew": true,
+    "descriptionHe": "ג׳ני לקלו היא בלשית צעירה וסקרנית בעולם מלא תעלומות. הצטרפו אליה לחקירה שמשלבת מפגשים עם דמויות צבעוניות, חיפוש רמזים ופתרון חידות.\n\nהרפתקה מצוירת ששמה במרכז את הסיפור, הדמויות והחדווה שבגילוי האמת.",
+    "sourceUrl": "https://store.steampowered.com/app/319870/Jenny_LeClue__Detectivu/",
+    "translationCredit": "Kitor",
+    "steamAppId": 319870
   },
   {
     "id": "dig",
@@ -682,7 +842,10 @@
       "osx": true,
       "linux": true
     },
-    "hebrew": false
+    "hebrew": false,
+    "descriptionHe": "אסטרואיד בגודל של ירח קטן דוהר לעבר כדור הארץ, ומפקד המשימה בוסטון לאו יוצא לעצור אותו יחד עם העיתונאית מגי רובינס והגיאולוג לודגר ברינק. אחרי שהאסטרואיד משנה את מסלולו, השלושה מוצאים את עצמם בעולם זר ונטוש, מלא בטכנולוגיה של תרבות שנעלמה. כדי לשוב הביתה עליהם להבין מה קרה שם, ומה הם מוכנים להשאיר מאחור.",
+    "sourceUrl": "https://www.gog.com/en/game/the_dig",
+    "gogSlug": "the_dig"
   },
   {
     "id": "disco-elysium",
@@ -701,6 +864,33 @@
       "osx": true,
       "linux": false
     },
-    "hebrew": true
+    "hebrew": true,
+    "descriptionHe": "משחק תפקידים בלשי מאת ZA/UM. אתם מגלמים בלש שאיבד את זיכרונו ונשלח לחקור רצח ברוואשול. אפשר להתקין תרגום חלקי לעברית דרך קיטור.",
+    "sourceUrl": "https://store.steampowered.com/app/632470/",
+    "translationCredit": "Kitor",
+    "steamAppId": 632470
+  },
+  {
+    "id": "moomin-midsummer-madness",
+    "title": "Moomin: Midsummer Madness",
+    "covers": {
+      "en": {
+        "src": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/moomin-midsummer-madness/en/4e88fbccb315.png"
+      },
+      "he": {
+        "src": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/moomin-midsummer-madness/he/5829993e2434.png",
+        "title": "מומינים: טירוף אמצע הקיץ"
+      }
+    },
+    "platforms": {
+      "windows": true,
+      "osx": false,
+      "linux": false
+    },
+    "hebrew": true,
+    "descriptionHe": "שיטפון פתאומי מציף את עמק המומינים וסוחף את משפחת מומין אל תיאטרון ישן שצף על המים. הצטרפו למומינטרול ולמאי הקטנה כשהם חוקרים את התיאטרון, פוגשים חברים ותיקים ופותרים חידות בדרך הביתה. ההרפתקה המאוירת מבוססת על ספרה של טובה ינסון.",
+    "sourceUrl": "https://store.steampowered.com/app/4463520/",
+    "translationCredit": "Kitor",
+    "steamAppId": 4463520
   }
 ]
