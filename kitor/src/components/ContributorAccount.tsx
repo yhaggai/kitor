@@ -70,7 +70,7 @@ export default function ContributorAccount() {
         </>
       ) : (
         <Button variant="outline" size="sm" onClick={() => setOpen(true)}>
-          {t("Contributor sign-in")}
+          {t("Sign in")}
         </Button>
       )}
       {error && !open && (
