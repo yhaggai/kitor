@@ -1,7 +1,6 @@
 {
   "Kitor refreshes your game library from Steam when it opens and uses the connection to download games. You can disconnect in Settings.": "קיטור מרעננת את ספריית המשחקים מ־Steam בפתיחה ומשתמשת בחיבור כדי להוריד משחקים. אפשר לנתק את החשבון בהגדרות.",
-  "Generate Steam QR code": "יצירת קוד QR של Steam",
-  "Generate a QR code here and scan it with Steam Guard.": "צרו כאן קוד QR וסרקו אותו באמצעות Steam Guard.",
+  "Scan the QR code with Steam Guard.": "סרקו את קוד ה־QR באמצעות Steam Guard.",
   "Refresh the library to see your owned games.": "רעננו את הספרייה כדי לראות את המשחקים שבבעלותכם.",
   "Google verifies your account. Kitor’s contribution service stores your Google account ID, display name and verified email. If you submit edits, your display name and Kitor contributor ID appear on the public pull request. Signing in is optional.": "Google מאמתת את החשבון שלכם. שירות התרומות של קיטור שומר את מזהה חשבון Google, את שם התצוגה ואת כתובת האימייל המאומתת. אם תשלחו תיקונים, שם התצוגה ומזהה התורם בקיטור יופיעו בבקשת השינויים הציבורית. ההתחברות אופציונלית.",
   "Finish signing in in your browser…": "השלימו את ההתחברות בדפדפן…",
@@ -475,7 +474,6 @@
   "Approve the Kitor sign-in. We’ll continue automatically.": "אשרו את ההתחברות של קיטור. נמשיך אוטומטית.",
   "Waiting for approval on your phone…": "ממתינים לאישור בטלפון…",
   "Creating a secure sign-in code…": "יוצר קוד התחברות מאובטח…",
-  "Generate a new code": "יצירת קוד חדש",
   "Checking Steam connection…": "בודק את החיבור ל־Steam…",
   "You’re ready to download supported Steam games in Kitor.": "אפשר להוריד משחקי Steam נתמכים ישירות בקיטור.",
   "Scan a QR code with the Steam app on your phone to get started.": "כדי להתחיל, סרקו קוד QR באמצעות אפליקציית Steam בטלפון.",

@@ -99,7 +99,7 @@ export default function SteamConnectDialog() {
             </div>
             <ol className="list-inside list-decimal space-y-2 text-sm">
               <li>{t("Open the Steam app on your phone.")}</li>
-              <li>{t("Generate a QR code here and scan it with Steam Guard.")}</li>
+              <li>{t("Scan the QR code with Steam Guard.")}</li>
               <li>{t("Approve the Kitor sign-in. We’ll continue automatically.")}</li>
             </ol>
             {busy && (
@@ -208,11 +208,6 @@ export default function SteamConnectDialog() {
           <Button variant="outline" onClick={() => void cancel()}>
             {t("Cancel")}
           </Button>
-          {method === "qr" && !busy && (
-            <Button disabled={changing} onClick={() => void retry()}>
-              {t(error ? "Generate a new code" : "Generate Steam QR code")}
-            </Button>
-          )}
         </div>
       </DialogContent>
     </Dialog>
