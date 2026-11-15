@@ -428,7 +428,11 @@
   object-fit: contain;
 }
 .kt-category-shelf {
-  --kt-row-peek: clamp(56px, 7cqi, 112px);
+  --kt-row-columns: 2;
+  --kt-row-gap: 12px;
+  /* Both edge previews together take up one tile, with a gap on each side. */
+  --kt-row-tile: calc(100cqi / (var(--kt-row-columns) + 1) - var(--kt-row-gap));
+  --kt-row-peek: calc(var(--kt-row-tile) / 2 + var(--kt-row-gap));
   position: relative;
   isolation: isolate;
 }
@@ -441,7 +445,7 @@
   width: var(--kt-row-peek);
   padding: 0;
   border: 0;
-  background: color-mix(in srgb, var(--kt-bg) 60%, transparent);
+  background: color-mix(in srgb, var(--kt-bg) 45%, transparent);
   color: var(--kt-text);
 }
 .kt-category-arrow--previous {
@@ -483,8 +487,8 @@
   }
 }
 .kt-category-track {
-  --kt-row-columns: 2;
-  --kt-row-gap: 12px;
+  /* Center the projected box at its resting angle so either edge cuts it in half. */
+  --kt-box-center-offset: -0.008106;
   display: flex;
   gap: var(--kt-row-gap);
   padding-block: 8px;
@@ -493,15 +497,14 @@
   overflow-x: auto;
   overscroll-behavior-inline: contain;
   scrollbar-width: none;
-  scroll-snap-type: inline proximity;
+  scroll-snap-type: inline mandatory;
   scroll-behavior: smooth;
 }
 .kt-category-track::-webkit-scrollbar {
   display: none;
 }
 .kt-category-track .kt-game-tile {
-  /* Fit full tiles and their internal gaps between the two preview areas. */
-  flex: 0 0 calc((100% + var(--kt-row-gap)) / var(--kt-row-columns) - var(--kt-row-gap));
+  flex: 0 0 var(--kt-row-tile);
   padding: 6px;
   margin: 0;
   scroll-snap-align: start;
@@ -511,27 +514,27 @@
   margin-block-start: 6px;
 }
 @container (min-width: 680px) {
-  .kt-category-track {
+  .kt-category-shelf {
     --kt-row-columns: 3;
   }
 }
 @container (min-width: 920px) {
-  .kt-category-track {
+  .kt-category-shelf {
     --kt-row-columns: 4;
   }
 }
 @container (min-width: 1180px) {
-  .kt-category-track {
+  .kt-category-shelf {
     --kt-row-columns: 5;
   }
 }
 @container (min-width: 1460px) {
-  .kt-category-track {
+  .kt-category-shelf {
     --kt-row-columns: 6;
   }
 }
 @container (min-width: 1740px) {
-  .kt-category-track {
+  .kt-category-shelf {
     --kt-row-columns: 7;
   }
 }
