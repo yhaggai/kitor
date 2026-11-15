@@ -28,6 +28,8 @@ pub struct AvailablePatchInfo {
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct GameWithPatches {
     pub id: i32,
+    #[serde(default)]
+    pub tags: Vec<String>,
     pub scummvm_id: String,
     pub title: String,
     pub title_he: Option<String>,
@@ -345,6 +347,7 @@ pub async fn get_games_with_patches(
 
         games_with_patches.push(GameWithPatches {
             id: game.id,
+            tags: game_def.map(|def| def.tags.clone()).unwrap_or_default(),
             scummvm_id: game.scummvm_id,
             title: game.title,
             title_he: game_def.and_then(|def| def.title_he.clone()),

@@ -37,6 +37,7 @@ export function gameSummary(game: Game): GameSummary {
     : (game.is_patched ?? false);
   return {
     id: String(game.id),
+    tags: game.tags,
     searchTerms: `${game.scummvm_id} ${game.title} ${game.title_he ?? ""}`,
     title: classicTitles[game.scummvm_id] ?? game.title,
     titleHe: game.title_he ?? undefined,

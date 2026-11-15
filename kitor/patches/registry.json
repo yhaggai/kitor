@@ -3,7 +3,7 @@
     {
       "scummvm_id": "undertale",
       "add_to_cart_url": "https://www.gog.com/checkout/widget/52756712356612660/1456487183?price=undefined%2031.00",
-      "tags": ["indie", "story"],
+      "tags": ["hot-kitor", "indie", "story"],
       "steam_app_id": 391540,
       "cover_url": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/undertale/9145051fa004.jpg",
       "title": "UNDERTALE",
@@ -1627,7 +1627,7 @@
     {
       "scummvm_id": "owlboy",
       "add_to_cart_url": "https://www.gog.com/checkout/widget/52756712356612660/1159880091?price=undefined%206.20",
-      "tags": ["indie"],
+      "tags": ["hot-kitor", "indie"],
       "steam_app_id": 115800,
       "title": "ילד הינשוף — Owlboy",
       "title_he": "ילד הינשוף",
@@ -2158,7 +2158,7 @@
     },
     {
       "scummvm_id": "disco-elysium",
-      "tags": ["detective"],
+      "tags": ["hot-kitor", "detective"],
       "steam_app_id": 632470,
       "title": "Disco Elysium – The Final Cut",
       "title_he": "דיסקו אליסיום",
@@ -2224,6 +2224,7 @@
     },
     {
       "scummvm_id": "moomin-midsummer-madness",
+      "tags": ["hot-kitor"],
       "steam_app_id": 4463520,
       "title": "Moomin: Midsummer Madness",
       "cover_url": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/moomin-midsummer-madness/en/4e88fbccb315.png",
