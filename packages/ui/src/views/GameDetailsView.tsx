@@ -19,7 +19,7 @@ export function GameDetailsView({
   manage,
   manageControl,
   translation,
-  descriptionCredit,
+  translationCredit,
 }: {
   game: GameSummary;
   collection: Collection;
@@ -28,7 +28,7 @@ export function GameDetailsView({
   manage?: ReactNode;
   manageControl?: ReactNode;
   translation?: ReactNode;
-  descriptionCredit?: ReactNode;
+  translationCredit?: ReactNode;
 }) {
   const { t, language } = useTranslation();
   const [boxOpen, setBoxOpen] = useState(false);
@@ -87,7 +87,6 @@ export function GameDetailsView({
             <p dir="rtl" lang="he">
               {game.description || "הרפתקה חדשה מחכה לכם."}
             </p>
-            {descriptionCredit}
           </div>
         </div>
       </div>
@@ -107,6 +106,7 @@ export function GameDetailsView({
         <p>
           {t("Language:")} {game.language || t("Not available")}
         </p>
+        {translationCredit}
         {game.author && (
           <p dir="auto">
             {t("Translation by")} {game.author}
