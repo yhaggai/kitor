@@ -49,6 +49,28 @@ select:focus-visible {
   width: min(1240px, calc(100% - 96px));
   margin-inline: auto;
 }
+.site-header {
+  position: relative;
+  background: #080f1d;
+}
+.site-header::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: min(100%, 660px);
+  margin-left: clamp(0px, 5vw, 120px);
+  pointer-events: none;
+  background:
+    linear-gradient(to bottom, #080f1d, rgb(8 15 29 / 18%)),
+    url("/art/header-skyline.webp") center bottom / 660px auto no-repeat;
+  mask-image: linear-gradient(to right, transparent, #000 16% 76%, transparent);
+}
+.site-header:dir(ltr)::before {
+  left: auto;
+  right: 0;
+  margin-left: 0;
+  margin-right: clamp(0px, 5vw, 120px);
+}
 .nav {
   height: 100px;
   display: flex;
@@ -56,16 +78,7 @@ select:focus-visible {
   gap: 60px;
   position: relative;
   z-index: 2;
-}
-.brand {
-  font-size: 40px;
-  font-weight: 900;
-  letter-spacing: -2px;
-  white-space: nowrap;
-}
-.steam {
-  color: var(--gold);
-  font-size: 35px;
+  color: #fecb67;
 }
 .nav nav {
   display: flex;
@@ -75,7 +88,9 @@ select:focus-visible {
 .nav .button {
   margin-inline-start: auto;
 }
-.nav a:hover,
+.nav a:not(.button):hover {
+  color: #ffefce;
+}
 .text-link:hover {
   color: var(--teal);
 }
@@ -348,10 +363,6 @@ p {
   color: var(--muted);
   font-size: 13px;
 }
-.footer .brand {
-  font-size: 28px;
-  color: #f6ead6;
-}
 .footer > a:last-child {
   margin-inline-start: auto;
 }
@@ -426,11 +437,7 @@ select {
   min-height: 48px;
   width: 100%;
 }
-.filters p {
-  margin-inline-start: auto;
-  font-size: 14px;
-  color: var(--teal);
-}
+
 .game-grid {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -438,40 +445,13 @@ select {
 }
 .game-entry {
   min-width: 0;
-  border-bottom: 1px solid #263545;
-  padding-bottom: 20px;
 }
-.game-entry .site-box {
-  background: #101b2b !important;
-  border-radius: 8px;
-}
-.game-entry .site-box > div:first-child {
-  padding: 16px 16px 0;
-  min-height: 110px;
-  align-content: start;
-}
-.game-entry .site-box > div:first-child > span {
-  font-size: 12px;
-  letter-spacing: 0;
-  text-transform: none;
-  flex-basis: 100%;
-  min-height: 35px;
-}
-.game-entry .site-box > div:nth-child(2) {
-  --box-width: min(200px, 70cqi);
-}
-.game-meta {
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 8px;
-  font-size: 11px;
-  padding: 16px 10px 0;
-  color: var(--muted);
-}
-.game-meta > span:first-child {
-  color: var(--teal);
-}
+
+
+
+
+
+
 .skip {
   position: fixed;
   top: -100px;
@@ -540,12 +520,16 @@ select {
   .wrap {
     width: calc(100% - 36px);
   }
+  .site-header::before,
+  .site-header:dir(ltr)::before {
+    margin-inline: 0;
+    background-position: center, 35% bottom;
+    background-size: auto, 560px auto;
+    opacity: 0.72;
+  }
   .nav {
     height: 80px;
     gap: 15px;
-  }
-  .brand {
-    font-size: 32px;
   }
   .nav nav {
     gap: 16px;
@@ -656,24 +640,14 @@ select {
   .filters label:first-child {
     min-width: 100%;
   }
-  .filters p {
-    margin: 0 auto 10px 0;
-  }
+
   .game-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 24px 10px;
   }
-  .game-entry .site-box > div:first-child {
-    padding: 12px 9px 0;
-    min-height: 133px;
-  }
-  .game-entry .site-box > div:nth-child(2) {
-    --box-width: 72cqi;
-  }
-  .game-meta {
-    font-size: 10px;
-    padding-inline: 2px;
-  }
+
+
+
   .catalog > .lead {
     max-width: 500px;
   }
@@ -728,10 +702,13 @@ select {
 .brand {
   display: inline-flex;
   flex-shrink: 0;
+  padding-inline: 6px;
+  border-radius: 8px;
 }
 .brand img {
   display: block;
   height: auto;
+  filter: drop-shadow(0 0 6px rgb(255 169 66 / 45%));
 }
 .nav-actions {
   display: flex;
@@ -739,14 +716,7 @@ select {
   gap: 12px;
   margin-inline-start: auto;
 }
-.language-switch {
-  display: inline-flex;
-  align-items: center;
-  min-height: 40px;
-  padding-inline: 12px;
-  border: 1px solid #3c4b60;
-  border-radius: 6px;
-}
+
 @media (max-width: 760px) {
   .nav .brand img {
     width: 104px;

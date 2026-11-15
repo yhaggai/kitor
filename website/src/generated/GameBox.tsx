@@ -1,4 +1,4 @@
-import { useTranslation } from "@kitor/ui";
+import { useTranslation } from "../lib/game-box-translation";
 import * as Dialog from "@radix-ui/react-dialog";
 import { Package, X, ZoomIn, ZoomOut } from "lucide-react";
 import { type CSSProperties, useRef, useState } from "react";

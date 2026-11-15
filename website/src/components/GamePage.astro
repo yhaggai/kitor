@@ -1,0 +1,236 @@
+---
+import Layout from "../layouts/Layout.astro";
+import type { CatalogGame } from "../lib/catalog";
+import { fallbackInstallerUrl, installers } from "../lib/downloads";
+import { gameGuideNotes } from "../lib/game-guide-notes";
+import Box from "./Box";
+
+const { game, locale } = Astro.props as { game: CatalogGame; locale: "he" | "en" };
+const en = locale === "en";
+const t = (hebrew: string, english: string) => (en ? english : hebrew);
+const home = en ? "/en/" : "/";
+const name = (en ? game.title : game.title_he) || game.title;
+const searchTitle = game.hebrew ? t(`${name} בעברית`, `${name} in Hebrew`) : name;
+const description = game.hebrew
+  ? t(
+      `איך לשחק ב־${name} בעברית עם קיטור. בדקו את פרטי המשחק והורידו את האפליקציה.`,
+      `Play ${name} in Hebrew with Kitor. Check the game details and download the app.`
+    )
+  : t(`${name} בקטלוג קיטור. בדקו את פרטי המהדורה והזמינות.`, `${name} in the Kitor catalog. Check the edition and availability.`);
+const otherLocale = en ? "he" : "en";
+const boxLanguage = game.covers[locale].src ? locale : otherLocale;
+const note = gameGuideNotes[game.id]?.[locale];
+const translationCreditParts = game.translationCredit?.split(/(\bAdventureBrew\b)/i);
+const adventureBrewGroupUrl = "https://www.facebook.com/groups/hebrewadventure";
+const storeLinks = [
+  ...(game.steamAppId ? [{ name: "Steam", url: `https://store.steampowered.com/app/${game.steamAppId}/` }] : []),
+  ...(game.gogSlug ? [{ name: "GOG", url: `https://www.gog.com/en/game/${game.gogSlug}` }] : []),
+];
+---
+
+<Layout {locale} title={`${searchTitle} – ${t("קיטור", "Kitor")}`} {description}>
+  <main id="main" class="wrap game-guide">
+    <a class="text-link" href={home + "games/"}>{t("חזרה לקטלוג המשחקים", "Back to the game catalog")}</a>
+    <div class="game-guide-intro">
+      <div class="game-guide-copy">
+        <h1>{name}</h1>
+        {!en && game.title_he && <p class="quiet"><bdi>{game.title}</bdi></p>}
+        <p class="lead">{game.hebrew
+          ? t("רוצים לשחק בעברית? הורידו את קיטור והוסיפו את העותק שלכם של המשחק לקיטור.", "Want to play in Hebrew? Download Kitor and add your own copy of the game.")
+          : t("רוצים לשחק? הורידו את קיטור והוסיפו את העותק שלכם של המשחק לקיטור. למשחק הזה אין כרגע תרגום בקיטור.", "Want to play? Download Kitor and add your own copy of the game. Kitor does not currently offer a Hebrew patch for this title.")}
+        </p>
+        <div class="game-download-control" dir="ltr">
+          <a class="button" id="game-download" href={home + "#download"} dir={en ? "ltr" : "rtl"}>
+            <span id="game-download-label">{t("הורידו את קיטור", "Download Kitor")}</span>
+            <span aria-hidden="true">↓</span>
+          </a>
+          <details id="game-installers" class="game-installers">
+            <summary class="button" aria-label={t("כל גרסאות ההורדה", "All installer options")}>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m6 9 6 6 6-6" /></svg>
+            </summary>
+            <ul class="installer-options">
+              {installers.map(({ id, label }) => (
+                <li>
+                  <a data-game-installer={id} href={fallbackInstallerUrl(id)}>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                      {id.startsWith("windows") ? (
+                        <path d="M2 4.8 11 3.5V11H2Zm10-1.5L22 2v9H12ZM2 12h9v7.5L2 18.2Zm10 0h10v10l-10-1.5Z" />
+                      ) : (
+                        <path d="M17.1 12.4c0-2 1.6-3 1.7-3.1-1-1.5-2.7-1.7-3.3-1.7-1.4-.2-2.7.8-3.4.8-.7 0-1.8-.8-3-.8-1.6 0-3.1.9-3.9 2.3-1.7 2.9-.4 7.2 1.2 9.5.8 1.1 1.7 2.3 2.9 2.3 1.2-.1 1.7-.8 3.2-.8 1.5 0 1.9.8 3.2.8 1.3 0 2.1-1.2 2.9-2.3.9-1.3 1.2-2.6 1.2-2.7-.1 0-2.7-1-2.7-4.3ZM14.7 6.1c.7-.9 1.2-2 1.1-3.1-1 .1-2.2.7-3 1.5-.7.8-1.2 1.9-1.1 3 1.1.1 2.3-.6 3-1.4Z" />
+                      )}
+                    </svg>
+                    <span>{label}</span>
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </details>
+        </div>
+      </div>
+      {game.covers[boxLanguage].src && (
+        <div class="game-guide-box">
+          <Box {locale} title={name} covers={game.covers} defaultLanguage={boxLanguage} client:load />
+        </div>
+      )}
+    </div>
+
+    <section class="game-guide-section">
+      <h2>{t("פרטי המשחק", "Game details")}</h2>
+      {note && <p>{note}</p>}
+      {!en && game.descriptionHe && <p class="game-guide-description">{game.descriptionHe}</p>}
+      {translationCreditParts && (
+        <p>
+          {t("קרדיט לתרגום", "Translation credit")} · <bdi>{translationCreditParts.map((part, index) =>
+            index % 2 === 1 ? <a class="text-link" href={adventureBrewGroupUrl}>{part}</a> : part
+          )}</bdi>
+        </p>
+      )}
+      {(storeLinks.length > 0 || game.sourceUrl) && (
+        <div class="game-guide-links">
+          {storeLinks.map(({ name, url }) => <a class="text-link" href={url}><bdi>{name}</bdi></a>)}
+          {game.sourceUrl && <a class="text-link" href={game.sourceUrl}>{t("פרסום מקורי", "Original announcement")}</a>}
+        </div>
+      )}
+    </section>
+
+    {game.screenshot && (
+      <img class="game-guide-screenshot" src={game.screenshot} alt={t(`צילום מסך מתוך ${name}`, `${name} screenshot`)} loading="lazy" />
+    )}
+  </main>
+</Layout>
+
+<script>
+  import { detectDownload, fallbackInstallerUrl, installers, latestInstallers } from "../lib/downloads";
+
+  const button = document.querySelector<HTMLAnchorElement>("#game-download");
+  const label = document.querySelector("#game-download-label");
+  const dropdown = document.querySelector<HTMLDetailsElement>("#game-installers");
+  const summary = dropdown?.querySelector("summary");
+  const published = latestInstallers().catch(() => undefined);
+  let directDownload = false;
+
+  button?.addEventListener("click", (event) => {
+    if (!dropdown || directDownload) return;
+    event.preventDefault();
+    dropdown.open = true;
+    dropdown.querySelector("a")?.focus();
+  });
+
+  document.addEventListener("click", (event) => {
+    if (dropdown && !dropdown.contains(event.target as Node) && !button?.contains(event.target as Node)) {
+      dropdown.open = false;
+    }
+  });
+
+  dropdown?.addEventListener("keydown", (event) => {
+    if (event.key !== "Escape" || !dropdown.open) return;
+    dropdown.open = false;
+    summary?.focus();
+  });
+
+  void detectDownload(navigator).then(async (detected) => {
+    if (!button || !label || !detected) return;
+    const platform = detected === "mac" || detected.startsWith("darwin-") ? "macOS" : "Windows";
+    const platformName = document.createElement("bdi");
+    platformName.textContent = platform;
+    const prefix = document.documentElement.lang === "en" ? "Download Kitor for " : "הורידו את קיטור ל־";
+    label.replaceChildren(prefix, platformName);
+
+    const installer = installers.find(({ id }) => id === detected);
+    if (!installer) return;
+    directDownload = true;
+    button.href = fallbackInstallerUrl(installer.id);
+    const url = (await published)?.urls.get(installer.id);
+    if (url) button.href = url;
+  });
+
+  void published.then((release) => {
+    if (!release) return;
+    for (const [id, url] of release.urls) {
+      const link = document.querySelector<HTMLAnchorElement>(`[data-game-installer="${id}"]`);
+      if (link) link.href = url;
+    }
+  });
+</script>
+
+<style>
+  .game-guide { padding-block: 40px 100px; }
+  .game-guide-intro {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 32px;
+    margin-block: 40px;
+  }
+  .game-guide-copy { flex: 1 1 480px; min-width: 0; }
+  .game-guide-box { width: min(100%, 300px); margin-inline: auto; }
+  .game-guide h1 { font-size: clamp(2rem, 6vw, 4rem); }
+  .game-guide h2 { font-size: clamp(1.5rem, 4vw, 2rem); }
+  .game-guide .lead { margin-block: 16px 24px; }
+  .game-download-control {
+    position: relative;
+    display: inline-flex;
+    align-items: stretch;
+    gap: 2px;
+    max-width: 100%;
+  }
+  .game-download-control > a {
+    gap: 12px;
+    padding-inline: clamp(10px, 3vw, 24px);
+    border-radius: 6px 0 0 6px;
+  }
+  .game-download-control .button:hover {
+    transform: none;
+  }
+  .game-installers {
+    display: flex;
+  }
+  .game-installers summary {
+    height: 100%;
+    padding-inline: 13px;
+    border-radius: 0 6px 6px 0;
+    cursor: pointer;
+    list-style: none;
+  }
+  .game-installers summary::-webkit-details-marker {
+    display: none;
+  }
+  .installer-options {
+    position: absolute;
+    z-index: 2;
+    inset: calc(100% + 6px) 0 auto auto;
+    width: max-content;
+    max-width: calc(100vw - 40px);
+    margin: 0;
+    padding: 6px;
+    list-style: none;
+    background: #101b2b;
+    border: 1px solid #3c4b60;
+    border-radius: 8px;
+    box-shadow: 0 8px 24px #0005;
+  }
+  :global(html[lang="en"]) .installer-options {
+    inset-inline: 0 auto;
+  }
+  .installer-options a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 9px 12px;
+    border-radius: 4px;
+  }
+  .installer-options a:hover,
+  .installer-options a:focus-visible {
+    background: #263545;
+  }
+  .installer-options svg {
+    flex: none;
+  }
+  .game-guide-links { display: flex; flex-wrap: wrap; gap: 8px 16px; margin-block: 16px; }
+  .game-guide-links .text-link { overflow-wrap: anywhere; }
+  .game-guide-section { max-width: 72ch; }
+  .game-guide-section p { margin-block: 12px; }
+  .game-guide-description { white-space: pre-line; }
+  .game-guide-screenshot { display: block; max-width: min(100%, 720px); height: auto; margin-block-start: 24px; }
+</style>
