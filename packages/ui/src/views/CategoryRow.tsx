@@ -8,6 +8,7 @@ import {
   useRef,
   useState,
 } from "react";
+import hotKitorEmoji from "../assets/hot-kitor.webp";
 import type { GameCategory } from "../categories";
 import { GameTile } from "../components/GameTile";
 import { useTranslation } from "../i18n";
@@ -59,6 +60,7 @@ export function CategoryRow({
   onOpen: (game: GameSummary, element: HTMLButtonElement) => void;
 }) {
   const { t } = useTranslation();
+  const isHotKitor = category === "hot-kitor";
   const Icon = (category && categoryIcons.get(category)) || Gamepad2Icon;
   const iconRef = useRef<AnimatedIconHandle>(null);
   const headingId = useId();
@@ -107,7 +109,11 @@ export function CategoryRow({
           onMouseEnter={() => iconRef.current?.startAnimation()}
           onMouseLeave={() => iconRef.current?.stopAnimation()}
         >
-          <Icon ref={iconRef} size={22} />
+          {isHotKitor ? (
+            <img className="kt-category-emoji" src={hotKitorEmoji} alt="" width={30} height={30} />
+          ) : (
+            <Icon ref={iconRef} size={22} />
+          )}
           <h2 id={headingId}>{title}</h2>
         </div>
       </div>
@@ -130,7 +136,12 @@ export function CategoryRow({
           onScroll={(event) => updateEdges(event.currentTarget)}
         >
           {games.map((game) => (
-            <GameTile key={game.id} game={game} onOpen={onOpen} />
+            <GameTile
+              key={game.id}
+              game={game}
+              onOpen={onOpen}
+              showBeta={game.tags?.includes("hot-kitor")}
+            />
           ))}
         </div>
         {!edges.end && (

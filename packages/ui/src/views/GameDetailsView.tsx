@@ -101,6 +101,9 @@ export function GameDetailsView({
       )}
       <section className="kt-detail-panel" aria-labelledby={`${id}-translation`}>
         <h2 id={`${id}-translation`}>{t("Community translation")}</h2>
+        {game.tags?.includes("hot-kitor") && (
+          <p>{t("This Hebrew translation is still in beta and needs further testing.")}</p>
+        )}
         <p>
           {t("Language:")} {game.language || t("Not available")}
         </p>

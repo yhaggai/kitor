@@ -423,6 +423,10 @@
   font-size: clamp(17px, 2.4cqi, 23px);
   line-height: 1.25;
 }
+.kt-category-emoji {
+  flex-shrink: 0;
+  object-fit: contain;
+}
 .kt-category-shelf {
   --kt-row-peek: clamp(56px, 7cqi, 112px);
   position: relative;
@@ -537,6 +541,7 @@
   gap: 32px 28px;
 }
 .kt-game-tile {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: stretch;
@@ -548,6 +553,30 @@
   text-align: start;
   border-radius: 12px;
   min-width: 0;
+}
+.kt-beta-corner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 70px;
+  height: 70px;
+  overflow: hidden;
+  z-index: 1;
+  pointer-events: none;
+}
+.kt-beta-corner > span {
+  position: absolute;
+  top: 17px;
+  left: -25px;
+  width: 110px;
+  padding-block: 3px;
+  transform: rotate(-45deg);
+  background: #f8c65d;
+  color: #241706;
+  font-size: 12px;
+  font-weight: 750;
+  line-height: 1.25;
+  text-align: center;
 }
 .kt-game-tile--highlighted {
   outline: 2px solid var(--kt-accent);

@@ -1,5 +1,6 @@
 /** Stable registry tag ids and the English labels shown on Home. */
 export const categoryLabels = {
+  "hot-kitor": "Hot Kitor",
   classic: "Old classic",
   detective: "Detective",
   thriller: "Thriller",
