@@ -116,6 +116,10 @@ pub fn merge(registry: &mut Registry, catalog: &Catalog) {
         else {
             continue;
         };
+        // The language-only feed cannot identify a particular file-matched build.
+        if game.uses_file_matching(&release.language) {
+            continue;
+        }
         let Some(patch) = game
             .patches
             .iter_mut()

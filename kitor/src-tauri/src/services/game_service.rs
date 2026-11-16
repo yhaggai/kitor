@@ -317,7 +317,9 @@ pub async fn get_games_with_patches(
         let available_patches: Vec<AvailablePatchInfo> = if let Some(def) = game_def.filter(|def| {
             def.platforms.as_ref().is_none_or(|p| if cfg!(target_os="windows") {p.windows} else if cfg!(target_os="macos") {p.osx} else {p.linux})
         }) {
-            def.patches.iter().map(|p| {
+            let target = def.behavior.install_target(Path::new(&game.install_path))?;
+            super::patch_service::patches_for_installation(def, &target, &installed)
+                .into_iter().map(|p| {
                 AvailablePatchInfo {
                     release_revision: p.release_revision,
                     language: p.language.clone(),

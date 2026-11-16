@@ -952,9 +952,30 @@
           "source_type": "github",
           "checksum": "ef14aaeaff5c680ebfde31751b6f24d4bd1c417521ed0a1f8d03da33906075bf",
           "file_size": 222535658,
-          "description": "הרפתקת הצבע והקלק עם אפריל ריאן בין העולמות ארקדיה וסטארק, המשלבת חלומות, פילוסופיה, הומור וקסם.\n\nקרדיטים ותודות (מהפרסום המקורי):\nבראש ובראשונה נכיר תודה לקברניט שהוביל וניווט את הספינה בנחישות ובתבונה לחוף מבטחים, האחד והיחיד ניב באר. וכמו כן ליורדי הים שהצטרפו להפלגה ותרמו איש איש מכישוריו ונסיונו. ואלה שמותם: סיון רדט (מתרגמת ראשית), נתנאל אטלי, גל שמש, חן יערי, אלעזר גרשוני.\n\nUse the owned GOG edition referenced by publisher; Steam compatibility remains unverified. Requires a ScummVM Stark build with Hebrew support. Fonts remain local to the game. Windows/macOS package plans are built; native gameplay validation is pending. Automatic folder detection recognizes the Toonstruck resources in MISC, including GOG macOS app bundles.",
+          "description": "הרפתקת הצבע והקלק עם אפריל ריאן בין העולמות ארקדיה וסטארק, המשלבת חלומות, פילוסופיה, הומור וקסם.\n\nקרדיטים ותודות (מהפרסום המקורי):\nבראש ובראשונה נכיר תודה לקברניט שהוביל וניווט את הספינה בנחישות ובתבונה לחוף מבטחים, האחד והיחיד ניב באר. וכמו כן ליורדי הים שהצטרפו להפלגה ותרמו איש איש מכישוריו ונסיונו. ואלה שמותם: סיון רדט (מתרגמת ראשית), נתנאל אטלי, גל שמש, חן יערי, אלעזר גרשוני.\n\nGOG edition. Requires ScummVM Stark with Hebrew support.",
           "filename": "tlj-he-catalog-20261025-kitor1.zip",
-          "post_install_script": null
+          "post_install_script": null,
+          "match_files": {
+            "x.xarc": "e8f217666a04cf4df537df901f350a5bf716bcd22256dac5aa88f1f76b6693f0",
+            "game.exe": "7a431e0a1eee1247d04bc1547682af72e92147c59bb97658ab1120b19559a4b1"
+          }
+        },
+        {
+          "install_manifest": "patch.json",
+          "language": "he",
+          "version": "catalog-20261025-steam1",
+          "author": "AdventureBrew",
+          "download_url": "https://github.com/yhaggai/kitor/releases/download/patch-tlj-he-vcatalog-20261025-steam1/tlj-he-catalog-20261025-steam1.zip",
+          "source_type": "github",
+          "checksum": "f40906369e33025a829c1d9b3faa21e266e53a29ffa3d386d0bbfd254a2ec0c4",
+          "file_size": 222537505,
+          "description": "הרפתקת הצבע והקלק עם אפריל ריאן בין העולמות ארקדיה וסטארק, המשלבת חלומות, פילוסופיה, הומור וקסם.\n\nקרדיטים ותודות (מהפרסום המקורי):\nבראש ובראשונה נכיר תודה לקברניט שהוביל וניווט את הספינה בנחישות ובתבונה לחוף מבטחים, האחד והיחיד ניב באר. וכמו כן ליורדי הים שהצטרפו להפלגה ותרמו איש איש מכישוריו ונסיונו. ואלה שמותם: סיון רדט (מתרגמת ראשית), נתנאל אטלי, גל שמש, חן יערי, אלעזר גרשוני.\n\nSteam edition. Requires ScummVM Stark with Hebrew support.",
+          "filename": "tlj-he-catalog-20261025-steam1.zip",
+          "post_install_script": null,
+          "match_files": {
+            "x.xarc": "2b1545a9ac40493f9e16ddb19522ddc57c2134e5af77eb39465d8c21352731f8",
+            "game.exe": "14ecbd33415cf95bccf3e76d563e02843ab5dbbe0efc0d550827f27e681c00d3"
+          }
         }
       ],
       "gog": {
@@ -1002,7 +1023,8 @@
             "args": ["--language=he", "--fullscreen", "--auto-detect"]
           }
         }
-      }
+      },
+      "steam_app_id": 6310
     },
     {
       "scummvm_id": "sky",
