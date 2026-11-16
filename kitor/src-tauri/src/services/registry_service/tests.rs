@@ -73,3 +73,75 @@ fn production_registry_ignores_external_catalog() {
     assert_eq!(registry_content(&external).unwrap(),
         include_str!("../../../../patches/registry.json"));
 }
+
+#[test]
+fn tlj_catalog_groups_variants_and_keeps_the_best_release_for_each_build() {
+    let registry: Registry =
+        serde_json::from_str(include_str!("../../../../patches/registry.json")).unwrap();
+    let mut game = registry.games.into_iter().find(|game| game.scummvm_id == "tlj").unwrap();
+    let gog = game.patches[0].clone();
+    let steam = game.patches[1].clone();
+    assert_eq!(game.steam_app_id, Some(6310));
+    assert!(game.gog.is_some());
+    assert_eq!(game.catalog_patches().count(), 1);
+    assert_eq!(game.compatible_patches(|path| gog.match_files.get(path).cloned())[0].version, gog.version);
+    assert_eq!(game.compatible_patches(|path| steam.match_files.get(path).cloned())[0].version, steam.version);
+    assert!(game.compatible_patches(|path| {
+        (path == "x.xarc").then(|| steam.match_files[path].clone())
+    }).is_empty());
+
+    let mut update = steam.clone();
+    update.version = "new-steam-translation".into();
+    update.release_revision = 1;
+    game.patches.push(update);
+    let mut another_build = steam.clone();
+    another_build.version = "unrelated-new-game-build".into();
+    another_build.release_revision = 2;
+    another_build.match_files.insert("x.xarc".into(), "00".repeat(32));
+    game.patches.push(another_build);
+    assert_eq!(game.compatible_patches(|path| steam.match_files.get(path).cloned())[0].version,
+        "new-steam-translation");
+    assert_eq!(game.compatible_patches(|path| gog.match_files.get(path).cloned())[0].version, gog.version);
+}
+
+#[test]
+fn active_patch_fingerprints_follow_verified_journal_bytes() {
+    use super::super::patch_lifecycle;
+    use std::fs;
+
+    let registry: Registry =
+        serde_json::from_str(include_str!("../../../../patches/registry.json")).unwrap();
+    let mut game = registry.games.into_iter().find(|game| game.scummvm_id == "tlj").unwrap();
+    game.patches.truncate(1);
+    let patch = &mut game.patches[0];
+    let fixture = tempfile::tempdir().unwrap();
+    let target = fixture.path().join("game");
+    let package = fixture.path().join("package");
+    fs::create_dir(&target).unwrap();
+    fs::create_dir(&package).unwrap();
+    let original = target.join("x.xarc");
+    let payload = package.join("replacement");
+    fs::write(&original, "original").unwrap();
+    fs::write(&payload, "patched").unwrap();
+    let original_hash = patch_lifecycle::hash(&original).unwrap();
+    let installed_hash = patch_lifecycle::hash(&payload).unwrap();
+    patch.match_files = BTreeMap::from([("x.xarc".into(), original_hash.clone())]);
+    let manifest = serde_json::json!({
+        "schema_version": 1, "scummvm_id": "tlj", "language": "he",
+        "version": patch.version, "filename": "test.zip", "platforms": {"osx": {}},
+        "files": [{
+            "path": "x.xarc", "operation": "modify", "original_sha256": original_hash,
+            "installed_sha256": installed_hash,
+            "source": {"kind": "copy", "path": "replacement", "sha256": installed_hash}
+        }]
+    });
+    fs::write(package.join("patch.json"), serde_json::to_vec(&manifest).unwrap()).unwrap();
+    let journal = patch_lifecycle::install(
+        &package, "patch.json", &target, &fixture.path().join("backups"),
+        "tlj", "he", &game.patches[0].version, "osx",
+    ).unwrap();
+    assert!(game.patches_for_target(&target, std::iter::empty::<&Path>()).is_empty());
+    assert_eq!(game.patches_for_target(&target, [&journal]).len(), 1);
+    fs::write(&original, "changed outside Kitor").unwrap();
+    assert!(game.patches_for_target(&target, [&journal]).is_empty());
+}

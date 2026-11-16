@@ -155,6 +155,7 @@ pub fn preview_definition(
 ) -> Result<super::super::registry_service::PatchDefinition, String> {
     use super::super::{patch_lifecycle, registry_service::PatchDefinition};
     Ok(PatchDefinition {
+        match_files: Default::default(),
         release_revision:0,install_manifest:Some("patch.json".into()),language:"he".into(),
         version:"0.1.0-preview1".into(),author:"Kitor local preview".into(),
         download_url:"local-preview://disco-elysium".into(),source_type:"local-preview".into(),

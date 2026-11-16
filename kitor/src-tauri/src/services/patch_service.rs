@@ -34,6 +34,16 @@ pub struct PatchInfo {
     pub tags: Vec<String>,
 }
 
+pub(super) fn patches_for_installation<'a>(
+    definition: &'a registry_service::GameDefinition,
+    target: &Path,
+    installed: &[installed_patch::Model],
+) -> Vec<&'a registry_service::PatchDefinition> {
+    definition.patches_for_target(target, installed.iter()
+        .filter(|patch| patch.status == "active")
+        .filter_map(|patch| patch.backup_path.as_deref()))
+}
+
 pub async fn get_patches_for_game(
     db: &DatabaseConnection,
     game_id: i32,
@@ -54,9 +64,15 @@ pub async fn get_patches_for_game(
         .find(|g| g.scummvm_id == game.scummvm_id)
         .ok_or("Game not found in registry")?;
 
-    let patches: Vec<PatchInfo> = game_def
-        .patches
+    let installed = if game_def.patches.iter().any(|patch| !patch.match_files.is_empty()) {
+        reconcile_patches(db, &game, &game_def.behavior).await?
+    } else {
+        Vec::new()
+    };
+    let target = game_def.behavior.install_target(Path::new(&game.install_path))?;
+    let patches: Vec<PatchInfo> = patches_for_installation(&game_def, &target, &installed)
         .into_iter()
+        .cloned()
         .map(|p| PatchInfo {
             scummvm_id: game_def.scummvm_id.clone(),
             game_title: game_def.title.clone(),
@@ -141,7 +157,7 @@ pub async fn get_all_patches(db: &DatabaseConnection) -> Result<Vec<PatchInfo>, 
             continue;
         }
 
-        for patch in game_def.patches {
+        for patch in game_def.catalog_patches().cloned() {
             all_patches.push(PatchInfo {
                 scummvm_id: game_def.scummvm_id.clone(),
                 game_title: game_def.title.clone(),
@@ -235,17 +251,6 @@ pub async fn download_and_install_patch(
         }
     }
 
-    let patch = game_def
-        .patches
-        .into_iter()
-        .find(|p| p.language == language && p.version == version)
-        .ok_or("Patch not found in registry")?;
-
-    println!(
-        "[patch_service] Patch found: {} by {}",
-        patch.description, patch.author
-    );
-
     let install_target = crate::services::game_service::detect_game_for_id(
         Path::new(&game.install_path),
         &game.scummvm_id,
@@ -253,6 +258,30 @@ pub async fn download_and_install_patch(
     .filter(|detected| detected.scummvm_id == game.scummvm_id)
     .map(|detected| PathBuf::from(detected.install_path))
     .ok_or("Game data folder no longer matches the registered game")?;
+
+    let selected_by_files = game_def.uses_file_matching(&language);
+    let installed = if selected_by_files {
+        reconcile_patches(db, &game, &game_def.behavior).await?
+    } else {
+        Vec::new()
+    };
+    let patch = if selected_by_files {
+        let target = game_def.behavior.install_target(&install_target)?;
+        patches_for_installation(&game_def, &target, &installed)
+            .into_iter()
+            .find(|patch| patch.language == language)
+            .ok_or("Unsupported original version: no translation matches the installed game files")?
+    } else {
+        game_def.patches.iter()
+            .find(|patch| patch.language == language && patch.version == version)
+            .ok_or("Patch not found in registry")?
+    };
+    let version = patch.version.clone();
+
+    println!(
+        "[patch_service] Patch found: {} by {}",
+        patch.description, patch.author
+    );
 
     // Emit progress: Preparing download
     crate::services::diagnostics::record(&app_data_dir, "patch", &scummvm_id, "preparing download");
@@ -306,7 +335,7 @@ pub async fn download_and_install_patch(
         "[patch_service] Download destination: {}",
         download_path.display()
     );
-    let source = super::package_source::PackageSource::resolve(&patch, &game_def.behavior)?;
+    let source = super::package_source::PackageSource::resolve(patch, &game_def.behavior)?;
     match &source {
         super::package_source::PackageSource::Download
         | super::package_source::PackageSource::SpaceQuest4Scummvm => {
@@ -379,6 +408,11 @@ pub async fn download_and_install_patch(
             "step": "Checking patch files..."
         }),
     );
+    if selected_by_files && !patches_for_installation(&game_def, &install_target, &installed)
+        .iter().any(|candidate| std::ptr::eq(*candidate, patch))
+    {
+        return Err("Unsupported original version: game files changed during patch download".into());
+    }
     let previous = get_installed_patches(db, game.id).await?;
     if previous.iter().any(|p| {
         p.backup_path

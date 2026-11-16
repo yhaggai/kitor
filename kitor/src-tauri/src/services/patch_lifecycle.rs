@@ -245,6 +245,22 @@ pub fn matches_installation(dir: &Path, target: &Path, game: &str) -> Result<boo
     Ok(journal.game == game && journal.target == target.canonicalize().map_err(err)?)
 }
 
+/// Resolve an original fingerprint from an active transaction only when the
+/// current file still matches that transaction's installed bytes.
+pub fn original_fingerprints(
+    dir: &Path, target: &Path, game: &str,
+) -> Result<BTreeMap<String, (String, String)>> {
+    let journal = load(dir)?;
+    if journal.status != "active" || journal.game != game
+        || journal.target != target.canonicalize().map_err(err)?
+    {
+        return Err("Patch journal does not identify an active patch for this installation".into());
+    }
+    Ok(journal.files.into_iter().filter_map(|record| {
+        Some((record.path.to_ascii_lowercase(), (record.original_hash?, record.installed_hash?)))
+    }).collect())
+}
+
 /// A fresh installation at a previously patched path must not inherit its badge.
 /// Retain the old journal and backups; only inspect the files it affected.
 pub fn matches_original_files(dir: &Path, target: &Path) -> Result<bool> {

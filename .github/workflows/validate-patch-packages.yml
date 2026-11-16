@@ -103,6 +103,19 @@ jobs:
               subprocess.run([sys.executable, 'kitor/tools/build_patch_packages.py', str(manifest), '--platform', 'windows', '--output', 'dist/candidates'], check=True)
           for manifest in sorted(pathlib.Path('patches-workspace').glob('*/he/patch.osx.candidate.json')):
               subprocess.run([sys.executable, 'kitor/tools/build_patch_packages.py', str(manifest), '--platform', 'osx', '--output', 'dist/candidates'], check=True)
+      - name: Rebuild the Steam-specific Longest Journey package
+        shell: python
+        run: |
+          import hashlib, json, pathlib, subprocess, sys
+          subprocess.run([sys.executable, 'patches-workspace/tlj/he/build_steam.py', '--output', 'dist/patches'], check=True)
+          registry = json.loads(pathlib.Path('kitor/patches/registry.json').read_text(encoding='utf-8'))
+          game = next(game for game in registry['games'] if game['scummvm_id'] == 'tlj')
+          patch = next(patch for patch in game['patches'] if patch['version'] == 'catalog-20261025-steam1')
+          archive = pathlib.Path('dist/patches') / patch['filename']
+          with archive.open('rb') as stream:
+              checksum = hashlib.file_digest(stream, 'sha256').hexdigest()
+          if checksum != patch['checksum'] or archive.stat().st_size != patch['file_size']:
+              raise SystemExit('Steam patch archive does not match the registry')
       - name: Validate on-demand archive checksums and catalog coverage
         run: python kitor/tools/build_download_packages.py
       - name: Upload requested unverified package builds
