@@ -1,5 +1,5 @@
 //! Steam OpenID identity and Web API access. Keys live in the OS credential store, never app files or logs.
-use rand::RngCore;
+use rand::TryRng;
 use serde::{Deserialize, Serialize};
 use std::{
     collections::{HashMap, HashSet},
@@ -364,7 +364,9 @@ pub async fn login() -> Result<String, String> {
         .map_err(|_| "Could not read callback port")?
         .port();
     let mut random = [0u8; 32];
-    rand::rngs::OsRng.fill_bytes(&mut random);
+    rand::rngs::SysRng
+        .try_fill_bytes(&mut random)
+        .map_err(|_| "Could not generate Steam sign-in token")?;
     let token: String = random.iter().map(|b| format!("{b:02x}")).collect();
     let return_to = format!("http://127.0.0.1:{port}/steam-callback/{token}");
     let mut auth = url::Url::parse(OPENID).unwrap();
