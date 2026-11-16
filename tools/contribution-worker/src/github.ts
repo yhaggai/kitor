@@ -1,10 +1,10 @@
 import { importPKCS8, SignJWT } from "jose";
+import { type Catalog, catalog, MAX_CATALOG_BYTES } from "./catalogs";
 import { apply, type Correction, manifestChecksum } from "./csv";
 import { type Contributor, type Env, HttpError, hash, now } from "./shared";
 
 const REPO = "yhaggai/kitor";
-const CSV = "patches-workspace/drifter/he/payload/translation.csv",
-  MANIFEST = "patches-workspace/drifter/he/patch.json";
+const MANIFEST = "patches-workspace/drifter/he/patch.json";
 class GitHubError extends HttpError {
   constructor(readonly upstreamStatus: number) {
     super(502, `GitHub returned ${upstreamStatus}; retry shortly`);
@@ -35,12 +35,12 @@ export async function github(
   const reader = response.body!.getReader();
   let text = "",
     size = 0;
-  const decoder = new TextDecoder();
+  const decoder = new TextDecoder("utf-8", { fatal: true, ignoreBOM: true });
   while (true) {
     const { done, value } = await reader.read();
     if (done) break;
     size += value.length;
-    if (size > 8_000_000) {
+    if (size > (raw ? MAX_CATALOG_BYTES : 8_000_000)) {
       await reader.cancel();
       throw new HttpError(502, "GitHub response too large");
     }
@@ -69,7 +69,7 @@ export async function installation(env: Env) {
 }
 export const source = (path: string, sha: string, token: string) =>
   github(`repos/${REPO}/contents/${path}?ref=${encodeURIComponent(sha)}`, token, undefined, true);
-export async function canonical(base: string, token: string) {
+export async function canonical(base: string, token: string, config = catalog()) {
   const repo = await github(`repos/${REPO}`, token);
   const branch = repo.default_branch as string;
   const compare = await github(
@@ -78,7 +78,7 @@ export async function canonical(base: string, token: string) {
   );
   if (!["ahead", "identical"].includes(compare.status))
     throw new HttpError(409, "Draft base is no longer on upstream; refresh your draft");
-  return { branch, csv: await source(CSV, base, token) };
+  return { branch, csv: await source(config.path, base, token) };
 }
 export function attribution(user: Contributor) {
   const name = user.name
@@ -97,6 +97,8 @@ export async function openPR(
   user: Contributor,
   token: string
 ) {
+  const config = catalog(input.catalog_id);
+  const drifter = config.id === "drifter";
   const head = `kitor-contributions/${id}`;
   const endpoint = `repos/${REPO}`;
   const existing = await github(
@@ -109,25 +111,29 @@ export async function openPR(
     await labelContribution(existing[0], token);
     return { url: existing[0].html_url, existing: true };
   }
-  const manifest = manifestChecksum(await source(MANIFEST, input.base_sha, token), input.digest);
+  const manifest = drifter
+    ? manifestChecksum(await source(MANIFEST, input.base_sha, token), input.digest)
+    : undefined;
   const refs = await github(`${endpoint}/git/matching-refs/heads/${head}`, token);
   const ref = refs.find((r: any) => r.ref === `refs/heads/${head}`);
   if (ref) {
     if (
-      (await source(CSV, ref.object.sha, token)) !== csv ||
-      (await source(MANIFEST, ref.object.sha, token)) !== manifest
+      (await source(config.path, ref.object.sha, token)) !== csv ||
+      (manifest !== undefined && (await source(MANIFEST, ref.object.sha, token)) !== manifest)
     )
       throw new HttpError(409, "Submission branch differs from expected corrections");
   } else {
-    const commit = await correctionCommit(input.base_sha, csv, manifest, token);
+    const commit = await correctionCommit(input.base_sha, config, csv, manifest, token);
     await github(`${endpoint}/git/refs`, token, { ref: `refs/heads/${head}`, sha: commit });
   }
   const pr = await github(`${endpoint}/pulls`, token, {
     head,
     base: branch,
     draft: true,
-    title: `[POC — do not merge] Drifter: ${Object.keys(input.edits).length} correction(s) from Kitor`,
-    body: `${attribution(user)}\n\nSubmitted by the Kitor bot. Base: \`${input.base_sha}\`.\n\n**POC: do not merge or publish.** CSV corrections and checksum only; no release version bump or gameplay validation. Hebrew uses Drifter’s stored display order.`,
+    title: !drifter
+      ? config.title + " (" + config.label + "): translation corrections from Kitor"
+      : `[POC — do not merge] Drifter: ${Object.keys(input.edits).length} correction(s) from Kitor`,
+    body: `${attribution(user)}\n\nSubmitted by the Kitor bot. Base: \`${input.base_sha}\`.\n\n${drifter ? "**POC: do not merge or publish.** CSV corrections and checksum only; no release version bump or gameplay validation. Hebrew uses Drifter’s stored display order." : "Translation source corrections only. Review the Hebrew and rebuild and test the patch before releasing it."}`,
   });
   await labelContribution(pr, token);
   return { url: pr.html_url, existing: false };
@@ -180,11 +186,17 @@ async function labelContribution(pr: Pick<OpenPull, "number" | "labels">, token:
   }
 }
 
-export async function findOpenPR(env: Env, contributor: string, branch: string, token: string) {
+export async function findOpenPR(
+  env: Env,
+  contributor: string,
+  branch: string,
+  token: string,
+  config = catalog()
+) {
   const owned = await env.DB.prepare(
-    "SELECT DISTINCT url FROM submissions WHERE contributor_id=? AND status='complete' AND url IS NOT NULL"
+    "SELECT DISTINCT url FROM submissions WHERE contributor_id=? AND catalog_id=? AND status='complete' AND url IS NOT NULL"
   )
-    .bind(contributor)
+    .bind(contributor, config.id)
     .all<{ url: string }>();
   if (!owned.results.length) return null;
   const urls = new Set(owned.results.map((row) => row.url));
@@ -209,16 +221,16 @@ export async function findOpenPR(env: Env, contributor: string, branch: string, 
 
 async function correctionCommit(
   parent: string,
+  config: Catalog,
   csv: string,
-  manifest: string,
+  manifest: string | undefined,
   token: string
 ): Promise<string> {
   const base = await github(`${endpoint}/git/commits/${parent}`, token);
   const tree = [];
-  for (const [path, content] of [
-    [CSV, csv],
-    [MANIFEST, manifest],
-  ]) {
+  const files: [string, string][] = [[config.path, csv]];
+  if (manifest !== undefined) files.push([MANIFEST, manifest]);
+  for (const [path, content] of files) {
     const blob = await github(`${endpoint}/git/blobs`, token, { content, encoding: "utf-8" });
     tree.push({ path, mode: "100644", type: "blob", sha: blob.sha });
   }
@@ -227,7 +239,7 @@ async function correctionCommit(
     tree,
   });
   const commit = await github(`${endpoint}/git/commits`, token, {
-    message: "POC: Drifter translation corrections from Kitor",
+    message: config.title + ": translation corrections from Kitor",
     tree: createdTree.sha,
     parents: [parent],
   });
@@ -246,14 +258,15 @@ export async function appendPR(pr: OpenPull, input: Correction, token: string) {
     current.base.repo?.full_name !== REPO
   )
     throw new HttpError(409, "The PR changed during submission. Retry shortly.");
-  const previous = await source(CSV, current.head.sha, token);
-  const csv = await apply(previous, input.edits);
+  const config = catalog(input.catalog_id);
+  const previous = await source(config.path, current.head.sha, token);
+  const csv = await apply(previous, input.edits, config);
   if (csv !== previous) {
-    const manifest = manifestChecksum(
-      await source(MANIFEST, current.head.sha, token),
-      await hash(csv)
-    );
-    const commit = await correctionCommit(current.head.sha, csv, manifest, token);
+    const manifest =
+      config.id === "drifter"
+        ? manifestChecksum(await source(MANIFEST, current.head.sha, token), await hash(csv))
+        : undefined;
+    const commit = await correctionCommit(current.head.sha, config, csv, manifest, token);
     const latest: OpenPull = await github(path, token);
     if (
       latest.state !== "open" ||

@@ -5,6 +5,7 @@ Width warnings are conservative text-length hints, not font/pixel measurements.
 from pathlib import Path
 from collections import Counter
 import json,re,sys
+from translation_catalog import read_catalog
 ROOT=Path(__file__).resolve().parent
 CONTROL=re.compile(r'\\\[[^\]]+\]|\\[EMFTSz*>][\s\S]|\\[\s\S]|\^[0-9]|[/%%]')
 HEBREW=re.compile(r'[א-ת]')
@@ -37,7 +38,7 @@ def validate(catalog,source):
         if status!='unchanged' and re.search('[A-Za-z]',eng) and not HEBREW.search(h):warnings.append({'key':key,'kind':'no_hebrew_letters'})
     return {'entry_count':len(entries),'statuses':dict(Counter(e.get('status') for e in entries)),'errors':errors,'error_count':len(errors),'warning_count':len(warnings),'warning_categories':dict(Counter(w['kind'] for w in warnings)),'warnings':warnings,'scope':'Catalog syntax and source identity only. Drafts need editorial review; full-game font, RTL, dynamic-string and layout integration are not validated.'}
 if __name__=='__main__':
-    catalog=json.loads((ROOT/'translation-catalog.json').read_text())
+    catalog=read_catalog()
     source=json.loads((ROOT/'translation-work/catalog-before-full-translation.json').read_text())
     report=validate(catalog,source)
     (ROOT/'translation-validation.json').write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n')

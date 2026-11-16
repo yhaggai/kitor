@@ -8,7 +8,7 @@ The catalog covers all 4,692 nonempty player-facing `text` fields from the 1,931
 
 ## Rebuild
 
-`catalog.csv` is the editable source of truth for both editions. It contains one UTF-8-BOM row per stable text path, category, scene, speaker when the scene key identifies one, English source, unpointed Hebrew and pointed Hebrew. `catalog.json` is the preserved unpointed catalog; `catalog-niqqud.json` is an intermediate model draft. The CSV exporter preserves quoted commas, quotes and line breaks.
+`catalog.csv` is the editable source of truth for the patch. It contains one UTF-8-BOM row per stable text path, category, scene, speaker when the scene key identifies one, English source, unpointed Hebrew and pointed Hebrew. `catalog.json` is the preserved unpointed catalog; `catalog-niqqud.json` is an intermediate model draft. The text and font builders read the CSV. Edit both Hebrew columns together when changing wording; the JSON drafts are retained for reference.
 
 Use Python 3.11 with UnityPy 1.25.4 and python-bidi to build the database from the pristine bundle. The builder checks unique IDs, full path coverage, placeholders and tags, and exact base wording after removing niqqud:
 

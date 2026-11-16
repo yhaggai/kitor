@@ -33,7 +33,7 @@ Character and scene identity come from the game's `GameDatabase` character cards
 - Keep proper names above consistent. Preserve technical keys, asset names and credits people/company names in Latin script unless the visible text is a localizable role or heading.
 - Use natural Israeli Hebrew and address characters by scene relationship. Match singular/plural and gender in every dialogue exchange.
 - Preserve every `{placeholder}`, exact rich-text control token and number. Keep meaningful breaks. Do not visually reverse Hebrew in this catalog.
-- The model draft uses OpenAI Codex CLI `gpt-6-luna`, low reasoning effort, in isolated read-only translation batches. Each batch is validated for field count, placeholders, tags and digits; all entries remain editable in `catalog.json`.
+- The model draft uses OpenAI Codex CLI `gpt-6-luna`, low reasoning effort, in isolated read-only translation batches. Each batch is validated for field count, placeholders, tags and digits; all entries remain editable in `catalog.csv`.
 
 
 ## Hebrew naming references

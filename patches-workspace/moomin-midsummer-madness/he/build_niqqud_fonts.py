@@ -1,6 +1,7 @@
-"""Build composite TMP SDF glyphs for every niqqud cluster in catalog-niqqud.json."""
+"""Build composite TMP SDF glyphs for every niqqud cluster in catalog.csv."""
 from __future__ import annotations
 import argparse, copy, json, re, unicodedata
+from build import read_catalog
 from pathlib import Path
 import numpy as np
 from scipy.ndimage import distance_transform_edt
@@ -117,7 +118,7 @@ def append_font(env, font_obj, codes, font_path, output_prefix):
 
 def main():
     ap=argparse.ArgumentParser();ap.add_argument('font_bundle',type=Path);ap.add_argument('sharedassets',type=Path);ap.add_argument('--out',type=Path,required=True);a=ap.parse_args()
-    rows=json.loads((BASE/'catalog-niqqud.json').read_text(encoding='utf-8'))
+    rows=read_catalog(BASE/'catalog.csv')
     clusters=sorted({unicodedata.normalize('NFD',m.group()) for r in rows for m in CLUSTER.finditer(r['he'])})
     codes={c:chr(PUA_START+i) for i,c in enumerate(clusters)}
     (BASE/'niqqud-glyphs.json').write_text(json.dumps({c:ord(v) for c,v in codes.items()},ensure_ascii=False,indent=1),encoding='utf-8')

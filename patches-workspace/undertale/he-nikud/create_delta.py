@@ -2,6 +2,7 @@
 from pathlib import Path
 import argparse,bz2,hashlib,json,struct
 from delta import apply_patch
+from translation_catalog import CATALOG
 
 def sha(data):return hashlib.sha256(data).hexdigest()
 def chunks(data):
@@ -30,10 +31,8 @@ def main():
   result=Path(d)/'roundtrip';apply_patch(a.original,dest,result)
   if result.read_bytes()!=new:raise ValueError('Delta reconstruction failed')
  manifest={'release':a.release,'platform':a.platform,'source_sha256':sha(old),'patched_sha256':sha(new),'patch_sha256':sha(patch),'catalog_entries':16455,'draft_translations':15227,'unchanged_entries':1228}
- catalog_path=Path(__file__).resolve().parent/'translation-catalog.json'
- catalog=json.loads(catalog_path.read_text())
- manifest['catalog_sha256']=sha(catalog_path.read_bytes())
- manifest['nikud']=catalog.get('nikud')
+ manifest['catalog_sha256']=sha(CATALOG.read_bytes())
+ manifest['nikud']=json.loads(CATALOG.with_name('nikud-provenance.json').read_text())
  if a.platform=='Windows':manifest['runtime_tested_on_windows']=False
  (a.output/'manifest.json').write_text(json.dumps(manifest,indent=2)+'\n')
  print('Delta verified:',dest,'bytes:',len(patch))

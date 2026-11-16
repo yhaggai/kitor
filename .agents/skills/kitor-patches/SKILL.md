@@ -31,6 +31,10 @@ Every Kitor patch must provide usable Windows and macOS builds, an install metho
 - If an affected file changed again after installation or is owned by another active patch, detect the conflict and avoid silently destroying later changes. Record installed hashes or equivalent evidence for this check.
 - Report missing or invalid backups rather than claiming a successful uninstall. Retain the manifest and needed backups until restoration succeeds; retries must not damage restored originals or unrelated files.
 
+## Contributor CSVs for beta translations
+
+For a beta translation that accepts Kitor contributions, verify that the desktop and Worker entry in `kitor/contribution-catalogs.json` points to the editable CSV consumed by the patch builder. If translation text drives font generation, that step should read the same CSV. Check that IDs, source text and required formatting tokens survive edits and that the preview digest matches the Worker output. The canonical CSV must be on the default branch for the editor to load it. See the **Contributor CSV for beta translations** section of the `kitor-add-game-patch` skill for onboarding steps.
+
 ## Kitor integration and verification
 
 Inspect the current repository before implementing. Useful starting points are `patches-workspace/<game>/<language>/`, patch metadata and platform scripts, `kitor/src-tauri/src/services/patch_service.rs`, and `kitor/src-tauri/src/services/file_service.rs`. Existing code is context, not authority to weaken this contract. A recursive whole-game backup or directory-clearing restore is noncompliant.

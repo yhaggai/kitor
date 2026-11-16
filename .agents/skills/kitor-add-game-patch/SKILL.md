@@ -76,6 +76,15 @@ Explicitly inspect the existing Cloudflare asset service implementation and depl
 
 Verify the new game’s assets end-to-end in the running Kitor app against the intended Cloudflare environment: confirm the game ID maps to the correct English and Hebrew covers, actual image requests succeed with decodable image responses, transformations resolve, and both the library card and game details display the expected art. Check English before patch installation, Hebrew after installation, and English again after uninstall, including fallback behavior. Diagnose routing, cache, CORS, or app mapping failures rather than treating a successful upload or HTTP status alone as completion. Record the environment and app checks actually performed; if app verification is unavailable, report it as pending.
 
+## Contributor CSV for beta translations
+
+When a new beta translation will accept contributions in Kitor, set up its editable catalog as part of onboarding.
+
+1. For a new catalog, prefer `patches-workspace/<game>/<language>/translation-catalog.csv` with UTF-8 and the columns `key,english,hebrew`. Use stable game text IDs and Hebrew in logical reading order. Add columns for context, status or niqqud as the builder requires. Give independently built editions distinct catalog IDs. Keep both Hebrew versions in one row if they share a source and must have matching wording.
+2. Migrate the existing translations without changing their text. Wire each relevant build step, including any font generation that depends on the translated text, to read the CSV. Keep historical exports and generated payloads separate. Document the canonical CSV, editable columns and rebuild command in the game README and link it from `patches-workspace/README.md`.
+3. Register the catalog in `kitor/contribution-catalogs.json`, which the desktop and contribution Worker share. Use the registry game ID, exact repository path and CSV header, stable key and editable column indexes, and validation rules for placeholders, control tokens and any paired Hebrew text. Keep IDs and source columns read-only. Exclude rows the builder cannot map or intentionally leaves unchanged.
+4. Verify that the desktop preview and Worker produce the same CSV bytes for a representative edit and preserve untouched rows. Verify that the patch builder consumes the edit. The desktop fetches the catalog from a commit on the repository's default branch. Before making the editor available to users, verify that the canonical CSV is present there and the deployed Worker supports its catalog ID.
+
 ## Build, integrate, and test
 
 Read `kitor/tools/PATCH_PACKAGES.md` and `WINDOWS_VALIDATION.md`. Use the current tools from the repository root:

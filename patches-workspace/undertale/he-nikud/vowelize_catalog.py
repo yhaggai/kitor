@@ -4,6 +4,7 @@ Never trust model output to preserve game syntax: transfer only its marks onto
 the original Hebrew letters after checking exact consonant identity.
 """
 import argparse
+import csv
 import hashlib
 import importlib.metadata
 import json
@@ -11,8 +12,8 @@ from pathlib import Path
 import re
 
 from nikud import MARKS, strip_points
+from translation_catalog import FIELDS, read_catalog
 
-ROOT = Path(__file__).resolve().parent
 CONTROL = re.compile(r'\\\[[^\]]*\]|\\[EMFTSz*>][\s\S]|\\[\s\S]|\^[0-9]')
 LETTER = re.compile('[א-ת]')
 
@@ -41,13 +42,14 @@ def vowelize(text, predict):
 
 def main():
     p = argparse.ArgumentParser(description=__doc__)
-    p.add_argument('--catalog', type=Path, default=ROOT / 'translation-catalog.json')
+    p.add_argument('--catalog', type=Path, required=True)
+    p.add_argument('--output', type=Path, required=True, help='Write a separate CSV draft for review')
     a = p.parse_args()
     from nakdimon.predict import predict as model_predict
     def predict(text):
         return model_predict(text, maxlen=256)
     original = a.catalog.read_bytes()
-    catalog = json.loads(original)
+    catalog = read_catalog(a.catalog)
     cache = {}; changed = 0
     pending = list(dict.fromkeys(e['hebrew'] for e in catalog['entries']
                    if e['status'] != 'unchanged' and LETTER.search(e['hebrew'])
@@ -61,7 +63,7 @@ def main():
             raise ValueError('Batch boundaries changed')
         cache.update(zip(batch, result))
         print(f'Vowelized {min(start+32,len(pending))}/{len(pending)} unique strings', flush=True)
-    for i, entry in enumerate(catalog['entries']):
+    for entry in catalog['entries']:
         text = entry['hebrew']
         if entry['status'] == 'unchanged' or not LETTER.search(text):
             continue
@@ -75,9 +77,11 @@ def main():
     catalog['nikud'] = {'engine': 'nakdimon', 'version': importlib.metadata.version('nakdimon'),
                         'source_sha256': hashlib.sha256(original).hexdigest(),
                         'review_status': 'machine_draft', 'changed_entries': changed}
-    temp = a.catalog.with_suffix('.tmp')
-    temp.write_text(json.dumps(catalog, ensure_ascii=False, indent=2) + '\n')
-    temp.replace(a.catalog)
+    with a.output.open('x', encoding='utf-8', newline='') as stream:
+        writer = csv.DictWriter(stream, fieldnames=FIELDS)
+        writer.writeheader()
+        writer.writerows(catalog['entries'])
+    a.output.with_suffix('.provenance.json').write_text(json.dumps(catalog['nikud'], indent=2) + '\n')
     print(f'Vowelized {changed} entries; linguistic review required.')
 
 

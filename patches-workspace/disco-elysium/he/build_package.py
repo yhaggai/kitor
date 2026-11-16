@@ -148,12 +148,7 @@ def interface_image_bundle(source, translations, font_path):
 
 def build(mac,windows,font_path):
  report=text.validate()
- rows={r['key']:r for r in text.readcsv()}
- translations={key:row['hebrew'] for key,row in rows.items() if row['hebrew']}
- overrides=json.loads((ROOT/'interface-text.json').read_text())
- for key,override in overrides.items():
-  assert rows[key]['english']==override['english'],f'Interface source text changed: {key}'
-  translations[key]=override['hebrew']
+ translations={row['key']:row['hebrew'] for row in text.readcsv() if row['hebrew']}
  manifest={'schema_version':1,'scummvm_id':'disco-elysium','language':'he','version':VERSION,'release_revision':3,'filename':f'Disco-Elysium-Hebrew-{VERSION}.zip','platforms':{}}
  fingerprints={};glyphs={}
  for platform,root,base in [('osx',mac,'Contents/Resources/Data/StreamingAssets/AssetBundles/OSX'),('windows',windows,'disco_Data/StreamingAssets/AssetBundles/Windows')]:

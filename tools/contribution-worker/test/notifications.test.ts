@@ -4,9 +4,10 @@ import { readFile } from "node:fs/promises";
 import { test } from "node:test";
 import { convertV4MiniflareOptions, Miniflare } from "miniflare";
 import { records } from "../src/csv";
+import worker from "../src/index";
 import { drainNotifications, releaseContains, webhook } from "../src/notifications";
 import { saveConsent, unsubscribe } from "../src/preferences";
-import { type Env, hash } from "../src/shared";
+import { type Env, hash, now } from "../src/shared";
 
 const id = "a".repeat(64);
 const secret = "test-webhook-secret";
@@ -49,7 +50,12 @@ test("signed webhook, merge matching, private email, deduplication and retry que
   );
   try {
     const db = await mf.getD1Database("DB");
-    for (const file of ["0001_identity.sql", "0002_notifications.sql", "0003_email_consent.sql"])
+    for (const file of [
+      "0001_identity.sql",
+      "0002_notifications.sql",
+      "0003_email_consent.sql",
+      "0005_submission_catalog.sql",
+    ])
       for (const sql of (await readFile(`migrations/${file}`, "utf8"))
         .split(";")
         .filter((s) => s.trim()))
@@ -194,6 +200,39 @@ test("signed webhook, merge matching, private email, deduplication and retry que
     await assert.rejects(
       unsubscribe(new Request("http://localhost/notifications/unsubscribe?token=bad"), env)
     );
+    const session = "c".repeat(64);
+    await db
+      .prepare("INSERT INTO sessions VALUES (?,'u',?)")
+      .bind(await hash(session), now() + 60)
+      .run();
+    await db
+      .prepare(
+        "INSERT INTO submissions(id,contributor_id,status,lease_until,created_at) VALUES ('no-consent','u','complete',0,0)"
+      )
+      .run();
+    const profile = (enabled?: boolean, authenticated = true) =>
+      worker.fetch(
+        new Request("http://localhost/notifications/preferences", {
+          method: enabled === undefined ? "GET" : "POST",
+          headers: authenticated ? { Authorization: `Bearer ${session}` } : {},
+          body: enabled === undefined ? undefined : JSON.stringify({ enabled }),
+        }),
+        env
+      );
+    assert.equal((await profile(undefined, false)).status, 401);
+    assert.deepEqual(await (await profile()).json(), { enabled: false });
+    assert.deepEqual(await (await profile(true)).json(), { enabled: true });
+    const consent = await db.prepare("SELECT id,email_opt_in FROM submissions ORDER BY id").all();
+    assert.deepEqual(consent.results, [
+      { id, email_opt_in: 1 },
+      { id: "no-consent", email_opt_in: 0 },
+    ]);
+    assert.equal(
+      (await db.prepare("SELECT status FROM notifications").first())?.status,
+      "cancelled"
+    );
+    assert.deepEqual(await (await profile(false)).json(), { enabled: false });
+    assert.deepEqual(await (await profile()).json(), { enabled: false });
   } finally {
     await mf.dispose();
   }

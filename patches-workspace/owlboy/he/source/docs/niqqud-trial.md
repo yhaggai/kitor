@@ -13,7 +13,7 @@ proofreading. Treat this as a beta and report suspect forms with dialogue contex
 Model source: https://github.com/elazarg/nakdimon (MIT); runtime model from the
 PyPI wheel. No dialogue is uploaded to a niqqud service.
 
-Editable Unicode text lives in `translations/niqqud/part-*.json`. The builder
+Editable Unicode text lives in the `hebrew_niqqud` column of `translations/catalog.csv`. The builder
 requires every original entry, verifies all original letters and punctuation,
 and preserves timing, color, event and branch markers. It generates composite
 letter/mark glyphs so they reveal and reorder together. Private-use codes occur
@@ -34,7 +34,7 @@ folder supplies the guarded pristine executable and framework/compiler inputs;
 ```
 
 The local drafting tool is optional; ordinary builds use the checked-in reviewed
-JSON and do not need Nakdimon. Do not overwrite reviewed files with raw model
+CSV and do not need Nakdimon. Do not overwrite reviewed files with raw model
 output. `requirements-niqqud.txt` pins the optional draft dependency.
 
 ## Remove separately

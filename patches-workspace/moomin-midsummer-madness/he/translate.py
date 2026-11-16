@@ -49,4 +49,4 @@ assert not failures,failures
 assert len(results)==len(rows),(len(results),len(rows))
 for i,r in enumerate(rows):r['he']=results[i]
 (base/'catalog.json').write_text(json.dumps(rows,ensure_ascii=False,indent=1),encoding='utf8')
-(base/'model-attribution.md').write_text('Draft translation: OpenAI Codex CLI, model gpt-6-luna, reasoning effort low, run in isolated read-only batches (up to three concurrent). All 4,692 player-facing text fields were drafted. Structural, markup, placeholder and number checks were run in build.py; entries remain editable in catalog.json.\n',encoding='utf8')
+(base/'model-attribution.md').write_text('Draft translation: OpenAI Codex CLI, model gpt-6-luna, reasoning effort low, run in isolated read-only batches (up to three concurrent). All 4,692 player-facing text fields were drafted. Structural, markup, placeholder and number checks were run in build.py; entries remain editable in catalog.csv.\n',encoding='utf8')
