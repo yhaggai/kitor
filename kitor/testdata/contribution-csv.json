@@ -1,0 +1,59 @@
+[
+  {
+    "catalog": "undertale",
+    "source": "key,english,hebrew,status,translator_note\r\ndemo,Hi/,שלום/,draft,\r\nother,Hi/,שלום/,draft,",
+    "expected": "key,english,hebrew,status,translator_note\r\ndemo,Hi/,היי/,draft,\r\nother,Hi/,שלום/,draft,",
+    "edits": {
+      "2:demo": "היי/"
+    },
+    "rejected": {
+      "2:demo": "היי"
+    }
+  },
+  {
+    "catalog": "undertale-niqqud",
+    "source": "key,english,hebrew,status,translator_note,nikud_status\r\ndemo,Hi\\T0/,שָׁלוֹם\\T0/,draft,,machine_draft\r\nother,Hi\\T0/,שָׁלוֹם\\T0/,draft,,machine_draft",
+    "expected": "key,english,hebrew,status,translator_note,nikud_status\r\ndemo,Hi\\T0/,הַי\\T0/,draft,,machine_draft\r\nother,Hi\\T0/,שָׁלוֹם\\T0/,draft,,machine_draft",
+    "edits": {
+      "2:demo": "הַי\\T0/"
+    },
+    "rejected": {
+      "2:demo": "הַי/"
+    }
+  },
+  {
+    "catalog": "owlboy",
+    "source": "key,hebrew,hebrew_niqqud\r\n0001,שלום<30>|test,שָׁלוֹם<30>|test\r\nother,שלום<30>|test,שָׁלוֹם<30>|test",
+    "expected": "key,hebrew,hebrew_niqqud\r\n0001,היי<30>|test,הַיְי<30>|test\r\nother,שלום<30>|test,שָׁלוֹם<30>|test",
+    "edits": {
+      "1:0001": "היי<30>|test",
+      "2:0001": "הַיְי<30>|test"
+    },
+    "rejected": {
+      "1:0001": "היי<30>|test"
+    }
+  },
+  {
+    "catalog": "disco-elysium",
+    "source": "key,english,hebrew\r\ndemo,*A {name}*,\r\nother,*A {name}*,",
+    "expected": "key,english,hebrew\r\ndemo,*A {name}*,\"*שלום, \"\"{name}\"\"*\nשורה\"\r\nother,*A {name}*,",
+    "edits": {
+      "2:demo": "*שלום, \"{name}\"*\nשורה"
+    },
+    "rejected": {
+      "2:demo": "שלום"
+    }
+  },
+  {
+    "catalog": "moomin-midsummer-madness",
+    "source": "﻿stable_id,path,category,scene,speaker,en,he_unpointed,he_pointed\r\n\"[\"\"scene\"\",0,\"\"text\"\"]\",\"[\"\"scene\"\",0,\"\"text\"\"]\",dialogue,scene,Moomin,Hi 2,שלום 2,שָׁלוֹם 2\r\nother,\"[\"\"scene\"\",0,\"\"text\"\"]\",dialogue,scene,Moomin,Hi 2,שלום 2,שָׁלוֹם 2",
+    "expected": "﻿stable_id,path,category,scene,speaker,en,he_unpointed,he_pointed\r\n\"[\"\"scene\"\",0,\"\"text\"\"]\",\"[\"\"scene\"\",0,\"\"text\"\"]\",dialogue,scene,Moomin,Hi 2,היי 2,הַיְי 2\r\nother,\"[\"\"scene\"\",0,\"\"text\"\"]\",dialogue,scene,Moomin,Hi 2,שלום 2,שָׁלוֹם 2",
+    "edits": {
+      "6:[\"scene\",0,\"text\"]": "היי 2",
+      "7:[\"scene\",0,\"text\"]": "הַיְי 2"
+    },
+    "rejected": {
+      "6:[\"scene\",0,\"text\"]": "שלום 3"
+    }
+  }
+]

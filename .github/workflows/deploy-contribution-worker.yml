@@ -4,6 +4,7 @@ on:
   pull_request:
     paths:
       - 'tools/contribution-worker/**'
+      - 'kitor/contribution-catalogs.json'
       - '.github/workflows/deploy-contribution-worker.yml'
   workflow_dispatch:
     inputs:
