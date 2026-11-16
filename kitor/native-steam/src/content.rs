@@ -200,10 +200,19 @@ fn parse(data: &[u8], key: &[u8], depot: u32, manifest: u64) -> Result<Vec<File>
                 "Incomplete Steam file mapping"
             );
         }
+        let size = f.n(2);
+        let sha = f.b(5);
+        // Steam can store a zero digest for an empty file with no chunks.
+        // Normalize it so the assembled file still passes a real SHA-1 check.
+        let sha = if size == 0 && chunks.is_empty() && sha == [0; 20] {
+            Sha1::digest([]).to_vec()
+        } else {
+            sha.to_vec()
+        };
         files.push(File {
             path: name,
-            size: f.n(2),
-            sha: f.b(5).to_vec(),
+            size,
+            sha,
             flags,
             chunks,
         });
@@ -343,4 +352,34 @@ pub async fn download(
         })
         .await?;
     Ok(())
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use crate::wire::Message;
+
+    #[test]
+    fn empty_file_manifest_digest_matches_empty_content() {
+        let marker = Message::default().bytes(1, "data2.tag").bytes(5, [0; 20]);
+        let chunk = Message::default().bytes(1, [1; 20]).number(4, 1);
+        let nonempty = Message::default()
+            .bytes(1, "game.exe")
+            .number(2, 1)
+            .bytes(5, [0; 20])
+            .bytes(6, chunk.0);
+        let payload = Message::default().bytes(1, marker.0).bytes(1, nonempty.0);
+        let metadata = Message::default().number(1, 6311).number(2, 1);
+        let mut manifest = Vec::new();
+        for (magic, section) in [(0x71F617D0_u32, payload.0), (0x1F4812BE, metadata.0)] {
+            manifest.extend(magic.to_le_bytes());
+            manifest.extend((section.len() as u32).to_le_bytes());
+            manifest.extend(section);
+        }
+        manifest.extend(0x32C415AB_u32.to_le_bytes());
+
+        let files = parse(&manifest, &[], 6311, 1).unwrap();
+        assert_eq!(files[0].sha, Sha1::digest([]).to_vec());
+        assert_eq!(files[1].sha, [0; 20]);
+    }
 }
