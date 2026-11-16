@@ -1,4 +1,5 @@
 ---
+import DownloadIcon from "../components/DownloadIcon.astro";
 import kitorLogoArtwork from "../generated/kitor-logo.svg?raw";
 import "../styles/global.css";
 // Drop the paper layer and warm the pale highlights for the dark website.
@@ -9,10 +10,11 @@ const kitorLogo = `data:image/svg+xml,${encodeURIComponent(logoArtwork)}`;
 
 interface Props {
   locale?: "he" | "en";
+  headerStyle?: "landing" | "game";
   title?: string;
   description?: string;
 }
-const { locale = "he" } = Astro.props;
+const { locale = "he", headerStyle } = Astro.props;
 const en = locale === "en";
 const home = en ? "/en/" : "/";
 const hebrewPath = en ? Astro.url.pathname.slice("/en".length) : Astro.url.pathname;
@@ -53,7 +55,7 @@ const {
       </script>
     </>
   )}
-</head><body><a class="skip" href="#main">{t("דלגו לתוכן", "Skip to content")}</a><header class="site-header"><div class="nav wrap"><a class="brand" href={home} aria-label={t("קיטור — הבית", "Kitor — Home")}><img src={kitorLogo} alt="" width="136" height="68" /></a><nav aria-label={t("ניווט ראשי", "Main navigation")}><a href={home + "games/"}>{t("משחקים", "Games")}</a><a href={home + "#how"}>{t("איך זה עובד", "How it works")}</a><a href={home + "#community"}>{t("הקהילה", "Community")}</a></nav><div class="nav-actions"><a class="button small" href={home + "#download"}>{t("הורדה", "Download")} <span aria-hidden="true">↓</span></a></div></div></header><slot/><footer class="wrap footer"><a class="brand" href={home} aria-label={t("קיטור — הבית", "Kitor — Home")}><img src={kitorLogo} alt="" width="96" height="48" /></a><span>{t("עוד הרפתקה אחת, בשפה שלנו.", "One more adventure, in our language.")}</span><a href="https://github.com/yhaggai/kitor">{t("הפרויקט ב־GitHub ↗", "Project on GitHub ↗")}</a><a href="https://github.com/yhaggai/kitor/blob/v1/CODE_SIGNING_POLICY.md" lang="en" dir="ltr">Code signing policy</a><a href="https://github.com/yhaggai/kitor/blob/v1/PRIVACY.md">{t("פרטיות יישום המחשב", "Desktop app privacy")}</a></footer><script>
+</head><body><a class="skip" href="#main">{t("דלגו לתוכן", "Skip to content")}</a><header class:list={["site-header", headerStyle && `site-header--${headerStyle}`]}><div class="nav wrap"><a class="brand" href={home} aria-label={t("קיטור — הבית", "Kitor — Home")}><img src={kitorLogo} alt="" width="136" height="68" /></a><nav aria-label={t("ניווט ראשי", "Main navigation")}><a href={home + "games/"}>{t("משחקים", "Games")}</a><a href={home + "#how"}>{t("איך זה עובד", "How it works")}</a><a href={home + "#community"}>{t("הקהילה", "Community")}</a></nav><div class="nav-actions"><a class="button small" href={home + "#download"}>{t("הורדה", "Download")} <DownloadIcon/></a></div></div></header><slot/><footer class="wrap footer"><a class="brand" href={home} aria-label={t("קיטור — הבית", "Kitor — Home")}><img src={kitorLogo} alt="" width="96" height="48" /></a><span>{t("עוד הרפתקה אחת, בשפה שלנו.", "One more adventure, in our language.")}</span><a href="https://github.com/yhaggai/kitor">{t("הפרויקט ב־GitHub ↗", "Project on GitHub ↗")}</a><a href="https://github.com/yhaggai/kitor/blob/v1/PRIVACY.md">{t("פרטיות יישום המחשב", "Desktop app privacy")}</a></footer><script>
 const observer = new IntersectionObserver(entries => { for (const entry of entries) entry.target.classList.toggle('in-view', entry.isIntersecting); }, { threshold: 0.15 });
-document.querySelectorAll('.character').forEach(el => observer.observe(el));
+document.querySelectorAll('.character, #how .step-icon').forEach(el => observer.observe(el));
 </script></body></html>

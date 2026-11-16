@@ -13,7 +13,7 @@
 }
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 32px;
+  scroll-padding-top: 112px;
 }
 body {
   margin: 0;
@@ -50,26 +50,46 @@ select:focus-visible {
   margin-inline: auto;
 }
 .site-header {
-  position: relative;
+  position: sticky;
+  top: 0;
+  z-index: 10;
   background: #080f1d;
 }
-.site-header::before {
+@supports (backdrop-filter: blur(1px)) {
+  .site-header--landing {
+    background: rgb(8 15 29 / 78%);
+    backdrop-filter: blur(16px) saturate(125%);
+    box-shadow: inset 0 -1px rgb(190 210 240 / 14%);
+  }
+}
+.site-header--game {
+  background:
+    linear-gradient(to bottom, rgb(8 15 29 / 86%), rgb(8 15 29 / 46%)),
+    url("/art/night.webp") center 73% / max(100%, 840px) auto no-repeat
+      #080f1d;
+}
+.site-header--game::after {
   content: "";
   position: absolute;
-  inset: 0 auto 0 0;
-  width: min(100%, 660px);
-  margin-left: clamp(0px, 5vw, 120px);
+  inset: 0 8% 42%;
   pointer-events: none;
   background:
-    linear-gradient(to bottom, #080f1d, rgb(8 15 29 / 18%)),
-    url("/art/header-skyline.webp") center bottom / 660px auto no-repeat;
-  mask-image: linear-gradient(to right, transparent, #000 16% 76%, transparent);
+    linear-gradient(#c0d6ed 0 0) 14% 28% / 1px 1px no-repeat,
+    linear-gradient(#f9d69a 0 0) 28% 17% / 2px 2px no-repeat,
+    linear-gradient(#b8cce7 0 0) 40% 43% / 1px 1px no-repeat,
+    linear-gradient(#c0d6ed 0 0) 54% 19% / 2px 2px no-repeat,
+    linear-gradient(#b8cce7 0 0) 68% 31% / 1px 1px no-repeat,
+    linear-gradient(#f9d69a 0 0) 84% 22% / 1px 1px no-repeat;
+  opacity: 0.35;
 }
-.site-header:dir(ltr)::before {
-  left: auto;
-  right: 0;
-  margin-left: 0;
-  margin-right: clamp(0px, 5vw, 120px);
+@media (prefers-reduced-motion: no-preference) {
+  .site-header--game::after {
+    animation: header-starlight 6s ease-in-out infinite alternate;
+  }
+}
+@keyframes header-starlight {
+  from { opacity: 0.2; }
+  to { opacity: 0.65; }
 }
 .nav {
   height: 100px;
@@ -242,7 +262,7 @@ em {
   --box-width: min(155px, 78cqi);
   height: calc(var(--box-height) + 35px);
 }
-.shelves .site-box button {
+.shelves .site-box a {
   max-width: 100%;
 }
 .shelves .lower .site-box > div:nth-child(2) {
@@ -288,6 +308,26 @@ p {
   color: var(--gold);
   display: block;
   height: 68px;
+}
+@media (prefers-reduced-motion: no-preference) {
+  #how .step-icon.in-view {
+    animation: step-icon-dip 640ms ease-in-out;
+  }
+  #how article:nth-child(2) .step-icon.in-view {
+    animation: step-icon-lift 640ms 100ms ease-in-out;
+  }
+  #how article:nth-child(3) .step-icon.in-view {
+    animation: step-icon-shine 700ms 200ms ease-in-out;
+  }
+}
+@keyframes step-icon-dip {
+  45% { transform: translateY(6px); }
+}
+@keyframes step-icon-lift {
+  45% { transform: translateY(-5px); }
+}
+@keyframes step-icon-shine {
+  45% { filter: brightness(1.35) drop-shadow(0 0 7px var(--gold)); }
 }
 .number {
   position: absolute;
@@ -517,15 +557,15 @@ select {
   }
 }
 @media (max-width: 760px) {
+  html {
+    scroll-padding-top: 92px;
+  }
   .wrap {
     width: calc(100% - 36px);
   }
-  .site-header::before,
-  .site-header:dir(ltr)::before {
-    margin-inline: 0;
-    background-position: center, 35% bottom;
-    background-size: auto, 560px auto;
-    opacity: 0.72;
+  .site-header--game {
+    background-position: center, 55% 59%;
+    background-size: auto, max(100%, 700px) auto;
   }
   .nav {
     height: 80px;
@@ -723,6 +763,9 @@ select {
   }
 }
 @media (max-width: 520px) {
+  html {
+    scroll-padding-top: 120px;
+  }
   .nav {
     flex-wrap: wrap;
     height: auto;

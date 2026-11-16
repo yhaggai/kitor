@@ -1,0 +1,31 @@
+---
+/* Lucide Animated download icon, adapted for Astro.
+ * https://lucide-animated.com/icons/download
+ * Copyright (c) 2024-2026 pqoqubbw. MIT license.
+ */
+---
+<svg class="download-icon" viewBox="0 0 24 24" width="20" height="20" fill="none"
+  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+  aria-hidden="true" focusable="false">
+  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+  <g class="download-icon-arrow">
+    <polyline points="7 10 12 15 17 10" />
+    <line x1="12" x2="12" y1="15" y2="3" />
+  </g>
+</svg>
+
+<style>
+  .download-icon {
+    flex: none;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .download-icon-arrow {
+      transition: transform 300ms cubic-bezier(0.3, 1.6, 0.5, 1);
+    }
+
+    :global(.button:is(:hover, :focus-visible, :active)) .download-icon-arrow {
+      transform: translateY(2px);
+    }
+  }
+</style>
