@@ -86,6 +86,8 @@ pub async fn download_steam_windows_game(
     updates: State<'_, crate::services::app_updates::AppUpdates>,
 ) -> Result<Vec<crate::models::game::Model>, String> {
     let _activity = updates.activity()?;
+    let _install = super::backup_commands::GAME_INSTALL_OPERATION.try_read()
+        .map_err(|_| "A game uninstall is running. Try again after it finishes.")?;
     crate::services::steam_download_service::download_to_confirmed(app_id, game_ids, &app, install_root.map(std::path::PathBuf::from), overwrite.unwrap_or(false), Some(&app_handle)).await
 }
 

@@ -142,6 +142,7 @@ fn update_inner(
     let _lock = lock(dir.parent().ok_or("Missing transaction parent")?)?;
     recover(dir)?;
     let old = load(dir)?;
+    backups::require_originals(dir, &old)?;
     let target = target.canonicalize().map_err(err)?;
     if old.target != target
         || old.game != game
