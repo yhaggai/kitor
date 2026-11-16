@@ -55,18 +55,80 @@ export async function user(req: Request, env: Env): Promise<Contributor> {
   if (!row) throw new HttpError(401, "Your session expired. Sign in again");
   return row;
 }
-const message = (text: string) =>
-  new Response(
-    `<!doctype html><meta charset="utf-8"><title>Kitor sign-in</title><h1>${text}</h1><p>You can close this tab and return to Kitor.</p>`,
+const message = (text: string) => {
+  const styleNonce = random();
+  return new Response(
+    `<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#080f1d">
+  <title>Kitor sign-in</title>
+  <style nonce="${styleNonce}">
+    :root {
+      color-scheme: dark;
+      font-family: Heebo, Arial, sans-serif;
+      background: #080f1d;
+      color: #f6ead6;
+    }
+    body {
+      display: grid;
+      place-items: center;
+      box-sizing: border-box;
+      min-height: 100vh;
+      padding: 24px;
+      margin: 0;
+      background: radial-gradient(ellipse at 50% 100%, #142d3b, transparent 70%);
+    }
+    main {
+      box-sizing: border-box;
+      width: min(100%, 640px);
+      padding: clamp(32px, 7vw, 70px) clamp(20px, 5vw, 48px);
+      border: 1px solid #344351;
+      border-radius: 12px;
+      background: linear-gradient(130deg, #172536, #0b1321);
+      text-align: center;
+    }
+    h1 {
+      margin: 20px 0 12px;
+      color: #ffbd51;
+      font-size: clamp(32px, 5vw, 48px);
+      font-weight: 900;
+      line-height: 1.18;
+      letter-spacing: -0.035em;
+      text-wrap: balance;
+    }
+    p {
+      margin: 0;
+      color: #d1d9e3;
+      font-size: 18px;
+      line-height: 1.6;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <svg aria-hidden="true" width="64" height="64" viewBox="0 0 64 64">
+      <rect width="64" height="64" rx="12" fill="#080f1d"/>
+      <path d="M18 44h28v8H18zm6-10h20v7H24z" fill="#f8b94d"/>
+      <path d="M26 8h14v8H30v8h14v7H22V17h4z" fill="#f6e8d1"/>
+    </svg>
+    <h1>${text}</h1>
+    <p>You can close this tab and return to Kitor.</p>
+  </main>
+</body>
+</html>`,
     {
       headers: {
         "Content-Type": "text/html; charset=utf-8",
         "Cache-Control": "no-store",
-        "Content-Security-Policy": "default-src 'none'; frame-ancestors 'none'",
+        "Content-Security-Policy": `default-src 'none'; style-src 'nonce-${styleNonce}'; frame-ancestors 'none'`,
         "Referrer-Policy": "no-referrer",
       },
     }
   );
+};
 export async function auth(req: Request, env: Env, path: string): Promise<Response | null> {
   if (path === "/auth/start" && req.method === "POST") {
     if (!env.GOOGLE_CLIENT_ID || !env.GOOGLE_CLIENT_SECRET)

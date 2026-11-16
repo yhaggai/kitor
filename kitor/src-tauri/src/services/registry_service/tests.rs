@@ -49,3 +49,27 @@ fn saved_bundled_entry_migrates_to_reviewed_download() {
     assert_eq!(resolved.version, original.version);
     assert_eq!(resolved.release_revision, original.release_revision);
 }
+
+#[test]
+fn embedded_moomin_patch_remains_available_in_the_loaded_registry() {
+    let registry = load_registry().unwrap();
+    let game = registry
+        .games
+        .iter()
+        .find(|game| game.scummvm_id == "moomin-midsummer-madness")
+        .expect("Moomin game is present");
+    assert_eq!(game.behavior.bundled_resource.as_deref(), Some("moomin-midsummer-madness"));
+    assert!(game.patches.iter().any(|patch| {
+        patch.language == "he" && patch.source_type == "bundled"
+    }));
+}
+
+#[cfg(not(debug_assertions))]
+#[test]
+fn production_registry_ignores_external_catalog() {
+    let dir = tempfile::tempdir().unwrap();
+    let external = dir.path().join("registry.json");
+    std::fs::write(&external, r#"{"games":[],"attacker":"override"}"#).unwrap();
+    assert_eq!(registry_content(&external).unwrap(),
+        include_str!("../../../../patches/registry.json"));
+}

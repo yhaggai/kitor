@@ -7,12 +7,21 @@ on:
       - 'kitor/tools/check_translation_pr.py'
       - 'kitor/src/**'
       - 'kitor/src-tauri/**'
+      - 'kitor/native-steam/**'
+      - 'kitor/public/**'
+      - 'packages/ui/**'
       - 'kitor/patches/**'
       - 'patches-workspace/**'
       - 'kitor/tests/**'
       - 'kitor/tools/app_release.py'
       - 'kitor/tools/test_app_release.py'
       - 'kitor/package.json'
+      - 'kitor/index.html'
+      - 'kitor/postcss.config.js'
+      - 'kitor/tailwind.config.js'
+      - 'kitor/tsconfig*.json'
+      - 'kitor/vite.config.ts'
+      - 'package.json'
       - 'bun.lock'
       - '.github/workflows/build-installers.yml'
       - '.github/workflows/release-app.yml'
@@ -22,6 +31,10 @@ on:
         description: Upload unsigned preview installers
         type: boolean
         default: false
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event_name }}-${{ github.event.pull_request.number || github.run_id }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 
 permissions:
   contents: read
@@ -54,6 +67,11 @@ jobs:
         with:
           bun-version: '1.3.2'
       - uses: dtolnay/rust-toolchain@stable
+      - name: Cache Cargo dependencies
+        uses: Swatinem/rust-cache@e9d7b9f1e587218970671bac74e5511ed9506e6a # v2
+        with:
+          key: ${{ matrix.os }}
+          workspaces: kitor/src-tauri
       - uses: actions/setup-python@v6
         with:
           python-version: '3.12'

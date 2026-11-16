@@ -1,5 +1,5 @@
 import { ArrowLeft, Expand } from "lucide-react";
-import { type ReactNode, useId, useState } from "react";
+import { type ReactNode, useEffect, useId, useState } from "react";
 import { Button } from "../components/Button";
 import { FlowDialog } from "../components/FlowDialog";
 import { GameBanner } from "../components/GameBanner";
@@ -19,7 +19,7 @@ export function GameDetailsView({
   manage,
   manageControl,
   translation,
-  descriptionCredit,
+  translationCredit,
 }: {
   game: GameSummary;
   collection: Collection;
@@ -28,13 +28,24 @@ export function GameDetailsView({
   manage?: ReactNode;
   manageControl?: ReactNode;
   translation?: ReactNode;
-  descriptionCredit?: ReactNode;
+  translationCredit?: ReactNode;
 }) {
   const { t, language } = useTranslation();
   const [boxOpen, setBoxOpen] = useState(false);
   const id = useId();
   const title = gameTitle(game, language);
   const titleIsHebrew = /[\u0590-\u05FF]/.test(title);
+  useEffect(() => {
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key !== "Escape" || event.defaultPrevented) return;
+      // Leave Escape to open modals (game box, gallery, confirms).
+      if (document.querySelector("dialog[open], [role='dialog']")) return;
+      event.preventDefault();
+      onBack();
+    };
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
+  }, [onBack]);
   return (
     <section className="kt-details" aria-label={t("{0} details", [title])}>
       <Button variant="ghost" onClick={onBack}>
@@ -76,7 +87,6 @@ export function GameDetailsView({
             <p dir="rtl" lang="he">
               {game.description || "הרפתקה חדשה מחכה לכם."}
             </p>
-            {descriptionCredit}
           </div>
         </div>
       </div>
@@ -90,9 +100,13 @@ export function GameDetailsView({
       )}
       <section className="kt-detail-panel" aria-labelledby={`${id}-translation`}>
         <h2 id={`${id}-translation`}>{t("Community translation")}</h2>
+        {game.tags?.includes("hot-kitor") && (
+          <p>{t("This Hebrew translation is still in beta and needs further testing.")}</p>
+        )}
         <p>
           {t("Language:")} {game.language || t("Not available")}
         </p>
+        {translationCredit}
         {game.author && (
           <p dir="auto">
             {t("Translation by")} {game.author}

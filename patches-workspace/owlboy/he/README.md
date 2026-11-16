@@ -20,6 +20,14 @@ It has a separately compiled runtime, executable delta, and nikud assets under
 `windows/`. The legacy XNA edition is unsupported.
 Full-game playtesting is pending. `release_ready` remains false.
 
+## Edit the translation
+
+Edit `source/translations/catalog.csv` in logical Hebrew order. Keep `key` and
+the game's markup, timing tokens and branch suffixes intact. `hebrew` builds
+the regular locale; `hebrew_niqqud` builds the Windows nikud locale. When changing
+the wording, update both columns: the nikud build checks that the two strings
+differ only by vowel marks.
+
 ## Package
 
 From the repository root:

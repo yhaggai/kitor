@@ -7,11 +7,13 @@ let pending: Promise<void> | null = null;
 
 export const useGogLibrary = create<{
   loading: boolean;
+  loaded: boolean;
   error: string | null;
   refresh: () => Promise<void>;
   clear: () => void;
 }>((set) => ({
   loading: false,
+  loaded: false,
   error: null,
   refresh: () => {
     if (pending) return pending;
@@ -27,7 +29,10 @@ export const useGogLibrary = create<{
           return;
         }
         const games = await invoke<GogGame[]>("get_gog_user_games");
-        if (current === generation) useAppStore.getState().setGogGames(games);
+        if (current === generation) {
+          useAppStore.getState().setGogGames(games);
+          set({ loaded: true });
+        }
       } catch (error) {
         if (current === generation) set({ error: String(error) });
       } finally {
@@ -44,6 +49,6 @@ export const useGogLibrary = create<{
     pending = null;
     useAppStore.getState().setGogAuth({ isAuthenticated: false });
     useAppStore.getState().setGogGames([]);
-    set({ loading: false, error: null });
+    set({ loading: false, loaded: false, error: null });
   },
 }));

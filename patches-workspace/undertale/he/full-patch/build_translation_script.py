@@ -1,9 +1,12 @@
 from pathlib import Path
-import json,sys
+import json
+import sys
+
 ROOT=Path(__file__).resolve().parent.parent
 sys.path.insert(0,str(ROOT))
+from translation_catalog import read_catalog
 from validate_translation_catalog import validate
-catalog=json.loads((ROOT/'translation-catalog.json').read_text())
+catalog=read_catalog()
 source=json.loads((ROOT/'translation-work/catalog-before-full-translation.json').read_text())
 result=validate(catalog,source)
 assert not result['errors'],result['errors']

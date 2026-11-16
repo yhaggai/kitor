@@ -1,4 +1,6 @@
 export { default as kitorIcon } from "./assets/kitor-logo.svg";
+export { default as gogIcon } from "./assets/providers/gog.png";
+export { default as steamIcon } from "./assets/providers/steam.png";
 export { AppShell } from "./components/AppShell";
 export { BrandLogo } from "./components/BrandLogo";
 export { Button, type ButtonProps } from "./components/Button";
@@ -12,6 +14,11 @@ export { ManageMenu } from "./components/ManageMenu";
 export { StatusBadge } from "./components/StatusBadge";
 export { gameTitle } from "./hebrewTitle";
 export { type AppLanguage, setAppLanguage, translate, useTranslation } from "./i18n";
+export {
+  type AnimatedIconHandle,
+  BugIcon,
+  LanguagesIcon,
+} from "./icons";
 export type { Collection, GameStatus, GameSummary } from "./types";
 export { useGameNavigation } from "./useGameNavigation";
 export { CollectionView } from "./views/CollectionView";

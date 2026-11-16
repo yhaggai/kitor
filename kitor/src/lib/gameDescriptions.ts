@@ -7,7 +7,7 @@ type Description = {
   communityTranslation: boolean;
 };
 export const translationCommunity = {
-  name: "הרפתקה עברית",
+  name: "הרפתקאה בעברית",
   url: "https://www.facebook.com/groups/hebrewadventure",
 };
 

@@ -1,15 +1,61 @@
 ---
+import DownloadIcon from "../components/DownloadIcon.astro";
+import kitorLogoArtwork from "../generated/kitor-logo.svg?raw";
 import "../styles/global.css";
+// Drop the paper layer and warm the pale highlights for the dark website.
+const logoArtwork = kitorLogoArtwork
+  .replace(/<path id="kitor-logo-paper"[^>]*\/>/, "")
+  .replace(/fill="#FFEF(?:CD|CE)"/g, 'fill="#FECB67"');
+const kitorLogo = `data:image/svg+xml,${encodeURIComponent(logoArtwork)}`;
+
 interface Props {
+  locale?: "he" | "en";
+  headerStyle?: "landing" | "game";
   title?: string;
   description?: string;
 }
+const { locale = "he", headerStyle } = Astro.props;
+const en = locale === "en";
+const home = en ? "/en/" : "/";
+const hebrewPath = en ? Astro.url.pathname.slice("/en".length) : Astro.url.pathname;
+const englishPath = "/en" + hebrewPath;
+const hebrewUrl = new URL(hebrewPath, Astro.site);
+const englishUrl = new URL(englishPath, Astro.site);
+const t = (he: string, english: string) => (en ? english : he);
+const measurementId = import.meta.env.PUBLIC_GA_MEASUREMENT_ID ?? "G-1EVLL5CNSE";
+const analyticsEnabled = import.meta.env.PROD && /^G-[A-Z0-9]+$/.test(measurementId ?? "");
 const {
-  title = "קיטור — המשחקים שאהבת. עכשיו בעברית.",
-  description = "ספריית המשחקים והתרגומים שלכם, במקום אחד. גלו את המשחקים הנתמכים בקיטור.",
+  title = t("קיטור (Kitor) – תרגומים לעברית למשחקי מחשב", "Kitor – Hebrew translations for PC games"),
+  description = t(
+    "גלו משחקי מחשב עם תרגום לעברית והתקינו תרגומים קהילתיים למשחקים נתמכים מהמחשב, מ־Steam ומ־GOG.",
+    "Find PC games with Hebrew translations and install community patches for supported local, Steam, and GOG games."
+  ),
 } = Astro.props;
 ---
-<!doctype html><html lang="he" dir="rtl"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><meta name="theme-color" content="#080f1d"/><meta name="description" content={description}/><title>{title}</title><link rel="icon" href="/favicon.svg"/></head><body><a class="skip" href="#main">דלגו לתוכן</a><header class="nav wrap"><a class="brand" href="/" aria-label="קיטור — הבית"><span class="steam">♨</span> קיטור</a><nav aria-label="ניווט ראשי"><a href="/games/">משחקים</a><a href="/#how">איך זה עובד</a><a href="/#community">הקהילה</a></nav><a class="button small" href="/#download">הורדה <span aria-hidden="true">↓</span></a></header><slot/><footer class="wrap footer"><a class="brand" href="/">קיטור</a><span>עוד הרפתקה אחת, בשפה שלנו.</span><a href="https://github.com/yhaggai/kitor">הפרויקט ב־GitHub ↗</a><a href="https://github.com/yhaggai/kitor/blob/v1/CODE_SIGNING_POLICY.md" lang="en" dir="ltr">Code signing policy</a><a href="https://github.com/yhaggai/kitor/blob/v1/PRIVACY.md">פרטיות יישום המחשב</a></footer><script>
+<!doctype html><html lang={locale} dir={en ? "ltr" : "rtl"}><head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#080f1d" />
+  <meta name="description" content={description} />
+  <title>{title}</title>
+  <link rel="canonical" href={(en ? englishUrl : hebrewUrl).href} />
+  <link rel="alternate" hreflang="he" href={hebrewUrl.href} />
+  <link rel="alternate" hreflang="en" href={englishUrl.href} />
+  <link rel="icon" href="/favicon.svg" />
+  {analyticsEnabled && (
+    <>
+      <script is:inline async src={`https://www.googletagmanager.com/gtag/js?id=${measurementId}`}></script>
+      <script define:vars={{ measurementId }}>
+        window.dataLayer = window.dataLayer || [];
+        window.gtag = function () {
+          window.dataLayer.push(arguments);
+        };
+        window.gtag("js", new Date());
+        window.gtag("config", measurementId);
+      </script>
+    </>
+  )}
+</head><body><a class="skip" href="#main">{t("דלגו לתוכן", "Skip to content")}</a><header class:list={["site-header", headerStyle && `site-header--${headerStyle}`]}><div class="nav wrap"><a class="brand" href={home} aria-label={t("קיטור — הבית", "Kitor — Home")}><img src={kitorLogo} alt="" width="136" height="68" /></a><nav aria-label={t("ניווט ראשי", "Main navigation")}><a href={home + "games/"}>{t("משחקים", "Games")}</a><a href={home + "#how"}>{t("איך זה עובד", "How it works")}</a><a href={home + "#community"}>{t("הקהילה", "Community")}</a></nav><div class="nav-actions"><a class="button small" href={home + "#download"}>{t("הורדה", "Download")} <DownloadIcon/></a></div></div></header><slot/><footer class="wrap footer"><a class="brand" href={home} aria-label={t("קיטור — הבית", "Kitor — Home")}><img src={kitorLogo} alt="" width="96" height="48" /></a><span>{t("עוד הרפתקה אחת, בשפה שלנו.", "One more adventure, in our language.")}</span><a href="https://github.com/yhaggai/kitor">{t("הפרויקט ב־GitHub ↗", "Project on GitHub ↗")}</a><a href="https://github.com/yhaggai/kitor/blob/v1/PRIVACY.md">{t("פרטיות יישום המחשב", "Desktop app privacy")}</a></footer><script>
 const observer = new IntersectionObserver(entries => { for (const entry of entries) entry.target.classList.toggle('in-view', entry.isIntersecting); }, { threshold: 0.15 });
-document.querySelectorAll('.character').forEach(el => observer.observe(el));
+document.querySelectorAll('.character, #how .step-icon').forEach(el => observer.observe(el));
 </script></body></html>

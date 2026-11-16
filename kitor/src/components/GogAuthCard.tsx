@@ -1,7 +1,7 @@
-import { ManageMenu, useTranslation } from "@kitor/ui";
+import { gogIcon, ManageMenu, useTranslation } from "@kitor/ui";
 import { invoke } from "@tauri-apps/api/core";
 import { listen } from "@tauri-apps/api/event";
-import { CheckCircle, Gamepad2, LogIn, LogOut, XCircle } from "lucide-react";
+import { CheckCircle, LogIn, LogOut, XCircle } from "lucide-react";
 import { useEffect, useState } from "react";
 import BugReportDialog from "@/components/BugReportDialog";
 import { Badge } from "@/components/ui/badge";
@@ -20,6 +20,7 @@ export default function GogAuthCard() {
 
   const {
     loading: isLoadingGames,
+    loaded,
     error: libraryError,
     refresh: checkAuthStatus,
   } = useGogLibrary();
@@ -80,11 +81,13 @@ export default function GogAuthCard() {
     <Card>
       <CardHeader>
         <CardTitle className="flex items-center gap-3">
-          <Gamepad2 className="h-10 w-10 object-contain" aria-hidden="true" />
+          <img className="h-10 w-10 object-contain" src={gogIcon} alt="" />
           GOG
         </CardTitle>
         <CardDescription>
-          {t("Connect your GOG account to download games from your library")}{" "}
+          {t(
+            "Connect GOG to download your games and refresh your library when Kitor opens. You can disconnect in Settings."
+          )}{" "}
         </CardDescription>
       </CardHeader>
       <CardContent className="space-y-4">
@@ -99,7 +102,9 @@ export default function GogAuthCard() {
                     ? t("Loading library…")
                     : libraryError
                       ? t("Library could not be loaded")
-                      : t("Owned games: {0}", [gogGames.length])}
+                      : loaded
+                        ? t("Owned games: {0}", [gogGames.length])
+                        : t("Refresh the library to see your owned games.")}
                 </p>
               </div>
               <Badge variant="secondary">{t("Connected")}</Badge>

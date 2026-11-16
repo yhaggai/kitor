@@ -1,7 +1,23 @@
 //! Local storefront discovery. No account credentials or network access required.
 use serde::Serialize;
 use std::collections::HashSet;
-use std::path::PathBuf;
+use std::path::{Path, PathBuf};
+
+pub(super) fn installed_steam_build(path: &Path, app_id: u32) -> Option<u64> {
+    if !path.is_dir() {
+        return None;
+    }
+    let path = path.canonicalize().ok()?;
+    // The registered game path can be a subdirectory of the Steam installation.
+    let install_root = path.ancestors().find(|ancestor| {
+        ancestor
+            .parent()
+            .is_some_and(|parent| parent.ends_with("steamapps/common"))
+    })?;
+    let steamapps = install_root.parent()?.parent()?;
+    let manifest = std::fs::read(steamapps.join(format!("appmanifest_{app_id}.acf"))).ok()?;
+    kitor_steam::installed_build(&manifest, app_id, install_root.file_name()?.to_str()?)
+}
 
 #[derive(Default, Serialize)]
 pub struct ScanResult {

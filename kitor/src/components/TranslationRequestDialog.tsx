@@ -1,8 +1,8 @@
-import { useTranslation } from "@kitor/ui";
+import { type AnimatedIconHandle, LanguagesIcon, useTranslation } from "@kitor/ui";
 import { isTauri } from "@tauri-apps/api/core";
 import { openUrl } from "@tauri-apps/plugin-opener";
-import { Languages, Mail } from "lucide-react";
-import { useState } from "react";
+import { Mail } from "lucide-react";
+import { useRef, useState } from "react";
 import BugReportDialog from "@/components/BugReportDialog";
 import { Button } from "@/components/ui/button";
 import {
@@ -17,6 +17,7 @@ import { BUG_REPORT_EMAIL } from "@/lib/bugReport";
 
 export default function TranslationRequestDialog() {
   const { t } = useTranslation();
+  const iconRef = useRef<AnimatedIconHandle>(null);
   const [game, setGame] = useState("");
   const [storeUrl, setStoreUrl] = useState("");
   const [notes, setNotes] = useState("");
@@ -60,8 +61,12 @@ export default function TranslationRequestDialog() {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button variant="outline">
-          <Languages />
+        <Button
+          variant="outline"
+          onMouseEnter={() => iconRef.current?.startAnimation()}
+          onMouseLeave={() => iconRef.current?.stopAnimation()}
+        >
+          <LanguagesIcon ref={iconRef} size={16} />
           <span>{t("Request a translation")}</span>
         </Button>
       </DialogTrigger>

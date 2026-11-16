@@ -8,6 +8,24 @@ Installable packages are indexed in the Kitor registry. New packages are publish
 
 Patch payloads, reconstruction recipes, build sources, and provenance belong under `patches-workspace/<game>/`. The legacy MI1 installer is retained under `monkey-se/he/legacy/MI1-heb-patch/`. Grim Fandango prototype tools are grouped under `grim-fandango-remastered/he/prototype/{windows,macos}/`. Shared native Monkey Island build tools live in `monkey-se-native/he/prototype/`; MI2 links to them. App catalog metadata and purchase guides remain under `kitor/patches/`; generated archives remain under ignored `dist/`.
 
+## Beta translation catalogs
+
+The [contribution catalog index](../kitor/contribution-catalogs.json) gives Kitor
+and the contribution Worker the repository path and column names for each
+catalog. Each linked CSV below is the editable text input for its patch
+builder. Build outputs and historical drafts are kept separately.
+
+Edit the Hebrew columns in these source files, keeping row IDs, original text,
+and game formatting tokens intact. The linked build notes explain how to turn
+a catalog change into a patch using a supported copy of the game.
+
+| Game | Editable CSV | Build notes |
+|---|---|---|
+| Undertale | [Regular](undertale/he/translation-catalog.csv), [niqqud](undertale/he-nikud/translation-catalog.csv) | [Regular](undertale/he/README.md), [niqqud](undertale/he-nikud/README.md) |
+| Owlboy | [Regular and niqqud](owlboy/he/source/translations/catalog.csv) | [Build notes](owlboy/he/README.md) |
+| Disco Elysium | [Dialogue and interface](disco-elysium/he/translations.csv) | [Build notes](disco-elysium/he/README.md) |
+| Moomin: Midsummer Madness | [Regular and niqqud text](moomin-midsummer-madness/he/catalog.csv) | [Build notes](moomin-midsummer-madness/he/README.md) |
+
 ## Contract
 
 Every releasable patch needs Windows and macOS artifacts, a declared file plan, source hashes, edition/dependency information, and selective install/uninstall through Kitor. Back up only affected existing files; restore those originals and remove patch-created files. Never copy or clear the entire game directory. See [specification.json](specification.json).

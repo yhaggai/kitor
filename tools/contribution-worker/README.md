@@ -1,8 +1,10 @@
 # Kitor contributions: local Worker + D1
 
-The desktop editor talks to this Worker at `http://127.0.0.1:8787` in debug
-builds. Google authenticates contributors; the GitHub App creates draft PRs as
-the bot. No contributor GitHub account is needed. Nothing here deploys remotely.
+Kitor debug builds use the staging Worker by default. To test a local Worker,
+start it using the steps below and run
+`KITOR_CONTRIBUTION_API_URL=http://127.0.0.1:8787 bun run tauri dev` from
+the `kitor` directory. Google authenticates contributors, and the GitHub App
+creates draft PRs as the bot. No contributor GitHub account is needed.
 
 ## Google OAuth setup
 
@@ -169,7 +171,7 @@ ignored file and a restrictive umask. The Worker’s local Wrangler setup uses
 Set the **repository Actions variable** `KITOR_CONTRIBUTION_API_URL` to the
 same HTTPS origin as the production environment's `PUBLIC_URL`. The app
 release workflow validates it before creating a draft release and embeds it
-in each signed installer. Use a build-time override for staging desktop builds.
+in each signed installer. Debug builds use staging unless a build-time URL is supplied.
 
 Register each OAuth client's exact `${PUBLIC_URL}/auth/google/callback` URI.
 The existing localhost OAuth client stays for local development. Use a sandbox
@@ -190,8 +192,21 @@ health check does not roll back already-applied migrations; repair forward or de
 a compatible prior Worker after inspecting the failure. The health check verifies
 configuration and authentication gating, not a full Google login or PR creation.
 
-This workflow deploys only the backend. Desktop packaging continues separately;
-set `KITOR_CONTRIBUTION_API_URL` to the appropriate HTTPS URL when building Kitor.
+This workflow deploys only the backend. Set `KITOR_CONTRIBUTION_API_URL` to
+the appropriate HTTPS URL when packaging a release build of Kitor.
+
+To build a separate macOS app for staging, run this from the repository root:
+
+```sh
+cd kitor
+bun run tauri build --debug --bundles app \
+  --config '{"productName":"Kitor Staging","identifier":"click.kitor.staging"}'
+```
+
+Open `kitor/src-tauri/target/debug/bundle/macos/Kitor Staging.app` from the
+repository root. The URL is compiled into the app, so changing the variable
+requires a rebuild.
+
 # Resend notification setup
 
 The transport is in `src/email.ts`; signed merge/release webhooks and the D1

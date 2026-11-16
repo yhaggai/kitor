@@ -3,7 +3,7 @@
     {
       "scummvm_id": "undertale",
       "add_to_cart_url": "https://www.gog.com/checkout/widget/52756712356612660/1456487183?price=undefined%2031.00",
-      "tags": ["indie", "story"],
+      "tags": ["hot-kitor", "indie", "story"],
       "steam_app_id": 391540,
       "cover_url": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/undertale/9145051fa004.jpg",
       "title": "UNDERTALE",
@@ -71,7 +71,7 @@
       "steam_app_id": 32360,
       "title": "The Secret of Monkey Island — Classic",
       "title_he": "הסוד של אי הקופים",
-      "cover_url": "/monkey-classic-en.jpg",
+      "cover_url": "https://assets.kitor.click/covers/the-secret-of-monkey-island/en/bdb3276b36cf.png",
       "platforms": {
         "windows": true,
         "osx": true,
@@ -132,7 +132,7 @@
       "steam_app_id": 32460,
       "title": "Monkey Island 2: LeChuck's Revenge — Classic",
       "title_he": "אי הקופים 2 נקמתו של לצ׳אק",
-      "cover_url": "/monkey2-classic-en.jpg",
+      "cover_url": "https://assets.kitor.click/covers/monkey-island-2-lechuck-s-revenge/en/c6a42adc2047.png",
       "platforms": {
         "windows": true,
         "osx": true,
@@ -640,6 +640,7 @@
     },
     {
       "scummvm_id": "sq6",
+      "tags": ["classic"],
       "add_to_cart_url": "https://www.gog.com/checkout/widget/52756712356612660/1207658833?price=undefined%2031.00",
       "steam_app_id": 10110,
       "cover_url": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/sq6/en/c3a436d54e83.jpg",
@@ -1626,7 +1627,7 @@
     {
       "scummvm_id": "owlboy",
       "add_to_cart_url": "https://www.gog.com/checkout/widget/52756712356612660/1159880091?price=undefined%206.20",
-      "tags": ["indie"],
+      "tags": ["hot-kitor", "indie"],
       "steam_app_id": 115800,
       "title": "ילד הינשוף — Owlboy",
       "title_he": "ילד הינשוף",
@@ -1945,7 +1946,7 @@
       "steam_app_id": 2333000,
       "title": "Silver Pines",
       "title_he": "סילבר פיינס",
-      "cover_url": "/cover-silver-pines.jpg",
+      "cover_url": "https://assets.kitor.click/covers/silver-pines/en/d277d9e48633.jpg",
       "platforms": {
         "windows": true,
         "osx": false,
@@ -2157,6 +2158,7 @@
     },
     {
       "scummvm_id": "disco-elysium",
+      "tags": ["hot-kitor", "detective"],
       "steam_app_id": 632470,
       "title": "Disco Elysium – The Final Cut",
       "title_he": "דיסקו אליסיום",
@@ -2218,6 +2220,75 @@
             }
           }
         }
+      }
+    },
+    {
+      "scummvm_id": "moomin-midsummer-madness",
+      "tags": ["hot-kitor"],
+      "steam_app_id": 4463520,
+      "title": "Moomin: Midsummer Madness",
+      "cover_url": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/moomin-midsummer-madness/en/4e88fbccb315.png",
+      "platforms": {
+        "windows": true,
+        "osx": false,
+        "linux": false
+      },
+      "detection_patterns": {
+        "unique_files": [],
+        "file_patterns": []
+      },
+      "patches": [
+        {
+          "language": "he",
+          "version": "0.1.1",
+          "release_revision": 2,
+          "author": "Kitor",
+          "download_url": "bundled://moomin-midsummer-madness/windows",
+          "source_type": "bundled",
+          "checksum": null,
+          "file_size": null,
+          "filename": "moomin-midsummer-madness-he-0.1.1-windows.zip",
+          "post_install_script": null,
+          "install_manifest": "patch.json",
+          "description": "Hebrew translation with niqqud and right-to-left layout for Windows Steam build 26355427. Includes dialogue, menus, journal, credits and game fonts. Corrects Hebrew gender and number agreement in 169 lines; full linguistic proofreading pending."
+        }
+      ],
+      "behavior": {
+        "detection": {
+          "layouts": [
+            {
+              "root": ".",
+              "required_files": [
+                "Summer/Adventure_UE5.exe",
+                "Summer/Adventure_UE5_Data/StreamingAssets/aa/StandaloneWindows64/database_assets_all_c77c9f4b2caf03eae7708be1f1ce7d43.bundle"
+              ],
+              "data": "."
+            }
+          ]
+        },
+        "launch": {
+          "original": {
+            "commands": {
+              "windows": {
+                "program": "Summer/Adventure_UE5.exe",
+                "required_files": [
+                  "Summer/Adventure_UE5_Data/StreamingAssets/aa/StandaloneWindows64/database_assets_all_c77c9f4b2caf03eae7708be1f1ce7d43.bundle"
+                ]
+              }
+            }
+          },
+          "patched": {
+            "commands": {
+              "windows": {
+                "program": "Summer/Adventure_UE5.exe",
+                "required_files": [
+                  "Summer/Adventure_UE5_Data/StreamingAssets/aa/StandaloneWindows64/database_assets_all_c77c9f4b2caf03eae7708be1f1ce7d43.bundle"
+                ]
+              }
+            }
+          }
+        },
+        "bundled_resource": "moomin-midsummer-madness"
       }
     }
   ],

@@ -13,7 +13,7 @@
 }
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 32px;
+  scroll-padding-top: 112px;
 }
 body {
   margin: 0;
@@ -49,6 +49,48 @@ select:focus-visible {
   width: min(1240px, calc(100% - 96px));
   margin-inline: auto;
 }
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: #080f1d;
+}
+@supports (backdrop-filter: blur(1px)) {
+  .site-header--landing {
+    background: rgb(8 15 29 / 78%);
+    backdrop-filter: blur(16px) saturate(125%);
+    box-shadow: inset 0 -1px rgb(190 210 240 / 14%);
+  }
+}
+.site-header--game {
+  background:
+    linear-gradient(to bottom, rgb(8 15 29 / 86%), rgb(8 15 29 / 46%)),
+    url("/art/night.webp") center 73% / max(100%, 840px) auto no-repeat
+      #080f1d;
+}
+.site-header--game::after {
+  content: "";
+  position: absolute;
+  inset: 0 8% 42%;
+  pointer-events: none;
+  background:
+    linear-gradient(#c0d6ed 0 0) 14% 28% / 1px 1px no-repeat,
+    linear-gradient(#f9d69a 0 0) 28% 17% / 2px 2px no-repeat,
+    linear-gradient(#b8cce7 0 0) 40% 43% / 1px 1px no-repeat,
+    linear-gradient(#c0d6ed 0 0) 54% 19% / 2px 2px no-repeat,
+    linear-gradient(#b8cce7 0 0) 68% 31% / 1px 1px no-repeat,
+    linear-gradient(#f9d69a 0 0) 84% 22% / 1px 1px no-repeat;
+  opacity: 0.35;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .site-header--game::after {
+    animation: header-starlight 6s ease-in-out infinite alternate;
+  }
+}
+@keyframes header-starlight {
+  from { opacity: 0.2; }
+  to { opacity: 0.65; }
+}
 .nav {
   height: 100px;
   display: flex;
@@ -56,16 +98,7 @@ select:focus-visible {
   gap: 60px;
   position: relative;
   z-index: 2;
-}
-.brand {
-  font-size: 40px;
-  font-weight: 900;
-  letter-spacing: -2px;
-  white-space: nowrap;
-}
-.steam {
-  color: var(--gold);
-  font-size: 35px;
+  color: #fecb67;
 }
 .nav nav {
   display: flex;
@@ -75,7 +108,9 @@ select:focus-visible {
 .nav .button {
   margin-inline-start: auto;
 }
-.nav a:hover,
+.nav a:not(.button):hover {
+  color: #ffefce;
+}
 .text-link:hover {
   color: var(--teal);
 }
@@ -120,7 +155,7 @@ select:focus-visible {
   background:
     linear-gradient(0deg, #080f1d, transparent 30%),
     linear-gradient(90deg, #080f1d10, #080f1d25),
-    url("/art/night.webp") center/cover no-repeat;
+    url("/art/night.webp") center / cover no-repeat;
   opacity: 0.85;
 }
 .hero-content {
@@ -227,7 +262,7 @@ em {
   --box-width: min(155px, 78cqi);
   height: calc(var(--box-height) + 35px);
 }
-.shelves .site-box button {
+.shelves .site-box a {
   max-width: 100%;
 }
 .shelves .lower .site-box > div:nth-child(2) {
@@ -273,6 +308,26 @@ p {
   color: var(--gold);
   display: block;
   height: 68px;
+}
+@media (prefers-reduced-motion: no-preference) {
+  #how .step-icon.in-view {
+    animation: step-icon-dip 640ms ease-in-out;
+  }
+  #how article:nth-child(2) .step-icon.in-view {
+    animation: step-icon-lift 640ms 100ms ease-in-out;
+  }
+  #how article:nth-child(3) .step-icon.in-view {
+    animation: step-icon-shine 700ms 200ms ease-in-out;
+  }
+}
+@keyframes step-icon-dip {
+  45% { transform: translateY(6px); }
+}
+@keyframes step-icon-lift {
+  45% { transform: translateY(-5px); }
+}
+@keyframes step-icon-shine {
+  45% { filter: brightness(1.35) drop-shadow(0 0 7px var(--gold)); }
 }
 .number {
   position: absolute;
@@ -348,10 +403,6 @@ p {
   color: var(--muted);
   font-size: 13px;
 }
-.footer .brand {
-  font-size: 28px;
-  color: #f6ead6;
-}
 .footer > a:last-child {
   margin-inline-start: auto;
 }
@@ -426,11 +477,7 @@ select {
   min-height: 48px;
   width: 100%;
 }
-.filters p {
-  margin-inline-start: auto;
-  font-size: 14px;
-  color: var(--teal);
-}
+
 .game-grid {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -438,40 +485,13 @@ select {
 }
 .game-entry {
   min-width: 0;
-  border-bottom: 1px solid #263545;
-  padding-bottom: 20px;
 }
-.game-entry .site-box {
-  background: #101b2b !important;
-  border-radius: 8px;
-}
-.game-entry .site-box > div:first-child {
-  padding: 16px 16px 0;
-  min-height: 110px;
-  align-content: start;
-}
-.game-entry .site-box > div:first-child > span {
-  font-size: 12px;
-  letter-spacing: 0;
-  text-transform: none;
-  flex-basis: 100%;
-  min-height: 35px;
-}
-.game-entry .site-box > div:nth-child(2) {
-  --box-width: min(200px, 70cqi);
-}
-.game-meta {
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 8px;
-  font-size: 11px;
-  padding: 16px 10px 0;
-  color: var(--muted);
-}
-.game-meta > span:first-child {
-  color: var(--teal);
-}
+
+
+
+
+
+
 .skip {
   position: fixed;
   top: -100px;
@@ -537,15 +557,19 @@ select {
   }
 }
 @media (max-width: 760px) {
+  html {
+    scroll-padding-top: 92px;
+  }
   .wrap {
     width: calc(100% - 36px);
+  }
+  .site-header--game {
+    background-position: center, 55% 59%;
+    background-size: auto, max(100%, 700px) auto;
   }
   .nav {
     height: 80px;
     gap: 15px;
-  }
-  .brand {
-    font-size: 32px;
   }
   .nav nav {
     gap: 16px;
@@ -656,24 +680,14 @@ select {
   .filters label:first-child {
     min-width: 100%;
   }
-  .filters p {
-    margin: 0 auto 10px 0;
-  }
+
   .game-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 24px 10px;
   }
-  .game-entry .site-box > div:first-child {
-    padding: 12px 9px 0;
-    min-height: 133px;
-  }
-  .game-entry .site-box > div:nth-child(2) {
-    --box-width: 72cqi;
-  }
-  .game-meta {
-    font-size: 10px;
-    padding-inline: 2px;
-  }
+
+
+
   .catalog > .lead {
     max-width: 500px;
   }
@@ -699,4 +713,67 @@ select {
 /* SSR covers remain visible before React hydration and with JavaScript disabled. */
 .site-box img {
   opacity: 1;
+}
+
+#recommended-download + [hidden] {
+  display: none;
+}
+.download-platforms {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 24px 36px;
+  margin-block: 26px;
+}
+.download-platforms > div {
+  scroll-margin-top: 24px;
+}
+.download-platforms .button {
+  margin: 4px;
+}
+.download-platforms .quiet {
+  max-width: 36ch;
+  margin: 12px auto 0;
+}
+
+.nav {
+  gap: clamp(15px, 4vw, 60px);
+}
+.brand {
+  display: inline-flex;
+  flex-shrink: 0;
+  padding-inline: 6px;
+  border-radius: 8px;
+}
+.brand img {
+  display: block;
+  height: auto;
+  filter: drop-shadow(0 0 6px rgb(255 169 66 / 45%));
+}
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-inline-start: auto;
+}
+
+@media (max-width: 760px) {
+  .nav .brand img {
+    width: 104px;
+  }
+}
+@media (max-width: 520px) {
+  html {
+    scroll-padding-top: 120px;
+  }
+  .nav {
+    flex-wrap: wrap;
+    height: auto;
+    padding-block: 12px;
+    row-gap: 8px;
+  }
+  .nav nav {
+    order: 1;
+    width: 100%;
+  }
 }

@@ -15,48 +15,28 @@ export default function NativeSteamConnection() {
   }, [refresh]);
   return (
     <div className="space-y-3">
-      <div className="flex items-center gap-2">
-        {loading ? (
-          <Loader2 className="h-5 w-5 animate-spin" />
-        ) : connected ? (
-          <CheckCircle2 className="h-5 w-5 text-green-500" />
-        ) : null}
-        <p className="font-medium">
-          {t(
-            loading
-              ? "Checking Steam connection…"
-              : connected
-                ? "Connected to Steam"
-                : "Connect Steam"
-          )}
-        </p>
-      </div>
-      <p className="text-sm text-muted-foreground">
-        {t(
-          connected
-            ? "You’re ready to download supported Steam games in Kitor."
-            : "Scan a QR code with the Steam app on your phone to get started."
-        )}
-      </p>
-      <Button
-        variant={connected ? "outline" : "default"}
-        disabled={busy || loading}
-        onClick={() => {
-          if (connected) void disconnect();
-          else void ensureConnected();
-        }}
-      >
-        {t(connected ? "Logout from Steam" : "Connect Steam")}
-      </Button>
-      {connected && (
-        <div className="space-y-2">
-          <output className="text-sm text-muted-foreground">
-            {library.busy
-              ? t("Loading library…")
-              : library.status.owned_app_ids !== null
-                ? t("Owned games: {0}", [library.status.owned_app_ids.length])
-                : t("Library could not be loaded")}
-          </output>
+      {loading ? (
+        <output className="flex items-center gap-2">
+          <Loader2 className="h-5 w-5 animate-spin" aria-hidden="true" />
+          {t("Checking Steam connection…")}
+        </output>
+      ) : connected ? (
+        <div className="flex items-start justify-between gap-3">
+          <div>
+            <p className="flex items-center gap-2 font-medium">
+              <CheckCircle2 className="h-5 w-5 text-green-500" aria-hidden="true" />
+              {t("Connected")}
+            </p>
+            <output className="text-sm text-muted-foreground">
+              {library.busy
+                ? t("Loading library…")
+                : library.status.owned_app_ids !== null
+                  ? t("Owned games: {0}", [library.status.owned_app_ids.length])
+                  : library.error
+                    ? t("Library could not be loaded")
+                    : t("Refresh the library to see your owned games.")}
+            </output>
+          </div>
           <ManageMenu label={t("Manage Steam")}>
             <Button
               variant="outline"
@@ -66,6 +46,14 @@ export default function NativeSteamConnection() {
             >
               {t("Refresh library")}
             </Button>
+            <Button
+              variant="outline"
+              className="w-full"
+              disabled={busy}
+              onClick={() => void disconnect()}
+            >
+              {t("Logout from Steam")}
+            </Button>
             {library.error && (
               <p role="alert" className="break-words text-sm text-destructive">
                 {t(library.error)}
@@ -73,6 +61,10 @@ export default function NativeSteamConnection() {
             )}
           </ManageMenu>
         </div>
+      ) : (
+        <Button disabled={busy} onClick={() => void ensureConnected()}>
+          {t("Connect Steam")}
+        </Button>
       )}
       {error && (
         <p role="alert" className="text-sm text-destructive">

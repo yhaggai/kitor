@@ -46,7 +46,7 @@ function App() {
     };
   }, []);
   useEffect(() => {
-    void useSteamStore.getState().run("get_steam_status");
+    void useSteamStore.getState().run("refresh_steam_library");
   }, []);
   const {
     setGames,

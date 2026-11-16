@@ -1710,5 +1710,26 @@
         ]
       }
     ]
+  },
+  {
+    "app_id": 4463520,
+    "depot_id": 4463521,
+    "platform": "windows",
+    "title": "Moomin: Midsummer Madness",
+    "importer": "layout",
+    "cache_key": "4463520-4463521",
+    "games": [
+      {
+        "id": "moomin-midsummer-madness",
+        "title": "Moomin: Midsummer Madness",
+        "folder": "",
+        "files": []
+      }
+    ],
+    "required_files": [
+      "Summer/Adventure_UE5.exe",
+      "Summer/Adventure_UE5_Data/StreamingAssets/aa/StandaloneWindows64/database_assets_all_c77c9f4b2caf03eae7708be1f1ce7d43.bundle"
+    ],
+    "copy_paths": ["Summer"]
   }
 ]

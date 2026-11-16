@@ -1,3 +1,4 @@
+import { catalog } from "./catalogs";
 import { apply } from "./csv";
 import { sendEmail } from "./email";
 import { github, installation, source } from "./github";
@@ -66,10 +67,13 @@ export async function webhook(req: Request, env: Env): Promise<Response> {
     )
       return json({ ignored: true });
     const url = `https://github.com/${REPO}/pull/${pr.number}`;
-    const submission = await env.DB.prepare("SELECT status,url FROM submissions WHERE id=?")
+    const submission = await env.DB.prepare(
+      "SELECT status,url,catalog_id FROM submissions WHERE id=?"
+    )
       .bind(id)
-      .first<{ status: string; url: string }>();
-    if (!submission) return json({ ignored: true });
+      .first<{ status: string; url: string; catalog_id: string }>();
+    if (!submission || !["drifter", "drifter-logical"].includes(submission.catalog_id))
+      return json({ ignored: true });
     if (submission.status !== "complete")
       throw new HttpError(503, "Submission is still processing; redeliver this event");
     if (submission.url !== url) return json({ ignored: true });
@@ -122,7 +126,8 @@ export async function releaseContains(
   tag: string,
   merge: string,
   edits: Record<string, string>,
-  token: string
+  token: string,
+  catalogId = "drifter"
 ): Promise<boolean> {
   const release = await github(`repos/${REPO}/releases/tags/${encodeURIComponent(tag)}`, token);
   if (release.draft || release.prerelease || !release.published_at || !release.assets?.length)
@@ -144,7 +149,17 @@ export async function releaseContains(
   const entry = manifest.files?.find((file: { path: string }) => file.path === "translation.csv");
   if (!entry?.source?.sha256 || entry.source.sha256 !== (await hash(csv))) return false;
   try {
-    return (await apply(csv, edits)) === csv;
+    const config = catalog(catalogId);
+    const editable = catalogId === "drifter" ? csv : await source(config.path, tag, token);
+    if (catalogId === "drifter-logical") {
+      const receipt = JSON.parse(await source(ROOT + "build-source.json", tag, token));
+      if (
+        receipt.payload_sha256 !== entry.source.sha256 ||
+        receipt.source_sha256 !== (await hash(editable))
+      )
+        return false;
+    }
+    return (await apply(editable, edits, config)) === editable;
   } catch {
     return false;
   }
@@ -152,13 +167,19 @@ export async function releaseContains(
 export async function reconcileReleases(env: Env) {
   if (env.NOTIFICATIONS_ENABLED !== "true" || !env.GITHUB_PRIVATE_KEY) return;
   const rows =
-    await env.DB.prepare(`SELECT s.id,s.merge_sha,s.edits_json,r.tag FROM submissions s CROSS JOIN patch_releases r
+    await env.DB.prepare(`SELECT s.id,s.merge_sha,s.edits_json,s.catalog_id,r.tag FROM submissions s CROSS JOIN patch_releases r
     LEFT JOIN release_checks c ON c.submission_id=s.id AND c.tag=r.tag
-    WHERE s.merge_sha IS NOT NULL AND s.edits_json IS NOT NULL AND s.released_tag IS NULL
+    WHERE s.catalog_id IN ('drifter','drifter-logical') AND s.merge_sha IS NOT NULL AND s.edits_json IS NOT NULL AND s.released_tag IS NULL
     AND (c.checked_at IS NULL OR c.checked_at<?)
     ORDER BY COALESCE(c.checked_at,0),r.created_at DESC LIMIT 1`)
       .bind(now() - 86400)
-      .all<{ id: string; merge_sha: string; edits_json: string; tag: string }>();
+      .all<{
+        id: string;
+        merge_sha: string;
+        edits_json: string;
+        catalog_id: string;
+        tag: string;
+      }>();
   if (!rows.results.length) return;
   try {
     const token = await installation(env);
@@ -172,7 +193,8 @@ export async function reconcileReleases(env: Env) {
           tag,
           row.merge_sha,
           JSON.parse(row.edits_json),
-          token
+          token,
+          row.catalog_id
         );
         await env.DB.prepare(
           "INSERT INTO release_checks(submission_id,tag,checked_at) VALUES (?,?,?) ON CONFLICT(submission_id,tag) DO UPDATE SET checked_at=excluded.checked_at"

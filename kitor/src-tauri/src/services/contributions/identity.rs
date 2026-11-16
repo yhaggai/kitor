@@ -25,18 +25,53 @@ pub struct Identity {
     pending: Mutex<Option<Pending>>,
 }
 pub fn endpoint() -> Result<String, String> {
-    let value = option_env!("KITOR_CONTRIBUTION_API_URL")
-        .unwrap_or("http://127.0.0.1:8787")
-        .trim_end_matches('/');
+    contribution_endpoint(option_env!("KITOR_CONTRIBUTION_API_URL"), cfg!(debug_assertions))
+}
+
+fn contribution_endpoint(configured: Option<&str>, debug: bool) -> Result<String, String> {
+    let value = match configured.map(str::trim).filter(|value| !value.is_empty()) {
+        Some(value) => value.trim_end_matches('/'),
+        None if debug => "http://127.0.0.1:8787",
+        None => return Err("Contribution sign-in is not configured in this build".into()),
+    };
     let url = url::Url::parse(value).map_err(|_| "Invalid contribution API URL")?;
     if url.scheme() != "https"
-        && !(cfg!(debug_assertions)
-            && url.scheme() == "http"
-            && url.host_str() == Some("127.0.0.1"))
+        && !(debug && url.scheme() == "http" && url.host_str() == Some("127.0.0.1"))
     {
         return Err("Contribution API requires HTTPS".into());
     }
     Ok(value.into())
+}
+
+#[cfg(test)]
+mod tests {
+    use super::contribution_endpoint;
+
+    #[test]
+    fn blank_build_variable_uses_the_debug_default() {
+        for value in [None, Some(""), Some(" \n")] {
+            assert_eq!(
+                contribution_endpoint(value, true).unwrap(),
+                "http://127.0.0.1:8787"
+            );
+            assert_eq!(
+                contribution_endpoint(value, false).unwrap_err(),
+                "Contribution sign-in is not configured in this build"
+            );
+        }
+    }
+
+    #[test]
+    fn hosted_builds_keep_the_configured_https_origin() {
+        for environment in ["staging", "production"] {
+            let origin = format!("https://kitor-contributions-{environment}.yhaggai.workers.dev");
+            let configured = format!(" {origin}/ ");
+            assert_eq!(
+                contribution_endpoint(Some(&configured), false).unwrap(),
+                origin
+            );
+        }
+    }
 }
 fn entry() -> Result<keyring::Entry, String> {
     keyring::Entry::new("kitor-contribution-worker", &endpoint()?)
@@ -110,11 +145,7 @@ pub async fn request(
 }
 #[tauri::command]
 pub async fn contributor_status() -> Result<Option<Contributor>, String> {
-    let Some(s) = stored()? else { return Ok(None) };
-    let value = request("/auth/me", None, Some(&s.token)).await?;
-    serde_json::from_value(value)
-        .map(Some)
-        .map_err(|_| "Invalid contributor profile".into())
+    Ok(stored()?.map(|session| session.contributor))
 }
 #[tauri::command]
 pub async fn contributor_sign_in(state: tauri::State<'_, Identity>) -> Result<String, String> {

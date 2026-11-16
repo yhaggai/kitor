@@ -22,6 +22,33 @@ pub async fn get_all_patches(state: State<'_, AppState>) -> Result<Vec<patch_ser
     patch_service::get_all_patches(&state.db).await
 }
 
+#[derive(serde::Serialize)]
+pub struct CatalogGame {
+    scummvm_id: String,
+    title: String,
+    title_he: Option<String>,
+    cover_url: Option<String>,
+    steam_app_id: u32,
+}
+
+#[tauri::command]
+pub fn get_catalog_games_without_patches() -> Result<Vec<CatalogGame>, String> {
+    Ok(registry_service::load_registry()?
+        .games
+        .into_iter()
+        .filter(|game| game.discover_without_patch && game.patches.is_empty())
+        .filter_map(|game| {
+            Some(CatalogGame {
+                steam_app_id: game.steam_app_id?,
+                scummvm_id: game.scummvm_id,
+                title: game.title,
+                title_he: game.title_he,
+                cover_url: game.cover_url,
+            })
+        })
+        .collect())
+}
+
 #[tauri::command]
 pub async fn download_and_install_patch(
     scummvm_id: String,
@@ -122,25 +149,4 @@ pub async fn open_steam_client(app_id: u32, steam: State<'_, crate::services::st
         crate::services::steam_service::game_url(&steam, app_id).await,
         None::<&str>,
     ).map_err(|e| format!("Could not open Steam. Make sure it is installed: {}", e))
-}
-
-#[tauri::command]
-pub async fn download_and_extract_gog_installer(
-    scummvm_id: String,
-    installer_path: String,
-    dest_dir: String,
-    state: tauri::State<'_, crate::AppState>,
-    app_handle: tauri::AppHandle,
-    updates: State<'_, crate::services::app_updates::AppUpdates>,
-) -> Result<(), String> {
-    let _activity = updates.activity()?;
-    use std::path::PathBuf;
-    crate::services::patch_service::download_and_extract_gog_installer(
-        &state.db,
-        scummvm_id,
-        installer_path,
-        PathBuf::from(dest_dir),
-        app_handle,
-        state.app_data_dir.clone(),
-    ).await
 }

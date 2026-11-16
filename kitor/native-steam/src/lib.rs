@@ -4,6 +4,7 @@ mod catalog;
 mod cm;
 mod content;
 mod wire;
+pub use catalog::installed_build;
 use anyhow::{ensure, Context, Result};
 use serde::Serialize;
 use std::{path::Path, time::Duration};

@@ -1,0 +1,15 @@
+{
+  "game_id": "sq6",
+  "edition": "Space Quest 6: Roger Wilco in the Spinal Frontier, Sierra retail CD-ROM",
+  "purpose": "Hebrew display face of the game box",
+  "store_product": "https://store.steampowered.com/app/10110/Space_Quest_Collection/",
+  "source_page": "https://spacequest.net/misc/boxscans/",
+  "source_image": "https://spacequest.net/misc/boxscans/sq6front.jpg",
+  "edit_input": "https://assets.kitor.click/covers/sq6/en/c3a436d54e83.jpg",
+  "retrieved": "2026-11-13",
+  "asset": "kitor/public/cover-sq6-he.jpg",
+  "method": "Built-in imagegen text localization of the retail scan; unofficial display artwork",
+  "hebrew_text": ["מסע בחלל 6", "רוֹגֶ׳ר", "וִילְקוֹ"],
+  "review": "Visually checked for Hebrew spelling, vowel marks and retained cover composition",
+  "prompt": "Text localization of the attached flat portrait Space Quest 6 retail box scan for a game library. Preserve the exact aspect ratio, painted astronaut Roger, gloves, face, spacecraft, planet, purple stars, hose, squeegee, composition, original Sierra footer and tiny platform label. Replace the top red SPACE QUEST 6 with exactly “מסע בחלל 6” in red futuristic type, Hebrew RTL with 6 at the visual left. Replace the large two yellow/orange words ROGER WILCO with exactly “רוֹגֶ׳ר” on line one and “וִילְקוֹ” on line two, bold matching the original perspective and black outlines. Keep each vowel mark and the geresh in place. Remove the small FULL ENGLISH VERSION lettering by restoring the stars behind it; do not add any claim about game language. Flat full-bleed cover only, no box mockup, extra lettering or watermark."
+}

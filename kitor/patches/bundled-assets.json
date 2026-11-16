@@ -1,0 +1,10 @@
+{
+  "moomin-midsummer-madness/windows": {
+    "patch.json": "patches-workspace/moomin-midsummer-madness/he/patch.windows.candidate.json",
+    "deltas/00-database_assets_all_c77c9f4b2caf03eae7708be1f1ce7d43.bundle.bsdiff": "patches-workspace/moomin-midsummer-madness/he/deltas/00-database_assets_all_c77c9f4b2caf03eae7708be1f1ce7d43.bundle.bsdiff",
+    "deltas/01-fonts_assets_all_2ab40165824cec60e96eea3c37ae678d.bundle.bsdiff": "patches-workspace/moomin-midsummer-madness/he/deltas/01-fonts_assets_all_2ab40165824cec60e96eea3c37ae678d.bundle.bsdiff",
+    "deltas/02-sharedassets0.assets.bsdiff": "patches-workspace/moomin-midsummer-madness/he/deltas/02-sharedassets0.assets.bsdiff",
+    "deltas/03-catalog.bin.bsdiff": "patches-workspace/moomin-midsummer-madness/he/deltas/03-catalog.bin.bsdiff",
+    "deltas/04-Assembly-CSharp.dll.bsdiff": "patches-workspace/moomin-midsummer-madness/he/deltas/04-Assembly-CSharp.dll.bsdiff"
+  }
+}

@@ -29,6 +29,7 @@ export type GameHealth = {
 type Game = {
   health?: GameHealth | null;
   id: number;
+  tags?: string[];
   scummvm_id: string;
   title: string;
   title_he?: string | null;

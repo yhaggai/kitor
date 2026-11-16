@@ -11,6 +11,10 @@ export function cn(...inputs: ClassValue[]) {
 export function getCoverSrc(coverUrl: string | null | undefined): string | null {
   if (!coverUrl) return null;
 
+  if (coverUrl === "/cover-sq6-he.jpg") {
+    return coverUrl;
+  }
+
   // Remote URLs
   if (coverUrl.startsWith("http://") || coverUrl.startsWith("https://")) {
     return coverUrl;

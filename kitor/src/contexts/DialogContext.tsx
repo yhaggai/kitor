@@ -17,6 +17,7 @@ type AlertOptions = {
   game?: string;
   title: string;
   description?: string;
+  reportDetails?: string;
 };
 
 type ConfirmOptions = {
@@ -119,7 +120,10 @@ export function DialogProvider({ children, dialogRootElement }: DialogProviderPr
               {state.options.failure && (
                 <BugReportDialog
                   game={state.options.game}
-                  details={[state.options.title, state.options.description]
+                  details={[
+                    state.options.title,
+                    state.options.reportDetails ?? state.options.description,
+                  ]
                     .filter(Boolean)
                     .join("\n\n")}
                 />
