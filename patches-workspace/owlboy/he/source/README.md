@@ -42,7 +42,7 @@ and installation; see [validation](docs/validation.md) for remaining playtesting
 Close Owlboy first. Remove an older Hebrew patch using its own uninstall journal.
 Do not build from an already modified installation.
 
-Prerequisites: Python 3.10+ and the **.NET 9 SDK**. The scripts install the pinned
+Prerequisites: Python 3.11+ and the **.NET 9 SDK**. The scripts install the pinned
 Pillow and python-bidi build dependencies into a local virtual environment and
 restore Mono.Cecil from NuGet. Internet is needed for this first setup.
 

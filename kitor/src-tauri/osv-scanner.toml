@@ -1,0 +1,3 @@
+[[IgnoredVulns]]
+id = "RUSTSEC-2024-0429"
+reason = "This lockfile uses vendor/glib-0.18.5 with the VariantStrIter fix backported from https://github.com/gtk-rs/gtk-rs-core/pull/1343."

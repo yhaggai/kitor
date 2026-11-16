@@ -72,8 +72,7 @@ impl Connection {
             Message::default().number(1, 65580),
         )
         .await?;
-        use rsa::rand_core::RngCore;
-        let login_id = rsa::rand_core::OsRng.next_u32();
+        let login_id = getrandom::u32().context("Could not generate a Steam login ID")?;
         let logon = Message::default()
             .number(1, 65580)
             .number(7, 20)
