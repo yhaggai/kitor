@@ -1,0 +1,63 @@
+{
+  "verified_on": "2026-11-14",
+  "bucket": "kitor-assets",
+  "manifest_url": "https://assets.kitor.click/covers/manifest.json",
+  "results": [
+    {
+      "game_id": "moomin-midsummer-madness",
+      "language": "en",
+      "original_sha256_verified": true,
+      "variant_480_verified": true,
+      "variant_dimensions": [
+        480,
+        720
+      ],
+      "verified_variants": {
+        "240": [
+          240,
+          360
+        ],
+        "480": [
+          480,
+          720
+        ],
+        "960": [
+          600,
+          900
+        ]
+      }
+    },
+    {
+      "game_id": "moomin-midsummer-madness",
+      "language": "he",
+      "original_sha256_verified": true,
+      "variant_480_verified": true,
+      "variant_dimensions": [
+        480,
+        720
+      ],
+      "verified_variants": {
+        "240": [
+          240,
+          360
+        ],
+        "480": [
+          480,
+          720
+        ],
+        "960": [
+          600,
+          900
+        ]
+      }
+    }
+  ],
+  "banner": {
+    "sha256": "dbed97c7286778366bae955487cbc4a3fa8d685aeb16f0dffb577cdd77112446",
+    "bytes": 57652,
+    "width": 460,
+    "height": 215,
+    "object_key": "banners/moomin-midsummer-madness/en/dbed97c72867.jpg",
+    "original_url": "https://assets.kitor.click/banners/moomin-midsummer-madness/en/dbed97c72867.jpg"
+  }
+}

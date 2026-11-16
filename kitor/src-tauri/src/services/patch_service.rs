@@ -307,14 +307,25 @@ pub async fn download_and_install_patch(
         download_path.display()
     );
     let source = super::package_source::PackageSource::resolve(&patch, &game_def.behavior)?;
-    if matches!(source, super::package_source::PackageSource::Download | super::package_source::PackageSource::SpaceQuest4Scummvm) {
-        download_service::download_patch_file(
-            &patch.download_url,
-            &download_path,
-            &app_handle,
-            &scummvm_id,
-        )
-        .await?;
+    match &source {
+        super::package_source::PackageSource::Download
+        | super::package_source::PackageSource::SpaceQuest4Scummvm => {
+            download_service::download_patch_file(
+                &patch.download_url,
+                &download_path,
+                &app_handle,
+                &scummvm_id,
+            )
+            .await?;
+        }
+        super::package_source::PackageSource::Embedded(_) => {}
+        #[cfg(debug_assertions)]
+        super::package_source::PackageSource::LocalPreview(path) => {
+            std::fs::copy(path, &download_path).map_err(|e| e.to_string())?;
+        }
+        super::package_source::PackageSource::OwlboyMacSteam => {}
+    }
+    if !matches!(source, super::package_source::PackageSource::OwlboyMacSteam | super::package_source::PackageSource::Embedded(_)) {
         if let Some(checksum) = &patch.checksum {
             if patch_lifecycle::hash(&download_path)? != checksum.to_lowercase() {
                 return Err(
@@ -341,7 +352,7 @@ pub async fn download_and_install_patch(
     let manifest_name = patch.install_manifest.as_deref().ok_or(
         "Patch has no file-change manifest; whole-folder installation is no longer supported",
     )?;
-    if matches!(source, super::package_source::PackageSource::Download | super::package_source::PackageSource::SpaceQuest4Scummvm)
+    if !matches!(source, super::package_source::PackageSource::OwlboyMacSteam | super::package_source::PackageSource::Embedded(_))
         && download_path.extension().and_then(|s| s.to_str()) != Some("zip")
     {
         return Err("Declarative patch packages must be ZIP archives".into());
@@ -489,7 +500,7 @@ pub async fn download_and_install_patch(
 
     // Clean up download
     println!("[patch_service] Cleaning up download file");
-    if matches!(source, super::package_source::PackageSource::Download | super::package_source::PackageSource::SpaceQuest4Scummvm) {
+    if !matches!(source, super::package_source::PackageSource::OwlboyMacSteam) {
         let _ = std::fs::remove_file(&download_path);
     }
 
@@ -637,160 +648,6 @@ pub async fn restore_backup(
         .exec(db)
         .await
         .map_err(|e| format!("Failed to delete installed patch record: {}", e))?;
-
-    Ok(())
-}
-
-pub async fn download_and_extract_gog_installer(
-    db: &DatabaseConnection,
-    scummvm_id: String,
-    installer_path: String,
-    dest_dir: PathBuf,
-    app_handle: tauri::AppHandle,
-    app_data_dir: PathBuf,
-) -> Result<(), String> {
-    use crate::services::{game_service, gog_service};
-    use std::process::Command;
-
-    // 1. Verify innoextract is installed
-    let innoextract_check = Command::new("innoextract").arg("--version").output();
-    if innoextract_check.is_err() {
-        // Attempt to brew install on macos
-        #[cfg(target_os = "macos")]
-        {
-            let _ = app_handle.emit(
-                "gog-installer-progress",
-                serde_json::json!({
-                    "step": "Installing innoextract...",
-                    "progress": 0
-                }),
-            );
-            let brew_install = Command::new("brew")
-                .arg("install")
-                .arg("innoextract")
-                .output();
-            if brew_install.is_err() || !brew_install.unwrap().status.success() {
-                return Err(
-                    "innoextract is not installed. Please try 'brew install innoextract' manually."
-                        .to_string(),
-                );
-            }
-        }
-        #[cfg(not(target_os = "macos"))]
-        {
-            return Err(
-                "innoextract is not installed. Please install it and try again.".to_string(),
-            );
-        }
-    }
-
-    // 2. Get GOG access token
-    let token = gog_service::get_valid_token(db).await?;
-
-    // 3. Download the installer
-    // Append the access token as a query parameter
-    let url = if installer_path.contains("?") {
-        format!("{}&access_token={}", installer_path, token)
-    } else {
-        format!("{}?access_token={}", installer_path, token)
-    };
-
-    let downloads_dir = app_data_dir.join("downloads");
-    std::fs::create_dir_all(&downloads_dir)
-        .map_err(|e| format!("Failed to create downloads directory: {}", e))?;
-
-    let file_name = std::path::Path::new(url.split('?').next().unwrap_or(&url))
-        .file_name()
-        .and_then(|n| n.to_str())
-        .unwrap_or("gog_installer.exe");
-
-    let download_path = downloads_dir.join(file_name);
-
-    let _ = app_handle.emit(
-        "gog-installer-progress",
-        serde_json::json!({
-            "step": "Downloading installer...",
-            "progress": 10
-        }),
-    );
-
-    // Use download_service to download the file
-    crate::services::download_service::download_file(&url, &download_path, &app_handle)
-        .await
-        .map_err(|e| format!("Failed to download installer: {}", e))?;
-
-    let _ = app_handle.emit(
-        "gog-installer-progress",
-        serde_json::json!({
-            "step": "Extracting game files...",
-            "progress": 50
-        }),
-    );
-
-    // 4. Extract using innoextract to dest_dir
-    std::fs::create_dir_all(&dest_dir)
-        .map_err(|e| format!("Failed to create destination directory: {}", e))?;
-
-    let extract_output = Command::new("innoextract")
-        .arg("-d")
-        .arg(&dest_dir)
-        .arg("--lowercase")
-        .arg("-e")
-        .arg(&download_path)
-        .output()
-        .map_err(|e| format!("Failed to execute innoextract: {}", e))?;
-
-    if !extract_output.status.success() {
-        let _ = std::fs::remove_file(&download_path);
-        return Err(format!(
-            "innoextract failed: {}",
-            String::from_utf8_lossy(&extract_output.stderr)
-        ));
-    }
-
-    // 5. Clean up the installer
-    let _ = std::fs::remove_file(&download_path);
-
-    let _ = app_handle.emit(
-        "gog-installer-progress",
-        serde_json::json!({
-            "step": "Adding to library...",
-            "progress": 90
-        }),
-    );
-
-    // Innoextract typically extracts to a folder like "app". We should point to that if it exists.
-    let mut game_path = dest_dir.clone();
-    if dest_dir.join("app").exists() {
-        game_path = dest_dir.join("app");
-    }
-
-    // 6. Add game to library
-    let registry = registry_service::load_registry()?;
-    let title = registry
-        .games
-        .iter()
-        .find(|g| g.scummvm_id == scummvm_id)
-        .map(|g| g.title.clone())
-        .unwrap_or_else(|| scummvm_id.clone());
-
-    game_service::add_game_manually(
-        db,
-        scummvm_id,
-        title,
-        game_path.to_string_lossy().to_string(),
-        app_data_dir,
-    )
-    .await
-    .map_err(|e| format!("Failed to add game to library: {}", e))?;
-
-    let _ = app_handle.emit(
-        "gog-installer-progress",
-        serde_json::json!({
-            "step": "Complete",
-            "progress": 100
-        }),
-    );
 
     Ok(())
 }

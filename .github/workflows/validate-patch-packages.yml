@@ -25,6 +25,10 @@ on:
         default: false
         required: false
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event_name }}-${{ github.event.pull_request.number || github.run_id }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
 permissions:
   contents: read
 
@@ -49,6 +53,13 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: python kitor/tools/hydrate_patch_inputs.py --repo ${{ github.repository }}
       - uses: dtolnay/rust-toolchain@stable
+      - name: Cache Cargo dependencies
+        uses: Swatinem/rust-cache@e9d7b9f1e587218970671bac74e5511ed9506e6a # v2
+        with:
+          key: ${{ matrix.os }}
+          workspaces: |
+            kitor/src-tauri
+            kitor/tools/lifecycle-harness
       - name: Build disposable validation CLI
         run: cargo build --manifest-path kitor/tools/lifecycle-harness/Cargo.toml --locked --bin validate_owned_games
       - name: Compile native classic Tentacle installer

@@ -10,12 +10,18 @@ VERSION='0.2.0-beta.2'
 TOKENS=re.compile(r'<[^>]*>|\[\d+\]')
 NORMALIZE=str.maketrans({'־':'-','–':'-','—':'-','…':'...','׳':"'",'״':'"','‘':"'",'’':"'",'“':'"','”':'"','\u00a0':' '})
 def digest(data):return hashlib.sha256(data).hexdigest()
-def catalog():
+def catalog(column='hebrew'):
+ path=ROOT/'translations/catalog.csv'
  result={}
- for path in sorted((ROOT/'translations').glob('part-*.json')):
-  data=json.loads(path.read_text(encoding='utf-8'))
-  if set(data)&set(result):raise ValueError('Duplicate entry ids')
-  result.update(data)
+ with path.open(encoding='utf-8-sig',newline='') as stream:
+  reader=csv.DictReader(stream,strict=True)
+  if reader.fieldnames!=['key','hebrew','hebrew_niqqud']:
+   raise ValueError(f'Unexpected translation catalog columns: {reader.fieldnames}')
+  for row in reader:
+   key=row['key']
+   if None in row or None in row.values() or not key or key in result or not row[column]:
+    raise ValueError(f'Malformed or duplicate translation row: {key!r}')
+   result[key]=row[column]
  return result
 
 def wrap(text,widths,limit=210):

@@ -64,11 +64,12 @@ test("discovery cards keep every registry tag", () => {
   ]);
 });
 
-test("home lists category filters and the library does not", () => {
+test("home lists category rows and the library keeps a flat grid", () => {
   const home = renderToStaticMarkup(
     <CollectionView collection="discovery" games={catalog} onOpen={() => {}} />
   );
-  expect(home).toContain("Categories");
+  expect(home).toContain('class="kt-category-row"');
+  expect(home).not.toContain("All categories");
   expect(home).toContain("Old classic");
   expect(home).toContain("Detective");
   expect(home).toContain("Thriller");
@@ -76,6 +77,8 @@ test("home lists category filters and the library does not", () => {
     <CollectionView collection="library" games={catalog} onOpen={() => {}} />
   );
   expect(library).not.toContain("Old classic");
+  expect(library).not.toContain('class="kt-category-row"');
+  expect(library).toContain('class="kt-game-grid"');
   expect(library).toContain("All games");
   setAppLanguage("he");
   const hebrew = renderToStaticMarkup(

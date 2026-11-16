@@ -1,7 +1,7 @@
 import { useTranslation } from "@kitor/ui";
 import * as Dialog from "@radix-ui/react-dialog";
 import { Package, X, ZoomIn, ZoomOut } from "lucide-react";
-import { type CSSProperties, useRef, useState } from "react";
+import { type CSSProperties, type PointerEvent, useRef, useState } from "react";
 import { cn } from "@/lib/utils";
 import styles from "./GameBox.module.css";
 
@@ -26,6 +26,8 @@ export type GameBoxProps = {
   /** Called for explicit selections and flips, never for temporary hover previews. */
   onLanguageChange?: (language: GameBoxLanguage) => void;
   showLanguageControls?: boolean;
+  /** Link to the game instead of opening the enlarged viewer. */
+  href?: string;
   className?: string;
   style?: CSSProperties;
 };
@@ -43,6 +45,7 @@ export function GameBox({
   defaultLanguage = "en",
   onLanguageChange,
   showLanguageControls = true,
+  href,
   className,
   style,
 }: GameBoxProps) {
@@ -63,6 +66,16 @@ export function GameBox({
     setHovering(false);
     if (language === undefined) setSelectedLanguage(next);
     if (next !== restingLanguage) onLanguageChange?.(next);
+  };
+
+  const targetProps = {
+    className: styles.target,
+    "data-language": visibleLanguage,
+    onPointerEnter: (event: PointerEvent<HTMLAnchorElement | HTMLButtonElement>) => {
+      if (event.pointerType === "mouse" || event.pointerType === "pen") setHovering(true);
+    },
+    onPointerLeave: () => setHovering(false),
+    onPointerCancel: () => setHovering(false),
   };
 
   return (
@@ -107,28 +120,28 @@ export function GameBox({
         <div className={styles.stage} data-hovered={hovering}>
           <div className={styles.halo} aria-hidden="true" />
           <div className={styles.shadow} aria-hidden="true" />
-          <Dialog.Trigger asChild>
-            <button
-              type="button"
-              className={styles.target}
-              data-language={visibleLanguage}
-              aria-label={
-                hebrew ? `הגדלת קופסת המשחק ${title}` : t("Enlarge {0} game box", [title])
-              }
-              onPointerEnter={(event) => {
-                if (event.pointerType === "mouse" || event.pointerType === "pen") setHovering(true);
-              }}
-              onPointerLeave={() => setHovering(false)}
-              onPointerCancel={() => setHovering(false)}
-              onClick={() => {
-                setRotation(visibleLanguage === "he" ? 163 : -17);
-                setZoom(100);
-                setHovering(false);
-              }}
-            >
+          {href ? (
+            <a {...targetProps} href={href} aria-label={title}>
               <BoxFaces title={title} covers={covers} />
-            </button>
-          </Dialog.Trigger>
+            </a>
+          ) : (
+            <Dialog.Trigger asChild>
+              <button
+                {...targetProps}
+                type="button"
+                aria-label={
+                  hebrew ? `הגדלת קופסת המשחק ${title}` : t("Enlarge {0} game box", [title])
+                }
+                onClick={() => {
+                  setRotation(visibleLanguage === "he" ? 163 : -17);
+                  setZoom(100);
+                  setHovering(false);
+                }}
+              >
+                <BoxFaces title={title} covers={covers} />
+              </button>
+            </Dialog.Trigger>
+          )}
         </div>
       </section>
       <Dialog.Portal>

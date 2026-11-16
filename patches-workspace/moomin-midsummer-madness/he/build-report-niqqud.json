@@ -1,0 +1,31 @@
+{
+  "entries": 4692,
+  "pointed_hebrew_entries": 4550,
+  "unpointed_nonhebrew_entries": 142,
+  "unique_composite_clusters": 300,
+  "font_styles": [
+    "Pangolin-Regular SDF MAIN",
+    "OpenDyslexic-Regular_SDF",
+    "BalsamiqSans-Regular_SDF",
+    "BalsamiqSans-Bold_SDF"
+  ],
+  "atlas_dimensions_px": {
+    "Pangolin-Regular SDF MAIN": [1024, 3578],
+    "OpenDyslexic-Regular_SDF": [1024, 3578],
+    "BalsamiqSans-Regular_SDF": [1024, 3350],
+    "BalsamiqSans-Bold_SDF": [1024, 3363]
+  },
+  "database_validation": "UnityPy reopened all 4,692 text fields after CSV-driven build",
+  "startup_validation": "Unity 6000.3.12f1 loaded 1,931 offline cards and initialized FlowGraph; no CRC mismatch or font/glyph errors in player4.log",
+  "addressables_font_crc": "9f61b488",
+  "startup_log": ".tmp/moomin-niqqud-build/player4.log",
+  "preview": "niqqud-font-preview.png",
+  "installed_sha256": {
+    "database_bundle": "f3369f59404ec0a7abbb2586982ff5460d5a0d9806d2741b426d36e4e2be9b08",
+    "font_bundle": "0f2ea755032095990f3ef4d51d8734780bfff7967adbe64b29c52bcab4128c84",
+    "sharedassets0": "26abea910dfa5fa236f0f2c020d451fe63f589854e3aa8d32b1027d6664883f0",
+    "addressables_catalog": "37fe8d1cd9559d1d87e6b2c759910ef4a0ba339cd0e00b34e174c6b00ce946e7",
+    "source_csv": "d883c05d7a97387956540e0088a153b95da6389c193c7b53281d03e5be611a45"
+  },
+  "manual_language_review": "The automatic niqqud pass was not proofread line by line; the recurring-name glossary has explicit marked overrides."
+}

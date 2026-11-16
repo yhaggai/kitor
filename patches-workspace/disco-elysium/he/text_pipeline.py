@@ -20,7 +20,8 @@ def sha(s):return hashlib.sha256(s.encode()).hexdigest()
 def writejson(p,obj):p.write_text(json.dumps(obj,ensure_ascii=False,indent=2)+'\n')
 def readcsv():
  with (ROOT/'translations.csv').open(newline='',encoding='utf-8') as f:
-  r=csv.DictReader(f);assert r.fieldnames==FIELDS,'CSV columns must be key,english,hebrew';rows=list(r)
+  r=csv.DictReader(f,strict=True);assert r.fieldnames==FIELDS,'CSV columns must be key,english,hebrew';rows=list(r)
+ if any(None in row or None in row.values() or not row['key'] for row in rows):raise ValueError('Malformed translation row')
  assert len({r['key'] for r in rows})==len(rows),'Duplicate CSV key'
  return rows
 def writecsv(rows):
@@ -32,7 +33,7 @@ def merge_source(previous,entries,allow_additions=False):
  assert allow_additions or old==entries,'Source build differs; explicit CSV migration required'
  return previous+[{'key':k,'english':v,'hebrew':''} for k,v in entries.items() if k not in old]
 def extract(data,allow_additions=False):
- previous=readcsv() if (ROOT/'translations.csv').exists() else None
+ previous=readcsv()
  file=next(data.glob('StreamingAssets/aa/*/dialoguebundle*'))
  db=next(o.read_typetree() for o in UnityPy.load(str(file)).objects if o.type.name=='MonoBehaviour')
  actors={str(a['id']):{f['title']:f['value'] for f in a['fields']} for a in db['actors']}
@@ -61,12 +62,8 @@ def extract(data,allow_additions=False):
     en=term['Languages'][1];assert key not in entries or entries[key]==en;entries[key]=en
    if key in entries:mapped.add(key)
    else:missing.append({'table':t['m_Name'],'key':key})
- initial={r['key']:r['he'] for r in json.loads((ROOT/'opening.json').read_text())['entries']}
- if previous is not None:
-  merged=merge_source(previous,entries,allow_additions)
-  if len(merged)!=len(previous):writecsv(merged)
- else:
-  writecsv([{'key':k,'english':v,'hebrew':initial.get(k,'')} for k,v in entries.items()])
+ merged=merge_source(previous,entries,allow_additions)
+ if len(merged)!=len(previous):writecsv(merged)
  writejson(ROOT/'source-index.json',{'schema_version':1,'source_sha256':{k:sha(v) for k,v in entries.items()},'context':context,'unmapped_source_keys':sorted(set(entries)-mapped),'unresolved_localization_terms':missing,'conversations':len(db['conversations'])})
  writejson(ROOT/'actors.json',actors)
 def validate(release=False):

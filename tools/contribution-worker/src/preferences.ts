@@ -1,5 +1,26 @@
 import { type Env, HttpError, now, random } from "./shared";
 
+export async function setContributionEmails(env: Env, contributor: string, enabled: boolean) {
+  if (enabled) {
+    await env.DB.batch([
+      env.DB.prepare("UPDATE contributors SET email_unsubscribed=0 WHERE id=?").bind(contributor),
+      env.DB.prepare(
+        "UPDATE submissions SET email_opt_in=1 WHERE contributor_id=? AND email_consent_at IS NOT NULL"
+      ).bind(contributor),
+    ]);
+  } else {
+    await env.DB.batch([
+      env.DB.prepare("UPDATE contributors SET email_unsubscribed=1 WHERE id=?").bind(contributor),
+      env.DB.prepare("UPDATE submissions SET email_opt_in=0 WHERE contributor_id=?").bind(
+        contributor
+      ),
+      env.DB.prepare(
+        "UPDATE notifications SET status='cancelled' WHERE status IN ('pending','needs_review') AND submission_id IN (SELECT id FROM submissions WHERE contributor_id=?)"
+      ).bind(contributor),
+    ]);
+  }
+}
+
 export async function saveConsent(
   env: Env,
   submission: string,
@@ -24,17 +45,7 @@ export async function unsubscribe(req: Request, env: Env): Promise<Response> {
     .first<{ id: string }>();
   if (!contributor) throw new HttpError(400, "Invalid unsubscribe link");
   if (req.method === "POST") {
-    await env.DB.batch([
-      env.DB.prepare("UPDATE contributors SET email_unsubscribed=1 WHERE id=?").bind(
-        contributor.id
-      ),
-      env.DB.prepare("UPDATE submissions SET email_opt_in=0 WHERE contributor_id=?").bind(
-        contributor.id
-      ),
-      env.DB.prepare(
-        "UPDATE notifications SET status='cancelled' WHERE status IN ('pending','needs_review') AND submission_id IN (SELECT id FROM submissions WHERE contributor_id=?)"
-      ).bind(contributor.id),
-    ]);
+    await setContributionEmails(env, contributor.id, false);
   }
   const content =
     req.method === "POST"

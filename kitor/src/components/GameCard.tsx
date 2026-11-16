@@ -363,7 +363,7 @@ export default function GameCard({ game, collection, onRemove, onBack }: GameCar
     <>
       <GameDetailsView
         game={gameSummary(game)}
-        descriptionCredit={<TranslationCredit gameId={game.scummvm_id} />}
+        translationCredit={<TranslationCredit gameId={game.scummvm_id} />}
         collection={collection}
         onBack={onBack}
         actions={
@@ -629,6 +629,7 @@ export default function GameCard({ game, collection, onRemove, onBack }: GameCar
       />
 
       <InstallPatchDialog
+        gameId={game.scummvm_id}
         updating={!!updatePatch}
         gameTitle={displayTitle}
         open={state.showInstallDialog}

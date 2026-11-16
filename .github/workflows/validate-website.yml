@@ -1,0 +1,35 @@
+name: Validate website
+
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/validate-website.yml'
+      - 'website/**'
+      - 'kitor/patches/registry.json'
+      - 'kitor/src/data/game-box-covers.json'
+      - 'kitor/src/data/game-descriptions.he.json'
+      - 'kitor/src/data/game-galleries.json'
+      - 'kitor/src/components/GameBox*'
+      - 'kitor/public/cover-sq6-he.jpg'
+      - 'packages/ui/src/assets/kitor-logo.svg'
+      - 'assets/game-boxes/desktop-sources/**'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  website:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: website
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: website/package-lock.json
+      - run: npm ci
+      - run: npm run build

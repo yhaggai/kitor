@@ -4,7 +4,7 @@ import zipfile
 ROOT = Path(__file__).resolve().parents[1]
 files = ['README.md', 'LICENSE', '.gitignore', 'requirements.txt', 'compatibility.json',
          'catalog-contract.json', 'install-macos.command', 'install-windows.cmd']
-for directory, pattern in [('tools', '*.py'), ('translations', 'part-*.json'),
+for directory, pattern in [('tools', '*.py'), ('translations', 'catalog.csv'),
                            ('fonts', '*.json'), ('runtime', '*.cs'),
                            ('patcher', '*.cs'), ('patcher', '*.csproj'),
                            ('docs', '*.md'), ('docs', 'package-validation.json'),

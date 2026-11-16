@@ -38,3 +38,5 @@ pub mod games;
 
 pub mod diagnostics;
 pub mod contributions;
+
+pub mod runtime_cleanup;

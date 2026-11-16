@@ -37,6 +37,7 @@ export function gameSummary(game: Game): GameSummary {
     : (game.is_patched ?? false);
   return {
     id: String(game.id),
+    tags: game.tags,
     searchTerms: `${game.scummvm_id} ${game.title} ${game.title_he ?? ""}`,
     title: classicTitles[game.scummvm_id] ?? game.title,
     titleHe: game.title_he ?? undefined,
@@ -70,5 +71,26 @@ export function patchSummary(patch: PatchWithStatus): GameSummary {
     author: gameDescription(patch.scummvm_id).communityTranslation ? undefined : patch.author,
     version: patch.version,
     language: patchOptionLabel(patch.language, patch.scummvm_id),
+  };
+}
+
+export type CatalogGame = {
+  scummvm_id: string;
+  title: string;
+  title_he: string | null;
+  cover_url: string | null;
+  steam_app_id: number;
+};
+
+export function catalogGameSummary(game: CatalogGame): GameSummary {
+  return {
+    id: game.scummvm_id,
+    searchTerms: `${game.scummvm_id} ${game.title} ${game.title_he ?? ""}`,
+    title: game.title,
+    titleHe: game.title_he ?? undefined,
+    ...artwork(game.scummvm_id, game.cover_url ?? undefined),
+    coverLanguage: "he",
+    status: "original",
+    description: gameDescription(game.scummvm_id).description,
   };
 }

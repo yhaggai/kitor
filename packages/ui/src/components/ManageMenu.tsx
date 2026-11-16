@@ -1,6 +1,6 @@
-import { Settings } from "lucide-react";
 import { type ReactNode, useEffect, useId, useRef, useState } from "react";
 import { useTranslation } from "../i18n";
+import { type AnimatedIconHandle, SettingsIcon } from "../icons";
 
 export function ManageMenu({
   children,
@@ -13,6 +13,7 @@ export function ManageMenu({
   const [open, setOpen] = useState(false);
   const root = useRef<HTMLFieldSetElement>(null);
   const trigger = useRef<HTMLButtonElement>(null);
+  const iconRef = useRef<AnimatedIconHandle>(null);
   const id = useId();
   useEffect(() => {
     if (!open) return;
@@ -67,8 +68,10 @@ export function ManageMenu({
         aria-expanded={open}
         aria-controls={id}
         onClick={() => setOpen((value) => !value)}
+        onMouseEnter={() => iconRef.current?.startAnimation()}
+        onMouseLeave={() => iconRef.current?.stopAnimation()}
       >
-        <Settings size={22} aria-hidden="true" />
+        <SettingsIcon ref={iconRef} size={22} />
       </button>
       {open && (
         // biome-ignore lint/a11y/useKeyWithClickEvents: Delegates clicks from native buttons, including keyboard activation.

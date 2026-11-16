@@ -1,0 +1,65 @@
+{
+  "overrides": [
+    {
+      "index": 733,
+      "path": ["dialogue_chapter1_salon_fdesc_peephole", "phrases", 0, "phrase", "text"],
+      "en": "A <bold>hole </>in the floor! ",
+      "he": "<bold>חור</> ברצפה!"
+    },
+    {
+      "index": 737,
+      "path": ["dialogue_chapter1_salon_fdesc_peephole", "phrases", 4, "phrase", "text"],
+      "en": "Sure, that huge hungry <bold>catfish </>would be thrilled to meet you!",
+      "he": "בטח, <bold>שפמנון</> ענקי ורעב ישמח מאוד לפגוש אותך!"
+    },
+    {
+      "index": 741,
+      "path": ["dialogue_chapter1_salon_fdesc_peephole", "phrases", 8, "phrase", "text"],
+      "en": "We need to make this <bold>catfish </>leave the kitchen somehow...",
+      "he": "אנחנו צריכים לגרום ל<bold>שפמנון</> הזה לצאת מהמטבח איכשהו..."
+    },
+    {
+      "index": 742,
+      "path": ["dialogue_chapter1_salon_fdesc_stool", "phrases", 0, "phrase", "text"],
+      "en": "A little <bold>stool</>...",
+      "he": "<bold>שרפרף</> קטן..."
+    },
+    {
+      "index": 2199,
+      "path": ["dialogue_chapter3_q3_field_qdesc_crows", "phrases", 0, "phrase", "text"],
+      "en": "These <bold>crows</> have no reason to come closer.",
+      "he": "ל<bold>עורבים</> האלה אין שום סיבה להתקרב."
+    },
+    {
+      "index": 2277,
+      "path": ["dialogue_chapter3_q3_shore_repeatquest_someone", "phrases", 2, "phrase", "text"],
+      "en": "You’ll never win my <bold>glue</> with that attitude!",
+      "he": "עם גישה כזאת, לעולם לא תזכי ב<bold>דבק</> שלי!"
+    },
+    {
+      "index": 2307,
+      "path": ["dialogue_chapter3_q3_shore_wordplay_round3_3", "phrases", 0, "phrase", "text"],
+      "en": "Turned <bold>white</> in a sudden...",
+      "he": "הפך לפתע ל<bold>לבן</>..."
+    },
+    {
+      "index": 3276,
+      "path": ["dialogue_epilogue_dining_fdesq_moray", "phrases", 3, "phrase", "text"],
+      "en": "And <bold>Moominmamma</> was just about to lay out all the scarves to dry!",
+      "he": "ו<bold>מומינאמא</> בדיוק עמדה לפרוש את כל הצעיפים לייבוש!"
+    },
+    {
+      "index": 3286,
+      "path": ["dialogue_epilogue_dining_qdesq_storage", "phrases", 0, "phrase", "text"],
+      "en": "It’s too <bold>dark</> inside, I can’t see a thing…",
+      "he": "בפנים <bold>חשוך</> מדי, אני לא רואה כלום..."
+    },
+    {
+      "index": 3827,
+      "path": ["dialogue_prologue_garden_cutscene_closeup_pool", "phrases", 0, "phrase", "text"],
+      "en": "How did Snorkmaiden's precious <bold>ankle ring</> end up here?",
+      "he": "איך <bold>טבעת הקרסול</> היקרה של סנורקה הגיעה לכאן?"
+    }
+  ],
+  "reason": "Manual rich-text repair: the batch model either omitted/corrupted a tag or moved the source bold span onto an empty Hebrew span. Semantic bold spans restored from English source."
+}

@@ -12,6 +12,7 @@
 }
 .box {
   position: relative;
+  left: calc(var(--box-width) * var(--kt-box-center-offset, 0));
   display: block;
   width: var(--box-width);
   height: var(--box-height);

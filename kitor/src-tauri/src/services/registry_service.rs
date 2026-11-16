@@ -62,6 +62,8 @@ pub struct GameDefinition {
     pub add_to_cart_url: Option<String>,
     pub detection_patterns: DetectionPatterns,
     pub patches: Vec<PatchDefinition>,
+    #[serde(default, skip_serializing_if = "std::ops::Not::not")]
+    pub discover_without_patch: bool,
     // Read-only compatibility with registries created before behavior profiles.
     #[serde(skip_serializing_if = "Option::is_none")]
     pub launch_config: Option<LaunchConfig>,
@@ -123,33 +125,21 @@ pub struct RegistryMetadata {
     pub source: String,
 }
 
+fn registry_content(development_path: &Path) -> Result<String, String> {
+    if cfg!(debug_assertions) {
+        match std::fs::read_to_string(development_path) {
+            Ok(content) => return Ok(content),
+            Err(error) if error.kind() == std::io::ErrorKind::NotFound => {},
+            Err(error) => return Err(format!("Registry load error: {error}")),
+        }
+    }
+    Ok(include_str!("../../../patches/registry.json").to_owned())
+}
+
 pub fn load_registry() -> Result<Registry, String> {
-    // Get the registry file path relative to the executable
-    let registry_path = if cfg!(debug_assertions) {
-        // In development, look in the workspace root (one level up from src-tauri)
-        Path::new("../patches/registry.json")
-    } else {
-        // In production, look relative to the executable
-        Path::new("patches/registry.json")
-    };
-
-    println!("Attempting to load registry from: {:?}", registry_path);
-
-    let content = std::fs::read_to_string(registry_path)
-        .or_else(|error| {
-            // Finder-launched bundles have no project working directory.
-            // Keep the reviewed registry available without relying on cwd.
-            if error.kind() == std::io::ErrorKind::NotFound {
-                Ok(include_str!("../../../patches/registry.json").to_owned())
-            } else {
-                Err(error)
-            }
-        })
-        .map_err(|e| {
-            let err_msg = format!("Failed to read registry file: {}", e);
-            println!("Registry load error: {}", err_msg);
-            err_msg
-        })?;
+    // Production trust starts with the compiled catalog. A working-directory
+    // file must never replace package URLs, checksums, or launch metadata.
+    let content = registry_content(Path::new("../patches/registry.json"))?;
 
     println!("Registry file loaded successfully, parsing JSON...");
 
@@ -176,6 +166,12 @@ pub fn load_registry() -> Result<Registry, String> {
     migrate_bundled_packages(&mut registry, &bundled);
     prepare_behaviors(&mut registry, &bundled)?;
     updates::merge_cached(&mut registry);
+    #[cfg(debug_assertions)]
+    if let Some(path) = super::games::disco_elysium::preview_archive()? {
+        if let Some(game) = registry.games.iter_mut().find(|g| g.scummvm_id == "disco-elysium") {
+            game.patches = vec![super::games::disco_elysium::preview_definition(&path)?];
+        }
+    }
     Ok(registry)
 }
 
@@ -196,6 +192,11 @@ fn migrate_bundled_packages(registry: &mut Registry, bundled: &Registry) {
                 .patches
                 .iter()
                 .find(|p| p.source_type != "bundled" && p.language == patch.language)
+                .or_else(|| {
+                    (def.behavior.bundled.is_some() || def.behavior.bundled_resource.is_some())
+                        .then(|| def.patches.iter().find(|p| p.language == patch.language))
+                        .flatten()
+                })
             else {
                 return false;
             };
