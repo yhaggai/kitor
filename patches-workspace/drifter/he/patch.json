@@ -15,7 +15,7 @@
       "source": {
         "kind": "copy",
         "path": "payload/translation.csv",
-        "sha256": "778d7c50340f35b706583fc9b72d3be8e7413b2cfa65ad7334ca9b07ad2cbdeb"
+        "sha256": "cbd5c3f158b7c5ef1555f327dc2efbcabd6157c8194e94b91a753a11f5610400"
       }
     }
   ]
