@@ -10,6 +10,11 @@ Patch payloads, reconstruction recipes, build sources, and provenance belong und
 
 ## Beta translation catalogs
 
+The [contribution catalog index](../kitor/contribution-catalogs.json) gives Kitor
+and the contribution Worker the repository path and column names for each
+catalog. Each linked CSV below is the editable text input for its patch
+builder. Build outputs and historical drafts are kept separately.
+
 Edit the Hebrew columns in these source files, keeping row IDs, original text,
 and game formatting tokens intact. The linked build notes explain how to turn
 a catalog change into a patch using a supported copy of the game.
