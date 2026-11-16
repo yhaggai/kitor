@@ -5,6 +5,9 @@ import { featured, games } from "../lib/catalog";
 import { fallbackInstallerUrl, fallbackReleaseUrl, installers } from "../lib/downloads";
 import Box from "./Box";
 import Character from "./Character.astro";
+import gogLogo from "../../../kitor/public/store-logos/gog.png?url";
+import steamLogo from "../../../kitor/public/store-logos/steam.png?url";
+import kitorIcon from "../../../kitor/src-tauri/icons/128x128.png?url";
 
 const { locale } = Astro.props as { locale: "he" | "en" };
 const en = locale === "en";
@@ -21,22 +24,25 @@ const t = (hebrew: string, english: string) => (en ? english : hebrew);
     <h2>{t("מוסיפים משחק, וקיטור עושה את הקסם", "Add a game. Kitor does the magic.")}</h2>
     <div class="steps">
       <article>
-        <span class="step-icon" aria-hidden="true">↓</span>
-        <span class="number">01</span>
+        <div class="step-icon step-stores" dir="ltr" aria-hidden="true">
+          <img src={steamLogo} alt="" width="36" height="36" />
+          <span>{t("או", "or")}</span>
+          <img src={gogLogo} alt="" width="36" height="36" />
+        </div>
         <h3>{t("מוסיפים משחק", "Add a game")}</h3>
         <p>{en
           ? <>Add a supported game from your computer or from your <bdi>Steam</bdi> or <bdi>GOG</bdi> library. Kitor downloads it if needed.</>
           : <>מוסיפים משחק נתמך מהמחשב או מהספרייה שלכם ב־<bdi>Steam</bdi> או ב־<bdi>GOG</bdi>. קיטור מוריד את המשחק במידת הצורך.</>}</p>
       </article>
       <article>
-        <span class="step-icon" aria-hidden="true">א</span>
-        <span class="number">02</span>
-        <h3>{t("קיטור מוסיף תרגום", "Kitor adds the translation")}</h3>
-        <p>{t("קיטור מתקין אוטומטית את התרגום שמתאים למשחק ומגבה את הקבצים שהוא משנה.", "Kitor automatically installs the right translation for your game and backs up the files it changes.")}</p>
+        <div class="step-icon" aria-hidden="true">
+          <img src={kitorIcon} alt="" width="52" height="52" />
+        </div>
+        <h3>{t("קיטור מתקין את התרגום", "Kitor installs the translation")}</h3>
+        <p>{t("קיטור מחיל את התרגום לעברית אוטומטית ומגבה את הקבצים שהוא משנה.", "Kitor automatically applies the Hebrew patch and backs up the files it changes.")}</p>
       </article>
       <article>
         <span class="step-icon" aria-hidden="true">✦</span>
-        <span class="number">03</span>
         <h3>{t("משחקים בעברית", "Play in Hebrew")}</h3>
         <p>{t("מפעילים את המשחק מתוך קיטור וחוזרים לעולמות שאוהבים.", "Launch the game from Kitor and return to the worlds you love.")}</p>
       </article>
