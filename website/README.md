@@ -2,6 +2,8 @@
 
 Hebrew RTL Astro website with React islands reusing the desktop GameBox component.
 
+Use Node.js 24 for local development and builds.
+
 ```sh
 cd website
 npm ci

@@ -163,7 +163,7 @@ pub async fn password(
     mut codes: tokio::sync::mpsc::Receiver<String>,
     emit: &(impl Fn(Event) + Send + Sync),
 ) -> Result<Credentials> {
-    use rsa::{rand_core::OsRng, BigUint, Pkcs1v15Encrypt, RsaPublicKey};
+    use rsa::{BoxedUint, PublicKey};
     let password = zeroize::Zeroizing::new(password);
     let username = username.trim();
     ensure!(
@@ -180,12 +180,12 @@ pub async fn password(
     )
     .await?;
     let modulus =
-        BigUint::parse_bytes(rsa.s(1)?.as_bytes(), 16).context("Invalid Steam encryption key")?;
+        BoxedUint::from_str_radix_vartime(&rsa.s(1)?, 16).context("Invalid Steam encryption key")?;
     let exponent =
-        BigUint::parse_bytes(rsa.s(2)?.as_bytes(), 16).context("Invalid Steam encryption key")?;
-    let public_key = RsaPublicKey::new(modulus, exponent)?;
+        BoxedUint::from_str_radix_vartime(&rsa.s(2)?, 16).context("Invalid Steam encryption key")?;
+    let public_key = PublicKey::new(modulus, exponent)?;
     let encrypted = public_key
-        .encrypt(&mut OsRng, Pkcs1v15Encrypt, password.as_bytes())
+        .pkcs1v15_encrypt(password.as_bytes())
         .map_err(|_| anyhow::anyhow!("Could not encrypt Steam password"))?;
     drop(password);
     let device = Message::default()

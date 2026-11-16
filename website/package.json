@@ -16,7 +16,7 @@
   },
   "dependencies": {
     "@astrojs/node": "^11.1.13",
-    "@astrojs/react": "^4.4.0",
+    "@astrojs/react": "^7.1.9",
     "@radix-ui/react-dialog": "^1.1.15",
     "ag-grid-community": "^36.3.0",
     "ag-grid-react": "^36.3.0",

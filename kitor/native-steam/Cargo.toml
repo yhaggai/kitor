@@ -11,7 +11,8 @@ cbc = { version = "0.1", features = ["alloc", "block-padding"] }
 base64 = "0.22"
 flate2 = "1"
 futures = "0.3"
-keyring = { version = "3.6.3", features = ["apple-native", "windows-native", "sync-secret-service", "crypto-rust"] }
+getrandom = "0.4"
+keyring = { version = "3.6.3", features = ["apple-native", "windows-native", "sync-crypto-rust"] }
 lzma-rs = "0.3"
 qrcode = { version = "0.14", default-features = false, features = ["svg"] }
 reqwest = { version = "0.12", default-features = false, features = ["json", "rustls-tls", "stream", "http2"] }
@@ -21,7 +22,7 @@ sha1 = "0.10"
 tempfile = "3"
 tokio = { version = "1", features = ["full"] }
 tokio-tungstenite = { version = "0.26", features = ["rustls-tls-native-roots"] }
-zip = "2.2"
+zip = "9.0.5"
 zstd = "0.13"
 
 # Keep content decoding representative of release speed in the desktop dev app.
@@ -38,6 +39,10 @@ opt-level = 3
 opt-level = 3
 
 [dependencies.rsa]
-version = "0.9"
+version = "0.10"
+features = ["pkcs1v15"]
 [dependencies.zeroize]
 version = "1"
+
+[patch.crates-io]
+keyring = { path = "vendor/keyring-3.6.3" }
