@@ -1,5 +1,29 @@
 [
   {
+    "app_id": 6310,
+    "depot_id": 6311,
+    "title": "The Longest Journey",
+    "importer": "layout",
+    "cache_key": "6310-6311",
+    "games": [
+      {
+        "id": "tlj",
+        "title": "The Longest Journey",
+        "folder": "",
+        "files": []
+      }
+    ],
+    "required_files": [
+      "game.exe",
+      "x.xarc",
+      "chapters.ini",
+      "global/Global.xarc",
+      "08/08.xarc",
+      "static/mainmenulocation/MainMenuLocation.xarc"
+    ],
+    "copy_depot": true
+  },
+  {
     "app_id": 221910,
     "depot_id": 221911,
     "platform": "windows",
