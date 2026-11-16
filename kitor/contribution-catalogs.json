@@ -1,10 +1,25 @@
 [
   {
     "id": "drifter",
-    "game": "drifter",
+    "game": null,
     "title": "The Drifter",
     "label": "Hebrew",
     "path": "patches-workspace/drifter/he/payload/translation.csv",
+    "header": ["Character", "ID", "File", "Context", "English", "Hebrew"],
+    "key": 1,
+    "speaker": 0,
+    "context": [2, 3],
+    "english": 4,
+    "editable": [5],
+    "skip": 3,
+    "tokens": "\\{[^}]*\\}|<[^>]*>|%[sdif]"
+  },
+  {
+    "id": "drifter-logical",
+    "game": "drifter",
+    "title": "The Drifter",
+    "label": "Hebrew",
+    "path": "patches-workspace/drifter/he/translation-catalog.csv",
     "header": ["Character", "ID", "File", "Context", "English", "Hebrew"],
     "key": 1,
     "speaker": 0,
