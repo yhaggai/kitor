@@ -11,7 +11,7 @@ are still pending; this is not a claim of a polished, fully tested release.
 
 ## What is included
 
-- Editable Hebrew in normal logical reading order, split into three JSON files.
+- Editable Hebrew in normal logical reading order, in a CSV catalog.
 - A 27-glyph Hebrew pixel alphabet, including final forms, with no niqqud.
 - Runtime glyph placement for right-to-left reveal, highlighted text, and numbers.
   The game's original pause, sound, and event logic remains in control.
@@ -110,7 +110,7 @@ python tools/extract.py --game '/path/to/resources'
 ```
 
 This writes `.local/source.json`, which is deliberately ignored. Entry IDs are
-checked against `catalog-contract.json`. Edit `translations/part-*.json` and run:
+checked against `catalog-contract.json`. Edit `translations/catalog.csv` and run:
 
 ```sh
 python -m unittest discover -s tests -v

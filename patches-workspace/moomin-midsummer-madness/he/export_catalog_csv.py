@@ -1,5 +1,5 @@
-"""Export editable unpointed/pointed translations to the canonical UTF-8 CSV."""
-import csv,json,re
+"""Export the historical JSON drafts to a separate CSV for comparison."""
+import argparse,csv,json,re
 from pathlib import Path
 
 BASE=Path(__file__).resolve().parent
@@ -15,8 +15,10 @@ def main():
  unpointed=json.loads((BASE/'catalog.json').read_text(encoding='utf-8'))
  pointed=json.loads((BASE/'catalog-niqqud.json').read_text(encoding='utf-8'))
  if len(unpointed)!=len(pointed):raise ValueError('Catalog lengths differ')
- out=BASE/'catalog.csv'
- with out.open('w',encoding='utf-8-sig',newline='') as f:
+ parser=argparse.ArgumentParser(description=__doc__)
+ parser.add_argument('--output',type=Path,required=True)
+ out=parser.parse_args().output
+ with out.open('x',encoding='utf-8-sig',newline='') as f:
   w=csv.DictWriter(f,fieldnames=FIELDS,quoting=csv.QUOTE_MINIMAL,lineterminator='\n');w.writeheader()
   for old,new in zip(unpointed,pointed):
    if old['path']!=new['path'] or old['en']!=new['en']:raise ValueError('Stable source ID mismatch')

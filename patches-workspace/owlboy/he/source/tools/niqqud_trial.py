@@ -48,9 +48,7 @@ def tile(cluster,height):
  return out
 
 def load_pointed():
- result={}
- for path in sorted((Path(__file__).resolve().parents[1]/'translations/niqqud').glob('part-*.json')):
-  part=json.loads(path.read_text(encoding='utf-8'));assert not set(result)&set(part);result.update(part)
+ result=catalog('hebrew_niqqud')
  base=catalog()
  if set(result)!=set(base):raise ValueError('Incomplete niqqud catalog')
  for key,text in result.items():

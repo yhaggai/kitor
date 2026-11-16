@@ -7,11 +7,11 @@ from PIL import Image, ImageDraw, ImageFont
 
 ROOT = Path(__file__).resolve().parent
 sys.path.insert(0, str(ROOT.parent))
+from translation_catalog import CATALOG, read_catalog
 from nikud import glyph_map, encode
 from pointed_font import render_pointed
 SOURCE = ROOT / 'fonts'
 OUT = ROOT / 'generated-fonts'
-CATALOG = ROOT.parent / 'translation-catalog.json'
 OUT.mkdir(exist_ok=True)
 REGULAR = '/System/Library/Fonts/Supplemental/Arial.ttf'
 BOLD = '/System/Library/Fonts/Supplemental/Arial Bold.ttf'
@@ -87,7 +87,7 @@ def render(ch, face, metric, antialias):
         advance=metric['reference_advance'];cell=Image.new('RGBA',(1,1))
     return cell,advance
 
-catalog=json.loads(CATALOG.read_text())
+catalog=read_catalog()
 pointed=glyph_map(catalog)
 pointed_by_code={ord(code): cluster for cluster,code in pointed.items()}
 visible={c for e in catalog['entries'] for c in encode(e.get('hebrew',''),pointed)

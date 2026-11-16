@@ -2,13 +2,15 @@
 Run export_all_fonts.csx once, then this script after editing the catalog.
 """
 from pathlib import Path
+import sys
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+from translation_catalog import CATALOG, read_catalog
 import csv, hashlib, json, math, statistics, unicodedata
 from PIL import Image, ImageDraw, ImageFont
 
 ROOT = Path(__file__).resolve().parent
 SOURCE = ROOT / 'fonts'
 OUT = ROOT / 'generated-fonts'
-CATALOG = ROOT.parent / 'translation-catalog.json'
 OUT.mkdir(exist_ok=True)
 REGULAR = '/System/Library/Fonts/Supplemental/Arial.ttf'
 BOLD = '/System/Library/Fonts/Supplemental/Arial Bold.ttf'
@@ -84,7 +86,7 @@ def render(ch, face, metric, antialias):
         advance=metric['reference_advance'];cell=Image.new('RGBA',(1,1))
     return cell,advance
 
-catalog=json.loads(CATALOG.read_text())
+catalog=read_catalog()
 visible={c for e in catalog['entries'] for c in e.get('hebrew','')
          if c.isprintable() and unicodedata.category(c)!='Cf'}
 required=visible|{chr(c) for c in range(0x5d0,0x5eb)}

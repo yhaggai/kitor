@@ -122,15 +122,13 @@ def encode_niqqud_clusters(text):
     return CLUSTER.sub(encode,text)
 
 def read_catalog(path):
-    if path.suffix.lower()!='.csv':
-        rows=json.loads(path.read_text(encoding='utf-8'))
-        return [{'path':r['path'],'en':r['en'],'he':r['he']} for r in rows]
     result=[];seen=set()
     with path.open(encoding='utf-8-sig',newline='') as f:
-        reader=csv.DictReader(f)
+        reader=csv.DictReader(f,strict=True)
         required={'stable_id','path','category','scene','speaker','en','he_unpointed','he_pointed'}
         if set(reader.fieldnames or ())!=required:raise ValueError(f'Unexpected catalog CSV columns: {reader.fieldnames}')
         for i,row in enumerate(reader,2):
+            if None in row or None in row.values():raise ValueError(f'Malformed catalog CSV row {i}')
             p=json.loads(row['path']);stable=json.dumps(p,ensure_ascii=False,separators=(',',':'))
             if stable!=row['stable_id']:raise ValueError(f'Stable ID/path mismatch at CSV row {i}')
             if stable in seen:raise ValueError(f'Duplicate stable ID at CSV row {i}: {stable}')

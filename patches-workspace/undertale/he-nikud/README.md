@@ -31,8 +31,8 @@ have limited nikud legibility; archive verification does not replace playtesting
 Raw pointed text entered dynamically outside the catalog is not shaped.
 
 To vowelize new unpointed entries locally, install `nakdimon==0.2.1` in a separate
-Python 3.12+ environment and run `python vowelize_catalog.py`. Existing pointed
-entries are preserved. Normal patch building and installation do not need the
+Python 3.12+ environment and run `python vowelize_catalog.py --catalog translation-catalog.csv --output draft.csv`. Existing pointed
+entries are preserved. Review the draft before copying changes into the source CSV. Normal patch building and installation do not need the
 model. To edit nikud, update the Unicode `hebrew` field and rebuild both platforms.
 
 ## Install on Windows
@@ -102,7 +102,7 @@ The original checksum is verified before restoring. Rollback refuses to overwrit
 - Flowey bubble bounds include 12 pixels of right padding and reserve the final glyph cell.
 - The Mettaton letter-count quiz retains the English name so its original answer remains valid.
 
-Edit `translation-catalog.json`: change `hebrew`, `status` and `translator_note`; preserve `key`, `english`, placeholders and control commands. Translations in the catalog do not take effect until rebuilt. The committed deltas are the alpha 3 nikud draft for both supported Steam archives.
+Edit `translation-catalog.csv`: change `hebrew`, `status` and `translator_note`; preserve `key`, `english`, placeholders and control commands. Translations in the catalog do not take effect until rebuilt. The committed deltas are the alpha 3 nikud draft for both supported Steam archives.
 
 ## Build from source
 
@@ -137,7 +137,7 @@ The runtime reference suite has 21 focused tests. The original alpha 2 archive w
 
 ## Repository contents
 
-- `translation-catalog.json`: bilingual translation source.
+- `translation-catalog.csv`: bilingual translation source.
 - `full-patch/hebrew-runtime/`: GML bidi/layout helpers and Python reference tests.
 - `full-patch/render-gml/`: draw wrappers.
 - `full-patch/*.py`, `*.csx`: font generation, surgical code transforms and import/verification scripts.

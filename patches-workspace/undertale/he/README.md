@@ -71,7 +71,7 @@ The original checksum is verified before restoring. Rollback refuses to overwrit
 - Flowey bubble bounds include 12 pixels of right padding and reserve the final glyph cell.
 - The Mettaton letter-count quiz retains the English name so its original answer remains valid.
 
-Edit `translation-catalog.json`: change `hebrew`, `status` and `translator_note`; preserve `key`, `english`, placeholders and control commands. Translations in the catalog do not take effect until rebuilt. The committed delta is the tested alpha 2 Steam build.
+Edit `translation-catalog.csv`: change `hebrew`, `status` and `translator_note`; preserve `key`, `english`, placeholders and control commands. Translations in the catalog do not take effect until rebuilt. The committed delta is the tested alpha 2 Steam build.
 
 ## Build from source
 
@@ -106,7 +106,7 @@ The runtime reference suite has 21 focused tests. The original alpha 2 archive w
 
 ## Repository contents
 
-- `translation-catalog.json`: bilingual translation source.
+- `translation-catalog.csv`: bilingual translation source.
 - `full-patch/hebrew-runtime/`: GML bidi/layout helpers and Python reference tests.
 - `full-patch/render-gml/`: draw wrappers.
 - `full-patch/*.py`, `*.csx`: font generation, surgical code transforms and import/verification scripts.
