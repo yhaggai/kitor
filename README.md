@@ -37,11 +37,13 @@
 
 ### מתחילים לשחק
 
-1. מוסיפים את תיקיית המשחק או סורקים התקנות קיימות.
-2. בוחרים תרגום מתאים וקוראים את הדרישות וההנחיות שלו.
-3. סוגרים את המשחק, מתקינים את התרגום ומפעילים מהספרייה.
+![בוחרים משחק מ־Steam או מ־GOG, קיטור מוריד אותו ומחיל את התרגום אוטומטית, ומשחקים בעברית. במשחק הדמות מרימה מפתח ואומרת ״מצאתי את המפתח!״](docs/images/kitor-install-flow-he.png)
 
-צריך עותק משלכם של המשחק; קיטור אינו מספק את המשחקים עצמם. התמיכה ב־Windows וב־macOS, מהדורות המשחק ודרישות ההפעלה משתנות בין כותרים ותרגומים. יש לבדוק את פרטי המשחק באפליקציה; הופעה בקטלוג אינה מבטיחה שכל גרסה נבדקה במלואה.
+בוחרים בקיטור משחק שבבעלותכם דרך אינטגרציית החנות הנתמכת. קיטור מוריד את המשחק ומחיל עליו את התרגום לעברית אוטומטית. כשההתקנה מסתיימת, מפעילים את המשחק מהספרייה.
+
+אם המשחק כבר מותקן, אפשר להוסיף את התיקייה שלו או לסרוק התקנות קיימות.
+
+התמיכה ב־Windows וב־macOS, מהדורות המשחק ודרישות ההפעלה משתנות בין כותרים ותרגומים. יש לבדוק את פרטי המשחק באפליקציה; הופעה בקטלוג אינה מבטיחה שכל גרסה נבדקה במלואה.
 
 ### פיתוח ותרומה
 
@@ -85,11 +87,13 @@ The project brings together classic adventures and other games, using ScummVM or
 
 ### Start playing
 
-1. Add your game folder or scan existing installations.
-2. Choose a compatible translation and read its requirements and instructions.
-3. Close the game, install the translation, and launch it from your library.
+![Choose a game from Steam or GOG, let Kitor download and patch it automatically, then play in Hebrew. The adventurer holds up a key and says ‘I found the key!’ in Hebrew](docs/images/kitor-install-flow.png)
 
-You need your own copy of the game; Kitor does not supply the games themselves. Windows and macOS support, game editions, and runtime requirements vary by title and patch. Check the game's details in the app; a catalog entry does not mean every version has been fully tested.
+Choose a game you own in Kitor through a supported store integration. Kitor downloads the game and automatically applies the Hebrew patch. When installation is complete, launch the game from your library.
+
+If the game is already installed, you can add its folder or scan for existing installations.
+
+Windows and macOS support, game editions, and runtime requirements vary by title and patch. Check the game's details in the app; a catalog entry does not mean every version has been fully tested.
 
 ### Development and contributions
 
