@@ -9,6 +9,12 @@
 <p align="center"><a href="#hebrew">עברית</a> · <a href="#english">English</a> · <a href="https://github.com/yhaggai/kitor/releases">הורדות / Downloads</a></p>
 
 <p align="center">
+  <a href="https://github.com/yhaggai/kitor/actions/workflows/osv-scanner.yml"><img src="https://github.com/yhaggai/kitor/actions/workflows/osv-scanner.yml/badge.svg?branch=v1" alt="Dependency vulnerability scan" /></a>
+  <a href="https://github.com/yhaggai/kitor/actions/workflows/codeql.yml"><img src="https://github.com/yhaggai/kitor/actions/workflows/codeql.yml/badge.svg?branch=v1" alt="CodeQL source scan" /></a>
+  <a href="https://github.com/yhaggai/kitor/actions/workflows/zizmor.yml"><img src="https://github.com/yhaggai/kitor/actions/workflows/zizmor.yml/badge.svg?branch=v1" alt="GitHub Actions security scan" /></a>
+</p>
+
+<p align="center">
   <img src="docs/images/kitor-home.jpg" width="960" alt="Kitor Home showing Hebrew game covers in Classics, Detectives, and Thriller / מסך הבית של קיטור עם עטיפות בעברית בקטגוריות קלאסיקות, בלשים ומתח" />
 </p>
 
