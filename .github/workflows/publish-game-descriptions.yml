@@ -1,0 +1,65 @@
+name: Publish game descriptions
+
+on:
+  pull_request:
+    paths:
+      - 'kitor/src/data/game-descriptions.he.json'
+      - 'kitor/src/lib/descriptionFeedSchema.ts'
+      - 'kitor/tools/build-description-feed.ts'
+      - '.github/workflows/publish-game-descriptions.yml'
+  push:
+    branches: [v1]
+    paths:
+      - 'kitor/src/data/game-descriptions.he.json'
+      - 'kitor/src/lib/descriptionFeedSchema.ts'
+      - 'kitor/tools/build-description-feed.ts'
+      - '.github/workflows/publish-game-descriptions.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with:
+          node-version: 24
+      - run: node kitor/tools/build-description-feed.ts
+
+  publish:
+    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/v1'
+    needs: validate
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    concurrency:
+      group: publish-kitor-game-descriptions
+      cancel-in-progress: false
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: v1
+          persist-credentials: false
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with:
+          node-version: 24
+      - run: node kitor/tools/build-description-feed.ts game-descriptions-v1.json
+      - run: npm install --global wrangler@4.40.2
+      - name: Publish description feed
+        env:
+          CLOUDFLARE_ACCOUNT_ID: ${{ vars.CLOUDFLARE_ACCOUNT_ID }}
+          CLOUDFLARE_API_TOKEN: ${{ secrets.KITOR_DESCRIPTION_R2_TOKEN }}
+          WRANGLER_SEND_METRICS: 'false'
+        run: |
+          if [[ -z "$CLOUDFLARE_ACCOUNT_ID" || -z "$CLOUDFLARE_API_TOKEN" ]]; then
+            echo "::error::Set CLOUDFLARE_ACCOUNT_ID and KITOR_DESCRIPTION_R2_TOKEN to publish the description feed."
+            exit 1
+          fi
+          wrangler r2 object put kitor-assets/catalog/game-descriptions-v1.json \
+            --remote --file game-descriptions-v1.json \
+            --content-type 'application/json; charset=utf-8' --cache-control 'public, max-age=300'

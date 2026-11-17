@@ -12,6 +12,7 @@ import PatchBrowser from "@/components/PatchBrowser";
 import Settings from "@/components/Settings";
 import TranslationRequestDialog from "@/components/TranslationRequestDialog";
 
+import { refreshDescriptionFeed } from "@/lib/descriptionFeed";
 import { appUpdateStore } from "@/store/appUpdates";
 import { useGogLibrary } from "@/store/gog";
 import { useSteamStore } from "@/store/steam";
@@ -32,6 +33,11 @@ type ScummVMStatus = {
 
 function App() {
   const [navigationResetKey, setNavigationResetKey] = useState(0);
+  useEffect(() => {
+    void refreshDescriptionFeed();
+    const timer = window.setInterval(refreshDescriptionFeed, 15 * 60 * 1000);
+    return () => window.clearInterval(timer);
+  }, []);
   useEffect(() => {
     void appUpdateStore.getState().check();
   }, []);

@@ -87,6 +87,7 @@ pub fn run() {
             commands::patch_commands::get_all_patches,
             commands::patch_commands::get_catalog_games_without_patches,
             commands::patch_commands::refresh_patch_registry,
+            commands::description_commands::fetch_game_descriptions,
             commands::patch_commands::download_and_install_patch,
             commands::patch_commands::get_installed_patches,
             commands::patch_commands::restore_backup,
