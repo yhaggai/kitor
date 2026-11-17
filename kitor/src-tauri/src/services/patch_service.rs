@@ -647,6 +647,12 @@ pub(super) async fn reconcile_patches(
                         // data, but do not associate its old translation with this install.
                         continue;
                     }
+                    if patch_lifecycle::can_reinstall_after_store_restore(path, &target)
+                        .unwrap_or(false)
+                    {
+                        // Leave the journal available for selective cleanup on install.
+                        continue;
+                    }
                     row.status = if result.is_ok() { "damaged" } else { "unverified" }.into();
                     installed.push(row);
                     continue;
