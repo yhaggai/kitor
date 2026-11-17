@@ -21,6 +21,7 @@ PLATFORMS = {
 }
 REPO = "yhaggai/kitor"
 FEED_TAG = "app-updates"
+CODE_SIGNING_POLICY_LINK = f"[Code signing policy](https://github.com/{REPO}/blob/v1/CODE_SIGNING_POLICY.md)"
 
 
 def version_tuple(value):
@@ -158,8 +159,13 @@ def finalize():
         tmp = Path(tmp)
         manifest = manifest_for(data, fetch_signatures(tag, tmp))
         upload_manifest(tag, manifest, tmp)
-    gh("release", "edit", tag, "--repo", REPO, "--notes",
-       "Installers and signed updates are ready for macOS (Apple Silicon and Intel) and Windows (x64).\n\nReplace these notes with the changes in this version before publishing. Publishing this release updates Kitor's stable app-update feed.")
+    gh(
+        "release", "edit", tag, "--repo", REPO, "--notes",
+        "Installers and signed updates are ready for macOS (Apple Silicon and Intel) and Windows (x64).\n\n"
+        "Replace this paragraph with the changes in this version and keep the policy link below. "
+        "Publishing this release updates Kitor's stable app-update feed.\n\n"
+        f"{CODE_SIGNING_POLICY_LINK}",
+    )
 
 
 def publish_feed(tag):

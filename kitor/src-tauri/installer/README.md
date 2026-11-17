@@ -75,7 +75,8 @@ bun run --cwd kitor build
 See the [Code signing policy](../../../CODE_SIGNING_POLICY.md),
 [privacy policy](../../../PRIVACY.md), and
 [application checklist](../../../docs/signpath-application.md).
-SignPath acceptance and integration are pending. Add this link to app release notes:
+SignPath acceptance and integration are pending. The workflow adds this link to
+the app release notes. Keep it when editing the notes before publishing:
 
 ```markdown
 [Code signing policy](https://github.com/yhaggai/kitor/blob/v1/CODE_SIGNING_POLICY.md)

@@ -4,7 +4,9 @@ use std::{
     io::Read,
     path::{Path, PathBuf},
 };
+#[cfg(any(test, feature = "standalone-patch-tools"))]
 pub const VERSION: &str = "2.0-beta2-kitor1";
+
 fn child(root: &Path, name: &str) -> Option<PathBuf> {
     fs::read_dir(root)
         .ok()?
