@@ -8,7 +8,12 @@ use base64::{
     Engine,
 };
 use serde::{Deserialize, Serialize};
+use sha1::{Digest, Sha1};
 use std::time::Duration;
+
+// A server rejection applies only to the token used for that request. Keep
+// the Keychain entry intact; a later successful sign-in can replace it.
+static REJECTED_TOKEN: std::sync::Mutex<Option<[u8; 20]>> = std::sync::Mutex::new(None);
 #[derive(Serialize, Deserialize)]
 pub struct Credentials {
     pub account: String,
@@ -16,6 +21,29 @@ pub struct Credentials {
     pub refresh_token: String,
 }
 impl Credentials {
+    fn token_id(&self) -> [u8; 20] {
+        Sha1::digest(self.refresh_token.as_bytes()).into()
+    }
+    pub fn mark_rejected(&self) {
+        *REJECTED_TOKEN.lock().unwrap() = Some(self.token_id());
+    }
+    pub fn load_usable() -> Result<Option<Self>> {
+        let Some(credentials) = Self::load()? else {
+            return Ok(None);
+        };
+        let now = std::time::SystemTime::now()
+            .duration_since(std::time::UNIX_EPOCH)?
+            .as_secs();
+        Ok(credentials.is_usable_at(now).then_some(credentials))
+    }
+    fn is_usable_at(&self, now: u64) -> bool {
+        let expired = token_claims(&self.refresh_token)
+            .ok()
+            .and_then(|claims| claims["exp"].as_u64())
+            .is_some_and(|expiry| expiry <= now);
+        let rejected = *REJECTED_TOKEN.lock().unwrap() == Some(self.token_id());
+        !expired && !rejected
+    }
     pub fn load() -> Result<Option<Self>> {
         match entry()?.get_password() {
             Ok(s) => Ok(Some(serde_json::from_str(&s)?)),
@@ -35,6 +63,33 @@ impl Credentials {
             Ok(()) | Err(keyring::Error::NoEntry) => Ok(()),
             Err(_) => anyhow::bail!("Could not remove saved Steam session"),
         }
+    }
+}
+fn token_claims(token: &str) -> Result<serde_json::Value> {
+    let claims = token.split('.').nth(1).context("Invalid Steam session")?;
+    Ok(serde_json::from_slice(&URL_SAFE_NO_PAD.decode(claims)?)?)
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn expired_or_rejected_sessions_need_reconnect_but_replacements_stay_usable() {
+        let token = |signature| Credentials {
+            account: "test".into(),
+            steam_id: 1,
+            refresh_token: format!(
+                "header.{}.{signature}",
+                URL_SAFE_NO_PAD.encode(br#"{"exp":200}"#)
+            ),
+        };
+        let saved = token("old");
+        assert!(saved.is_usable_at(199));
+        assert!(!saved.is_usable_at(200));
+        saved.mark_rejected();
+        assert!(!saved.is_usable_at(199));
+        assert!(token("new").is_usable_at(199));
     }
 }
 fn entry() -> Result<keyring::Entry> {
@@ -133,12 +188,7 @@ pub async fn qr(
         .await?;
         let refresh_token = session.s(3)?;
         if !refresh_token.is_empty() {
-            let claims = refresh_token
-                .split('.')
-                .nth(1)
-                .context("Invalid Steam session")?;
-            let claims: serde_json::Value =
-                serde_json::from_slice(&URL_SAFE_NO_PAD.decode(claims)?)?;
+            let claims = token_claims(&refresh_token)?;
             let steam_id = claims["sub"]
                 .as_str()
                 .context("Steam session has no identity")?

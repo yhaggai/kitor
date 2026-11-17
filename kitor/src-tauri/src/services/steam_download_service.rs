@@ -83,12 +83,15 @@ async fn native_depot_source(
     if !kitor_steam::connected().await.map_err(|e| e.to_string())? { return Ok(None); }
     let staging = tempfile::tempdir_in(&state.app_data_dir).map_err(|e| e.to_string())?;
     let source = staging.path().join("content");
-    kitor_steam::download(app_id, depot_id, &source, |event| {
-        if let Some(app) = progress_app {
-            use tauri::Emitter;
-            let _ = app.emit("native-steam-download", &event);
-        }
-    }).await.map_err(|e| e.to_string())?;
+    super::install_cancellation::interruptible(async {
+        kitor_steam::download(app_id, depot_id, &source, |event| {
+            if let Some(app) = progress_app {
+                use tauri::Emitter;
+                let _ = app.emit("native-steam-download", &event);
+            }
+        }).await.map_err(|e| e.to_string())
+    }).await?;
+    super::install_cancellation::checkpoint()?;
     Ok(Some((staging, source)))
 }
 
@@ -138,6 +141,7 @@ async fn download_collection(
                 valid_source().ok_or("Steam completed, but the collection files could not be verified")?
             }
         };
+        super::install_cancellation::checkpoint()?;
         if let Some(app) = progress_app {
             use tauri::Emitter;
             for recipe in &product.games {
@@ -271,6 +275,7 @@ async fn download_depot_set(
                 .find(|path| path.is_dir())
                 .ok_or_else(|| format!("Steam did not provide depot {depot}"))?
         };
+        super::install_cancellation::checkpoint()?;
         let target = destination.clone();
         let consume = native.is_some();
         tokio::task::spawn_blocking(move || merge_depot(&source, &target, consume))
@@ -322,6 +327,7 @@ async fn download_layout(
         use tauri::Emitter;
         let _ = app.emit("steam-game-importing", &recipe.id);
     }
+    super::install_cancellation::checkpoint()?;
     let consume = native_staging.is_some();
     let games = install_root.to_path_buf();
     let destination = games.join(format!("{}-steam", recipe.id));
@@ -423,6 +429,7 @@ async fn download_depot(
     app: u32,
     depot: u32,
 ) -> Result<(), String> {
+    super::install_cancellation::checkpoint()?;
     let log = steam.join("logs/console_log.txt");
     std::fs::create_dir_all(progress_dir).map_err(|e| e.to_string())?;
     let request = progress_dir.join(format!("steam-download-{app}-{depot}.json"));
@@ -466,7 +473,11 @@ async fn download_depot(
     let mut pending = String::new();
     let mut complete = false;
     for _ in 0..1800 {
-        tokio::time::sleep(Duration::from_secs(2)).await;
+        // Steam owns this transfer. Keep its request file so a retry can reattach.
+        super::install_cancellation::interruptible(async {
+            tokio::time::sleep(Duration::from_secs(2)).await;
+            Ok(())
+        }).await?;
         if let Ok(mut file) = std::fs::File::open(&log) {
             let metadata = file.metadata().map_err(|e| e.to_string())?;
             let length = metadata.len();
@@ -773,6 +784,7 @@ pub async fn download_to_confirmed(
                 valid_source().ok_or("Steam completed, but the files do not match the verified edition. No games were imported.")?
             }
         };
+        super::install_cancellation::checkpoint()?;
         for recipe in all {
             let destination = cache.join(&recipe.id);
             if verify_recipe(&destination, recipe).is_ok() {
@@ -782,6 +794,7 @@ pub async fn download_to_confirmed(
         }
     }
     for recipe in needed {
+        super::install_cancellation::checkpoint()?;
         let destination = install_root.join(format!("{}-steam", recipe.id));
         // A previous registration failure leaves a pristine, recoverable import.
         if !destination.exists() {

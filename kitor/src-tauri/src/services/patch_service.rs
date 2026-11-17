@@ -198,7 +198,9 @@ pub async fn download_and_install_patch(
     app_handle: tauri::AppHandle,
     app_data_dir: PathBuf,
 ) -> Result<(), String> {
-    let _operation = PATCH_OPERATION.lock().await;
+    let _operation = super::install_cancellation::interruptible(async {
+        Ok(PATCH_OPERATION.lock().await)
+    }).await?;
     println!(
         "[patch_service] Starting installation for {} (lang: {}, ver: {})",
         scummvm_id, language, version
@@ -459,6 +461,7 @@ pub async fn download_and_install_patch(
             }),
         );
     };
+    super::install_cancellation::checkpoint()?;
     let backup_path = if let Some(installed) = matching.first() {
         let _ = app_handle.emit(
             "install-progress",

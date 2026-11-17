@@ -244,7 +244,9 @@ pub async fn download_scummvm(
     app_data_dir: &PathBuf,
     app_handle: &tauri::AppHandle,
 ) -> Result<(), String> {
-    let _operation = RUNTIME_OPERATION.lock().await;
+    let _operation = super::install_cancellation::interruptible(async {
+        Ok(RUNTIME_OPERATION.lock().await)
+    }).await?;
     println!("[scummvm_service] Starting ScummVM download");
 
     // Emit progress: Starting
@@ -259,7 +261,8 @@ pub async fn download_scummvm(
         .map_err(|e| format!("Failed to create ScummVM directory: {}", e))?;
 
     // Get download URL based on platform
-    let (download_url, archive_name) = get_download_url_and_name().await?;
+    let (download_url, archive_name) =
+        super::install_cancellation::interruptible(get_download_url_and_name()).await?;
     
     println!("[scummvm_service] Download URL: {}", download_url);
 
@@ -268,7 +271,8 @@ pub async fn download_scummvm(
     std::fs::create_dir_all(&downloads_dir)
         .map_err(|e| format!("Failed to create downloads directory: {}", e))?;
     
-    let download_path = downloads_dir.join(&archive_name);
+    let staging = tempfile::tempdir_in(&downloads_dir).map_err(|e| e.to_string())?;
+    let download_path = staging.path().join(&archive_name);
 
     // Emit progress: Downloading
     let _ = app_handle.emit("scummvm-download-progress", serde_json::json!({
@@ -280,11 +284,8 @@ pub async fn download_scummvm(
     
     // Clone app_handle for the download progress tracking
     let app_handle_clone = app_handle.clone();
-    let download_result = download_scummvm_with_progress(&download_url, &download_path, &app_handle_clone).await;
-    
-    if let Err(e) = download_result {
-        return Err(format!("Download failed: {}", e));
-    }
+    download_scummvm_with_progress(&download_url, &download_path, &app_handle_clone).await?;
+    super::install_cancellation::checkpoint()?;
     
     println!("[scummvm_service] Download complete");
 
@@ -823,11 +824,10 @@ async fn download_scummvm_with_progress(
         .build()
         .map_err(|e| format!("Failed to create HTTP client: {}", e))?;
 
-    let response = client
-        .get(url)
-        .send()
-        .await
-        .map_err(|e| format!("Failed to download file: {}", e))?;
+    let response = super::install_cancellation::interruptible(async {
+        client.get(url).send().await
+            .map_err(|e| format!("Failed to download file: {}", e))
+    }).await?;
 
     let total_size = response.content_length().unwrap_or(0);
     println!("[scummvm_service] Download size: {} bytes", total_size);
@@ -840,7 +840,9 @@ async fn download_scummvm_with_progress(
     let mut stream = response.bytes_stream();
     let mut last_emitted_progress: u32 = 0; // Throttle: track last emitted progress
 
-    while let Some(item) = stream.next().await {
+    while let Some(item) =
+        super::install_cancellation::interruptible(async { Ok(stream.next().await) }).await?
+    {
         let chunk = item.map_err(|e| format!("Failed to read chunk: {}", e))?;
         
         file.write_all(&chunk)

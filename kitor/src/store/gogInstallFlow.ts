@@ -25,6 +25,7 @@ export const useGogInstallFlow = create<{
     ) {
       useGogDownload.setState({
         complete: false,
+        cancelled: false,
         error: null,
         gameId: null,
         installedGameId: null,

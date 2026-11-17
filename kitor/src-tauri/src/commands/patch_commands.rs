@@ -56,19 +56,23 @@ pub async fn download_and_install_patch(
     version: String,
     app_handle: AppHandle,
     state: State<'_, AppState>,
+    run_id: Option<String>,
     updates: State<'_, crate::services::app_updates::AppUpdates>,
 ) -> Result<(), String> {
     let _activity = updates.activity()?;
     use crate::services::diagnostics;
     let target = scummvm_id.clone();
     diagnostics::record(&state.app_data_dir, "patch", &target, "started");
-    let result = patch_service::download_and_install_patch(
-        &state.db,
-        scummvm_id,
-        language,
-        version,
-        app_handle,
-        state.app_data_dir.clone(),
+    let result = crate::services::install_cancellation::scope(
+        run_id,
+        patch_service::download_and_install_patch(
+            &state.db,
+            scummvm_id,
+            language,
+            version,
+            app_handle,
+            state.app_data_dir.clone(),
+        ),
     )
     .await;
     diagnostics::record(&state.app_data_dir, "patch", &target, diagnostics::outcome(&result));

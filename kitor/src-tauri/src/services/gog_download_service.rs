@@ -262,14 +262,14 @@ pub async fn install(
             .timeout(std::time::Duration::from_secs(120))
             .build()
             .map_err(|e| e.to_string())?;
-        let metadata = json(
+        let metadata = super::install_cancellation::interruptible(json(
             &client,
             https_url(
                 &format!("https://api.gog.com/products/{id}?expand=downloads"),
                 true,
             )?,
             &token,
-        )
+        ))
         .await?;
         let installer = select_installer(metadata)?;
         let downloads = tempfile::tempdir_in(&games).map_err(|e| e.to_string())?;
@@ -285,20 +285,28 @@ pub async fn install(
             .map_err(|e| e.to_string())?;
         let mut downloaded_bytes = 0u64;
         for (index, part) in installer.files.into_iter().enumerate() {
-            let resolved = json(&client, https_url(&part.downlink, true)?, &token).await?;
+            let resolved = super::install_cancellation::interruptible(json(
+                &client,
+                https_url(&part.downlink, true)?,
+                &token,
+            ))
+            .await?;
             let url = https_url(
                 resolved["downlink"]
                     .as_str()
                     .ok_or("Missing GOG download link")?,
                 false,
             )?;
-            let response = transfer
-                .get(url.clone())
-                .send()
-                .await
-                .map_err(|_| "Could not download game files")?
-                .error_for_status()
-                .map_err(|_| "GOG game download failed. Retry or reconnect GOG.")?;
+            let response = super::install_cancellation::interruptible(async {
+                transfer
+                    .get(url.clone())
+                    .send()
+                    .await
+                    .map_err(|_| "Could not download game files")?
+                    .error_for_status()
+                    .map_err(|_| "GOG game download failed. Retry or reconnect GOG.".into())
+            })
+            .await?;
             if response.status() != reqwest::StatusCode::OK {
                 return Err("GOG returned a partial installer response. Please retry.".into());
             }
@@ -325,7 +333,9 @@ pub async fn install(
                 expected_bytes.filter(|n| *n > 0).map(|_| 0),
                 Some(downloaded_bytes),
             );
-            while let Some(chunk) = stream.next().await {
+            while let Some(chunk) =
+                super::install_cancellation::interruptible(async { Ok(stream.next().await) }).await?
+            {
                 let chunk = chunk.map_err(|_| "Game download was interrupted. Please retry.")?;
                 file.write_all(&chunk).await.map_err(|e| e.to_string())?;
                 size += chunk.len() as u64;
@@ -350,6 +360,7 @@ pub async fn install(
         if executables.len() != 1 {
             return Err("This GOG release needs an unsupported installer layout".into());
         }
+        super::install_cancellation::checkpoint()?;
         progress(app, &game_id, "Preparing game files…", None);
         let output = tokio::process::Command::new(tool)
             .args([
@@ -377,6 +388,7 @@ pub async fn install(
         })
         .await
         .map_err(|e| e.to_string())??;
+        super::install_cancellation::checkpoint()?;
         std::fs::rename(staging.path(), &destination).map_err(|e| e.to_string())?;
         destination.join(relative)
     };

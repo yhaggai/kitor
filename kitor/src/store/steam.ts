@@ -8,6 +8,10 @@ export type SteamStatus = {
   owned_app_ids: number[] | null;
   message: string | null;
 };
+export type InitialSteamLibrary = {
+  library: { steam_id: string; owned_app_ids: number[] } | null;
+  error: string | null;
+};
 const empty: SteamStatus = {
   steam_id: null,
   has_api_key: false,
@@ -21,6 +25,7 @@ export const useSteamStore = create<{
   busy: boolean;
   error: string | null;
   reset: () => void;
+  applySignIn: (result: InitialSteamLibrary) => void;
   run: (command: string, args?: Record<string, unknown>) => Promise<boolean>;
 }>((set) => ({
   status: empty,
@@ -29,6 +34,10 @@ export const useSteamStore = create<{
   reset: () => {
     request += 1;
     set({ status: { ...empty }, busy: false, error: null });
+  },
+  applySignIn: ({ library, error }) => {
+    request += 1;
+    set({ status: { ...empty, ...library }, busy: false, error });
   },
   run: async (command, args) => {
     const current = ++request;
