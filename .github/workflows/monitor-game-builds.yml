@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
 
 concurrency:
   group: game-build-monitor
@@ -14,21 +14,36 @@ concurrency:
 
 jobs:
   scan:
+    permissions:
+      contents: write
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v5
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
         with:
           node-version: 22
       - name: Check stores and publish snapshot
         shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
         run: |
+          auth_header="Authorization: Basic $(printf 'x-access-token:%s' "$GH_TOKEN" | base64 -w0)"
+          echo "::add-mask::$auth_header"
+          unset GH_TOKEN
+          git_remote() {
+            GIT_CONFIG_COUNT=1 \
+              GIT_CONFIG_KEY_0=http.https://github.com/.extraheader \
+              GIT_CONFIG_VALUE_0="$auth_header" git "$@"
+          }
+
           branch=game-build-monitor
           snapshot="$RUNNER_TEMP/game-builds.json"
           previous="$RUNNER_TEMP/previous-game-builds.json"
-          remote_ref=$(git ls-remote --heads origin "refs/heads/$branch")
+          remote_ref=$(git_remote ls-remote --heads origin "refs/heads/$branch")
           if [[ -n "$remote_ref" ]]; then
-            git fetch origin "refs/heads/$branch:refs/remotes/origin/$branch"
+            git_remote fetch origin "refs/heads/$branch:refs/remotes/origin/$branch"
             git show "origin/$branch:game-builds.json" > "$previous"
             node tools/game-build-monitor/monitor.mjs "$snapshot" "$previous"
             git switch -c "$branch" "origin/$branch"
@@ -41,4 +56,4 @@ jobs:
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git commit -m 'Update game build monitor'
-          git push origin "HEAD:refs/heads/$branch"
+          git_remote push origin "HEAD:refs/heads/$branch"
