@@ -1,5 +1,5 @@
 use serde::{Deserialize, Serialize};
-use std::path::Path;
+use std::{collections::BTreeMap, path::Path};
 
 #[path = "patch_catalog.rs"]
 pub mod updates;
@@ -91,6 +91,9 @@ pub struct DetectionPatterns {
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct PatchDefinition {
+    /// SHA-256 of original files, relative to the patch target.
+    #[serde(default, skip_serializing_if = "BTreeMap::is_empty")]
+    pub match_files: BTreeMap<String, String>,
     #[serde(default)]
     pub release_revision: u64,
     #[serde(default)]
@@ -106,6 +109,83 @@ pub struct PatchDefinition {
     pub filename: Option<String>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub post_install_script: Option<PostInstallScript>,
+}
+
+impl GameDefinition {
+    pub fn uses_file_matching(&self, language: &str) -> bool {
+        self.patches.iter().any(|patch| {
+            patch.language == language && !patch.match_files.is_empty()
+        })
+    }
+
+    /// Keep the original order for unscoped languages and expose a single
+    /// compatible release for each language with file matching.
+    pub fn compatible_patches(
+        &self,
+        mut fingerprint: impl FnMut(&str) -> Option<String>,
+    ) -> Vec<&PatchDefinition> {
+        let mut hashes = BTreeMap::new();
+        let mut best = BTreeMap::<&str, usize>::new();
+        for (index, patch) in self.patches.iter().enumerate() {
+            if patch.match_files.is_empty() || !patch.match_files.iter().all(|(path, expected)| {
+                hashes.entry(path.as_str()).or_insert_with(|| fingerprint(path))
+                    .as_ref().is_some_and(|actual| actual.eq_ignore_ascii_case(expected))
+            }) {
+                continue;
+            }
+            let selected = best.entry(&patch.language).or_insert(index);
+            if patch.release_revision > self.patches[*selected].release_revision {
+                *selected = index;
+            }
+        }
+        self.patches.iter().enumerate().filter_map(|(index, patch)| {
+            let include = if self.uses_file_matching(&patch.language) {
+                best.get(patch.language.as_str()) == Some(&index)
+            } else {
+                true
+            };
+            include.then_some(patch)
+        }).collect()
+    }
+
+    pub fn patches_for_target(
+        &self,
+        target: &Path,
+        journals: impl IntoIterator<Item = impl AsRef<Path>>,
+    ) -> Vec<&PatchDefinition> {
+        use super::patch_lifecycle;
+        if self.patches.iter().all(|patch| patch.match_files.is_empty()) {
+            return self.patches.iter().collect();
+        }
+        let originals: Vec<_> = journals.into_iter().filter_map(|dir| {
+            patch_lifecycle::original_fingerprints(dir.as_ref(), target, &self.scummvm_id).ok()
+        }).collect();
+        self.compatible_patches(|path| {
+            let file = patch_lifecycle::safe_path(target, path).ok()?;
+            if !file.is_file() {
+                return None;
+            }
+            let actual = patch_lifecycle::hash(&file).ok()?;
+            let key = path.to_ascii_lowercase();
+            let mut previous = originals.iter().filter_map(|journal| {
+                journal.get(&key).filter(|(_, installed)| installed == &actual)
+                    .map(|(original, _)| original)
+            });
+            if let Some(original) = previous.next() {
+                return previous.all(|other| other == original).then(|| original.clone());
+            }
+            Some(actual)
+        })
+    }
+
+    /// The store catalog describes a translation once per language. The
+    /// actual package is selected once the user has a local game directory.
+    pub fn catalog_patches(&self) -> impl Iterator<Item = &PatchDefinition> {
+        let mut seen = std::collections::HashSet::new();
+        self.patches.iter().filter(move |patch| {
+            !self.uses_file_matching(&patch.language) || seen.insert(patch.language.as_str())
+        })
+    }
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]

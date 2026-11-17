@@ -7,7 +7,6 @@ import {
   LogIn,
   LogOut,
   type LucideIcon,
-  Monitor,
   RefreshCw,
   Shield,
   Trash2,
@@ -15,6 +14,7 @@ import {
 import type { ReactNode } from "react";
 import kitorIcon from "../assets/kitor-logo.svg";
 import gogIcon from "../assets/providers/gog.png";
+import scummvmIcon from "../assets/providers/scummvm.svg";
 import steamIcon from "../assets/providers/steam.png";
 import { Button } from "../components/Button";
 import { ManageMenu } from "../components/ManageMenu";
@@ -171,7 +171,7 @@ export function SettingsView({
         <SettingsCard
           title="ScummVM"
           status={!state.runtime ? "unavailable" : state.runtimeUpdated ? "ready" : "attention"}
-          icon={<Monitor aria-hidden="true" />}
+          icon={<img src={scummvmIcon} alt="" />}
           description={
             state.runtime
               ? t("Ready · {0}", [

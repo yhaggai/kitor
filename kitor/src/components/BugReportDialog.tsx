@@ -7,6 +7,7 @@ import { useEffect, useId, useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
+  DialogCloseButton,
   DialogContent,
   DialogDescription,
   DialogHeader,
@@ -188,26 +189,23 @@ export default function BugReportDialog({
           <span>{t("Report a bug")}</span>
         </Button>
       </DialogTrigger>
-      <DialogContent className="max-h-[90vh] max-w-xl overflow-y-auto">
-        <DialogHeader>
-          <DialogTitle>{t("Report a bug")}</DialogTitle>
-          <DialogDescription>
-            {t("Help us fix Kitor. Your report goes to")}{" "}
-            <span className="select-all break-all">{BUG_REPORT_EMAIL}</span>.
-          </DialogDescription>
-        </DialogHeader>
-        <div className="rounded-md bg-muted p-3 text-sm">
-          <p className="font-medium">{t("What makes a useful report?")}</p>
-          <ul className="mt-1 list-disc space-y-1 pl-5 text-muted-foreground">
-            <li>{t("Name the game and patch, and where you got the game (Steam, GOG, etc.).")}</li>
-            <li>
-              {t("List the steps to reproduce, what you expected, and what actually happened.")}
-            </li>
-            <li>{t("Include the exact error and a screenshot. Crop out personal information.")}</li>
-          </ul>
-        </div>
+      <DialogContent
+        className="max-h-[90dvh] max-w-xl grid-rows-[auto_minmax(0,1fr)_auto] gap-0 overflow-hidden p-0"
+        showCloseButton={false}
+      >
+        <header className="relative border-b px-6 py-4 pe-12">
+          <DialogHeader>
+            <DialogTitle>{t("Report a bug")}</DialogTitle>
+            <DialogDescription>
+              {t("Help us fix Kitor. Your report goes to")}{" "}
+              <span className="select-all break-all">{BUG_REPORT_EMAIL}</span>.
+            </DialogDescription>
+          </DialogHeader>
+          <DialogCloseButton />
+        </header>
         <form
-          className="space-y-4"
+          id={`${id}-report`}
+          className="min-h-0 space-y-4 overflow-y-auto px-6 py-4"
           onSubmit={(event) => {
             event.preventDefault();
             event.stopPropagation();
@@ -221,6 +219,20 @@ export default function BugReportDialog({
             }
           }}
         >
+          <div className="rounded-md bg-muted p-3 text-sm">
+            <p className="font-medium">{t("What makes a useful report?")}</p>
+            <ul className="mt-1 list-disc space-y-1 pl-5 text-muted-foreground">
+              <li>
+                {t("Name the game and patch, and where you got the game (Steam, GOG, etc.).")}
+              </li>
+              <li>
+                {t("List the steps to reproduce, what you expected, and what actually happened.")}
+              </li>
+              <li>
+                {t("Include the exact error and a screenshot. Crop out personal information.")}
+              </li>
+            </ul>
+          </div>
           <div className="space-y-1">
             <label htmlFor={`${id}-game`} className="text-sm font-medium">
               {t("Game / patch (optional)")}{" "}
@@ -343,6 +355,8 @@ export default function BugReportDialog({
               "Kitor version and operating system are included. You send the email yourself. With diagnostics, screenshots or a long report, we save an email file (.eml) with all attachments for you to open or attach in your email app."
             )}{" "}
           </p>
+        </form>
+        <footer className="space-y-2 border-t px-6 py-4">
           {error && (
             <p role="alert" className="text-sm text-destructive">
               {t(error)}
@@ -358,7 +372,11 @@ export default function BugReportDialog({
             >
               {t("Copy report")}{" "}
             </Button>
-            <Button type="submit" disabled={busy || collecting || !details.trim()}>
+            <Button
+              type="submit"
+              form={`${id}-report`}
+              disabled={busy || collecting || !details.trim()}
+            >
               <Mail />
               {busy
                 ? t("Preparing…")
@@ -367,7 +385,7 @@ export default function BugReportDialog({
                   : t("Prepare email")}
             </Button>
           </div>
-        </form>
+        </footer>
       </DialogContent>
     </Dialog>
   );

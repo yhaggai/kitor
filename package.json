@@ -8,6 +8,9 @@
     "kitor",
     "packages/ui"
   ],
+  "overrides": {
+    "glob": "^14.0.2"
+  },
   "scripts": {
     "lint": "biome check .",
     "lint:fix": "biome check --write --unsafe .",

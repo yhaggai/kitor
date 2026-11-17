@@ -9,8 +9,13 @@ use std::{
     process::Command,
 };
 
+#[path = "bsdiff.rs"]
+mod bsdiff;
+
 #[path = "patch_upgrade.rs"]
 mod upgrade;
+#[path = "patch_backups.rs"]
+pub mod backups;
 #[cfg(any(test, feature = "standalone-patch-tools"))]
 pub use upgrade::update;
 pub use upgrade::{update_with_progress, recover_installation};
@@ -245,6 +250,22 @@ pub fn matches_installation(dir: &Path, target: &Path, game: &str) -> Result<boo
     Ok(journal.game == game && journal.target == target.canonicalize().map_err(err)?)
 }
 
+/// Resolve an original fingerprint from an active transaction only when the
+/// current file still matches that transaction's installed bytes.
+pub fn original_fingerprints(
+    dir: &Path, target: &Path, game: &str,
+) -> Result<BTreeMap<String, (String, String)>> {
+    let journal = load(dir)?;
+    if journal.status != "active" || journal.game != game
+        || journal.target != target.canonicalize().map_err(err)?
+    {
+        return Err("Patch journal does not identify an active patch for this installation".into());
+    }
+    Ok(journal.files.into_iter().filter_map(|record| {
+        Some((record.path.to_ascii_lowercase(), (record.original_hash?, record.installed_hash?)))
+    }).collect())
+}
+
 /// A fresh installation at a previously patched path must not inherit its badge.
 /// Retain the old journal and backups; only inspect the files it affected.
 pub fn matches_original_files(dir: &Path, target: &Path) -> Result<bool> {
@@ -390,24 +411,7 @@ fn stage_source_with_input(
             super::reconstruction::apply(&asset, &input_path(input)?, output)?;
         }
         Source::Bsdiff { input, .. } => {
-            // Only the trusted backend decoder runs, never a package installer.
-            let input = input_path(input)?;
-            let mut command = if cfg!(target_os = "windows") {
-                let mut c = Command::new("py");
-                c.arg("-3");
-                c
-            } else {
-                Command::new("python3")
-            };
-            command
-                .arg("-I")
-                .arg("-c")
-                .arg(include_str!("apply_bsdiff.py"))
-                .arg(&input)
-                .arg(&asset)
-                .arg(output)
-                .current_dir(output.parent().unwrap());
-            run(command, "Install Python 3 and retry.")?;
+            bsdiff::apply(&input_path(input)?, &asset, output).map_err(err)?;
         }
         Source::Xdelta { input, .. } => {
             let input = input_path(input)?;
@@ -802,6 +806,7 @@ pub fn uninstall(dir: &Path, target: &Path) -> Result<()> {
     if journal.target != target {
         return Err("Backup belongs to a different game installation".into());
     }
+    backups::require_originals(dir, &journal)?;
     restore_inner(dir, &mut journal)?;
     cleanup_restored(dir, &journal)
 }
@@ -914,6 +919,33 @@ mod tests {
             fs::set_permissions(path, permissions).unwrap();
         }
     }
+    #[test]
+    fn deleting_a_backup_preserves_the_installed_patch_and_allows_reinstall_after_uninstall() {
+        let mut f = Fixture::new();
+        f.storage = f._root.path().join("patch-transactions");
+        fs::write(f.game.join("data.bin"), b"original").unwrap();
+        f.plan(json!([f.copy("data.bin", "modify", b"translated")]), "1");
+        let transaction = f.install("osx", "1").unwrap();
+
+        let list = || backups::list(f._root.path(), true, false).unwrap();
+        let entry = list().pop().unwrap();
+        assert_eq!(entry.summary.bytes, 8);
+        assert!(entry.summary.needs_confirmation);
+        assert!(backups::delete(entry, false).is_err());
+        backups::delete(list().pop().unwrap(), true).unwrap();
+        assert!(list().is_empty());
+        assert!(uninstall(&transaction, &f.game).unwrap_err().contains("Missing original backup"));
+        assert_eq!(fs::read(f.game.join("data.bin")).unwrap(), b"translated");
+        assert_eq!(load(&transaction).unwrap().status, "active");
+
+        let remaining = backups::list(f._root.path(), false, true).unwrap().pop().unwrap();
+        fs::remove_dir_all(&f.game).unwrap();
+        backups::retire_uninstalled(remaining).unwrap();
+        fs::create_dir(&f.game).unwrap();
+        fs::write(f.game.join("data.bin"), b"original").unwrap();
+        assert_ne!(f.install("osx", "1").unwrap(), transaction);
+    }
+
     #[test]
     fn selective_roundtrip_both_layouts_preserves_unrelated_files_and_permissions() {
         for platform in ["windows", "osx"] {
@@ -1270,7 +1302,7 @@ mod tests {
         }
     }
     #[test]
-    #[ignore = "requires KITOR_UNDERTALE_ARCHIVE pointing to a supported original archive and Python 3"]
+    #[ignore = "requires KITOR_UNDERTALE_ARCHIVE pointing to a supported original archive"]
     fn real_undertale_archive_roundtrip_on_disposable_copy() {
         let original = PathBuf::from(std::env::var_os("KITOR_UNDERTALE_ARCHIVE").unwrap());
         let platform = if original.extension().unwrap() == "win" {

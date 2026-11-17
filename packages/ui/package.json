@@ -30,7 +30,7 @@
     "@types/react": "^19.1.8",
     "@types/react-dom": "^19.1.6",
     "typescript": "~5.8.3",
-    "vite": "^6.4.1",
+    "vite": "^6.4.4",
     "@mswjs/interceptors": "^0.41.9"
   },
   "msw": {

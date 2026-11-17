@@ -295,9 +295,6 @@ p {
   gap: 70px;
   margin-top: 55px;
 }
-.steps article {
-  position: relative;
-}
 .steps p {
   color: var(--muted);
   font-size: 16px;
@@ -306,8 +303,18 @@ p {
 .step-icon {
   font-size: 44px;
   color: var(--gold);
-  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   height: 68px;
+}
+.step-icon img {
+  object-fit: contain;
+}
+.step-stores {
+  gap: 12px;
+  font-size: 14px;
+  color: var(--muted);
 }
 @media (prefers-reduced-motion: no-preference) {
   #how .step-icon.in-view {
@@ -328,14 +335,6 @@ p {
 }
 @keyframes step-icon-shine {
   45% { filter: brightness(1.35) drop-shadow(0 0 7px var(--gold)); }
-}
-.number {
-  position: absolute;
-  top: 14px;
-  right: 0;
-  color: #64768b;
-  font-size: 12px;
-  letter-spacing: 2px;
 }
 .collection {
   display: grid;
@@ -636,9 +635,6 @@ select {
   }
   .steps article {
     padding-inline: 25px;
-  }
-  .number {
-    right: 15px;
   }
   .collection {
     grid-template-columns: 1fr;

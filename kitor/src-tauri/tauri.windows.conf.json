@@ -1,0 +1,8 @@
+{
+  "bundle": {
+    "externalBin": ["vendor/innoextract/innoextract"],
+    "resources": {
+      "vendor/innoextract/licenses": "tools/innoextract-licenses"
+    }
+  }
+}

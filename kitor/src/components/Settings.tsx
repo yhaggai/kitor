@@ -15,6 +15,7 @@ import {
 import { useCallback, useEffect, useState } from "react";
 import AppUpdateCard from "@/components/AppUpdateCard";
 import GogAuthCard from "@/components/GogAuthCard";
+import ManageBackups from "@/components/ManageBackups";
 import SteamAuthCard from "@/components/SteamAuthCard";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -211,6 +212,7 @@ export default function Settings() {
       <AppUpdateCard />
       <GogAuthCard />
       <SteamAuthCard />
+      <ManageBackups />
 
       <Card>
         <CardHeader>
