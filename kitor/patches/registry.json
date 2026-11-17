@@ -1741,6 +1741,16 @@
           "version": "0.2.0-beta.2-kitor2-download1",
           "author": "yhaggai (AI-assisted translation)",
           "download_url": "https://github.com/yhaggai/kitor/releases/download/patch-owlboy-he-v0.2.0-beta.2-kitor2-download1/owlboy-he-0.2.0-beta.2-kitor2-download1.zip",
+          "supported_builds": [
+            {
+              "store": "steam",
+              "platform": "windows",
+              "depot_id": "115801",
+              "manifest_id": "4002365934342145975",
+              "build_id": "26574659",
+              "evidence": "patches-workspace/owlboy/he/README.md"
+            }
+          ],
           "source_type": "github",
           "checksum": "b66900615e0c07038949604374ca7145d861b7982164fa01bdfba321cc56bfd2",
           "file_size": 5016145,

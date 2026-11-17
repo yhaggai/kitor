@@ -47,9 +47,9 @@ def tile(cluster,height):
  out.alpha_composite(marks_layer)
  return out
 
-def load_pointed():
- result=catalog('hebrew_niqqud')
- base=catalog()
+def load_pointed(edition=None):
+ result=catalog('hebrew_niqqud', edition)
+ base=catalog(edition=edition)
  if set(result)!=set(base):raise ValueError('Incomplete niqqud catalog')
  for key,text in result.items():
   if re.sub('[\u0591-\u05bd\u05bf\u05c1-\u05c2\u05c4-\u05c5\u05c7]','',text)!=base[key]:raise ValueError('Base text changed: '+key)
@@ -71,14 +71,14 @@ def extend_composites(folder,codes):
  for x,t in tiles:atlas.paste(t,(x,0))
  return {folder.name+'.png':png(atlas),'charmap.txt':chars.encode(),'info.txt':('\n'.join(lines[:header])+'\n'+','.join(' '.join(map(str,b)) for b in boxes)+'\n').encode()},dict(zip(chars,[b[2]+float(lines[header-3]) for b in boxes]))
 
-def build(game,original,out,full=False):
+def build(game,original,out,full=False,edition=None):
  game=game.resolve();out.mkdir(parents=True,exist_ok=True);payload=out/'payload';changes=[]
  def put(path,data):
   target=payload/path;target.parent.mkdir(parents=True,exist_ok=True);target.write_bytes(data);old=game/path
   changes.append(dict(path=path,original_sha256=digest(old.read_bytes()) if old.exists() else None,installed_sha256=digest(data)))
  loc=game/'Data/Localizations';rows=list(csv.reader((loc/'he.csv').open(encoding='utf-8-sig',newline='')))
  # Canonical order makes equivalent Unicode mark sequences share a glyph.
- samples={k:unicodedata.normalize('NFD',v.translate(NORMALIZE)) for k,v in (load_pointed() if full else SAMPLES).items()}
+ samples={k:unicodedata.normalize('NFD',v.translate(NORMALIZE)) for k,v in (load_pointed(edition) if full else SAMPLES).items()}
  clusters=sorted({m.group() for s in samples.values() for m in CLUSTER.finditer(s)})
  codes={cluster:chr(0xe200+i) for i,cluster in enumerate(clusters)};reverse={v:k for k,v in codes.items()}
  widths=None

@@ -12,17 +12,17 @@ import niqqud_trial
 VERSION = '0.2.0-beta.2-kitor2'
 
 
-def build(game, out):
+def build(game, out, edition=None):
     game, out = game.resolve(), out.resolve()
     if out == game or game in out.parents:
         raise ValueError('Build output must be outside the game')
     with tempfile.TemporaryDirectory(prefix='owlboy-niqqud-') as temporary:
         work = Path(temporary)
-        regular.build(game, work / 'regular')
+        regular.build(game, work / 'regular', edition=edition)
         installed = work / 'installed'
         shutil.copytree(game / 'Data/Localizations', installed / 'Data/Localizations')
         shutil.copytree(work / 'regular/payload', installed, dirs_exist_ok=True)
-        niqqud_trial.build(installed, game, work / 'niqqud', full=True)
+        niqqud_trial.build(installed, game, work / 'niqqud', full=True, edition=edition)
         payload = out / 'payload'
         shutil.copytree(work / 'regular/payload', payload, dirs_exist_ok=True)
         shutil.copytree(work / 'niqqud/payload', payload, dirs_exist_ok=True)
@@ -46,5 +46,6 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--game', type=Path, required=True)
     parser.add_argument('--out', type=Path, required=True)
+    parser.add_argument('--edition', type=Path, help='Edition-specific compatibility and translation catalogs')
     args = parser.parse_args()
-    build(args.game, args.out)
+    build(args.game, args.out, args.edition)
