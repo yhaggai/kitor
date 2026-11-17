@@ -41,3 +41,40 @@ Production builds use the Kitor GA4 web stream (`G-1EVLL5CNSE`). Set `PUBLIC_GA_
 The Hebrew and English landing pages send `installer_download` when a visitor clicks a direct installer link. The `installer_platform` parameter is `windows-x86_64`, `darwin-aarch64`, or `darwin-x86_64`. The `page_language` parameter is `he` or `en`.
 
 In GA4 Admin, create event-scoped custom dimensions named **Installer platform** and **Page language**, using the corresponding parameter names above. In Explore, filter Event name to `installer_download` and break down Event count by Installer platform. Add Page language for the Hebrew and English split. For a deployment smoke test, click a direct installer link on each landing page and check the event and parameters in GA4 Realtime.
+
+## Game build monitor
+
+`/build-monitor/` displays the public Steam app build and GOG Galaxy builds for store IDs in the patch registry. The GitHub Actions workflow **Monitor patched game builds** runs daily and supports manual dispatch. It publishes `game-builds.json` to the `game-build-monitor` branch. Forks and local previews can set `PUBLIC_GAME_BUILD_SNAPSHOT_URL` to another snapshot URL.
+
+Add a documented store build ID or an exact Steam depot manifest to the patch release’s `supported_builds` array in `kitor/patches/registry.json`. Include the store, platform, and evidence path. Use `released_on` and `release_date_source` when the store release date is known. Use `first_seen_on` if the source only identifies the first observation of a depot manifest. Latest Steam dates use the public branch update timestamp, bounded by the app’s initial Steam release when available. GOG dates use the public Galaxy build publication timestamp. The first successful scan records what the store serves. Subsequent scans retain the last observed change and compare the latest build or specific depot against the documented baseline. A build difference calls for a patch check. Store lookup failures retain the last successful value. GOG offline installers and store listings without IDs in the registry are outside this scan.
+
+The production monitor is at [build.kitor.click](https://build.kitor.click). Its Cloudflare Worker serves the dashboard and its same-origin `/game-builds.json` endpoint. Cloudflare Cron runs the same scanner daily at 05:23 UTC and persists the results in Workers KV. The registry is bundled at deploy time, so redeploy after changing which games or supported builds are tracked.
+
+Run these from the repository root to deploy the dashboard and registry:
+
+```sh
+node tools/game-build-monitor/prepare-cloudflare.mjs
+wrangler deploy --config tools/game-build-monitor/wrangler.jsonc
+```
+
+The production build links game pages back to the main Kitor website. Set `KITOR_SITE_URL` when building if the main site URL changes.
+
+### Steam manifest file checks
+
+The scanner can inspect changed Steam depots on a machine with the native Steam helper. Build the helper and set its path when running a scan:
+
+```sh
+cargo build --locked --manifest-path kitor/native-steam/Cargo.toml
+export KITOR_STEAM_MANIFEST_BIN="$PWD/kitor/native-steam/target/debug/kitor-steam"
+node tools/game-build-monitor/monitor.mjs next-game-builds.json previous-game-builds.json
+```
+
+Omit the previous snapshot argument on the first run. The helper uses Steam's local depot cache when possible. Set `KITOR_STEAM_DEPOT_CACHE` to override the macOS default. For uncached manifests, run the helper's `connect` command once to authenticate an account with access to the depots. The helper requests only manifests and prints per-file SHA-1 values. It does not download Steam content chunks.
+
+For each changed depot with a recorded manifest baseline and a matching patch plan, the scanner checks the original files the patch depends on. It records unchanged inputs, changed or missing inputs, or an unavailable comparison. A changed input calls for patch verification. Successful checks are reused for the same manifest pair and patch file list. App-only baselines have no depot manifest to compare. The Cloudflare scan continues to fetch public metadata.
+
+The production Worker compares GOG Galaxy manifests in Cloudflare once a day at 05:43 UTC, after the public scan at 05:23 UTC. Deployment bundles the patch plans for recorded GOG baselines. The check reads English and language-neutral base-game manifests and compares file hashes when the formats are comparable. GOG offline installers are outside this check.
+
+The hosted Steam workflow `Check Steam patch files` runs at 06:03 UTC when enabled. Set the repository variables `KITOR_STEAM_CLOUD_ENABLED=true` and `KITOR_MONITOR_CLOUDFLARE_ACCOUNT_ID`. Store a Steam session for an account with depot access in the GitHub secret `KITOR_STEAM_CLOUD_SESSION` as a JSON object with `account`, `steam_id` (integer), and `refresh_token`. Store a Cloudflare token with Workers KV write access in `KITOR_MONITOR_CLOUDFLARE_TOKEN`. The hosted runner publishes results for the exact manifest pair in the live dashboard snapshot.
+
+The Cloudflare Worker sends the daily patch alert at 06:33 UTC to `notifications@kitor.click` when a current manifest comparison shows a patch input changed or is missing. The alert lists each affected patch and its files. The Worker records successful alerts in KV to avoid repeating them. Provision a sending-only `RESEND_API_KEY` on the build monitor Worker to enable delivery.

@@ -1,0 +1,62 @@
+---
+import GameCard from "../components/GameCard.astro";
+import Layout from "../layouts/Layout.astro";
+import { games } from "../lib/catalog";
+
+const snapshotUrl = import.meta.env.PUBLIC_GAME_BUILD_SNAPSHOT_URL
+  || "https://raw.githubusercontent.com/yhaggai/kitor/game-build-monitor/game-builds.json";
+const siteOrigin = import.meta.env.PUBLIC_GAME_BUILD_SITE_ORIGIN;
+const catalogPath = siteOrigin ? new URL("/en/games/", siteOrigin).href : "/en/games/";
+const monitoredGames = games.filter((game) => game.hebrew && (game.steamAppId || game.gogProductId))
+  .sort((a, b) => a.title.localeCompare(b.title));
+---
+
+<Layout locale="en" headerStyle="landing" logoOnlyHeader siteOrigin={siteOrigin} title="Game build monitor · Kitor" noindex>
+  <main id="main" class="wrap catalog">
+    <div id="monitor" data-snapshot={snapshotUrl}>
+      <a class="text-link" href={catalogPath}>← All games</a>
+      <h1>Game build monitor</h1>
+      <p class="lead" id="scan-status" role="status">Loading Steam and GOG build checks…</p>
+      <div class="filters">
+        <label>Search games <input id="search" type="search" placeholder="Game title…" /></label>
+        <label>Store
+          <select id="store"><option value="">All stores</option><option value="steam">Steam</option><option value="gog">GOG</option></select>
+        </label>
+        <label class="review-filter"><span><input id="review" type="checkbox" disabled /> Build changes and differences</span></label>
+      </div>
+      <div class="game-grid monitor-grid">
+        {monitoredGames.map((game) => (
+          <article data-game={game.id} data-title={`${game.title} ${game.title_he ?? ""}`}>
+            <GameCard game={game} href={`${catalogPath}${game.id}/`} locale="en">
+              <div class="store-builds">
+                {game.steamAppId && <div data-store="steam"><strong>Steam</strong><div>Awaiting scan</div></div>}
+                {game.gogProductId && <div data-store="gog"><strong>GOG</strong><div>Awaiting scan</div></div>}
+              </div>
+            </GameCard>
+          </article>
+        ))}
+      </div>
+      <p id="empty" role="status" hidden>No matching games.</p>
+    </div>
+  </main>
+</Layout>
+
+<script>
+  import { showBuildMonitor } from "../lib/build-monitor";
+  const monitor = document.querySelector<HTMLElement>("#monitor");
+  if (monitor) void showBuildMonitor(monitor);
+</script>
+
+<style>
+  h1 { margin-top: .65rem; }
+  .monitor-grid { grid-template-columns: repeat(auto-fill, minmax(min(100%, 210px), 1fr)); align-items: start; }
+  .review-filter span { display: flex; align-items: center; gap: 6px; min-height: 48px; }
+  #review { width: auto; min-height: 0; accent-color: var(--teal); }
+  :global(#monitor .store-builds) { display: grid; gap: 12px; text-align: start; font-size: .85rem; overflow-wrap: anywhere; }
+  :global(#monitor .store-builds > div) { border-top: 1px solid #263545; padding-top: 10px; }
+  :global(#monitor .build-meta) { color: var(--muted); }
+  :global(#monitor .build-match) { color: var(--teal); }
+  :global(#monitor .attention) { color: var(--gold); }
+  :global(#monitor details) { margin-top: 6px; }
+  :global(#monitor summary) { cursor: pointer; color: var(--muted); }
+</style>

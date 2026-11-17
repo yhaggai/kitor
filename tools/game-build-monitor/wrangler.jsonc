@@ -1,0 +1,23 @@
+{
+  "$schema": "https://developers.cloudflare.com/workers/wrangler-schema.json",
+  "name": "kitor-game-build-monitor",
+  "main": "worker.mjs",
+  "compatibility_date": "2026-11-16",
+  "compatibility_flags": ["nodejs_compat"],
+  "build": { "command": "node prepare-gog-plans.mjs", "cwd": "tools/game-build-monitor" },
+  "workers_dev": false,
+  "preview_urls": false,
+  "routes": [{ "pattern": "build.kitor.click", "custom_domain": true }],
+  "assets": {
+    "directory": "../../website/.astro/monitor-cloudflare-assets",
+    "binding": "ASSETS"
+  },
+  "kv_namespaces": [
+    { "binding": "BUILD_SNAPSHOTS", "id": "f68c1b80ee6c408b996f0066935aa356" }
+  ],
+  "vars": {
+    "PATCH_ALERT_TO": "notifications@kitor.click",
+    "NOTIFICATION_FROM": "Kitor <notifications@kitor.click>"
+  },
+  "triggers": { "crons": ["23 5 * * *", "43 5 * * *", "33 6 * * *"] }
+}

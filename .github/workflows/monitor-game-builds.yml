@@ -1,0 +1,44 @@
+name: Monitor patched game builds
+
+on:
+  schedule:
+    - cron: '23 5 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: game-build-monitor
+  cancel-in-progress: false
+
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Check stores and publish snapshot
+        shell: bash
+        run: |
+          branch=game-build-monitor
+          snapshot="$RUNNER_TEMP/game-builds.json"
+          previous="$RUNNER_TEMP/previous-game-builds.json"
+          remote_ref=$(git ls-remote --heads origin "refs/heads/$branch")
+          if [[ -n "$remote_ref" ]]; then
+            git fetch origin "refs/heads/$branch:refs/remotes/origin/$branch"
+            git show "origin/$branch:game-builds.json" > "$previous"
+            node tools/game-build-monitor/monitor.mjs "$snapshot" "$previous"
+            git switch -c "$branch" "origin/$branch"
+          else
+            node tools/game-build-monitor/monitor.mjs "$snapshot"
+            git switch --orphan "$branch"
+          fi
+          cp "$snapshot" game-builds.json
+          git add game-builds.json
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git commit -m 'Update game build monitor'
+          git push origin "HEAD:refs/heads/$branch"
