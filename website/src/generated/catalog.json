@@ -1,6 +1,7 @@
 [
   {
     "id": "undertale",
+    "added_on": "2026-10-25",
     "title": "UNDERTALE",
     "title_he": "אנדרטייל",
     "covers": {
@@ -25,6 +26,7 @@
   },
   {
     "id": "monkey-se",
+    "added_on": "2025-12-28",
     "title": "The Secret of Monkey Island — Classic",
     "title_he": "הסוד של אי הקופים",
     "covers": {
@@ -46,10 +48,12 @@
     "screenshot": "https://assets.kitor.click/screenshots/monkey-se/e1e05efcb2815923.jpg",
     "translationCredit": "AdventureBrew",
     "steamAppId": 32360,
-    "gogSlug": "the_secret_of_monkey_island_special_edition"
+    "gogSlug": "the_secret_of_monkey_island_special_edition",
+    "gogProductId": 1207666253
   },
   {
     "id": "monkey2-se",
+    "added_on": "2026-01-10",
     "title": "Monkey Island 2: LeChuck's Revenge — Classic",
     "title_he": "אי הקופים 2 נקמתו של לצ׳אק",
     "covers": {
@@ -71,10 +75,12 @@
     "screenshot": "https://assets.kitor.click/screenshots/monkey2-se/01671e6d3b0127dd.jpg",
     "translationCredit": "AdventureBrew",
     "steamAppId": 32460,
-    "gogSlug": "monkey_island_2_special_edition_lechucks_revenge"
+    "gogSlug": "monkey_island_2_special_edition_lechucks_revenge",
+    "gogProductId": 1425039730
   },
   {
     "id": "sq1sci",
+    "added_on": "2026-01-10",
     "title": "Space Quest I: Roger Wilco in the Sarien Encounter (VGA Remake)",
     "title_he": "מסע בחלל 1 VGA",
     "covers": {
@@ -99,6 +105,7 @@
   },
   {
     "id": "kyra1-cd",
+    "added_on": "2026-01-11",
     "title": "The Legend of Kyrandia",
     "title_he": "אגדת קירנדיה",
     "covers": {
@@ -119,10 +126,12 @@
     "sourceUrl": "https://www.facebook.com/groups/200491360554968/permalink/840226783248086/",
     "screenshot": "https://assets.kitor.click/screenshots/kyra1-cd/ecb0f67239d31c6b.jpg",
     "translationCredit": "AdventureBrew",
-    "gogSlug": "legend_of_kyrandia"
+    "gogSlug": "legend_of_kyrandia",
+    "gogProductId": 1207659683
   },
   {
     "id": "pq1",
+    "added_on": "2026-10-25",
     "title": "Police Quest: In Pursuit of the Death Angel (EGA)",
     "title_he": "משימה משטרתית",
     "covers": {
@@ -147,6 +156,7 @@
   },
   {
     "id": "sq1",
+    "added_on": "2026-10-25",
     "title": "Space Quest I: The Sarien Encounter (EGA)",
     "title_he": "מסע בחלל 1 EGA",
     "covers": {
@@ -166,10 +176,12 @@
     "descriptionHe": "תצטרפו להרפתקה הראשונה של רוג׳ר וילקו בגרסה המקורית עם גרפיקה של EGA. כמובן, מדובר במסע בחלל פרק ראשון (Space Quest 1). תיהנו מכל ההומור, מכל הדרכים למות, ומכל הניקיון של השרת האס!",
     "sourceUrl": "https://www.facebook.com/groups/hebrewadventure/posts/1893489874588433/",
     "translationCredit": "sam-mfb",
-    "steamAppId": 10110
+    "steamAppId": 10110,
+    "gogProductId": 1207661413
   },
   {
     "id": "sq2",
+    "added_on": "2026-10-25",
     "title": "Space Quest II: Vohaul’s Revenge",
     "title_he": "מסע בחלל 2",
     "covers": {
@@ -189,10 +201,12 @@
     "descriptionHe": "רוג׳ר וילקו, השרת שהפך לגיבור בעל כורחו, נקלע שוב לצרות כשווהאל מבקש לנקום בו. מסע ההיחלצות מוביל אותו דרך ג׳ונגל מסוכן ומתקנים מאיימים, עם חידות, מלכודות והומור חללי בכל פינה.",
     "sourceUrl": "https://www.facebook.com/groups/hebrewadventure/posts/1864116760859078/",
     "translationCredit": "sam-mfb",
-    "steamAppId": 10110
+    "steamAppId": 10110,
+    "gogProductId": 1207661423
   },
   {
     "id": "sq3",
+    "added_on": "2026-10-25",
     "title": "Space Quest III: The Pirates of Pestulon",
     "title_he": "מסע בחלל 3",
     "covers": {
@@ -213,10 +227,12 @@
     "sourceUrl": "https://www.facebook.com/groups/200491360554968/permalink/715358449068254/",
     "screenshot": "https://assets.kitor.click/screenshots/sq3/b62764b09d8faabe.jpg",
     "translationCredit": "AdventureBrew",
-    "steamAppId": 10110
+    "steamAppId": 10110,
+    "gogProductId": 1207661433
   },
   {
     "id": "sq4",
+    "added_on": "2026-11-01",
     "title": "Space Quest IV: Roger Wilco and the Time Rippers",
     "title_he": "מסע בחלל IV: רוג׳ר וילקו וקורעי הזמן",
     "covers": {
@@ -240,6 +256,7 @@
   },
   {
     "id": "sq5",
+    "added_on": "2026-10-25",
     "title": "Space Quest V: The Next Mutation",
     "title_he": "מסע בחלל 5",
     "covers": {
@@ -264,6 +281,7 @@
   },
   {
     "id": "sq6",
+    "added_on": "2026-11-01",
     "title": "Space Quest 6: Roger Wilco in the Spinal Frontier",
     "title_he": "מסע בחלל 6",
     "covers": {
@@ -287,6 +305,7 @@
   },
   {
     "id": "torin",
+    "added_on": "2026-10-25",
     "title": "Torin’s Passage",
     "title_he": "המסע של טורין",
     "covers": {
@@ -306,10 +325,12 @@
     "descriptionHe": "טורין יוצא לחפש את הוריו שנחטפו, ויורד אל עולמות קסומים החבויים במעמקי האדמה. לצדו בוגל, חברו הנאמן, שמסייע לו להתמודד עם המכשולים בדרך.\n\nהרפתקה מצוירת מבית סיירה, המשלבת פנטזיה, חידות והומור בסיפור על משפחה, אומץ וגילוי עצמי.",
     "sourceUrl": "https://www.facebook.com/groups/200491360554968/permalink/591304524806981/",
     "screenshot": "https://assets.kitor.click/screenshots/torin/5f9bafc24c5303fa.jpg",
-    "translationCredit": "AdventureBrew"
+    "translationCredit": "AdventureBrew",
+    "gogProductId": 1207659044
   },
   {
     "id": "spyfox",
+    "added_on": "2026-10-25",
     "title": "Spy Fox in Dry Cereal",
     "title_he": "ספיי פוקס",
     "covers": {
@@ -334,6 +355,7 @@
   },
   {
     "id": "pajama",
+    "added_on": "2026-10-25",
     "title": "Pajama Sam: No Need to Hide When It’s Dark Outside",
     "title_he": "פיג׳מה סם",
     "covers": {
@@ -353,10 +375,12 @@
     "descriptionHe": "סאם הקטן מאד מפחד לישון בחושך. אבל כשאמא אומרת שהלילה הוא ילד גדול ומכבה לו את האור, סאם מחליט להתחפש לגיבור על. הוא חוגר את כלי הנשק שלו (קופסת אוכל, מסיכה ופנס) ויוצא להילחם בחושך בכבודו ובעצמו!",
     "sourceUrl": "https://www.facebook.com/groups/hebrewadventure/posts/1353949765209116",
     "screenshot": "https://assets.kitor.click/screenshots/pajama/e81b658b487e721d.jpg",
-    "translationCredit": "AdventureBrew"
+    "translationCredit": "AdventureBrew",
+    "gogProductId": 1435735429
   },
   {
     "id": "toonstruck",
+    "added_on": "2026-10-25",
     "title": "Toonstruck",
     "title_he": "טונסטרק",
     "covers": {
@@ -376,10 +400,12 @@
     "descriptionHe": "דרו בלנק הוא אנימטור סרטים ממורמר שמאייר סדרת ארנבונים מצליחה. אך יום אחד מנהלו הקשוח דורש ממנו לעדכן את העיצוב למשהו יותר חדשני. כשהוא אפוף בהתקף היסטריה וייאוש הוא נשאב לתוך העולם המצויר שם הוא פוגש את יצירי כפיו הצבעוניים ובראשם את הארנב המוטרף פלקס ווילדלי. ביחד הם יוצאים למסע הצלת הממלכה המאושרת והעליזה מידי הרוזן נפריוס המרושע המאיים להפוך אותה למקום קודר ואפל.",
     "sourceUrl": "https://www.facebook.com/groups/hebrewadventure/posts/1396014141002678",
     "screenshot": "https://assets.kitor.click/screenshots/toonstruck/d439cb75c5e8c0ad.jpg",
-    "translationCredit": "AdventureBrew"
+    "translationCredit": "AdventureBrew",
+    "gogProductId": 1207666633
   },
   {
     "id": "gob2",
+    "added_on": "2026-10-25",
     "title": "Gobliins 2: The Prince Buffoon",
     "title_he": "גובלינים 2",
     "covers": {
@@ -399,10 +425,12 @@
     "descriptionHe": "בפרק זה אנו שולטים בשני גובלינים - פינגוּס החכם והביישן, ווינקל הטיפש והאמיץ, שמטרתם היא לחלץ את הנסיך הצעיר שנחטף על ידי שד שהפכו לשוטה החצר ולהחזירו בריא ושלם לאביו המלך. כל חידה וחידה במשחק ניתנת לפתרון על ידי אחד מהגובלינים בהתאם לתכונותיו הייחודיות ולעיתים בשילוב של שניהם ביחד.",
     "sourceUrl": "https://www.facebook.com/groups/hebrewadventure/posts/926432064627557",
     "screenshot": "https://assets.kitor.click/screenshots/gob2/93cf6d3d8e2801d6.jpg",
-    "translationCredit": "AdventureBrew"
+    "translationCredit": "AdventureBrew",
+    "gogProductId": 1207662293
   },
   {
     "id": "tlj",
+    "added_on": "2026-10-25",
     "title": "The Longest Journey",
     "title_he": "המסע הארוך ביותר",
     "covers": {
@@ -422,10 +450,13 @@
     "descriptionHe": "אפריל ריאן נשאבת למסע בין סטארק וארקדיה, שני עולמות שהאיזון ביניהם מתערער. מפגשים עם דמויות יוצאות דופן, חלומות וחידות חושפים בהדרגה את תפקידה בסיפור גדול ממנה.\n\nהמסע הארוך ביותר הוא הרפתקת הצבע־והקלק עשירה בדיאלוגים, הומור וקסם, שמחברת בין עולמות ובין שאלות על זהות וגורל.",
     "sourceUrl": "https://www.facebook.com/groups/hebrewadventure/permalink/1680515765885846/",
     "screenshot": "https://assets.kitor.click/screenshots/tlj/cd4a47ae8ff8f7bc.jpg",
-    "translationCredit": "AdventureBrew"
+    "translationCredit": "AdventureBrew",
+    "steamAppId": 6310,
+    "gogProductId": 1207658794
   },
   {
     "id": "sky",
+    "added_on": "2026-10-25",
     "title": "Beneath a Steel Sky",
     "title_he": "מתחת לשמי הפלדה",
     "covers": {
@@ -445,10 +476,12 @@
     "descriptionHe": "החיים לא האירו פנים לרוברט פוסטר. כילד קטן וחינני מסוקו התרסק מעל מדבריות השממה והוא היחיד ששרד את ההתרסקות מכל משפחתו. שבט מקומי מאמץ את רוברט ומגדלו כאחד מבניו. רוברט גדל לנער חסון ומוכשר ושוכח את חייו הישנים בעיר הגדולה.\n\nכעבור שנים רבות נוחת שוב מסוק ועליו חיילי איגוד הערים במחנה השבט, חוטף את רוברט ומשמיד את הכפר כולו על תושביו. הדבר היחיד שרוברט מצליח להציל מבין ההריסות בטרם נגרר באכזריות, זה את לוח האם של חברו הטוב ביותר, ג'ואי הרובוט. לוח אם זה משמש כמוחו ואישיותו של ג'ואי ועתיד להיכנס לכל מיני מכשירי חשמל וללוות אותו בכל עת צרה ומצוקה.\n\nהמסוק ועליו רוברט השבוי מתקרב לשמי העיר הגדולה, לוח הפיקוד מתחיל להשתבש והוא מתרסק לתוך הקומה ה-100 של אחד מגורדי השחקים הרבים הענקיים הפזורים בעיר. כמו תמיד גם הפעם רוברט הוא היחיד ששורד (תזכרו בפעם הבאה כשאתם עולים על מסוק, לא לקחת אותו איתכם).\n\nמכאן ואילך רוברט נאלץ לשרוד לבדו בעיר הענקית כשהוא נרדף על ידי צבא מרושע, מערכת מחשבי על בשם חניבעל ששולטת על כל פרט ופרט מחיי היומיום, ושאר תלאות ומכאובים. ביחד עם חברו הרובוט שמתפקד עכשיו כשואב אבק ביתי, הם יוצאים למסע בעיר העגומה בניסיון להציל את עצמם ואת יתר התושבים מידי שלטון העריצות.",
     "sourceUrl": "https://www.facebook.com/groups/hebrewadventure/posts/1709390876331668",
     "screenshot": "https://assets.kitor.click/screenshots/sky/6e20c304d27583d8.jpg",
-    "translationCredit": "AdventureBrew"
+    "translationCredit": "AdventureBrew",
+    "gogProductId": 1207658695
   },
   {
     "id": "stanley-parable",
+    "added_on": "2026-10-25",
     "title": "The Stanley Parable (2013)",
     "title_he": "המשל של סטנלי",
     "covers": {
@@ -473,6 +506,7 @@
   },
   {
     "id": "tesla-effect",
+    "added_on": "2026-10-25",
     "title": "Tesla Effect: A Tex Murphy Adventure",
     "title_he": "אפקט טסלה",
     "covers": {
@@ -497,6 +531,7 @@
   },
   {
     "id": "ethan-carter",
+    "added_on": "2026-10-25",
     "title": "The Vanishing of Ethan Carter (original)",
     "title_he": "ההיעלמות של איתן קרטר",
     "covers": {
@@ -521,6 +556,7 @@
   },
   {
     "id": "life-is-strange",
+    "added_on": "2026-10-25",
     "title": "Life Is Strange — Episodes 1–3",
     "title_he": "החיים מוזרים",
     "covers": {
@@ -545,6 +581,7 @@
   },
   {
     "id": "portal2",
+    "added_on": "2026-10-25",
     "title": "Portal 2",
     "title_he": "פורטל 2",
     "covers": {
@@ -569,6 +606,7 @@
   },
   {
     "id": "journey-down1",
+    "added_on": "2026-10-25",
     "title": "The Journey Down: Chapter One",
     "title_he": "המסע למטה",
     "covers": {
@@ -593,6 +631,7 @@
   },
   {
     "id": "kathy-rain-dc",
+    "added_on": "2026-10-25",
     "title": "Kathy Rain: Director's Cut",
     "title_he": "קתי ריין",
     "covers": {
@@ -617,6 +656,7 @@
   },
   {
     "id": "drifter",
+    "added_on": "2026-10-25",
     "title": "The Drifter",
     "title_he": "הנווד",
     "covers": {
@@ -641,6 +681,7 @@
   },
   {
     "id": "owlboy",
+    "added_on": "2026-10-26",
     "title": "ילד הינשוף — Owlboy",
     "title_he": "ילד הינשוף",
     "covers": {
@@ -664,6 +705,7 @@
   },
   {
     "id": "tentacle",
+    "added_on": "2026-10-26",
     "title": "Day of the Tentacle (Classic)",
     "title_he": "יומו של הטנטקל",
     "covers": {
@@ -688,6 +730,7 @@
   },
   {
     "id": "day-of-the-tentacle-remastered",
+    "added_on": "2026-10-26",
     "title": "Day of the Tentacle Remastered",
     "title_he": "יומו של הטנטקל",
     "covers": {
@@ -711,6 +754,7 @@
   },
   {
     "id": "grim-fandango-remastered",
+    "added_on": "2026-10-28",
     "title": "Grim Fandango Remastered",
     "title_he": "גרים פנדנגו",
     "covers": {
@@ -730,10 +774,12 @@
     "descriptionHe": "מני קלאוורה עובד כסוכן נסיעות בארץ המתים, אבל מפגש עם לקוחה חדשה מסבך אותו בפרשה גדולה בהרבה מהעבודה היומיומית. במסע מלא מזימות, חברות וגעגוע הוא מנסה לחשוף את האמת ולתקן עוול.\n\nגרים פנדנגו משלב הומור שחור, אווירת סרטי בלשים ועולם חזותי בהשראת יום המתים המקסיקני.",
     "sourceUrl": "https://www.facebook.com/groups/200491360554968/permalink/356883714915731/",
     "translationCredit": "Niv Bar and Shani Roz; Kitor native adaptation",
-    "gogSlug": "grim_fandango_remastered"
+    "gogSlug": "grim_fandango_remastered",
+    "gogProductId": 1207667183
   },
   {
     "id": "monkey-se-native",
+    "added_on": "2026-10-28",
     "title": "The Secret of Monkey Island: Special Edition (Native Remastered)",
     "title_he": "הסוד של אי הקופים",
     "covers": {
@@ -754,10 +800,12 @@
     "sourceUrl": "https://www.facebook.com/groups/200491360554968/permalink/418070868797015/",
     "translationCredit": "AdventureBrew; native adaptation and menu translation: Kitor",
     "steamAppId": 32360,
-    "gogSlug": "the_secret_of_monkey_island_special_edition"
+    "gogSlug": "the_secret_of_monkey_island_special_edition",
+    "gogProductId": 1207666253
   },
   {
     "id": "monkey2-se-native",
+    "added_on": "2026-10-28",
     "title": "Monkey Island 2: LeChuck's Revenge Special Edition (Native Remastered)",
     "title_he": "אי הקופים 2 נקמתו של לצ׳אק",
     "covers": {
@@ -778,10 +826,12 @@
     "sourceUrl": "https://www.facebook.com/groups/200491360554968/posts/1105072610096834/",
     "translationCredit": "AdventureBrew; native adaptation and menu translation: Kitor",
     "steamAppId": 32460,
-    "gogSlug": "monkey_island_2_special_edition_lechucks_revenge"
+    "gogSlug": "monkey_island_2_special_edition_lechucks_revenge",
+    "gogProductId": 1425039730
   },
   {
     "id": "silver-pines",
+    "added_on": "2026-10-31",
     "title": "Silver Pines",
     "title_he": "סילבר פיינס",
     "covers": {
@@ -805,6 +855,7 @@
   },
   {
     "id": "jenny-leclue",
+    "added_on": "2026-11-06",
     "title": "Jenny LeClue - Detectivu",
     "title_he": "ג׳ני לקלו – הבלשית",
     "covers": {
@@ -827,29 +878,8 @@
     "steamAppId": 319870
   },
   {
-    "id": "dig",
-    "title": "The Dig",
-    "title_he": "התגלית",
-    "covers": {
-      "he": {
-        "src": ""
-      },
-      "en": {
-        "src": ""
-      }
-    },
-    "platforms": {
-      "windows": true,
-      "osx": true,
-      "linux": true
-    },
-    "hebrew": false,
-    "descriptionHe": "אסטרואיד בגודל של ירח קטן דוהר לעבר כדור הארץ, ומפקד המשימה בוסטון לאו יוצא לעצור אותו יחד עם העיתונאית מגי רובינס והגיאולוג לודגר ברינק. אחרי שהאסטרואיד משנה את מסלולו, השלושה מוצאים את עצמם בעולם זר ונטוש, מלא בטכנולוגיה של תרבות שנעלמה. כדי לשוב הביתה עליהם להבין מה קרה שם, ומה הם מוכנים להשאיר מאחור.",
-    "sourceUrl": "https://www.gog.com/en/game/the_dig",
-    "gogSlug": "the_dig"
-  },
-  {
     "id": "disco-elysium",
+    "added_on": "2026-11-13",
     "title": "Disco Elysium – The Final Cut",
     "title_he": "דיסקו אליסיום",
     "covers": {
@@ -873,14 +903,16 @@
   },
   {
     "id": "moomin-midsummer-madness",
+    "added_on": "2026-11-14",
     "title": "Moomin: Midsummer Madness",
+    "title_he": "מוּמינים: ההצגה הגדולה",
     "covers": {
       "en": {
-        "src": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/moomin-midsummer-madness/en/4e88fbccb315.png"
+        "src": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/moomin-midsummer-madness/en/889e60283031.png"
       },
       "he": {
-        "src": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/moomin-midsummer-madness/he/5829993e2434.png",
-        "title": "מומינים: טירוף אמצע הקיץ"
+        "src": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/moomin-midsummer-madness/he/03de07ae885a.png",
+        "title": "מוּמינים: ההצגה הגדולה"
       }
     },
     "platforms": {
@@ -889,7 +921,7 @@
       "linux": false
     },
     "hebrew": true,
-    "descriptionHe": "שיטפון פתאומי מציף את עמק המומינים וסוחף את משפחת מומין אל תיאטרון ישן שצף על המים. הצטרפו למומינטרול ולמאי הקטנה כשהם חוקרים את התיאטרון, פוגשים חברים ותיקים ופותרים חידות בדרך הביתה. ההרפתקה המאוירת מבוססת על ספרה של טובה ינסון.",
+    "descriptionHe": "שיטפון פתאומי מציף את עמק המומינים וסוחף את משפחת מומין אל תיאטרון ישן שצף על המים. הצטרפו למומינטרול ולמאי הקטנה כשהם חוקרים את התיאטרון, פוגשים חברים ותיקים ופותרים חידות בדרך הביתה. ההרפתקה המאוירת מבוססת על ספרה של טובה ינסון, ״מוּמינים: ההצגה הגדולה״.",
     "sourceUrl": "https://store.steampowered.com/app/4463520/",
     "translationCredit": "Kitor",
     "steamAppId": 4463520

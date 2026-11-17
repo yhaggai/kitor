@@ -143,7 +143,7 @@ export default function PatchBrowser({ navigationResetKey }: { navigationResetKe
           error={loadError}
           onOpen={navigation.open}
           toolbar={
-            <DropdownMenu.Root>
+            <DropdownMenu.Root modal={false}>
               <DropdownMenu.Trigger asChild>
                 <Button variant="outline" disabled={isScanning}>
                   <FolderSearch className="mr-2 h-4 w-4" />

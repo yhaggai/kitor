@@ -48,10 +48,12 @@ export function GameDetailsView({
   }, [onBack]);
   return (
     <section className="kt-details" aria-label={t("{0} details", [title])}>
-      <Button variant="ghost" onClick={onBack}>
-        <ArrowLeft size={18} />
-        {t("Back to")} {collection === "library" ? t("library") : t("discovery")}
-      </Button>
+      <div className="kt-detail-navigation">
+        <Button variant="ghost" onClick={onBack}>
+          <ArrowLeft size={18} />
+          {t("Back to")} {collection === "library" ? t("library") : t("discovery")}
+        </Button>
+      </div>
       <GameBanner game={game} />
       <div className="kt-detail-hero kt-detail-hero--banner">
         <div className="kt-detail-art">
@@ -83,6 +85,18 @@ export function GameDetailsView({
             {manageControl}
             {manage && <ManageMenu>{manage}</ManageMenu>}
           </div>
+          {!!game.originalDevelopers?.length && (
+            <p>
+              {t("Original developers")} ·{" "}
+              <bdi>{game.originalDevelopers.map((studio) => studio.name).join(", ")}</bdi>
+            </p>
+          )}
+          {!!game.publishers?.length && (
+            <p>
+              {t(game.publishers.length === 1 ? "Publisher" : "Publishers")} ·{" "}
+              <bdi>{game.publishers.join(", ")}</bdi>
+            </p>
+          )}
           <div className="kt-detail-description">
             <p dir="rtl" lang="he">
               {game.description || "הרפתקה חדשה מחכה לכם."}
@@ -100,7 +114,7 @@ export function GameDetailsView({
       )}
       <section className="kt-detail-panel" aria-labelledby={`${id}-translation`}>
         <h2 id={`${id}-translation`}>{t("Community translation")}</h2>
-        {game.tags?.includes("hot-kitor") && (
+        {game.translationBeta && (
           <p>{t("This Hebrew translation is still in beta and needs further testing.")}</p>
         )}
         <p>

@@ -1,5 +1,6 @@
 export { default as kitorIcon } from "./assets/kitor-logo.svg";
 export { default as gogIcon } from "./assets/providers/gog.png";
+export { default as scummvmIcon } from "./assets/providers/scummvm.svg";
 export { default as steamIcon } from "./assets/providers/steam.png";
 export { AppShell } from "./components/AppShell";
 export { BrandLogo } from "./components/BrandLogo";
@@ -19,7 +20,7 @@ export {
   BugIcon,
   LanguagesIcon,
 } from "./icons";
-export type { Collection, GameStatus, GameSummary } from "./types";
+export type { Collection, GameStatus, GameSummary, Studio } from "./types";
 export { useGameNavigation } from "./useGameNavigation";
 export { CollectionView } from "./views/CollectionView";
 export { GameDetailsView } from "./views/GameDetailsView";

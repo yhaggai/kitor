@@ -3,6 +3,7 @@ import catalog from "../generated/catalog.json";
 import type { GameBoxProps } from "../generated/GameBox";
 export type CatalogGame = {
   id: string;
+  added_on?: string;
   title: string;
   title_he?: string;
   covers: GameBoxProps["covers"];
@@ -15,6 +16,7 @@ export type CatalogGame = {
   translationCredit?: string;
   steamAppId?: number;
   gogSlug?: string;
+  gogProductId?: number;
 };
 export const games: CatalogGame[] = catalog;
 export const featured = ["monkey-se", "sq1", "toonstruck", "undertale", "kathy-rain-dc"].map(

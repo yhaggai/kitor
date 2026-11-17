@@ -10,6 +10,7 @@ import {
 } from "react";
 import hotKitorEmoji from "../assets/hot-kitor.webp";
 import type { GameCategory } from "../categories";
+import { GameSort, type GameSortOrder, sortGamesByRelease } from "../components/GameSort";
 import { GameTile } from "../components/GameTile";
 import { useTranslation } from "../i18n";
 import {
@@ -51,16 +52,28 @@ const categoryIcons = new Map<string, CategoryIcon>([
 export function CategoryRow({
   category,
   title,
+  logo,
+  logoOnDark,
   games,
   onOpen,
+  sortOrder,
+  onSortChange,
 }: {
   category?: string;
   title: string;
+  logo?: string;
+  logoOnDark?: boolean;
   games: GameSummary[];
   onOpen: (game: GameSummary, element: HTMLButtonElement) => void;
+  sortOrder: GameSortOrder;
+  onSortChange: (order: GameSortOrder) => void;
 }) {
   const { t } = useTranslation();
   const isHotKitor = category === "hot-kitor";
+  const orderedGames =
+    sortOrder === "default" && isHotKitor
+      ? [...games].sort((a, b) => (b.addedOn ?? "").localeCompare(a.addedOn ?? ""))
+      : sortGamesByRelease(games, sortOrder);
   const Icon = (category && categoryIcons.get(category)) || Gamepad2Icon;
   const iconRef = useRef<AnimatedIconHandle>(null);
   const headingId = useId();
@@ -109,13 +122,31 @@ export function CategoryRow({
           onMouseEnter={() => iconRef.current?.startAnimation()}
           onMouseLeave={() => iconRef.current?.stopAnimation()}
         >
-          {isHotKitor ? (
+          {logo ? (
+            <img
+              className={logoOnDark ? "kt-studio-logo kt-studio-logo--dark" : "kt-studio-logo"}
+              src={logo}
+              alt=""
+              width={72}
+              height={30}
+            />
+          ) : isHotKitor ? (
             <img className="kt-category-emoji" src={hotKitorEmoji} alt="" width={30} height={30} />
           ) : (
             <Icon ref={iconRef} size={22} />
           )}
-          <h2 id={headingId}>{title}</h2>
+          <h2 id={headingId} dir="auto">
+            {title}
+          </h2>
         </div>
+        <GameSort
+          scope={title}
+          order={sortOrder}
+          onChange={(order) => {
+            onSortChange(order);
+            trackRef.current?.scrollTo({ left: 0, behavior: "instant" });
+          }}
+        />
       </div>
       <div className="kt-category-shelf">
         {!edges.start && (
@@ -135,13 +166,8 @@ export function CategoryRow({
           ref={trackRef}
           onScroll={(event) => updateEdges(event.currentTarget)}
         >
-          {games.map((game) => (
-            <GameTile
-              key={game.id}
-              game={game}
-              onOpen={onOpen}
-              showBeta={game.tags?.includes("hot-kitor")}
-            />
+          {orderedGames.map((game) => (
+            <GameTile key={game.id} game={game} onOpen={onOpen} showBeta={game.translationBeta} />
           ))}
         </div>
         {!edges.end && (

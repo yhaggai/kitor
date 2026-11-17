@@ -79,6 +79,13 @@ export function ManageMenu({
           aria-label={t(label)}
           id={id}
           className="kt-manage-dropdown"
+          onMouseDown={(event) => {
+            // WebKit can blur the focused menu item without focusing the clicked button.
+            // Keep focus inside the menu until the button's click handler runs.
+            if (event.button === 0 && (event.target as Element).closest("button:not(:disabled)")) {
+              event.preventDefault();
+            }
+          }}
           onClick={(event) => {
             if ((event.target as HTMLElement).closest("button")) {
               setOpen(false);

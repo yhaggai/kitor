@@ -28,6 +28,7 @@ import { useDialog } from "@/hooks/useDialog";
 import { type PatchDownloadProgress, useGameCardState } from "@/hooks/useGameCardState";
 import { primaryGameAction } from "@/lib/gameAction";
 import { patchOptionLabel, selectedPatchOption } from "@/lib/patchOptions";
+import { usePublishedDescription } from "@/lib/descriptionFeed";
 import { gameSummary } from "@/lib/presentation";
 import type { Game, GameHealth } from "@/store/store";
 import { useAppStore } from "@/store/store";
@@ -71,6 +72,7 @@ function PatchVersionTooltip({
 }
 
 export default function GameCard({ game, collection, onRemove, onBack }: GameCardProps) {
+  const description = usePublishedDescription(game.scummvm_id);
   const { t, language } = useTranslation();
   const displayTitle = language === "he" ? game.title_he?.trim() || game.title : game.title;
   const [refreshing, setRefreshing] = useState(false);
@@ -413,11 +415,12 @@ export default function GameCard({ game, collection, onRemove, onBack }: GameCar
     `Available patches: ${game.available_patches?.map((patch) => `${patch.language} ${patch.version}`).join(", ") || "none"}`,
   ].join("\n");
   const busy = refreshing || state.isInstalling || state.isRestoring || state.isDeleting;
+  const summary = gameSummary(game);
 
   return (
     <>
       <GameDetailsView
-        game={gameSummary(game)}
+        game={{ ...summary, description: description ?? summary.description }}
         translationCredit={<TranslationCredit gameId={game.scummvm_id} />}
         collection={collection}
         onBack={onBack}

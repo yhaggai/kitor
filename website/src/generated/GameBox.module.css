@@ -135,6 +135,27 @@
   --turn: 163deg;
 }
 
+/* Shelf links can turn before the page hydrates. */
+.target[href]:focus-visible {
+  --turn: 163deg;
+  --lift: -8px;
+}
+
+.target[href][data-language="he"]:focus-visible {
+  --turn: -17deg;
+}
+
+@media (any-hover: hover) {
+  .target[href]:hover {
+    --turn: 163deg;
+    --lift: -8px;
+  }
+
+  .target[href][data-language="he"]:hover {
+    --turn: -17deg;
+  }
+}
+
 .box {
   position: relative;
   width: var(--box-width);

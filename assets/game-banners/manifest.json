@@ -748,6 +748,38 @@
       "review": "Hebrew spelling and RTL inspected; generated non-text artwork differs from original.",
       "local_file": "assets/game-banners/publish/banners/disco-elysium/he/483eff4982ff.png",
       "url": "https://assets.kitor.click/banners/disco-elysium/he/483eff4982ff.png"
+    },
+    {
+      "game_id": "moomin-midsummer-madness",
+      "title": "Moomin: Midsummer Madness",
+      "canonical_artwork_id": "moomin-midsummer-madness",
+      "file": "banners/moomin-midsummer-madness/he/bcf0554b4e91.png",
+      "sha256": "bcf0554b4e91fda77ced01bcd0779b00e0864951c13d18f0aa1f82450662f1b5",
+      "bytes": 2651405,
+      "width": 1833,
+      "height": 858,
+      "object_key": "banners/moomin-midsummer-madness/he/bcf0554b4e91.png",
+      "original_url": "https://assets.kitor.click/banners/moomin-midsummer-madness/he/bcf0554b4e91.png",
+      "source": "Steam header artwork",
+      "source_page": "https://store.steampowered.com/app/4463520/Moomin_Midsummer_Madness/",
+      "source_image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/4463520/c4e85af3552b33fc849be844e50efc50d751d9c3/header.jpg?t=1794470267",
+      "source_archive": "kitor/public/covers/moomin-midsummer-madness/header.jpg",
+      "kind": "ai-localized-artwork",
+      "generated_on": "2026-11-15",
+      "generation_tool": "OpenAI ImageGen",
+      "generation_prompt": "Precisely localize the supplied wide 1834:858 banner. Preserve the exact illustrated composition and framing, characters, objects, paper grain and ink colors. Change only the blue lettering inside the white cloud. Top line reads exactly 'מוּמינים' (מ וּ מ י נ י ם), with a dot beside the first vav. Bottom line reads exactly 'ההצגה הגדולה' (ה ה צ ג ה / ה ג ד ו ל ה). This is the title of the book, and the subtitle must have exactly two words. Render natural right-to-left Hebrew. Match the original bold blue hand-cut type and center both lines. No English lettering.",
+      "review": "Artwork and lettering visually inspected. Public object verified byte for byte.",
+      "hebrew_title": "מוּמינים: ההצגה הגדולה",
+      "edit_target": "ImageGen wide adaptation of the archived Steam header",
+      "local_file": "assets/game-banners/publish/banners/moomin-midsummer-madness/he/bcf0554b4e91.png",
+      "url": "https://assets.kitor.click/banners/moomin-midsummer-madness/he/bcf0554b4e91.png",
+      "sources": [
+        {
+          "source": "Steam",
+          "source_page": "https://store.steampowered.com/app/4463520/Moomin_Midsummer_Madness/",
+          "image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/4463520/c4e85af3552b33fc849be844e50efc50d751d9c3/header.jpg?t=1794470267"
+        }
+      ]
     }
   ]
 }

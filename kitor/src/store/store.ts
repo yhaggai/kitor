@@ -30,6 +30,8 @@ type Game = {
   health?: GameHealth | null;
   id: number;
   tags?: string[];
+  translation_beta?: boolean;
+  added_on?: string;
   scummvm_id: string;
   title: string;
   title_he?: string | null;
@@ -71,6 +73,8 @@ type Patch = {
     linux: boolean;
   };
   tags?: string[];
+  translation_beta?: boolean;
+  added_on?: string;
 };
 
 type DownloadProgress = {

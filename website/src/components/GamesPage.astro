@@ -1,4 +1,5 @@
 ---
+import GameCard from "./GameCard.astro";
 import Layout from "../layouts/Layout.astro";
 import { games } from "../lib/catalog";
 const { locale } = Astro.props as { locale: "he" | "en" };
@@ -29,18 +30,7 @@ const t = (hebrew: string, english: string) => (en ? english : hebrew);
     <div class="game-grid">
       {games.map((game) => (
         <article class="game-entry" data-title={`${game.title} ${game.title_he ?? ""} ${game.id}`.toLocaleLowerCase("he")}>
-          <a class="game-card" href={catalogPath + game.id + "/"}>
-            <img
-              class="game-cover"
-              src={game.covers.he.src || game.covers.en.src}
-              alt=""
-              width="220"
-              height="290"
-              loading="lazy"
-              decoding="async"
-            />
-            <h2 class="game-title"><bdi lang="he">{game.title_he || game.title}</bdi></h2>
-          </a>
+          <GameCard game={game} href={catalogPath + game.id + "/"} locale="he" />
         </article>
       ))}
     </div>
@@ -65,37 +55,3 @@ const t = (hebrew: string, english: string) => (en ? english : hebrew);
   </script>
 </Layout>
 
-<style>
-  .game-card {
-    display: grid;
-    gap: 12px;
-    padding: 14px 12px;
-    background: #101b2b;
-    border: 1px solid #263545;
-    border-radius: 8px;
-    color: inherit;
-    text-align: center;
-    text-decoration: none;
-  }
-
-  .game-card:hover,
-  .game-card:focus-visible {
-    border-color: var(--teal);
-  }
-
-  .game-cover {
-    display: block;
-    width: min(100%, 220px);
-    height: auto;
-    aspect-ratio: 22 / 29;
-    object-fit: contain;
-    margin-inline: auto;
-  }
-
-  .game-title {
-    margin: 0;
-    font-size: clamp(1rem, 2vw, 1.2rem);
-    line-height: 1.35;
-    overflow-wrap: anywhere;
-  }
-</style>

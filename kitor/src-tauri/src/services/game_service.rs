@@ -30,6 +30,10 @@ pub struct GameWithPatches {
     pub id: i32,
     #[serde(default)]
     pub tags: Vec<String>,
+    #[serde(default)]
+    pub translation_beta: bool,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub added_on: Option<String>,
     pub scummvm_id: String,
     pub title: String,
     pub title_he: Option<String>,
@@ -350,6 +354,8 @@ pub async fn get_games_with_patches(
         games_with_patches.push(GameWithPatches {
             id: game.id,
             tags: game_def.map(|def| def.tags.clone()).unwrap_or_default(),
+            translation_beta: game_def.is_some_and(|def| def.is_translation_beta()),
+            added_on: game_def.and_then(|def| def.added_on.clone()),
             scummvm_id: game.scummvm_id,
             title: game.title,
             title_he: game_def.and_then(|def| def.title_he.clone()),

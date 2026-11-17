@@ -121,7 +121,7 @@ export function GameBox({
           <div className={styles.halo} aria-hidden="true" />
           <div className={styles.shadow} aria-hidden="true" />
           {href ? (
-            <a {...targetProps} href={href} aria-label={title}>
+            <a className={styles.target} data-language={restingLanguage} href={href} aria-label={title}>
               <BoxFaces title={title} covers={covers} />
             </a>
           ) : (

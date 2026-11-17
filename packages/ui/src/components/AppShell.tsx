@@ -1,4 +1,4 @@
-import { type ComponentType, type ReactNode, type Ref, useRef } from "react";
+import { type ComponentType, type ReactNode, type Ref, useLayoutEffect, useRef } from "react";
 import { useTranslation } from "../i18n";
 import { type AnimatedIconHandle, HomeIcon, LibraryIcon, SettingsIcon } from "../icons";
 import type { Collection } from "../types";
@@ -49,6 +49,31 @@ export function AppShell({
   account?: ReactNode;
 }) {
   const { t } = useTranslation();
+  const hasAccount = Boolean(account);
+  const mainRef = useRef<HTMLElement>(null);
+  const accountRef = useRef<HTMLDivElement>(null);
+
+  useLayoutEffect(() => {
+    if (!hasAccount) return;
+    const main = mainRef.current;
+    const accountBar = accountRef.current;
+    if (!main || !accountBar) return;
+
+    const updateAccountHeight = () => {
+      main.style.setProperty(
+        "--kt-account-height",
+        `${accountBar.getBoundingClientRect().height}px`
+      );
+    };
+    updateAccountHeight();
+    const observer = new ResizeObserver(updateAccountHeight);
+    observer.observe(accountBar, { box: "border-box" });
+    return () => {
+      observer.disconnect();
+      main.style.removeProperty("--kt-account-height");
+    };
+  }, [hasAccount]);
+
   return (
     <div className="kitor-theme kt-shell">
       <a className="kt-skip-link" href="#kitor-main">
@@ -82,8 +107,12 @@ export function AppShell({
           {footer}
         </div>
       </aside>
-      <main id="kitor-main" className="kt-main" tabIndex={-1}>
-        {account}
+      <main ref={mainRef} id="kitor-main" className="kt-main" tabIndex={-1}>
+        {hasAccount && (
+          <div ref={accountRef} className="kt-account-bar">
+            {account}
+          </div>
+        )}
         {children}
       </main>
     </div>

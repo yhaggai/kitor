@@ -137,7 +137,7 @@ export default function GameLibrary({ onRefresh, navigationResetKey }: GameLibra
   };
 
   const scanButton = (outline = false) => (
-    <DropdownMenu.Root>
+    <DropdownMenu.Root modal={false}>
       <DropdownMenu.Trigger asChild>
         <Button
           variant={outline ? "outline" : "default"}

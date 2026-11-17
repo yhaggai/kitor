@@ -1,5 +1,5 @@
 {
-  "verified_on": "2026-11-14",
+  "verified_on": "2026-11-15",
   "bucket": "kitor-assets",
   "manifest_url": "https://assets.kitor.click/covers/manifest.json",
   "results": [
@@ -22,10 +22,12 @@
           720
         ],
         "960": [
-          600,
-          900
+          960,
+          1440
         ]
-      }
+      },
+      "object_key": "covers/moomin-midsummer-madness/en/889e60283031.png",
+      "sha256": "889e60283031969c640829f3fd3e6e572133ce00921aebf35956183b73b962be"
     },
     {
       "game_id": "moomin-midsummer-madness",
@@ -46,10 +48,12 @@
           720
         ],
         "960": [
-          600,
-          900
+          960,
+          1440
         ]
-      }
+      },
+      "object_key": "covers/moomin-midsummer-madness/he/03de07ae885a.png",
+      "sha256": "03de07ae885a916912454681f6e970bcaffb5cdea6a0d0061f6e78a3bd59bff2"
     }
   ],
   "banner": {
@@ -59,5 +63,14 @@
     "height": 215,
     "object_key": "banners/moomin-midsummer-madness/en/dbed97c72867.jpg",
     "original_url": "https://assets.kitor.click/banners/moomin-midsummer-madness/en/dbed97c72867.jpg"
+  },
+  "banner_he": {
+    "sha256": "bcf0554b4e91fda77ced01bcd0779b00e0864951c13d18f0aa1f82450662f1b5",
+    "bytes": 2651405,
+    "width": 1833,
+    "height": 858,
+    "object_key": "banners/moomin-midsummer-madness/he/bcf0554b4e91.png",
+    "original_url": "https://assets.kitor.click/banners/moomin-midsummer-madness/he/bcf0554b4e91.png",
+    "original_sha256_verified": true
   }
 }
