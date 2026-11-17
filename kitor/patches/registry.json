@@ -1748,6 +1748,34 @@
           "filename": "owlboy-he-0.2.0-beta.2-kitor2-download1.zip",
           "post_install_script": null,
           "install_manifest": "patch.json",
+          "supported_builds": [
+            {
+              "store": "steam",
+              "platform": "osx",
+              "depot_id": "115805",
+              "manifest_id": "409618040785163464",
+              "released_on": "2026-11-10",
+              "evidence": "tools/game-build-monitor/hash-verification.md"
+            }
+          ],
+          "verified_mismatches": [
+            {
+              "store": "steam",
+              "platform": "windows",
+              "depot_id": "115801",
+              "checked_manifest_id": "4002365934342145975",
+              "evidence": "tools/game-build-monitor/hash-verification.md",
+              "paths": [
+                "Data/Localizations/Translations.csv",
+                "Data/Localizations/en/Arial/info.txt",
+                "Data/Localizations/en/Gulim/info.txt",
+                "Data/Localizations/en/GulimBold/info.txt",
+                "Data/Localizations/en/Unlocalized/info.txt",
+                "Data/Localizations/en/WarningFont/info.txt",
+                "Owlboy.exe"
+              ]
+            }
+          ],
           "release_revision": 1
         }
       ],
