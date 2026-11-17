@@ -24,6 +24,16 @@ Catalog search accepts English and Hebrew titles. The landing page recommends a 
 
 Generated night scenery is in `public/art`; source game art lives in the ignored local `assets/` workspace. Edge characters are lightweight SVG pixel illustrations, animated with IntersectionObserver and disabled motion for reduced-motion preferences.
 
+## Store search prototype
+
+`/store-search/` is a separate, unlisted research page. Select a catalog game to fetch current offers from CheapShark, grouped by active store and sorted by price. `?game=undertale` preselects a game. Steam IDs provide exact identity matches; title searches ask the user to confirm the edition. Missing offers describe missing provider coverage, not verified store unavailability. Prices are USD and region/patch compatibility must be checked separately.
+
+The browser calls CheapShark directly with a 15-second timeout and a five-minute in-memory cache. No API key or backend is required. CheapShark requires its redirect links and prohibits using your own affiliate links for tracked stores; this prototype does not monetize purchases. Direct retailer feeds or separately agreed terms are needed before building Kitor affiliate monetization on this feature. See https://apidocs.cheapshark.com/.
+
+Selecting a game also exposes a G2A marketplace search link using its catalog title. This link is independent of CheapShark success and opens G2A in a new tab; no G2A availability or prices are inferred. Inline G2A offers would require an authenticated integration with its Export API.
+
+Run the focused service tests with Node 24 or newer: `node --test website/scripts/store-search.test.ts` from the repository root.
+
 ## Website analytics
 
 Production builds use the Kitor GA4 web stream (`G-1EVLL5CNSE`). Set `PUBLIC_GA_MEASUREMENT_ID` to override the stream ID or set it to an empty value to disable analytics for a build. Development skips the Google tag.
