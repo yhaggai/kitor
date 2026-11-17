@@ -32,6 +32,10 @@ pub struct PatchInfo {
     pub platforms: Option<registry_service::Platforms>,
     #[serde(default)]
     pub tags: Vec<String>,
+    #[serde(default)]
+    pub translation_beta: bool,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub added_on: Option<String>,
 }
 
 pub(super) fn patches_for_installation<'a>(
@@ -64,6 +68,7 @@ pub async fn get_patches_for_game(
         .find(|g| g.scummvm_id == game.scummvm_id)
         .ok_or("Game not found in registry")?;
 
+    let translation_beta = game_def.is_translation_beta();
     let installed = if game_def.patches.iter().any(|patch| !patch.match_files.is_empty()) {
         reconcile_patches(db, &game, &game_def.behavior).await?
     } else {
@@ -98,6 +103,8 @@ pub async fn get_patches_for_game(
             add_to_cart_url: game_def.add_to_cart_url.clone(),
             platforms: game_def.platforms.clone(),
             tags: game_def.tags.clone(),
+            translation_beta,
+            added_on: game_def.added_on.clone(),
         })
         .collect();
 
@@ -130,6 +137,8 @@ fn store_catalog_entry(game: &registry_service::GameDefinition) -> PatchInfo {
         add_to_cart_url: game.add_to_cart_url.clone(),
         platforms: game.platforms.clone(),
         tags: game.tags.clone(),
+        translation_beta: game.is_translation_beta(),
+        added_on: game.added_on.clone(),
     }
 }
 
@@ -157,6 +166,7 @@ pub async fn get_all_patches(db: &DatabaseConnection) -> Result<Vec<PatchInfo>, 
             continue;
         }
 
+        let translation_beta = game_def.is_translation_beta();
         for patch in game_def.catalog_patches().cloned() {
             all_patches.push(PatchInfo {
                 scummvm_id: game_def.scummvm_id.clone(),
@@ -183,6 +193,8 @@ pub async fn get_all_patches(db: &DatabaseConnection) -> Result<Vec<PatchInfo>, 
                 add_to_cart_url: game_def.add_to_cart_url.clone(),
                 platforms: game_def.platforms.clone(),
                 tags: game_def.tags.clone(),
+                translation_beta,
+                added_on: game_def.added_on.clone(),
             });
         }
     }
@@ -694,16 +706,24 @@ mod store_catalog_tests {
     use super::store_catalog_entry;
 
     #[test]
-    fn the_dig_is_listed_for_purchase_without_a_translation() {
-        let registry = crate::services::registry_service::load_registry().unwrap();
-        let game = registry
-            .games
-            .iter()
-            .find(|entry| entry.scummvm_id == "dig")
-            .unwrap();
-        assert!(game.patches.is_empty());
-        assert_eq!(game.gog.as_ref().map(|gog| gog.id), Some(1425299904));
-        let listing = store_catalog_entry(game);
+    fn store_only_game_preserves_gog_purchase_details() {
+        let game = serde_json::from_value(serde_json::json!({
+            "scummvm_id": "dig",
+            "title": "The Dig",
+            "add_to_cart_url": "https://www.gog.com/checkout/widget/52756712356612660/1425299904?price=undefined%2018.60",
+            "gog": {
+                "id": 1425299904,
+                "installers": [{
+                    "id": "",
+                    "name": "The Dig",
+                    "path": "https://www.gog.com/downloads/the_dig/en1installer0"
+                }]
+            },
+            "detection_patterns": { "unique_files": [], "file_patterns": [] },
+            "patches": []
+        }))
+        .unwrap();
+        let listing = store_catalog_entry(&game);
         assert_eq!(listing.language, "");
         assert_eq!(listing.download_url, "");
         assert_eq!(listing.source_type, "store");

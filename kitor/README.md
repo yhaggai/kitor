@@ -377,6 +377,11 @@ format adapter, original and patched launch profiles, installation target,
 and related library editions. `launch_config` is accepted only for legacy
 registry compatibility; new definitions use `behavior.launch`.
 
+Set `added_on` to the date a game joins the registry, in `YYYY-MM-DD` format.
+Keep that date when updating its patches or artwork. The initial dates were
+backfilled from the first commits containing each game ID on the main line
+of the registry’s Git history.
+
 Ordinary ScummVM titles need detection files and launch arguments. A native
 executable can be declared in `behavior.launch.original.commands` and
 `behavior.launch.patched.commands`, keyed by `windows`, `osx`, or `linux`.

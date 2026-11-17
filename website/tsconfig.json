@@ -4,6 +4,7 @@
     "jsx": "react-jsx",
     "baseUrl": ".",
     "paths": {
+      "@kitor/ui": ["src/lib/box-translation.ts"],
       "@/lib/utils": ["src/lib/utils.ts"]
     }
   },

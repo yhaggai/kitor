@@ -29,6 +29,8 @@ pub struct CatalogGame {
     title_he: Option<String>,
     cover_url: Option<String>,
     steam_app_id: u32,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    added_on: Option<String>,
 }
 
 #[tauri::command]
@@ -44,6 +46,7 @@ pub fn get_catalog_games_without_patches() -> Result<Vec<CatalogGame>, String> {
                 title: game.title,
                 title_he: game.title_he,
                 cover_url: game.cover_url,
+                added_on: game.added_on,
             })
         })
         .collect())

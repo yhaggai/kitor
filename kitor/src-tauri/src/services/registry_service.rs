@@ -43,6 +43,9 @@ pub struct GameDefinition {
     #[serde(default)]
     pub behavior: super::game_behavior::GameBehavior,
     pub scummvm_id: String,
+    /// Date this game first appeared in the registry, as YYYY-MM-DD.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub added_on: Option<String>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub steam_app_id: Option<u32>,
     pub title: String,
@@ -51,6 +54,8 @@ pub struct GameDefinition {
     /// Catalog keywords such as `classic` or `detective`. A game may have several.
     #[serde(default, skip_serializing_if = "Vec::is_empty")]
     pub tags: Vec<String>,
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub translation_beta: Option<bool>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub cover_url: Option<String>,
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -91,6 +96,8 @@ pub struct DetectionPatterns {
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct PatchDefinition {
+    #[serde(default, skip_serializing_if = "Vec::is_empty")]
+    pub supported_builds: Vec<SupportedBuild>,
     /// SHA-256 of original files, relative to the patch target.
     #[serde(default, skip_serializing_if = "BTreeMap::is_empty")]
     pub match_files: BTreeMap<String, String>,
@@ -189,6 +196,26 @@ impl GameDefinition {
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct SupportedBuild {
+    pub store: String,
+    pub platform: String,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub build_id: Option<String>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub depot_id: Option<String>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub manifest_id: Option<String>,
+    pub evidence: String,
+    /// Store release date in UTC, formatted as YYYY-MM-DD.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub released_on: Option<String>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub first_seen_on: Option<String>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub release_date_source: Option<String>,
+}
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct PostInstallScript {
     #[serde(default, skip_serializing_if = "Option::is_none")]
     pub windows: Option<String>,
@@ -203,6 +230,14 @@ pub struct RegistryMetadata {
     pub version: String,
     pub last_updated: String,
     pub source: String,
+}
+
+impl GameDefinition {
+    pub fn is_translation_beta(&self) -> bool {
+        // Older registries used the Hot Kitor category to mark beta translations.
+        self.translation_beta
+            .unwrap_or_else(|| self.tags.iter().any(|tag| tag == "hot-kitor"))
+    }
 }
 
 fn registry_content(development_path: &Path) -> Result<String, String> {

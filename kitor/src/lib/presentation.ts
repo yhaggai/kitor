@@ -1,7 +1,8 @@
 import type { GameSummary } from "@kitor/ui";
 import banners from "@/data/game-banners.json";
 import galleries from "@/data/game-galleries.json";
-import { gameDescription } from "@/lib/gameDescriptions";
+import { gameCredits } from "@/lib/gameCredits";
+import { gameDescription, gameReleaseDate } from "@/lib/gameDescriptions";
 import { patchOptionLabel } from "@/lib/patchOptions";
 import { getCatalogCovers, getCoverSrc } from "@/lib/utils";
 import type { Game, PatchWithStatus } from "@/store/store";
@@ -37,7 +38,11 @@ export function gameSummary(game: Game): GameSummary {
     : (game.is_patched ?? false);
   return {
     id: String(game.id),
+    addedOn: game.added_on,
+    ...gameCredits(game.scummvm_id),
+    originalReleaseDate: gameReleaseDate(game.scummvm_id),
     tags: game.tags,
+    translationBeta: game.translation_beta,
     searchTerms: `${game.scummvm_id} ${game.title} ${game.title_he ?? ""}`,
     title: classicTitles[game.scummvm_id] ?? game.title,
     titleHe: game.title_he ?? undefined,
@@ -60,8 +65,12 @@ export function gameSummary(game: Game): GameSummary {
 export function patchSummary(patch: PatchWithStatus): GameSummary {
   return {
     id: `${patch.scummvm_id}:${patch.language}:${patch.version}`,
+    addedOn: patch.added_on,
+    ...gameCredits(patch.scummvm_id),
+    originalReleaseDate: gameReleaseDate(patch.scummvm_id),
     searchTerms: `${patch.scummvm_id} ${patch.game_title} ${patch.title_he ?? ""} ${(patch.tags ?? []).join(" ")}`,
     tags: patch.tags ?? [],
+    translationBeta: patch.translation_beta,
     title: classicTitles[patch.scummvm_id] ?? patch.game_title,
     titleHe: patch.title_he ?? undefined,
     ...artwork(patch.scummvm_id, patch.cover_url),
@@ -76,6 +85,7 @@ export function patchSummary(patch: PatchWithStatus): GameSummary {
 
 export type CatalogGame = {
   scummvm_id: string;
+  added_on?: string;
   title: string;
   title_he: string | null;
   cover_url: string | null;
@@ -85,6 +95,9 @@ export type CatalogGame = {
 export function catalogGameSummary(game: CatalogGame): GameSummary {
   return {
     id: game.scummvm_id,
+    ...gameCredits(game.scummvm_id),
+    addedOn: game.added_on,
+    originalReleaseDate: gameReleaseDate(game.scummvm_id),
     searchTerms: `${game.scummvm_id} ${game.title} ${game.title_he ?? ""}`,
     title: game.title,
     titleHe: game.title_he ?? undefined,

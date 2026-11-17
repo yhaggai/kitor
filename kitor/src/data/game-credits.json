@@ -1,0 +1,307 @@
+{
+  "studios": {
+    "astronauts": {
+      "name": "The Astronauts",
+      "logo": "astronauts.png",
+      "logoSource": "https://www.theastronauts.com/"
+    },
+    "big-finish": {
+      "name": "Big Finish Games",
+      "logo": "big-finish.png",
+      "logoSource": "https://bigfinishgames.com/"
+    },
+    "burst": {
+      "name": "Burst Studios",
+      "logo": "burst.png",
+      "logoSource": "https://gamesdb.launchbox-app.com/games/images/1217-toonstruck"
+    },
+    "clifftop": {
+      "name": "Clifftop Games",
+      "logo": "clifftop.png",
+      "logoSource": "https://www.clifftopgames.com/"
+    },
+    "coktel": {
+      "name": "Coktel Vision",
+      "logo": "coktel.png",
+      "logoSource": "https://fr.wikipedia.org/wiki/Fichier:Coktel_Vision.svg"
+    },
+    "crossbridge": {
+      "name": "Crossbridge Game Studios",
+      "logo": "crossbridge.png",
+      "logoSource": "https://www.crossbridge.games/"
+    },
+    "d-pad": {
+      "name": "D-Pad Studio",
+      "logo": "d-pad.png",
+      "logoSource": "https://www.dpadstudio.com/"
+    },
+    "dave-lloyd": {
+      "name": "Dave Lloyd"
+    },
+    "dontnod": {
+      "name": "Dontnod Entertainment",
+      "logo": "dontnod.png",
+      "logoSource": "https://commons.wikimedia.org/wiki/File:DontnodEntertainmentLogo.png"
+    },
+    "dynamix": {
+      "name": "Dynamix",
+      "logo": "dynamix.jpg",
+      "logoSource": "https://www.sierragamers.com/sierra-logos/"
+    },
+    "funcom": {
+      "name": "Funcom",
+      "logo": "funcom.png",
+      "logoSource": "https://www.funcom.com/about-us/"
+    },
+    "galactic-cafe": {
+      "name": "Galactic Cafe",
+      "logo": "galactic-cafe.jpg",
+      "logoSource": "https://developer.valvesoftware.com/wiki/Category:Galactic_Cafe_games"
+    },
+    "humongous": {
+      "name": "Humongous Entertainment",
+      "logoSource": "https://commons.wikimedia.org/wiki/File:Humongous_Entertainment_logo.svg",
+      "logo": "humongous.svg"
+    },
+    "lucasarts": {
+      "name": "LucasArts",
+      "logoSource": "https://commons.wikimedia.org/wiki/File:Lucas_arts_wordmark.jpg",
+      "logo": "lucasarts.jpg"
+    },
+    "mografi": {
+      "name": "Mografi"
+    },
+    "powerhoof": {
+      "name": "Powerhoof",
+      "logoSource": "https://www.powerhoof.com/press/",
+      "logo": "powerhoof.png"
+    },
+    "revolution": {
+      "name": "Revolution Software",
+      "logo": "revolution.png",
+      "logoSource": "https://revolution.co.uk/press-kit/"
+    },
+    "sierra": {
+      "name": "Sierra On-Line",
+      "logoSource": "https://www.sierragamers.com/sierra-logos/",
+      "logo": "sierra.jpg"
+    },
+    "skygoblin": {
+      "name": "SkyGoblin",
+      "logo": "skygoblin.png",
+      "logoSource": "https://skygoblin.com/"
+    },
+    "tobyfox": {
+      "name": "tobyfox"
+    },
+    "valve": {
+      "name": "Valve",
+      "logoSource": "https://commons.wikimedia.org/wiki/File:Valve_logo.svg",
+      "logo": "valve.svg"
+    },
+    "westwood": {
+      "name": "Westwood Studios",
+      "logoSource": "https://commons.wikimedia.org/wiki/File:Westwood_Studios_1994.svg",
+      "logo": "westwood.svg"
+    },
+    "wych-elm": {
+      "name": "Wych Elm",
+      "logo": "wych-elm.png",
+      "logoSource": "https://www.silverpinesgame.com/",
+      "logoOnDark": true
+    },
+    "za-um": {
+      "name": "ZA/UM",
+      "logo": "za-um.svg",
+      "logoSource": "https://zaumstudio.com/",
+      "logoOnDark": true
+    }
+  },
+  "games": {
+    "monkey-se": {
+      "originalDevelopers": ["lucasarts"],
+      "publishers": ["Lucasfilm Games"],
+      "source": "https://www.mocagh.org/lucasfilm/mi12wl-manual.pdf"
+    },
+    "monkey2-se": {
+      "originalDevelopers": ["lucasarts"],
+      "publishers": ["LucasArts"],
+      "source": "https://www.mocagh.org/lucasfilm/mi12wl-manual.pdf"
+    },
+    "sq1sci": {
+      "originalDevelopers": ["sierra"],
+      "publishers": ["Sierra On-Line"],
+      "source": "https://www.pcgamingwiki.com/wiki/Engine:ScummVM"
+    },
+    "pq1": {
+      "originalDevelopers": ["sierra"],
+      "publishers": ["Sierra On-Line"],
+      "source": "https://www.pcgamingwiki.com/wiki/Engine:ScummVM"
+    },
+    "sq1": {
+      "originalDevelopers": ["sierra"],
+      "publishers": ["Sierra On-Line"],
+      "source": "https://www.pcgamingwiki.com/wiki/Engine:ScummVM"
+    },
+    "sq2": {
+      "originalDevelopers": ["sierra"],
+      "publishers": ["Sierra On-Line"],
+      "source": "https://www.pcgamingwiki.com/wiki/Engine:ScummVM"
+    },
+    "sq3": {
+      "originalDevelopers": ["sierra"],
+      "publishers": ["Sierra On-Line"],
+      "source": "https://www.pcgamingwiki.com/wiki/Engine:ScummVM"
+    },
+    "sq4": {
+      "originalDevelopers": ["sierra"],
+      "publishers": ["Sierra On-Line"],
+      "source": "https://www.pcgamingwiki.com/wiki/Engine:ScummVM"
+    },
+    "sq6": {
+      "originalDevelopers": ["sierra"],
+      "publishers": ["Sierra On-Line"],
+      "source": "https://www.pcgamingwiki.com/wiki/Engine:ScummVM"
+    },
+    "torin": {
+      "originalDevelopers": ["sierra"],
+      "publishers": ["Sierra On-Line"],
+      "source": "https://www.pcgamingwiki.com/wiki/Engine:ScummVM"
+    },
+    "sq5": {
+      "originalDevelopers": ["dynamix"],
+      "publishers": ["Sierra On-Line"],
+      "source": "https://en.wikipedia.org/wiki/Space_Quest_V"
+    },
+    "kyra1-cd": {
+      "originalDevelopers": ["westwood"],
+      "publishers": ["Virgin Games"],
+      "source": "https://en.wikipedia.org/wiki/The_Legend_of_Kyrandia"
+    },
+    "spyfox": {
+      "originalDevelopers": ["humongous"],
+      "publishers": ["Humongous Entertainment"],
+      "source": "https://www.pcgamingwiki.com/wiki/Engine:ScummVM"
+    },
+    "pajama": {
+      "originalDevelopers": ["humongous"],
+      "publishers": ["Humongous Entertainment"],
+      "source": "https://www.pcgamingwiki.com/wiki/Engine:ScummVM"
+    },
+    "toonstruck": {
+      "originalDevelopers": ["burst"],
+      "publishers": ["Virgin Interactive Entertainment"],
+      "source": "https://cdn.akamai.steamstatic.com/steam/apps/369830/manuals/Toonstruck_-_Manual.pdf"
+    },
+    "gob2": {
+      "originalDevelopers": ["coktel"],
+      "publishers": ["Sierra On-Line"],
+      "source": "https://www.sierragamers.com/wp-content/uploads/2019/12/Goblins_2_Multimedia_Manual.pdf"
+    },
+    "tlj": {
+      "originalDevelopers": ["funcom"],
+      "publishers": ["Funcom"],
+      "source": "https://www.funcom.com/about-us/"
+    },
+    "sky": {
+      "originalDevelopers": ["revolution"],
+      "publishers": ["Virgin Interactive Entertainment"],
+      "source": "https://en.wikipedia.org/wiki/Beneath_a_Steel_Sky"
+    },
+    "undertale": {
+      "originalDevelopers": ["tobyfox"],
+      "publishers": ["tobyfox"],
+      "source": "https://store.steampowered.com/app/391540/"
+    },
+    "stanley-parable": {
+      "originalDevelopers": ["galactic-cafe"],
+      "publishers": ["Galactic Cafe", "Klei Publishing"],
+      "source": "https://store.steampowered.com/app/221910/"
+    },
+    "tesla-effect": {
+      "originalDevelopers": ["big-finish"],
+      "publishers": ["Big Finish Games"],
+      "source": "https://store.steampowered.com/app/261510/"
+    },
+    "ethan-carter": {
+      "originalDevelopers": ["astronauts"],
+      "publishers": ["The Astronauts"],
+      "source": "https://store.steampowered.com/app/258520/"
+    },
+    "life-is-strange": {
+      "originalDevelopers": ["dontnod"],
+      "publishers": ["Square Enix"],
+      "source": "https://store.steampowered.com/app/319630/"
+    },
+    "portal2": {
+      "originalDevelopers": ["valve"],
+      "publishers": ["Valve"],
+      "source": "https://store.steampowered.com/app/620/"
+    },
+    "journey-down1": {
+      "originalDevelopers": ["skygoblin"],
+      "publishers": ["SkyGoblin"],
+      "source": "https://store.steampowered.com/app/220090/"
+    },
+    "kathy-rain-dc": {
+      "originalDevelopers": ["clifftop"],
+      "publishers": ["Raw Fury"],
+      "source": "https://store.steampowered.com/app/1395030/"
+    },
+    "drifter": {
+      "originalDevelopers": ["powerhoof", "dave-lloyd"],
+      "publishers": ["Powerhoof"],
+      "source": "https://store.steampowered.com/app/1170570/"
+    },
+    "owlboy": {
+      "originalDevelopers": ["d-pad"],
+      "publishers": ["D-Pad Studio"],
+      "source": "https://store.steampowered.com/app/115800/"
+    },
+    "tentacle": {
+      "originalDevelopers": ["lucasarts"],
+      "publishers": ["LucasArts"],
+      "source": "https://www.doublefine.com/games/day-of-the-tentacle-remastered"
+    },
+    "day-of-the-tentacle-remastered": {
+      "originalDevelopers": ["lucasarts"],
+      "publishers": ["Double Fine Productions"],
+      "source": "https://www.doublefine.com/games/day-of-the-tentacle-remastered"
+    },
+    "grim-fandango-remastered": {
+      "originalDevelopers": ["lucasarts"],
+      "publishers": ["Double Fine Productions"],
+      "source": "https://www.doublefine.com/about"
+    },
+    "monkey-se-native": {
+      "originalDevelopers": ["lucasarts"],
+      "publishers": ["LucasArts"],
+      "source": "https://store.steampowered.com/app/32360/"
+    },
+    "monkey2-se-native": {
+      "originalDevelopers": ["lucasarts"],
+      "publishers": ["LucasArts"],
+      "source": "https://store.steampowered.com/app/32460/"
+    },
+    "silver-pines": {
+      "originalDevelopers": ["wych-elm"],
+      "publishers": ["Team17"],
+      "source": "https://store.steampowered.com/app/2333000/"
+    },
+    "jenny-leclue": {
+      "originalDevelopers": ["mografi"],
+      "publishers": ["Mografi"],
+      "source": "https://store.steampowered.com/app/319870/"
+    },
+    "disco-elysium": {
+      "originalDevelopers": ["za-um"],
+      "publishers": ["ZA/UM"],
+      "source": "https://store.steampowered.com/app/632470/"
+    },
+    "moomin-midsummer-madness": {
+      "originalDevelopers": ["crossbridge"],
+      "publishers": ["Shochiku"],
+      "source": "https://store.steampowered.com/app/4463520/"
+    }
+  }
+}

@@ -1,11 +1,45 @@
-import { Search } from "lucide-react";
+import * as Dropdown from "@radix-ui/react-dropdown-menu";
+import { Check, ListFilter, Search, SlidersHorizontal, X } from "lucide-react";
 import { type ReactNode, useEffect, useState } from "react";
 import { categoryLabel, orderedCategories } from "../categories";
 import { Button } from "../components/Button";
+import { type GameSortOrder, sortGamesByRelease } from "../components/GameSort";
 import { GameTile } from "../components/GameTile";
 import { useTranslation } from "../i18n";
-import type { Collection, GameSummary } from "../types";
+import type { Collection, GameSummary, Studio } from "../types";
 import { CategoryRow } from "./CategoryRow";
+
+const HOME_VIEW_STORAGE_KEY = "kitor-home-view";
+
+type HomeView = "categories" | "grid" | "studios";
+
+function MenuOption({
+  value,
+  disabled,
+  children,
+}: {
+  value: string;
+  disabled?: boolean;
+  children: ReactNode;
+}) {
+  return (
+    <Dropdown.RadioItem className="kt-collection-option" value={value} disabled={disabled}>
+      <Dropdown.ItemIndicator>
+        <Check size={15} aria-hidden="true" />
+      </Dropdown.ItemIndicator>
+      <span>{children}</span>
+    </Dropdown.RadioItem>
+  );
+}
+
+function readHomeView(): HomeView {
+  try {
+    const view = globalThis.localStorage?.getItem(HOME_VIEW_STORAGE_KEY);
+    return view === "grid" || view === "studios" ? view : "categories";
+  } catch {
+    return "categories";
+  }
+}
 
 export function CollectionView({
   collection,
@@ -28,9 +62,28 @@ export function CollectionView({
   toolbar?: ReactNode;
   feedback?: ReactNode;
 }) {
-  const { t } = useTranslation();
+  const { t, language } = useTranslation();
+  const direction = language === "he" ? "rtl" : "ltr";
   const [query, setQuery] = useState("");
   const [filter, setFilter] = useState("all");
+  const [homeSort, setHomeSort] = useState<GameSortOrder>("default");
+  const [categorySorts, setCategorySorts] = useState<Record<string, GameSortOrder>>({});
+  const isHome = collection === "discovery";
+  const [homeView, setHomeView] = useState(readHomeView);
+  const searchTerm = query.trim().toLowerCase();
+  const isBrowsingHome = isHome && !searchTerm;
+  const showCategories = isBrowsingHome && homeView === "categories";
+  const showStudios = isBrowsingHome && homeView === "studios";
+
+  function changeHomeView(view: HomeView) {
+    setHomeView(view);
+    try {
+      globalThis.localStorage?.setItem(HOME_VIEW_STORAGE_KEY, view);
+    } catch {
+      // Switching views still works when persistent storage is unavailable.
+    }
+  }
+
   // biome-ignore lint/correctness/useExhaustiveDependencies: Navigation explicitly resets the search.
   useEffect(() => {
     setQuery("");
@@ -40,15 +93,41 @@ export function CollectionView({
     { id: "ready", label: t("Translation installed") },
     { id: "available", label: t("Translation available") },
   ];
+  const activeFilter = filters.find(({ id }) => id !== "all" && id === filter);
   const inStatus = (game: GameSummary, status: string) =>
     status === "all" || game.status === status;
   const haystack = (game: GameSummary) =>
-    `${game.title} ${game.author ?? ""} ${game.language ?? ""} ${game.searchTerms ?? ""} ${(game.tags ?? []).map((tag) => `${tag} ${t(categoryLabel(tag))}`).join(" ")}`.toLowerCase();
+    `${game.title} ${game.author ?? ""} ${game.language ?? ""} ${game.searchTerms ?? ""} ${(game.originalDevelopers ?? []).map((studio) => studio.name).join(" ")} ${(game.tags ?? []).map((tag) => `${tag} ${t(categoryLabel(tag))}`).join(" ")}`.toLowerCase();
   const matches = games.filter(
-    (game) => inStatus(game, filter) && haystack(game).includes(query.trim().toLowerCase())
+    (game) => inStatus(game, filter) && haystack(game).includes(searchTerm)
   );
-  const categories = collection === "discovery" ? orderedCategories(matches) : [];
-  const uncategorized = categories.length ? matches.filter((game) => !game.tags?.length) : matches;
+  const categories = showCategories ? orderedCategories(matches) : [];
+  const studios = new Map<string, { studio: Studio; games: GameSummary[] }>();
+  if (showStudios) {
+    for (const game of matches) {
+      const developers = new Map(game.originalDevelopers?.map((studio) => [studio.id, studio]));
+      for (const studio of developers.values()) {
+        const row = studios.get(studio.id);
+        if (row) row.games.push(game);
+        else studios.set(studio.id, { studio, games: [game] });
+      }
+    }
+  }
+  const studioRows = [...studios.values()].sort((a, b) =>
+    a.studio.name.localeCompare(b.studio.name)
+  );
+  const ungrouped = showStudios
+    ? matches.filter((game) => !game.originalDevelopers?.length)
+    : matches.filter((game) => !game.tags?.length);
+
+  function categorySortProps(id: string) {
+    const sortOrder = categorySorts[id] ?? homeSort;
+    return {
+      sortOrder,
+      onSortChange: (order: GameSortOrder) =>
+        setCategorySorts((previous) => ({ ...previous, [id]: order })),
+    };
+  }
 
   return (
     <section
@@ -67,33 +146,125 @@ export function CollectionView({
         </div>
         {toolbar}
       </header>
-      <div className="kt-toolbar">
-        <label className="kt-search">
-          <Search size={19} />
-          <span className="kt-sr-only">{t("Search games")}</span>
-          <input
-            type="search"
-            placeholder={t("Search your next adventure…")}
-            value={query}
-            onChange={(event) => setQuery(event.target.value)}
-            onKeyDown={(event) => {
-              if (event.key === "Escape") setQuery("");
-            }}
-          />
-        </label>
-        <fieldset className="kt-filters" aria-label={t("Filter games")}>
-          {filters.map(({ id, label }) => (
-            <button
-              type="button"
-              key={id}
-              aria-pressed={filter === id}
-              onClick={() => setFilter(id)}
+      <div className="kt-collection-controls">
+        <div className="kt-toolbar">
+          <label className="kt-search">
+            <Search size={19} />
+            <span className="kt-sr-only">{t("Search games")}</span>
+            <input
+              type="search"
+              placeholder={t("Search your next adventure…")}
+              value={query}
+              onChange={(event) => setQuery(event.target.value)}
+              onKeyDown={(event) => {
+                if (event.key === "Escape") setQuery("");
+              }}
+            />
+          </label>
+          {isHome ? (
+            <div className="kt-collection-menu-actions">
+              <Dropdown.Root dir={direction} modal={false}>
+                <Dropdown.Trigger
+                  className="kt-collection-menu-trigger"
+                  aria-label={t("Filter games")}
+                  title={t("Filter games")}
+                  data-filtered={filter !== "all" || undefined}
+                >
+                  <ListFilter size={17} aria-hidden="true" />
+                </Dropdown.Trigger>
+                <Dropdown.Content className="kt-collection-menu" align="end" sideOffset={6}>
+                  <Dropdown.RadioGroup
+                    aria-label={t("Translation status")}
+                    value={filter}
+                    onValueChange={setFilter}
+                  >
+                    <Dropdown.Label className="kt-collection-menu-label">
+                      {t("Translation status")}
+                    </Dropdown.Label>
+                    {filters.map(({ id, label }) => (
+                      <MenuOption key={id} value={id}>
+                        {label} ({games.filter((game) => inStatus(game, id)).length})
+                      </MenuOption>
+                    ))}
+                  </Dropdown.RadioGroup>
+                </Dropdown.Content>
+              </Dropdown.Root>
+              <Dropdown.Root dir={direction} modal={false}>
+                <Dropdown.Trigger
+                  className="kt-collection-menu-trigger"
+                  aria-label={t("Display options")}
+                  title={t("Display options")}
+                >
+                  <SlidersHorizontal size={17} aria-hidden="true" />
+                </Dropdown.Trigger>
+                <Dropdown.Content className="kt-collection-menu" align="end" sideOffset={6}>
+                  <Dropdown.RadioGroup
+                    aria-label={t("Grouping")}
+                    value={isBrowsingHome ? homeView : "grid"}
+                    onValueChange={(value) => changeHomeView(value as HomeView)}
+                  >
+                    <Dropdown.Label className="kt-collection-menu-label">
+                      {t("Grouping")}
+                    </Dropdown.Label>
+                    <MenuOption value="categories" disabled={!isBrowsingHome}>
+                      {t("Categories")}
+                    </MenuOption>
+                    <MenuOption value="studios" disabled={!isBrowsingHome}>
+                      {t("Studios")}
+                    </MenuOption>
+                    <MenuOption value="grid" disabled={!isBrowsingHome}>
+                      {t("No grouping")}
+                    </MenuOption>
+                  </Dropdown.RadioGroup>
+                  <Dropdown.Separator className="kt-collection-menu-separator" />
+                  <Dropdown.RadioGroup
+                    aria-label={t("Ordering")}
+                    value={homeSort}
+                    onValueChange={(value) => {
+                      setHomeSort(value as GameSortOrder);
+                      if (isBrowsingHome) setCategorySorts({});
+                    }}
+                  >
+                    <Dropdown.Label className="kt-collection-menu-label">
+                      {t("Ordering")}
+                    </Dropdown.Label>
+                    <MenuOption value="default">{t("Default order")}</MenuOption>
+                    <MenuOption value="release-newest">
+                      {t("Release date (newest first)")}
+                    </MenuOption>
+                    <MenuOption value="release-oldest">
+                      {t("Release date (oldest first)")}
+                    </MenuOption>
+                  </Dropdown.RadioGroup>
+                </Dropdown.Content>
+              </Dropdown.Root>
+            </div>
+          ) : (
+            <select
+              className="kt-game-filter"
+              aria-label={t("Filter games")}
+              value={filter}
+              onChange={(event) => setFilter(event.target.value)}
             >
-              {label}
-              <span>{games.filter((game) => inStatus(game, id)).length}</span>
-            </button>
-          ))}
-        </fieldset>
+              {filters.map(({ id, label }) => (
+                <option key={id} value={id}>
+                  {label} ({games.filter((game) => inStatus(game, id)).length})
+                </option>
+              ))}
+            </select>
+          )}
+        </div>
+        {isHome && activeFilter && (
+          <button
+            className="kt-collection-filter-chip"
+            type="button"
+            aria-label={t("Remove filter: {0}", [activeFilter.label])}
+            onClick={() => setFilter("all")}
+          >
+            {activeFilter.label}
+            <X size={14} aria-hidden="true" />
+          </button>
+        )}
       </div>
       {feedback}
       {loading ? (
@@ -111,7 +282,7 @@ export function CollectionView({
           <output className="kt-sr-only">
             {matches.length} {t("games")}
           </output>
-          {collection === "discovery" ? (
+          {showCategories || showStudios ? (
             <div className="kt-category-rows" key={navigationResetKey}>
               {categories.map((id) => (
                 <CategoryRow
@@ -120,20 +291,45 @@ export function CollectionView({
                   title={t(categoryLabel(id))}
                   games={matches.filter((game) => game.tags?.includes(id))}
                   onOpen={onOpen}
+                  {...categorySortProps(id)}
                 />
               ))}
-              {uncategorized.length > 0 && (
+              {studioRows.map(({ studio, games: studioGames }) => (
                 <CategoryRow
-                  title={t(categories.length ? "Other games" : "All games")}
-                  games={uncategorized}
+                  key={studio.id}
+                  title={studio.name}
+                  logo={studio.logo}
+                  logoOnDark={studio.logoOnDark}
+                  games={studioGames}
                   onOpen={onOpen}
+                  {...categorySortProps(`studio:${studio.id}`)}
+                />
+              ))}
+              {ungrouped.length > 0 && (
+                <CategoryRow
+                  title={t(
+                    showStudios
+                      ? "Uncredited developers"
+                      : categories.length
+                        ? "Other games"
+                        : "All games"
+                  )}
+                  games={ungrouped}
+                  onOpen={onOpen}
+                  {...categorySortProps(showStudios ? "studio:uncredited" : "uncategorized")}
                 />
               )}
             </div>
           ) : (
             <div className="kt-game-grid">
-              {matches.map((game) => (
-                <GameTile key={game.id} game={game} onOpen={onOpen} showStatus />
+              {sortGamesByRelease(matches, isHome ? homeSort : "default").map((game) => (
+                <GameTile
+                  key={game.id}
+                  game={game}
+                  onOpen={onOpen}
+                  showStatus={!isHome}
+                  showBeta={isHome && game.translationBeta}
+                />
               ))}
             </div>
           )}

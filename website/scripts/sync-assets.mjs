@@ -52,6 +52,7 @@ for (const game of registry.games) {
   const description = descriptions[game.scummvm_id];
   catalog.push({
     id: game.scummvm_id,
+    added_on: game.added_on,
     title: game.title,
     title_he: game.title_he,
     covers,
@@ -64,6 +65,7 @@ for (const game of registry.games) {
     translationCredit: translation?.author,
     steamAppId: game.steam_app_id,
     gogSlug: game.gog?.slug,
+    gogProductId: game.gog?.id,
   });
 }
 await writeFile(path.join(generated, "catalog.json"), JSON.stringify(catalog, null, 2) + "\n");

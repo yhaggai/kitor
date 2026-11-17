@@ -9824,40 +9824,55 @@
     {
       "game_id": "moomin-midsummer-madness",
       "title": "Moomin: Midsummer Madness",
+      "title_he": "מוּמינים: ההצגה הגדולה",
       "covers": {
         "en": {
-          "file": "covers/moomin-midsummer-madness/en/4e88fbccb315.png",
-          "sha256": "4e88fbccb315883ad63433a0f843e7d28db5aefad6142dc57166178e7e1b9625",
-          "bytes": 291343,
-          "width": 600,
-          "height": 900,
-          "object_key": "covers/moomin-midsummer-madness/en/4e88fbccb315.png",
-          "original_url": "https://assets.kitor.click/covers/moomin-midsummer-madness/en/4e88fbccb315.png",
+          "file": "covers/moomin-midsummer-madness/en/889e60283031.png",
+          "sha256": "889e60283031969c640829f3fd3e6e572133ce00921aebf35956183b73b962be",
+          "bytes": 3511259,
+          "width": 1024,
+          "height": 1536,
+          "object_key": "covers/moomin-midsummer-madness/en/889e60283031.png",
+          "original_url": "https://assets.kitor.click/covers/moomin-midsummer-madness/en/889e60283031.png",
           "variant_urls": {
-            "240": "https://assets.kitor.click/cdn-cgi/image/width=240,fit=scale-down,quality=85,format=auto/covers/moomin-midsummer-madness/en/4e88fbccb315.png",
-            "480": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/moomin-midsummer-madness/en/4e88fbccb315.png",
-            "960": "https://assets.kitor.click/cdn-cgi/image/width=960,fit=scale-down,quality=85,format=auto/covers/moomin-midsummer-madness/en/4e88fbccb315.png"
+            "240": "https://assets.kitor.click/cdn-cgi/image/width=240,fit=scale-down,quality=85,format=auto/covers/moomin-midsummer-madness/en/889e60283031.png",
+            "480": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/moomin-midsummer-madness/en/889e60283031.png",
+            "960": "https://assets.kitor.click/cdn-cgi/image/width=960,fit=scale-down,quality=85,format=auto/covers/moomin-midsummer-madness/en/889e60283031.png"
           },
-          "source": "Steam header artwork adapted for Kitor",
-          "source_page": "https://store.steampowered.com/app/4463520/",
-          "kind": "portrait-layout"
+          "source": "Steam header artwork",
+          "source_page": "https://store.steampowered.com/app/4463520/Moomin_Midsummer_Madness/",
+          "source_image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/4463520/c4e85af3552b33fc849be844e50efc50d751d9c3/header.jpg?t=1794470267",
+          "source_archive": "kitor/public/covers/moomin-midsummer-madness/header.jpg",
+          "kind": "ai-generated-cover",
+          "generated_on": "2026-11-15",
+          "generation_tool": "OpenAI ImageGen",
+          "generation_prompt": "Create a 2:3 portrait front game box cover, full bleed with a single continuous illustrated scene. Official Steam header is the visual reference. Preserve exact Moomintroll and Little My designs on their floating log, red-curtained flooded floating theatre, turquoise water, pine shoreline, paper grain and pen-and-ink storybook style. No borders, badges, watermarks. Recompose naturally for portrait, with white cloud at upper quarter and the characters centered underneath; provide illustrated foreground water, leaves and flowers below. Keep faces and lettering well inside edges. Recreate the original bold blue lettering spelling exactly 'MOOMIN' and 'MIDSUMMER MADNESS' on two lines.",
+          "review": "Artwork and lettering visually inspected. Public object verified byte for byte."
         },
         "he": {
-          "file": "covers/moomin-midsummer-madness/he/5829993e2434.png",
-          "sha256": "5829993e2434619604144e92160640a0ced84b4dd7b8e542d969fc0bca4f6617",
-          "bytes": 289029,
-          "width": 600,
-          "height": 900,
-          "object_key": "covers/moomin-midsummer-madness/he/5829993e2434.png",
-          "original_url": "https://assets.kitor.click/covers/moomin-midsummer-madness/he/5829993e2434.png",
+          "file": "covers/moomin-midsummer-madness/he/03de07ae885a.png",
+          "sha256": "03de07ae885a916912454681f6e970bcaffb5cdea6a0d0061f6e78a3bd59bff2",
+          "bytes": 3130304,
+          "width": 1024,
+          "height": 1536,
+          "object_key": "covers/moomin-midsummer-madness/he/03de07ae885a.png",
+          "original_url": "https://assets.kitor.click/covers/moomin-midsummer-madness/he/03de07ae885a.png",
           "variant_urls": {
-            "240": "https://assets.kitor.click/cdn-cgi/image/width=240,fit=scale-down,quality=85,format=auto/covers/moomin-midsummer-madness/he/5829993e2434.png",
-            "480": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/moomin-midsummer-madness/he/5829993e2434.png",
-            "960": "https://assets.kitor.click/cdn-cgi/image/width=960,fit=scale-down,quality=85,format=auto/covers/moomin-midsummer-madness/he/5829993e2434.png"
+            "240": "https://assets.kitor.click/cdn-cgi/image/width=240,fit=scale-down,quality=85,format=auto/covers/moomin-midsummer-madness/he/03de07ae885a.png",
+            "480": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/moomin-midsummer-madness/he/03de07ae885a.png",
+            "960": "https://assets.kitor.click/cdn-cgi/image/width=960,fit=scale-down,quality=85,format=auto/covers/moomin-midsummer-madness/he/03de07ae885a.png"
           },
-          "source": "Steam header artwork adapted for Kitor",
-          "source_page": "https://store.steampowered.com/app/4463520/",
-          "kind": "portrait-layout"
+          "source": "Steam header artwork",
+          "source_page": "https://store.steampowered.com/app/4463520/Moomin_Midsummer_Madness/",
+          "source_image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/4463520/c4e85af3552b33fc849be844e50efc50d751d9c3/header.jpg?t=1794470267",
+          "source_archive": "kitor/public/covers/moomin-midsummer-madness/header.jpg",
+          "kind": "ai-localized-artwork",
+          "generated_on": "2026-11-15",
+          "generation_tool": "OpenAI ImageGen",
+          "generation_prompt": "Precisely localize the supplied 2:3 portrait cover. Preserve the exact illustrated composition and framing, characters, objects, paper grain and ink colors. Change only the blue lettering inside the white cloud. Top line reads exactly 'מוּמינים' (מ וּ מ י נ י ם), with a dot beside the first vav. Bottom line reads exactly 'ההצגה הגדולה' (ה ה צ ג ה / ה ג ד ו ל ה). This is the title of the book, and the subtitle must have exactly two words. Render natural right-to-left Hebrew. Match the original bold blue hand-cut type and center both lines. No English lettering.",
+          "review": "Artwork and lettering visually inspected. Public object verified byte for byte.",
+          "hebrew_title": "מוּמינים: ההצגה הגדולה",
+          "edit_target": "covers/moomin-midsummer-madness/en/889e60283031.png"
         }
       }
     }

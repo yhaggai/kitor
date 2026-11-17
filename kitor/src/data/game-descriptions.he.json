@@ -156,32 +156,38 @@
     "communityTranslation": true
   },
   "undertale": {
+    "originalReleaseDate": "2015-09-15",
     "description": "ילדה נופלת אל עולם תת־קרקעי המאוכלס במפלצות ומחפשת דרך לשוב הביתה. בדרך היא פוגשת דמויות מצחיקות ומרגשות, והבחירות שלה משפיעות על הקשרים שהיא יוצרת ועל המשך המסע.\n\nמשחק תפקידים שמשלב חקירה, הומור ועימותים שאפשר לפתור גם בלי להילחם.\n\nאנדרטייל, משחק האינדי של טובי פוקס, השפיע עמוקות על עולם משחקי התפקידים והראה כמה רחוק אפשר ללכת עם סיפור שבו גם לחמלה יש מקום. יותר מעשור אחרי יציאתו, שחקנים עדיין אוהבים ומעריכים אותו, וקהילת מעריצים מסורה ממשיכה לחגוג אותו בקונצרטים, במפגשי קוספליי ובמשחקי מעריצים.",
     "descriptionEn": "A child falls into an underground world inhabited by monsters and searches for a way home. Along the way, the people they meet and the choices they make shape a role-playing adventure where even fights can be resolved without violence.\n\nToby Fox’s Undertale left a lasting mark on indie role-playing games with a story that made compassion a meaningful choice. More than a decade after its release, players still admire it, and a devoted fan community keeps celebrating it through concerts, cosplay meetups, and fan games.",
     "sourceUrl": "https://store.steampowered.com/app/391540/Undertale/",
     "communityTranslation": false
   },
   "sq4": {
+    "originalReleaseDate": "1991-03-04",
     "description": "רוג׳ר וילקו מסתבך בהרפתקה שמדלגת בין תקופות שונות של מסע בחלל. סכנות מהעבר ומהעתיד רודפות אחריו, והשרת המפורסם צריך להסתמך על תושייה ומזל כדי לשרוד.\n\nקומדיית מדע בדיוני עם חידות, מסע בזמן ובדיחות על משחקי מחשב ועל הגיבור עצמו.",
     "sourceUrl": "https://www.gog.com/en/game/space_quest_4_5_6",
     "communityTranslation": false
   },
   "sq6": {
+    "originalReleaseDate": "1995-07-11",
     "description": "רוג׳ר וילקו חוזר לעוד הרפתקה חללית מלאה צרות, מפגשים מוזרים וחידות. גם כשהוא מנסה להתרחק מהסתבכויות, היקום מוצא דרכים חדשות להעמיד את השרת חסר המזל במבחן.\n\nהפרק השישי בסדרה ממשיך את מסורת ההומור הפרוע והפרודיה על עולם המדע הבדיוני.",
     "sourceUrl": "https://www.gog.com/en/game/space_quest_4_5_6",
     "communityTranslation": false
   },
   "owlboy": {
+    "originalReleaseDate": "2016-11-01",
     "description": "הרפתקת פלטפורמות עלילתית בעולם השוכן בין העננים. עופו בשמים, חקרו מקומות חדשים וקחו את חבריכם למסע כדי להיעזר בכישוריהם.\n\nעולם מפורט באמנות פיקסלים מחבר בין גילוי, פעולה וקשרים עם הדמויות שפוגשים בדרך.",
     "sourceUrl": "https://store.steampowered.com/app/115800/Owlboy/",
     "communityTranslation": false
   },
   "jenny-leclue": {
+    "originalReleaseDate": "2019-09-19",
     "description": "ג׳ני לקלו היא בלשית צעירה וסקרנית בעולם מלא תעלומות. הצטרפו אליה לחקירה שמשלבת מפגשים עם דמויות צבעוניות, חיפוש רמזים ופתרון חידות.\n\nהרפתקה מצוירת ששמה במרכז את הסיפור, הדמויות והחדווה שבגילוי האמת.",
     "sourceUrl": "https://store.steampowered.com/app/319870/Jenny_LeClue__Detectivu/",
     "communityTranslation": false
   },
   "silver-pines": {
+    "originalReleaseDate": "2026-10-08",
     "description": "בעיירה אמריקאית קטנה מסתתרות תעלומות וסכנות מסויטות. חקרו את סביבותיה, פתרו חידות והתמודדו עם האיומים שבדרך תוך ניהול זהיר של המשאבים המעטים שברשותכם.\n\nהרפתקת אימה והישרדות המשלבת חקירה וגילוי של אזורים מחוברים.",
     "sourceUrl": "https://store.steampowered.com/app/2333000/Silver_Pines/",
     "communityTranslation": false
@@ -205,12 +211,14 @@
     "communityTranslation": true
   },
   "dig": {
+    "metadataSource": "patches-metadata/003_the_dig.json",
     "description": "אסטרואיד בגודל של ירח קטן דוהר לעבר כדור הארץ, ומפקד המשימה בוסטון לאו יוצא לעצור אותו יחד עם העיתונאית מגי רובינס והגיאולוג לודגר ברינק. אחרי שהאסטרואיד משנה את מסלולו, השלושה מוצאים את עצמם בעולם זר ונטוש, מלא בטכנולוגיה של תרבות שנעלמה. כדי לשוב הביתה עליהם להבין מה קרה שם, ומה הם מוכנים להשאיר מאחור.",
     "sourceUrl": "https://www.gog.com/en/game/the_dig",
     "communityTranslation": false
   },
   "moomin-midsummer-madness": {
-    "description": "שיטפון פתאומי מציף את עמק המומינים וסוחף את משפחת מומין אל תיאטרון ישן שצף על המים. הצטרפו למומינטרול ולמאי הקטנה כשהם חוקרים את התיאטרון, פוגשים חברים ותיקים ופותרים חידות בדרך הביתה. ההרפתקה המאוירת מבוססת על ספרה של טובה ינסון.",
+    "originalReleaseDate": "2026-11-12",
+    "description": "שיטפון פתאומי מציף את עמק המומינים וסוחף את משפחת מומין אל תיאטרון ישן שצף על המים. הצטרפו למומינטרול ולמאי הקטנה כשהם חוקרים את התיאטרון, פוגשים חברים ותיקים ופותרים חידות בדרך הביתה. ההרפתקה המאוירת מבוססת על ספרה של טובה ינסון, ״מוּמינים: ההצגה הגדולה״.",
     "sourceUrl": "https://store.steampowered.com/app/4463520/",
     "communityTranslation": false
   },

@@ -15,7 +15,6 @@
     "check:game-pages": "node scripts/check-game-pages.mjs"
   },
   "dependencies": {
-    "@astrojs/node": "^11.1.13",
     "@astrojs/react": "^7.1.9",
     "@radix-ui/react-dialog": "^1.1.15",
     "ag-grid-community": "^36.3.0",

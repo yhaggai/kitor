@@ -8,6 +8,7 @@ export default defineConfig({
   vite: {
     resolve: {
       alias: {
+        "@kitor/ui": fileURLToPath(new URL("./src/lib/box-translation.ts", import.meta.url)),
         "@/lib/utils": fileURLToPath(
           new URL("./src/lib/utils.ts", import.meta.url),
         ),

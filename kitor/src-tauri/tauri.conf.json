@@ -15,6 +15,7 @@
       {
         "title": "kitor",
         "theme": "Dark",
+        "backgroundColor": "#302e28",
         "width": 1180,
         "height": 800,
         "minWidth": 760,
