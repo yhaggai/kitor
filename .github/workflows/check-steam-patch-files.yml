@@ -17,16 +17,17 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 20
     steps:
-      - uses: actions/checkout@v5
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
         with:
           node-version: 22
-      - name: Build Steam helper and install Wrangler
-        run: |
-          cargo build --locked --manifest-path kitor/native-steam/Cargo.toml
-          npm install --global wrangler@4.40.2
+      - run: cargo build --locked --manifest-path kitor/native-steam/Cargo.toml
+      - run: npm ci --prefix tools/ci-wrangler
       - name: Compare changed Steam depots
         env:
+          KITOR_WRANGLER_BIN: ${{ github.workspace }}/tools/ci-wrangler/node_modules/.bin/wrangler
           KITOR_STEAM_CLOUD_SESSION: ${{ secrets.KITOR_STEAM_CLOUD_SESSION }}
           CLOUDFLARE_API_TOKEN: ${{ secrets.KITOR_MONITOR_CLOUDFLARE_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ vars.KITOR_MONITOR_CLOUDFLARE_ACCOUNT_ID }}

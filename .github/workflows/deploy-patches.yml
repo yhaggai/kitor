@@ -1,13 +1,10 @@
 name: Deploy Patches
 
 on:
-  workflow_run:
-    workflows: [Validate patch packages]
-    types: [completed]
-    branches: [main, v1]
+  workflow_call:
 
 permissions:
-  contents: write
+  contents: read
 
 concurrency:
   group: publish-translation-patches
@@ -15,14 +12,15 @@ concurrency:
 
 jobs:
   publish:
-    # Only validated trusted pushes; never run PR code with write credentials.
-    if: github.event.workflow_run.conclusion == 'success' && github.event.workflow_run.event == 'push' && github.event.workflow_run.head_repository.full_name == github.repository
+    permissions:
+      contents: write
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
         with:
-          ref: ${{ github.event.workflow_run.head_sha }}
-      - uses: actions/setup-python@v6
+          persist-credentials: false
+          ref: ${{ github.sha }}
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6
         with:
           python-version: '3.12'
       - name: Hydrate pinned build inputs
@@ -32,5 +30,5 @@ jobs:
       - name: Publish immutable packages and advance registry
         env:
           GH_TOKEN: ${{ github.token }}
-          PATCH_SOURCE_SHA: ${{ github.event.workflow_run.head_sha }}
+          PATCH_SOURCE_SHA: ${{ github.sha }}
         run: python kitor/tools/publish_patch_releases.py

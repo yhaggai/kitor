@@ -34,7 +34,7 @@ permissions:
 
 jobs:
   translation-scope:
-    uses: ./.github/workflows/classify-translation-pr.yml
+    uses: $/.github/workflows/classify-translation-pr.yml
   lifecycle-and-packaging:
     needs: translation-scope
     if: needs.translation-scope.outputs.translation_only != 'true'
@@ -44,17 +44,19 @@ jobs:
         os: [windows-latest, macos-latest]
     runs-on: ${{ matrix.os }}
     steps:
-      - uses: actions/checkout@v5
-      - uses: actions/setup-python@v6
+      - uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6
         with:
           python-version: '3.12'
       - name: Hydrate pinned large payloads from private build inputs
         env:
           GH_TOKEN: ${{ github.token }}
-        run: python kitor/tools/hydrate_patch_inputs.py --repo ${{ github.repository }}
-      - uses: dtolnay/rust-toolchain@stable
+        run: python kitor/tools/hydrate_patch_inputs.py --repo "$GITHUB_REPOSITORY"
+      - uses: dtolnay/rust-toolchain@39008827e6b4319a349e9a42dfc90579dd25f1ca # stable
       - name: Cache Cargo dependencies
-        uses: Swatinem/rust-cache@e9d7b9f1e587218970671bac74e5511ed9506e6a # v2
+        uses: Swatinem/rust-cache@d1527c8f67ef9af357290475d4af4b0fab8f12e0 # v2
         with:
           key: ${{ matrix.os }}
           workspaces: |
@@ -120,7 +122,7 @@ jobs:
         run: python kitor/tools/build_download_packages.py
       - name: Upload requested unverified package builds
         if: github.event_name == 'workflow_dispatch' && inputs.upload_artifacts
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
         with:
           name: unverified-patch-builds-${{ matrix.os }}
           path: |
@@ -129,3 +131,9 @@ jobs:
           retention-days: 1
           compression-level: 0
           if-no-files-found: error
+  publish:
+    needs: lifecycle-and-packaging
+    if: github.event_name == 'push' && (github.ref == 'refs/heads/v1' || github.ref == 'refs/heads/main')
+    permissions:
+      contents: write
+    uses: $/.github/workflows/deploy-patches.yml

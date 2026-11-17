@@ -7,6 +7,7 @@ on:
       - 'kitor/src/lib/descriptionFeedSchema.ts'
       - 'kitor/tools/build-description-feed.ts'
       - '.github/workflows/publish-game-descriptions.yml'
+      - 'tools/ci-wrangler/package*.json'
   push:
     branches: [v1]
     paths:
@@ -14,6 +15,7 @@ on:
       - 'kitor/src/lib/descriptionFeedSchema.ts'
       - 'kitor/tools/build-description-feed.ts'
       - '.github/workflows/publish-game-descriptions.yml'
+      - 'tools/ci-wrangler/package*.json'
   workflow_dispatch:
 
 permissions:
@@ -49,7 +51,7 @@ jobs:
         with:
           node-version: 24
       - run: node kitor/tools/build-description-feed.ts game-descriptions-v1.json
-      - run: npm install --global wrangler@4.40.2
+      - run: npm ci --prefix tools/ci-wrangler
       - name: Publish description feed
         env:
           CLOUDFLARE_ACCOUNT_ID: ${{ vars.CLOUDFLARE_ACCOUNT_ID }}
@@ -60,6 +62,6 @@ jobs:
             echo "::error::Set CLOUDFLARE_ACCOUNT_ID and KITOR_DESCRIPTION_R2_TOKEN to publish the description feed."
             exit 1
           fi
-          wrangler r2 object put kitor-assets/catalog/game-descriptions-v1.json \
+          tools/ci-wrangler/node_modules/.bin/wrangler r2 object put kitor-assets/catalog/game-descriptions-v1.json \
             --remote --file game-descriptions-v1.json \
             --content-type 'application/json; charset=utf-8' --cache-control 'public, max-age=300'
