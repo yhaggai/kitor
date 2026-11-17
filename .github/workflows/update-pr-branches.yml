@@ -1,0 +1,56 @@
+name: Update pull request branches
+
+on:
+  push:
+    branches: [v1]
+  pull_request_target:
+    branches: [v1]
+    types: [opened, reopened, edited, synchronize]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pull-requests: read
+
+concurrency:
+  group: update-pr-branches-v1
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Update branches behind v1
+        env:
+          GH_TOKEN: ${{ github.token }}
+          # Use an App token or fine-grained PAT so CI runs after each update.
+          UPDATE_TOKEN: ${{ secrets.PR_BRANCH_UPDATE_TOKEN }}
+        run: |
+          set -euo pipefail
+          repo="repos/$GITHUB_REPOSITORY"
+          base_sha=$(gh api "$repo/git/ref/heads/v1" --jq '.object.sha')
+          prs=$(gh api --paginate "$repo/pulls?state=open&base=v1&per_page=100" \
+            --jq '.[] | select(.head.repo.id == .base.repo.id) | [.number, .head.sha] | @tsv')
+
+          failed=0
+          while IFS=$'\t' read -r number head_sha; do
+            if [[ -z "$number" ]]; then
+              continue
+            fi
+
+            behind=$(gh api "$repo/compare/$base_sha...$head_sha" --jq '.behind_by')
+            if [[ "$behind" == 0 ]]; then
+              continue
+            fi
+
+            if [[ -z "$UPDATE_TOKEN" ]]; then
+              echo '::error::Set PR_BRANCH_UPDATE_TOKEN with Contents and Pull requests write access to enable automatic updates.'
+              exit 1
+            fi
+
+            if ! GH_TOKEN="$UPDATE_TOKEN" gh api --silent --method PUT \
+              "$repo/pulls/$number/update-branch" -f expected_head_sha="$head_sha"; then
+              echo "::error::GitHub could not update pull request #$number. Check the API error above."
+              failed=1
+            fi
+          done <<< "$prs"
+          exit "$failed"
