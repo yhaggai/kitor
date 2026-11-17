@@ -210,10 +210,13 @@ pub async fn submit(
     if csv == draft.source {
         return Err("There are no corrections to submit".into());
     }
-    let mut input = serde_json::json!({"base_sha":draft.base_sha,"digest":digest,"edits":draft.edits,"email_opt_in":email_opt_in});
-    if config.id != "drifter" {
-        input["catalog_id"] = serde_json::json!(config.id);
-    }
+    let input = serde_json::json!({
+        "catalog_id": config.id,
+        "base_sha": draft.base_sha,
+        "digest": digest,
+        "edits": draft.edits,
+        "email_opt_in": email_opt_in,
+    });
     let response = reqwest::Client::builder()
         .timeout(std::time::Duration::from_secs(180))
         .redirect(reqwest::redirect::Policy::none())
