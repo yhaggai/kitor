@@ -1,0 +1,7 @@
+{
+  "name": "kitor-ci-wrangler",
+  "private": true,
+  "devDependencies": {
+    "wrangler": "4.40.2"
+  }
+}
