@@ -112,7 +112,7 @@ version = "1.1.5"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "40c48f72fd53cd289104fc64099abca73db4166ad86ea0b4341abe65af83dadc"
 dependencies = [
- "windows-sys 0.60.2",
+ "windows-sys 0.61.2",
 ]
 
 [[package]]
@@ -123,7 +123,7 @@ checksum = "291e6a250ff86cd4a820112fb8898808a366d8f9f58ce16d1f538353ad55747d"
 dependencies = [
  "anstyle",
  "once_cell_polyfill",
- "windows-sys 0.60.2",
+ "windows-sys 0.61.2",
 ]
 
 [[package]]
@@ -424,11 +424,30 @@ dependencies = [
 
 [[package]]
 name = "bzip2"
+version = "0.5.2"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "49ecfb22d906f800d4fe833b6282cf4dc1c298f5057ca0b5445e5c209735ca47"
+dependencies = [
+ "bzip2-sys",
+]
+
+[[package]]
+name = "bzip2"
 version = "0.6.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "f3a53fac24f34a81bc9954b5d6cfce0c21e18ec6959f44f56e8e90e4bb7c346c"
 dependencies = [
  "libbz2-rs-sys",
+]
+
+[[package]]
+name = "bzip2-sys"
+version = "0.1.13+1.0.8"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "225bff33b2141874fe80d71e07d6eec4f85c5c216453dd96388240f96e1acc14"
+dependencies = [
+ "cc",
+ "pkg-config",
 ]
 
 [[package]]
@@ -2592,7 +2611,7 @@ name = "kitor"
 version = "0.1.7"
 dependencies = [
  "base64 0.22.1",
- "bzip2",
+ "bzip2 0.5.2",
  "chrono",
  "csv",
  "futures",
@@ -2601,7 +2620,7 @@ dependencies = [
  "md-5",
  "migration",
  "percent-encoding",
- "rand 0.8.8",
+ "rand 0.10.4",
  "reqwest 0.12.28",
  "sea-orm",
  "sea-orm-migration",
@@ -7519,7 +7538,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "80cc68510ea7553c30a69c732de5278e94183f68765af6c642dbccefd6ec777e"
 dependencies = [
  "aes 0.9.4",
- "bzip2",
+ "bzip2 0.6.1",
  "constant_time_eq",
  "crc32fast",
  "deflate64",
