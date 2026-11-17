@@ -5,6 +5,7 @@ import { CatalogGameActions } from "@/components/CatalogGameActions";
 import GameCard from "@/components/GameCard";
 import { TranslationContributionButton } from "@/components/TranslationContributionButton";
 import { TranslationCredit } from "@/components/TranslationCredit";
+import { usePublishedDescription } from "@/lib/descriptionFeed";
 import { type CatalogGame, catalogGameSummary, patchSummary } from "@/lib/presentation";
 import { type Game, type PatchWithStatus, useAppStore } from "@/store/store";
 
@@ -45,6 +46,7 @@ export default function GameDetails({
   const { t } = useTranslation();
   const games = useAppStore((state) => state.games);
   const gameId = game?.scummvm_id ?? patch?.scummvm_id ?? catalogGame?.scummvm_id;
+  const description = usePublishedDescription(gameId);
   const installed = game ?? games.find((entry) => entry.scummvm_id === gameId);
   const installedId = installed?.id;
   useEffect(() => {
@@ -65,9 +67,10 @@ export default function GameDetails({
     );
   }
   if (catalogGame) {
+    const summary = catalogGameSummary(catalogGame);
     return (
       <GameDetailsView
-        game={catalogGameSummary(catalogGame)}
+        game={{ ...summary, description: description ?? summary.description }}
         collection={collection}
         onBack={onBack}
         translationCredit={<TranslationCredit gameId={catalogGame.scummvm_id} />}
@@ -86,9 +89,10 @@ export default function GameDetails({
     );
   }
   if (!patch) return null;
+  const summary = patchSummary({ ...patch, game_installed: false, patch_installed: false });
   return (
     <GameDetailsView
-      game={patchSummary({ ...patch, game_installed: false, patch_installed: false })}
+      game={{ ...summary, description: description ?? summary.description }}
       collection={collection}
       onBack={onBack}
       translationCredit={<TranslationCredit gameId={patch.scummvm_id} />}

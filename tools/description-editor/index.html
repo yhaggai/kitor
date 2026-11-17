@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Kitor Catalog Editor</title>
+  <link rel="stylesheet" href="/editor.css">
+  <script type="module" src="/editor.js"></script>
+</head>
+<body>
+  <header><strong>Kitor</strong><span>Catalog editor</span></header>
+  <main>
+    <aside>
+      <label for="search">Find a game</label>
+      <input id="search" type="search" placeholder="Search titles or game IDs" autocomplete="off">
+      <nav id="games" aria-label="Games"></nav>
+    </aside>
+    <section>
+      <h1 id="title">Select a game</h1>
+      <p id="game-id" hidden></p>
+      <form id="editor" hidden>
+        <label for="description">Hebrew description</label>
+        <textarea id="description" lang="he" dir="rtl" required rows="12"></textarea>
+        <div class="actions">
+          <button id="reset" type="button" disabled>Reset</button>
+          <button id="submit" type="submit" disabled>Open pull request</button>
+        </div>
+      </form>
+      <p id="status" role="status">Loading descriptions from GitHub…</p>
+    </section>
+  </main>
+</body>
+</html>
