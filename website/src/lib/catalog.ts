@@ -9,6 +9,7 @@ export type CatalogGame = {
   platforms: Record<string, boolean>;
   hebrew: boolean;
   descriptionHe?: string;
+  descriptionEn?: string;
   sourceUrl?: string;
   screenshot?: string;
   translationCredit?: string;

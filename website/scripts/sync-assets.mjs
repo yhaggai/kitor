@@ -58,6 +58,7 @@ for (const game of registry.games) {
     platforms: game.platforms,
     hebrew: Boolean(translation),
     descriptionHe: description?.description,
+    descriptionEn: description?.descriptionEn,
     sourceUrl: description?.sourceUrl,
     screenshot: galleries[game.scummvm_id]?.[0]?.src,
     translationCredit: translation?.author,

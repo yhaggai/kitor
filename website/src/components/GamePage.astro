@@ -20,6 +20,7 @@ const description = game.hebrew
 const otherLocale = en ? "he" : "en";
 const boxLanguage = game.covers[locale].src ? locale : otherLocale;
 const note = gameGuideNotes[game.id]?.[locale];
+const gameDescription = en ? game.descriptionEn : game.descriptionHe;
 const translationCreditParts = game.translationCredit?.split(/(\bAdventureBrew\b)/i);
 const adventureBrewGroupUrl = "https://www.facebook.com/groups/hebrewadventure";
 const storeLinks = [
@@ -77,7 +78,7 @@ const storeLinks = [
     <section class="game-guide-section">
       <h2>{t("פרטי המשחק", "Game details")}</h2>
       {note && <p>{note}</p>}
-      {!en && game.descriptionHe && <p class="game-guide-description">{game.descriptionHe}</p>}
+      {gameDescription && <p class="game-guide-description">{gameDescription}</p>}
       {translationCreditParts && (
         <p>
           {t("קרדיט לתרגום", "Translation credit")} · <bdi>{translationCreditParts.map((part, index) =>
