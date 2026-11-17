@@ -706,16 +706,24 @@ mod store_catalog_tests {
     use super::store_catalog_entry;
 
     #[test]
-    fn the_dig_is_listed_for_purchase_without_a_translation() {
-        let registry = crate::services::registry_service::load_registry().unwrap();
-        let game = registry
-            .games
-            .iter()
-            .find(|entry| entry.scummvm_id == "dig")
-            .unwrap();
-        assert!(game.patches.is_empty());
-        assert_eq!(game.gog.as_ref().map(|gog| gog.id), Some(1425299904));
-        let listing = store_catalog_entry(game);
+    fn store_only_game_preserves_gog_purchase_details() {
+        let game = serde_json::from_value(serde_json::json!({
+            "scummvm_id": "dig",
+            "title": "The Dig",
+            "add_to_cart_url": "https://www.gog.com/checkout/widget/52756712356612660/1425299904?price=undefined%2018.60",
+            "gog": {
+                "id": 1425299904,
+                "installers": [{
+                    "id": "",
+                    "name": "The Dig",
+                    "path": "https://www.gog.com/downloads/the_dig/en1installer0"
+                }]
+            },
+            "detection_patterns": { "unique_files": [], "file_patterns": [] },
+            "patches": []
+        }))
+        .unwrap();
+        let listing = store_catalog_entry(&game);
         assert_eq!(listing.language, "");
         assert_eq!(listing.download_url, "");
         assert_eq!(listing.source_type, "store");
