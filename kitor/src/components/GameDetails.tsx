@@ -83,6 +83,7 @@ export default function GameDetails({
             <p className="text-sm text-muted-foreground">
               {t("No compatible patch is available in the current catalog.")}
             </p>
+            <TranslationContributionButton gameId={catalogGame.scummvm_id} />
           </div>
         }
       />

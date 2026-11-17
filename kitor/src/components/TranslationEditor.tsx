@@ -1,3 +1,4 @@
+import { useTranslation } from "@kitor/ui";
 import { invoke } from "@tauri-apps/api/core";
 import { openUrl } from "@tauri-apps/plugin-opener";
 import {
@@ -14,6 +15,7 @@ import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogDescription, DialogTitle } from "@/components/ui/dialog";
 import "./TranslationEditor.css";
 import type { Contributor } from "@/store/contributor";
+import type { ContributionCatalog } from "./TranslationContributionButton";
 
 ModuleRegistry.registerModules([AllCommunityModule]);
 type Row = {
@@ -23,6 +25,7 @@ type Row = {
   english: string;
   hebrew: string;
   proposal: string;
+  variant: string | null;
 };
 type Draft = {
   base_sha: string;
@@ -34,7 +37,14 @@ type Draft = {
 type Preview = {
   digest: string;
   revision: number;
-  changes: { key: string; english: string; before: string; after: string }[];
+  changes: {
+    key: string;
+    english: string;
+    context: string;
+    variant: string | null;
+    before: string;
+    after: string;
+  }[];
 };
 const theme = themeQuartz.withParams({
   backgroundColor: "#101827",
@@ -49,10 +59,16 @@ const theme = themeQuartz.withParams({
 export default function TranslationEditor({
   onClose,
   contributor,
+  catalog,
 }: {
   onClose: () => void;
   contributor: Contributor;
+  catalog: ContributionCatalog;
 }) {
+  const { t, language } = useTranslation();
+  const catalogId = catalog.id;
+  const drifter = catalogId === "drifter" || catalogId === "drifter-logical";
+  const paired = catalog.editable.length === 2;
   const [draft, setDraft] = useState<Draft | null>(null);
   const [data, setData] = useState<Row[]>([]);
   const [edits, setEdits] = useState<Record<string, string>>({});
@@ -60,11 +76,13 @@ export default function TranslationEditor({
   const [changedOnly, setChangedOnly] = useState(false);
   const [message, setMessage] = useState("Loading translation…");
   const [error, setError] = useState("");
+  const [closeError, setCloseError] = useState("");
   const [busy, setBusy] = useState(false);
   const [emailOptIn, setEmailOptIn] = useState(false);
   const [preview, setPreview] = useState<Preview | null>(null);
   const [botReady, setBotReady] = useState(false);
   const [botMessage, setBotMessage] = useState("Checking the local contribution bot…");
+  const [botError, setBotError] = useState("");
   const [pr, setPr] = useState<string | null>(null);
   const [saved, setSaved] = useState(false);
   const revision = useRef(0),
@@ -76,21 +94,27 @@ export default function TranslationEditor({
   const generation = useRef(0);
   const checkBot = useCallback(async () => {
     setBotReady(false);
+    setBotError("");
     try {
-      const status = await invoke<{ configured: boolean }>("contribution_bot_status");
-      setBotReady(status.configured);
+      const status = await invoke<{ configured: boolean; catalogs: string[] }>(
+        "contribution_bot_status"
+      );
+      const supported = catalogId === "drifter" || status.catalogs.includes(catalogId);
+      setBotReady(status.configured && supported);
       setBotMessage(
-        status.configured
-          ? "The bot is ready to open a draft PR."
-          : "The local bot is running. Its GitHub App credentials still need to be configured."
+        !supported
+          ? "The contribution service does not yet accept this catalog."
+          : status.configured
+            ? "The bot is ready to open a draft PR."
+            : "The local bot is running. Its GitHub App credentials still need to be configured."
       );
     } catch (e) {
-      setBotMessage(String(e));
+      setBotError(String(e));
     }
-  }, []);
+  }, [catalogId]);
   useEffect(() => {
     mounted.current = true;
-    void invoke<Draft>("open_translation_draft", { contributorId: contributor.id })
+    void invoke<Draft>("open_translation_draft", { contributorId: contributor.id, catalogId })
       .then((d) => {
         if (!mounted.current) return;
         revision.current = d.revision;
@@ -107,7 +131,7 @@ export default function TranslationEditor({
     return () => {
       mounted.current = false;
     };
-  }, [checkBot, contributor.id]);
+  }, [catalogId, checkBot, contributor.id]);
 
   // Save every committed cell edit through one ordered queue. Stale writes cannot win.
   const persist = useCallback(
@@ -120,6 +144,7 @@ export default function TranslationEditor({
         .then(async () => {
           const rev = await invoke<number>("save_translation_draft", {
             contributorId: contributor.id,
+            catalogId,
             revision: revision.current,
             edits: next,
           });
@@ -128,6 +153,7 @@ export default function TranslationEditor({
             setSaved(true);
             setMessage("Saved on this computer");
             setError("");
+            setCloseError("");
           }
         });
       void queue.current.catch((e) => {
@@ -137,7 +163,7 @@ export default function TranslationEditor({
         }
       });
     },
-    [contributor.id]
+    [catalogId, contributor.id]
   );
   const onChange = useCallback(
     (event: CellValueChangedEvent<Row>) => {
@@ -162,18 +188,36 @@ export default function TranslationEditor({
   }, [changedOnly]);
   const columns = useMemo<ColDef<Row>[]>(
     () => [
-      { headerName: "Speaker", field: "character", width: 110 },
-      { headerName: "Scene / context", field: "context", width: 200 },
-      { headerName: "English", field: "english", flex: 1, minWidth: 230 },
       {
-        headerName: "Current Hebrew",
+        headerName: t("Speaker"),
+        field: "character",
+        width: 110,
+        hide: catalog.speaker === undefined,
+      },
+      {
+        headerName: t("Edition"),
+        field: "variant",
+        width: 155,
+        hide: !paired,
+        valueFormatter: (p) => (p.value ? t(p.value) : ""),
+      },
+      { headerName: t("Scene / context"), field: "context", width: 200 },
+      {
+        headerName: t("English"),
+        field: "english",
+        flex: 1,
+        minWidth: 230,
+        hide: catalog.english === undefined,
+      },
+      {
+        headerName: t("Current Hebrew"),
         field: "hebrew",
         flex: 1,
         minWidth: 230,
         cellClass: "hebrew-cell",
       },
       {
-        headerName: "Your correction ✎",
+        headerName: t("Your correction ✎"),
         field: "proposal",
         editable: !busy && !preview,
         flex: 1,
@@ -185,16 +229,18 @@ export default function TranslationEditor({
         cellClassRules: { "changed-cell": (p) => p.data?.proposal !== p.data?.hebrew },
       },
     ],
-    [busy, preview]
+    [busy, catalog.english, catalog.speaker, paired, preview, t]
   );
   const review = async () => {
     grid.current?.api.stopEditing();
     setBusy(true);
     setError("");
+    setCloseError("");
     try {
       await queue.current;
       const p = await invoke<Preview>("preview_translation_submission", {
         contributorId: contributor.id,
+        catalogId,
       });
       setPreview(p);
     } catch (e) {
@@ -207,11 +253,13 @@ export default function TranslationEditor({
     if (!preview) return;
     setBusy(true);
     setError("");
+    setCloseError("");
     try {
       const result = await invoke<{ url: string; existing: boolean; updated?: boolean }>(
         "submit_translation_draft",
         {
           contributorId: contributor.id,
+          catalogId,
           revision: preview.revision,
           digest: preview.digest,
           emailOptIn,
@@ -239,10 +287,12 @@ export default function TranslationEditor({
       await queue.current;
       onClose();
     } catch (e) {
-      setError(`Could not save the draft: ${String(e)}. Fix the correction before closing.`);
+      setCloseError(String(e));
     }
   };
   const count = Object.keys(edits).length;
+  const reviewLabel = (total: number) =>
+    t(total === 1 ? "Review {0} correction" : "Review {0} corrections", [total]);
   return (
     <Dialog
       open
@@ -250,23 +300,39 @@ export default function TranslationEditor({
         if (!value) void close();
       }}
     >
-      <DialogContent className="translation-editor" onInteractOutside={(e) => e.preventDefault()}>
+      <DialogContent
+        dir={language === "he" ? "rtl" : "ltr"}
+        className="translation-editor"
+        onInteractOutside={(e) => e.preventDefault()}
+      >
         <div className="translation-heading">
           <div>
-            <span className="translation-eyebrow">COMMUNITY TRANSLATIONS · EXPERIMENT</span>
-            <DialogTitle>The Drifter — improve the Hebrew translation</DialogTitle>
+            <span className="translation-eyebrow">{t("COMMUNITY TRANSLATIONS · EXPERIMENT")}</span>
+            <DialogTitle>
+              {drifter
+                ? t("The Drifter — improve the Hebrew translation")
+                : t("{0} — improve the Hebrew translation", [catalog.title])}
+            </DialogTitle>
             <DialogDescription>
-              Find a line, edit your correction, then review and send a draft pull request.
+              {catalog.game === "undertale" && <>{t(catalog.label)} · </>}
+              {t("Find a line, edit your correction, then review and send a draft pull request.")}
             </DialogDescription>
           </div>
         </div>
         <p className="translation-notice">
-          This first POC edits Drifter’s stored text format: Hebrew is in display order. It does not
-          install a patch or publish a release.
+          {t(
+            catalogId === "drifter"
+              ? "This first POC edits Drifter’s stored text format: Hebrew is in display order. It does not install a patch or publish a release."
+              : paired
+                ? "Edit Hebrew in normal reading order. If you change the wording, update both the regular and niqqud rows."
+                : "Edit Hebrew in normal reading order."
+          )}
         </p>
-        {error && (
+        {(error || closeError) && (
           <p role="alert" className="translation-error">
-            {error}
+            {closeError
+              ? t("Could not save the draft: {0}. Fix the correction before closing.", [closeError])
+              : error}
           </p>
         )}
         {draft && !preview && (
@@ -275,8 +341,8 @@ export default function TranslationEditor({
               <label className="translation-search">
                 <Search size={16} />
                 <input
-                  aria-label="Search subtitles"
-                  placeholder="Search English, Hebrew, speaker or scene…"
+                  aria-label={t("Search subtitles")}
+                  placeholder={t("Search English, Hebrew, speaker or scene…")}
                   value={search}
                   onChange={(e) => setSearch(e.target.value)}
                 />
@@ -287,13 +353,13 @@ export default function TranslationEditor({
                   checked={changedOnly}
                   onChange={(e) => setChangedOnly(e.target.checked)}
                 />{" "}
-                Only my changes ({count})
+                {t("Only my changes ({0})", [count])}
               </label>
               <Button
                 variant="outline"
                 size="sm"
                 onClick={() => grid.current?.api.undoCellEditing()}
-                aria-label="Undo edit"
+                aria-label={t("Undo edit")}
               >
                 <Undo2 size={16} />
               </Button>
@@ -301,7 +367,7 @@ export default function TranslationEditor({
                 variant="outline"
                 size="sm"
                 onClick={() => grid.current?.api.redoCellEditing()}
-                aria-label="Redo edit"
+                aria-label={t("Redo edit")}
               >
                 <Redo2 size={16} />
               </Button>
@@ -336,29 +402,36 @@ export default function TranslationEditor({
         )}
         {preview && !pr && (
           <div className="translation-review">
-            <h3>Review {preview.changes.length} correction(s)</h3>
+            <h3>{reviewLabel(preview.changes.length)}</h3>
             <p>
-              Your changes will be public on GitHub. Kitor adds them to your open draft PR for The
-              Drifter, or opens a new draft if needed.
+              {t(
+                "Your changes will be public on GitHub. Kitor adds them to your open draft pull request for this translation, or opens a new draft if needed."
+              )}
             </p>
-            <label className="translation-email-opt-in">
-              <input
-                type="checkbox"
-                checked={emailOptIn}
-                disabled={busy}
-                onChange={(event) => setEmailOptIn(event.target.checked)}
-              />
-              Email me when my contribution is approved and included in a patch.
-            </label>
-            <p className="translation-email-disclosure">
-              Optional. You can contribute without emails. If selected, Kitor stores your verified
-              Google email privately and uses Resend to deliver these updates. Each email includes a
-              link to stop contribution emails. Selecting this again resumes emails for this new
-              contribution.
-            </p>
+            {drifter && (
+              <>
+                <label className="translation-email-opt-in">
+                  <input
+                    type="checkbox"
+                    checked={emailOptIn}
+                    disabled={busy}
+                    onChange={(event) => setEmailOptIn(event.target.checked)}
+                  />
+                  {t("Email me when my contribution is approved and included in a patch.")}
+                </label>
+                <p className="translation-email-disclosure">
+                  {t(
+                    "Optional. You can contribute without emails. If selected, Kitor stores your verified Google email privately and uses Resend to deliver these updates. Each email includes a link to stop contribution emails. Selecting this again resumes emails for this new contribution."
+                  )}
+                </p>
+              </>
+            )}
             {preview.changes.map((change) => (
               <article key={change.key}>
-                <p>{change.english}</p>
+                <p>
+                  {change.english || change.context}
+                  {change.variant && " · " + t(change.variant)}
+                </p>
                 <div className="translation-before" dir="auto">
                   − {change.before}
                 </div>
@@ -369,15 +442,18 @@ export default function TranslationEditor({
             ))}
             {!pr && (
               <div className="translation-auth">
-                <h3>Contributing as {contributor.name}</h3>
-                <p>Public contributor ID: {contributor.id}. Your email stays private.</p>
+                <h3>{t("Contributing as {0}", [contributor.name])}</h3>
                 <p>
-                  No GitHub sign-in or repository access is needed from you. The bot posts your
-                  reviewed corrections as a public draft PR.
+                  {t("Public contributor ID: {0}. Your email stays private.", [contributor.id])}
                 </p>
-                <p>{botMessage}</p>
+                <p>
+                  {t(
+                    "No GitHub sign-in or repository access is needed from you. The bot posts your reviewed corrections as a public draft PR."
+                  )}
+                </p>
+                <p>{botError || t(botMessage)}</p>
                 <Button variant="outline" disabled={busy} onClick={() => void checkBot()}>
-                  Check connection
+                  {t("Check connection")}
                 </Button>
               </div>
             )}
@@ -405,59 +481,62 @@ export default function TranslationEditor({
               <span className="translation-celebration-emoji" aria-hidden="true">
                 🎉
               </span>
-              <span className="translation-eyebrow">A LITTLE EDIT. A BETTER ADVENTURE.</span>
-              <h3 id="contribution-success-title">Your contribution is in!</h3>
+              <span className="translation-eyebrow">{t("A LITTLE EDIT. A BETTER ADVENTURE.")}</span>
+              <h3 id="contribution-success-title">{t("Your contribution is in!")}</h3>
               <p className="translation-celebration-thanks">
-                Thank you for helping bring The Drifter to life in Hebrew.
+                {t("Thank you for helping improve the Hebrew translation of {0}.", [catalog.title])}
               </p>
               <p>
-                Your {preview?.changes.length === 1 ? "correction is" : "corrections are"} ready for
-                review. Once approved for release, they can be included in the next patch version.
+                {t(
+                  preview?.changes.length === 1
+                    ? "Your correction is ready for review. Once approved for release, it can be included in the next patch version."
+                    : "Your corrections are ready for review. Once approved for release, they can be included in the next patch version."
+                )}
               </p>
               <div className="translation-celebration-next">
-                <strong>What happens next?</strong>
+                <strong>{t("What happens next?")}</strong>
                 <p>
-                  The translation team reviews your changes. You can follow their feedback on your
-                  contribution.
+                  {t(
+                    "The translation team reviews your changes. You can follow their feedback on your contribution."
+                  )}
                 </p>
-                <small>
-                  In this preview, approval notifications and patch releases aren’t connected yet.
-                </small>
               </div>
               <Button variant="outline" onClick={() => void openUrl(pr)}>
-                View your contribution ↗
+                {t("View your contribution ↗")}
               </Button>
             </div>
           </section>
         )}
         <div className="translation-footer">
           <div aria-live="polite">
-            <span className={saved ? "saved-dot" : "saving-dot"} /> {message}
+            <span className={saved ? "saved-dot" : "saving-dot"} /> {t(message)}
             {draft && (
               <small>
-                {draft.rows.length.toLocaleString()} lines · based on {draft.base_branch} /{" "}
-                {draft.base_sha.slice(0, 7)}
+                {t("{0} lines · based on {1}", [
+                  draft.rows.length.toLocaleString(language),
+                  `${draft.base_branch} / ${draft.base_sha.slice(0, 7)}`,
+                ])}
               </small>
             )}
           </div>
           <div className="translation-footer-actions">
             {pr ? (
-              <Button onClick={() => void close()}>Done — thank you!</Button>
+              <Button onClick={() => void close()}>{t("Done — thank you!")}</Button>
             ) : preview ? (
               <>
                 <Button variant="outline" disabled={busy} onClick={() => setPreview(null)}>
-                  Back to editing
+                  {t("Back to editing")}
                 </Button>
                 <Button
                   disabled={busy || !botReady || !preview.changes.length || !!pr}
                   onClick={() => void submit()}
                 >
-                  {busy ? "Submitting…" : "Send corrections"}
+                  {busy ? t("Submitting…") : t("Send corrections")}
                 </Button>
               </>
             ) : (
               <Button disabled={!draft || busy || count === 0} onClick={() => void review()}>
-                {busy ? "Preparing…" : `Review ${count} correction${count === 1 ? "" : "s"}`}
+                {busy ? t("Preparing…") : reviewLabel(count)}
               </Button>
             )}
           </div>

@@ -1,6 +1,62 @@
+use regex::Regex;
 use serde::{Deserialize, Serialize};
 use sha2::{Digest, Sha256};
-use std::collections::{BTreeMap, HashSet};
+use std::{
+    collections::{BTreeMap, HashSet},
+    sync::LazyLock,
+};
+use unicode_normalization::UnicodeNormalization;
+
+#[derive(Deserialize)]
+pub struct Catalog {
+    pub id: String,
+    pub path: String,
+    header: Vec<String>,
+    key: usize,
+    speaker: Option<usize>,
+    context: Vec<usize>,
+    english: Option<usize>,
+    editable: Vec<usize>,
+    skip: usize,
+    status: Option<usize>,
+    #[serde(default)]
+    locked_keys: Vec<String>,
+    tokens: String,
+}
+
+static CATALOGS: LazyLock<Vec<Catalog>> = LazyLock::new(|| {
+    serde_json::from_str(include_str!("../../../../contribution-catalogs.json"))
+        .expect("valid contribution catalog configuration")
+});
+
+pub fn catalog(id: &str) -> Result<&'static Catalog, String> {
+    CATALOGS
+        .iter()
+        .find(|catalog| catalog.id == id)
+        .ok_or_else(|| "Unknown translation catalog".into())
+}
+
+impl Catalog {
+    fn drifter(&self) -> bool {
+        matches!(self.id.as_str(), "drifter" | "drifter-logical")
+    }
+
+    fn row_key(&self, record: &csv::StringRecord, col: usize) -> String {
+        if self.drifter() {
+            key(record)
+        } else {
+            format!("{col}:{}", &record[self.key])
+        }
+    }
+
+    fn locked(&self, record: &csv::StringRecord) -> bool {
+        self.status.is_some_and(|col| &record[col] == "unchanged")
+            || self
+                .locked_keys
+                .binary_search_by(|key| key.as_str().cmp(&record[self.key]))
+                .is_ok()
+    }
+}
 
 #[derive(Clone, Serialize, Deserialize, Debug)]
 pub struct Row {
@@ -9,13 +65,14 @@ pub struct Row {
     pub context: String,
     pub english: String,
     pub hebrew: String,
+    pub variant: Option<&'static str>,
 }
 
 pub fn hash(bytes: &[u8]) -> String {
     format!("{:x}", Sha256::digest(bytes))
 }
 
-fn read(source: &str) -> Result<Vec<(csv::StringRecord, usize, usize)>, String> {
+fn read(config: &Catalog, source: &str) -> Result<Vec<(csv::StringRecord, usize, usize)>, String> {
     let mut reader = csv::ReaderBuilder::new()
         .has_headers(false)
         .from_reader(source.as_bytes());
@@ -35,11 +92,19 @@ fn read(source: &str) -> Result<Vec<(csv::StringRecord, usize, usize)>, String> 
         {
             end += 1;
         }
-        if record.len() != 6 {
-            return Err("Expected six CSV columns".into());
+        if record.len() != config.header.len() {
+            return Err("Unexpected number of translation CSV columns".into());
         }
         result.push((record.clone(), start, end));
         start = end;
+    }
+    if result.len() <= config.skip
+        || result[0]
+            .0
+            .iter()
+            .ne(config.header.iter().map(String::as_str))
+    {
+        return Err("Unsupported translation CSV header".into());
     }
     Ok(result)
 }
@@ -52,115 +117,172 @@ fn key(record: &csv::StringRecord) -> String {
     )
 }
 
-pub fn rows(source: &str) -> Result<Vec<Row>, String> {
-    let records = read(source)?;
-    if records.len() < 4
-        || records[0].0.iter().collect::<Vec<_>>()
-            != ["Character", "ID", "File", "Context", "English", "Hebrew"]
-    {
-        return Err("Unsupported Drifter CSV header".into());
-    }
+pub fn rows(config: &Catalog, source: &str) -> Result<Vec<Row>, String> {
     let mut seen = HashSet::new();
-    records
-        .into_iter()
-        .skip(3)
-        .map(|(record, _, _)| {
-            let key = key(&record);
-            if !seen.insert(key.clone()) {
-                return Err("Duplicate translation identity".into());
-            }
-            Ok(Row {
-                key,
-                character: record[0].into(),
-                context: format!("{} / {}", &record[2], &record[3]),
-                english: record[4].into(),
-                hebrew: record[5].into(),
-            })
-        })
-        .collect()
-}
-
-fn tokens(text: &str) -> Vec<String> {
-    let mut output = Vec::new();
-    let chars: Vec<char> = text.chars().collect();
-    let mut i = 0;
-    while i < chars.len() {
-        if chars[i] == '{' || chars[i] == '<' {
-            let close = if chars[i] == '{' { '}' } else { '>' };
-            if let Some(end) = chars[i + 1..].iter().position(|c| *c == close) {
-                output.push(chars[i..=i + 1 + end].iter().collect());
-                i += end + 2;
-                continue;
-            }
+    let mut result = Vec::new();
+    for (record, _, _) in read(config, source)?.into_iter().skip(config.skip) {
+        let id = if config.drifter() {
+            key(&record)
+        } else {
+            record[config.key].to_owned()
+        };
+        if id.is_empty() || !seen.insert(id) {
+            return Err("Duplicate or missing translation identity".into());
         }
-        if chars[i] == '%' && i + 1 < chars.len() && "sdif".contains(chars[i + 1]) {
-            output.push(chars[i..i + 2].iter().collect());
-            i += 2;
+        if config.locked(&record) {
             continue;
         }
-        i += 1;
+        for (index, &col) in config.editable.iter().enumerate() {
+            result.push(Row {
+                key: config.row_key(&record, col),
+                character: config
+                    .speaker
+                    .map(|speaker| record[speaker].to_owned())
+                    .unwrap_or_default(),
+                context: config
+                    .context
+                    .iter()
+                    .map(|&c| &record[c])
+                    .collect::<Vec<_>>()
+                    .join(" / "),
+                english: config
+                    .english
+                    .map(|en| record[en].to_owned())
+                    .unwrap_or_default(),
+                hebrew: record[col].into(),
+                variant: (config.editable.len() == 2).then_some(if index == 0 {
+                    "Regular Hebrew"
+                } else {
+                    "Hebrew with niqqud"
+                }),
+            });
+        }
     }
-    output.sort();
-    output
+    Ok(result)
+}
+
+fn tokens<'a>(pattern: &Regex, text: &'a str) -> Vec<&'a str> {
+    let mut result: Vec<_> = pattern.find_iter(text).map(|m| m.as_str()).collect();
+    result.sort_unstable();
+    result
+}
+
+fn is_mark(c: char) -> bool {
+    matches!(c, '\u{0591}'..='\u{05bd}' | '\u{05bf}' | '\u{05c1}'..='\u{05c2}' | '\u{05c4}'..='\u{05c5}' | '\u{05c7}')
+}
+
+fn same_wording(config: &Catalog, regular: &str, pointed: &str) -> bool {
+    if regular.chars().any(is_mark) {
+        return false;
+    }
+    if config.id == "owlboy" {
+        regular.chars().eq(pointed.chars().filter(|&c| !is_mark(c)))
+    } else {
+        regular.nfd().eq(pointed.nfd().filter(|&c| !is_mark(c)))
+    }
 }
 
 /// Preserve raw bytes of untouched records, including multiline fields and CRLF.
-pub fn apply(source: &str, edits: &BTreeMap<String, String>) -> Result<String, String> {
+/// In-progress drafts can save one cell at a time before paired Hebrew is ready.
+pub fn apply(
+    config: &Catalog,
+    source: &str,
+    edits: &BTreeMap<String, String>,
+    review: bool,
+) -> Result<String, String> {
     if edits.len() > 200 {
         return Err("Submit at most 200 corrections at a time".into());
     }
-    let allowed: BTreeMap<_, _> = rows(source)?
-        .into_iter()
-        .map(|r| (r.key, r.hebrew))
-        .collect();
-    for (key, value) in edits {
-        let original = allowed.get(key).ok_or("Unknown translation key")?;
-        if value.trim().is_empty() || value.len() > 16000 || value.contains('\0') {
-            return Err("Corrections must contain text and be shorter than 16 KB".into());
-        }
-        if tokens(original) != tokens(value) {
-            return Err("Keep the existing formatting and control tokens".into());
-        }
-    }
+    let records = read(config, source)?;
+    let pattern = Regex::new(&config.tokens).map_err(|_| "Invalid catalog token rule")?;
     let mut output = String::with_capacity(source.len());
     let mut end = 0;
-    for (index, (record, start, stop)) in read(source)?.into_iter().enumerate() {
-        let replacement = if index >= 3 {
-            edits
-                .get(&key(&record))
-                .filter(|v| v.as_str() != &record[5])
-        } else {
-            None
-        };
-        if let Some(value) = replacement {
-            let raw = &source[start..stop];
-            let ending = if raw.ends_with("\r\n") {
-                "\r\n"
-            } else if raw.ends_with('\n') {
-                "\n"
-            } else {
-                ""
+    let mut found = HashSet::new();
+    for (record, start, stop) in records.into_iter().skip(config.skip) {
+        let mut fields: Vec<_> = record.iter().collect();
+        let mut changed = false;
+        for &col in &config.editable {
+            let key = config.row_key(&record, col);
+            let Some(value) = edits.get(&key) else {
+                continue;
             };
-            let mut fields: Vec<String> = record.iter().map(str::to_owned).collect();
-            fields[5] = value.clone();
-            output.push_str(
-                &fields
-                    .iter()
-                    .map(|f| {
-                        if f.contains([',', '"', '\n', '\r']) {
-                            format!("\"{}\"", f.replace('"', "\"\""))
-                        } else {
-                            f.clone()
-                        }
-                    })
-                    .collect::<Vec<_>>()
-                    .join(","),
-            );
-            output.push_str(ending);
-        } else {
-            output.push_str(&source[start..stop]);
+            if !found.insert(key) {
+                return Err("Duplicate translation identity".into());
+            }
+            let before = fields[col];
+            if value == before {
+                continue;
+            }
+            if config.locked(&record) {
+                return Err("This line is not editable in the current patch".into());
+            }
+            if value.trim().is_empty() || value.len() > 16000 || value.contains('\0') {
+                return Err("Corrections must contain text and be shorter than 16 KB".into());
+            }
+            let baseline = if before.is_empty() {
+                config.english.map(|col| fields[col]).unwrap_or("")
+            } else {
+                before
+            };
+            if (config.id != "drifter"
+                && value.contains([
+                    '\u{202a}', '\u{202b}', '\u{202c}', '\u{202d}', '\u{202e}', '\u{2066}',
+                    '\u{2067}', '\u{2068}', '\u{2069}',
+                ]))
+                || (config.id.starts_with("undertale") && value.contains(['\r', '\n']))
+                || (config.id == "owlboy"
+                    && before.split_once('|').map(|(_, suffix)| suffix)
+                        != value.split_once('|').map(|(_, suffix)| suffix))
+                || tokens(&pattern, baseline) != tokens(&pattern, value)
+            {
+                return Err("Keep existing formatting and control tokens".into());
+            }
+            fields[col] = value;
+            changed = true;
         }
+        if !changed {
+            continue;
+        }
+        if review
+            && config.editable.len() == 2
+            && !same_wording(
+                config,
+                fields[config.editable[0]],
+                fields[config.editable[1]],
+            )
+        {
+            return Err(
+                "Update both Hebrew versions so their wording matches without niqqud".into(),
+            );
+        }
+        let raw = &source[start..stop];
+        let ending = if raw.ends_with("\r\n") {
+            "\r\n"
+        } else if raw.ends_with('\n') {
+            "\n"
+        } else if raw.ends_with('\r') {
+            "\r"
+        } else {
+            ""
+        };
+        output.push_str(&source[end..start]);
+        for (col, field) in fields.iter().enumerate() {
+            if col != 0 {
+                output.push(',');
+            }
+            if field.contains([',', '"', '\n', '\r']) {
+                output.push('"');
+                output.push_str(&field.replace('"', "\"\""));
+                output.push('"');
+            } else {
+                output.push_str(field);
+            }
+        }
+        output.push_str(ending);
         end = stop;
+    }
+    if found.len() != edits.len() {
+        return Err("Unknown translation key".into());
     }
     output.push_str(&source[end..]);
     Ok(output)
@@ -171,17 +293,64 @@ mod tests {
     use super::*;
     const SOURCE: &str =
         include_str!("../../../../../patches-workspace/drifter/he/payload/translation.csv");
+    use std::path::Path;
+
+    #[test]
+    fn beta_catalog_csv_matches_worker_fixtures() {
+        #[derive(Deserialize)]
+        struct Fixture {
+            catalog: String,
+            source: String,
+            expected: String,
+            edits: BTreeMap<String, String>,
+            rejected: BTreeMap<String, String>,
+        }
+        let fixtures: Vec<Fixture> =
+            serde_json::from_str(include_str!("../../../../testdata/contribution-csv.json"))
+                .unwrap();
+        for fixture in fixtures {
+            let config = catalog(&fixture.catalog).unwrap();
+            let rows = rows(config, &fixture.source).unwrap();
+            assert!(fixture
+                .edits
+                .keys()
+                .all(|key| rows.iter().any(|row| &row.key == key)));
+            assert_eq!(
+                apply(config, &fixture.source, &fixture.edits, true).unwrap(),
+                fixture.expected,
+                "{}",
+                fixture.catalog
+            );
+            assert!(apply(config, &fixture.source, &fixture.rejected, true).is_err());
+        }
+    }
+
+    #[test]
+    fn desktop_loads_all_beta_sources() {
+        let root = Path::new(env!("CARGO_MANIFEST_DIR")).join("../..");
+        for config in CATALOGS.iter().filter(|c| c.id != "drifter") {
+            let source = std::fs::read_to_string(root.join(&config.path)).unwrap();
+            assert!(source.len() <= super::super::MAX_CATALOG_BYTES);
+            let rows = rows(config, &source).unwrap();
+            assert!(!rows.is_empty());
+            assert!(rows.iter().all(|row| row.key.len() <= 2048));
+        }
+    }
+
     #[test]
     fn full_roundtrip_and_single_change() {
-        let rows = rows(SOURCE).unwrap();
+        let rows = rows(catalog("drifter").unwrap(), SOURCE).unwrap();
         assert_eq!(rows.len(), 9799);
-        assert_eq!(apply(SOURCE, &BTreeMap::new()).unwrap(), SOURCE);
+        assert_eq!(
+            apply(catalog("drifter").unwrap(), SOURCE, &BTreeMap::new(), true).unwrap(),
+            SOURCE
+        );
         let row = rows
             .iter()
             .find(|r| r.english == "Ok" && r.context == "Room- Title / ContinueGame")
             .unwrap();
         let edits = BTreeMap::from([(row.key.clone(), "רדסב".into())]);
-        let actual = apply(SOURCE, &edits).unwrap();
+        let actual = apply(catalog("drifter").unwrap(), SOURCE, &edits, true).unwrap();
         let expected = SOURCE.replacen(
             ",1,Room- Title,ContinueGame,Ok,רושיא",
             ",1,Room- Title,ContinueGame,Ok,רדסב",
@@ -203,13 +372,32 @@ mod tests {
     }
     #[test]
     fn invalid_edits_and_quoted_newlines() {
-        assert!(apply(SOURCE, &BTreeMap::from([("missing".into(), "x".into())])).is_err());
-        let row = &rows(SOURCE).unwrap()[0];
-        assert!(apply(SOURCE, &BTreeMap::from([(row.key.clone(), "".into())])).is_err());
+        assert!(apply(
+            catalog("drifter").unwrap(),
+            SOURCE,
+            &BTreeMap::from([("missing".into(), "x".into())]),
+            true
+        )
+        .is_err());
+        let row = &rows(catalog("drifter").unwrap(), SOURCE).unwrap()[0];
+        assert!(apply(
+            catalog("drifter").unwrap(),
+            SOURCE,
+            &BTreeMap::from([(row.key.clone(), "".into())]),
+            true
+        )
+        .is_err());
         let value = "שורה, \"אחת\"\nושנייה";
-        let output = apply(SOURCE, &BTreeMap::from([(row.key.clone(), value.into())])).unwrap();
-        assert_eq!(rows(&output).unwrap()[0].hebrew, value);
-        assert_eq!(tokens("a {name} <b>%s</b>"), tokens("<b>%s</b> {name} b"));
-        assert_ne!(tokens("{name}"), tokens("{other}"));
+        let output = apply(
+            catalog("drifter").unwrap(),
+            SOURCE,
+            &BTreeMap::from([(row.key.clone(), value.into())]),
+            true,
+        )
+        .unwrap();
+        assert_eq!(
+            rows(catalog("drifter").unwrap(), &output).unwrap()[0].hebrew,
+            value
+        );
     }
 }
