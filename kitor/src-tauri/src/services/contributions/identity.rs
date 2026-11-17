@@ -31,7 +31,7 @@ pub fn endpoint() -> Result<String, String> {
 fn contribution_endpoint(configured: Option<&str>, debug: bool) -> Result<String, String> {
     let value = match configured.map(str::trim).filter(|value| !value.is_empty()) {
         Some(value) => value.trim_end_matches('/'),
-        None if debug => "http://127.0.0.1:8787",
+        None if debug => "https://kitor-contributions-staging.yhaggai.workers.dev",
         None => return Err("Contribution sign-in is not configured in this build".into()),
     };
     let url = url::Url::parse(value).map_err(|_| "Invalid contribution API URL")?;
@@ -52,7 +52,7 @@ mod tests {
         for value in [None, Some(""), Some(" \n")] {
             assert_eq!(
                 contribution_endpoint(value, true).unwrap(),
-                "http://127.0.0.1:8787"
+                "https://kitor-contributions-staging.yhaggai.workers.dev"
             );
             assert_eq!(
                 contribution_endpoint(value, false).unwrap_err(),
@@ -146,6 +146,18 @@ pub async fn request(
 #[tauri::command]
 pub async fn contributor_status() -> Result<Option<Contributor>, String> {
     Ok(stored()?.map(|session| session.contributor))
+}
+#[tauri::command]
+pub async fn contributor_email_preference(
+    contributor_id: String,
+    enabled: Option<bool>,
+) -> Result<bool, String> {
+    let token = token_for(&contributor_id)?;
+    let body = enabled.map(|enabled| json!({ "enabled": enabled }));
+    let response = request("/notifications/preferences", body, Some(&token)).await?;
+    response["enabled"]
+        .as_bool()
+        .ok_or_else(|| "Invalid service response".into())
 }
 #[tauri::command]
 pub async fn contributor_sign_in(state: tauri::State<'_, Identity>) -> Result<String, String> {

@@ -1,4 +1,4 @@
-use super::REPO;
+use super::{MAX_CATALOG_BYTES, REPO};
 use reqwest::{Client, Method};
 use serde_json::Value;
 use std::time::Duration;
@@ -20,7 +20,7 @@ pub fn string(value: &Value, field: &str) -> Result<String, String> {
         .map(str::to_owned)
         .ok_or_else(|| format!("GitHub response omitted {field}"))
 }
-pub async fn bounded(mut response: reqwest::Response) -> Result<String, String> {
+pub async fn bounded(mut response: reqwest::Response, max: usize) -> Result<String, String> {
     let status = response.status();
     if !status.is_success() {
         return Err(format!(
@@ -34,7 +34,7 @@ pub async fn bounded(mut response: reqwest::Response) -> Result<String, String> 
         .await
         .map_err(|_| "GitHub response was interrupted")?
     {
-        if bytes.len() + chunk.len() > 8_000_000 {
+        if bytes.len() + chunk.len() > max {
             return Err("GitHub response exceeds size limit".into());
         }
         bytes.extend_from_slice(&chunk);
@@ -59,7 +59,11 @@ pub async fn api(path: &str, body: Option<Value>, token: Option<&str>) -> Result
     if let Some(body) = body {
         request = request.json(&body);
     }
-    let text = bounded(request.send().await.map_err(|_| "Could not reach GitHub")?).await?;
+    let text = bounded(
+        request.send().await.map_err(|_| "Could not reach GitHub")?,
+        8_000_000,
+    )
+    .await?;
     serde_json::from_str(&text).map_err(|_| "Invalid GitHub response".into())
 }
 pub async fn raw(path: &str, sha: &str, token: Option<&str>) -> Result<String, String> {
@@ -72,11 +76,14 @@ pub async fn raw(path: &str, sha: &str, token: Option<&str>) -> Result<String, S
     if let Some(token) = token {
         request = request.bearer_auth(token);
     }
-    bounded(
-        request
-            .send()
-            .await
-            .map_err(|_| "Could not load translation source from GitHub")?,
-    )
-    .await
+    let response = request
+        .send()
+        .await
+        .map_err(|_| "Could not load translation source from GitHub")?;
+    if response.status() == reqwest::StatusCode::NOT_FOUND {
+        return Err(
+            "This translation source is not yet available on Kitor’s default branch.".into(),
+        );
+    }
+    bounded(response, MAX_CATALOG_BYTES).await
 }

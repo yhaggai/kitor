@@ -8,10 +8,9 @@
   padding: 24px;
   background: #0c1422;
   color: #e6edf6;
-  direction: ltr;
 }
 .translation-heading {
-  padding-right: 28px;
+  padding-inline-end: 28px;
 }
 .translation-heading h2 {
   font-size: 23px;
@@ -28,7 +27,7 @@
 .translation-notice {
   font-size: 12px;
   background: #202439;
-  border-left: 3px solid #efb667;
+  border-inline-start: 3px solid #efb667;
   padding: 9px 12px;
   margin: 0;
   color: #d3d9e5;
@@ -66,7 +65,7 @@
   color: inherit;
 }
 .translation-toolbar input[type="checkbox"] {
-  margin-right: 6px;
+  margin-inline-end: 6px;
 }
 .translation-grid {
   flex: 1;

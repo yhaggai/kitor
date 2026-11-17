@@ -1,15 +1,21 @@
-# Drifter desktop contribution POC
+# Desktop translation contributions
 
-The Drifter card/details has an **Improve translation · POC** button. The editor
-loads the CSV from the repository's default branch (currently `v1`), pins the
-commit, and keeps committed cell edits in the application data directory under
-`contributors/<contributor-id>/translation-drafts/drifter-he.json`. Reopening restores the same base and edits;
-it does not silently replace an unfinished draft with the latest remote version.
+Select **Improve translation** on Undertale, Owlboy, Disco Elysium, or Moomin:
+Midsummer Madness, or The Drifter. The editor pins the CSV from Kitor's default branch at the time the draft
+opens. Saved cell edits live under
+`contributors/<contributor-id>/translation-drafts/<catalog>-he.json`. Older display-order Drifter drafts retain their original filename. The new
+Drifter editor starts a separate draft from the logical-order catalog. Reopening uses the same base and
+edits, even if a newer CSV is available upstream.
 
-Search, column filters, changed-only filtering and session undo/redo work over a
-virtualized grid. Review shows the exact persisted corrections before submission.
-The POC edits the CSV's existing **display-order Hebrew**, not logical Hebrew.
-Normal Hebrew input conversion and in-game rendering verification remain future work.
+The same grid provides search, filters, undo and redo, and a review of the exact
+saved changes. Enter Hebrew in normal reading order.
+
+- Undertale offers separate regular and niqqud catalogs. Rows marked intentionally
+  unchanged are excluded.
+- Owlboy and Moomin show regular and niqqud variants together. If you change the
+  wording, update both rows. Niqqud alone can be corrected in the pointed row.
+- Disco Elysium allows filling empty translations as well as correcting existing
+  text where the game has a matching localization entry. For a blank\n  translation, keep the original English formatting tokens.
 
 ## Sign-in and local Worker setup
 
@@ -18,28 +24,28 @@ to see the sign-in prompt. Cancel and retry are supported. Each account has its
 own local draft; signing out does not delete it. Existing anonymous drafts remain
 untouched in the old folder.
 
-Start the local Cloudflare Worker and D1 at `127.0.0.1:8787` using
-[the Worker and Google OAuth setup guide](../tools/contribution-worker/README.md).
+Debug builds use the staging Worker by default. To test the Worker and D1 on
+loopback, follow [the Worker and Google OAuth setup guide](../tools/contribution-worker/README.md)
+and set `KITOR_CONTRIBUTION_API_URL=http://127.0.0.1:8787` when starting Kitor.
 Contributors do not sign into GitHub. The bot authors the PR and includes the
 verified session's Google display name and public Kitor ID; email stays private.
 The GitHub private key and Google client secret remain on the backend.
 
 ## Submission
 
-The server validates the pinned base against upstream, downloads the canonical
-CSV, applies the corrections and verifies the preview digest. Clients cannot
-choose repositories, paths or arbitrary file contents. It creates a deterministic
-branch in upstream and a draft PR. Repeated submission returns the existing PR;
-existing branch contents are checked before reuse and never force-pushed.
+The server checks that the pinned commit is part of upstream, applies corrections
+to an allowlisted CSV, and verifies the preview digest. Your submission adds to
+your open draft PR for that catalog or opens a new draft PR. The bot does not
+force-push. Untouched CSV records are preserved byte for byte.
 
-Only edited CSV records and the manifest payload SHA-256 change. Untouched CSV
-bytes are preserved. Unknown rows, empty translations and token changes are
-rejected. A submission is limited to 200 corrections. The manifest version is
-unchanged: PRs are labeled **POC — do not merge**. Submission does not build,
-install or release a patch. Merge conflicts remain visible in GitHub.
+Current contribution PRs change the source CSV. Maintainers review the text and rebuild and
+test the patch separately. The Drifter retains optional contribution emails. Its build
+converts the source to the game’s display order, then updates the payload checksum. A submission is limited
+to 200 cells and does not install or release a patch.
 
-This POC runs only on loopback. The Worker enforces authentication and rate limits.
-A hosted build must set `KITOR_CONTRIBUTION_API_URL` to its HTTPS endpoint at compile time.
+For rollout, land the CSVs on the default branch, deploy the contribution Worker
+with the D1 catalog migration, and ship a desktop build configured to use that
+Worker. Test one signed-in public draft PR per catalog in staging before release.
 
 ## Validation
 
@@ -49,6 +55,7 @@ cd src-tauri
 cargo test --lib services::contributions
 ```
 
-Tests cover all 9,799 editable source rows, no-op byte preservation, surgical CSV
-replacement, multiline quoting, placeholder validation, draft persistence and
-stale-save rejection. Live bot PR verification requires the repository installation and server key.
+Desktop and Worker tests cover the Drifter regression format, the beta CSVs,
+multiline quoting, formatting rules, and byte-for-byte agreement between preview
+and submission. Worker tests also check catalog-isolated PR routing. Live PR
+verification requires the repository installation and server key.

@@ -2621,6 +2621,7 @@ dependencies = [
  "migration",
  "percent-encoding",
  "rand 0.10.4",
+ "regex",
  "reqwest 0.12.28",
  "sea-orm",
  "sea-orm-migration",
@@ -2635,6 +2636,7 @@ dependencies = [
  "tauri-plugin-updater",
  "tempfile",
  "tokio",
+ "unicode-normalization",
  "url",
  "zip",
 ]

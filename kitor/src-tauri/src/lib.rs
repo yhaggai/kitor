@@ -56,6 +56,7 @@ pub fn run() {
             commands::contribution_commands::submit_translation_draft,
             commands::contribution_commands::contribution_bot_status,
             services::contributions::identity::contributor_status,
+            services::contributions::identity::contributor_email_preference,
             services::contributions::identity::contributor_sign_in,
             services::contributions::identity::contributor_poll,
             services::contributions::identity::contributor_cancel,

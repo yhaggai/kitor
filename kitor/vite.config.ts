@@ -15,6 +15,11 @@ export default defineConfig(async () => ({
     },
   },
 
+  build: {
+    // Desktop assets are bundled locally. The lazy translation editor includes AG Grid (~1.27 MB).
+    chunkSizeWarningLimit: 1300,
+  },
+
   // Vite options tailored for Tauri development and only applied in `tauri dev` or `tauri build`
   //
   // 1. prevent Vite from obscuring rust errors

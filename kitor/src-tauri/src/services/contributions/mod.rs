@@ -3,7 +3,7 @@
 pub mod csv_text;
 pub mod github;
 pub mod identity;
-use csv_text::{apply, hash, rows, Row};
+use csv_text::{apply, hash, rows, Catalog, Row};
 use serde::{Deserialize, Serialize};
 use std::{
     collections::BTreeMap,
@@ -12,7 +12,7 @@ use std::{
 use tokio::sync::Mutex;
 
 pub const REPO: &str = "yhaggai/kitor";
-pub const CSV_PATH: &str = "patches-workspace/drifter/he/payload/translation.csv";
+pub const MAX_CATALOG_BYTES: usize = 24_000_000;
 
 #[derive(Default)]
 pub struct Contributions {
@@ -40,6 +40,8 @@ pub struct EditorData {
 pub struct Change {
     pub key: String,
     pub english: String,
+    pub context: String,
+    pub variant: Option<&'static str>,
     pub before: String,
     pub after: String,
 }
@@ -57,15 +59,16 @@ pub struct Submission {
     pub updated: bool,
 }
 
-fn path(root: &Path) -> PathBuf {
-    root.join("translation-drafts/drifter-he.json")
+fn path(root: &Path, config: &Catalog) -> PathBuf {
+    root.join("translation-drafts")
+        .join(format!("{}-he.json", config.id))
 }
-fn read(root: &Path) -> Result<Draft, String> {
-    let file = path(root);
+fn read(root: &Path, config: &Catalog) -> Result<Draft, String> {
+    let file = path(root, config);
     if std::fs::metadata(&file)
         .map_err(|_| "No saved draft")?
         .len()
-        > 8_000_000
+        > 32_000_000
     {
         return Err("Draft exceeds size limit".into());
     }
@@ -79,12 +82,14 @@ fn read(root: &Path) -> Result<Draft, String> {
     {
         return Err("Unsupported draft; it has not been overwritten".into());
     }
-    apply(&data.source, &data.edits)?;
+    if data.source.len() > MAX_CATALOG_BYTES {
+        return Err("Translation catalog exceeds size limit".into());
+    }
     Ok(data)
 }
-fn write(root: &Path, draft: &Draft) -> Result<(), String> {
+fn write(root: &Path, config: &Catalog, draft: &Draft) -> Result<(), String> {
     use std::io::Write;
-    let file = path(root);
+    let file = path(root, config);
     let dir = file.parent().unwrap();
     std::fs::create_dir_all(dir).map_err(|_| "Could not create draft directory")?;
     let mut temporary =
@@ -102,9 +107,9 @@ fn write(root: &Path, draft: &Draft) -> Result<(), String> {
     Ok(())
 }
 
-pub async fn open(root: &Path) -> Result<EditorData, String> {
-    let draft = if path(root).exists() {
-        read(root)?
+pub async fn open(root: &Path, config: &Catalog) -> Result<EditorData, String> {
+    let draft = if path(root, config).exists() {
+        read(root, config)?
     } else {
         let repo = github::api(&format!("repos/{REPO}"), None, None).await?;
         let branch = github::string(&repo, "default_branch")?;
@@ -115,8 +120,8 @@ pub async fn open(root: &Path) -> Result<EditorData, String> {
         )
         .await?;
         let sha = github::string(&commit, "sha")?;
-        let source = github::raw(CSV_PATH, &sha, None).await?;
-        rows(&source)?;
+        let source = github::raw(&config.path, &sha, None).await?;
+        rows(config, &source)?;
         let draft = Draft {
             schema: 1,
             base_sha: sha,
@@ -125,11 +130,11 @@ pub async fn open(root: &Path) -> Result<EditorData, String> {
             edits: BTreeMap::new(),
             revision: 0,
         };
-        write(root, &draft)?;
+        write(root, config, &draft)?;
         draft
     };
     Ok(EditorData {
-        rows: rows(&draft.source)?,
+        rows: rows(config, &draft.source)?,
         base_sha: draft.base_sha,
         base_branch: draft.base_branch,
         edits: draft.edits,
@@ -139,29 +144,30 @@ pub async fn open(root: &Path) -> Result<EditorData, String> {
 
 pub fn save(
     root: &Path,
+    config: &Catalog,
     revision: u64,
     mut edits: BTreeMap<String, String>,
 ) -> Result<u64, String> {
-    let mut draft = read(root)?;
+    let mut draft = read(root, config)?;
     if draft.revision != revision {
         return Err("Draft changed in another window. Reopen the editor before saving.".into());
     }
-    apply(&draft.source, &edits)?;
-    let originals: BTreeMap<_, _> = rows(&draft.source)?
+    apply(config, &draft.source, &edits, false)?;
+    let originals: BTreeMap<_, _> = rows(config, &draft.source)?
         .into_iter()
         .map(|r| (r.key, r.hebrew))
         .collect();
     edits.retain(|key, value| originals.get(key) != Some(value));
     draft.edits = edits;
     draft.revision += 1;
-    write(root, &draft)?;
+    write(root, config, &draft)?;
     Ok(draft.revision)
 }
 
-pub fn preview(root: &Path) -> Result<Preview, String> {
-    let draft = read(root)?;
-    let csv = apply(&draft.source, &draft.edits)?;
-    let changes = rows(&draft.source)?
+pub fn preview(root: &Path, config: &Catalog) -> Result<Preview, String> {
+    let draft = read(root, config)?;
+    let csv = apply(config, &draft.source, &draft.edits, true)?;
+    let changes = rows(config, &draft.source)?
         .into_iter()
         .filter_map(|row| {
             draft
@@ -171,6 +177,8 @@ pub fn preview(root: &Path) -> Result<Preview, String> {
                 .map(|value| Change {
                     key: row.key.clone(),
                     english: row.english,
+                    context: row.context,
+                    variant: row.variant,
                     before: row.hebrew,
                     after: value.clone(),
                 })
@@ -185,21 +193,26 @@ pub fn preview(root: &Path) -> Result<Preview, String> {
 
 pub async fn submit(
     root: &Path,
+    config: &Catalog,
     revision: u64,
     digest: &str,
     token: &str,
     email_opt_in: bool,
 ) -> Result<Submission, String> {
-    let draft = read(root)?;
+    let draft = read(root, config)?;
     if draft.revision != revision {
         return Err("The draft changed. Review your corrections again.".into());
     }
-    let csv = apply(&draft.source, &draft.edits)?;
+    let csv = apply(config, &draft.source, &draft.edits, true)?;
     if hash(csv.as_bytes()) != digest {
         return Err("The preview is outdated. Review again.".into());
     }
     if csv == draft.source {
         return Err("There are no corrections to submit".into());
+    }
+    let mut input = serde_json::json!({"base_sha":draft.base_sha,"digest":digest,"edits":draft.edits,"email_opt_in":email_opt_in});
+    if config.id != "drifter" {
+        input["catalog_id"] = serde_json::json!(config.id);
     }
     let response = reqwest::Client::builder()
         .timeout(std::time::Duration::from_secs(180))
@@ -209,7 +222,7 @@ pub async fn submit(
         .post(format!("{}/submissions", identity::endpoint()?))
         .bearer_auth(token)
         .header("X-Kitor-Client", "desktop-poc")
-        .json(&serde_json::json!({"base_sha":draft.base_sha,"digest":digest,"edits":draft.edits,"email_opt_in":email_opt_in}))
+        .json(&input)
         .send()
         .await
         .map_err(|_| {
@@ -247,9 +260,11 @@ mod tests {
         let source =
             include_str!("../../../../../patches-workspace/drifter/he/payload/translation.csv")
                 .to_owned();
-        let key = rows(&source).unwrap()[0].key.clone();
+        let config = csv_text::catalog("drifter").unwrap();
+        let key = rows(config, &source).unwrap()[0].key.clone();
         write(
             root.path(),
+            config,
             &Draft {
                 schema: 1,
                 base_sha: "a".repeat(40),
@@ -263,21 +278,24 @@ mod tests {
         assert_eq!(
             save(
                 root.path(),
+                config,
                 0,
                 BTreeMap::from([(key.clone(), "תיקון".into())])
             )
             .unwrap(),
             1
         );
-        assert_eq!(read(root.path()).unwrap().edits[&key], "תיקון");
-        assert!(save(root.path(), 0, BTreeMap::new()).is_err());
-        assert_eq!(preview(root.path()).unwrap().changes.len(), 1);
+        assert_eq!(read(root.path(), config).unwrap().edits[&key], "תיקון");
+        assert!(save(root.path(), config, 0, BTreeMap::new()).is_err());
+        assert_eq!(preview(root.path(), config).unwrap().changes.len(), 1);
     }
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct BotStatus {
     pub configured: bool,
+    #[serde(default)]
+    pub catalogs: Vec<String>,
 }
 pub async fn bot_status() -> Result<BotStatus, String> {
     let response = reqwest::Client::builder()
