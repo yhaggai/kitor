@@ -13,8 +13,15 @@ Steam Owlboy 1.4 macOS FNA edition, at `Owlboy.app/Contents/Resources`.
 Original executable SHA-256:
 `e399de418effb376c7c48916f6da19e2aa7fa91a2fea0cce7479e52cb17e653c`.
 Python 3 is required by Kitor's bundled BSDIFF decoder.
-Windows Steam FNA build 105-e322 is supported by `patch.windows.candidate.json`.
-Original Windows executable SHA-256:
+Windows Steam FNA build 138-4809 (Steam build `26574659`, depot `115801`,
+manifest `4002365934342145975`) uses `steam-138-4809/patch.windows.zip`.
+Its original executable SHA-256 is
+`919e3a7db7d2255d743133335e521c7c95fc57ead8d8fd3701baef2587935b56`.
+The Windows lifecycle harness passed install and uninstall against files
+verified against that Steam depot manifest. It restored all 17 modified
+originals and removed all 25 files created by the patch.
+The earlier Windows Steam FNA build 105-e322 uses `patch.windows.candidate.json`.
+Its original executable SHA-256 is
 `036eff99b4a693dc090f23fbba781b71a6f747191d8c6ad54e1a7b5e3d2ad073`.
 It has a separately compiled runtime, executable delta, and nikud assets under
 `windows/`. The legacy XNA edition is unsupported.
@@ -80,3 +87,14 @@ python import_package.py --platform windows --package BUILD_DIRECTORY --original
 The importer keeps Windows assets in `windows/` and regenerates its Rust
 embedding table. Nikud catalogs are checked in; no model download or online
 text service is needed to build.
+
+For Windows 138-4809, run these commands from this directory with pristine
+files from the depot listed above. The edition catalogs contain 4,541 entries.
+
+```sh
+python source/tools/build_niqqud.py --game ORIGINAL_GAME --out BUILD_DIRECTORY --edition steam-138-4809
+python import_package.py --platform windows --package BUILD_DIRECTORY --original ORIGINAL_GAME --output PACKAGE_DIRECTORY --version 0.2.0-beta.2-kitor2-download1 --release-revision 1
+python ../../../kitor/tools/build_patch_packages.py --platform windows --output OUTPUT_DIRECTORY PACKAGE_DIRECTORY/patch.windows.candidate.json
+```
+
+Copy the resulting Windows ZIP to `steam-138-4809/patch.windows.zip`.

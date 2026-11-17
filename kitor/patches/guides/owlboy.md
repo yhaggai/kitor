@@ -1,7 +1,8 @@
 # ילד הינשוף — Owlboy
 
-Own the Steam edition (app 115800). The Hebrew beta currently supports the native
-macOS Steam 1.4 FNA build and Windows Steam FNA build 105-e322.
+Own the Steam edition (app 115800). The Hebrew beta supports Windows Steam FNA
+build 138-4809 (Steam build 26574659) and the earlier Windows build 105-e322.
+The macOS Steam FNA package also supports build 138-4809.
 The legacy Windows XNA edition and Linux are not supported.
 
 Install Owlboy through Steam, then use Scan or select the Owlboy installation,
@@ -11,7 +12,7 @@ and Data (or Data itself). Unknown or modified executables are refused.
 
 Close the game before installing. Choose Hebrew (the Israeli flag) in Languages.
 On Windows, choose the Israeli flag marked **N** for Hebrew with nikud, or the
-unmarked flag for regular Hebrew. The beta covers all 4,537 catalog entries
+unmarked flag for regular Hebrew. The current build includes 4,541 catalog entries
 with Hebrew fonts and RTL rendering. Nikud comes from the upstream niqqud-beta
 branch and still needs full linguistic proofreading.
 A full playthrough is pending. Translation was AI-assisted and reviewed for

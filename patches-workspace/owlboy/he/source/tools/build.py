@@ -10,7 +10,10 @@ VERSION='0.2.0-beta.2'
 TOKENS=re.compile(r'<[^>]*>|\[\d+\]')
 NORMALIZE=str.maketrans({'־':'-','–':'-','—':'-','…':'...','׳':"'",'״':'"','‘':"'",'’':"'",'“':'"','”':'"','\u00a0':' '})
 def digest(data):return hashlib.sha256(data).hexdigest()
-def catalog(column='hebrew'):
+def catalog(column='hebrew', edition=None):
+ if edition is not None:
+  filename='niqqud.json' if column=='hebrew_niqqud' else 'translations.json'
+  return json.loads((edition/filename).read_text(encoding='utf-8'))
  path=ROOT/'translations/catalog.csv'
  result={}
  with path.open(encoding='utf-8-sig',newline='') as stream:
@@ -56,16 +59,16 @@ def compile_runtime(game,out,niqqud=False):
  subprocess.run(['dotnet','build',str(ROOT/'patcher/Patcher.csproj'),'-c','Release','--nologo'],check=True)
  subprocess.run(['dotnet',str(ROOT/'patcher/bin/Release/net9.0/Patcher.dll'),str(game/'Owlboy.exe'),str(out/'OwlboyHebrew.dll'),str(out/'Owlboy.exe')],check=True)
 
-def build(game,out,allow_partial=False):
+def build(game,out,allow_partial=False,edition=None):
  game=game.resolve();out=out.resolve();out.mkdir(parents=True,exist_ok=True)
  if out==game or game in out.parents:raise ValueError('Build output must be outside the game')
  loc=game/'Data/Localizations'
  if (loc/'he.csv').exists():raise ValueError('Hebrew is already installed. Uninstall before building, or supply pristine local inputs.')
- compatibility=json.loads((ROOT/'compatibility.json').read_text(encoding='utf-8'))
+ compatibility=json.loads(((edition or ROOT)/'compatibility.json').read_text(encoding='utf-8'))
  if digest((game/'Owlboy.exe').read_bytes()) not in compatibility['executable_sha256']:raise ValueError('Unsupported executable edition. No files changed.')
  source=list(csv.reader((loc/'de.csv').open(encoding='utf-8-sig',newline='')))
  if digest(json.dumps([r[2] for r in source[1:]],ensure_ascii=False,separators=(',',':')).encode())!=compatibility['source_catalog_sha256']:raise ValueError('Source catalog differs from the translated edition')
- translations=catalog();required={f'{i:04d}' for i in range(1,len(source)-1)}
+ translations=catalog(edition=edition);required={f'{i:04d}' for i in range(1,len(source)-1)}
  if required-set(translations) and not allow_partial:raise ValueError(f'Missing {len(required-set(translations))} translation entries')
  clean={};unchanged=[]
  for i,row in enumerate(source[1:]):
