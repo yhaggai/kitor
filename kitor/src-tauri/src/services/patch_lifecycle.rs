@@ -11,6 +11,8 @@ use std::{
 
 #[path = "patch_upgrade.rs"]
 mod upgrade;
+#[path = "patch_backups.rs"]
+pub mod backups;
 #[cfg(any(test, feature = "standalone-patch-tools"))]
 pub use upgrade::update;
 pub use upgrade::{update_with_progress, recover_installation};
@@ -818,6 +820,7 @@ pub fn uninstall(dir: &Path, target: &Path) -> Result<()> {
     if journal.target != target {
         return Err("Backup belongs to a different game installation".into());
     }
+    backups::require_originals(dir, &journal)?;
     restore_inner(dir, &mut journal)?;
     cleanup_restored(dir, &journal)
 }
@@ -930,6 +933,33 @@ mod tests {
             fs::set_permissions(path, permissions).unwrap();
         }
     }
+    #[test]
+    fn deleting_a_backup_preserves_the_installed_patch_and_allows_reinstall_after_uninstall() {
+        let mut f = Fixture::new();
+        f.storage = f._root.path().join("patch-transactions");
+        fs::write(f.game.join("data.bin"), b"original").unwrap();
+        f.plan(json!([f.copy("data.bin", "modify", b"translated")]), "1");
+        let transaction = f.install("osx", "1").unwrap();
+
+        let list = || backups::list(f._root.path(), true, false).unwrap();
+        let entry = list().pop().unwrap();
+        assert_eq!(entry.summary.bytes, 8);
+        assert!(entry.summary.needs_confirmation);
+        assert!(backups::delete(entry, false).is_err());
+        backups::delete(list().pop().unwrap(), true).unwrap();
+        assert!(list().is_empty());
+        assert!(uninstall(&transaction, &f.game).unwrap_err().contains("Missing original backup"));
+        assert_eq!(fs::read(f.game.join("data.bin")).unwrap(), b"translated");
+        assert_eq!(load(&transaction).unwrap().status, "active");
+
+        let remaining = backups::list(f._root.path(), false, true).unwrap().pop().unwrap();
+        fs::remove_dir_all(&f.game).unwrap();
+        backups::retire_uninstalled(remaining).unwrap();
+        fs::create_dir(&f.game).unwrap();
+        fs::write(f.game.join("data.bin"), b"original").unwrap();
+        assert_ne!(f.install("osx", "1").unwrap(), transaction);
+    }
+
     #[test]
     fn selective_roundtrip_both_layouts_preserves_unrelated_files_and_permissions() {
         for platform in ["windows", "osx"] {

@@ -7,6 +7,7 @@ import { listen } from "@tauri-apps/api/event";
 import {
   CheckCircle,
   Download as DownloadIcon,
+  FolderOpen,
   Play,
   RefreshCw,
   Settings,
@@ -77,7 +78,61 @@ export default function GameCard({ game, collection, onRemove, onBack }: GameCar
   const [translationChoice, setTranslationChoice] = useState("");
   const { state, actions } = useGameCardState();
   const { isScummVMReady } = useAppStore();
-  const { alert } = useDialog();
+  const { alert, confirm } = useDialog();
+  const [storage, setStorage] = useState<{
+    gameId: number;
+    has_backup: boolean;
+    uninstall_path: string | null;
+  }>();
+
+  const loadStorageOptions = async () => {
+    setStorage(undefined);
+    try {
+      const options = await invoke<{ has_backup: boolean; uninstall_path: string | null }>(
+        "game_storage_options",
+        { gameId: game.id }
+      );
+      setStorage({ ...options, gameId: game.id });
+    } catch (error) {
+      console.error("Failed to load game storage options:", error);
+    }
+  };
+
+  const openBackupFolder = async () => {
+    try {
+      await invoke("open_game_backup_folder", { gameId: game.id });
+    } catch (error) {
+      await alert({
+        failure: true,
+        title: t("Could Not Open Backup Folder"),
+        description: String(error),
+      });
+    }
+  };
+
+  const uninstallGame = async (path: string) => {
+    const confirmed = await confirm({
+      title: t("Uninstall {0}?", [displayTitle]),
+      description: t(
+        "Quit the game first. Kitor will delete the game folder at {0} (including any saves inside it) and its patch backups.",
+        [path]
+      ),
+      confirmText: t("Uninstall Game"),
+      cancelText: t("Cancel"),
+    });
+    if (!confirmed) return;
+    actions.startDelete();
+    try {
+      await invoke("uninstall_game", { gameId: game.id, expectedPath: path });
+      const store = useAppStore.getState();
+      store.setGames(store.games.filter((entry) => entry.id !== game.id));
+      onRemove?.();
+    } catch (error) {
+      await alert({ failure: true, title: t("Uninstall Failed"), description: String(error) });
+    } finally {
+      actions.finishDelete();
+    }
+  };
 
   useEffect(() => {
     console.log("[GameCard] Setting up install-progress listener for", game.scummvm_id);
@@ -512,7 +567,11 @@ export default function GameCard({ game, collection, onRemove, onBack }: GameCar
           </div>
         }
         manageControl={
-          <DropdownMenu.Root>
+          <DropdownMenu.Root
+            onOpenChange={(open) => {
+              if (open) void loadStorageOptions();
+            }}
+          >
             <DropdownMenu.Trigger asChild>
               <Button
                 variant="outline"
@@ -529,6 +588,16 @@ export default function GameCard({ game, collection, onRemove, onBack }: GameCar
                 align="end"
               >
                 <OpenGameFolderMenuItem gameId={game.id} />
+                {storage?.gameId === game.id && storage.has_backup && (
+                  <DropdownMenu.Item
+                    className="flex cursor-pointer items-center rounded-sm px-2 py-2 text-sm text-foreground outline-none hover:bg-accent focus:bg-accent"
+                    onSelect={openBackupFolder}
+                    disabled={busy}
+                  >
+                    <FolderOpen className="mr-2 h-4 w-4" />
+                    {t("Open Backup Folder")}
+                  </DropdownMenu.Item>
+                )}
                 <DropdownMenu.Item
                   className="flex cursor-pointer items-center rounded-sm px-2 py-2 text-sm text-foreground outline-none hover:bg-accent focus:bg-accent data-[disabled]:opacity-50"
                   onSelect={handleRefresh}
@@ -568,6 +637,18 @@ export default function GameCard({ game, collection, onRemove, onBack }: GameCar
                   </DropdownMenu.Item>
                 )}
                 <DropdownMenu.Separator className="my-1 h-px bg-border" />
+                {storage?.gameId === game.id && storage.uninstall_path && (
+                  <DropdownMenu.Item
+                    className="flex cursor-pointer items-center rounded-sm px-2 py-2 text-sm text-destructive outline-none hover:bg-accent focus:bg-accent"
+                    onSelect={() => {
+                      if (storage.uninstall_path) void uninstallGame(storage.uninstall_path);
+                    }}
+                    disabled={busy}
+                  >
+                    <Trash2 className="mr-2 h-4 w-4" />
+                    {t("Uninstall Game")}
+                  </DropdownMenu.Item>
+                )}
                 <DropdownMenu.Item
                   className="flex cursor-pointer items-center rounded-sm px-2 py-2 text-sm text-destructive outline-none hover:bg-accent focus:bg-accent"
                   onSelect={() => actions.showDeleteDialog()}
