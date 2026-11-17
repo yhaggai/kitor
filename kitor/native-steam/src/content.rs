@@ -93,7 +93,7 @@ struct File {
     flags: u64,
     chunks: Vec<Chunk>,
 }
-fn parse(data: &[u8], key: &[u8], depot: u32, manifest: u64) -> Result<Vec<File>> {
+fn parse(data: &[u8], key: &[u8], depot: u32, manifest: u64, hashes_only: bool) -> Result<Vec<File>> {
     let data = if data.starts_with(b"PK") {
         unzip(data, 32 * 1024 * 1024)?
     } else {
@@ -136,6 +136,9 @@ fn parse(data: &[u8], key: &[u8], depot: u32, manifest: u64) -> Result<Vec<File>
     {
         let f = Fields::parse(mapping)?;
         let flags = f.n(3);
+        if hashes_only && (flags & (64 | 512) != 0 || !f.b(7).is_empty()) {
+            continue;
+        }
         ensure!(
             flags & 512 == 0 && f.b(7).is_empty(),
             "Steam symbolic links are not supported by this installer"
@@ -251,6 +254,28 @@ fn decode(data: &[u8], key: &[u8], chunk: &Chunk) -> Result<Vec<u8>> {
     );
     Ok(out)
 }
+pub async fn fetch_manifest(
+    client: &reqwest::Client,
+    hosts: &[String],
+    depot: u32,
+    manifest: u64,
+    code: u64,
+) -> Result<Vec<u8>> {
+    fetch(client, hosts, &format!("depot/{depot}/manifest/{manifest}/5/{code}"), 32 * 1024 * 1024).await
+}
+
+pub fn manifest_hashes(
+    raw: &[u8],
+    key: &[u8],
+    depot: u32,
+    manifest: u64,
+) -> Result<std::collections::BTreeMap<String, String>> {
+    Ok(parse(raw, key, depot, manifest, true)?
+        .into_iter()
+        .map(|file| (file.path, file.sha.iter().map(|b| format!("{b:02x}")).collect()))
+        .collect())
+}
+
 pub async fn download(
     client: &reqwest::Client,
     hosts: &[String],
@@ -261,14 +286,8 @@ pub async fn download(
     target: &Path,
     emit: &(impl Fn(Event) + Send + Sync),
 ) -> Result<()> {
-    let raw = fetch(
-        client,
-        hosts,
-        &format!("depot/{depot}/manifest/{manifest}/5/{code}"),
-        32 * 1024 * 1024,
-    )
-    .await?;
-    let files = parse(&raw, key, depot, manifest)?;
+    let raw = fetch_manifest(client, hosts, depot, manifest, code).await?;
+    let files = parse(&raw, key, depot, manifest, false)?;
     let total = files
         .iter()
         .flat_map(|f| &f.chunks)

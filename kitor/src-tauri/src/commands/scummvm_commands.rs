@@ -20,10 +20,15 @@ pub async fn launch_game(
 pub async fn download_scummvm_binary(
     state: State<'_, AppState>,
     app_handle: tauri::AppHandle,
+    run_id: Option<String>,
     updates: State<'_, crate::services::app_updates::AppUpdates>,
 ) -> Result<(), String> {
     let _activity = updates.activity()?;
-    scummvm_service::download_scummvm(&state.db, &state.app_data_dir, &app_handle).await
+    crate::services::install_cancellation::scope(
+        run_id,
+        scummvm_service::download_scummvm(&state.db, &state.app_data_dir, &app_handle),
+    )
+    .await
 }
 
 #[tauri::command]

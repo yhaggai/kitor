@@ -1,7 +1,7 @@
 import { invoke } from "@tauri-apps/api/core";
 import { listen } from "@tauri-apps/api/event";
 import { create } from "zustand";
-import { useSteamStore } from "./steam";
+import { type InitialSteamLibrary, useSteamStore } from "./steam";
 
 type AuthEvent =
   | { kind: "qr"; svg: string }
@@ -30,7 +30,7 @@ export const useNativeSteam = create<{
   error: string | null;
   challenge: { code_type: number | null; message: string } | null;
   submittingCode: boolean;
-  refresh: () => Promise<boolean>;
+  refresh: () => Promise<boolean | null>;
   ensureConnected: () => Promise<boolean>;
   retry: (credentials?: PasswordLogin) => Promise<void>;
   switchMethod: (method: Method) => Promise<void>;
@@ -55,20 +55,20 @@ export const useNativeSteam = create<{
       return connected;
     } catch (e) {
       set({ error: String(e), loading: false });
-      return false;
+      return null;
     }
   },
   ensureConnected: () => {
     if (pending) return pending;
     if (get().busy) return Promise.resolve(false);
-    if (get().connected) return Promise.resolve(true);
     pending = new Promise((resolve) => {
       settle = resolve;
     });
     const result = pending;
     void (async () => {
-      if (await get().refresh()) {
-        finish(true);
+      const connected = await get().refresh();
+      if (connected !== false) {
+        finish(connected === true);
         return;
       }
       set({ open: true, error: null, method: "qr" });
@@ -93,14 +93,13 @@ export const useNativeSteam = create<{
         });
         if (cancelled) return;
         const login = credentials
-          ? invoke("connect_native_steam_password", credentials)
-          : invoke("connect_native_steam");
+          ? invoke<InitialSteamLibrary>("connect_native_steam_password", credentials)
+          : invoke<InitialSteamLibrary>("connect_native_steam");
         credentials = undefined;
-        await login;
+        const result = await login;
         if (!cancelled) {
-          useSteamStore.getState().reset();
+          useSteamStore.getState().applySignIn(result);
           set({ connected: true, open: false, loading: false });
-          void useSteamStore.getState().run("refresh_steam_library");
           finish(true);
         }
       } catch (e) {

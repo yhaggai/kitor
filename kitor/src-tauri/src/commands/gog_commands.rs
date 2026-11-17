@@ -140,12 +140,16 @@ pub async fn install_gog_game(
     scummvm_id: String,
     state: State<'_, AppState>,
     app: AppHandle,
+    run_id: Option<String>,
     updates: State<'_, crate::services::app_updates::AppUpdates>,
 ) -> Result<crate::models::game::Model, String> {
     let _activity = updates.activity()?;
     let _install = super::backup_commands::GAME_INSTALL_OPERATION.try_read()
         .map_err(|_| "A game uninstall is running. Try again after it finishes.")?;
-    crate::services::gog_download_service::install(game_id, scummvm_id, &state, &app, install_root.map(std::path::PathBuf::from)).await
+    crate::services::install_cancellation::scope(
+        run_id,
+        crate::services::gog_download_service::install(game_id, scummvm_id, &state, &app, install_root.map(std::path::PathBuf::from)),
+    ).await
 }
 
 #[tauri::command]

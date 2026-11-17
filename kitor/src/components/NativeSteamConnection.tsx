@@ -11,8 +11,8 @@ export default function NativeSteamConnection() {
     useNativeSteam();
   const library = useSteamStore();
   useEffect(() => {
-    void refresh();
-  }, [refresh]);
+    if (!busy && !library.busy) void refresh();
+  }, [busy, library.busy, refresh]);
   return (
     <div className="space-y-3">
       {loading ? (
@@ -66,9 +66,9 @@ export default function NativeSteamConnection() {
           {t("Connect Steam")}
         </Button>
       )}
-      {error && (
+      {(error || (!connected && library.error)) && (
         <p role="alert" className="text-sm text-destructive">
-          {error}
+          {error || library.error}
         </p>
       )}
     </div>

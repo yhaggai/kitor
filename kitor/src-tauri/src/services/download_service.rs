@@ -12,16 +12,6 @@ pub struct DownloadProgress {
     pub percentage: u32,
 }
 
-pub async fn download_file(
-    url: &str,
-    dest_path: &Path,
-    app_handle: &tauri::AppHandle,
-) -> Result<(), String> {
-    download_with_progress(url, dest_path, |progress| {
-        let _ = app_handle.emit("download-progress", progress);
-    }).await
-}
-
 pub async fn download_patch_file(
     url: &str,
     dest_path: &Path,
@@ -55,8 +45,10 @@ async fn download_with_progress(
     let temp_path = dest_path.with_extension(format!("download-{}-{}",
         std::process::id(), chrono::Utc::now().timestamp_nanos_opt().unwrap_or_default()));
     let result = async {
-        let response = reqwest::Client::new().get(url).send().await
-            .map_err(|_| "Could not download file. Check your connection.".to_string())?;
+        let response = super::install_cancellation::interruptible(async {
+            reqwest::Client::new().get(url).send().await
+                .map_err(|_| "Could not download file. Check your connection.".to_string())
+        }).await?;
         let status = response.status();
         {
             response.error_for_status_ref()
@@ -68,7 +60,9 @@ async fn download_with_progress(
             let mut stream = response.bytes_stream();
             let mut last_report = std::time::Instant::now();
             progress(DownloadProgress { downloaded: 0, total, percentage: 0 });
-            while let Some(item) = stream.next().await {
+            while let Some(item) =
+                super::install_cancellation::interruptible(async { Ok(stream.next().await) }).await?
+            {
                 let chunk = item.map_err(|e| format!("Incomplete download: {}", e))?;
                 file.write_all(&chunk).await.map_err(|e| format!("Failed to write download: {}", e))?;
                 downloaded += chunk.len() as u64;
@@ -88,6 +82,7 @@ async fn download_with_progress(
         if dest_path.extension().is_some_and(|ext| ext.eq_ignore_ascii_case("zip")) {
             crate::services::file_service::validate_zip(&temp_path)?;
         }
+        super::install_cancellation::checkpoint()?;
         tokio::fs::rename(&temp_path, dest_path).await
             .map_err(|e| format!("Failed to finish download: {}", e))?;
         progress(DownloadProgress { downloaded: size, total: size, percentage: 100 });
@@ -156,6 +151,50 @@ mod tests {
             assert_eq!((last.downloaded, last.total, last.percentage), (6, 6, 100));
             assert_eq!(std::fs::read(path).unwrap(), b"abcdef");
         }
+    }
+
+    #[tokio::test]
+    async fn cancelling_a_stalled_download_removes_partial_file() {
+        use super::super::install_cancellation::{begin_game_install, cancel_game_install, end_game_install, scope};
+        use std::time::Duration;
+        use tokio::io::{AsyncReadExt, AsyncWriteExt};
+
+        let listener = tokio::net::TcpListener::bind("127.0.0.1:0").await.unwrap();
+        let url = format!("http://{}/patch.zip", listener.local_addr().unwrap());
+        let server = tokio::spawn(async move {
+            let (mut socket, _) = listener.accept().await.unwrap();
+            let mut request = [0; 4096];
+            socket.read(&mut request).await.unwrap();
+            socket.write_all(b"HTTP/1.1 200 OK\r\nContent-Length: 20\r\n\r\npartial").await.unwrap();
+            // Leave the client waiting for the rest of the response.
+            std::future::pending::<()>().await;
+        });
+        let dir = tempfile::tempdir().unwrap();
+        let path = dir.path().join("patch.zip");
+        std::fs::write(&path, b"previous download").unwrap();
+
+        let run_id = "stalled-download-test".to_string();
+        begin_game_install(run_id.clone()).unwrap();
+        let started = tokio::sync::Notify::new();
+        let download = scope(Some(run_id.clone()), download_with_progress(&url, &path, |_| {
+            started.notify_one();
+        }));
+        let cancel = async {
+            started.notified().await;
+            // Let the transfer read the first bytes and wait for the rest.
+            tokio::task::yield_now().await;
+            assert_eq!(std::fs::read_dir(dir.path()).unwrap().count(), 2);
+            cancel_game_install(run_id.clone());
+        };
+        let result = tokio::time::timeout(Duration::from_secs(5), async {
+            tokio::join!(download, cancel).0
+        }).await;
+        end_game_install(run_id);
+        server.abort();
+
+        assert_eq!(result.unwrap().unwrap_err(), "Installation cancelled");
+        assert_eq!(std::fs::read(&path).unwrap(), b"previous download");
+        assert_eq!(std::fs::read_dir(dir.path()).unwrap().count(), 1);
     }
 
     #[tokio::test]

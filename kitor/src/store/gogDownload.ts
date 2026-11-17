@@ -5,6 +5,8 @@ import type { PatchDownloadProgress } from "@/hooks/useGameCardState";
 import { downloadSteamGames } from "./steamDownload";
 import { type Game, type GameHealth, useAppStore } from "./store";
 
+const CANCELLED = "Installation cancelled";
+
 type InstallProgress = {
   game_id: string;
   step: string;
@@ -17,6 +19,10 @@ export const useGogDownload = create<{
   phase: "download" | "install" | "patch";
   installedGameId: number | null;
   busy: boolean;
+  cancelling: boolean;
+  cancelled: boolean;
+  runId: string | null;
+  cancel: () => Promise<void>;
   patchDownload: PatchDownloadProgress | null;
   downloadedBytes: number | null;
   totalBytes: number | null;
@@ -34,6 +40,19 @@ export const useGogDownload = create<{
   phase: "download",
   installedGameId: null,
   busy: false,
+  cancelling: false,
+  cancelled: false,
+  runId: null,
+  cancel: async () => {
+    const { busy, cancelling, runId } = get();
+    if (!busy || cancelling || !runId) return;
+    set({ cancelling: true });
+    try {
+      await invoke("cancel_game_install", { runId });
+    } catch (error) {
+      if (get().runId === runId) set({ cancelling: false, error: String(error) });
+    }
+  },
   patchDownload: null,
   downloadedBytes: null,
   totalBytes: null,
@@ -53,10 +72,15 @@ export const useGogDownload = create<{
         gameId,
         error: "Connect the GOG account that owns this game, then retry.",
         complete: false,
+        cancelled: false,
       });
       return;
     }
+    const runId = crypto.randomUUID();
     set({
+      runId,
+      cancelling: false,
+      cancelled: false,
       phase: typeof source !== "number" && "installedGameId" in source ? "install" : "download",
       installedGameId: null,
       busy: true,
@@ -70,7 +94,14 @@ export const useGogDownload = create<{
       percentage: null,
     });
     const listeners: (() => void)[] = [];
+    let registered = false;
+    const checkpoint = () => {
+      if (get().cancelling) throw CANCELLED;
+    };
     try {
+      await invoke("begin_game_install", { runId });
+      registered = true;
+      checkpoint();
       const root = installRoot ?? (await invoke<string>("get_game_install_root"));
       let game: Game;
       if (typeof source !== "number" && "installedGameId" in source) {
@@ -93,7 +124,9 @@ export const useGogDownload = create<{
               });
           })
         );
+        checkpoint();
         game = await invoke<Game>("install_gog_game", {
+          runId,
           gameId: source,
           scummvmId: gameId,
           installRoot: root,
@@ -120,7 +153,11 @@ export const useGogDownload = create<{
             }
           )
         );
-        const imported = await downloadSteamGames(source.steamAppId, [gameId], root);
+        checkpoint();
+        const imported = await downloadSteamGames(source.steamAppId, [gameId], root, {
+          runId,
+          checkpoint,
+        });
         if (imported === null) return "cancelled";
         const importedLibrary = await invoke<Game[]>("get_games_with_patches");
         useAppStore.getState().setGames(importedLibrary);
@@ -135,14 +172,18 @@ export const useGogDownload = create<{
         step: "Preparing game runtime…",
         installedGameId: game.id,
       });
+      checkpoint();
       const games = await invoke<Game[]>("get_games_with_patches");
+      checkpoint();
       const installed = games.find((entry) => entry.id === game.id);
       if (!installed) throw new Error("Installed game was not found in the library.");
       if (installed.requires_scummvm !== false) {
         const status = await invoke<{ downloaded: boolean }>("check_scummvm_status");
-        if (!status.downloaded) await invoke("download_scummvm_binary");
+        checkpoint();
+        if (!status.downloaded) await invoke("download_scummvm_binary", { runId });
         store.setScummVMReady(true);
       }
+      checkpoint();
       set({
         phase: "patch",
         percentage: null,
@@ -173,9 +214,11 @@ export const useGogDownload = create<{
           entry.release_revision === patch.release_revision &&
           entry.status === "active"
       );
+      checkpoint();
       let patchVerified = false;
       if (recordedPatch) {
         const health = await invoke<GameHealth>("refresh_game", { gameId: game.id });
+        checkpoint();
         patchVerified = health.patch_status === "installed";
         if (!patchVerified) {
           store.setGames(
@@ -185,21 +228,40 @@ export const useGogDownload = create<{
           await invoke("restore_backup", { installedPatchId: recordedPatch.id });
         }
       }
+      checkpoint();
       if (!patchVerified) {
         await invoke("download_and_install_patch", {
+          runId,
           scummvmId: gameId,
           language: patch.language,
           version: patch.version,
         });
       }
+      checkpoint();
       store.setGames(await invoke<Game[]>("get_games_with_patches"));
+      checkpoint();
       store.setHighlightedGameId(game.id);
       set({ complete: true, step: "Ready to play", percentage: 100 });
     } catch (error) {
-      set({ error: String(error) });
+      if (String(error) === CANCELLED) {
+        // A game or patch may have completed before its safe stopping point.
+        try {
+          const games = await invoke<Game[]>("get_games_with_patches");
+          useAppStore.getState().setGames(games);
+        } catch (refreshError) {
+          console.warn("Could not refresh the library after cancelling installation", refreshError);
+        }
+        set({ cancelled: true, error: null });
+      } else {
+        set({ error: String(error) });
+      }
     } finally {
       for (const stop of listeners) stop();
-      set({ busy: false });
+      try {
+        if (registered) await invoke("end_game_install", { runId });
+      } finally {
+        set({ busy: false, cancelling: false, runId: null });
+      }
     }
   },
 }));

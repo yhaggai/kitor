@@ -83,12 +83,16 @@ pub async fn download_steam_windows_game(
     overwrite: Option<bool>,
     app_handle: tauri::AppHandle,
     app: State<'_, AppState>,
+    run_id: Option<String>,
     updates: State<'_, crate::services::app_updates::AppUpdates>,
 ) -> Result<Vec<crate::models::game::Model>, String> {
     let _activity = updates.activity()?;
     let _install = super::backup_commands::GAME_INSTALL_OPERATION.try_read()
         .map_err(|_| "A game uninstall is running. Try again after it finishes.")?;
-    crate::services::steam_download_service::download_to_confirmed(app_id, game_ids, &app, install_root.map(std::path::PathBuf::from), overwrite.unwrap_or(false), Some(&app_handle)).await
+    crate::services::install_cancellation::scope(
+        run_id,
+        crate::services::steam_download_service::download_to_confirmed(app_id, game_ids, &app, install_root.map(std::path::PathBuf::from), overwrite.unwrap_or(false), Some(&app_handle)),
+    ).await
 }
 
 #[tauri::command]
@@ -105,7 +109,7 @@ pub async fn get_native_steam_status() -> Result<bool, String> {
 }
 
 #[tauri::command]
-pub async fn connect_native_steam(app: tauri::AppHandle) -> Result<(), String> {
+pub async fn connect_native_steam(app: tauri::AppHandle) -> Result<kitor_steam::InitialLibrary, String> {
     use tauri::Emitter;
     let _guard = NATIVE_LOGIN.try_lock().map_err(|_| "Steam download sign-in is already running")?;
     let cancel = NATIVE_CANCEL.notified();
@@ -132,7 +136,7 @@ pub async fn disconnect_native_steam() -> Result<(), String> {
 static NATIVE_CODES: tokio::sync::Mutex<Option<tokio::sync::mpsc::Sender<String>>> = tokio::sync::Mutex::const_new(None);
 
 #[tauri::command]
-pub async fn connect_native_steam_password(username: String, password: String, app: tauri::AppHandle) -> Result<(), String> {
+pub async fn connect_native_steam_password(username: String, password: String, app: tauri::AppHandle) -> Result<kitor_steam::InitialLibrary, String> {
     use tauri::Emitter;
     let _guard = NATIVE_LOGIN.try_lock().map_err(|_| "Steam download sign-in is already running")?;
     let cancel = NATIVE_CANCEL.notified();

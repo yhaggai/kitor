@@ -5,10 +5,17 @@ import type { Game } from "./store";
 export async function downloadSteamGames(
   appId: number,
   gameIds: string[],
-  installRoot: string
+  installRoot: string,
+  cancellation?: { runId: string; checkpoint: () => void }
 ): Promise<Game[] | null> {
   const download = (overwrite: boolean) =>
-    invoke<Game[]>("download_steam_windows_game", { appId, gameIds, installRoot, overwrite });
+    invoke<Game[]>("download_steam_windows_game", {
+      appId,
+      gameIds,
+      installRoot,
+      overwrite,
+      runId: cancellation?.runId,
+    });
 
   try {
     return await download(false);
@@ -17,6 +24,7 @@ export async function downloadSteamGames(
     const prefix = "OVERWRITE_REQUIRED:";
     if (!message.startsWith(prefix)) throw error;
 
+    cancellation?.checkpoint();
     const path = message.slice(prefix.length);
     const confirmed = await ask(
       `The installation folder already exists:\n${path}\n\nContinuing will replace this folder and delete any saves, patches, or other files inside it.`,
@@ -27,6 +35,7 @@ export async function downloadSteamGames(
         cancelLabel: "Cancel",
       }
     );
+    cancellation?.checkpoint();
     return confirmed ? download(true) : null;
   }
 }

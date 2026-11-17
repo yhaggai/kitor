@@ -59,7 +59,7 @@ impl Connection {
         let mut c = Self {
             socket: socket.context("Could not connect to Steam")?,
             queue: VecDeque::new(),
-            steam_id: credentials.steam_id,
+            steam_id: 0,
             session: 0,
             job: 1,
             licenses: vec![],
@@ -72,6 +72,7 @@ impl Connection {
             Message::default().number(1, 65580),
         )
         .await?;
+        c.steam_id = credentials.steam_id;
         let login_id = getrandom::u32().context("Could not generate a Steam login ID")?;
         let logon = Message::default()
             .number(1, 65580)
@@ -89,11 +90,16 @@ impl Connection {
             loop {
                 let p = c.next().await?;
                 if p.kind == 751 {
-                    ensure!(
-                        p.body.n(1) == 1,
-                        "Steam login rejected (code {}). Reconnect Steam.",
-                        p.body.n(1)
-                    );
+                    let code = p.body.n(1);
+                    // An invalid, revoked, or expired token needs a new sign-in.
+                    // Network errors and other Steam results leave it reusable.
+                    if matches!(code, 5 | 26 | 27 | 121) {
+                        credentials.mark_rejected();
+                        bail!(
+                            "Steam rejected the saved session (code {code}). Connect Steam again."
+                        );
+                    }
+                    ensure!(code == 1, "Steam login failed (code {code}). Try again.");
                     c.session = p.header.n(2);
                     c.cell_id = p.body.n(7);
                     let interval = p.body.n(3).max(5);
@@ -107,7 +113,12 @@ impl Connection {
         Ok(c)
     }
     async fn send(&mut self, kind: u32, header: Message, body: Message) -> Result<()> {
-        let header = header.fixed(1, self.steam_id).number(2, self.session).0;
+        let header = if self.steam_id == 0 {
+            header
+        } else {
+            header.fixed(1, self.steam_id).number(2, self.session)
+        }
+        .0;
         let mut b = Vec::with_capacity(8 + header.len() + body.0.len());
         b.extend((kind | 0x80000000).to_le_bytes());
         b.extend((header.len() as u32).to_le_bytes());
@@ -167,9 +178,12 @@ impl Connection {
     async fn next(&mut self) -> Result<Packet> {
         loop {
             if let Some(p) = self.queue.pop_front() {
+                if p.kind == 757 {
+                    bail!("Steam ended the connection (code {}).", p.body.n(1));
+                }
                 return Ok(p);
             }
-            tokio::select! {_ = self.heartbeat.tick()=>{self.send(703,Message::default(),Message::default()).await?;},msg=self.socket.next()=>{match msg.context("Steam disconnected")??{Ws::Binary(b)=>self.unpack(&b,0)?,Ws::Ping(b)=>self.socket.send(Ws::Pong(b)).await?,Ws::Close(_)=>bail!("Steam disconnected"),_=>{}}}}
+            tokio::select! {_ = self.heartbeat.tick(), if self.session != 0 =>{self.send(703,Message::default(),Message::default()).await?;},msg=self.socket.next()=>{match msg.context("Steam disconnected")??{Ws::Binary(b)=>self.unpack(&b,0)?,Ws::Ping(b)=>self.socket.send(Ws::Pong(b)).await?,Ws::Close(_)=>bail!("Steam disconnected"),_=>{}}}}
         }
     }
     pub async fn request(
@@ -209,5 +223,16 @@ impl Connection {
         loop {
             self.next().await?;
         }
+    }
+
+    pub async fn log_off(mut self) {
+        if self.session == 0 {
+            return;
+        }
+        let _ = tokio::time::timeout(Duration::from_secs(2), async {
+            let _ = self.send(706, Message::default(), Message::default()).await;
+            let _ = self.socket.close(None).await;
+        })
+        .await;
     }
 }

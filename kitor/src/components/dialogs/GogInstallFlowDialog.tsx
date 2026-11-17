@@ -27,7 +27,10 @@ export function GogInstallFlowDialog() {
   const [launching, setLaunching] = useState(false);
   const steam = target?.steamAppId !== undefined;
   const active = target?.gameId === download.gameId;
-  const installing = active && (download.busy || download.complete || download.error !== null);
+  const cancelled = active && download.cancelled;
+  const cancelling = active && download.cancelling;
+  const installing =
+    active && (download.busy || download.complete || cancelled || download.error !== null);
   const patching = active && download.busy && download.phase === "patch";
   const { state: patchState, actions: patchActions } = useGameCardState();
 
@@ -192,8 +195,8 @@ export function GogInstallFlowDialog() {
     checked !== target.gameId || library.loading || (owned && supported === null && !error);
 
   const preparing = (steam || (owned && supported !== false)) && !installing && !failure;
-  const showSteps = installing || preparing;
-  const progressing = preparing || (active && download.busy);
+  const showSteps = !cancelled && (installing || preparing);
+  const progressing = !cancelling && (preparing || (active && download.busy));
   const percentage = installing ? download.percentage : null;
   const downloadedMB =
     installing && download.phase === "download" && download.downloadedBytes !== null
@@ -209,7 +212,7 @@ export function GogInstallFlowDialog() {
         )
       : null;
 
-  if (!open && installing) {
+  if (!open && installing && !cancelled) {
     return (
       <Button className="fixed bottom-6 end-6 z-40 shadow-lg" onClick={() => setOpen(true)}>
         {t("Game installation")}
@@ -243,43 +246,57 @@ export function GogInstallFlowDialog() {
           </ol>
         )}
         <div className="gog-installer-main">
-          <div className="space-y-4" aria-live="polite">
+          <div className="gog-installer-status" aria-live="polite">
             {complete && !failure && (
               <CheckCircle2 className="h-9 w-9 text-green-500" aria-hidden="true" />
             )}
-            <DialogTitle>
-              {complete
-                ? t(failure ? "Could not start the game" : "Ready to play")
-                : showSteps
-                  ? t(steps[index])
-                  : t("Play with GOG")}
-            </DialogTitle>
-            <DialogDescription>
-              {complete
-                ? t(
-                    failure
-                      ? "The game is installed, but could not be started. You can retry without reinstalling."
-                      : "The game and Hebrew patch are installed. Enjoy your game!"
-                  )
-                : installing
-                  ? t("Keep Kitor open until installation finishes.")
-                  : steam
-                    ? t("Preparing your installation…")
-                    : checking
-                      ? t("Checking your GOG library…")
-                      : !authenticated
-                        ? t(
-                            "Connect GOG to install this game. Kitor refreshes your GOG library when it opens. You can disconnect in Settings."
-                          )
-                        : !owned
-                          ? t("Buy the game on GOG, then return here to continue.")
-                          : supported === false
-                            ? t(
-                                "Automatic installation is not available for this game on this computer. Install it from GOG, then add its folder to Kitor."
-                              )
-                            : t("Preparing your installation…")}
-            </DialogDescription>
-            {patching && (
+            <div className="gog-installer-heading">
+              <DialogTitle>
+                {cancelled
+                  ? t("Installation cancelled")
+                  : cancelling
+                    ? t("Cancelling installation…")
+                    : complete
+                      ? t(failure ? "Could not start the game" : "Ready to play")
+                      : showSteps
+                        ? t(steps[index])
+                        : t("Play with GOG")}
+              </DialogTitle>
+              <DialogDescription>
+                {cancelled
+                  ? t(
+                      steam && download.phase === "download"
+                        ? "Completed steps were kept. If Steam is downloading the game, you can stop it in Steam."
+                        : "Completed steps were kept. You can try again."
+                    )
+                  : cancelling
+                    ? t("Kitor will stop as soon as it can do so safely.")
+                    : complete
+                      ? t(
+                          failure
+                            ? "The game is installed, but could not be started. You can retry without reinstalling."
+                            : "The game and Hebrew patch are installed. Enjoy your game!"
+                        )
+                      : installing
+                        ? t("Keep Kitor open until installation finishes.")
+                        : steam
+                          ? t("Preparing your installation…")
+                          : checking
+                            ? t("Checking your GOG library…")
+                            : !authenticated
+                              ? t(
+                                  "Connect GOG to install this game. Kitor refreshes your GOG library when it opens. You can disconnect in Settings."
+                                )
+                              : !owned
+                                ? t("Buy the game on GOG, then return here to continue.")
+                                : supported === false
+                                  ? t(
+                                      "Automatic installation is not available for this game on this computer. Install it from GOG, then add its folder to Kitor."
+                                    )
+                                  : t("Preparing your installation…")}
+              </DialogDescription>
+            </div>
+            {patching && !cancelling && (
               <PatchInstallProgress
                 installSteps={patchState.installSteps}
                 progress={patchState.installProgress}
@@ -322,10 +339,26 @@ export function GogInstallFlowDialog() {
               <Button onClick={() => void play()} disabled={launching}>
                 {t("Play the game")}
               </Button>
-            ) : download.busy ? (
-              <Button variant="outline" onClick={() => setOpen(false)}>
-                {t("Hide")}
-              </Button>
+            ) : active && download.busy ? (
+              <>
+                <Button variant="outline" onClick={() => setOpen(false)}>
+                  {t("Hide")}
+                </Button>
+                <Button
+                  variant="outline"
+                  onClick={() => void download.cancel()}
+                  disabled={cancelling}
+                >
+                  {t("Cancel installation")}
+                </Button>
+              </>
+            ) : cancelled ? (
+              <>
+                <Button onClick={() => void start()}>{t("Try again")}</Button>
+                <Button variant="outline" onClick={() => setOpen(false)}>
+                  {t("Close")}
+                </Button>
+              </>
             ) : installing ? (
               <Button onClick={() => void start()}>{t("Try again")}</Button>
             ) : steam ? (

@@ -280,6 +280,17 @@ body {
 .gog-installer[dir="rtl"] .gog-installer-steps {
   direction: rtl;
 }
+.gog-installer-status,
+.gog-installer-heading {
+  display: flex;
+  flex-direction: column;
+}
+.gog-installer-status {
+  gap: 14px;
+}
+.gog-installer-heading {
+  gap: 8px;
+}
 .gog-installer-actions {
   display: flex;
   flex-wrap: wrap;

@@ -41,3 +41,5 @@ pub mod diagnostics;
 pub mod contributions;
 
 pub mod runtime_cleanup;
+
+pub mod install_cancellation;
