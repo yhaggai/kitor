@@ -2592,6 +2592,7 @@ name = "kitor"
 version = "0.1.6"
 dependencies = [
  "base64 0.22.1",
+ "bzip2",
  "chrono",
  "csv",
  "futures",
