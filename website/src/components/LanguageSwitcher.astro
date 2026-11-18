@@ -1,0 +1,18 @@
+---
+interface Props {
+  locale: "he" | "en";
+  hebrewPath: string;
+  englishPath: string;
+}
+const { locale, hebrewPath, englishPath } = Astro.props;
+---
+<div class="language-switcher" role="group" aria-label={locale === "he" ? "שפת האתר" : "Site language"} dir="ltr">
+  <a href={hebrewPath} lang="he" hreflang="he" aria-current={locale === "he" ? "page" : undefined}>עברית</a>
+  <a href={englishPath} lang="en" hreflang="en" aria-current={locale === "en" ? "page" : undefined}>English</a>
+</div>
+<style>
+  .language-switcher { display: inline-flex; flex-shrink: 0; border: 1px solid #536479; border-radius: 8px; padding: 3px; gap: 2px; }
+  .language-switcher a { padding: 6px 8px; border-radius: 5px; font-size: 13px; line-height: 1.4; white-space: nowrap; }
+  .language-switcher a[aria-current="page"] { background: #fecb67; color: #080f1d; }
+  .language-switcher a:focus-visible { outline: 2px solid #fecb67; outline-offset: 3px; }
+</style>
