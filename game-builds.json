@@ -1,0 +1,1194 @@
+{
+  "checkedAt": "2026-11-18T14:22:49.892Z",
+  "rows": [
+    {
+      "key": "steam:391540",
+      "store": "steam",
+      "id": "391540",
+      "gameId": "undertale",
+      "title": "UNDERTALE",
+      "supported": [
+        {
+          "store": "steam",
+          "platform": "windows",
+          "depot_id": "391541",
+          "manifest_id": "3413030246586915448",
+          "evidence": "patches-workspace/undertale/he/README.md",
+          "first_seen_on": "2017-12-06",
+          "release_date_source": "https://steamdb.info/depot/391541/manifests/",
+          "language": "he",
+          "patchVersion": "alpha2-steam-kitor6",
+          "status": "match"
+        },
+        {
+          "store": "steam",
+          "platform": "osx",
+          "depot_id": "391542",
+          "manifest_id": "1593483711954100372",
+          "evidence": "tools/game-build-monitor/hash-verification.md",
+          "language": "he",
+          "patchVersion": "alpha2-steam-kitor6",
+          "status": "match"
+        }
+      ],
+      "latest": {
+        "buildId": "4279148",
+        "manifests": {
+          "391541": "3413030246586915448",
+          "391542": "1593483711954100372",
+          "391544": "5730345506996883260"
+        },
+        "releasedOn": "2019-10-28"
+      },
+      "availability": "ok",
+      "lastSuccessAt": "2026-11-18T14:22:49.892Z",
+      "change": null
+    },
+    {
+      "key": "steam:32360",
+      "store": "steam",
+      "id": "32360",
+      "gameId": "monkey-se",
+      "title": "The Secret of Monkey Island — Classic",
+      "supported": [],
+      "latest": {
+        "buildId": "19295",
+        "manifests": {
+          "32361": "5976354238575002765"
+        },
+        "releasedOn": null
+      },
+      "availability": "ok",
+      "lastSuccessAt": "2026-11-18T14:22:49.892Z",
+      "change": null
+    },
+    {
+      "key": "gog:1207666253:windows",
+      "store": "gog",
+      "id": "1207666253",
+      "os": "windows",
+      "gameId": "monkey-se",
+      "title": "The Secret of Monkey Island — Classic",
+      "supported": [],
+      "latest": {
+        "buildId": "50953075782223848",
+        "version": "1.0",
+        "releasedOn": "2018-02-13"
+      },
+      "availability": "ok",
+      "lastSuccessAt": "2026-11-18T14:22:49.892Z",
+      "change": null
+    },
+    {
+      "key": "gog:1207666253:osx",
+      "store": "gog",
+      "id": "1207666253",
+      "os": "osx",
+      "gameId": "monkey-se",
+      "title": "The Secret of Monkey Island — Classic",
+      "supported": [],
+      "latest": null,
+      "availability": "unavailable",
+      "lastSuccessAt": null,
+      "change": null
+    },
+    {
+      "key": "steam:32460",
+      "store": "steam",
+      "id": "32460",
+      "gameId": "monkey2-se",
+      "title": "Monkey Island 2: LeChuck's Revenge — Classic",
+      "supported": [],
+      "latest": {
+        "buildId": "52245",
+        "manifests": {
+          "32461": "7019039573050115999"
+        },
+        "releasedOn": null
+      },
+      "availability": "ok",
+      "lastSuccessAt": "2026-11-18T14:22:49.892Z",
+      "change": null
+    },
+    {
+      "key": "gog:1425039730:windows",
+      "store": "gog",
+      "id": "1425039730",
+      "os": "windows",
+      "gameId": "monkey2-se",
+      "title": "Monkey Island 2: LeChuck's Revenge — Classic",
+      "supported": [],
+      "latest": {
+        "buildId": "15751",
+        "version": null,
+        "releasedOn": "2015-03-17"
+      },
+      "availability": "ok",
+      "lastSuccessAt": "2026-11-18T14:22:49.892Z",
+      "change": null
+    },
+    {
+      "key": "gog:1425039730:osx",
+      "store": "gog",
+      "id": "1425039730",
+      "os": "osx",
+      "gameId": "monkey2-se",
+      "title": "Monkey Island 2: LeChuck's Revenge — Classic",
+      "supported": [],
+      "latest": null,
+      "availability": "unavailable",
+      "lastSuccessAt": null,
+      "change": null
+    },
+    {
+      "key": "steam:10110",
+      "store": "steam",
+      "id": "10110",
+      "gameId": "sq1sci",
+      "title": "Space Quest I: Roger Wilco in the Sarien Encounter (VGA Remake)",
+      "supported": [],
+      "latest": {
+        "buildId": "1302634",
+        "manifests": {
+          "10111": "6725209980292758062"
+        },
+        "releasedOn": "2016-08-29"
+      },
+      "availability": "ok",
+      "lastSuccessAt": "2026-11-18T14:22:49.892Z",
+      "change": null
+    },
+    {
+      "key": "gog:1207659683:windows",
+      "store": "gog",
+      "id": "1207659683",
+      "os": "windows",
+      "gameId": "kyra1-cd",
+      "title": "The Legend of Kyrandia",
+      "supported": [],
+      "latest": {
+        "buildId": "51156413910289461",
+        "version": "1.1",
+        "releasedOn": "2018-04-24"
+      },
+      "availability": "ok",
+      "lastSuccessAt": "2026-11-18T14:22:49.892Z",
+      "change": null
+    },
+    {
+      "key": "gog:1207659683:osx",
+      "store": "gog",
+      "id": "1207659683",
+      "os": "osx",
+      "gameId": "kyra1-cd",
+      "title": "The Legend of Kyrandia",
+      "supported": [],
+      "latest": {
+        "buildId": "52941790197377289",
+        "version": "gog-4",
+        "releasedOn": "2019-12-31"
+      },
+      "availability": "ok",
+      "lastSuccessAt": "2026-11-18T14:22:49.892Z",
+      "change": null
+    },
+    {
+      "key": "steam:494740",
+      "store": "steam",
+      "id": "494740",
+      "gameId": "pq1",
+      "title": "Police Quest: In Pursuit of the Death Angel (EGA)",
+      "supported": [],
+      "latest": {
+        "buildId": "1306244",
+        "manifests": {
+          "494741": "427993029009177791"
+        },
+        "releasedOn": "2016-08-29"
+      },
+      "availability": "ok",
+      "lastSuccessAt": "2026-11-18T14:22:49.892Z",
+      "change": null
+    },
+    {
+      "key": "steam:10110",
+      "store": "steam",
+      "id": "10110",
+      "gameId": "sq1",
+      "title": "Space Quest I: The Sarien Encounter (EGA)",
+      "supported": [
+        {
+          "store": "steam",
+          "platform": "windows",
+          "depot_id": "10111",
+          "manifest_id": "6725209980292758062",
+          "evidence": "tools/game-build-monitor/hash-verification.md",
+          "language": "he",
+          "patchVersion": "1.0-kitor1",
+          "status": "match"
+        },
+        {
+          "store": "steam",
+          "platform": "osx",
+          "depot_id": "10111",
+          "manifest_id": "6725209980292758062",
+          "evidence": "tools/game-build-monitor/hash-verification.md",
+          "language": "he",
+          "patchVersion": "1.0-kitor1",
+          "status": "match"
+        }
+      ],
+      "latest": {
+        "buildId": "1302634",
+        "manifests": {
+          "10111": "6725209980292758062"
+        },
+        "releasedOn": "2016-08-29"
+      },
+      "availability": "ok",
+      "lastSuccessAt": "2026-11-18T14:22:49.892Z",
+      "change": null
+    },
+    {
+      "key": "gog:1207661413:windows",
+      "store": "gog",
+      "id": "1207661413",
+      "os": "windows",
+      "gameId": "sq1",
+      "title": "Space Quest I: The Sarien Encounter (EGA)",
+      "supported": [],
+      "latest": {
+        "buildId": "59441489525262901",
+        "version": "2.2 GOG v2",
+        "releasedOn": "2026-02-19"
+      },
+      "availability": "ok",
+      "lastSuccessAt": "2026-11-18T14:22:49.892Z",
+      "change": null
+    },
+    {
+      "key": "gog:1207661413:osx",
+      "store": "gog",
+      "id": "1207661413",
+      "os": "osx",
+      "gameId": "sq1",
+      "title": "Space Quest I: The Sarien Encounter (EGA)",
+      "supported": [],
+      "latest": null,
+      "availability": "unavailable",
+      "lastSuccessAt": null,
+      "change": null
+    },
+    {
+      "key": "steam:10110",
+      "store": "steam",
+      "id": "10110",
+      "gameId": "sq2",
+      "title": "Space Quest II: Vohaul’s Revenge",
+      "supported": [],
+      "latest": {
+        "buildId": "1302634",
+        "manifests": {
+          "10111": "6725209980292758062"
+        },
+        "releasedOn": "2016-08-29"
+      },
+      "availability": "ok",
+      "lastSuccessAt": "2026-11-18T14:22:49.892Z",
+      "change": null
+    },
+    {
+      "key": "gog:1207661423:windows",
+      "store": "gog",
+      "id": "1207661423",
+      "os": "windows",
+      "gameId": "sq2",
+      "title": "Space Quest II: Vohaul’s Revenge",
+      "supported": [],
+      "latest": {
+        "buildId": "59441499654619266",
+        "version": "2.0F GOG v2",
+        "releasedOn": "2026-02-19"
+      },
+      "availability": "ok",
+      "lastSuccessAt": "2026-11-18T14:22:49.892Z",
+      "change": null
+    },
+    {
+      "key": "gog:1207661423:osx",
+      "store": "gog",
+      "id": "1207661423",
+      "os": "osx",
+      "gameId": "sq2",
+      "title": "Space Quest II: Vohaul’s Revenge",
+      "supported": [],
+      "latest": null,
+      "availability": "unavailable",
+      "lastSuccessAt": null,
+      "change": null
+    },
+    {
+      "key": "steam:10110",
+      "store": "steam",
+      "id": "10110",
+      "gameId": "sq3",
+      "title": "Space Quest III: The Pirates of Pestulon",
+      "supported": [],
+      "latest": {
+        "buildId": "1302634",
+        "manifests": {
+          "10111": "6725209980292758062"
+        },
+        "releasedOn": "2016-08-29"
+      },
+      "availability": "ok",
+      "lastSuccessAt": "2026-11-18T14:22:49.892Z",
+      "change": null
+    },
+    {
+      "key": "gog:1207661433:windows",
+      "store": "gog",
+      "id": "1207661433",
+      "os": "windows",
+      "gameId": "sq3",
+      "title": "Space Quest III: The Pirates of Pestulon",
+      "supported": [],
+      "latest": {
+        "buildId": "59441509060749173",
+        "version": "1.018 GOG v2",
+        "releasedOn": "2026-02-19"
+      },
+      "availability": "ok",
+      "lastSuccessAt": "2026-11-18T14:22:49.892Z",
+      "change": null
+    },
+    {
+      "key": "gog:1207661433:osx",
+      "store": "gog",
+      "id": "1207661433",
+      "os": "osx",
+      "gameId": "sq3",
+      "title": "Space Quest III: The Pirates of Pestulon",
+      "supported": [],
+      "latest": null,
+      "availability": "unavailable",
+      "lastSuccessAt": null,
+      "change": null
+    },
+    {
+      "key": "steam:10110",
+      "store": "steam",
+      "id": "10110",
+      "gameId": "sq4",
+      "title": "Space Quest IV: Roger Wilco and the Time Rippers",
+      "supported": [],
+      "latest": {
+        "buildId": "1302634",
+        "manifests": {
+          "10111": "6725209980292758062"
+        },
+        "releasedOn": "2016-08-29"
+      },
+      "availability": "ok",
+      "lastSuccessAt": "2026-11-18T14:22:49.892Z",
+      "change": null
+    },
+    {
+      "key": "steam:10110",
+      "store": "steam",
+      "id": "10110",
+      "gameId": "sq5",
+      "title": "Space Quest V: The Next Mutation",
+      "supported": [],
+      "latest": {
+        "buildId": "1302634",
+        "manifests": {
+          "10111": "6725209980292758062"
+        },
+        "releasedOn": "2016-08-29"
+      },
+      "availability": "ok",
+      "lastSuccessAt": "2026-11-18T14:22:49.892Z",
+      "change": null
+    },
+    {
+      "key": "gog:1207659044:windows",
+      "store": "gog",
+      "id": "1207659044",
+      "os": "windows",
+      "gameId": "torin",
+      "title": "Torin’s Passage",
+      "supported": [],
+      "latest": {
+        "buildId": "51155436974418858",
+        "version": "1.0 galaxy hotfix",
+        "releasedOn": "2018-04-24"
+      },
+      "availability": "ok",
+      "lastSuccessAt": "2026-11-18T14:22:49.892Z",
+      "change": null
+    },
+    {
+      "key": "gog:1207659044:osx",
+      "store": "gog",
+      "id": "1207659044",
+      "os": "osx",
+      "gameId": "torin",
+      "title": "Torin’s Passage",
+      "supported": [],
+      "latest": null,
+      "availability": "unavailable",
+      "lastSuccessAt": null,
+      "change": null
+    },
+    {
+      "key": "steam:283980",
+      "store": "steam",
+      "id": "283980",
+      "gameId": "spyfox",
+      "title": "Spy Fox in Dry Cereal",
+      "supported": [],
+      "latest": {
+        "buildId": "4419260",
+        "manifests": {
+          "283981": "4062872676091490748",
+          "283982": "7572936951989329178",
+          "283983": "3270735117988947658",
+          "283984": "5321091726111985739",
+          "283985": "2927015558846741545",
+          "283986": "8502649209528433878",
+          "283987": "6737044270830928109",
+          "283988": "8953858738212852734",
+          "283989": "527783680879791118",
+          "283990": "8662888275057532587",
+          "283991": "4338336316924567501",
+          "283992": "943049906025162767",
+          "283993": "8619281316684898394",
+          "283994": "8870321488301866732",
+          "283995": "473337525159075240",
+          "283996": "7672272373350632732",
+          "283997": "1878657133105993461",
+          "283998": "5539716296977136659",
+          "283999": "1119779147684917388"
+        },
+        "releasedOn": "2019-11-23"
+      },
+      "availability": "ok",
+      "lastSuccessAt": "2026-11-18T14:22:49.892Z",
+      "change": null
+    },
+    {
+      "key": "gog:1435735429:windows",
+      "store": "gog",
+      "id": "1435735429",
+      "os": "windows",
+      "gameId": "pajama",
+      "title": "Pajama Sam: No Need to Hide When It’s Dark Outside",
+      "supported": [],
+      "latest": {
+        "buildId": "51156437183802459",
+        "version": "1.0",
+        "releasedOn": "2018-04-24"
+      },
+      "availability": "ok",
+      "lastSuccessAt": "2026-11-18T14:22:49.892Z",
+      "change": null
+    },
+    {
+      "key": "gog:1435735429:osx",
+      "store": "gog",
+      "id": "1435735429",
+      "os": "osx",
+      "gameId": "pajama",
+      "title": "Pajama Sam: No Need to Hide When It’s Dark Outside",
+      "supported": [],
+      "latest": {
+        "buildId": "52072741060606731",
+        "version": "1.0",
+        "releasedOn": "2019-03-06"
+      },
+      "availability": "ok",
+      "lastSuccessAt": "2026-11-18T14:22:49.892Z",
+      "change": null
+    },
+    {
+      "key": "gog:1207666633:windows",
+      "store": "gog",
+      "id": "1207666633",
+      "os": "windows",
+      "gameId": "toonstruck",
+      "title": "Toonstruck",
+      "supported": [],
+      "latest": {
+        "buildId": "51156416898316566",
+        "version": "1.0",
+        "releasedOn": "2018-04-24"
+      },
+      "availability": "ok",
+      "lastSuccessAt": "2026-11-18T14:22:49.892Z",
+      "change": null
+    },
+    {
+      "key": "gog:1207666633:osx",
+      "store": "gog",
+      "id": "1207666633",
+      "os": "osx",
+      "gameId": "toonstruck",
+      "title": "Toonstruck",
+      "supported": [],
+      "latest": {
+        "buildId": "52947501171829638",
+        "version": "gog-3",
+        "releasedOn": "2020-01-02"
+      },
+      "availability": "ok",
+      "lastSuccessAt": "2026-11-18T14:22:49.892Z",
+      "change": null
+    },
+    {
+      "key": "gog:1207662293:windows",
+      "store": "gog",
+      "id": "1207662293",
+      "os": "windows",
+      "gameId": "gob2",
+      "title": "Gobliins 2: The Prince Buffoon",
+      "supported": [],
+      "latest": {
+        "buildId": "51156431220245696",
+        "version": "1.02",
+        "releasedOn": "2018-04-24"
+      },
+      "availability": "ok",
+      "lastSuccessAt": "2026-11-18T14:22:49.892Z",
+      "change": null
+    },
+    {
+      "key": "gog:1207662293:osx",
+      "store": "gog",
+      "id": "1207662293",
+      "os": "osx",
+      "gameId": "gob2",
+      "title": "Gobliins 2: The Prince Buffoon",
+      "supported": [],
+      "latest": null,
+      "availability": "unavailable",
+      "lastSuccessAt": null,
+      "change": null
+    },
+    {
+      "key": "steam:6310",
+      "store": "steam",
+      "id": "6310",
+      "gameId": "tlj",
+      "title": "The Longest Journey",
+      "supported": [],
+      "latest": {
+        "buildId": "32037",
+        "manifests": {
+          "6311": "404429144808164178"
+        },
+        "releasedOn": null
+      },
+      "availability": "ok",
+      "lastSuccessAt": "2026-11-18T14:22:49.892Z",
+      "change": null
+    },
+    {
+      "key": "gog:1207658794:windows",
+      "store": "gog",
+      "id": "1207658794",
+      "os": "windows",
+      "gameId": "tlj",
+      "title": "The Longest Journey",
+      "supported": [],
+      "latest": {
+        "buildId": "51672583396238307",
+        "version": "142 lang update",
+        "releasedOn": "2018-10-22"
+      },
+      "availability": "ok",
+      "lastSuccessAt": "2026-11-18T14:22:49.892Z",
+      "change": null
+    },
+    {
+      "key": "gog:1207658794:osx",
+      "store": "gog",
+      "id": "1207658794",
+      "os": "osx",
+      "gameId": "tlj",
+      "title": "The Longest Journey",
+      "supported": [],
+      "latest": null,
+      "availability": "unavailable",
+      "lastSuccessAt": null,
+      "change": null
+    },
+    {
+      "key": "gog:1207658695:windows",
+      "store": "gog",
+      "id": "1207658695",
+      "os": "windows",
+      "gameId": "sky",
+      "title": "Beneath a Steel Sky",
+      "supported": [],
+      "latest": {
+        "buildId": "51156444997712340",
+        "version": "1.0",
+        "releasedOn": "2018-04-24"
+      },
+      "availability": "ok",
+      "lastSuccessAt": "2026-11-18T14:22:49.892Z",
+      "change": null
+    },
+    {
+      "key": "gog:1207658695:osx",
+      "store": "gog",
+      "id": "1207658695",
+      "os": "osx",
+      "gameId": "sky",
+      "title": "Beneath a Steel Sky",
+      "supported": [],
+      "latest": {
+        "buildId": "52736136793075632",
+        "version": "1.0",
+        "releasedOn": "2019-10-21"
+      },
+      "availability": "ok",
+      "lastSuccessAt": "2026-11-18T14:22:49.892Z",
+      "change": null
+    },
+    {
+      "key": "steam:221910",
+      "store": "steam",
+      "id": "221910",
+      "gameId": "stanley-parable",
+      "title": "The Stanley Parable (2013)",
+      "supported": [],
+      "latest": {
+        "buildId": "1541646",
+        "manifests": {
+          "221911": "4574887516115604592",
+          "221912": "4004439736290655106",
+          "221913": "565664059840023103",
+          "221914": "4819957267483375851"
+        },
+        "releasedOn": "2016-12-27"
+      },
+      "availability": "ok",
+      "lastSuccessAt": "2026-11-18T14:22:49.892Z",
+      "change": null
+    },
+    {
+      "key": "steam:261510",
+      "store": "steam",
+      "id": "261510",
+      "gameId": "tesla-effect",
+      "title": "Tesla Effect: A Tex Murphy Adventure",
+      "supported": [],
+      "latest": {
+        "buildId": "297944",
+        "manifests": {
+          "261511": "6231652133838335837",
+          "261512": "9014612892901753358",
+          "282580": "6363290677554006060"
+        },
+        "releasedOn": null
+      },
+      "availability": "ok",
+      "lastSuccessAt": "2026-11-18T14:22:49.892Z",
+      "change": null
+    },
+    {
+      "key": "steam:258520",
+      "store": "steam",
+      "id": "258520",
+      "gameId": "ethan-carter",
+      "title": "The Vanishing of Ethan Carter (original)",
+      "supported": [],
+      "latest": {
+        "buildId": "481110",
+        "manifests": {
+          "258521": "8358890155311250024",
+          "258522": "5864944920622967324",
+          "258523": "1560781289980822697"
+        },
+        "releasedOn": null
+      },
+      "availability": "ok",
+      "lastSuccessAt": "2026-11-18T14:22:49.892Z",
+      "change": null
+    },
+    {
+      "key": "steam:319630",
+      "store": "steam",
+      "id": "319630",
+      "gameId": "life-is-strange",
+      "title": "Life Is Strange — Episodes 1–3",
+      "supported": [],
+      "latest": {
+        "buildId": "2304417",
+        "manifests": {
+          "319631": "1504133382031970604",
+          "319632": "7649253819993129790",
+          "319633": "3204428865733255167",
+          "319634": "222794417875313061",
+          "319635": "70888225976114718",
+          "319636": "114033635064667670",
+          "319637": "185325383318277789",
+          "319638": "41093949998204956",
+          "319640": "3010017480070139114",
+          "319641": "2241753359886490277",
+          "319642": "47059555116448828",
+          "319643": "63421583718511130",
+          "319644": "14200674631853344",
+          "319645": "79657551267791428",
+          "319646": "17411502911150245",
+          "319648": "713697669645095858",
+          "319649": "5832655655601560602",
+          "329880": "6686257525367030622",
+          "329910": "621653098648178046",
+          "329920": "6205501035602217932",
+          "329930": "4448389403897272612",
+          "425570": "9058349801170125022",
+          "432670": "8697497343955061773"
+        },
+        "releasedOn": "2018-02-23"
+      },
+      "availability": "ok",
+      "lastSuccessAt": "2026-11-18T14:22:49.892Z",
+      "change": null
+    },
+    {
+      "key": "steam:620",
+      "store": "steam",
+      "id": "620",
+      "gameId": "portal2",
+      "title": "Portal 2",
+      "supported": [],
+      "latest": {
+        "buildId": "25240193",
+        "manifests": {
+          "621": "9044256803759256265",
+          "622": "2202889899553513457",
+          "623": "2276453204441793614",
+          "624": "3651103799462409440",
+          "625": "1128685895801277145",
+          "626": "6439173920052159773",
+          "627": "4705364648410025995",
+          "628": "1134745004760172192",
+          "660": "2679694482538379167",
+          "661": "8940703274703023246"
+        },
+        "releasedOn": "2026-09-29"
+      },
+      "availability": "ok",
+      "lastSuccessAt": "2026-11-18T14:22:49.892Z",
+      "change": null
+    },
+    {
+      "key": "steam:220090",
+      "store": "steam",
+      "id": "220090",
+      "gameId": "journey-down1",
+      "title": "The Journey Down: Chapter One",
+      "supported": [],
+      "latest": {
+        "buildId": "1854802",
+        "manifests": {
+          "220091": "6829969935766857900",
+          "220093": "2152449034681351482",
+          "220094": "7062624989223653927"
+        },
+        "releasedOn": "2017-05-30"
+      },
+      "availability": "ok",
+      "lastSuccessAt": "2026-11-18T14:22:49.892Z",
+      "change": null
+    },
+    {
+      "key": "steam:1395030",
+      "store": "steam",
+      "id": "1395030",
+      "gameId": "kathy-rain-dc",
+      "title": "Kathy Rain: Director's Cut",
+      "supported": [],
+      "latest": {
+        "buildId": "20267953",
+        "manifests": {
+          "1395031": "5493145509261332213",
+          "1395032": "846367865604733419",
+          "1395033": "5487684927407467580"
+        },
+        "releasedOn": "2025-10-06"
+      },
+      "availability": "ok",
+      "lastSuccessAt": "2026-11-18T14:22:49.892Z",
+      "change": null
+    },
+    {
+      "key": "steam:1170570",
+      "store": "steam",
+      "id": "1170570",
+      "gameId": "drifter",
+      "title": "The Drifter",
+      "supported": [
+        {
+          "store": "steam",
+          "platform": "osx",
+          "build_id": "22758595",
+          "evidence": "patches-workspace/drifter/he/macos-loader-evidence.json",
+          "released_on": "2026-04-13",
+          "release_date_source": "https://steamdb.info/patchnotes/22758595/",
+          "language": "he",
+          "patchVersion": "2026-07-09-kitor2-download1",
+          "status": "match"
+        }
+      ],
+      "latest": {
+        "buildId": "22758595",
+        "manifests": {
+          "1170571": "9157791965194182650",
+          "1170572": "4359048483106282539",
+          "1170573": "4609207423110939652"
+        },
+        "releasedOn": "2026-04-13"
+      },
+      "availability": "ok",
+      "lastSuccessAt": "2026-11-18T14:22:49.892Z",
+      "change": null
+    },
+    {
+      "key": "steam:115800",
+      "store": "steam",
+      "id": "115800",
+      "gameId": "owlboy",
+      "title": "ילד הינשוף — Owlboy",
+      "supported": [
+        {
+          "store": "steam",
+          "platform": "windows",
+          "depot_id": "115801",
+          "manifest_id": "4002365934342145975",
+          "build_id": "26574659",
+          "evidence": "patches-workspace/owlboy/he/README.md",
+          "language": "he",
+          "patchVersion": "0.2.0-beta.2-kitor2-download1",
+          "status": "match"
+        }
+      ],
+      "latest": {
+        "buildId": "26574659",
+        "manifests": {
+          "115801": "4002365934342145975",
+          "115802": "8755363361571940280",
+          "115804": "7741183994030195032",
+          "115805": "409618040785163464"
+        },
+        "releasedOn": "2026-11-10"
+      },
+      "availability": "ok",
+      "lastSuccessAt": "2026-11-18T14:22:49.892Z",
+      "change": null
+    },
+    {
+      "key": "steam:388210",
+      "store": "steam",
+      "id": "388210",
+      "gameId": "tentacle",
+      "title": "Day of the Tentacle (Classic)",
+      "supported": [
+        {
+          "store": "steam",
+          "platform": "windows",
+          "depot_id": "388211",
+          "manifest_id": "8150331470367542821",
+          "evidence": "patches-workspace/tentacle/he/README.md",
+          "released_on": "2021-02-08",
+          "release_date_source": "https://steamdb.info/depot/388211/manifests/",
+          "language": "he",
+          "patchVersion": "2.0-beta2-kitor1-download2",
+          "status": "match"
+        },
+        {
+          "store": "steam",
+          "platform": "osx",
+          "depot_id": "388214",
+          "manifest_id": "2376453229416774441",
+          "evidence": "patches-workspace/tentacle/he/README.md",
+          "first_seen_on": "2020-06-24",
+          "release_date_source": "https://steamdb.info/depot/388214/",
+          "language": "he",
+          "patchVersion": "2.0-beta2-kitor1-download2",
+          "status": "match"
+        }
+      ],
+      "latest": {
+        "buildId": "6047174",
+        "manifests": {
+          "388211": "8150331470367542821",
+          "388212": "3298751354544021668",
+          "388213": "7983847359504027419",
+          "388214": "2376453229416774441"
+        },
+        "releasedOn": "2021-02-08"
+      },
+      "availability": "ok",
+      "lastSuccessAt": "2026-11-18T14:22:49.892Z",
+      "change": null
+    },
+    {
+      "key": "steam:388210",
+      "store": "steam",
+      "id": "388210",
+      "gameId": "day-of-the-tentacle-remastered",
+      "title": "Day of the Tentacle Remastered",
+      "supported": [
+        {
+          "store": "steam",
+          "platform": "osx",
+          "depot_id": "388214",
+          "manifest_id": "2376453229416774441",
+          "evidence": "tools/game-build-monitor/hash-verification.md",
+          "first_seen_on": "2020-06-24",
+          "release_date_source": "https://steamdb.info/depot/388214/",
+          "language": "he",
+          "patchVersion": "0.1-local-items-kitor1-download1",
+          "status": "match"
+        }
+      ],
+      "latest": {
+        "buildId": "6047174",
+        "manifests": {
+          "388211": "8150331470367542821",
+          "388212": "3298751354544021668",
+          "388213": "7983847359504027419",
+          "388214": "2376453229416774441"
+        },
+        "releasedOn": "2021-02-08"
+      },
+      "availability": "ok",
+      "lastSuccessAt": "2026-11-18T14:22:49.892Z",
+      "change": null
+    },
+    {
+      "key": "gog:1207667183:windows",
+      "store": "gog",
+      "id": "1207667183",
+      "os": "windows",
+      "gameId": "grim-fandango-remastered",
+      "title": "Grim Fandango Remastered",
+      "supported": [],
+      "latest": {
+        "buildId": "50773165089695575",
+        "version": "1.4.0",
+        "releasedOn": "2017-12-13"
+      },
+      "availability": "ok",
+      "lastSuccessAt": "2026-11-18T14:22:49.892Z",
+      "change": null
+    },
+    {
+      "key": "steam:32360",
+      "store": "steam",
+      "id": "32360",
+      "gameId": "monkey-se-native",
+      "title": "The Secret of Monkey Island: Special Edition (Native Remastered)",
+      "supported": [],
+      "latest": {
+        "buildId": "19295",
+        "manifests": {
+          "32361": "5976354238575002765"
+        },
+        "releasedOn": null
+      },
+      "availability": "ok",
+      "lastSuccessAt": "2026-11-18T14:22:49.892Z",
+      "change": null
+    },
+    {
+      "key": "gog:1207666253:windows",
+      "store": "gog",
+      "id": "1207666253",
+      "os": "windows",
+      "gameId": "monkey-se-native",
+      "title": "The Secret of Monkey Island: Special Edition (Native Remastered)",
+      "supported": [
+        {
+          "store": "gog",
+          "platform": "windows",
+          "build_id": "50953075782223848",
+          "evidence": "tools/game-build-monitor/hash-verification.md",
+          "released_on": "2018-02-13",
+          "release_date_source": "https://content-system.gog.com/products/1207666253/os/windows/builds?generation=2",
+          "language": "he",
+          "patchVersion": "0.2.0-native-candidate-download1",
+          "status": "match"
+        }
+      ],
+      "latest": {
+        "buildId": "50953075782223848",
+        "version": "1.0",
+        "releasedOn": "2018-02-13"
+      },
+      "availability": "ok",
+      "lastSuccessAt": "2026-11-18T14:22:49.892Z",
+      "change": null
+    },
+    {
+      "key": "steam:32460",
+      "store": "steam",
+      "id": "32460",
+      "gameId": "monkey2-se-native",
+      "title": "Monkey Island 2: LeChuck's Revenge Special Edition (Native Remastered)",
+      "supported": [],
+      "latest": {
+        "buildId": "52245",
+        "manifests": {
+          "32461": "7019039573050115999"
+        },
+        "releasedOn": null
+      },
+      "availability": "ok",
+      "lastSuccessAt": "2026-11-18T14:22:49.892Z",
+      "change": null
+    },
+    {
+      "key": "gog:1425039730:windows",
+      "store": "gog",
+      "id": "1425039730",
+      "os": "windows",
+      "gameId": "monkey2-se-native",
+      "title": "Monkey Island 2: LeChuck's Revenge Special Edition (Native Remastered)",
+      "supported": [],
+      "latest": {
+        "buildId": "15751",
+        "version": null,
+        "releasedOn": "2015-03-17"
+      },
+      "availability": "ok",
+      "lastSuccessAt": "2026-11-18T14:22:49.892Z",
+      "change": null
+    },
+    {
+      "key": "steam:2333000",
+      "store": "steam",
+      "id": "2333000",
+      "gameId": "silver-pines",
+      "title": "Silver Pines",
+      "supported": [],
+      "latest": {
+        "buildId": "26489514",
+        "manifests": {
+          "2333001": "7642143874526224503",
+          "4677931": "769645333623634749"
+        },
+        "releasedOn": "2026-11-06"
+      },
+      "availability": "ok",
+      "lastSuccessAt": "2026-11-18T14:22:49.892Z",
+      "change": null
+    },
+    {
+      "key": "steam:319870",
+      "store": "steam",
+      "id": "319870",
+      "gameId": "jenny-leclue",
+      "title": "Jenny LeClue - Detectivu",
+      "supported": [
+        {
+          "store": "steam",
+          "platform": "windows",
+          "depot_id": "319874",
+          "manifest_id": "2207954257582961902",
+          "evidence": "patches-workspace/jenny-leclue/he/provenance.json",
+          "language": "he",
+          "patchVersion": "0.4.6-download1",
+          "status": "match"
+        },
+        {
+          "store": "steam",
+          "platform": "osx",
+          "depot_id": "319872",
+          "manifest_id": "8849404721773343611",
+          "evidence": "tools/game-build-monitor/hash-verification.md",
+          "language": "he",
+          "patchVersion": "0.4.6-download1",
+          "status": "match"
+        }
+      ],
+      "latest": {
+        "buildId": "24043907",
+        "manifests": {
+          "319872": "8849404721773343611",
+          "319874": "2207954257582961902"
+        },
+        "releasedOn": "2026-07-03"
+      },
+      "availability": "ok",
+      "lastSuccessAt": "2026-11-18T14:22:49.892Z",
+      "change": null
+    },
+    {
+      "key": "steam:632470",
+      "store": "steam",
+      "id": "632470",
+      "gameId": "disco-elysium",
+      "title": "Disco Elysium – The Final Cut",
+      "supported": [
+        {
+          "store": "steam",
+          "platform": "osx",
+          "depot_id": "632473",
+          "manifest_id": "3514503533443935223",
+          "evidence": "tools/game-build-monitor/hash-verification.md",
+          "language": "he",
+          "patchVersion": "0.1.2",
+          "status": "match"
+        }
+      ],
+      "latest": {
+        "buildId": "23980936",
+        "manifests": {
+          "632471": "5267467363497400856",
+          "632473": "3514503533443935223",
+          "1173140": "5482040944560501642"
+        },
+        "releasedOn": "2026-07-01"
+      },
+      "availability": "ok",
+      "lastSuccessAt": "2026-11-18T14:22:49.892Z",
+      "change": null
+    },
+    {
+      "key": "steam:4463520",
+      "store": "steam",
+      "id": "4463520",
+      "gameId": "moomin-midsummer-madness",
+      "title": "Moomin: Midsummer Madness",
+      "supported": [
+        {
+          "store": "steam",
+          "platform": "windows",
+          "build_id": "26355427",
+          "evidence": "patches-workspace/moomin-midsummer-madness/he/README.md",
+          "released_on": "2026-11-12",
+          "release_date_source": "https://steamdb.info/patchnotes/26355427/",
+          "language": "he",
+          "patchVersion": "0.1.1",
+          "status": "different"
+        }
+      ],
+      "latest": {
+        "buildId": "26734391",
+        "manifests": {
+          "4463521": "5631864438934004332",
+          "4463522": "6987382206577570148"
+        },
+        "releasedOn": "2026-11-18"
+      },
+      "availability": "ok",
+      "lastSuccessAt": "2026-11-18T14:22:49.892Z",
+      "change": null
+    }
+  ]
+}
