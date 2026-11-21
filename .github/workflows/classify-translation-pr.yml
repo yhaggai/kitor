@@ -1,11 +1,11 @@
-name: Check translation changes
+name: PR checks
 
 on:
-  workflow_call:
-    outputs:
-      translation_only:
-        description: The PR changes only supported Hebrew translation data and matching checksums
-        value: ${{ jobs.classify.outputs.translation_only }}
+  pull_request:
+
+concurrency:
+  group: pr-checks-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
 
 permissions:
   contents: read
@@ -15,14 +15,14 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       translation_only: ${{ steps.classify.outputs.translation_only }}
+      installers: ${{ steps.classify.outputs.installers }}
+      packages: ${{ steps.classify.outputs.packages }}
     steps:
       - uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
-        if: github.event_name == 'pull_request'
         with:
           persist-credentials: false
           fetch-depth: 1
       - name: Fetch comparison base without history
-        if: github.event_name == 'pull_request'
         env:
           BASE_SHA: ${{ github.event.pull_request.base.sha }}
           GH_TOKEN: ${{ github.token }}
@@ -33,9 +33,42 @@ jobs:
         id: classify
         env:
           BASE_SHA: ${{ github.event.pull_request.base.sha }}
-        run: |
-          translation_only=false
-          if [[ -n "$BASE_SHA" ]]; then
-            translation_only=$(python3 kitor/tools/check_translation_pr.py "$BASE_SHA")
-          fi
-          echo "translation_only=$translation_only" >> "$GITHUB_OUTPUT"
+        run: python3 kitor/tools/check_pr_scope.py "$BASE_SHA" >> "$GITHUB_OUTPUT"
+
+  installers:
+    needs: classify
+    if: needs.classify.outputs.translation_only != 'true' && needs.classify.outputs.installers == 'true'
+    uses: ./.github/workflows/build-installers.yml
+
+  packages:
+    needs: classify
+    if: needs.classify.outputs.translation_only != 'true' && needs.classify.outputs.packages == 'true'
+    # The reusable workflow also contains publishing jobs restricted to push.
+    permissions:
+      contents: write
+    uses: ./.github/workflows/validate-patch-packages.yml
+
+  codeql:
+    needs: classify
+    if: github.base_ref == 'v1' && needs.classify.outputs.translation_only != 'true'
+    permissions:
+      contents: read
+      security-events: write
+    uses: ./.github/workflows/codeql.yml
+
+  workflow-security:
+    needs: classify
+    if: github.base_ref == 'v1' && needs.classify.outputs.translation_only != 'true'
+    permissions:
+      contents: read
+      security-events: write
+    uses: ./.github/workflows/zizmor.yml
+
+  dependencies:
+    needs: classify
+    if: github.base_ref == 'v1' && needs.classify.outputs.translation_only != 'true'
+    permissions:
+      actions: read
+      contents: read
+      security-events: write
+    uses: ./.github/workflows/osv-scanner.yml

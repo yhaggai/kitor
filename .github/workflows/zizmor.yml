@@ -1,8 +1,7 @@
 name: GitHub Actions security scan
 
 on:
-  pull_request:
-    branches: [v1]
+  workflow_call:
   push:
     branches: [v1]
   workflow_dispatch:
@@ -11,11 +10,7 @@ permissions:
   contents: read
 
 jobs:
-  translation-scope:
-    uses: ./.github/workflows/classify-translation-pr.yml
   audit:
-    needs: translation-scope
-    if: needs.translation-scope.outputs.translation_only != 'true'
     runs-on: ubuntu-latest
     permissions:
       contents: read

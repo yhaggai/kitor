@@ -1,8 +1,7 @@
 name: Dependency vulnerability scan
 
 on:
-  pull_request:
-    branches: [v1]
+  workflow_call:
   push:
     branches: [v1]
   schedule:
@@ -13,11 +12,7 @@ permissions:
   contents: read
 
 jobs:
-  translation-scope:
-    uses: ./.github/workflows/classify-translation-pr.yml
   verify-no-chrono:
-    needs: translation-scope
-    if: needs.translation-scope.outputs.translation_only != 'true'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
@@ -34,19 +29,19 @@ jobs:
           fi
 
   scan-pr:
-    needs: [translation-scope, verify-no-chrono]
+    needs: verify-no-chrono
     permissions:
       actions: read
       contents: read
       security-events: write
-    if: github.event_name == 'pull_request' && needs.translation-scope.outputs.translation_only != 'true'
+    if: github.event_name == 'pull_request'
     uses: google/osv-scanner-action/.github/workflows/osv-scanner-reusable-pr.yml@32d3cd482bdadfb38b186c0ad1b031902d55d932 # v2.7.1
 
   scan-repository:
-    needs: [translation-scope, verify-no-chrono]
+    needs: verify-no-chrono
     permissions:
       actions: read
       contents: read
       security-events: write
-    if: github.event_name != 'pull_request' && needs.translation-scope.outputs.translation_only != 'true'
+    if: github.event_name != 'pull_request'
     uses: google/osv-scanner-action/.github/workflows/osv-scanner-reusable.yml@32d3cd482bdadfb38b186c0ad1b031902d55d932 # v2.7.1
