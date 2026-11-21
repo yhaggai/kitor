@@ -378,7 +378,11 @@ pub async fn install(
         if !output.status.success() {
             return Err("Could not extract this GOG release. Your library was not changed.".into());
         }
-        let source = staging.path().to_path_buf();
+        // Publish the extracted game before compatibility detection. A newer store
+        // edition must not disappear merely because Kitor cannot recognize it yet.
+        super::install_cancellation::checkpoint()?;
+        std::fs::rename(staging.path(), &destination).map_err(|e| e.to_string())?;
+        let source = destination.clone();
         let identity = game_id.clone();
         let relative = tokio::task::spawn_blocking(move || {
             let path = find_game(&source, &identity)?;
@@ -387,9 +391,8 @@ pub async fn install(
                 .map_err(|e| e.to_string())
         })
         .await
-        .map_err(|e| e.to_string())??;
-        super::install_cancellation::checkpoint()?;
-        std::fs::rename(staging.path(), &destination).map_err(|e| e.to_string())?;
+        .map_err(|e| format!("Game files retained at {}: {e}", destination.display()))?
+        .map_err(|e| format!("Game files retained at {}: {e}", destination.display()))?;
         destination.join(relative)
     };
     progress(app, &game_id, "Adding game to library…", None);

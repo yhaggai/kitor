@@ -77,7 +77,7 @@ async fn immediate_launch_failure_reaches_the_caller() {
 #[test]
 fn launch_signature_is_isolated_and_refreshed_after_patching() {
     let root = std::env::temp_dir().join(format!("kitor-kyra-launch-{}-{}",
-        std::process::id(), chrono::Utc::now().timestamp_nanos_opt().unwrap()));
+        std::process::id(), time::OffsetDateTime::now_utc().unix_timestamp_nanos()));
     let data = root.join("data");
     let launch = root.join("launch");
     std::fs::create_dir_all(&data).unwrap();
