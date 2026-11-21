@@ -5,6 +5,7 @@ import unicodedata
 from pathlib import Path
 import UnityPy
 from bidi import algorithm as bidi
+from reviewed_terms import apply_reviewed_terms
 
 TOKEN = re.compile(r'(<[^<>\n]{1,100}>|\{[^{}\n]+\})')
 NUM = re.compile(r'\d+')
@@ -29,7 +30,8 @@ def wrap_dialogue(paragraph, units, offset, symbols):
             # Runtime substitutions can vary; reserve a short name-sized slot.
             return 8*DIALOGUE_ADVANCES.get(ord('א'),40.0)
         unit=units[offset+i]
-        return DIALOGUE_ADVANCES.get(ord(unit[0]),DIALOGUE_ADVANCES.get(ord(ch),40.0))
+        code=GLYPHS.get(unicodedata.normalize('NFD',unit),ord(unit[0]))
+        return DIALOGUE_ADVANCES.get(code,DIALOGUE_ADVANCES.get(ord(unit[0]),DIALOGUE_ADVANCES.get(ord(ch),40.0)))
     words=list(re.finditer(r'\S+',paragraph))
     if not words:return [('',0,len(paragraph))]
     lines=[];start=0;end=0;width=0.0
@@ -129,6 +131,7 @@ def read_catalog(path):
         if set(reader.fieldnames or ())!=required:raise ValueError(f'Unexpected catalog CSV columns: {reader.fieldnames}')
         for i,row in enumerate(reader,2):
             if None in row or None in row.values():raise ValueError(f'Malformed catalog CSV row {i}')
+            row['he_pointed']=apply_reviewed_terms(row['he_pointed'])
             p=json.loads(row['path']);stable=json.dumps(p,ensure_ascii=False,separators=(',',':'))
             if stable!=row['stable_id']:raise ValueError(f'Stable ID/path mismatch at CSV row {i}')
             if stable in seen:raise ValueError(f'Duplicate stable ID at CSV row {i}: {stable}')

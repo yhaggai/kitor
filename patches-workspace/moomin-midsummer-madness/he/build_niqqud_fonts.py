@@ -1,6 +1,6 @@
 """Build composite TMP SDF glyphs for every niqqud cluster in catalog.csv."""
 from __future__ import annotations
-import argparse, copy, json, re, unicodedata
+import argparse, copy, hashlib, json, re, unicodedata
 from build import read_catalog
 from pathlib import Path
 import numpy as np
@@ -8,6 +8,7 @@ from scipy.ndimage import distance_transform_edt
 from PIL import Image
 import freetype, uharfbuzz as hb
 import UnityPy
+from font_layout import LOWER_MARKS, spaced_metrics, allocate_cluster_codes
 
 BASE=Path(__file__).resolve().parent
 CLUSTER=re.compile(r'[\u05d0-\u05ea][\u0591-\u05bd\u05bf\u05c1-\u05c2\u05c4-\u05c5\u05c7]+')
@@ -16,19 +17,21 @@ PUA_START=0xE200
 PAD=12
 SCALE=4
 
-def sdf_tile(cluster, font_path, font_size, pad=PAD):
+def sdf_tile(cluster, font_path, font_size, pad=PAD, lower_mark_gap=0):
     # HarfBuzz applies the font's GPOS mark-to-base anchors; FreeType rasterizes
     # each shaped glyph ID. This avoids guessing mark positions or reversing them.
     face=freetype.Face(font_path);face.set_pixel_sizes(0,font_size*SCALE)
     blob=hb.Blob.from_file_path(font_path);hface=hb.Face(blob);hfont=hb.Font(hface)
     hfont.scale=(font_size*SCALE*64,font_size*SCALE*64);hb.ot_font_set_funcs(hfont)
     buf=hb.Buffer();buf.add_str(cluster);buf.direction='rtl';buf.script='Hebr';buf.language='he';hb.shape(hfont,buf)
+    lower_ids={hfont.get_nominal_glyph(cp) for cp in LOWER_MARKS}
     pen_x=pen_y=0;layers=[];left=top=10**9;right=bottom=-10**9
     for info,pos in zip(buf.glyph_infos,buf.glyph_positions):
         face.load_glyph(info.codepoint,freetype.FT_LOAD_RENDER|freetype.FT_LOAD_NO_HINTING)
         slot=face.glyph;bm=slot.bitmap
         origin_x=pen_x+pos.x_offset;origin_y=pen_y+pos.y_offset
         gx=round(origin_x/64)+slot.bitmap_left;gy=-round(origin_y/64)-slot.bitmap_top
+        if info.codepoint in lower_ids:gy+=round(lower_mark_gap*SCALE)
         if bm.width and bm.rows:
             pitch=abs(bm.pitch);raw=np.frombuffer(bytes(bm.buffer),dtype=np.uint8).reshape((bm.rows,pitch))[:,:bm.width]
             if bm.pitch<0:raw=raw[::-1]
@@ -71,6 +74,16 @@ def append_font(env, font_obj, codes, font_path, output_prefix):
     x=0;y=old_h;row_h=0;placements=[];tiles=[]
     basechars={c.m_Unicode:c.m_GlyphIndex for c in font.m_CharacterTable}
     glyph_by_index={g.m_Index:g for g in font.m_GlyphTable}
+    # Correct side bearings for ordinary Hebrew as well as pointed composites.
+    for cp,idx in basechars.items():
+        if not 0x05D0<=cp<=0x05EA:continue
+        g=glyph_by_index[idx];r=g.m_GlyphRect;m=g.m_Metrics
+        box=old.crop((r.m_X,r.m_Y,r.m_X+r.m_Width,r.m_Y+r.m_Height)).point(lambda a:255 if a>=128 else 0).getbbox()
+        if box:
+            m.m_HorizontalBearingX,m.m_HorizontalAdvance=spaced_metrics(m.m_HorizontalBearingX,m.m_HorizontalAdvance,box)
+    # Rebuilding from a previously pointed bundle must replace, not duplicate, PUA entries.
+    font.m_CharacterTable=[c for c in font.m_CharacterTable if not PUA_START<=c.m_Unicode<0xF000]
+    font.m_GlyphTable=[g for g in font.m_GlyphTable if not 20000<=g.m_Index<20000+0xF000-PUA_START]
     # Match the actual unpointed Hebrew glyph height already present in this font.
     # The previous pass used a 44 px Arial raster that rendered substantially smaller.
     ref_heights=[glyph_by_index[basechars[cp]].m_GlyphRect.m_Height for cp in range(0x05d0,0x05eb)
@@ -83,17 +96,19 @@ def append_font(env, font_obj, codes, font_path, output_prefix):
     print(f'{output_prefix}: {font.m_Name}: sizing Hebrew to {ref_height:.1f}px from Arial {font_size}px',flush=True)
     # Find ordinary Hebrew glyph metrics to keep advance and size tied to each base letter.
     for cluster,code in codes.items():
-        tile,(w,h,bx,by)=sdf_tile(cluster,font_path,font_size)
+        tile,(w,h,bx,by)=sdf_tile(cluster,font_path,font_size,lower_mark_gap=3 if 'Bold' in font.m_Name else 2)
+        ink_box=tile.point(lambda a:255 if a>=128 else 0).getbbox()
+        bx,advance=spaced_metrics(bx,glyph_by_index[basechars[ord(cluster[0])]].m_Metrics.m_HorizontalAdvance,ink_box)
         if x+w+1>old_w:x=0;y+=row_h+1;row_h=0
         if y+h>8192:raise ValueError('Composite glyph atlas exceeds 8192 px')
-        tiles.append((x,y,tile));placements.append((cluster,code,x,y,w,h,bx,by))
+        tiles.append((x,y,tile));placements.append((cluster,code,x,y,w,h,bx,by,advance))
         x+=w+1;row_h=max(row_h,h)
     new_h=max(old_h,y+row_h)
     atlas=Image.new('L',(old_w,new_h),0);atlas.paste(old,(0,0))
     # Texture2D image_data is Unity's bottom-up raw Alpha8 layout. Existing
     # glyphs are already in that convention; flip only new PIL tiles on write.
     for x,y,t in tiles:atlas.paste(t.transpose(Image.Transpose.FLIP_TOP_BOTTOM),(x,y))
-    for cluster,code,x,y,w,h,bx,by in placements:
+    for cluster,code,x,y,w,h,bx,by,advance in placements:
         base=ord(cluster[0]);base_idx=basechars.get(base)
         if base_idx is None or base_idx not in glyph_by_index:
             raise ValueError(f'{font.m_Name}: missing base Hebrew glyph {cluster[0]}')
@@ -102,7 +117,7 @@ def append_font(env, font_obj, codes, font_path, output_prefix):
         g.m_GlyphRect.m_X=x;g.m_GlyphRect.m_Y=y;g.m_GlyphRect.m_Width=w;g.m_GlyphRect.m_Height=h
         g.m_Metrics.m_Width=float(w);g.m_Metrics.m_Height=float(h)
         g.m_Metrics.m_HorizontalBearingX=float(bx);g.m_Metrics.m_HorizontalBearingY=float(by)
-        g.m_Metrics.m_HorizontalAdvance=proto.m_Metrics.m_HorizontalAdvance
+        g.m_Metrics.m_HorizontalAdvance=advance
         g.m_Scale=1.0;g.m_AtlasIndex=0
         ch=clone_entry(font.m_CharacterTable[0]);ch.m_Unicode=ord(code);ch.m_GlyphIndex=g.m_Index;ch.m_Scale=1.0
         font.m_GlyphTable.append(g);font.m_CharacterTable.append(ch)
@@ -120,7 +135,9 @@ def main():
     ap=argparse.ArgumentParser();ap.add_argument('font_bundle',type=Path);ap.add_argument('sharedassets',type=Path);ap.add_argument('--out',type=Path,required=True);a=ap.parse_args()
     rows=read_catalog(BASE/'catalog.csv')
     clusters=sorted({unicodedata.normalize('NFD',m.group()) for r in rows for m in CLUSTER.finditer(r['he'])})
-    codes={c:chr(PUA_START+i) for i,c in enumerate(clusters)}
+    mapping=BASE/'niqqud-glyphs.json'
+    existing=json.loads(mapping.read_text(encoding='utf-8')) if mapping.exists() else {}
+    codes={c:chr(code) for c,code in allocate_cluster_codes(clusters,existing,PUA_START).items()}
     (BASE/'niqqud-glyphs.json').write_text(json.dumps({c:ord(v) for c,v in codes.items()},ensure_ascii=False,indent=1),encoding='utf-8')
     fonts=UnityPy.load(a.font_bundle.read_bytes());shared=UnityPy.load(a.sharedassets.read_bytes())
     for n in FONT_NAMES:
@@ -133,5 +150,19 @@ def main():
     a.out.mkdir(parents=True,exist_ok=True)
     (a.out/'fonts_assets_all.bundle').write_bytes(fonts.file.save(packer='lz4'))
     (a.out/'sharedassets0.assets').write_bytes(shared.file.save(packer='lz4'))
-    print(f'Created map with {len(codes)} clusters and PUA range U+{PUA_START:04X}–U+{PUA_START+len(codes)-1:04X}')
+    # Composite ink can be wider than its base letter. Wrapping must use the
+    # rebuilt advances, with the widest active face reserved for styled words.
+    advances={}
+    for obj in fonts.objects:
+        if obj.type.name!='MonoBehaviour' or obj.peek_name() not in FONT_NAMES:continue
+        font=obj.read();glyphs={g.m_Index:g for g in font.m_GlyphTable}
+        for ch in font.m_CharacterTable:
+            advance=glyphs[ch.m_GlyphIndex].m_Metrics.m_HorizontalAdvance
+            advances[str(ch.m_Unicode)]=max(advances.get(str(ch.m_Unicode),0),advance)
+    metrics={'font_asset':'maximum advances across active regular and bold faces',
+             'font_bundle_sha256':hashlib.sha256((a.out/'fonts_assets_all.bundle').read_bytes()).hexdigest(),
+             'advances':dict(sorted(advances.items(),key=lambda item:int(item[0]))),
+             'bubble_width_limit':550.0}
+    (BASE/'dialogue-font-advances.json').write_text(json.dumps(metrics,indent=2)+'\n',encoding='utf-8')
+    print(f'Created map with {len(codes)} clusters and PUA range U+{PUA_START:04X}–U+{max(map(ord,codes.values())):04X}')
 if __name__=='__main__':main()

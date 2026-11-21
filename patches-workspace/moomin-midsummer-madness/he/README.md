@@ -1,5 +1,58 @@
 # Moomin: Midsummer Madness — Hebrew localization
 
+## Font spacing update 0.1.3, revision 4
+
+Kitor downloads this patch as `0.1.3-download1` (catalog revision 5); no game
+patch payload is bundled in the app. The ZIP retains the same five-file plan
+and uses the standard checksum-verified download and selective journaled
+installation path.
+
+All 3,866 dialogue CSV speaker labels now resolve from the pristine
+GameDatabase's per-phrase `character_card`, correcting 3,492 scene-inferred
+labels without editing translations. `speaker-context.json` retains character
+IDs, names, emotions and events for subsequent agreement review. Recreate it
+with `merge_speakers.py <pristine-database-bundle>`. The references establish
+who speaks; they do not automatically establish each addressee or grammatical
+number.
+
+The follow-up agreement review fixes 123 dialogue rows, including first-person
+gender, singular/plural address and distinctions visible only in niqqud.
+`speaker-agreement.json` documents all 19 speaker cards, while
+`agreement-review.json` records every correction and its context. This is a
+targeted agreement pass, not a claim of complete literary proofreading.
+
+Composite PUA codes are stable across rebuilds: new clusters append to the
+existing mapping, and unused legacy clusters remain available. This preserves
+previously encoded chapter names in save filenames. Offline before/after font
+previews use the matching old and new cluster maps separately.
+
+Hebrew base letters and composite pointed glyphs now reserve at least two atlas
+pixels of ink clearance on each side. Composite advances expand when needed,
+rather than retaining an original-font advance that is narrower than the Arial
+glyph. Lower vowel marks move down two atlas pixels in regular faces and three
+in bold; dagesh and shin/sin dots retain HarfBuzz anchor positions. Letter size
+and vertical baseline are unchanged. `dialogue-font-advances.json` is regenerated
+from the widest active face, including the composite PUA glyphs, and dialogue
+wrapping uses the composite advance for each pointed cluster.
+
+`niqqud-font-preview.png` compares English, previous Hebrew and updated Hebrew
+for all four active faces at the same rendering scale. It is an offline atlas
+preview, without TMP material effects. `verify_niqqud_fonts.py` reopens both font
+copies and checks unique indices, coverage, atlas bounds and ink margins;
+`font-spacing-report.json` records the results. No running game is controlled.
+
+Shmantaf readings are pinned as שְׁמַנְטַף / שְׁמַנְטַפִים. The plural is attested
+in [Uriel Ofek's literary discussion](https://benyehuda.org/read/21434); the
+singular follows the user's pronunciation. The latest user-requested spelling
+for Misabel is אומללית / אוּמְלָלִית, superseding the earlier אומללת revision.
+`reviewed_terms.py` applies those readings after draft generation and when
+reading the canonical CSV for font and database builds. The CSV and pointed
+reference catalog contain the corrections themselves.
+
+The update targets the same Windows Steam build, with the existing selective
+five-file installation and restoration plan. macOS is not supported by this
+game patch. Visual validation is offline; live gameplay has not been checked.
+
 This folder contains the editable logical-order Hebrew catalog, its source inventory, character glossary, extraction and build scripts, and model attribution.
 
 ## Scope

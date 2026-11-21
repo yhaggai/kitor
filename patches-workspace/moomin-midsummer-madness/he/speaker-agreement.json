@@ -1,0 +1,29 @@
+{
+  "scope": "Hebrew grammatical agreement for explicit GameDatabase character cards. A grammatical label does not establish a hidden identity or biological sex.",
+  "speakers": {
+    "character_little_my": {"hebrew": "מאי הקטנה", "gender": "feminine", "number": "singular", "evidence": "character-glossary.md; explicit Little My dialogue"},
+    "character_moomintroll": {"hebrew": "מומינטרול", "gender": "masculine", "number": "singular", "evidence": "character-glossary.md; explicit Moomintroll dialogue"},
+    "character_spider": {"hebrew": "העכביש", "gender": "masculine", "number": "singular", "basis": "grammatical noun", "evidence": "Hebrew role העכביש in character-glossary.md"},
+    "character_mymble": {"hebrew": "מייבל", "gender": "feminine", "number": "singular", "evidence": "character-glossary.md; the older sister"},
+    "character_pappa": {"hebrew": "מומינאבא", "gender": "masculine", "number": "singular", "evidence": "character-glossary.md; Moominpappa"},
+    "character_snorkmaiden": {"hebrew": "סנורקה", "gender": "feminine", "number": "singular", "evidence": "character-glossary.md; explicit Snorkmaiden dialogue"},
+    "character_mamma": {"hebrew": "מומינאמא", "gender": "feminine", "number": "singular", "evidence": "character-glossary.md; Moominmamma"},
+    "character_misabel": {"hebrew": "אומללית", "gender": "feminine", "number": "singular", "evidence": "character-glossary.md; explicit Misabel dialogue"},
+    "character_emma": {"hebrew": "אמה", "gender": "feminine", "number": "singular", "evidence": "character-glossary.md; explicit Emma dialogue"},
+    "character_bushkid": {"hebrew": "וודי — ילד־השיח", "gender": "masculine", "number": "singular", "evidence": "dialogue_chapter3_q1_park_standardmatch_bushkid: And what would he do with it?; Russian first-person мечтал in cutscene_angostura"},
+    "character_park_keeper": {"hebrew": "שומר הפארק", "gender": "masculine", "number": "singular", "evidence": "character-glossary.md; explicit Park Keeper dialogue"},
+    "character_artist": {"hebrew": "וודי — הצייר", "gender": "masculine", "number": "singular", "basis": "documented grammatical convention", "referent_gender_in_english": "unspecified", "evidence": "chapter_recap_chapter_3_q1 conditional_text_list[2]: Russian был художником; Spanish el niño; Hebrew role הצייר. English uses singular they, which is retained as uncertainty about referent gender rather than a plural marker."},
+    "character_snufkin": {"hebrew": "סנופקין", "gender": "masculine", "number": "singular", "evidence": "character-glossary.md; explicit Snufkin dialogue"},
+    "character_trainer": {"hebrew": "וודי — המאמנת", "gender": "feminine", "number": "singular", "evidence": "dialogue_chapter3_q1_park_standardmatch_trainer: She's got no use for it.; dialogue_chapter3_q1_park_uniquematch_trainer_chocolate: she didn't ask for a bird (German sie wollte)"},
+    "character_fillyjonk": {"hebrew": "פיליונק", "gender": "feminine", "number": "singular", "evidence": "character-glossary.md; explicit Fillyjonk dialogue"},
+    "character_policeman": {"hebrew": "השוטר", "gender": "masculine", "number": "singular", "evidence": "character-glossary.md; explicit Policeman dialogue"},
+    "character_someone": {"hebrew": "מישהו", "gender": "unspecified", "grammatical_gender": "masculine", "number": "singular", "evidence": "The game deliberately uses Someone; preserve the mystery. The generic Hebrew label מישהו is masculine, but it does not identify the speaker or establish referent gender."},
+    "character_edward": {"hebrew": "אדוארד הבובל", "gender": "masculine", "number": "singular", "evidence": "character-glossary.md; explicit Edward dialogue"},
+    "character_bird": {"hebrew": "הציפור", "gender": "feminine", "number": "singular", "basis": "grammatical noun", "evidence": "Hebrew role הציפור in character-glossary.md; no biological-sex inference"}
+  },
+  "collectives": {
+    "moomintroll_and_little_my": {"members": ["character_moomintroll", "character_little_my"], "gender": "masculine", "number": "plural", "evidence": "Mixed pair. Do not replace singular address automatically without contextual addressee evidence."},
+    "hattifatteners": {"hebrew": "השמנטפים", "gender": "masculine", "number": "plural", "evidence": "Canonical Hebrew creature label and plural references in the dialogue"},
+    "police_chief_disguise": {"role_number": "singular", "participants": ["character_moomintroll", "character_little_my"], "participant_number": "plural", "evidence": "Two protagonists jointly impersonate one Police Chief. Dialogue may intentionally combine a singular role with plural commands."}
+  }
+}

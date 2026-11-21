@@ -28,54 +28,42 @@ fn all_catalog_patches_are_downloadable() {
     }
 }
 
-#[cfg(target_os = "windows")]
 #[test]
-fn moomin_embedded_package_matches_manifest_and_embedded_hashes() {
+fn moomin_resolves_to_verified_download_without_embedded_resources() {
     let registry = crate::services::registry_service::load_registry().unwrap();
-    let game = registry
-        .games
-        .iter()
-        .find(|game| game.scummvm_id == "moomin-midsummer-madness")
-        .expect("Moomin game is registered");
-    let patch = game.patches.iter().find(|patch| patch.language == "he").unwrap();
-    let PackageSource::Embedded(key) = PackageSource::resolve(patch, &game.behavior).unwrap() else {
-        panic!("Moomin patch must use the embedded package")
-    };
-    assert_eq!(key, "moomin-midsummer-madness");
-    let staging = tempfile::tempdir().unwrap();
-    PackageSource::Embedded(key.clone())
-        .stage(
-            staging.path(),
-            Path::new("unused.zip"),
-            &game.scummvm_id,
-            "he",
-            &patch.version,
-            Path::new("."),
-        )
-        .unwrap();
-    assert!(staging.path().join("patch.json").is_file());
-    let assets = embedded_assets("moomin-midsummer-madness/windows").unwrap();
-    let manifest = assets
-        .iter()
-        .find(|(path, _)| *path == "patch.json")
-        .expect("embedded package has its patch manifest");
-    let package: crate::services::patch_lifecycle::Package =
-        serde_json::from_slice(manifest.1).unwrap();
-    assert_eq!(package.scummvm_id, game.scummvm_id);
-    assert_eq!(package.version, patch.version);
-    use sha2::Digest;
-    for file in &package.platforms["windows"].files {
-        let Some(crate::services::patch_lifecycle::Source::Bsdiff { path, sha256, .. }) =
-            file.source.as_ref()
-        else {
-            panic!("Moomin package files use BSDIFF sources")
-        };
-        let bytes = assets
-            .iter()
-            .find(|(name, _)| *name == path)
-            .expect("every manifest delta is bundled");
-        assert_eq!(format!("{:x}", sha2::Sha256::digest(bytes.1)), *sha256);
+    let game = registry.games.iter().find(|g| g.scummvm_id == "moomin-midsummer-madness").unwrap();
+    let patch = &game.patches[0];
+    assert!(matches!(PackageSource::resolve(patch, &game.behavior).unwrap(), PackageSource::Download));
+    let (url, checksum) = PackageSource::Download.download_metadata(patch).unwrap();
+    assert_eq!(url, patch.download_url);
+    assert_eq!(checksum, patch.checksum);
+    assert!(url.starts_with("https://github.com/yhaggai/kitor/releases/download/"));
+    assert!(checksum.is_some_and(|value| value.len() == 64));
+    assert!(game.behavior.bundled_resource.is_none());
+}
+
+#[test]
+fn owlboy_compatibility_archives_are_downloads_with_independent_checksums() {
+    let registry = crate::services::registry_service::load_registry().unwrap();
+    let patch = &registry.games.iter().find(|g| g.scummvm_id == "owlboy").unwrap().patches[0];
+    for (source, suffix, expected) in [
+        (PackageSource::OwlboyWindowsSteam, "-windows.zip", "858989571dfbde1f70612b268d494ae8d9326409955ad2cdae8b1460da2a702a"),
+        (PackageSource::OwlboyMacSteam, "-macos.zip", "c749082648925a3ee00cc6a4ac35c6301605bdda6aad84aa684ea8e42917beb8"),
+    ] {
+        let (url, checksum) = source.download_metadata(patch).unwrap();
+        assert!(url.starts_with("https://github.com/yhaggai/kitor/releases/download/"));
+        assert!(url.ends_with(suffix));
+        assert_eq!(checksum.as_deref(), Some(expected));
     }
+}
+
+#[test]
+fn legacy_bundled_sources_are_rejected_instead_of_staged() {
+    let registry = crate::services::registry_service::load_registry().unwrap();
+    let mut patch = registry.games.iter().find(|g| g.scummvm_id == "moomin-midsummer-madness").unwrap().patches[0].clone();
+    patch.source_type = "bundled".into();
+    patch.download_url = "bundled://moomin-midsummer-madness/windows".into();
+    assert!(PackageSource::resolve(&patch, &GameBehavior::default()).is_err());
 }
 
 #[test]

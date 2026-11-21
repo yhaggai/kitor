@@ -8,6 +8,7 @@ import argparse
 import hashlib
 import json
 import re
+import shutil
 from pathlib import Path
 import stat
 import subprocess
@@ -19,6 +20,24 @@ from build_patch_packages import require, validate
 ROOT = Path(__file__).resolve().parents[2]
 INDEX = ROOT / 'kitor/patches/download-packages.json'
 REGISTRY = ROOT / 'kitor/patches/registry.json'
+COMPAT_INDEX = ROOT / 'kitor/patches/compat-downloads.json'
+
+
+def compatibility_downloads(output):
+    """Copy hash-pinned compatibility archives without embedding or repacking them."""
+    results = []
+    output.mkdir(parents=True, exist_ok=True)
+    for identity, entry in json.loads(COMPAT_INDEX.read_text(encoding='utf-8')).items():
+        source = (ROOT / entry['source']).resolve(strict=True)
+        require(source.is_relative_to(ROOT.resolve()), 'Compatibility package escapes repository')
+        require(Path(entry['filename']).name == entry['filename'] and entry['filename'].endswith('.zip'), 'Unsafe compatibility filename')
+        with source.open('rb') as stream:
+            checksum = hashlib.file_digest(stream, 'sha256').hexdigest()
+        require(checksum == entry['checksum'] and source.stat().st_size == entry['file_size'], f'Compatibility package differs: {identity}')
+        destination = output / entry['filename']
+        shutil.copyfile(source, destination)
+        results.append((destination, entry))
+    return results
 
 
 def registry_text(registry, previous):
@@ -95,23 +114,24 @@ def build_all(output, update_registry=False):
 def verify_published():
     """App releases must not point users at missing or mismatched ZIPs."""
     identities = json.loads(INDEX.read_text(encoding="utf-8"))
-    for game in json.loads(REGISTRY.read_text(encoding="utf-8"))['games']:
-        if game['scummvm_id'] not in identities:
-            continue
-        for patch in game['patches']:
-            tag = patch['download_url'].split('/download/', 1)[1].split('/', 1)[0]
-            release = json.loads(subprocess.check_output(
-                ['gh', 'api', f'repos/yhaggai/kitor/releases/tags/{tag}'], text=True, encoding='utf-8'))
-            require(not release['draft'] and not release['prerelease'],
-                    f'Patch release is not published: {tag}')
-            with tempfile.TemporaryDirectory() as temp:
-                subprocess.run(['gh', 'release', 'download', tag, '--repo', 'yhaggai/kitor',
-                                '--pattern', patch['filename'], '--dir', temp], check=True)
-                artifact = Path(temp) / patch['filename']
-                with artifact.open('rb') as stream:
-                    checksum = hashlib.file_digest(stream, 'sha256').hexdigest()
-                require(checksum == patch['checksum'] and artifact.stat().st_size == patch['file_size'],
-                        f"Published package differs from catalog: {game['scummvm_id']}")
+    entries = [(game['scummvm_id'], patch)
+               for game in json.loads(REGISTRY.read_text(encoding="utf-8"))['games']
+               if game['scummvm_id'] in identities for patch in game['patches']]
+    entries.extend(json.loads(COMPAT_INDEX.read_text(encoding='utf-8')).items())
+    for identity, patch in entries:
+        tag = patch['download_url'].split('/download/', 1)[1].split('/', 1)[0]
+        release = json.loads(subprocess.check_output(
+            ['gh', 'api', f'repos/yhaggai/kitor/releases/tags/{tag}'], text=True, encoding='utf-8'))
+        require(not release['draft'] and not release['prerelease'],
+                f'Patch release is not published: {tag}')
+        with tempfile.TemporaryDirectory() as temp:
+            subprocess.run(['gh', 'release', 'download', tag, '--repo', 'yhaggai/kitor',
+                            '--pattern', patch['filename'], '--dir', temp], check=True)
+            artifact = Path(temp) / patch['filename']
+            with artifact.open('rb') as stream:
+                checksum = hashlib.file_digest(stream, 'sha256').hexdigest()
+            require(checksum == patch['checksum'] and artifact.stat().st_size == patch['file_size'],
+                    f"Published package differs from catalog: {identity}")
 
 
 if __name__ == '__main__':
@@ -124,4 +144,6 @@ if __name__ == '__main__':
         verify_published()
     else:
         for artifact, _, _ in build_all(args.output, args.update_registry):
+            print(artifact)
+        for artifact, _ in compatibility_downloads(args.output):
             print(artifact)

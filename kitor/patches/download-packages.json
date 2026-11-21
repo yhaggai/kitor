@@ -1,4 +1,9 @@
 {
+  "moomin-midsummer-madness": {
+    "windows": {
+      "default": "patches-workspace/moomin-midsummer-madness/he/patch.windows.candidate.json"
+    }
+  },
   "sq4": {
     "windows": {
       "default": "patches-workspace/sq4/he/patch.json"
