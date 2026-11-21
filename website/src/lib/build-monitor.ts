@@ -30,7 +30,10 @@ type BuildRow = {
 const platform = { windows: "Windows", osx: "macOS", linux: "Linux" };
 const date = (value: string) => new Date(value).toLocaleString();
 const needsReview = (row: BuildRow) =>
-  row.change !== null || row.supported.some((baseline) => baseline.status === "different");
+  row.change !== null ||
+  row.supported.some(
+    ({ status, fileCheck }) => status === "different" || fileCheck?.status === "changed"
+  );
 
 function line(parent: HTMLElement, value: string, className = "") {
   const element = document.createElement("div");
@@ -45,6 +48,22 @@ function link(parent: HTMLElement, label: string, url: string) {
   anchor.textContent = label;
   anchor.href = url;
   parent.append(anchor);
+}
+
+function renderPatchStatus(parent: HTMLElement, baseline: Baseline) {
+  const os = platform[baseline.platform as keyof typeof platform] ?? baseline.platform;
+  const check = baseline.fileCheck;
+  if (check?.status === "changed") {
+    line(parent, `${os} · ↑ ${check.paths.length} patch files changed or missing`, "attention");
+  } else if (check?.status === "unchanged") {
+    line(parent, `${os} · ✓ ${check.filesChecked} patch inputs match`, "build-match");
+  } else if (baseline.status === "different") {
+    line(parent, `${os} · ↑ Build differs from patch baseline`, "attention");
+  } else if (baseline.status === "match") {
+    line(parent, `${os} · ✓ Matches patch baseline`, "build-match");
+  } else {
+    line(parent, `${os} · Comparison unavailable`, "build-meta");
+  }
 }
 
 function renderStore(row: BuildRow) {
@@ -63,25 +82,23 @@ function renderStore(row: BuildRow) {
   }
 
   if (row.availability !== "ok") {
-    line(element, row.availability === "error" ? "Store lookup failed" : "No public build", "attention");
+    line(
+      element,
+      row.availability === "error" ? "Store lookup failed" : "No public build",
+      "attention"
+    );
     if (row.lastSuccessAt) line(element, `Last seen ${date(row.lastSuccessAt)}`, "build-meta");
-  } else if (row.supported.some(({ fileCheck }) => fileCheck?.status === "changed")) {
-    line(element, "↑ Patch files changed · verification needed", "attention");
-  } else if (row.supported.some(({ fileCheck }) => fileCheck?.status === "unchanged")
-    && row.supported.every(({ status, fileCheck }) => status === "match" || fileCheck?.status === "unchanged")) {
-    line(element, "✓ Compared patch files unchanged", "build-match");
-  } else if (row.supported.some((baseline) => baseline.status === "different")) {
-    line(element, "↑ Build differs from patch baseline", "attention");
-  } else if (row.supported.length && row.supported.every((baseline) => baseline.status === "match")) {
-    line(element, "✓ Matches patch baseline", "build-match");
+  } else if (row.supported.length) {
+    for (const baseline of row.supported) renderPatchStatus(element, baseline);
   } else {
-    line(element, row.supported.length ? "Comparison unavailable" : "Supported build unrecorded", "build-meta");
+    line(element, "Supported build unrecorded", "build-meta");
   }
 
   if (row.change) {
-    const change = row.change.previousBuildId === row.change.buildId
-      ? "Depot manifest changed"
-      : `Changed from build ${row.change.previousBuildId}`;
+    const change =
+      row.change.previousBuildId === row.change.buildId
+        ? "Depot manifest changed"
+        : `Changed from build ${row.change.previousBuildId}`;
     line(element, change, "attention").title = date(row.change.detectedAt);
   }
 
@@ -90,25 +107,48 @@ function renderStore(row: BuildRow) {
     const summary = document.createElement("summary");
     summary.textContent = "Patch build details";
     details.append(summary);
-    const status = { match: "Matches", different: "Differs", unavailable: "Comparison unavailable" };
+    const status = {
+      match: "Matches",
+      different: "Differs",
+      unavailable: "Comparison unavailable",
+    };
     for (const baseline of row.supported) {
       const os = platform[baseline.platform as keyof typeof platform] ?? baseline.platform;
-      const id = baseline.manifest_id
-        ? `Depot ${baseline.depot_id} · manifest ${baseline.manifest_id}`
-        : `Build ${baseline.build_id}`;
-      line(details, `${os} · ${status[baseline.status]}`);
-      line(details, id, "build-meta");
       const check = baseline.fileCheck;
-      if (check?.status === "unchanged") line(details, `${check.filesChecked} patch inputs unchanged (${row.store === "steam" ? "Steam SHA-1" : "GOG manifest hashes"})`, "build-match");
+      line(
+        details,
+        check?.status === "changed" || check?.status === "unchanged"
+          ? os
+          : `${os} · ${status[baseline.status]}`
+      );
+      if (baseline.manifest_id) {
+        line(
+          details,
+          `Depot ${baseline.depot_id} · manifest ${baseline.manifest_id}`,
+          "build-meta"
+        );
+      } else if (baseline.build_id) {
+        line(details, `Build ${baseline.build_id}`, "build-meta");
+      }
+      if (check?.status === "unchanged")
+        line(details, `${check.filesChecked} patch inputs match`, "build-match");
       if (check?.status === "changed") {
         line(details, "Patch files changed or missing", "attention");
         for (const path of check.paths) line(details, path);
       }
       if (check?.status === "unavailable") line(details, check.reason, "build-meta");
       if (baseline.patchVersion) line(details, `Patch ${baseline.patchVersion}`, "build-meta");
-      const datedEntry = line(details, baseline.released_on ? `Released ${baseline.released_on} `
-        : baseline.first_seen_on ? `First seen ${baseline.first_seen_on} ` : "Release date unknown", "build-meta");
-      if (baseline.release_date_source) link(datedEntry, "Date source", baseline.release_date_source);
+      const datedEntry = line(
+        details,
+        baseline.released_on
+          ? `Released ${baseline.released_on} `
+          : baseline.first_seen_on
+            ? `First seen ${baseline.first_seen_on} `
+            : "Release date unknown",
+        "build-meta"
+      );
+      if (baseline.release_date_source)
+        link(datedEntry, "Date source", baseline.release_date_source);
       link(details, "Evidence", `https://github.com/yhaggai/kitor/blob/HEAD/${baseline.evidence}`);
     }
     element.append(details);
@@ -134,9 +174,11 @@ export async function showBuildMonitor(root: HTMLElement) {
       for (const summary of summaries) {
         summary.hidden = Boolean(store.value && store.value !== summary.dataset.store);
       }
-      card.hidden = !card.dataset.title!.toLowerCase().includes(query)
-        || ![...summaries].some((summary) => !summary.hidden)
-        || (review.checked && !rows.some((row) => (!store.value || store.value === row.store) && needsReview(row)));
+      card.hidden =
+        !card.dataset.title!.toLowerCase().includes(query) ||
+        ![...summaries].some((summary) => !summary.hidden) ||
+        (review.checked &&
+          !rows.some((row) => (!store.value || store.value === row.store) && needsReview(row)));
       if (!card.hidden) count++;
     }
     empty.hidden = count > 0;

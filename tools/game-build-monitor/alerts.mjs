@@ -5,7 +5,10 @@ const stores = ["steam", "gog"];
 const deliveryKey = "patch-alerts-delivered";
 
 async function hash(value) {
-  const digest = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(JSON.stringify(value)));
+  const digest = await crypto.subtle.digest(
+    "SHA-256",
+    new TextEncoder().encode(JSON.stringify(value))
+  );
   return Array.from(new Uint8Array(digest), (byte) => byte.toString(16).padStart(2, "0")).join("");
 }
 
@@ -15,7 +18,9 @@ export async function sendPatchAlerts(env, deliver = sendEmail) {
 
   const kv = env.BUILD_SNAPSHOTS;
   const [snapshot, sent, ...checks] = await Promise.all(
-    ["latest", deliveryKey, ...stores.map(fileChecksKey)].map((key) => kv.get(key, { type: "json" })),
+    ["latest", deliveryKey, ...stores.map(fileChecksKey)].map((key) =>
+      kv.get(key, { type: "json" })
+    )
   );
   if (!snapshot) return;
   const delivered = new Set(sent ?? []);
@@ -29,11 +34,15 @@ export async function sendPatchAlerts(env, deliver = sendEmail) {
       const id = await hash([recipient, identity]);
       if (delivered.has(id)) continue;
       const [gameId, , platform, , patchVersion] = identity;
+      const latest = identity.at(-1);
+      const previous = identity.at(-2);
+      const buildLabel = store === "steam" ? "Manifest" : "Build";
+      const build = previous ? `${previous} → ${latest}` : latest;
       entries.push({
         id,
         text: [
           `${titles.get(gameId) ?? gameId} (${store === "steam" ? "Steam" : "GOG"}, ${platform})`,
-          `Patch ${patchVersion}. ${store === "steam" ? "Manifest" : "Build"} ${identity.at(-2)} → ${identity.at(-1)}.`,
+          `Patch ${patchVersion}. ${buildLabel} ${build}.`,
           ...check.paths.map((path) => `  - ${path}`),
         ].join("\n"),
       });
