@@ -7,6 +7,10 @@ on:
         description: Build and verify signed macOS installers without creating a release
         type: boolean
         default: false
+      resume_windows:
+        description: Resume Windows upload for an existing draft with unchanged app sources
+        type: boolean
+        default: false
   release:
     types: [published]
 
@@ -25,6 +29,7 @@ jobs:
       contents: write
     outputs:
       tag: ${{ steps.release.outputs.tag }}
+      matrix: ${{ steps.matrix.outputs.matrix }}
     steps:
       - uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
         with:
@@ -57,11 +62,48 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: python kitor/tools/build_download_packages.py --verify-published
       - name: Create draft app release
-        if: ${{ !inputs.verify_macos }}
+        if: ${{ !inputs.verify_macos && !inputs.resume_windows }}
         id: release
         env:
           GH_TOKEN: ${{ github.token }}
         run: python kitor/tools/app_release.py prepare
+      - name: Select builds and verify draft recovery inputs
+        id: matrix
+        env:
+          GH_TOKEN: ${{ github.token }}
+          RESUME_WINDOWS: ${{ inputs.resume_windows }}
+          VERIFY_MACOS: ${{ inputs.verify_macos }}
+        shell: python
+        run: |
+          import json, os, re, subprocess, sys
+          sys.path.insert(0, "kitor/tools")
+          import app_release
+
+          builds = [
+              {"os": "macos-latest", "target": "aarch64-apple-darwin", "platform": "darwin-aarch64", "bundles": "app,dmg"},
+              {"os": "macos-latest", "target": "x86_64-apple-darwin", "platform": "darwin-x86_64", "bundles": "app,dmg"},
+              {"os": "windows-latest", "target": "x86_64-pc-windows-msvc", "platform": "windows-x86_64", "bundles": "nsis"},
+          ]
+          if os.environ["RESUME_WINDOWS"] == "true":
+              if os.environ["VERIFY_MACOS"] == "true":
+                  raise SystemExit("Draft recovery cannot run in verification-only mode")
+              draft = app_release.release("app-v" + app_release.configured_version())
+              source = draft["target_commitish"]
+              if not draft["draft"] or draft["prerelease"] or not re.fullmatch(r"[0-9a-f]{40}", source):
+                  raise SystemExit("Recovery requires an unpublished stable draft with an exact source SHA")
+              subprocess.run(["git", "fetch", "--depth=1", "origin", source], check=True)
+              changed = set(subprocess.check_output(["git", "diff", "--name-only", source, "HEAD"], text=True).splitlines())
+              if changed - {".github/workflows/release-app.yml"}:
+                  raise SystemExit("App sources changed since the draft; do not mix platform builds")
+              assets = app_release.asset_map(draft)
+              for platform in ("darwin-aarch64", "darwin-x86_64"):
+                  name = app_release.filename(app_release.configured_version(), platform)
+                  for required in (name, name + ".sig", name.replace(".app.tar.gz", ".dmg")):
+                      if required not in assets or assets[required]["size"] <= 0:
+                          raise SystemExit("Recovery requires both completed Mac platform uploads")
+              builds = builds[-1:]
+          with open(os.environ["GITHUB_OUTPUT"], "a", encoding="utf8") as output:
+              output.write("matrix=" + json.dumps({"include": builds}) + "\n")
 
   build:
     needs: prepare
@@ -69,20 +111,7 @@ jobs:
       contents: write
     strategy:
       fail-fast: false
-      matrix:
-        include:
-          - os: macos-latest
-            target: aarch64-apple-darwin
-            platform: darwin-aarch64
-            bundles: app,dmg
-          - os: macos-latest
-            target: x86_64-apple-darwin
-            platform: darwin-x86_64
-            bundles: app,dmg
-          - os: windows-latest
-            target: x86_64-pc-windows-msvc
-            platform: windows-x86_64
-            bundles: nsis
+      matrix: ${{ fromJSON(needs.prepare.outputs.matrix) }}
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
@@ -174,6 +203,7 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
           RELEASE_PLATFORM: ${{ matrix.platform }}
+        shell: bash
         run: python kitor/tools/app_release.py upload --platform "$RELEASE_PLATFORM"
 
   finalize:
