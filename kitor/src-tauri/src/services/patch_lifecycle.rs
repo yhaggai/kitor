@@ -281,6 +281,34 @@ pub fn matches_original_files(dir: &Path, target: &Path) -> Result<bool> {
     Ok(true)
 }
 
+pub fn can_reinstall_after_store_restore(dir: &Path, target: &Path) -> Result<bool> {
+    let journal = load(dir)?;
+    if journal.target != target.canonicalize().map_err(err)? {
+        return Ok(false);
+    }
+    store_restored_originals(&journal)
+}
+
+fn store_restored_originals(journal: &Journal) -> Result<bool> {
+    if journal.status != "active" {
+        return Ok(false);
+    }
+    let mut restored_game_file = false;
+    for record in &journal.files {
+        if !record.started || record.restored {
+            return Ok(false);
+        }
+        let current = current_hash(&safe_path(&journal.target, &record.path)?)?;
+        if current == record.original_hash {
+            restored_game_file |= record.original_hash.is_some()
+                && record.original_hash != record.installed_hash;
+        } else if record.original_hash.is_some() || current != record.installed_hash {
+            return Ok(false);
+        }
+    }
+    Ok(restored_game_file)
+}
+
 pub fn archive_replaced_installation(dir: &Path, target: &Path) -> Result<()> {
     let _lock = lock(dir.parent().ok_or("Missing transaction parent")?)?;
     if !matches_original_files(dir, target)? {
@@ -545,14 +573,22 @@ pub fn install_with_progress(
             cleanup_restored(&dir, &existing)?;
         }
         if existing.status == "active" {
-            if existing.game == game && existing.language == language && existing.version == version
-            {
-                for record in &existing.files {
-                    if current_hash(&safe_path(&target, &record.path)?)? != record.installed_hash {
-                        return Err("Installed patch files changed; resolve the conflict before reinstalling".into());
-                    }
+            if existing.game == game {
+                if store_restored_originals(&existing)? {
+                    // A storefront reinstall can restore the game files while
+                    // leaving patch-created files. Remove only verified leftovers.
+                    restore_inner(&dir, &mut existing)?;
+                    cleanup_restored(&dir, &existing)?;
+                    continue;
                 }
-                return Ok(dir);
+                if existing.language == language && existing.version == version {
+                    for record in &existing.files {
+                        if current_hash(&safe_path(&target, &record.path)?)? != record.installed_hash {
+                            return Err("Installed patch files changed; resolve the conflict before reinstalling".into());
+                        }
+                    }
+                    return Ok(dir);
+                }
             }
             if existing
                 .files
@@ -812,6 +848,10 @@ pub fn uninstall(dir: &Path, target: &Path) -> Result<()> {
 }
 
 #[cfg(test)]
+#[path = "patch_lifecycle_reinstall_tests.rs"]
+mod reinstall_tests;
+
+#[cfg(test)]
 mod tests {
     use super::*;
     use serde_json::json;
@@ -850,14 +890,14 @@ mod tests {
         assert_eq!(fs::read(fixture.game.join("later.dat")).unwrap(), b"keep later");
     }
 
-    struct Fixture {
+    pub(super) struct Fixture {
         _root: tempfile::TempDir,
-        game: PathBuf,
+        pub(super) game: PathBuf,
         package: PathBuf,
         storage: PathBuf,
     }
     impl Fixture {
-        fn new() -> Self {
+        pub(super) fn new() -> Self {
             let root = tempfile::tempdir().unwrap();
             let game = root.path().join("game");
             let package = root.path().join("package");
@@ -871,7 +911,7 @@ mod tests {
                 storage,
             }
         }
-        fn plan(&self, changes: serde_json::Value, version: &str) {
+        pub(super) fn plan(&self, changes: serde_json::Value, version: &str) {
             fs::write(
                 self.package.join("patch.json"),
                 serde_json::to_vec_pretty(&json!({
@@ -882,12 +922,12 @@ mod tests {
             )
             .unwrap();
         }
-        fn copy(&self, target: &str, operation: &str, contents: &[u8]) -> serde_json::Value {
+        pub(super) fn copy(&self, target: &str, operation: &str, contents: &[u8]) -> serde_json::Value {
             let name = format!("{:x}", Sha256::digest(contents));
             fs::write(self.package.join(&name), contents).unwrap();
             json!({"path":target,"operation":operation,"source":{"kind":"copy","path":name,"sha256":hash(&self.package.join(&name)).unwrap()}})
         }
-        fn install(&self, platform: &str, version: &str) -> Result<PathBuf> {
+        pub(super) fn install(&self, platform: &str, version: &str) -> Result<PathBuf> {
             install(
                 &self.package,
                 "patch.json",

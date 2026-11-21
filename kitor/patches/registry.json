@@ -1741,6 +1741,16 @@
           "version": "0.2.0-beta.2-kitor2-download1",
           "author": "yhaggai (AI-assisted translation)",
           "download_url": "https://github.com/yhaggai/kitor/releases/download/patch-owlboy-he-v0.2.0-beta.2-kitor2-download1/owlboy-he-0.2.0-beta.2-kitor2-download1.zip",
+          "supported_builds": [
+            {
+              "store": "steam",
+              "platform": "windows",
+              "depot_id": "115801",
+              "manifest_id": "4002365934342145975",
+              "build_id": "26574659",
+              "evidence": "patches-workspace/owlboy/he/README.md"
+            }
+          ],
           "source_type": "github",
           "checksum": "b66900615e0c07038949604374ca7145d861b7982164fa01bdfba321cc56bfd2",
           "file_size": 5016145,
@@ -2368,7 +2378,7 @@
       "tags": ["hot-kitor"],
       "steam_app_id": 4463520,
       "title": "Moomin: Midsummer Madness",
-      "title_he": "מוּמינים: ההצגה הגדולה",
+      "title_he": "מומינים: ההצגה הגדולה",
       "cover_url": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/moomin-midsummer-madness/en/889e60283031.png",
       "platforms": {
         "windows": true,
@@ -2385,24 +2395,26 @@
             {
               "store": "steam",
               "platform": "windows",
-              "build_id": "26355427",
-              "evidence": "patches-workspace/moomin-midsummer-madness/he/README.md",
-              "released_on": "2026-11-12",
-              "release_date_source": "https://steamdb.info/patchnotes/26355427/"
+              "build_id": "26803369",
+              "depot_id": "4463521",
+              "manifest_id": "6372969767257979387",
+              "evidence": "patches-workspace/moomin-midsummer-madness/he/compatibility.json",
+              "released_on": "2026-11-20",
+              "release_date_source": "https://steamdb.info/patchnotes/26803369/"
             }
           ],
           "language": "he",
-          "version": "0.1.1",
-          "release_revision": 2,
+          "version": "0.1.2",
+          "release_revision": 3,
           "author": "Kitor",
           "download_url": "bundled://moomin-midsummer-madness/windows",
           "source_type": "bundled",
           "checksum": null,
           "file_size": null,
-          "filename": "moomin-midsummer-madness-he-0.1.1-windows.zip",
+          "filename": "moomin-midsummer-madness-he-0.1.2-windows.zip",
           "post_install_script": null,
           "install_manifest": "patch.json",
-          "description": "Hebrew translation with niqqud and right-to-left layout for Windows Steam build 26355427. Includes dialogue, menus, journal, credits and game fonts. Corrects Hebrew gender and number agreement in 169 lines; full linguistic proofreading pending."
+          "description": "Hebrew translation with niqqud and right-to-left layout for Windows Steam build 26803369. Includes dialogue, menus, journal, credits and game fonts. Corrects Hebrew gender and number agreement in 169 lines; full linguistic proofreading pending."
         }
       ],
       "behavior": {
@@ -2412,7 +2424,7 @@
               "root": ".",
               "required_files": [
                 "Summer/Adventure_UE5.exe",
-                "Summer/Adventure_UE5_Data/StreamingAssets/aa/StandaloneWindows64/database_assets_all_c77c9f4b2caf03eae7708be1f1ce7d43.bundle"
+                "Summer/Adventure_UE5_Data/StreamingAssets/aa/StandaloneWindows64/database_assets_all_451c9c2dc5087ceed02f737272b90df7.bundle"
               ],
               "data": "."
             }
@@ -2424,7 +2436,7 @@
               "windows": {
                 "program": "Summer/Adventure_UE5.exe",
                 "required_files": [
-                  "Summer/Adventure_UE5_Data/StreamingAssets/aa/StandaloneWindows64/database_assets_all_c77c9f4b2caf03eae7708be1f1ce7d43.bundle"
+                  "Summer/Adventure_UE5_Data/StreamingAssets/aa/StandaloneWindows64/database_assets_all_451c9c2dc5087ceed02f737272b90df7.bundle"
                 ]
               }
             }
@@ -2434,7 +2446,7 @@
               "windows": {
                 "program": "Summer/Adventure_UE5.exe",
                 "required_files": [
-                  "Summer/Adventure_UE5_Data/StreamingAssets/aa/StandaloneWindows64/database_assets_all_c77c9f4b2caf03eae7708be1f1ce7d43.bundle"
+                  "Summer/Adventure_UE5_Data/StreamingAssets/aa/StandaloneWindows64/database_assets_all_451c9c2dc5087ceed02f737272b90df7.bundle"
                 ]
               }
             }
@@ -2446,7 +2458,7 @@
   ],
   "metadata": {
     "version": "2.1",
-    "last_updated": "2026-11-10",
+    "last_updated": "2026-11-21",
     "source": "Kitor Community Registry"
   }
 }

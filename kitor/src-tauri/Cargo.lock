@@ -2608,7 +2608,7 @@ dependencies = [
 
 [[package]]
 name = "kitor"
-version = "0.1.7"
+version = "0.1.8"
 dependencies = [
  "base64 0.22.1",
  "bzip2 0.5.2",
