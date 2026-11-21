@@ -3,7 +3,7 @@ name: Update pull request branches
 on:
   push:
     branches: [v1]
-  pull_request_target:
+  pull_request:
     branches: [v1]
     types: [opened, reopened, edited, synchronize]
   workflow_dispatch:
@@ -17,6 +17,7 @@ concurrency:
 
 jobs:
   update:
+    if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository
     runs-on: ubuntu-latest
     steps:
       - name: Update branches behind v1
