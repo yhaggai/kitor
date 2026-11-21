@@ -711,7 +711,20 @@ pub async fn download_to(
     download_to_confirmed(app_id, game_ids, state, install_root, false, None).await
 }
 
-pub async fn download_to_confirmed(
+// Keep the download state machine off the Tauri command/cancellation stack.
+// Debug builds retain several nested async frames on Windows worker threads.
+pub fn download_to_confirmed<'a>(
+    app_id: u32,
+    game_ids: Vec<String>,
+    state: &'a crate::AppState,
+    install_root: Option<PathBuf>,
+    overwrite: bool,
+    progress_app: Option<&'a tauri::AppHandle>,
+) -> std::pin::Pin<Box<dyn std::future::Future<Output = Result<Vec<crate::models::game::Model>, String>> + Send + 'a>> {
+    Box::pin(download_to_confirmed_inner(app_id, game_ids, state, install_root, overwrite, progress_app))
+}
+
+async fn download_to_confirmed_inner(
     app_id: u32,
     game_ids: Vec<String>,
     state: &crate::AppState,
@@ -734,11 +747,11 @@ pub async fn download_to_confirmed(
         })
         .ok_or("Unsupported game edition for this Steam product")?;
     if product.games.len() > 1 {
-        return download_collection(&product, state, &install_root, overwrite, progress_app).await;
+        return Box::pin(download_collection(&product, state, &install_root, overwrite, progress_app)).await;
     }
     if matches!(product.importer, Importer::Layout) {
         if product.games.len() != 1 || game_ids.len() != 1 { return Err("Layout imports require one game".into()); }
-        return Ok(vec![download_layout(&product, state, &install_root, progress_app).await?]);
+        return Ok(vec![Box::pin(download_layout(&product, state, &install_root, progress_app)).await?]);
     }
     let all = &product.games;
     let existing = super::game_service::get_all_games(&state.db).await?;
