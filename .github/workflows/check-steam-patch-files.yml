@@ -23,6 +23,8 @@ jobs:
       - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
         with:
           node-version: 22
+      - name: Install Linux Steam client build dependencies
+        run: sudo apt-get update && sudo apt-get install -y libdbus-1-dev pkg-config
       - run: cargo build --locked --manifest-path kitor/native-steam/Cargo.toml
       - run: npm ci --prefix tools/ci-wrangler
       - name: Compare changed Steam depots
