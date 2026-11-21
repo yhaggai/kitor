@@ -13,6 +13,10 @@ export function issueCandidates(snapshot) {
       const marker = `<!-- kitor-build-update:${id} -->`;
       const store = row.store === "steam" ? "Steam" : "GOG";
       const current = row.latest.buildId;
+      const baseline = row.supported.find(b => b.platform === platform && b.language === language
+        && b.patchVersion === patchVersion && (row.store === "steam"
+          ? b.depot_id === identity[5] && b.manifest_id === identity.at(-2)
+          : b.build_id === identity.at(-2)));
       candidates.push({
         marker,
         title: `[Patch update] ${row.title}: ${store} ${platform} build ${current}`,
@@ -21,7 +25,7 @@ export function issueCandidates(snapshot) {
           `The build monitor confirmed changes to files used by the **${row.title}** patch.`,
           `- Store/platform: ${store} / ${platform}`,
           `- Translation/patch: ${language} / ${patchVersion}`,
-          `- Supported build: ${row.supported.find(b => b.platform === platform && b.language === language && b.patchVersion === patchVersion && (!b.depot_id || b.depot_id === identity[5]))?.build_id ?? "not recorded"}`,
+          `- Supported build: ${baseline?.build_id ?? "not recorded"}`,
           `- Current build: ${current}`,
           `- ${row.store === "steam" ? "Depot manifests" : "Builds"}: ${identity.at(-2)} → ${identity.at(-1)}`,
           "",

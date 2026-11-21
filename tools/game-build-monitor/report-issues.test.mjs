@@ -67,3 +67,18 @@ test("unchanged builds do not access GitHub and invalid destinations are rejecte
   assert.deepEqual(await reportBuildIssues(snapshot("unchanged"), "yhaggai/kitor", () => assert.fail()), { created: 0, updated: 0 });
   await assert.rejects(reportBuildIssues(snapshot(), "../elsewhere", () => assert.fail()), /Invalid GitHub repository/);
 });
+
+
+test("GOG comparisons report the matching baseline and current build", () => {
+  const data = snapshot();
+  const row = data.rows[0];
+  row.store = "gog"; row.key = "gog:123:windows";
+  row.supported[0].build_id = "gog-old";
+  row.supported.unshift({ ...row.supported[0], build_id: "other-baseline", fileCheck: undefined });
+  const [issue] = issueCandidates(data);
+  assert.match(issue.title, /GOG windows build new/);
+  assert.match(issue.body, /Supported build: gog-old/);
+  assert.match(issue.body, /Builds: gog-old → new/);
+  row.supported[1].status = "match";
+  assert.deepEqual(issueCandidates(data), []);
+});
