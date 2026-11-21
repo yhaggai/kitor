@@ -42,7 +42,7 @@ pub async fn collect_bug_diagnostics(
     let runtime = scummvm_service::check_scummvm_status(&state.db, &state.app_data_dir).await.ok();
     serde_json::to_string_pretty(&serde_json::json!({
         "schema_version": 1,
-        "collected_at": chrono::Utc::now().to_rfc3339(),
+        "collected_at": crate::date_time::now_rfc3339(),
         "kitor_version": app.package_info().version.to_string(),
         "os": std::env::consts::OS, "architecture": std::env::consts::ARCH,
         "scummvm": runtime.map(|r| serde_json::json!({"downloaded": r.downloaded, "version": r.version})),

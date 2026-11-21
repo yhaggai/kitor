@@ -11,8 +11,10 @@ pub struct Model {
     pub install_path: String,
     pub cover_url: Option<String>,
     pub detected_version: Option<String>,
-    pub added_date: DateTime,
-    pub last_played: Option<DateTime>,
+    #[serde(with = "crate::date_time::serde_naive")]
+    pub added_date: time::PrimitiveDateTime,
+    #[serde(default, with = "crate::date_time::serde_naive::option")]
+    pub last_played: Option<time::PrimitiveDateTime>,
     pub launch_subdirectory: Option<String>,
     pub launch_args: Option<String>,
 }
