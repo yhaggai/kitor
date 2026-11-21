@@ -1,4 +1,4 @@
-import { createHash } from "node:crypto";
+import { createHash, randomUUID } from "node:crypto";
 import { pathToFileURL } from "node:url";
 import { extractFileChecks } from "./file-check-overlay.mjs";
 
@@ -49,15 +49,17 @@ export async function reportBuildIssues(snapshot, repository, github) {
   const candidates = issueCandidates(snapshot);
   if (!candidates.length) return { created: 0, updated: 0 };
   const issues = [];
+  const readVersion = randomUUID();
   for (let page = 1; ; page++) {
-    const batch = await github("GET", `/repos/${repository}/issues?state=all&per_page=100&page=${page}`);
+    const batch = await github("GET", `/repos/${repository}/issues?state=all&per_page=100&_=${readVersion}&page=${page}`);
     if (!Array.isArray(batch)) throw new Error("Invalid GitHub issue response");
     issues.push(...batch.filter(issue => !issue.pull_request));
     if (batch.length < 100) break;
   }
   let created = 0, updated = 0;
   for (const { marker, title, body } of candidates) {
-    const existing = issues.find(issue => issue.body?.includes(marker));
+    const matching = issues.filter(issue => issue.body?.includes(marker));
+    const existing = matching.find(issue => issue.state === "open") ?? matching[0];
     if (existing) {
       if (existing.state === "open" && (existing.body !== body || existing.title !== title)) {
         await github("PATCH", `/repos/${repository}/issues/${existing.number}`, { title, body });
@@ -82,8 +84,8 @@ async function main() {
   const snapshot = await response.json();
   const github = async (method, path, body) => {
     const response = await fetch(`https://api.github.com${path}`, {
-      method, redirect: "error", signal: AbortSignal.timeout(30_000),
-      headers: { Authorization: `Bearer ${token}`, Accept: "application/vnd.github+json", "X-GitHub-Api-Version": "2022-11-28", "Content-Type": "application/json" },
+      method, redirect: "error", cache: "no-store", signal: AbortSignal.timeout(30_000),
+      headers: { Authorization: `Bearer ${token}`, Accept: "application/vnd.github+json", "Cache-Control": "no-cache", "X-GitHub-Api-Version": "2022-11-28", "Content-Type": "application/json" },
       ...(body ? { body: JSON.stringify(body) } : {}),
     });
     if (!response.ok) throw new Error(`GitHub issue API returned HTTP ${response.status}`);

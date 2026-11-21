@@ -82,3 +82,26 @@ test("GOG comparisons report the matching baseline and current build", () => {
   row.supported[1].status = "match";
   assert.deepEqual(issueCandidates(data), []);
 });
+
+
+test("repeat checks make fresh issue-list requests and prefer the remaining open issue", async () => {
+  const [candidate] = issueCandidates(snapshot());
+  const paths = [];
+  for (let attempt = 0; attempt < 2; attempt++) {
+    const result = await reportBuildIssues(snapshot(), "yhaggai/kitor", async (method, path) => {
+      paths.push(path);
+      return [{ ...candidate, state: "open", number: 110 }];
+    });
+    assert.deepEqual(result, { created: 0, updated: 0 });
+  }
+  assert.notEqual(paths[0], paths[1]);
+  const changes = [];
+  await reportBuildIssues(snapshot(), "yhaggai/kitor", async (method, path) => {
+    if (method === "GET") return [
+      { ...candidate, state: "closed", number: 111 },
+      { body: candidate.marker, state: "open", number: 110 },
+    ];
+    changes.push(path); return {};
+  });
+  assert.deepEqual(changes, ["/repos/yhaggai/kitor/issues/110"]);
+});
