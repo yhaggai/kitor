@@ -2,22 +2,22 @@
   "schema_version": 1,
   "scummvm_id": "moomin-midsummer-madness",
   "language": "he",
-  "version": "0.1.1",
-  "release_revision": 2,
-  "filename": "moomin-midsummer-madness-he-0.1.1-windows.zip",
+  "version": "0.1.2",
+  "release_revision": 3,
+  "filename": "moomin-midsummer-madness-he-0.1.2-windows.zip",
   "platforms": {
     "windows": {
       "files": [
         {
-          "path": "Summer/Adventure_UE5_Data/StreamingAssets/aa/StandaloneWindows64/database_assets_all_c77c9f4b2caf03eae7708be1f1ce7d43.bundle",
+          "path": "Summer/Adventure_UE5_Data/StreamingAssets/aa/StandaloneWindows64/database_assets_all_451c9c2dc5087ceed02f737272b90df7.bundle",
           "operation": "modify",
-          "original_sha256": "96b1575ccf2148a8d8514aae8d345bf32ee834cac343af794b38c87196856a42",
-          "installed_sha256": "20cd5ce52f71b47f956055cf57af92c2818b789b56133948687e33f496909514",
+          "original_sha256": "79ac6a2148fb545e766845735a7b3939d49b1a3a6138b86dea03b8e406d6d459",
+          "installed_sha256": "fd2a33efd3780bc6917e5482b4a0ac64a2eaa611e08283f25b734133ff9f11de",
           "source": {
             "kind": "bsdiff",
-            "path": "deltas/00-database_assets_all_c77c9f4b2caf03eae7708be1f1ce7d43.bundle.bsdiff",
-            "sha256": "0852fa7ffcfa4c3f730d35d3bdd51b9bdfb7a3cc5baf5afd0a269bffb9c3514b",
-            "input": "Summer/Adventure_UE5_Data/StreamingAssets/aa/StandaloneWindows64/database_assets_all_c77c9f4b2caf03eae7708be1f1ce7d43.bundle"
+            "path": "deltas/00-database_assets_all_451c9c2dc5087ceed02f737272b90df7.bundle.bsdiff",
+            "sha256": "5b7ffb10b6c0870bde59f99f33bfcbd550bdc4f3f3d605622fcd92b174f56a30",
+            "input": "Summer/Adventure_UE5_Data/StreamingAssets/aa/StandaloneWindows64/database_assets_all_451c9c2dc5087ceed02f737272b90df7.bundle"
           }
         },
         {
@@ -28,7 +28,7 @@
           "source": {
             "kind": "bsdiff",
             "path": "deltas/01-fonts_assets_all_2ab40165824cec60e96eea3c37ae678d.bundle.bsdiff",
-            "sha256": "c06909e305b39bb6beb9c22315989585d089eeba52df97e02acb91e1c0ceef72",
+            "sha256": "90c6b8c1fe8205116efdff7d26d1c8b5b647d345b0eb377ec1d85036e01243d2",
             "input": "Summer/Adventure_UE5_Data/StreamingAssets/aa/StandaloneWindows64/fonts_assets_all_2ab40165824cec60e96eea3c37ae678d.bundle"
           }
         },
@@ -40,31 +40,31 @@
           "source": {
             "kind": "bsdiff",
             "path": "deltas/02-sharedassets0.assets.bsdiff",
-            "sha256": "97dfece0df1c2f91dd5f1eac2bac2eabd4165eb43c3480651db6c45ec29a14cf",
+            "sha256": "3be7fdb81e941b47980d821ab319684802b1c3be2a97922bb945f88b99e60441",
             "input": "Summer/Adventure_UE5_Data/sharedassets0.assets"
           }
         },
         {
           "path": "Summer/Adventure_UE5_Data/StreamingAssets/aa/catalog.bin",
           "operation": "modify",
-          "original_sha256": "58e5d9b7f8ff9c13ab24c40e3bb9a017436a2200265d64bea4368849a2965ed5",
-          "installed_sha256": "c6c0bc3d2f72604b2388a434b62df1d21a19867d8f263056e7cab7dc3f7482de",
+          "original_sha256": "7c073230712e2c71c8dcac54b4bf4ea16922ad3d5635616455a868701e6566e5",
+          "installed_sha256": "e1a811d76c55ebb8743c8550c7a96774aed89e25a467ea9df305a9cceea7da9c",
           "source": {
             "kind": "bsdiff",
             "path": "deltas/03-catalog.bin.bsdiff",
-            "sha256": "2429934d8f0a1997ca2f1e20727f18560db2de0bf972f6d3c9c964fcaf37b01f",
+            "sha256": "cf3d8720df02ef38b35e20c76a6d8fbb4ab53f47f93008eb4ad11e25fb37989f",
             "input": "Summer/Adventure_UE5_Data/StreamingAssets/aa/catalog.bin"
           }
         },
         {
           "path": "Summer/Adventure_UE5_Data/Managed/Assembly-CSharp.dll",
           "operation": "modify",
-          "original_sha256": "59065184a97757e292bcb499e7d77ea526a21313af03fd737f6629197ce6efa2",
-          "installed_sha256": "529a710b53bff407fa5adf239f0a50e37e321f8e87ee4a3039527edc77da9b04",
+          "original_sha256": "ab0f78622c589aad5df03d819ab24f1901fcfca360c74703b398d454d882895f",
+          "installed_sha256": "fd7af2b0ad8634fa3573d5accdb2436fb04339d9fb1bd56afcce06332bc013fc",
           "source": {
             "kind": "bsdiff",
             "path": "deltas/04-Assembly-CSharp.dll.bsdiff",
-            "sha256": "2f193f6f800dd213869208d68fa795008e488bf8894b2f8467d750baac8a653f",
+            "sha256": "44831fa7fa6b7294654923f99d4750c34270d39bfcb023a791802a37398789a7",
             "input": "Summer/Adventure_UE5_Data/Managed/Assembly-CSharp.dll"
           }
         }

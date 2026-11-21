@@ -209,7 +209,7 @@ pub async fn launch_game(
 
     // Update last_played
     let mut active_game: game::ActiveModel = game.into();
-    active_game.last_played = Set(Some(chrono::Utc::now().naive_utc()));
+    active_game.last_played = Set(Some(crate::date_time::now_naive()));
     active_game.update(db)
         .await
         .map_err(|e| format!("Failed to update last_played: {}", e))?;
@@ -883,7 +883,7 @@ async fn set_config_value(db: &DatabaseConnection, key: &str, value: &str) -> Re
     let config = app_config::ActiveModel {
         key: Set(key.to_string()),
         value: Set(value.to_string()),
-        updated_at: Set(chrono::Utc::now().naive_utc()),
+        updated_at: Set(crate::date_time::now_naive()),
     };
     
     app_config::Entity::insert(config)

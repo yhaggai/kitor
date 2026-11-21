@@ -1,0 +1,23 @@
+{
+  "build": "26803369",
+  "files": [
+    {
+      "path": "Summer/Adventure_UE5_Data/StreamingAssets/aa/catalog.bin",
+      "staged": "catalog.bin",
+      "original_sha256": "7c073230712e2c71c8dcac54b4bf4ea16922ad3d5635616455a868701e6566e5",
+      "installed_sha256": "e1a811d76c55ebb8743c8550c7a96774aed89e25a467ea9df305a9cceea7da9c"
+    },
+    {
+      "path": "Summer/Adventure_UE5_Data/StreamingAssets/aa/StandaloneWindows64/database_assets_all_451c9c2dc5087ceed02f737272b90df7.bundle",
+      "staged": "database.bundle",
+      "original_sha256": "79ac6a2148fb545e766845735a7b3939d49b1a3a6138b86dea03b8e406d6d459",
+      "installed_sha256": "fd2a33efd3780bc6917e5482b4a0ac64a2eaa611e08283f25b734133ff9f11de"
+    },
+    {
+      "path": "Summer/Adventure_UE5_Data/Managed/Assembly-CSharp.dll",
+      "staged": "Assembly-CSharp.dll",
+      "original_sha256": "ab0f78622c589aad5df03d819ab24f1901fcfca360c74703b398d454d882895f",
+      "installed_sha256": "fd7af2b0ad8634fa3573d5accdb2436fb04339d9fb1bd56afcce06332bc013fc"
+    }
+  ]
+}

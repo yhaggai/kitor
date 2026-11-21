@@ -13,7 +13,11 @@ permissions:
   contents: read
 
 jobs:
+  translation-scope:
+    uses: ./.github/workflows/classify-translation-pr.yml
   analyze:
+    needs: translation-scope
+    if: needs.translation-scope.outputs.translation_only != 'true'
     runs-on: ubuntu-latest
     permissions:
       contents: read

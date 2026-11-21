@@ -9,7 +9,8 @@ pub struct Model {
     pub game_id: i32,
     pub scummvm_id: String,
     pub version: String,
-    pub installed_date: DateTime,
+    #[serde(with = "crate::date_time::serde_naive")]
+    pub installed_date: time::PrimitiveDateTime,
     pub status: String,
     pub backup_path: Option<String>,
 }

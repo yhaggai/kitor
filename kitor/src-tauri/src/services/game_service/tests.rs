@@ -27,7 +27,7 @@ async fn library_includes_game_without_any_patches() {
         scummvm_id: Set("unpatched-library-fixture".to_string()),
         title: Set("Game without a patch".to_string()),
         install_path: Set(fixture.0.to_string_lossy().to_string()),
-        added_date: Set(chrono::Utc::now().naive_utc()),
+        added_date: Set(crate::date_time::now_naive()),
         ..Default::default()
     }.insert(&db).await.unwrap();
 
