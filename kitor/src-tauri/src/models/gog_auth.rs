@@ -7,9 +7,9 @@ pub struct Model {
     pub id: i32,
     pub access_token: String,
     pub refresh_token: String,
-    pub expires_at: DateTime,
-    pub created_at: DateTime,
-    pub updated_at: DateTime,
+    pub expires_at: time::PrimitiveDateTime,
+    pub created_at: time::PrimitiveDateTime,
+    pub updated_at: time::PrimitiveDateTime,
 }
 
 #[derive(Copy, Clone, Debug, EnumIter, DeriveRelation)]
