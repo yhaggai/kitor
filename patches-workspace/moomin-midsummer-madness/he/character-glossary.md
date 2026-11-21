@@ -17,7 +17,7 @@ Character and scene identity come from the game's `GameDatabase` character cards
 | Mymble | מייבל | feminine | Older, responsible sister; confident and caring. Grounded in `character_mymble`. |
 | Edward the Booble | אדוארד הבובל | masculine | Enormous, gentle creature; formal label. Grounded in `character_edward`. |
 | Fillyjonk | פיליונק | feminine | Anxious, proper, easily alarmed; retain her fussiness with rhythm. Grounded in `character_fillyjonk`. |
-| Misabel | אומללת | feminine | Nervous, earnest; grounded in `character_misabel`. |
+| Misabel | אומללית | feminine | Nervous, earnest; grounded in `character_misabel`. |
 | Emma | אמה | feminine | Theatrical and commanding, as a theatre rat; grounded in `character_emma`. |
 | Park Keeper | שומר הפארק | masculine | Strict, officious; grounded in `character_park_keeper`. |
 | Policeman | השוטר | masculine | Official, self-important; grounded in `character_policeman`. |
