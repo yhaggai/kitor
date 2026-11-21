@@ -1,5 +1,92 @@
 use super::*;
 
+#[tokio::test]
+async fn steam_download_future_fits_worker_stack() {
+    let dir = tempfile::tempdir().unwrap();
+    let state = crate::AppState {
+        db: crate::db::init_db(&dir.path().to_path_buf()).await.unwrap(),
+        app_data_dir: dir.path().to_path_buf(),
+    };
+    let future = download_to_confirmed(4463520, vec!["moomin-midsummer-madness".into()], &state, None, false, None);
+    let bytes = std::mem::size_of_val(&future);
+    println!("Steam download future: {bytes} bytes");
+    assert!(bytes <= 32, "Steam download future occupies {bytes} bytes on the worker stack");
+}
+
+#[test]
+fn steam_download_reuses_registered_moomin_on_worker_without_network() {
+    let runtime = tokio::runtime::Builder::new_multi_thread()
+        .worker_threads(1)
+        .thread_stack_size(2 * 1024 * 1024)
+        .enable_all()
+        .build()
+        .unwrap();
+    runtime.block_on(async {
+        tokio::spawn(async {
+            let dir = tempfile::tempdir().unwrap();
+            let root = dir.path().to_path_buf();
+            let game_root = root.join("moomin");
+            std::fs::create_dir(&game_root).unwrap();
+            let state = crate::AppState {
+                db: crate::db::init_db(&root).await.unwrap(),
+                app_data_dir: root,
+            };
+            let existing = super::super::game_service::add_game_manually(
+                &state.db, "moomin-midsummer-madness".into(), "Moomin".into(),
+                game_root.to_string_lossy().into_owned(), state.app_data_dir.clone(),
+            ).await.unwrap();
+            let games = download_to_confirmed(4463520, vec![existing.scummvm_id.clone()], &state, None, false, None)
+                .await.unwrap();
+            assert_eq!(games.len(), 1);
+            assert_eq!(games[0].id, existing.id);
+        }).await.unwrap();
+    });
+}
+
+#[tokio::test(flavor = "multi_thread", worker_threads = 2)]
+#[ignore = "Requires signed-in Steam owning Moomin; downloads the full depot into a disposable folder"]
+async fn live_moomin_native_download_on_default_worker_stack() {
+    let dir = tempfile::tempdir().unwrap();
+    let destination = dir.path().join("content");
+    let future = kitor_steam::download(4463520, 4463521, &destination, |event| {
+        match event {
+            kitor_steam::Event::Status { message } => println!("{message}"),
+            kitor_steam::Event::Progress { downloaded_bytes, total_bytes } => {
+                if downloaded_bytes % (64 * 1024 * 1024) < 1024 * 1024 {
+                    println!("Downloaded {downloaded_bytes}/{total_bytes}");
+                }
+            }
+            _ => (),
+        }
+    });
+    Box::pin(future).await.unwrap();
+    assert!(destination.join("Summer/Adventure_UE5.exe").is_file());
+}
+
+#[tokio::test(flavor = "multi_thread", worker_threads = 2)]
+#[ignore = "Requires signed-in Steam owning Moomin; downloads and registers a disposable installation"]
+async fn live_moomin_scoped_download_and_import_on_worker() {
+    tokio::spawn(async {
+        let dir = tempfile::tempdir().unwrap();
+        let state = crate::AppState {
+            db: crate::db::init_db(&dir.path().to_path_buf()).await.unwrap(),
+            app_data_dir: dir.path().to_path_buf(),
+        };
+        let run_id = "moomin-stack-regression".to_owned();
+        super::super::install_cancellation::begin_game_install(run_id.clone()).unwrap();
+        let result = super::super::install_cancellation::scope(
+            Some(run_id.clone()),
+            download_to_confirmed(4463520, vec!["moomin-midsummer-madness".into()], &state, None, false, None),
+        ).await;
+        super::super::install_cancellation::end_game_install(run_id);
+        let games = result.unwrap();
+        assert_eq!(games.len(), 1);
+        assert_eq!(games[0].scummvm_id, "moomin-midsummer-madness");
+        assert!(Path::new(&games[0].install_path).join("Summer/Adventure_UE5.exe").is_file());
+        assert_eq!(super::super::game_service::get_all_games(&state.db).await.unwrap().len(), 1);
+    }).await.unwrap();
+}
+
 #[test]
 fn moomin_steam_product_matches_verified_windows_layout() {
     let product = products()
@@ -13,7 +100,7 @@ fn moomin_steam_product_matches_verified_windows_layout() {
         &"Summer/Adventure_UE5.exe".to_owned()
     ));
     assert!(product.required_files.contains(
-        &"Summer/Adventure_UE5_Data/StreamingAssets/aa/StandaloneWindows64/database_assets_all_c77c9f4b2caf03eae7708be1f1ce7d43.bundle".to_owned()
+        &"Summer/Adventure_UE5_Data/StreamingAssets/aa/StandaloneWindows64/database_assets_all_451c9c2dc5087ceed02f737272b90df7.bundle".to_owned()
     ));
     assert_eq!(product.copy_paths, ["Summer"]);
 }

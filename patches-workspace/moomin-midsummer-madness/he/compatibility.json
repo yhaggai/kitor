@@ -1,0 +1,78 @@
+{
+  "game": "moomin-midsummer-madness",
+  "patch_version": "0.1.2",
+  "release_revision": 3,
+  "verified_on": "2026-11-21",
+  "store": "steam",
+  "app_id": 4463520,
+  "depot_id": 4463521,
+  "depot_manifest_id": "6372969767257979387",
+  "build_id": "26803369",
+  "released_on": "2026-11-20",
+  "release_date_source": "https://steamdb.info/patchnotes/26803369/",
+  "platform": "windows",
+  "architecture": "x86_64",
+  "files": [
+    {
+      "path": "Summer/Adventure_UE5_Data/StreamingAssets/aa/StandaloneWindows64/database_assets_all_451c9c2dc5087ceed02f737272b90df7.bundle",
+      "original_sha256": "79ac6a2148fb545e766845735a7b3939d49b1a3a6138b86dea03b8e406d6d459",
+      "installed_sha256": "fd2a33efd3780bc6917e5482b4a0ac64a2eaa611e08283f25b734133ff9f11de"
+    },
+    {
+      "path": "Summer/Adventure_UE5_Data/StreamingAssets/aa/StandaloneWindows64/fonts_assets_all_2ab40165824cec60e96eea3c37ae678d.bundle",
+      "original_sha256": "072a7a9aa6e1a165e81b3ec3ec2d7d35c5cc17eeabc65dcba8e511037c4db3bf",
+      "installed_sha256": "d23685e642675a4486820320d85ff07dee41c8b8ae2a60fa4a1a88651a2baab9"
+    },
+    {
+      "path": "Summer/Adventure_UE5_Data/sharedassets0.assets",
+      "original_sha256": "ad50c9ed6dcf3173721e3d4e3dcd466cf9fd83687fa05e443825f043439d208e",
+      "installed_sha256": "67e553f21956f8c27c4048c99ac531834cee62e1371b98f598a06b8e8af6158d"
+    },
+    {
+      "path": "Summer/Adventure_UE5_Data/StreamingAssets/aa/catalog.bin",
+      "original_sha256": "7c073230712e2c71c8dcac54b4bf4ea16922ad3d5635616455a868701e6566e5",
+      "installed_sha256": "e1a811d76c55ebb8743c8550c7a96774aed89e25a467ea9df305a9cceea7da9c"
+    },
+    {
+      "path": "Summer/Adventure_UE5_Data/Managed/Assembly-CSharp.dll",
+      "original_sha256": "ab0f78622c589aad5df03d819ab24f1901fcfca360c74703b398d454d882895f",
+      "installed_sha256": "fd7af2b0ad8634fa3573d5accdb2436fb04339d9fb1bd56afcce06332bc013fc"
+    }
+  ],
+  "package": {
+    "filename": "moomin-midsummer-madness-he-0.1.2-windows.zip",
+    "sha256": "16105c55da99756c3157a2f040f509c8ae49b754a8a44666a86e6da1dca63bde",
+    "size": 16196396
+  },
+  "source_evidence": {
+    "database_catalog_assembly": "Verified originals retained in the per-install recovery manifest for Steam build 26803369.",
+    "fonts_sharedassets": "Unchanged original files retained from build 26355427; both patch outputs are retained from the prior verified Hebrew build.",
+    "text_changes": "One credit name changed from Pavel Arkhipov to Pavel Vophira. All 4692 text fields rebuilt and reopened from the canonical CSV.",
+    "source_database_sha256": "79ac6a2148fb545e766845735a7b3939d49b1a3a6138b86dea03b8e406d6d459"
+  },
+  "validation": {
+    "delta_roundtrips": "passed for all five files",
+    "catalog_crcs": {
+      "database_original": "fd17f90c",
+      "database_installed": "9f7587a8",
+      "fonts_original": "18adf005",
+      "fonts_installed": "eab3a5eb"
+    },
+    "regression_tests": "3 passed",
+    "startup": "Identical payloads to the local Windows repair that passed bootstrap and initialized settings on 2026-11-21.",
+    "saves": "65 pre-existing save files retained identical SHA-256 after that startup test. This candidate build does not access user saves.",
+    "visual_menu": "not verified: capture timed out",
+    "load_saved_game": "not tested",
+    "macos": "not built or tested; not advertised as supported",
+    "native_windows_lifecycle": {
+      "result": "passed",
+      "affected_files": 5,
+      "backed_up_files": 5,
+      "restored_originals": "all five SHA-256 hashes match",
+      "unrelated_files": "preexisting and added-after-install sentinels preserved"
+    },
+    "rust_integration_tests": "3 passed",
+    "general_package_tests": "12 passed, 1 skipped, 1 unrelated failure: untracked space-quest-iv/he/patch.json lacks macOS platform"
+  },
+  "publication": "local candidate; not published"
+}
