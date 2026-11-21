@@ -2762,6 +2762,10 @@
   {
    "row": 335,
    "reason": "Mymble refers to older sisters as a class; עושות is intentional feminine plural."
+  },
+  {
+   "stable_id": "[\"dialogue_chapter2_dressing_fdesc_broom\",\"phrases\",1,\"phrase\",\"text\"]",
+   "reason": "The user broomstick revision is retained. In יותר קל לי להאמין, קל is an impersonal predicate about believing, not a masculine description of Little My; מטאטא is a masculine noun."
   }
  ],
  "limitations": [
