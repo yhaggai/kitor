@@ -29,6 +29,13 @@ jobs:
         run: sudo apt-get update && sudo apt-get install -y libdbus-1-dev pkg-config
       - run: cargo build --locked --manifest-path kitor/native-steam/Cargo.toml
       - run: npm ci --prefix tools/ci-wrangler
+      - name: Refresh stores and compare GOG patch files
+        if: github.event_name == 'workflow_dispatch'
+        env:
+          KITOR_MONITOR_TRIGGER_TOKEN: ${{ secrets.KITOR_MONITOR_TRIGGER_TOKEN }}
+        run: |
+          node tools/game-build-monitor/trigger-check.mjs scan
+          node tools/game-build-monitor/trigger-check.mjs gog
       - name: Compare changed Steam depots
         env:
           KITOR_WRANGLER_BIN: ${{ github.workspace }}/tools/ci-wrangler/node_modules/.bin/wrangler
@@ -41,3 +48,8 @@ jobs:
             exit 1
           fi
           node tools/game-build-monitor/run-steam-checks.mjs
+      - name: Send new patch alerts
+        if: github.event_name == 'workflow_dispatch'
+        env:
+          KITOR_MONITOR_TRIGGER_TOKEN: ${{ secrets.KITOR_MONITOR_TRIGGER_TOKEN }}
+        run: node tools/game-build-monitor/trigger-check.mjs alerts
