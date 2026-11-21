@@ -11,6 +11,15 @@ from build_patch_packages import InvalidPackage, validate
 
 
 class DownloadPackages(unittest.TestCase):
+    def test_registry_has_no_duplicate_fields_after_upstream_merges(self):
+        def unique_fields(pairs):
+            result = {}
+            for key, value in pairs:
+                self.assertNotIn(key, result, f'Duplicate catalog field: {key}')
+                result[key] = value
+            return result
+        json.loads(packages.REGISTRY.read_text(encoding='utf-8'), object_pairs_hook=unique_fields)
+
     def test_all_archives_preserve_supported_file_plans_and_assets(self):
         index = json.loads(packages.INDEX.read_text(encoding="utf-8"))
         with tempfile.TemporaryDirectory() as temp:
