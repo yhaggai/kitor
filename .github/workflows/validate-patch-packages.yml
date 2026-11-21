@@ -34,7 +34,7 @@ permissions:
 
 jobs:
   translation-scope:
-    uses: $/.github/workflows/classify-translation-pr.yml
+    uses: ./.github/workflows/classify-translation-pr.yml
   lifecycle-and-packaging:
     needs: translation-scope
     if: needs.translation-scope.outputs.translation_only != 'true'
@@ -136,4 +136,4 @@ jobs:
     if: github.event_name == 'push' && (github.ref == 'refs/heads/v1' || github.ref == 'refs/heads/main')
     permissions:
       contents: write
-    uses: $/.github/workflows/deploy-patches.yml
+    uses: ./.github/workflows/deploy-patches.yml

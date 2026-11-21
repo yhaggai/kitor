@@ -14,9 +14,27 @@ permissions:
 
 jobs:
   translation-scope:
-    uses: $/.github/workflows/classify-translation-pr.yml
-  scan-pr:
+    uses: ./.github/workflows/classify-translation-pr.yml
+  verify-no-chrono:
     needs: translation-scope
+    if: needs.translation-scope.outputs.translation_only != 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          persist-credentials: false
+      - uses: dtolnay/rust-toolchain@39008827e6b4319a349e9a42dfc90579dd25f1ca # stable
+      - name: Reject Chrono in resolved dependencies
+        working-directory: kitor/src-tauri
+        run: |
+          cargo tree --locked --all-features --target all --edges normal,build,dev --prefix none --format '{p}' > dependencies.txt
+          if grep -Eq '^chrono v' dependencies.txt; then
+            echo '::error::Chrono is a build dependency. Remove it before relying on the optional-dependency advisory exception.'
+            exit 1
+          fi
+
+  scan-pr:
+    needs: [translation-scope, verify-no-chrono]
     permissions:
       actions: read
       contents: read
@@ -25,7 +43,7 @@ jobs:
     uses: google/osv-scanner-action/.github/workflows/osv-scanner-reusable-pr.yml@32d3cd482bdadfb38b186c0ad1b031902d55d932 # v2.7.1
 
   scan-repository:
-    needs: translation-scope
+    needs: [translation-scope, verify-no-chrono]
     permissions:
       actions: read
       contents: read

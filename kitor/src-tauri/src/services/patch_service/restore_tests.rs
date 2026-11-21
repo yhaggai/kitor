@@ -49,7 +49,7 @@ async fn update_reconciles_stale_database_and_restore_preserves_unrelated_files(
         game_id: Set(game.id),
         scummvm_id: Set("kyra1-cd".into()),
         version: Set("test".into()),
-        installed_date: Set(chrono::Utc::now().naive_utc()),
+        installed_date: Set(crate::date_time::now_naive()),
         status: Set("active".into()),
         backup_path: Set(Some(backup.to_string_lossy().into_owned())),
         ..Default::default()

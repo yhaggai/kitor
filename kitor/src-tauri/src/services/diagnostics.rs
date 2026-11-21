@@ -15,7 +15,7 @@ pub fn record(dir: &Path, operation: &str, target: &str, phase: &str) {
             std::fs::rename(&path, previous)?;
         }
         let mut file = std::fs::OpenOptions::new().create(true).append(true).open(path)?;
-        writeln!(file, "{}", json!({"time": chrono::Utc::now().to_rfc3339(),
+        writeln!(file, "{}", json!({"time": crate::date_time::now_rfc3339(),
             "operation": operation, "target": target.chars().take(128).collect::<String>(), "phase": phase}))
     })(); // Diagnostics must never prevent a launch or installation.
 }
