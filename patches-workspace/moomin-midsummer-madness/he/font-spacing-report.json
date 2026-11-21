@@ -1,0 +1,54 @@
+[
+  {
+    "file": "fonts_assets_all.bundle",
+    "sha256": "f21318eda9bacedb999e920686fc864bca85d1b81297c2e31a3f26e79ea14893",
+    "fonts": [
+      {
+        "font": "Pangolin-Regular SDF MAIN",
+        "hebrew_glyphs_checked": 327,
+        "minimum_side_margin": 2.0
+      },
+      {
+        "font": "OpenDyslexic-Regular_SDF",
+        "hebrew_glyphs_checked": 327,
+        "minimum_side_margin": 2.0
+      },
+      {
+        "font": "BalsamiqSans-Regular_SDF",
+        "hebrew_glyphs_checked": 327,
+        "minimum_side_margin": 2.0
+      },
+      {
+        "font": "BalsamiqSans-Bold_SDF",
+        "hebrew_glyphs_checked": 327,
+        "minimum_side_margin": 2.0
+      }
+    ]
+  },
+  {
+    "file": "sharedassets0.assets",
+    "sha256": "8b7971f1b730067488562454557d9174ab1ebf96e4c9998b1d48ca167df497f7",
+    "fonts": [
+      {
+        "font": "Pangolin-Regular SDF MAIN",
+        "hebrew_glyphs_checked": 327,
+        "minimum_side_margin": 2.0
+      },
+      {
+        "font": "OpenDyslexic-Regular_SDF",
+        "hebrew_glyphs_checked": 327,
+        "minimum_side_margin": 2.0
+      },
+      {
+        "font": "BalsamiqSans-Regular_SDF",
+        "hebrew_glyphs_checked": 327,
+        "minimum_side_margin": 2.0
+      },
+      {
+        "font": "BalsamiqSans-Bold_SDF",
+        "hebrew_glyphs_checked": 327,
+        "minimum_side_margin": 2.0
+      }
+    ]
+  }
+]

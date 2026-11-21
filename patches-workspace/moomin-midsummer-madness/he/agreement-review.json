@@ -1,0 +1,2777 @@
+{
+ "model": "GPT-6",
+ "reasoning_effort": "not exposed",
+ "scope": "Screened all 3,866 explicit-speaker dialogue rows. Reviewed 238 gender/number flags, 28 cross-localization address flags, 32 first-person candidates, 58 ambiguous pointed participles, and feminine-pronoun cases in context. This is a targeted agreement pass, not a full literary proofread. Follow-up screens also reviewed possessive/verb number suffixes and Russian gender-marked second-person past forms against adjacent speakers.",
+ "source_bundle_sha256": "79ac6a2148fb545e766845735a7b3939d49b1a3a6138b86dea03b8e406d6d459",
+ "source_languages": [
+  "en",
+  "ru",
+  "de"
+ ],
+ "corrected_rows": 123,
+ "corrections": [
+  {
+   "stable_id": "[\"dialogue_chapter1_attic_quest_stickbun\",\"phrases\",15,\"phrase\",\"text\"]",
+   "path": [
+    "dialogue_chapter1_attic_quest_stickbun",
+    "phrases",
+    15,
+    "phrase",
+    "text"
+   ],
+   "en": "I want to see what is it. Hope it's a monster! ",
+   "speaker_card": "character_little_my",
+   "before_unpointed": "אני רוצה לראות מה זה. הלוואי שזו מפלצת! ",
+   "before_pointed": "אֲנִי רוֹצֶה לִרְאוֹת מָה זֶה. הַלְּוַואי שֶׁזּוֹ מִפְלֶצֶת! ",
+   "reasons": [
+    "The female speaker is the first-person subject."
+   ],
+   "kinds": [
+    "gender-pointing"
+   ],
+   "after_unpointed": "אני רוצה לראות מה זה. הלוואי שזו מפלצת! ",
+   "after_pointed": "אֲנִי רוֹצָה לִרְאוֹת מָה זֶה. הַלְּוַואי שֶׁזּוֹ מִפְלֶצֶת! "
+  },
+  {
+   "stable_id": "[\"dialogue_chapter1_balcony_cutscene_firsttime\",\"phrases\",1,\"phrase\",\"text\"]",
+   "path": [
+    "dialogue_chapter1_balcony_cutscene_firsttime",
+    "phrases",
+    1,
+    "phrase",
+    "text"
+   ],
+   "en": "You should change your address.",
+   "speaker_card": "character_little_my",
+   "before_unpointed": "כדאי לך לשנות כתובת.",
+   "before_pointed": "כְּדַאי לְךְ לְשַׁנּוֹת כְּתוֹבֶת.",
+   "reasons": [
+    "Russian вам and German ihr/eure both address a group."
+   ],
+   "kinds": [
+    "addressee-number"
+   ],
+   "after_unpointed": "כדאי לכם לשנות כתובת.",
+   "after_pointed": "כְּדַאי לָכֶם לְשַׁנּוֹת כְּתוֹבֶת."
+  },
+  {
+   "stable_id": "[\"dialogue_chapter1_balcony_cutscene_stop\",\"phrases\",0,\"phrase\",\"text\"]",
+   "path": [
+    "dialogue_chapter1_balcony_cutscene_stop",
+    "phrases",
+    0,
+    "phrase",
+    "text"
+   ],
+   "en": "Hey, where do you think you're going?",
+   "speaker_card": "character_little_my",
+   "before_unpointed": "היי, לאן את חושבת שאת הולכת?",
+   "before_pointed": "הַיי, לְאָן אֶתְ חוֹשֶׁבֶת שֶׁאַתְּ הוֹלֶכֶת?",
+   "reasons": [
+    "The shipped Russian собрался and the Moomintroll exchange identify masculine singular, overriding the erroneous feminine address."
+   ],
+   "kinds": [
+    "addressee-gender"
+   ],
+   "after_unpointed": "היי, לאן אתה חושב שאתה הולך?",
+   "after_pointed": "הַיי, לְאָן אַתָּה חוֹשֵׁב שֶׁאַתָּה הוֹלֵךְ?"
+  },
+  {
+   "stable_id": "[\"dialogue_chapter1_balcony_greeting_mymble\",\"phrases\",6,\"phrase\",\"text\"]",
+   "path": [
+    "dialogue_chapter1_balcony_greeting_mymble",
+    "phrases",
+    6,
+    "phrase",
+    "text"
+   ],
+   "en": "And now that I did so well, I want a break.",
+   "speaker_card": "character_mymble",
+   "before_unpointed": "ועכשיו, אחרי שהצלחתי כל כך, אני רוצה לנוח קצת.",
+   "before_pointed": "וְעַכְשָׁיו, אַחֲרֵי שֶׁהִצְלַחְתִּי כָּל כָּךְ, אֲנִי רוֹצֶה לָנוּחַ קְצָת.",
+   "reasons": [
+    "The female speaker is the first-person subject."
+   ],
+   "kinds": [
+    "gender-pointing"
+   ],
+   "after_unpointed": "ועכשיו, אחרי שהצלחתי כל כך, אני רוצה לנוח קצת.",
+   "after_pointed": "וְעַכְשָׁיו, אַחֲרֵי שֶׁהִצְלַחְתִּי כָּל כָּךְ, אֲנִי רוֹצָה לָנוּחַ קְצָת."
+  },
+  {
+   "stable_id": "[\"dialogue_chapter1_balcony_quest_stickbun\",\"phrases\",7,\"phrase\",\"text\"]",
+   "path": [
+    "dialogue_chapter1_balcony_quest_stickbun",
+    "phrases",
+    7,
+    "phrase",
+    "text"
+   ],
+   "en": "I hope it's a sea monster!",
+   "speaker_card": "character_little_my",
+   "before_unpointed": "אני מקווה שזאת מפלצת ים!",
+   "before_pointed": "אֲנִי מְקַוֶּוה שֶׁזֹּאת מִפְלֶצֶת יָם!",
+   "reasons": [
+    "The female speaker is the first-person subject."
+   ],
+   "kinds": [
+    "gender-pointing"
+   ],
+   "after_unpointed": "אני מקווה שזאת מפלצת ים!",
+   "after_pointed": "אֲנִי מְקַוָּוה שֶׁזֹּאת מִפְלֶצֶת יָם!"
+  },
+  {
+   "stable_id": "[\"dialogue_chapter1_balcony_repeatquest_stickbun\",\"phrases\",0,\"phrase\",\"text\"]",
+   "path": [
+    "dialogue_chapter1_balcony_repeatquest_stickbun",
+    "phrases",
+    0,
+    "phrase",
+    "text"
+   ],
+   "en": "Have you figured out what’s attracted the seagulls' attention?",
+   "speaker_card": "character_moomintroll",
+   "before_unpointed": "הבנת כבר מה משך את תשומת הלב של השחפים?",
+   "before_pointed": "הֵבַנְתָּ כְּבָר מָה מָשַׁךְ אֶת תְּשׂוּמַת הַלֵּב שֶׁל הַשְּׁחָפִים?",
+   "reasons": [
+    "Mymble answers; Russian выяснила independently confirms feminine singular."
+   ],
+   "kinds": [
+    "gender-pointing"
+   ],
+   "after_unpointed": "הבנת כבר מה משך את תשומת הלב של השחפים?",
+   "after_pointed": "הֵבַנְתְּ כְּבָר מָה מָשַׁךְ אֶת תְּשׂוּמַת הַלֵּב שֶׁל הַשְּׁחָפִים?"
+  },
+  {
+   "stable_id": "[\"dialogue_chapter1_inventory_mirrorsrod\",\"phrases\",0,\"phrase\",\"text\"]",
+   "path": [
+    "dialogue_chapter1_inventory_mirrorsrod",
+    "phrases",
+    0,
+    "phrase",
+    "text"
+   ],
+   "en": "Who are you going to catch with it? Snorkmaiden?",
+   "speaker_card": "character_little_my",
+   "before_unpointed": "את מי את מתכוונת לתפוס עם זה? את סנורקה?",
+   "before_pointed": "אֶת מִי אַתְּ מִתְכַּוֶּונֶת לִתְפּוֹס עִם זֶה? אֶת סְנוֹרְקָה?",
+   "reasons": [
+    "Little My comments on Moomintroll fishing for Snorkmaiden; the two object markers remain את."
+   ],
+   "kinds": [
+    "addressee-gender"
+   ],
+   "after_unpointed": "את מי אתה מתכוון לתפוס עם זה? את סנורקה?",
+   "after_pointed": "אֶת מִי אַתָּה מִתְכַּוֵּון לִתְפּוֹס עִם זֶה? אֶת סְנוֹרְקָה?"
+  },
+  {
+   "stable_id": "[\"dialogue_chapter1_moomintroll_room_enddesc_snork\",\"phrases\",0,\"phrase\",\"text\"]",
+   "path": [
+    "dialogue_chapter1_moomintroll_room_enddesc_snork",
+    "phrases",
+    0,
+    "phrase",
+    "text"
+   ],
+   "en": "He's ugly, and I like it!",
+   "speaker_card": "character_little_my",
+   "before_unpointed": "הוא מכוער, ואני אוהב אותו!",
+   "before_pointed": "הוּא מְכוֹעָר, וַאֲנִי אוֹהֵב אוֹתוֹ!",
+   "reasons": [
+    "Little My speaks about herself in the first person."
+   ],
+   "kinds": [
+    "speaker-gender"
+   ],
+   "after_unpointed": "הוא מכוער, ואני אוהבת אותו!",
+   "after_pointed": "הוּא מְכוֹעָר, וַאֲנִי אוֹהֶבֶת אוֹתוֹ!"
+  },
+  {
+   "stable_id": "[\"dialogue_chapter1_salon_cutscene_coffee_quest_completed\",\"phrases\",10,\"phrase\",\"text\"]",
+   "path": [
+    "dialogue_chapter1_salon_cutscene_coffee_quest_completed",
+    "phrases",
+    10,
+    "phrase",
+    "text"
+   ],
+   "en": "Children, climb up to the <bold>attic</>, quickly!",
+   "speaker_card": "character_mamma",
+   "before_unpointed": "ילדים, מהר לעלות לעליית הגג <bold>attic</>!",
+   "before_pointed": "יְלָדִים, מַהֵר לַעֲלוֹת לַעֲלִיַּיּת הַגַּג <bold>attic</>!",
+   "reasons": [
+    "Moominmamma addresses both children. Preserve the attic clue inside the bold span; remove the leftover English attic in row 664."
+   ],
+   "kinds": [
+    "addressee-number"
+   ],
+   "after_unpointed": "ילדים, עלו מהר ל<bold>עליית הגג</>!",
+   "after_pointed": "יְלָדִים, עֲלוּ מַהֵר לְ<bold>עֲלִיַּית הַגַּג</>!"
+  },
+  {
+   "stable_id": "[\"dialogue_chapter1_salon_cutscene_fake_end\",\"phrases\",10,\"phrase\",\"text\"]",
+   "path": [
+    "dialogue_chapter1_salon_cutscene_fake_end",
+    "phrases",
+    10,
+    "phrase",
+    "text"
+   ],
+   "en": "Children, climb up to the attic, quickly!",
+   "speaker_card": "character_mamma",
+   "before_unpointed": "ילדים, מהר לעלות לעליית הגג!",
+   "before_pointed": "יְלָדִים, מַהֵר לַעֲלוֹת לַעֲלִיַּיּת הַגַּג!",
+   "reasons": [
+    "Moominmamma addresses both children with an explicit plural command."
+   ],
+   "kinds": [
+    "addressee-number"
+   ],
+   "after_unpointed": "ילדים, עלו מהר לעליית הגג!",
+   "after_pointed": "יְלָדִים, עֲלוּ מַהֵר לַעֲלִיַּית הַגַּג!"
+  },
+  {
+   "stable_id": "[\"dialogue_chapter1_salon_cutscene_flooding\",\"phrases\",2,\"phrase\",\"text\"]",
+   "path": [
+    "dialogue_chapter1_salon_cutscene_flooding",
+    "phrases",
+    2,
+    "phrase",
+    "text"
+   ],
+   "en": "Children, climb up to the <bold>attic</>, quickly!",
+   "speaker_card": "character_mamma",
+   "before_unpointed": "ילדים, מהר לעלות ל<bold>עליית הגג</>!",
+   "before_pointed": "יְלָדִים, מַהֵר לַעֲלוֹת לַ<bold>עֲלִיַּיּת הַגַּג</>!",
+   "reasons": [
+    "Moominmamma addresses both children. Preserve the attic clue inside the bold span; remove the leftover English attic in row 664."
+   ],
+   "kinds": [
+    "addressee-number"
+   ],
+   "after_unpointed": "ילדים, עלו מהר ל<bold>עליית הגג</>!",
+   "after_pointed": "יְלָדִים, עֲלוּ מַהֵר לְ<bold>עֲלִיַּית הַגַּג</>!"
+  },
+  {
+   "stable_id": "[\"dialogue_chapter1_salon_cutscene_mirrorback\",\"phrases\",0,\"phrase\",\"text\"]",
+   "path": [
+    "dialogue_chapter1_salon_cutscene_mirrorback",
+    "phrases",
+    0,
+    "phrase",
+    "text"
+   ],
+   "en": "Hey! You know, I want my <bold>mirror </>back.",
+   "speaker_card": "character_snorkmaiden",
+   "before_unpointed": "היי! את יודעת, אני רוצה את ה<bold>מראה </>שלי בחזרה.",
+   "before_pointed": "הַיי! אַתְּ יוֹדַעַת, אֲנִי רוֹצֶה אֶת הַ<bold>מַּרְאֶה </>שֶׁלִּי בַּחֲזָרָה.",
+   "reasons": [
+    "The female speaker is the first-person subject."
+   ],
+   "kinds": [
+    "gender-pointing"
+   ],
+   "after_unpointed": "היי! את יודעת, אני רוצה את ה<bold>מראה </>שלי בחזרה.",
+   "after_pointed": "הַיי! אַתְּ יוֹדַעַת, אֲנִי רוֹצָה אֶת הַ<bold>מַּרְאֶה </>שֶׁלִּי בַּחֲזָרָה."
+  },
+  {
+   "stable_id": "[\"dialogue_chapter1_salon_fdesc_peephole\",\"phrases\",7,\"phrase\",\"text\"]",
+   "path": [
+    "dialogue_chapter1_salon_fdesc_peephole",
+    "phrases",
+    7,
+    "phrase",
+    "text"
+   ],
+   "en": "I don't want to find out anyway!",
+   "speaker_card": "character_moomintroll",
+   "before_unpointed": "בכל מקרה, אני לא רוצה לגלות!",
+   "before_pointed": "בְּכָל מִקְרֶה, אֲנִי לֹא רוֹצָה לְגַלּוֹת!",
+   "reasons": [
+    "The male speaker is the first-person subject."
+   ],
+   "kinds": [
+    "gender-pointing"
+   ],
+   "after_unpointed": "בכל מקרה, אני לא רוצה לגלות!",
+   "after_pointed": "בְּכָל מִקְרֶה, אֲנִי לֹא רוֹצֶה לְגַלּוֹת!"
+  },
+  {
+   "stable_id": "[\"dialogue_chapter1_salon_npcbackground_3\",\"phrases\",0,\"phrase\",\"text\"]",
+   "path": [
+    "dialogue_chapter1_salon_npcbackground_3",
+    "phrases",
+    0,
+    "phrase",
+    "text"
+   ],
+   "en": "Thinking about something?",
+   "speaker_card": "character_mamma",
+   "before_unpointed": "על מה את חושבת?",
+   "before_pointed": "עַל מָה אַתְּ חוֹשֶׁבֶת?",
+   "reasons": [
+    "Moominpappa answers Moominmamma in the same background exchange."
+   ],
+   "kinds": [
+    "addressee-gender"
+   ],
+   "after_unpointed": "על מה אתה חושב?",
+   "after_pointed": "עַל מָה אַתָּה חוֹשֵׁב?"
+  },
+  {
+   "stable_id": "[\"dialogue_chapter1_salon_npcbackground_6\",\"phrases\",1,\"phrase\",\"text\"]",
+   "path": [
+    "dialogue_chapter1_salon_npcbackground_6",
+    "phrases",
+    1,
+    "phrase",
+    "text"
+   ],
+   "en": "You see? It’s always fine to put off chores!",
+   "speaker_card": "character_pappa",
+   "before_unpointed": "את רואה? תמיד כדאי לדחות מטלות!",
+   "before_pointed": "אֶתְ רוֹאָה? תָּמִיד כְּדַאי לִדְחוֹת מַטָּלוֹת!",
+   "reasons": [
+    "The context identifies a feminine-singular pronoun, not the object marker את."
+   ],
+   "kinds": [
+    "gender-pointing"
+   ],
+   "after_unpointed": "את רואה? תמיד כדאי לדחות מטלות!",
+   "after_pointed": "אַתְּ רוֹאָה? תָּמִיד כְּדַאי לִדְחוֹת מַטָּלוֹת!"
+  },
+  {
+   "stable_id": "[\"dialogue_chapter1_salon_quest_coffee\",\"phrases\",5,\"phrase\",\"text\"]",
+   "path": [
+    "dialogue_chapter1_salon_quest_coffee",
+    "phrases",
+    5,
+    "phrase",
+    "text"
+   ],
+   "en": "Darling, you've built a beautiful home!",
+   "speaker_card": "character_mamma",
+   "before_unpointed": "יקירי, בניתם כאן בית מקסים!",
+   "before_pointed": "יַקִּירִי, בְּנִיתָם כָּאן בֵּית מַקְסִים!",
+   "reasons": [
+    "Moominmamma explicitly addresses darling Moominpappa; German du and Russian ты построил are singular."
+   ],
+   "kinds": [
+    "addressee-number"
+   ],
+   "after_unpointed": "יקירי, בנית כאן בית מקסים!",
+   "after_pointed": "יַקִּירִי, בָּנִיתָ כָּאן בֵּית מַקְסִים!"
+  },
+  {
+   "stable_id": "[\"dialogue_chapter1_salon_quest_coffee\",\"phrases\",11,\"phrase\",\"text\"]",
+   "path": [
+    "dialogue_chapter1_salon_quest_coffee",
+    "phrases",
+    11,
+    "phrase",
+    "text"
+   ],
+   "en": "Good, but only because I want coffee too!",
+   "speaker_card": "character_little_my",
+   "before_unpointed": "בסדר, אבל רק כי גם אני רוצה קפה!",
+   "before_pointed": "בְּסֵדֶר, אֲבָל רַק כִּי גַּם אֲנִי רוֹצֶה קָפֶה!",
+   "reasons": [
+    "The female speaker is the first-person subject."
+   ],
+   "kinds": [
+    "gender-pointing"
+   ],
+   "after_unpointed": "בסדר, אבל רק כי גם אני רוצה קפה!",
+   "after_pointed": "בְּסֵדֶר, אֲבָל רַק כִּי גַּם אֲנִי רוֹצָה קָפֶה!"
+  },
+  {
+   "stable_id": "[\"dialogue_chapter1_salon_quest_mirror\",\"phrases\",4,\"phrase\",\"text\"]",
+   "path": [
+    "dialogue_chapter1_salon_quest_mirror",
+    "phrases",
+    4,
+    "phrase",
+    "text"
+   ],
+   "en": "Well... I think you look beautiful!",
+   "speaker_card": "character_moomintroll",
+   "before_unpointed": "טוב... לדעתי את נראית יפה!",
+   "before_pointed": "טוֹב... לְדַעְתִּי אֶתְּ נִרְאֵית יָפָה!",
+   "reasons": [
+    "The context identifies a feminine-singular pronoun, not the object marker את."
+   ],
+   "kinds": [
+    "gender-pointing"
+   ],
+   "after_unpointed": "טוב... לדעתי את נראית יפה!",
+   "after_pointed": "טוֹב... לְדַעְתִּי אַתְּ נִרְאֵית יָפָה!"
+  },
+  {
+   "stable_id": "[\"dialogue_chapter1_salon_quest_mirrorback\",\"phrases\",2,\"phrase\",\"text\"]",
+   "path": [
+    "dialogue_chapter1_salon_quest_mirrorback",
+    "phrases",
+    2,
+    "phrase",
+    "text"
+   ],
+   "en": "Well, that's the reason I want it back!",
+   "speaker_card": "character_snorkmaiden",
+   "before_unpointed": "ובכן, בגלל זה אני רוצה אותה בחזרה!",
+   "before_pointed": "וּבְכֵן, בִּגְלַל זֶה אֲנִי רוֹצֶה אוֹתָהּ בַּחֲזָרָה!",
+   "reasons": [
+    "The female speaker is the first-person subject."
+   ],
+   "kinds": [
+    "gender-pointing"
+   ],
+   "after_unpointed": "ובכן, בגלל זה אני רוצה אותה בחזרה!",
+   "after_pointed": "וּבְכֵן, בִּגְלַל זֶה אֲנִי רוֹצָה אוֹתָהּ בַּחֲזָרָה!"
+  },
+  {
+   "stable_id": "[\"dialogue_chapter1_salon_uniquematch_sm_mirrorsrod_back\",\"phrases\",1,\"phrase\",\"text\"]",
+   "path": [
+    "dialogue_chapter1_salon_uniquematch_sm_mirrorsrod_back",
+    "phrases",
+    1,
+    "phrase",
+    "text"
+   ],
+   "en": "Do you still hate it?",
+   "speaker_card": "character_little_my",
+   "before_unpointed": "את עדיין שונאת אותה?",
+   "before_pointed": "אֶת עֲדַיִין שׂוֹנֵאת אוֹתָהּ?",
+   "reasons": [
+    "Little My addresses Snorkmaiden."
+   ],
+   "kinds": [
+    "gender-pointing"
+   ],
+   "after_unpointed": "את עדיין שונאת אותה?",
+   "after_pointed": "אַתְּ עֲדַיִין שׂוֹנֵאת אוֹתָהּ?"
+  },
+  {
+   "stable_id": "[\"dialogue_chapter1_salon_uniquematch_sm_mirrorsrod_back\",\"phrases\",2,\"phrase\",\"text\"]",
+   "path": [
+    "dialogue_chapter1_salon_uniquematch_sm_mirrorsrod_back",
+    "phrases",
+    2,
+    "phrase",
+    "text"
+   ],
+   "en": "You know, I figured out my fringe wasn't awful. ",
+   "speaker_card": "character_snorkmaiden",
+   "before_unpointed": "את יודעת, הבנתי שהפוני שלי לא היה כזה נורא.",
+   "before_pointed": "אֶתְּ יוֹדַעַת, הֵבַנְתִּי שֶׁהַפּוֹנִי שֶׁלִּי לֹא הָיָה כָּזֶה נוֹרָא.",
+   "reasons": [
+    "The context identifies a feminine-singular pronoun, not the object marker את."
+   ],
+   "kinds": [
+    "gender-pointing"
+   ],
+   "after_unpointed": "את יודעת, הבנתי שהפוני שלי לא היה כזה נורא.",
+   "after_pointed": "אַתְּ יוֹדַעַת, הֵבַנְתִּי שֶׁהַפּוֹנִי שֶׁלִּי לֹא הָיָה כָּזֶה נוֹרָא."
+  },
+  {
+   "stable_id": "[\"dialogue_chapter1_salon_uniquematch_stool_books_box\",\"phrases\",1,\"phrase\",\"text\"]",
+   "path": [
+    "dialogue_chapter1_salon_uniquematch_stool_books_box",
+    "phrases",
+    1,
+    "phrase",
+    "text"
+   ],
+   "en": "You're imagining it!",
+   "speaker_card": "character_little_my",
+   "before_unpointed": "את מדמיינת!",
+   "before_pointed": "אֶתְ מְדַמְיֶינֶת!",
+   "reasons": [
+    "The context identifies a feminine-singular pronoun, not the object marker את."
+   ],
+   "kinds": [
+    "gender-pointing"
+   ],
+   "after_unpointed": "את מדמיינת!",
+   "after_pointed": "אַתְּ מְדַמְיֶינֶת!"
+  },
+  {
+   "stable_id": "[\"dialogue_chapter2_cutscene_my_on_hook_2\",\"phrases\",0,\"phrase\",\"text\"]",
+   "path": [
+    "dialogue_chapter2_cutscene_my_on_hook_2",
+    "phrases",
+    0,
+    "phrase",
+    "text"
+   ],
+   "en": "I’d rather help Little My first. She’s still waiting for a lift.",
+   "speaker_card": "character_moomintroll",
+   "before_unpointed": "אני מעדיף קודם לעזור למאי הקטנה. היא עדיין מחכה שאעזור לה לעלות.",
+   "before_pointed": "אֲנִי מַעֲדִיף קוֹדֶם לַעֲזוֹר לְמַאי הַקְּטַנָּה. הִיא עֲדַיִין מְחַכֶּה שֶׁאֶעֱזוֹר לָהּ לַעֲלוֹת.",
+   "reasons": [
+    "The third-person subject is Little My."
+   ],
+   "kinds": [
+    "gender-pointing"
+   ],
+   "after_unpointed": "אני מעדיף קודם לעזור למאי הקטנה. היא עדיין מחכה שאעזור לה לעלות.",
+   "after_pointed": "אֲנִי מַעֲדִיף קוֹדֶם לַעֲזוֹר לְמַאי הַקְּטַנָּה. הִיא עֲדַיִין מְחַכָּה שֶׁאֶעֱזוֹר לָהּ לַעֲלוֹת."
+  },
+  {
+   "stable_id": "[\"dialogue_chapter2_dressing_cutscene_breakfree\",\"phrases\",0,\"phrase\",\"text\"]",
+   "path": [
+    "dialogue_chapter2_dressing_cutscene_breakfree",
+    "phrases",
+    0,
+    "phrase",
+    "text"
+   ],
+   "en": "Little My! Where have you been?",
+   "speaker_card": "character_moomintroll",
+   "before_unpointed": "מאי הקטנה! איפה היית?",
+   "before_pointed": "מַאי הַקְּטַנָּה! אֵיפֹה הָיִיתָ?",
+   "reasons": [
+    "Moomintroll explicitly addresses Little My; Russian была is feminine."
+   ],
+   "kinds": [
+    "addressee-gender"
+   ],
+   "after_unpointed": "מאי הקטנה! איפה היית?",
+   "after_pointed": "מַאי הַקְּטַנָּה! אֵיפֹה הָיִיתְ?"
+  },
+  {
+   "stable_id": "[\"dialogue_chapter2_dressing_cutscene_breakfree\",\"phrases\",3,\"phrase\",\"text\"]",
+   "path": [
+    "dialogue_chapter2_dressing_cutscene_breakfree",
+    "phrases",
+    3,
+    "phrase",
+    "text"
+   ],
+   "en": "Have you seen him?!",
+   "speaker_card": "character_moomintroll",
+   "before_unpointed": "ראית אותו?!",
+   "before_pointed": "רָאִיתָ אוֹתוֹ?!",
+   "reasons": [
+    "Little My is the addressee in the same exchange; Russian видела is feminine."
+   ],
+   "kinds": [
+    "addressee-gender"
+   ],
+   "after_unpointed": "ראית אותו?!",
+   "after_pointed": "רָאִיתְ אוֹתוֹ?!"
+  },
+  {
+   "stable_id": "[\"dialogue_chapter2_dressing_enddesc_pillows\",\"phrases\",0,\"phrase\",\"text\"]",
+   "path": [
+    "dialogue_chapter2_dressing_enddesc_pillows",
+    "phrases",
+    0,
+    "phrase",
+    "text"
+   ],
+   "en": "Oh! I want that many pillows too.",
+   "speaker_card": "character_little_my",
+   "before_unpointed": "אוי! גם אני רוצה כל כך הרבה כריות.",
+   "before_pointed": "אוֹי! גַּם אֲנִי רוֹצֶה כָּל כָּךְ הַרְבֵּה כָּרִיּוֹת.",
+   "reasons": [
+    "The female speaker is the first-person subject."
+   ],
+   "kinds": [
+    "gender-pointing"
+   ],
+   "after_unpointed": "אוי! גם אני רוצה כל כך הרבה כריות.",
+   "after_pointed": "אוֹי! גַּם אֲנִי רוֹצָה כָּל כָּךְ הַרְבֵּה כָּרִיּוֹת."
+  },
+  {
+   "stable_id": "[\"dialogue_chapter2_dressing_filler_misa\",\"phrases\",1,\"phrase\",\"text\"]",
+   "path": [
+    "dialogue_chapter2_dressing_filler_misa",
+    "phrases",
+    1,
+    "phrase",
+    "text"
+   ],
+   "en": "You know, Misabel... You don't look happy in this wig.",
+   "speaker_card": "character_little_my",
+   "before_unpointed": "את יודעת, אומללית... את לא נראית מאושרת בפאה הזאת.",
+   "before_pointed": "אֶתְּ יוֹדַעַת, אוּמְלָלִית... אַתְּ לֹא נִרְאֵית מְאוּשֶּׁרֶת בַּפֵּאָה הַזֹּאת.",
+   "reasons": [
+    "The context identifies a feminine-singular pronoun, not the object marker את."
+   ],
+   "kinds": [
+    "gender-pointing"
+   ],
+   "after_unpointed": "את יודעת, אומללית... את לא נראית מאושרת בפאה הזאת.",
+   "after_pointed": "אַתְּ יוֹדַעַת, אוּמְלָלִית... אַתְּ לֹא נִרְאֵית מְאוּשֶּׁרֶת בַּפֵּאָה הַזֹּאת."
+  },
+  {
+   "stable_id": "[\"dialogue_chapter2_inventory_barometer\",\"phrases\",1,\"phrase\",\"text\"]",
+   "path": [
+    "dialogue_chapter2_inventory_barometer",
+    "phrases",
+    1,
+    "phrase",
+    "text"
+   ],
+   "en": "I don't believe it! ",
+   "speaker_card": "character_little_my",
+   "before_unpointed": "אני לא מאמין! ",
+   "before_pointed": "אֲנִי לֹא מַאֲמִין! ",
+   "reasons": [
+    "Little My is the explicit first-person speaker."
+   ],
+   "kinds": [
+    "speaker-gender"
+   ],
+   "after_unpointed": "אני לא מאמינה! ",
+   "after_pointed": "אֲנִי לֹא מַאֲמִינָה! "
+  },
+  {
+   "stable_id": "[\"dialogue_chapter2_inventory_standardmatch_newspaper\",\"phrases\",0,\"phrase\",\"text\"]",
+   "path": [
+    "dialogue_chapter2_inventory_standardmatch_newspaper",
+    "phrases",
+    0,
+    "phrase",
+    "text"
+   ],
+   "en": "I don't want to tear the newspaper.",
+   "speaker_card": "character_moomintroll",
+   "before_unpointed": "אני לא רוצה לקרוע את העיתון.",
+   "before_pointed": "אֲנִי לֹא רוֹצָה לִקְרוֹעַ אֶת הָעִיתּוֹן.",
+   "reasons": [
+    "The male speaker is the first-person subject."
+   ],
+   "kinds": [
+    "gender-pointing"
+   ],
+   "after_unpointed": "אני לא רוצה לקרוע את העיתון.",
+   "after_pointed": "אֲנִי לֹא רוֹצֶה לִקְרוֹעַ אֶת הָעִיתּוֹן."
+  },
+  {
+   "stable_id": "[\"dialogue_chapter2_pier_cutscene_both_boarding_pier\",\"phrases\",0,\"phrase\",\"text\"]",
+   "path": [
+    "dialogue_chapter2_pier_cutscene_both_boarding_pier",
+    "phrases",
+    0,
+    "phrase",
+    "text"
+   ],
+   "en": "I like this kind of ship!",
+   "speaker_card": "character_little_my",
+   "before_unpointed": "אני אוהב ספינה כזאת!",
+   "before_pointed": "אֲנִי אוֹהֵב סְפִינָה כְּזֹאת!",
+   "reasons": [
+    "Little My speaks about herself in the first person."
+   ],
+   "kinds": [
+    "speaker-gender"
+   ],
+   "after_unpointed": "אני אוהבת ספינה כזאת!",
+   "after_pointed": "אֲנִי אוֹהֶבֶת סְפִינָה כְּזֹאת!"
+  },
+  {
+   "stable_id": "[\"dialogue_chapter2_pier_cutscene_mymble\",\"phrases\",0,\"phrase\",\"text\"]",
+   "path": [
+    "dialogue_chapter2_pier_cutscene_mymble",
+    "phrases",
+    0,
+    "phrase",
+    "text"
+   ],
+   "en": "Mymble, remember you told me about Hattifatteners?",
+   "speaker_card": "character_little_my",
+   "before_unpointed": "מייבל, את זוכרת שסיפרת לי על השמנטפים?",
+   "before_pointed": "מַיְיבֶּל, אֶתְּ זוֹכֶרֶת שֶׁסִּיפַּרְתָּ לִי עַל הַשְּׁמַנְטַפִים?",
+   "reasons": [
+    "Little My explicitly addresses Mymble.",
+    "The past-tense second-person addressee is Mymble, feminine singular."
+   ],
+   "kinds": [
+    "gender-pointing"
+   ],
+   "after_unpointed": "מייבל, את זוכרת שסיפרת לי על השמנטפים?",
+   "after_pointed": "מַיְיבֶּל, אַתְּ זוֹכֶרֶת שֶׁסִּיפַּרְתְּ לִי עַל הַשְּׁמַנְטַפִים?"
+  },
+  {
+   "stable_id": "[\"dialogue_chapter2_pier_cutscene_mymble\",\"phrases\",8,\"phrase\",\"text\"]",
+   "path": [
+    "dialogue_chapter2_pier_cutscene_mymble",
+    "phrases",
+    8,
+    "phrase",
+    "text"
+   ],
+   "en": "I've read a forecast! There's gonna be a terrible hurricane!",
+   "speaker_card": "character_mymble",
+   "before_unpointed": "קראתי תחזית! עומדת להשתולל הוריקן נוראה!",
+   "before_pointed": "קָרָאתִי תַּחֲזִית! עוֹמֶדֶת לְהִשְׁתּוֹלֵל הוֹרִיקָן נוֹרָאָה!",
+   "reasons": [
+    "The noun הוריקן is masculine; the weather predicate is not controlled by Mymble speaker gender."
+   ],
+   "kinds": [
+    "referent-gender"
+   ],
+   "after_unpointed": "קראתי תחזית! עומד להשתולל הוריקן נורא!",
+   "after_pointed": "קָרָאתִי תַּחֲזִית! עוֹמֵד לְהִשְׁתּוֹלֵל הוֹרִיקָן נוֹרָא!"
+  },
+  {
+   "stable_id": "[\"dialogue_chapter2_pier_greeting_mymble\",\"phrases\",0,\"phrase\",\"text\"]",
+   "path": [
+    "dialogue_chapter2_pier_greeting_mymble",
+    "phrases",
+    0,
+    "phrase",
+    "text"
+   ],
+   "en": "Mymble! Have you found a <bold>barometer</> already?",
+   "speaker_card": "character_moomintroll",
+   "before_unpointed": "מייבל! כבר מצאת <bold>ברומטר</>?",
+   "before_pointed": "מַיְיבֶּל! כְּבָר מָצָאתָ <bold>בְּרוֹמֶטֶר</>?",
+   "reasons": [
+    "Moomintroll explicitly addresses Mymble; Russian нашла is feminine."
+   ],
+   "kinds": [
+    "addressee-gender"
+   ],
+   "after_unpointed": "מייבל! כבר מצאת <bold>ברומטר</>?",
+   "after_pointed": "מַיְיבֶּל! כְּבָר מָצָאתְ <bold>בְּרוֹמֶטֶר</>?"
+  },
+  {
+   "stable_id": "[\"dialogue_chapter2_pier_greeting_mymble\",\"phrases\",2,\"phrase\",\"text\"]",
+   "path": [
+    "dialogue_chapter2_pier_greeting_mymble",
+    "phrases",
+    2,
+    "phrase",
+    "text"
+   ],
+   "en": "You know, I'll just lie here for a while...",
+   "speaker_card": "character_mymble",
+   "before_unpointed": "את יודעת, אני פשוט אשכב פה קצת...",
+   "before_pointed": "אֶתְּ יוֹדַעַת, אֲנִי פָּשׁוּט אֶשְׁכַּב פֹּה קְצָת...",
+   "reasons": [
+    "The context identifies a feminine-singular pronoun, not the object marker את."
+   ],
+   "kinds": [
+    "gender-pointing"
+   ],
+   "after_unpointed": "את יודעת, אני פשוט אשכב פה קצת...",
+   "after_pointed": "אַתְּ יוֹדַעַת, אֲנִי פָּשׁוּט אֶשְׁכַּב פֹּה קְצָת..."
+  },
+  {
+   "stable_id": "[\"dialogue_chapter2_pier_quest_my\",\"phrases\",0,\"phrase\",\"text\"]",
+   "path": [
+    "dialogue_chapter2_pier_quest_my",
+    "phrases",
+    0,
+    "phrase",
+    "text"
+   ],
+   "en": "Ahoy there! What do you see?",
+   "speaker_card": "character_moomintroll",
+   "before_unpointed": "אהוי! מה את רואה?",
+   "before_pointed": "אָהוּי! מָה אַתְּ רוֹאֶה?",
+   "reasons": [
+    "Moomintroll addresses Mymble in feminine singular."
+   ],
+   "kinds": [
+    "gender-pointing"
+   ],
+   "after_unpointed": "אהוי! מה את רואה?",
+   "after_pointed": "אָהוּי! מָה אַתְּ רוֹאָה?"
+  },
+  {
+   "stable_id": "[\"dialogue_chapter2_properties_cutscene_trampoline_my\",\"phrases\",2,\"phrase\",\"text\"]",
+   "path": [
+    "dialogue_chapter2_properties_cutscene_trampoline_my",
+    "phrases",
+    2,
+    "phrase",
+    "text"
+   ],
+   "en": "Little My! Have you caught Propertius?",
+   "speaker_card": "character_snorkmaiden",
+   "before_unpointed": "מאי הקטנה! תפסת את פרופרטיוס?",
+   "before_pointed": "מַאי הַקְּטַנָּה! תָּפַסֶת אֶת פְּרוֹפֶרְטְיוּס?",
+   "reasons": [
+    "Snorkmaiden explicitly addresses Little My."
+   ],
+   "kinds": [
+    "gender-pointing"
+   ],
+   "after_unpointed": "מאי הקטנה! תפסת את פרופרטיוס?",
+   "after_pointed": "מַאי הַקְּטַנָּה! תָּפַסְתְּ אֶת פְּרוֹפֶרְטְיוּס?"
+  },
+  {
+   "stable_id": "[\"dialogue_chapter2_properties_npcbackground_emma_2\",\"phrases\",0,\"phrase\",\"text\"]",
+   "path": [
+    "dialogue_chapter2_properties_npcbackground_emma_2",
+    "phrases",
+    0,
+    "phrase",
+    "text"
+   ],
+   "en": "...hope there's more than one inside...",
+   "speaker_card": "character_emma",
+   "before_unpointed": "…אני מקווה שיש בפנים יותר מאחד…",
+   "before_pointed": "…אֲנִי מְקַוֶּוה שֶׁיֵּשׁ בִּפְנִים יוֹתֵר מֵאֶחָד…",
+   "reasons": [
+    "The female speaker is the first-person subject."
+   ],
+   "kinds": [
+    "gender-pointing"
+   ],
+   "after_unpointed": "…אני מקווה שיש בפנים יותר מאחד…",
+   "after_pointed": "…אֲנִי מְקַוָּוה שֶׁיֵּשׁ בִּפְנִים יוֹתֵר מֵאֶחָד…"
+  },
+  {
+   "stable_id": "[\"dialogue_chapter2_properties_uniquematch_sm_fake_candy_box\",\"phrases\",0,\"phrase\",\"text\"]",
+   "path": [
+    "dialogue_chapter2_properties_uniquematch_sm_fake_candy_box",
+    "phrases",
+    0,
+    "phrase",
+    "text"
+   ],
+   "en": "Candies, of course! Put it in the circle as a gift for Propertius.",
+   "speaker_card": "character_snorkmaiden",
+   "before_unpointed": "ממתקים, כמובן! שים את זה במעגל בתור מתנה לפרופרטיוס.",
+   "before_pointed": "מַמְתַּקִּים, כַּמּוּבָן! שִׂים אֶת זֶה בְּמַעְגָּל בְּתוֹר מַתָּנָה לִפְּרוֹפֶרְטְיוּס.",
+   "reasons": [
+    "German singular and Russian plural disagree on the addressee; use a natural unmarked instruction instead of guessing."
+   ],
+   "kinds": [
+    "unmarked-addressee"
+   ],
+   "after_unpointed": "ממתקים, כמובן! צריך להניח את זה במעגל בתור מתנה לפרופרטיוס.",
+   "after_pointed": "מַמְתַּקִּים, כַּמּוּבָן! צָרִיךְ לְהַנִּיחַ אֶת זֶה בַּמַּעְגָּל בְּתוֹר מַתָּנָה לִפְּרוֹפֶרְטְיוּס."
+  },
+  {
+   "stable_id": "[\"dialogue_chapter2_stage_cutscene_wrong_wind\",\"phrases\",1,\"phrase\",\"text\"]",
+   "path": [
+    "dialogue_chapter2_stage_cutscene_wrong_wind",
+    "phrases",
+    1,
+    "phrase",
+    "text"
+   ],
+   "en": "What did you see?",
+   "speaker_card": "character_moomintroll",
+   "before_unpointed": "מה ראית?",
+   "before_pointed": "מָה רָאִיתָ?",
+   "reasons": [
+    "Russian увидела and the adjacent Little My reply establish feminine singular."
+   ],
+   "kinds": [
+    "addressee-gender"
+   ],
+   "after_unpointed": "מה ראית?",
+   "after_pointed": "מָה רָאִיתְ?"
+  },
+  {
+   "stable_id": "[\"dialogue_chapter2_stage_greeting_spider\",\"phrases\",0,\"phrase\",\"text\"]",
+   "path": [
+    "dialogue_chapter2_stage_greeting_spider",
+    "phrases",
+    0,
+    "phrase",
+    "text"
+   ],
+   "en": "Hey! Hanging around, I see!",
+   "speaker_card": "character_little_my",
+   "before_unpointed": "היי! רואה שאת מסתובבת פה!",
+   "before_pointed": "הַיי! רוֹאֶה שֶׁאַתְּ מִסְתּוֹבֶבֶת פֹּה!",
+   "reasons": [
+    "Little My addresses the grammatical-masculine Spider; her own see remains feminine."
+   ],
+   "kinds": [
+    "speaker-and-addressee-gender"
+   ],
+   "after_unpointed": "היי! רואה שאתה מסתובב פה!",
+   "after_pointed": "הַיי! רוֹאָה שֶׁאַתָּה מִסְתּוֹבֵב פֹּה!"
+  },
+  {
+   "stable_id": "[\"dialogue_chapter2_stage_qdesc_hook_up\",\"phrases\",0,\"phrase\",\"text\"]",
+   "path": [
+    "dialogue_chapter2_stage_qdesc_hook_up",
+    "phrases",
+    0,
+    "phrase",
+    "text"
+   ],
+   "en": "This hook could get me down… if only I weren’t so light!",
+   "speaker_card": "character_little_my",
+   "before_unpointed": "הוו הזה יכול להוריד אותי למטה... אילו רק לא הייתי כל כך קל!",
+   "before_pointed": "הַוַו הַזֶּה יָכוֹל לְהוֹרִיד אוֹתִי לְמַטָּה... אִילּוּ רַק לֹא הָיִיתִי כָּל כָּךְ קַל!",
+   "reasons": [
+    "Little My describes her own weight, not the hook."
+   ],
+   "kinds": [
+    "speaker-gender"
+   ],
+   "after_unpointed": "הוו הזה יכול להוריד אותי למטה... אילו רק לא הייתי כל כך קלה!",
+   "after_pointed": "הַוַו הַזֶּה יָכוֹל לְהוֹרִיד אוֹתִי לְמַטָּה... אִילּוּ רַק לֹא הָיִיתִי כָּל כָּךְ קַלָּה!"
+  },
+  {
+   "stable_id": "[\"dialogue_chapter2_stage_uniquematch_garlic_shell\",\"phrases\",0,\"phrase\",\"text\"]",
+   "path": [
+    "dialogue_chapter2_stage_uniquematch_garlic_shell",
+    "phrases",
+    0,
+    "phrase",
+    "text"
+   ],
+   "en": "I don’t want to throw garlic there. Some poor fish might eat it!",
+   "speaker_card": "character_moomintroll",
+   "before_unpointed": "אני לא רוצה לזרוק לשם שום. איזה דג מסכן עוד עלול לאכול אותו!",
+   "before_pointed": "אֲנִי לֹא רוֹצָה לִזְרוֹק לְשֵׁם שׁוּם. אֵיזֶה דָּג מְסַכֵּן עוֹד עָלוּל לֶאֱכוֹל אוֹתוֹ!",
+   "reasons": [
+    "The male speaker is the first-person subject."
+   ],
+   "kinds": [
+    "gender-pointing"
+   ],
+   "after_unpointed": "אני לא רוצה לזרוק לשם שום. איזה דג מסכן עוד עלול לאכול אותו!",
+   "after_pointed": "אֲנִי לֹא רוֹצֶה לִזְרוֹק לְשֵׁם שׁוּם. אֵיזֶה דָּג מְסַכֵּן עוֹד עָלוּל לֶאֱכוֹל אוֹתוֹ!"
+  },
+  {
+   "stable_id": "[\"dialogue_chapter3_q1_inventory_standardmatch_syrup\",\"phrases\",0,\"phrase\",\"text\"]",
+   "path": [
+    "dialogue_chapter3_q1_inventory_standardmatch_syrup",
+    "phrases",
+    0,
+    "phrase",
+    "text"
+   ],
+   "en": "Pretty sure the doctor didn’t prescribe it to everything.",
+   "speaker_card": "character_little_my",
+   "before_unpointed": "די בטוח שהרופא לא רשם אותו לכל דבר.",
+   "before_pointed": "דֵּי בָּטוּחַ שֶׁהָרוֹפֵא לֹא רָשַׁם אוֹתוֹ לְכָל דָּבָר.",
+   "reasons": [
+    "The omitted first-person subject is Little My."
+   ],
+   "kinds": [
+    "speaker-gender"
+   ],
+   "after_unpointed": "די בטוחה שהרופא לא רשם אותו לכל דבר.",
+   "after_pointed": "דֵּי בְּטוּחָה שֶׁהָרוֹפֵא לֹא רָשַׁם אוֹתוֹ לְכָל דָּבָר."
+  },
+  {
+   "stable_id": "[\"dialogue_chapter3_q1_inventory_uniquematch_frog_blue_paint\",\"phrases\",0,\"phrase\",\"text\"]",
+   "path": [
+    "dialogue_chapter3_q1_inventory_uniquematch_frog_blue_paint",
+    "phrases",
+    0,
+    "phrase",
+    "text"
+   ],
+   "en": "I like its natural color.",
+   "speaker_card": "character_little_my",
+   "before_unpointed": "אני אוהב את הצבע הטבעי שלו.",
+   "before_pointed": "אֲנִי אוֹהֵב אֶת הַצֶּבַע הַטִּבְעִי שֶׁלּוֹ.",
+   "reasons": [
+    "Little My speaks about herself in the first person.",
+    "The same frog is grammatical feminine, as in the other paint variants."
+   ],
+   "kinds": [
+    "speaker-gender",
+    "referent-gender"
+   ],
+   "after_unpointed": "אני אוהבת את הצבע הטבעי שלה.",
+   "after_pointed": "אֲנִי אוֹהֶבֶת אֶת הַצֶּבַע הַטִּבְעִי שֶׁלָּהּ."
+  },
+  {
+   "stable_id": "[\"dialogue_chapter3_q1_inventory_uniquematch_frog_red_paint\",\"phrases\",0,\"phrase\",\"text\"]",
+   "path": [
+    "dialogue_chapter3_q1_inventory_uniquematch_frog_red_paint",
+    "phrases",
+    0,
+    "phrase",
+    "text"
+   ],
+   "en": "I like its natural color.",
+   "speaker_card": "character_little_my",
+   "before_unpointed": "אני אוהב את הצבע הטבעי שלה.",
+   "before_pointed": "אֲנִי אוֹהֵב אֶת הַצֶּבַע הַטִּבְעִי שֶׁלָּהּ.",
+   "reasons": [
+    "Little My speaks about herself in the first person."
+   ],
+   "kinds": [
+    "speaker-gender"
+   ],
+   "after_unpointed": "אני אוהבת את הצבע הטבעי שלה.",
+   "after_pointed": "אֲנִי אוֹהֶבֶת אֶת הַצֶּבַע הַטִּבְעִי שֶׁלָּהּ."
+  },
+  {
+   "stable_id": "[\"dialogue_chapter3_q1_inventory_uniquematch_frog_yellow_paint\",\"phrases\",0,\"phrase\",\"text\"]",
+   "path": [
+    "dialogue_chapter3_q1_inventory_uniquematch_frog_yellow_paint",
+    "phrases",
+    0,
+    "phrase",
+    "text"
+   ],
+   "en": "I like its natural color.",
+   "speaker_card": "character_little_my",
+   "before_unpointed": "אני אוהב את הצבע הטבעי שלה.",
+   "before_pointed": "אֲנִי אוֹהֵב אֶת הַצֶּבַע הַטִּבְעִי שֶׁלָּהּ.",
+   "reasons": [
+    "Little My speaks about herself in the first person."
+   ],
+   "kinds": [
+    "speaker-gender"
+   ],
+   "after_unpointed": "אני אוהבת את הצבע הטבעי שלה.",
+   "after_pointed": "אֲנִי אוֹהֶבֶת אֶת הַצֶּבַע הַטִּבְעִי שֶׁלָּהּ."
+  },
+  {
+   "stable_id": "[\"dialogue_chapter3_q1_park_cutscene_artist_complete\",\"phrases\",1,\"phrase\",\"text\"]",
+   "path": [
+    "dialogue_chapter3_q1_park_cutscene_artist_complete",
+    "phrases",
+    1,
+    "phrase",
+    "text"
+   ],
+   "en": "I’m imagining!",
+   "speaker_card": "character_artist",
+   "before_unpointed": "אני מדמיינת!",
+   "before_pointed": "אֲנִי מְדַמְיֶינֶת!",
+   "reasons": [
+    "Keep the artist consistent with the Hebrew role צייר and masculine Russian recap был художником; English recap uses neutral they."
+   ],
+   "kinds": [
+    "speaker-grammatical-convention"
+   ],
+   "after_unpointed": "אני מדמיין!",
+   "after_pointed": "אֲנִי מְדַמְיֵין!"
+  },
+  {
+   "stable_id": "[\"dialogue_chapter3_q1_park_cutscene_snufkin\",\"phrases\",3,\"phrase\",\"text\"]",
+   "path": [
+    "dialogue_chapter3_q1_park_cutscene_snufkin",
+    "phrases",
+    3,
+    "phrase",
+    "text"
+   ],
+   "en": "Why are you here? Are you lost?",
+   "speaker_card": "character_snufkin",
+   "before_unpointed": "מה אתה עושה כאן? הלכת לאיבוד?",
+   "before_pointed": "מָה אַתָּה עוֹשֶׂה כָּאן? הַלֶּכֶתָ לְאִיבּוּד?",
+   "reasons": [
+    "Snufkin addresses Little My; Russian потерялась confirms feminine singular."
+   ],
+   "kinds": [
+    "addressee-gender"
+   ],
+   "after_unpointed": "מה את עושה כאן? הלכת לאיבוד?",
+   "after_pointed": "מָה אַתְּ עוֹשָׂה כָּאן? הָלַכְתְּ לְאִיבּוּד?"
+  },
+  {
+   "stable_id": "[\"dialogue_chapter3_q1_park_cutscene_snufkin\",\"phrases\",9,\"phrase\",\"text\"]",
+   "path": [
+    "dialogue_chapter3_q1_park_cutscene_snufkin",
+    "phrases",
+    9,
+    "phrase",
+    "text"
+   ],
+   "en": "Are you planning some mischief? I’m in!",
+   "speaker_card": "character_little_my",
+   "before_unpointed": "את מתכננת לעשות בלגן? אני בפנים!",
+   "before_pointed": "אֶתּ מְתַכְנֶנֶת לַעֲשׂוֹת בָּלָגָן? אֲנִי בִּפְנִים!",
+   "reasons": [
+    "Little My addresses Snufkin; Russian задумал independently confirms masculine singular."
+   ],
+   "kinds": [
+    "addressee-gender"
+   ],
+   "after_unpointed": "אתה מתכנן לעשות בלגן? אני בפנים!",
+   "after_pointed": "אַתָּה מְתַכְנֵן לַעֲשׂוֹת בָּלָגָן? אֲנִי בִּפְנִים!"
+  },
+  {
+   "stable_id": "[\"dialogue_chapter3_q1_park_fdesc_ticket\",\"phrases\",0,\"phrase\",\"text\"]",
+   "path": [
+    "dialogue_chapter3_q1_park_fdesc_ticket",
+    "phrases",
+    0,
+    "phrase",
+    "text"
+   ],
+   "en": "I hope the ticket includes the right to be silly.",
+   "speaker_card": "character_little_my",
+   "before_unpointed": "אני מקווה שהכרטיס כולל גם זכות להשתטות.",
+   "before_pointed": "אֲנִי מְקַוֶּוה שֶׁהַכַּרְטִיס כּוֹלֵל גַּם זְכוּת לְהִשְׁתַּטוֹת.",
+   "reasons": [
+    "The female speaker is the first-person subject."
+   ],
+   "kinds": [
+    "gender-pointing"
+   ],
+   "after_unpointed": "אני מקווה שהכרטיס כולל גם זכות להשתטות.",
+   "after_pointed": "אֲנִי מְקַוָּוה שֶׁהַכַּרְטִיס כּוֹלֵל גַּם זְכוּת לְהִשְׁתַּטוֹת."
+  },
+  {
+   "stable_id": "[\"dialogue_chapter3_q1_park_filler_bushkid\",\"phrases\",3,\"phrase\",\"text\"]",
+   "path": [
+    "dialogue_chapter3_q1_park_filler_bushkid",
+    "phrases",
+    3,
+    "phrase",
+    "text"
+   ],
+   "en": "That’s what I need!",
+   "speaker_card": "character_little_my",
+   "before_unpointed": "בדיוק מה שאני צריך!",
+   "before_pointed": "בְּדִיּוּק מָה שֶׁאֲנִי צָרִיךְ!",
+   "reasons": [
+    "Little My says what she needs."
+   ],
+   "kinds": [
+    "speaker-gender"
+   ],
+   "after_unpointed": "בדיוק מה שאני צריכה!",
+   "after_pointed": "בְּדִיּוּק מָה שֶׁאֲנִי צְרִיכָה!"
+  },
+  {
+   "stable_id": "[\"dialogue_chapter3_q1_park_quest_bushkid\",\"phrases\",2,\"phrase\",\"text\"]",
+   "path": [
+    "dialogue_chapter3_q1_park_quest_bushkid",
+    "phrases",
+    2,
+    "phrase",
+    "text"
+   ],
+   "en": "Finally! Let’s pretend I’m the Lion, and you’re Snorkmaiden!",
+   "speaker_card": "character_little_my",
+   "before_unpointed": "סוף סוף! בוא נעמיד פנים שאני האריה ואת סנורקה!",
+   "before_pointed": "סוֹף סוֹף! בּוֹא נַעֲמִיד פָּנִים שֶׁאֲנִי הָאַרְיֵה וְאֶת סְנוֹרְקָה!",
+   "reasons": [
+    "The addressee is the bush child: English he in row 1781. Playing Snorkmaiden does not change the addressee pronoun."
+   ],
+   "kinds": [
+    "addressee-gender"
+   ],
+   "after_unpointed": "סוף סוף! בוא נעמיד פנים שאני האריה ואתה סנורקה!",
+   "after_pointed": "סוֹף סוֹף! בּוֹא נַעֲמִיד פָּנִים שֶׁאֲנִי הָאַרְיֵה וְאַתָּה סְנוֹרְקָה!"
+  },
+  {
+   "stable_id": "[\"dialogue_chapter3_q1_park_takeitem_mustard\",\"phrases\",2,\"phrase\",\"text\"]",
+   "path": [
+    "dialogue_chapter3_q1_park_takeitem_mustard",
+    "phrases",
+    2,
+    "phrase",
+    "text"
+   ],
+   "en": "I think I know whose pack this is...",
+   "speaker_card": "character_little_my",
+   "before_unpointed": "נראה לי שאני יודע של מי התרמיל הזה...",
+   "before_pointed": "נִרְאֶה לִי שֶׁאֲנִי יוֹדֵעַ שֶׁל מֵי הַתַּרְמִיל הַזֶּה...",
+   "reasons": [
+    "Little My says what she knows."
+   ],
+   "kinds": [
+    "speaker-gender"
+   ],
+   "after_unpointed": "נראה לי שאני יודעת של מי התרמיל הזה...",
+   "after_pointed": "נִרְאֶה לִי שֶׁאֲנִי יוֹדַעַת שֶׁל מֵי הַתַּרְמִיל הַזֶּה..."
+  },
+  {
+   "stable_id": "[\"dialogue_chapter3_q1_park_uniquematch_bushkid_bucket\",\"phrases\",1,\"phrase\",\"text\"]",
+   "path": [
+    "dialogue_chapter3_q1_park_uniquematch_bushkid_bucket",
+    "phrases",
+    1,
+    "phrase",
+    "text"
+   ],
+   "en": "Oh, you’re so complicated!",
+   "speaker_card": "character_little_my",
+   "before_unpointed": "אוי, כמה שאת מסובכת!",
+   "before_pointed": "אוֹי, כַּמָּה שֶׁאַתְּ מְסוּבֶּכֶת!",
+   "reasons": [
+    "Little My addresses the bush child, identified as he in source row 1781."
+   ],
+   "kinds": [
+    "addressee-gender"
+   ],
+   "after_unpointed": "אוי, כמה שאתה מסובך!",
+   "after_pointed": "אוֹי, כַּמָּה שֶׁאַתָּה מְסוּבָּךְ!"
+  },
+  {
+   "stable_id": "[\"dialogue_chapter3_q1_park_uniquematch_chocolate_frogs\",\"phrases\",0,\"phrase\",\"text\"]",
+   "path": [
+    "dialogue_chapter3_q1_park_uniquematch_chocolate_frogs",
+    "phrases",
+    0,
+    "phrase",
+    "text"
+   ],
+   "en": "\"Ribbit\" clearly means \"not hungry\".",
+   "speaker_card": "character_little_my",
+   "before_unpointed": "״קרקור״ פירושו בבירור ״אני לא רעב״.",
+   "before_pointed": "״קִרְקוּר״ פֵּירוּשׁוֹ בְּבֵירוּר ״אֲנִי לֹא רָעֵב״.",
+   "reasons": [
+    "The quotation represents the frog, grammatical feminine צפרדע, rather than the speaker herself."
+   ],
+   "kinds": [
+    "quoted-referent-gender"
+   ],
+   "after_unpointed": "״קרקור״ פירושו בבירור ״אני לא רעבה״.",
+   "after_pointed": "״קִרְקוּר״ פֵּירוּשׁוֹ בְּבֵירוּר ״אֲנִי לֹא רְעֵבָה״."
+  },
+  {
+   "stable_id": "[\"dialogue_chapter3_q1_park_uniquematch_snufkin_berries\",\"phrases\",0,\"phrase\",\"text\"]",
+   "path": [
+    "dialogue_chapter3_q1_park_uniquematch_snufkin_berries",
+    "phrases",
+    0,
+    "phrase",
+    "text"
+   ],
+   "en": "Hmm… If they were tasty, you wouldn’t be sharing.",
+   "speaker_card": "character_snufkin",
+   "before_unpointed": "הממ… אם הם היו טעימים, לא היית חולק אותם.",
+   "before_pointed": "הַמְּמ… אִם הֵם הָיוּ טְעִימִים, לֹא הָיִיתָ חוֹלֵק אוֹתָם.",
+   "reasons": [
+    "Snufkin addresses Little My; Russian ты ... поделилась confirms feminine singular."
+   ],
+   "kinds": [
+    "addressee-gender"
+   ],
+   "after_unpointed": "הממ… אם הם היו טעימים, לא היית חולקת אותם.",
+   "after_pointed": "הַמְּמ… אִם הֵם הָיוּ טְעִימִים, לֹא הָיִיתְ חוֹלֶקֶת אוֹתָם."
+  },
+  {
+   "stable_id": "[\"dialogue_chapter3_q1_park_uniquematch_trainer_berries\",\"phrases\",1,\"phrase\",\"text\"]",
+   "path": [
+    "dialogue_chapter3_q1_park_uniquematch_trainer_berries",
+    "phrases",
+    1,
+    "phrase",
+    "text"
+   ],
+   "en": "I’m sure you’ve never tried!",
+   "speaker_card": "character_little_my",
+   "before_unpointed": "בטוח עוד לא ניסית!",
+   "before_pointed": "בָּטוּחַ עוֹד לֹא נִיסִּית!",
+   "reasons": [
+    "Little My speaks to the female trainer; English she in rows 1789/1884 establishes the trainer reference."
+   ],
+   "kinds": [
+    "speaker-and-addressee-gender"
+   ],
+   "after_unpointed": "אני בטוחה שעוד לא ניסית!",
+   "after_pointed": "אֲנִי בְּטוּחָה שֶׁעוֹד לֹא נִיסִּיתְּ!"
+  },
+  {
+   "stable_id": "[\"dialogue_chapter3_q2_ffhouse_cutscene_enter\",\"phrases\",5,\"phrase\",\"text\"]",
+   "path": [
+    "dialogue_chapter3_q2_ffhouse_cutscene_enter",
+    "phrases",
+    5,
+    "phrase",
+    "text"
+   ],
+   "en": "Thank you. And happy Midsummer to you.",
+   "speaker_card": "character_fillyjonk",
+   "before_unpointed": "תודה. וגם לך חג אמצע קיץ שמח.",
+   "before_pointed": "תּוֹדָה. וְגַם לְךְ חַג אֶמְצַע קַיִץ שָׂמֵחַ.",
+   "reasons": [
+    "Fillyjonk addresses the visitors together: German euch and Russian вам."
+   ],
+   "kinds": [
+    "addressee-number"
+   ],
+   "after_unpointed": "תודה. וגם לכם חג אמצע קיץ שמח.",
+   "after_pointed": "תּוֹדָה. וְגַם לָכֶם חַג אֶמְצַע קַיִץ שָׂמֵחַ."
+  },
+  {
+   "stable_id": "[\"dialogue_chapter3_q2_ffhouse_repeatquest_sm\",\"phrases\",0,\"phrase\",\"text\"]",
+   "path": [
+    "dialogue_chapter3_q2_ffhouse_repeatquest_sm",
+    "phrases",
+    0,
+    "phrase",
+    "text"
+   ],
+   "en": "I hope Fillyjonk doesn’t get worse. ",
+   "speaker_card": "character_snorkmaiden",
+   "before_unpointed": "אני מקווה שמצבה של פיליונק לא יחמיר. ",
+   "before_pointed": "אֲנִי מְקַוֶּוה שֶׁמַּצָּבָהּ שֶׁל פִּילְיוֹנְק לֹא יַחְמִיר. ",
+   "reasons": [
+    "The female speaker is the first-person subject."
+   ],
+   "kinds": [
+    "gender-pointing"
+   ],
+   "after_unpointed": "אני מקווה שמצבה של פיליונק לא יחמיר. ",
+   "after_pointed": "אֲנִי מְקַוָּוה שֶׁמַּצָּבָהּ שֶׁל פִּילְיוֹנְק לֹא יַחְמִיר. "
+  },
+  {
+   "stable_id": "[\"dialogue_chapter3_q2_field_takeitem_pitchfork\",\"phrases\",1,\"phrase\",\"text\"]",
+   "path": [
+    "dialogue_chapter3_q2_field_takeitem_pitchfork",
+    "phrases",
+    1,
+    "phrase",
+    "text"
+   ],
+   "en": "Imagine what she could do with it!",
+   "speaker_card": "character_moomintroll",
+   "before_unpointed": "תארו לעצמכם מה היא הייתה יכולה לעשות עם זה!",
+   "before_pointed": "תָּאֲרוּ לְעַצְמְכֶם מָה הִיא הָיְיתָה יְכוֹלָה לַעֲשׂוֹת עִם זֶה!",
+   "reasons": [
+    "This is a Moomintroll monologue; Russian and German are unmarked. Avoid inventing a plural audience."
+   ],
+   "kinds": [
+    "unmarked-addressee"
+   ],
+   "after_unpointed": "אפשר רק לדמין מה היא הייתה יכולה לעשות עם זה!",
+   "after_pointed": "אֶפְשָׁר רַק לְדַמְיֵן מָה הִיא הָיְיתָה יְכוֹלָה לַעֲשׂוֹת עִם זֶה!"
+  },
+  {
+   "stable_id": "[\"dialogue_chapter3_q2_shore_cutscene_bunch\",\"phrases\",3,\"phrase\",\"text\"]",
+   "path": [
+    "dialogue_chapter3_q2_shore_cutscene_bunch",
+    "phrases",
+    3,
+    "phrase",
+    "text"
+   ],
+   "en": "Time for fortune-telling! Did you gather the <bold>flowers</>, Moomintroll?",
+   "speaker_card": "character_snorkmaiden",
+   "before_unpointed": "הגיע הזמן לנחש את העתיד! אספת את ה<bold>פרחים</>, מומינטרול?",
+   "before_pointed": "הִגִּיעַ הַזְּמַן לְנַחֵשׁ אֶת הֶעָתִיד! אָסַפַתָ אֶת הַ<bold>פְּרָחִים</>, מוּמִינְטְרוֹל?",
+   "reasons": [
+    "Snorkmaiden explicitly addresses Moomintroll."
+   ],
+   "kinds": [
+    "gender-pointing"
+   ],
+   "after_unpointed": "הגיע הזמן לנחש את העתיד! אספת את ה<bold>פרחים</>, מומינטרול?",
+   "after_pointed": "הִגִּיעַ הַזְּמַן לְנַחֵשׁ אֶת הֶעָתִיד! אָסַפְתָּ אֶת הַ<bold>פְּרָחִים</>, מוּמִינְטְרוֹל?"
+  },
+  {
+   "stable_id": "[\"dialogue_chapter3_q3_ffhouse_cutscene_start\",\"phrases\",0,\"phrase\",\"text\"]",
+   "path": [
+    "dialogue_chapter3_q3_ffhouse_cutscene_start",
+    "phrases",
+    0,
+    "phrase",
+    "text"
+   ],
+   "en": "Never thought having four kids would be this hard!",
+   "speaker_card": "character_snufkin",
+   "before_unpointed": "לא חשבתי שלהיות אחראית על ארבעה ילדים יהיה כל כך קשה!",
+   "before_pointed": "לֹא חָשַׁבְתִּי שֶׁלִהְיוֹת אַחְרָאִית עַל אַרְבָּעָה יְלָדִים יִהְיֶה כָּל כָּךְ קָשֶׁה!",
+   "reasons": [
+    "Snufkin speaks about his own responsibility for the children."
+   ],
+   "kinds": [
+    "speaker-gender"
+   ],
+   "after_unpointed": "לא חשבתי שלהיות אחראי על ארבעה ילדים יהיה כל כך קשה!",
+   "after_pointed": "לֹא חָשַׁבְתִּי שֶׁלִהְיוֹת אַחְרָאִי עַל אַרְבָּעָה יְלָדִים יִהְיֶה כָּל כָּךְ קָשֶׁה!"
+  },
+  {
+   "stable_id": "[\"dialogue_chapter3_q3_field_uniquematch_crows_bucket\",\"phrases\",0,\"phrase\",\"text\"]",
+   "path": [
+    "dialogue_chapter3_q3_field_uniquematch_crows_bucket",
+    "phrases",
+    0,
+    "phrase",
+    "text"
+   ],
+   "en": "I could catch one, if only they were on the ground...",
+   "speaker_card": "character_little_my",
+   "before_unpointed": "הייתי יכול לתפוס אחד, אילו רק היו על הקרקע...",
+   "before_pointed": "הָיִיתִי יָכוֹל לִתְפּוֹס אֶחָד, אִילּוּ רַק הָיוּ עַל הַקַּרְקַע...",
+   "reasons": [
+    "Little My describes her own ability."
+   ],
+   "kinds": [
+    "speaker-gender"
+   ],
+   "after_unpointed": "הייתי יכולה לתפוס אחד, אילו רק היו על הקרקע...",
+   "after_pointed": "הָיִיתִי יְכוֹלָה לִתְפּוֹס אֶחָד, אִילּוּ רַק הָיוּ עַל הַקַּרְקַע..."
+  },
+  {
+   "stable_id": "[\"dialogue_chapter3_q3_field_uniquematch_crows_cheese\",\"phrases\",0,\"phrase\",\"text\"]",
+   "path": [
+    "dialogue_chapter3_q3_field_uniquematch_crows_cheese",
+    "phrases",
+    0,
+    "phrase",
+    "text"
+   ],
+   "en": "You’re smart, but just look at this tasty piece!",
+   "speaker_card": "character_little_my",
+   "before_unpointed": "את חכמה, אבל תראי איזו חתיכה טעימה!",
+   "before_pointed": "אַתְּ חֲכָמָה, אֲבָל תִּרְאִי אֵיזוֹ חֲתִיכָה טְעִימָה!",
+   "reasons": [
+    "The addressed crow is עורב in Hebrew, grammatical masculine; Russian ворона has a different grammatical gender."
+   ],
+   "kinds": [
+    "referent-gender"
+   ],
+   "after_unpointed": "אתה חכם, אבל תראה איזו חתיכה טעימה!",
+   "after_pointed": "אַתָּה חָכָם, אֲבָל תִּרְאֶה אֵיזוֹ חֲתִיכָה טְעִימָה!"
+  },
+  {
+   "stable_id": "[\"dialogue_chapter3_q3_shore_greeting_someone\",\"phrases\",0,\"phrase\",\"text\"]",
+   "path": [
+    "dialogue_chapter3_q3_shore_greeting_someone",
+    "phrases",
+    0,
+    "phrase",
+    "text"
+   ],
+   "en": "I see a <bold>glue</>! Very useful thing, I’ll keep it...",
+   "speaker_card": "character_little_my",
+   "before_unpointed": "אני רואה <bold>דבק</>! דבר שימושי מאוד, אשמור אותו...",
+   "before_pointed": "אֲנִי רוֹאֶה <bold>דָּבֵק</>! דָּבָר שִׁימּוּשִׁי מְאוֹד, אֶשְׁמוֹר אוֹתוֹ...",
+   "reasons": [
+    "Little My is the first-person subject."
+   ],
+   "kinds": [
+    "gender-pointing"
+   ],
+   "after_unpointed": "אני רואה <bold>דבק</>! דבר שימושי מאוד, אשמור אותו...",
+   "after_pointed": "אֲנִי רוֹאָה <bold>דָּבֵק</>! דָּבָר שִׁימּוּשִׁי מְאוֹד, אֶשְׁמוֹר אוֹתוֹ..."
+  },
+  {
+   "stable_id": "[\"dialogue_chapter4_backstage_fdesc_door_nokey\",\"phrases\",1,\"phrase\",\"text\"]",
+   "path": [
+    "dialogue_chapter4_backstage_fdesc_door_nokey",
+    "phrases",
+    1,
+    "phrase",
+    "text"
+   ],
+   "en": "Haven’t you saved the key by any chance?",
+   "speaker_card": "character_little_my",
+   "before_unpointed": "לא שמרת אצלך את המפתח במקרה?",
+   "before_pointed": "לֹא שָׁמַרְתָּ אֶצְלֵךְ אֶת הַמַּפְתֵּחַ בְּמִקְרֶה?",
+   "reasons": [
+    "Moomintroll answers the question; the possessive must match the masculine verb."
+   ],
+   "kinds": [
+    "gender-pointing"
+   ],
+   "after_unpointed": "לא שמרת אצלך את המפתח במקרה?",
+   "after_pointed": "לֹא שָׁמַרְתָּ אֶצְלְךָ אֶת הַמַּפְתֵּחַ בְּמִקְרֶה?"
+  },
+  {
+   "stable_id": "[\"dialogue_chapter4_dressing_cutscene_meet_mymble\",\"phrases\",10,\"phrase\",\"text\"]",
+   "path": [
+    "dialogue_chapter4_dressing_cutscene_meet_mymble",
+    "phrases",
+    10,
+    "phrase",
+    "text"
+   ],
+   "en": "You think a loud shout would calm them?",
+   "speaker_card": "character_little_my",
+   "before_unpointed": "את חושבת שצעקה חזקה תרגיע אותם?",
+   "before_pointed": "אֶת חוֹשֶׁבֶת שֶׁצָּעֲקָה חֲזָקָה תַּרְגִּיעַ אוֹתָם?",
+   "reasons": [
+    "Little My addresses Mymble, who answers the next line."
+   ],
+   "kinds": [
+    "gender-pointing"
+   ],
+   "after_unpointed": "את חושבת שצעקה חזקה תרגיע אותם?",
+   "after_pointed": "אַתְּ חוֹשֶׁבֶת שֶׁצָּעֲקָה חֲזָקָה תַּרְגִּיעַ אוֹתָם?"
+  },
+  {
+   "stable_id": "[\"dialogue_chapter4_dressing_filler_kids\",\"phrases\",1,\"phrase\",\"text\"]",
+   "path": [
+    "dialogue_chapter4_dressing_filler_kids",
+    "phrases",
+    1,
+    "phrase",
+    "text"
+   ],
+   "en": "Hey, you! Jump quietly, and don’t you dare wake my sister up!",
+   "speaker_card": "character_little_my",
+   "before_unpointed": "היי, את! תקפצי בשקט, ואל תעזי להעיר את אחותי!",
+   "before_pointed": "הַיי, אַתְּ! תִּקְפְּצִי בְּשֶׁקֶט, וְאַל תַּעֵזִי לְהָעִיר אֶת אֲחוֹתִי!",
+   "reasons": [
+    "The answering character_card is character_artist; use the documented masculine grammatical convention, distinct from the female trainer."
+   ],
+   "kinds": [
+    "addressee-grammatical-convention"
+   ],
+   "after_unpointed": "היי, אתה! תקפוץ בשקט, ואל תעז להעיר את אחותי!",
+   "after_pointed": "הַיי, אַתָּה! תִּקְפּוֹץ בְּשֶׁקֶט, וְאַל תָּעֵז לְהָעִיר אֶת אֲחוֹתִי!"
+  },
+  {
+   "stable_id": "[\"dialogue_chapter4_dressing_greeting_misa\",\"phrases\",8,\"phrase\",\"text\"]",
+   "path": [
+    "dialogue_chapter4_dressing_greeting_misa",
+    "phrases",
+    8,
+    "phrase",
+    "text"
+   ],
+   "en": "You look so much happier now!",
+   "speaker_card": "character_moomintroll",
+   "before_unpointed": "את נראית הרבה יותר מאושרת עכשיו!",
+   "before_pointed": "אֶתְּ נִרְאֵית הַרְבֵּה יוֹתֵר מְאוּשֶּׁרֶת עַכְשָׁיו!",
+   "reasons": [
+    "The context identifies a feminine-singular pronoun, not the object marker את."
+   ],
+   "kinds": [
+    "gender-pointing"
+   ],
+   "after_unpointed": "את נראית הרבה יותר מאושרת עכשיו!",
+   "after_pointed": "אַתְּ נִרְאֵית הַרְבֵּה יוֹתֵר מְאוּשֶּׁרֶת עַכְשָׁיו!"
+  },
+  {
+   "stable_id": "[\"dialogue_chapter4_dressing_npcbackground_8\",\"phrases\",0,\"phrase\",\"text\"]",
+   "path": [
+    "dialogue_chapter4_dressing_npcbackground_8",
+    "phrases",
+    0,
+    "phrase",
+    "text"
+   ],
+   "en": "I want to sleep! Calm down!",
+   "speaker_card": "character_mymble",
+   "before_unpointed": "אני רוצה לישון! תירגעו!",
+   "before_pointed": "אֲנִי רוֹצֶה לִישׁוֹן! תֵּירָגְעוּ!",
+   "reasons": [
+    "The female speaker is the first-person subject."
+   ],
+   "kinds": [
+    "gender-pointing"
+   ],
+   "after_unpointed": "אני רוצה לישון! תירגעו!",
+   "after_pointed": "אֲנִי רוֹצָה לִישׁוֹן! תֵּירָגְעוּ!"
+  },
+  {
+   "stable_id": "[\"dialogue_chapter4_dressing_quest_kids\",\"phrases\",2,\"phrase\",\"text\"]",
+   "path": [
+    "dialogue_chapter4_dressing_quest_kids",
+    "phrases",
+    2,
+    "phrase",
+    "text"
+   ],
+   "en": "Your sister is an angry dragon!",
+   "speaker_card": "character_artist",
+   "before_unpointed": "אחותכם היא דרקון זועם!",
+   "before_pointed": "אֲחוֹתְכֶם הִיא דְּרָקוֹן זוֹעֵם!",
+   "reasons": [
+    "The artist addresses Little My about her sister; German deine and Russian твоя are singular. Moomintroll is not Mymble’s sibling."
+   ],
+   "kinds": [
+    "addressee-number"
+   ],
+   "after_unpointed": "אחותך היא דרקון זועם!",
+   "after_pointed": "אֲחוֹתֵךְ הִיא דְּרָקוֹן זוֹעֵם!"
+  },
+  {
+   "stable_id": "[\"dialogue_chapter4_dressing_quest_mymble\",\"phrases\",3,\"phrase\",\"text\"]",
+   "path": [
+    "dialogue_chapter4_dressing_quest_mymble",
+    "phrases",
+    3,
+    "phrase",
+    "text"
+   ],
+   "en": "Little My! You know I’m doing this only because I have to.",
+   "speaker_card": "character_mymble",
+   "before_unpointed": "מאי! את יודעת שאני עושה את זה רק כי אני חייבת.",
+   "before_pointed": "מַאי! אַתְּ יוֹדַעַת שֶׁאֲנִי עוֹשֶׂה אֶת זֶה רַק כִּי אֲנִי חַיֶּיבֶת.",
+   "reasons": [
+    "The female speaker is the first-person subject."
+   ],
+   "kinds": [
+    "gender-pointing"
+   ],
+   "after_unpointed": "מאי! את יודעת שאני עושה את זה רק כי אני חייבת.",
+   "after_pointed": "מַאי! אַתְּ יוֹדַעַת שֶׁאֲנִי עוֹשָׂה אֶת זֶה רַק כִּי אֲנִי חַיֶּיבֶת."
+  },
+  {
+   "stable_id": "[\"dialogue_chapter4_dressing_repeatquest_misa_sec\",\"phrases\",3,\"phrase\",\"text\"]",
+   "path": [
+    "dialogue_chapter4_dressing_repeatquest_misa_sec",
+    "phrases",
+    3,
+    "phrase",
+    "text"
+   ],
+   "en": "Go and tell my admirer I want to <bold>see</> them!",
+   "speaker_card": "character_misabel",
+   "before_unpointed": "לך לספר למעריץ שלי שאני רוצה <bold>לראות</> אותו!",
+   "before_pointed": "לְךָ לְסַפֵּר לְמַּעֲרִיץ שֶׁלִּי שֶׁאֲנִי רוֹצֶה <bold>לִרְאוֹת</> אוֹתוֹ!",
+   "reasons": [
+    "The female speaker is the first-person subject.",
+    "German sagt addresses the two messengers; Misabel is feminine and the admirer remains singular."
+   ],
+   "kinds": [
+    "gender-pointing",
+    "speaker-addressee-and-referent"
+   ],
+   "after_unpointed": "לכו לספר למעריץ שלי שאני רוצה <bold>לראות</> אותו!",
+   "after_pointed": "לְכוּ לְסַפֵּר לַמַּעֲרִיץ שֶׁלִּי שֶׁאֲנִי רוֹצָה <bold>לִרְאוֹת</> אוֹתוֹ!"
+  },
+  {
+   "stable_id": "[\"dialogue_chapter4_dressing_repeatquest_misa_third\",\"phrases\",1,\"phrase\",\"text\"]",
+   "path": [
+    "dialogue_chapter4_dressing_repeatquest_misa_third",
+    "phrases",
+    1,
+    "phrase",
+    "text"
+   ],
+   "en": "Don’t you want a date with that mister?",
+   "speaker_card": "character_little_my",
+   "before_unpointed": "את לא רוצה לצאת לדייט עם האדון הזה?",
+   "before_pointed": "אֶתְ לֹא רוֹצָה לָצֵאת לְדֵיְיט עִם הָאָדוֹן הַזֶּה?",
+   "reasons": [
+    "The context identifies a feminine-singular pronoun, not the object marker את."
+   ],
+   "kinds": [
+    "gender-pointing"
+   ],
+   "after_unpointed": "את לא רוצה לצאת לדייט עם האדון הזה?",
+   "after_pointed": "אַתְּ לֹא רוֹצָה לָצֵאת לְדֵיְיט עִם הָאָדוֹן הַזֶּה?"
+  },
+  {
+   "stable_id": "[\"dialogue_chapter4_dressing_uniquematch_misa_newring\",\"phrases\",8,\"phrase\",\"text\"]",
+   "path": [
+    "dialogue_chapter4_dressing_uniquematch_misa_newring",
+    "phrases",
+    8,
+    "phrase",
+    "text"
+   ],
+   "en": "It’s not funny! I want to <bold>meet</> this person! Tell them!",
+   "speaker_card": "character_misabel",
+   "before_unpointed": "זה לא מצחיק! אני רוצה <bold>לפגוש</> את האדם הזה! תגיד להם!",
+   "before_pointed": "זֶה לֹא מַצְחִיק! אֲנִי רוֹצֶה <bold>לִפְגּוֹשׁ</> אֶת הָאָדָם הַזֶּה! תַּגִּיד לָהֶם!",
+   "reasons": [
+    "The female speaker is the first-person subject.",
+    "Misabel is feminine; German sagt / Russian передайте address the pair, while the admirer is one person, not plural them."
+   ],
+   "kinds": [
+    "gender-pointing",
+    "speaker-addressee-and-referent"
+   ],
+   "after_unpointed": "זה לא מצחיק! אני רוצה <bold>לפגוש</> את האדם הזה! תגידו לו!",
+   "after_pointed": "זֶה לֹא מַצְחִיק! אֲנִי רוֹצָה <bold>לִפְגּוֹשׁ</> אֶת הָאָדָם הַזֶּה! תַּגִּידוּ לוֹ!"
+  },
+  {
+   "stable_id": "[\"dialogue_chapter4_inventory_standardmatch_duster\",\"phrases\",0,\"phrase\",\"text\"]",
+   "path": [
+    "dialogue_chapter4_inventory_standardmatch_duster",
+    "phrases",
+    0,
+    "phrase",
+    "text"
+   ],
+   "en": "I can’t think how that would help.",
+   "speaker_card": "character_little_my",
+   "before_unpointed": "אני לא מצליח לחשוב איך זה יכול לעזור.",
+   "before_pointed": "אֲנִי לֹא מַצְלִיחַ לַחֲשׁוֹב אֵיךְ זֶה יָכוֹל לַעֲזוֹר.",
+   "reasons": [
+    "Little My describes her own difficulty."
+   ],
+   "kinds": [
+    "speaker-gender"
+   ],
+   "after_unpointed": "אני לא מצליחה לחשוב איך זה יכול לעזור.",
+   "after_pointed": "אֲנִי לֹא מַצְלִיחָה לַחֲשׁוֹב אֵיךְ זֶה יָכוֹל לַעֲזוֹר."
+  },
+  {
+   "stable_id": "[\"dialogue_chapter4_properties_quest_someone_first\",\"phrases\",7,\"phrase\",\"text\"]",
+   "path": [
+    "dialogue_chapter4_properties_quest_someone_first",
+    "phrases",
+    7,
+    "phrase",
+    "text"
+   ],
+   "en": "And if I had, would you introduce me to that gorgeous madame?",
+   "speaker_card": "character_someone",
+   "before_unpointed": "ואם הייתי רואה, היית מכירה לי את הגברת היפהפייה הזאת?",
+   "before_pointed": "וְאִם הָיִיתִי רוֹאֶה, הָיִיתָ מַכִּירָה לִי אֶת הַגְּבֶרֶת הַיְּפֵהפִייָּה הַזֹּאת?",
+   "reasons": [
+    "German würdet ihr addresses the mixed pair; the previous and next speakers are Little My and Moomintroll.",
+    "Use the plural past-tense vocalization consistently."
+   ],
+   "kinds": [
+    "addressee-number",
+    "plural-pointing"
+   ],
+   "after_unpointed": "ואם הייתי רואה, הייתם מכירים לי את הגברת היפהפייה הזאת?",
+   "after_pointed": "וְאִם הָיִיתִי רוֹאֶה, הֱיִיתֶם מַכִּירִים לִי אֶת הַגְּבֶרֶת הַיְּפֵהפִיָּיה הַזֹּאת?"
+  },
+  {
+   "stable_id": "[\"dialogue_chapter4_properties_quest_someone_first\",\"phrases\",11,\"phrase\",\"text\"]",
+   "path": [
+    "dialogue_chapter4_properties_quest_someone_first",
+    "phrases",
+    11,
+    "phrase",
+    "text"
+   ],
+   "en": "And I'll look for that... <bold>slipper</>, you said? That <bold>slipper</> for you!",
+   "speaker_card": "character_someone",
+   "before_unpointed": "ואני אחפש את ה... <bold>נעל בית</>, אמרת? את <bold>נעל הבית</> שלך!",
+   "before_pointed": "וַאֲנִי אֲחַפֵּשׂ אֶת ה... <bold>נָעַל בַּיִת</>, אָמַרְתָּ? אֶת <bold>נַעַל הַבַּיִת</> שֶׁלָּךָ!",
+   "reasons": [
+    "The same hidden speaker addresses the mixed pair; German euch and Russian plural wording confirm this."
+   ],
+   "kinds": [
+    "addressee-number"
+   ],
+   "after_unpointed": "ואני אחפש את ה... <bold>נעל בית</>, אמרתם? את <bold>נעל הבית</> שלכם!",
+   "after_pointed": "וַאֲנִי אֲחַפֵּשׂ אֶת ה... <bold>נַעַל בַּיִת</>, אֲמַרְתֶּם? אֶת <bold>נַעַל הַבַּיִת</> שֶׁלָּכֶם!"
+  },
+  {
+   "stable_id": "[\"dialogue_chapter4_properties_quest_someone_sec\",\"phrases\",10,\"phrase\",\"text\"]",
+   "path": [
+    "dialogue_chapter4_properties_quest_someone_sec",
+    "phrases",
+    10,
+    "phrase",
+    "text"
+   ],
+   "en": "And I’ll find you the best <bold>slipper</>, believe me!",
+   "speaker_card": "character_someone",
+   "before_unpointed": "ואני אמצא לך את <bold>נעל הבית</> הכי טובה, תאמין לי!",
+   "before_pointed": "וַאֲנִי אֶמְצָא לְךְ אֶת <bold>נַעַל הַבַּיִת</> הֲכִי טוֹבָה, תַּאֲמִין לִי!",
+   "reasons": [
+    "German euch and Russian вам refer to both protagonists."
+   ],
+   "kinds": [
+    "addressee-number"
+   ],
+   "after_unpointed": "ואני אמצא לכם את <bold>נעל הבית</> הכי טובה, תאמינו לי!",
+   "after_pointed": "וַאֲנִי אֶמְצָא לָכֶם אֶת <bold>נַעַל הַבַּיִת</> הֲכִי טוֹבָה, תַּאֲמִינוּ לִי!"
+  },
+  {
+   "stable_id": "[\"dialogue_chapter4_properties_quest_someone_third\",\"phrases\",7,\"phrase\",\"text\"]",
+   "path": [
+    "dialogue_chapter4_properties_quest_someone_third",
+    "phrases",
+    7,
+    "phrase",
+    "text"
+   ],
+   "en": "It's so romantic! You'll show it to the lady of my heart!",
+   "speaker_card": "character_someone",
+   "before_unpointed": "זה כל כך רומנטי! תראה אותו לגברת שליבי שייך לה!",
+   "before_pointed": "זֶה כָּל כָּךְ רוֹמַנְטִי! תִּרְאֶה אוֹתוֹ לִגְּבֶרֶת שְׁלִיבִּי שַׁיָּיךְ לָהּ!",
+   "reasons": [
+    "German zeigt ihr and Russian plural show address both protagonists."
+   ],
+   "kinds": [
+    "addressee-number"
+   ],
+   "after_unpointed": "זה כל כך רומנטי! תראו אותו לגברת שליבי שייך לה!",
+   "after_pointed": "זֶה כָּל כָּךְ רוֹמַנְטִי! תַּרְאוּ אוֹתוֹ לִגְּבֶרֶת שְׁלִיבִּי שַׁיָּיךְ לָהּ!"
+  },
+  {
+   "stable_id": "[\"dialogue_chapter4_properties_repeatquest_someone_first\",\"phrases\",5,\"phrase\",\"text\"]",
+   "path": [
+    "dialogue_chapter4_properties_repeatquest_someone_first",
+    "phrases",
+    5,
+    "phrase",
+    "text"
+   ],
+   "en": "Why do I still smell the <bold>bouquet</>? Haven’t you given it to my lady yet?",
+   "speaker_card": "character_someone",
+   "before_unpointed": "למה אני עדיין מריח את ה<bold>זר</>? עוד לא נתת אותו לגברתי?",
+   "before_pointed": "לָמָּה אֲנִי עֲדַיִין מֵרִיחַ אֶת הַ<bold>זָּר</>? עוֹד לֹא נָתַתְּ אוֹתוֹ לִגְבַרְתִּי?",
+   "reasons": [
+    "German habt ihr and Russian plural gave address both protagonists."
+   ],
+   "kinds": [
+    "addressee-number"
+   ],
+   "after_unpointed": "למה אני עדיין מריח את ה<bold>זר</>? עוד לא נתתם אותו לגברתי?",
+   "after_pointed": "לָמָּה אֲנִי עֲדַיִין מֵרִיחַ אֶת הַ<bold>זָּר</>? עוֹד לֹא נְתַתֶּם אוֹתוֹ לִגְבַרְתִּי?"
+  },
+  {
+   "stable_id": "[\"dialogue_chapter4_properties_uniquematch_someone_duster\",\"phrases\",0,\"phrase\",\"text\"]",
+   "path": [
+    "dialogue_chapter4_properties_uniquematch_someone_duster",
+    "phrases",
+    0,
+    "phrase",
+    "text"
+   ],
+   "en": "It would be so nice if you tidied me up.",
+   "speaker_card": "character_someone",
+   "before_unpointed": "היה נחמד אם היית מנקה ממני את האבק.",
+   "before_pointed": "הָיָה נֶחְמָד אִם הָיִיתָ מְנַקָּה מִמֶּנִּי אֶת הָאָבָק.",
+   "reasons": [
+    "German euch and Russian вы address both; avoid the original mixture of masculine past and feminine participle.",
+    "Use the plural past-tense vocalization consistently."
+   ],
+   "kinds": [
+    "addressee-number",
+    "plural-pointing"
+   ],
+   "after_unpointed": "היה נחמד אם הייתם מנקים ממני את האבק.",
+   "after_pointed": "הָיָה נֶחְמָד אִם הֱיִיתֶם מְנַקִּים מִמֶּנִּי אֶת הָאָבָק."
+  },
+  {
+   "stable_id": "[\"dialogue_chapter4_properties_uniquematch_someone_old_ring\",\"phrases\",0,\"phrase\",\"text\"]",
+   "path": [
+    "dialogue_chapter4_properties_uniquematch_someone_old_ring",
+    "phrases",
+    0,
+    "phrase",
+    "text"
+   ],
+   "en": "It looks awful! I told you to fix it!",
+   "speaker_card": "character_someone",
+   "before_unpointed": "זה נראה זוועה! אמרתי לך לתקן אותו!",
+   "before_pointed": "זֶה נִרְאֶה זְוָועָה! אָמַרְתִּי לָךְ לְתַקֵּן אוֹתוֹ!",
+   "reasons": [
+    "German ihr and Russian plural request address both protagonists."
+   ],
+   "kinds": [
+    "addressee-number"
+   ],
+   "after_unpointed": "זה נראה זוועה! אמרתי לכם לתקן אותו!",
+   "after_pointed": "זֶה נִרְאֶה זְוָועָה! אָמַרְתִּי לָכֶם לְתַקֵּן אוֹתוֹ!"
+  },
+  {
+   "stable_id": "[\"dialogue_chapter4_properties_uniquematch_someone_ring1\",\"phrases\",0,\"phrase\",\"text\"]",
+   "path": [
+    "dialogue_chapter4_properties_uniquematch_someone_ring1",
+    "phrases",
+    0,
+    "phrase",
+    "text"
+   ],
+   "en": "It looks awful! I told you to fix it!",
+   "speaker_card": "character_someone",
+   "before_unpointed": "זה נראה זוועה! אמרתי לך לתקן אותו!",
+   "before_pointed": "זֶה נִרְאֶה זְוָועָה! אָמַרְתִּי לָךְ לְתַקֵּן אוֹתוֹ!",
+   "reasons": [
+    "German ihr and Russian plural request address both protagonists."
+   ],
+   "kinds": [
+    "addressee-number"
+   ],
+   "after_unpointed": "זה נראה זוועה! אמרתי לכם לתקן אותו!",
+   "after_pointed": "זֶה נִרְאֶה זְוָועָה! אָמַרְתִּי לָכֶם לְתַקֵּן אוֹתוֹ!"
+  },
+  {
+   "stable_id": "[\"dialogue_chapter4_properties_uniquematch_someone_ring2\",\"phrases\",0,\"phrase\",\"text\"]",
+   "path": [
+    "dialogue_chapter4_properties_uniquematch_someone_ring2",
+    "phrases",
+    0,
+    "phrase",
+    "text"
+   ],
+   "en": "It looks awful! I told you to fix it!",
+   "speaker_card": "character_someone",
+   "before_unpointed": "זה נראה זוועה! אמרתי לך לתקן אותו!",
+   "before_pointed": "זֶה נִרְאֶה זְוָועָה! אָמַרְתִּי לָךְ לְתַקֵּן אוֹתוֹ!",
+   "reasons": [
+    "German ihr and Russian plural request address both protagonists."
+   ],
+   "kinds": [
+    "addressee-number"
+   ],
+   "after_unpointed": "זה נראה זוועה! אמרתי לכם לתקן אותו!",
+   "after_pointed": "זֶה נִרְאֶה זְוָועָה! אָמַרְתִּי לָכֶם לְתַקֵּן אוֹתוֹ!"
+  },
+  {
+   "stable_id": "[\"dialogue_chapter4_stage_cutscene_discuss\",\"phrases\",0,\"phrase\",\"text\"]",
+   "path": [
+    "dialogue_chapter4_stage_cutscene_discuss",
+    "phrases",
+    0,
+    "phrase",
+    "text"
+   ],
+   "en": "You’d never believe it, but he wants...",
+   "speaker_card": "character_little_my",
+   "before_unpointed": "לא הייתם מאמינים, אבל הוא רוצה...",
+   "before_pointed": "לֹא הֲיִיתֶם מַאֲמִינִים, אֲבָל הוּא רוֹצֶה...",
+   "reasons": [
+    "Moomintroll answers; German du and Russian ты are singular."
+   ],
+   "kinds": [
+    "addressee-number"
+   ],
+   "after_unpointed": "לא היית מאמין, אבל הוא רוצה...",
+   "after_pointed": "לֹא הָיִיתָ מַאֲמִין, אֲבָל הוּא רוֹצֶה..."
+  },
+  {
+   "stable_id": "[\"dialogue_chapter4_stage_filler_spider\",\"phrases\",4,\"phrase\",\"text\"]",
+   "path": [
+    "dialogue_chapter4_stage_filler_spider",
+    "phrases",
+    4,
+    "phrase",
+    "text"
+   ],
+   "en": "I don’t want to abuse Moominpappa’s hospitality.",
+   "speaker_card": "character_spider",
+   "before_unpointed": "אני לא רוצה לנצל את הכנסת האורחים של מומינאבא.",
+   "before_pointed": "אֲנִי לֹא רוֹצָה לְנַצֵּל אֶת הַכְּנֶסֶת הָאוֹרְחִים שֶׁל מוּמִינְאַבָּא.",
+   "reasons": [
+    "The male speaker is the first-person subject."
+   ],
+   "kinds": [
+    "gender-pointing"
+   ],
+   "after_unpointed": "אני לא רוצה לנצל את הכנסת האורחים של מומינאבא.",
+   "after_pointed": "אֲנִי לֹא רוֹצֶה לְנַצֵּל אֶת הַכְּנֶסֶת הָאוֹרְחִים שֶׁל מוּמִינְאַבָּא."
+  },
+  {
+   "stable_id": "[\"dialogue_chapter4_stage_greeting_spider\",\"phrases\",2,\"phrase\",\"text\"]",
+   "path": [
+    "dialogue_chapter4_stage_greeting_spider",
+    "phrases",
+    2,
+    "phrase",
+    "text"
+   ],
+   "en": "I can see you’ve settled in!",
+   "speaker_card": "character_little_my",
+   "before_unpointed": "אני רואה שכבר התמקמת כאן!",
+   "before_pointed": "אֲנִי רוֹאֶה שֶׁכְּבָר הִתְמַקַּמְתָּ כָּאן!",
+   "reasons": [
+    "Little My is the first-person subject."
+   ],
+   "kinds": [
+    "gender-pointing"
+   ],
+   "after_unpointed": "אני רואה שכבר התמקמת כאן!",
+   "after_pointed": "אֲנִי רוֹאָה שֶׁכְּבָר הִתְמַקַּמְתָּ כָּאן!"
+  },
+  {
+   "stable_id": "[\"dialogue_chapter4_stage_npcbackground_bad_4\",\"phrases\",1,\"phrase\",\"text\"]",
+   "path": [
+    "dialogue_chapter4_stage_npcbackground_bad_4",
+    "phrases",
+    1,
+    "phrase",
+    "text"
+   ],
+   "en": "...Then find it! Where did you see it last time?...",
+   "speaker_card": "character_emma",
+   "before_unpointed": "...אז תמצאי אותו! איפה ראית אותו בפעם האחרונה?...",
+   "before_pointed": "...אָז תִּמְצְאִי אוֹתוֹ! אֵיפֹה רָאִיתָ אוֹתוֹ בַּפַּעַם הָאַחֲרוֹנָה?...",
+   "reasons": [
+    "Emma addresses Fillyjonk; the existing feminine imperative and Russian видела confirm feminine singular."
+   ],
+   "kinds": [
+    "addressee-gender"
+   ],
+   "after_unpointed": "...אז תמצאי אותו! איפה ראית אותו בפעם האחרונה?...",
+   "after_pointed": "...אָז תִּמְצְאִי אוֹתוֹ! אֵיפֹה רָאִיתְ אוֹתוֹ בַּפַּעַם הָאַחֲרוֹנָה?..."
+  },
+  {
+   "stable_id": "[\"dialogue_chapter4_stage_quest_emma_ff_aria\",\"phrases\",7,\"phrase\",\"text\"]",
+   "path": [
+    "dialogue_chapter4_stage_quest_emma_ff_aria",
+    "phrases",
+    7,
+    "phrase",
+    "text"
+   ],
+   "en": "Emma, you’re wrong! Fillyjonk has a pleasant voice.",
+   "speaker_card": "character_moomintroll",
+   "before_unpointed": "אמה, את טועה! לפיליונק יש קול נעים.",
+   "before_pointed": "אִמָּהּ, אַתְ טוֹעֶה! לְפִּילְיוֹנְק יֵשׁ קוֹל נָעִים.",
+   "reasons": [
+    "English explicitly names Emma, rather than the ordinary noun her mother.",
+    "The addressee is Emma.",
+    "The addressee is Emma, feminine singular."
+   ],
+   "kinds": [
+    "named-addressee",
+    "gender-pointing"
+   ],
+   "after_unpointed": "אמה, את טועה! לפיליונק יש קול נעים.",
+   "after_pointed": "אֶמָּה, אַתְּ טוֹעָה! לְפִּילְיוֹנְק יֵשׁ קוֹל נָעִים."
+  },
+  {
+   "stable_id": "[\"dialogue_chapter4_stage_repeatquest_mamma\",\"phrases\",0,\"phrase\",\"text\"]",
+   "path": [
+    "dialogue_chapter4_stage_repeatquest_mamma",
+    "phrases",
+    0,
+    "phrase",
+    "text"
+   ],
+   "en": "Haven’t you <bold>found Moominpappa</> yet?",
+   "speaker_card": "character_mamma",
+   "before_unpointed": "עוד לא <bold>מצאת את מומינאבא</>?",
+   "before_pointed": "עוֹד לֹא <bold>מָצָאתָ אֶת מוּמִינְאַבָּא</>?",
+   "reasons": [
+    "German habt ihr and Russian нашли address both protagonists."
+   ],
+   "kinds": [
+    "addressee-number"
+   ],
+   "after_unpointed": "עוד לא <bold>מצאתם את מומינאבא</>?",
+   "after_pointed": "עוֹד לֹא <bold>מְצָאתֶם אֶת מוּמִינְאַבָּא</>?"
+  },
+  {
+   "stable_id": "[\"dialogue_chapter4_stage_repeatquest_mamma\",\"phrases\",4,\"phrase\",\"text\"]",
+   "path": [
+    "dialogue_chapter4_stage_repeatquest_mamma",
+    "phrases",
+    4,
+    "phrase",
+    "text"
+   ],
+   "en": "I just want things to be where they belong again!",
+   "speaker_card": "character_mamma",
+   "before_unpointed": "אני רק רוצה שהכול יחזור למקום שלו!",
+   "before_pointed": "אֲנִי רַק רוֹצֶה שֶׁהַכּוֹל יַחֲזוֹר לַמָּקוֹם שֶׁלּוֹ!",
+   "reasons": [
+    "The female speaker is the first-person subject."
+   ],
+   "kinds": [
+    "gender-pointing"
+   ],
+   "after_unpointed": "אני רק רוצה שהכול יחזור למקום שלו!",
+   "after_pointed": "אֲנִי רַק רוֹצָה שֶׁהַכּוֹל יַחֲזוֹר לַמָּקוֹם שֶׁלּוֹ!"
+  },
+  {
+   "stable_id": "[\"dialogue_chapter4_stage_standardmatch_emma_fillyjonk\",\"phrases\",0,\"phrase\",\"text\"]",
+   "path": [
+    "dialogue_chapter4_stage_standardmatch_emma_fillyjonk",
+    "phrases",
+    0,
+    "phrase",
+    "text"
+   ],
+   "en": "Don’t distract Fillyjonk with nonsense! She has so much to do!",
+   "speaker_card": "character_emma",
+   "before_unpointed": "אל תסיחי את דעתה של פיליונק בשטויות! יש לה כל כך הרבה מה לעשות!",
+   "before_pointed": "אֶל תַּסִיחִי אֶת דַּעְתָּהּ שֶׁל פִּילְיוֹנְק בַּשְּׁטוּיוֹת! יֵשׁ לָהּ כָּל כָּךְ הַרְבֵּה מָה לַעֲשׂוֹת!",
+   "reasons": [
+    "German lenkt and Russian plural imperative address the pair, rather than an assumed single girl."
+   ],
+   "kinds": [
+    "addressee-number"
+   ],
+   "after_unpointed": "אל תסיחו את דעתה של פיליונק בשטויות! יש לה כל כך הרבה מה לעשות!",
+   "after_pointed": "אַל תָּסִיחוּ אֶת דַּעְתָּהּ שֶׁל פִּילְיוֹנְק בַּשְּׁטוּיוֹת! יֵשׁ לָהּ כָּל כָּךְ הַרְבֵּה מָה לַעֲשׂוֹת!"
+  },
+  {
+   "stable_id": "[\"dialogue_chapter4_stage_standardmatch_pappa\",\"phrases\",0,\"phrase\",\"text\"]",
+   "path": [
+    "dialogue_chapter4_stage_standardmatch_pappa",
+    "phrases",
+    0,
+    "phrase",
+    "text"
+   ],
+   "en": "The world is full of wonders! And you’re holding one in your hands!",
+   "speaker_card": "character_pappa",
+   "before_unpointed": "העולם מלא פלאים! ואחד מהם בידיים שלך!",
+   "before_pointed": "הָעוֹלָם מָלֵא פְּלָאִים! וְאֶחָד מֵהֶם בַּיָּדַיִים שֶׁלְּךָ!",
+   "reasons": [
+    "Moominpappa addresses the pair: German ihr and Russian plural hands."
+   ],
+   "kinds": [
+    "addressee-number"
+   ],
+   "after_unpointed": "העולם מלא פלאים! ואחד מהם בידיים שלכם!",
+   "after_pointed": "הָעוֹלָם מָלֵא פְּלָאִים! וְאֶחָד מֵהֶם בַּיָּדַיִים שֶׁלָּכֶם!"
+  },
+  {
+   "stable_id": "[\"dialogue_chapter4_stage_uniquematch_mamma_leakyboat\",\"phrases\",6,\"phrase\",\"text\"]",
+   "path": [
+    "dialogue_chapter4_stage_uniquematch_mamma_leakyboat",
+    "phrases",
+    6,
+    "phrase",
+    "text"
+   ],
+   "en": "And I hope <bold>someone has found</> my basket and is enjoying a new hobby now!",
+   "speaker_card": "character_mamma",
+   "before_unpointed": "ואני מקווה ש<bold>מישהו מצא</> את הסל שלי ועכשיו נהנה מתחביב חדש!",
+   "before_pointed": "וַאֲנִי מְקַוֶּוה שֶׁ<bold>מִּישֶׁהוּ מָצָא</> אֶת הַסַּל שֶׁלִּי וְעַכְשָׁיו נֶהֱנֶה מִתַּחְבִּיב חָדָשׁ!",
+   "reasons": [
+    "The female speaker is the first-person subject."
+   ],
+   "kinds": [
+    "gender-pointing"
+   ],
+   "after_unpointed": "ואני מקווה ש<bold>מישהו מצא</> את הסל שלי ועכשיו נהנה מתחביב חדש!",
+   "after_pointed": "וַאֲנִי מְקַוָּוה שֶׁ<bold>מִּישֶׁהוּ מָצָא</> אֶת הַסַּל שֶׁלִּי וְעַכְשָׁיו נֶהֱנֶה מִתַּחְבִּיב חָדָשׁ!"
+  },
+  {
+   "stable_id": "[\"dialogue_chapter4_stage_uniquematch_mamma_new_ring\",\"phrases\",0,\"phrase\",\"text\"]",
+   "path": [
+    "dialogue_chapter4_stage_uniquematch_mamma_new_ring",
+    "phrases",
+    0,
+    "phrase",
+    "text"
+   ],
+   "en": "What a beautiful ring you have!",
+   "speaker_card": "character_mamma",
+   "before_unpointed": "איזו טבעת יפה יש לך!",
+   "before_pointed": "אֵיזוֹ טַבַּעַת יָפֶה יֵשׁ לְךָ!",
+   "reasons": [
+    "German ihr and Russian plural possession address the pair.",
+    "The adjective agrees with the feminine ring."
+   ],
+   "kinds": [
+    "addressee-number",
+    "referent-gender"
+   ],
+   "after_unpointed": "איזו טבעת יפה יש לכם!",
+   "after_pointed": "אֵיזוֹ טַבַּעַת יָפָה יֵשׁ לָכֶם!"
+  },
+  {
+   "stable_id": "[\"dialogue_chapter4_stage_uniquematch_mamma_new_ring\",\"phrases\",1,\"phrase\",\"text\"]",
+   "path": [
+    "dialogue_chapter4_stage_uniquematch_mamma_new_ring",
+    "phrases",
+    1,
+    "phrase",
+    "text"
+   ],
+   "en": "Would you agree to be friends with whoever gives it to you?",
+   "speaker_card": "character_little_my",
+   "before_unpointed": "היית מסכימה להתיידד עם מי שייתן לך אותה?",
+   "before_pointed": "הָיִיתָ מַסְכִּימָה לְהִתְיַידֵּד עִם מִי שֶׁיִּיתֵּן לָךְ אוֹתָהּ?",
+   "reasons": [
+    "Little My addresses Moominmamma; Russian согласилась confirms feminine singular."
+   ],
+   "kinds": [
+    "addressee-gender"
+   ],
+   "after_unpointed": "היית מסכימה להתיידד עם מי שייתן לך אותה?",
+   "after_pointed": "הָיִיתְ מַסְכִּימָה לְהִתְיַידֵּד עִם מִי שֶׁיִּיתֵּן לָךְ אוֹתָהּ?"
+  },
+  {
+   "stable_id": "[\"dialogue_chapter4_stage_uniquematch_mamma_statuette\",\"phrases\",0,\"phrase\",\"text\"]",
+   "path": [
+    "dialogue_chapter4_stage_uniquematch_mamma_statuette",
+    "phrases",
+    0,
+    "phrase",
+    "text"
+   ],
+   "en": "I hope you like it, dear Little My!",
+   "speaker_card": "character_mamma",
+   "before_unpointed": "אני מקווה שתאהבי את זה, מאי הקטנה!",
+   "before_pointed": "אֲנִי מְקַוֶּוה שֶׁתֹּאהֲבִי אֶת זֶה, מַאי הַקְּטַנָּה!",
+   "reasons": [
+    "The female speaker is the first-person subject."
+   ],
+   "kinds": [
+    "gender-pointing"
+   ],
+   "after_unpointed": "אני מקווה שתאהבי את זה, מאי הקטנה!",
+   "after_pointed": "אֲנִי מְקַוָּוה שֶׁתֹּאהֲבִי אֶת זֶה, מַאי הַקְּטַנָּה!"
+  },
+  {
+   "stable_id": "[\"dialogue_epilogue_dinning_takeitem_coin3\",\"phrases\",0,\"phrase\",\"text\"]",
+   "path": [
+    "dialogue_epilogue_dinning_takeitem_coin3",
+    "phrases",
+    0,
+    "phrase",
+    "text"
+   ],
+   "en": "What would you do without me, Moomintroll!",
+   "speaker_card": "character_little_my",
+   "before_unpointed": "מה הייתם עושים בלעדיי, מומינטרול!",
+   "before_pointed": "מָה הֲיִיתֶם עוֹשִׂים בִּלְעָדַיי, מוּמִינְטְרוֹל!",
+   "reasons": [
+    "Little My explicitly names Moomintroll; German du and Russian ты are singular."
+   ],
+   "kinds": [
+    "addressee-number"
+   ],
+   "after_unpointed": "מה היית עושה בלעדיי, מומינטרול!",
+   "after_pointed": "מָה הָיִיתָ עוֹשֶׂה בִּלְעָדַיי, מוּמִינְטְרוֹל!"
+  },
+  {
+   "stable_id": "[\"dialogue_epilogue_garden_cutscene_no_stealing\",\"phrases\",1,\"phrase\",\"text\"]",
+   "path": [
+    "dialogue_epilogue_garden_cutscene_no_stealing",
+    "phrases",
+    1,
+    "phrase",
+    "text"
+   ],
+   "en": "Tell me, are you stealing my things right under my nose?",
+   "speaker_card": "character_policeman",
+   "before_unpointed": "תגיד לי, אתה גונב לי את הדברים ממש מתחת לאף?",
+   "before_pointed": "תַּגִּיד לִי, אַתָּה גּוֹנֵב לִי אֶת הַדְּבָרִים מַמָּשׁ מִתַּחַת לָאַף?",
+   "reasons": [
+    "German stehlt ihr and Russian вы identify plural addressees, before the disguise scene."
+   ],
+   "kinds": [
+    "addressee-number"
+   ],
+   "after_unpointed": "תגידו לי, אתם גונבים לי את הדברים ממש מתחת לאף?",
+   "after_pointed": "תַּגִּידוּ לִי, אַתֶּם גּוֹנְבִים לִי אֶת הַדְּבָרִים מַמָּשׁ מִתַּחַת לָאַף?"
+  },
+  {
+   "stable_id": "[\"dialogue_epilogue_garden_cutscene_save_snufkin\",\"phrases\",1,\"phrase\",\"text\"]",
+   "path": [
+    "dialogue_epilogue_garden_cutscene_save_snufkin",
+    "phrases",
+    1,
+    "phrase",
+    "text"
+   ],
+   "en": "What a handsome Police Chief you are! Now go and save Snufkin!",
+   "speaker_card": "character_snorkmaiden",
+   "before_unpointed": "איזה מפקד משטרה נאה אתה! עכשיו לך להציל את סנופקין!",
+   "before_pointed": "אֵיזֶה מְפַקֵּד מִשְׁטָרָה נָאֶה אִתָּה! עַכְשָׁיו לְךָ לְהַצִּיל אֶת סְנוּפְקִין!",
+   "reasons": [
+    "Both protagonists impersonate one Police Chief: keep the role singular and commands plural; German rettet and Russian идите confirm plural."
+   ],
+   "kinds": [
+    "addressee-number"
+   ],
+   "after_unpointed": "איזה מפקד משטרה נאה יצא מכם! עכשיו לכו להציל את סנופקין!",
+   "after_pointed": "אֵיזֶה מְפַקֵּד מִשְׁטָרָה נָאֶה יָצָא מִכֶּם! עַכְשָׁיו לְכוּ לְהַצִּיל אֶת סְנוּפְקִין!"
+  },
+  {
+   "stable_id": "[\"dialogue_epilogue_garden_first_cutscene\",\"phrases\",7,\"phrase\",\"text\"]",
+   "path": [
+    "dialogue_epilogue_garden_first_cutscene",
+    "phrases",
+    7,
+    "phrase",
+    "text"
+   ],
+   "en": "For burning all the signs, for making the Park Keeper glow, for…",
+   "speaker_card": "character_policeman",
+   "before_unpointed": "על כך ששרפתם את כל השלטים, גרמתם לשומר הפארק לזהור, ועל...",
+   "before_pointed": "עַל כָּךְ שֶׁשָּׂרַפְתֶּם אֶת כָּל הַשְּׁלָטִים, גָּרַמְתָם לְשׁוֹמֵר הַפַּארְק לְזִהוֹר, וְעַל...",
+   "reasons": [
+    "The second verb must agree with the same plural addressees as שרפתם."
+   ],
+   "kinds": [
+    "addressee-number"
+   ],
+   "after_unpointed": "על כך ששרפתם את כל השלטים, גרמתם לשומר הפארק לזהור, ועל...",
+   "after_pointed": "עַל כָּךְ שֶׁשָּׂרַפְתֶּם אֶת כָּל הַשְּׁלָטִים, גְּרַמְתֶּם לְשׁוֹמֵר הַפַּארְק לְזִהוֹר, וְעַל..."
+  },
+  {
+   "stable_id": "[\"dialogue_epilogue_garden_greeting_snufkin\",\"phrases\",6,\"phrase\",\"text\"]",
+   "path": [
+    "dialogue_epilogue_garden_greeting_snufkin",
+    "phrases",
+    6,
+    "phrase",
+    "text"
+   ],
+   "en": "That’s exactly what I don’t want to do…",
+   "speaker_card": "character_snufkin",
+   "before_unpointed": "זה בדיוק מה שאני לא רוצה לעשות...",
+   "before_pointed": "זֶה בְּדִיּוּק מָה שֶׁאֲנִי לֹא רוֹצָה לַעֲשׂוֹת...",
+   "reasons": [
+    "The male speaker is the first-person subject."
+   ],
+   "kinds": [
+    "gender-pointing"
+   ],
+   "after_unpointed": "זה בדיוק מה שאני לא רוצה לעשות...",
+   "after_pointed": "זֶה בְּדִיּוּק מָה שֶׁאֲנִי לֹא רוֹצֶה לַעֲשׂוֹת..."
+  },
+  {
+   "stable_id": "[\"dialogue_epilogue_garden_npcbackground_police_snufkin_3\",\"phrases\",0,\"phrase\",\"text\"]",
+   "path": [
+    "dialogue_epilogue_garden_npcbackground_police_snufkin_3",
+    "phrases",
+    0,
+    "phrase",
+    "text"
+   ],
+   "en": "...You've violated the law!..",
+   "speaker_card": "character_policeman",
+   "before_unpointed": "...הפרת את החוק!..",
+   "before_pointed": "...הֲפָרַת אֶת הַחוֹק!..",
+   "reasons": [
+    "The policeman addresses Snufkin; Russian нарушил establishes masculine singular."
+   ],
+   "kinds": [
+    "addressee-gender"
+   ],
+   "after_unpointed": "...הפרת את החוק!..",
+   "after_pointed": "...הֵפַרְתָּ אֶת הַחוֹק!.."
+  },
+  {
+   "stable_id": "[\"dialogue_epilogue_garden_npcbackground_police_snufkin_5\",\"phrases\",0,\"phrase\",\"text\"]",
+   "path": [
+    "dialogue_epilogue_garden_npcbackground_police_snufkin_5",
+    "phrases",
+    0,
+    "phrase",
+    "text"
+   ],
+   "en": "...Sowing hattifattener seeds, how dare you...",
+   "speaker_card": "character_policeman",
+   "before_unpointed": "...זריעת זרעים של שמנטפים, איך העזת...",
+   "before_pointed": "...זְרִיעַת זְרָעִים שֶׁל שְׁמַנְטַפִים, אֵיךְ הֵעַזְתְּ...",
+   "reasons": [
+    "The same policeman/Snufkin exchange and Russian посмел establish masculine singular."
+   ],
+   "kinds": [
+    "addressee-gender"
+   ],
+   "after_unpointed": "...זריעת זרעים של שמנטפים, איך העזת...",
+   "after_pointed": "...זְרִיעַת זְרָעִים שֶׁל שְׁמַנְטַפִים, אֵיךְ הֵעַזְתָּ..."
+  },
+  {
+   "stable_id": "[\"dialogue_epilogue_garden_repeatquest_sm\",\"phrases\",0,\"phrase\",\"text\"]",
+   "path": [
+    "dialogue_epilogue_garden_repeatquest_sm",
+    "phrases",
+    0,
+    "phrase",
+    "text"
+   ],
+   "en": "Have you found anything? Hurry up, Hemulen will take Snufkin to jail soon!",
+   "speaker_card": "character_snorkmaiden",
+   "before_unpointed": "מצאת משהו? מהר, ההמולן עוד מעט ייקח את סנופקין לכלא!",
+   "before_pointed": "מָצָאתָ מַשֶּׁהוּ? מַהֵר, הַהַמוּלָן עוֹד מְעַט יִיקַּח אֶת סְנוּפְקִין לַכֶּלֶא!",
+   "reasons": [
+    "German habt ihr / beeilt euch and Russian plural found/hurry address both protagonists."
+   ],
+   "kinds": [
+    "addressee-number"
+   ],
+   "after_unpointed": "מצאתם משהו? מהרו, ההמולן עוד מעט ייקח את סנופקין לכלא!",
+   "after_pointed": "מְצָאתֶם מַשֶּׁהוּ? מַהֲרוּ, הַהַמוּלָן עוֹד מְעַט יִיקַּח אֶת סְנוּפְקִין לַכֶּלֶא!"
+  },
+  {
+   "stable_id": "[\"dialogue_epilogue_garden_uniquematch_snorkmaiden_torn_coat\",\"phrases\",0,\"phrase\",\"text\"]",
+   "path": [
+    "dialogue_epilogue_garden_uniquematch_snorkmaiden_torn_coat",
+    "phrases",
+    0,
+    "phrase",
+    "text"
+   ],
+   "en": "Haven’t you found something more… neat?",
+   "speaker_card": "character_snorkmaiden",
+   "before_unpointed": "לא מצאת משהו קצת יותר… מסודר?",
+   "before_pointed": "לֹא מָצָאתָ מַשֶּׁהוּ קְצָת יוֹתֵר… מְסוּדָּר?",
+   "reasons": [
+    "German habt ihr and Russian plural found address both protagonists."
+   ],
+   "kinds": [
+    "addressee-number"
+   ],
+   "after_unpointed": "לא מצאתם משהו קצת יותר… מסודר?",
+   "after_pointed": "לֹא מְצָאתֶם מַשֶּׁהוּ קְצָת יוֹתֵר… מְסוּדָּר?"
+  },
+  {
+   "stable_id": "[\"dialogue_epilogue_kitchen_fdesq_cupboard\",\"phrases\",0,\"phrase\",\"text\"]",
+   "path": [
+    "dialogue_epilogue_kitchen_fdesq_cupboard",
+    "phrases",
+    0,
+    "phrase",
+    "text"
+   ],
+   "en": "Coffee, pickles, jars… Nothing I need right now.",
+   "speaker_card": "character_moomintroll",
+   "before_unpointed": "קפה, חמוצים, צנצנות… שום דבר שאני צריכה כרגע.",
+   "before_pointed": "קָפֶה, חֲמוּצִים, צִנְצָנוֹת… שׁוּם דָּבָר שֶׁאֲנִי צְרִיכָה כָּרֶגַע.",
+   "reasons": [
+    "The explicit speaker is Moomintroll, not Little My."
+   ],
+   "kinds": [
+    "speaker-gender"
+   ],
+   "after_unpointed": "קפה, חמוצים, צנצנות… שום דבר שאני צריך כרגע.",
+   "after_pointed": "קָפֶה, חֲמוּצִים, צִנְצָנוֹת… שׁוּם דָּבָר שֶׁאֲנִי צָרִיךְ כָּרֶגַע."
+  },
+  {
+   "stable_id": "[\"dialogue_epilogue_veranda_filler_bird\",\"phrases\",1,\"phrase\",\"text\"]",
+   "path": [
+    "dialogue_epilogue_veranda_filler_bird",
+    "phrases",
+    1,
+    "phrase",
+    "text"
+   ],
+   "en": "You imagine you're better at finding sticks than a bird?",
+   "speaker_card": "character_bird",
+   "before_unpointed": "את חושבת שאת טובה יותר במציאת מקלות מציפור?",
+   "before_pointed": "אֶת חוֹשֶׁבֶת שֶׁאַתְּ טוֹבָה יוֹתֵר בִּמְצִיאַת מַקְלוֹת מִצִּיפּוֹר?",
+   "reasons": [
+    "Bird addresses the pair: German meint ihr and Russian вы."
+   ],
+   "kinds": [
+    "addressee-number"
+   ],
+   "after_unpointed": "אתם חושבים שאתם טובים יותר במציאת מקלות מציפור?",
+   "after_pointed": "אַתֶּם חוֹשְׁבִים שֶׁאַתֶּם טוֹבִים יוֹתֵר בִּמְצִיאַת מַקְלוֹת מִצִּיפּוֹר?"
+  },
+  {
+   "stable_id": "[\"dialogue_epilogue_veranda_filler_bird_end\",\"phrases\",2,\"phrase\",\"text\"]",
+   "path": [
+    "dialogue_epilogue_veranda_filler_bird_end",
+    "phrases",
+    2,
+    "phrase",
+    "text"
+   ],
+   "en": "We need to lay low now, and you’re shouting here!",
+   "speaker_card": "character_bird",
+   "before_unpointed": "אנחנו צריכים עכשיו לשמור על פרופיל נמוך, ואתם צועקים פה!",
+   "before_pointed": "אֲנַחְנוּ צְרִיכִים עַכְשָׁיו לִשְׁמוֹר עַל פְּרוֹפִיל נָמוּךְ, וְאַתֶּם צוֹעֲקִים פֹּה!",
+   "reasons": [
+    "Bird addresses Moomintroll, who apologizes in the next line. German du and Russian ты are singular."
+   ],
+   "kinds": [
+    "addressee-number"
+   ],
+   "after_unpointed": "אנחנו צריכים עכשיו לשמור על פרופיל נמוך, ואתה צועק פה!",
+   "after_pointed": "אֲנַחְנוּ צְרִיכִים עַכְשָׁיו לִשְׁמוֹר עַל פְּרוֹפִיל נָמוּךְ, וְאַתָּה צוֹעֵק פֹּה!"
+  },
+  {
+   "stable_id": "[\"dialogue_prologue_bridge_cutscene_bird\",\"phrases\",7,\"phrase\",\"text\"]",
+   "path": [
+    "dialogue_prologue_bridge_cutscene_bird",
+    "phrases",
+    7,
+    "phrase",
+    "text"
+   ],
+   "en": "You mean the ones throwing pebbles at nests?",
+   "speaker_card": "character_moomintroll",
+   "before_unpointed": "את מתכוונת לאלה שזורקים חלוקי נחל על קנים?",
+   "before_pointed": "אֶתְּ מִתְכַּוֶּונֶת לְאֵלֶּה שֶׁזּוֹרְקִים חַלּוּקֵי נַחַל עַל קָנִים?",
+   "reasons": [
+    "The context identifies a feminine-singular pronoun, not the object marker את."
+   ],
+   "kinds": [
+    "gender-pointing"
+   ],
+   "after_unpointed": "את מתכוונת לאלה שזורקים חלוקי נחל על קנים?",
+   "after_pointed": "אַתְּ מִתְכַּוֶּונֶת לְאֵלֶּה שֶׁזּוֹרְקִים חַלּוּקֵי נַחַל עַל קָנִים?"
+  },
+  {
+   "stable_id": "[\"dialogue_prologue_bridge_fdesc_paints\",\"phrases\",1,\"phrase\",\"text\"]",
+   "path": [
+    "dialogue_prologue_bridge_fdesc_paints",
+    "phrases",
+    1,
+    "phrase",
+    "text"
+   ],
+   "en": "No rush, as far as I can see.\n\n",
+   "speaker_card": "character_little_my",
+   "before_unpointed": "אין סיבה למהר, עד כמה שאני רואה.\n\n",
+   "before_pointed": "אֵין סִיבָּה לְמַהֵר, עַד כַּמָּה שֶׁאֲנִי רוֹאֶה.\n\n",
+   "reasons": [
+    "Little My is the first-person subject."
+   ],
+   "kinds": [
+    "gender-pointing"
+   ],
+   "after_unpointed": "אין סיבה למהר, עד כמה שאני רואה.\n\n",
+   "after_pointed": "אֵין סִיבָּה לְמַהֵר, עַד כַּמָּה שֶׁאֲנִי רוֹאָה.\n\n"
+  },
+  {
+   "stable_id": "[\"dialogue_prologue_garden_cutscene_endquest\",\"phrases\",2,\"phrase\",\"text\"]",
+   "path": [
+    "dialogue_prologue_garden_cutscene_endquest",
+    "phrases",
+    2,
+    "phrase",
+    "text"
+   ],
+   "en": "You look wonderful!",
+   "speaker_card": "character_moomintroll",
+   "before_unpointed": "את נראית נפלא!",
+   "before_pointed": "אֶתְּ נִרְאֵית נִפְלָא!",
+   "reasons": [
+    "Moomintroll addresses Snorkmaiden.",
+    "The adjective agrees with Snorkmaiden."
+   ],
+   "kinds": [
+    "gender-pointing",
+    "addressee-gender"
+   ],
+   "after_unpointed": "את נראית נפלאה!",
+   "after_pointed": "אַתְּ נִרְאֵית נִפְלָאָה!"
+  },
+  {
+   "stable_id": "[\"dialogue_prologue_garden_cutscene_my_ladder\",\"phrases\",2,\"phrase\",\"text\"]",
+   "path": [
+    "dialogue_prologue_garden_cutscene_my_ladder",
+    "phrases",
+    2,
+    "phrase",
+    "text"
+   ],
+   "en": "You know, birds these days...",
+   "speaker_card": "character_moomintroll",
+   "before_unpointed": "את יודעת, הציפורים של היום...",
+   "before_pointed": "אֶתְּ יוֹדַעַת, הַצִּיפּוֹרִים שֶׁל הַיּוֹם...",
+   "reasons": [
+    "The context identifies a feminine-singular pronoun, not the object marker את."
+   ],
+   "kinds": [
+    "gender-pointing"
+   ],
+   "after_unpointed": "את יודעת, הציפורים של היום...",
+   "after_pointed": "אַתְּ יוֹדַעַת, הַצִּיפּוֹרִים שֶׁל הַיּוֹם..."
+  },
+  {
+   "stable_id": "[\"dialogue_prologue_garden_cutscene_rope\",\"phrases\",2,\"phrase\",\"text\"]",
+   "path": [
+    "dialogue_prologue_garden_cutscene_rope",
+    "phrases",
+    2,
+    "phrase",
+    "text"
+   ],
+   "en": "What are you doing? Is this some new game?",
+   "speaker_card": "character_snorkmaiden",
+   "before_unpointed": "מה את עושה? זה משחק חדש?",
+   "before_pointed": "מָה אַתְּ עוֹשָׂה? זֶה מִשְׂחָק חָדָשׁ?",
+   "reasons": [
+    "Snorkmaiden addresses both: German was macht ihr and Russian plural doing."
+   ],
+   "kinds": [
+    "addressee-number"
+   ],
+   "after_unpointed": "מה אתם עושים? זה משחק חדש?",
+   "after_pointed": "מָה אַתֶּם עוֹשִׂים? זֶה מִשְׂחָק חָדָשׁ?"
+  },
+  {
+   "stable_id": "[\"dialogue_prologue_garden_qdesc_moomin\",\"phrases\",1,\"phrase\",\"text\"]",
+   "path": [
+    "dialogue_prologue_garden_qdesc_moomin",
+    "phrases",
+    1,
+    "phrase",
+    "text"
+   ],
+   "en": "He’d better do something useful — like I always do!",
+   "speaker_card": "character_little_my",
+   "before_unpointed": "הוא כבר יכול לעשות משהו מועיל — כמו שאני תמיד עושה!",
+   "before_pointed": "הוּא כְּבָר יָכוֹל לַעֲשׂוֹת מַשֶּׁהוּ מוֹעִיל — כְּמוֹ שֶׁאֲנִי תָּמִיד עוֹשֶׂה!",
+   "reasons": [
+    "The female speaker is the first-person subject."
+   ],
+   "kinds": [
+    "gender-pointing"
+   ],
+   "after_unpointed": "הוא כבר יכול לעשות משהו מועיל — כמו שאני תמיד עושה!",
+   "after_pointed": "הוּא כְּבָר יָכוֹל לַעֲשׂוֹת מַשֶּׁהוּ מוֹעִיל — כְּמוֹ שֶׁאֲנִי תָּמִיד עוֹשָׂה!"
+  },
+  {
+   "stable_id": "[\"dialogue_prologue_garden_qdesc_ring\",\"phrases\",1,\"phrase\",\"text\"]",
+   "path": [
+    "dialogue_prologue_garden_qdesc_ring",
+    "phrases",
+    1,
+    "phrase",
+    "text"
+   ],
+   "en": "I’ll be upset if we fall in. We need something to hook that ring!",
+   "speaker_card": "character_little_my",
+   "before_unpointed": "אני אהיה נסער אם ניפול פנימה. צריך משהו שיוכל לתפוס את הטבעת!",
+   "before_pointed": "אֲנִי אֶהְיֶה נִסְעָר אִם נִיפּוּל פְּנִימָה. צָרִיךְ מַשֶּׁהוּ שֶׁיּוּכַל לִתְפּוֹס אֶת הַטַּבַּעַת!",
+   "reasons": [
+    "Little My describes her own reaction."
+   ],
+   "kinds": [
+    "speaker-gender"
+   ],
+   "after_unpointed": "אני אהיה נסערת אם ניפול פנימה. צריך משהו שיוכל לתפוס את הטבעת!",
+   "after_pointed": "אֲנִי אֶהְיֶה נִסְעֶרֶת אִם נִיפּוּל פְּנִימָה. צָרִיךְ מַשֶּׁהוּ שֶׁיּוּכַל לִתְפּוֹס אֶת הַטַּבַּעַת!"
+  },
+  {
+   "stable_id": "[\"dialogue_prologue_garden_quest_ankle_ring\",\"phrases\",4,\"phrase\",\"text\"]",
+   "path": [
+    "dialogue_prologue_garden_quest_ankle_ring",
+    "phrases",
+    4,
+    "phrase",
+    "text"
+   ],
+   "en": "Sure… as long as you're the one who hides it.",
+   "speaker_card": "character_little_my",
+   "before_unpointed": "בטח… כל עוד את זו שמחביאה אותה.",
+   "before_pointed": "בֶּטַח… כָּל עוֹד אֶת זוֹ שֶׁמַּחְבִּיאָה אוֹתָהּ.",
+   "reasons": [
+    "Moomintroll speaks immediately before Little My answers; Russian ты сам ... спрятал confirms masculine singular."
+   ],
+   "kinds": [
+    "addressee-gender"
+   ],
+   "after_unpointed": "בטח… כל עוד אתה זה שמחביא אותה.",
+   "after_pointed": "בֶּטַח… כָּל עוֹד אַתָּה זֶה שֶׁמַּחְבִּיא אוֹתָהּ."
+  },
+  {
+   "stable_id": "[\"dialogue_prologue_garden_repeatquest_sm\",\"phrases\",4,\"phrase\",\"text\"]",
+   "path": [
+    "dialogue_prologue_garden_repeatquest_sm",
+    "phrases",
+    4,
+    "phrase",
+    "text"
+   ],
+   "en": "And have you seen my lovely <bold>ankle ring</>?",
+   "speaker_card": "character_snorkmaiden",
+   "before_unpointed": "וראית את <bold>טבעת הקרסול</> היפה שלי?",
+   "before_pointed": "וְרָאִיתָ אֶת <bold>טַבַּעַת הַקַּרְסוֹל</> הַיָּפֶה שֶׁלִּי?",
+   "reasons": [
+    "German habt ihr and Russian plural seen address both; יפה agrees with feminine טבעת.",
+    "Use the ordinary conjunction vocalization before the plural verb."
+   ],
+   "kinds": [
+    "addressee-number",
+    "plural-pointing"
+   ],
+   "after_unpointed": "וראיתם את <bold>טבעת הקרסול</> היפה שלי?",
+   "after_pointed": "וּרְאִיתֶם אֶת <bold>טַבַּעַת הַקַּרְסוֹל</> הַיָּפָה שֶׁלִּי?"
+  },
+  {
+   "stable_id": "[\"dialogue_prologue_garden_uniquematch_brush_paints\",\"phrases\",0,\"phrase\",\"text\"]",
+   "path": [
+    "dialogue_prologue_garden_uniquematch_brush_paints",
+    "phrases",
+    0,
+    "phrase",
+    "text"
+   ],
+   "en": "What colors! I feel inspired and ready to create!",
+   "speaker_card": "character_moomintroll",
+   "before_unpointed": "איזה צבעים! קיבלתי השראה ואני מוכנה ליצור!",
+   "before_pointed": "אֵיזֶה צְבָעִים! קִיבַּלְתִּי הַשְׁרָאָה וַאֲנִי מוּכָנָה לִיצוֹר!",
+   "reasons": [
+    "The explicit speaker is Moomintroll."
+   ],
+   "kinds": [
+    "speaker-gender"
+   ],
+   "after_unpointed": "איזה צבעים! קיבלתי השראה ואני מוכן ליצור!",
+   "after_pointed": "אֵיזֶה צְבָעִים! קִיבַּלְתִּי הַשְׁרָאָה וַאֲנִי מוּכָן לִיצוֹר!"
+  },
+  {
+   "stable_id": "[\"dialogue_prologue_garden_uniquematch_dirty_brush_pool\",\"phrases\",1,\"phrase\",\"text\"]",
+   "path": [
+    "dialogue_prologue_garden_uniquematch_dirty_brush_pool",
+    "phrases",
+    1,
+    "phrase",
+    "text"
+   ],
+   "en": "If you say so...",
+   "speaker_card": "character_little_my",
+   "before_unpointed": "אם את אומרת...",
+   "before_pointed": "אִם אַתְּ אוֹמֶרֶת...",
+   "reasons": [
+    "Moomintroll speaks immediately before Little My replies."
+   ],
+   "kinds": [
+    "addressee-gender"
+   ],
+   "after_unpointed": "אם אתה אומר...",
+   "after_pointed": "אִם אַתָּה אוֹמֵר..."
+  },
+  {
+   "stable_id": "[\"dialogue_prologue_garden_uniquematch_pool_ladder\",\"phrases\",0,\"phrase\",\"text\"]",
+   "path": [
+    "dialogue_prologue_garden_uniquematch_pool_ladder",
+    "phrases",
+    0,
+    "phrase",
+    "text"
+   ],
+   "en": "A ladder? You think it's a swimming pool?",
+   "speaker_card": "character_little_my",
+   "before_unpointed": "סולם? את חושבת שזו בריכת שחייה?",
+   "before_pointed": "סוּלָּם? אַתְּ חוֹשֶׁבֶת שֶׁזּוֹ בְּרֵיכַת שְׂחִיָּיּה?",
+   "reasons": [
+    "Little My comments to Moomintroll about his ladder idea.",
+    "Keep the verb consistent with Moomintroll."
+   ],
+   "kinds": [
+    "addressee-gender"
+   ],
+   "after_unpointed": "סולם? אתה חושב שזו בריכת שחייה?",
+   "after_pointed": "סוּלָּם? אַתָּה חוֹשֵׁב שֶׁזּוֹ בְּרֵיכַת שְׂחִיָּיּה?"
+  },
+  {
+   "stable_id": "[\"dialogue_prologue_standartmatch_my_refuse_1\",\"phrases\",0,\"phrase\",\"text\"]",
+   "path": [
+    "dialogue_prologue_standartmatch_my_refuse_1",
+    "phrases",
+    0,
+    "phrase",
+    "text"
+   ],
+   "en": "I'm not doing this.",
+   "speaker_card": "character_little_my",
+   "before_unpointed": "אני לא עושה את זה.",
+   "before_pointed": "אֲנִי לֹא עוֹשֶׂה אֶת זֶה.",
+   "reasons": [
+    "The female speaker is the first-person subject."
+   ],
+   "kinds": [
+    "gender-pointing"
+   ],
+   "after_unpointed": "אני לא עושה את זה.",
+   "after_pointed": "אֲנִי לֹא עוֹשָׂה אֶת זֶה."
+  }
+ ],
+ "preserved_context_cases": [
+  {
+   "row": 1755,
+   "reason": "The trainer is female (English she, rows 1789/1884); feminine address is retained despite the shared Woodie label."
+  },
+  {
+   "row": 3026,
+   "reason": "The next speaker is Emma; feminine singular address is retained."
+  },
+  {
+   "row": 3798,
+   "reason": "Little My addresses Bird, grammatical feminine; the next Moomintroll line does not make him the addressee."
+  },
+  {
+   "row": 3489,
+   "reason": "Two protagonists jointly impersonate one Police Chief; singular predicate role is intentional."
+  },
+  {
+   "row": 326,
+   "reason": "Mymble speaks for a mixed group including Moomintroll; חייבים is intentional despite a female speaker."
+  },
+  {
+   "row": 335,
+   "reason": "Mymble refers to older sisters as a class; עושות is intentional feminine plural."
+  },
+  {
+   "stable_id": "[\"dialogue_chapter2_dressing_fdesc_broom\",\"phrases\",1,\"phrase\",\"text\"]",
+   "reason": "The user broomstick revision is retained. In יותר קל לי להאמין, קל is an impersonal predicate about believing, not a masculine description of Little My; מטאטא is a masculine noun."
+  }
+ ],
+ "limitations": [
+  "The source character card identifies the speaker, not every addressee. Addressees were resolved with adjacent dialogue and the shipped Russian/German versions.",
+  "Artist uses a documented masculine grammatical convention from the Russian recap and Hebrew role; English uses neutral they.",
+  "Someone identity and referent gender remain undisclosed; no hidden identity is inferred.",
+  "Full gameplay and a full line-by-line literary proofread remain pending."
+ ]
+}

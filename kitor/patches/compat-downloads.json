@@ -1,0 +1,16 @@
+{
+  "owlboy-windows-steam-138-4809": {
+    "source": "patches-workspace/owlboy/he/steam-138-4809/patch.windows.zip",
+    "filename": "owlboy-he-0.2.0-beta.2-kitor2-download1-windows.zip",
+    "download_url": "https://github.com/yhaggai/kitor/releases/download/patch-owlboy-he-v0.2.0-beta.2-kitor2-steam-138-4809-windows/owlboy-he-0.2.0-beta.2-kitor2-download1-windows.zip",
+    "checksum": "858989571dfbde1f70612b268d494ae8d9326409955ad2cdae8b1460da2a702a",
+    "file_size": 3215809
+  },
+  "owlboy-macos-steam-138-4809": {
+    "source": "patches-workspace/owlboy/he/steam-138-4809/patch.zip",
+    "filename": "owlboy-he-0.2.0-beta.2-kitor2-download1-macos.zip",
+    "download_url": "https://github.com/yhaggai/kitor/releases/download/patch-owlboy-he-v0.2.0-beta.2-kitor2-steam-138-4809-macos/owlboy-he-0.2.0-beta.2-kitor2-download1-macos.zip",
+    "checksum": "c749082648925a3ee00cc6a4ac35c6301605bdda6aad84aa684ea8e42917beb8",
+    "file_size": 2832131
+  }
+}

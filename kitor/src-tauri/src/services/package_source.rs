@@ -1,7 +1,6 @@
 //! Stage verified translation packages before touching game files.
 use super::{game_behavior::GameBehavior, registry_service::PatchDefinition};
 use std::{fs, path::Path};
-include!(concat!(env!("OUT_DIR"), "/bundled_assets.rs"));
 
 pub enum PackageSource {
     Download,
@@ -10,7 +9,6 @@ pub enum PackageSource {
     OwlboyMacSteam,
     OwlboyWindowsSteam,
     SpaceQuest4Scummvm,
-    Embedded(String),
 }
 impl PackageSource {
     pub fn resolve_for_target(
@@ -32,11 +30,24 @@ impl PackageSource {
         Self::resolve(patch, behavior)
     }
 
-    pub fn uses_embedded_files(&self) -> bool {
-        matches!(self, Self::OwlboyMacSteam | Self::OwlboyWindowsSteam | Self::Embedded(_))
+    pub fn download_metadata(&self, patch: &PatchDefinition) -> Result<(String, Option<String>), String> {
+        let key = match self {
+            Self::OwlboyMacSteam => Some("owlboy-macos-steam-138-4809"),
+            Self::OwlboyWindowsSteam => Some("owlboy-windows-steam-138-4809"),
+            _ => None,
+        };
+        if let Some(key) = key {
+            let entries: serde_json::Value = serde_json::from_str(include_str!("../../../patches/compat-downloads.json"))
+                .map_err(|e| e.to_string())?;
+            let entry = &entries[key];
+            let url = entry["download_url"].as_str().ok_or("Missing compatibility download URL")?;
+            let checksum = entry["checksum"].as_str().ok_or("Missing compatibility download checksum")?;
+            return Ok((url.into(), Some(checksum.into())));
+        }
+        Ok((patch.download_url.clone(), patch.checksum.clone()))
     }
 
-    pub fn resolve(patch: &PatchDefinition, behavior: &GameBehavior) -> Result<Self, String> {
+    pub fn resolve(patch: &PatchDefinition, _behavior: &GameBehavior) -> Result<Self, String> {
         if cfg!(target_os = "macos")
             && patch.version == "0.2.0-beta.2-kitor2-download1"
             && patch.filename.as_deref() == Some("owlboy-he-0.2.0-beta.2-kitor2-download1.zip")
@@ -51,10 +62,7 @@ impl PackageSource {
             return Ok(Self::SpaceQuest4Scummvm);
         }
         if patch.source_type == "bundled" {
-            if let (Some(key), None) = (&behavior.bundled_resource, behavior.bundled) {
-                return Ok(Self::Embedded(key.clone()));
-            }
-            return Err("Bundled patch has no reviewed embedded resource".into());
+            return Err("Bundled patches are no longer supported; refresh the catalog".into());
         }
         #[cfg(debug_assertions)]
         if patch.source_type == "local-preview" && patch.download_url == "local-preview://disco-elysium" {
@@ -64,7 +72,7 @@ impl PackageSource {
             }
             return Ok(Self::LocalPreview(path));
         }
-        if patch.source_type == "bundled" || !patch.download_url.starts_with("https://") {
+        if !patch.download_url.starts_with("https://") {
             return Err("Patch has no downloadable package; refresh the catalog".into());
         }
         Ok(Self::Download)
@@ -79,20 +87,7 @@ impl PackageSource {
         _version: &str,
         target: &Path,
     ) -> Result<(), String> {
-        let bundled;
-        if let Self::Embedded(key) = self {
-            let key = format!("{key}/{}", super::patch_lifecycle::platform());
-            let assets = embedded_assets(&key)
-                .ok_or("Bundled patch is unavailable for this platform")?;
-            for (name, bytes) in assets {
-                let path = super::patch_lifecycle::safe_path(destination, name)?;
-                fs::create_dir_all(path.parent().ok_or("Invalid asset path")?)
-                    .map_err(|e| e.to_string())?;
-                fs::write(path, bytes).map_err(|e| e.to_string())?;
-            }
-            return Ok(());
-        }
-        let archive = if matches!(self, Self::OwlboyWindowsSteam) {
+        if matches!(self, Self::OwlboyWindowsSteam) {
             if id != "owlboy" || _language != "he" {
                 return Err("Unexpected Owlboy patch identity".into());
             }
@@ -100,10 +95,6 @@ impl PackageSource {
             if !owlboy_windows_138_4809(&executable) {
                 return Err("The Owlboy executable changed before staging the patch.".into());
             }
-            bundled = tempfile::Builder::new().suffix(".zip").tempfile().map_err(|e| e.to_string())?;
-            fs::write(bundled.path(), include_bytes!("../../../../patches-workspace/owlboy/he/steam-138-4809/patch.windows.zip"))
-                .map_err(|e| e.to_string())?;
-            bundled.path()
         } else if matches!(self, Self::OwlboyMacSteam) {
             if id != "owlboy" || _language != "he" {
                 return Err("Unexpected Owlboy patch identity".into());
@@ -114,13 +105,7 @@ impl PackageSource {
             if executable != EXPECTED_EXE && executable != PATCHED_EXE {
                 return Err("This Hebrew patch requires the Steam macOS Owlboy build 138-4809.".into());
             }
-            bundled = tempfile::Builder::new().suffix(".zip").tempfile().map_err(|e| e.to_string())?;
-            fs::write(bundled.path(), include_bytes!("../../../../patches-workspace/owlboy/he/steam-138-4809/patch.zip"))
-                .map_err(|e| e.to_string())?;
-            bundled.path()
-        } else {
-            archive
-        };
+        }
         super::file_service::validate_zip(archive)?;
         // Extract beside the destination so moving the selected platform works
         // on Windows and cannot cross filesystems. No game files are touched.

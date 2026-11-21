@@ -9,7 +9,7 @@ import re
 import subprocess
 import tempfile
 from build_patch_packages import build, require
-from build_download_packages import build_all as build_downloads
+from build_download_packages import build_all as build_downloads, compatibility_downloads
 
 
 def gh(*args, input=None):
@@ -108,6 +108,10 @@ def main():
     # their existing candidate/platform status; do not promote them into the
     # stable update catalog merely because their transport changed.
     with tempfile.TemporaryDirectory() as temp:
+        for artifact, metadata in compatibility_downloads(Path(temp)):
+            tag = metadata['download_url'].split('/download/', 1)[1].split('/', 1)[0]
+            publish_asset(repo, commit, tag, artifact,
+                          f'Hash-pinned Owlboy Steam compatibility package.\nSource: {repo}@{commit}')
         for artifact, game, metadata in build_downloads(Path(temp)):
             tag = metadata['download_url'].split('/download/', 1)[1].split('/', 1)[0]
             publish_asset(repo, commit, tag, artifact,

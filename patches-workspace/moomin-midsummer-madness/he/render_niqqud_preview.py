@@ -1,5 +1,5 @@
 """Render a labeled preview from the rebuilt Pangolin/Balsamiq SDF atlases."""
-import json,sys,unicodedata
+import argparse,json,sys,unicodedata
 from pathlib import Path
 from PIL import Image,ImageDraw
 import UnityPy
@@ -9,7 +9,7 @@ import build
 
 def draw_line(canvas,atlas,font,text,baseline,ycolor):
     chars={c.m_Unicode:c for c in font.m_CharacterTable};glyphs={g.m_Index:g for g in font.m_GlyphTable}
-    rendered=build.visual(text,'dialogue_preview');cursor=35
+    rendered=build.visual(text,'font_preview');cursor=35
     for ch in rendered:
         cp=ord(ch);entry=chars.get(cp)
         if entry is None:raise ValueError(f'Missing preview glyph U+{cp:04X}')
@@ -24,13 +24,31 @@ def draw_line(canvas,atlas,font,text,baseline,ycolor):
     return cursor
 
 def main():
-    e=UnityPy.load(Path('.tmp/moomin-niqqud-fonttest/fonts_assets_all.bundle').read_bytes())
-    samples=[('Pangolin Regular','Pangolin-Regular SDF MAIN','מוּמִינְטְרוֹל: מַאי הַקְּטַנָּה!'),('Balsamiq Bold','BalsamiqSans-Bold_SDF','סְנוּפְקִין וְסְנוֹרְקָה — הַשְּׁמַנְטַפִּים')]
-    img=Image.new('RGBA',(1100,330),'white');d=ImageDraw.Draw(img);color=(31,55,82,255)
-    for i,(label,name,text) in enumerate(samples):
-        d.text((25,25+i*145),label,fill=(40,40,40,255))
-        obj=next(o for o in e.objects if o.peek_name()==name);font=obj.read();tex=next(o for o in e.objects if o.path_id==font.m_AtlasTextures[0].path_id).read();atlas=Image.frombytes('L',(tex.m_Width,tex.m_Height),tex.image_data)
-        end=draw_line(img,atlas,font,text,100+i*145,color)
-        if end>1090:raise ValueError(f'Preview line too wide: {end}')
-    dest=BASE/'niqqud-font-preview.png';img.save(dest);print(dest)
+    ap=argparse.ArgumentParser(description=__doc__)
+    ap.add_argument('bundle',type=Path)
+    ap.add_argument('--before',type=Path,required=True)
+    ap.add_argument('--before-glyphs',type=Path,required=True)
+    ap.add_argument('--out',type=Path,default=BASE/'niqqud-font-preview.png')
+    a=ap.parse_args()
+    envs=[UnityPy.load(a.before.read_bytes()),UnityPy.load(a.bundle.read_bytes())]
+    current_codes=build.GLYPHS
+    previous_codes={unicodedata.normalize('NFD',k):v for k,v in json.loads(a.before_glyphs.read_text(encoding='utf-8')).items()}
+    names=['Pangolin-Regular SDF MAIN','OpenDyslexic-Regular_SDF','BalsamiqSans-Regular_SDF','BalsamiqSans-Bold_SDF']
+    img=Image.new('RGBA',(1800,760),'white');d=ImageDraw.Draw(img);color=(31,55,82,255)
+    d.text((20,10),'Offline TMP atlas comparison: English / previous Hebrew / updated Hebrew',fill='black')
+    for j,label in enumerate(['English','Previous Hebrew','Updated Hebrew']):d.text((j*600+20,35),label,fill='black')
+    for i,name in enumerate(names):
+        y=65+i*170
+        d.text((20,y),name,fill='black')
+        for col,(env,text) in enumerate([(envs[0],'Little My! Moomintroll'),(envs[0],'מַאי הַקְּטַנָּה! מוּמִינְטְרוֹל'),(envs[1],'מַאי הַקְּטַנָּה! מוּמִינְטְרוֹל')]):
+            build.GLYPHS=previous_codes if col<2 else current_codes
+            obj=next(o for o in env.objects if o.type.name=='MonoBehaviour' and o.peek_name()==name)
+            font=obj.read();tex=next(o for o in env.objects if o.path_id==font.m_AtlasTextures[0].path_id).read()
+            atlas=Image.frombytes('L',(tex.m_Width,tex.m_Height),tex.image_data)
+            panel=Image.new('RGBA',(1200,190),'white')
+            draw_line(panel,atlas,font,text,85,color)
+            draw_line(panel,atlas,font,'סְנוּפְקִין וְסְנוֹרְקָה' if col else 'Snufkin and Snorkmaiden',165,color)
+            img.alpha_composite(panel.resize((600,95),Image.Resampling.LANCZOS),(col*600,y+25))
+    build.GLYPHS=current_codes
+    img.save(a.out);print(a.out)
 if __name__=='__main__':main()

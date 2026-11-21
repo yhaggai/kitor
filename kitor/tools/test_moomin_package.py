@@ -27,14 +27,21 @@ class MoominPackageTests(unittest.TestCase):
                     with self.assertRaises(ValueError):
                         builder.update_catalog(catalog, [(b'old', b'new')])
 
-    def test_current_build_metadata_and_embedded_package_agree(self):
+    def test_current_build_metadata_and_download_package_agree(self):
         registry = json.loads((ROOT / 'kitor/patches/registry.json').read_text(encoding='utf8'))
         game = next(g for g in registry['games'] if g['scummvm_id'] == 'moomin-midsummer-madness')
         release = game['patches'][0]
         manifest, assets = validate(PACKAGE / 'patch.windows.candidate.json', 'windows')
-        self.assertEqual(release['version'], manifest['version'])
-        self.assertEqual(release['release_revision'], manifest['release_revision'])
-        self.assertEqual(release['filename'], manifest['filename'])
+        self.assertEqual(release['version'], manifest['version'] + '-download1')
+        self.assertEqual(release['release_revision'], manifest['release_revision'] + 1)
+        self.assertEqual(release['source_type'], 'github')
+        self.assertTrue(release['download_url'].startswith('https://github.com/yhaggai/kitor/releases/download/'))
+        self.assertEqual(len(release['checksum']), 64)
+        self.assertNotIn('bundled_resource', game['behavior'])
+        compatibility = json.loads((PACKAGE / 'compatibility.json').read_text(encoding='utf8'))
+        expected = [{key:file[key] for key in ('path','original_sha256','installed_sha256')}
+                    for file in manifest['platforms']['windows']['files']]
+        self.assertEqual(compatibility['files'], expected)
         self.assertEqual(release['supported_builds'][0]['build_id'], '26803369')
         database = builder.FILES[0]
         self.assertEqual(manifest['platforms']['windows']['files'][0]['path'], database)
@@ -45,11 +52,11 @@ class MoominPackageTests(unittest.TestCase):
         product = next(p for p in products if p['app_id'] == 4463520)
         self.assertIn(database, product['required_files'])
         self.assertIn('26803369', product['cache_key'])
-        bundled = json.loads((ROOT / 'kitor/patches/bundled-assets.json').read_text(encoding='utf8'))['moomin-midsummer-madness/windows']
-        self.assertEqual(set(assets), set(bundled))
-        for name, source in bundled.items():
-            if name != 'patch.json':
-                self.assertEqual(assets[name], (ROOT / source).read_bytes())
+        bundled = json.loads((ROOT / 'kitor/patches/bundled-assets.json').read_text(encoding='utf8'))
+        self.assertEqual(bundled, {})
+        index = json.loads((ROOT / 'kitor/patches/download-packages.json').read_text(encoding='utf8'))
+        self.assertEqual(index['moomin-midsummer-madness']['windows']['default'],
+                         'patches-workspace/moomin-midsummer-madness/he/patch.windows.candidate.json')
 
 
 if __name__ == '__main__':

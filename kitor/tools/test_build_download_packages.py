@@ -11,11 +11,20 @@ from build_patch_packages import InvalidPackage, validate
 
 
 class DownloadPackages(unittest.TestCase):
+    def test_registry_has_no_duplicate_fields_after_upstream_merges(self):
+        def unique_fields(pairs):
+            result = {}
+            for key, value in pairs:
+                self.assertNotIn(key, result, f'Duplicate catalog field: {key}')
+                result[key] = value
+            return result
+        json.loads(packages.REGISTRY.read_text(encoding='utf-8'), object_pairs_hook=unique_fields)
+
     def test_all_archives_preserve_supported_file_plans_and_assets(self):
         index = json.loads(packages.INDEX.read_text(encoding="utf-8"))
         with tempfile.TemporaryDirectory() as temp:
             results = packages.build_all(Path(temp))
-            self.assertEqual(len(results), 10)
+            self.assertEqual(len(results), len(index))
             for artifact, game, patch in results:
                 with zipfile.ZipFile(artifact) as archive:
                     expected = set()
@@ -47,37 +56,30 @@ class DownloadPackages(unittest.TestCase):
             with self.assertRaises(InvalidPackage):
                 packages.build(game, game['patches'][0], {}, Path(temp))
 
-    def test_production_embedded_assets_are_moomin_delta_allowlist_only(self):
-        build = (packages.ROOT / 'kitor/src-tauri/build.rs').read_text(encoding="utf-8")
-        self.assertIn('include_bytes!', build)
-        self.assertIn('source.starts_with(repo.canonicalize().unwrap())', build)
-        index_path = packages.ROOT / 'kitor/patches/bundled-assets.json'
-        index = json.loads(index_path.read_text(encoding="utf-8"))
-        self.assertEqual(set(index), {'moomin-midsummer-madness/windows'})
-        assets = index['moomin-midsummer-madness/windows']
-        manifest_path = 'patches-workspace/moomin-midsummer-madness/he/patch.windows.candidate.json'
-        self.assertEqual(assets.get('patch.json'), manifest_path)
-        for name, source in assets.items():
-            path = (packages.ROOT / source).resolve(strict=True)
-            approved = (packages.ROOT / 'patches-workspace/moomin-midsummer-madness/he').resolve()
-            self.assertTrue(path.is_relative_to(approved), source)
-            self.assertTrue(path.is_file(), source)
-            self.assertIn(name, {'patch.json'} | {
-                f"deltas/{p.name}" for p in (approved / 'deltas').iterdir() if p.is_file()
-            })
-        manifest = json.loads((packages.ROOT / manifest_path).read_text(encoding="utf-8"))
-        listed_deltas = {
-            change['source']['path']
-            for change in manifest['platforms']['windows']['files']
-        }
-        self.assertEqual(set(assets) - {'patch.json'}, listed_deltas)
-        for game in json.loads(packages.REGISTRY.read_text(encoding="utf-8"))['games']:
+    def test_app_has_no_bundled_patch_entries_or_runtime_payload_includes(self):
+        index = json.loads((packages.ROOT / 'kitor/patches/bundled-assets.json').read_text(encoding='utf-8'))
+        self.assertEqual(index, {})
+        for name in ('kitor/src-tauri/build.rs', 'kitor/src-tauri/src/services/package_source.rs'):
+            source = (packages.ROOT / name).read_text(encoding='utf-8')
+            self.assertNotIn('include_bytes!', source)
+            self.assertNotIn('embedded_assets(', source)
+        config = json.loads((packages.ROOT / 'kitor/src-tauri/tauri.conf.json').read_text(encoding='utf-8'))
+        self.assertNotIn('patches-workspace', json.dumps(config.get('bundle', {}).get('resources', [])))
+        for game in json.loads(packages.REGISTRY.read_text(encoding='utf-8'))['games']:
+            self.assertNotIn('bundled_resource', game['behavior'])
+            self.assertNotIn('bundled', game['behavior'])
             for patch in game['patches']:
-                if patch['source_type'] == 'bundled':
-                    self.assertEqual(game['scummvm_id'], 'moomin-midsummer-madness')
-                    self.assertEqual(game['behavior'].get('bundled_resource'), 'moomin-midsummer-madness')
-                else:
-                    self.assertTrue(patch['download_url'].startswith('https://'))
+                self.assertNotEqual(patch['source_type'], 'bundled')
+                self.assertTrue(patch['download_url'].startswith('https://'))
+
+    def test_compatibility_archives_retain_their_pinned_bytes(self):
+        with tempfile.TemporaryDirectory() as temp:
+            results = packages.compatibility_downloads(Path(temp))
+            self.assertEqual(len(results), 2)
+            for artifact, entry in results:
+                self.assertEqual(artifact.stat().st_size, entry['file_size'])
+                self.assertEqual(hashlib.sha256(artifact.read_bytes()).hexdigest(), entry['checksum'])
+                self.assertEqual(artifact.read_bytes(), (packages.ROOT / entry['source']).read_bytes())
 
     def test_app_release_gate_rejects_mismatched_published_bytes(self):
         with tempfile.TemporaryDirectory() as temp:
