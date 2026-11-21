@@ -8,10 +8,34 @@ pub enum PackageSource {
     #[cfg(debug_assertions)]
     LocalPreview(std::path::PathBuf),
     OwlboyMacSteam,
+    OwlboyWindowsSteam,
     SpaceQuest4Scummvm,
     Embedded(String),
 }
 impl PackageSource {
+    pub fn resolve_for_target(
+        patch: &PatchDefinition,
+        behavior: &GameBehavior,
+        id: &str,
+        target: &Path,
+    ) -> Result<Self, String> {
+        if cfg!(target_os = "windows")
+            && id == "owlboy"
+            && patch.version == "0.2.0-beta.2-kitor2-download1"
+            && patch.language == "he"
+            && patch.release_revision == 1
+            && super::patch_lifecycle::hash(&target.join("Owlboy.exe"))
+                .is_ok_and(|hash| owlboy_windows_138_4809(&hash))
+        {
+            return Ok(Self::OwlboyWindowsSteam);
+        }
+        Self::resolve(patch, behavior)
+    }
+
+    pub fn uses_embedded_files(&self) -> bool {
+        matches!(self, Self::OwlboyMacSteam | Self::OwlboyWindowsSteam | Self::Embedded(_))
+    }
+
     pub fn resolve(patch: &PatchDefinition, behavior: &GameBehavior) -> Result<Self, String> {
         if cfg!(target_os = "macos")
             && patch.version == "0.2.0-beta.2-kitor2-download1"
@@ -68,7 +92,19 @@ impl PackageSource {
             }
             return Ok(());
         }
-        let archive = if matches!(self, Self::OwlboyMacSteam) {
+        let archive = if matches!(self, Self::OwlboyWindowsSteam) {
+            if id != "owlboy" || _language != "he" {
+                return Err("Unexpected Owlboy patch identity".into());
+            }
+            let executable = super::patch_lifecycle::hash(&target.join("Owlboy.exe"))?;
+            if !owlboy_windows_138_4809(&executable) {
+                return Err("The Owlboy executable changed before staging the patch.".into());
+            }
+            bundled = tempfile::Builder::new().suffix(".zip").tempfile().map_err(|e| e.to_string())?;
+            fs::write(bundled.path(), include_bytes!("../../../../patches-workspace/owlboy/he/steam-138-4809/patch.windows.zip"))
+                .map_err(|e| e.to_string())?;
+            bundled.path()
+        } else if matches!(self, Self::OwlboyMacSteam) {
             if id != "owlboy" || _language != "he" {
                 return Err("Unexpected Owlboy patch identity".into());
             }
@@ -120,6 +156,12 @@ impl PackageSource {
         }
         Ok(())
     }
+}
+
+fn owlboy_windows_138_4809(executable: &str) -> bool {
+    matches!(executable,
+        "919e3a7db7d2255d743133335e521c7c95fc57ead8d8fd3701baef2587935b56"
+        | "365426f44f8094a10be0113814ce3b2c8bda6d713ef3a120f29589cd37fd5ef8")
 }
 
 fn select_owlboy_catalog(root: &Path, target: &Path) -> Result<(), String> {

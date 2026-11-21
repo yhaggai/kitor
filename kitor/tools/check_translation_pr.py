@@ -82,7 +82,61 @@ def validate_catalog(before, after):
     return old == new
 
 
+def validate_reference_catalog(before, after):
+    old, new = parse_json(before), parse_json(after)
+    if not isinstance(old, list) or not isinstance(new, list) or len(old) != len(new):
+        return False
+    for previous, current in zip(old, new):
+        if not isinstance(previous, dict) or not isinstance(current, dict):
+            return False
+        if not isinstance(previous.get("he"), str) or not isinstance(current.get("he"), str):
+            return False
+        check_text(previous["he"], current["he"])
+        if {k: v for k, v in previous.items() if k != "he"} != {
+            k: v for k, v in current.items() if k != "he"
+        }:
+            return False
+    return True
+
+
+def validate_editorial_csv(before, after):
+    def rows(data):
+        return list(csv.reader(io.StringIO(data.decode("utf-8-sig"), newline=""), strict=True))
+    old, new = rows(before), rows(after)
+    header = ["stable_id", "path", "category", "scene", "speaker", "en", "he_unpointed", "he_pointed"]
+    if not old or not new or old[0] != header or new[0] != header or len(old) != len(new):
+        return False
+    for previous, current in zip(old[1:], new[1:]):
+        if len(previous) != 8 or len(current) != 8 or previous[:6] != current[:6]:
+            return False
+        for index in (6, 7):
+            check_text(previous[index], current[index])
+        if re.sub(r"[\u0591-\u05bd\u05bf-\u05c7]", "", current[7]) != current[6]:
+            return False
+    return True
+
+
+def validate_glossary(before, after):
+    data = parse_json(after)
+    return isinstance(data, dict) and all(
+        isinstance(key, str) and isinstance(value, str) and "\0" not in key + value
+        for key, value in data.items()
+    )
+
+
+def validate_notes(before, after):
+    return "\0" not in after.decode("utf-8")
+
+
 def validator(relative):
+    if relative == "catalog.csv":
+        return validate_editorial_csv
+    if relative in ("catalog.json", "catalog-niqqud.json"):
+        return validate_reference_catalog
+    if relative == "niqqud-glossary.json":
+        return validate_glossary
+    if relative in ("character-glossary.md", "model-attribution.md"):
+        return validate_notes
     if relative == "payload/translation.csv":
         return validate_csv
     if relative == "translation-catalog.json":

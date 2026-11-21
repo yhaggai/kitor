@@ -74,7 +74,7 @@ pub async fn refresh(game_id: i32, state: &AppState) -> Result<GameHealth, Strin
             game_status,
             details,
             patch_status: "not_installed".into(),
-            checked_at: chrono::Utc::now().to_rfc3339(),
+            checked_at: crate::date_time::now_rfc3339(),
         };
         if !root.is_dir() {
             if !patches.is_empty() {
@@ -137,7 +137,7 @@ pub(super) fn inspect_manual(behavior: &super::game_behavior::GameBehavior, app_
     let record = behavior.manual_patch_manifest.as_ref().map(|p| app_data.join(p)).filter(|p| p.is_file())?;
     let mut health = GameHealth {
         game_status: if root.is_dir() { "present" } else { "missing" }.into(),
-        patch_status: "not_installed".into(), details: Vec::new(), checked_at: chrono::Utc::now().to_rfc3339(),
+        patch_status: "not_installed".into(), details: Vec::new(), checked_at: crate::date_time::now_rfc3339(),
     };
     if let Err(error) = verify_manual(&record, root, game_id, &mut health) {
         health.patch_status = "unverified".into(); health.details.push(error);

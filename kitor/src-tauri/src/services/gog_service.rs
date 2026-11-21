@@ -1,6 +1,6 @@
 use sea_orm::{entity::*, query::*, DatabaseConnection};
 use serde::{Deserialize, Serialize};
-use chrono::{DateTime, Utc, Duration};
+use time::{OffsetDateTime, Duration};
 use base64::{Engine as _, engine::general_purpose};
 use crate::models::gog_auth;
 
@@ -189,7 +189,7 @@ pub async fn store_tokens(
 ) -> Result<(), String> {
     let encrypted_access = encrypt_token(access_token);
     let encrypted_refresh = encrypt_token(refresh_token);
-    let now = Utc::now();
+    let now = OffsetDateTime::now_utc();
     let expires_at = now + Duration::seconds(expires_in);
     
     // Delete existing auth
@@ -202,9 +202,9 @@ pub async fn store_tokens(
     let new_auth = gog_auth::ActiveModel {
         access_token: Set(encrypted_access),
         refresh_token: Set(encrypted_refresh),
-        expires_at: Set(expires_at.naive_utc()),
-        created_at: Set(now.naive_utc()),
-        updated_at: Set(now.naive_utc()),
+        expires_at: Set(crate::date_time::naive_utc(expires_at)),
+        created_at: Set(crate::date_time::naive_utc(now)),
+        updated_at: Set(crate::date_time::naive_utc(now)),
         ..Default::default()
     };
     
@@ -223,8 +223,8 @@ pub async fn get_valid_token(db: &DatabaseConnection) -> Result<String, String> 
         .map_err(|e| format!("Database error: {}", e))?
         .ok_or("Not authenticated")?;
     
-    let now: DateTime<Utc> = Utc::now();
-    let expires_at: DateTime<Utc> = DateTime::from_naive_utc_and_offset(auth.expires_at, Utc);
+    let now = OffsetDateTime::now_utc();
+    let expires_at = auth.expires_at.assume_utc();
     
     // If token expires in less than 5 minutes, refresh it
     if expires_at < now + Duration::minutes(5) {

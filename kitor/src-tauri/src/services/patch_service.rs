@@ -349,7 +349,9 @@ pub async fn download_and_install_patch(
         "[patch_service] Download destination: {}",
         download_path.display()
     );
-    let source = super::package_source::PackageSource::resolve(patch, &game_def.behavior)?;
+    let source = super::package_source::PackageSource::resolve_for_target(
+        patch, &game_def.behavior, &scummvm_id, &install_target,
+    )?;
     match &source {
         super::package_source::PackageSource::Download
         | super::package_source::PackageSource::SpaceQuest4Scummvm => {
@@ -366,9 +368,10 @@ pub async fn download_and_install_patch(
         super::package_source::PackageSource::LocalPreview(path) => {
             std::fs::copy(path, &download_path).map_err(|e| e.to_string())?;
         }
-        super::package_source::PackageSource::OwlboyMacSteam => {}
+        super::package_source::PackageSource::OwlboyMacSteam
+        | super::package_source::PackageSource::OwlboyWindowsSteam => {}
     }
-    if !matches!(source, super::package_source::PackageSource::OwlboyMacSteam | super::package_source::PackageSource::Embedded(_)) {
+    if !source.uses_embedded_files() {
         if let Some(checksum) = &patch.checksum {
             if patch_lifecycle::hash(&download_path)? != checksum.to_lowercase() {
                 return Err(
@@ -395,7 +398,7 @@ pub async fn download_and_install_patch(
     let manifest_name = patch.install_manifest.as_deref().ok_or(
         "Patch has no file-change manifest; whole-folder installation is no longer supported",
     )?;
-    if !matches!(source, super::package_source::PackageSource::OwlboyMacSteam | super::package_source::PackageSource::Embedded(_))
+    if !source.uses_embedded_files()
         && download_path.extension().and_then(|s| s.to_str()) != Some("zip")
     {
         return Err("Declarative patch packages must be ZIP archives".into());
@@ -529,7 +532,7 @@ pub async fn download_and_install_patch(
         game_id: Set(game.id),
         scummvm_id: Set(scummvm_id.clone()),
         version: Set(version),
-        installed_date: Set(chrono::Utc::now().naive_utc()),
+        installed_date: Set(crate::date_time::now_naive()),
         status: Set("active".to_string()),
         backup_path: Set(Some(backup_path.to_string_lossy().into_owned())),
         ..Default::default()
@@ -549,7 +552,7 @@ pub async fn download_and_install_patch(
 
     // Clean up download
     println!("[patch_service] Cleaning up download file");
-    if !matches!(source, super::package_source::PackageSource::OwlboyMacSteam) {
+    if !source.uses_embedded_files() {
         let _ = std::fs::remove_file(&download_path);
     }
 
@@ -645,6 +648,12 @@ pub(super) async fn reconcile_patches(
                         patch_lifecycle::archive_replaced_installation(path, &target)?;
                         // The path now contains the original game again. Keep recovery
                         // data, but do not associate its old translation with this install.
+                        continue;
+                    }
+                    if patch_lifecycle::can_reinstall_after_store_restore(path, &target)
+                        .unwrap_or(false)
+                    {
+                        // Leave the journal available for selective cleanup on install.
                         continue;
                     }
                     row.status = if result.is_ok() { "damaged" } else { "unverified" }.into();
