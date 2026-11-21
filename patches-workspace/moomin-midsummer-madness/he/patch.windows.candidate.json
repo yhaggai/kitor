@@ -2,9 +2,9 @@
   "schema_version": 1,
   "scummvm_id": "moomin-midsummer-madness",
   "language": "he",
-  "version": "0.1.2",
-  "release_revision": 3,
-  "filename": "moomin-midsummer-madness-he-0.1.2-windows.zip",
+  "version": "0.1.3",
+  "release_revision": 4,
+  "filename": "moomin-midsummer-madness-he-0.1.3-windows.zip",
   "platforms": {
     "windows": {
       "files": [
@@ -12,11 +12,11 @@
           "path": "Summer/Adventure_UE5_Data/StreamingAssets/aa/StandaloneWindows64/database_assets_all_451c9c2dc5087ceed02f737272b90df7.bundle",
           "operation": "modify",
           "original_sha256": "79ac6a2148fb545e766845735a7b3939d49b1a3a6138b86dea03b8e406d6d459",
-          "installed_sha256": "fd2a33efd3780bc6917e5482b4a0ac64a2eaa611e08283f25b734133ff9f11de",
+          "installed_sha256": "c368c4705aaefb8967e9f953d176f222444b32624e4b140510babc9a82d3ec8c",
           "source": {
             "kind": "bsdiff",
             "path": "deltas/00-database_assets_all_451c9c2dc5087ceed02f737272b90df7.bundle.bsdiff",
-            "sha256": "5b7ffb10b6c0870bde59f99f33bfcbd550bdc4f3f3d605622fcd92b174f56a30",
+            "sha256": "adec73da96117f0b401f2ca3c5680d28ebbc81143c4a1d52528c8a96cf606733",
             "input": "Summer/Adventure_UE5_Data/StreamingAssets/aa/StandaloneWindows64/database_assets_all_451c9c2dc5087ceed02f737272b90df7.bundle"
           }
         },
@@ -24,11 +24,11 @@
           "path": "Summer/Adventure_UE5_Data/StreamingAssets/aa/StandaloneWindows64/fonts_assets_all_2ab40165824cec60e96eea3c37ae678d.bundle",
           "operation": "modify",
           "original_sha256": "072a7a9aa6e1a165e81b3ec3ec2d7d35c5cc17eeabc65dcba8e511037c4db3bf",
-          "installed_sha256": "d23685e642675a4486820320d85ff07dee41c8b8ae2a60fa4a1a88651a2baab9",
+          "installed_sha256": "f21318eda9bacedb999e920686fc864bca85d1b81297c2e31a3f26e79ea14893",
           "source": {
             "kind": "bsdiff",
             "path": "deltas/01-fonts_assets_all_2ab40165824cec60e96eea3c37ae678d.bundle.bsdiff",
-            "sha256": "90c6b8c1fe8205116efdff7d26d1c8b5b647d345b0eb377ec1d85036e01243d2",
+            "sha256": "047d8f369281ec9dec721e3496f990ab2d6bc87d5bacf647f5ace267da30ff09",
             "input": "Summer/Adventure_UE5_Data/StreamingAssets/aa/StandaloneWindows64/fonts_assets_all_2ab40165824cec60e96eea3c37ae678d.bundle"
           }
         },
@@ -36,11 +36,11 @@
           "path": "Summer/Adventure_UE5_Data/sharedassets0.assets",
           "operation": "modify",
           "original_sha256": "ad50c9ed6dcf3173721e3d4e3dcd466cf9fd83687fa05e443825f043439d208e",
-          "installed_sha256": "67e553f21956f8c27c4048c99ac531834cee62e1371b98f598a06b8e8af6158d",
+          "installed_sha256": "8b7971f1b730067488562454557d9174ab1ebf96e4c9998b1d48ca167df497f7",
           "source": {
             "kind": "bsdiff",
             "path": "deltas/02-sharedassets0.assets.bsdiff",
-            "sha256": "3be7fdb81e941b47980d821ab319684802b1c3be2a97922bb945f88b99e60441",
+            "sha256": "a9b3d0712882e598445261186770c62e425022eea6fb836b4b915c48ed9c561f",
             "input": "Summer/Adventure_UE5_Data/sharedassets0.assets"
           }
         },
@@ -48,11 +48,11 @@
           "path": "Summer/Adventure_UE5_Data/StreamingAssets/aa/catalog.bin",
           "operation": "modify",
           "original_sha256": "7c073230712e2c71c8dcac54b4bf4ea16922ad3d5635616455a868701e6566e5",
-          "installed_sha256": "e1a811d76c55ebb8743c8550c7a96774aed89e25a467ea9df305a9cceea7da9c",
+          "installed_sha256": "6ce243f4970ff838806eddbcf83d40cda2b9e97beaef8254a0e20aa0d8a9eb93",
           "source": {
             "kind": "bsdiff",
             "path": "deltas/03-catalog.bin.bsdiff",
-            "sha256": "cf3d8720df02ef38b35e20c76a6d8fbb4ab53f47f93008eb4ad11e25fb37989f",
+            "sha256": "00a7c87086d16266904095590f14445f80acdbe81cfa0f7e491600d0ef2b4098",
             "input": "Summer/Adventure_UE5_Data/StreamingAssets/aa/catalog.bin"
           }
         },

@@ -1,5 +1,34 @@
 # Moomin: Midsummer Madness — Hebrew localization
 
+## Font spacing update 0.1.3, revision 4
+
+Hebrew base letters and composite pointed glyphs now reserve at least two atlas
+pixels of ink clearance on each side. Composite advances expand when needed,
+rather than retaining an original-font advance that is narrower than the Arial
+glyph. Lower vowel marks move down two atlas pixels in regular faces and three
+in bold; dagesh and shin/sin dots retain HarfBuzz anchor positions. Letter size
+and vertical baseline are unchanged. `dialogue-font-advances.json` is regenerated
+from the widest active face, including the composite PUA glyphs, and dialogue
+wrapping uses the composite advance for each pointed cluster.
+
+`niqqud-font-preview.png` compares English, previous Hebrew and updated Hebrew
+for all four active faces at the same rendering scale. It is an offline atlas
+preview, without TMP material effects. `verify_niqqud_fonts.py` reopens both font
+copies and checks unique indices, coverage, atlas bounds and ink margins;
+`font-spacing-report.json` records the results. No running game is controlled.
+
+Shmantaf readings are pinned as שְׁמַנְטַף / שְׁמַנְטַפִים. The plural is attested
+in [Uriel Ofek's literary discussion](https://benyehuda.org/read/21434); the
+singular follows the user's pronunciation. The latest user-requested spelling
+for Misabel is אומללית / אוּמְלָלִית, superseding the earlier אומללת revision.
+`reviewed_terms.py` applies those readings after draft generation and when
+reading the canonical CSV for font and database builds. The CSV and pointed
+reference catalog contain the corrections themselves.
+
+The update targets the same Windows Steam build, with the existing selective
+five-file installation and restoration plan. macOS is not supported by this
+game patch. Visual validation is offline; live gameplay has not been checked.
+
 This folder contains the editable logical-order Hebrew catalog, its source inventory, character glossary, extraction and build scripts, and model attribution.
 
 ## Scope

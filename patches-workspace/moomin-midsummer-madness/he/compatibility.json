@@ -1,7 +1,7 @@
 {
   "game": "moomin-midsummer-madness",
-  "patch_version": "0.1.2",
-  "release_revision": 3,
+  "patch_version": "0.1.3",
+  "release_revision": 4,
   "verified_on": "2026-11-21",
   "store": "steam",
   "app_id": 4463520,
@@ -16,22 +16,22 @@
     {
       "path": "Summer/Adventure_UE5_Data/StreamingAssets/aa/StandaloneWindows64/database_assets_all_451c9c2dc5087ceed02f737272b90df7.bundle",
       "original_sha256": "79ac6a2148fb545e766845735a7b3939d49b1a3a6138b86dea03b8e406d6d459",
-      "installed_sha256": "fd2a33efd3780bc6917e5482b4a0ac64a2eaa611e08283f25b734133ff9f11de"
+      "installed_sha256": "c368c4705aaefb8967e9f953d176f222444b32624e4b140510babc9a82d3ec8c"
     },
     {
       "path": "Summer/Adventure_UE5_Data/StreamingAssets/aa/StandaloneWindows64/fonts_assets_all_2ab40165824cec60e96eea3c37ae678d.bundle",
       "original_sha256": "072a7a9aa6e1a165e81b3ec3ec2d7d35c5cc17eeabc65dcba8e511037c4db3bf",
-      "installed_sha256": "d23685e642675a4486820320d85ff07dee41c8b8ae2a60fa4a1a88651a2baab9"
+      "installed_sha256": "f21318eda9bacedb999e920686fc864bca85d1b81297c2e31a3f26e79ea14893"
     },
     {
       "path": "Summer/Adventure_UE5_Data/sharedassets0.assets",
       "original_sha256": "ad50c9ed6dcf3173721e3d4e3dcd466cf9fd83687fa05e443825f043439d208e",
-      "installed_sha256": "67e553f21956f8c27c4048c99ac531834cee62e1371b98f598a06b8e8af6158d"
+      "installed_sha256": "8b7971f1b730067488562454557d9174ab1ebf96e4c9998b1d48ca167df497f7"
     },
     {
       "path": "Summer/Adventure_UE5_Data/StreamingAssets/aa/catalog.bin",
       "original_sha256": "7c073230712e2c71c8dcac54b4bf4ea16922ad3d5635616455a868701e6566e5",
-      "installed_sha256": "e1a811d76c55ebb8743c8550c7a96774aed89e25a467ea9df305a9cceea7da9c"
+      "installed_sha256": "6ce243f4970ff838806eddbcf83d40cda2b9e97beaef8254a0e20aa0d8a9eb93"
     },
     {
       "path": "Summer/Adventure_UE5_Data/Managed/Assembly-CSharp.dll",
@@ -51,28 +51,32 @@
     "source_database_sha256": "79ac6a2148fb545e766845735a7b3939d49b1a3a6138b86dea03b8e406d6d459"
   },
   "validation": {
+    "database": "All 4,692 fields rebuilt and reopened; IDs, formatting, source and base wording checked by the builder.",
+    "font_assets": "Both font copies reopened; four faces each with 300 composites and 27 base letters; unique indices, bounds and minimum two-pixel side margins verified.",
+    "preview": "niqqud-font-preview.png; offline atlas comparison, equal rendering scale, no change to font size or baseline; lower marks moved 2 atlas px in regular and 3 in bold.",
     "delta_roundtrips": "passed for all five files",
     "catalog_crcs": {
       "database_original": "fd17f90c",
-      "database_installed": "9f7587a8",
+      "database_installed": "545a3b5a",
       "fonts_original": "18adf005",
-      "fonts_installed": "eab3a5eb"
+      "fonts_installed": "93ea01b0"
     },
-    "regression_tests": "3 passed",
-    "startup": "Identical payloads to the local Windows repair that passed bootstrap and initialized settings on 2026-11-21.",
-    "saves": "65 pre-existing save files retained identical SHA-256 after that startup test. This candidate build does not access user saves.",
-    "visual_menu": "not verified: capture timed out",
-    "load_saved_game": "not tested",
-    "macos": "not built or tested; not advertised as supported",
+    "regression_tests": "20 passed: font spacing/wrapping 4, reviewed terms/catalog 4, package metadata 3, app release 9.",
     "native_windows_lifecycle": {
-      "result": "passed",
-      "affected_files": 5,
-      "backed_up_files": 5,
-      "restored_originals": "all five SHA-256 hashes match",
-      "unrelated_files": "preexisting and added-after-install sentinels preserved"
+      "affectedFiles": 5,
+      "backedUpFiles": 5,
+      "copiedOriginalFiles": 5,
+      "editionValidation": "declared_original_fingerprints_matched",
+      "gameplay": "not_run",
+      "guardedFileCount": 5,
+      "selectiveRoundtrip": "passed",
+      "warning": "Pass means disposable install/uninstall roundtrip only; game ownership, complete edition compatibility, and gameplay are not verified"
     },
-    "rust_integration_tests": "3 passed",
-    "general_package_tests": "12 passed, 1 skipped, 1 unrelated failure: untracked space-quest-iv/he/patch.json lacks macOS platform"
+    "startup": "not run for 0.1.3; user game deliberately left running and untouched",
+    "saves": "not accessed",
+    "live_visual": "not verified; offline font assets inspected",
+    "load_saved_game": "not tested",
+    "macos": "not built or tested for this Windows-only game; support not advertised"
   },
-  "publication": "local candidate; not published"
+  "publication": "Prepared for the bundled patch in Kitor 0.1.9; release status is tracked by GitHub app-v0.1.9."
 }
