@@ -38,7 +38,7 @@ jobs:
   installers:
     needs: classify
     if: needs.classify.outputs.translation_only != 'true' && needs.classify.outputs.installers == 'true'
-    uses: ./.github/workflows/build-installers.yml
+    uses: $/.github/workflows/build-installers.yml
 
   packages:
     needs: classify
@@ -46,7 +46,7 @@ jobs:
     # The reusable workflow also contains publishing jobs restricted to push.
     permissions:
       contents: write
-    uses: ./.github/workflows/validate-patch-packages.yml
+    uses: $/.github/workflows/validate-patch-packages.yml
 
   codeql:
     needs: classify
@@ -54,7 +54,7 @@ jobs:
     permissions:
       contents: read
       security-events: write
-    uses: ./.github/workflows/codeql.yml
+    uses: $/.github/workflows/codeql.yml
 
   workflow-security:
     needs: classify
@@ -62,7 +62,7 @@ jobs:
     permissions:
       contents: read
       security-events: write
-    uses: ./.github/workflows/zizmor.yml
+    uses: $/.github/workflows/zizmor.yml
 
   dependencies:
     needs: classify
@@ -71,4 +71,4 @@ jobs:
       actions: read
       contents: read
       security-events: write
-    uses: ./.github/workflows/osv-scanner.yml
+    uses: $/.github/workflows/osv-scanner.yml
