@@ -125,9 +125,12 @@ async fn download_collection(
         return Err(format!("OVERWRITE_REQUIRED:{}", destination.display()));
     }
     {
-        let native_staging = native_source(product, state, progress_app).await?;
+        let mut native_staging = native_source(product, state, progress_app).await?;
         let source = if let Some((_, source)) = &native_staging {
-            for recipe in &product.games { verify_recipe(&source.join(&recipe.folder), recipe)?; }
+            let validation = product.games.iter().try_for_each(|recipe| verify_recipe(&source.join(&recipe.folder), recipe));
+            if let Err(error) = validation {
+                return Err(retain_download(&mut native_staging, error));
+            }
             source.clone()
         } else {
             let (steam, executable) = layout_steam_client()?;
@@ -302,14 +305,14 @@ async fn download_layout(
         }
         return Err("This game's registered folder is missing. Remove that library entry before downloading again.".into());
     }
-    let native_staging = if product.additional_depots.is_empty() {
+    let mut native_staging = if product.additional_depots.is_empty() {
         native_source(product, state, progress_app).await?
     } else {
         Some(download_depot_set(product, state, progress_app).await?)
     };
     let source = if let Some((_, source)) = &native_staging {
         if !product.required_files.iter().all(|name| source.join(name).is_file()) {
-            return Err("Downloaded Steam files do not match the supported game edition".into());
+            return Err(retain_download(&mut native_staging, "Downloaded Steam files do not match the supported game edition".into()));
         }
         source.clone()
     } else {
@@ -360,8 +363,11 @@ async fn download_layout(
         for path in &executable_paths {
             restore_owner_execute(&staged_game, path)?;
         }
-        if super::game_service::detect_game_for_id(&staged_game, &game_id)?.is_none() {
-            return Err("Steam files do not match the supported game edition.".into());
+        let detected = super::game_service::detect_game_for_id(&staged_game, &game_id);
+        if !matches!(&detected, Ok(Some(_))) {
+            let retained = staging.keep().join("game");
+            return Err(format!("{}. Game files retained at {}. No compatible edition was registered.",
+                detected.err().unwrap_or_else(|| "Steam files do not match the supported game edition".into()), retained.display()));
         }
         if game_id == "owlboy" {
             // Validate the platform and prepare the native bundle's executable
@@ -768,9 +774,12 @@ pub async fn download_to_confirmed(
         .all(|r| verify_recipe(&cache.join(&r.id), r).is_ok())
     {
         // Exact known bytes can be reused even without an appmanifest or old console logs.
-        let native_staging = native_source(&product, state, progress_app).await?;
+        let mut native_staging = native_source(&product, state, progress_app).await?;
         let source = if let Some((_, source)) = &native_staging {
-            for recipe in all { verify_recipe(&source.join(&recipe.folder), recipe)?; }
+            let validation = all.iter().try_for_each(|recipe| verify_recipe(&source.join(&recipe.folder), recipe));
+            if let Err(error) = validation {
+                return Err(retain_download(&mut native_staging, error));
+            }
             source.clone()
         } else {
             let (steam, executable) = layout_steam_client()?;
@@ -829,3 +838,17 @@ mod manual_import;
 
 #[cfg(test)]
 mod capability_tests;
+
+// Completed downloads must survive an unsupported edition or patch catalog mismatch.
+fn retain_download(staging: &mut Option<(tempfile::TempDir, PathBuf)>, error: String) -> String {
+    if let Some((directory, source)) = staging.take() {
+        let _ = directory.keep();
+        format!("{error}. Downloaded game files retained at {}", source.display())
+    } else {
+        error
+    }
+}
+
+#[cfg(test)]
+#[path = "steam_download_retention_tests.rs"]
+mod retention_tests;
