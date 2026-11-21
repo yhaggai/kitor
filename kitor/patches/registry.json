@@ -2396,6 +2396,8 @@
               "store": "steam",
               "platform": "windows",
               "build_id": "26355427",
+              "depot_id": "4463521",
+              "manifest_id": "5209053138090660751",
               "evidence": "patches-workspace/moomin-midsummer-madness/he/README.md",
               "released_on": "2026-11-12",
               "release_date_source": "https://steamdb.info/patchnotes/26355427/"
