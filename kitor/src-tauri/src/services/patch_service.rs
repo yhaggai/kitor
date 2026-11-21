@@ -532,7 +532,7 @@ pub async fn download_and_install_patch(
         game_id: Set(game.id),
         scummvm_id: Set(scummvm_id.clone()),
         version: Set(version),
-        installed_date: Set(chrono::Utc::now().naive_utc()),
+        installed_date: Set(crate::date_time::now_naive()),
         status: Set("active".to_string()),
         backup_path: Set(Some(backup_path.to_string_lossy().into_owned())),
         ..Default::default()

@@ -1,3 +1,7 @@
 [[IgnoredVulns]]
 id = "RUSTSEC-2024-0429"
 reason = "This lockfile uses vendor/glib-0.18.5 with the VariantStrIter fix backported from https://github.com/gtk-rs/gtk-rs-core/pull/1343."
+
+[[IgnoredVulns]]
+id = "RUSTSEC-2026-0543"
+reason = "Chrono is retained in Cargo.lock by disabled optional integrations in upstream crates (including serde_with). Kitor uses time and disables SeaORM's Chrono features. The vulnerability workflow checks the resolved dependency tree for all targets and features and fails if Chrono becomes a build dependency."
