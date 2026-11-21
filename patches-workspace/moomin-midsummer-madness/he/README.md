@@ -2,6 +2,19 @@
 
 ## Font spacing update 0.1.3, revision 4
 
+Kitor downloads this patch as `0.1.3-download1` (catalog revision 5); no game
+patch payload is bundled in the app. The ZIP retains the same five-file plan
+and uses the standard checksum-verified download and selective journaled
+installation path.
+
+All 3,866 dialogue CSV speaker labels now resolve from the pristine
+GameDatabase's per-phrase `character_card`, correcting 3,492 scene-inferred
+labels without editing translations. `speaker-context.json` retains character
+IDs, names, emotions and events for subsequent agreement review. Recreate it
+with `merge_speakers.py <pristine-database-bundle>`. The references establish
+who speaks; they do not automatically establish each addressee or grammatical
+number.
+
 Hebrew base letters and composite pointed glyphs now reserve at least two atlas
 pixels of ink clearance on each side. Composite advances expand when needed,
 rather than retaining an original-font advance that is narrower than the Arial

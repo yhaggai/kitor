@@ -51,17 +51,32 @@ fn saved_bundled_entry_migrates_to_reviewed_download() {
 }
 
 #[test]
-fn embedded_moomin_patch_remains_available_in_the_loaded_registry() {
+fn moomin_download_remains_available_in_the_loaded_registry() {
     let registry = load_registry().unwrap();
     let game = registry
         .games
         .iter()
         .find(|game| game.scummvm_id == "moomin-midsummer-madness")
         .expect("Moomin game is present");
-    assert_eq!(game.behavior.bundled_resource.as_deref(), Some("moomin-midsummer-madness"));
+    assert!(game.behavior.bundled_resource.is_none());
     assert!(game.patches.iter().any(|patch| {
-        patch.language == "he" && patch.source_type == "bundled"
+        patch.language == "he" && patch.source_type == "github" && patch.checksum.is_some()
     }));
+}
+
+#[test]
+fn saved_moomin_bundle_migrates_to_download_and_clears_embedded_behavior() {
+    let built: Registry = serde_json::from_str(include_str!("../../../../patches/registry.json")).unwrap();
+    let mut saved = built.clone();
+    let game = saved.games.iter_mut().find(|g| g.scummvm_id == "moomin-midsummer-madness").unwrap();
+    game.patches[0].source_type = "bundled".into();
+    game.patches[0].download_url = "bundled://moomin-midsummer-madness/windows".into();
+    game.behavior.bundled_resource = Some("moomin-midsummer-madness".into());
+    migrate_bundled_packages(&mut saved, &built);
+    let game = saved.games.iter().find(|g| g.scummvm_id == "moomin-midsummer-madness").unwrap();
+    assert_eq!(game.patches[0].source_type, "github");
+    assert!(game.patches[0].download_url.starts_with("https://"));
+    assert!(game.behavior.bundled_resource.is_none());
 }
 
 #[cfg(not(debug_assertions))]

@@ -76,7 +76,11 @@
     "saves": "not accessed",
     "live_visual": "not verified; offline font assets inspected",
     "load_saved_game": "not tested",
-    "macos": "not built or tested for this Windows-only game; support not advertised"
+    "macos": "not built or tested for this Windows-only game; support not advertised",
+    "speakers": "3,866 explicit GameDatabase character_card references resolved; 3,492 inferred CSV labels corrected. All translation fields preserved; rebuilt database byte-identical.",
+    "transport": "All 37 catalog patches use HTTPS downloads; no bundled asset index or embedded runtime archive. Compatibility packages are hash-pinned and checked before game files change."
   },
-  "publication": "Prepared for the bundled patch in Kitor 0.1.9; release status is tracked by GitHub app-v0.1.9."
+  "publication": "On-demand GitHub download; Kitor 0.1.9 contains no bundled patch payloads. Publication is gated by verified package availability.",
+  "download_version": "0.1.3-download1",
+  "download_release_revision": 5
 }

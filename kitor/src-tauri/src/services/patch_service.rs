@@ -344,7 +344,6 @@ pub async fn download_and_install_patch(
         }),
     );
 
-    println!("[patch_service] Downloading from: {}", patch.download_url);
     println!(
         "[patch_service] Download destination: {}",
         download_path.display()
@@ -352,35 +351,34 @@ pub async fn download_and_install_patch(
     let source = super::package_source::PackageSource::resolve_for_target(
         patch, &game_def.behavior, &scummvm_id, &install_target,
     )?;
+    let (download_url, checksum) = source.download_metadata(patch)?;
+    println!("[patch_service] Downloading from: {}", download_url);
     match &source {
         super::package_source::PackageSource::Download
-        | super::package_source::PackageSource::SpaceQuest4Scummvm => {
+        | super::package_source::PackageSource::SpaceQuest4Scummvm
+        | super::package_source::PackageSource::OwlboyMacSteam
+        | super::package_source::PackageSource::OwlboyWindowsSteam => {
             download_service::download_patch_file(
-                &patch.download_url,
+                &download_url,
                 &download_path,
                 &app_handle,
                 &scummvm_id,
             )
             .await?;
         }
-        super::package_source::PackageSource::Embedded(_) => {}
         #[cfg(debug_assertions)]
         super::package_source::PackageSource::LocalPreview(path) => {
             std::fs::copy(path, &download_path).map_err(|e| e.to_string())?;
         }
-        super::package_source::PackageSource::OwlboyMacSteam
-        | super::package_source::PackageSource::OwlboyWindowsSteam => {}
     }
-    if !source.uses_embedded_files() {
-        if let Some(checksum) = &patch.checksum {
-            if patch_lifecycle::hash(&download_path)? != checksum.to_lowercase() {
-                return Err(
-                    "Downloaded translation checksum mismatch; game files were not changed".into(),
-                );
-            }
-        } else if patch.release_revision > 0 {
-            return Err("Published translation is missing its package checksum".into());
+    if let Some(checksum) = &checksum {
+        if patch_lifecycle::hash(&download_path)? != checksum.to_lowercase() {
+            return Err(
+                "Downloaded translation checksum mismatch; game files were not changed".into(),
+            );
         }
+    } else if patch.release_revision > 0 {
+        return Err("Published translation is missing its package checksum".into());
     }
     println!("[patch_service] Download complete");
 
@@ -398,8 +396,7 @@ pub async fn download_and_install_patch(
     let manifest_name = patch.install_manifest.as_deref().ok_or(
         "Patch has no file-change manifest; whole-folder installation is no longer supported",
     )?;
-    if !source.uses_embedded_files()
-        && download_path.extension().and_then(|s| s.to_str()) != Some("zip")
+    if download_path.extension().and_then(|s| s.to_str()) != Some("zip")
     {
         return Err("Declarative patch packages must be ZIP archives".into());
     }
@@ -552,9 +549,7 @@ pub async fn download_and_install_patch(
 
     // Clean up download
     println!("[patch_service] Cleaning up download file");
-    if !source.uses_embedded_files() {
-        let _ = std::fs::remove_file(&download_path);
-    }
+    let _ = std::fs::remove_file(&download_path);
 
     // Emit progress: Complete
     crate::services::diagnostics::record(&app_data_dir, "patch", &scummvm_id, "complete");
