@@ -20,8 +20,16 @@ jobs:
         if: github.event_name == 'pull_request'
         with:
           persist-credentials: false
-          fetch-depth: 0
-      - name: Validate subtitle-only changes
+          fetch-depth: 1
+      - name: Fetch comparison base without history
+        if: github.event_name == 'pull_request'
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          GH_TOKEN: ${{ github.token }}
+        # The checkout intentionally does not persist credentials. Use the
+        # runner's GitHub CLI credential helper only for this fetch.
+        run: git -c credential.helper= -c 'credential.helper=!gh auth git-credential' fetch --no-tags --depth=1 origin "$BASE_SHA"
+      - name: Validate translation-only changes
         id: classify
         env:
           BASE_SHA: ${{ github.event.pull_request.base.sha }}
