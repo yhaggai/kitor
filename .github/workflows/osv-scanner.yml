@@ -13,18 +13,22 @@ permissions:
   contents: read
 
 jobs:
+  translation-scope:
+    uses: $/.github/workflows/classify-translation-pr.yml
   scan-pr:
+    needs: translation-scope
     permissions:
       actions: read
       contents: read
       security-events: write
-    if: github.event_name == 'pull_request'
+    if: github.event_name == 'pull_request' && needs.translation-scope.outputs.translation_only != 'true'
     uses: google/osv-scanner-action/.github/workflows/osv-scanner-reusable-pr.yml@32d3cd482bdadfb38b186c0ad1b031902d55d932 # v2.7.1
 
   scan-repository:
+    needs: translation-scope
     permissions:
       actions: read
       contents: read
       security-events: write
-    if: github.event_name != 'pull_request'
+    if: github.event_name != 'pull_request' && needs.translation-scope.outputs.translation_only != 'true'
     uses: google/osv-scanner-action/.github/workflows/osv-scanner-reusable.yml@32d3cd482bdadfb38b186c0ad1b031902d55d932 # v2.7.1
