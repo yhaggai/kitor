@@ -175,6 +175,7 @@ export const useGogDownload = create<{
       checkpoint();
       const games = await invoke<Game[]>("get_games_with_patches");
       checkpoint();
+      store.setGames(games);
       const installed = games.find((entry) => entry.id === game.id);
       if (!installed) throw new Error("Installed game was not found in the library.");
       if (installed.requires_scummvm !== false) {
@@ -253,7 +254,20 @@ export const useGogDownload = create<{
         }
         set({ cancelled: true, error: null });
       } else {
-        set({ error: String(error) });
+        // Installation and patching are separate outcomes. Refresh even when
+        // patching fails so the installed, unpatched game remains accessible.
+        try {
+          useAppStore.getState().setGames(await invoke<Game[]>("get_games_with_patches"));
+        } catch (refreshError) {
+          console.warn("Could not refresh the library after installation failure", refreshError);
+        }
+        const installedGameId = get().installedGameId;
+        set({
+          error:
+            installedGameId === null
+              ? String(error)
+              : `${String(error)} The installed game has been kept in your library.`,
+        });
       }
     } finally {
       for (const stop of listeners) stop();
