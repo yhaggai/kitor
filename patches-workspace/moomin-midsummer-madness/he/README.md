@@ -15,6 +15,17 @@ with `merge_speakers.py <pristine-database-bundle>`. The references establish
 who speaks; they do not automatically establish each addressee or grammatical
 number.
 
+The follow-up agreement review fixes 123 dialogue rows, including first-person
+gender, singular/plural address and distinctions visible only in niqqud.
+`speaker-agreement.json` documents all 19 speaker cards, while
+`agreement-review.json` records every correction and its context. This is a
+targeted agreement pass, not a claim of complete literary proofreading.
+
+Composite PUA codes are stable across rebuilds: new clusters append to the
+existing mapping, and unused legacy clusters remain available. This preserves
+previously encoded chapter names in save filenames. Offline before/after font
+previews use the matching old and new cluster maps separately.
+
 Hebrew base letters and composite pointed glyphs now reserve at least two atlas
 pixels of ink clearance on each side. Composite advances expand when needed,
 rather than retaining an original-font advance that is narrower than the Arial

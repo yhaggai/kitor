@@ -2427,12 +2427,12 @@
           "author": "Kitor",
           "download_url": "https://github.com/yhaggai/kitor/releases/download/patch-moomin-midsummer-madness-he-v0.1.3-download1/moomin-midsummer-madness-he-0.1.3-download1.zip",
           "source_type": "github",
-          "checksum": "c6035e2013477015a46849691599d2f978857513a669bd8e484366c6aed92345",
-          "file_size": 23574403,
+          "checksum": "d928c0319ca6331ebf150126770d2260ad313082bc9b11b989f13abcd6d667ca",
+          "file_size": 23575072,
           "filename": "moomin-midsummer-madness-he-0.1.3-download1.zip",
           "post_install_script": null,
           "install_manifest": "patch.json",
-          "description": "Hebrew translation with niqqud and right-to-left layout for Windows Steam build 26803369. Includes dialogue, menus, journal, credits and game fonts. Corrects Hebrew gender and number agreement in 169 lines; full linguistic proofreading pending. Improves Hebrew letter spacing and niqqud clearance, and corrects Shmantaf name vowelization."
+          "description": "Hebrew translation with niqqud and right-to-left layout for Windows Steam build 26803369. Includes dialogue, menus, journal, credits and game fonts. Improves Hebrew letter spacing and niqqud clearance, corrects Shmantaf vowelization and uses אומללית for Misabel. Adds 123 context-reviewed dialogue agreement corrections with exact database speakers; full literary proofreading pending."
         }
       ],
       "behavior": {

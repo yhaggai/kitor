@@ -27,9 +27,12 @@ def main():
     ap=argparse.ArgumentParser(description=__doc__)
     ap.add_argument('bundle',type=Path)
     ap.add_argument('--before',type=Path,required=True)
+    ap.add_argument('--before-glyphs',type=Path,required=True)
     ap.add_argument('--out',type=Path,default=BASE/'niqqud-font-preview.png')
     a=ap.parse_args()
     envs=[UnityPy.load(a.before.read_bytes()),UnityPy.load(a.bundle.read_bytes())]
+    current_codes=build.GLYPHS
+    previous_codes={unicodedata.normalize('NFD',k):v for k,v in json.loads(a.before_glyphs.read_text(encoding='utf-8')).items()}
     names=['Pangolin-Regular SDF MAIN','OpenDyslexic-Regular_SDF','BalsamiqSans-Regular_SDF','BalsamiqSans-Bold_SDF']
     img=Image.new('RGBA',(1800,760),'white');d=ImageDraw.Draw(img);color=(31,55,82,255)
     d.text((20,10),'Offline TMP atlas comparison: English / previous Hebrew / updated Hebrew',fill='black')
@@ -38,6 +41,7 @@ def main():
         y=65+i*170
         d.text((20,y),name,fill='black')
         for col,(env,text) in enumerate([(envs[0],'Little My! Moomintroll'),(envs[0],'מַאי הַקְּטַנָּה! מוּמִינְטְרוֹל'),(envs[1],'מַאי הַקְּטַנָּה! מוּמִינְטְרוֹל')]):
+            build.GLYPHS=previous_codes if col<2 else current_codes
             obj=next(o for o in env.objects if o.type.name=='MonoBehaviour' and o.peek_name()==name)
             font=obj.read();tex=next(o for o in env.objects if o.path_id==font.m_AtlasTextures[0].path_id).read()
             atlas=Image.frombytes('L',(tex.m_Width,tex.m_Height),tex.image_data)
@@ -45,5 +49,6 @@ def main():
             draw_line(panel,atlas,font,text,85,color)
             draw_line(panel,atlas,font,'סְנוּפְקִין וְסְנוֹרְקָה' if col else 'Snufkin and Snorkmaiden',165,color)
             img.alpha_composite(panel.resize((600,95),Image.Resampling.LANCZOS),(col*600,y+25))
+    build.GLYPHS=current_codes
     img.save(a.out);print(a.out)
 if __name__=='__main__':main()

@@ -3,6 +3,7 @@ import importlib.util
 from pathlib import Path
 import sys
 import unittest
+import unicodedata
 from unittest.mock import patch
 
 SOURCE = Path(__file__).resolve().parents[2] / 'patches-workspace/moomin-midsummer-madness/he'
@@ -13,6 +14,18 @@ spec.loader.exec_module(fonts)
 
 
 class FontSpacingTests(unittest.TestCase):
+    def test_published_cluster_ids_survive_new_letters_and_unused_legacy_clusters(self):
+        old = {'מָ':0xE200, 'שָׁ':0xE201}
+        actual = fonts.allocate_cluster_codes(['בַּ', 'מָ'], old)
+        for cluster, code in old.items():
+            self.assertEqual(actual[unicodedata.normalize('NFD', cluster)], code)
+        self.assertEqual(actual[unicodedata.normalize('NFD', 'בַּ')], 0xE202)
+        self.assertEqual(fonts.allocate_cluster_codes(['מָ', 'בַּ'], actual), actual)
+
+    def test_duplicate_or_out_of_range_published_codes_are_rejected(self):
+        for old in ({'מָ':0xE200, 'בַּ':0xE200}, {'מָ':0xF000}):
+            with self.assertRaises(ValueError):fonts.allocate_cluster_codes([], old)
+
     def test_overhanging_ink_gets_space_on_both_sides(self):
         bearing, advance = fonts.spaced_metrics(-15, 18, (12, 12, 36, 50))
         self.assertGreaterEqual(bearing + 12, 2)

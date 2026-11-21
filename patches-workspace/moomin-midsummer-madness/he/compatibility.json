@@ -16,7 +16,7 @@
     {
       "path": "Summer/Adventure_UE5_Data/StreamingAssets/aa/StandaloneWindows64/database_assets_all_451c9c2dc5087ceed02f737272b90df7.bundle",
       "original_sha256": "79ac6a2148fb545e766845735a7b3939d49b1a3a6138b86dea03b8e406d6d459",
-      "installed_sha256": "c368c4705aaefb8967e9f953d176f222444b32624e4b140510babc9a82d3ec8c"
+      "installed_sha256": "b4533f5929d5b3a62425b8a22ce3553d251cd1242e4a99ea3c976c7247cd33be"
     },
     {
       "path": "Summer/Adventure_UE5_Data/StreamingAssets/aa/StandaloneWindows64/fonts_assets_all_2ab40165824cec60e96eea3c37ae678d.bundle",
@@ -31,7 +31,7 @@
     {
       "path": "Summer/Adventure_UE5_Data/StreamingAssets/aa/catalog.bin",
       "original_sha256": "7c073230712e2c71c8dcac54b4bf4ea16922ad3d5635616455a868701e6566e5",
-      "installed_sha256": "6ce243f4970ff838806eddbcf83d40cda2b9e97beaef8254a0e20aa0d8a9eb93"
+      "installed_sha256": "8477febb346f94f3fdd70f994e13200cbc742d4aa1dd026ca406f5d127614225"
     },
     {
       "path": "Summer/Adventure_UE5_Data/Managed/Assembly-CSharp.dll",
@@ -57,11 +57,11 @@
     "delta_roundtrips": "passed for all five files",
     "catalog_crcs": {
       "database_original": "fd17f90c",
-      "database_installed": "545a3b5a",
+      "database_installed": "3749f760",
       "fonts_original": "18adf005",
       "fonts_installed": "93ea01b0"
     },
-    "regression_tests": "20 passed: font spacing/wrapping 4, reviewed terms/catalog 4, package metadata 3, app release 9.",
+    "regression_tests": "Python suite: 71 cases, 67 passed and 4 skipped. Rust package-source: 8 passed and 1 private-preview ignored; registry: 10 passed. Full local lifecycle: 57 passed and 3 owned-game checks ignored before the agreement-only text rebuild.",
     "native_windows_lifecycle": {
       "affectedFiles": 5,
       "backedUpFiles": 5,
@@ -77,10 +77,11 @@
     "live_visual": "not verified; offline font assets inspected",
     "load_saved_game": "not tested",
     "macos": "not built or tested for this Windows-only game; support not advertised",
-    "speakers": "3,866 explicit GameDatabase character_card references resolved; 3,492 inferred CSV labels corrected. All translation fields preserved; rebuilt database byte-identical.",
-    "transport": "All 37 catalog patches use HTTPS downloads; no bundled asset index or embedded runtime archive. Compatibility packages are hash-pinned and checked before game files change."
+    "speakers": "3,866 explicit character references resolved; all CSV labels match the persisted context map.",
+    "agreement": "123 targeted dialogue corrections across speaker/addressee gender, singular/plural and pointed forms; evidence and limitations in agreement-review.json.",
+    "save_glyphs": "All 300 previously assigned composite codes retained. Future clusters append without reassigning old codes; unused legacy clusters remain available."
   },
-  "publication": "On-demand GitHub download; Kitor 0.1.9 contains no bundled patch payloads. Publication is gated by verified package availability.",
+  "publication": "On-demand GitHub download; Kitor 0.1.9 contains no bundled game patch payloads. Availability and checksum are gated before app publication.",
   "download_version": "0.1.3-download1",
   "download_release_revision": 5
 }

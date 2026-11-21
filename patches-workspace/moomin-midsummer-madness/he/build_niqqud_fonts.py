@@ -8,7 +8,7 @@ from scipy.ndimage import distance_transform_edt
 from PIL import Image
 import freetype, uharfbuzz as hb
 import UnityPy
-from font_layout import LOWER_MARKS, spaced_metrics
+from font_layout import LOWER_MARKS, spaced_metrics, allocate_cluster_codes
 
 BASE=Path(__file__).resolve().parent
 CLUSTER=re.compile(r'[\u05d0-\u05ea][\u0591-\u05bd\u05bf\u05c1-\u05c2\u05c4-\u05c5\u05c7]+')
@@ -135,7 +135,9 @@ def main():
     ap=argparse.ArgumentParser();ap.add_argument('font_bundle',type=Path);ap.add_argument('sharedassets',type=Path);ap.add_argument('--out',type=Path,required=True);a=ap.parse_args()
     rows=read_catalog(BASE/'catalog.csv')
     clusters=sorted({unicodedata.normalize('NFD',m.group()) for r in rows for m in CLUSTER.finditer(r['he'])})
-    codes={c:chr(PUA_START+i) for i,c in enumerate(clusters)}
+    mapping=BASE/'niqqud-glyphs.json'
+    existing=json.loads(mapping.read_text(encoding='utf-8')) if mapping.exists() else {}
+    codes={c:chr(code) for c,code in allocate_cluster_codes(clusters,existing,PUA_START).items()}
     (BASE/'niqqud-glyphs.json').write_text(json.dumps({c:ord(v) for c,v in codes.items()},ensure_ascii=False,indent=1),encoding='utf-8')
     fonts=UnityPy.load(a.font_bundle.read_bytes());shared=UnityPy.load(a.sharedassets.read_bytes())
     for n in FONT_NAMES:
@@ -162,5 +164,5 @@ def main():
              'advances':dict(sorted(advances.items(),key=lambda item:int(item[0]))),
              'bubble_width_limit':550.0}
     (BASE/'dialogue-font-advances.json').write_text(json.dumps(metrics,indent=2)+'\n',encoding='utf-8')
-    print(f'Created map with {len(codes)} clusters and PUA range U+{PUA_START:04X}–U+{PUA_START+len(codes)-1:04X}')
+    print(f'Created map with {len(codes)} clusters and PUA range U+{PUA_START:04X}–U+{max(map(ord,codes.values())):04X}')
 if __name__=='__main__':main()

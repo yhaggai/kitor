@@ -23,7 +23,9 @@ Character and scene identity come from the game's `GameDatabase` character cards
 | Policeman | השוטר | masculine | Official, self-important; grounded in `character_policeman`. |
 | Hattifatteners | השמנטפים | plural | Keep this canonical Moomin creature name consistent. |
 | The Groke | הגרוק | feminine | Use the established Hebrew Moomin name הגרוק. |
-| Woodie / Bushkid / Trainer | וודי / ילד-שיח / מאמן | preserve distinct labels | Forest children; playful, simple speech. Cards `character_artist`, `character_bushkid`, and `character_trainer` share Woodie label but identify distinct portraits, so translate displayed label consistently as וודי. |
+| Woodie / Bushkid | וודי — ילד־השיח | masculine singular | `character_bushkid`; English explicitly calls this child “he” in `chapter3_q1_park_standardmatch_bushkid`. |
+| Woodie / Trainer | וודי — המאמנת | feminine singular | `character_trainer`; English “she” and German “sie wollte” in the trainer interaction establish feminine reference. |
+| Woodie / Artist | וודי — הצייר | masculine singular grammatical convention | `character_artist`; Russian recap uses `был художником` and Spanish `el niño`. English uses neutral singular “they”; do not mistake it for a group or claim biological-sex evidence. The visible character name remains וודי. |
 | Bird | הציפור | grammatical feminine | Keep as a role label, not a personal name. |
 | Spider | העכביש | masculine | Edward is a separate named character. |
 | Someone | מישהו / מישהי by context; otherwise ״מישהו״ | unresolved | Preserve mystery and use unmarked Hebrew wherever possible. |
@@ -42,4 +44,22 @@ Israeli character-name usage was checked against [Cartoons.co.il's Moomins page]
 
 ## Pointed-name spellings
 
-`niqqud-glossary.json` pins the reviewed pronunciations used in the pointed edition while preserving every base letter: Moomintroll מוּמִינְטְרוֹל, Moomin מוּמִין, Little My מַאי הַקְּטַנָּה, Moominmamma מוּמִינְאִמָּא, Moominpappa מוּמִינְאַבָּא, Snufkin סְנוּפְקִין, Snorkmaiden סְנוֹרְקָה, Hattifatteners הַשְּׁמַנְטַפִּים, and the Groke הַגְּרוֹק. The Hebrew name spellings are supported by the references above; the vowel marks are editorial pronunciations for this edition. Other niqqud is model-generated and was checked for exact base-text and markup preservation, not manually proofread line by line.
+`niqqud-glossary.json` pins the reviewed pronunciations used in the pointed edition while preserving every base letter: Moomintroll מוּמִינְטְרוֹל, Moomin מוּמִין, Little My מַאי הַקְּטַנָּה, Moominmamma מוּמִינְאִמָּא, Moominpappa מוּמִינְאַבָּא, Snufkin סְנוּפְקִין, Snorkmaiden סְנוֹרְקָה, Hattifatteners הַשְּׁמַנְטַפִים, and the Groke הַגְּרוֹק. The Hebrew name spellings are supported by the references above; the vowel marks are editorial pronunciations for this edition. Other niqqud is model-generated and was checked for exact base-text and markup preservation, not manually proofread line by line.
+
+## Agreement review using explicit speakers
+
+`speaker-agreement.json` records grammatical gender and number separately for all
+19 character cards, including the three distinct Woodies. Someone remains
+undisclosed; Bird and Spider use Hebrew grammatical noun gender. These traits
+describe references, not the grammatical subject of every sentence spoken by a
+character. A woman can address a man, quote another character, or speak for a
+mixed group.
+
+The targeted follow-up in `agreement-review.json` corrects 123 dialogue rows in
+both canonical Hebrew columns and the reference catalogs. All 3,866 dialogue
+rows were screened; flagged passages were reviewed with their actual speaker,
+adjacent lines, and shipped English/Russian/German text. Where the source
+localizations disagree about an addressee, the correction uses natural unmarked
+wording. The two protagonists can jointly impersonate one Police Chief: that
+role stays singular while commands to both remain plural. A full literary
+proofread and gameplay review remain outstanding.

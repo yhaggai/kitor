@@ -38,6 +38,10 @@ class MoominPackageTests(unittest.TestCase):
         self.assertTrue(release['download_url'].startswith('https://github.com/yhaggai/kitor/releases/download/'))
         self.assertEqual(len(release['checksum']), 64)
         self.assertNotIn('bundled_resource', game['behavior'])
+        compatibility = json.loads((PACKAGE / 'compatibility.json').read_text(encoding='utf8'))
+        expected = [{key:file[key] for key in ('path','original_sha256','installed_sha256')}
+                    for file in manifest['platforms']['windows']['files']]
+        self.assertEqual(compatibility['files'], expected)
         self.assertEqual(release['supported_builds'][0]['build_id'], '26803369')
         database = builder.FILES[0]
         self.assertEqual(manifest['platforms']['windows']['files'][0]['path'], database)
