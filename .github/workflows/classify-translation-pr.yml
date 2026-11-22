@@ -6,6 +6,9 @@ on:
       translation_only:
         description: The PR changes only supported Hebrew translation data and matching checksums
         value: ${{ jobs.classify.outputs.translation_only }}
+      workflow_or_docs_only:
+        description: The PR changes only Markdown or GitHub Actions workflows
+        value: ${{ jobs.classify.outputs.workflow_or_docs_only }}
 
 permissions:
   contents: read
@@ -15,6 +18,7 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       translation_only: ${{ steps.classify.outputs.translation_only }}
+      workflow_or_docs_only: ${{ steps.source-scope.outputs.workflow_or_docs_only }}
     steps:
       - uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
         if: github.event_name == 'pull_request'
@@ -31,3 +35,23 @@ jobs:
             translation_only=$(python3 kitor/tools/check_translation_pr.py "$BASE_SHA")
           fi
           echo "translation_only=$translation_only" >> "$GITHUB_OUTPUT"
+      - name: Check CodeQL source scope
+        id: source-scope
+        if: github.event_name == 'pull_request'
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+        run: |
+          git diff --name-only --no-renames -z "$BASE_SHA" HEAD > "$RUNNER_TEMP/codeql-changed-paths"
+          workflow_or_docs_only=false
+          while IFS= read -r -d '' path; do
+            case "$path" in
+              .github/workflows/*.yml|.github/workflows/*.yaml|*.md)
+                workflow_or_docs_only=true
+                ;;
+              *)
+                workflow_or_docs_only=false
+                break
+                ;;
+            esac
+          done < "$RUNNER_TEMP/codeql-changed-paths"
+          echo "workflow_or_docs_only=$workflow_or_docs_only" >> "$GITHUB_OUTPUT"

@@ -17,7 +17,9 @@ jobs:
     uses: ./.github/workflows/classify-translation-pr.yml
   analyze:
     needs: translation-scope
-    if: needs.translation-scope.outputs.translation_only != 'true'
+    if: >-
+      needs.translation-scope.outputs.translation_only != 'true' &&
+      needs.translation-scope.outputs.workflow_or_docs_only != 'true'
     runs-on: ubuntu-latest
     permissions:
       contents: read
