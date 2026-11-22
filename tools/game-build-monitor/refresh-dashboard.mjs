@@ -9,9 +9,13 @@ export function hasCurrentCatalog(snapshot, games) {
   const targets = monitorTargets(games);
   if (!Array.isArray(snapshot.rows) || snapshot.rows.length !== targets.length) return false;
   return targets.every(target => {
-    const row = snapshot.rows.find(row => row.key === target.key);
+    const row = snapshot.rows.find(row => row.key === target.key && row.gameId === target.gameId);
     const supported = row?.supported?.map(({ status, fileCheck, ...baseline }) => baseline);
-    return isDeepStrictEqual(supported, target.supported);
+    const expected = [
+      ...target.supported,
+      ...(target.verifiedMismatches ?? []).map(({ paths, checked_manifest_id, ...comparison }) => comparison),
+    ];
+    return isDeepStrictEqual(supported, expected);
   });
 }
 

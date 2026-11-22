@@ -38,3 +38,26 @@ test("a persistently stale production snapshot fails the refresh", async () => {
     pause: async () => {}, attempts: 2,
   }), /outdated patch catalog/);
 });
+
+test("editions sharing a store ID are verified by game identity", () => {
+  const editions = [games[0], { ...games[0], scummvm_id: "other-edition", patches: [] }];
+  editions[1].patches = [{ ...games[0].patches[0], version: "other-version" }];
+  const snapshot = { rows: monitorTargets(editions) };
+  assert.equal(hasCurrentCatalog(snapshot, editions), true);
+  snapshot.rows[1].supported[0].patchVersion = "stale";
+  assert.equal(hasCurrentCatalog(snapshot, editions), false);
+});
+
+test("recorded incompatibilities remain visible without claiming support", () => {
+  const catalog = [{ ...games[0], patches: [{ ...games[0].patches[0], verified_mismatches: [{
+    store: "steam", platform: "osx", depot_id: "4463522", checked_manifest_id: "123", paths: ["game.dat"],
+  }] }] }];
+  const [target] = monitorTargets(catalog);
+  const { paths, checked_manifest_id, ...comparison } = target.verifiedMismatches[0];
+  const snapshot = { rows: [{ ...target, supported: [...target.supported, {
+    ...comparison, status: "unavailable", fileCheck: { status: "changed", paths },
+  }] }] };
+  assert.equal(hasCurrentCatalog(snapshot, catalog), true);
+  snapshot.rows[0].supported.pop();
+  assert.equal(hasCurrentCatalog(snapshot, catalog), false);
+});
