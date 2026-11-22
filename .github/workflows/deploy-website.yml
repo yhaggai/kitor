@@ -1,0 +1,72 @@
+name: Deploy website
+
+on:
+  push:
+    branches: [v1]
+    paths:
+      - '.github/workflows/deploy-website.yml'
+      - 'website/**'
+      - 'tools/ci-wrangler/package*.json'
+      - 'kitor/patches/registry.json'
+      - 'kitor/src/data/game-box-covers.json'
+      - 'kitor/src/data/game-descriptions.he.json'
+      - 'kitor/src/data/game-galleries.json'
+      - 'kitor/src/components/GameBox*'
+      - 'kitor/public/cover-sq6-he.jpg'
+      - 'packages/ui/src/assets/kitor-logo.svg'
+      - 'assets/game-boxes/desktop-sources/**'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: deploy-kitor-website
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    if: github.ref == 'refs/heads/v1'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      CLOUDFLARE_ACCOUNT_ID: ${{ vars.CLOUDFLARE_ACCOUNT_ID }}
+      CLOUDFLARE_PAGES_PROJECT: ${{ vars.CLOUDFLARE_PAGES_PROJECT }}
+      KITOR_SITE_URL: ${{ vars.KITOR_SITE_URL }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with:
+          node-version: 24
+          cache: npm
+          cache-dependency-path: |
+            website/package-lock.json
+            tools/ci-wrangler/package-lock.json
+      - name: Check deployment settings
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_PAGES_API_TOKEN }}
+        run: |
+          for setting in CLOUDFLARE_ACCOUNT_ID CLOUDFLARE_PAGES_PROJECT KITOR_SITE_URL CLOUDFLARE_API_TOKEN; do
+            if [[ -z "${!setting}" ]]; then
+              echo "::error::Missing $setting. See website/README.md for deployment setup."
+              exit 1
+            fi
+          done
+          node --input-type=module -e 'const url = new URL(process.env.KITOR_SITE_URL); if (url.protocol !== "https:") throw new Error("KITOR_SITE_URL must use HTTPS");'
+      - name: Install website dependencies
+        run: npm ci --prefix website
+      - name: Check website
+        run: npm run check --prefix website
+      - name: Build website and verify game pages
+        run: npm run build --prefix website
+      - name: Install Wrangler
+        run: npm ci --prefix tools/ci-wrangler
+      - name: Deploy to Cloudflare Pages
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_PAGES_API_TOKEN }}
+          WRANGLER_SEND_METRICS: 'false'
+        run: |
+          tools/ci-wrangler/node_modules/.bin/wrangler pages deploy website/dist \
+            --project-name "$CLOUDFLARE_PAGES_PROJECT" --branch v1
