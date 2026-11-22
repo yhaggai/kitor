@@ -15,11 +15,39 @@ permissions:
 jobs:
   translation-scope:
     uses: ./.github/workflows/classify-translation-pr.yml
+  source-scope:
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    outputs:
+      workflow_or_docs_only: ${{ steps.source-scope.outputs.workflow_or_docs_only }}
+    steps:
+      - name: Check out PR for path comparison
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+          fetch-depth: 0
+      - name: Check CodeQL source scope
+        id: source-scope
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+        run: |
+          git diff --name-only --no-renames -z "$BASE_SHA" HEAD > "$RUNNER_TEMP/codeql-changed-paths"
+          workflow_or_docs_only=false
+          while IFS= read -r -d '' path; do
+            case "$path" in
+              .github/workflows/*.yml|.github/workflows/*.yaml|*.md)
+                workflow_or_docs_only=true
+                ;;
+              *)
+                workflow_or_docs_only=false
+                break
+                ;;
+            esac
+          done < "$RUNNER_TEMP/codeql-changed-paths"
+          echo "workflow_or_docs_only=$workflow_or_docs_only" >> "$GITHUB_OUTPUT"
   analyze:
-    needs: translation-scope
-    if: >-
-      needs.translation-scope.outputs.translation_only != 'true' &&
-      needs.translation-scope.outputs.workflow_or_docs_only != 'true'
+    needs: [translation-scope, source-scope]
+    if: ${{ !cancelled() }}
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -29,16 +57,27 @@ jobs:
       matrix:
         language: [javascript-typescript, rust]
     steps:
+      - name: Require successful scope checks
+        if: >-
+          needs.translation-scope.result != 'success' ||
+          (github.event_name == 'pull_request' && needs.source-scope.result != 'success')
+        run: exit 1
+      - name: Skip source scan for out-of-scope changes
+        if: needs.translation-scope.outputs.translation_only == 'true' || needs.source-scope.outputs.workflow_or_docs_only == 'true'
+        run: echo "This PR does not require a CodeQL source scan."
       - name: Check out repository
+        if: needs.translation-scope.outputs.translation_only != 'true' && needs.source-scope.outputs.workflow_or_docs_only != 'true'
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           persist-credentials: false
       - name: Initialize CodeQL
+        if: needs.translation-scope.outputs.translation_only != 'true' && needs.source-scope.outputs.workflow_or_docs_only != 'true'
         uses: github/codeql-action/init@9b3254085494b55a0f7c4c2b3d2d52cc712ce370 # v4.39.1
         with:
           languages: ${{ matrix.language }}
           build-mode: none
       - name: Analyze source
+        if: needs.translation-scope.outputs.translation_only != 'true' && needs.source-scope.outputs.workflow_or_docs_only != 'true'
         uses: github/codeql-action/analyze@9b3254085494b55a0f7c4c2b3d2d52cc712ce370 # v4.39.1
         with:
           category: /language:${{ matrix.language }}
