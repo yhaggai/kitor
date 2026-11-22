@@ -81,6 +81,17 @@ function renderStore(row: BuildRow) {
     if (current.releasedOn) line(element, `Released ${current.releasedOn}`, "build-meta");
   }
 
+  const patches = new Map(
+    row.supported.filter(({ patchVersion }) => patchVersion).map((baseline) => [
+      `${baseline.language}:${baseline.patchVersion}`,
+      baseline,
+    ])
+  );
+  for (const { language, patchVersion } of patches.values()) {
+    const name = language === "he" ? "Hebrew" : language;
+    line(element, `${name} patch ${patchVersion}`, "build-meta");
+  }
+
   if (row.availability !== "ok") {
     line(
       element,
@@ -99,7 +110,13 @@ function renderStore(row: BuildRow) {
       row.change.previousBuildId === row.change.buildId
         ? "Depot manifest changed"
         : `Changed from build ${row.change.previousBuildId}`;
-    line(element, change, "attention").title = date(row.change.detectedAt);
+    const matchesCurrentBuild =
+      row.availability === "ok" && row.supported.length > 0 &&
+      row.supported.every(({ status, fileCheck }) =>
+        fileCheck?.status !== "changed" &&
+        (status === "match" || fileCheck?.status === "unchanged")
+      );
+    line(element, change, matchesCurrentBuild ? "build-meta" : "attention").title = date(row.change.detectedAt);
   }
 
   if (row.supported.length) {
