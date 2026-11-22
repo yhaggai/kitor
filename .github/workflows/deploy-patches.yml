@@ -2,6 +2,11 @@ name: Deploy Patches
 
 on:
   workflow_call:
+    secrets:
+      KITOR_MONITOR_CLOUDFLARE_TOKEN:
+        required: true
+      KITOR_MONITOR_TRIGGER_TOKEN:
+        required: true
 
 permissions:
   contents: read
@@ -32,3 +37,10 @@ jobs:
           GH_TOKEN: ${{ github.token }}
           PATCH_SOURCE_SHA: ${{ github.sha }}
         run: python kitor/tools/publish_patch_releases.py
+
+  refresh-dashboard:
+    needs: publish
+    uses: ./.github/workflows/refresh-build-dashboard.yml
+    secrets:
+      KITOR_MONITOR_CLOUDFLARE_TOKEN: ${{ secrets.KITOR_MONITOR_CLOUDFLARE_TOKEN }}
+      KITOR_MONITOR_TRIGGER_TOKEN: ${{ secrets.KITOR_MONITOR_TRIGGER_TOKEN }}

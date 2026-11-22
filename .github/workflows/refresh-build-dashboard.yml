@@ -2,10 +2,12 @@ name: Refresh build dashboard
 
 on:
   workflow_dispatch:
-  workflow_run:
-    workflows: ['Validate patch packages']
-    types: [completed]
-    branches: [v1]
+  workflow_call:
+    secrets:
+      KITOR_MONITOR_CLOUDFLARE_TOKEN:
+        required: true
+      KITOR_MONITOR_TRIGGER_TOKEN:
+        required: true
   release:
     types: [published]
 
@@ -19,8 +21,7 @@ concurrency:
 jobs:
   refresh:
     if: >-
-      github.event_name == 'workflow_dispatch' ||
-      (github.event_name == 'workflow_run' && github.event.workflow_run.event == 'push' && github.event.workflow_run.conclusion == 'success') ||
+      github.event_name == 'workflow_dispatch' || github.event_name == 'push' ||
       (github.event_name == 'release' && startsWith(github.event.release.tag_name, 'app-v') && !github.event.release.prerelease)
     runs-on: ubuntu-latest
     timeout-minutes: 10
@@ -33,6 +34,7 @@ jobs:
       - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
         with:
           node-version: 24
+          package-manager-cache: false
       - name: Test monitor catalog and authentication
         run: node --test tools/game-build-monitor/*.test.mjs
       - run: npm ci --prefix tools/ci-wrangler
