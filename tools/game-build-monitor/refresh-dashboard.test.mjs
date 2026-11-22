@@ -1,0 +1,63 @@
+import test from "node:test";
+import assert from "node:assert/strict";
+import { monitorTargets } from "./scan.mjs";
+import { hasCurrentCatalog, refreshDashboard } from "./refresh-dashboard.mjs";
+
+const games = [{ scummvm_id: "moomin", title: "Moomin", steam_app_id: "4463520", patches: [{
+  version: "0.1.3-download1", language: "he", supported_builds: [{ store: "steam", platform: "windows", build_id: "26803369" }],
+}] }];
+const current = () => ({ rows: monitorTargets(games).map(row => ({ ...row,
+  supported: row.supported.map(baseline => ({ ...baseline, status: "match", fileCheck: { status: "unchanged" } })),
+})) });
+
+test("verification requires the published version and build, ignoring comparison annotations", () => {
+  assert.equal(hasCurrentCatalog(current(), games), true);
+  const stale = current();
+  stale.rows[0].supported[0].patchVersion = "0.1.1";
+  assert.equal(hasCurrentCatalog(stale, games), false);
+  const wrongBuild = current();
+  wrongBuild.rows[0].supported[0].build_id = "26355427";
+  assert.equal(hasCurrentCatalog(wrongBuild, games), false);
+  assert.equal(hasCurrentCatalog({ rows: [] }, games), false);
+});
+
+test("refresh waits for KV propagation and confirms production rather than just trigger success", async () => {
+  let scans = 0, pauses = 0;
+  await refreshDashboard(games, "test-token", {
+    trigger: async (action, token) => { assert.equal(action, "scan"); assert.equal(token, "test-token"); scans++; },
+    transport: async () => Response.json(scans === 1 ? { rows: [] } : current()),
+    pause: async () => { pauses++; },
+  });
+  assert.equal(scans, 2);
+  assert.equal(pauses, 1);
+});
+
+test("a persistently stale production snapshot fails the refresh", async () => {
+  await assert.rejects(refreshDashboard(games, "test-token", {
+    trigger: async () => {}, transport: async () => Response.json({ rows: [] }),
+    pause: async () => {}, attempts: 2,
+  }), /outdated patch catalog/);
+});
+
+test("editions sharing a store ID are verified by game identity", () => {
+  const editions = [games[0], { ...games[0], scummvm_id: "other-edition", patches: [] }];
+  editions[1].patches = [{ ...games[0].patches[0], version: "other-version" }];
+  const snapshot = { rows: monitorTargets(editions) };
+  assert.equal(hasCurrentCatalog(snapshot, editions), true);
+  snapshot.rows[1].supported[0].patchVersion = "stale";
+  assert.equal(hasCurrentCatalog(snapshot, editions), false);
+});
+
+test("recorded incompatibilities remain visible without claiming support", () => {
+  const catalog = [{ ...games[0], patches: [{ ...games[0].patches[0], verified_mismatches: [{
+    store: "steam", platform: "osx", depot_id: "4463522", checked_manifest_id: "123", paths: ["game.dat"],
+  }] }] }];
+  const [target] = monitorTargets(catalog);
+  const { paths, checked_manifest_id, ...comparison } = target.verifiedMismatches[0];
+  const snapshot = { rows: [{ ...target, supported: [...target.supported, {
+    ...comparison, status: "unavailable", fileCheck: { status: "changed", paths },
+  }] }] };
+  assert.equal(hasCurrentCatalog(snapshot, catalog), true);
+  snapshot.rows[0].supported.pop();
+  assert.equal(hasCurrentCatalog(snapshot, catalog), false);
+});
