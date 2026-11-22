@@ -21,8 +21,7 @@ concurrency:
 jobs:
   refresh:
     if: >-
-      github.event_name == 'workflow_dispatch' || github.event_name == 'push' ||
-      (github.event_name == 'release' && startsWith(github.event.release.tag_name, 'app-v') && !github.event.release.prerelease)
+      github.event_name == 'workflow_dispatch' || github.event_name == 'push' || github.event_name == 'release'
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:

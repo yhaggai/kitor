@@ -1,6 +1,6 @@
 # Game build checks
 
-Successful patch publication on `v1` and stable app releases automatically run **Refresh build dashboard**. It publishes the current registry and GOG comparison plans to the monitor's KV catalog, then requests a fresh production store scan. Failed publication and PR runs do not update production. Manual dispatch can retry a failed refresh. Scheduled Worker scans also read this catalog, so they cannot revert to an older deployed patch baseline. This uses the existing KV-only Cloudflare token and authenticated scan token; it does not send alerts.
+Successful patch publication on `v1` and every published release automatically run **Refresh build dashboard**. It publishes the current registry and GOG comparison plans to the monitor's KV catalog, then requests a fresh production store scan. Failed publication and PR runs do not update production. Manual dispatch can retry a failed refresh. Scheduled Worker scans also read this catalog, so they cannot revert to an older deployed patch baseline. This uses the existing KV-only Cloudflare token and authenticated scan token; it does not send alerts.
 
 The Worker must include `catalog.mjs` before enabling this workflow. Dashboard HTML still needs a deployment when adding game cards or changing the UI; patch versions and supported builds no longer require a Worker deployment.
 
