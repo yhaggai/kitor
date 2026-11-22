@@ -5,6 +5,7 @@ on:
     paths:
       - '.github/workflows/validate-website.yml'
       - 'website/**'
+      - 'tools/game-build-monitor/**'
       - 'kitor/patches/registry.json'
       - 'kitor/src/data/game-box-covers.json'
       - 'kitor/src/data/game-descriptions.he.json'
@@ -34,4 +35,6 @@ jobs:
           cache: npm
           cache-dependency-path: website/package-lock.json
       - run: npm ci
+      - name: Test build monitor
+        run: node --test ../tools/game-build-monitor/*.test.mjs
       - run: npm run build
