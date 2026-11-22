@@ -5,7 +5,9 @@ import { fileURLToPath } from "node:url";
 const website = new URL("../../website/", import.meta.url);
 const staging = new URL(".astro/monitor-cloudflare-assets/", website);
 const dist = new URL("dist/", website);
-const build = spawnSync("npm", ["run", "build"], {
+const command = process.platform === "win32" ? "cmd.exe" : "npm";
+const args = process.platform === "win32" ? ["/d", "/s", "/c", "npm run build"] : ["run", "build"];
+const build = spawnSync(command, args, {
   cwd: fileURLToPath(website),
   stdio: "inherit",
   env: {
