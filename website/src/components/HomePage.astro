@@ -17,7 +17,7 @@ const collectionGames = ["grim-fandango-remastered", "owlboy"].map(
 const gameHref = (id: string) => `${en ? "/en" : ""}/games/${id}/`;
 const t = (hebrew: string, english: string) => (en ? english : hebrew);
 ---
-<Layout locale={locale} headerStyle="landing"><main id="main"><section class="hero"><div class="scene" aria-hidden="true"></div><div class="hero-content wrap"><div class="hero-copy"><p class="eyebrow">{t("הרפתקאות מוכרות. מילים חדשות.", "Familiar adventures. New words.")}</p><h1>{t("המשחקים שאהבת.", "The games you loved.")}<br/><em>{t("עכשיו בעברית.", "Now in Hebrew.")}</em></h1><p class="lead">{t("קיטור מתקין תרגומים קהילתיים לעברית למשחקים נתמכים מהמחשב, מ־Steam ומ־GOG.", "Kitor installs community Hebrew translations for supported games from your computer, Steam, and GOG.")}</p><div class="actions"><a class="button" id="recommended-download" href="#download"><span>{t("להורדת קיטור", "Download Kitor")}</span> <DownloadIcon/></a><a class="button secondary" href="#download" hidden>{t("כל הגרסאות", "All versions")}</a></div><a class="text-link" href={en ? "/en/games/" : "/games/"}>{t("לכל המשחקים", "Browse all games")} <span aria-hidden="true">{en ? "→" : "←"}</span></a><p class="quiet hero-note">{t("המשחקים שלכם. התרגומים של הקהילה. מקום אחד לכולם.", "Your games and community translations, together.")}</p></div><div class="shelves" aria-label={t("מבחר מתוך ספריית המשחקים", "Featured games from the library")}><div class="shelf">{featured.slice(0,3).map(game => <Box locale={locale} title={game.title} covers={game.covers} href={gameHref(game.id)} client:load />)}</div><div class="shelf lower">{featured.slice(3).map(game => <Box locale={locale} title={game.title} covers={game.covers} href={gameHref(game.id)} client:load />)}</div><p class="shelf-caption">{t("העבירו את העכבר כדי להפוך קופסה · לחצו כדי לפתוח את עמוד המשחק", "Hover to turn a box around · Click to open the game page")}</p></div></div><Character kind="pirate" side="left"/></section>
+<Layout locale={locale} headerStyle="landing"><main id="main"><section class="hero"><div class="scene" aria-hidden="true"></div><div class="hero-content wrap"><div class="hero-copy"><p class="eyebrow">{t("הרפתקאות מוכרות. מילים חדשות.", "Familiar adventures. New words.")}</p><h1>{t("המשחקים שאהבת.", "The games you loved.")}<br/><em>{t("עכשיו בעברית.", "Now in Hebrew.")}</em></h1><p class="lead">{t("קיטור מתקין תרגומים קהילתיים לעברית למשחקים נתמכים מהמחשב, מ־Steam ומ־GOG.", "Kitor installs community Hebrew translations for supported games from your computer, Steam, and GOG.")}</p><div class="actions"><a class="button" id="recommended-download" href="#download"><span>{t("להורדת קיטור", "Download Kitor")}</span> <DownloadIcon/></a><a class="button secondary" href="#download" hidden>{t("כל הגרסאות", "All versions")}</a><a class="button secondary" href={en ? "/en/games/" : "/games/"}>{t("כל המשחקים בעברית", "All games in Hebrew")} <span aria-hidden="true">{en ? "→" : "←"}</span></a></div><p class="quiet hero-note">{t("המשחקים שלכם. התרגומים של הקהילה. מקום אחד לכולם.", "Your games and community translations, together.")}</p></div><div class="shelves" aria-label={t("מבחר מתוך ספריית המשחקים", "Featured games from the library")}><div class="shelf">{featured.slice(0,3).map(game => <Box locale={locale} title={game.title} covers={game.covers} href={gameHref(game.id)} client:load />)}</div><div class="shelf lower">{featured.slice(3).map(game => <Box locale={locale} title={game.title} covers={game.covers} href={gameHref(game.id)} client:load />)}</div><p class="shelf-caption">{t("העבירו את העכבר כדי להפוך קופסה · לחצו כדי לפתוח את עמוד המשחק", "Hover to turn a box around · Click to open the game page")}</p></div></div><Character kind="pirate" side="left"/></section>
 <section id="how" class="section how">
   <div class="wrap">
     <p class="eyebrow">{t("פחות הגדרות, יותר הרפתקאות", "Less setup, more adventure")}</p>
@@ -50,7 +50,7 @@ const t = (hebrew: string, english: string) => (en ? english : hebrew);
   </div>
   <Character kind="tentacle" side="right" />
 </section>
-<section class="section collection wrap"><div><p class="eyebrow">{t("מדף מלא בזיכרונות", "A shelf full of memories")}</p><h2>{t("איזו הרפתקה", "What adventure")}<br/>{t("נפתח היום?", "will you play today?")}</h2><p class="lead">{t("גלו את המשחקים בקטלוג, ממסע בחלל ועד אי הקופים.", "Explore the catalog, from Space Quest to Monkey Island.")}</p><a class="button secondary" href={en ? "/en/games/" : "/games/"}>{t("לכל המשחקים", "Browse all games")} <span aria-hidden="true">{en ? "→" : "←"}</span></a></div><div class="collection-art">
+<section class="section collection wrap"><div><p class="eyebrow">{t("מדף מלא בזיכרונות", "A shelf full of memories")}</p><h2>{t("איזו הרפתקה", "What adventure")}<br/>{t("נפתח היום?", "will you play today?")}</h2><p class="lead">{t("גלו את המשחקים בקטלוג, ממסע בחלל ועד אי הקופים.", "Explore the catalog, from Space Quest to Monkey Island.")}</p><a class="button secondary" href={en ? "/en/games/" : "/games/"}>{t("כל המשחקים בעברית", "All games in Hebrew")} <span aria-hidden="true">{en ? "→" : "←"}</span></a></div><div class="collection-art">
   {collectionGames.map(game => (
     <Box locale={locale} title={game.title} covers={game.covers} href={gameHref(game.id)} client:visible />
   ))}
@@ -107,7 +107,7 @@ const t = (hebrew: string, english: string) => (en ? english : hebrew);
   const label = recommended?.querySelector("span");
   const allVersions = document.querySelector<HTMLAnchorElement>("#recommended-download + a");
   const releaseLink = document.querySelector<HTMLAnchorElement>("#app-releases");
-  const { gtag } = window as Window & {
+  const analytics = window as Window & {
     gtag?: (command: "event", name: string, parameters: Record<string, string>) => void;
   };
   const trackInstallerClick = (event: MouseEvent) => {
@@ -116,15 +116,13 @@ const t = (hebrew: string, english: string) => (en ? english : hebrew);
       ? event.target.closest<HTMLAnchorElement>("a[data-installer]")
       : null;
     if (!link?.dataset.installer) return;
-    gtag?.("event", "installer_download", {
+    analytics.gtag?.("event", "installer_download", {
       installer_platform: link.dataset.installer,
       page_language: document.documentElement.lang,
     });
   };
-  if (gtag) {
-    document.addEventListener("click", trackInstallerClick);
-    document.addEventListener("auxclick", trackInstallerClick);
-  }
+  document.addEventListener("click", trackInstallerClick);
+  document.addEventListener("auxclick", trackInstallerClick);
 
   const published = latestInstallers().catch(() => undefined);
 

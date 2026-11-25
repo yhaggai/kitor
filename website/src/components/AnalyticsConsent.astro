@@ -1,0 +1,120 @@
+---
+interface Props {
+  locale: "he" | "en";
+  measurementId: string;
+  promptOnArrival: boolean;
+}
+const { locale, measurementId, promptOnArrival } = Astro.props;
+const t = (he: string, en: string) => locale === "he" ? he : en;
+---
+<button type="button" id="analytics-settings" aria-controls="analytics-consent" aria-expanded="false" hidden>
+  {t("הגדרות אנליטיקה", "Analytics settings")}
+</button>
+<section id="analytics-consent" aria-labelledby="analytics-consent-title" hidden>
+  <h2 id="analytics-consent-title">{t("אנליטיקה באתר", "Website analytics")}</h2>
+  <p>{t(
+    "קיטור משתמש ב־Google Analytics ובעוגיות כדי למדוד ביקורים באתר ולחיצות על קישורי הורדה. אפשר לשנות את ההחלטה בכל עת בהגדרות האנליטיקה.",
+    "Kitor uses Google Analytics and cookies to measure site visits and clicks on download links. You can change your choice any time in Analytics settings."
+  )}</p>
+  <div class="consent-actions">
+    <button type="button" id="analytics-accept" class="button small">{t("אישור אנליטיקה", "Allow analytics")}</button>
+    <button type="button" id="analytics-reject" class="button small secondary">{t("דחייה", "Decline")}</button>
+  </div>
+</section>
+
+<script define:vars={{ measurementId, promptOnArrival }}>
+  const storageKey = "kitor.analyticsConsent";
+  const settings = document.getElementById("analytics-settings");
+  const banner = document.getElementById("analytics-consent");
+  const accept = document.getElementById("analytics-accept");
+  const reject = document.getElementById("analytics-reject");
+  let choice;
+  try {
+    choice = localStorage.getItem(storageKey);
+  } catch {
+    // The visitor can still make a choice for this page.
+  }
+
+  function loadAnalytics() {
+    if (window.gtag) return;
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = function () {
+      window.dataLayer.push(arguments);
+    };
+    window.gtag("js", new Date());
+    window.gtag("config", measurementId);
+
+    const script = document.createElement("script");
+    script.async = true;
+    script.src = `https://www.googletagmanager.com/gtag/js?id=${measurementId}`;
+    document.head.append(script);
+  }
+
+  function showBanner(show) {
+    banner.hidden = !show;
+    settings.setAttribute("aria-expanded", String(show));
+  }
+
+  function saveChoice(nextChoice) {
+    const restoreFocus = banner.contains(document.activeElement);
+    choice = nextChoice;
+    try {
+      localStorage.setItem(storageKey, choice);
+    } catch {
+      // Apply the choice even when persistence is unavailable.
+    }
+    window[`ga-disable-${measurementId}`] = choice === "denied";
+    if (choice === "granted") loadAnalytics();
+    showBanner(false);
+    if (restoreFocus) settings.focus({ preventScroll: true });
+  }
+
+  settings.hidden = false;
+  if (choice === "granted") loadAnalytics();
+  showBanner(promptOnArrival && choice !== "granted" && choice !== "denied");
+
+  settings.addEventListener("click", () => {
+    showBanner(banner.hidden);
+    if (!banner.hidden) accept.focus({ preventScroll: true });
+  });
+  accept.addEventListener("click", () => saveChoice("granted"));
+  reject.addEventListener("click", () => saveChoice("denied"));
+</script>
+
+<style>
+  #analytics-settings {
+    background: none;
+    border: 0;
+    padding: 0;
+    color: inherit;
+    font: inherit;
+    text-decoration: underline;
+    cursor: pointer;
+  }
+  #analytics-consent {
+    position: fixed;
+    z-index: 100;
+    inset-block-end: max(1rem, env(safe-area-inset-bottom));
+    inset-inline-end: 1rem;
+    width: min(27rem, calc(100% - 2rem));
+    padding: 1rem;
+    border-radius: 0.85rem;
+    border: 1px solid #48556a;
+    background: #111c2e;
+    color: #f5f7fb;
+    box-shadow: 0 10px 36px #0009;
+  }
+  #analytics-consent h2 {
+    margin: 0;
+    font-size: 1.1rem;
+  }
+  #analytics-consent p {
+    margin: 0.45rem 0 0.85rem;
+    font-size: 0.9rem;
+  }
+  .consent-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+</style>
