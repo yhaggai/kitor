@@ -402,7 +402,7 @@ p {
   color: var(--muted);
   font-size: 13px;
 }
-.footer > a:last-child {
+.footer > a:last-of-type {
   margin-inline-start: auto;
 }
 .character {
@@ -663,7 +663,7 @@ select {
     flex-wrap: wrap;
     gap: 12px 25px;
   }
-  .footer > a:last-child {
+  .footer > a:last-of-type {
     margin-inline-start: 0;
   }
   .catalog h1 {
