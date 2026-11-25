@@ -1,5 +1,5 @@
 {
-  "checkedAt": "2026-11-24T16:02:33.126Z",
+  "checkedAt": "2026-11-25T15:51:56.248Z",
   "rows": [
     {
       "key": "steam:391540",
@@ -41,7 +41,7 @@
         "releasedOn": "2019-10-28"
       },
       "availability": "ok",
-      "lastSuccessAt": "2026-11-24T16:02:33.126Z",
+      "lastSuccessAt": "2026-11-25T15:51:56.248Z",
       "change": null
     },
     {
@@ -59,7 +59,7 @@
         "releasedOn": null
       },
       "availability": "ok",
-      "lastSuccessAt": "2026-11-24T16:02:33.126Z",
+      "lastSuccessAt": "2026-11-25T15:51:56.248Z",
       "change": null
     },
     {
@@ -76,7 +76,7 @@
         "releasedOn": "2018-02-13"
       },
       "availability": "ok",
-      "lastSuccessAt": "2026-11-24T16:02:33.126Z",
+      "lastSuccessAt": "2026-11-25T15:51:56.248Z",
       "change": null
     },
     {
@@ -107,7 +107,7 @@
         "releasedOn": null
       },
       "availability": "ok",
-      "lastSuccessAt": "2026-11-24T16:02:33.126Z",
+      "lastSuccessAt": "2026-11-25T15:51:56.248Z",
       "change": null
     },
     {
@@ -124,7 +124,7 @@
         "releasedOn": "2015-03-17"
       },
       "availability": "ok",
-      "lastSuccessAt": "2026-11-24T16:02:33.126Z",
+      "lastSuccessAt": "2026-11-25T15:51:56.248Z",
       "change": null
     },
     {
@@ -155,7 +155,7 @@
         "releasedOn": "2016-08-29"
       },
       "availability": "ok",
-      "lastSuccessAt": "2026-11-24T16:02:33.126Z",
+      "lastSuccessAt": "2026-11-25T15:51:56.248Z",
       "change": null
     },
     {
@@ -172,7 +172,7 @@
         "releasedOn": "2018-04-24"
       },
       "availability": "ok",
-      "lastSuccessAt": "2026-11-24T16:02:33.126Z",
+      "lastSuccessAt": "2026-11-25T15:51:56.248Z",
       "change": null
     },
     {
@@ -189,7 +189,7 @@
         "releasedOn": "2019-12-31"
       },
       "availability": "ok",
-      "lastSuccessAt": "2026-11-24T16:02:33.126Z",
+      "lastSuccessAt": "2026-11-25T15:51:56.248Z",
       "change": null
     },
     {
@@ -207,7 +207,7 @@
         "releasedOn": "2016-08-29"
       },
       "availability": "ok",
-      "lastSuccessAt": "2026-11-24T16:02:33.126Z",
+      "lastSuccessAt": "2026-11-25T15:51:56.248Z",
       "change": null
     },
     {
@@ -246,7 +246,7 @@
         "releasedOn": "2016-08-29"
       },
       "availability": "ok",
-      "lastSuccessAt": "2026-11-24T16:02:33.126Z",
+      "lastSuccessAt": "2026-11-25T15:51:56.248Z",
       "change": null
     },
     {
@@ -256,14 +256,25 @@
       "os": "windows",
       "gameId": "sq1",
       "title": "Space Quest I: The Sarien Encounter (EGA)",
-      "supported": [],
+      "supported": [
+        {
+          "store": "gog",
+          "platform": "windows",
+          "build_id": "59441489525262901",
+          "released_on": "2026-02-19",
+          "evidence": "tools/game-build-monitor/hash-verification.md",
+          "language": "he",
+          "patchVersion": "1.0-kitor1",
+          "status": "match"
+        }
+      ],
       "latest": {
         "buildId": "59441489525262901",
         "version": "2.2 GOG v2",
         "releasedOn": "2026-02-19"
       },
       "availability": "ok",
-      "lastSuccessAt": "2026-11-24T16:02:33.126Z",
+      "lastSuccessAt": "2026-11-25T15:51:56.248Z",
       "change": null
     },
     {
@@ -285,7 +296,30 @@
       "id": "10110",
       "gameId": "sq2",
       "title": "Space Quest II: Vohaul’s Revenge",
-      "supported": [],
+      "supported": [
+        {
+          "store": "steam",
+          "platform": "windows",
+          "depot_id": "10111",
+          "manifest_id": "6725209980292758062",
+          "released_on": "2016-08-29",
+          "evidence": "tools/game-build-monitor/hash-verification.md",
+          "language": "he",
+          "patchVersion": "1.0-kitor2",
+          "status": "match"
+        },
+        {
+          "store": "steam",
+          "platform": "osx",
+          "depot_id": "10111",
+          "manifest_id": "6725209980292758062",
+          "released_on": "2016-08-29",
+          "evidence": "tools/game-build-monitor/hash-verification.md",
+          "language": "he",
+          "patchVersion": "1.0-kitor2",
+          "status": "match"
+        }
+      ],
       "latest": {
         "buildId": "1302634",
         "manifests": {
@@ -294,7 +328,7 @@
         "releasedOn": "2016-08-29"
       },
       "availability": "ok",
-      "lastSuccessAt": "2026-11-24T16:02:33.126Z",
+      "lastSuccessAt": "2026-11-25T15:51:56.248Z",
       "change": null
     },
     {
@@ -304,14 +338,25 @@
       "os": "windows",
       "gameId": "sq2",
       "title": "Space Quest II: Vohaul’s Revenge",
-      "supported": [],
+      "supported": [
+        {
+          "store": "gog",
+          "platform": "windows",
+          "build_id": "59441499654619266",
+          "released_on": "2026-02-19",
+          "evidence": "tools/game-build-monitor/hash-verification.md",
+          "language": "he",
+          "patchVersion": "1.0-kitor2",
+          "status": "match"
+        }
+      ],
       "latest": {
         "buildId": "59441499654619266",
         "version": "2.0F GOG v2",
         "releasedOn": "2026-02-19"
       },
       "availability": "ok",
-      "lastSuccessAt": "2026-11-24T16:02:33.126Z",
+      "lastSuccessAt": "2026-11-25T15:51:56.248Z",
       "change": null
     },
     {
@@ -342,7 +387,7 @@
         "releasedOn": "2016-08-29"
       },
       "availability": "ok",
-      "lastSuccessAt": "2026-11-24T16:02:33.126Z",
+      "lastSuccessAt": "2026-11-25T15:51:56.248Z",
       "change": null
     },
     {
@@ -359,7 +404,7 @@
         "releasedOn": "2026-02-19"
       },
       "availability": "ok",
-      "lastSuccessAt": "2026-11-24T16:02:33.126Z",
+      "lastSuccessAt": "2026-11-25T15:51:56.248Z",
       "change": null
     },
     {
@@ -381,7 +426,30 @@
       "id": "10110",
       "gameId": "sq4",
       "title": "Space Quest IV: Roger Wilco and the Time Rippers",
-      "supported": [],
+      "supported": [
+        {
+          "store": "steam",
+          "platform": "windows",
+          "depot_id": "10111",
+          "manifest_id": "6725209980292758062",
+          "released_on": "2016-08-29",
+          "evidence": "tools/game-build-monitor/hash-verification.md",
+          "language": "he",
+          "patchVersion": "0.1.1-download1",
+          "status": "match"
+        },
+        {
+          "store": "steam",
+          "platform": "osx",
+          "depot_id": "10111",
+          "manifest_id": "6725209980292758062",
+          "released_on": "2016-08-29",
+          "evidence": "tools/game-build-monitor/hash-verification.md",
+          "language": "he",
+          "patchVersion": "0.1.1-download1",
+          "status": "match"
+        }
+      ],
       "latest": {
         "buildId": "1302634",
         "manifests": {
@@ -390,7 +458,7 @@
         "releasedOn": "2016-08-29"
       },
       "availability": "ok",
-      "lastSuccessAt": "2026-11-24T16:02:33.126Z",
+      "lastSuccessAt": "2026-11-25T15:51:56.248Z",
       "change": null
     },
     {
@@ -408,7 +476,7 @@
         "releasedOn": "2016-08-29"
       },
       "availability": "ok",
-      "lastSuccessAt": "2026-11-24T16:02:33.126Z",
+      "lastSuccessAt": "2026-11-25T15:51:56.248Z",
       "change": null
     },
     {
@@ -425,7 +493,7 @@
         "releasedOn": "2018-04-24"
       },
       "availability": "ok",
-      "lastSuccessAt": "2026-11-24T16:02:33.126Z",
+      "lastSuccessAt": "2026-11-25T15:51:56.248Z",
       "change": null
     },
     {
@@ -474,7 +542,7 @@
         "releasedOn": "2019-11-23"
       },
       "availability": "ok",
-      "lastSuccessAt": "2026-11-24T16:02:33.126Z",
+      "lastSuccessAt": "2026-11-25T15:51:56.248Z",
       "change": null
     },
     {
@@ -491,7 +559,7 @@
         "releasedOn": "2018-04-24"
       },
       "availability": "ok",
-      "lastSuccessAt": "2026-11-24T16:02:33.126Z",
+      "lastSuccessAt": "2026-11-25T15:51:56.248Z",
       "change": null
     },
     {
@@ -508,7 +576,7 @@
         "releasedOn": "2019-03-06"
       },
       "availability": "ok",
-      "lastSuccessAt": "2026-11-24T16:02:33.126Z",
+      "lastSuccessAt": "2026-11-25T15:51:56.248Z",
       "change": null
     },
     {
@@ -525,7 +593,7 @@
         "releasedOn": "2018-04-24"
       },
       "availability": "ok",
-      "lastSuccessAt": "2026-11-24T16:02:33.126Z",
+      "lastSuccessAt": "2026-11-25T15:51:56.248Z",
       "change": null
     },
     {
@@ -542,7 +610,7 @@
         "releasedOn": "2020-01-02"
       },
       "availability": "ok",
-      "lastSuccessAt": "2026-11-24T16:02:33.126Z",
+      "lastSuccessAt": "2026-11-25T15:51:56.248Z",
       "change": null
     },
     {
@@ -559,7 +627,7 @@
         "releasedOn": "2018-04-24"
       },
       "availability": "ok",
-      "lastSuccessAt": "2026-11-24T16:02:33.126Z",
+      "lastSuccessAt": "2026-11-25T15:51:56.248Z",
       "change": null
     },
     {
@@ -590,7 +658,7 @@
         "releasedOn": null
       },
       "availability": "ok",
-      "lastSuccessAt": "2026-11-24T16:02:33.126Z",
+      "lastSuccessAt": "2026-11-25T15:51:56.248Z",
       "change": null
     },
     {
@@ -607,7 +675,7 @@
         "releasedOn": "2018-10-22"
       },
       "availability": "ok",
-      "lastSuccessAt": "2026-11-24T16:02:33.126Z",
+      "lastSuccessAt": "2026-11-25T15:51:56.248Z",
       "change": null
     },
     {
@@ -637,7 +705,7 @@
         "releasedOn": "2018-04-24"
       },
       "availability": "ok",
-      "lastSuccessAt": "2026-11-24T16:02:33.126Z",
+      "lastSuccessAt": "2026-11-25T15:51:56.248Z",
       "change": null
     },
     {
@@ -654,7 +722,7 @@
         "releasedOn": "2019-10-21"
       },
       "availability": "ok",
-      "lastSuccessAt": "2026-11-24T16:02:33.126Z",
+      "lastSuccessAt": "2026-11-25T15:51:56.248Z",
       "change": null
     },
     {
@@ -675,7 +743,7 @@
         "releasedOn": "2016-12-27"
       },
       "availability": "ok",
-      "lastSuccessAt": "2026-11-24T16:02:33.126Z",
+      "lastSuccessAt": "2026-11-25T15:51:56.248Z",
       "change": null
     },
     {
@@ -695,7 +763,7 @@
         "releasedOn": null
       },
       "availability": "ok",
-      "lastSuccessAt": "2026-11-24T16:02:33.126Z",
+      "lastSuccessAt": "2026-11-25T15:51:56.248Z",
       "change": null
     },
     {
@@ -715,7 +783,7 @@
         "releasedOn": null
       },
       "availability": "ok",
-      "lastSuccessAt": "2026-11-24T16:02:33.126Z",
+      "lastSuccessAt": "2026-11-25T15:51:56.248Z",
       "change": null
     },
     {
@@ -755,7 +823,7 @@
         "releasedOn": "2018-02-23"
       },
       "availability": "ok",
-      "lastSuccessAt": "2026-11-24T16:02:33.126Z",
+      "lastSuccessAt": "2026-11-25T15:51:56.248Z",
       "change": null
     },
     {
@@ -782,7 +850,7 @@
         "releasedOn": "2026-09-29"
       },
       "availability": "ok",
-      "lastSuccessAt": "2026-11-24T16:02:33.126Z",
+      "lastSuccessAt": "2026-11-25T15:51:56.248Z",
       "change": null
     },
     {
@@ -802,7 +870,7 @@
         "releasedOn": "2017-05-30"
       },
       "availability": "ok",
-      "lastSuccessAt": "2026-11-24T16:02:33.126Z",
+      "lastSuccessAt": "2026-11-25T15:51:56.248Z",
       "change": null
     },
     {
@@ -822,7 +890,7 @@
         "releasedOn": "2025-10-06"
       },
       "availability": "ok",
-      "lastSuccessAt": "2026-11-24T16:02:33.126Z",
+      "lastSuccessAt": "2026-11-25T15:51:56.248Z",
       "change": null
     },
     {
@@ -854,7 +922,7 @@
         "releasedOn": "2026-04-13"
       },
       "availability": "ok",
-      "lastSuccessAt": "2026-11-24T16:02:33.126Z",
+      "lastSuccessAt": "2026-11-25T15:51:56.248Z",
       "change": null
     },
     {
@@ -908,7 +976,7 @@
         "releasedOn": "2026-11-10"
       },
       "availability": "ok",
-      "lastSuccessAt": "2026-11-24T16:02:33.126Z",
+      "lastSuccessAt": "2026-11-25T15:51:56.248Z",
       "change": null
     },
     {
@@ -927,7 +995,7 @@
           "released_on": "2021-02-08",
           "release_date_source": "https://steamdb.info/depot/388211/manifests/",
           "language": "he",
-          "patchVersion": "2.0-beta2-kitor1-download2",
+          "patchVersion": "2.0-beta2-kitor1-download3",
           "status": "match"
         },
         {
@@ -939,7 +1007,7 @@
           "first_seen_on": "2020-06-24",
           "release_date_source": "https://steamdb.info/depot/388214/",
           "language": "he",
-          "patchVersion": "2.0-beta2-kitor1-download2",
+          "patchVersion": "2.0-beta2-kitor1-download3",
           "status": "match"
         }
       ],
@@ -954,7 +1022,7 @@
         "releasedOn": "2021-02-08"
       },
       "availability": "ok",
-      "lastSuccessAt": "2026-11-24T16:02:33.126Z",
+      "lastSuccessAt": "2026-11-25T15:51:56.248Z",
       "change": null
     },
     {
@@ -973,7 +1041,7 @@
           "first_seen_on": "2020-06-24",
           "release_date_source": "https://steamdb.info/depot/388214/",
           "language": "he",
-          "patchVersion": "0.1-local-items-kitor1-download1",
+          "patchVersion": "0.1.1-ofl-kitor1-download2",
           "status": "match"
         }
       ],
@@ -988,7 +1056,7 @@
         "releasedOn": "2021-02-08"
       },
       "availability": "ok",
-      "lastSuccessAt": "2026-11-24T16:02:33.126Z",
+      "lastSuccessAt": "2026-11-25T15:51:56.248Z",
       "change": null
     },
     {
@@ -998,14 +1066,25 @@
       "os": "windows",
       "gameId": "grim-fandango-remastered",
       "title": "Grim Fandango Remastered",
-      "supported": [],
+      "supported": [
+        {
+          "store": "gog",
+          "platform": "windows",
+          "build_id": "50773165089695575",
+          "released_on": "2017-12-13",
+          "evidence": "tools/game-build-monitor/hash-verification.md",
+          "language": "he",
+          "patchVersion": "0.3.0-native-candidate-download1",
+          "status": "match"
+        }
+      ],
       "latest": {
         "buildId": "50773165089695575",
         "version": "1.4.0",
         "releasedOn": "2017-12-13"
       },
       "availability": "ok",
-      "lastSuccessAt": "2026-11-24T16:02:33.126Z",
+      "lastSuccessAt": "2026-11-25T15:51:56.248Z",
       "change": null
     },
     {
@@ -1023,7 +1102,7 @@
         "releasedOn": null
       },
       "availability": "ok",
-      "lastSuccessAt": "2026-11-24T16:02:33.126Z",
+      "lastSuccessAt": "2026-11-25T15:51:56.248Z",
       "change": null
     },
     {
@@ -1042,7 +1121,7 @@
           "released_on": "2018-02-13",
           "release_date_source": "https://content-system.gog.com/products/1207666253/os/windows/builds?generation=2",
           "language": "he",
-          "patchVersion": "0.2.0-native-candidate-download1",
+          "patchVersion": "0.2.0-native-candidate-download2",
           "status": "match"
         }
       ],
@@ -1052,7 +1131,7 @@
         "releasedOn": "2018-02-13"
       },
       "availability": "ok",
-      "lastSuccessAt": "2026-11-24T16:02:33.126Z",
+      "lastSuccessAt": "2026-11-25T15:51:56.248Z",
       "change": null
     },
     {
@@ -1061,7 +1140,18 @@
       "id": "32460",
       "gameId": "monkey2-se-native",
       "title": "Monkey Island 2: LeChuck's Revenge Special Edition (Native Remastered)",
-      "supported": [],
+      "supported": [
+        {
+          "store": "steam",
+          "platform": "windows",
+          "depot_id": "32461",
+          "manifest_id": "7019039573050115999",
+          "evidence": "tools/game-build-monitor/hash-verification.md",
+          "language": "he",
+          "patchVersion": "0.2.0-native-candidate-download2",
+          "status": "match"
+        }
+      ],
       "latest": {
         "buildId": "52245",
         "manifests": {
@@ -1070,7 +1160,7 @@
         "releasedOn": null
       },
       "availability": "ok",
-      "lastSuccessAt": "2026-11-24T16:02:33.126Z",
+      "lastSuccessAt": "2026-11-25T15:51:56.248Z",
       "change": null
     },
     {
@@ -1080,14 +1170,25 @@
       "os": "windows",
       "gameId": "monkey2-se-native",
       "title": "Monkey Island 2: LeChuck's Revenge Special Edition (Native Remastered)",
-      "supported": [],
+      "supported": [
+        {
+          "store": "gog",
+          "platform": "windows",
+          "build_id": "15751",
+          "released_on": "2015-03-17",
+          "evidence": "tools/game-build-monitor/hash-verification.md",
+          "language": "he",
+          "patchVersion": "0.2.0-native-candidate-download2",
+          "status": "match"
+        }
+      ],
       "latest": {
         "buildId": "15751",
         "version": null,
         "releasedOn": "2015-03-17"
       },
       "availability": "ok",
-      "lastSuccessAt": "2026-11-24T16:02:33.126Z",
+      "lastSuccessAt": "2026-11-25T15:51:56.248Z",
       "change": null
     },
     {
@@ -1106,7 +1207,7 @@
         "releasedOn": "2026-11-06"
       },
       "availability": "ok",
-      "lastSuccessAt": "2026-11-24T16:02:33.126Z",
+      "lastSuccessAt": "2026-11-25T15:51:56.248Z",
       "change": null
     },
     {
@@ -1146,7 +1247,7 @@
         "releasedOn": "2026-07-03"
       },
       "availability": "ok",
-      "lastSuccessAt": "2026-11-24T16:02:33.126Z",
+      "lastSuccessAt": "2026-11-25T15:51:56.248Z",
       "change": null
     },
     {
@@ -1177,7 +1278,7 @@
         "releasedOn": "2026-07-01"
       },
       "availability": "ok",
-      "lastSuccessAt": "2026-11-24T16:02:33.126Z",
+      "lastSuccessAt": "2026-11-25T15:51:56.248Z",
       "change": null
     },
     {
@@ -1210,7 +1311,7 @@
         "releasedOn": "2026-11-24"
       },
       "availability": "ok",
-      "lastSuccessAt": "2026-11-24T16:02:33.126Z",
+      "lastSuccessAt": "2026-11-25T15:51:56.248Z",
       "change": {
         "previousBuildId": "26803369",
         "buildId": "26887812",
