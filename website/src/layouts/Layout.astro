@@ -1,4 +1,5 @@
 ---
+import AnalyticsConsent from "../components/AnalyticsConsent.astro";
 import LanguageSwitcher from "../components/LanguageSwitcher.astro";
 import DownloadIcon from "../components/DownloadIcon.astro";
 import kitorLogoArtwork from "../generated/kitor-logo.svg?raw";
@@ -54,25 +55,12 @@ const {
     <link rel="alternate" hreflang="en" href={englishUrl.href} />
   </>}
   <link rel="icon" href="/favicon.svg" />
-  {analyticsEnabled && (
-    <>
-      <script is:inline async src={`https://www.googletagmanager.com/gtag/js?id=${measurementId}`}></script>
-      <script define:vars={{ measurementId }}>
-        window.dataLayer = window.dataLayer || [];
-        window.gtag = function () {
-          window.dataLayer.push(arguments);
-        };
-        window.gtag("js", new Date());
-        window.gtag("config", measurementId);
-      </script>
-    </>
-  )}
 </head><body><a class="skip" href="#main">{t("דלגו לתוכן", "Skip to content")}</a><header class:list={["site-header", headerStyle && `site-header--${headerStyle}`]}><div class="nav wrap"><a class="brand" href={home} aria-label={t("קיטור — הבית", "Kitor — Home")}><img src={headerLogo} alt="" width="136" height="68" /></a>{!logoOnlyHeader && <><nav aria-label={t("ניווט ראשי", "Main navigation")}><a href={home + "games/"}>{t("משחקים", "Games")}</a><a href={home + "#how"}>{t("איך זה עובד", "How it works")}</a><a href={home + "#community"}>{t("הקהילה", "Community")}</a></nav><div class="nav-actions"><LanguageSwitcher {locale} {hebrewPath} {englishPath} /><a class="button small" href={home + "#download"}>{t("הורדה", "Download")} <DownloadIcon/></a></div></>}</div></header><slot/><footer class="wrap footer"><a class="brand" href={home} aria-label={t("קיטור — הבית", "Kitor — Home")}><img src={kitorLogo} alt="" width="96" height="48" /></a><span>{t("עוד הרפתקה אחת, בשפה שלנו.", "One more adventure, in our language.")}</span><a href="https://github.com/yhaggai/kitor">
   {headerStyle === "landing" && <span aria-hidden="true">☆ </span>}
   {headerStyle === "landing"
     ? t("תנו לקיטור כוכב ב־GitHub", "Star Kitor on GitHub")
     : t("הפרויקט ב־GitHub ↗", "Project on GitHub ↗")}
-</a><a href="https://github.com/yhaggai/kitor/blob/v1/PRIVACY.md">{t("פרטיות יישום המחשב", "Desktop app privacy")}</a></footer><script>
+</a><a href="https://github.com/yhaggai/kitor/blob/v1/PRIVACY.md">{t("פרטיות יישום המחשב", "Desktop app privacy")}</a>{analyticsEnabled && <AnalyticsConsent {locale} {measurementId} promptOnArrival={headerStyle === "landing"} />}</footer><script>
 const observer = new IntersectionObserver(entries => { for (const entry of entries) entry.target.classList.toggle('in-view', entry.isIntersecting); }, { threshold: 0.15 });
 document.querySelectorAll('.character, #how .step-icon').forEach(el => observer.observe(el));
 </script></body></html>

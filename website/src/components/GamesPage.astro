@@ -30,7 +30,7 @@ const t = (hebrew: string, english: string) => (en ? english : hebrew);
     <div class="game-grid">
       {games.map((game) => (
         <article class="game-entry" data-title={`${game.title} ${game.title_he ?? ""} ${game.id}`.toLocaleLowerCase("he")}>
-          <GameCard game={game} href={catalogPath + game.id + "/"} locale="he" />
+          <GameCard game={game} href={catalogPath + game.id + "/"} {locale} showGuideTitle />
         </article>
       ))}
     </div>
