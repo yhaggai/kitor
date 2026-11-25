@@ -1,40 +1,11 @@
 //! Native Windows Special Edition candidates, separate from classic ScummVM patches.
-use std::{fs, path::{Path, PathBuf}, process::Command};
+#[cfg(any(test, feature = "standalone-patch-tools"))]
+use std::{fs, path::Path};
 
 #[cfg(any(test, feature = "standalone-patch-tools"))]
 pub const VERSION: &str = "0.2.0-native-candidate";
 #[cfg(any(test, feature = "standalone-patch-tools"))]
 pub fn supported(id: &str) -> bool { matches!(id, "monkey-se-native" | "monkey2-se-native") }
-
-fn names(id: &str) -> Result<(&'static str, &'static str, &'static str), String> {
-    match id {
-        "monkey-se-native" => Ok(("MISE.exe", "Monkey1.pak", "32360")),
-        "monkey2-se-native" => Ok(("Monkey2.exe", "monkey2.pak", "32460")),
-        _ => Err("Unknown native Monkey Island edition".into()),
-    }
-}
-
-pub fn detect(root: &Path, id: &str) -> Option<PathBuf> {
-    let (exe, pak, _) = names(id).ok()?;
-    if !root.join(exe).is_file() || !root.join(pak).is_file() { return None; }
-    use std::io::Read;
-    let mut header = [0; 8];
-    fs::File::open(root.join(pak)).ok()?.read_exact(&mut header).ok()?;
-    if header != *b"KAPL\0\0\x80?" { return None; }
-    root.canonicalize().ok()
-}
-
-pub fn launch_command(root: &Path, id: &str) -> Result<Command, String> {
-    if !cfg!(target_os = "windows") { return Err("Native Monkey Island patches currently support Windows only".into()); }
-    let root = detect(root, id).ok_or("Native Monkey Island Special Edition installation not found")?;
-    let (exe, _, app) = names(id)?;
-    if id == "monkey2-se-native" && !root.join("steam_api.dll").is_file() {
-        return Err("Monkey Island 2 is missing steam_api.dll. Restore the game through Steam before launching the native edition.".into());
-    }
-    let mut command = Command::new(root.join(exe));
-    command.current_dir(root).env("SteamAppId", app).env("SteamGameId", app);
-    Ok(command)
-}
 
 #[cfg(any(test, feature = "standalone-patch-tools"))]
 pub fn stage(destination: &Path, id: &str, language: &str, version: &str) -> Result<(), String> {
@@ -66,24 +37,5 @@ pub fn stage(destination: &Path, id: &str, language: &str, version: &str) -> Res
 }
 
 #[cfg(test)]
-mod tests {
-    use super::*;
-    #[test]
-    fn detection_requires_title_specific_executable_and_archive_header() {
-        let d = tempfile::tempdir().unwrap();
-        fs::write(d.path().join("MISE.exe"), b"fixture").unwrap();
-        fs::write(d.path().join("Monkey1.pak"), b"not a pak").unwrap();
-        assert!(detect(d.path(), "monkey-se-native").is_none());
-        fs::write(d.path().join("Monkey1.pak"), b"KAPL\0\0\x80?").unwrap();
-        assert!(detect(d.path(), "monkey-se-native").is_some());
-        assert!(detect(d.path(), "monkey2-se-native").is_none());
-        assert!(!supported("monkey-se"));
-    }
-    #[test]
-    fn staging_rejects_wrong_identity_and_version() {
-        let d = tempfile::tempdir().unwrap();
-        assert!(stage(d.path(), "monkey-se-native", "en", VERSION).is_err());
-        assert!(stage(d.path(), "monkey-se-native", "he", "unknown").is_err());
-        assert!(stage(d.path(), "monkey-se", "he", VERSION).is_err());
-    }
-}
+#[path = "monkey_native/tests.rs"]
+mod tests;

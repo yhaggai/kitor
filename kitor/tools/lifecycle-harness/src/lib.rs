@@ -8,8 +8,18 @@ pub mod registry_service;
 pub mod game_behavior;
 #[path = "../../../src-tauri/src/services/game_adapters.rs"]
 pub mod game_adapters;
+#[path = "../../../src-tauri/src/services/native_launch.rs"]
+pub mod native_launch;
+#[path = "../../../src-tauri/src/services/game_detection.rs"]
+pub mod game_detection;
 pub mod services {
-    pub use crate::{registry_service, game_behavior, game_adapters, patch_lifecycle};
+    pub use crate::{registry_service, game_behavior, game_adapters, game_detection, patch_lifecycle};
+}
+
+/// Standalone tools use the same reviewed launch configuration as the desktop.
+pub fn configured_native_command(id: &str, root: &std::path::Path, patched: bool) -> Result<std::process::Command, String> {
+    let profile = game_behavior::for_game(id)?.launch_profile(patched);
+    native_launch::native_command(&profile, root)?.ok_or("This edition has no native launch profile".into())
 }
 
 #[cfg(test)]

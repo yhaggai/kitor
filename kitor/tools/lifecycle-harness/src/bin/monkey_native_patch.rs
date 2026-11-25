@@ -1,5 +1,6 @@
 use kitor_patch_lifecycle_harness::{games::monkey_native as patch, patch_lifecycle as lifecycle};
 use std::path::PathBuf;
+use kitor_patch_lifecycle_harness::configured_native_command;
 
 fn run() -> Result<(), String> {
     let args: Vec<_> = std::env::args().skip(1).collect();
@@ -20,7 +21,7 @@ fn run() -> Result<(), String> {
             println!("{}", journal.display());
         },
         "install" => {
-            patch::launch_command(&root, &args[1])?;
+            configured_native_command(&args[1], &root, false)?;
             let staging = tempfile::tempdir().map_err(|e|e.to_string())?;
             patch::stage(staging.path(), &args[1], "he", patch::VERSION)?;
             let journal = lifecycle::install(staging.path(), "patch.json", &root, &storage,
@@ -29,7 +30,7 @@ fn run() -> Result<(), String> {
         },
         "uninstall" => lifecycle::uninstall(&storage, &root)?,
         "launch" => {
-            let mut cmd = patch::launch_command(&root, &args[1])?;
+            let mut cmd = configured_native_command(&args[1], &root, false)?;
             let log = std::fs::File::create(storage).map_err(|e|e.to_string())?;
             cmd.stdout(log.try_clone().map_err(|e|e.to_string())?).stderr(log);
             println!("PID {}", cmd.spawn().map_err(|e|e.to_string())?.id());

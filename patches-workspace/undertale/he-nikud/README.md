@@ -106,7 +106,7 @@ Edit `translation-catalog.csv`: change `hebrew`, `status` and `translator_note`;
 
 ## Build from source
 
-Requires Python 3.10+, Pillow, uharfbuzz, freetype-py, macOS Arial/Arial Bold fonts and [UndertaleModTool CLI 0.9.2.0](https://github.com/UnderminersTeam/UndertaleModTool/releases/tag/0.9.2.0). Download the appropriate official macOS CLI and extract it locally. The CLI is not bundled here.
+Requires Python 3.11+, Pillow, uharfbuzz, freetype-py, macOS Arial/Arial Bold fonts and [UndertaleModTool CLI 0.9.2.0](https://github.com/UnderminersTeam/UndertaleModTool/releases/tag/0.9.2.0). Download the appropriate official macOS CLI and extract it locally. The CLI is not bundled here.
 
 ```sh
 python3 -m venv .venv

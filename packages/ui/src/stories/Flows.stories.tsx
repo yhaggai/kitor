@@ -1,3 +1,4 @@
+import { Store } from "@kitor/registry";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { expect, userEvent, within } from "storybook/test";
 import { handlers } from "../mocks/handlers";
@@ -30,14 +31,14 @@ export const SteamDownload: Story = {
   args: {
     initialCollection: "discovery",
     initialGame: "grim-fandango-remastered",
-    initialFlow: "steam",
+    initialFlow: Store.Steam,
   },
 };
 export const GogDownload: Story = {
   args: {
     initialCollection: "discovery",
     initialGame: "grim-fandango-remastered",
-    initialFlow: "gog",
+    initialFlow: Store.Gog,
   },
 };
 export const GogSignInRequired: Story = { args: { ...GogDownload.args, disconnected: true } };

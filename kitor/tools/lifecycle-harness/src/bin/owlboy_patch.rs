@@ -12,7 +12,7 @@ fn run() -> Result<(), String> {
         return lifecycle::uninstall(&storage, &root);
     }
     if args[0] != "install" { return Err("Expected install or uninstall".into()); }
-    let root = owlboy::detect(&root).ok_or("Owlboy FNA installation not found")?;
+    let root = kitor_patch_lifecycle_harness::game_detection::detect_registered("owlboy", &root, None).ok_or("Owlboy FNA installation not found")?;
     let stage = tempfile::tempdir().map_err(|e| e.to_string())?;
     owlboy::stage(stage.path(), "he", owlboy::VERSION)?;
     let journal = lifecycle::install(stage.path(), "patch.json", &root, &storage,

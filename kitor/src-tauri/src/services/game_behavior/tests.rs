@@ -4,16 +4,24 @@ use super::*;
 fn catalog_profiles_keep_native_and_patched_launches_distinct() {
     for id in ["monkey-se", "monkey2-se"] {
         let behavior = for_game(id).unwrap();
-        assert_eq!(behavior.launch_profile(false).is_native(), !cfg!(target_os = "macos"));
-        assert!(behavior.launch_profile(true).native.is_none());
+        assert_eq!(
+            behavior.launch_profile(false).is_native(),
+            !cfg!(target_os = "macos")
+        );
+        assert!(!behavior.launch_profile(true).is_native());
         assert_eq!(
             behavior.launch_profile(true).subdirectory.as_deref(),
             Some("hebrew")
         );
     }
     let grim = for_game("grim-fandango-remastered").unwrap();
-    assert!(!grim.launch_profile(false).prepare_hebrew_preferences);
-    assert!(grim.launch_profile(true).prepare_hebrew_preferences);
+    assert!(grim.launch_profile(false).commands[&Platform::Windows]
+        .preparation
+        .is_none());
+    assert_eq!(
+        grim.launch_profile(true).commands[&Platform::Windows].preparation,
+        Some(NativePreparation::GrimHebrewPreferences)
+    );
 }
 
 #[test]
@@ -44,13 +52,9 @@ fn native_command_can_be_added_entirely_through_configuration() {
         "commands": {platform: {"program": "game-runner", "args": ["--windowed"], "env": {"GAME_LANGUAGE": "en"}}}
     })).unwrap();
     assert!(profile.is_native());
-    let cmd = crate::services::game_adapters::native_command(
-        &profile,
-        root.path(),
-        "previously-unknown-game",
-    )
-    .unwrap()
-    .unwrap();
+    let cmd = crate::services::game_adapters::native_command(&profile, root.path())
+        .unwrap()
+        .unwrap();
     assert_eq!(cmd.get_program(), root.path().join("game-runner"));
     assert_eq!(cmd.get_args().collect::<Vec<_>>(), vec!["--windowed"]);
     assert_eq!(cmd.get_current_dir(), Some(root.path()));
@@ -59,7 +63,7 @@ fn native_command_can_be_added_entirely_through_configuration() {
 #[test]
 fn invalid_profiles_fail_before_launch() {
     assert!(serde_json::from_value::<GameBehavior>(
-        serde_json::json!({"detection": {"adapter": "misspelled_adapter"}})
+        serde_json::json!({"detection": {"mode": "misspelled_mode"}})
     )
     .is_err());
     let profile = LaunchProfile {
@@ -79,7 +83,10 @@ fn invalid_profiles_fail_before_launch() {
 
 #[test]
 fn monkey_original_macos_uses_classic_scummvm_data() {
-    for (id, target) in [("monkey-se", "scumm:monkey"), ("monkey2-se", "scumm:monkey2")] {
+    for (id, target) in [
+        ("monkey-se", "scumm:monkey"),
+        ("monkey2-se", "scumm:monkey2"),
+    ] {
         let behavior = for_game(id).unwrap();
         let profiles = behavior.launch.as_ref().unwrap();
         assert!(profiles.original.is_native());

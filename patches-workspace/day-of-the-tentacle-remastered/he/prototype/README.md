@@ -1,11 +1,17 @@
 # Day of the Tentacle Remastered: Hebrew dialogue prototype
 
-## Windows candidate (2026-10-28)
+The current build uses the Bold instance of Noto Sans Hebrew under SIL OFL 1.1.
+The pinned input is [NotoSansHebrew.ttf](fonts/NotoSansHebrew.ttf), from
+[Google Fonts](https://github.com/google/fonts/tree/main/ofl/notosanshebrew).
+Its SHA-256 is `7ef36a2c3593758cdb622e1bdef4f84523e92fbc3ccc667438dd80ff54c2de88`.
+The patch ZIPs include [the OFL notice](../licenses/FONT-OFL.txt).
+
+## Windows candidate
 
 The Windows Steam archive now has a separate native recipe at
 `../patch.windows.candidate.json`. It contains 5,142 translated subtitles and
 348 item/person labels, with all 12,800 original glyphs preserved. The user
-confirmed the disposable Windows test build works. Broader gameplay review,
+confirmed the previous font build on Windows. Broader gameplay review,
 remaining dialogue, menus, and dialogue choices are still outstanding.
 
 Windows speech uses a 4-byte count and 32-byte records with relative 32-bit
@@ -18,7 +24,7 @@ revisions below. Run `map_dialogue.py` and `align_dialogue.py` against the Windo
 as described below, also against the Windows resource. Then run:
 
 ```sh
-python -X utf8 build_full_hebrew.py --source-windows "PATH/TO/GAME" --output generated/windows-v1 --font "C:/Windows/Fonts/arialbd.ttf" --item-labels generated/en.uitext.info.items
+python -X utf8 build_full_hebrew.py --source-windows "PATH/TO/GAME" --output generated/windows-v1 --item-labels generated/en.uitext.info.items
 python -X utf8 validate_full_hebrew.py --archive "PATH/TO/GAME/tenta.cle" --output generated/windows-v1
 python -X utf8 ../build_local_package.py "PATH/TO/GAME/tenta.cle" generated/windows-v1/game/tenta.cle --platform windows
 python -X utf8 -m unittest discover -s . -p "test_*.py"
@@ -27,10 +33,10 @@ python -X utf8 -m unittest discover -s . -p "test_*.py"
 Build both lifecycle harness binaries in release mode, then run
 `../validate_windows.py GAME_FOLDER HARNESS_BINARY_FOLDER`. It uses a temporary
 copy to verify native install/uninstall, Classic coexistence, and save preservation.
-Refresh the Classic recipes' alternate input hash and manifest recipe hashes when
-rebuilding the native recipe. The original installed Steam files are not modified
-by these build and validation commands. Local font/payload redistribution limits
-still apply.
+When rebuilding the native recipe, verify the Classic outputs against the new
+archive before adding it to the Classic recipes' alternate input hashes. Refresh
+the corresponding manifest recipe hashes. These commands use disposable copies
+of the installed game files.
 
 This is an offline mapping and resource-building prototype for the full remaster,
 not a ScummVM patch or an installable Kitor release. No Steam files are modified.
@@ -160,7 +166,7 @@ diagnostic mapping, not a production encoding: later English capitals will rende
 as Hebrew. Only 13 opening-scene subtitles are translated in this probe.
 
 The FTX2 payload decodes as two-channel luminance/alpha. Glyphs are rendered from
-the local Arial Bold system font (local testing only; do not redistribute). FriBidi
+Noto Sans Hebrew Bold (SIL OFL 1.1). FriBidi
 preorders each explicit subtitle line; automatic wrapping remains unverified.
 The first subtitle includes `test 123` plus Hebrew to distinguish archive loading
 and glyph rendering. All 51 replaced archive members were re-extracted and checked
@@ -208,7 +214,7 @@ and metrics, every unaffected cmap entry, all IDs/non-pointer speech metadata,
 579 unchanged records, and round-trip decoding of all 5,142 translated strings.
 Seven tests cover alignment, punctuation, mixed English/numbers, and wrapping
 before bidi reordering. Native Windows testing and install/uninstall packaging
-remain future release work. Local Arial glyphs are for this local test only.
+remain future release work.
 
 Runtime check on 2026-10-26: the corrected v2 app displayed readable Hebrew
 in remastered mode. Observed the two-line Green Tentacle sentence “אני לא חושב

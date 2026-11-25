@@ -1,9 +1,10 @@
+import type { PatchLanguage } from "@kitor/registry";
 import { useMemo, useReducer } from "react";
 import type { PatchWithStatus } from "@/store/store";
 
 type SelectedGuide = {
   scummvmId: string;
-  language: string;
+  language: PatchLanguage | "";
   title: string;
 };
 

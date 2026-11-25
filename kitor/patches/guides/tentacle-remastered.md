@@ -5,11 +5,13 @@ The current candidate translates 5,142 subtitles and 348 item/person label
 records; menus, dialogue choices, and 579 speech records remain English.
 Keep the in-game text language set to English.
 
-The patch backs up only the changed archive and restores it on uninstall.
-It uses local Arial-derived glyphs and is for personal testing only.
-Windows and macOS have separate patch recipes for their native resource layouts.
+The patch uses Noto Sans Hebrew Bold under SIL OFL 1.1. It backs up
+`tenta.cle` and, on macOS, the files changed by ad-hoc signing. Uninstall
+restores those originals.
+The recipes target the hash-matched Steam builds from depot 388211
+(Windows x86) and depot 388214 (macOS x86_64).
 The Windows Steam candidate includes the same subtitles and item labels; its
-native rendering was confirmed by the user on 2026-10-28. Keep text language set
+previous font build was tested on Windows on 2026-10-28. Keep text language set
 to English. This remains a partial translation, with broader gameplay review pending.
 
 Both Classic and Remastered patches are available for a Remastered installation.

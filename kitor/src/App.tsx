@@ -73,8 +73,8 @@ function App() {
 
   const loadGames = useCallback(async () => {
     try {
-      const games = await invoke("get_games_with_patches");
-      setGames(games as Game[]);
+      const games = await invoke<Game[]>("get_games_with_patches");
+      setGames(games);
     } catch (error) {
       console.error("Failed to load games:", error);
     }

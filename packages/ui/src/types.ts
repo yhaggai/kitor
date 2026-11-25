@@ -1,3 +1,5 @@
+import type { Tag } from "@kitor/registry";
+
 /** Presentation data only. Native game and patch models stay in the desktop app. */
 export type GameStatus = "ready" | "available" | "unowned" | "attention" | "original";
 export type Collection = "library" | "discovery";
@@ -20,7 +22,7 @@ export type GameSummary = {
   author?: string;
   version?: string;
   /** Registry keywords. A game may belong to more than one category. */
-  tags?: string[];
+  tags?: Tag[];
   translationBeta?: boolean;
   /** Date first added to the Kitor registry, in YYYY-MM-DD format. */
   addedOn?: string;

@@ -1,10 +1,11 @@
+import { Tag } from "@kitor/registry";
 import type { GameSummary } from "../types";
 
 /** Deliberately fictional installation state; no native APIs or user library reads. */
 const fixtures: GameSummary[] = [
   {
     id: "jenny-leclue",
-    tags: ["detective"],
+    tags: [Tag.Detective],
     banner: {
       en: "/banners/jenny-leclue-en.jpg",
       he: "/banners/jenny-leclue-he.png",
@@ -21,7 +22,7 @@ const fixtures: GameSummary[] = [
   },
   {
     id: "monkey-se",
-    tags: ["classic", "comedy"],
+    tags: [Tag.Classic, Tag.Comedy],
     banner: {
       en: "/banners/monkey-classic-en.png",
       he: "/banners/monkey-classic-he.png",
@@ -35,7 +36,7 @@ const fixtures: GameSummary[] = [
   },
   {
     id: "tentacle",
-    tags: ["classic", "comedy"],
+    tags: [Tag.Classic, Tag.Comedy],
     title: "Day of the Tentacle",
     cover: "/covers/tentacle.jpg",
     status: "available",
@@ -44,7 +45,7 @@ const fixtures: GameSummary[] = [
   },
   {
     id: "grim-fandango-remastered",
-    tags: ["classic"],
+    tags: [Tag.Classic],
     title: "Grim Fandango",
     cover: "/covers/grim-fandango-remastered.jpg",
     status: "available",
@@ -53,7 +54,7 @@ const fixtures: GameSummary[] = [
   },
   {
     id: "sq5",
-    tags: ["classic", "sci-fi"],
+    tags: [Tag.Classic, Tag.SciFi],
     title: "Space Quest V",
     cover: "/covers/sq5.jpg",
     status: "ready",
@@ -62,7 +63,7 @@ const fixtures: GameSummary[] = [
   },
   {
     id: "drifter",
-    tags: ["thriller"],
+    tags: [Tag.Thriller],
     title: "The Drifter",
     cover: "/covers/drifter.jpg",
     status: "attention",
@@ -72,7 +73,7 @@ const fixtures: GameSummary[] = [
   },
   {
     id: "monkey2-se",
-    tags: ["classic", "comedy"],
+    tags: [Tag.Classic, Tag.Comedy],
     title: "Monkey Island 2: LeChuck's Revenge — Classic",
     cover: "/covers/monkey2-classic-en.jpg",
     banner: {
