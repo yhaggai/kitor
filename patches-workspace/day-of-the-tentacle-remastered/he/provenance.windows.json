@@ -1,23 +1,30 @@
 {
-  "status": "resource_validated_user_runtime_confirmed",
+  "status": "resource_and_windows_fixture_validated",
   "release_ready": false,
-  "version": "0.1-local-items-kitor1",
-  "source": "prototype/generated/windows-v1/full-manifest.json",
+  "version": "0.1.1-ofl-kitor1",
+  "source": "prototype/build_full_hebrew.py",
   "input_sha256": "e50d476124ce1421441f8115d0b7cc07f3ed98714e37264cd31bdf67aea64841",
-  "installed_sha256": "9b84e69bddbd447622146d81fd51ba049166149be8b1131a8452ed8f5640f1fc",
-  "redistribution": "Local personal-use only. Prototype uses Arial glyphs; do not publish. Classic translation announcement also prohibits redistribution.",
+  "installed_sha256": "d7d797ab069be7feabdb49a722c8ceaae83cac21b3ffc7bd7d6a1fa1fc7b0515",
   "limitations": [
     "579 dialogue records remain English including commentary",
     "Menus and dialogue choices remain untranslated",
     "English language only",
-    "Broader gameplay and long-subtitle review pending"
+    "Broader gameplay and long-subtitle review pending",
+    "Native Windows gameplay on the OFL build has not been checked"
   ],
   "runtime": "Native remastered engine; never ScummVM",
-  "runtime_validation": "User confirmed Windows test build works on 2026-10-28.",
   "resource_validation": {
     "translated_subtitles": 5142,
     "translated_item_labels": 348,
     "verified_members": 162,
     "preserved_original_glyphs": 12800
+  },
+  "font_source": "NotoSansHebrew.ttf",
+  "font_sha256": "7ef36a2c3593758cdb622e1bdef4f84523e92fbc3ccc667438dd80ff54c2de88",
+  "licensed_font_notice": "licenses/FONT-OFL.txt",
+  "validation": {
+    "resource_members": 162,
+    "original_glyphs_preserved": 12800,
+    "selective_install_uninstall": "passed using original Windows files on a disposable fixture on macOS"
   }
 }

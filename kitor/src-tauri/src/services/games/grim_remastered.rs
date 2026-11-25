@@ -1,5 +1,5 @@
 //! Bundled native Windows Grim Fandango Remastered Hebrew candidate.
-use std::{fs, path::Path, process::Command};
+use std::{fs, path::Path};
 #[cfg(feature = "standalone-patch-tools")]
 pub const VERSION: &str = "0.3.0-native-candidate";
 #[cfg(feature = "standalone-patch-tools")]
@@ -38,17 +38,6 @@ pub fn stage(destination: &Path, language: &str, version: &str) -> Result<(), St
     }
     Ok(())
 }
-pub fn launch_command(root: &Path) -> Result<Command, String> {
-    if !cfg!(target_os = "windows") { return Err("Grim Fandango native launch supports Windows only".into()); }
-    let root = root.canonicalize().map_err(|e| e.to_string())?;
-    if !root.join("GrimFandango.exe").is_file() || !root.join("grim.en.tab").is_file() {
-        return Err("Native Grim Fandango Remastered installation not found".into());
-    }
-    let mut command = Command::new(root.join("GrimFandango.exe"));
-    command.current_dir(root);
-    Ok(command)
-}
-
 // The native game has no language-index command-line switch. Its version-2
 // registry stores 64 records (Adler-32 key, type, 260-byte value), then 24 bytes
 // of other settings. Change only Language, a type-3 float, before starting it.

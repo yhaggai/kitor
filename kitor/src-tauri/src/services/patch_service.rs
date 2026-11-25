@@ -18,7 +18,7 @@ pub struct PatchInfo {
     pub version: String,
     pub author: String,
     pub download_url: String,
-    pub source_type: String,
+    pub source_type: registry_service::CatalogSourceType,
     pub checksum: Option<String>,
     pub file_size: Option<i64>,
     pub description: String,
@@ -31,7 +31,7 @@ pub struct PatchInfo {
     pub add_to_cart_url: Option<String>,
     pub platforms: Option<registry_service::Platforms>,
     #[serde(default)]
-    pub tags: Vec<String>,
+    pub tags: Vec<registry_service::Tag>,
     #[serde(default)]
     pub translation_beta: bool,
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -86,7 +86,7 @@ pub async fn get_patches_for_game(
             version: p.version,
             author: p.author,
             download_url: p.download_url,
-            source_type: p.source_type,
+            source_type: p.source_type.into(),
             checksum: p.checksum,
             file_size: p.file_size,
             description: p.description,
@@ -120,7 +120,7 @@ fn store_catalog_entry(game: &registry_service::GameDefinition) -> PatchInfo {
         version: String::new(),
         author: String::new(),
         download_url: String::new(),
-        source_type: "store".into(),
+        source_type: registry_service::CatalogSourceType::Store,
         checksum: None,
         file_size: None,
         description: String::new(),
@@ -176,7 +176,7 @@ pub async fn get_all_patches(db: &DatabaseConnection) -> Result<Vec<PatchInfo>, 
                 version: patch.version,
                 author: patch.author,
                 download_url: patch.download_url,
-                source_type: patch.source_type,
+                source_type: patch.source_type.into(),
                 checksum: patch.checksum,
                 file_size: patch.file_size,
                 description: patch.description,
@@ -709,38 +709,5 @@ pub async fn restore_backup(
 mod restore_tests;
 
 #[cfg(test)]
-mod store_catalog_tests {
-    use super::store_catalog_entry;
-
-    #[test]
-    fn store_only_game_preserves_gog_purchase_details() {
-        let game = serde_json::from_value(serde_json::json!({
-            "scummvm_id": "dig",
-            "title": "The Dig",
-            "add_to_cart_url": "https://www.gog.com/checkout/widget/52756712356612660/1425299904?price=undefined%2018.60",
-            "gog": {
-                "id": 1425299904,
-                "installers": [{
-                    "id": "",
-                    "name": "The Dig",
-                    "path": "https://www.gog.com/downloads/the_dig/en1installer0"
-                }]
-            },
-            "detection_patterns": { "unique_files": [], "file_patterns": [] },
-            "patches": []
-        }))
-        .unwrap();
-        let listing = store_catalog_entry(&game);
-        assert_eq!(listing.language, "");
-        assert_eq!(listing.download_url, "");
-        assert_eq!(listing.source_type, "store");
-        assert_eq!(
-            listing.gog_installer_path.as_deref(),
-            Some("https://www.gog.com/downloads/the_dig/en1installer0")
-        );
-        assert_eq!(
-            listing.add_to_cart_url.as_deref(),
-            Some("https://www.gog.com/checkout/widget/52756712356612660/1425299904?price=undefined%2018.60")
-        );
-    }
-}
+#[path = "patch_service/store_catalog_tests.rs"]
+mod store_catalog_tests;

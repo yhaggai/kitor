@@ -31,7 +31,6 @@ pub fn endpoint() -> Result<String, String> {
 fn contribution_endpoint(configured: Option<&str>, debug: bool) -> Result<String, String> {
     let value = match configured.map(str::trim).filter(|value| !value.is_empty()) {
         Some(value) => value.trim_end_matches('/'),
-        None if debug => "https://kitor-contributions-staging.yhaggai.workers.dev",
         None => return Err("Contribution sign-in is not configured in this build".into()),
     };
     let url = url::Url::parse(value).map_err(|_| "Invalid contribution API URL")?;

@@ -1,3 +1,4 @@
+import { Store } from "@kitor/registry";
 import { Download, FolderOpen, type LucideIcon, RefreshCw, RotateCcw, Trash2 } from "lucide-react";
 import { useEffect, useState } from "react";
 import {
@@ -168,8 +169,8 @@ export function CatalogDemo({
         setRemoved(fixtures.map((item) => item.id));
         navigation.back();
         break;
-      case "steam":
-      case "gog":
+      case Store.Steam:
+      case Store.Gog:
         if (id) {
           setAdded((prev) => [...prev, id]);
           setRemoved((prev) => prev.filter((item) => item !== id));
@@ -396,8 +397,8 @@ export function CatalogDemo({
                       <Button disabled={busy} onClick={() => open("store-steam", "Get the game")}>
                         Get the game
                       </Button>
-                      {actionButton("steam", "Install from Steam")}
-                      {actionButton("gog", "Install from GOG")}
+                      {actionButton(Store.Steam, "Install from Steam")}
+                      {actionButton(Store.Gog, "Install from GOG")}
                       {actionButton("store-gog", "View on GOG")}
                     </>
                   )
@@ -425,8 +426,8 @@ export function CatalogDemo({
                         </>
                       ) : (
                         <>
-                          {actionButton("steam", "Install from Steam", false, Download)}
-                          {actionButton("gog", "Install from GOG", false, Download)}
+                          {actionButton(Store.Steam, "Install from Steam", false, Download)}
+                          {actionButton(Store.Gog, "Install from GOG", false, Download)}
                         </>
                       )}
                     </div>

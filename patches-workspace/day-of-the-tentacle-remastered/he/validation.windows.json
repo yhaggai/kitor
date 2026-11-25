@@ -1,14 +1,11 @@
 {
   "platform": "windows",
   "input_sha256": "e50d476124ce1421441f8115d0b7cc07f3ed98714e37264cd31bdf67aea64841",
-  "installed_sha256": "9b84e69bddbd447622146d81fd51ba049166149be8b1131a8452ed8f5640f1fc",
+  "installed_sha256": "d7d797ab069be7feabdb49a722c8ceaae83cac21b3ffc7bd7d6a1fa1fc7b0515",
   "checks": [
-    "native install matches expected hash",
-    "classic installs from native-patched archive",
-    "all classic output hashes match",
-    "native uninstall restores original archive exactly",
-    "native uninstall preserves classic patch",
-    "classic uninstall preserves saves"
+    "Reconstruction on original Windows Steam files matches the expected patched SHA-256",
+    "Classic extraction from the OFL archive produces all three expected output hashes",
+    "Selective install and uninstall restore the original archive and preserve unrelated files on a disposable macOS-hosted fixture"
   ],
-  "runtime": "User confirmed the Windows test build works on 2026-10-28."
+  "runtime": "Native gameplay was previously confirmed with the old font on 2026-10-28. The OFL build has not been launched on Windows."
 }

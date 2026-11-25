@@ -29,7 +29,7 @@ pub struct AvailablePatchInfo {
 pub struct GameWithPatches {
     pub id: i32,
     #[serde(default)]
-    pub tags: Vec<String>,
+    pub tags: Vec<registry_service::Tag>,
     #[serde(default)]
     pub translation_beta: bool,
     #[serde(skip_serializing_if = "Option::is_none")]
