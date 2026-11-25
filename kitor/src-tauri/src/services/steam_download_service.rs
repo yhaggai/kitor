@@ -363,16 +363,19 @@ async fn download_layout(
         for path in &executable_paths {
             restore_owner_execute(&staged_game, path)?;
         }
-        let detected = super::game_service::detect_game_for_id(&staged_game, &game_id);
-        if !matches!(&detected, Ok(Some(_))) {
-            let retained = staging.keep().join("game");
-            return Err(format!("{}. Game files retained at {}. No compatible edition was registered.",
-                detected.err().unwrap_or_else(|| "Steam files do not match the supported game edition".into()), retained.display()));
-        }
-        if game_id == "owlboy" {
-            // Validate the platform and prepare the native bundle's executable
-            // permission before publishing the installation or applying a patch.
-            super::games::owlboy::launch_command(&staged_game)?;
+        let detected = match super::game_service::detect_game_for_id(&staged_game, &game_id) {
+            Ok(Some(game)) => game,
+            result => {
+                let retained = staging.keep().join("game");
+                return Err(format!("{}. Game files retained at {}. No compatible edition was registered.",
+                    result.err().unwrap_or_else(|| "Steam files do not match the supported game edition".into()), retained.display()));
+            }
+        };
+        // Registry profiles opt into import validation and declared permission
+        // repair; downloads without that requirement retain their existing flow.
+        let profile = super::game_behavior::for_game(&game_id)?.launch_profile(false);
+        if profile.validate_on_import {
+            super::game_adapters::native_command(&profile, Path::new(&detected.install_path))?;
         }
         std::fs::rename(&staged_game, &import).map_err(|e| e.to_string())?;
         Ok(())

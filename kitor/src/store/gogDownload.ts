@@ -1,3 +1,4 @@
+import { PatchLanguage } from "@kitor/registry";
 import { invoke } from "@tauri-apps/api/core";
 import { listen } from "@tauri-apps/api/event";
 import { create } from "zustand";
@@ -191,7 +192,7 @@ export const useGogDownload = create<{
         step: "Installing the Hebrew patch",
       });
       const patch =
-        installed.available_patches?.find((entry) => entry.language === "he") ??
+        installed.available_patches?.find((entry) => entry.language === PatchLanguage.Hebrew) ??
         installed.available_patches?.find((entry) => entry.language.startsWith("he-"));
       if (!patch) throw new Error("No compatible Hebrew patch is available for this game.");
       listeners.push(

@@ -16,7 +16,7 @@ import shutil
 from PIL import Image, ImageDraw, ImageFont
 from map_dialogue import extract_speech, rebuild, speech_rows, digest
 
-from build_font_probe import patch_font, visual
+from build_font_probe import NOTO_SANS_HEBREW, patch_font, visual
 
 BYTE_SLOTS = {chr(1488+i): 192+i for i in range(27)}
 
@@ -45,7 +45,7 @@ def main():
     sources.add_argument('--source-app',type=Path)
     sources.add_argument('--source-windows',type=Path)
     ap.add_argument('--output',required=True,type=Path)
-    ap.add_argument('--font',type=Path,default=Path('/System/Library/Fonts/Supplemental/Arial Bold.ttf'))
+    ap.add_argument('--font',type=Path,default=NOTO_SANS_HEBREW)
     ap.add_argument('--item-labels',type=Path,help='Generated item-label UI resource')
     args=ap.parse_args()
     if args.output.exists():
@@ -142,7 +142,6 @@ def main():
             'encoding':'single-byte C0-DA mapped to Hebrew; unused by original English dialogue','font_source':str(args.font),'font_pairs':sum(n.endswith('.font') for n in replacements),'item_labels':bool(args.item_labels),'probes':probes,'changes':changes,
             'limitations':['579 dialogue records remain English, including commentary.',
                           'Menus and dialogue choices remain untranslated; item labels included only with --item-labels.',
-                          'Local system font; do not distribute.',
                           'Byte slots C0-DA replace unused accented mappings; other languages unsupported. Explicit wrapping needs scene review.']}
     (args.output/'full-manifest.json').write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n')
     print(json.dumps({'app':str(app.resolve()),'font_pairs':report['font_pairs'],'subtitle_probes':len(probes)}))

@@ -3,17 +3,17 @@
   "input_size": 2729086579,
   "outputs": {
     "tentacle.000": {
-      "recipe_sha256": "398c714546dd2c1f393d6db75dd829168deb7570993d8d85c6eb5026c14a0fd9",
+      "recipe_sha256": "9a6372e5e195aea7f815e9792cfa51a15f2a9563532802dcd3d93ca2a5483843",
       "sha256": "21bdb9663389bd01b6bbb1cb50bdce985ec68adcb5fae3efcd6f384288066536",
       "size": 7932
     },
     "tentacle.001": {
-      "recipe_sha256": "9c0f9b676b07faa5bdaa35cd8122762e40fa2d337c4c9442fcd1a13cf071f14f",
+      "recipe_sha256": "fd55420f305b1839babd0ee27a9c8a0e432398c42f33a840a3b8f8ad81d0ad7b",
       "sha256": "99d1d246332e4a5541431ce4aec05988d5ae4ad51e05f6fe77a4fc003e4bf0cf",
       "size": 11330154
     },
     "monster.so3": {
-      "recipe_sha256": "30fb6adf31cbc1b25e24c77df56e6ca628d5a538150312b3eea8d70a8afa7490",
+      "recipe_sha256": "57c6d7f819041c5a57f6a49185eca860813d8f16a57a492a920d361138a3e046",
       "sha256": "281f0f8a8bacb0464bfb74b0d3af3b086a2a638df5290ac36658207e0f0330ba",
       "size": 486659032
     }

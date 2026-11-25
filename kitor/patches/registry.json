@@ -4,7 +4,11 @@
       "scummvm_id": "undertale",
       "added_on": "2026-10-25",
       "add_to_cart_url": "https://www.gog.com/checkout/widget/52756712356612660/1456487183?price=undefined%2031.00",
-      "tags": ["hot-kitor", "indie", "story"],
+      "tags": [
+        "hot-kitor",
+        "indie",
+        "story"
+      ],
       "steam_app_id": 391540,
       "cover_url": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/undertale/9145051fa004.jpg",
       "title": "UNDERTALE",
@@ -15,7 +19,9 @@
         "linux": false
       },
       "detection_patterns": {
-        "unique_files": ["UNDERTALE.exe"],
+        "unique_files": [
+          "UNDERTALE.exe"
+        ],
         "file_patterns": []
       },
       "purchase_guide": null,
@@ -56,30 +62,89 @@
       "behavior": {
         "launch": {
           "original": {
-            "native": "undertale"
+            "commands": {
+              "windows": {
+                "program": "UNDERTALE.exe"
+              },
+              "osx": {
+                "root": "app_bundle",
+                "bundle_name": "UNDERTALE.app",
+                "method": "executable",
+                "program": "Contents/MacOS/Mac_Runner",
+                "working_directory": "bundle_resources",
+                "required_files": [
+                  "Contents/Resources/game.ios"
+                ],
+                "executable_files": [
+                  "Contents/MacOS/Mac_Runner"
+                ],
+                "env": {
+                  "SteamAppId": "391540",
+                  "SteamGameId": "391540"
+                }
+              }
+            }
           },
           "patched": {
-            "native": "undertale"
+            "commands": {
+              "windows": {
+                "program": "UNDERTALE.exe"
+              },
+              "osx": {
+                "root": "app_bundle",
+                "bundle_name": "UNDERTALE.app",
+                "method": "executable",
+                "program": "Contents/MacOS/Mac_Runner",
+                "working_directory": "bundle_resources",
+                "required_files": [
+                  "Contents/Resources/game.ios"
+                ],
+                "executable_files": [
+                  "Contents/MacOS/Mac_Runner"
+                ],
+                "env": {
+                  "SteamAppId": "391540",
+                  "SteamGameId": "391540"
+                }
+              }
+            }
           }
         },
         "detection": {
           "layouts": [
             {
               "root": ".",
-              "required_files": ["Contents/Resources/game.ios", "Contents/MacOS/Mac_Runner"],
+              "required_files": [
+                "Contents/Resources/game.ios",
+                "Contents/MacOS/Mac_Runner"
+              ],
               "data": "Contents/Resources"
             },
             {
               "root": "UNDERTALE.app",
-              "required_files": ["Contents/Resources/game.ios", "Contents/MacOS/Mac_Runner"],
+              "required_files": [
+                "Contents/Resources/game.ios",
+                "Contents/MacOS/Mac_Runner"
+              ],
               "data": "Contents/Resources"
             },
             {
-              "root": "../..",
-              "required_files": ["Contents/Resources/game.ios", "Contents/MacOS/Mac_Runner"],
-              "data": "Contents/Resources"
+              "root": ".",
+              "required_files": [
+                "Contents/Resources/game.ios",
+                "Contents/MacOS/Mac_Runner"
+              ],
+              "data": "Contents/Resources",
+              "ancestor": 2
+            },
+            {
+              "root": ".",
+              "required_files": [
+                "UNDERTALE.exe"
+              ]
             }
-          ]
+          ],
+          "mode": "layouts"
         }
       }
     },
@@ -87,7 +152,10 @@
       "scummvm_id": "monkey-se",
       "added_on": "2025-12-28",
       "add_to_cart_url": "https://www.gog.com/checkout/widget/52756712356612660/1207666253?price=undefined%2031.00",
-      "tags": ["classic", "comedy"],
+      "tags": [
+        "classic",
+        "comedy"
+      ],
       "steam_app_id": 32360,
       "title": "The Secret of Monkey Island — Classic",
       "title_he": "הסוד של אי הקופים",
@@ -110,8 +178,14 @@
         ]
       },
       "detection_patterns": {
-        "unique_files": ["Monkey1.pak", "Monkey.exe", "MISE.exe"],
-        "file_patterns": ["*.pak"]
+        "unique_files": [
+          "Monkey1.pak",
+          "Monkey.exe",
+          "MISE.exe"
+        ],
+        "file_patterns": [
+          "*.pak"
+        ]
       },
       "purchase_guide": "monkey-se.md",
       "patches": [
@@ -132,15 +206,47 @@
       "behavior": {
         "launch": {
           "original": {
-            "native": "monkey_native",
-            "native_game_id": "monkey-se-native"
+            "commands": {
+              "windows": {
+                "program": "MISE.exe",
+                "required_files": [
+                  "Monkey1.pak"
+                ],
+                "signatures": [
+                  {
+                    "path": "Monkey1.pak",
+                    "prefix": [
+                      75,
+                      65,
+                      80,
+                      76,
+                      0,
+                      0,
+                      128,
+                      63
+                    ]
+                  }
+                ],
+                "env": {
+                  "SteamAppId": "32360",
+                  "SteamGameId": "32360"
+                }
+              }
+            }
           },
           "patched": {
             "subdirectory": "hebrew",
-            "args": ["--language=he", "--fullscreen", "--auto-detect"]
+            "args": [
+              "--language=he",
+              "--fullscreen",
+              "--auto-detect"
+            ]
           },
           "original_macos": {
-            "args": ["--fullscreen", "scumm:monkey"]
+            "args": [
+              "--fullscreen",
+              "scumm:monkey"
+            ]
           }
         }
       }
@@ -149,7 +255,10 @@
       "scummvm_id": "monkey2-se",
       "added_on": "2026-01-10",
       "add_to_cart_url": "https://www.gog.com/checkout/widget/52756712356612660/1425039730?price=undefined%2031.00",
-      "tags": ["classic", "comedy"],
+      "tags": [
+        "classic",
+        "comedy"
+      ],
       "steam_app_id": 32460,
       "title": "Monkey Island 2: LeChuck's Revenge — Classic",
       "title_he": "אי הקופים 2 נקמתו של לצ׳אק",
@@ -172,8 +281,13 @@
         ]
       },
       "detection_patterns": {
-        "unique_files": ["Monkey2.pak", "Monkey2.exe"],
-        "file_patterns": ["*.pak"]
+        "unique_files": [
+          "Monkey2.pak",
+          "Monkey2.exe"
+        ],
+        "file_patterns": [
+          "*.pak"
+        ]
       },
       "purchase_guide": "monkey2-se.md",
       "patches": [
@@ -194,18 +308,55 @@
       "behavior": {
         "launch": {
           "original": {
-            "native": "monkey_native",
-            "native_game_id": "monkey2-se-native"
+            "commands": {
+              "windows": {
+                "program": "Monkey2.exe",
+                "required_files": [
+                  "monkey2.pak",
+                  "steam_api.dll"
+                ],
+                "signatures": [
+                  {
+                    "path": "monkey2.pak",
+                    "prefix": [
+                      75,
+                      65,
+                      80,
+                      76,
+                      0,
+                      0,
+                      128,
+                      63
+                    ]
+                  }
+                ],
+                "env": {
+                  "SteamAppId": "32460",
+                  "SteamGameId": "32460"
+                }
+              }
+            }
           },
           "patched": {
             "subdirectory": "hebrew",
-            "args": ["--language=he", "--fullscreen", "--auto-detect"]
+            "args": [
+              "--language=he",
+              "--fullscreen",
+              "--auto-detect"
+            ]
           },
           "original_macos": {
-            "args": ["--fullscreen", "scumm:monkey2"]
+            "args": [
+              "--fullscreen",
+              "scumm:monkey2"
+            ]
           }
         },
-        "health_files": ["Monkey2.exe", "monkey2.pak", "audio/SFXOriginal.xwb"],
+        "health_files": [
+          "Monkey2.exe",
+          "monkey2.pak",
+          "audio/SFXOriginal.xwb"
+        ],
         "manual_patch_manifest": "manual-patches/monkey2-steam-he-1.1-kitor2/manifest.json"
       }
     },
@@ -213,7 +364,11 @@
       "scummvm_id": "sq1sci",
       "added_on": "2026-01-10",
       "add_to_cart_url": "https://www.gog.com/checkout/widget/52756712356612660/1207658875?price=undefined%2031.00",
-      "tags": ["classic", "comedy", "sci-fi"],
+      "tags": [
+        "classic",
+        "comedy",
+        "sci-fi"
+      ],
       "steam_app_id": 10110,
       "title": "Space Quest I: Roger Wilco in the Sarien Encounter (VGA Remake)",
       "title_he": "מסע בחלל 1 VGA",
@@ -224,8 +379,13 @@
         "linux": true
       },
       "detection_patterns": {
-        "unique_files": ["RESOURCE.000", "SCIDHUV.EXE"],
-        "file_patterns": ["RESOURCE.*"]
+        "unique_files": [
+          "RESOURCE.000",
+          "SCIDHUV.EXE"
+        ],
+        "file_patterns": [
+          "RESOURCE.*"
+        ]
       },
       "purchase_guide": null,
       "patches": [
@@ -246,14 +406,47 @@
       "behavior": {
         "launch": {
           "original": {
-            "args": ["--fullscreen", "--platform=dos", "sci:sq1sci"]
+            "args": [
+              "--fullscreen",
+              "--platform=dos",
+              "sci:sq1sci"
+            ]
           },
           "patched": {
-            "args": ["--language=he", "--fullscreen", "--platform=dos", "sci:sq1sci"]
+            "args": [
+              "--language=he",
+              "--fullscreen",
+              "--platform=dos",
+              "sci:sq1sci"
+            ]
           }
         },
         "detection": {
-          "adapter": "space_quest"
+          "layouts": [
+            {
+              "root": ".",
+              "required_files": [
+                "RESOURCE.000",
+                "RESOURCE.001",
+                "RESOURCE.002",
+                "RESOURCE.003",
+                "RESOURCE.004",
+                "RESOURCE.MAP"
+              ],
+              "file_checks": [
+                {
+                  "kind": "digest",
+                  "path": "RESOURCE.MAP",
+                  "algorithm": "sha256",
+                  "values": [
+                    "b39d7965bb3413c01286525077be3aedde47fcd17b891ba16baea772416261d5"
+                  ]
+                }
+              ],
+              "path_style": "preserve"
+            }
+          ],
+          "mode": "layouts"
         }
       }
     },
@@ -261,7 +454,10 @@
       "scummvm_id": "kyra1-cd",
       "added_on": "2026-01-11",
       "add_to_cart_url": "https://www.gog.com/checkout/widget/52756712356612660/1207659683?price=undefined%204.60",
-      "tags": ["classic", "fantasy"],
+      "tags": [
+        "classic",
+        "fantasy"
+      ],
       "title": "The Legend of Kyrandia",
       "title_he": "אגדת קירנדיה",
       "cover_url": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/kyra1-cd/b9f9a5ade25d.jpeg",
@@ -283,8 +479,14 @@
         ]
       },
       "detection_patterns": {
-        "unique_files": ["GEMCUT.PAK", "KYRAGEM.PAK"],
-        "file_patterns": ["*.PAK", "*.VRM"],
+        "unique_files": [
+          "GEMCUT.PAK",
+          "KYRAGEM.PAK"
+        ],
+        "file_patterns": [
+          "*.PAK",
+          "*.VRM"
+        ],
         "detection_subdirectory": "DAT"
       },
       "purchase_guide": null,
@@ -306,11 +508,17 @@
       "behavior": {
         "launch": {
           "original": {
-            "args": ["--fullscreen", "kyra:kyra1"],
+            "args": [
+              "--fullscreen",
+              "kyra:kyra1"
+            ],
             "preparation": "kyrandia_signature"
           },
           "patched": {
-            "args": ["--fullscreen", "kyra:kyra1"],
+            "args": [
+              "--fullscreen",
+              "kyra:kyra1"
+            ],
             "preparation": "kyrandia_signature"
           }
         }
@@ -320,7 +528,10 @@
       "scummvm_id": "pq1",
       "added_on": "2026-10-25",
       "add_to_cart_url": "https://www.gog.com/checkout/widget/52756712356612660/1207658902?price=undefined%2031.00",
-      "tags": ["classic", "detective"],
+      "tags": [
+        "classic",
+        "detective"
+      ],
       "steam_app_id": 494740,
       "cover_url": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/pq1/bb3cbf8ffefc.jpg",
       "title": "Police Quest: In Pursuit of the Death Angel (EGA)",
@@ -379,14 +590,22 @@
                 "VOL.2"
               ]
             }
-          ]
+          ],
+          "mode": "layouts"
         },
         "launch": {
           "original": {
-            "args": ["--fullscreen", "--auto-detect"]
+            "args": [
+              "--fullscreen",
+              "--auto-detect"
+            ]
           },
           "patched": {
-            "args": ["--language=he", "--fullscreen", "--auto-detect"]
+            "args": [
+              "--language=he",
+              "--fullscreen",
+              "--auto-detect"
+            ]
           }
         }
       }
@@ -395,7 +614,11 @@
       "scummvm_id": "sq1",
       "added_on": "2026-10-25",
       "add_to_cart_url": "https://www.gog.com/checkout/widget/52756712356612660/1207658875?price=undefined%2031.00",
-      "tags": ["classic", "comedy", "sci-fi"],
+      "tags": [
+        "classic",
+        "comedy",
+        "sci-fi"
+      ],
       "steam_app_id": 10110,
       "cover_url": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/sq1/08cf78a61b31.jpg",
       "title": "Space Quest I: The Sarien Encounter (EGA)",
@@ -427,6 +650,13 @@
               "depot_id": "10111",
               "manifest_id": "6725209980292758062",
               "evidence": "tools/game-build-monitor/hash-verification.md"
+            },
+            {
+              "store": "gog",
+              "platform": "windows",
+              "build_id": "59441489525262901",
+              "released_on": "2026-02-19",
+              "evidence": "tools/game-build-monitor/hash-verification.md"
             }
           ],
           "language": "he",
@@ -455,15 +685,50 @@
       "behavior": {
         "launch": {
           "original": {
-            "args": ["--fullscreen", "--platform=dos", "agi:sq1"]
+            "args": [
+              "--fullscreen",
+              "--platform=dos",
+              "agi:sq1"
+            ]
           },
           "patched": {
-            "args": ["--language=he", "--fullscreen", "--platform=dos", "agi:sq1"]
+            "args": [
+              "--language=he",
+              "--fullscreen",
+              "--platform=dos",
+              "agi:sq1"
+            ]
           }
         },
         "detection": {
-          "adapter": "space_quest",
-          "priority": 1
+          "priority": 1,
+          "layouts": [
+            {
+              "root": ".",
+              "required_files": [
+                "LOGDIR",
+                "PICDIR",
+                "SNDDIR",
+                "VIEWDIR",
+                "VOL.0",
+                "VOL.1",
+                "VOL.2"
+              ],
+              "file_checks": [
+                {
+                  "kind": "digest",
+                  "path": "LOGDIR",
+                  "algorithm": "sha256",
+                  "values": [
+                    "1aeef7bd675ac6c3907181b619df3c53f14f42bc64ea2965e6b3ab7f81f8a1fd",
+                    "969ea8c0b95b63bb5998e2dcba8a6a525ce2f677caff751e05a64c1f157b0dd2"
+                  ]
+                }
+              ],
+              "path_style": "preserve"
+            }
+          ],
+          "mode": "layouts"
         }
       }
     },
@@ -471,7 +736,11 @@
       "scummvm_id": "sq2",
       "added_on": "2026-10-25",
       "add_to_cart_url": "https://www.gog.com/checkout/widget/52756712356612660/1207658875?price=undefined%2031.00",
-      "tags": ["classic", "comedy", "sci-fi"],
+      "tags": [
+        "classic",
+        "comedy",
+        "sci-fi"
+      ],
       "steam_app_id": 10110,
       "cover_url": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/sq2/2f9730d67c73.jpg",
       "title": "Space Quest II: Vohaul’s Revenge",
@@ -491,12 +760,37 @@
           "install_manifest": "patch.json",
           "language": "he",
           "version": "1.0-kitor2",
+          "supported_builds": [
+            {
+              "store": "steam",
+              "platform": "windows",
+              "depot_id": "10111",
+              "manifest_id": "6725209980292758062",
+              "released_on": "2016-08-29",
+              "evidence": "tools/game-build-monitor/hash-verification.md"
+            },
+            {
+              "store": "steam",
+              "platform": "osx",
+              "depot_id": "10111",
+              "manifest_id": "6725209980292758062",
+              "released_on": "2016-08-29",
+              "evidence": "tools/game-build-monitor/hash-verification.md"
+            },
+            {
+              "store": "gog",
+              "platform": "windows",
+              "build_id": "59441499654619266",
+              "released_on": "2026-02-19",
+              "evidence": "tools/game-build-monitor/hash-verification.md"
+            }
+          ],
           "author": "sam-mfb",
           "download_url": "https://github.com/yhaggai/kitor/releases/download/patch-sq2-he-v1.0-kitor2/sq2-he-kitor2.zip",
           "source_type": "github",
           "checksum": "37a47cf0186557e0e1f71ac8be2d73777f20de56de9478452485c63663bb523d",
           "file_size": 460690,
-          "description": "הפרק השני בסדרת מסע בחלל, נקמתו של ווהאל, בתרגום לעברית.\n\nקרדיטים ותודות (מהפרסום המקורי):\nתודה לשגב (Segev Mashraky) שלימד אותי איך לעשות תרגומים למשחקי AGI. שימו לב לgithub שלו--אני מאוד ממליץ [https://github.com/SegMash/AGIHebrew](https://github.com/SegMash/AGIHebrew)\nתודה לניב באר, שיצר את מסך ״נקמתו של ווהאל״ (באמת הרבה יותר טוב ממה שאני יכולתי לעשות).\nתודה לכל קהילת ״הרפתקה עברית״ שעזרה לי עם התרגום (וסובלת את העברית שלי), כולל shingimel, scars-shawn ופינגימר.\n\nGOG original AGI edition; Steam edition is unverified. Publisher MD5 edition guards. Requires Hebrew-capable ScummVM. Windows/macOS package plans are built; native gameplay validation is pending. Automatic folder detection recognizes the Toonstruck resources in MISC, including GOG macOS app bundles.",
+          "description": "הפרק השני בסדרת מסע בחלל, נקמתו של ווהאל, בתרגום לעברית.\n\nקרדיטים ותודות (מהפרסום המקורי):\nתודה לשגב (Segev Mashraky) שלימד אותי איך לעשות תרגומים למשחקי AGI. שימו לב לgithub שלו--אני מאוד ממליץ [https://github.com/SegMash/AGIHebrew](https://github.com/SegMash/AGIHebrew)\nתודה לניב באר, שיצר את מסך ״נקמתו של ווהאל״ (באמת הרבה יותר טוב ממה שאני יכולתי לעשות).\nתודה לכל קהילת ״הרפתקה עברית״ שעזרה לי עם התרגום (וסובלת את העברית שלי), כולל shingimel, scars-shawn ופינגימר.\n\nOriginal AGI edition. Publisher MD5 guards match the recorded GOG Windows and Steam Collection builds. Requires Hebrew-capable ScummVM. Windows/macOS package plans are built; native gameplay validation is pending. Automatic folder detection recognizes the Toonstruck resources in MISC, including GOG macOS app bundles.",
           "filename": "sq2-he-kitor2.zip",
           "post_install_script": null
         }
@@ -515,15 +809,50 @@
       "behavior": {
         "launch": {
           "original": {
-            "args": ["--fullscreen", "--platform=dos", "agi:sq2"]
+            "args": [
+              "--fullscreen",
+              "--platform=dos",
+              "agi:sq2"
+            ]
           },
           "patched": {
-            "args": ["--language=he", "--fullscreen", "--platform=dos", "agi:sq2"]
+            "args": [
+              "--language=he",
+              "--fullscreen",
+              "--platform=dos",
+              "agi:sq2"
+            ]
           }
         },
         "detection": {
-          "adapter": "space_quest",
-          "priority": 1
+          "priority": 1,
+          "layouts": [
+            {
+              "root": ".",
+              "required_files": [
+                "LOGDIR",
+                "PICDIR",
+                "SNDDIR",
+                "VIEWDIR",
+                "VOL.0",
+                "VOL.1",
+                "VOL.2"
+              ],
+              "file_checks": [
+                {
+                  "kind": "digest",
+                  "path": "LOGDIR",
+                  "algorithm": "sha256",
+                  "values": [
+                    "6955d9116b24da3ac92289e10b8d9f38cf305a48b7e3fc8565c289746598db01",
+                    "46e9a703fde53ba91e4178e561b10e0b45015939e3eef8af6f5ed7519c7043ef"
+                  ]
+                }
+              ],
+              "path_style": "preserve"
+            }
+          ],
+          "mode": "layouts"
         }
       }
     },
@@ -531,7 +860,11 @@
       "scummvm_id": "sq3",
       "added_on": "2026-10-25",
       "add_to_cart_url": "https://www.gog.com/checkout/widget/52756712356612660/1207658875?price=undefined%2031.00",
-      "tags": ["classic", "comedy", "sci-fi"],
+      "tags": [
+        "classic",
+        "comedy",
+        "sci-fi"
+      ],
       "steam_app_id": 10110,
       "cover_url": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/sq3/48f13b56b776.jpeg",
       "title": "Space Quest III: The Pirates of Pestulon",
@@ -575,14 +908,45 @@
       "behavior": {
         "launch": {
           "original": {
-            "args": ["--fullscreen", "--platform=dos", "sci:sq3"]
+            "args": [
+              "--fullscreen",
+              "--platform=dos",
+              "sci:sq3"
+            ]
           },
           "patched": {
-            "args": ["--language=he", "--fullscreen", "--platform=dos", "sci:sq3"]
+            "args": [
+              "--language=he",
+              "--fullscreen",
+              "--platform=dos",
+              "sci:sq3"
+            ]
           }
         },
         "detection": {
-          "adapter": "space_quest"
+          "layouts": [
+            {
+              "root": ".",
+              "required_files": [
+                "RESOURCE.001",
+                "RESOURCE.002",
+                "RESOURCE.003",
+                "RESOURCE.MAP"
+              ],
+              "file_checks": [
+                {
+                  "kind": "digest",
+                  "path": "RESOURCE.MAP",
+                  "algorithm": "sha256",
+                  "values": [
+                    "9075d55e53cee2f70b75404bb215c5a37cfc2bb8803896706179a10b099efb42"
+                  ]
+                }
+              ],
+              "path_style": "preserve"
+            }
+          ],
+          "mode": "layouts"
         }
       }
     },
@@ -590,7 +954,11 @@
       "scummvm_id": "sq4",
       "added_on": "2026-11-01",
       "add_to_cart_url": "https://www.gog.com/checkout/widget/52756712356612660/1207658833?price=undefined%2031.00",
-      "tags": ["classic", "comedy", "sci-fi"],
+      "tags": [
+        "classic",
+        "comedy",
+        "sci-fi"
+      ],
       "steam_app_id": 10110,
       "cover_url": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/sq4/en/7bf2aea312f3c85d.webp",
       "title": "Space Quest IV: Roger Wilco and the Time Rippers",
@@ -609,6 +977,24 @@
         {
           "language": "he",
           "version": "0.1.1-download1",
+          "supported_builds": [
+            {
+              "store": "steam",
+              "platform": "windows",
+              "depot_id": "10111",
+              "manifest_id": "6725209980292758062",
+              "released_on": "2016-08-29",
+              "evidence": "tools/game-build-monitor/hash-verification.md"
+            },
+            {
+              "store": "steam",
+              "platform": "osx",
+              "depot_id": "10111",
+              "manifest_id": "6725209980292758062",
+              "released_on": "2016-08-29",
+              "evidence": "tools/game-build-monitor/hash-verification.md"
+            }
+          ],
           "release_revision": 3,
           "author": "Kitor",
           "download_url": "https://github.com/yhaggai/kitor/releases/download/patch-sq4-he-v0.1.1-download1/sq4-he-0.1.1-download1.zip",
@@ -623,14 +1009,45 @@
       ],
       "behavior": {
         "detection": {
-          "adapter": "space_quest"
+          "layouts": [
+            {
+              "root": ".",
+              "required_files": [
+                "RESOURCE.000",
+                "RESOURCE.AUD",
+                "RESOURCE.MAP"
+              ],
+              "file_checks": [
+                {
+                  "kind": "digest",
+                  "path": "RESOURCE.MAP",
+                  "algorithm": "sha256",
+                  "values": [
+                    "62384fb1813c1a140072ff84455736c96f28454b3f96a82211ce3dc5844aa4b6"
+                  ]
+                }
+              ],
+              "path_style": "preserve"
+            }
+          ],
+          "mode": "layouts"
         },
         "launch": {
           "original": {
-            "args": ["--fullscreen", "--platform=dos", "sci:sq4"]
+            "args": [
+              "--fullscreen",
+              "--platform=dos",
+              "sci:sq4"
+            ]
           },
           "patched": {
-            "args": ["--language=en", "--subtitles", "--fullscreen", "--platform=dos", "sci:sq4"]
+            "args": [
+              "--language=en",
+              "--subtitles",
+              "--fullscreen",
+              "--platform=dos",
+              "sci:sq4"
+            ]
           }
         }
       }
@@ -639,7 +1056,11 @@
       "scummvm_id": "sq5",
       "added_on": "2026-10-25",
       "add_to_cart_url": "https://www.gog.com/checkout/widget/52756712356612660/1207658833?price=undefined%2031.00",
-      "tags": ["classic", "comedy", "sci-fi"],
+      "tags": [
+        "classic",
+        "comedy",
+        "sci-fi"
+      ],
       "steam_app_id": 10110,
       "cover_url": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/sq5/8d60499f2931.webp",
       "title": "Space Quest V: The Next Mutation",
@@ -672,21 +1093,54 @@
       "behavior": {
         "launch": {
           "original": {
-            "args": ["--fullscreen", "--platform=dos", "sci:sq5"]
+            "args": [
+              "--fullscreen",
+              "--platform=dos",
+              "sci:sq5"
+            ]
           },
           "patched": {
-            "args": ["--language=he", "--fullscreen", "--platform=dos", "sci:sq5"]
+            "args": [
+              "--language=he",
+              "--fullscreen",
+              "--platform=dos",
+              "sci:sq5"
+            ]
           }
         },
         "detection": {
-          "adapter": "space_quest"
+          "layouts": [
+            {
+              "root": ".",
+              "required_files": [
+                "RESOURCE.000",
+                "RESOURCE.AUD",
+                "RESOURCE.MAP",
+                "RESOURCE.MSG"
+              ],
+              "file_checks": [
+                {
+                  "kind": "digest",
+                  "path": "RESOURCE.MAP",
+                  "algorithm": "sha256",
+                  "values": [
+                    "148b5b8445399a347cf7d3286264902e8ef480f4e0544164678c92ee5be476d1"
+                  ]
+                }
+              ],
+              "path_style": "preserve"
+            }
+          ],
+          "mode": "layouts"
         }
       }
     },
     {
       "scummvm_id": "sq6",
       "added_on": "2026-11-01",
-      "tags": ["classic"],
+      "tags": [
+        "classic"
+      ],
       "add_to_cart_url": "https://www.gog.com/checkout/widget/52756712356612660/1207658833?price=undefined%2031.00",
       "steam_app_id": 10110,
       "cover_url": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/sq6/en/c3a436d54e83.jpg",
@@ -705,14 +1159,44 @@
       "patches": [],
       "behavior": {
         "detection": {
-          "adapter": "space_quest"
+          "layouts": [
+            {
+              "root": ".",
+              "required_files": [
+                "RESOURCE.000",
+                "RESOURCE.AUD",
+                "RESOURCE.MAP",
+                "RESOURCE.SFX"
+              ],
+              "file_checks": [
+                {
+                  "kind": "digest",
+                  "path": "RESOURCE.MAP",
+                  "algorithm": "sha256",
+                  "values": [
+                    "7ec15cbf5501af2b09e62f7a1f34d6a49d2978bf9a7b6f8c1c86c18e41a997b7"
+                  ]
+                }
+              ],
+              "path_style": "preserve"
+            }
+          ],
+          "mode": "layouts"
         },
         "launch": {
           "original": {
-            "args": ["--fullscreen", "--platform=dos", "sci:sq6"]
+            "args": [
+              "--fullscreen",
+              "--platform=dos",
+              "sci:sq6"
+            ]
           },
           "patched": {
-            "args": ["--fullscreen", "--platform=dos", "sci:sq6"]
+            "args": [
+              "--fullscreen",
+              "--platform=dos",
+              "sci:sq6"
+            ]
           }
         }
       }
@@ -721,7 +1205,10 @@
       "scummvm_id": "torin",
       "added_on": "2026-10-25",
       "add_to_cart_url": "https://www.gog.com/checkout/widget/52756712356612660/1207659044?price=undefined%2018.60",
-      "tags": ["classic", "fantasy"],
+      "tags": [
+        "classic",
+        "fantasy"
+      ],
       "cover_url": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/torin/344dd7e600d6.jpeg",
       "title": "Torin’s Passage",
       "title_he": "המסע של טורין",
@@ -763,14 +1250,53 @@
       },
       "behavior": {
         "detection": {
-          "adapter": "torin"
+          "layouts": [
+            {
+              "root": ".",
+              "required_files": [
+                "resmap.000",
+                "ressci.000"
+              ],
+              "file_checks": [
+                {
+                  "kind": "digest",
+                  "path": "resmap.000",
+                  "algorithm": "md5",
+                  "bytes": 5000,
+                  "size": 9799,
+                  "values": [
+                    "bb3b0b22ff08df54fbe2d06263409be6"
+                  ]
+                },
+                {
+                  "kind": "digest",
+                  "path": "ressci.000",
+                  "algorithm": "md5",
+                  "bytes": 5000,
+                  "size": 55973887,
+                  "values": [
+                    "693a259d346c9360f4a0c11fdaae430a"
+                  ]
+                }
+              ],
+              "path_style": "preserve"
+            }
+          ],
+          "mode": "layouts"
         },
         "launch": {
           "original": {
-            "args": ["--fullscreen", "--auto-detect"]
+            "args": [
+              "--fullscreen",
+              "--auto-detect"
+            ]
           },
           "patched": {
-            "args": ["--language=he", "--fullscreen", "--auto-detect"]
+            "args": [
+              "--language=he",
+              "--fullscreen",
+              "--auto-detect"
+            ]
           }
         }
       }
@@ -778,7 +1304,11 @@
     {
       "scummvm_id": "spyfox",
       "added_on": "2026-10-25",
-      "tags": ["classic", "kids", "comedy"],
+      "tags": [
+        "classic",
+        "kids",
+        "comedy"
+      ],
       "steam_app_id": 283980,
       "cover_url": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/spyfox/f79e51735fc4.jpg",
       "title": "Spy Fox in Dry Cereal",
@@ -789,7 +1319,9 @@
         "linux": false
       },
       "detection_patterns": {
-        "unique_files": ["spyfox.he0"],
+        "unique_files": [
+          "spyfox.he0"
+        ],
         "file_patterns": []
       },
       "purchase_guide": null,
@@ -811,10 +1343,17 @@
       "behavior": {
         "launch": {
           "original": {
-            "args": ["--fullscreen", "--auto-detect"]
+            "args": [
+              "--fullscreen",
+              "--auto-detect"
+            ]
           },
           "patched": {
-            "args": ["--language=he", "--fullscreen", "--auto-detect"]
+            "args": [
+              "--language=he",
+              "--fullscreen",
+              "--auto-detect"
+            ]
           }
         }
       }
@@ -823,7 +1362,10 @@
       "scummvm_id": "pajama",
       "added_on": "2026-10-25",
       "add_to_cart_url": "https://www.gog.com/checkout/widget/52756712356612660/1434542135?price=undefined%2031.00",
-      "tags": ["classic", "kids"],
+      "tags": [
+        "classic",
+        "kids"
+      ],
       "cover_url": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/pajama/800dc7a2b316.jpg",
       "title": "Pajama Sam: No Need to Hide When It’s Dark Outside",
       "title_he": "פיג׳מה סם",
@@ -833,7 +1375,9 @@
         "linux": false
       },
       "detection_patterns": {
-        "unique_files": ["pajama.he0"],
+        "unique_files": [
+          "pajama.he0"
+        ],
         "file_patterns": []
       },
       "purchase_guide": null,
@@ -859,10 +1403,18 @@
       "behavior": {
         "launch": {
           "original": {
-            "args": ["--fullscreen", "--auto-detect"]
+            "args": [
+              "--fullscreen",
+              "--auto-detect"
+            ]
           },
           "patched": {
-            "args": ["--subtitles", "--language=he", "--fullscreen", "--auto-detect"]
+            "args": [
+              "--subtitles",
+              "--language=he",
+              "--fullscreen",
+              "--auto-detect"
+            ]
           }
         }
       }
@@ -871,7 +1423,11 @@
       "scummvm_id": "toonstruck",
       "added_on": "2026-10-25",
       "add_to_cart_url": "https://www.gog.com/checkout/widget/52756712356612660/1207666633?price=undefined%2062.00",
-      "tags": ["classic", "comedy", "fantasy"],
+      "tags": [
+        "classic",
+        "comedy",
+        "fantasy"
+      ],
       "cover_url": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/toonstruck/fbd6de512350.jpg",
       "title": "Toonstruck",
       "title_he": "טונסטרק",
@@ -907,17 +1463,36 @@
       "behavior": {
         "launch": {
           "original": {
-            "args": ["--fullscreen", "--auto-detect"]
+            "args": [
+              "--fullscreen",
+              "--auto-detect"
+            ]
           },
           "patched": {
-            "args": ["--language=he", "--fullscreen", "--auto-detect"],
+            "args": [
+              "--language=he",
+              "--fullscreen",
+              "--auto-detect"
+            ],
             "runtime": "scummvm-toon-hebrew",
             "runtime_data": "toon.dat"
           }
         },
         "detection": {
-          "adapter": "toonstruck",
-          "extra_subdirectories": ["Toonstruck"]
+          "extra_subdirectories": [
+            "Toonstruck"
+          ],
+          "layouts": [
+            {
+              "root": ".",
+              "required_files": [
+                "MISC/TOONFONT.CAF",
+                "MISC/TOONSTRK.RES"
+              ],
+              "path_style": "preserve"
+            }
+          ],
+          "mode": "layouts"
         }
       }
     },
@@ -925,7 +1500,11 @@
       "scummvm_id": "gob2",
       "added_on": "2026-10-25",
       "add_to_cart_url": "https://www.gog.com/checkout/widget/52756712356612660/1207658846?price=undefined%2018.60",
-      "tags": ["classic", "puzzle", "fantasy"],
+      "tags": [
+        "classic",
+        "puzzle",
+        "fantasy"
+      ],
       "cover_url": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/gob2/e7017e6b020e.jpeg",
       "title": "Gobliins 2: The Prince Buffoon",
       "title_he": "גובלינים 2",
@@ -968,10 +1547,17 @@
       "behavior": {
         "launch": {
           "original": {
-            "args": ["--fullscreen", "--auto-detect"]
+            "args": [
+              "--fullscreen",
+              "--auto-detect"
+            ]
           },
           "patched": {
-            "args": ["--language=he", "--fullscreen", "--auto-detect"]
+            "args": [
+              "--language=he",
+              "--fullscreen",
+              "--auto-detect"
+            ]
           }
         }
       }
@@ -980,7 +1566,11 @@
       "scummvm_id": "tlj",
       "added_on": "2026-10-25",
       "add_to_cart_url": "https://www.gog.com/checkout/widget/52756712356612660/1207658794?price=undefined%209.30",
-      "tags": ["classic", "fantasy", "story"],
+      "tags": [
+        "classic",
+        "fantasy",
+        "story"
+      ],
       "cover_url": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/tlj/7caffc0e3eb6.jpeg",
       "title": "The Longest Journey",
       "title_he": "המסע הארוך ביותר",
@@ -1065,14 +1655,22 @@
                 "Static/MainMenuLocation/MainMenuLocation.xarc"
               ]
             }
-          ]
+          ],
+          "mode": "layouts"
         },
         "launch": {
           "original": {
-            "args": ["--fullscreen", "--auto-detect"]
+            "args": [
+              "--fullscreen",
+              "--auto-detect"
+            ]
           },
           "patched": {
-            "args": ["--language=he", "--fullscreen", "--auto-detect"]
+            "args": [
+              "--language=he",
+              "--fullscreen",
+              "--auto-detect"
+            ]
           }
         }
       },
@@ -1082,7 +1680,10 @@
       "scummvm_id": "sky",
       "added_on": "2026-10-25",
       "add_to_cart_url": "https://www.gog.com/checkout/widget/52756712356612660/1207658695?price=Free",
-      "tags": ["classic", "sci-fi"],
+      "tags": [
+        "classic",
+        "sci-fi"
+      ],
       "cover_url": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/sky/a66d8fcd68f6.jpg",
       "title": "Beneath a Steel Sky",
       "title_he": "מתחת לשמי הפלדה",
@@ -1092,7 +1693,9 @@
         "linux": false
       },
       "detection_patterns": {
-        "unique_files": ["sky.dsk"],
+        "unique_files": [
+          "sky.dsk"
+        ],
         "file_patterns": []
       },
       "purchase_guide": null,
@@ -1118,10 +1721,17 @@
       "behavior": {
         "launch": {
           "original": {
-            "args": ["--fullscreen", "--auto-detect"]
+            "args": [
+              "--fullscreen",
+              "--auto-detect"
+            ]
           },
           "patched": {
-            "args": ["--language=he", "--fullscreen", "--auto-detect"]
+            "args": [
+              "--language=he",
+              "--fullscreen",
+              "--auto-detect"
+            ]
           }
         }
       }
@@ -1129,7 +1739,11 @@
     {
       "scummvm_id": "stanley-parable",
       "added_on": "2026-10-25",
-      "tags": ["indie", "comedy", "story"],
+      "tags": [
+        "indie",
+        "comedy",
+        "story"
+      ],
       "steam_app_id": 221910,
       "cover_url": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/stanley-parable/924f717e3da0.jpg",
       "title": "The Stanley Parable (2013)",
@@ -1163,22 +1777,31 @@
           "layouts": [
             {
               "root": ".",
-              "required_files": ["stanley.exe", "thestanleyparable/gameinfo.txt"],
+              "required_files": [
+                "stanley.exe",
+                "thestanleyparable/gameinfo.txt"
+              ],
               "data": "."
             }
-          ]
+          ],
+          "mode": "layouts"
         },
         "launch": {
           "original": {
             "commands": {
               "windows": {
                 "program": "stanley.exe",
-                "required_files": ["thestanleyparable/gameinfo.txt"],
+                "required_files": [
+                  "thestanleyparable/gameinfo.txt"
+                ],
                 "env": {
                   "SteamAppId": "221910",
                   "SteamGameId": "221910"
                 },
-                "args": ["-game", "thestanleyparable"]
+                "args": [
+                  "-game",
+                  "thestanleyparable"
+                ]
               }
             }
           },
@@ -1186,12 +1809,17 @@
             "commands": {
               "windows": {
                 "program": "stanley.exe",
-                "required_files": ["thestanleyparable/gameinfo.txt"],
+                "required_files": [
+                  "thestanleyparable/gameinfo.txt"
+                ],
                 "env": {
                   "SteamAppId": "221910",
                   "SteamGameId": "221910"
                 },
-                "args": ["-game", "thestanleyparable"]
+                "args": [
+                  "-game",
+                  "thestanleyparable"
+                ]
               }
             }
           }
@@ -1202,7 +1830,11 @@
       "scummvm_id": "tesla-effect",
       "added_on": "2026-10-25",
       "add_to_cart_url": "https://www.gog.com/checkout/widget/52756712356612660/1207664503?price=undefined%2012.40",
-      "tags": ["detective", "sci-fi", "comedy"],
+      "tags": [
+        "detective",
+        "sci-fi",
+        "comedy"
+      ],
       "steam_app_id": 261510,
       "cover_url": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/tesla-effect/77011ed8d30d.jpg",
       "title": "Tesla Effect: A Tex Murphy Adventure",
@@ -1242,7 +1874,8 @@
               ],
               "data": "."
             }
-          ]
+          ],
+          "mode": "layouts"
         },
         "launch": {
           "original": {
@@ -1280,7 +1913,11 @@
       "scummvm_id": "ethan-carter",
       "added_on": "2026-10-25",
       "add_to_cart_url": "https://www.gog.com/checkout/widget/52756712356612660/1207665373?price=undefined%2062.00",
-      "tags": ["indie", "detective", "story"],
+      "tags": [
+        "indie",
+        "detective",
+        "story"
+      ],
       "steam_app_id": 258520,
       "cover_url": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/ethan-carter/1cb9c72fce73.jpg",
       "title": "The Vanishing of Ethan Carter (original)",
@@ -1320,14 +1957,17 @@
               ],
               "data": "."
             }
-          ]
+          ],
+          "mode": "layouts"
         },
         "launch": {
           "original": {
             "commands": {
               "windows": {
                 "program": "Binaries/Win64/AstronautsGame-Win64-Shipping.exe",
-                "required_files": ["AstronautsGame/Localization/AstronautsGame.enu"],
+                "required_files": [
+                  "AstronautsGame/Localization/AstronautsGame.enu"
+                ],
                 "env": {
                   "SteamAppId": "258520",
                   "SteamGameId": "258520"
@@ -1339,7 +1979,9 @@
             "commands": {
               "windows": {
                 "program": "Binaries/Win64/AstronautsGame-Win64-Shipping.exe",
-                "required_files": ["AstronautsGame/Localization/AstronautsGame.enu"],
+                "required_files": [
+                  "AstronautsGame/Localization/AstronautsGame.enu"
+                ],
                 "env": {
                   "SteamAppId": "258520",
                   "SteamGameId": "258520"
@@ -1354,7 +1996,9 @@
       "scummvm_id": "life-is-strange",
       "added_on": "2026-10-25",
       "add_to_cart_url": "https://www.gog.com/checkout/widget/52756712356612660/1931614212?price=undefined%2062.00",
-      "tags": ["story"],
+      "tags": [
+        "story"
+      ],
       "steam_app_id": 319630,
       "cover_url": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/life-is-strange/3129cec77590.jpg",
       "title": "Life Is Strange — Episodes 1–3",
@@ -1394,14 +2038,17 @@
               ],
               "data": "."
             }
-          ]
+          ],
+          "mode": "layouts"
         },
         "launch": {
           "original": {
             "commands": {
               "windows": {
                 "program": "Binaries/Win32/LifeIsStrange.exe",
-                "required_files": ["LifeIsStrangeGame/Localization/INT/CU_E1_1A.INT"],
+                "required_files": [
+                  "LifeIsStrangeGame/Localization/INT/CU_E1_1A.INT"
+                ],
                 "env": {
                   "SteamAppId": "319630",
                   "SteamGameId": "319630"
@@ -1413,7 +2060,9 @@
             "commands": {
               "windows": {
                 "program": "Binaries/Win32/LifeIsStrange.exe",
-                "required_files": ["LifeIsStrangeGame/Localization/INT/CU_E1_1A.INT"],
+                "required_files": [
+                  "LifeIsStrangeGame/Localization/INT/CU_E1_1A.INT"
+                ],
                 "env": {
                   "SteamAppId": "319630",
                   "SteamGameId": "319630"
@@ -1427,7 +2076,11 @@
     {
       "scummvm_id": "portal2",
       "added_on": "2026-10-25",
-      "tags": ["puzzle", "comedy", "sci-fi"],
+      "tags": [
+        "puzzle",
+        "comedy",
+        "sci-fi"
+      ],
       "steam_app_id": 620,
       "cover_url": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/portal2/716b26a850c5.jpg",
       "title": "Portal 2",
@@ -1438,7 +2091,9 @@
         "linux": false
       },
       "detection_patterns": {
-        "unique_files": ["portal2.exe"],
+        "unique_files": [
+          "portal2.exe"
+        ],
         "file_patterns": []
       },
       "patches": [
@@ -1461,17 +2116,25 @@
           "layouts": [
             {
               "root": ".",
-              "required_files": ["portal2.exe", "portal2/bin/client.dll", "portal2/gameinfo.txt"],
+              "required_files": [
+                "portal2.exe",
+                "portal2/bin/client.dll",
+                "portal2/gameinfo.txt"
+              ],
               "data": "."
             }
-          ]
+          ],
+          "mode": "layouts"
         },
         "launch": {
           "original": {
             "commands": {
               "windows": {
                 "program": "portal2.exe",
-                "required_files": ["portal2/bin/client.dll", "portal2/gameinfo.txt"],
+                "required_files": [
+                  "portal2/bin/client.dll",
+                  "portal2/gameinfo.txt"
+                ],
                 "env": {
                   "SteamAppId": "620",
                   "SteamGameId": "620"
@@ -1483,7 +2146,10 @@
             "commands": {
               "windows": {
                 "program": "portal2.exe",
-                "required_files": ["portal2/bin/client.dll", "portal2/gameinfo.txt"],
+                "required_files": [
+                  "portal2/bin/client.dll",
+                  "portal2/gameinfo.txt"
+                ],
                 "env": {
                   "SteamAppId": "620",
                   "SteamGameId": "620"
@@ -1498,7 +2164,11 @@
       "scummvm_id": "journey-down1",
       "added_on": "2026-10-25",
       "add_to_cart_url": "https://www.gog.com/checkout/widget/52756712356612660/2093419598?price=undefined%20120.90",
-      "tags": ["indie", "comedy", "story"],
+      "tags": [
+        "indie",
+        "comedy",
+        "story"
+      ],
       "steam_app_id": 220090,
       "cover_url": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/journey-down1/593bbde1b4e9.jpg",
       "title": "The Journey Down: Chapter One",
@@ -1509,7 +2179,9 @@
         "linux": false
       },
       "detection_patterns": {
-        "unique_files": ["jd1.gob"],
+        "unique_files": [
+          "jd1.gob"
+        ],
         "file_patterns": []
       },
       "patches": [
@@ -1532,17 +2204,23 @@
           "layouts": [
             {
               "root": ".",
-              "required_files": ["JourneyDown1.exe", "jd1.gob"],
+              "required_files": [
+                "JourneyDown1.exe",
+                "jd1.gob"
+              ],
               "data": "."
             }
-          ]
+          ],
+          "mode": "layouts"
         },
         "launch": {
           "original": {
             "commands": {
               "windows": {
                 "program": "JourneyDown1.exe",
-                "required_files": ["jd1.gob"],
+                "required_files": [
+                  "jd1.gob"
+                ],
                 "env": {
                   "SteamAppId": "220090",
                   "SteamGameId": "220090"
@@ -1554,7 +2232,9 @@
             "commands": {
               "windows": {
                 "program": "JourneyDown1.exe",
-                "required_files": ["jd1.gob"],
+                "required_files": [
+                  "jd1.gob"
+                ],
                 "env": {
                   "SteamAppId": "220090",
                   "SteamGameId": "220090"
@@ -1569,7 +2249,11 @@
       "scummvm_id": "kathy-rain-dc",
       "added_on": "2026-10-25",
       "add_to_cart_url": "https://www.gog.com/checkout/widget/52756712356612660/2036622572?price=undefined%2011.60",
-      "tags": ["indie", "detective", "thriller"],
+      "tags": [
+        "indie",
+        "detective",
+        "thriller"
+      ],
       "steam_app_id": 1395030,
       "cover_url": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/kathy-rain-dc/4d5873a538fd.jpg",
       "title": "Kathy Rain: Director's Cut",
@@ -1609,14 +2293,17 @@
               ],
               "data": "."
             }
-          ]
+          ],
+          "mode": "layouts"
         },
         "launch": {
           "original": {
             "commands": {
               "windows": {
                 "program": "KathyRainDirectorsCut.exe",
-                "required_files": ["KathyRainDirectorsCut_Data/resources.assets"],
+                "required_files": [
+                  "KathyRainDirectorsCut_Data/resources.assets"
+                ],
                 "env": {
                   "SteamAppId": "1395030",
                   "SteamGameId": "1395030"
@@ -1628,7 +2315,9 @@
             "commands": {
               "windows": {
                 "program": "KathyRainDirectorsCut.exe",
-                "required_files": ["KathyRainDirectorsCut_Data/resources.assets"],
+                "required_files": [
+                  "KathyRainDirectorsCut_Data/resources.assets"
+                ],
                 "env": {
                   "SteamAppId": "1395030",
                   "SteamGameId": "1395030"
@@ -1643,7 +2332,10 @@
       "scummvm_id": "drifter",
       "added_on": "2026-10-25",
       "add_to_cart_url": "https://www.gog.com/checkout/widget/52756712356612660/1629486561?price=undefined%2049.60",
-      "tags": ["indie", "thriller"],
+      "tags": [
+        "indie",
+        "thriller"
+      ],
       "steam_app_id": 1170570,
       "cover_url": "https://assets.kitor.click/cdn-cgi/image/width=480,fit=scale-down,quality=85,format=auto/covers/drifter/8f903a5fb6f8.jpg",
       "title": "The Drifter",
@@ -1686,10 +2378,38 @@
       "behavior": {
         "launch": {
           "original": {
-            "native": "drifter"
+            "commands": {
+              "windows": {
+                "program": "TheDrifter.exe"
+              },
+              "osx": {
+                "root": "app_bundle",
+                "bundle_name": "TheDrifter.app",
+                "method": "app_bundle",
+                "program": "Contents/MacOS/The Drifter",
+                "working_directory": "bundle_parent",
+                "required_files": [
+                  "Contents/Resources/Data/globalgamemanagers"
+                ]
+              }
+            }
           },
           "patched": {
-            "native": "drifter"
+            "commands": {
+              "windows": {
+                "program": "TheDrifter.exe"
+              },
+              "osx": {
+                "root": "app_bundle",
+                "bundle_name": "TheDrifter.app",
+                "method": "app_bundle",
+                "program": "Contents/MacOS/The Drifter",
+                "working_directory": "bundle_parent",
+                "required_files": [
+                  "Contents/Resources/Data/globalgamemanagers"
+                ]
+              }
+            }
           }
         },
         "target": "drifter_user_data",
@@ -1697,7 +2417,10 @@
           "layouts": [
             {
               "root": ".",
-              "required_files": ["TheDrifter.exe", "TheDrifter_Data/globalgamemanagers"]
+              "required_files": [
+                "TheDrifter.exe",
+                "TheDrifter_Data/globalgamemanagers"
+              ]
             },
             {
               "root": ".",
@@ -1713,7 +2436,8 @@
                 "Contents/Resources/Data/globalgamemanagers"
               ]
             }
-          ]
+          ],
+          "mode": "layouts"
         }
       }
     },
@@ -1721,7 +2445,10 @@
       "scummvm_id": "owlboy",
       "added_on": "2026-10-26",
       "add_to_cart_url": "https://www.gog.com/checkout/widget/52756712356612660/1159880091?price=undefined%206.20",
-      "tags": ["hot-kitor", "indie"],
+      "tags": [
+        "hot-kitor",
+        "indie"
+      ],
       "steam_app_id": 115800,
       "title": "ילד הינשוף — Owlboy",
       "title_he": "ילד הינשוף",
@@ -1731,7 +2458,9 @@
         "linux": false
       },
       "detection_patterns": {
-        "unique_files": ["Owlboy.exe"],
+        "unique_files": [
+          "Owlboy.exe"
+        ],
         "file_patterns": []
       },
       "purchase_guide": "owlboy.md",
@@ -1782,21 +2511,170 @@
       "behavior": {
         "launch": {
           "original": {
-            "native": "owlboy"
+            "commands": {
+              "windows": {
+                "program": "Owlboy.exe",
+                "required_files": [
+                  "Owlboy.exe",
+                  "FNA.dll",
+                  "Data/versioninfo.txt",
+                  "Data/Localizations/de.csv",
+                  "FNA3D.dll",
+                  "SDL2.dll"
+                ],
+                "required_directories": [
+                  "Data/Maps"
+                ]
+              },
+              "osx": {
+                "root": "app_bundle",
+                "bundle_name": "Owlboy.app",
+                "method": "app_bundle",
+                "program": "Contents/MacOS/Owlboy",
+                "working_directory": "bundle_resources",
+                "required_files": [
+                  "Contents/Resources/Owlboy.exe",
+                  "Contents/Resources/FNA.dll",
+                  "Contents/Resources/Data/versioninfo.txt",
+                  "Contents/Resources/Data/Localizations/de.csv"
+                ],
+                "executable_files": [
+                  "Contents/MacOS/Owlboy"
+                ],
+                "required_directories": [
+                  "Contents/Resources/Data/Maps"
+                ]
+              }
+            },
+            "validate_on_import": true
           },
           "patched": {
-            "native": "owlboy"
+            "commands": {
+              "windows": {
+                "program": "Owlboy.exe",
+                "required_files": [
+                  "Owlboy.exe",
+                  "FNA.dll",
+                  "Data/versioninfo.txt",
+                  "Data/Localizations/de.csv",
+                  "FNA3D.dll",
+                  "SDL2.dll"
+                ],
+                "required_directories": [
+                  "Data/Maps"
+                ]
+              },
+              "osx": {
+                "root": "app_bundle",
+                "bundle_name": "Owlboy.app",
+                "method": "app_bundle",
+                "program": "Contents/MacOS/Owlboy",
+                "working_directory": "bundle_resources",
+                "required_files": [
+                  "Contents/Resources/Owlboy.exe",
+                  "Contents/Resources/FNA.dll",
+                  "Contents/Resources/Data/versioninfo.txt",
+                  "Contents/Resources/Data/Localizations/de.csv"
+                ],
+                "executable_files": [
+                  "Contents/MacOS/Owlboy"
+                ],
+                "required_directories": [
+                  "Contents/Resources/Data/Maps"
+                ]
+              }
+            },
+            "validate_on_import": true
           }
         },
         "detection": {
-          "adapter": "owlboy"
+          "layouts": [
+            {
+              "root": ".",
+              "required_files": [
+                "Contents/MacOS/Owlboy",
+                "Contents/Resources/Owlboy.exe",
+                "Contents/Resources/FNA.dll",
+                "Contents/Resources/Data/versioninfo.txt",
+                "Contents/Resources/Data/Localizations/de.csv"
+              ],
+              "data": "Contents/Resources",
+              "required_directories": [
+                "Contents/Resources/Data/Maps"
+              ]
+            },
+            {
+              "root": "Owlboy.app",
+              "required_files": [
+                "Contents/MacOS/Owlboy",
+                "Contents/Resources/Owlboy.exe",
+                "Contents/Resources/FNA.dll",
+                "Contents/Resources/Data/versioninfo.txt",
+                "Contents/Resources/Data/Localizations/de.csv"
+              ],
+              "data": "Contents/Resources",
+              "required_directories": [
+                "Contents/Resources/Data/Maps"
+              ]
+            },
+            {
+              "root": ".",
+              "required_files": [
+                "Contents/MacOS/Owlboy",
+                "Contents/Resources/Owlboy.exe",
+                "Contents/Resources/FNA.dll",
+                "Contents/Resources/Data/versioninfo.txt",
+                "Contents/Resources/Data/Localizations/de.csv"
+              ],
+              "ancestor": 2,
+              "data": "Contents/Resources",
+              "required_directories": [
+                "Contents/Resources/Data/Maps"
+              ],
+              "selected_name": "Resources"
+            },
+            {
+              "root": ".",
+              "required_files": [
+                "Owlboy.exe",
+                "FNA.dll",
+                "Data/versioninfo.txt",
+                "Data/Localizations/de.csv",
+                "FNA3D.dll",
+                "SDL2.dll"
+              ],
+              "required_directories": [
+                "Data/Maps"
+              ]
+            },
+            {
+              "root": ".",
+              "required_files": [
+                "Owlboy.exe",
+                "FNA.dll",
+                "Data/versioninfo.txt",
+                "Data/Localizations/de.csv",
+                "FNA3D.dll",
+                "SDL2.dll"
+              ],
+              "ancestor": 1,
+              "required_directories": [
+                "Data/Maps"
+              ],
+              "selected_name": "Data"
+            }
+          ],
+          "mode": "layouts"
         }
       }
     },
     {
       "scummvm_id": "tentacle",
       "added_on": "2026-10-26",
-      "tags": ["classic", "comedy"],
+      "tags": [
+        "classic",
+        "comedy"
+      ],
       "steam_app_id": 388210,
       "title": "Day of the Tentacle (Classic)",
       "title_he": "יומו של הטנטקל",
@@ -1806,7 +2684,9 @@
         "linux": false
       },
       "detection_patterns": {
-        "unique_files": ["tenta.cle"],
+        "unique_files": [
+          "tenta.cle"
+        ],
         "file_patterns": []
       },
       "purchase_guide": "tentacle.md",
@@ -1833,33 +2713,298 @@
             }
           ],
           "language": "he",
-          "version": "2.0-beta2-kitor1-download2",
+          "version": "2.0-beta2-kitor1-download3",
           "author": "AdventureBrew / Shany Roze, Rafael Ben-Ari, Niv Baehr, Omer Cohen; extraction: BLooperZ",
-          "download_url": "https://github.com/yhaggai/kitor/releases/download/patch-tentacle-he-v2.0-beta2-kitor1-download2/tentacle-he-2.0-beta2-kitor1-download2.zip",
+          "download_url": "https://github.com/yhaggai/kitor/releases/download/patch-tentacle-he-v2.0-beta2-kitor1-download3/tentacle-he-2.0-beta2-kitor1-download3.zip",
           "source_type": "github",
-          "checksum": "5471ba338ba3099b7c20ac0209b8e804fbff255b773b4f209d83e0d3101a34dc",
-          "file_size": 6717350,
+          "checksum": "6584055cfaa7b03bde8fc17df22f050df9db2c20d8c261592f80a538f7508a16",
+          "file_size": 6717758,
           "description": "יומו של הטנטקל — הגרסה הקלאסית בעברית. התקנה ישירה על קובצי הגרסה הקלאסית הנתמכת, או חילוץ אופציונלי מתוך Remastered שבבעלותכם; הפעלה באמצעות ScummVM. תרגום בטא DOTT-WIP2. הפצת חבילת התרגום דרך קיטור נעשית באישור.",
-          "filename": "tentacle-he-2.0-beta2-kitor1-download2.zip",
+          "filename": "tentacle-he-2.0-beta2-kitor1-download3.zip",
           "post_install_script": null,
           "install_manifest": "patch.json",
-          "release_revision": 2
+          "release_revision": 3
         }
       ],
       "behavior": {
         "launch": {
           "original": {
-            "args": ["--platform=dos", "--fullscreen", "scumm:tentacle"],
+            "args": [
+              "--platform=dos",
+              "--fullscreen",
+              "scumm:tentacle"
+            ],
             "preparation": "tentacle_classic"
           },
           "patched": {
             "subdirectory": "hebrew",
-            "args": ["--language=he", "--platform=dos", "--fullscreen", "scumm:tentacle"],
+            "args": [
+              "--language=he",
+              "--platform=dos",
+              "--fullscreen",
+              "scumm:tentacle"
+            ],
             "preparation": "tentacle_classic"
           }
         },
         "detection": {
-          "adapter": "tentacle"
+          "layouts": [
+            {
+              "root": ".",
+              "required_files": [
+                "tentacle.000",
+                "tentacle.001"
+              ],
+              "file_checks": [
+                {
+                  "kind": "digest",
+                  "path": "tentacle.000",
+                  "algorithm": "sha256",
+                  "values": [
+                    "c89a825fcb2c4ea4d9678feab9c23e924ba578293d25a5d098cb3cb39ac86cb9",
+                    "21bdb9663389bd01b6bbb1cb50bdce985ec68adcb5fae3efcd6f384288066536"
+                  ]
+                },
+                {
+                  "kind": "size",
+                  "path": "tentacle.001",
+                  "min": 1
+                }
+              ],
+              "edition": "classic"
+            },
+            {
+              "root": "Contents/Resources/game/game",
+              "required_files": [
+                "tentacle.000",
+                "tentacle.001"
+              ],
+              "file_checks": [
+                {
+                  "kind": "digest",
+                  "path": "tentacle.000",
+                  "algorithm": "sha256",
+                  "values": [
+                    "c89a825fcb2c4ea4d9678feab9c23e924ba578293d25a5d098cb3cb39ac86cb9",
+                    "21bdb9663389bd01b6bbb1cb50bdce985ec68adcb5fae3efcd6f384288066536"
+                  ]
+                },
+                {
+                  "kind": "size",
+                  "path": "tentacle.001",
+                  "min": 1
+                }
+              ],
+              "edition": "classic"
+            },
+            {
+              "root": "Contents/Resources/game",
+              "required_files": [
+                "tentacle.000",
+                "tentacle.001"
+              ],
+              "file_checks": [
+                {
+                  "kind": "digest",
+                  "path": "tentacle.000",
+                  "algorithm": "sha256",
+                  "values": [
+                    "c89a825fcb2c4ea4d9678feab9c23e924ba578293d25a5d098cb3cb39ac86cb9",
+                    "21bdb9663389bd01b6bbb1cb50bdce985ec68adcb5fae3efcd6f384288066536"
+                  ]
+                },
+                {
+                  "kind": "size",
+                  "path": "tentacle.001",
+                  "min": 1
+                }
+              ],
+              "edition": "classic"
+            },
+            {
+              "root": "classic/en",
+              "required_files": [
+                "tentacle.000",
+                "tentacle.001"
+              ],
+              "file_checks": [
+                {
+                  "kind": "digest",
+                  "path": "tentacle.000",
+                  "algorithm": "sha256",
+                  "values": [
+                    "c89a825fcb2c4ea4d9678feab9c23e924ba578293d25a5d098cb3cb39ac86cb9",
+                    "21bdb9663389bd01b6bbb1cb50bdce985ec68adcb5fae3efcd6f384288066536"
+                  ]
+                },
+                {
+                  "kind": "size",
+                  "path": "tentacle.001",
+                  "min": 1
+                }
+              ],
+              "edition": "classic"
+            },
+            {
+              "root": ".",
+              "required_files": [
+                "Dott.app/Contents/MacOS/Dott",
+                "Dott.app/Contents/Resources/tenta.cle"
+              ],
+              "file_checks": [
+                {
+                  "kind": "prefix",
+                  "path": "Dott.app/Contents/Resources/tenta.cle",
+                  "bytes": [
+                    75,
+                    65,
+                    80,
+                    76,
+                    0,
+                    0,
+                    128,
+                    63
+                  ],
+                  "min_size": 41
+                }
+              ],
+              "edition": "remastered"
+            },
+            {
+              "root": ".",
+              "required_files": [
+                "Dott.exe",
+                "tenta.cle"
+              ],
+              "file_checks": [
+                {
+                  "kind": "prefix",
+                  "path": "tenta.cle",
+                  "bytes": [
+                    75,
+                    65,
+                    80,
+                    76,
+                    0,
+                    0,
+                    128,
+                    63
+                  ],
+                  "min_size": 41
+                }
+              ],
+              "edition": "remastered"
+            },
+            {
+              "root": ".",
+              "required_files": [
+                "Dott.app/Contents/MacOS/Dott",
+                "Dott.app/Contents/Resources/tenta.cle"
+              ],
+              "ancestor": 1,
+              "file_checks": [
+                {
+                  "kind": "prefix",
+                  "path": "Dott.app/Contents/Resources/tenta.cle",
+                  "bytes": [
+                    75,
+                    65,
+                    80,
+                    76,
+                    0,
+                    0,
+                    128,
+                    63
+                  ],
+                  "min_size": 41
+                }
+              ],
+              "selected_name": "Dott.app",
+              "edition": "remastered"
+            },
+            {
+              "root": ".",
+              "required_files": [
+                "Dott.exe",
+                "tenta.cle"
+              ],
+              "ancestor": 1,
+              "file_checks": [
+                {
+                  "kind": "prefix",
+                  "path": "tenta.cle",
+                  "bytes": [
+                    75,
+                    65,
+                    80,
+                    76,
+                    0,
+                    0,
+                    128,
+                    63
+                  ],
+                  "min_size": 41
+                }
+              ],
+              "selected_name": "Dott.app",
+              "edition": "remastered"
+            },
+            {
+              "root": ".",
+              "required_files": [
+                "Dott.app/Contents/MacOS/Dott",
+                "Dott.app/Contents/Resources/tenta.cle"
+              ],
+              "ancestor": 3,
+              "file_checks": [
+                {
+                  "kind": "prefix",
+                  "path": "Dott.app/Contents/Resources/tenta.cle",
+                  "bytes": [
+                    75,
+                    65,
+                    80,
+                    76,
+                    0,
+                    0,
+                    128,
+                    63
+                  ],
+                  "min_size": 41
+                }
+              ],
+              "selected_name": "Resources",
+              "edition": "remastered"
+            },
+            {
+              "root": ".",
+              "required_files": [
+                "Dott.exe",
+                "tenta.cle"
+              ],
+              "ancestor": 3,
+              "file_checks": [
+                {
+                  "kind": "prefix",
+                  "path": "tenta.cle",
+                  "bytes": [
+                    75,
+                    65,
+                    80,
+                    76,
+                    0,
+                    0,
+                    128,
+                    63
+                  ],
+                  "min_size": 41
+                }
+              ],
+              "selected_name": "Resources",
+              "edition": "remastered"
+            }
+          ],
+          "mode": "layouts"
         }
       }
     },
@@ -1867,7 +3012,11 @@
       "scummvm_id": "day-of-the-tentacle-remastered",
       "added_on": "2026-10-26",
       "add_to_cart_url": "https://www.gog.com/checkout/widget/52756712356612660/1456922969?price=undefined%2046.50",
-      "tags": ["hot-kitor", "classic", "comedy"],
+      "tags": [
+        "hot-kitor",
+        "classic",
+        "comedy"
+      ],
       "translation_beta": false,
       "steam_app_id": 388210,
       "title": "Day of the Tentacle Remastered",
@@ -1878,7 +3027,9 @@
         "linux": false
       },
       "detection_patterns": {
-        "unique_files": ["tenta.cle"],
+        "unique_files": [
+          "tenta.cle"
+        ],
         "file_patterns": []
       },
       "purchase_guide": "tentacle-remastered.md",
@@ -1896,40 +3047,313 @@
             }
           ],
           "language": "he",
-          "version": "0.1-local-items-kitor1-download1",
+          "version": "0.1.1-ofl-kitor1-download2",
           "author": "AdventureBrew classic translators; local remastered adaptation",
-          "download_url": "https://github.com/yhaggai/kitor/releases/download/patch-day-of-the-tentacle-remastered-he-v0.1-local-items-kitor1-download1/day-of-the-tentacle-remastered-he-0.1-local-items-kitor1-download1.zip",
+          "download_url": "https://github.com/yhaggai/kitor/releases/download/patch-day-of-the-tentacle-remastered-he-v0.1.1-ofl-kitor1-download2/day-of-the-tentacle-remastered-he-0.1.1-ofl-kitor1-download2.zip",
           "source_type": "github",
-          "checksum": "be28437f06cd0cdde1f641e084a18c7d6024a0666d5c88202da031293aa4a503",
-          "file_size": 10929147,
-          "description": "יומו של הטנטקל — אבטיפוס נפרד לגרסה המחודשת. 5,142 כתוביות ו-348 שמות פריטים ודמויות בעברית. תפריטים, אפשרויות שיחה ו-579 רשומות דיבור עדיין באנגלית. יש לבחור English. הפעלה במנוע המקורי; לא ScummVM. לשימוש מקומי בלבד, ללא הפצה. Windows and macOS local candidates.",
-          "filename": "day-of-the-tentacle-remastered-he-0.1-local-items-kitor1-download1.zip",
+          "checksum": "ed2098785fa773b1d37e762677ca9a4219180d35d47e1f88da6f0e145e942869",
+          "file_size": 11057286,
+          "description": "יומו של הטנטקל — אבטיפוס נפרד לגרסה המחודשת. 5,142 כתוביות ו-348 שמות פריטים ודמויות בעברית. תפריטים, אפשרויות שיחה ו-579 רשומות דיבור עדיין באנגלית. יש לבחור English. הפעלה במנוע המקורי; לא ScummVM. הגופן Noto Sans Hebrew Bold מופץ תחת OFL 1.1. מיועד ל־Windows ול־macOS.",
+          "filename": "day-of-the-tentacle-remastered-he-0.1.1-ofl-kitor1-download2.zip",
           "post_install_script": null,
           "install_manifest": "patch.json",
-          "release_revision": 1
+          "release_revision": 2
         }
       ],
       "behavior": {
         "launch": {
           "original": {
-            "native": "tentacle_remastered"
+            "commands": {
+              "windows": {
+                "program": "Dott.exe",
+                "required_files": [
+                  "tenta.cle"
+                ],
+                "env": {
+                  "SteamAppId": "388210"
+                },
+                "signatures": [
+                  {
+                    "path": "tenta.cle",
+                    "prefix": [
+                      75,
+                      65,
+                      80,
+                      76,
+                      0,
+                      0,
+                      128,
+                      63
+                    ]
+                  }
+                ]
+              },
+              "osx": {
+                "root": "app_bundle",
+                "bundle_name": "Dott.app",
+                "method": "executable",
+                "program": "Contents/MacOS/Dott",
+                "working_directory": "bundle_parent",
+                "required_files": [
+                  "Contents/Resources/tenta.cle"
+                ],
+                "env": {
+                  "SteamAppId": "388210"
+                },
+                "signatures": [
+                  {
+                    "path": "Contents/Resources/tenta.cle",
+                    "prefix": [
+                      75,
+                      65,
+                      80,
+                      76,
+                      0,
+                      0,
+                      128,
+                      63
+                    ]
+                  }
+                ]
+              }
+            }
           },
           "patched": {
-            "native": "tentacle_remastered"
+            "commands": {
+              "windows": {
+                "program": "Dott.exe",
+                "required_files": [
+                  "tenta.cle"
+                ],
+                "env": {
+                  "SteamAppId": "388210"
+                },
+                "signatures": [
+                  {
+                    "path": "tenta.cle",
+                    "prefix": [
+                      75,
+                      65,
+                      80,
+                      76,
+                      0,
+                      0,
+                      128,
+                      63
+                    ]
+                  }
+                ]
+              },
+              "osx": {
+                "root": "app_bundle",
+                "bundle_name": "Dott.app",
+                "method": "executable",
+                "program": "Contents/MacOS/Dott",
+                "working_directory": "bundle_parent",
+                "required_files": [
+                  "Contents/Resources/tenta.cle"
+                ],
+                "env": {
+                  "SteamAppId": "388210"
+                },
+                "signatures": [
+                  {
+                    "path": "Contents/Resources/tenta.cle",
+                    "prefix": [
+                      75,
+                      65,
+                      80,
+                      76,
+                      0,
+                      0,
+                      128,
+                      63
+                    ]
+                  }
+                ]
+              }
+            }
           }
         },
         "detection": {
-          "adapter": "tentacle_remastered",
-          "priority": 10
+          "priority": 10,
+          "layouts": [
+            {
+              "root": ".",
+              "required_files": [
+                "Dott.app/Contents/MacOS/Dott",
+                "Dott.app/Contents/Resources/tenta.cle"
+              ],
+              "file_checks": [
+                {
+                  "kind": "prefix",
+                  "path": "Dott.app/Contents/Resources/tenta.cle",
+                  "bytes": [
+                    75,
+                    65,
+                    80,
+                    76,
+                    0,
+                    0,
+                    128,
+                    63
+                  ],
+                  "min_size": 41
+                }
+              ],
+              "edition": "remastered"
+            },
+            {
+              "root": ".",
+              "required_files": [
+                "Dott.exe",
+                "tenta.cle"
+              ],
+              "file_checks": [
+                {
+                  "kind": "prefix",
+                  "path": "tenta.cle",
+                  "bytes": [
+                    75,
+                    65,
+                    80,
+                    76,
+                    0,
+                    0,
+                    128,
+                    63
+                  ],
+                  "min_size": 41
+                }
+              ],
+              "edition": "remastered"
+            },
+            {
+              "root": ".",
+              "required_files": [
+                "Dott.app/Contents/MacOS/Dott",
+                "Dott.app/Contents/Resources/tenta.cle"
+              ],
+              "ancestor": 1,
+              "file_checks": [
+                {
+                  "kind": "prefix",
+                  "path": "Dott.app/Contents/Resources/tenta.cle",
+                  "bytes": [
+                    75,
+                    65,
+                    80,
+                    76,
+                    0,
+                    0,
+                    128,
+                    63
+                  ],
+                  "min_size": 41
+                }
+              ],
+              "selected_name": "Dott.app",
+              "edition": "remastered"
+            },
+            {
+              "root": ".",
+              "required_files": [
+                "Dott.exe",
+                "tenta.cle"
+              ],
+              "ancestor": 1,
+              "file_checks": [
+                {
+                  "kind": "prefix",
+                  "path": "tenta.cle",
+                  "bytes": [
+                    75,
+                    65,
+                    80,
+                    76,
+                    0,
+                    0,
+                    128,
+                    63
+                  ],
+                  "min_size": 41
+                }
+              ],
+              "selected_name": "Dott.app",
+              "edition": "remastered"
+            },
+            {
+              "root": ".",
+              "required_files": [
+                "Dott.app/Contents/MacOS/Dott",
+                "Dott.app/Contents/Resources/tenta.cle"
+              ],
+              "ancestor": 3,
+              "file_checks": [
+                {
+                  "kind": "prefix",
+                  "path": "Dott.app/Contents/Resources/tenta.cle",
+                  "bytes": [
+                    75,
+                    65,
+                    80,
+                    76,
+                    0,
+                    0,
+                    128,
+                    63
+                  ],
+                  "min_size": 41
+                }
+              ],
+              "selected_name": "Resources",
+              "edition": "remastered"
+            },
+            {
+              "root": ".",
+              "required_files": [
+                "Dott.exe",
+                "tenta.cle"
+              ],
+              "ancestor": 3,
+              "file_checks": [
+                {
+                  "kind": "prefix",
+                  "path": "tenta.cle",
+                  "bytes": [
+                    75,
+                    65,
+                    80,
+                    76,
+                    0,
+                    0,
+                    128,
+                    63
+                  ],
+                  "min_size": 41
+                }
+              ],
+              "selected_name": "Resources",
+              "edition": "remastered"
+            }
+          ],
+          "mode": "layouts"
         },
-        "library_editions": ["tentacle", "day-of-the-tentacle-remastered"]
+        "library_editions": [
+          "tentacle",
+          "day-of-the-tentacle-remastered"
+        ]
       }
     },
     {
       "scummvm_id": "grim-fandango-remastered",
       "added_on": "2026-10-28",
       "add_to_cart_url": "https://www.gog.com/checkout/widget/52756712356612660/1207667183?price=undefined%2046.50",
-      "tags": ["classic", "comedy", "detective"],
+      "tags": [
+        "classic",
+        "comedy",
+        "detective"
+      ],
       "title": "Grim Fandango Remastered",
       "title_he": "גרים פנדנגו",
       "platforms": {
@@ -1944,13 +3368,24 @@
         "installers": []
       },
       "detection_patterns": {
-        "unique_files": ["GrimFandango.exe"],
+        "unique_files": [
+          "GrimFandango.exe"
+        ],
         "file_patterns": []
       },
       "patches": [
         {
           "language": "he",
           "version": "0.3.0-native-candidate-download1",
+          "supported_builds": [
+            {
+              "store": "gog",
+              "platform": "windows",
+              "build_id": "50773165089695575",
+              "released_on": "2017-12-13",
+              "evidence": "tools/game-build-monitor/hash-verification.md"
+            }
+          ],
           "author": "Niv Bar and Shani Roz; Kitor native adaptation",
           "download_url": "https://github.com/yhaggai/kitor/releases/download/patch-grim-fandango-remastered-he-v0.3.0-native-candidate-download1/grim-fandango-remastered-he-0.3.0-native-candidate-download1.zip",
           "source_type": "github",
@@ -1966,11 +3401,25 @@
       "behavior": {
         "launch": {
           "original": {
-            "native": "grim"
+            "commands": {
+              "windows": {
+                "program": "GrimFandango.exe",
+                "required_files": [
+                  "grim.en.tab"
+                ]
+              }
+            }
           },
           "patched": {
-            "native": "grim",
-            "prepare_hebrew_preferences": true
+            "commands": {
+              "windows": {
+                "program": "GrimFandango.exe",
+                "required_files": [
+                  "grim.en.tab"
+                ],
+                "preparation": "grim_hebrew_preferences"
+              }
+            }
           }
         }
       }
@@ -1979,7 +3428,11 @@
       "scummvm_id": "monkey-se-native",
       "added_on": "2026-10-28",
       "add_to_cart_url": "https://www.gog.com/checkout/widget/52756712356612660/1207666253?price=undefined%2031.00",
-      "tags": ["hot-kitor", "classic", "comedy"],
+      "tags": [
+        "hot-kitor",
+        "classic",
+        "comedy"
+      ],
       "translation_beta": false,
       "steam_app_id": 32360,
       "title": "The Secret of Monkey Island: Special Edition (Native Remastered)",
@@ -2003,8 +3456,14 @@
         ]
       },
       "detection_patterns": {
-        "unique_files": ["Monkey1.pak", "Monkey.exe", "MISE.exe"],
-        "file_patterns": ["*.pak"]
+        "unique_files": [
+          "Monkey1.pak",
+          "Monkey.exe",
+          "MISE.exe"
+        ],
+        "file_patterns": [
+          "*.pak"
+        ]
       },
       "purchase_guide": "monkey-se-native.md",
       "patches": [
@@ -2020,39 +3479,123 @@
             }
           ],
           "language": "he",
-          "version": "0.2.0-native-candidate-download1",
+          "version": "0.2.0-native-candidate-download2",
           "author": "AdventureBrew; native adaptation and menu translation: Kitor",
-          "download_url": "https://github.com/yhaggai/kitor/releases/download/patch-monkey-se-native-he-v0.2.0-native-candidate-download1/monkey-se-native-he-0.2.0-native-candidate-download1.zip",
+          "download_url": "https://github.com/yhaggai/kitor/releases/download/patch-monkey-se-native-he-v0.2.0-native-candidate-download2/monkey-se-native-he-0.2.0-native-candidate-download2.zip",
           "source_type": "github",
-          "checksum": "e4ca0ea78b3385caf49e678a6a2eb57b3410aecc25f3d982f30282ed26795ae7",
-          "file_size": 8919374,
-          "filename": "monkey-se-native-he-0.2.0-native-candidate-download1.zip",
+          "checksum": "a01ee96360c6b2afbf30b72f03f0192d9c221978a7c4c8a9aeb45412453c7f01",
+          "file_size": 8923928,
+          "filename": "monkey-se-native-he-0.2.0-native-candidate-download2.zip",
           "post_install_script": null,
           "install_manifest": "patch.json",
           "description": "Native Windows Hebrew candidate using the classic AdventureBrew dialogue and new Hebrew menus. Select Hebrew (replaces French). Unmatched or conflicting dialogue stays English. Hebrew subtitles and bitmap fonts are included for the F1 classic-mode toggle; unmatched lines remain English. Full-game and RTL wrapping validation are incomplete. Requires a supported original edition; installation is reversible. Steam must be running for Monkey Island 2.",
-          "release_revision": 2
+          "release_revision": 3
         }
       ],
       "behavior": {
         "launch": {
           "original": {
-            "native": "monkey_native"
+            "commands": {
+              "windows": {
+                "program": "MISE.exe",
+                "required_files": [
+                  "Monkey1.pak"
+                ],
+                "signatures": [
+                  {
+                    "path": "Monkey1.pak",
+                    "prefix": [
+                      75,
+                      65,
+                      80,
+                      76,
+                      0,
+                      0,
+                      128,
+                      63
+                    ]
+                  }
+                ],
+                "env": {
+                  "SteamAppId": "32360",
+                  "SteamGameId": "32360"
+                }
+              }
+            }
           },
           "patched": {
-            "native": "monkey_native"
+            "commands": {
+              "windows": {
+                "program": "MISE.exe",
+                "required_files": [
+                  "Monkey1.pak"
+                ],
+                "signatures": [
+                  {
+                    "path": "Monkey1.pak",
+                    "prefix": [
+                      75,
+                      65,
+                      80,
+                      76,
+                      0,
+                      0,
+                      128,
+                      63
+                    ]
+                  }
+                ],
+                "env": {
+                  "SteamAppId": "32360",
+                  "SteamGameId": "32360"
+                }
+              }
+            }
           }
         },
         "detection": {
-          "adapter": "monkey_native"
+          "layouts": [
+            {
+              "root": ".",
+              "required_files": [
+                "MISE.exe",
+                "Monkey1.pak"
+              ],
+              "file_checks": [
+                {
+                  "kind": "prefix",
+                  "path": "Monkey1.pak",
+                  "bytes": [
+                    75,
+                    65,
+                    80,
+                    76,
+                    0,
+                    0,
+                    128,
+                    63
+                  ]
+                }
+              ]
+            }
+          ],
+          "mode": "layouts"
         },
-        "library_editions": ["monkey-se", "monkey-se-native"]
+        "library_editions": [
+          "monkey-se",
+          "monkey-se-native"
+        ]
       }
     },
     {
       "scummvm_id": "monkey2-se-native",
       "added_on": "2026-10-28",
       "add_to_cart_url": "https://www.gog.com/checkout/widget/52756712356612660/1425039730?price=undefined%2031.00",
-      "tags": ["hot-kitor", "classic", "comedy"],
+      "tags": [
+        "hot-kitor",
+        "classic",
+        "comedy"
+      ],
       "translation_beta": false,
       "steam_app_id": 32460,
       "title": "Monkey Island 2: LeChuck's Revenge Special Edition (Native Remastered)",
@@ -2076,45 +3619,152 @@
         ]
       },
       "detection_patterns": {
-        "unique_files": ["Monkey2.pak", "Monkey2.exe"],
-        "file_patterns": ["*.pak"]
+        "unique_files": [
+          "Monkey2.pak",
+          "Monkey2.exe"
+        ],
+        "file_patterns": [
+          "*.pak"
+        ]
       },
       "purchase_guide": "monkey2-se-native.md",
       "patches": [
         {
           "language": "he",
-          "version": "0.2.0-native-candidate-download1",
+          "version": "0.2.0-native-candidate-download2",
+          "supported_builds": [
+            {
+              "store": "steam",
+              "platform": "windows",
+              "depot_id": "32461",
+              "manifest_id": "7019039573050115999",
+              "evidence": "tools/game-build-monitor/hash-verification.md"
+            },
+            {
+              "store": "gog",
+              "platform": "windows",
+              "build_id": "15751",
+              "released_on": "2015-03-17",
+              "evidence": "tools/game-build-monitor/hash-verification.md"
+            }
+          ],
           "author": "AdventureBrew; native adaptation and menu translation: Kitor",
-          "download_url": "https://github.com/yhaggai/kitor/releases/download/patch-monkey2-se-native-he-v0.2.0-native-candidate-download1/monkey2-se-native-he-0.2.0-native-candidate-download1.zip",
+          "download_url": "https://github.com/yhaggai/kitor/releases/download/patch-monkey2-se-native-he-v0.2.0-native-candidate-download2/monkey2-se-native-he-0.2.0-native-candidate-download2.zip",
           "source_type": "github",
-          "checksum": "cc599e66e5680c17a8f2d1b6c7298148ce601a09d0ac71f38deddb866c8fd7fa",
-          "file_size": 8752122,
-          "filename": "monkey2-se-native-he-0.2.0-native-candidate-download1.zip",
+          "checksum": "2a969c47cbf18e6b231aa95037128a0b5c684bb0458491f2236896d7c96a629c",
+          "file_size": 8758582,
+          "filename": "monkey2-se-native-he-0.2.0-native-candidate-download2.zip",
           "post_install_script": null,
           "install_manifest": "patch.json",
           "description": "Native Windows Hebrew candidate using the classic AdventureBrew dialogue and new Hebrew menus. Select French in Steam to load Hebrew. The original executable is preserved. Unmatched or conflicting dialogue stays English. Hebrew subtitles and bitmap fonts are included for the F1 classic-mode toggle; unmatched lines remain English. Full-game and RTL wrapping validation are incomplete. Requires a supported original edition; installation is reversible. Steam must be running for Monkey Island 2.",
-          "release_revision": 2
+          "release_revision": 3
         }
       ],
       "behavior": {
         "launch": {
           "original": {
-            "native": "monkey_native"
+            "commands": {
+              "windows": {
+                "program": "Monkey2.exe",
+                "required_files": [
+                  "monkey2.pak",
+                  "steam_api.dll"
+                ],
+                "signatures": [
+                  {
+                    "path": "monkey2.pak",
+                    "prefix": [
+                      75,
+                      65,
+                      80,
+                      76,
+                      0,
+                      0,
+                      128,
+                      63
+                    ]
+                  }
+                ],
+                "env": {
+                  "SteamAppId": "32460",
+                  "SteamGameId": "32460"
+                }
+              }
+            }
           },
           "patched": {
-            "native": "monkey_native"
+            "commands": {
+              "windows": {
+                "program": "Monkey2.exe",
+                "required_files": [
+                  "monkey2.pak",
+                  "steam_api.dll"
+                ],
+                "signatures": [
+                  {
+                    "path": "monkey2.pak",
+                    "prefix": [
+                      75,
+                      65,
+                      80,
+                      76,
+                      0,
+                      0,
+                      128,
+                      63
+                    ]
+                  }
+                ],
+                "env": {
+                  "SteamAppId": "32460",
+                  "SteamGameId": "32460"
+                }
+              }
+            }
           }
         },
         "detection": {
-          "adapter": "monkey_native"
+          "layouts": [
+            {
+              "root": ".",
+              "required_files": [
+                "Monkey2.exe",
+                "monkey2.pak"
+              ],
+              "file_checks": [
+                {
+                  "kind": "prefix",
+                  "path": "monkey2.pak",
+                  "bytes": [
+                    75,
+                    65,
+                    80,
+                    76,
+                    0,
+                    0,
+                    128,
+                    63
+                  ]
+                }
+              ]
+            }
+          ],
+          "mode": "layouts"
         },
-        "library_editions": ["monkey2-se", "monkey2-se-native"]
+        "library_editions": [
+          "monkey2-se",
+          "monkey2-se-native"
+        ]
       }
     },
     {
       "scummvm_id": "silver-pines",
       "added_on": "2026-10-31",
-      "tags": ["indie", "horror", "thriller"],
+      "tags": [
+        "indie",
+        "horror",
+        "thriller"
+      ],
       "steam_app_id": 2333000,
       "title": "Silver Pines",
       "title_he": "סילבר פיינס",
@@ -2155,7 +3805,8 @@
               ],
               "data": "."
             }
-          ]
+          ],
+          "mode": "layouts"
         },
         "launch": {
           "original": {
@@ -2169,7 +3820,9 @@
                   "SteamAppId": "2333000",
                   "SteamGameId": "2333000"
                 },
-                "args": ["-force-d3d11"]
+                "args": [
+                  "-force-d3d11"
+                ]
               }
             }
           },
@@ -2184,7 +3837,9 @@
                   "SteamAppId": "2333000",
                   "SteamGameId": "2333000"
                 },
-                "args": ["-force-d3d11"]
+                "args": [
+                  "-force-d3d11"
+                ]
               }
             }
           }
@@ -2195,7 +3850,10 @@
       "scummvm_id": "jenny-leclue",
       "added_on": "2026-11-06",
       "add_to_cart_url": "https://www.gog.com/checkout/widget/52756712356612660/1285204674?price=undefined%2015.50",
-      "tags": ["indie", "detective"],
+      "tags": [
+        "indie",
+        "detective"
+      ],
       "steam_app_id": 319870,
       "title": "Jenny LeClue - Detectivu",
       "title_he": "ג׳ני לקלו – הבלשית",
@@ -2272,7 +3930,8 @@
               ],
               "data": "."
             }
-          ]
+          ],
+          "mode": "layouts"
         },
         "launch": {
           "original": {
@@ -2317,7 +3976,10 @@
     {
       "scummvm_id": "disco-elysium",
       "added_on": "2026-11-13",
-      "tags": ["hot-kitor", "detective"],
+      "tags": [
+        "hot-kitor",
+        "detective"
+      ],
       "steam_app_id": 632470,
       "title": "Disco Elysium – The Final Cut",
       "title_he": "דיסקו אליסיום",
@@ -2359,19 +4021,193 @@
       ],
       "behavior": {
         "detection": {
-          "adapter": "disco_elysium",
-          "priority": 20
+          "priority": 20,
+          "layouts": [
+            {
+              "root": ".",
+              "required_files": [
+                "Contents/MacOS/Disco Elysium",
+                "Contents/Resources/Data/globalgamemanagers",
+                "Contents/Resources/Data/StreamingAssets/AssetBundles/OSX/lockits/arabic",
+                "Contents/Resources/Data/StreamingAssets/AssetBundles/OSX/fonts/arabic",
+                "Contents/Resources/Data/app.info"
+              ],
+              "file_checks": [
+                {
+                  "kind": "text",
+                  "path": "Contents/Resources/Data/app.info",
+                  "equals": "ZAUM Studio\nDisco Elysium",
+                  "normalization": "trim_crlf"
+                }
+              ]
+            },
+            {
+              "root": ".",
+              "required_files": [
+                "disco.exe",
+                "disco_Data/globalgamemanagers",
+                "disco_Data/StreamingAssets/AssetBundles/Windows/lockits/arabic",
+                "disco_Data/StreamingAssets/AssetBundles/Windows/fonts/arabic",
+                "disco_Data/app.info"
+              ],
+              "file_checks": [
+                {
+                  "kind": "text",
+                  "path": "disco_Data/app.info",
+                  "equals": "ZAUM Studio\nDisco Elysium",
+                  "normalization": "trim_crlf"
+                }
+              ]
+            },
+            {
+              "root": ".",
+              "required_files": [
+                "Contents/MacOS/Disco Elysium",
+                "Contents/Resources/Data/globalgamemanagers",
+                "Contents/Resources/Data/StreamingAssets/AssetBundles/OSX/lockits/arabic",
+                "Contents/Resources/Data/StreamingAssets/AssetBundles/OSX/fonts/arabic",
+                "Contents/Resources/Data/app.info"
+              ],
+              "ancestor": 1,
+              "file_checks": [
+                {
+                  "kind": "text",
+                  "path": "Contents/Resources/Data/app.info",
+                  "equals": "ZAUM Studio\nDisco Elysium",
+                  "normalization": "trim_crlf"
+                }
+              ]
+            },
+            {
+              "root": ".",
+              "required_files": [
+                "disco.exe",
+                "disco_Data/globalgamemanagers",
+                "disco_Data/StreamingAssets/AssetBundles/Windows/lockits/arabic",
+                "disco_Data/StreamingAssets/AssetBundles/Windows/fonts/arabic",
+                "disco_Data/app.info"
+              ],
+              "ancestor": 1,
+              "file_checks": [
+                {
+                  "kind": "text",
+                  "path": "disco_Data/app.info",
+                  "equals": "ZAUM Studio\nDisco Elysium",
+                  "normalization": "trim_crlf"
+                }
+              ]
+            },
+            {
+              "root": ".",
+              "required_files": [
+                "Contents/MacOS/Disco Elysium",
+                "Contents/Resources/Data/globalgamemanagers",
+                "Contents/Resources/Data/StreamingAssets/AssetBundles/OSX/lockits/arabic",
+                "Contents/Resources/Data/StreamingAssets/AssetBundles/OSX/fonts/arabic",
+                "Contents/Resources/Data/app.info"
+              ],
+              "ancestor": 2,
+              "file_checks": [
+                {
+                  "kind": "text",
+                  "path": "Contents/Resources/Data/app.info",
+                  "equals": "ZAUM Studio\nDisco Elysium",
+                  "normalization": "trim_crlf"
+                }
+              ]
+            },
+            {
+              "root": ".",
+              "required_files": [
+                "disco.exe",
+                "disco_Data/globalgamemanagers",
+                "disco_Data/StreamingAssets/AssetBundles/Windows/lockits/arabic",
+                "disco_Data/StreamingAssets/AssetBundles/Windows/fonts/arabic",
+                "disco_Data/app.info"
+              ],
+              "ancestor": 2,
+              "file_checks": [
+                {
+                  "kind": "text",
+                  "path": "disco_Data/app.info",
+                  "equals": "ZAUM Studio\nDisco Elysium",
+                  "normalization": "trim_crlf"
+                }
+              ]
+            },
+            {
+              "root": ".",
+              "required_files": [
+                "Contents/MacOS/Disco Elysium",
+                "Contents/Resources/Data/globalgamemanagers",
+                "Contents/Resources/Data/StreamingAssets/AssetBundles/OSX/lockits/arabic",
+                "Contents/Resources/Data/StreamingAssets/AssetBundles/OSX/fonts/arabic",
+                "Contents/Resources/Data/app.info"
+              ],
+              "ancestor": 3,
+              "file_checks": [
+                {
+                  "kind": "text",
+                  "path": "Contents/Resources/Data/app.info",
+                  "equals": "ZAUM Studio\nDisco Elysium",
+                  "normalization": "trim_crlf"
+                }
+              ]
+            },
+            {
+              "root": ".",
+              "required_files": [
+                "disco.exe",
+                "disco_Data/globalgamemanagers",
+                "disco_Data/StreamingAssets/AssetBundles/Windows/lockits/arabic",
+                "disco_Data/StreamingAssets/AssetBundles/Windows/fonts/arabic",
+                "disco_Data/app.info"
+              ],
+              "ancestor": 3,
+              "file_checks": [
+                {
+                  "kind": "text",
+                  "path": "disco_Data/app.info",
+                  "equals": "ZAUM Studio\nDisco Elysium",
+                  "normalization": "trim_crlf"
+                }
+              ]
+            },
+            {
+              "root": "disco.app",
+              "required_files": [
+                "Contents/MacOS/Disco Elysium",
+                "Contents/Resources/Data/globalgamemanagers",
+                "Contents/Resources/Data/StreamingAssets/AssetBundles/OSX/lockits/arabic",
+                "Contents/Resources/Data/StreamingAssets/AssetBundles/OSX/fonts/arabic",
+                "Contents/Resources/Data/app.info"
+              ],
+              "file_checks": [
+                {
+                  "kind": "text",
+                  "path": "Contents/Resources/Data/app.info",
+                  "equals": "ZAUM Studio\nDisco Elysium",
+                  "normalization": "trim_crlf"
+                }
+              ]
+            }
+          ],
+          "mode": "layouts"
         },
         "launch": {
           "original": {
             "commands": {
               "windows": {
                 "program": "disco.exe",
-                "required_files": ["disco_Data/app.info"]
+                "required_files": [
+                  "disco_Data/app.info"
+                ]
               },
               "osx": {
                 "program": "Contents/MacOS/Disco Elysium",
-                "required_files": ["Contents/Resources/Data/app.info"]
+                "required_files": [
+                  "Contents/Resources/Data/app.info"
+                ]
               }
             }
           },
@@ -2379,11 +4215,15 @@
             "commands": {
               "windows": {
                 "program": "disco.exe",
-                "required_files": ["disco_Data/app.info"]
+                "required_files": [
+                  "disco_Data/app.info"
+                ]
               },
               "osx": {
                 "program": "Contents/MacOS/Disco Elysium",
-                "required_files": ["Contents/Resources/Data/app.info"]
+                "required_files": [
+                  "Contents/Resources/Data/app.info"
+                ]
               }
             }
           }
@@ -2393,7 +4233,9 @@
     {
       "scummvm_id": "moomin-midsummer-madness",
       "added_on": "2026-11-14",
-      "tags": ["hot-kitor"],
+      "tags": [
+        "hot-kitor"
+      ],
       "steam_app_id": 4463520,
       "title": "Moomin: Midsummer Madness",
       "title_he": "מומינים: ההצגה הגדולה",
@@ -2446,7 +4288,8 @@
               ],
               "data": "."
             }
-          ]
+          ],
+          "mode": "layouts"
         },
         "launch": {
           "original": {

@@ -1,3 +1,4 @@
+import { Tag } from "@kitor/registry";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import {
   type ComponentType,
@@ -35,19 +36,20 @@ type CategoryIcon = ComponentType<{
   size?: number;
 }>;
 
-const categoryIcons = new Map<string, CategoryIcon>([
-  ["classic", TrophyIcon],
-  ["detective", SearchIcon],
-  ["thriller", TimerIcon],
-  ["indie", SparklesIcon],
-  ["comedy", SmileIcon],
-  ["sci-fi", RocketIcon],
-  ["fantasy", WandSparklesIcon],
-  ["kids", BabyIcon],
-  ["puzzle", PuzzleIcon],
-  ["story", BookOpenIcon],
-  ["horror", GhostIcon],
-] satisfies [GameCategory, CategoryIcon][]);
+const categoryIcons: Record<GameCategory, CategoryIcon> = {
+  [Tag.Classic]: TrophyIcon,
+  [Tag.Detective]: SearchIcon,
+  [Tag.Thriller]: TimerIcon,
+  [Tag.Indie]: SparklesIcon,
+  [Tag.Comedy]: SmileIcon,
+  [Tag.SciFi]: RocketIcon,
+  [Tag.Fantasy]: WandSparklesIcon,
+  [Tag.Kids]: BabyIcon,
+  [Tag.Puzzle]: PuzzleIcon,
+  [Tag.Story]: BookOpenIcon,
+  [Tag.Horror]: GhostIcon,
+  [Tag.HotKitor]: SparklesIcon,
+};
 
 export function CategoryRow({
   category,
@@ -59,7 +61,7 @@ export function CategoryRow({
   sortOrder,
   onSortChange,
 }: {
-  category?: string;
+  category?: GameCategory;
   title: string;
   logo?: string;
   logoOnDark?: boolean;
@@ -69,12 +71,12 @@ export function CategoryRow({
   onSortChange: (order: GameSortOrder) => void;
 }) {
   const { t } = useTranslation();
-  const isHotKitor = category === "hot-kitor";
+  const isHotKitor = category === Tag.HotKitor;
   const orderedGames =
     sortOrder === "default" && isHotKitor
       ? [...games].sort((a, b) => (b.addedOn ?? "").localeCompare(a.addedOn ?? ""))
       : sortGamesByRelease(games, sortOrder);
-  const Icon = (category && categoryIcons.get(category)) || Gamepad2Icon;
+  const Icon = (category && categoryIcons[category]) || Gamepad2Icon;
   const iconRef = useRef<AnimatedIconHandle>(null);
   const headingId = useId();
   const trackId = useId();

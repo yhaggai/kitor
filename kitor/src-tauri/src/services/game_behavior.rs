@@ -1,5 +1,10 @@
 //! Reviewed catalog behavior shared by detection, installation and launching.
 //! Most games use declarative defaults; adapters are for format-specific work.
+use super::registry_service::Platform;
+pub use super::registry_service::{
+    BundledAdapter, InstallTarget, LaunchMethod, LaunchPreparation, LaunchRoot,
+    LaunchWorkingDirectory, NativePreparation,
+};
 use serde::{Deserialize, Serialize};
 use std::path::{Path, PathBuf};
 
@@ -16,48 +21,8 @@ pub struct GameBehavior {
     pub manual_patch_manifest: Option<String>,
 }
 
-#[derive(Debug, Clone, Default, Serialize, Deserialize)]
-#[serde(default, deny_unknown_fields)]
-pub struct Detection {
-    pub adapter: DetectionAdapter,
-    pub priority: i32,
-    pub layouts: Vec<Layout>,
-    pub extra_subdirectories: Vec<String>,
-}
-#[derive(Debug, Clone, Serialize, Deserialize)]
-#[serde(deny_unknown_fields)]
-pub struct Layout {
-    pub root: String,
-    pub required_files: Vec<String>,
-    #[serde(default)]
-    pub data: String,
-}
-#[derive(Debug, Clone, Copy, Default, PartialEq, Eq, Serialize, Deserialize)]
-#[serde(rename_all = "snake_case")]
-pub enum DetectionAdapter {
-    DiscoElysium,
-    #[default]
-    Patterns,
-    Tentacle,
-    TentacleRemastered,
-    Owlboy,
-    MonkeyNative,
-    SpaceQuest,
-    Toonstruck,
-    Torin,
-}
-#[derive(Debug, Clone, Copy, Serialize, Deserialize)]
-#[serde(rename_all = "snake_case")]
-pub enum BundledAdapter {
-    Tentacle,
-}
-#[derive(Debug, Clone, Copy, Default, Serialize, Deserialize)]
-#[serde(rename_all = "snake_case")]
-pub enum InstallTarget {
-    #[default]
-    GameDirectory,
-    DrifterUserData,
-}
+pub use super::game_detection::Detection;
+
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(deny_unknown_fields)]
 pub struct LaunchProfiles {
@@ -69,19 +34,31 @@ pub struct LaunchProfiles {
 #[derive(Debug, Clone, Default, Serialize, Deserialize)]
 #[serde(default, deny_unknown_fields)]
 pub struct LaunchProfile {
-    pub native: Option<NativeAdapter>,
-    pub commands: std::collections::BTreeMap<String, NativeCommand>,
-    pub native_game_id: Option<String>,
+    pub validate_on_import: bool,
+    pub commands: std::collections::BTreeMap<Platform, NativeCommand>,
     pub subdirectory: Option<String>,
     pub args: Vec<String>,
     pub runtime: Option<String>,
     pub runtime_data: Option<String>,
     pub preparation: Option<LaunchPreparation>,
-    pub prepare_hebrew_preferences: bool,
 }
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(deny_unknown_fields)]
 pub struct NativeCommand {
+    #[serde(default)]
+    pub method: LaunchMethod,
+    #[serde(default)]
+    pub root: LaunchRoot,
+    pub bundle_name: Option<String>,
+    #[serde(default)]
+    pub working_directory: LaunchWorkingDirectory,
+    #[serde(default)]
+    pub executable_files: Vec<String>,
+    #[serde(default)]
+    pub required_directories: Vec<String>,
+    #[serde(default)]
+    pub signatures: Vec<LaunchSignature>,
+    pub preparation: Option<NativePreparation>,
     pub program: String,
     #[serde(default)]
     pub args: Vec<String>,
@@ -90,27 +67,72 @@ pub struct NativeCommand {
     #[serde(default)]
     pub required_files: Vec<String>,
 }
-impl LaunchProfile {
-    pub fn is_native(&self) -> bool {
-        self.native.is_some() || !self.commands.is_empty()
+#[derive(Debug, Clone, Serialize, Deserialize)]
+#[serde(deny_unknown_fields)]
+pub struct LaunchSignature {
+    pub path: String,
+    pub prefix: Vec<u8>,
+}
+
+impl NativeCommand {
+    pub fn validate_for_platform(&self, platform: Platform) -> Result<(), String> {
+        self.validate()?;
+        if self.root == LaunchRoot::AppBundle && platform != Platform::MacOS {
+            return Err("App-bundle roots require macOS".into());
+        }
+        if self.preparation == Some(NativePreparation::GrimHebrewPreferences)
+            && platform != Platform::Windows
+        {
+            return Err("Grim Fandango preference preparation requires Windows".into());
+        }
+        Ok(())
+    }
+
+    pub fn validate(&self) -> Result<(), String> {
+        validate_relative(&self.program)?;
+        let bundle = self.root == LaunchRoot::AppBundle;
+        if bundle != self.bundle_name.is_some() {
+            return Err(
+                "App-bundle roots require a bundle name; game roots cannot specify one".into(),
+            );
+        }
+        if let Some(name) = &self.bundle_name {
+            validate_relative(name)?;
+            if name.contains('/') || !name.to_ascii_lowercase().ends_with(".app") {
+                return Err("Bundle name must be a single .app directory name".into());
+            }
+        }
+        if !bundle
+            && (self.method == LaunchMethod::AppBundle
+                || self.working_directory != LaunchWorkingDirectory::Root)
+        {
+            return Err("Bundle launch and working directories require an app-bundle root".into());
+        }
+        if self.method == LaunchMethod::AppBundle && !self.env.is_empty() {
+            return Err("Use executable launch when environment variables are required".into());
+        }
+        for path in self
+            .required_files
+            .iter()
+            .chain(&self.required_directories)
+            .chain(&self.executable_files)
+        {
+            validate_relative(path)?;
+        }
+        for signature in &self.signatures {
+            validate_relative(&signature.path)?;
+            if signature.prefix.is_empty() || signature.prefix.len() > 4096 {
+                return Err("Launch signatures must contain 1 to 4096 bytes".into());
+            }
+        }
+        Ok(())
     }
 }
 
-#[derive(Debug, Clone, Copy, Serialize, Deserialize)]
-#[serde(rename_all = "snake_case")]
-pub enum NativeAdapter {
-    Drifter,
-    MonkeyNative,
-    Grim,
-    TentacleRemastered,
-    Owlboy,
-    Undertale,
-}
-#[derive(Debug, Clone, Copy, Serialize, Deserialize)]
-#[serde(rename_all = "snake_case")]
-pub enum LaunchPreparation {
-    KyrandiaSignature,
-    TentacleClassic,
+impl LaunchProfile {
+    pub fn is_native(&self) -> bool {
+        !self.commands.is_empty()
+    }
 }
 
 pub fn for_game(id: &str) -> Result<GameBehavior, String> {
@@ -136,14 +158,15 @@ fn validate_relative(path: &str) -> Result<(), String> {
 
 impl GameBehavior {
     pub fn validate(&self) -> Result<(), String> {
+        self.detection.validate()?;
         if self.bundled.is_some() && self.bundled_resource.is_some() {
             return Err("Choose one bundled package resource or adapter".into());
         }
         if let Some(profiles) = &self.launch {
-            for profile in [&profiles.original, &profiles.patched].into_iter().chain(profiles.original_macos.iter()) {
-                if profile.native.is_some() && !profile.commands.is_empty() {
-                    return Err("Choose native commands or a native adapter, not both".into());
-                }
+            for profile in [&profiles.original, &profiles.patched]
+                .into_iter()
+                .chain(profiles.original_macos.iter())
+            {
                 for path in profile
                     .subdirectory
                     .iter()
@@ -152,11 +175,11 @@ impl GameBehavior {
                 {
                     validate_relative(path)?;
                 }
-                for command in profile.commands.values() {
-                    validate_relative(&command.program)?;
-                    for name in &command.required_files {
-                        validate_relative(name)?;
-                    }
+                if profile.validate_on_import && profile.commands.is_empty() {
+                    return Err("Import validation requires native commands".into());
+                }
+                for (platform, command) in &profile.commands {
+                    command.validate_for_platform(*platform)?;
                 }
             }
         }
@@ -193,7 +216,11 @@ impl GameBehavior {
                     profiles.patched.clone()
                 } else {
                     if cfg!(target_os = "macos") {
-                        profiles.original_macos.as_ref().unwrap_or(&profiles.original).clone()
+                        profiles
+                            .original_macos
+                            .as_ref()
+                            .unwrap_or(&profiles.original)
+                            .clone()
                     } else {
                         profiles.original.clone()
                     }

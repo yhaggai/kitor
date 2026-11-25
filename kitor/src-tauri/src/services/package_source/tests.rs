@@ -61,7 +61,7 @@ fn owlboy_compatibility_archives_are_downloads_with_independent_checksums() {
 fn legacy_bundled_sources_are_rejected_instead_of_staged() {
     let registry = crate::services::registry_service::load_registry().unwrap();
     let mut patch = registry.games.iter().find(|g| g.scummvm_id == "moomin-midsummer-madness").unwrap().patches[0].clone();
-    patch.source_type = "bundled".into();
+    patch.source_type = crate::services::registry_service::SourceType::Bundled;
     patch.download_url = "bundled://moomin-midsummer-madness/windows".into();
     assert!(PackageSource::resolve(&patch, &GameBehavior::default()).is_err());
 }
@@ -123,7 +123,7 @@ fn platform_and_edition_selection_never_falls_back_to_other_payloads() {
 #[cfg(debug_assertions)]
 fn arbitrary_local_packages_are_not_enabled_by_catalog_urls() {
     let mut patch=crate::services::registry_service::load_registry().unwrap().games.into_iter().flat_map(|g|g.patches).next().unwrap();
-    patch.source_type="local-preview".into();patch.download_url="file:///tmp/other.zip".into();
+    patch.source_type=crate::services::registry_service::SourceType::LocalPreview;patch.download_url="file:///tmp/other.zip".into();
     assert!(PackageSource::resolve(&patch,&GameBehavior::default()).is_err());
 }
 
