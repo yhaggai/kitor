@@ -103,13 +103,14 @@ fn windows_detection_and_launch() {
     assert_eq!(detect(&root.join("Data")), detect(&root));
     if cfg!(target_os = "windows") {
         let cmd = launch_command(&root).unwrap();
+        let canonical_root = root.canonicalize().unwrap();
         assert_eq!(
-            Path::new(cmd.get_program()),
-            root.canonicalize().unwrap().join("oWlBoY.ExE")
+            Path::new(cmd.get_program()).canonicalize().unwrap(),
+            canonical_root.join("oWlBoY.ExE")
         );
         assert_eq!(
-            cmd.get_current_dir(),
-            Some(root.canonicalize().unwrap().as_path())
+            cmd.get_current_dir().unwrap().canonicalize().unwrap(),
+            canonical_root
         );
         // Exercise the catalog route as well: it must not reject Windows before
         // reaching this platform-aware launcher (for either language edition).
