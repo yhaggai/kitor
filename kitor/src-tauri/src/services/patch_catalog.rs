@@ -29,7 +29,7 @@ pub struct Release {
     pub file_size: u64,
     pub author: String,
     pub description: String,
-    pub platforms: Vec<String>,
+    pub platforms: Vec<Platform>,
 }
 
 pub fn initialize(app_data: &Path) {
@@ -85,7 +85,7 @@ pub fn parse(bytes: &[u8]) -> Result<Catalog, String> {
             || release
                 .platforms
                 .iter()
-                .any(|p| !["windows", "osx"].contains(&p.as_str()))
+                .any(|p| ![Platform::Windows, Platform::MacOS].contains(p))
             || !identities.insert((&release.scummvm_id, &release.language))
         {
             return Err(format!(
@@ -98,15 +98,9 @@ pub fn parse(bytes: &[u8]) -> Result<Catalog, String> {
 }
 
 pub fn merge(registry: &mut Registry, catalog: &Catalog) {
-    let platform = if cfg!(target_os = "windows") {
-        "windows"
-    } else if cfg!(target_os = "macos") {
-        "osx"
-    } else {
-        "linux"
-    };
+    let platform = Platform::current();
     for release in &catalog.patches {
-        if !release.platforms.iter().any(|p| p == platform) {
+        if !release.platforms.contains(&platform) {
             continue;
         }
         let Some(game) = registry
@@ -142,7 +136,7 @@ pub fn merge(registry: &mut Registry, catalog: &Catalog) {
         patch.file_size = Some(release.file_size as i64);
         patch.author = release.author.clone();
         patch.description = release.description.clone();
-        patch.source_type = "github".into();
+        patch.source_type = SourceType::GitHub;
         patch.install_manifest = Some("patch.json".into());
         patch.post_install_script = None;
     }

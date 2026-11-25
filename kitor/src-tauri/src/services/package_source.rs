@@ -61,11 +61,11 @@ impl PackageSource {
         {
             return Ok(Self::SpaceQuest4Scummvm);
         }
-        if patch.source_type == "bundled" {
+        if patch.source_type == super::registry_service::SourceType::Bundled {
             return Err("Bundled patches are no longer supported; refresh the catalog".into());
         }
         #[cfg(debug_assertions)]
-        if patch.source_type == "local-preview" && patch.download_url == "local-preview://disco-elysium" {
+        if patch.source_type == super::registry_service::SourceType::LocalPreview && patch.download_url == "local-preview://disco-elysium" {
             let path = super::games::disco_elysium::preview_archive()?.ok_or("Local preview is not enabled")?;
             if patch.checksum.as_deref() != Some(super::patch_lifecycle::hash(&path)?.as_str()) {
                 return Err("Local preview changed; refresh before installing".into());

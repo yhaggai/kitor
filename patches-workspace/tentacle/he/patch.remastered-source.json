@@ -14,7 +14,7 @@
           "source": {
             "kind": "reconstruct",
             "path": "recipes/windows-tentacle.000.json",
-            "sha256": "112e62d2043e440fbcf8e0669403ea9ab8a6554f003eba8058d2b2a7f09420a6",
+            "sha256": "8798d5cc368670406767bb146b3149cbe334add4d04ff7ca33673593deb1458b",
             "input": "tenta.cle"
           }
         },
@@ -25,7 +25,7 @@
           "source": {
             "kind": "reconstruct",
             "path": "recipes/windows-tentacle.001.json",
-            "sha256": "8c65923e67df93c5566c666c6678f963318d345292af0f2977c2fadea8c6af0f",
+            "sha256": "6e63f23b4ff4b909bf98a06938d6056a2432965cf4e3745e7b4a65a719d39dd5",
             "input": "tenta.cle"
           }
         },
@@ -36,7 +36,7 @@
           "source": {
             "kind": "reconstruct",
             "path": "recipes/windows-monster.so3.json",
-            "sha256": "0ebeb5459d6b9408f3b7fbd560e0918c9b90e30cc8d1637c138eb07ad770e790",
+            "sha256": "67919b832903ee16631f64768f706565427b285fd364a3404e2ee4eedc2b3d76",
             "input": "tenta.cle"
           }
         }
@@ -51,7 +51,7 @@
           "source": {
             "kind": "reconstruct",
             "path": "recipes/tentacle.000.json",
-            "sha256": "00b0b1e4a45bdfe93f23b3f4aef4cff1499c48dba4c9510557f3b6749434774a",
+            "sha256": "9a6372e5e195aea7f815e9792cfa51a15f2a9563532802dcd3d93ca2a5483843",
             "input": "Dott.app/Contents/Resources/tenta.cle"
           }
         },
@@ -62,7 +62,7 @@
           "source": {
             "kind": "reconstruct",
             "path": "recipes/tentacle.001.json",
-            "sha256": "aae8dcb3092cf3eb79ea0f92ea7e72eafecc8a2de5a556a8e84f997c703d4b10",
+            "sha256": "fd55420f305b1839babd0ee27a9c8a0e432398c42f33a840a3b8f8ad81d0ad7b",
             "input": "Dott.app/Contents/Resources/tenta.cle"
           }
         },
@@ -73,7 +73,7 @@
           "source": {
             "kind": "reconstruct",
             "path": "recipes/monster.so3.json",
-            "sha256": "f4422bd145a326a9e108a784941fd4c6caea0da250e0828a67be8eec5ca0eb3e",
+            "sha256": "57c6d7f819041c5a57f6a49185eca860813d8f16a57a492a920d361138a3e046",
             "input": "Dott.app/Contents/Resources/tenta.cle"
           }
         }

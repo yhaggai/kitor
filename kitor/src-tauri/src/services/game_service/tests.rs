@@ -1,5 +1,7 @@
 use super::*;
-use crate::services::game_adapters::is_space_quest;
+fn is_space_quest(path: &Path, id: &str) -> bool {
+    crate::services::game_detection::detect_registered(id, path, None).is_some()
+}
 
 struct Fixture(PathBuf);
 impl Fixture {
@@ -45,7 +47,7 @@ async fn library_includes_game_without_any_patches() {
 fn detects_space_quest_collection() {
     let root = PathBuf::from(std::env::var("KITOR_SPACE_QUEST_DIR").unwrap());
     let signatures: serde_json::Value = serde_json::from_str(include_str!(
-        "../../../data/space_quest_detection.json"
+        "fixtures/space-quest.json"
     )).unwrap();
     for signature in signatures.as_array().unwrap() {
         let id = signature["id"].as_str().unwrap();

@@ -11,7 +11,7 @@ import { CategoryRow } from "./CategoryRow";
 
 const HOME_VIEW_STORAGE_KEY = "kitor-home-view";
 
-type HomeView = "categories" | "grid" | "studios";
+type HomeView = "categories" | "grid" | "studios" | "years";
 
 function MenuOption({
   value,
@@ -35,7 +35,7 @@ function MenuOption({
 function readHomeView(): HomeView {
   try {
     const view = globalThis.localStorage?.getItem(HOME_VIEW_STORAGE_KEY);
-    return view === "grid" || view === "studios" ? view : "categories";
+    return view === "grid" || view === "studios" || view === "years" ? view : "categories";
   } catch {
     return "categories";
   }
@@ -74,6 +74,7 @@ export function CollectionView({
   const isBrowsingHome = isHome && !searchTerm;
   const showCategories = isBrowsingHome && homeView === "categories";
   const showStudios = isBrowsingHome && homeView === "studios";
+  const showYears = isBrowsingHome && homeView === "years";
 
   function changeHomeView(view: HomeView) {
     setHomeView(view);
@@ -116,9 +117,26 @@ export function CollectionView({
   const studioRows = [...studios.values()].sort((a, b) =>
     a.studio.name.localeCompare(b.studio.name)
   );
-  const ungrouped = showStudios
-    ? matches.filter((game) => !game.originalDevelopers?.length)
-    : matches.filter((game) => !game.tags?.length);
+  const years = new Map<string, GameSummary[]>();
+  const undated: GameSummary[] = [];
+  if (showYears) {
+    for (const game of matches) {
+      const year = game.originalReleaseDate?.slice(0, 4);
+      if (!year) {
+        undated.push(game);
+        continue;
+      }
+      const row = years.get(year);
+      if (row) row.push(game);
+      else years.set(year, [game]);
+    }
+  }
+  const yearRows = [...years.entries()].sort(([a], [b]) =>
+    homeSort === "release-oldest" ? a.localeCompare(b) : b.localeCompare(a)
+  );
+  const ungrouped = matches.filter((game) =>
+    showStudios ? !game.originalDevelopers?.length : !game.tags?.length
+  );
 
   function categorySortProps(id: string) {
     const sortOrder = categorySorts[id] ?? homeSort;
@@ -212,6 +230,9 @@ export function CollectionView({
                     <MenuOption value="studios" disabled={!isBrowsingHome}>
                       {t("Studios")}
                     </MenuOption>
+                    <MenuOption value="years" disabled={!isBrowsingHome}>
+                      {t("Release year")}
+                    </MenuOption>
                     <MenuOption value="grid" disabled={!isBrowsingHome}>
                       {t("No grouping")}
                     </MenuOption>
@@ -282,7 +303,7 @@ export function CollectionView({
           <output className="kt-sr-only">
             {matches.length} {t("games")}
           </output>
-          {showCategories || showStudios ? (
+          {showCategories || showStudios || showYears ? (
             <div className="kt-category-rows" key={navigationResetKey}>
               {categories.map((id) => (
                 <CategoryRow
@@ -305,7 +326,24 @@ export function CollectionView({
                   {...categorySortProps(`studio:${studio.id}`)}
                 />
               ))}
-              {ungrouped.length > 0 && (
+              {yearRows.map(([year, yearGames]) => (
+                <CategoryRow
+                  key={year}
+                  title={year}
+                  games={yearGames}
+                  onOpen={onOpen}
+                  {...categorySortProps(`year:${year}`)}
+                />
+              ))}
+              {showYears && undated.length > 0 && (
+                <CategoryRow
+                  title={t("Unknown release year")}
+                  games={undated}
+                  onOpen={onOpen}
+                  {...categorySortProps("year:unknown")}
+                />
+              )}
+              {!showYears && ungrouped.length > 0 && (
                 <CategoryRow
                   title={t(
                     showStudios

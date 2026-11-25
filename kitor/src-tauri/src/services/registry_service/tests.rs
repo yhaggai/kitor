@@ -33,7 +33,7 @@ fn saved_bundled_entry_migrates_to_reviewed_download() {
         .find(|g| g.scummvm_id == "jenny-leclue")
         .unwrap();
     let original = game.patches[0].clone();
-    game.patches[0].source_type = "bundled".into();
+    game.patches[0].source_type = SourceType::Bundled;
     game.patches[0].download_url = "bundled://jenny-leclue/he".into();
     game.patches[0].version = "old".into();
     game.patches[0].release_revision += 1;
@@ -44,7 +44,7 @@ fn saved_bundled_entry_migrates_to_reviewed_download() {
         .find(|g| g.scummvm_id == "jenny-leclue")
         .unwrap()
         .patches[0];
-    assert_eq!(resolved.source_type, "github");
+    assert_eq!(resolved.source_type, SourceType::GitHub);
     assert_eq!(resolved.download_url, original.download_url);
     assert_eq!(resolved.version, original.version);
     assert_eq!(resolved.release_revision, original.release_revision);
@@ -60,7 +60,7 @@ fn moomin_download_remains_available_in_the_loaded_registry() {
         .expect("Moomin game is present");
     assert!(game.behavior.bundled_resource.is_none());
     assert!(game.patches.iter().any(|patch| {
-        patch.language == "he" && patch.source_type == "github" && patch.checksum.is_some()
+        patch.language == "he" && patch.source_type == SourceType::GitHub && patch.checksum.is_some()
     }));
 }
 
@@ -69,12 +69,12 @@ fn saved_moomin_bundle_migrates_to_download_and_clears_embedded_behavior() {
     let built: Registry = serde_json::from_str(include_str!("../../../../patches/registry.json")).unwrap();
     let mut saved = built.clone();
     let game = saved.games.iter_mut().find(|g| g.scummvm_id == "moomin-midsummer-madness").unwrap();
-    game.patches[0].source_type = "bundled".into();
+    game.patches[0].source_type = SourceType::Bundled;
     game.patches[0].download_url = "bundled://moomin-midsummer-madness/windows".into();
     game.behavior.bundled_resource = Some("moomin-midsummer-madness".into());
     migrate_bundled_packages(&mut saved, &built);
     let game = saved.games.iter().find(|g| g.scummvm_id == "moomin-midsummer-madness").unwrap();
-    assert_eq!(game.patches[0].source_type, "github");
+    assert_eq!(game.patches[0].source_type, SourceType::GitHub);
     assert!(game.patches[0].download_url.starts_with("https://"));
     assert!(game.behavior.bundled_resource.is_none());
 }
@@ -159,4 +159,25 @@ fn active_patch_fingerprints_follow_verified_journal_bytes() {
     assert_eq!(game.patches_for_target(&target, [&journal]).len(), 1);
     fs::write(&original, "changed outside Kitor").unwrap();
     assert!(game.patches_for_target(&target, [&journal]).is_empty());
+}
+
+#[test]
+fn registry_vocabulary_rejects_unknown_wire_values() {
+    assert!(serde_json::from_str::<Tag>(r#""clasisc""#).is_err());
+    assert!(serde_json::from_str::<Platform>(r#""macos""#).is_err());
+    assert!(serde_json::from_str::<Store>(r#""steem""#).is_err());
+    assert!(serde_json::from_str::<SourceType>(r#""store""#).is_err());
+    assert_eq!(serde_json::from_str::<Tag>(r#""hot-kitor""#).unwrap(), Tag::HotKitor);
+    assert_eq!(serde_json::to_string(&Platform::MacOS).unwrap(), r#""osx""#);
+    assert_eq!(CatalogSourceType::from(SourceType::LocalPreview), CatalogSourceType::LocalPreview);
+}
+
+#[test]
+fn generated_behavior_enums_preserve_defaults_and_reject_unknown_command_platforms() {
+    let behavior: super::super::game_behavior::GameBehavior = serde_json::from_str("{}").unwrap();
+    assert_eq!(behavior.detection.mode, DetectionMode::Patterns);
+    assert_eq!(behavior.target, InstallTarget::GameDirectory);
+    assert!(serde_json::from_value::<super::super::game_behavior::LaunchProfile>(
+        serde_json::json!({"commands": {"macos": {"program": "game"}}})
+    ).is_err());
 }
