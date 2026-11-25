@@ -3,7 +3,7 @@ import Layout from "../layouts/Layout.astro";
 import { gameGuideTitle, type CatalogGame } from "../lib/catalog";
 import { fallbackInstallerUrl, installers } from "../lib/downloads";
 import { gameGuideNotes } from "../lib/game-guide-notes";
-import { platformNames, storeNames, translationDetails } from "../lib/translation-details";
+import { platformNames, translationDetails } from "../lib/translation-details";
 import Box from "./Box";
 
 const { game, locale } = Astro.props as { game: CatalogGame; locale: "he" | "en" };
@@ -16,16 +16,11 @@ const details = translationDetails[game.id];
 const platforms = Object.entries(game.platforms)
   .filter(([, supported]) => supported)
   .map(([platform]) => platformNames[platform] ?? platform);
-const translationVersion = game.translationVersion;
 const status = details?.status
   ? t(...details.status)
-  : !game.hebrew
-    ? t("אין כרגע חבילת תרגום בקיטור.", "Kitor does not currently offer a Hebrew patch.")
-    : /experimental|candidate/i.test(translationVersion ?? "")
-      ? t("חבילה ניסיונית. בדיקת משחק מלאה עדיין ממתינה.", "Experimental patch. A full playthrough is pending.")
-      : /beta/i.test(translationVersion ?? "")
-        ? t("בטא.", "Beta.")
-        : t("חבילת תרגום זמינה בקיטור.", "A Hebrew patch is available in Kitor.");
+  : game.hebrew
+    ? t("חבילת תרגום זמינה בקיטור.", "A Hebrew patch is available in Kitor.")
+    : t("אין כרגע חבילת תרגום בקיטור.", "Kitor does not currently offer a Hebrew patch.");
 const description = game.hebrew
   ? t(
       `איך לשחק ב־${name} בעברית עם קיטור. בדקו את פרטי המשחק והורידו את האפליקציה.`,
@@ -100,23 +95,14 @@ const storeLinks = [
             ? t("היקף התרגום לא מתועד בקטלוג.", "The catalog has no record of the translation coverage.")
             : t("אין חבילת תרגום שאפשר לבדוק.", "There is no patch to assess.")}</dd>
         <dt>{t("סטטוס התרגום", "Translation status")}</dt>
-        <dd>{status} {translationVersion && <bdi>{translationVersion}</bdi>}</dd>
+        <dd>{status}</dd>
         <dt>{t("גרסאות נתמכות", "Supported editions")}</dt>
         <dd>
           {game.hebrew ? (
             <>
               {details?.edition && <div><bdi>{details.edition}</bdi></div>}
               {platforms.length > 0 && <div><bdi>{platforms.join(" · ")}</bdi></div>}
-              {game.translationBuilds?.length ? (
-                <ul>
-                  {game.translationBuilds.map(({ store, platform, buildId, manifestId }) => (
-                    <li><bdi>{storeNames[store] ?? store} · {platformNames[platform] ?? platform}
-                      {buildId ? ` · Build ${buildId}` : ""}
-                      {manifestId ? ` · Manifest ${manifestId}` : ""}
-                    </bdi></li>
-                  ))}
-                </ul>
-              ) : !details?.edition && t("המהדורה המדויקת לא מתועדת בקטלוג.", "The catalog has no record of the exact edition.")}
+              {!details?.edition && t("המהדורה המדויקת לא מתועדת בקטלוג.", "The catalog has no record of the exact edition.")}
             </>
           ) : t("אין מהדורה נתמכת לתרגום בקיטור.", "No edition has a supported Hebrew patch in Kitor.")}
         </dd>

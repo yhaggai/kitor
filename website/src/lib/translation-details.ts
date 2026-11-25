@@ -112,5 +112,3 @@ export const platformNames: Record<string, string> = {
   osx: "macOS",
   linux: "Linux",
 };
-
-export const storeNames: Record<string, string> = { steam: "Steam", gog: "GOG" };

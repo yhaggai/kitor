@@ -22,19 +22,6 @@
     "descriptionEn": "A child falls into an underground world inhabited by monsters and searches for a way home. Along the way, the people they meet and the choices they make shape a role-playing adventure where even fights can be resolved without violence.\n\nToby Fox’s Undertale left a lasting mark on indie role-playing games with a story that made compassion a meaningful choice. More than a decade after its release, players still admire it, and a devoted fan community keeps celebrating it through concerts, cosplay meetups, and fan games.",
     "sourceUrl": "https://store.steampowered.com/app/391540/Undertale/",
     "translationCredit": "yhaggai",
-    "translationVersion": "alpha2-steam-kitor6",
-    "translationBuilds": [
-      {
-        "store": "steam",
-        "platform": "windows",
-        "manifestId": "3413030246586915448"
-      },
-      {
-        "store": "steam",
-        "platform": "osx",
-        "manifestId": "1593483711954100372"
-      }
-    ],
     "steamAppId": 391540
   },
   {
@@ -60,7 +47,6 @@
     "sourceUrl": "https://www.facebook.com/groups/200491360554968/permalink/418070868797015/",
     "screenshot": "https://assets.kitor.click/screenshots/monkey-se/e1e05efcb2815923.jpg",
     "translationCredit": "AdventureBrew",
-    "translationVersion": "1.2-kitor2",
     "steamAppId": 32360,
     "gogSlug": "the_secret_of_monkey_island_special_edition",
     "gogProductId": 1207666253
@@ -88,7 +74,6 @@
     "sourceUrl": "https://www.facebook.com/groups/200491360554968/posts/1105072610096834/",
     "screenshot": "https://assets.kitor.click/screenshots/monkey2-se/01671e6d3b0127dd.jpg",
     "translationCredit": "AdventureBrew",
-    "translationVersion": "1.1-kitor2",
     "steamAppId": 32460,
     "gogSlug": "monkey_island_2_special_edition_lechucks_revenge",
     "gogProductId": 1425039730
@@ -116,7 +101,6 @@
     "sourceUrl": "https://www.facebook.com/groups/200491360554968/posts/1017911895479573",
     "screenshot": "https://assets.kitor.click/screenshots/sq1sci/6c041c3b9983892c.jpg",
     "translationCredit": "AdventureBrew",
-    "translationVersion": "1.0-kitor3",
     "steamAppId": 10110
   },
   {
@@ -142,7 +126,6 @@
     "sourceUrl": "https://www.facebook.com/groups/200491360554968/permalink/840226783248086/",
     "screenshot": "https://assets.kitor.click/screenshots/kyra1-cd/ecb0f67239d31c6b.jpg",
     "translationCredit": "AdventureBrew",
-    "translationVersion": "1.0-beta-kitor2",
     "gogSlug": "legend_of_kyrandia",
     "gogProductId": 1207659683
   },
@@ -169,7 +152,6 @@
     "sourceUrl": "https://www.facebook.com/groups/200491360554968/permalink/834363283834436/",
     "screenshot": "https://assets.kitor.click/screenshots/pq1/54972047fbfc056d.jpg",
     "translationCredit": "AdventureBrew",
-    "translationVersion": "1.0-kitor1",
     "steamAppId": 494740
   },
   {
@@ -194,19 +176,6 @@
     "descriptionHe": "תצטרפו להרפתקה הראשונה של רוג׳ר וילקו בגרסה המקורית עם גרפיקה של EGA. כמובן, מדובר במסע בחלל פרק ראשון (Space Quest 1). תיהנו מכל ההומור, מכל הדרכים למות, ומכל הניקיון של השרת האס!",
     "sourceUrl": "https://www.facebook.com/groups/hebrewadventure/posts/1893489874588433/",
     "translationCredit": "sam-mfb",
-    "translationVersion": "1.0-kitor1",
-    "translationBuilds": [
-      {
-        "store": "steam",
-        "platform": "windows",
-        "manifestId": "6725209980292758062"
-      },
-      {
-        "store": "steam",
-        "platform": "osx",
-        "manifestId": "6725209980292758062"
-      }
-    ],
     "steamAppId": 10110,
     "gogProductId": 1207661413
   },
@@ -232,7 +201,6 @@
     "descriptionHe": "רוג׳ר וילקו, השרת שהפך לגיבור בעל כורחו, נקלע שוב לצרות כשווהאל מבקש לנקום בו. מסע ההיחלצות מוביל אותו דרך ג׳ונגל מסוכן ומתקנים מאיימים, עם חידות, מלכודות והומור חללי בכל פינה.",
     "sourceUrl": "https://www.facebook.com/groups/hebrewadventure/posts/1864116760859078/",
     "translationCredit": "sam-mfb",
-    "translationVersion": "1.0-kitor2",
     "steamAppId": 10110,
     "gogProductId": 1207661423
   },
@@ -259,7 +227,6 @@
     "sourceUrl": "https://www.facebook.com/groups/200491360554968/permalink/715358449068254/",
     "screenshot": "https://assets.kitor.click/screenshots/sq3/b62764b09d8faabe.jpg",
     "translationCredit": "AdventureBrew",
-    "translationVersion": "1.0-kitor1",
     "steamAppId": 10110,
     "gogProductId": 1207661433
   },
@@ -285,7 +252,6 @@
     "descriptionHe": "רוג׳ר וילקו מסתבך בהרפתקה שמדלגת בין תקופות שונות של מסע בחלל. סכנות מהעבר ומהעתיד רודפות אחריו, והשרת המפורסם צריך להסתמך על תושייה ומזל כדי לשרוד.\n\nקומדיית מדע בדיוני עם חידות, מסע בזמן ובדיחות על משחקי מחשב ועל הגיבור עצמו.",
     "sourceUrl": "https://www.gog.com/en/game/space_quest_4_5_6",
     "translationCredit": "Kitor",
-    "translationVersion": "0.1.1-download1",
     "steamAppId": 10110
   },
   {
@@ -311,7 +277,6 @@
     "sourceUrl": "https://www.facebook.com/groups/hebrewadventure/permalink/1360601411210618/",
     "screenshot": "https://assets.kitor.click/screenshots/sq5/da4611d35005409a.jpg",
     "translationCredit": "AdventureBrew",
-    "translationVersion": "1.0-kitor1",
     "steamAppId": 10110
   },
   {
@@ -361,7 +326,6 @@
     "sourceUrl": "https://www.facebook.com/groups/200491360554968/permalink/591304524806981/",
     "screenshot": "https://assets.kitor.click/screenshots/torin/5f9bafc24c5303fa.jpg",
     "translationCredit": "AdventureBrew",
-    "translationVersion": "1.0-kitor1",
     "gogProductId": 1207659044
   },
   {
@@ -387,7 +351,6 @@
     "sourceUrl": "https://www.facebook.com/groups/hebrewadventure/posts/1352741975329895/",
     "screenshot": "https://assets.kitor.click/screenshots/spyfox/a203dd3acef73bd6.jpg",
     "translationCredit": "AdventureBrew",
-    "translationVersion": "1.0-kitor1",
     "steamAppId": 283980
   },
   {
@@ -413,7 +376,6 @@
     "sourceUrl": "https://www.facebook.com/groups/hebrewadventure/posts/1353949765209116",
     "screenshot": "https://assets.kitor.click/screenshots/pajama/e81b658b487e721d.jpg",
     "translationCredit": "AdventureBrew",
-    "translationVersion": "1.0-kitor1",
     "gogProductId": 1435735429
   },
   {
@@ -439,7 +401,6 @@
     "sourceUrl": "https://www.facebook.com/groups/hebrewadventure/posts/1396014141002678",
     "screenshot": "https://assets.kitor.click/screenshots/toonstruck/d439cb75c5e8c0ad.jpg",
     "translationCredit": "AdventureBrew",
-    "translationVersion": "1.0-kitor1",
     "gogProductId": 1207666633
   },
   {
@@ -465,7 +426,6 @@
     "sourceUrl": "https://www.facebook.com/groups/hebrewadventure/posts/926432064627557",
     "screenshot": "https://assets.kitor.click/screenshots/gob2/93cf6d3d8e2801d6.jpg",
     "translationCredit": "AdventureBrew",
-    "translationVersion": "1.0-kitor1",
     "gogProductId": 1207662293
   },
   {
@@ -491,7 +451,6 @@
     "sourceUrl": "https://www.facebook.com/groups/hebrewadventure/permalink/1680515765885846/",
     "screenshot": "https://assets.kitor.click/screenshots/tlj/cd4a47ae8ff8f7bc.jpg",
     "translationCredit": "AdventureBrew",
-    "translationVersion": "catalog-20261025-kitor1",
     "steamAppId": 6310,
     "gogProductId": 1207658794
   },
@@ -518,7 +477,6 @@
     "sourceUrl": "https://www.facebook.com/groups/hebrewadventure/posts/1709390876331668",
     "screenshot": "https://assets.kitor.click/screenshots/sky/6e20c304d27583d8.jpg",
     "translationCredit": "AdventureBrew",
-    "translationVersion": "catalog-20261025-kitor1",
     "gogProductId": 1207658695
   },
   {
@@ -544,7 +502,6 @@
     "sourceUrl": "https://www.facebook.com/groups/200491360554968/posts/1107855336485228/",
     "screenshot": "https://assets.kitor.click/screenshots/stanley-parable/545da591ec8e906a.jpg",
     "translationCredit": "sigmagamma and Hebrew Adventure contributors",
-    "translationVersion": "0.9.2.2-steam-male-kitor1",
     "steamAppId": 221910
   },
   {
@@ -570,7 +527,6 @@
     "sourceUrl": "https://www.facebook.com/groups/200491360554968/permalink/356128024991300/",
     "screenshot": "https://assets.kitor.click/screenshots/tesla-effect/e8ca617b7708ec30.jpg",
     "translationCredit": "Hebrew Adventure community (upstream credits)",
-    "translationVersion": "RC1-kitor1",
     "steamAppId": 261510
   },
   {
@@ -596,7 +552,6 @@
     "sourceUrl": "https://www.facebook.com/groups/hebrewadventure/permalink/1388383521765740/?mibextid=rS40aB7S9Ucbxw6v",
     "screenshot": "https://assets.kitor.click/screenshots/ethan-carter/7e645616e133929e.jpg",
     "translationCredit": "Hebrew Adventure community (upstream credits)",
-    "translationVersion": "2023-12-25-kitor1",
     "steamAppId": 258520
   },
   {
@@ -622,7 +577,6 @@
     "sourceUrl": "https://www.facebook.com/groups/hebrewadventure/posts/1399725470631545",
     "screenshot": "https://assets.kitor.click/screenshots/life-is-strange/54047ceb01d62bfb.jpg",
     "translationCredit": "Hebrew Adventure community (upstream credits)",
-    "translationVersion": "2024-01-15-kitor1",
     "steamAppId": 319630
   },
   {
@@ -648,7 +602,6 @@
     "sourceUrl": "https://www.facebook.com/groups/hebrewadventure/posts/1523199624950795",
     "screenshot": "https://assets.kitor.click/screenshots/portal2/e81fd6a442c4cfae.jpg",
     "translationCredit": "sigmagamma and Hebrew Adventure contributors",
-    "translationVersion": "0.9.8-glados-localfonts-experimental-kitor1",
     "steamAppId": 620
   },
   {
@@ -674,7 +627,6 @@
     "sourceUrl": "https://www.facebook.com/groups/hebrewadventure/posts/1627312777872812/",
     "screenshot": "https://assets.kitor.click/screenshots/journey-down1/61a7274691b0b160.jpg",
     "translationCredit": "Hebrew Adventure community (upstream credits)",
-    "translationVersion": "2025-01-23-kitor1",
     "steamAppId": 220090
   },
   {
@@ -700,7 +652,6 @@
     "sourceUrl": "https://www.facebook.com/groups/hebrewadventure/posts/1797129740891114",
     "screenshot": "https://assets.kitor.click/screenshots/kathy-rain-dc/5401ca953090cb1c.jpg",
     "translationCredit": "Hebrew Adventure community (upstream credits)",
-    "translationVersion": "2025-09-15-kitor1",
     "steamAppId": 1395030
   },
   {
@@ -726,14 +677,6 @@
     "sourceUrl": "https://www.facebook.com/share/p/1LEcjZ4Kyj/",
     "screenshot": "https://assets.kitor.click/screenshots/drifter/e83dc806f9231ff5.jpg",
     "translationCredit": "Hebrew Adventure community (upstream credits)",
-    "translationVersion": "2026-07-09-kitor2-download1",
-    "translationBuilds": [
-      {
-        "store": "steam",
-        "platform": "osx",
-        "buildId": "22758595"
-      }
-    ],
     "steamAppId": 1170570
   },
   {
@@ -758,14 +701,6 @@
     "descriptionHe": "הרפתקת פלטפורמות עלילתית בעולם השוכן בין העננים. עופו בשמים, חקרו מקומות חדשים וקחו את חבריכם למסע כדי להיעזר בכישוריהם.\n\nעולם מפורט באמנות פיקסלים מחבר בין גילוי, פעולה וקשרים עם הדמויות שפוגשים בדרך.",
     "sourceUrl": "https://store.steampowered.com/app/115800/Owlboy/",
     "translationCredit": "yhaggai (AI-assisted translation)",
-    "translationVersion": "0.2.0-beta.2-kitor2-download1",
-    "translationBuilds": [
-      {
-        "store": "steam",
-        "platform": "osx",
-        "manifestId": "409618040785163464"
-      }
-    ],
     "steamAppId": 115800
   },
   {
@@ -791,19 +726,6 @@
     "sourceUrl": "https://www.facebook.com/groups/hebrewadventure/posts/342895866314516/",
     "screenshot": "https://assets.kitor.click/screenshots/tentacle/d2ccea3d6da92d5a.jpg",
     "translationCredit": "AdventureBrew / Shany Roze, Rafael Ben-Ari, Niv Baehr, Omer Cohen; extraction: BLooperZ",
-    "translationVersion": "2.0-beta2-kitor1-download2",
-    "translationBuilds": [
-      {
-        "store": "steam",
-        "platform": "windows",
-        "manifestId": "8150331470367542821"
-      },
-      {
-        "store": "steam",
-        "platform": "osx",
-        "manifestId": "2376453229416774441"
-      }
-    ],
     "steamAppId": 388210
   },
   {
@@ -828,14 +750,6 @@
     "descriptionHe": "ברנרד, הוגי ולוורן יוצאים לעצור טנטקל סגול שזומם להשתלט על העולם. תקלה במכונת הזמן מפזרת אותם בתקופות שונות, והדרך להצלת העתיד עוברת בשיתוף פעולה בין העבר, ההווה והעתיד.\n\nהרפתקה מצוירת ומשעשעת של לוקאסארטס, שבה שינוי קטן בעבר יכול להפוך לפתרון מפתיע מאות שנים אחר כך.",
     "sourceUrl": "https://www.facebook.com/groups/hebrewadventure/posts/342895866314516/",
     "translationCredit": "AdventureBrew classic translators; local remastered adaptation",
-    "translationVersion": "0.1-local-items-kitor1-download1",
-    "translationBuilds": [
-      {
-        "store": "steam",
-        "platform": "osx",
-        "manifestId": "2376453229416774441"
-      }
-    ],
     "steamAppId": 388210
   },
   {
@@ -860,7 +774,6 @@
     "descriptionHe": "מני קלאוורה עובד כסוכן נסיעות בארץ המתים, אבל מפגש עם לקוחה חדשה מסבך אותו בפרשה גדולה בהרבה מהעבודה היומיומית. במסע מלא מזימות, חברות וגעגוע הוא מנסה לחשוף את האמת ולתקן עוול.\n\nגרים פנדנגו משלב הומור שחור, אווירת סרטי בלשים ועולם חזותי בהשראת יום המתים המקסיקני.",
     "sourceUrl": "https://www.facebook.com/groups/200491360554968/permalink/356883714915731/",
     "translationCredit": "Niv Bar and Shani Roz; Kitor native adaptation",
-    "translationVersion": "0.3.0-native-candidate-download1",
     "gogSlug": "grim_fandango_remastered",
     "gogProductId": 1207667183
   },
@@ -886,14 +799,6 @@
     "descriptionHe": "גייבראש ת׳ריפווד חולם להפוך לפיראט אימתני, אבל הדרך אל התואר רצופה מבחנים מגוחכים, דו־קרבות עלבונות ודמויות בלתי נשכחות. כשהפיראט לה־צ׳אק מאיים על המושלת איליין, החלום הופך למסע הצלה באיים הקריביים.\n\nהרפתקת הצבע־והקלק קומית של חידות, אוצרות וסודות, שבה לשון חדה מועילה לא פחות מחרב.",
     "sourceUrl": "https://www.facebook.com/groups/200491360554968/permalink/418070868797015/",
     "translationCredit": "AdventureBrew; native adaptation and menu translation: Kitor",
-    "translationVersion": "0.2.0-native-candidate-download1",
-    "translationBuilds": [
-      {
-        "store": "gog",
-        "platform": "windows",
-        "buildId": "50953075782223848"
-      }
-    ],
     "steamAppId": 32360,
     "gogSlug": "the_secret_of_monkey_island_special_edition",
     "gogProductId": 1207666253
@@ -920,7 +825,6 @@
     "descriptionHe": "גייבראש ת׳ריפווד יוצא לחפש אוצר אגדי, אך לה־צ׳אק חוזר לחייו ומאיים להפוך את ההרפתקה לסיוט. בין איים משונים, חידות ערמומיות ופיראטים בעלי חוש הומור מפוקפק, עליו להקדים את יריבו ולגלות מה מסתתר מאחורי האוצר.\n\nהפרק השני בסדרת אי הקופים משלב הומור פרוע, דמויות צבעוניות וסיפור מלא תפניות.",
     "sourceUrl": "https://www.facebook.com/groups/200491360554968/posts/1105072610096834/",
     "translationCredit": "AdventureBrew; native adaptation and menu translation: Kitor",
-    "translationVersion": "0.2.0-native-candidate-download1",
     "steamAppId": 32460,
     "gogSlug": "monkey_island_2_special_edition_lechucks_revenge",
     "gogProductId": 1425039730
@@ -947,7 +851,6 @@
     "descriptionHe": "בעיירה אמריקאית קטנה מסתתרות תעלומות וסכנות מסויטות. חקרו את סביבותיה, פתרו חידות והתמודדו עם האיומים שבדרך תוך ניהול זהיר של המשאבים המעטים שברשותכם.\n\nהרפתקת אימה והישרדות המשלבת חקירה וגילוי של אזורים מחוברים.",
     "sourceUrl": "https://store.steampowered.com/app/2333000/Silver_Pines/",
     "translationCredit": "Kitor",
-    "translationVersion": "0.1.1-download1",
     "steamAppId": 2333000
   },
   {
@@ -972,19 +875,6 @@
     "descriptionHe": "ג׳ני לקלו היא בלשית צעירה וסקרנית בעולם מלא תעלומות. הצטרפו אליה לחקירה שמשלבת מפגשים עם דמויות צבעוניות, חיפוש רמזים ופתרון חידות.\n\nהרפתקה מצוירת ששמה במרכז את הסיפור, הדמויות והחדווה שבגילוי האמת.",
     "sourceUrl": "https://store.steampowered.com/app/319870/Jenny_LeClue__Detectivu/",
     "translationCredit": "Kitor",
-    "translationVersion": "0.4.6-download1",
-    "translationBuilds": [
-      {
-        "store": "steam",
-        "platform": "windows",
-        "manifestId": "2207954257582961902"
-      },
-      {
-        "store": "steam",
-        "platform": "osx",
-        "manifestId": "8849404721773343611"
-      }
-    ],
     "steamAppId": 319870
   },
   {
@@ -1009,14 +899,6 @@
     "descriptionHe": "משחק תפקידים בלשי מאת ZA/UM. אתם מגלמים בלש שאיבד את זיכרונו ונשלח לחקור רצח ברוואשול. אפשר להתקין תרגום חלקי לעברית דרך קיטור.",
     "sourceUrl": "https://store.steampowered.com/app/632470/",
     "translationCredit": "Kitor",
-    "translationVersion": "0.1.2",
-    "translationBuilds": [
-      {
-        "store": "steam",
-        "platform": "osx",
-        "manifestId": "3514503533443935223"
-      }
-    ],
     "steamAppId": 632470
   },
   {
@@ -1042,15 +924,6 @@
     "descriptionHe": "שיטפון פתאומי מציף את עמק המומינים וסוחף את משפחת מומין אל תיאטרון ישן שצף על המים. הצטרפו למומינטרול ולמאי הקטנה כשהם חוקרים את התיאטרון, פוגשים חברים ותיקים ופותרים חידות בדרך הביתה. ההרפתקה המאוירת מבוססת על ספרה של טובה ינסון, ״מוּמינים: ההצגה הגדולה״.",
     "sourceUrl": "https://store.steampowered.com/app/4463520/",
     "translationCredit": "Kitor",
-    "translationVersion": "0.1.3-download1",
-    "translationBuilds": [
-      {
-        "store": "steam",
-        "platform": "windows",
-        "buildId": "26803369",
-        "manifestId": "6372969767257979387"
-      }
-    ],
     "steamAppId": 4463520
   }
 ]

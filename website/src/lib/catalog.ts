@@ -14,13 +14,6 @@ export type CatalogGame = {
   sourceUrl?: string;
   screenshot?: string;
   translationCredit?: string;
-  translationVersion?: string;
-  translationBuilds?: Array<{
-    store: string;
-    platform: string;
-    buildId?: string;
-    manifestId?: string;
-  }>;
   steamAppId?: number;
   gogSlug?: string;
   gogProductId?: number;

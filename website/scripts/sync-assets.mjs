@@ -63,13 +63,6 @@ for (const game of registry.games) {
     sourceUrl: description?.sourceUrl,
     screenshot: galleries[game.scummvm_id]?.[0]?.src,
     translationCredit: translation?.author,
-    translationVersion: translation?.version,
-    translationBuilds: translation?.supported_builds?.map(({ store, platform, build_id, manifest_id }) => ({
-      store,
-      platform,
-      buildId: build_id,
-      manifestId: manifest_id,
-    })),
     steamAppId: game.steam_app_id,
     gogSlug: game.gog?.slug,
     gogProductId: game.gog?.id,
