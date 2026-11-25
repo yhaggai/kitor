@@ -77,6 +77,14 @@ const t = (hebrew: string, english: string) => (en ? english : hebrew);
 </section>
 <section class="faq wrap"><h2>{t("לפני שמתחילים", "Before you start")}</h2><details><summary>{t("האם קיטור כולל את המשחקים?", "Does Kitor include the games?")}</summary><p>{en ? <>You need your own copy of the game. Kitor can download supported games directly from your <bdi>GOG</bdi> or <bdi>Steam</bdi> library, then automatically install the translation.</> : <>לא. צריך עותק משלכם של המשחק. אם כבר יש לכם משחק נתמך בספרייה של <bdi>GOG</bdi> או <bdi>Steam</bdi>, קיטור יכול להוריד אותו עבורכם ישירות מהחנות, בלי שתצטרכו להוריד אותו בנפרד. לאחר מכן קיטור מתקין את התרגום אוטומטית.</>}</p></details><details><summary>{t("האם כל משחק עובד בכל מערכת הפעלה?", "Does every game work on every operating system?")}</summary><p>{t("התמיכה משתנה ממשחק למשחק ומגרסה לגרסה. פרטי התאימות וההתקנה מופיעים באפליקציה.", "Support varies by game and edition. Check the app for compatibility and installation details.")}</p></details><details><summary>{t("אפשר להסיר תרגום?", "Can I remove a translation?")}</summary><p>{t("קיטור מגבה את הקבצים שהתרגום משנה ועוקב אחרי קבצים שנוספו, כדי לאפשר שחזור. מומלץ לסגור את המשחק לפני התקנה או הסרה.", "Kitor backs up changed files and tracks added files so it can restore the original game. Close the game before installing or removing a translation.")}</p></details>
   <details>
+    <summary>{t("האם קיטור חינמי?", "Is Kitor free?")}</summary>
+    <p>{t("כן. קיטור חינמי לגמרי, והשימוש בתרגומים אינו כרוך בתשלום. רבים מהתרגומים נוצרו בהתנדבות על ידי חברי הקהילה.", "Yes. Kitor is completely free, and there’s no charge to use the translations. Many of them were created by volunteers in the community.")}</p>
+  </details>
+  <details>
+    <summary>{t("מה קורה כשמשחק מתעדכן?", "What happens when a game is updated?")}</summary>
+    <p>{t("קיטור עוקב אחר כל עדכון למשחקים הנתמכים. אם גרסה חדשה של משחק מצריכה פאץ׳ חדש לתרגום, אנחנו מעלים אותו ומודיעים לכם כשאפשר להתקין אותו.", "Kitor tracks every update to supported games. If a new game version requires an updated translation patch, we publish it and notify you when it’s ready to install.")}</p>
+  </details>
+  <details>
     <summary>{t("מה אם מצאתי טעות בתרגום?", "What if I spot a mistake in the translation?")}</summary>
     <p>{t("אפשר לשלוח הצעת תיקון דרך קיטור בלחיצת כפתור. אם ההצעה תתקבל, התיקון ייכלל אוטומטית בעדכון הבא של התרגום לעברית.", "You can use Kitor to submit a correction with the click of a button. Once your suggestion is accepted, it will automatically be included in the next Hebrew translation update.")}</p>
   </details>

@@ -24,6 +24,24 @@ Catalog search accepts English and Hebrew titles. The landing page recommends a 
 
 Generated night scenery is in `public/art`; source game art lives in the ignored local `assets/` workspace. Edge characters are lightweight SVG pixel illustrations, animated with IntersectionObserver and disabled motion for reduced-motion preferences.
 
+## Cloudflare Pages deployment
+
+The **Deploy website** GitHub Action checks and builds the website, verifies the generated game pages, and uploads `website/dist` with Wrangler. It runs on pushes to `v1` that change the website or its shared inputs, and can also be started manually from Actions on `v1`.
+
+Create a Cloudflare Pages Direct Upload project and set its production branch to `v1`. In GitHub **Settings → Secrets and variables → Actions**, configure these repository variables:
+
+| Variable | Value |
+| --- | --- |
+| `CLOUDFLARE_ACCOUNT_ID` | Cloudflare account ID containing the Pages project |
+| `CLOUDFLARE_PAGES_PROJECT` | Exact Pages project name |
+| `KITOR_SITE_URL` | Public HTTPS origin, such as `https://kitor.click` or the project's `https://<project>.pages.dev` URL |
+
+Add the repository secret `CLOUDFLARE_PAGES_API_TOKEN` with **Account → Cloudflare Pages → Edit** permission scoped to that account. The workflow fails before building if any required setting is missing. The Pages production branch must match `v1` so uploads become production deployments rather than previews. If the project already uses Cloudflare Git integration, disable its automatic builds when using this Action to avoid duplicate deployments.
+
+Merge the workflow into `v1`, then select **Actions → Deploy website → Run workflow → v1** for the first deployment. Custom domains must also be attached to the Pages project in Cloudflare. This Action deploys to your Cloudflare account; it does not update the separate ChatGPT Sites publication recorded in `.openai/hosting.json`.
+
+Cloudflare documents this flow in [Use Direct Upload with continuous integration](https://developers.cloudflare.com/pages/how-to/use-direct-upload-with-continuous-integration/).
+
 ## Store search prototype
 
 `/store-search/` is a separate, unlisted research page. Select a catalog game to fetch current offers from CheapShark, grouped by active store and sorted by price. `?game=undertale` preselects a game. Steam IDs provide exact identity matches; title searches ask the user to confirm the edition. Missing offers describe missing provider coverage, not verified store unavailability. Prices are USD and region/patch compatibility must be checked separately.
@@ -48,7 +66,7 @@ In GA4 Admin, create event-scoped custom dimensions named **Installer platform**
 
 Add a documented store build ID or an exact Steam depot manifest to the patch release’s `supported_builds` array in `kitor/patches/registry.json`. Include the store, platform, and evidence path. Use `released_on` and `release_date_source` when the store release date is known. Use `first_seen_on` if the source only identifies the first observation of a depot manifest. Latest Steam dates use the public branch update timestamp, bounded by the app’s initial Steam release when available. GOG dates use the public Galaxy build publication timestamp. The first successful scan records what the store serves. Subsequent scans retain the last observed change and compare the latest build or specific depot against the documented baseline. A build difference calls for a patch check. Store lookup failures retain the last successful value. GOG offline installers and store listings without IDs in the registry are outside this scan.
 
-The production monitor is at [build.kitor.click](https://build.kitor.click). Its Cloudflare Worker serves the dashboard and its same-origin `/game-builds.json` endpoint. Cloudflare Cron runs the same scanner daily at 05:23 UTC and persists the results in Workers KV. Successful patch publication and stable app releases refresh the KV registry and scan production automatically through **Refresh build dashboard**. Patch versions and supported builds no longer require a Worker deployment. Redeploy when adding game cards or changing the dashboard UI.
+The production monitor is at [build.kitor.click](https://build.kitor.click). Its Cloudflare Worker serves the dashboard and its same-origin `/game-builds.json` endpoint. Cloudflare Cron runs the same scanner daily at 05:23 UTC and persists the results in Workers KV. Successful patch publication and every published release refresh the KV registry and scan production automatically through **Refresh build dashboard**. Patch versions and supported builds no longer require a Worker deployment. Redeploy when adding game cards or changing the dashboard UI.
 
 Run these from the repository root to deploy the dashboard and registry:
 

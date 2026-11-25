@@ -54,11 +54,17 @@ def paths_match(paths, patterns):
 
 
 def classify(base):
-    paths = git("diff", "--name-only", "--no-renames", "-z", base, "HEAD").decode().split("\0")
+    changed = git("diff", "--name-only", "--no-renames", "-z", base, "HEAD")
+    paths = changed.decode().split("\0")[:-1]
     return {
         "translation_only": translation_only(base),
         "installers": paths_match(paths, INSTALLERS_PATHS),
         "packages": paths_match(paths, PACKAGES_PATHS),
+        "workflow_or_docs_only": bool(paths) and all(
+            path.endswith(".md")
+            or (path.startswith(".github/workflows/") and path.endswith((".yml", ".yaml")))
+            for path in paths
+        ),
     }
 
 

@@ -14,11 +14,13 @@ class PrScopeTests(unittest.TestCase):
 
     def test_translation_only_is_shared_with_both_build_routes(self):
         result = self.classify(['patches-workspace/game/he/catalog.csv'], True)
-        self.assertEqual(result, {'translation_only': True, 'installers': True, 'packages': True})
+        self.assertEqual(result, {'translation_only': True, 'installers': True, 'packages': True,
+                                  'workflow_or_docs_only': False})
 
     def test_frontend_change_only_routes_installers(self):
         self.assertEqual(self.classify(['kitor/src/App.tsx']),
-                         {'translation_only': False, 'installers': True, 'packages': False})
+                         {'translation_only': False, 'installers': True, 'packages': False,
+                          'workflow_or_docs_only': False})
 
     def test_backend_and_deleted_patch_files_route_both_builds(self):
         for path in ['kitor/src-tauri/src/lib.rs', 'patches-workspace/game/he/deleted.bin']:
@@ -31,6 +33,15 @@ class PrScopeTests(unittest.TestCase):
         result = self.classify(['README.md'])
         self.assertFalse(result['installers'])
         self.assertFalse(result['packages'])
+
+    def test_workflow_and_markdown_changes_can_skip_codeql(self):
+        result = self.classify(['docs/README.md', '.github/workflows/check.yaml'])
+        self.assertTrue(result['workflow_or_docs_only'])
+
+    def test_empty_or_mixed_changes_cannot_skip_codeql(self):
+        self.assertFalse(self.classify([])['workflow_or_docs_only'])
+        result = self.classify(['.github/workflows/check.yml', 'kitor/src/App.tsx'])
+        self.assertFalse(result['workflow_or_docs_only'])
 
     def test_mixed_changes_cannot_skip_full_checks(self):
         result = self.classify(['patches-workspace/game/he/catalog.csv', 'kitor/src/App.tsx'])
