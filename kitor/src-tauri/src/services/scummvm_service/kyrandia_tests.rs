@@ -2,7 +2,10 @@ use super::*;
 use crate::services::game_adapters::prepare_kyrandia_launch_path;
 use crate::services::game_behavior::for_game;
 #[cfg(target_os = "macos")]
-use crate::services::game_adapters::drifter_launch_command;
+fn drifter_command(root: &Path) -> Result<Command, String> {
+    crate::services::game_adapters::native_command(&for_game("drifter")?.launch_profile(false), root)?
+        .ok_or("Missing native profile".into())
+}
 
 #[test]
 fn patched_toon_runtime_is_optional_and_isolated() {
@@ -28,13 +31,13 @@ fn patched_toon_runtime_is_optional_and_isolated() {
 fn drifter_launches_native_bundle_from_both_detected_and_manual_paths() {
     let root = tempfile::tempdir().unwrap();
     let bundle = root.path().join("TheDrifter.app");
-    assert!(drifter_launch_command(root.path()).is_err());
+    assert!(drifter_command(root.path()).is_err());
     std::fs::create_dir_all(bundle.join("Contents/MacOS")).unwrap();
     std::fs::create_dir_all(bundle.join("Contents/Resources/Data")).unwrap();
     std::fs::write(bundle.join("Contents/MacOS/The Drifter"), b"runner").unwrap();
     std::fs::write(bundle.join("Contents/Resources/Data/globalgamemanagers"), b"data").unwrap();
     for path in [root.path(), bundle.as_path()] {
-        let cmd = drifter_launch_command(path).unwrap();
+        let cmd = drifter_command(path).unwrap();
         assert_eq!(cmd.get_program(), "/usr/bin/open");
         assert_eq!(cmd.get_args().collect::<Vec<_>>(), vec![bundle.canonicalize().unwrap().as_os_str()]);
         assert_eq!(cmd.get_current_dir(), Some(root.path().canonicalize().unwrap().as_path()));

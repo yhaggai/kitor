@@ -1,5 +1,6 @@
 use kitor_patch_lifecycle_harness::{games::grim_remastered as patch, patch_lifecycle as lifecycle};
 use std::path::PathBuf;
+use kitor_patch_lifecycle_harness::configured_native_command;
 
 fn run() -> Result<(), String> {
     let args: Vec<_> = std::env::args_os().skip(1).collect();
@@ -10,8 +11,7 @@ fn run() -> Result<(), String> {
     let storage = PathBuf::from(&args[2]);
     if args[0] == "uninstall" { return lifecycle::uninstall(&storage, &root); }
     if args[0] == "launch" {
-        let mut command = patch::launch_command(&root)?;
-        patch::prepare_launch(&root)?;
+        let mut command = configured_native_command("grim-fandango-remastered", &root, true)?;
         let log = std::fs::File::create(storage).map_err(|e| e.to_string())?;
         command.stdout(log.try_clone().map_err(|e| e.to_string())?).stderr(log);
         let child = command.spawn().map_err(|e| e.to_string())?;
@@ -19,7 +19,7 @@ fn run() -> Result<(), String> {
         return Ok(());
     }
     if args[0] != "install" { return Err("Unknown action".into()); }
-    patch::launch_command(&root)?;
+    configured_native_command("grim-fandango-remastered", &root, false)?;
     let staging = tempfile::tempdir().map_err(|e| e.to_string())?;
     patch::stage(staging.path(), "he", patch::VERSION)?;
     let journal = lifecycle::install(staging.path(), "patch.json", &root, &storage,

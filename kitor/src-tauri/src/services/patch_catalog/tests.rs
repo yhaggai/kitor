@@ -58,7 +58,7 @@ fn catalog() -> Catalog {
             file_size: 123,
             author: "Translator".into(),
             description: "Corrected dialogue".into(),
-            platforms: vec!["windows".into(), "osx".into()],
+            platforms: vec![Platform::Windows, Platform::MacOS],
         }],
     }
 }

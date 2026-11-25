@@ -6,7 +6,8 @@
   "type": "module",
   "workspaces": [
     "kitor",
-    "packages/ui"
+    "packages/ui",
+    "packages/registry"
   ],
   "overrides": {
     "glob": "^14.0.2"
@@ -16,12 +17,18 @@
     "lint:fix": "biome check --write --unsafe .",
     "format": "biome format --write .",
     "lint:staged": "biome check --staged --no-errors-on-unmatched .",
+    "tauri:dev:infisical": "bun run --cwd kitor tauri:dev:infisical",
     "storybook": "bun run --cwd packages/ui storybook",
     "storybook:build": "bun run --cwd packages/ui build-storybook",
-    "ui:check": "bun run --cwd packages/ui typecheck"
+    "ui:check": "bun run --cwd packages/ui typecheck",
+    "registry:validate": "bun tools/registry/validate.ts",
+    "registry:schema": "bun tools/registry/validate.ts --write-schema",
+    "registry:test": "bun test tools/registry/schema.test.ts tools/registry/consumers.test.ts tools/registry/launch.test.ts tools/registry/detection.test.ts",
+    "registry:typecheck": "tsc --noEmit --strict --skipLibCheck --moduleResolution bundler --module esnext --target es2022 --jsx react-jsx packages/registry/src/types.test.ts"
   },
   "devDependencies": {
     "@biomejs/biome": "^2.3.10",
-    "@evilmartians/lefthook": "^2.0.13"
+    "@evilmartians/lefthook": "^2.0.13",
+    "@kitor/registry": "workspace:*"
   }
 }

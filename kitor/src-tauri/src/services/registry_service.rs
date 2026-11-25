@@ -1,3 +1,6 @@
+#[path = "registry_vocabulary.rs"]
+mod vocabulary;
+pub use vocabulary::*;
 use serde::{Deserialize, Serialize};
 use std::{collections::BTreeMap, path::Path};
 
@@ -53,7 +56,7 @@ pub struct GameDefinition {
     pub title_he: Option<String>,
     /// Catalog keywords such as `classic` or `detective`. A game may have several.
     #[serde(default, skip_serializing_if = "Vec::is_empty")]
-    pub tags: Vec<String>,
+    pub tags: Vec<Tag>,
     #[serde(default, skip_serializing_if = "Option::is_none")]
     pub translation_beta: Option<bool>,
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -109,7 +112,7 @@ pub struct PatchDefinition {
     pub version: String,
     pub author: String,
     pub download_url: String,
-    pub source_type: String,
+    pub source_type: SourceType,
     pub checksum: Option<String>,
     pub file_size: Option<i64>,
     pub description: String,
@@ -197,8 +200,8 @@ impl GameDefinition {
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct SupportedBuild {
-    pub store: String,
-    pub platform: String,
+    pub store: Store,
+    pub platform: Platform,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub build_id: Option<String>,
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -236,7 +239,7 @@ impl GameDefinition {
     pub fn is_translation_beta(&self) -> bool {
         // Older registries used the Hot Kitor category to mark beta translations.
         self.translation_beta
-            .unwrap_or_else(|| self.tags.iter().any(|tag| tag == "hot-kitor"))
+            .unwrap_or_else(|| self.tags.contains(&Tag::HotKitor))
     }
 }
 
@@ -299,14 +302,14 @@ fn migrate_bundled_packages(registry: &mut Registry, bundled: &Registry) {
             .iter()
             .find(|g| g.scummvm_id == game.scummvm_id);
         game.patches.retain_mut(|patch| {
-            if patch.source_type != "bundled" {
+            if patch.source_type != SourceType::Bundled {
                 return true;
             }
             let Some(def) = built else { return false };
             let Some(packaged) = def
                 .patches
                 .iter()
-                .find(|p| p.source_type != "bundled" && p.language == patch.language)
+                .find(|p| p.source_type != SourceType::Bundled && p.language == patch.language)
                 .or_else(|| {
                     (def.behavior.bundled.is_some() || def.behavior.bundled_resource.is_some())
                         .then(|| def.patches.iter().find(|p| p.language == patch.language))

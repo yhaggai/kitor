@@ -120,7 +120,7 @@ pub async fn launch_game(
     let behavior = super::game_behavior::for_game(&game.scummvm_id)?;
     let state = super::patch_state::resolve(db, &game, app_data_dir, &behavior).await?;
     let profile = behavior.launch_profile(state.is_patched());
-    if let Some(mut cmd) = super::game_adapters::native_command(&profile, Path::new(&game.install_path), &game.scummvm_id)? {
+    if let Some(mut cmd) = super::game_adapters::native_command(&profile, Path::new(&game.install_path))? {
         return start_game_process(&mut cmd, &app_data_dir.join(format!("launch-{}.log", game.id))).await;
     }
 

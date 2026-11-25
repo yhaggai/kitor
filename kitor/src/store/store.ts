@@ -1,3 +1,5 @@
+import type { CatalogSourceType, PatchLanguage, Platforms, Tag } from "@kitor/registry";
+import type { RegistryPatch } from "@kitor/registry/schema";
 import { create } from "zustand";
 
 type InstalledPatchInfo = {
@@ -7,16 +9,12 @@ type InstalledPatchInfo = {
   version: string;
   installed_date: string;
   status: string;
-  language: string | null;
+  language: PatchLanguage | null;
   backup_path?: string;
 };
 
-type AvailablePatchInfo = {
+type AvailablePatchInfo = Pick<RegistryPatch, "language" | "version" | "author" | "description"> & {
   release_revision: number;
-  language: string;
-  version: string;
-  author: string;
-  description: string;
 };
 
 export type GameHealth = {
@@ -29,7 +27,7 @@ export type GameHealth = {
 type Game = {
   health?: GameHealth | null;
   id: number;
-  tags?: string[];
+  tags?: Tag[];
   translation_beta?: boolean;
   added_on?: string;
   scummvm_id: string;
@@ -47,32 +45,26 @@ type Game = {
   available_patches?: AvailablePatchInfo[];
 };
 
-type Patch = {
+type Patch = Pick<
+  RegistryPatch,
+  "version" | "download_url" | "author" | "description" | "post_install_script"
+> & {
   scummvm_id: string;
   game_title: string;
   title_he?: string | null;
-  language: string;
-  version: string;
-  download_url: string;
-  source_type: string;
+  language: PatchLanguage | "";
+  source_type: CatalogSourceType;
   file_size?: number;
   checksum?: string;
-  author: string;
-  description: string;
   filename?: string;
-  post_install_script?: string;
   purchase_guide?: string;
   cover_url?: string;
   steam_app_id?: number | null;
   gog_id?: number | null;
   gog_installer_path?: string | null;
   add_to_cart_url?: string | null;
-  platforms?: {
-    windows: boolean;
-    osx: boolean;
-    linux: boolean;
-  };
-  tags?: string[];
+  platforms?: Platforms;
+  tags?: Tag[];
   translation_beta?: boolean;
   added_on?: string;
 };
@@ -159,26 +151,15 @@ export type PatchWithStatus = Patch & {
   game_installed: boolean;
   patch_installed: boolean;
   game_id?: number;
-  cover_url?: string;
-  purchase_guide?: string;
-  steam_app_id?: number | null;
-  gog_id?: number | null;
-  gog_installer_path?: string | null;
-  add_to_cart_url?: string | null;
-  platforms?: {
-    windows: boolean;
-    osx: boolean;
-    linux: boolean;
-  };
 };
 
 export type {
-  Game,
-  Patch,
-  DownloadProgress,
-  InstalledPatchInfo,
   AvailablePatchInfo,
-  ScummVMDownloadProgress,
+  DownloadProgress,
+  Game,
   GogAuthState,
   GogGame,
+  InstalledPatchInfo,
+  Patch,
+  ScummVMDownloadProgress,
 };

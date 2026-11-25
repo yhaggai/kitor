@@ -76,8 +76,14 @@ def main():
                 length+=len(b);h.update(b)
             recipe={'schema_version':1,'input_sha256':archive_hash,'output_size':length,'operations':ops}
             native=ROOT.parents[1]/f'day-of-the-tentacle-remastered/he/patch.{args.platform}.candidate.json'
-            if native.exists():recipe['alternate_input_sha256']=[json.loads(native.read_text())['platforms'][args.platform]['files'][0]['installed_sha256']]
-            path=ROOT/'recipes'/f'{name if args.platform == 'osx' else 'windows-'+name}.json';save(path,recipe)
+            path=ROOT/'recipes'/f'{name if args.platform == 'osx' else 'windows-'+name}.json'
+            if native.exists():
+                native_hash=json.loads(native.read_text())['platforms'][args.platform]['files'][0]['installed_sha256']
+                # Keep verified older inputs if rebuilding yields the same recipe.
+                previous=json.loads(path.read_text()) if path.exists() else {}
+                retained=previous.get('alternate_input_sha256', []) if all(previous.get(k)==v for k,v in recipe.items()) else []
+                recipe['alternate_input_sha256']=list(dict.fromkeys([*retained,native_hash]))
+            save(path,recipe)
             outputs[name]={'recipe_sha256':digest(path.read_bytes()),'sha256':h.hexdigest(),'size':length}
         for ext in ['000','001']:
             off,size=table['classic/en/tentacle.'+ext];original=a[off:off+size]

@@ -1,3 +1,4 @@
+import type { PatchLanguage } from "@kitor/registry";
 import { type Collection, GameDetailsView, useTranslation } from "@kitor/ui";
 import * as AlertDialog from "@radix-ui/react-alert-dialog";
 import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
@@ -26,9 +27,9 @@ import { TranslationCredit } from "@/components/TranslationCredit";
 import { Button } from "@/components/ui/button";
 import { useDialog } from "@/hooks/useDialog";
 import { type PatchDownloadProgress, useGameCardState } from "@/hooks/useGameCardState";
+import { usePublishedDescription } from "@/lib/descriptionFeed";
 import { primaryGameAction } from "@/lib/gameAction";
 import { patchOptionLabel, selectedPatchOption } from "@/lib/patchOptions";
-import { usePublishedDescription } from "@/lib/descriptionFeed";
 import { gameSummary } from "@/lib/presentation";
 import type { Game, GameHealth } from "@/store/store";
 import { useAppStore } from "@/store/store";
@@ -77,7 +78,7 @@ export default function GameCard({ game, collection, onRemove, onBack }: GameCar
   const displayTitle = language === "he" ? game.title_he?.trim() || game.title : game.title;
   const [refreshing, setRefreshing] = useState(false);
   const [updateConfirmationOpen, setUpdateConfirmationOpen] = useState(false);
-  const [translationChoice, setTranslationChoice] = useState("");
+  const [translationChoice, setTranslationChoice] = useState<PatchLanguage | "">("");
   const { state, actions } = useGameCardState();
   const { isScummVMReady } = useAppStore();
   const { alert, confirm } = useDialog();
@@ -471,7 +472,12 @@ export default function GameCard({ game, collection, onRemove, onBack }: GameCar
                   id={`translation-${game.id}`}
                   className="w-full rounded-md border bg-background px-3 py-2 text-sm"
                   value={selectedPatch?.language ?? ""}
-                  onChange={(event) => setTranslationChoice(event.target.value)}
+                  onChange={(event) => {
+                    const patch = game.available_patches?.find(
+                      (patch) => patch.language === event.target.value
+                    );
+                    if (patch) setTranslationChoice(patch.language);
+                  }}
                   disabled={busy}
                 >
                   {game.available_patches?.map((patch) => (

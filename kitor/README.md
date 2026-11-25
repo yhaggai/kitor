@@ -52,6 +52,28 @@ Before running Kitor, you need to install:
    bun tauri:dev
    ```
 
+### Contribution sign-in with Infisical
+
+With the Infisical CLI installed, run these commands from this directory and
+select the existing contribution Worker project when prompted:
+
+```sh
+infisical login
+infisical init
+```
+
+Set `KITOR_CONTRIBUTION_API_URL` in the Infisical environment that matches the
+Worker you want to use. Keep each `/desktop` folder limited to desktop configuration.
+
+| Infisical location | URL | Desktop command |
+| --- | --- | --- |
+| `dev` → `/desktop` | `http://127.0.0.1:8787` with the local Worker running | `bun run tauri:dev:infisical` |
+| `staging` → `/desktop` | Staging Worker's HTTPS origin | `bun run tauri:dev:staging` |
+
+Infisical passes the URL to Tauri and Cargo. Restart the dev command to pick up
+changes. To set the local URL directly, use
+`KITOR_CONTRIBUTION_API_URL=http://127.0.0.1:8787 bun run tauri:dev`.
+
 ## Building for Production
 
 ```bash

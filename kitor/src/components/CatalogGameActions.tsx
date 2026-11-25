@@ -1,3 +1,4 @@
+import { Store } from "@kitor/registry";
 import { gogIcon, kitorIcon, ManageMenu, steamIcon, useTranslation } from "@kitor/ui";
 import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
 import { invoke } from "@tauri-apps/api/core";
@@ -52,7 +53,7 @@ export function CatalogGameActions({
   const [capabilities, setCapabilities] = useState<SteamDownloadCapabilities | null>(null);
   const [downloadOpen, setDownloadOpen] = useState(false);
   const [addOpen, setAddOpen] = useState(false);
-  const [installSource, setInstallSource] = useState<"gog" | "steam" | null>(null);
+  const [installSource, setInstallSource] = useState<Store | null>(null);
   const [waitingForClient, setWaitingForClient] = useState(false);
   const [scanning, setScanning] = useState(false);
   const [refreshing, setRefreshing] = useState(false);
@@ -80,9 +81,9 @@ export function CatalogGameActions({
     };
   }, [steamAppId, scummvmId]);
 
-  async function chooseStore(provider: "gog" | "steam") {
+  async function chooseStore(provider: Store) {
     setError(null);
-    if (provider === "gog" && gogId) {
+    if (provider === Store.Gog && gogId) {
       useGogInstallFlow.getState().show({
         gogId,
         gameId: scummvmId,
@@ -90,7 +91,7 @@ export function CatalogGameActions({
       });
       return;
     }
-    if (provider !== "steam" || !steamAppId) return;
+    if (provider !== Store.Steam || !steamAppId) return;
     if (capabilities?.supported) {
       if (steamInstalling) {
         useGogInstallFlow.getState().setOpen(true);
@@ -124,13 +125,13 @@ export function CatalogGameActions({
     }
   }
 
-  const [selectedStore, setSelectedStore] = useState<"gog" | "steam" | null>(null);
+  const [selectedStore, setSelectedStore] = useState<Store | null>(null);
   const primaryStore =
-    selectedStore ?? (gogId && (ownsGog || !ownsSteam || !steamAppId) ? "gog" : "steam");
-  const waitingForSteam = primaryStore === "steam" && capabilities === null;
-  const installLabel = (provider: "gog" | "steam") =>
+    selectedStore ?? (gogId && (ownsGog || !ownsSteam || !steamAppId) ? Store.Gog : Store.Steam);
+  const waitingForSteam = primaryStore === Store.Steam && capabilities === null;
+  const installLabel = (provider: Store) =>
     t(
-      provider === "steam"
+      provider === Store.Steam
         ? capabilities?.supported || ownsSteam
           ? "Install from Steam"
           : steam.owned_app_ids === null
@@ -143,9 +144,9 @@ export function CatalogGameActions({
             : "Buy on GOG"
     );
 
-  async function selectStore(provider: "gog" | "steam") {
+  async function selectStore(provider: Store) {
     setError(null);
-    if (provider === "steam") {
+    if (provider === Store.Steam) {
       if (!steamAppId) return;
       if (capabilities?.supported) {
         setInstallSource(provider);
@@ -171,7 +172,7 @@ export function CatalogGameActions({
       }
       return;
     }
-    if (provider === "gog" && !ownsGog) {
+    if (provider === Store.Gog && !ownsGog) {
       if (!gogAuthenticated || !useGogLibrary.getState().loaded) {
         await chooseStore(provider);
       } else {
@@ -203,11 +204,11 @@ export function CatalogGameActions({
             aria-busy={waitingForSteam || undefined}
           >
             <img
-              src={primaryStore === "steam" ? steamIcon : gogIcon}
+              src={primaryStore === Store.Steam ? steamIcon : gogIcon}
               alt=""
               className="h-6 w-6 shrink-0 object-contain"
             />
-            {steamInstalling && primaryStore === "steam"
+            {steamInstalling && primaryStore === Store.Steam
               ? t("Downloading…")
               : installLabel(primaryStore)}
           </button>
@@ -229,12 +230,12 @@ export function CatalogGameActions({
                   sideOffset={6}
                   className="z-50 min-w-44 rounded-md border bg-background p-1 shadow-lg"
                 >
-                  {(["steam", "gog"] as const).map((provider) => (
+                  {Object.values(Store).map((provider) => (
                     <DropdownMenu.Item
                       key={provider}
                       dir="auto"
                       className="flex items-center gap-2 cursor-pointer rounded-sm px-3 py-2 text-sm text-foreground outline-none data-[highlighted]:bg-accent data-[disabled]:opacity-50"
-                      disabled={provider === "steam" ? !steamAppId : !gogId}
+                      disabled={provider === Store.Steam ? !steamAppId : !gogId}
                       onSelect={() => {
                         setError(null);
                         setSelectedStore(provider);
@@ -242,7 +243,7 @@ export function CatalogGameActions({
                       }}
                     >
                       <img
-                        src={provider === "steam" ? steamIcon : gogIcon}
+                        src={provider === Store.Steam ? steamIcon : gogIcon}
                         alt=""
                         className="h-6 w-6 shrink-0 object-contain"
                       />
@@ -310,7 +311,7 @@ export function CatalogGameActions({
           <div className="grid gap-3">
             <Button
               variant="default"
-              disabled={opening || (installSource === "steam" && !capabilities?.supported)}
+              disabled={opening || (installSource === Store.Steam && !capabilities?.supported)}
               onClick={() => {
                 const provider = installSource;
                 setInstallSource(null);
@@ -327,7 +328,7 @@ export function CatalogGameActions({
                 setOpening(true);
                 setError(null);
                 try {
-                  if (installSource === "steam") {
+                  if (installSource === Store.Steam) {
                     await invoke("open_steam_client", { appId: steamAppId });
                     setClientError(null);
                     setWaitingForClient(true);
@@ -341,13 +342,13 @@ export function CatalogGameActions({
               }}
             >
               <img
-                src={installSource === "steam" ? steamIcon : gogIcon}
+                src={installSource === Store.Steam ? steamIcon : gogIcon}
                 alt=""
                 className="h-6 w-6 object-contain"
               />
-              {t(installSource === "steam" ? "Use Steam client" : "Use GOG Galaxy")}
+              {t(installSource === Store.Steam ? "Use Steam client" : "Use GOG Galaxy")}
             </Button>
-            {installSource === "steam" && capabilities?.supported === false && (
+            {installSource === Store.Steam && capabilities?.supported === false && (
               <p className="text-sm text-muted-foreground">
                 {t("Direct download is not available for this game yet.")}
               </p>

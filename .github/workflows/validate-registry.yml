@@ -1,0 +1,49 @@
+name: Validate registry
+
+on:
+  pull_request:
+    paths:
+      - 'kitor/patches/**'
+      - 'tools/registry/**'
+      - 'packages/registry/**'
+      - 'packages/ui/**'
+      - 'kitor/src/**'
+      - 'kitor/src-tauri/src/services/registry_vocabulary.rs'
+      - 'package.json'
+      - 'kitor/package.json'
+      - 'bun.lock'
+      - '.github/workflows/validate-registry.yml'
+  push:
+    branches: [main, v1]
+    paths:
+      - 'kitor/patches/**'
+      - 'tools/registry/**'
+      - 'packages/registry/**'
+      - 'packages/ui/**'
+      - 'kitor/src/**'
+      - 'kitor/src-tauri/src/services/registry_vocabulary.rs'
+      - 'package.json'
+      - 'kitor/package.json'
+      - 'bun.lock'
+      - '.github/workflows/validate-registry.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  registry:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
+        with:
+          persist-credentials: false
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: 1.2.22
+      - run: bun install --frozen-lockfile
+      - run: bun run registry:validate
+      - run: bun run registry:test
+      - run: bun run registry:typecheck
+      - run: bun run ui:check
+      - run: bunx tsc --noEmit -p kitor/tsconfig.json

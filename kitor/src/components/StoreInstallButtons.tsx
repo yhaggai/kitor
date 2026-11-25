@@ -1,3 +1,4 @@
+import { Store } from "@kitor/registry";
 import { useTranslation } from "@kitor/ui";
 import { invoke } from "@tauri-apps/api/core";
 import { useEffect, useState } from "react";
@@ -103,7 +104,7 @@ export function StoreInstallButtons({
         {steamAppId && (
           <Button
             size="sm"
-            variant="steam"
+            variant={Store.Steam}
             className="h-12 min-w-36 flex-1 rounded-xl px-3 font-semibold tracking-wide transition-[filter,box-shadow]"
             disabled={opening || capabilities === null}
             title={
@@ -140,7 +141,7 @@ export function StoreInstallButtons({
         {gogId && (
           <Button
             size="sm"
-            variant="gog"
+            variant={Store.Gog}
             className="h-12 min-w-36 flex-1 rounded-xl px-3 font-semibold tracking-wide transition-[filter,box-shadow]"
             disabled={opening || gogSupported === null}
             title={

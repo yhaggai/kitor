@@ -16,6 +16,8 @@ import sys
 from PIL import Image, ImageDraw, ImageFont
 from map_dialogue import extract_speech, rebuild, speech_rows, digest
 
+NOTO_SANS_HEBREW = Path(__file__).with_name('fonts') / 'NotoSansHebrew.ttf'
+
 SLOTS = {chr(1488 + i): chr(65 + i) for i in range(27)}
 
 
@@ -63,6 +65,7 @@ def patch_font(font_data, texture_data, ttf, *, extend=False):
         count = len(records)
         struct.pack_into('<I', font, 4, count)
         font.extend(b'\0' * (27 * 16))
+    use_noto_bold = Path(ttf).resolve() == NOTO_SANS_HEBREW.resolve()
     cells = []
     for i, record in enumerate(records):
         x, y, right, bottom, bearing, ink_width, advance, flags = record
@@ -71,6 +74,8 @@ def patch_font(font_data, texture_data, ttf, *, extend=False):
             h = bottom-y
             size = max(3, int(h * .92))
             face = ImageFont.truetype(str(ttf), size)
+            if use_noto_bold:
+                face.set_variation_by_name('Bold')
             char = replacement[i]
             box = face.getbbox(char)
             pad = max(1, h//24)
@@ -110,7 +115,7 @@ def main():
     ap=argparse.ArgumentParser(description=__doc__)
     ap.add_argument('--source-app',required=True,type=Path)
     ap.add_argument('--output',required=True,type=Path)
-    ap.add_argument('--font',type=Path,default=Path('/System/Library/Fonts/Supplemental/Arial Bold.ttf'))
+    ap.add_argument('--font',type=Path,default=NOTO_SANS_HEBREW)
     args=ap.parse_args()
     if args.output.exists():
         raise SystemExit('Output already exists; choose a fresh test directory')
@@ -172,7 +177,7 @@ def main():
             'font_source':str(args.font),'font_pairs':(len(replacements)-1)//2,'probes':probes,'changes':changes,
             'limitations':['Uppercase Latin A-Z and [ are repurposed in subtitle fonts.',
                           'Only opening scene translated; later English capitals display Hebrew.',
-                          'Local system font; do not distribute.','RTL preordered per explicit line; automatic wrapping unverified.']}
+                          'RTL preordered per explicit line; automatic wrapping unverified.']}
     (args.output/'probe-manifest.json').write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n')
     print(json.dumps({'app':str(app.resolve()),'font_pairs':report['font_pairs'],'subtitle_probes':len(probes)}))
 

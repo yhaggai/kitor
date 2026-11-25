@@ -1,102 +1,20 @@
 //! Independent classic Hebrew patch, with optional extraction from Remastered.
-use std::{
-    fs,
-    io::Read,
-    path::{Path, PathBuf},
-};
+use std::path::{Path, PathBuf};
+#[cfg(any(test, feature = "standalone-patch-tools"))]
+use std::fs;
 #[cfg(any(test, feature = "standalone-patch-tools"))]
 pub const VERSION: &str = "2.0-beta2-kitor1";
 
-fn child(root: &Path, name: &str) -> Option<PathBuf> {
-    fs::read_dir(root)
-        .ok()?
-        .flatten()
-        .find(|e| e.file_name().to_string_lossy().eq_ignore_ascii_case(name))
-        .map(|e| e.path())
-}
-fn descend(root: &Path, parts: &[&str]) -> Option<PathBuf> {
-    let mut p = root.to_path_buf();
-    for part in parts {
-        p = child(&p, part)?;
-    }
-    Some(p)
-}
-fn archive(path: &Path) -> bool {
-    let Ok(mut f) = fs::File::open(path) else {
-        return false;
-    };
-    let mut h = [0; 8];
-    f.metadata().is_ok_and(|m| m.len() > 40)
-        && f.read_exact(&mut h).is_ok()
-        && h == *b"KAPL\0\0\x80?"
-}
-/// Resolve to the Steam/GOG installation root, never inside its signed app bundle.
-/// The archive signature plus title-specific executable is the fallback detector:
-/// ScummVM cannot inspect classic data while it is still inside tenta.cle.
-pub fn detect_remastered(path: &Path) -> Option<PathBuf> {
-    let mut roots = vec![path.to_path_buf()];
-    if path
-        .file_name()
-        .is_some_and(|n| n.eq_ignore_ascii_case("Dott.app"))
-    {
-        roots.push(path.parent()?.to_path_buf());
-    }
-    if path
-        .file_name()
-        .is_some_and(|n| n.eq_ignore_ascii_case("Resources"))
-    {
-        roots.push(path.parent()?.parent()?.parent()?.to_path_buf());
-    }
-    for root in roots {
-        let mac = descend(&root, &["Dott.app", "Contents", "Resources", "tenta.cle"]);
-        let runner = descend(&root, &["Dott.app", "Contents", "MacOS", "Dott"]);
-        if mac.is_some_and(|p| archive(&p)) && runner.is_some_and(|p| p.is_file()) {
-            return root.canonicalize().ok();
-        }
-        let win = child(&root, "tenta.cle");
-        let exe = child(&root, "Dott.exe");
-        if win.is_some_and(|p| archive(&p)) && exe.is_some_and(|p| p.is_file()) {
-            return root.canonicalize().ok();
-        }
-    }
-    None
-}
-/// Loose classic files, including common GOG wrappers. An edition fingerprint is
-/// checked again by the install plan before any originals are changed.
 pub fn detect_classic(path: &Path) -> Option<PathBuf> {
-    let mut roots = vec![path.to_path_buf()];
-    for parts in [
-        &["Contents", "Resources", "game", "game"][..],
-        &["Contents", "Resources", "game"][..],
-        &["classic", "en"][..],
-    ] {
-        if let Some(p) = descend(path, parts) {
-            roots.push(p);
-        }
-    }
-    for root in roots {
-        let Some(index) = child(&root, "tentacle.000") else {
-            continue;
-        };
-        let Some(data) = child(&root, "tentacle.001") else {
-            continue;
-        };
-        if index.is_file() && data.is_file() && fs::metadata(&data).ok()?.len() > 0 {
-            let hash = crate::services::patch_lifecycle::hash(&index).ok()?;
-            if [
-                "c89a825fcb2c4ea4d9678feab9c23e924ba578293d25a5d098cb3cb39ac86cb9",
-                "21bdb9663389bd01b6bbb1cb50bdce985ec68adcb5fae3efcd6f384288066536",
-            ]
-            .contains(&hash.as_str())
-            {
-                return root.canonicalize().ok();
-            }
-        }
-    }
-    None
+    super::super::game_detection::detect_registered("tentacle", path, Some(super::super::registry_service::DetectionEdition::Classic))
 }
+#[cfg(feature = "standalone-patch-tools")]
+pub fn detect_remastered(path: &Path) -> Option<PathBuf> {
+    super::super::game_detection::detect_registered("day-of-the-tentacle-remastered", path, None)
+}
+#[cfg(any(test, feature = "standalone-patch-tools"))]
 pub fn detect(path: &Path) -> Option<PathBuf> {
-    detect_classic(path).or_else(|| detect_remastered(path))
+    super::super::game_detection::detect_registered("tentacle", path, None)
 }
 #[cfg(any(test, feature = "standalone-patch-tools"))]
 pub fn stage(

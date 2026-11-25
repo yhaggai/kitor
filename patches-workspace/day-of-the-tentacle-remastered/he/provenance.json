@@ -1,16 +1,24 @@
 {
-  "status": "packaged_unverified",
+  "status": "resource_and_macos_lifecycle_validated",
   "release_ready": false,
-  "version": "0.1-local-items-kitor1",
-  "source": "prototype/generated/full-hebrew-items-v2/full-manifest.json",
+  "version": "0.1.1-ofl-kitor1",
+  "source": "prototype/build_full_hebrew.py",
   "input_sha256": "c97d6690abcee78e429fa22bb2d8d5ba6ab181641785e21ead0d6260e97640f1",
-  "installed_sha256": "5228ad6679e1a5b0a1c248ad1492b186bb5f5ce21629511005b461760b076a7d",
-  "redistribution": "Local personal-use only. Prototype uses Arial glyphs; do not publish. Classic translation announcement also prohibits redistribution.",
+  "installed_sha256": "3cad2dcc6f1b0cd5e24e4cf40870d238e170784b83f83cf4a7b96f115276c3ae",
   "limitations": [
     "579 dialogue records remain English including commentary",
     "Menus and dialogue choices remain untranslated",
     "English language only",
-    "Windows runtime and native Mac installation validation pending"
+    "Native gameplay on the OFL build has not been checked"
   ],
-  "runtime": "Native remastered engine; never ScummVM"
+  "runtime": "Native remastered engine; never ScummVM",
+  "font_source": "NotoSansHebrew.ttf",
+  "font_sha256": "7ef36a2c3593758cdb622e1bdef4f84523e92fbc3ccc667438dd80ff54c2de88",
+  "licensed_font_notice": "licenses/FONT-OFL.txt",
+  "validation": {
+    "resource_members": 162,
+    "original_glyphs_preserved": 12800,
+    "selective_install_uninstall": "passed on macOS using a disposable copy",
+    "macos_signature": "codesign --verify --deep --strict passed after install"
+  }
 }

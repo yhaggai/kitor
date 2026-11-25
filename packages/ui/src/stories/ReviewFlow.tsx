@@ -1,3 +1,4 @@
+import { Store } from "@kitor/registry";
 import { useEffect, useRef, useState } from "react";
 import { Button, FlowDialog, OperationProgress } from "../index";
 import type { OperationResult, ReviewScenario } from "../mocks/operations";
@@ -38,7 +39,7 @@ export function ReviewFlow({
   const controller = useRef<AbortController | null>(null);
   useEffect(() => () => controller.current?.abort(), []);
   const action = request.action;
-  const download = action === "steam" || action === "gog";
+  const download = action === Store.Steam || action === Store.Gog;
   const needsFolder = download || action === "folder";
   const secret = action === "steam-key";
   const auth = action === "connect-steam" || action === "connect-gog";
@@ -55,7 +56,7 @@ export function ReviewFlow({
     (needsFolder && !folder) ||
     (secret && !credential.trim()) ||
     (isReport && !details.trim()) ||
-    (action === "gog" && !connectedGog) ||
+    (action === Store.Gog && !connectedGog) ||
     (download && scenario === "unsupported");
   async function run(override?: string) {
     controller.current?.abort();
@@ -221,14 +222,14 @@ export function ReviewFlow({
               )}
             </>
           )}
-          {action === "steam" && (
+          {action === Store.Steam && (
             <p>
               Sign in to the Steam client with an account that owns the game. Kitor downloads the
               supported Windows files, verifies them and detects games in the collection. Install
               translations separately.
             </p>
           )}
-          {action === "gog" && (
+          {action === Store.Gog && (
             <p>
               {connectedGog
                 ? "Your GOG account owns this game. Download and extract its Windows installer; the game will appear in your library. Install translations separately."

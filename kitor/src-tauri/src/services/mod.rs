@@ -29,6 +29,8 @@ pub mod app_updates;
 
 pub mod game_behavior;
 pub mod game_adapters;
+pub mod native_launch;
+pub mod game_detection;
 pub mod package_source;
 pub mod patch_state;
 

@@ -2,8 +2,8 @@
   "schema_version": 1,
   "scummvm_id": "day-of-the-tentacle-remastered",
   "language": "he",
-  "version": "0.1-local-items-kitor1",
-  "filename": "DOTT-Remastered-Hebrew-local-kitor1.zip",
+  "version": "0.1.1-ofl-kitor1",
+  "filename": "DOTT-Remastered-Hebrew-0.1.1-ofl-kitor1.zip",
   "platforms": {
     "osx": {
       "files": [
@@ -11,11 +11,11 @@
           "path": "Dott.app/Contents/Resources/tenta.cle",
           "operation": "modify",
           "original_sha256": "c97d6690abcee78e429fa22bb2d8d5ba6ab181641785e21ead0d6260e97640f1",
-          "installed_sha256": "5228ad6679e1a5b0a1c248ad1492b186bb5f5ce21629511005b461760b076a7d",
+          "installed_sha256": "3cad2dcc6f1b0cd5e24e4cf40870d238e170784b83f83cf4a7b96f115276c3ae",
           "source": {
             "kind": "reconstruct",
             "path": "recipes/tenta.cle.json",
-            "sha256": "419fc813ce7a999341c7b5ab31dbc653bc2c2f05dc523cffb25687cdf2dd6139",
+            "sha256": "06ef94f7526e1d7ae0554d74f6fe85a4ce3628b017e7a015b9a956fcb089ec59",
             "input": "Dott.app/Contents/Resources/tenta.cle"
           }
         },
@@ -23,11 +23,11 @@
           "path": "Dott.app/Contents/MacOS/Dott",
           "operation": "modify",
           "original_sha256": "d1d9e2220595c2c7870a16803f6bc21915c2e1da8cde2f51ff5dc27bebf509fc",
-          "installed_sha256": "d4b87d5b0df39146ede2095dce39b3e7f337cd27623dc6730883522d367331c6",
+          "installed_sha256": "1e799bf54266f91fda5449f8c4df9746b8a3474bca34a6101d343d4abd194de1",
           "source": {
             "kind": "reconstruct",
             "path": "recipes/signature-0.json",
-            "sha256": "9e97459f61ec0cbc29be8f4340d8cea2a18ec912850824c3cf712db91e3e3f0d",
+            "sha256": "73d89720675cda7ad4afac1de27d258185df31f4c57a66e101b934a870099e74",
             "input": "Dott.app/Contents/MacOS/Dott"
           }
         },
@@ -59,11 +59,11 @@
           "path": "Dott.app/Contents/_CodeSignature/CodeResources",
           "operation": "modify",
           "original_sha256": "f5b914f740a37348f7cc7e7d83f0bf4e233c80794c8f604d3e2ea623683ba896",
-          "installed_sha256": "788d583ef0f16d39ddb37dd714aa3fb0941ecde775f082ac3628eb0b444c4e82",
+          "installed_sha256": "9d0691368b35325bebe7ebd3dd5e4208e3058895ef91d146d2a76f357195b03e",
           "source": {
             "kind": "reconstruct",
             "path": "recipes/signature-3.json",
-            "sha256": "900ee70c7c471ff3e8ad02f43b7fa74ddef8c4ea87eaa6c32a2c2ad9a586fdb9",
+            "sha256": "53b593118cf2fffa1d2694151fd0ab74c5cfcd085b809f02e2a195db7ee15ab7",
             "input": "Dott.app/Contents/_CodeSignature/CodeResources"
           }
         }
