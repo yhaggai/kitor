@@ -1,11 +1,12 @@
 ---
-import type { CatalogGame } from "../lib/catalog";
+import { gameGuideTitle, type CatalogGame } from "../lib/catalog";
 interface Props {
   game: CatalogGame;
   href: string;
+  showGuideTitle?: boolean;
   locale: "en" | "he";
 }
-const { game, href, locale } = Astro.props;
+const { game, href, locale, showGuideTitle } = Astro.props;
 const cover = game.covers[locale].src || game.covers[locale === "en" ? "he" : "en"].src;
 const title = locale === "he" ? game.title_he || game.title : game.title;
 ---
@@ -13,7 +14,7 @@ const title = locale === "he" ? game.title_he || game.title : game.title;
 <div class="game-card">
   <a href={href}>
     <img class="game-cover" src={cover} alt="" width="220" height="290" loading="lazy" decoding="async" />
-    <h2 class="game-title"><bdi>{title}</bdi></h2>
+    <h2 class="game-title"><bdi>{showGuideTitle ? gameGuideTitle(game, locale) : title}</bdi></h2>
   </a>
   <slot />
 </div>
