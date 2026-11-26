@@ -213,6 +213,7 @@ export default function PatchBrowser({ navigationResetKey }: { navigationResetKe
 
       {selectedCatalogGame && (
         <GameDetails
+          key={selectedCatalogGame.scummvm_id}
           catalogGame={selectedCatalogGame}
           onRemove={async () => setGames(await invoke<Game[]>("get_games_with_patches"))}
           collection="discovery"
@@ -221,6 +222,7 @@ export default function PatchBrowser({ navigationResetKey }: { navigationResetKe
       )}
       {selected && (
         <GameDetails
+          key={selected.scummvm_id}
           patch={selected}
           onRemove={async () => setGames(await invoke<Game[]>("get_games_with_patches"))}
           collection="discovery"
