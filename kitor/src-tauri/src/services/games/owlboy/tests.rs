@@ -124,8 +124,14 @@ fn windows_detection_and_launch() {
             let command = crate::services::game_adapters::native_command(&profile, &root)
                 .unwrap()
                 .unwrap();
-            assert_eq!(command.get_program(), cmd.get_program());
-            assert_eq!(command.get_current_dir(), cmd.get_current_dir());
+            assert_eq!(
+                Path::new(command.get_program()).canonicalize().unwrap(),
+                executable.canonicalize().unwrap()
+            );
+            assert_eq!(
+                command.get_current_dir().unwrap().canonicalize().unwrap(),
+                root.canonicalize().unwrap()
+            );
         }
     } else {
         assert!(launch_command(&root).is_err());
