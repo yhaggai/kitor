@@ -104,9 +104,10 @@ fn windows_detection_and_launch() {
     if cfg!(target_os = "windows") {
         let cmd = launch_command(&root).unwrap();
         let canonical_root = root.canonicalize().unwrap();
+        let canonical_executable = root.join("oWlBoY.ExE").canonicalize().unwrap();
         assert_eq!(
             Path::new(cmd.get_program()).canonicalize().unwrap(),
-            canonical_root.join("oWlBoY.ExE")
+            canonical_executable
         );
         assert_eq!(
             cmd.get_current_dir().unwrap().canonicalize().unwrap(),
@@ -120,8 +121,14 @@ fn windows_detection_and_launch() {
             let command = crate::services::game_adapters::native_command(&profile, &root)
                 .unwrap()
                 .unwrap();
-            assert_eq!(command.get_program(), cmd.get_program());
-            assert_eq!(command.get_current_dir(), cmd.get_current_dir());
+            assert_eq!(
+                Path::new(command.get_program()).canonicalize().unwrap(),
+                canonical_executable
+            );
+            assert_eq!(
+                command.get_current_dir().unwrap().canonicalize().unwrap(),
+                canonical_root
+            );
         }
     } else {
         assert!(launch_command(&root).is_err());
