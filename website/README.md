@@ -35,8 +35,12 @@ Create a Cloudflare Pages Direct Upload project and set its production branch to
 | `CLOUDFLARE_ACCOUNT_ID` | Cloudflare account ID containing the Pages project |
 | `CLOUDFLARE_PAGES_PROJECT` | Exact Pages project name |
 | `KITOR_SITE_URL` | Public HTTPS origin, such as `https://kitor.click` or the project's `https://<project>.pages.dev` URL |
+| `INFISICAL_PROJECT_SLUG` | Infisical project containing the Pages token |
+| `INFISICAL_IDENTITY_ID` | Infisical machine identity for website deployment |
 
-Add the repository secret `CLOUDFLARE_PAGES_API_TOKEN` with **Account → Cloudflare Pages → Edit** permission scoped to that account. The workflow fails before building if any required setting is missing. The Pages production branch must match `v1` so uploads become production deployments rather than previews. If the project already uses Cloudflare Git integration, disable its automatic builds when using this Action to avoid duplicate deployments.
+Store `CLOUDFLARE_PAGES_API_TOKEN` at the root of the Infisical `prod` environment. Scope the token to the Pages account with **Account → Cloudflare Pages → Edit** permission. Grant the machine identity read access to the token and configure GitHub OIDC trust for the `v1` branch and `.github/workflows/deploy-website.yml`. The workflow fetches the token immediately before deployment.
+
+Set the Pages production branch to `v1`. If the project already uses Cloudflare Git integration, disable its automatic builds when using this Action to avoid duplicate deployments.
 
 Merge the workflow into `v1`, then select **Actions → Deploy website → Run workflow → v1** for the first deployment. Custom domains must also be attached to the Pages project in Cloudflare. This Action deploys to your Cloudflare account; it does not update the separate ChatGPT Sites publication recorded in `.openai/hosting.json`.
 
