@@ -85,7 +85,7 @@ export function patchSummary(patch: PatchWithStatus): GameSummary {
 
 export type CatalogGame = {
   scummvm_id: string;
-  tags?: string[];
+  tags?: GameSummary["tags"];
   added_on?: string;
   title: string;
   title_he: string | null;
