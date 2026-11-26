@@ -25,6 +25,7 @@ pub async fn get_all_patches(state: State<'_, AppState>) -> Result<Vec<patch_ser
 #[derive(serde::Serialize)]
 pub struct CatalogGame {
     scummvm_id: String,
+    tags: Vec<registry_service::Tag>,
     title: String,
     title_he: Option<String>,
     cover_url: Option<String>,
@@ -41,6 +42,7 @@ pub fn get_catalog_games_without_patches() -> Result<Vec<CatalogGame>, String> {
         .filter(|game| game.discover_without_patch && game.patches.is_empty())
         .filter_map(|game| {
             Some(CatalogGame {
+                tags: game.tags,
                 steam_app_id: game.steam_app_id?,
                 scummvm_id: game.scummvm_id,
                 title: game.title,

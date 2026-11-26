@@ -1,6 +1,11 @@
 [
   {
     "id": "undertale",
+    "tags": [
+      "hot-kitor",
+      "indie",
+      "story"
+    ],
     "added_on": "2026-10-25",
     "title": "UNDERTALE",
     "title_he": "אנדרטייל",
@@ -26,6 +31,10 @@
   },
   {
     "id": "monkey-se",
+    "tags": [
+      "classic",
+      "comedy"
+    ],
     "added_on": "2025-12-28",
     "title": "The Secret of Monkey Island — Classic",
     "title_he": "הסוד של אי הקופים",
@@ -53,6 +62,10 @@
   },
   {
     "id": "monkey2-se",
+    "tags": [
+      "classic",
+      "comedy"
+    ],
     "added_on": "2026-01-10",
     "title": "Monkey Island 2: LeChuck's Revenge — Classic",
     "title_he": "אי הקופים 2 נקמתו של לצ׳אק",
@@ -80,6 +93,11 @@
   },
   {
     "id": "sq1sci",
+    "tags": [
+      "classic",
+      "comedy",
+      "sci-fi"
+    ],
     "added_on": "2026-01-10",
     "title": "Space Quest I: Roger Wilco in the Sarien Encounter (VGA Remake)",
     "title_he": "מסע בחלל 1 VGA",
@@ -105,6 +123,10 @@
   },
   {
     "id": "kyra1-cd",
+    "tags": [
+      "classic",
+      "fantasy"
+    ],
     "added_on": "2026-01-11",
     "title": "The Legend of Kyrandia",
     "title_he": "אגדת קירנדיה",
@@ -131,6 +153,10 @@
   },
   {
     "id": "pq1",
+    "tags": [
+      "classic",
+      "detective"
+    ],
     "added_on": "2026-10-25",
     "title": "Police Quest: In Pursuit of the Death Angel (EGA)",
     "title_he": "משימה משטרתית",
@@ -156,6 +182,11 @@
   },
   {
     "id": "sq1",
+    "tags": [
+      "classic",
+      "comedy",
+      "sci-fi"
+    ],
     "added_on": "2026-10-25",
     "title": "Space Quest I: The Sarien Encounter (EGA)",
     "title_he": "מסע בחלל 1 EGA",
@@ -181,6 +212,11 @@
   },
   {
     "id": "sq2",
+    "tags": [
+      "classic",
+      "comedy",
+      "sci-fi"
+    ],
     "added_on": "2026-10-25",
     "title": "Space Quest II: Vohaul’s Revenge",
     "title_he": "מסע בחלל 2",
@@ -206,6 +242,11 @@
   },
   {
     "id": "sq3",
+    "tags": [
+      "classic",
+      "comedy",
+      "sci-fi"
+    ],
     "added_on": "2026-10-25",
     "title": "Space Quest III: The Pirates of Pestulon",
     "title_he": "מסע בחלל 3",
@@ -232,6 +273,11 @@
   },
   {
     "id": "sq4",
+    "tags": [
+      "classic",
+      "comedy",
+      "sci-fi"
+    ],
     "added_on": "2026-11-01",
     "title": "Space Quest IV: Roger Wilco and the Time Rippers",
     "title_he": "מסע בחלל IV: רוג׳ר וילקו וקורעי הזמן",
@@ -256,6 +302,11 @@
   },
   {
     "id": "sq5",
+    "tags": [
+      "classic",
+      "comedy",
+      "sci-fi"
+    ],
     "added_on": "2026-10-25",
     "title": "Space Quest V: The Next Mutation",
     "title_he": "מסע בחלל 5",
@@ -281,6 +332,9 @@
   },
   {
     "id": "sq6",
+    "tags": [
+      "classic"
+    ],
     "added_on": "2026-11-01",
     "title": "Space Quest 6: Roger Wilco in the Spinal Frontier",
     "title_he": "מסע בחלל 6",
@@ -305,6 +359,10 @@
   },
   {
     "id": "torin",
+    "tags": [
+      "classic",
+      "fantasy"
+    ],
     "added_on": "2026-10-25",
     "title": "Torin’s Passage",
     "title_he": "המסע של טורין",
@@ -330,6 +388,11 @@
   },
   {
     "id": "spyfox",
+    "tags": [
+      "classic",
+      "kids",
+      "comedy"
+    ],
     "added_on": "2026-10-25",
     "title": "Spy Fox in Dry Cereal",
     "title_he": "ספיי פוקס",
@@ -355,6 +418,10 @@
   },
   {
     "id": "pajama",
+    "tags": [
+      "classic",
+      "kids"
+    ],
     "added_on": "2026-10-25",
     "title": "Pajama Sam: No Need to Hide When It’s Dark Outside",
     "title_he": "פיג׳מה סם",
@@ -380,6 +447,11 @@
   },
   {
     "id": "toonstruck",
+    "tags": [
+      "classic",
+      "comedy",
+      "fantasy"
+    ],
     "added_on": "2026-10-25",
     "title": "Toonstruck",
     "title_he": "טונסטרק",
@@ -405,6 +477,11 @@
   },
   {
     "id": "gob2",
+    "tags": [
+      "classic",
+      "puzzle",
+      "fantasy"
+    ],
     "added_on": "2026-10-25",
     "title": "Gobliins 2: The Prince Buffoon",
     "title_he": "גובלינים 2",
@@ -430,6 +507,11 @@
   },
   {
     "id": "tlj",
+    "tags": [
+      "classic",
+      "fantasy",
+      "story"
+    ],
     "added_on": "2026-10-25",
     "title": "The Longest Journey",
     "title_he": "המסע הארוך ביותר",
@@ -456,6 +538,10 @@
   },
   {
     "id": "sky",
+    "tags": [
+      "classic",
+      "sci-fi"
+    ],
     "added_on": "2026-10-25",
     "title": "Beneath a Steel Sky",
     "title_he": "מתחת לשמי הפלדה",
@@ -481,6 +567,11 @@
   },
   {
     "id": "stanley-parable",
+    "tags": [
+      "indie",
+      "comedy",
+      "story"
+    ],
     "added_on": "2026-10-25",
     "title": "The Stanley Parable (2013)",
     "title_he": "המשל של סטנלי",
@@ -506,6 +597,11 @@
   },
   {
     "id": "tesla-effect",
+    "tags": [
+      "detective",
+      "sci-fi",
+      "comedy"
+    ],
     "added_on": "2026-10-25",
     "title": "Tesla Effect: A Tex Murphy Adventure",
     "title_he": "אפקט טסלה",
@@ -531,6 +627,11 @@
   },
   {
     "id": "ethan-carter",
+    "tags": [
+      "indie",
+      "detective",
+      "story"
+    ],
     "added_on": "2026-10-25",
     "title": "The Vanishing of Ethan Carter (original)",
     "title_he": "ההיעלמות של איתן קרטר",
@@ -556,6 +657,9 @@
   },
   {
     "id": "life-is-strange",
+    "tags": [
+      "story"
+    ],
     "added_on": "2026-10-25",
     "title": "Life Is Strange — Episodes 1–3",
     "title_he": "החיים מוזרים",
@@ -581,6 +685,11 @@
   },
   {
     "id": "portal2",
+    "tags": [
+      "puzzle",
+      "comedy",
+      "sci-fi"
+    ],
     "added_on": "2026-10-25",
     "title": "Portal 2",
     "title_he": "פורטל 2",
@@ -606,6 +715,11 @@
   },
   {
     "id": "journey-down1",
+    "tags": [
+      "indie",
+      "comedy",
+      "story"
+    ],
     "added_on": "2026-10-25",
     "title": "The Journey Down: Chapter One",
     "title_he": "המסע למטה",
@@ -631,6 +745,11 @@
   },
   {
     "id": "kathy-rain-dc",
+    "tags": [
+      "indie",
+      "detective",
+      "thriller"
+    ],
     "added_on": "2026-10-25",
     "title": "Kathy Rain: Director's Cut",
     "title_he": "קתי ריין",
@@ -656,6 +775,10 @@
   },
   {
     "id": "drifter",
+    "tags": [
+      "indie",
+      "thriller"
+    ],
     "added_on": "2026-10-25",
     "title": "The Drifter",
     "title_he": "הנווד",
@@ -681,6 +804,10 @@
   },
   {
     "id": "owlboy",
+    "tags": [
+      "hot-kitor",
+      "indie"
+    ],
     "added_on": "2026-10-26",
     "title": "ילד הינשוף — Owlboy",
     "title_he": "ילד הינשוף",
@@ -705,6 +832,10 @@
   },
   {
     "id": "tentacle",
+    "tags": [
+      "classic",
+      "comedy"
+    ],
     "added_on": "2026-10-26",
     "title": "Day of the Tentacle (Classic)",
     "title_he": "יומו של הטנטקל",
@@ -730,6 +861,11 @@
   },
   {
     "id": "day-of-the-tentacle-remastered",
+    "tags": [
+      "hot-kitor",
+      "classic",
+      "comedy"
+    ],
     "added_on": "2026-10-26",
     "title": "Day of the Tentacle Remastered",
     "title_he": "יומו של הטנטקל",
@@ -754,6 +890,11 @@
   },
   {
     "id": "grim-fandango-remastered",
+    "tags": [
+      "classic",
+      "comedy",
+      "detective"
+    ],
     "added_on": "2026-10-28",
     "title": "Grim Fandango Remastered",
     "title_he": "גרים פנדנגו",
@@ -779,6 +920,11 @@
   },
   {
     "id": "monkey-se-native",
+    "tags": [
+      "hot-kitor",
+      "classic",
+      "comedy"
+    ],
     "added_on": "2026-10-28",
     "title": "The Secret of Monkey Island: Special Edition (Native Remastered)",
     "title_he": "הסוד של אי הקופים",
@@ -805,6 +951,11 @@
   },
   {
     "id": "monkey2-se-native",
+    "tags": [
+      "hot-kitor",
+      "classic",
+      "comedy"
+    ],
     "added_on": "2026-10-28",
     "title": "Monkey Island 2: LeChuck's Revenge Special Edition (Native Remastered)",
     "title_he": "אי הקופים 2 נקמתו של לצ׳אק",
@@ -831,6 +982,11 @@
   },
   {
     "id": "silver-pines",
+    "tags": [
+      "indie",
+      "horror",
+      "thriller"
+    ],
     "added_on": "2026-10-31",
     "title": "Silver Pines",
     "title_he": "סילבר פיינס",
@@ -855,6 +1011,10 @@
   },
   {
     "id": "jenny-leclue",
+    "tags": [
+      "indie",
+      "detective"
+    ],
     "added_on": "2026-11-06",
     "title": "Jenny LeClue - Detectivu",
     "title_he": "ג׳ני לקלו – הבלשית",
@@ -879,6 +1039,10 @@
   },
   {
     "id": "disco-elysium",
+    "tags": [
+      "hot-kitor",
+      "detective"
+    ],
     "added_on": "2026-11-13",
     "title": "Disco Elysium – The Final Cut",
     "title_he": "דיסקו אליסיום",
@@ -903,6 +1067,9 @@
   },
   {
     "id": "moomin-midsummer-madness",
+    "tags": [
+      "hot-kitor"
+    ],
     "added_on": "2026-11-14",
     "title": "Moomin: Midsummer Madness",
     "title_he": "מומינים: ההצגה הגדולה",

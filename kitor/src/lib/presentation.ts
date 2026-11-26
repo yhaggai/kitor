@@ -85,6 +85,7 @@ export function patchSummary(patch: PatchWithStatus): GameSummary {
 
 export type CatalogGame = {
   scummvm_id: string;
+  tags?: string[];
   added_on?: string;
   title: string;
   title_he: string | null;
@@ -95,6 +96,7 @@ export type CatalogGame = {
 export function catalogGameSummary(game: CatalogGame): GameSummary {
   return {
     id: game.scummvm_id,
+    tags: game.tags,
     ...gameCredits(game.scummvm_id),
     addedOn: game.added_on,
     originalReleaseDate: gameReleaseDate(game.scummvm_id),

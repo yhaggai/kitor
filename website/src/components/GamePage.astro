@@ -1,6 +1,8 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import { gameGuideTitle, type CatalogGame } from "../lib/catalog";
+import GameCard from "./GameCard.astro";
+import { relatedGames } from "../generated/relatedGames";
+import { gameGuideTitle, games, type CatalogGame } from "../lib/catalog";
 import { fallbackInstallerUrl, installers } from "../lib/downloads";
 import { gameGuideNotes } from "../lib/game-guide-notes";
 import { platformNames, translationDetails } from "../lib/translation-details";
@@ -27,6 +29,7 @@ const description = game.hebrew
       `Play ${name} in Hebrew with Kitor. Check the game details and download the app.`
     )
   : t(`${name} בקטלוג קיטור. בדקו את פרטי המהדורה והזמינות.`, `${name} in the Kitor catalog. Check the edition and availability.`);
+const suggestions = relatedGames(game, games.map(entry => ({ ...entry, addedOn: entry.added_on })));
 const otherLocale = en ? "he" : "en";
 const boxLanguage = game.covers[locale].src ? locale : otherLocale;
 const note = gameGuideNotes[game.id]?.[locale];
@@ -131,6 +134,14 @@ const storeLinks = [
     {game.screenshot && (
       <img class="game-guide-screenshot" src={game.screenshot} alt={t(`צילום מסך מתוך ${name}`, `${name} screenshot`)} loading="lazy" />
     )}
+    {suggestions.length > 0 && (
+      <section>
+        <h2>{t("משחקים נוספים שאולי יעניינו אתכם", "Games you might also like")}</h2>
+        <div class="related-games">
+          {suggestions.map(entry => <GameCard game={entry} {locale} href={home + "games/" + entry.id + "/"} />)}
+        </div>
+      </section>
+    )}
   </main>
 </Layout>
 
@@ -189,6 +200,7 @@ const storeLinks = [
 </script>
 
 <style>
+  .related-games { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 150px), 1fr)); gap: 16px; max-width: 720px; }
   .game-guide { padding-block: 40px 100px; }
   .game-guide-intro {
     display: flex;

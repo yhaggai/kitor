@@ -3,6 +3,7 @@ import catalog from "../generated/catalog.json";
 import type { GameBoxProps } from "../generated/GameBox";
 export type CatalogGame = {
   id: string;
+  tags?: string[];
   added_on?: string;
   title: string;
   title_he?: string;
