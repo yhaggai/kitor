@@ -1,30 +1,12 @@
 name: Build Kitor installers
 
 on:
-  pull_request:
-    paths:
-      - '.github/workflows/classify-translation-pr.yml'
-      - 'kitor/tools/check_translation_pr.py'
-      - 'kitor/src/**'
-      - 'kitor/src-tauri/**'
-      - 'kitor/native-steam/**'
-      - 'kitor/public/**'
-      - 'packages/ui/**'
-      - 'kitor/patches/**'
-      - 'patches-workspace/**'
-      - 'kitor/tests/**'
-      - 'kitor/tools/app_release.py'
-      - 'kitor/tools/test_app_release.py'
-      - 'kitor/package.json'
-      - 'kitor/index.html'
-      - 'kitor/postcss.config.js'
-      - 'kitor/tailwind.config.js'
-      - 'kitor/tsconfig*.json'
-      - 'kitor/vite.config.ts'
-      - 'package.json'
-      - 'bun.lock'
-      - '.github/workflows/build-installers.yml'
-      - '.github/workflows/release-app.yml'
+  workflow_call:
+    inputs:
+      upload_artifacts:
+        description: Upload unverified artifacts
+        type: boolean
+        default: false
   workflow_dispatch:
     inputs:
       upload_artifacts:
@@ -33,18 +15,14 @@ on:
         default: false
 
 concurrency:
-  group: ${{ github.workflow }}-${{ github.event_name }}-${{ github.event.pull_request.number || github.run_id }}
+  group: installers-${{ github.workflow }}-${{ github.event_name }}-${{ github.event.pull_request.number || github.run_id }}
   cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 
 permissions:
   contents: read
 
 jobs:
-  translation-scope:
-    uses: ./.github/workflows/classify-translation-pr.yml
   installer:
-    needs: translation-scope
-    if: needs.translation-scope.outputs.translation_only != 'true'
     strategy:
       fail-fast: false
       matrix:
