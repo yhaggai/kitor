@@ -103,15 +103,18 @@ fn windows_detection_and_launch() {
     assert_eq!(detect(&root.join("Data")), detect(&root));
     if cfg!(target_os = "windows") {
         let cmd = launch_command(&root).unwrap();
-        let canonical_root = root.canonicalize().unwrap();
-        let canonical_executable = root.join("oWlBoY.ExE").canonicalize().unwrap();
+        let program = Path::new(cmd.get_program());
+        let working_dir = cmd.get_current_dir().unwrap();
+        let executable = root.join("oWlBoY.ExE");
+
+        // Windows can spell the temporary directory with an 8.3 alias.
+        // Check both command paths against the contents of the executable fixture.
+        assert_eq!(program.file_name(), executable.file_name());
+        fs::write(&executable, b"Owlboy test executable").unwrap();
+        assert_eq!(fs::read(program).unwrap(), b"Owlboy test executable");
         assert_eq!(
-            Path::new(cmd.get_program()).canonicalize().unwrap(),
-            canonical_executable
-        );
-        assert_eq!(
-            cmd.get_current_dir().unwrap().canonicalize().unwrap(),
-            canonical_root
+            fs::read(working_dir.join("oWlBoY.ExE")).unwrap(),
+            b"Owlboy test executable"
         );
         // Exercise the catalog route as well: it must not reject Windows before
         // reaching this platform-aware launcher (for either language edition).
@@ -123,11 +126,11 @@ fn windows_detection_and_launch() {
                 .unwrap();
             assert_eq!(
                 Path::new(command.get_program()).canonicalize().unwrap(),
-                canonical_executable
+                executable.canonicalize().unwrap()
             );
             assert_eq!(
                 command.get_current_dir().unwrap().canonicalize().unwrap(),
-                canonical_root
+                root.canonicalize().unwrap()
             );
         }
     } else {
