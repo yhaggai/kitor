@@ -7,8 +7,9 @@ export const installers = [
 ] as const;
 
 type InstallerId = (typeof installers)[number]["id"];
-// Keep this fallback on a verified stable desktop release for offline or rate-limited visitors.
-const fallbackVersion = "0.1.3";
+// Use a stable release from the Developer ID signing and notarization workflow.
+const fallbackVersion = "0.1.9";
+const minimumDownloadVersion = fallbackVersion.split(".").map(Number);
 export const fallbackReleaseUrl = `${releasesUrl}/tag/app-v${fallbackVersion}`;
 export function fallbackInstallerUrl(id: InstallerId) {
   const { suffix } = installers.find((installer) => installer.id === id)!;
@@ -74,6 +75,7 @@ export async function latestInstallers() {
       const match = /^app-v(\d+)\.(\d+)\.(\d+)$/.exec(release.tag_name);
       if (!match || release.draft || release.prerelease) continue;
       const version = match.slice(1).map(Number);
+      if (isNewer(minimumDownloadVersion, version)) continue;
       if (latest && !isNewer(version, latest.version)) continue;
 
       const urls = new Map<InstallerId, string>();
