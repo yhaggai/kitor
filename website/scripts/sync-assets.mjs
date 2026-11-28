@@ -52,6 +52,7 @@ for (const game of registry.games) {
   const description = descriptions[game.scummvm_id];
   catalog.push({
     id: game.scummvm_id,
+    tags: game.tags,
     added_on: game.added_on,
     title: game.title,
     title_he: game.title_he,
@@ -69,6 +70,7 @@ for (const game of registry.games) {
   });
 }
 await writeFile(path.join(generated, "catalog.json"), JSON.stringify(catalog, null, 2) + "\n");
+await copyFile(path.join(repo, "kitor/src/lib/relatedGames.ts"), path.join(generated, "relatedGames.ts"));
 // The desktop remains the maintained source; the website supplies its own translator.
 const components = path.join(repo, "kitor/src/components");
 const gameBox = await readFile(path.join(components, "GameBox.tsx"), "utf8");

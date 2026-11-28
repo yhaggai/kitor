@@ -6,6 +6,7 @@ import { ChevronDown, FolderSearch } from "lucide-react";
 import { useEffect, useState } from "react";
 import BugReportDialog from "@/components/BugReportDialog";
 import GameDetails from "@/components/GameDetails";
+import RelatedGames from "@/components/RelatedGames";
 import { Button } from "@/components/ui/button";
 import { useDialog } from "@/hooks/useDialog";
 import { gameSummary } from "@/lib/presentation";
@@ -229,6 +230,13 @@ export default function GameLibrary({ onRefresh, navigationResetKey }: GameLibra
           collection="library"
           onRemove={onRefresh}
           onBack={navigation.back}
+        />
+      )}
+      {selected?.scummvm_id && (
+        <RelatedGames
+          currentId={selected?.scummvm_id}
+          entries={games.map((game) => ({ gameId: game.scummvm_id, summary: gameSummary(game) }))}
+          onSelect={navigation.select}
         />
       )}
     </div>

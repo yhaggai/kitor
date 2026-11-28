@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 import AddGameDialog from "@/components/AddGameDialog";
 import BugReportDialog from "@/components/BugReportDialog";
 import GameDetails from "@/components/GameDetails";
+import RelatedGames from "@/components/RelatedGames";
 import { Button } from "@/components/ui/button";
 import { usePatchBrowserState } from "@/hooks/usePatchBrowserState";
 import { type CatalogGame, catalogGameSummary, patchSummary } from "@/lib/presentation";
@@ -212,6 +213,7 @@ export default function PatchBrowser({ navigationResetKey }: { navigationResetKe
 
       {selectedCatalogGame && (
         <GameDetails
+          key={selectedCatalogGame.scummvm_id}
           catalogGame={selectedCatalogGame}
           onRemove={async () => setGames(await invoke<Game[]>("get_games_with_patches"))}
           collection="discovery"
@@ -220,10 +222,24 @@ export default function PatchBrowser({ navigationResetKey }: { navigationResetKe
       )}
       {selected && (
         <GameDetails
+          key={selected.scummvm_id}
           patch={selected}
           onRemove={async () => setGames(await invoke<Game[]>("get_games_with_patches"))}
           collection="discovery"
           onBack={navigation.back}
+        />
+      )}
+      {(selected?.scummvm_id ?? selectedCatalogGame?.scummvm_id) && (
+        <RelatedGames
+          currentId={selected?.scummvm_id ?? selectedCatalogGame?.scummvm_id}
+          entries={[
+            ...patches.map((patch) => ({ gameId: patch.scummvm_id, summary: patchSummary(patch) })),
+            ...catalogGames.map((game) => ({
+              gameId: game.scummvm_id,
+              summary: catalogGameSummary(game),
+            })),
+          ]}
+          onSelect={navigation.select}
         />
       )}
     </div>
