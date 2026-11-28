@@ -33,7 +33,7 @@ jobs:
             exit 1
           fi
 
-  scan-pr:
+  run-osv-pr:
     needs: [translation-scope, verify-no-chrono]
     permissions:
       actions: read
@@ -41,6 +41,32 @@ jobs:
       security-events: write
     if: github.event_name == 'pull_request' && needs.translation-scope.outputs.translation_only != 'true'
     uses: google/osv-scanner-action/.github/workflows/osv-scanner-reusable-pr.yml@32d3cd482bdadfb38b186c0ad1b031902d55d932 # v2.7.1
+
+  osv-pr-result:
+    # Keep the check name required by branch protection on v1.
+    name: scan-pr / osv-scan
+    needs: [translation-scope, verify-no-chrono, run-osv-pr]
+    if: always() && github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    permissions: {}
+    steps:
+      - name: Verify scan or translation-only result
+        env:
+          CLASSIFIER_RESULT: ${{ needs.translation-scope.result }}
+          TRANSLATION_ONLY: ${{ needs.translation-scope.outputs.translation_only }}
+          CHRONO_RESULT: ${{ needs.verify-no-chrono.result }}
+          SCAN_RESULT: ${{ needs.run-osv-pr.result }}
+        run: |
+          if [[ "$CLASSIFIER_RESULT" == success ]]; then
+            if [[ "$TRANSLATION_ONLY" == true && "$CHRONO_RESULT" == skipped && "$SCAN_RESULT" == skipped ]]; then
+              exit 0
+            fi
+            if [[ "$TRANSLATION_ONLY" == false && "$CHRONO_RESULT" == success && "$SCAN_RESULT" == success ]]; then
+              exit 0
+            fi
+          fi
+          echo '::error::OSV scan or translation classification did not complete successfully.'
+          exit 1
 
   scan-repository:
     needs: [translation-scope, verify-no-chrono]
